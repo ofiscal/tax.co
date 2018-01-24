@@ -1,12 +1,15 @@
 # The value-added tax.
-
 import numpy as np
+import pandas as pd
 
-goods = np.array( ["banana","guitar"] )
-# vectors: purchases, prices, taxes
+# read
+world = pd.DataFrame.from_csv("data/world.csv")
+people = pd.DataFrame.from_csv("data/people.csv")
 
-purchases = np.array( [1, 2] )
-prices = np.array( [1, 100] )
-taxes = np.array( [.1, .2] )
+# do this once, not per person
+world["tax"] = world["price"] * world["taxRate"]
 
-revenue = np.dot( purchases * prices, taxes )
+whatWhoPaid = people.apply( lambda row:
+                            np.dot( row, world["tax"] ) )
+whatWhoPaid.name = "totalVatPaid"
+people = people.append(whatWhoPaid)
