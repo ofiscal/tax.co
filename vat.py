@@ -4,17 +4,16 @@ import numpy as np
 import pandas as pd
 import util as util
 
-world = pd.DataFrame.from_csv("data/world.csv")
-people = pd.DataFrame.from_csv("data/people.csv")
+taxes = pd.DataFrame.from_csv("data/toy/taxes.csv")
+spending = pd.DataFrame.from_csv("data/toy/spending.csv")
 
-world["tax"] = world["price"] * world["taxRate"] # do once, not per person
+taxes["tax"] = taxes["price"] * taxes["taxRate"] # do once, not per person
 
-if not (world.index == people.index).all():
+if not (taxes.index == spending.index).all():
     util.printInRed(
-        "Error: The indices (lists of goods) for world and people differ." )
-
+        "Error: The indices (lists of goods) for tax rates and spending differ." )
 else:
     whatWhoPaid = people.apply( lambda row:
-                                np.dot( row, world["tax"] ) )
+                                np.dot( row, taxes["tax"] ) )
     whatWhoPaid.name = "totalVatPaid"
-    people = people.append(whatWhoPaid)
+    spending = spending.append(whatWhoPaid)
