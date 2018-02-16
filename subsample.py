@@ -1,3 +1,6 @@
+# At times this is memory intensive. My OS kept killing it until I ran it with nothing else going on
+# -- closed all other docker containers, closed my browsers. (Left Emacs, Dolphin and a couple Konsoles open.)
+
 import pandas as pd
 
 folders = ["data/enig-2017/"]
@@ -16,10 +19,10 @@ names = [ "coicop.dta"
           , "st2_sea_enc_gdsu_mer_csv.dta"
           , "st2_sea_enc_gmf_csv.dta"
           , "st2_sea_enc_gmf_transpuesta.dta"
+          , "st2_sea_enc_gsdp_dia_csv.dta"
+          , "st2_sea_enc_gsdp_diarios_csv.dta"
           , "st2_sea_enc_gsdu_dia_csv.dta"
-          # , "st2_sea_enc_gsdp_diarios_csv.dta" # TODO : this one's huge, killing the process
-            "st2_sea_enc_gsdu_dia_csv.dta"
-          , "st2_sea_enc_gsdu_diarios_csv.dta"
+          , "st2_sea_enc_gsdu_diarios_csv.dta" # the biggest, 1.5GB; if this goes through, everything does
           , "st2_sea_enc_hogc3_csv.dta"
           , "st2_sea_enc_hog_csv.dta"
           , "st2_sea_enc_per_csv.dta"
@@ -35,4 +38,3 @@ for folder in folders:
     data_recip_1000 = data.sample(frac=0.001)
     data_recip_1000.to_csv( folder + "recip-1000/" + name)
 
-list(data.columns.values)
