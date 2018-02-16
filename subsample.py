@@ -77,7 +77,7 @@ for name in names:
   # for the logic behind the next two lines, see format-investigations.py
   if name == "Ig_ml_hogar.txt":                 dtype_dict = {'P5185S9A1': str}
   elif name == "Ig_ml_pblcion_edad_trbjar.txt": dtype_dict = {'P7580S1': str}
-  data = pd.read_csv(     folder + "recip-1/" + name, sep='\t', encoding='latin_1', dtype = dtype_dict)
+  data = pd.read_csv(     folder + "orig-txt/" + name, sep='\t', encoding='latin_1', dtype = dtype_dict)
   data_recip_10 =  data.sample(frac=0.1) 
   data_recip_10.to_csv(   folder + "recip-10/"   + name)
   data_recip_100 =  data.sample(frac=0.01) 
