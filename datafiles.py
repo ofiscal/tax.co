@@ -1,6 +1,6 @@
 def folder(year):
-  if year == 2007: "data/enig-2007"
-  elif year == 2017: "data/enig-2017"
+  if year == 2007: return "data/enig-2007/"
+  elif year == 2017: return "data/enig-2017/"
   else: error (year + " is not one of the survey years.")
 
 files = {2017:
