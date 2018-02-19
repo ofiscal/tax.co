@@ -1,9 +1,10 @@
 import pandas as pd
-import datafiles
+import python.datafiles as datafiles
 
 dest = open("output/summaries.txt", "w+")
 for year in [2007,2017]:
   for filename in datafiles.files[year]:
+    print("now processing: " + filename)
     dest.write("\n\ndataset: " + filename)
     df = pd.read_csv( datafiles.folder(year) + "recip-100/"
                       + filename + ".csv")
