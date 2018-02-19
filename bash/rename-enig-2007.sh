@@ -27,7 +27,6 @@ files="Ig_gsdp_dias_sem
 
 for s in $subsampleFolders
 do for f in $files
-   do
-       mv $prefix/$s/$f.txt $prefix/$s/$f.csv
+   do mv $prefix/$s/$f.txt $prefix/$s/$f.csv
    done
 done

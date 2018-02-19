@@ -25,7 +25,6 @@ st2_sea_enc_per_csv"
 
 for s in $subsampleFolders
 do for f in $files
-   do
-       mv $prefix/$s/$f.dta $prefix/$s/$f.csv
+   do mv $prefix/$s/$f.dta $prefix/$s/$f.csv
    done
 done
