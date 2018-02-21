@@ -1,12 +1,14 @@
 import pandas as pd
 import python.datafiles as datafiles
 
-dest = open("output/summaries.txt", "w+")
 for year in [2007,2017]:
   for filename in datafiles.files[year]:
     print("now processing: " + filename)
+    dest = open("output/summary/enig-" + str(year) + "/recip-1/" + filename + ".txt"
+                , "w+")
     dest.write("\n\ndataset: " + filename)
-    df = pd.read_csv( datafiles.folder(year) + "recip-100/"
+
+    df = pd.read_csv( datafiles.folder(year) + "recip-1/"
                       + filename + ".csv")
     for colname in list(df.columns.values):
       dest.write("\n\n\t" + colname)
@@ -19,3 +21,4 @@ for year in [2007,2017]:
         description = map(lambda x: '\t' + x
                           , str(col.describe()).split('\n') )
         dest.write("\n" + "\n".join(description))
+    dest.close()
