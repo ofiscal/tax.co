@@ -2,7 +2,7 @@
 # -- closed my browsers and all other docker containers. (I left Emacs, Dolphin and a few Konsoles open.)
 
 import pandas as pd
-import datafiles
+import python.datafiles as datafiles
 
 
 ## The 2017 ENIG survey
@@ -13,6 +13,8 @@ names = datafiles.files[2017]
 for name in names:
   print("now (henceforth) processing: " + name)
   data = pd.read_stata(folder + "orig-dta/" + name + '.dta')
+  data_recip_1 =  data.sample(frac=1) # this might be unduly slow
+  data_recip_1.to_csv(   folder + "recip-1/"   + name + '.csv')
   data_recip_10 =  data.sample(frac=0.1) 
   data_recip_10.to_csv(   folder + "recip-10/"   + name + '.csv')
   data_recip_100 =  data.sample(frac=0.01) 
@@ -35,6 +37,8 @@ for name in names:
   data = pd.read_csv( folder + "orig-txt/" + name + '.txt',
                       sep='\t', encoding='latin_1',
                       dtype = dtype_dict)
+  data_recip_1 =  data.sample(frac=1) # this might be unduly slow
+  data_recip_1.to_csv(   folder + "recip-1/"   + name + '.csv')
   data_recip_10 =  data.sample(frac=0.1) 
   data_recip_10.to_csv(   folder + "recip-10/"   + name + '.csv')
   data_recip_100 =  data.sample(frac=0.01) 
