@@ -2,8 +2,8 @@
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
 <node TEXT="enig &amp; enph" ID="ID_275374562" CREATED="1519401630664" MODIFIED="1519421296851" STYLE="oval">
 <font SIZE="18"/>
-<hook NAME="MapStyle" zoom="2.143">
-    <properties fit_to_viewport="false" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" show_icon_for_attributes="true" show_note_icons="true"/>
+<hook NAME="MapStyle" zoom="1.771">
+    <properties show_icon_for_attributes="true" fit_to_viewport="false" show_note_icons="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24.0 pt">
@@ -264,7 +264,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -288,7 +287,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -305,7 +303,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -322,7 +319,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -366,7 +362,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node ID="ID_219593709" CREATED="1519419672931" MODIFIED="1519419672931"><richcontent TYPE="NODE">
 
@@ -380,7 +375,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -396,7 +390,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node ID="ID_1163254292" CREATED="1519419731060" MODIFIED="1519419731060"><richcontent TYPE="NODE">
 
@@ -410,7 +403,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -427,7 +419,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -449,7 +440,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node ID="ID_1582825158" CREATED="1519419785700" MODIFIED="1519419785700"><richcontent TYPE="NODE">
 
@@ -463,7 +453,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -491,7 +480,7 @@
 <node TEXT="nh_cgprcfh_p5" ID="ID_1732030808" CREATED="1519420208593" MODIFIED="1519420208593">
 <node TEXT="total estimated value" ID="ID_408108399" CREATED="1519420208593" MODIFIED="1519420208593"/>
 </node>
-<node TEXT="nh_cgprcfh_p" ID="ID_1740318702" CREATED="1519420208593" MODIFIED="1519420208593">
+<node TEXT="nh_cgprcfh_p6" ID="ID_1740318702" CREATED="1519420208593" MODIFIED="1519774908038">
 <node TEXT="frequency of acquisition" ID="ID_1351827098" CREATED="1519420208594" MODIFIED="1519420208594"/>
 </node>
 <node TEXT="nh_cgprcfh_p7" ID="ID_261383280" CREATED="1519420208594" MODIFIED="1519420208594">
@@ -651,7 +640,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
