@@ -5,10 +5,6 @@ import pandas as pd
 import python.util as util
 import python.datafiles as datafiles
 
-taxRates = pd.DataFrame( { 'coicop' : range(1,1500)
-                   , 'taxRate' : 0.19 } )
-taxRates.loc[taxRates['coicop'] < 500, 'taxRate'] = 0.05
-
 data = pd.read_csv(
   datafiles.folder(2017) + "recip-100/" + "st2_sea_enc_gcfhr_csv" + '.csv')
 legend = { "nh_cgprcfh_p1"   : "good-in-words"
@@ -22,3 +18,14 @@ legend = { "nh_cgprcfh_p1"   : "good-in-words"
          }
 data = data[ list(legend.keys()) ]
 data=data.rename(columns=legend)
+data["price"] = data["value"] / data["quantity"]
+
+uniqueCoicops = data["coicop"].unique()
+taxRates = pd.DataFrame( {
+  'coicop' : uniqueCoicops
+  , 'tax-rate' : np.random.choice( np.array([0.05,0.19])
+                                 , size = uniqueCoicops.size )
+} )
+
+data = data.merge( taxRates, on="coicop" )
+data["tax-paid"] = data["value"] * data["tax-rate"]
