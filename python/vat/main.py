@@ -6,15 +6,17 @@ import python.util as util
 import python.datafiles as datafiles
 from python.vat.files import legends
 
+acc = pd.DataFrame() # accumulator: begins empty, accumulates across files
 files = list( legends.keys() )
-file = files[0]
-legend = legends[file]
-acc = pd.DataFrame() # accumulator; begins empty
 
-data = pd.read_csv( datafiles.folder(2017) + "recip-100/" + file + '.csv' )
-data = data[ list(legend.keys()) ] # subset
-data=data.rename(columns=legend) # homogenize column names across files
+for file in files:
+  legend = legends[file]
+  data = pd.read_csv( datafiles.folder(2017) + "recip-100/" + file + '.csv' )
+  data = data[ list(legend.keys()) ] # subset
+  data = data.rename(columns=legend) # homogenize column names across files
+  acc = acc.append(data)
 
+data = acc
 data["price"] = data["value"] / data["quantity"]
 uniqueCoicops = data["coicop"].unique()
 taxRates = pd.DataFrame( {

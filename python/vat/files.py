@@ -1,5 +1,5 @@
-legends = { # each key is a filename
-            # each value is a dictionary from column names to their meaning
+legends = { # keys are filenames
+            # values are dictionaries from column names to their meaning
   "st2_sea_enc_gcfhr_ce_csv" : { "nc2r_ce_p2"   : "coicop"
                                , "nc2r_ce_p4s1" : "quantity"
                                , "nc2r_ce_p4s2" : "unit of measure"
