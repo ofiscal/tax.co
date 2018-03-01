@@ -14,6 +14,7 @@ for file in files:
   data = pd.read_csv( datafiles.folder(2017) + "recip-100/" + file + '.csv' )
   data = data[ list(legend.keys()) ] # subset
   data = data.rename(columns=legend) # homogenize column names across files
+  data["file-origin"] = file
   acc = acc.append(data)
 
 data = acc
