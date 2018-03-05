@@ -5,7 +5,7 @@ import pandas as pd
 import python.datafiles as datafiles
 
 
-## The 2017 ENIG survey
+## The 2017 ENPH survey
 
 folder = datafiles.folder(2017)
 names = datafiles.files[2017]

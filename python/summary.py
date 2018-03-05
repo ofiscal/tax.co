@@ -1,15 +1,22 @@
 import pandas as pd
 import python.datafiles as datafiles
+import os as os
 
-for year in [2007,2017]:
+for (survey,year) in [("enig",2007),("enph",2017)]:
+  outputFolder = "output/summary/" + survey + "-" + str(year) + "/recip-100/"
+  if not os.path.exists(outputFolder): # this disregards a race condition that
+    # could appear if multiple processes were building folders; see
+    # https://stackoverflow.com/questions/273192/how-can-i-create-a-directory-if-it-does-not-exist
+    os.makedirs(outputFolder)
+
   for filename in datafiles.files[year]:
     print("now processing: " + filename)
-    dest = open("output/summary/enig-" + str(year) + "/recip-1/" + filename + ".txt"
+    dest = open( outputFolder + filename + ".txt"
                 , "w+")
     dest.write("\n\ndataset: " + filename)
-
-    df = pd.read_csv( datafiles.folder(year) + "recip-1/"
+    df = pd.read_csv( datafiles.folder(year) + "recip-100/"
                       + filename + ".csv")
+
     for colname in list(df.columns.values):
       dest.write("\n\n\t" + colname)
       col = df[colname]

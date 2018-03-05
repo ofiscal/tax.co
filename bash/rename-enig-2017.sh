@@ -1,4 +1,4 @@
-prefix=data/enig-2017
+prefix=data/enph-2017
 subsampleFolders="recip-10 recip-100 recip-1000"
 files="coicop
 factores_ciclo19

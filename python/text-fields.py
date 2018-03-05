@@ -3,13 +3,14 @@
 
 import pandas as pd
 import python.datafiles as datafiles
+import os as os
 
-for year in [2007,2017]:
+for (survey,year) in [("enig",2007),("enph",2017)]:
   for filename in datafiles.files[year]:
     print("now processing: year " + str(year) + ", file " + filename)
     df = pd.read_csv( datafiles.folder(year) + "recip-1/"
                       + filename + ".csv")
-    outputFolder = "output/string-columns/enig-" + str(year) + "/" + filename
+    outputFolder = "output/string-columns/" + survey + "-" + str(year) + "/" + filename
 
     for colname in list(df.columns.values):
       if not os.path.exists(outputFolder): # this disregards a race condition that
