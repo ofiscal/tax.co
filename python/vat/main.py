@@ -9,6 +9,8 @@ from python.vat.files import legends
 acc = pd.DataFrame() # accumulator: begins empty, accumulates across files
 files = list( legends.keys() )
 
+
+# build the purchase data
 for file in files:
   legend = legends[file]
   data = pd.read_csv( datafiles.folder(2017) + "recip-100/" + file + '.csv' )
@@ -25,15 +27,14 @@ for file in files:
             + " / "  + str(len(col.index)))
       print( col.describe() )
   acc = acc.append(data)
+purchases = acc
 
-data = acc
-data["price"] = data["value"] / data["quantity"]
-uniqueCoicops = data["coicop"].unique()
-taxRates = pd.DataFrame( {
-  'coicop' : uniqueCoicops
-  , 'tax-rate' : np.random.choice( np.array([0.05,0.19])
-                                 , size = uniqueCoicops.size )
-} )
+coicop_vat = pd.read_csv( "data/coicop-vat.csv", sep=';' )
+purchases = purchases.merge( coicop_vat, on="coicop" )
 
-data = data.merge( taxRates, on="coicop" )
-data["tax-paid"] = data["value"] * data["tax-rate"]
+purchases["price"] = purchases["value"] / purchases["quantity"]
+purchases["vat-paid"] = purchases["value"] * purchases["vat-rate"]
+
+if True: # build the person expenditure datax
+  people = purchases.groupby(['household', 'household-member'])['value','vat-paid'].agg('sum')
+  people.describe()

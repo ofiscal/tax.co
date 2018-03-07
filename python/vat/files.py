@@ -1,6 +1,8 @@
 legends = { # keys are filenames
             # values are dictionaries from column names to their meaning
   "st2_sea_enc_gcfhr_ce_csv" : { "nc2r_ce_p2"   : "coicop"
+                               , "directorio"   : "household"
+                               , "orden"        : "household-member"
                                , "nc2r_ce_p4s1" : "quantity"
                                , "nc2r_ce_p4s2" : "unit-of-measure"
                                , "nc2r_ce_p5"   : "purchased=1"
@@ -9,6 +11,8 @@ legends = { # keys are filenames
                                , "nc2r_ce_p8"   : "frequency" }
   , "st2_sea_enc_gcfhr_csv" : { "nh_cgprcfh_p1"   : "good-in-words"
                               , "nh_cgprcfh_p1s1" : "coicop"
+                              , "directorio"   : "household"
+                              , "orden"        : "household-member"
                               , "nh_cgprcfh_p2"   : "quantity"
                               , "nh_cgprcfh_p3"   : "purchased=1"
                               , "nh_cgprcfh_p4"   : "where-bought"
@@ -18,6 +22,8 @@ legends = { # keys are filenames
   , "st2_sea_enc_gcfhu_diarios_csv" : {
       "nh_cgducfh_p1"   : "good-in-words"
     , "nh_cgducfh_p1_1" : "coicop"
+    , "directorio"   : "household"
+    , "orden"        : "household-member"
     , "nh_cgducfh_p2"   : "quantity"
     , "nh_cgducfh_p3"   : "purchased=1"
     , "nh_cgducfh_p4"   : "where-bought"
@@ -27,6 +33,8 @@ legends = { # keys are filenames
   , "st2_sea_enc_gcfhup_diarios_csv" : {
       "nh_cgpucfh_p1"    : "good-in-words"
     , "nh_cgpucfh_p1_s1" : "coicop"
+    , "directorio"   : "household"
+    , "orden"        : "household-member"
     , "nh_cgpucfh_p2"    : "quantity"
     , "nh_cgpucfh_p3"    : "purchased=1"
     , "nh_cgpucfh_p4"    : "where-bought"
@@ -34,6 +42,8 @@ legends = { # keys are filenames
     , "nh_cgpucfh_p6"    : "frequency" }
   , "st2_sea_enc_gdr_csv" : {
       "nc2r_ca_p3" : "coicop"
+    , "directorio"   : "household"
+    , "orden"        : "household-member"
     , "nc2r_ca_p4_s1" : "quantity"
     , "nc2r_ca_p4_s2" : "unit-of-measure"
     , "nc2r_ca_p5_s1" : "purchased=1"
@@ -42,6 +52,8 @@ legends = { # keys are filenames
     , "nc2r_ca_p8_s1" : "frequency" }
   , "st2_sea_enc_gmf_csv" : {
       "p10270" : "coicop"
+    , "directorio"   : "household"
+    , "orden"        : "household-member"
     , "p10270_fc_s1" : "purchased=1"
     , "p10270s1" : "value(total/cash)"
     , "p10270s2" : "where-bought"
@@ -50,6 +62,8 @@ legends = { # keys are filenames
     }
   , "st2_sea_enc_gsdp_diarios_csv" : {
      "nc4_cc_p1_1" : "coicop"
+    , "directorio"   : "household"
+    , "orden"        : "household-member"
     , "nc4_cc_p2" : "quantity"
     , "nc4_cc_p3" : "purchased=1"
     , "nc4_cc_p4" : "where-bought"
@@ -57,6 +71,8 @@ legends = { # keys are filenames
     , "nc4_cc_p6" : "frequency" }
   , "st2_sea_enc_gsdu_diarios_csv" : {
       "nh_cgdu_p1" : "coicop"
+    , "directorio"   : "household"
+    , "orden"        : "household-member"
     , "nh_cgdu_p2" : "quantity"
     , "nh_cgdu_p3" : "unit-of-measure"
     , "nh_cgdu_p5" : "purchased=1"
