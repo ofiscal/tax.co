@@ -1,0 +1,6 @@
+team,position,time,money
+A,up,0,0
+A,down,1,5
+A,down,2,55
+B,up,10,5
+B,up,10,-5

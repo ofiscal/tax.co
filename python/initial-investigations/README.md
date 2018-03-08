@@ -1,0 +1,1 @@
+These are investigations performed prior to doing any substantial data construction. Some of them investigate Python's behavior, on synthetic data. Others investigate the nature of the raw data. The most processing that data has been subjected to prior to these investigations is conversion to .csv format and subsampling.
