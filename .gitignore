@@ -1,6 +1,17 @@
 *~
 .ipynb_checkpoints/
 __pycache__/
-python/__pycache__/
+*/__pycache__/
+*/*/__pycache__/
 output/
-data/enig*
+all-but-data/
+data/
+python/temp.py
+temp
+
+# TODO ? it would be nice not to have to list these
+  # instead, move them to a separate Git repo hosted by Javeriana, not Github
+data-doc/Listado completo IVA Canasta Familiar.pdf
+data-doc/Nacional, Calidad de Vida, 2014/
+data-doc/enig-2007/
+data-doc/enph-2017/
