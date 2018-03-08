@@ -18,7 +18,7 @@ for file in files:
   data = data.rename(columns=legend) # homogenize column names across files
   data["file-origin"] = file
 
-  if True: # print summary stats for `data`, before merging with `acc`
+  if False: # print summary stats for `data`, before merging with `acc`
     print( "\n\nFILE: " + file + "\n" )
     for colname in data.columns.values:
       col = data[colname]
@@ -29,6 +29,8 @@ for file in files:
   acc = acc.append(data)
 purchases = acc
 
+purchases.to_csv( 'purchases.recip_100.csv')
+
 coicop_vat = pd.read_csv( "data/coicop-vat.csv", sep=';' )
 purchases = purchases.merge( coicop_vat, on="coicop" )
 
@@ -36,5 +38,6 @@ purchases["price"] = purchases["value"] / purchases["quantity"]
 purchases["vat-paid"] = purchases["value"] * purchases["vat-rate"]
 
 if True: # build the person expenditure datax
-  people = purchases.groupby(['household', 'household-member'])['value','vat-paid'].agg('sum')
+  people = purchases.groupby(
+    ['household', 'household-member'])['value','vat-paid'].agg('sum')
   people.describe()
