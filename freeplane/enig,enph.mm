@@ -3,7 +3,7 @@
 <node TEXT="enig &amp; enph" ID="ID_275374562" CREATED="1519401630664" MODIFIED="1519421296851" STYLE="oval">
 <font SIZE="18"/>
 <hook NAME="MapStyle" zoom="1.771">
-    <properties show_icon_for_attributes="true" fit_to_viewport="false" show_note_icons="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff"/>
+    <properties fit_to_viewport="false" show_icon_for_attributes="true" show_note_icons="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24.0 pt">
@@ -63,9 +63,11 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="65" RULE="ON_BRANCH_CREATION"/>
-<node TEXT="enig 2007" POSITION="right" ID="ID_1889278040" CREATED="1519403167472" MODIFIED="1519421299553">
-<edge COLOR="#7c7c00"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="67" RULE="ON_BRANCH_CREATION"/>
+<node TEXT="to know" POSITION="right" ID="ID_470129232" CREATED="1520627344259" MODIFIED="1520627345327">
+<edge COLOR="#ff0000"/>
+<node TEXT="enig 2007" ID="ID_1889278040" CREATED="1519403167472" MODIFIED="1520627346376">
+<node TEXT="expenditures" ID="ID_971299815" CREATED="1520627472996" MODIFIED="1520627480200">
 <node TEXT="# Ig_ml_hogar:" ID="ID_323399515" CREATED="1519401646516" MODIFIED="1519403169924">
 <node TEXT="This table contains info regarding characteristics of dwellings and livelihoods." ID="ID_1957149252" CREATED="1519401646516" MODIFIED="1519417808574"/>
 <node TEXT="variables relevant to the VAT on rent" ID="ID_812651051" CREATED="1519401646525" MODIFIED="1519417826772">
@@ -331,11 +333,22 @@
 <node TEXT="These tables contain food expenditures that were imputed for households that did not complete the booklets used to compile tables Ig_gsdu_gas_dia and Ig_gssr_gas_sem but reported to have made purchases in the reference period of the survey.  We can only recover prices for the former, using the questions ARTICULO (COICOP code), VALOR_MENSUAL_ALIMENTO, and CANTIDAD; for the latter only total monetary values are reported." ID="ID_244202743" CREATED="1519401646593" MODIFIED="1519401683334"/>
 </node>
 </node>
-<node TEXT="enph 2017" POSITION="right" ID="ID_1073810579" CREATED="1519403273903" MODIFIED="1519421301673">
-<edge COLOR="#0000ff"/>
+<node TEXT="persons" ID="ID_963068490" CREATED="1520627451660" MODIFIED="1520627482312">
+<node TEXT="data sets" ID="ID_1689444493" CREATED="1520627521173" MODIFIED="1520627522287">
+<node TEXT="Ig_ml_persona" ID="ID_1188581783" CREATED="1520627448876" MODIFIED="1520627525375"/>
+<node TEXT="Ig_ml_ocupado" ID="ID_487288113" CREATED="1520627525685" MODIFIED="1520627526240"/>
+</node>
+<node TEXT="variables" ID="ID_53298940" CREATED="1520627562758" MODIFIED="1520627563784">
+<node TEXT="identical to the enph-2017&apos;s" ID="ID_621136212" CREATED="1520628637146" MODIFIED="1520628651236">
+<arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_297205636" STARTINCLINATION="53;0;" ENDINCLINATION="53;0;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="enph 2017" ID="ID_1073810579" CREATED="1519403273903" MODIFIED="1520627346385">
 <node TEXT="Provides information for the 32 principal cities, 6 intermediate cities and 140 municipalities. Covers information for 90000 households." ID="ID_621362895" CREATED="1519403275928" MODIFIED="1519418696701"/>
 <node TEXT="All expenses are daily." ID="ID_1800385518" CREATED="1519403578647" MODIFIED="1519418385475"/>
-<node TEXT="vat-relevant data sets" ID="ID_12740332" CREATED="1519403304847" MODIFIED="1519403312193">
+<node TEXT="expenditures" ID="ID_12740332" CREATED="1519403304847" MODIFIED="1520627484855">
 <node TEXT="st2_sea_enc_per_csv" ID="ID_273743675" CREATED="1519418876160" MODIFIED="1519418876160">
 <node TEXT="The table contains lots of information about the people answering the surveys. Apparently, it has variables that could be used to calibrate the &#x201c;holy grail&#x201d; (questions P800 to P8007&#x2026;need to explore further)." ID="ID_1943254848" CREATED="1519418876160" MODIFIED="1519418876160"/>
 </node>
@@ -648,21 +661,42 @@
 </node>
 </node>
 </node>
+<node TEXT="persons" ID="ID_207853977" CREATED="1520627125466" MODIFIED="1520627486615">
+<node TEXT="st2_sea_enc_per_csv" ID="ID_297205636" CREATED="1520627152826" MODIFIED="1520628238040">
+<node TEXT="p6040" ID="ID_1305394409" CREATED="1520628273268" MODIFIED="1520628273268">
+<node TEXT="age" ID="ID_524347615" CREATED="1520628273268" MODIFIED="1520628273268"/>
 </node>
-<node TEXT="todo" POSITION="right" ID="ID_1831914412" CREATED="1519404204022" MODIFIED="1519404205096">
+<node TEXT="p6080" ID="ID_1546011462" CREATED="1520628273268" MODIFIED="1520628273268">
+<node TEXT="race" ID="ID_361546144" CREATED="1520628273270" MODIFIED="1520628273270"/>
+</node>
+<node TEXT="p6210" ID="ID_205222903" CREATED="1520628273270" MODIFIED="1520628273270">
+<node TEXT="education" ID="ID_450101414" CREATED="1520628273270" MODIFIED="1520628273270"/>
+</node>
+<node TEXT="p6370" ID="ID_816091951" CREATED="1520628273270" MODIFIED="1520628273270">
+<node TEXT="job name (text)" ID="ID_652954592" CREATED="1520628273272" MODIFIED="1520628273272"/>
+</node>
+<node TEXT="p6370s1" ID="ID_1068780229" CREATED="1520628273272" MODIFIED="1520628273272">
+<node TEXT="job code" ID="ID_1457792347" CREATED="1520628273274" MODIFIED="1520628273274"/>
+</node>
+<node TEXT="p6430" ID="ID_1537532566" CREATED="1520628273274" MODIFIED="1520628273274">
+<node TEXT="&quot;corresponds to a numeric variable useful to identify employers, employees (government or not), and independent workers, among others. (same for the ENIG)&quot;" ID="ID_1266530021" CREATED="1520628273276" MODIFIED="1520628273276"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="person-level location data" ID="ID_275844253" CREATED="1520627279858" MODIFIED="1520627346414">
+<node TEXT="&quot;The location variables are a little bit more difficult to get, since they are not directly available in the tables: the sample of households used in these surveys is a subsample taken from a more general survey (the GEIH) that contains the key variables to present our results by region (as well as other variables that we could use). You can find the GEIH for 2007,2016 and 2017  in the following links (they are presented by month, so we have to append the files to get the complete survey):&#xa;&#xa;&#xa;http://microdatos.dane.gov.co/index.php/catalog/317/get_microdata (GEIH 2007)&#xa;&#xa;http://microdatos.dane.gov.co/index.php/catalog/427/get_microdata (GEIH 2016)&#xa;&#xa;http://microdatos.dane.gov.co/index.php/catalog/458/get_microdata (GEIH 2017)&#xa;&#xa;&#xa;I will send the citizen&#xb4;s guide on monday, and after that I could send you all that is missing. We could also discuss additional exercises and graphs that could be doable before our deadline.&quot;" ID="ID_322979330" CREATED="1520627299754" MODIFIED="1520627303817"/>
+</node>
+<node TEXT="references" ID="ID_1273865310" CREATED="1519421221622" MODIFIED="1520627350257">
+<node TEXT="tax.co/hopefully-obsolete/enig-enph,email,david-suarez,2018-02-23.md" ID="ID_78623075" CREATED="1519421226656" MODIFIED="1519421236294"/>
+</node>
+</node>
+<node TEXT="to do" POSITION="right" ID="ID_1831914412" CREATED="1519404204022" MODIFIED="1520627333754">
 <edge COLOR="#ff00ff"/>
-<node TEXT="Does everything have a COICOP?" ID="ID_449548142" CREATED="1519404240414" MODIFIED="1519404650663">
-<font BOLD="false"/>
-</node>
-<node TEXT="Make a covering vocabulary for each item in the tax code." ID="ID_478758022" CREATED="1519404264926" MODIFIED="1519404277360"/>
 <node TEXT="Match the covering vocabularies to the COICOP items." ID="ID_1817124328" CREATED="1519404278814" MODIFIED="1519404293344">
 <node TEXT="This can be done for all of 2017, and for 2007 goods, but for 2007 services the COICOP data uses an obsolete coding." ID="ID_1092513153" CREATED="1519404357062" MODIFIED="1519404399524"/>
 </node>
 <node TEXT="Is there time data associated with each purchase?" ID="ID_1875434406" CREATED="1519404453550" MODIFIED="1519404461968"/>
-</node>
-<node TEXT="references" POSITION="right" ID="ID_1273865310" CREATED="1519421221622" MODIFIED="1519421279781">
-<edge COLOR="#7c007c"/>
-<node TEXT="tax.co/hopefully-obsolete/enig-enph,email,david-suarez,2018-02-23.md" ID="ID_78623075" CREATED="1519421226656" MODIFIED="1519421236294"/>
 </node>
 </node>
 </map>
