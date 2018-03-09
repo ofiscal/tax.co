@@ -13,8 +13,10 @@ files = list( legends.keys() )
 # build the purchase data
 for file in files:
   legend = legends[file]
-  data = pd.read_csv( datafiles.folder(2017) + "recip-100/" + file + '.csv' )
-  data = data[ list(legend.keys()) ] # subset columns
+  data = pd.read_csv( datafiles.folder(2017) + "recip-100/" + file + '.csv'
+                      , usecols = list( legend.keys() )
+  )
+
   data = data.rename(columns=legend) # homogenize column names across files
   data["file-origin"] = file
 

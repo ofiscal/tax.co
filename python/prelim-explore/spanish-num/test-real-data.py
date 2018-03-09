@@ -9,17 +9,17 @@ import numpy as np
 import pandas as pd
 import python.util as util
 import python.datafiles as datafiles
-from python.vat.files import legends
+import python.vat.files as vatfiles
 
 purchases = pd.DataFrame() # accumulator: begins empty, accumulates across files
-files = list( legends.keys() )
+files = list( vatfiles.legends.keys() )
 
 # build the purchase data
 for file in files:
-  legend = legends[file]
+  legend = vatfiles.legends[file]
   data = pd.read_csv( datafiles.folder(2017) + "recip-100/" + file + '.csv'
-                      , names = format_all_fields_as_strings[file].keys()
-                      , dtype = format_all_fields_as_strings[file] )
+    , usecols = legend.keys()
+    , dtype =   vatfiles.format_all_fields_as_strings[file] )
   data = data.rename(columns=legend) # homogenize column names across files
   data["file-origin"] = file
   purchases = purchases.append(data)
