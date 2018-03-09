@@ -82,3 +82,10 @@ legends = { # keys are filenames
     , "nh_cgdu_p10" : "household-communal"
     }
 }
+
+format_all_fields_as_strings = {}
+for k1 in legends.keys():
+  x = {}
+  for v2 in legends[k1].values():
+    x[v2] = 'str'
+  format_all_fields_as_strings[k1] = x

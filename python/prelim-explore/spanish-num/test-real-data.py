@@ -1,4 +1,9 @@
-# The value-added tax.
+# prelim-explore/spanish-num/test-real-data.py
+# This builds a data set, purchases.as-text.csv,
+# that is easily grepped to find values ending in .000
+  # grep "\.000" purchases.as-text.csv | grep -v "\:..\.000"
+# If present, those would indicate a Spanish number format error.
+# Good news -- there aren't any!
 
 import numpy as np
 import pandas as pd
@@ -6,37 +11,18 @@ import python.util as util
 import python.datafiles as datafiles
 from python.vat.files import legends
 
-acc = pd.DataFrame() # accumulator: begins empty, accumulates across files
+purchases = pd.DataFrame() # accumulator: begins empty, accumulates across files
 files = list( legends.keys() )
 
 # build the purchase data
 for file in files:
   legend = legends[file]
-  data = pd.read_csv( datafiles.folder(2017) + "recip-100/" + file + '.csv' )
-  data = data[ list(legend.keys()) ] # subset columns
+  data = pd.read_csv( datafiles.folder(2017) + "recip-100/" + file + '.csv'
+                      , names = format_all_fields_as_strings[file].keys()
+                      , dtype = format_all_fields_as_strings[file] )
   data = data.rename(columns=legend) # homogenize column names across files
   data["file-origin"] = file
+  purchases = purchases.append(data)
+del(data)
 
-  if False: # print summary stats for `data`, before merging with `acc`
-    print( "\n\nFILE: " + file + "\n" )
-    for colname in data.columns.values:
-      col = data[colname]
-      print("\ncolumn: " + colname)
-      print("missing: " + str(len(col.index)-col.count())
-            + " / "  + str(len(col.index)))
-      print( col.describe() )
-  acc = acc.append(data)
-purchases = acc
-
-purchases.to_csv( 'purchases.recip_100.csv')
-
-coicop_vat = pd.read_csv( "data/coicop-vat.csv", sep=';' )
-purchases = purchases.merge( coicop_vat, on="coicop" )
-
-purchases["price"] = purchases["value"] / purchases["quantity"]
-purchases["vat-paid"] = purchases["value"] * purchases["vat-rate"]
-
-if True: # build the person expenditure datax
-  people = purchases.groupby(
-    ['household', 'household-member'])['value','vat-paid'].agg('sum')
-  people.describe()
+purchases.to_csv( 'purchases.as-text.csv')
