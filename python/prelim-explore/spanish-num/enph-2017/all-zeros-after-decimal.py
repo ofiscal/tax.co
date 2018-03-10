@@ -14,10 +14,11 @@ import python.util as util
 import python.datafiles as datafiles
 import python.vat.files as vatfiles
 
+
 purchases = pd.DataFrame() # accumulator: begins empty, accumulates across files
 files = list( vatfiles.legends.keys() )
 
-# build the purchase data
+# build the purchase data, interpreting everything as text
 for file in files:
   legend = vatfiles.legends[file]
   data = pd.read_csv( datafiles.folder(2017) + "recip-10/" + file + '.csv'
