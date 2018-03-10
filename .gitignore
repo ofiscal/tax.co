@@ -3,7 +3,7 @@
 __pycache__/
 */__pycache__/
 */*/__pycache__/
-output/
+output/summaries.txt
 all-but-data/
 data/
 python/temp.py
