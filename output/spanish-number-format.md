@@ -1,11 +1,29 @@
 Sometimes numbers in Spanish are formatted using a comma (,) as the decimal point, and a period (.) to indicate powers of 1000 (as in 1.000 = 1 thousand, or 1.000.000 = 1 million).
 
-The code at `python/prelim-explore/spanish-num/` generates evidence (described below) that swapping commas for periods in numbers is not in fact a problem, at least for the columns of the ENPH-2017 used in the VAT analysis. See the header comments of the Python files in that folder for details.
+The code at `python/prelim-explore/spanish-num/` generates evidence (described below) useful for determining whether swapping commas for periods in numbers is in fact a problem, at least for the columns of the ENPH-2017 used in the VAT analysis.
+
+That code detects no such formatting errors within the data. However, there could be such problems upstream, in the processes at DANE that generated the data.
 
 It is, however, still possible that, e.g., the number 1000 was input as 1.000 into the software that produced the ENPH before we received it.
 
 
-# Evidence the ENPH does not exhibit the "Spanish number format problem"
+# The "Spanish number format problem" may have distorted the process of creating the ENPH
+
+One thing that [this program](python/prelim-explore/spanish-num/enph-2017/fractions.py) does is calculate, for each numeric column used in the VAT analysis, the minimum nonzero value in that column. It outputs, in relevant part, the following:
+
+```
+value's minimum positive value: 
+1.0
+value(credit)'s minimum positive value: 
+98.0
+value(total/cash)'s minimum positive value: 
+31.0
+```
+
+That seems to indicate a problem, because units of Colombian currency less than 50 pesos are not in use.
+
+
+# Internally, the ENPH does not exhibit the "Spanish number format problem"
 
 If a column has any cell with a value with a comma in it, it is interpreted as a string, not a number -- but all the columns we want read as numbers are indeed read that way. Ditto if a column has a cell with two periods.
 
