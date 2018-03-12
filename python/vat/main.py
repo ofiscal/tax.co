@@ -33,13 +33,13 @@ purchases = acc
 
 purchases.to_csv( 'purchases.recip_100.csv')
 
-coicop_vat = pd.read_csv( "data/coicop-vat.csv", sep=';' )
+coicop_vat = pd.read_csv( "data/vat/coicop-vat.csv", sep=';' )
 purchases = purchases.merge( coicop_vat, on="coicop" )
 
 purchases["price"] = purchases["value"] / purchases["quantity"]
 purchases["vat-paid"] = purchases["value"] * purchases["vat-rate"]
 
-if True: # build the person expenditure datax
+if True: # build the person expenditure data
   people = purchases.groupby(
     ['household', 'household-member'])['value','vat-paid'].agg('sum')
   people.describe()
