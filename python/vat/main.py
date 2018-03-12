@@ -6,30 +6,30 @@ import python.util as util
 import python.datafiles as datafiles
 from python.vat.files import legends
 
-acc = pd.DataFrame() # accumulator: begins empty, accumulates across files
+purchases = pd.DataFrame() # accumulator: begins empty, accumulates across files
 files = list( legends.keys() )
 
 
 # build the purchase data
 for file in files:
   legend = legends[file]
-  data = pd.read_csv( datafiles.yearSubsampleSurveyFolder(2017,100) + file + '.csv'
+  shuttle = pd.read_csv( datafiles.yearSubsampleSurveyFolder(2017,100) + file + '.csv'
                       , usecols = list( legend.keys() )
   )
 
-  data = data.rename(columns=legend) # homogenize column names across files
-  data["file-origin"] = file
+  shuttle = shuttle.rename(columns=legend) # homogenize column names across files
+  shuttle["file-origin"] = file
 
-  if False: # print summary stats for `data`, before merging with `acc`
+  if False: # print summary stats for `shuttle`, before merging with `purchases`
     print( "\n\nFILE: " + file + "\n" )
-    for colname in data.columns.values:
-      col = data[colname]
+    for colname in shuttle.columns.values:
+      col = shuttle[colname]
       print("\ncolumn: " + colname)
       print("missing: " + str(len(col.index)-col.count())
             + " / "  + str(len(col.index)))
       print( col.describe() )
-  acc = acc.append(data)
-purchases = acc
+  purchases = purchases.append(shuttle)
+del(shuttle)
 
 purchases.to_csv( 'purchases.recip_100.csv')
 
@@ -43,3 +43,7 @@ if True: # build the person expenditure data
   people = purchases.groupby(
     ['household', 'household-member'])['value','vat-paid'].agg('sum')
   people.describe()
+
+  # PITFALL: Even if using a subsample of purchases, use the complete demographic data sample
+  demog = pd.read_csv( datafiles.yearSurveyFolder(2017,1) + file + '.csv'
+                      , usecols = list( legend.keys() )
