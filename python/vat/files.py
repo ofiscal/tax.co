@@ -1,8 +1,10 @@
-person_file_legend = { "p6040" : "age"
-                     , "p6080" : "race"
-                     , "p6210" : "education"
-                     , "p6370" : "job name (text)"
-                     , "p6370s1" : "job code" }
+person_file_legend = { "directorio" : "household"
+                     , "orden"      : "household-member"
+                     , "p6040"      : "age"
+                     , "p6080"      : "race"
+                     , "p6210"      : "education"
+                     , "p6370"      : "job name (text)"
+                     , "p6370s1"    : "job code" }
 
 purchase_file_legends = { # keys are filenames
             # values are dictionaries from column names to their meaning

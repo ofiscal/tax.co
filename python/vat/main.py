@@ -4,16 +4,24 @@ import numpy as np
 import pandas as pd
 import python.util as util
 import python.datafiles as datafiles
-from python.vat.files import purchase_file_legends
+import python.vat.files as vatfiles
+import os
 
+
+subsample = 1000 # a power of ten, the reciprocal of the subsample size
 purchases = pd.DataFrame() # accumulator: begins empty, accumulates across files
-files = list( purchase_file_legends.keys() )
+files = list( vatfiles.purchase_file_legends.keys() )
+
+def saveStage(data,name):
+  path = 'output/vat-data/recip-' + str(subsample)
+  if not os.path.exists(path): os.makedirs(path)
+  data.to_csv( path + '/' + name + ".csv" )
 
 
 # build the purchase data
 for file in files:
-  legend = purchase_file_legends[file]
-  shuttle = pd.read_csv( datafiles.yearSubsampleSurveyFolder(2017,100) + file + '.csv'
+  legend = vatfiles.purchase_file_legends[file]
+  shuttle = pd.read_csv( datafiles.yearSubsampleSurveyFolder(2017,subsample) + file + '.csv'
                       , usecols = list( legend.keys() )
   )
 
@@ -30,20 +38,30 @@ for file in files:
       print( col.describe() )
   purchases = purchases.append(shuttle)
 del(shuttle)
+saveStage(purchases, '/1.purchases')
 
-purchases.to_csv( 'purchases.recip_100.csv')
-
-coicop_vat = pd.read_csv( "data/vat/coicop-vat.csv", sep=';' )
-purchases = purchases.merge( coicop_vat, on="coicop" )
-
-purchases["price"] = purchases["value"] / purchases["quantity"]
-purchases["vat-paid"] = purchases["value"] * purchases["vat-rate"]
+if True: # merge coicop, construct some money-valued variables
+  coicop_vat = pd.read_csv( "data/vat/coicop-vat.csv", sep=';' )
+  purchases = purchases.merge( coicop_vat, on="coicop" )
+  purchases["price"] = purchases["value"] / purchases["quantity"]
+  purchases["vat-paid"] = purchases["value"] * purchases["vat-rate"]
+  saveStage(purchases, '/2.purchases,prices,taxes')
 
 if True: # build the person expenditure data
   people = purchases.groupby(
     ['household', 'household-member'])['value','vat-paid'].agg('sum')
-  people.describe()
+  people = people.reset_index(level = ['household', 'household-member'])
+    # https://stackoverflow.com/questions/20461165/how-to-convert-pandas-index-in-a-dataframe-to-a-column
+  saveStage(people, '/3.person-level-expenditures')
 
+if True: # merge demographic statistics
   # PITFALL: Even if using a subsample of purchases, use the complete demographic data sample
-  demog = pd.read_csv( datafiles.yearSurveyFolder(2017,1) + file + '.csv'
-                      , usecols = list( legend.keys() )
+  demog = pd.read_csv( datafiles.yearSubsampleSurveyFolder(2017,1) + 'st2_sea_enc_per_csv.csv'
+                    , usecols = list( vatfiles.person_file_legend.keys() )
+  )
+  demog = demog.rename(columns=vatfiles.person_file_legend) # homogenize column names across files
+  saveStage(demog, '/4.demog')
+  people = pd.merge( people, demog, on=["household","household-member"] )
+  del(demog)
+
+saveStage(people, '/5.all')
