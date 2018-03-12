@@ -1,7 +1,17 @@
-def surveyByYear(year):
-  if year == 2007: return "data/enig-2007/"
-  elif year == 2017: return "data/enph-2017/"
-  else: error (year + " is not one of the survey years.")
+def yearSurveyFolder(year):
+  if year in (2007,2017):
+    if year == 2007: return "data/enig-2007/"
+    elif year == 2017: return "data/enph-2017/"
+  else: raise ValueError (str(year) + " is not one of the survey years.")
+
+def yearSubsampleSurveyFolder(year,recip):
+  r = str(recip)
+  if year in (2007,2017):
+    if recip in (1,10,100,1000):
+      if year == 2007: return "data/enig-2007/recip-" + r + '/'
+      elif year == 2017: return "data/enph-2017/recip-" + r + '/'
+    else: raise ValueError (r + " is not the reciprocal of any of the subsample sizes.")
+  else: raise ValueError (str(year) + " is not one of the survey years.")
 
 files = {2017:
          [ "coicop"
