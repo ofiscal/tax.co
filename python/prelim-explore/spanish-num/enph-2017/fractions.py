@@ -11,7 +11,7 @@ purchases = pd.DataFrame()
 files = list( vatfiles.legends.keys() )
 for file in files:
   legend = vatfiles.legends[file]
-  shuttle = pd.read_csv( datafiles.folder(2017) + "recip-10/" + file + '.csv'
+  shuttle = pd.read_csv( datafiles.surveyByYear(2017) + "recip-10/" + file + '.csv'
                     , usecols = legend.keys()
                     )
   shuttle = shuttle.rename(columns=legend) # homogenize column names across files

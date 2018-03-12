@@ -21,7 +21,7 @@ files = list( vatfiles.legends.keys() )
 # build the purchase data, interpreting everything as text
 for file in files:
   legend = vatfiles.legends[file]
-  data = pd.read_csv( datafiles.folder(2017) + "recip-10/" + file + '.csv'
+  data = pd.read_csv( datafiles.surveyByYear(2017) + "recip-10/" + file + '.csv'
     , usecols = legend.keys()
     , dtype =   vatfiles.format_all_fields_as_strings[file] )
   data = data.rename(columns=legend) # homogenize column names across files

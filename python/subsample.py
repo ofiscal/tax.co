@@ -7,7 +7,7 @@ import python.datafiles as datafiles
 
 ## The 2017 ENPH survey
 
-folder = datafiles.folder(2017)
+folder = datafiles.surveyByYear(2017)
 names = datafiles.files[2017]
 
 for name in names:
@@ -25,7 +25,7 @@ for name in names:
 
 ## The 2007 ENIG survey
 
-folder = datafiles.folder(2007)
+folder = datafiles.surveyByYear(2007)
 names = datafiles.files[2007]
 
 for name in names:

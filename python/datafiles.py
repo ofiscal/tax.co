@@ -1,4 +1,4 @@
-def folder(year):
+def surveyByYear(year):
   if year == 2007: return "data/enig-2007/"
   elif year == 2017: return "data/enph-2017/"
   else: error (year + " is not one of the survey years.")

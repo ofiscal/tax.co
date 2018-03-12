@@ -14,7 +14,7 @@ for (survey,year) in [("enig",2007),("enph",2017)]:
     dest = open( outputFolder + filename + ".txt"
                 , "w+")
     dest.write("\n\ndataset: " + filename)
-    df = pd.read_csv( datafiles.folder(year) + "recip-100/"
+    df = pd.read_csv( datafiles.surveyByYear(year) + "recip-100/"
                       + filename + ".csv")
 
     for colname in list(df.columns.values):

@@ -2,7 +2,7 @@ import pandas as pd
 import python.datafiles as datafiles
 
 # (filename,colname) = ("st2_sea_enc_gcfhr_ce_csv","nc2r_ce_p2")
-# df = pd.read_csv( datafiles.folder(2017) + "recip-100/" + filename + ".csv")
+# df = pd.read_csv( datafiles.surveyByYear(2017) + "recip-100/" + filename + ".csv")
 # col=df[colname]
 # print( filename + "." + colname + ": " + str(col.count()) + " / " + str(len(col.index))
 #        + " = " + str(col.count() / len(col.index)) + " non-null items" )
@@ -18,7 +18,7 @@ fileColumnPairs = [ ("st2_sea_enc_gcfhr_ce_csv", "nc2r_ce_p2")
 ]
 
 for (filename,colname) in fileColumnPairs:
-  df = pd.read_csv( datafiles.folder(2017) + "recip-100/" + filename + ".csv")
+  df = pd.read_csv( datafiles.surveyByYear(2017) + "recip-100/" + filename + ".csv")
   col=df[colname]
   print( filename + "." + colname + ":\n\t"
          + str(col.count()) + " / " + str(len(col.index))
