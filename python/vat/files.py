@@ -1,4 +1,10 @@
-legends = { # keys are filenames
+person_file_legend = { "p6040" : "age"
+                     , "p6080" : "race"
+                     , "p6210" : "education"
+                     , "p6370" : "job name (text)"
+                     , "p6370s1" : "job code" }
+
+purchase_file_legends = { # keys are filenames
             # values are dictionaries from column names to their meaning
   "st2_sea_enc_gcfhr_ce_csv" : { "nc2r_ce_p2"   : "coicop"
                                , "directorio"   : "household"
@@ -83,9 +89,9 @@ legends = { # keys are filenames
     }
 }
 
-format_all_fields_as_strings = {}
-for k1 in legends.keys():
+format_purchase_fields_as_strings = {}
+for k1 in purchase_file_legends.keys():
   x = {}
-  for v2 in legends[k1].values():
+  for v2 in purchase_file_legends[k1].values():
     x[v2] = 'str'
-  format_all_fields_as_strings[k1] = x
+  format_purchase_fields_as_strings[k1] = x

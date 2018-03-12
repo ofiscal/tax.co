@@ -8,9 +8,9 @@ import python.vat.files as vatfiles
 # build the purchase data
 purchases = pd.DataFrame()
   # accumulator: begins empty, accumulates across files
-files = list( vatfiles.legends.keys() )
+files = list( vatfiles.purchase_file_legends.keys() )
 for file in files:
-  legend = vatfiles.legends[file]
+  legend = vatfiles.purchase_file_legends[file]
   shuttle = pd.read_csv( datafiles.yearSurveyFolder(2017) + "recip-10/" + file + '.csv'
                     , usecols = legend.keys()
                     )

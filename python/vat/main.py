@@ -4,15 +4,15 @@ import numpy as np
 import pandas as pd
 import python.util as util
 import python.datafiles as datafiles
-from python.vat.files import legends
+from python.vat.files import purchase_file_legends
 
 purchases = pd.DataFrame() # accumulator: begins empty, accumulates across files
-files = list( legends.keys() )
+files = list( purchase_file_legends.keys() )
 
 
 # build the purchase data
 for file in files:
-  legend = legends[file]
+  legend = purchase_file_legends[file]
   shuttle = pd.read_csv( datafiles.yearSubsampleSurveyFolder(2017,100) + file + '.csv'
                       , usecols = list( legend.keys() )
   )
