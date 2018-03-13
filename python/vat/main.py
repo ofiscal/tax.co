@@ -17,7 +17,7 @@ def saveStage(data,name):
   if not os.path.exists(path): os.makedirs(path)
   data.to_csv( path + '/' + name + ".csv" )
 
-def readStage(data,name): # to skip rebuilding something
+def readStage(name): # to skip rebuilding something
   path = 'output/vat-data/recip-' + str(subsample)
   return pd.read_csv( path + '/' + name + ".csv" )
 
@@ -45,15 +45,17 @@ if True: # build the purchase data
   saveStage(purchases, '/1.purchases')
 
 if True: # merge coicop, construct some money-valued variables
+  # TODO ? sort both frames on coicop before merging, for speed
   coicop_vat = pd.read_csv( "data/vat/coicop-vat.csv", sep=';' )
   purchases = purchases.merge( coicop_vat, on="coicop" )
   purchases["price"] = purchases["value"] / purchases["quantity"]
   purchases["vat-paid"] = purchases["value"] * purchases["vat-rate"]
   saveStage(purchases, '/2.purchases,prices,taxes')
+  purchases["transactions"] = 1
 
 if True: # build the person expenditure data
   people = purchases.groupby(
-    ['household', 'household-member'])['value','vat-paid'].agg('sum')
+    ['household', 'household-member'])['value','vat-paid',"transactions"].agg('sum')
   people = people.reset_index(level = ['household', 'household-member'])
     # https://stackoverflow.com/questions/20461165/how-to-convert-pandas-index-in-a-dataframe-to-a-column
   saveStage(people, '/3.person-level-expenditures')
