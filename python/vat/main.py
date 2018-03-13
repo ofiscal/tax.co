@@ -8,7 +8,7 @@ import python.vat.files as vatfiles
 import os
 
 
-subsample = 10 # a power of ten, the reciprocal of the subsample size
+subsample = 1 # The reciprocal of the subsample size. Valid values include 1, 10, 100 and 1000.
 purchases = pd.DataFrame() # accumulator: begins empty, accumulates across files
 files = list( vatfiles.purchase_file_legends.keys() )
 
@@ -17,6 +17,10 @@ def saveStage(data,name):
   if not os.path.exists(path): os.makedirs(path)
   data.to_csv( path + '/' + name + ".csv" )
 
+def readStage(data,name): # to skip rebuilding something
+  path = 'output/vat-data/recip-' + str(subsample)
+  return pd.read_csv( path + '/' + name + ".csv" )
+
 
 if True: # build the purchase data
   for file in files:
@@ -24,7 +28,6 @@ if True: # build the purchase data
     shuttle = pd.read_csv( datafiles.yearSubsampleSurveyFolder(2017,subsample) + file + '.csv'
                         , usecols = list( legend.keys() )
     )
-  
     shuttle = shuttle.rename(columns=legend) # homogenize column names across files
     shuttle["file-origin"] = file
   
@@ -36,6 +39,7 @@ if True: # build the purchase data
         print("missing: " + str(len(col.index)-col.count())
               + " / "  + str(len(col.index)))
         print( col.describe() )
+
     purchases = purchases.append(shuttle)
   del(shuttle)
   saveStage(purchases, '/1.purchases')
