@@ -8,7 +8,7 @@ import python.vat.files as vatfiles
 import os
 
 
-subsample = 1000 # a power of ten, the reciprocal of the subsample size
+subsample = 10 # a power of ten, the reciprocal of the subsample size
 purchases = pd.DataFrame() # accumulator: begins empty, accumulates across files
 files = list( vatfiles.purchase_file_legends.keys() )
 
@@ -18,27 +18,27 @@ def saveStage(data,name):
   data.to_csv( path + '/' + name + ".csv" )
 
 
-# build the purchase data
-for file in files:
-  legend = vatfiles.purchase_file_legends[file]
-  shuttle = pd.read_csv( datafiles.yearSubsampleSurveyFolder(2017,subsample) + file + '.csv'
-                      , usecols = list( legend.keys() )
-  )
-
-  shuttle = shuttle.rename(columns=legend) # homogenize column names across files
-  shuttle["file-origin"] = file
-
-  if False: # print summary stats for `shuttle`, before merging with `purchases`
-    print( "\n\nFILE: " + file + "\n" )
-    for colname in shuttle.columns.values:
-      col = shuttle[colname]
-      print("\ncolumn: " + colname)
-      print("missing: " + str(len(col.index)-col.count())
-            + " / "  + str(len(col.index)))
-      print( col.describe() )
-  purchases = purchases.append(shuttle)
-del(shuttle)
-saveStage(purchases, '/1.purchases')
+if True: # build the purchase data
+  for file in files:
+    legend = vatfiles.purchase_file_legends[file]
+    shuttle = pd.read_csv( datafiles.yearSubsampleSurveyFolder(2017,subsample) + file + '.csv'
+                        , usecols = list( legend.keys() )
+    )
+  
+    shuttle = shuttle.rename(columns=legend) # homogenize column names across files
+    shuttle["file-origin"] = file
+  
+    if False: # print summary stats for `shuttle`, before merging with `purchases`
+      print( "\n\nFILE: " + file + "\n" )
+      for colname in shuttle.columns.values:
+        col = shuttle[colname]
+        print("\ncolumn: " + colname)
+        print("missing: " + str(len(col.index)-col.count())
+              + " / "  + str(len(col.index)))
+        print( col.describe() )
+    purchases = purchases.append(shuttle)
+  del(shuttle)
+  saveStage(purchases, '/1.purchases')
 
 if True: # merge coicop, construct some money-valued variables
   coicop_vat = pd.read_csv( "data/vat/coicop-vat.csv", sep=';' )
