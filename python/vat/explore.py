@@ -16,7 +16,7 @@ if True: # read data
   ppt =   read_sizes( path, "2.purchases,prices,taxes" ) # pitfall: memory hog
   ple =   read_sizes( path, "3.person-level-expenditures" )
   demog = read_sizes( path, "4.demog" )
-  final =   read_sizes( path, "5.final" )
+  final = read_sizes( path, "5.person-demog-expenditures" )
   del(path)
 
 
@@ -24,11 +24,11 @@ if True: # read data
 # Why no vat for so many?
 ##
 
+final1 = final[1].drop( "Unnamed: 0", axis=1 ) # TODO : where did this come from?
 final_novat = final [1] [ final [1] ["vat-paid"] <= 0
                     ]
-
 if True: # show some things
-  final [1] . describe().round(2)
+  final1     .describe().round(2)
   final_novat.describe().round(2)
   final_novat[["household","household-member","transactions"]].iloc[0:5]
 
@@ -38,10 +38,46 @@ if True: # Check out the first (household,member) pair in final_novat with trans
   ppt1 = ppt[1]
   ppt1 [ (ppt1["household"] == house1) & (ppt1["household-member"] == 1) ]
   del(mbr1,house1)
-  # It looks legit. The "problem" is that the VAT is zero for lots of goods; see some-vat-exemptions.txt
+
+# OBSERVATIONS
+# It looks legitimate. The "problem" is that the VAT is zero for lots of goods; see some-vat-exemptions.txt
 
 
 ##
 # Cross sections
 ##
 
+final1_num = final1.drop("job name (text)",axis=1)
+
+def compareDescriptives(dfDict):
+  for dfName in dfDict.keys():
+    df = dfDict[ dfName ]
+    print(dfName)
+    print( describeWithMissing( df ).round(2) )
+
+def compareDescriptivesByFourColumns(dfDict):
+  colnames = dfDict[ list( dfDict.keys()
+                         ) [0]
+                   ].columns.values
+  for i in range( math.ceil( len(colnames)/4 ) ):
+    dfDict2 = {k: v[ colnames[4*i:4*i+4] ]
+               for k, v in dfDict.items()
+              }
+    compareDescriptives( dfDict2 )
+
+dfd = {
+    "full sample"  : final1                            
+  , "paid 0 vat"   : final1 [ final1["vat-paid"] <= 0 ]     
+  , "paid NaN vat" : final1 [ final1["vat-paid"].isnull() ]
+}
+
+compareDescriptives( {
+    "full sample"  : final1                            
+  , "paid 0 vat"   : final1 [ final1["vat-paid"] <= 0 ]     
+  , "paid NaN vat" : final1 [ final1["vat-paid"].isnull() ]
+} )
+
+# OBSERVATIONS
+#  # If you make more transactions, you're more likely to pay VAT. If you pay NaN, you probably only have
+#  # one recorded transaction in the ENPH.
+#  # NaN-VAT payers are a decade younger than others -- around 21 rather than 31

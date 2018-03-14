@@ -70,4 +70,4 @@ if True: # merge demographic statistics
   people = pd.merge( people, demog, on=["household","household-member"] )
   del(demog)
 
-saveStage(people, '/5.all')
+saveStage(people, '/5.person-demog-expenditures')
