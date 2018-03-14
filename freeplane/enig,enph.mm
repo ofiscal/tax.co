@@ -3,7 +3,7 @@
 <node TEXT="enig &amp; enph" ID="ID_275374562" CREATED="1519401630664" MODIFIED="1519421296851" STYLE="oval">
 <font SIZE="18"/>
 <hook NAME="MapStyle" zoom="1.771">
-    <properties fit_to_viewport="false" show_icon_for_attributes="true" show_note_icons="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff"/>
+    <properties show_icon_for_attributes="true" fit_to_viewport="false" show_note_icons="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24.0 pt">
@@ -677,6 +677,18 @@
 </node>
 <node TEXT="p6370s1" ID="ID_1068780229" CREATED="1520628273272" MODIFIED="1520628273272">
 <node TEXT="job code" ID="ID_1457792347" CREATED="1520628273274" MODIFIED="1520628273274"/>
+</node>
+<node TEXT="p6160" ID="ID_1058744928" CREATED="1521069607576" MODIFIED="1521069607576">
+<node TEXT="literate" ID="ID_141112435" CREATED="1521069607576" MODIFIED="1521069607576"/>
+</node>
+<node TEXT="p6170" ID="ID_1166721315" CREATED="1521069607576" MODIFIED="1521069607576">
+<node TEXT="student" ID="ID_1740736396" CREATED="1521069607579" MODIFIED="1521069607579"/>
+</node>
+<node TEXT="p6430" ID="ID_678474279" CREATED="1521069607579" MODIFIED="1521069607579">
+<node TEXT="employer type (inc. family)" ID="ID_1773793041" CREATED="1521069607579" MODIFIED="1521069607579"/>
+</node>
+<node TEXT="p6500" ID="ID_1063040120" CREATED="1521069607579" MODIFIED="1521069607579">
+<node TEXT="income" ID="ID_102707165" CREATED="1521069607580" MODIFIED="1521069607580"/>
 </node>
 <node TEXT="p6430" ID="ID_1537532566" CREATED="1520628273274" MODIFIED="1520628273274">
 <node TEXT="&quot;corresponds to a numeric variable useful to identify employers, employees (government or not), and independent workers, among others. (same for the ENIG)&quot;" ID="ID_1266530021" CREATED="1520628273276" MODIFIED="1520628273276"/>
