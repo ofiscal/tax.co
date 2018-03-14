@@ -1,0 +1,39 @@
+0-vat stuff:
+  tons of varieties of food
+  rent -- including "Arriendo de la vivienda donde reside," "Otros alquileres efectivos,"
+    "Cuotas de administraci�n de la vivienda para uso del hogar", and more
+  Servicio de acueducto
+  Recogida de basuras
+  Servicios relacionados con la copropiedad
+  Alcantarillado
+  Cuotas extraordinarias de administraci�n
+  Electricidad
+  a few varieties of gas
+  All kinds of medical things -- drugs, dietary supplements, vitamins, desinfectantes, pregnancy tests
+  Medical services
+  Tires, rims and "neumáticos"
+  Urban transport, train, metro, urban taxi, bus; intermunicipal transport
+  Water-based transport
+  Cell phones (but not smart ones) and accessories
+  Long distance and other phone calls
+    even international phone calls, if from public phones
+  pets
+  entry into fairs (book fairs, artisanal, ...) and sports events
+  cinema, theater, ballet, concerts, ..
+  "Otros espect�culos"
+  books
+  education (all levels)
+  restaurant food
+  whole meals
+  Pagos a EPS
+  Bank services? "Cuotas o pagos por pr�stamos de consumo realizados a bancos, cooperativas y fond"
+    "Cuotas o pagos por pr�stamos adquiridos con particulares y organizaciones del se"
+    "Pago de comisi�n por la administraci�n de los fondos de inversi�n colectiva, fon"
+  Fees on a second home? "Cuotas de amortizaci�n de vivienda para uso del hogar diferentes a la que habita"
+  Buying a house or other land
+  "Otros dineros ahorrados en el �ltimo mes"
+  ANY KIND OF SERVICE FEE? "Cuotas a organizaciones"
+  Cuotas a asociaciones profesionales, partidos pol�ticos,  juntas de acci�n comun
+  Cuotas a  instituciones religiosas y diezmo
+  ??? "Impuestos"
+  
