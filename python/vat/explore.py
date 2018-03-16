@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
-
+import python.util as util
+import math
 
 def read_sizes (path,filename):
   files = {}
@@ -12,8 +13,8 @@ def read_sizes (path,filename):
 
 if True: # read data
   path = "output/vat-data/"
-  # purchases = read_sizes( "1.purchases" )              # pitfall: memory hog
-  ppt =   read_sizes( path, "2.purchases,prices,taxes" ) # pitfall: memory hog
+# purchases = read_sizes( "1.purchases" )                # pitfall: memory hog
+# ppt =   read_sizes( path, "2.purchases,prices,taxes" ) # pitfall: memory hog
   ple =   read_sizes( path, "3.person-level-expenditures" )
   demog = read_sizes( path, "4.demog" )
   final = read_sizes( path, "5.person-demog-expenditures" )
@@ -32,15 +33,15 @@ if True: # show some things
   final_novat.describe().round(2)
   final_novat[["household","household-member","transactions"]].iloc[0:5]
 
-if True: # Check out the first (household,member) pair in final_novat with transactions > 15
+if False: # Check out the first (household,member) pair in final_novat with transactions > 15
   house1 = 100008
   mbr1 = 1
   ppt1 = ppt[1]
   ppt1 [ (ppt1["household"] == house1) & (ppt1["household-member"] == 1) ]
   del(mbr1,house1)
 
-# OBSERVATIONS
-# It looks legitimate. The "problem" is that the VAT is zero for lots of goods; see some-vat-exemptions.txt
+# OBSERVATIONS: It looks legitimate. The "problem" is that
+# the VAT is zero for lots of goods; see some-vat-exemptions.txt
 
 
 ##
@@ -53,7 +54,7 @@ def compareDescriptives(dfDict):
   for dfName in dfDict.keys():
     df = dfDict[ dfName ]
     print(dfName)
-    print( describeWithMissing( df ).round(2) )
+    print( util.describeWithMissing( df ).round(2) )
 
 def compareDescriptivesByFourColumns(dfDict):
   colnames = dfDict[ list( dfDict.keys()
@@ -65,17 +66,15 @@ def compareDescriptivesByFourColumns(dfDict):
               }
     compareDescriptives( dfDict2 )
 
-dfd = {
-    "full sample"  : final1                            
-  , "paid 0 vat"   : final1 [ final1["vat-paid"] <= 0 ]     
-  , "paid NaN vat" : final1 [ final1["vat-paid"].isnull() ]
+weirdVatDict = {
+    "full sample"  : final1
+  , "paid some vat": final1 [ final1["vat-paid"] > 0 ]
+  , "paid 0 vat"   : final1 [ final1["vat-paid"] <= 0 ]
+  , "paid not NaN vat" : final1 [ ~( final1["vat-paid"].isnull() ) ]
+  , "paid NaN vat"     : final1 [    final1["vat-paid"].isnull()   ]
 }
 
-compareDescriptives( {
-    "full sample"  : final1                            
-  , "paid 0 vat"   : final1 [ final1["vat-paid"] <= 0 ]     
-  , "paid NaN vat" : final1 [ final1["vat-paid"].isnull() ]
-} )
+compareDescriptivesByFourColumns( weirdVatDict )
 
 # OBSERVATIONS
 #  # If you make more transactions, you're more likely to pay VAT. If you pay NaN, you probably only have

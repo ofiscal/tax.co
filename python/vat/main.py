@@ -8,8 +8,8 @@ import python.vat.files as vatfiles
 import os
 
 
-subsample = 1 # The reciprocal of the subsample size. Valid values include 1, 10, 100 and 1000.
-purchases = pd.DataFrame() # accumulator: begins empty, accumulates across files
+subsample = 1000 # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
+purchases = pd.DataFrame() # will accumulate from each file
 files = list( vatfiles.purchase_file_legends.keys() )
 
 def saveStage(data,name):
