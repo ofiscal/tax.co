@@ -8,7 +8,7 @@ import python.vat.files as vatfiles
 import os
 
 
-subsample = 1000 # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
+subsample = 1 # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
 purchases = pd.DataFrame() # will accumulate from each file
 files = list( vatfiles.purchase_file_legends.keys() )
 
@@ -44,6 +44,7 @@ if True: # build the purchase data
   del(shuttle)
   saveStage(purchases, '/1.purchases')
 
+
 if True: # merge coicop, construct some money-valued variables
   # TODO ? sort both frames on coicop before merging, for speed
   coicop_vat = pd.read_csv( "data/vat/coicop-vat.csv", sep=';' )
@@ -51,14 +52,16 @@ if True: # merge coicop, construct some money-valued variables
   purchases["price"] = purchases["value"] / purchases["quantity"]
   purchases["vat-paid"] = purchases["value"] * purchases["vat-rate"]
   saveStage(purchases, '/2.purchases,prices,taxes')
-  purchases["transactions"] = 1
+
 
 if True: # build the person expenditure data
+  purchases["transactions"] = 1
   people = purchases.groupby(
     ['household', 'household-member'])['value','vat-paid',"transactions"].agg('sum')
   people = people.reset_index(level = ['household', 'household-member'])
     # https://stackoverflow.com/questions/20461165/how-to-convert-pandas-index-in-a-dataframe-to-a-column
   saveStage(people, '/3.person-level-expenditures')
+
 
 if True: # merge demographic statistics
   # PITFALL: Even if using a subsample of purchases, use the complete demographic data sample
@@ -69,5 +72,33 @@ if True: # merge demographic statistics
   saveStage(demog, '/4.demog')
   people = pd.merge( people, demog, on=["household","household-member"] )
   del(demog)
+  saveStage(people, '/5.person-demog-expenditures')
 
-saveStage(people, '/5.person-demog-expenditures')
+
+if True: # build the household expenditure data
+  people["members"] = 1
+  h_sum = people.groupby(
+      ['household']
+    ) ['value','vat-paid',"transactions","income","members"
+    ] . agg('sum')
+  h_min = people.groupby(
+      ['household']
+    ) ['age','literate','student'
+    ] . agg('min'
+    ) . rename( {'age' : 'age_min',
+                 'literate' : 'lit_min',
+                 'student' : 'student_min'
+                 } )
+  h_max = people.groupby(
+      ['household']
+    ) ['age','literate','student'
+    ] . agg('max'
+    ) . rename( {'age' : 'age_max',
+                 'literate' : 'lit_max',
+                 'student' : 'student_max'
+                 } )
+  households = pd.concat( [h_sum,h_min,h_max]
+                         , axis=1 )
+  households["household"] = households.index
+    # when there are multiple indices, reset_index is the way to do that
+  saveStage(households, '/6.households')
