@@ -85,18 +85,18 @@ if True: # build the household expenditure data
       ['household']
     ) ['age','literate','student'
     ] . agg('min'
-    ) . rename( {'age' : 'age_min',
-                 'literate' : 'lit_min',
-                 'student' : 'student_min'
-                 } )
+    ) . rename( columns = {'age' : 'age_min',
+                           'literate' : 'lit_min',
+                           'student' : 'student_min'
+    } )
   h_max = people.groupby(
       ['household']
     ) ['age','literate','student'
     ] . agg('max'
-    ) . rename( {'age' : 'age_max',
-                 'literate' : 'lit_max',
-                 'student' : 'student_max'
-                 } )
+    ) . rename( columns = {'age' : 'age_max',
+                           'literate' : 'lit_max',
+                           'student' : 'student_max'
+    } )
   households = pd.concat( [h_sum,h_min,h_max]
                          , axis=1 )
   households["household"] = households.index
