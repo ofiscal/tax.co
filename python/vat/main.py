@@ -74,11 +74,12 @@ if True: # merge demographic statistics
     demog["female"] =   demog["female"] - 1          # orig 1=male,2=female
     demog["student"] =  demog["student"]  * (-1) + 2 # orig 1=student,2=not
     demog["literate"] = demog["literate"] * (-1) + 2 # orig 1=lit,2=not
-    demog["race-indig"] =   demog["race"] == 1
-    demog["race-git-rom"] = demog["race"] == 2
-    demog["race-raizal"] =  demog["race"] == 3
-    demog["race-palenq"] =  demog["race"] == 4
-    demog["race-neg|mul"] = demog["race"] == 5
+    demog["r-indig"] =    demog["race"] == 1
+    demog["r-git|rom"] =  demog["race"] == 2
+    demog["r-raizal"] =   demog["race"] == 3
+    demog["r-palenq"] =   demog["race"] == 4
+    demog["r-neg|mul"] =  demog["race"] == 5
+    demog["r-whi|mest"] = demog["race"] == 6
 
   saveStage(demog, '/4.demog')
   people = pd.merge( people, demog, on=["household","household-member"] )
@@ -86,7 +87,7 @@ if True: # merge demographic statistics
   saveStage(people, '/5.person-demog-expenditures')
 
 
-if True: # build the household expenditure data
+if True: # aggregate from household-members to households
   people["members"] = 1
   h_sum = people.groupby(
       ['household']
@@ -94,19 +95,27 @@ if True: # build the household expenditure data
     ] . agg('sum')
   h_min = people.groupby(
       ['household']
-    ) ['age','literate','student'
+    ) ['age','female'
     ] . agg('min'
-    ) . rename( columns = {'age' : 'age_min',
-                           'literate' : 'lit_min',
-                           'student' : 'student_min'
+    ) . rename( columns = {'age' : 'age-min',
+                           'female' : 'has-male',
     } )
+  h_min["has-male"] = 1 - h_min["has-male"]
   h_max = people.groupby(
       ['household']
-    ) ['age','literate','student'
+    ) ['age','literate','student','female','education',
+       'r-indig', 'r-git|rom', 'r-raizal', 'r-palenq', 'r-whi|mest'
     ] . agg('max'
-    ) . rename( columns = {'age' : 'age_max',
-                           'literate' : 'lit_max',
-                           'student' : 'student_max'
+    ) . rename( columns = {'age' : 'age-max',
+                           'literate' : 'has-lit',
+                           'student' : 'has-student',
+                           'education' : 'edu-max',
+                           'female' : 'has-female',
+                           'r-indig' : 'has-indig',
+                           'r-git|rom' : 'has-git|rom',
+                           'r-raizal' : 'has-raizal',
+                           'r-palenq' : 'has-palenq',
+                           'r-whi|mest' : 'has-whi|mest'
     } )
   households = pd.concat( [h_sum,h_min,h_max]
                          , axis=1 )
