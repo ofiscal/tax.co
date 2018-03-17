@@ -63,7 +63,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="67" RULE="ON_BRANCH_CREATION"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="69" RULE="ON_BRANCH_CREATION"/>
 <node TEXT="to know" POSITION="right" ID="ID_470129232" CREATED="1520627344259" MODIFIED="1520627345327">
 <edge COLOR="#ff0000"/>
 <node TEXT="enig 2007" ID="ID_1889278040" CREATED="1519403167472" MODIFIED="1520627346376">
@@ -348,6 +348,9 @@
 <node TEXT="enph 2017" ID="ID_1073810579" CREATED="1519403273903" MODIFIED="1520627346385">
 <node TEXT="Provides information for the 32 principal cities, 6 intermediate cities and 140 municipalities. Covers information for 90000 households." ID="ID_621362895" CREATED="1519403275928" MODIFIED="1519418696701"/>
 <node TEXT="All expenses are daily." ID="ID_1800385518" CREATED="1519403578647" MODIFIED="1519418385475"/>
+<node TEXT="how to interpret frequencies" ID="ID_848775075" CREATED="1521256001343" MODIFIED="1521256007851">
+<arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_352822493" STARTINCLINATION="186;0;" ENDINCLINATION="186;0;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
+</node>
 <node TEXT="expenditures" ID="ID_429560464" CREATED="1521254417002" MODIFIED="1521254425454">
 <node TEXT="sea_enc_per_csv" ID="ID_398910560" CREATED="1521254418503" MODIFIED="1521254418503">
 <node TEXT="The table contains lots of information about the people answering the surveys. Apparently, it has variables that could be used to calibrate the &#x201c;holy grail&#x201d; (questions P800 to P8007&#x2026;need to explore further)." ID="ID_244751636" CREATED="1521254418503" MODIFIED="1521254418503"/>
@@ -358,7 +361,7 @@
 <node TEXT="sea_enc_hogc3_csv" ID="ID_1560989487" CREATED="1521254418503" MODIFIED="1521254418503">
 <node TEXT="The table contains additional information regarding less-frequent expenses at the household level. Several questions ask values paid for different services that are relevant for the calculation of indirect taxes, such as internet and cable. Need to explore further." ID="ID_718822918" CREATED="1521254418503" MODIFIED="1521254418503"/>
 </node>
-<node TEXT="sea_enc_gcfhr_ce_csv" ID="ID_1458758894" CREATED="1521254418503" MODIFIED="1521255008104">
+<node TEXT="sea_enc_gcfhr_ce_csv" ID="ID_1458758894" CREATED="1521254418503" MODIFIED="1521255880056">
 <font BOLD="false"/>
 <node TEXT="anything but $ (food ? food consumed outside the home)" ID="ID_770619966" CREATED="1521254418504" MODIFIED="1521254418504"/>
 <node TEXT="The table contains information of personal expenses for rural households." ID="ID_103695860" CREATED="1521254418504" MODIFIED="1521254418504"/>
@@ -385,7 +388,7 @@
 <node TEXT="1 &#xbb; 2. Diario&#xa;2 &#xbb; 2.1 Varias veces por semana&#xa;3 &#xbb; 3.Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;9 &#xbb; 9.Espor&#xe1;dico&quot;" ID="ID_754701999" CREATED="1521254062177" MODIFIED="1521254071629"/>
 </node>
 </node>
-<node TEXT="sea_enc_gcfhr_csv" ID="ID_1221624484" CREATED="1521254418504" MODIFIED="1521255008106">
+<node TEXT="sea_enc_gcfhr_csv" ID="ID_1221624484" CREATED="1521254418504" MODIFIED="1521255880056">
 <font BOLD="false"/>
 <node TEXT="The table contains information regarding food consumed for rural households that was not prepared at home." ID="ID_1876496339" CREATED="1521254418505" MODIFIED="1521254418505"/>
 <node TEXT="nh_cgprcfh_p1" ID="ID_310534034" CREATED="1521254418505" MODIFIED="1521254418505">
@@ -408,13 +411,13 @@
 </node>
 <node TEXT="nh_cgprcfh_p6" ID="ID_1744442282" CREATED="1521254418505" MODIFIED="1521254418505">
 <node TEXT="frequency of acquisition" ID="ID_1190165844" CREATED="1521254418505" MODIFIED="1521254418505"/>
-<node TEXT="&quot;9. Frecuencia de Compra&#xa;1 &#xbb; 2. Diario&#xa;2 &#xbb; 2.1. Varias veces por semana&#xa;3 &#xbb; 3. Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;9 &#xbb; 9. Espor&#xe1;dica&quot;" ID="ID_1628731412" CREATED="1521254090218" MODIFIED="1521254091286"/>
+<node TEXT="1 &#xbb; 2. Diario&#xa;2 &#xbb; 2.1. Varias veces por semana&#xa;3 &#xbb; 3. Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;9 &#xbb; 9. Espor&#xe1;dica&quot;" ID="ID_1628731412" CREATED="1521254090218" MODIFIED="1521255399033"/>
 </node>
 <node TEXT="nh_cgprcfh_p7" ID="ID_1814927132" CREATED="1521254418505" MODIFIED="1521254418505">
 <node TEXT="whether the expenditure is personal or corresponds to the household (1 if household is true)." ID="ID_658726919" CREATED="1521254418505" MODIFIED="1521254418505"/>
 </node>
 </node>
-<node TEXT="sea_enc_gcfhu_diarios_csv" ID="ID_838567996" CREATED="1521254418505" MODIFIED="1521255008106">
+<node TEXT="sea_enc_gcfhu_diarios_csv" ID="ID_838567996" CREATED="1521254418505" MODIFIED="1521255880056">
 <font BOLD="false"/>
 <node TEXT="food consumed outside the home only" ID="ID_478743312" CREATED="1521254418507" MODIFIED="1521254418507"/>
 <node TEXT="The table contains information regarding food consumed for urban households that was not prepared at home." ID="ID_851833655" CREATED="1521254418507" MODIFIED="1521254418507"/>
@@ -444,7 +447,7 @@
 <node TEXT="whether the expenditure is personal or corresponds to the household (1 if household is true)" ID="ID_1456904036" CREATED="1521254418507" MODIFIED="1521254418507"/>
 </node>
 </node>
-<node TEXT="sea_enc_gcfhup_diarios_csv" ID="ID_691622476" CREATED="1521254418507" MODIFIED="1521255008106">
+<node TEXT="sea_enc_gcfhup_diarios_csv" ID="ID_691622476" CREATED="1521254418507" MODIFIED="1521255880055">
 <font BOLD="false"/>
 <node TEXT="food consumed outside the home only" ID="ID_421445129" CREATED="1521254418507" MODIFIED="1521254418507"/>
 <node TEXT="The table contains information regarding food consumed for income earners in urban households that was not prepared at home." ID="ID_1569762147" CREATED="1521254418507" MODIFIED="1521254418507"/>
@@ -471,7 +474,7 @@
 <node TEXT="1 &#xbb; 2. Diario&#xa;2 &#xbb; 2.1. Varias veces por semana&#xa;3 &#xbb; 3. Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;9 &#xbb; 9. Espor&#xe1;dica&quot;" ID="ID_1773205054" CREATED="1521254159273" MODIFIED="1521254162562"/>
 </node>
 </node>
-<node TEXT="sea_enc_gdr_csv" ID="ID_1188073657" CREATED="1521254418507" MODIFIED="1521255008106">
+<node TEXT="sea_enc_gdr_csv" ID="ID_1188073657" CREATED="1521254418507" MODIFIED="1521255880055">
 <font BOLD="false"/>
 <node TEXT="includes everything -- food at home, restaurants, clothing .." ID="ID_972233347" CREATED="1521254418507" MODIFIED="1521254418507"/>
 <node TEXT="The table contains information of weekly expenses for rural households." ID="ID_1223713462" CREATED="1521254418507" MODIFIED="1521254418507"/>
@@ -495,10 +498,10 @@
 </node>
 <node TEXT="nc2r_ca_p8_s1" ID="ID_1884538920" CREATED="1521254418508" MODIFIED="1521254418508">
 <node TEXT="frequency of acquisition" ID="ID_1191182064" CREATED="1521254418508" MODIFIED="1521254418508"/>
-<node TEXT="&quot;8. Frecuencia de compra&#xa;1 &#xbb; 2. Diario&#xa;2 &#xbb; 2.1. Varias veces por semana&#xa;3 &#xbb; 3. Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;9 &#xbb; 9. Espor&#xe1;dica&quot;" ID="ID_289544177" CREATED="1521254275557" MODIFIED="1521254276654"/>
+<node TEXT="1 &#xbb; 2. Diario&#xa;2 &#xbb; 2.1. Varias veces por semana&#xa;3 &#xbb; 3. Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;9 &#xbb; 9. Espor&#xe1;dica&quot;" ID="ID_289544177" CREATED="1521254275557" MODIFIED="1521255509984"/>
 </node>
 </node>
-<node TEXT="sea_enc_gmf_csv" ID="ID_1728607123" CREATED="1521254418508" MODIFIED="1521255008107">
+<node TEXT="sea_enc_gmf_csv" ID="ID_1728607123" CREATED="1521254418508" MODIFIED="1521255880053">
 <font BOLD="false"/>
 <node TEXT="The table contains information regarding less-frequent expenditures." ID="ID_306164503" CREATED="1521254418509" MODIFIED="1521254418509"/>
 <node TEXT="p10270" ID="ID_1415448017" CREATED="1521254418509" MODIFIED="1521254418509">
@@ -515,7 +518,7 @@
 </node>
 <node TEXT="p10270s3" ID="ID_423082330" CREATED="1521254418509" MODIFIED="1521254418509">
 <node TEXT="frequency" ID="ID_1744992887" CREATED="1521254418509" MODIFIED="1521254418509"/>
-<node TEXT="&quot;Frecuencia de compra de:&#xa;3 &#xbb; 3. Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;8 &#xbb; 8. Anual&#xa;9 &#xbb; 9. Espor&#xe1;dica&#xa;10 &#xbb; 10. Semestral&quot;" ID="ID_993335647" CREATED="1521254867841" MODIFIED="1521254868981"/>
+<node TEXT="3 &#xbb; 3. Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;8 &#xbb; 8. Anual&#xa;9 &#xbb; 9. Espor&#xe1;dica&#xa;10 &#xbb; 10. Semestral&quot;" ID="ID_993335647" CREATED="1521254867841" MODIFIED="1521255548033"/>
 </node>
 <node TEXT="p10270s4" ID="ID_925318496" CREATED="1521254418509" MODIFIED="1521254418509">
 <node TEXT="value paid with credit" ID="ID_261406456" CREATED="1521254418509" MODIFIED="1521254418509"/>
@@ -541,7 +544,7 @@
 </node>
 <node TEXT="nc4_cc_p6" ID="ID_1849671622" CREATED="1521254418509" MODIFIED="1521254418509">
 <node TEXT="frequency of acquisition" ID="ID_1698017799" CREATED="1521254418509" MODIFIED="1521254418509"/>
-<node TEXT="&quot;9. Frecuencia de Compra***&#xa;1 &#xbb; 1. Diario&#xa;2 &#xbb; 2.1. Varias veces&#xa;3 &#xbb; 3. Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;9 &#xbb; 9. Espor&#xe1;dica por semana&quot;" ID="ID_1783721030" CREATED="1521254894660" MODIFIED="1521254895471"/>
+<node TEXT="1 &#xbb; 1. Diario&#xa;2 &#xbb; 2.1. Varias veces&#xa;3 &#xbb; 3. Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;9 &#xbb; 9. Espor&#xe1;dica por semana&quot;" ID="ID_1783721030" CREATED="1521254894660" MODIFIED="1521255611401"/>
 </node>
 </node>
 <node TEXT="sea_enc_gsdu_diarios_csv" ID="ID_1090903817" CREATED="1521254418509" MODIFIED="1521254418509">
@@ -620,6 +623,17 @@
 </node>
 <node TEXT="to do" POSITION="right" ID="ID_1831914412" CREATED="1519404204022" MODIFIED="1520627333754">
 <edge COLOR="#ff00ff"/>
+<node TEXT="interpreting frequencies" ID="ID_1660416272" CREATED="1521255957723" MODIFIED="1521255961635">
+<node TEXT="this legend seems to work for all but one of the ENPH-17 expenditure data sets described in this file" ID="ID_352822493" CREATED="1521255962356" MODIFIED="1521256036864">
+<node TEXT="1 &#xbb; 2. Diario&#xa;2 &#xbb; 2.1 Varias veces por semana&#xa;3 &#xbb; 3.Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;8 &#xbb; 8. Anual&#xa;9 &#xbb; 9.Espor&#xe1;dico&quot;&#xa;10 &#xbb; 10. Semestral&quot;" ID="ID_1674365602" CREATED="1521255982725" MODIFIED="1521255983793"/>
+</node>
+<node TEXT="problem: 9 = how infrequent?" ID="ID_1180824648" CREATED="1521255826921" MODIFIED="1521255866730">
+<node TEXT="As a frequency code, 9 usually means &quot;sporadically&quot;. I thought that meant &quot;less frequently than every year&quot;, assuming that the terms are ordered. But over here it interprets 9 as &quot;Espor&#xe1;dica por semana&quot;." ID="ID_968656694" CREATED="1521255724809" MODIFIED="1521255816716"/>
+<node TEXT="links" ID="ID_1067050442" CREATED="1521255836041" MODIFIED="1521255841610">
+<arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_1783721030" STARTINCLINATION="187;0;" ENDINCLINATION="187;0;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
+</node>
+</node>
+</node>
 <node TEXT="Match the covering vocabularies to the COICOP items." ID="ID_1817124328" CREATED="1519404278814" MODIFIED="1519404293344">
 <node TEXT="This can be done for all of 2017, and for 2007 goods, but for 2007 services the COICOP data uses an obsolete coding." ID="ID_1092513153" CREATED="1519404357062" MODIFIED="1519404399524"/>
 </node>
