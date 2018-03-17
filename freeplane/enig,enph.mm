@@ -3,7 +3,7 @@
 <node TEXT="enig &amp; enph" ID="ID_275374562" CREATED="1519401630664" MODIFIED="1519421296851" STYLE="oval">
 <font SIZE="18"/>
 <hook NAME="MapStyle" zoom="1.771">
-    <properties fit_to_viewport="false" show_icon_for_attributes="true" show_note_icons="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff"/>
+    <properties show_icon_for_attributes="true" fit_to_viewport="false" show_note_icons="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24.0 pt">
@@ -348,316 +348,228 @@
 <node TEXT="enph 2017" ID="ID_1073810579" CREATED="1519403273903" MODIFIED="1520627346385">
 <node TEXT="Provides information for the 32 principal cities, 6 intermediate cities and 140 municipalities. Covers information for 90000 households." ID="ID_621362895" CREATED="1519403275928" MODIFIED="1519418696701"/>
 <node TEXT="All expenses are daily." ID="ID_1800385518" CREATED="1519403578647" MODIFIED="1519418385475"/>
-<node TEXT="expenditures" ID="ID_12740332" CREATED="1519403304847" MODIFIED="1520627484855">
-<node TEXT="st2_sea_enc_per_csv" ID="ID_273743675" CREATED="1519418876160" MODIFIED="1519418876160">
-<node TEXT="The table contains lots of information about the people answering the surveys. Apparently, it has variables that could be used to calibrate the &#x201c;holy grail&#x201d; (questions P800 to P8007&#x2026;need to explore further)." ID="ID_1943254848" CREATED="1519418876160" MODIFIED="1519418876160"/>
+<node TEXT="expenditures" ID="ID_429560464" CREATED="1521254417002" MODIFIED="1521254425454">
+<node TEXT="sea_enc_per_csv" ID="ID_398910560" CREATED="1521254418503" MODIFIED="1521254418503">
+<node TEXT="The table contains lots of information about the people answering the surveys. Apparently, it has variables that could be used to calibrate the &#x201c;holy grail&#x201d; (questions P800 to P8007&#x2026;need to explore further)." ID="ID_244751636" CREATED="1521254418503" MODIFIED="1521254418503"/>
 </node>
-<node TEXT="st2_sea_enc_hog_csv" ID="ID_1227910945" CREATED="1519418876160" MODIFIED="1519418876160">
-<node TEXT="The table contains information regarding housing characteristics and ownership. Questions P5090, P5100S1- P5100S4, P5110, and P5140 represent if people own or rent among others), monthly payments for mortgages and insurances, and total values for imputed and actual rents respectively." ID="ID_25925917" CREATED="1519418876161" MODIFIED="1519418876161"/>
+<node TEXT="sea_enc_hog_csv" ID="ID_885184136" CREATED="1521254418503" MODIFIED="1521254418503">
+<node TEXT="The table contains information regarding housing characteristics and ownership. Questions P5090, P5100S1- P5100S4, P5110, and P5140 represent if people own or rent among others), monthly payments for mortgages and insurances, and total values for imputed and actual rents respectively." ID="ID_1136831921" CREATED="1521254418503" MODIFIED="1521254418503"/>
 </node>
-<node TEXT="st2_sea_enc_hogc3_csv" ID="ID_830021605" CREATED="1519418876161" MODIFIED="1519418876161">
-<node TEXT="The table contains additional information regarding less-frequent expenses at the household level. Several questions ask values paid for different services that are relevant for the calculation of indirect taxes, such as internet and cable. Need to explore further." ID="ID_595454500" CREATED="1519418876161" MODIFIED="1519418876161"/>
+<node TEXT="sea_enc_hogc3_csv" ID="ID_1560989487" CREATED="1521254418503" MODIFIED="1521254418503">
+<node TEXT="The table contains additional information regarding less-frequent expenses at the household level. Several questions ask values paid for different services that are relevant for the calculation of indirect taxes, such as internet and cable. Need to explore further." ID="ID_718822918" CREATED="1521254418503" MODIFIED="1521254418503"/>
 </node>
-<node TEXT="st2_sea_enc_gcfhr_ce_csv" ID="ID_897499445" CREATED="1519418876161" MODIFIED="1519418876161">
-<node TEXT="anything but $ (food ? food consumed outside the home)" ID="ID_983451973" CREATED="1519418876161" MODIFIED="1519419695730">
+<node TEXT="sea_enc_gcfhr_ce_csv" ID="ID_1458758894" CREATED="1521254418503" MODIFIED="1521255008104">
 <font BOLD="false"/>
+<node TEXT="anything but $ (food ? food consumed outside the home)" ID="ID_770619966" CREATED="1521254418504" MODIFIED="1521254418504"/>
+<node TEXT="The table contains information of personal expenses for rural households." ID="ID_103695860" CREATED="1521254418504" MODIFIED="1521254418504"/>
+<node TEXT="nc2r_ce_p2" ID="ID_1599718113" CREATED="1521254418504" MODIFIED="1521254418504">
+<node TEXT="a complete COICOP code for the article" ID="ID_798515820" CREATED="1521254418504" MODIFIED="1521254418504"/>
 </node>
-<node TEXT="The table contains information of personal expenses for rural households." ID="ID_457358031" CREATED="1519419683145" MODIFIED="1519419684012"/>
-<node ID="ID_1835920866" CREATED="1519419665100" MODIFIED="1519419665100"><richcontent TYPE="NODE">
-
-<html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      nc2r_ce_p2
-    </p>
-  </body>
-</html>
-</richcontent>
-<node ID="ID_219593709" CREATED="1519419672931" MODIFIED="1519419672931"><richcontent TYPE="NODE">
-
-<html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      a complete COICOP code for the article
-    </p>
-  </body>
-</html>
-</richcontent>
-</node>
-</node>
-<node ID="ID_393307193" CREATED="1519419717412" MODIFIED="1519419717412"><richcontent TYPE="NODE">
-
-<html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      nc2r_ce_p4s1
-    </p>
-  </body>
-</html>
-</richcontent>
-<node ID="ID_1163254292" CREATED="1519419731060" MODIFIED="1519419731060"><richcontent TYPE="NODE">
-
-<html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      the quantity
-    </p>
-  </body>
-</html>
-</richcontent>
-</node>
-</node>
-<node TEXT="nc2r_ce_p4s2" ID="ID_355530523" CREATED="1519419737410" MODIFIED="1519419738140">
-<node ID="ID_1980317837" CREATED="1519419741860" MODIFIED="1519419741860"><richcontent TYPE="NODE">
-
-<html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      measurement units
-    </p>
-  </body>
-</html>
-</richcontent>
-</node>
-</node>
-<node TEXT="nc2r_ce_p5" ID="ID_1466444655" CREATED="1519419757578" MODIFIED="1519419758276">
-<node TEXT="if they purchased the good (01 is the code for purchases)" ID="ID_1541135203" CREATED="1519419751882" MODIFIED="1519419753292"/>
-</node>
-<node TEXT="nc2r_ce_p6" ID="ID_528554806" CREATED="1519419769898" MODIFIED="1519419770443">
-<node TEXT="place of acquisition" ID="ID_1925616001" CREATED="1519419765810" MODIFIED="1519419766340"/>
-</node>
-<node ID="ID_1449682125" CREATED="1519419777668" MODIFIED="1519419777668"><richcontent TYPE="NODE">
-
-<html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      nc2r_ce_p7
-    </p>
-  </body>
-</html>
-</richcontent>
-<node ID="ID_1582825158" CREATED="1519419785700" MODIFIED="1519419785700"><richcontent TYPE="NODE">
-
-<html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      total estimated value
-    </p>
-  </body>
-</html>
-</richcontent>
+<node TEXT="nc2r_ce_p4s1" ID="ID_957431756" CREATED="1521254418504" MODIFIED="1521254418504">
+<node TEXT="the quantity" ID="ID_1175665147" CREATED="1521254418504" MODIFIED="1521254418504"/>
 </node>
+<node TEXT="nc2r_ce_p4s2" ID="ID_875342725" CREATED="1521254418504" MODIFIED="1521254418504">
+<node TEXT="measurement units" ID="ID_1031852028" CREATED="1521254418504" MODIFIED="1521254418504"/>
 </node>
-<node TEXT="nc2r_ce_p8" ID="ID_894814428" CREATED="1519419710012" MODIFIED="1519419777276">
-<node TEXT="frequency of acquisition" ID="ID_1989367661" CREATED="1519418876161" MODIFIED="1519419788980"/>
+<node TEXT="nc2r_ce_p5" ID="ID_934281770" CREATED="1521254418504" MODIFIED="1521254418504">
+<node TEXT="if they purchased the good (01 is the code for purchases)" ID="ID_611086901" CREATED="1521254418504" MODIFIED="1521254418504"/>
 </node>
+<node TEXT="nc2r_ce_p6" ID="ID_1713433473" CREATED="1521254418504" MODIFIED="1521254418504">
+<node TEXT="place of acquisition" ID="ID_1025594125" CREATED="1521254418504" MODIFIED="1521254418504"/>
 </node>
-<node TEXT="st2_sea_enc_gcfhr_csv" ID="ID_459707186" CREATED="1519418876161" MODIFIED="1519418876161">
-<node TEXT="The table contains information regarding food consumed for rural households that was not prepared at home." ID="ID_1149520520" CREATED="1519419951192" MODIFIED="1519419951192"/>
-<node TEXT="nh_cgprcfh_p1" ID="ID_1884615228" CREATED="1519420208591" MODIFIED="1519420208591">
-<node TEXT="a description in words for the article" ID="ID_465180985" CREATED="1519420208591" MODIFIED="1519420208591"/>
+<node TEXT="nc2r_ce_p7" ID="ID_511111273" CREATED="1521254418504" MODIFIED="1521254418504">
+<node TEXT="total estimated value" ID="ID_806877177" CREATED="1521254418504" MODIFIED="1521254418504"/>
 </node>
-<node TEXT="nh_cgprcfh_p1s1" ID="ID_1487752533" CREATED="1519420208591" MODIFIED="1519420208591">
-<node TEXT="a complete COICOP code" ID="ID_640269017" CREATED="1519420208591" MODIFIED="1519420208591"/>
+<node TEXT="nc2r_ce_p8" ID="ID_344316858" CREATED="1521254418504" MODIFIED="1521254418504">
+<node TEXT="frequency of acquisition" ID="ID_145115671" CREATED="1521254418504" MODIFIED="1521254418504"/>
+<node TEXT="1 &#xbb; 2. Diario&#xa;2 &#xbb; 2.1 Varias veces por semana&#xa;3 &#xbb; 3.Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;9 &#xbb; 9.Espor&#xe1;dico&quot;" ID="ID_754701999" CREATED="1521254062177" MODIFIED="1521254071629"/>
 </node>
-<node TEXT="nh_cgprcfh_p2" ID="ID_1703560172" CREATED="1519420208592" MODIFIED="1519420208592">
-<node TEXT="the quantity" ID="ID_105347343" CREATED="1519420208592" MODIFIED="1519420208592"/>
 </node>
-<node TEXT="nh_cgprcfh_p3" ID="ID_1139964874" CREATED="1519420208592" MODIFIED="1519420208592">
-<node TEXT="if they purchased the good (01 is the code for purchases)" ID="ID_123372718" CREATED="1519420208592" MODIFIED="1519420208592"/>
+<node TEXT="sea_enc_gcfhr_csv" ID="ID_1221624484" CREATED="1521254418504" MODIFIED="1521255008106">
+<font BOLD="false"/>
+<node TEXT="The table contains information regarding food consumed for rural households that was not prepared at home." ID="ID_1876496339" CREATED="1521254418505" MODIFIED="1521254418505"/>
+<node TEXT="nh_cgprcfh_p1" ID="ID_310534034" CREATED="1521254418505" MODIFIED="1521254418505">
+<node TEXT="a description in words for the article" ID="ID_1739526930" CREATED="1521254418505" MODIFIED="1521254418505"/>
 </node>
-<node TEXT="nh_cgprcfh_p4" ID="ID_1267525694" CREATED="1519420208592" MODIFIED="1519420208592">
-<node TEXT="place of acquisition" ID="ID_164003469" CREATED="1519420208593" MODIFIED="1519420208593"/>
+<node TEXT="nh_cgprcfh_p1s1" ID="ID_677061311" CREATED="1521254418505" MODIFIED="1521254418505">
+<node TEXT="a complete COICOP code" ID="ID_1442897995" CREATED="1521254418505" MODIFIED="1521254418505"/>
 </node>
-<node TEXT="nh_cgprcfh_p5" ID="ID_1732030808" CREATED="1519420208593" MODIFIED="1519420208593">
-<node TEXT="total estimated value" ID="ID_408108399" CREATED="1519420208593" MODIFIED="1519420208593"/>
+<node TEXT="nh_cgprcfh_p2" ID="ID_1677844592" CREATED="1521254418505" MODIFIED="1521254418505">
+<node TEXT="the quantity" ID="ID_1848942712" CREATED="1521254418505" MODIFIED="1521254418505"/>
 </node>
-<node TEXT="nh_cgprcfh_p6" ID="ID_1740318702" CREATED="1519420208593" MODIFIED="1519774908038">
-<node TEXT="frequency of acquisition" ID="ID_1351827098" CREATED="1519420208594" MODIFIED="1519420208594"/>
+<node TEXT="nh_cgprcfh_p3" ID="ID_41602199" CREATED="1521254418505" MODIFIED="1521254418505">
+<node TEXT="if they purchased the good (01 is the code for purchases)" ID="ID_619354093" CREATED="1521254418505" MODIFIED="1521254418505"/>
 </node>
-<node TEXT="nh_cgprcfh_p7" ID="ID_261383280" CREATED="1519420208594" MODIFIED="1519420208594">
-<node TEXT="whether the expenditure is personal or corresponds to the household (1 if household is true)." ID="ID_1582286126" CREATED="1519420208594" MODIFIED="1519420208594"/>
+<node TEXT="nh_cgprcfh_p4" ID="ID_458758935" CREATED="1521254418505" MODIFIED="1521254418505">
+<node TEXT="place of acquisition" ID="ID_247237514" CREATED="1521254418505" MODIFIED="1521254418505"/>
 </node>
+<node TEXT="nh_cgprcfh_p5" ID="ID_1759840784" CREATED="1521254418505" MODIFIED="1521254418505">
+<node TEXT="total estimated value" ID="ID_164641151" CREATED="1521254418505" MODIFIED="1521254418505"/>
 </node>
-<node TEXT="st2_sea_enc_gcfhu_diarios_csv" ID="ID_1271633017" CREATED="1519418876161" MODIFIED="1519418876161">
-<node TEXT="food consumed outside the home only" ID="ID_569925291" CREATED="1519420069263" MODIFIED="1519420069263"/>
-<node TEXT="The table contains information regarding food consumed for urban households that was not prepared at home." ID="ID_846495726" CREATED="1519420069263" MODIFIED="1519420069263"/>
-<node TEXT="nh_cgducfh_p1" ID="ID_1545662027" CREATED="1519420069264" MODIFIED="1519420069264">
-<node TEXT="a description in words for the article" ID="ID_39148478" CREATED="1519420069266" MODIFIED="1519420069266"/>
+<node TEXT="nh_cgprcfh_p6" ID="ID_1744442282" CREATED="1521254418505" MODIFIED="1521254418505">
+<node TEXT="frequency of acquisition" ID="ID_1190165844" CREATED="1521254418505" MODIFIED="1521254418505"/>
+<node TEXT="&quot;9. Frecuencia de Compra&#xa;1 &#xbb; 2. Diario&#xa;2 &#xbb; 2.1. Varias veces por semana&#xa;3 &#xbb; 3. Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;9 &#xbb; 9. Espor&#xe1;dica&quot;" ID="ID_1628731412" CREATED="1521254090218" MODIFIED="1521254091286"/>
 </node>
-<node TEXT="nh_cgducfh_p1_1" ID="ID_570615575" CREATED="1519420069266" MODIFIED="1519420069266">
-<node TEXT="a complete COICOP code" ID="ID_332499262" CREATED="1519420069267" MODIFIED="1519420069267"/>
+<node TEXT="nh_cgprcfh_p7" ID="ID_1814927132" CREATED="1521254418505" MODIFIED="1521254418505">
+<node TEXT="whether the expenditure is personal or corresponds to the household (1 if household is true)." ID="ID_658726919" CREATED="1521254418505" MODIFIED="1521254418505"/>
 </node>
-<node TEXT="nh_cgducfh_p2" ID="ID_1122401588" CREATED="1519420069267" MODIFIED="1519420069267">
-<node TEXT="the quantity" ID="ID_1841869301" CREATED="1519420069267" MODIFIED="1519420069267"/>
 </node>
-<node TEXT="nh_cgducfh_p3" ID="ID_601100600" CREATED="1519420069267" MODIFIED="1519420069267">
-<node TEXT="if they purchased the good (01 is the code for purchases)" ID="ID_297098719" CREATED="1519420069268" MODIFIED="1519420069268"/>
+<node TEXT="sea_enc_gcfhu_diarios_csv" ID="ID_838567996" CREATED="1521254418505" MODIFIED="1521255008106">
+<font BOLD="false"/>
+<node TEXT="food consumed outside the home only" ID="ID_478743312" CREATED="1521254418507" MODIFIED="1521254418507"/>
+<node TEXT="The table contains information regarding food consumed for urban households that was not prepared at home." ID="ID_851833655" CREATED="1521254418507" MODIFIED="1521254418507"/>
+<node TEXT="nh_cgducfh_p1" ID="ID_929619812" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="a description in words for the article" ID="ID_1619456374" CREATED="1521254418507" MODIFIED="1521254418507"/>
 </node>
-<node TEXT="nh_cgducfh_p4" ID="ID_5371608" CREATED="1519420069268" MODIFIED="1519420069268">
-<node TEXT="place of acquisition" ID="ID_210905627" CREATED="1519420069268" MODIFIED="1519420069268"/>
+<node TEXT="nh_cgducfh_p1_1" ID="ID_1923580097" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="a complete COICOP code" ID="ID_537099749" CREATED="1521254418507" MODIFIED="1521254418507"/>
 </node>
-<node TEXT="nh_cgducfh_p5" ID="ID_459839477" CREATED="1519420069268" MODIFIED="1519420069268">
-<node TEXT="total estimated value" ID="ID_1283877089" CREATED="1519420069269" MODIFIED="1519420069269"/>
+<node TEXT="nh_cgducfh_p2" ID="ID_1750834723" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="the quantity" ID="ID_409733762" CREATED="1521254418507" MODIFIED="1521254418507"/>
 </node>
-<node TEXT="nh_cgducfh_p6" ID="ID_1087275388" CREATED="1519420069269" MODIFIED="1519420069269">
-<node TEXT="frequency of acquisition" ID="ID_700033257" CREATED="1519420069269" MODIFIED="1519420069269"/>
+<node TEXT="nh_cgducfh_p3" ID="ID_1283475247" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="if they purchased the good (01 is the code for purchases)" ID="ID_248753801" CREATED="1521254418507" MODIFIED="1521254418507"/>
 </node>
-<node TEXT="nh_cgducfh_p7" ID="ID_1041437878" CREATED="1519420069269" MODIFIED="1519420069269">
-<node TEXT="whether the expenditure is personal or corresponds to the household (1 if household is true)" ID="ID_1959010373" CREATED="1519420069270" MODIFIED="1519420069270"/>
+<node TEXT="nh_cgducfh_p4" ID="ID_1718509982" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="place of acquisition" ID="ID_1365144579" CREATED="1521254418507" MODIFIED="1521254418507"/>
 </node>
+<node TEXT="nh_cgducfh_p5" ID="ID_1436257344" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="total estimated value" ID="ID_1758666449" CREATED="1521254418507" MODIFIED="1521254418507"/>
 </node>
-<node TEXT="st2_sea_enc_gcfhup_diarios_csv" ID="ID_606324884" CREATED="1519418876161" MODIFIED="1519418876161">
-<node TEXT="food consumed outside the home only" ID="ID_517236996" CREATED="1519420386536" MODIFIED="1519420386536"/>
-<node TEXT="The table contains information regarding food consumed for income earners in urban households that was not prepared at home." ID="ID_1356502554" CREATED="1519420386536" MODIFIED="1519420386536"/>
-<node TEXT="nh_cgpucfh_p1" ID="ID_1064550251" CREATED="1519420386539" MODIFIED="1519420386539">
-<node TEXT="a description in words for the article" ID="ID_688066412" CREATED="1519420386540" MODIFIED="1519420386540"/>
+<node TEXT="nh_cgducfh_p6" ID="ID_1307679698" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="frequency of acquisition" ID="ID_1139526225" CREATED="1521254418507" MODIFIED="1521254418507"/>
+<node TEXT="1 &#xbb; 2. Diario&#xa;2 &#xbb; 2.1. Varias veces por semana&#xa;3 &#xbb; 3. Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;9 &#xbb; 9. Espor&#xe1;dica&quot;" ID="ID_1756944745" CREATED="1521254139005" MODIFIED="1521254141987"/>
 </node>
-<node TEXT="nh_cgpucfh_p1_s1" ID="ID_1819844682" CREATED="1519420386540" MODIFIED="1519420386540">
-<node TEXT="a complete COICOP code" ID="ID_1549392301" CREATED="1519420386540" MODIFIED="1519420386540"/>
+<node TEXT="nh_cgducfh_p7" ID="ID_1360923989" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="whether the expenditure is personal or corresponds to the household (1 if household is true)" ID="ID_1456904036" CREATED="1521254418507" MODIFIED="1521254418507"/>
 </node>
-<node TEXT="nh_cgpucfh_p2" ID="ID_233623460" CREATED="1519420386540" MODIFIED="1519420386540">
-<node TEXT="the quantity" ID="ID_1372499076" CREATED="1519420386540" MODIFIED="1519420386540"/>
 </node>
-<node TEXT="nh_cgpucfh_p3" ID="ID_1111486226" CREATED="1519420386540" MODIFIED="1519420386540">
-<node TEXT="if they purchased the good (01 is the code for purchases)" ID="ID_1358338824" CREATED="1519420386540" MODIFIED="1519420386540"/>
+<node TEXT="sea_enc_gcfhup_diarios_csv" ID="ID_691622476" CREATED="1521254418507" MODIFIED="1521255008106">
+<font BOLD="false"/>
+<node TEXT="food consumed outside the home only" ID="ID_421445129" CREATED="1521254418507" MODIFIED="1521254418507"/>
+<node TEXT="The table contains information regarding food consumed for income earners in urban households that was not prepared at home." ID="ID_1569762147" CREATED="1521254418507" MODIFIED="1521254418507"/>
+<node TEXT="nh_cgpucfh_p1" ID="ID_1198119353" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="a description in words for the article" ID="ID_330806594" CREATED="1521254418507" MODIFIED="1521254418507"/>
 </node>
-<node TEXT="nh_cgpucfh_p4" ID="ID_1043812033" CREATED="1519420386540" MODIFIED="1519420386540">
-<node TEXT="place of acquisition" ID="ID_1133953873" CREATED="1519420386540" MODIFIED="1519420386540"/>
+<node TEXT="nh_cgpucfh_p1_s1" ID="ID_1485170179" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="a complete COICOP code" ID="ID_923884065" CREATED="1521254418507" MODIFIED="1521254418507"/>
 </node>
-<node TEXT="nh_cgpucfh_p5" ID="ID_746254274" CREATED="1519420386541" MODIFIED="1519420386541">
-<node TEXT="total estimated value" ID="ID_1035435433" CREATED="1519420386541" MODIFIED="1519420386541"/>
+<node TEXT="nh_cgpucfh_p2" ID="ID_1176625398" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="the quantity" ID="ID_1009823777" CREATED="1521254418507" MODIFIED="1521254418507"/>
 </node>
-<node TEXT="nh_cgpucfh_p6" ID="ID_847337405" CREATED="1519420386541" MODIFIED="1519420386541">
-<node TEXT="frequency of acquisition" ID="ID_1416286659" CREATED="1519420386541" MODIFIED="1519420386541"/>
+<node TEXT="nh_cgpucfh_p3" ID="ID_422483219" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="if they purchased the good (01 is the code for purchases)" ID="ID_460961301" CREATED="1521254418507" MODIFIED="1521254418507"/>
 </node>
+<node TEXT="nh_cgpucfh_p4" ID="ID_1131595153" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="place of acquisition" ID="ID_1033138927" CREATED="1521254418507" MODIFIED="1521254418507"/>
 </node>
-<node TEXT="st2_sea_enc_gdr_csv" ID="ID_1750228118" CREATED="1519418876162" MODIFIED="1519418876162">
-<node TEXT="includes everything -- food at home, restaurants, clothing .." ID="ID_1566360431" CREATED="1519420483704" MODIFIED="1519420483704"/>
-<node TEXT="The table contains information of weekly expenses for rural households." ID="ID_178376482" CREATED="1519420483704" MODIFIED="1519420483704"/>
-<node TEXT="nc2r_ca_p3" ID="ID_1200627715" CREATED="1519420483706" MODIFIED="1519420483706">
-<node TEXT="a complete COICOP code for the article" ID="ID_1019530404" CREATED="1519420483709" MODIFIED="1519420483709"/>
+<node TEXT="nh_cgpucfh_p5" ID="ID_1077552627" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="total estimated value" ID="ID_41246669" CREATED="1521254418507" MODIFIED="1521254418507"/>
 </node>
-<node TEXT="nc2r_ca_p4_s1" ID="ID_1273529619" CREATED="1519420483707" MODIFIED="1519420483707">
-<node TEXT="the quantity" ID="ID_889920921" CREATED="1519420483709" MODIFIED="1519420483709"/>
+<node TEXT="nh_cgpucfh_p6" ID="ID_1906487550" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="frequency of acquisition" ID="ID_684254016" CREATED="1521254418507" MODIFIED="1521254418507"/>
+<node TEXT="1 &#xbb; 2. Diario&#xa;2 &#xbb; 2.1. Varias veces por semana&#xa;3 &#xbb; 3. Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;9 &#xbb; 9. Espor&#xe1;dica&quot;" ID="ID_1773205054" CREATED="1521254159273" MODIFIED="1521254162562"/>
 </node>
-<node TEXT="nc2r_ca_p4_s2" ID="ID_507086352" CREATED="1519420483708" MODIFIED="1519420483708">
-<node TEXT="measurement units" ID="ID_1974094967" CREATED="1519420483710" MODIFIED="1519420483710"/>
 </node>
-<node TEXT="nc2r_ca_p5_s1" ID="ID_621854801" CREATED="1519420483708" MODIFIED="1519420483708">
-<node TEXT="if they purchased the good (01 is the code for purchases)" ID="ID_553060723" CREATED="1519420483710" MODIFIED="1519420483710"/>
+<node TEXT="sea_enc_gdr_csv" ID="ID_1188073657" CREATED="1521254418507" MODIFIED="1521255008106">
+<font BOLD="false"/>
+<node TEXT="includes everything -- food at home, restaurants, clothing .." ID="ID_972233347" CREATED="1521254418507" MODIFIED="1521254418507"/>
+<node TEXT="The table contains information of weekly expenses for rural households." ID="ID_1223713462" CREATED="1521254418507" MODIFIED="1521254418507"/>
+<node TEXT="nc2r_ca_p3" ID="ID_1157901723" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="a complete COICOP code for the article" ID="ID_1678229287" CREATED="1521254418507" MODIFIED="1521254418507"/>
 </node>
-<node TEXT="nc2r_ca_p6_s1" ID="ID_1760336331" CREATED="1519420483709" MODIFIED="1519420483709">
-<node TEXT="place of acquisition" ID="ID_59305216" CREATED="1519420483710" MODIFIED="1519420483710"/>
+<node TEXT="nc2r_ca_p4_s1" ID="ID_220619492" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="the quantity" ID="ID_1875485168" CREATED="1521254418507" MODIFIED="1521254418507"/>
 </node>
-<node TEXT="nc2r_ca_p7_s1" ID="ID_1544386641" CREATED="1519420483709" MODIFIED="1519420483709">
-<node TEXT="total estimated value" ID="ID_1505786358" CREATED="1519420483710" MODIFIED="1519420483710"/>
+<node TEXT="nc2r_ca_p4_s2" ID="ID_1815079629" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="measurement units" ID="ID_89646792" CREATED="1521254418507" MODIFIED="1521254418507"/>
 </node>
-<node TEXT="nc2r_ca_p8_s1" ID="ID_1741006726" CREATED="1519420483709" MODIFIED="1519420483709">
-<node TEXT="frequency of acquisition" ID="ID_440571067" CREATED="1519420483710" MODIFIED="1519420483710"/>
+<node TEXT="nc2r_ca_p5_s1" ID="ID_1465279517" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="if they purchased the good (01 is the code for purchases)" ID="ID_496181715" CREATED="1521254418507" MODIFIED="1521254418507"/>
 </node>
+<node TEXT="nc2r_ca_p6_s1" ID="ID_855559590" CREATED="1521254418507" MODIFIED="1521254418507">
+<node TEXT="place of acquisition" ID="ID_762161228" CREATED="1521254418508" MODIFIED="1521254418508"/>
 </node>
-<node TEXT="st2_sea_enc_gmf_csv" ID="ID_442896227" CREATED="1519418876162" MODIFIED="1519418876162">
-<node TEXT="The table contains information regarding less-frequent expenditures." ID="ID_543284415" CREATED="1519420606735" MODIFIED="1519420606735"/>
-<node TEXT="p10270" ID="ID_1290587119" CREATED="1519420606735" MODIFIED="1519420606735">
-<node TEXT="a complete COICOP code" ID="ID_472689914" CREATED="1519420606739" MODIFIED="1519420606739"/>
+<node TEXT="nc2r_ca_p7_s1" ID="ID_1024308653" CREATED="1521254418508" MODIFIED="1521254418508">
+<node TEXT="total estimated value" ID="ID_903069702" CREATED="1521254418508" MODIFIED="1521254418508"/>
 </node>
-<node TEXT="p10270_fc_s1" ID="ID_1781282777" CREATED="1519420606737" MODIFIED="1519420606737">
-<node TEXT="if the article was purchased (01 if purchased)" ID="ID_281840362" CREATED="1519420606739" MODIFIED="1519420606739"/>
+<node TEXT="nc2r_ca_p8_s1" ID="ID_1884538920" CREATED="1521254418508" MODIFIED="1521254418508">
+<node TEXT="frequency of acquisition" ID="ID_1191182064" CREATED="1521254418508" MODIFIED="1521254418508"/>
+<node TEXT="&quot;8. Frecuencia de compra&#xa;1 &#xbb; 2. Diario&#xa;2 &#xbb; 2.1. Varias veces por semana&#xa;3 &#xbb; 3. Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;9 &#xbb; 9. Espor&#xe1;dica&quot;" ID="ID_289544177" CREATED="1521254275557" MODIFIED="1521254276654"/>
 </node>
-<node TEXT="p10270s1" ID="ID_1522834281" CREATED="1519420606737" MODIFIED="1519420606737">
-<node TEXT="estimated value paid (total/cash)" ID="ID_1352319527" CREATED="1519420606739" MODIFIED="1519420606739"/>
 </node>
-<node TEXT="p10270s2" ID="ID_366156232" CREATED="1519420606738" MODIFIED="1519420606738">
-<node TEXT="place of acquisition" ID="ID_1572908973" CREATED="1519420606739" MODIFIED="1519420606739"/>
+<node TEXT="sea_enc_gmf_csv" ID="ID_1728607123" CREATED="1521254418508" MODIFIED="1521255008107">
+<font BOLD="false"/>
+<node TEXT="The table contains information regarding less-frequent expenditures." ID="ID_306164503" CREATED="1521254418509" MODIFIED="1521254418509"/>
+<node TEXT="p10270" ID="ID_1415448017" CREATED="1521254418509" MODIFIED="1521254418509">
+<node TEXT="a complete COICOP code" ID="ID_11510460" CREATED="1521254418509" MODIFIED="1521254418509"/>
 </node>
-<node TEXT="p10270s3" ID="ID_746176148" CREATED="1519420606738" MODIFIED="1519420606738">
-<node TEXT="frequency" ID="ID_125974889" CREATED="1519420606739" MODIFIED="1519420606739"/>
+<node TEXT="p10270_fc_s1" ID="ID_958929674" CREATED="1521254418509" MODIFIED="1521254418509">
+<node TEXT="if the article was purchased (01 if purchased)" ID="ID_662016038" CREATED="1521254418509" MODIFIED="1521254418509"/>
 </node>
-<node TEXT="p10270s4" ID="ID_1037680768" CREATED="1519420606739" MODIFIED="1519420606739">
-<node TEXT="value paid with credit" ID="ID_437471301" CREATED="1519420606739" MODIFIED="1519420606739"/>
+<node TEXT="p10270s1" ID="ID_1588195899" CREATED="1521254418509" MODIFIED="1521254418509">
+<node TEXT="estimated value paid (total/cash)" ID="ID_125548055" CREATED="1521254418509" MODIFIED="1521254418509"/>
 </node>
+<node TEXT="p10270s2" ID="ID_682270131" CREATED="1521254418509" MODIFIED="1521254418509">
+<node TEXT="place of acquisition" ID="ID_1281437637" CREATED="1521254418509" MODIFIED="1521254418509"/>
 </node>
-<node TEXT="st2_sea_enc_gsdp_diarios_csv" ID="ID_973736025" CREATED="1519418876162" MODIFIED="1519418876162">
-<node TEXT="The table contains information of daily expenses that come from income earners." ID="ID_1808264582" CREATED="1519420688807" MODIFIED="1519420688807"/>
-<node TEXT="nc4_cc_p1_1" ID="ID_847301400" CREATED="1519420688807" MODIFIED="1519420688807">
-<node TEXT="a complete COICOP code for the article" ID="ID_1148346401" CREATED="1519420688812" MODIFIED="1519420688812"/>
+<node TEXT="p10270s3" ID="ID_423082330" CREATED="1521254418509" MODIFIED="1521254418509">
+<node TEXT="frequency" ID="ID_1744992887" CREATED="1521254418509" MODIFIED="1521254418509"/>
+<node TEXT="&quot;Frecuencia de compra de:&#xa;3 &#xbb; 3. Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;8 &#xbb; 8. Anual&#xa;9 &#xbb; 9. Espor&#xe1;dica&#xa;10 &#xbb; 10. Semestral&quot;" ID="ID_993335647" CREATED="1521254867841" MODIFIED="1521254868981"/>
 </node>
-<node TEXT="nc4_cc_p2" ID="ID_152045466" CREATED="1519420688809" MODIFIED="1519420688809">
-<node TEXT="the quantity" ID="ID_1674837379" CREATED="1519420688812" MODIFIED="1519420688812"/>
+<node TEXT="p10270s4" ID="ID_925318496" CREATED="1521254418509" MODIFIED="1521254418509">
+<node TEXT="value paid with credit" ID="ID_261406456" CREATED="1521254418509" MODIFIED="1521254418509"/>
 </node>
-<node TEXT="nc4_cc_p3" ID="ID_1192776524" CREATED="1519420688809" MODIFIED="1519420688809">
-<node TEXT="if they purchased the good (01 is the code for purchases)" ID="ID_287781801" CREATED="1519420688812" MODIFIED="1519420688812"/>
 </node>
-<node TEXT="nc4_cc_p4" ID="ID_643646176" CREATED="1519420688810" MODIFIED="1519420688810">
-<node TEXT="place of acquisition" ID="ID_1794760324" CREATED="1519420688812" MODIFIED="1519420688812"/>
+<node TEXT="sea_enc_gsdp_diarios_csv" ID="ID_1452344266" CREATED="1521254418509" MODIFIED="1521255008107">
+<font BOLD="false"/>
+<node TEXT="The table contains information of daily expenses that come from income earners." ID="ID_1585926482" CREATED="1521254418509" MODIFIED="1521254418509"/>
+<node TEXT="nc4_cc_p1_1" ID="ID_1400069680" CREATED="1521254418509" MODIFIED="1521254418509">
+<node TEXT="a complete COICOP code for the article" ID="ID_530651775" CREATED="1521254418509" MODIFIED="1521254418509"/>
 </node>
-<node TEXT="nc4_cc_p5" ID="ID_355738228" CREATED="1519420688810" MODIFIED="1519420688810">
-<node TEXT="total estimated value" ID="ID_1112862918" CREATED="1519420688812" MODIFIED="1519420688812"/>
+<node TEXT="nc4_cc_p2" ID="ID_1239064155" CREATED="1521254418509" MODIFIED="1521254418509">
+<node TEXT="the quantity" ID="ID_81450350" CREATED="1521254418509" MODIFIED="1521254418509"/>
 </node>
-<node TEXT="nc4_cc_p6" ID="ID_232181199" CREATED="1519420688811" MODIFIED="1519420688811">
-<node TEXT="frequency of acquisition" ID="ID_218403420" CREATED="1519420688812" MODIFIED="1519420688812"/>
+<node TEXT="nc4_cc_p3" ID="ID_596300131" CREATED="1521254418509" MODIFIED="1521254418509">
+<node TEXT="if they purchased the good (01 is the code for purchases)" ID="ID_397880786" CREATED="1521254418509" MODIFIED="1521254418509"/>
 </node>
+<node TEXT="nc4_cc_p4" ID="ID_1749389374" CREATED="1521254418509" MODIFIED="1521254418509">
+<node TEXT="place of acquisition" ID="ID_1902022822" CREATED="1521254418509" MODIFIED="1521254418509"/>
 </node>
-<node TEXT="st2_sea_enc_gsdu_diarios_csv" ID="ID_1791251414" CREATED="1519418876162" MODIFIED="1519418876162">
-<node TEXT="The table contains information of daily expenses from urban households." ID="ID_1870861984" CREATED="1519420805498" MODIFIED="1519420805498"/>
-<node TEXT="nh_cgdu_p1" ID="ID_921742942" CREATED="1519420805498" MODIFIED="1519420805498">
-<node TEXT="a complete COICOP code for the article" ID="ID_1758489928" CREATED="1519420805506" MODIFIED="1519420805506"/>
+<node TEXT="nc4_cc_p5" ID="ID_1893261244" CREATED="1521254418509" MODIFIED="1521254418509">
+<node TEXT="total estimated value" ID="ID_356325637" CREATED="1521254418509" MODIFIED="1521254418509"/>
 </node>
-<node TEXT="nh_cgdu_p2" ID="ID_1339988971" CREATED="1519420805503" MODIFIED="1519420805503">
-<node TEXT="the quantity" ID="ID_623389118" CREATED="1519420805506" MODIFIED="1519420805506"/>
+<node TEXT="nc4_cc_p6" ID="ID_1849671622" CREATED="1521254418509" MODIFIED="1521254418509">
+<node TEXT="frequency of acquisition" ID="ID_1698017799" CREATED="1521254418509" MODIFIED="1521254418509"/>
+<node TEXT="&quot;9. Frecuencia de Compra***&#xa;1 &#xbb; 1. Diario&#xa;2 &#xbb; 2.1. Varias veces&#xa;3 &#xbb; 3. Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;9 &#xbb; 9. Espor&#xe1;dica por semana&quot;" ID="ID_1783721030" CREATED="1521254894660" MODIFIED="1521254895471"/>
 </node>
-<node TEXT="nh_cgdu _p3" ID="ID_1802904878" CREATED="1519420805503" MODIFIED="1519420805503">
-<node TEXT="measurement units" ID="ID_956485887" CREATED="1519420805506" MODIFIED="1519420805506"/>
 </node>
-<node TEXT="nh_cgdu_p5" ID="ID_1313625229" CREATED="1519420805504" MODIFIED="1519420805504">
-<node TEXT="whether they purchased the good (01 is the code for purchases)" ID="ID_1164014228" CREATED="1519420805506" MODIFIED="1519420805506"/>
+<node TEXT="sea_enc_gsdu_diarios_csv" ID="ID_1090903817" CREATED="1521254418509" MODIFIED="1521254418509">
+<node TEXT="The table contains information of daily expenses from urban households." ID="ID_75180754" CREATED="1521254418510" MODIFIED="1521254418510"/>
+<node TEXT="nh_cgdu_p1" ID="ID_1354324346" CREATED="1521254418510" MODIFIED="1521254418510">
+<node TEXT="a complete COICOP code for the article" ID="ID_1955478677" CREATED="1521254418510" MODIFIED="1521254418510"/>
 </node>
-<node TEXT="nh_cgdu_p7b1379" ID="ID_228849814" CREATED="1519420805504" MODIFIED="1519420805504">
-<node TEXT="place of acquisition" ID="ID_788816714" CREATED="1519420805506" MODIFIED="1519420805506"/>
+<node TEXT="nh_cgdu_p2" ID="ID_847216832" CREATED="1521254418510" MODIFIED="1521254418510">
+<node TEXT="the quantity" ID="ID_1708841324" CREATED="1521254418510" MODIFIED="1521254418510"/>
 </node>
-<node TEXT="nh_cgdu _p8" ID="ID_587558098" CREATED="1519420805505" MODIFIED="1519420805505">
-<node TEXT="total estimated value" ID="ID_1305895663" CREATED="1519420805506" MODIFIED="1519420831539"/>
+<node TEXT="nh_cgdu _p3" ID="ID_1657051380" CREATED="1521254418510" MODIFIED="1521254418510">
+<node TEXT="measurement units" ID="ID_600473621" CREATED="1521254418510" MODIFIED="1521254418510"/>
 </node>
-<node TEXT="nh_cgdu _p9" ID="ID_64455400" CREATED="1519420805505" MODIFIED="1519420805505">
-<node ID="ID_505327842" CREATED="1519420832915" MODIFIED="1519420832915"><richcontent TYPE="NODE">
-
-<html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      frequency of acquisition
-    </p>
-  </body>
-</html>
-</richcontent>
+<node TEXT="nh_cgdu_p5" ID="ID_221312600" CREATED="1521254418510" MODIFIED="1521254418510">
+<node TEXT="whether they purchased the good (01 is the code for purchases)" ID="ID_9149298" CREATED="1521254418510" MODIFIED="1521254418510"/>
 </node>
+<node TEXT="nh_cgdu_p7b1379" ID="ID_648298660" CREATED="1521254418510" MODIFIED="1521254418510">
+<node TEXT="place of acquisition" ID="ID_1709671197" CREATED="1521254418510" MODIFIED="1521254418510"/>
 </node>
-<node TEXT="nh_cgdu_p10" ID="ID_356632635" CREATED="1519420805506" MODIFIED="1519420805506">
-<node TEXT="whether the expenditure is personal or corresponds to the household (1 if household is true)" ID="ID_121454323" CREATED="1519420805506" MODIFIED="1519420805506"/>
+<node TEXT="nh_cgdu _p8" ID="ID_523229326" CREATED="1521254418510" MODIFIED="1521254418510">
+<node TEXT="total estimated value" ID="ID_272410575" CREATED="1521254418510" MODIFIED="1521254418510"/>
+</node>
+<node TEXT="nh_cgdu _p9" ID="ID_1012375136" CREATED="1521254418510" MODIFIED="1521254418510">
+<node TEXT="frequency of acquisition" ID="ID_850703267" CREATED="1521254418510" MODIFIED="1521254418510"/>
+<node TEXT="&quot;9. Frecuencia de Compra&#xa;1 &#xbb; 2. Diario&#xa;2 &#xbb; 2.1. Varias veces por semana&#xa;3 &#xbb; 3. Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;9 &#xbb; 9. Espor&#xe1;dica&quot;" ID="ID_149104090" CREATED="1521255001175" MODIFIED="1521255002044"/>
+</node>
+<node TEXT="nh_cgdu_p10" ID="ID_552288802" CREATED="1521254418510" MODIFIED="1521254418510">
+<node TEXT="whether the expenditure is personal or corresponds to the household (1 if household is true)" ID="ID_1791522417" CREATED="1521254418510" MODIFIED="1521254418510"/>
 </node>
 </node>
 </node>
@@ -712,6 +624,19 @@
 <node TEXT="This can be done for all of 2017, and for 2007 goods, but for 2007 services the COICOP data uses an obsolete coding." ID="ID_1092513153" CREATED="1519404357062" MODIFIED="1519404399524"/>
 </node>
 <node TEXT="Is there time data associated with each purchase?" ID="ID_1875434406" CREATED="1519404453550" MODIFIED="1519404461968"/>
+<node TEXT="are these more expenditure data sets?" ID="ID_1601216814" CREATED="1521253980456" MODIFIED="1521255029970">
+<font BOLD="false"/>
+<node TEXT="sea_enc_gcar_csv" ID="ID_1749017474" CREATED="1521254493488" MODIFIED="1521254493488">
+<node TEXT="NC2_CC_P2" ID="ID_1870303271" CREATED="1521255070548" MODIFIED="1521255071629">
+<node TEXT="1 &#xbb; 2. Diario&#xa;2 &#xbb; 2.1. Varias veces por semana&#xa;3 &#xbb; 3. Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;9 &#xbb; 9. Espor&#xe1;dica&quot;" ID="ID_1420772016" CREATED="1521254000511" MODIFIED="1521254034399"/>
+</node>
+</node>
+<node TEXT="sea_enc_gcau_csv" ID="ID_664721517" CREATED="1521254493488" MODIFIED="1521254493488">
+<node TEXT="NC2_CC_P2" ID="ID_1809521334" CREATED="1521255100577" MODIFIED="1521255101485">
+<node TEXT="1 &#xbb; 1. Nunca&#xa;2 &#xbb; 2. Diario&#xa;3 &#xbb; 2.1 varias veces por semana&#xa;4 &#xbb; 3. Semanal&#xa;5 &#xbb; 4. Quincenal&#xa;6 &#xbb; 5. Mensual&#xa;7 &#xbb; 6. Bimestral&#xa;8 &#xbb; 7. Trimestral&#xa;9 &#xbb; 9. Espor&#xe1;dica&quot;" ID="ID_1063154764" CREATED="1521254023494" MODIFIED="1521254031871"/>
+</node>
+</node>
+</node>
 </node>
 </node>
 </map>
