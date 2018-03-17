@@ -46,12 +46,17 @@ if True: # build the purchase data
   saveStage(purchases, '/1.purchases')
 
 
-if True: # merge coicop, construct some money-valued variables
-  # TODO ? sort both frames on coicop before merging, for speed
+if True: # merge coicop, build money-valued variables
   coicop_vat = pd.read_csv( "data/vat/coicop-vat.csv", sep=';' )
   purchases = purchases.merge( coicop_vat, on="coicop" )
+
   purchases["price"] = purchases["value"] / purchases["quantity"]
+  purchases["1-value"] = purchases["value"]
+  purchases["1-quantity"] = purchases["quantity"]
+  purchases["frequency"].replace( vatfiles.frequency_legend, inplace=True )
+  purchases["value"] = purchases["frequency"] * purchases["value"]
   purchases["vat-paid"] = purchases["value"] * purchases["vat-rate"]
+
   saveStage(purchases, '/2.purchases,prices,taxes')
 
 

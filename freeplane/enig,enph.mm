@@ -625,7 +625,10 @@
 <edge COLOR="#ff00ff"/>
 <node TEXT="interpreting frequencies" ID="ID_1660416272" CREATED="1521255957723" MODIFIED="1521255961635">
 <node TEXT="this legend seems to work for all but one of the ENPH-17 expenditure data sets described in this file" ID="ID_352822493" CREATED="1521255962356" MODIFIED="1521256036864">
-<node TEXT="1 &#xbb; 2. Diario&#xa;2 &#xbb; 2.1 Varias veces por semana&#xa;3 &#xbb; 3.Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;8 &#xbb; 8. Anual&#xa;9 &#xbb; 9.Espor&#xe1;dico&quot;&#xa;10 &#xbb; 10. Semestral&quot;" ID="ID_1674365602" CREATED="1521255982725" MODIFIED="1521255983793"/>
+<node TEXT="1 &#xbb; 2. Diario&#xa;2 &#xbb; 2.1 Varias veces por semana&#xa;3 &#xbb; 3.Semanal&#xa;4 &#xbb; 4. Quincenal&#xa;5 &#xbb; 5. Mensual&#xa;6 &#xbb; 6. Bimestral&#xa;7 &#xbb; 7. Trimestral&#xa;8 &#xbb; 8. Anual&#xa;9 &#xbb; 9.Espor&#xe1;dico&#xa;10 &#xbb; 10. Semestral" ID="ID_1674365602" CREATED="1521255982725" MODIFIED="1521301177432"/>
+</node>
+<node TEXT="problem: 2.1 or 2?" ID="ID_875648374" CREATED="1521309492595" MODIFIED="1521309505692">
+<arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_1674365602" STARTINCLINATION="133;0;" ENDINCLINATION="133;0;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
 </node>
 <node TEXT="problem: 9 = how infrequent?" ID="ID_1180824648" CREATED="1521255826921" MODIFIED="1521255866730">
 <node TEXT="As a frequency code, 9 usually means &quot;sporadically&quot;. I thought that meant &quot;less frequently than every year&quot;, assuming that the terms are ordered. But over here it interprets 9 as &quot;Espor&#xe1;dica por semana&quot;." ID="ID_968656694" CREATED="1521255724809" MODIFIED="1521255816716"/>

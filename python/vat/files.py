@@ -11,6 +11,24 @@ person_file_legend = { "directorio" : "household"
                      , "p6370"      : "job name (text)"
                      , "p6370s1"    : "job code" }
 
+frequency_legend = {
+  1 : 1,   # » 2. Diario
+  2 : 3.5, # » 2.1 Varias veces por semana
+           # 3.5 is the arithmetic average of the numbers in [1,7].
+           # The geometric average is 3.38.
+  3 : 7,   # » 3.Semanal
+  4 : 15,  # » 4. Quincenal
+  5 : 30,  # » 5. Mensual
+  6 : 60,  # » 6. Bimestral
+  7 : 90,  # » 7. Trimestral
+  8 : 365, # » 8. Anual
+  9 : (3*365), # » 9.Esporádico
+  10 : 182.5,  # » 10. Semestral
+}
+frequency_legend = { k : ((365/12)/v) for k,v in frequency_legend.items() }
+  # Frontload the division, rather than performing it for each row of data.
+  # (Because multiplication is cheaper than division.)
+
 purchase_file_legends = { # keys are filenames
             # values are dictionaries from column names to their meaning
   "st2_sea_enc_gcfhr_ce_csv" : { "nc2r_ce_p2"   : "coicop"
