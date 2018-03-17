@@ -3,7 +3,7 @@
 <node TEXT="enig &amp; enph" ID="ID_275374562" CREATED="1519401630664" MODIFIED="1519421296851" STYLE="oval">
 <font SIZE="18"/>
 <hook NAME="MapStyle" zoom="1.771">
-    <properties show_icon_for_attributes="true" fit_to_viewport="false" show_note_icons="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff"/>
+    <properties fit_to_viewport="false" show_icon_for_attributes="true" show_note_icons="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24.0 pt">
@@ -668,6 +668,9 @@
 </node>
 <node TEXT="p6080" ID="ID_1546011462" CREATED="1520628273268" MODIFIED="1520628273268">
 <node TEXT="race" ID="ID_361546144" CREATED="1520628273270" MODIFIED="1520628273270"/>
+</node>
+<node TEXT="p6020" ID="ID_1631599672" CREATED="1521245426307" MODIFIED="1521245426307">
+<node TEXT="sex" ID="ID_1835460177" CREATED="1521245430119" MODIFIED="1521245430921"/>
 </node>
 <node TEXT="p6210" ID="ID_205222903" CREATED="1520628273270" MODIFIED="1520628273270">
 <node TEXT="education" ID="ID_450101414" CREATED="1520628273270" MODIFIED="1520628273270"/>

@@ -69,6 +69,17 @@ if True: # merge demographic statistics
                     , usecols = list( vatfiles.person_file_legend.keys() )
   )
   demog = demog.rename(columns=vatfiles.person_file_legend) # homogenize column names across files
+
+  if True: # normalize some categorical variables to be 0-1
+    demog["female"] =   demog["female"] - 1          # orig 1=male,2=female
+    demog["student"] =  demog["student"]  * (-1) + 2 # orig 1=student,2=not
+    demog["literate"] = demog["literate"] * (-1) + 2 # orig 1=lit,2=not
+    demog["race-indig"] =   demog["race"] == 1
+    demog["race-git-rom"] = demog["race"] == 2
+    demog["race-raizal"] =  demog["race"] == 3
+    demog["race-palenq"] =  demog["race"] == 4
+    demog["race-neg|mul"] = demog["race"] == 5
+
   saveStage(demog, '/4.demog')
   people = pd.merge( people, demog, on=["household","household-member"] )
   del(demog)

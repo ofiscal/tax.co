@@ -6,6 +6,7 @@ person_file_legend = { "directorio" : "household"
                      , "p6500"      : "income"
                      , "p6040"      : "age"
                      , "p6080"      : "race"
+                     , "p6020"      : "female"
                      , "p6210"      : "education"
                      , "p6370"      : "job name (text)"
                      , "p6370s1"    : "job code" }
