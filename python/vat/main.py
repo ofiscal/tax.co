@@ -25,8 +25,9 @@ def readStage(name): # to skip rebuilding something
 if True: # build the purchase data
   for file in files:
     legend = vatfiles.purchase_file_legends[file]
-    shuttle = pd.read_csv( datafiles.yearSubsampleSurveyFolder(2017,subsample) + file + '.csv'
-                        , usecols = list( legend.keys() )
+    shuttle = pd.read_csv(
+      datafiles.yearSubsampleSurveyFolder(2017,subsample) + file + '.csv'
+      , usecols = list( legend.keys() )
     )
     shuttle = shuttle.rename(columns=legend) # homogenize column names across files
     shuttle["file-origin"] = file
@@ -59,9 +60,8 @@ if True: # build the person expenditure data
   people = purchases.groupby(
     ['household', 'household-member'])['value','vat-paid',"transactions"].agg('sum')
   people = people.reset_index(level = ['household', 'household-member'])
-    # https://stackoverflow.com/questions/20461165/how-to-convert-pandas-index-in-a-dataframe-to-a-column
   saveStage(people, '/3.person-level-expenditures')
-
+  
 
 if True: # merge demographic statistics
   # PITFALL: Even if using a subsample of purchases, use the complete demographic data sample
@@ -80,9 +80,13 @@ if True: # merge demographic statistics
     demog["r-palenq"] =   demog["race"] == 4
     demog["r-neg|mul"] =  demog["race"] == 5
     demog["r-whi|mest"] = demog["race"] == 6
-
   saveStage(demog, '/4.demog')
+
   people = pd.merge( people, demog, on=["household","household-member"] )
+  people["val/inc"] = people["value"]/people["income"]
+  people["vat/val"] = people["vat-paid"]/people["value"]
+  people["vat/inc"] = people["vat-paid"]/people["income"]
+
   del(demog)
   saveStage(people, '/5.person-demog-expenditures')
 
@@ -119,6 +123,11 @@ if True: # aggregate from household-members to households
     } )
   households = pd.concat( [h_sum,h_min,h_max]
                          , axis=1 )
+
+  households["val/inc"] = households["value"]/households["income"]
+  households["vat/val"] = households["vat-paid"]/households["value"]
+  households["vat/inc"] = households["vat-paid"]/households["income"]
+
   households["household"] = households.index
     # when there are multiple indices, reset_index is the way to do that
   saveStage(households, '/6.households')
