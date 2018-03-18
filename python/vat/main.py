@@ -60,6 +60,7 @@ if True: # merge coicop, build money-valued variables
   saveStage(purchases, '/2.purchases,prices,taxes')
 
 
+# purchases = readStage('/2.purchases,prices,taxes')
 if True: # build the person expenditure data
   purchases["transactions"] = 1
   people = purchases.groupby(
@@ -96,6 +97,7 @@ if True: # merge demographic statistics
   saveStage(people, '/5.person-demog-expenditures')
 
 
+# people = readStage('/5.person-demog-expenditures')
 if True: # aggregate from household-members to households
   people["members"] = 1
   h_sum = people.groupby(
@@ -136,3 +138,6 @@ if True: # aggregate from household-members to households
   households["household"] = households.index
     # when there are multiple indices, reset_index is the way to do that
   saveStage(households, '/6.households')
+
+# households = readStage('/6.households')
+
