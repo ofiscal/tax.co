@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import python.util as util
-import math
+import math as math
 
 def read_sizes (path,filename):
   files = {}
@@ -50,22 +50,6 @@ if False: # Check out the first (household,member) pair in final_novat with tran
 
 final1_num = final1.drop("job name (text)",axis=1)
 
-def compareDescriptives(dfDict):
-  for dfName in dfDict.keys():
-    df = dfDict[ dfName ]
-    print(dfName)
-    print( util.describeWithMissing( df ).round(2) )
-
-def compareDescriptivesByFourColumns(dfDict):
-  colnames = dfDict[ list( dfDict.keys()
-                         ) [0]
-                   ].columns.values
-  for i in range( math.ceil( len(colnames)/4 ) ):
-    dfDict2 = {k: v[ colnames[4*i:4*i+4] ]
-               for k, v in dfDict.items()
-              }
-    compareDescriptives( dfDict2 )
-
 weirdVatDict = {
     "full sample"  : final1
   , "paid some vat": final1 [ final1["vat-paid"] > 0 ]
@@ -74,7 +58,7 @@ weirdVatDict = {
   , "paid NaN vat"     : final1 [    final1["vat-paid"].isnull()   ]
 }
 
-compareDescriptivesByFourColumns( weirdVatDict )
+util.compareDescriptivesByFourColumns( weirdVatDict )
 
 # OBSERVATIONS
 #  # If you make more transactions, you're more likely to pay VAT. If you pay NaN, you probably only have
