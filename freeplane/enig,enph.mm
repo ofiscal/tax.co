@@ -589,6 +589,7 @@
 </node>
 <node TEXT="p6210" ID="ID_205222903" CREATED="1520628273270" MODIFIED="1520628273270">
 <node TEXT="education" ID="ID_450101414" CREATED="1520628273270" MODIFIED="1520628273270"/>
+<node TEXT="&#xbf;Cu&#xe1;l es el nivel educativo m&#xe1;s alto alcanzado?&#xa;1 &#xbb; Ninguno&#xa;2 &#xbb; Preescolar&#xa;3 &#xbb; Basica Primaria&#xa;4 &#xbb; Basica Secundaria&#xa;5 &#xbb; Media&#xa;6 &#xbb; Superior o Universitaria&#xa;9 &#xbb; &quot;&quot;No sabe, no informa" ID="ID_1376870501" CREATED="1521403691404" MODIFIED="1521403712971"/>
 </node>
 <node TEXT="p6370" ID="ID_816091951" CREATED="1520628273270" MODIFIED="1520628273270">
 <node TEXT="job name (text)" ID="ID_652954592" CREATED="1520628273272" MODIFIED="1520628273272"/>
