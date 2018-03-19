@@ -7,7 +7,7 @@ The VAT is a kind of tax, one levied on purchases of goods and services. The gov
 
 The default level of the VAT is 19%. There are numerous exemptions, however; the tax code singles out 310 categories of goods and services, some quite broad, for special VAT treatment. Some of these exempted items have a 5% VAT; the rest, 0%. 
 
-As a fraction of income, a VAT falls more heavily on poorer households, because these spend a greater fraction of their income. Some of the exclusions appear intended to relieve the tax burden on lower income households: Bus rides, rent on a home, water, sewerage, and phone services, medical goods and services, and hundreds of kinds of food are subject to zero VAT.
+As a fraction of income, any VAT (not just Colombia's) falls more heavily on poorer households, because these spend a greater fraction of their income. Some of the exclusions appear intended to relieve the tax burden on lower income households: Bus rides, rent on a home, water, sewerage, and phone services, medical goods and services, and hundreds of kinds of food are subject to zero VAT.
 
 Other zero-VAT goods and services include payments associated with a second home, ocean travel, banking services, political contributions, and ballet, cinema, theater, sporting events, circuses, fairs and any other "espectaculo".
 
@@ -34,7 +34,9 @@ The ENPH is a big survey. We selected only a fraction of the data collected in i
 Our other source of data is something we constructed ourselves. It associates a tax rate -- 0, 5 or 19% -- to each of the COICOP codes, based on the tax laws and the description of goods and services from the ENPH.
 
 
-# What purchases look like
+# What the data reveal
+
+## What purchases look like
 
 The survey records just under 7.5 million purchases. When people buy something, the median number they buy is 2. The maximum was a million, and the minimum -70 (yes, negative seventy). What they spent on each purchase ranges from 0 to 2.5 million pesos. We can calculate price by dividing what they spent by how many they were buying.
 
@@ -45,12 +47,12 @@ Multiplying the value of a purchase by its frequency results in the amount of mo
 The VAT paid on a purchase ranges from 0 to 4.4 million pesos. The average is 700 pesos. More than 3/4 of all purchases carry zero VAT -- which is plausible, given how many common purchases are exempt.
 
 
-# What individuals look like
+## What individuals look like
 
 The 300,000 Colombians surveyed in the ENPH range in age from 0 to 110. Half are under 30. In education, only 5% indicate having less than a primary education; 45% indicate having completed primary or secondary and no further; 23% indicate "media", and 22% indicate having a university education. 53% of respondents are female. Incomes range from 0 to 80 million pesos per month, with a median of 800,000 -- just over the minimum wage. 30% of respondents are students. The number of transactions per person range from 1 to 144. [[Given that the minimum age is 0, the minimum number of purchases is strange.]]
 
 
-# What households look like.
+## What households look like.
 
 The average household has 3.37 members. The biggest has 22. The average household makes 44 purchases in a month; the minimum observed number is 1, and the maximum 358.
 
@@ -72,7 +74,7 @@ The VAT also falls more heavily on households with an elderly member, defined as
 50% of households in which the most educated member has at least a university degree pay 0.8% or less of monthly income to the VAT. Half of other households pay at least 1.1%, unless their most educated member has less than a primary school education, in which case they pay 0.4% or less.
 
 
-# Individual spending and taxes
+## Individual spending and taxes
 
 Very few individuals in the youngest 20% of the population receive an income. In the next decile, though, there are many income earners. More than half of them spend less than 0.15% of their income on the VAT. For older people that fraction rises to about 0.3%.
 
