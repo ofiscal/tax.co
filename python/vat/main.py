@@ -142,4 +142,3 @@ if True: # aggregate from household-members to households
   saveStage(households, '/6.households')
 
 # households = readStage('/6.households')
-

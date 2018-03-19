@@ -583,6 +583,7 @@
 </node>
 <node TEXT="p6080" ID="ID_1546011462" CREATED="1520628273268" MODIFIED="1520628273268">
 <node TEXT="race" ID="ID_361546144" CREATED="1520628273270" MODIFIED="1520628273270"/>
+<node TEXT="&quot;6. De acuerdo con su cultura, pueblo, o rasgos f&#xed;sicos, ${posicion1} es o se reconoce como:&#xa;1 &#xbb; a. Ind&#xed;gena&#xa;2 &#xbb; b. Gitano-Rrom&#xa;3 &#xbb; c. Raizal del archipi&#xe9;lago de San Andr&#xe9;s y Providencia?&#xa;4 &#xbb; d. Palenquero de San Basilio o descendiente&#xa;5 &#xbb; e. Negro(a), mulato(a), afrocolombiano(a) o afrodescendiente?&#xa;6 &#xbb; f. Ninguno de los anteriores (mestizo, blanco, etc.)&quot;" ID="ID_1403713596" CREATED="1521430153776" MODIFIED="1521430163370"/>
 </node>
 <node TEXT="p6020" ID="ID_1631599672" CREATED="1521245426307" MODIFIED="1521245426307">
 <node TEXT="sex" ID="ID_1835460177" CREATED="1521245430119" MODIFIED="1521245430921"/>
