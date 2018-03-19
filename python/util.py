@@ -14,6 +14,13 @@ def describeWithMissing(df):
                    ).transpose()
   return yy.append( x )
 
+def dwmParamByGroup (describeParam, groupParam, df):
+  groups = df.groupby(groupParam)
+  dfs = [ groups . get_group(x) [describeParam]
+          . rename( columns = {describeParam : str(x) } )
+          for x in gb.groups]
+  return util.describeWithMissing( pd.concat( dfs,axis=1 ) ).round(2)
+
 def compareDescriptives(dfDict):
   for dfName in dfDict.keys():
     df = dfDict[ dfName ]

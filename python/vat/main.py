@@ -69,6 +69,7 @@ if True: # build the person expenditure data
   saveStage(people, '/3.person-level-expenditures')
   
 
+#people = readStage('/3.person-level-expenditures')
 if True: # merge demographic statistics
   # PITFALL: Even if using a subsample of purchases, use the complete demographic data sample
   demog = pd.read_csv( datafiles.yearSubsampleSurveyFolder(2017,1) + 'st2_sea_enc_per_csv.csv'
@@ -88,7 +89,8 @@ if True: # merge demographic statistics
     demog["r-whi|mest"] = demog["race"] == 6
   saveStage(demog, '/4.demog')
 
-  people = pd.merge( people, demog, on=["household","household-member"] )
+  people = pd.merge( people, demog, how = "right"
+                     , on=["household","household-member"] )
   people["val/inc"] = people["value"]/people["income"]
   people["vat/val"] = people["vat-paid"]/people["value"]
   people["vat/inc"] = people["vat-paid"]/people["income"]
