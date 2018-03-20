@@ -2,8 +2,8 @@
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
 <node TEXT="enig &amp; enph" ID="ID_275374562" CREATED="1519401630664" MODIFIED="1519421296851" STYLE="oval">
 <font SIZE="18"/>
-<hook NAME="MapStyle" zoom="1.771">
-    <properties show_icon_for_attributes="true" fit_to_viewport="false" show_note_icons="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff"/>
+<hook NAME="MapStyle" zoom="2.357">
+    <properties fit_to_viewport="false" show_icon_for_attributes="true" show_note_icons="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24.0 pt">
@@ -642,7 +642,6 @@
 <node TEXT="Match the covering vocabularies to the COICOP items." ID="ID_1817124328" CREATED="1519404278814" MODIFIED="1519404293344">
 <node TEXT="This can be done for all of 2017, and for 2007 goods, but for 2007 services the COICOP data uses an obsolete coding." ID="ID_1092513153" CREATED="1519404357062" MODIFIED="1519404399524"/>
 </node>
-<node TEXT="Is there time data associated with each purchase?" ID="ID_1875434406" CREATED="1519404453550" MODIFIED="1519404461968"/>
 <node TEXT="are these more expenditure data sets?" ID="ID_1601216814" CREATED="1521253980456" MODIFIED="1521255029970">
 <font BOLD="false"/>
 <node TEXT="sea_enc_gcar_csv" ID="ID_1749017474" CREATED="1521254493488" MODIFIED="1521254493488">
