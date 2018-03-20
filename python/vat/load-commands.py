@@ -1,5 +1,5 @@
-# Read into memory the data generated in main.py
-# These use python.vat.main.readStage
+# Read into memory the data generated in build.py
+# These use python.vat.build.readStage
 
 purchases = readStage('/2.purchases,prices,taxes') # memory hog
 
