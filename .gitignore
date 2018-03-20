@@ -4,6 +4,9 @@ __pycache__/
 */__pycache__/
 */*/__pycache__/
 output/summaries.txt
+output/summary/
+output/string-columns/
+output/vat-data/
 all-but-data/
 data/
 python/temp.py
