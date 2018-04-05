@@ -3,7 +3,7 @@
 <node TEXT="enig &amp; enph" ID="ID_275374562" CREATED="1519401630664" MODIFIED="1519421296851" STYLE="oval">
 <font SIZE="18"/>
 <hook NAME="MapStyle" zoom="2.357">
-    <properties fit_to_viewport="false" show_icon_for_attributes="true" show_note_icons="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff"/>
+    <properties show_icon_for_attributes="true" fit_to_viewport="false" show_note_icons="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24.0 pt">
@@ -346,12 +346,14 @@
 </node>
 </node>
 <node TEXT="enph 2017" ID="ID_1073810579" CREATED="1519403273903" MODIFIED="1520627346385">
+<node TEXT="was the ENPH in fact conducted over 2016-2017? yes, june 2016 to july 2017" ID="ID_1854947165" CREATED="1522517433324" MODIFIED="1522517435916"/>
 <node TEXT="Provides information for the 32 principal cities, 6 intermediate cities and 140 municipalities. Covers information for 90000 households." ID="ID_621362895" CREATED="1519403275928" MODIFIED="1519418696701"/>
-<node TEXT="All expenses are daily." ID="ID_1800385518" CREATED="1519403578647" MODIFIED="1519418385475"/>
 <node TEXT="how to interpret frequencies" ID="ID_848775075" CREATED="1521256001343" MODIFIED="1521256007851">
 <arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="200" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_352822493" STARTINCLINATION="186;0;" ENDINCLINATION="186;0;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
 </node>
 <node TEXT="expenditures" ID="ID_429560464" CREATED="1521254417002" MODIFIED="1521254425454">
+<node TEXT="All expenses are daily." ID="ID_1800385518" CREATED="1519403578647" MODIFIED="1519418385475"/>
+<node TEXT="when babies appear to buy things, it&apos;s that someone else (in the same household) bought it for them" ID="ID_637411823" CREATED="1522517549978" MODIFIED="1522517560133"/>
 <node TEXT="sea_enc_per_csv" ID="ID_398910560" CREATED="1521254418503" MODIFIED="1521254418503">
 <node TEXT="The table contains lots of information about the people answering the surveys. Apparently, it has variables that could be used to calibrate the &#x201c;holy grail&#x201d; (questions P800 to P8007&#x2026;need to explore further)." ID="ID_244751636" CREATED="1521254418503" MODIFIED="1521254418503"/>
 </node>

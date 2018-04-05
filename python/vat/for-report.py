@@ -1,3 +1,11 @@
+import numpy as np
+import pandas as pd
+import python.util as util
+import python.datafiles as datafiles
+import python.vat.files as vatfiles
+import os
+
+
 util.describeWithMissing(purchases)
 
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
@@ -14,6 +22,7 @@ for i in range(20):
 
 # Household spending and taxes
 util.describeWithMissing( households [["val/inc"]] )
+util.describeWithMissing( households [["vat/inc"]] )
 util.describeWithMissing(
   households [ households["val/inc"] !=  np.inf ] [["val/inc"]]
 )
