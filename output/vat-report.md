@@ -12,7 +12,7 @@ As a fraction of income, any VAT (not just Colombia's) falls more heavily on poo
 
 # How we determined which populations carry how much of the VAT burden
 
-## The Encuesta Nacional de Propuestos de Hogares (ENPH)
+## The Encuesta Nacional de Presupuestos de Hogares (ENPH)
 
 We used the ENPH, a survey of Colombian households conducted over 2016 and 2017. It picks a representative sample of homes, and then surveys everyone in the home, dividing them into "households", which are defined on the basis (income sharing? of whether they eat together?)
 
