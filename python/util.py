@@ -22,8 +22,10 @@ def dwmParamByGroup (describeParam, groupParam, df):
   return describeWithMissing( pd.concat( dfs,axis=1 ) )
 
 def compareDescriptives(dfDict):
+  """ builds a table of summary statistics for each data set in the input dictionary """
   for dfName in dfDict.keys():
     df = dfDict[ dfName ]
+    print(); print()
     print(dfName)
     print( describeWithMissing( df ).round(2) )
 

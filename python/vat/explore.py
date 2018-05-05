@@ -65,4 +65,3 @@ util.compareDescriptivesByFourColumns( weirdVatDict )
 #  # If you make more transactions, you're more likely to pay VAT. If you pay NaN, you probably only have
 #  # one recorded transaction in the ENPH.
 #  # NaN-VAT payers are a decade younger than others -- around 21 rather than 31
-

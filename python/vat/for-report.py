@@ -1,12 +1,14 @@
 import numpy as np
 import pandas as pd
+import os
+
 import python.util as util
 import python.datafiles as datafiles
 import python.vat.files as vatfiles
-import os
+import python.vat.output_io as ooio
 
 
-util.describeWithMissing(purchases)
+util.compareDescriptives(purchases)
 
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
     util.describeWithMissing(people)
