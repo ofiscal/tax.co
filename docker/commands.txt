@@ -1,12 +1,12 @@
-sudo docker build -f Dockerfile -t	        \
-  jeffreybbrown/tax.co:new .	\
+sudo docker build -f Dockerfile -t	                        \
+  jeffreybbrown/tax.co:new .	                                \
   | tee logs/"build-log.`date`.txt"
 
-sudo docker run --name anac -it -v /home/jeff/tax.co:/mnt \
+sudo docker run --name anac -it -v /home/jeff/tax.co:/mnt       \
   -p 8888:8888 -d -h 127.0.0.1                                  \
   jeffreybbrown/tax.co:new
 
 sudo docker run --entrypoint=/root/run-jupyter.sh               \
-                --name anac -it -v /home/jeff/tax.co:/mnt \
+                --name anac -it -v /home/jeff/tax.co:/mnt       \
   -p 8888:8888 -d -h 127.0.0.1                                  \
   jeffreybbrown/tax.co:new
