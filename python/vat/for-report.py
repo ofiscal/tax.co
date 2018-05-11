@@ -1,3 +1,5 @@
+# PITFALL: If a subsample is used, some of these statistics will be NaN or Inf when they otherwise would not
+
 import numpy as np
 import pandas as pd
 import os
@@ -8,7 +10,7 @@ import python.vat.files as vatfiles
 import python.vat.output_io as ooio
 
 
-util.compareDescriptives(purchases)
+util.compareDescriptives({'purchases':purchases})
 
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
     util.describeWithMissing(people)
@@ -26,7 +28,7 @@ for i in range(20):
 util.describeWithMissing( households [["val/inc"]] )
 util.describeWithMissing( households [["vat/inc"]] )
 util.describeWithMissing(
-  households [ households["val/inc"] !=  np.inf ] [["val/inc"]]
+                          households [ households["val/inc"] !=  np.inf ] [["val/inc"]]
 )
 
 households["has-child"] = households["age-min"] < 18
@@ -50,8 +52,9 @@ util.dwmParamByGroup("vat/inc","edu-max",
                      households [ households["income"] > 0 ] ).round(3)
 
 # Individual spending and taxes
-pd.qcut(people["age"], 10)
 people["age-decile"] = pd.qcut(people["age"], 10, labels = False)
+  # here's a way to show what that did
+    # pd.crosstab(index = people["age"], columns = people["age-decile"])
 util.dwmParamByGroup("vat/inc","age-decile",people)
 util.dwmParamByGroup("vat/inc","age-decile",
                      people[ people["income"] > 0 ] )
