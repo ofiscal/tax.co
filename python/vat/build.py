@@ -82,7 +82,7 @@ if True: # merge demographic statistics
 
   people = pd.merge( people, demog, how = "right"
                      , on=["household","household-member"] )
-  people["val/inc"] = people["value"]/people["income"]
+  people["value/inc"] = people["value"]/people["income"]
   people["vat/val"] = people["vat-paid"]/people["value"]
   people["vat/inc"] = people["vat-paid"]/people["income"]
 
@@ -124,7 +124,7 @@ if True: # aggregate from household-members to households
   households = pd.concat( [h_sum,h_min,h_max]
                          , axis=1 )
 
-  households["val/inc"] = households["value"]/households["income"]
+  households["value/inc"] = households["value"]/households["income"]
   households["vat/val"] = households["vat-paid"]/households["value"]
   households["vat/inc"] = households["vat-paid"]/households["income"]
 

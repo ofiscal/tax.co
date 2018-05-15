@@ -23,10 +23,10 @@ for i in range(20):
 
 
 # Household spending and taxes
-util.describeWithMissing( households [["val/inc"]] )
+util.describeWithMissing( households [["value/inc"]] )
 util.describeWithMissing( households [["vat/inc"]] )
 util.describeWithMissing(
-  households [ households["val/inc"] !=  np.inf ] [["val/inc"]]
+  households [ households["value/inc"] !=  np.inf ] [["value/inc"]]
 )
 
 households["has-child"] = households["age-min"] < 18
@@ -55,7 +55,7 @@ people["age-decile"] = pd.qcut(people["age"], 10, labels = False)
 util.dwmParamByGroup("vat/inc","age-decile",people)
 util.dwmParamByGroup("vat/inc","age-decile",
                      people[ people["income"] > 0 ] )
-util.dwmParamByGroup("val/inc","age-decile",
+util.dwmParamByGroup("value/inc","age-decile",
                      people[ people["income"] > 0 ] )
 
 pd.qcut(people["income"], 10)

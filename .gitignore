@@ -11,6 +11,7 @@ all-but-data/
 data/
 python/temp.py
 temp
+docker/commands-laptop.txt
 
 # TODO ? it would be nice not to have to list these
   # instead, move them to a separate Git repo hosted by Javeriana, not Github
