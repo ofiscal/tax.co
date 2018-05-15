@@ -1,3 +1,5 @@
+# PITFALL: If a subsample is used, some of these statistics will be NaN or Inf when they otherwise would not
+
 import numpy as np
 import pandas as pd
 import os
@@ -8,7 +10,15 @@ import python.vat.files as vatfiles
 import python.vat.output_io as ooio
 
 
-util.compareDescriptives(purchases)
+if True: # input the data. copied from output_io.py.
+  subsample = 1
+  purchases = ooio.readStage( subsample, '/2.purchases,prices,taxes') # memory hog
+  people = ooio.readStage( subsample, '/5.person-demog-expenditures')
+  households = ooio.readStage( subsample, '/6.households')
+
+
+# Overview of the three data sets
+util.compareDescriptives( {'purchases' : purchases} )
 
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
     util.describeWithMissing(people)
@@ -16,8 +26,8 @@ with pd.option_context('display.max_rows', None, 'display.max_columns', None):
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
     util.describeWithMissing(households)
 
-util.describeWithMissing(households)
 
+# Education quantiles (see "qcut" below for a better way to do this kind of thing)
 for i in range(20):                                 
   pd.DataFrame( people["education"] ).quantile(i/20)
 
@@ -50,8 +60,9 @@ util.dwmParamByGroup("vat/inc","edu-max",
                      households [ households["income"] > 0 ] ).round(3)
 
 # Individual spending and taxes
-pd.qcut(people["age"], 10)
 people["age-decile"] = pd.qcut(people["age"], 10, labels = False)
+  # here's a way to show what that did
+    # pd.crosstab(index = people["age"], columns = people["age-decile"])
 util.dwmParamByGroup("vat/inc","age-decile",people)
 util.dwmParamByGroup("vat/inc","age-decile",
                      people[ people["income"] > 0 ] )

@@ -8,7 +8,7 @@ import python.vat.files as vat_files
 import python.vat.output_io as vat_output_io
 
 
-subsample = 100 # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
+subsample = 1 # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
 files = list( vat_files.purchase_file_legends.keys() )
 
 
@@ -42,8 +42,7 @@ if True: # merge coicop, build money-valued variables
   purchases = purchases.merge( coicop_vat, on="coicop" )
 
   purchases["price"] = purchases["value"] / purchases["quantity"]
-  purchases["1-value"] = purchases["value"]
-  purchases["1-quantity"] = purchases["quantity"]
+  purchases["per-purchase value"] = purchases["value"]
   purchases["frequency"].replace( vat_files.frequency_legend, inplace=True )
   purchases["value"] = purchases["frequency"] * purchases["value"]
   purchases["vat-paid"] = purchases["value"] * purchases["vat-rate"]
@@ -58,7 +57,7 @@ if True: # build the person expenditure data
     ['household', 'household-member'])['value','vat-paid',"transactions"].agg('sum')
   people = people.reset_index(level = ['household', 'household-member'])
   vat_output_io.saveStage(subsample, people, '/3.person-level-expenditures')
-  
+
 
 #people = vat_output_io.readStage(subsample, '3.person-level-expenditures')
 if True: # merge demographic statistics
