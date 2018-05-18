@@ -27,7 +27,8 @@ with pd.option_context('display.max_rows', None, 'display.max_columns', None):
     util.describeWithMissing(households)
 
 
-# Education quantiles (see "qcut" below for a better way to do this kind of thing)
+# Education quantiles
+  # see "qcut" below for a better way to do this kind of thing
 for i in range(20):                                 
   pd.DataFrame( people["education"] ).quantile(i/20)
 

@@ -1,6 +1,6 @@
 # What is the VAT?
 
-The VAT is a kind of tax, one levied on purchases of goods and services. The government receives revenue from many other taxes, too -- the individual and corporate income taxes, real estate taxes, taxes on alcohol, tobacco, and gas, tariffs ... However the VAT is its single biggest revenue source. The VAT goes entirely to the federal government, which derives 1/3 of revenues from it. Federal tax revenue is 80% of total tax revenue in Colombia.
+A VAT is a kind of tax, one levied on purchases of goods and services. The government receives revenue from many other taxes, too -- the individual and corporate income taxes, real estate taxes, taxes on alcohol, tobacco, and gas, tariffs ... However the VAT is its single biggest revenue source. The VAT goes entirely to the federal government, which derives 1/3 of revenues from it. Federal tax revenue is 80% of total tax revenue in Colombia.
 
 
 ## What fraction of the price is the VAT?

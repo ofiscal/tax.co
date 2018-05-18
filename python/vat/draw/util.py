@@ -2,11 +2,12 @@ import numpy as np
 import pandas as pd
 
 %matplotlib inline
+  # enable the previous line if calling from Jupyter
 import matplotlib
+matplotlib.use('Agg')
+  # enable the previous line if calling from the (non-gui) shell
 import matplotlib.pyplot as plt
 
-
-the_data = pd.DataFrame([1,2,7,2,7],columns=["x"])
 
 def draw_cdf( series ):
   data = pd.DataFrame()
@@ -33,6 +34,3 @@ def draw_cdf( series ):
 
   # plt.plot( df["x"],df["pdf"] ) # could overlay.  in discrete distributions it's 0 a.e.
   plt.plot( df["x"],df["cdf"], 'r--' )
-
-draw_cdf( the_data["x"] )
-plt.show()   # or plt.savefig("test.png")
