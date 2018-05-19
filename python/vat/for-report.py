@@ -7,14 +7,14 @@ import os
 import python.util as util
 import python.datafiles as datafiles
 import python.vat.files as vatfiles
-import python.vat.output_io as ooio
+import python.vat.output_io as oio
 
 
 if True: # input the data. copied from output_io.py.
   subsample = 1
-  purchases = ooio.readStage( subsample, '/2.purchases,prices,taxes') # memory hog
-  people = ooio.readStage( subsample, '/5.person-demog-expenditures')
-  households = ooio.readStage( subsample, '/6.households')
+  purchases = oio.readStage( subsample, '/2.purchases,prices,taxes') # memory hog
+  people = oio.readStage( subsample, '/5.person-demog-expenditures')
+  households = oio.readStage( subsample, '/6.households')
 
 
 # Overview of the three data sets

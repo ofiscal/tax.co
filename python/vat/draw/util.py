@@ -16,7 +16,7 @@ def cdf( series ):
 
   dmin = data["x"].min()
   dmax = data["x"].max()
-  dstep = (dmax - dmin) / 100 # this resolution is arbitrary
+  dstep = (dmax - dmin) / 500 # this resolution is arbitrary
 
   pdf = data.groupby("x").agg('sum')
     # only the nonzero part of the pdf

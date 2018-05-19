@@ -18,9 +18,9 @@ if False:
   subsample = 1
 
   # intermediate data sets
-    # purchasesEarly = ooio.readStage( subsample, '/1.purchases') # memory hog
-    # demog = ooio.readStage( subsample, '/4.demog')
+    # purchasesEarly = oio.readStage( subsample, '/1.purchases') # memory hog
+    # demog = oio.readStage( subsample, '/4.demog')
 
-  purchases = ooio.readStage( subsample, '/2.purchases,prices,taxes') # memory hog
-  people = ooio.readStage( subsample, '/5.person-demog-expenditures')
-  households = ooio.readStage( subsample, '/6.households')
+  purchases = oio.readStage( subsample, '/2.purchases,prices,taxes') # memory hog
+  people = oio.readStage( subsample, '/5.person-demog-expenditures')
+  households = oio.readStage( subsample, '/6.households')
