@@ -12,3 +12,17 @@ mins = households.groupby( "income-decile" )[["income"]] \
 maxs = households.groupby( "income-decile" )[["income"]] \
        .agg('max').rename(columns = {"income":"max"})
 decile_summary = pd.concat([counts,mins,maxs],axis=1)
+
+plt.title("The CDF of (VAT / consumption), by income decile")
+plt.xlabel("VAT paid / value consumed")
+plt.ylabel("Probability")
+styles = [":","-",":","-",":","-"]
+colors = ["red","red","green","green","blue","blue"]
+for i in list(decile_summary.index):
+  draw.cdf( households[ households["income-decile"]==i ] \
+                      ["vat/value"],
+            linestyle = styles[i],
+            color = colors[i]
+  )
+plt.savefig("vat over consumption by income decile.png")
+plt.show()
