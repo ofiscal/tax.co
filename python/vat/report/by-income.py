@@ -1,9 +1,11 @@
-## Household spending and taxes / by income
+# Household spending and taxes / by income
+
+# PITFALL: Because 47% of households report zero income, there is nothing
+  # to distinguish the first five deciles, so they are grouped together.
+  # The "duplicates='drop'" option to pd.qcut, below, achieves that grouping.
 
 households["income-decile"] = pd.qcut(
   households["income"], 10, labels = False, duplicates='drop')
-  # duplicates='drop' is important; it causes the ~47% of households
-  # with zero income to be lumped into a single quantile
 households["one"] = 1
 counts = households.groupby( "income-decile" )[["one"]] \
        .agg('sum').rename(columns = {"one":"count"})
