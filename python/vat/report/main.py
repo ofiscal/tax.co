@@ -60,6 +60,7 @@ util.dwmParamByGroup("vat/inc","edu-max",households)
 util.dwmParamByGroup("vat/inc","edu-max",
                      households [ households["income"] > 0 ] ).round(3)
 
+
 # Individual spending and taxes
 people["age-decile"] = pd.qcut(people["age"], 10, labels = False)
   # here's a way to show what that did
