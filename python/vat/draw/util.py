@@ -9,7 +9,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 
-def cdf( series ):
+def cdf( series, **kwargs ):
   data = pd.DataFrame()
   data["x"] = pd.Series( sorted(series) )
   data["count"] = 1
@@ -36,4 +36,4 @@ def cdf( series ):
 
   # plt.plot( df["x"],df["pdf"] )
     # could overlay, but in discrete distributions, is zero almost everywhere
-  plt.plot( df["x"],df["cdf"], 'r--' )
+  plt.plot( df["x"],df["cdf"], **kwargs )
