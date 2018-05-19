@@ -11,3 +11,9 @@ import matplotlib
 # matplotlib.use('Agg')
   # enable the previous line if calling from the (non-gui) shell
 import matplotlib.pyplot as plt
+
+
+if True:
+  subsample = 1
+  people = oio.readStage( subsample, '/5.person-demog-expenditures')
+  households = oio.readStage( subsample, '/6.households')
