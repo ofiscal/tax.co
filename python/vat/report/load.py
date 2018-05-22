@@ -24,5 +24,9 @@ if True: # create some new variables
 
   # here's one way to show what the following decile-creating commands do
       # pd.crosstab(index = people["age"], columns = people["age-decile"])
-  people["age-decile"] = pd.qcut(people["age"], 10, labels = False)
-  people["inc-decile"] = pd.qcut(people["income"], 10, labels = False)
+  people["age-decile"] = pd.qcut(
+    people["age"], 10, labels = False, duplicates='drop')
+  people["income-decile"] = pd.qcut(
+    people["income"], 10, labels = False, duplicates='drop')
+  households["income-decile"] = pd.qcut(
+    households["income"], 10, labels = False, duplicates='drop')

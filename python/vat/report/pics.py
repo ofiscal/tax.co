@@ -3,8 +3,6 @@ if True: # the CDF of (VAT / consumption) by income decile
     # to distinguish the first five deciles, so they are grouped together.
     # The "duplicates='drop'" option to pd.qcut achieves that grouping.
 
-  households["income-decile"] = pd.qcut(
-    households["income"], 10, labels = False, duplicates='drop')
   households["one"] = 1
   counts = households.groupby( "income-decile" )[["one"]]     \
          .agg('sum').rename(columns = {"one":"count"})
@@ -25,4 +23,4 @@ if True: # the CDF of (VAT / consumption) by income decile
               linestyle = styles[i],
               color = colors[i]
     )
-  plt.savefig("vat over consumption by income decile.png")
+  plt.savefig("VAT over consumption by income decile.png")

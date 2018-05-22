@@ -47,8 +47,8 @@ util.dwmParamByGroup("vat/inc","age-decile",
 util.dwmParamByGroup("value/inc","age-decile",
                      people[ people["income"] > 0 ] )
 
-util.dwmParamByGroup("vat/inc","inc-decile",people)
-util.dwmParamByGroup("vat/inc","inc-decile",
+util.dwmParamByGroup("vat/inc","income-decile",people)
+util.dwmParamByGroup("vat/inc","income-decile",
                      people[ people["vat/inc"] < np.inf ] )
 
 util.dwmParamByGroup("vat/inc","race",
