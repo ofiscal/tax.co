@@ -1,4 +1,4 @@
-import python.vat.draw.util as draw
+import python.draw.util as draw
 import pandas as pd
 
 %matplotlib inline
