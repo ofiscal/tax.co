@@ -5,7 +5,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 
-def cdf( series, **kwargs ):
+def cdf( series, logx = False, with_mean = True, with_pdf = False, **kwargs ):
   data = pd.DataFrame()
   data["x"] = pd.Series( sorted(series) )
   data["count"] = 1
@@ -30,6 +30,20 @@ def cdf( series, **kwargs ):
   df = df.sort_values("x")
   df["cdf"] = df["pdf"].cumsum()
 
-  # plt.plot( df["x"],df["pdf"] )
-    # could overlay, but in discrete distributions, is zero almost everywhere
+  if logx:
+    plt.xscale("log")
+  if with_pdf: # for insufficiently "lumpy" variables, the pdf is zero almost everywhere
+    plt.plot( df["x"],df["pdf"] )
+  if with_mean:
+    plt.axvline( series.mean() )
+    plt.text( series.mean(), 0,
+              "mean = " + format( series.mean(), '.2e') )
   plt.plot( df["x"],df["cdf"], **kwargs )
+
+
+def single_cdf( series, xlabel, saveto, **kwargs ):
+  plt.grid(color='b', linestyle=':', linewidth=0.5)
+  plt.xlabel(xlabel)
+  plt.ylabel("Probability")
+  cdf( series, **kwargs )
+  plt.savefig( saveto )
