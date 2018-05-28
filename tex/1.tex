@@ -42,6 +42,9 @@
 %% This provides \toprule, among other stuff.
 \usepackage{booktabs}
 
+%% To include files with names with weird characters like space and dot.
+\usepackage{grffile}
+
 %% natbib.sty is loaded by default. However, natbib options can be
 %% provided with \biboptions{...} command. Following options are
 %% valid:
@@ -131,6 +134,11 @@ Maecenas \cite{Smith:2012qr} fermentum \cite{Smith:2013jd} urna ac sapien tincid
 
 \input{table}
 \\
+
+\begin{figure}[h]
+\centering\includegraphics[width=1\linewidth]{../output/vat-pics/VAT over consumption by income decile.png}
+\caption{Figure caption}
+\end{figure}
 
 \input{table}
 \\
