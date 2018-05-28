@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import os as os
 
 import matplotlib
 import matplotlib.pyplot as plt
@@ -41,9 +42,22 @@ def cdf( series, logx = False, with_mean = True, with_pdf = False, **kwargs ):
   plt.plot( df["x"],df["cdf"], **kwargs )
 
 
-def single_cdf( series, xlabel, saveto, **kwargs ):
+def single_cdf( series, xlabel, **kwargs ):
   plt.grid(color='b', linestyle=':', linewidth=0.5)
   plt.xlabel(xlabel)
   plt.ylabel("Probability")
   cdf( series, **kwargs )
-  plt.savefig( saveto )
+
+
+def table( df, colName ):
+  df = pd.DataFrame(
+    df.groupby( colName )[colName]         \
+      .agg('sum') )                        \
+    .rename( columns = {colName:"count"} ) \
+    .reset_index( level = colName )
+  plt.bar( df[colName], df["count"] )
+
+
+def savefig( folder, name ):
+  if not os.path.exists(folder): os.makedirs(folder)
+  plt.savefig( folder + "/" + name )

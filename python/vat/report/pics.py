@@ -4,40 +4,40 @@ vat_pics_dir = "output/vat-pics/"
 if True: # summary stats about people
   plt.close()
   draw.single_cdf( people["value"], "Spending per month",
-                   vat_pics_dir + "people/" + "spending per month",
                    logx = True)
+  draw.savefig( vat_pics_dir + "people" , "spending per month" )
 
   plt.close()
   draw.single_cdf( people["value"], "Income",
-                   vat_pics_dir + "people/" + "income",
                    logx = True)
+  draw.savefig( vat_pics_dir + "people" , "income" )
 
   plt.close()
-  draw.single_cdf( people["transactions"], "Transactions per month",
-                   vat_pics_dir + "people/" + "transactions per month")
+  draw.single_cdf( people["transactions"], "Transactions per month" )
+  draw.savefig( vat_pics_dir + "people" , "transactions per month" )
 
 
 if True: # summary stats about households
   plt.close()
-  draw.single_cdf( households["members"], "Household size",
-                   vat_pics_dir + "households/" + "size")
+  draw.single_cdf( households["members"], "Household size")
+  draw.savefig(vat_pics_dir + "households" , "size")
 
   plt.close()
-  draw.single_cdf( households["transactions"], "Transactions per month",
-                   vat_pics_dir + "households/" + "transactions per month")
+  draw.single_cdf( households["transactions"], "Transactions per month")
+  draw.savefig( vat_pics_dir + "households" , "transactions per month" )
 
   plt.close()
-  draw.single_cdf( households["age-min"], "Age of youngest member",
-                   vat_pics_dir + "households/" + "youngest")
+  draw.single_cdf( households["age-min"], "Age of youngest member")
+  draw.savefig( vat_pics_dir + "households" , "youngest" )
 
   plt.close()
-  draw.single_cdf( households["age-max"], "Age of oldest member",
-                   vat_pics_dir + "households/" + "oldest")
+  draw.single_cdf( households["age-max"], "Age of oldest member")
+  draw.savefig( vat_pics_dir + "households" , "oldest" )
 
   plt.close()
   draw.single_cdf( households["income"], "Household income",
-                   vat_pics_dir + "households/" + "income",
                    logx = True)
+  draw.savefig( vat_pics_dir + "households" , "income" )
 
   plt.close()
   plt.title("Highest education level among household members")
@@ -53,13 +53,8 @@ if True: # summary stats about households
                 "No sabe,\n no informa" ],
               rotation='vertical')
   plt.gcf().subplots_adjust(bottom=0.30) # labels go out of frame otherwise
-  df = pd.DataFrame(
-    households.groupby( "edu-max" )["edu-max"] \
-      .agg('sum') )                            \
-    .rename( columns = {"edu-max":"count"} )   \
-    .reset_index( level = "edu-max" )
-  plt.bar( df["edu-max"], df["count"] )
-  plt.savefig( vat_pics_dir + "households/" + "max edu" )
+  draw.table( households, "edu-max" )
+  draw.savefig( vat_pics_dir + "households" , "max edu" )
 
 
 if True: # the CDF of (VAT / consumption) by income decile
@@ -89,4 +84,4 @@ if True: # the CDF of (VAT / consumption) by income decile
               color = colors[i],
               with_mean = False
     )
-  plt.savefig(vat_pics_dir + "VAT over consumption by income decile.png")
+  draw.savefig(vat_pics_dir, "VAT over consumption by income decile.png")

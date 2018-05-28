@@ -2,7 +2,6 @@
 
 import numpy as np
 import pandas as pd
-import os
 
 import python.util as util
 import python.datafiles as datafiles
