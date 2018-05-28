@@ -18,6 +18,43 @@ if True: # stats about people
     draw.savefig( vat_pics_dir + "people" , "transactions per month" )
 
 
+if True: # stats about households with income
+  if True: # build households_w_income from households
+    # TODO ? move this data-building to an earlier-stage file
+
+    households_w_income = households[ households["income"] > 0 ].copy()
+      # Without the copy (even if I use .loc(), as suggested by the error)
+      # this causes an error about modifying a view.
+    households_w_income["one"] = 1
+    households_w_income["income-decile"] = pd.qcut(
+      households_w_income["income"], 10, labels = False, duplicates='drop')
+    counts = households_w_income.groupby( "income-decile" )[["one"]]     \
+           .agg('sum').rename(columns = {"one":"count"})
+    mins = households_w_income.groupby( "income-decile" )[["income"]]    \
+           .agg('min').rename(columns = {"income":"min"})
+    maxs = households_w_income.groupby( "income-decile" )[["income"]]    \
+           .agg('max').rename(columns = {"income":"max"})
+    household_w_income_decile_summary = pd.concat([counts,mins,maxs],axis=1)
+
+  if True: # the CDF of (VAT / income) by income decile
+    plt.close()
+    plt.title("The CDF of (VAT / income), by income decile")
+    plt.xlabel("VAT paid / income")
+    plt.ylabel("Probability")
+    styles = [":","-",":","-",":","-",":","-",":","-"]
+    colors = ["red","red","orange","orange","yellow","yellow",
+              "green","green","purple","purple"]
+    for i in list(household_w_income_decile_summary.index):
+      draw.cdf( households_w_income[                        \
+                    households_w_income["income-decile"]==i ] \
+                  ["vat/value"],
+                linestyle = styles[i],
+                color = colors[i],
+                with_mean = False
+      )
+    draw.savefig(vat_pics_dir, "VAT over income, by income decile.png")
+
+
 if True: # stats about households
   if True: # single series
     plt.close()
@@ -70,7 +107,7 @@ if True: # stats about households
            .agg('min').rename(columns = {"income":"min"})
     maxs = households.groupby( "income-decile" )[["income"]]    \
            .agg('max').rename(columns = {"income":"max"})
-    decile_summary = pd.concat([counts,mins,maxs],axis=1)
+    household_decile_summary = pd.concat([counts,mins,maxs],axis=1)
 
     plt.close()
     plt.title("The CDF of (VAT / consumption), by income decile")
@@ -78,7 +115,7 @@ if True: # stats about households
     plt.ylabel("Probability")
     styles = [":","-",":","-",":","-"]
     colors = ["red","red","green","green","blue","blue"]
-    for i in list(decile_summary.index):
+    for i in list(household_decile_summary.index):
       draw.cdf( households[ households["income-decile"]==i ]    \
                           ["vat/value"],
                 linestyle = styles[i],
