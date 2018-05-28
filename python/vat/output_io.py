@@ -21,6 +21,6 @@ if False:
     # purchasesEarly = oio.readStage( subsample, '/1.purchases') # memory hog
     # demog = oio.readStage( subsample, '/4.demog')
 
-  purchases = oio.readStage( subsample, '/2.purchases,prices,taxes') # memory hog
-  people = oio.readStage( subsample, '/5.person-demog-expenditures')
-  households = oio.readStage( subsample, '/6.households')
+  purchases = oio.readStage( subsample, '2.purchases,prices,taxes') # memory hog
+  people = oio.readStage( subsample, '5.person-demog-expenditures')
+  households = oio.readStage( subsample, '6.households')
