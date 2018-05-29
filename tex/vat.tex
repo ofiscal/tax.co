@@ -71,19 +71,6 @@
 % \biboptions{}
 
 
-% This causes floating images to stay in the subsection (not just the section)
-% they were intended for.
-% https://tex.stackexchange.com/questions/118662/use-placeins-for-subsections
-\usepackage[section]{placeins}
-\makeatletter
-\AtBeginDocument{%
-  \expandafter\renewcommand\expandafter\subsection\expandafter{%
-    \expandafter\@fb@secFB\subsection
-  }%
-}
-\makeatother
-
-
 \journal{Journal Name}
 
 \begin{document}
@@ -177,33 +164,47 @@ Our other source of data is something we constructed ourselves. It associates a 
 
 \subsection{What purchases look like}
 
-The survey records just under 7.5 million purchases. When people buy something, the median number they buy is 2. The maximum was a million, and the minimum -70 (yes, negative seventy). What they spent on each purchase ranges from 0 to 2.5 million pesos.
-
+The survey records just under 7.5 million purchases. When people buy something, the median number they buy is 2. The maximum was a million, and the minimum -70 (yes, negative seventy).
 \begin{figure}[t]
 \centering\includegraphics[width=1\linewidth]{../output/vat-pics/purchases/quantity.png}
 \end{figure}
 
 The survey includes a few categories for frequency of purchase. We translated those into numerical frequencies. A frequency of 30 indicates someone makes the same purchase 30 times in a month. That is the highest value. The least is .0027 -- once every two years.
-
 \begin{figure}[t]
 \centering\includegraphics[width=1\linewidth]{../output/vat-pics/purchases/frequency.png}
 \end{figure}
 
 Multiplying the value of a purchase by its frequency results in the amount of money someone spends on that good in a month, on average. It ranges from 0 to 23 million pesos, with an average of 34,000 and a median of 16,000.
-
 \begin{figure}[t]
 \centering\includegraphics[width=1\linewidth]{../output/vat-pics/purchases/value.png}
 \end{figure}
 
 The VAT paid on a purchase ranges from 0 to 4.4 million pesos. The average is 700 pesos. More than 80\% of all purchases carry zero VAT -- which is plausible, given how many common purchases are exempt.
-
 \begin{figure}[t]
 \centering\includegraphics[width=1\linewidth]{../output/vat-pics/purchases/vat in pesos.png}
 \end{figure}
 
 
-%%% jbb-end
+\section{What individuals look like}
 
+The 300,000 Colombians surveyed in the ENPH range in age from 0 to 110. Half are under 30. In education, only 5\% indicate having less than a primary education; 45\% indicate having completed primary or secondary and no further; 23\% indicate "media", and 22\% indicate having a university education.
+\begin{figure}[t]
+\centering\includegraphics[width=1\linewidth]{../output/vat-pics/people/age.png}
+\end{figure}
+
+53\% of respondents are female. 30\% of respondents are students. 
+
+Incomes range from 0 to 80 million pesos per month, with a median of 800,000 -- just over the minimum wage. The number of transactions per person range from 1 to 144. [[Given that the minimum age is 0, and that 93\% of purchases are household-communal (for the three data sets that include such a variable), the positive minimum number of purchases seems strange.]]
+\begin{figure}[t]
+\centering\includegraphics[width=1\linewidth]{../output/vat-pics/people/income.png}
+\end{figure}
+
+\begin{figure}[t]
+\centering\includegraphics[width=1\linewidth]{../output/vat-pics/people/transactions per month.png}
+\end{figure}
+
+
+%%% jbb-end
 
 
 \section{Flotsam and Jetsam}
