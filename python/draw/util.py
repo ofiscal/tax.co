@@ -52,7 +52,7 @@ def single_cdf( series, xlabel, **kwargs ):
 def table( df, colName ):
   df = pd.DataFrame(
     df.groupby( colName )[colName]         \
-      .agg('sum') )                        \
+      .agg('count') )                        \
     .rename( columns = {colName:"count"} ) \
     .reset_index( level = colName )
   plt.bar( df[colName], df["count"] )
