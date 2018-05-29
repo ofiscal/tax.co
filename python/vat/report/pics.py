@@ -3,17 +3,15 @@ vat_pics_dir = "output/vat-pics/"
 
 if True: # stats about purchases
     plt.close()
-    draw.single_cdf( purchases["quantity"], "Quantity per purchase",
+    draw.single_cdf( purchases["quantity"], "CDF of quantity per purchase",
                      logx = True)
     draw.savefig( vat_pics_dir + "purchases" , "quantity" )
 
     plt.close()
-    draw.single_cdf( purchases["frequency"], "Purchase frequency",
+    draw.single_cdf( purchases["frequency"], "CDF of purchase frequency",
                      logx = True)
     draw.savefig( vat_pics_dir + "purchases" , "frequency cdf" )
 
-    # TODO: why does this disagree with the results from
-    # pd.DataFrame(purchases[["frequency-code","coicop"]]).groupby("frequency-code").count()
     plt.close()
     plt.title("Purchase frequency")
     plt.xticks( np.arange(1,11,1),
@@ -31,6 +29,16 @@ if True: # stats about purchases
     plt.gcf().subplots_adjust(bottom=0.30) # labels go out of frame otherwise
     draw.table( purchases, "frequency-code" )
     draw.savefig( vat_pics_dir + "purchases" , "frequency" )
+
+    plt.close()
+    draw.single_cdf( purchases["value"], "CDF of monthly purchase value",
+                     logx = True)
+    draw.savefig( vat_pics_dir + "purchases" , "value" )
+
+    plt.close()
+    draw.single_cdf( purchases["vat-paid"], "CDF of VAT paid per purchase",
+                     logx = True)
+    draw.savefig( vat_pics_dir + "purchases" , "vat in pesos" )
 
 
 if True: # stats about people
