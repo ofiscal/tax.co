@@ -57,13 +57,14 @@ The average household has 3.37 members. The biggest has 22. The average number o
 The age of the oldest person in a household ranges from 0 [[who are they?]] to 110. Half of households contain somebody over fifty. A quarter of households include someone under 5 years of age, and half include someone under 14. More than 3/4 of households include someone who has attained at least a "media" educational degree. 90% of households include at least one female member, and 86% at least one male. The minimum and maximum values for household income are little changed from their values for individuals; however the median is substantially higher -- 1.02 million as opposed to 800,000 for individuals. That difference seems likely to reflect the prevalence of households with one full-time earner and another part-time earner.
 
 
-## Household "spending" and taxes
+# "Spending" and taxes
 
 The Encuesta Nacional de Presupuestos de Hogares provides data on something similar to consumption and spending, but equal to neither. Consumption does not typically include durable goods purchases, which the ENPH includes. Spending does not typically include gifts or government transfers, which the ENPH also includes. Henceforth this report will call that quantity "spending".
 
-Average household spending is 1.5 million pesos per month. As a fraction of a household's income, that spending ranges from essentially zero to literally infinite, because so many households have zero income.
 
-The rest of this analysis will exclude households with zero income. It will also discuss median values, rather than averages -- because while most households spend less than, say, ten times their income per month, some spend thousands of times more than their income, which skews the average.
+## Household spending and taxes
+
+Average household spending is 1.5 million pesos per month. As a fraction of a household's income, that spending ranges from essentially zero to literally infinite, because so many households have zero income. To exclude those infinite values, much of this analysis will refer to "income-earing households", meaning households which (during the period of observation) received a nonzero income. We will also focus on median or other percentile values, rather than averages -- because while most households spend less than, say, ten times their income per month, some spend thousands of times more than their income, which skews the average.
 
 Over half of income-receiving households spend more than their income. The excess spending might be gifts, government transfers, or loans. [[Can we find out?]]
 

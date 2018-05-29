@@ -84,6 +84,13 @@ if True: # stats about households with income
            .agg('max').rename(columns = {"income":"max"})
     household_w_income_decile_summary = pd.concat([counts,mins,maxs],axis=1)
 
+  if True: # CDF of spending / income
+    plt.close()
+    draw.single_cdf( households_w_income["value"] / households_w_income["income"],
+                     "CDF of (spending / income) across households",
+                     logx = True)
+    draw.savefig( vat_pics_dir + "income households" , "spending over income" )
+
   if True: # the CDF of (VAT / income) by income decile
     plt.close()
     plt.title("The CDF of (VAT / income), by income decile")
@@ -100,7 +107,7 @@ if True: # stats about households with income
                 color = colors[i],
                 with_mean = False
       )
-    draw.savefig(vat_pics_dir, "VAT over income, by income decile.png")
+    draw.savefig(vat_pics_dir + "income households", "VAT over income, by income decile.png")
 
 
 if True: # stats about households
@@ -170,4 +177,4 @@ if True: # stats about households
                 color = colors[i],
                 with_mean = False
       )
-    draw.savefig(vat_pics_dir, "VAT over consumption by income decile.png")
+    draw.savefig(vat_pics_dir + "households", "VAT over consumption, by income decile.png")

@@ -137,14 +137,14 @@ A VAT is a tax levied on purchases of goods and services. The Colombian governme
 
 The default level of the VAT is 19\%. There are numerous exemptions, however; the tax code singles out 310 categories of goods and services, some quite broad, for special VAT treatment. Some of these exempted items have a 5\% VAT; the rest, 0\%.
 
-A flat VAT falls more heavily on poorer households, because these spend a greater fraction of their income. A VAT can be made more progressive by taxing luxury items at a higher rate than necessities, since poorer households consume fewer luxury goods. Indeed, some of Colombia's VAT exclusions appear intended to relieve the tax burden on lower income households: Bus rides, rent on a home, water, sewerage, and phone services, medical goods and services, and hundreds of kinds of food are subject to zero VAT. Other zero-VAT goods and services include payments associated with a second home, ocean travel, banking services, political contributions, and "espectaculos" such as ballet, cinema, theater, sporting events, circuses, and fairs.
+A flat VAT falls more heavily on poorer households, because these spend a greater fraction of their income. A VAT can be made more progressive by taxing luxury items at a higher rate than necessities, since poorer households consume fewer luxury goods. Indeed, some of Colombia's VAT exclusions appear intended to relieve the tax burden on lower income households: Bus rides, rent on a home, water, sewerage, and phone services, medical goods and services, and hundreds of kinds of food are subject to zero VAT. Other zero-VAT goods and services include payments associated with a second home, ocean travel, banking services, political contributions, and ``espectaculos'' such as ballet, cinema, theater, sporting events, circuses, and fairs.
 
 
 \section{How we determined which populations carry how much of the VAT burden}
 
 \subsection{The Encuesta Nacional de Presupuestos de Hogares (ENPH)}
 
-We used the ENPH, a survey of Colombian households conducted over 2016 and 2017. It picks a representative sample of homes, and then surveys everyone in the home, dividing them into "households". A household's members consist of those people who eat and sleep there daily.
+We used the ENPH, a survey of Colombian households conducted over 2016 and 2017. It picks a representative sample of homes, and then surveys everyone in the home, dividing them into ``households''. A household's members consist of those people who eat and sleep there daily.
 
 The ENPH is a big survey. We selected only a fraction of the data collected in it for use in this analysis. Those selections include:
 
@@ -208,7 +208,7 @@ The VAT paid on a purchase ranges from 0 to 4.4 million pesos. The average is 70
 
 \subsection{What individuals look like}
 
-The 300,000 Colombians surveyed in the ENPH range in age from 0 to 110. Half are under 30. In education, only 5\% indicate having less than a primary education; 45\% indicate having completed primary or secondary and no further; 23\% indicate "media", and 22\% indicate having a university education. See Figure \ref{people:age}.
+The 300,000 Colombians surveyed in the ENPH range in age from 0 to 110. Half are under 30. In education, only 5\% indicate having less than a primary education; 45\% indicate having completed primary or secondary and no further; 23\% indicate ``media'', and 22\% indicate having a university education. See Figure \ref{people:age}.
 \begin{figure}[!htbp]
   \centering\includegraphics
       [width=0.8\linewidth]
@@ -275,7 +275,7 @@ The age of the oldest person in a household ranges from 0 [[who are they?]] to 1
   \label{households:oldest}
 \end{figure}
 
-More than 3/4 of households include someone who has attained at least a "media" educational degree. See Figure \ref{households:max edu}.
+More than 3/4 of households include someone who has attained at least a ``media'' educational degree. See Figure \ref{households:max edu}.
 \begin{figure}[!htbp]
   \centering\includegraphics
       [width=0.8\linewidth]
@@ -286,7 +286,7 @@ More than 3/4 of households include someone who has attained at least a "media" 
 
 90\% of households include at least one female member, and 86\% at least one male.
 
-The minimum and maximum values for household income are little changed from their values for individuals; however the median is substantially higher -- 1.02 million as opposed to 800,000 for individuals. That difference seems likely to reflect the prevalence of households with one full-time earner and another part-time earner. See Figure \ref{households:income}.
+The range of household income is little changed from its range among individuals; the distribution, however, is substantially higher -- 1.02 million as opposed to 800,000 for individuals. That difference seems likely to reflect the prevalence of households with one full-time earner and another part-time earner. See Figure \ref{households:income}.
 \begin{figure}[!htbp]
   \centering\includegraphics
       [width=0.8\linewidth]
@@ -296,7 +296,24 @@ The minimum and maximum values for household income are little changed from thei
 \end{figure}
 
 
-%%% jbb-end
+\section{``Spending'' and taxes}
+
+The Encuesta Nacional de Presupuestos de Hogares provides data on something similar to consumption and spending, but equal to neither. Consumption does not typically include durable goods purchases, which the ENPH includes. Spending does not typically include gifts or government transfers, which the ENPH also includes. Henceforth this report will call that quantity ``spending''.
+
+
+\subsection{Household spending and taxes}
+
+Average household spending is 1.5 million pesos per month. As a fraction of a household's income, that spending ranges from essentially zero to literally infinite, because so many households have zero income. To exclude those infinite values, much of this analysis will refer to ``income-earing households'', meaning households which (during the period of observation) received a nonzero income. We will also focus on median or other percentile values, rather than averages -- because while most households spend less than, say, ten times their income per month, some spend thousands of times more than their income, which skews the average.
+
+Over half of income-receiving households spend more than their income. The excess spending might be gifts, government transfers, or loans. [[Can we find out?]] See Figure \ref{income households:spending / income}.
+\begin{figure}[!htbp]
+  \centering\includegraphics
+      [width=0.8\linewidth]
+      {../output/vat-pics/income households/spending over income.png}
+  \caption{CDF of (spending / income) across households}
+  \label{income households:spending / income}
+\end{figure}
+
 
 
 \section{Flotsam and Jetsam}
@@ -307,7 +324,7 @@ The minimum and maximum values for household income are little changed from thei
 \begin{figure}[h]
   \centering\includegraphics
       [width=0.8\linewidth]
-      {../output/vat-pics/VAT over consumption by income decile.png}
+      {../output/vat-pics/households/VAT over consumption, by income decile.png}
   \caption{Figure caption}
 \end{figure}
 
