@@ -7,6 +7,7 @@ output/summaries.txt
 output/summary/
 output/string-columns/
 output/vat-data/
+output/vat-pics/
 all-but-data/
 data/
 python/temp.py

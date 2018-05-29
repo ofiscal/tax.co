@@ -12,7 +12,7 @@ import python.draw.util as draw
 
 if True: # input the data. copied from output_io.py.
   subsample = 1
-  # purchases = oio.readStage( subsample, '/2.purchases,prices,taxes') # memory hog
+  purchases = oio.readStage( subsample, '/2.purchases,prices,taxes') # memory hog
   people = oio.readStage( subsample, '/5.person-demog-expenditures')
   households = oio.readStage( subsample, '/6.households')
 
