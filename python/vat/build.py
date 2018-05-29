@@ -43,6 +43,9 @@ if True: # merge coicop, build money-valued variables
 
   purchases["price"] = purchases["value"] / purchases["quantity"]
   purchases["per-purchase value"] = purchases["value"]
+  purchases["frequency-code"] = purchases["frequency"]
+    # kept for the sake of drawing a table of purchase frequency
+    # with frequencies spread evenly across the x-axis
   purchases["frequency"].replace( vat_files.frequency_legend, inplace=True )
   purchases["value"] = purchases["frequency"] * purchases["value"]
   purchases["vat-paid"] = purchases["value"] * purchases["vat-rate"]
