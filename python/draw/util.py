@@ -6,12 +6,14 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 
-def cdf( series, logx = False, with_mean = True, with_pdf = False, **kwargs ):
+def cdf( series, logx = False, with_mean = True, with_pdf = False, xmin = None, **kwargs ):
   data = pd.DataFrame()
   data["x"] = pd.Series( sorted(series) )
   data["count"] = 1
 
   dmin = data["x"].min()
+  if xmin != None:
+    dmin = max(dmin,xmin)
   dmax = data["x"].max()
   dstep = (dmax - dmin) / 500 # this resolution is arbitrary
 
@@ -39,6 +41,7 @@ def cdf( series, logx = False, with_mean = True, with_pdf = False, **kwargs ):
     plt.axvline( series.mean() )
     plt.text( series.mean(), 0,
               "mean = " + format( series.mean(), '.2e') )
+
   plt.plot( df["x"],df["cdf"], **kwargs )
 
 

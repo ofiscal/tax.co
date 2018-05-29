@@ -1,5 +1,10 @@
 vat_pics_dir = "output/vat-pics/"
 
+if True: # TODO: move this to build.py
+  households["vat/income"] = households["vat-paid"] / households["income"]
+  households["value/income"] = households["value"] / households["income"]
+  people["vat/income"] = people["vat-paid"] / people["income"]
+  people["value/income"] = people["value"] / people["income"]
 
 if True: # stats about purchases
     plt.close()
@@ -100,14 +105,34 @@ if True: # stats about households with income
     colors = ["red","red","orange","orange","yellow","yellow",
               "green","green","purple","purple"]
     for i in list(household_w_income_decile_summary.index):
-      draw.cdf( households_w_income[                        \
-                    households_w_income["income-decile"]==i ] \
-                  ["vat/value"],
+      draw.cdf( households_w_income                           \
+                  [ households_w_income["income-decile"]==i ] \
+                  [ "vat/income" ],
                 linestyle = styles[i],
                 color = colors[i],
+                logx = True,
+                xmin = 1/(10**6),
                 with_mean = False
       )
+    plt.grid(color='b', linestyle=':', linewidth=0.5)
     draw.savefig(vat_pics_dir + "income households", "VAT over income, by income decile.png")
+
+
+  if True: # the CDF of (VAT / income) across households with and without children
+    plt.close()
+    plt.title("The CDF of (VAT / income) across households" + "\n" +
+              "with (solid) and without (dashed) children")
+    plt.xlabel("VAT paid / income")
+    plt.ylabel("Probability")
+    styles = ["-",":"]
+    for i in [True,False]:
+      draw.cdf( households_w_income                      \
+                  [ households_w_income["has-child"]==i ] \
+                  [ "vat/income" ],
+                linestyle = styles[i],
+                with_mean = False,
+                logx = True)
+    draw.savefig(vat_pics_dir + "income households", "VAT over income, by has-child.png")
 
 
 if True: # stats about households
@@ -171,8 +196,9 @@ if True: # stats about households
     styles = [":","-",":","-",":","-"]
     colors = ["red","red","green","green","blue","blue"]
     for i in list(household_decile_summary.index):
-      draw.cdf( households[ households["income-decile"]==i ]    \
-                          ["vat/value"],
+      draw.cdf( households                           \
+                  [ households["income-decile"]==i ] \
+                  ["vat/value"],
                 linestyle = styles[i],
                 color = colors[i],
                 with_mean = False
