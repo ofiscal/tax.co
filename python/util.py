@@ -6,6 +6,19 @@ def printInRed(message):
     CSI="\x1B["
     print( CSI+"31;40m" + message + CSI + "0m")
 
+def tabulate_min_median_max_by_group(df, group_name, param_name):
+    dff = df
+    dff["one"] = 1
+    counts = df.groupby( group_name )[["one"]]               \
+           .agg('sum').rename(columns = {"one":"count"})
+    mins = df.groupby( group_name )[[param_name]]            \
+           .agg('min').rename(columns = {param_name:"min"})
+    medians = df.groupby( group_name )[[param_name]]         \
+           .agg('median').rename(columns = {param_name:"median"})
+    maxs = df.groupby( group_name )[[param_name]]     \
+           .agg('max').rename(columns = {param_name:"max"})
+    return pd.concat([counts,mins,maxs,medians],axis=1)
+
 def describeWithMissing(df):
   x = df.describe()
   y = []

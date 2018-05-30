@@ -1,10 +1,12 @@
 vat_pics_dir = "output/vat-pics/"
 
+
 if True: # TODO: move this to build.py
   households["vat/income"] = households["vat-paid"] / households["income"]
   households["value/income"] = households["value"] / households["income"]
   people["vat/income"] = people["vat-paid"] / people["income"]
   people["value/income"] = people["value"] / people["income"]
+
 
 if True: # stats about purchases
     plt.close()
@@ -117,22 +119,39 @@ if True: # stats about households with income
     plt.grid(color='b', linestyle=':', linewidth=0.5)
     draw.savefig(vat_pics_dir + "income households", "VAT over income, by income decile.png")
 
-
-  if True: # the CDF of (VAT / income) across households with and without children
+  if True: # the CDF of (VAT / income) across households by has-child
     plt.close()
     plt.title("The CDF of (VAT / income) across households" + "\n" +
               "with (solid) and without (dashed) children")
     plt.xlabel("VAT paid / income")
     plt.ylabel("Probability")
     styles = ["-",":"]
-    for i in [True,False]:
+    for (style,value) in [(0,False),(1,True)]:
       draw.cdf( households_w_income                      \
-                  [ households_w_income["has-child"]==i ] \
+                  [ households_w_income["has-child"]==value ] \
                   [ "vat/income" ],
-                linestyle = styles[i],
+                linestyle = styles[style],
                 with_mean = False,
                 logx = True)
+    plt.grid(color='b', linestyle=':', linewidth=0.5)
     draw.savefig(vat_pics_dir + "income households", "VAT over income, by has-child.png")
+
+  if True: # the CDF of (VAT / income) across households by has-elderly
+    plt.close()
+    plt.title("The CDF of (VAT / income) across households" + "\n" +
+              "without (solid) and with (dashed) an elderly member")
+    plt.xlabel("VAT paid / income")
+    plt.ylabel("Probability")
+    styles = ["-",":"]
+    for (style,value) in [(0,False),(1,True)]:
+      draw.cdf( households_w_income                             \
+                  [ households_w_income["has-elderly"]==value ] \
+                  [ "vat/income" ],
+                linestyle = styles[style],
+                with_mean = False,
+                logx = True)
+    plt.grid(color='b', linestyle=':', linewidth=0.5)
+    draw.savefig(vat_pics_dir + "income households", "VAT over income, by has-elderly.png")
 
 
 if True: # stats about households
@@ -180,14 +199,16 @@ if True: # stats about households
       # distinguishes the first 5 deciles, so they are grouped together.
       # The "duplicates='drop'" option to pd.qcut achieves that grouping.
 
-    households["one"] = 1
-    counts = households.groupby( "income-decile" )[["one"]]     \
-           .agg('sum').rename(columns = {"one":"count"})
-    mins = households.groupby( "income-decile" )[["income"]]    \
-           .agg('min').rename(columns = {"income":"min"})
-    maxs = households.groupby( "income-decile" )[["income"]]    \
-           .agg('max').rename(columns = {"income":"max"})
-    household_decile_summary = pd.concat([counts,mins,maxs],axis=1)
+    draw.to_latex(
+      util.tabulate_min_median_max_by_group( households, "income-decile", "income" ),
+      "tex/tables/",
+      "income by income decile"
+    )
+
+    draw.to_latex(
+      util.tabulate_min_median_max_by_group( households, "income-decile", "vat/value" ),
+      "tex/tables/",
+      "vat over spending by income decile")
 
     plt.close()
     plt.title("The CDF of (VAT / consumption), by income decile")
@@ -203,4 +224,5 @@ if True: # stats about households
                 color = colors[i],
                 with_mean = False
       )
+    plt.grid(color='b', linestyle=':', linewidth=0.5)
     draw.savefig(vat_pics_dir + "households", "VAT over consumption, by income decile.png")

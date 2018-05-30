@@ -64,3 +64,9 @@ def table( df, colName ):
 def savefig( folder, name ):
   if not os.path.exists(folder): os.makedirs(folder)
   plt.savefig( folder + "/" + name )
+
+
+def to_latex( df, folder, name ):
+  if not os.path.exists(folder): os.makedirs(folder)
+  filename = folder + "/" + name + ".tex"
+  df.to_latex( filename )

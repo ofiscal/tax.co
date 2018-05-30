@@ -51,6 +51,7 @@
 
 %% To include files with names with weird characters like space and dot.
 \usepackage{grffile}
+\usepackage{import}
 
 %% natbib.sty is loaded by default. However, natbib options can be
 %% provided with \biboptions{...} command. Following options are
@@ -323,11 +324,26 @@ The VAT falls more heavily on households with children, where a child is defined
   \label{income households:vat / income, by child}
 \end{figure}
 
+The VAT also falls more heavily on households with an elderly member, defined as someone older than 65. See Figure \ref{income households:vat / income, by elderly}.
+\begin{figure}[!htbp]
+  \centering\includegraphics
+      [width=0.8\linewidth]
+      {../output/vat-pics/income households/VAT over income, by has-elderly.png}
+  \caption{CDF of (vat / income) across income-earning households with and without an elderly member}
+  \label{income households:vat / income, by elderly}
+\end{figure}
+
 
 \section{Flotsam and Jetsam}
 
-\input{table}
-\\
+\begin{table}
+  \centering
+  \input{"tables/income by income decile"}
+  \caption{The CDF across households of income, by income decile}
+  \label{table:households income by income decile}
+\end{table}
+
+See Table \ref{table:income by income decile}.
 
 \begin{figure}[h]
   \centering\includegraphics
@@ -335,8 +351,5 @@ The VAT falls more heavily on households with children, where a child is defined
       {../output/vat-pics/income households/VAT over income, by income decile.png}
   \caption{Figure caption}
 \end{figure}
-
-\input{table}
-\\
 
 \end{document}
