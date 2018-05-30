@@ -174,7 +174,7 @@ if True: # stats about households
 
     plt.close()
     draw.single_cdf( households["income"], "Household income",
-                     xmin = 10**5, # in pesos, that's basically zero
+                     xmin = 10**4, # as a monthly income in pesos, that's basically zero
                      logx = True)
     draw.savefig( vat_pics_dir + "households" , "income" )
 
