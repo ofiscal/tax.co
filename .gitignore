@@ -14,6 +14,7 @@ python/temp.py
 temp
 docker/commands-laptop.txt
 
+tex/tables/
 tex/*.aux
 tex/*.log
 tex/*.pdf
