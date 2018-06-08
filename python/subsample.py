@@ -1,7 +1,9 @@
 # At times this is memory intensive. My OS kept killing it, until I ran it with nothing else going on
 # -- closed my browsers and all other docker containers. (I left Emacs, Dolphin and a few Konsoles open.)
 
+import os
 import pandas as pd
+
 import python.datafiles as datafiles
 
 
@@ -9,6 +11,11 @@ import python.datafiles as datafiles
 
 folder = datafiles.yearSurveyFolder(2017)
 names = datafiles.files[2017]
+
+for subsample in [1,10,100,1000]:
+  subfolder = folder + "recip-" + str(subsample)
+  if not os.path.exists( subfolder ):
+    os.makedirs( subfolder )
 
 for name in names:
   print("now (henceforth) processing: " + name)
@@ -27,6 +34,11 @@ for name in names:
 
 folder = datafiles.yearSurveyFolder(2007)
 names = datafiles.files[2007]
+
+for subsample in [1,10,100,1000]:
+  subfolder = folder + "recip-" + str(subsample)
+  if not os.path.exists( subfolder ):
+    os.makedirs( subfolder )
 
 for name in names:
   print("now (henceforth) processing: " + name)
