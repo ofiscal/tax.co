@@ -1,25 +1,18 @@
 SHELL := bash
-.PHONY = enig_files enph_files unzip
+.PHONY = raw
 
+raw: $(enig_orig) $(enph_orig) $(subsamples)
 
-unzip: data/enph-2017/orig-dta/coicop.dta data/enig-2007/orig-txt/Ig_ml_vivienda.txt
-  # one file each from enph_files and enig_files
-  # generates lots of other files in the same two folders
-
-## Build the data for the VAT analysis
-
-
-## ## Build the subsample
-# use "computed variable names"
-  # https://ftp.gnu.org/old-gnu/Manuals/make-3.79.1/html_chapter/make_toc.html#TOC62
-
-# https://stackoverflow.com/questions/23417941/python-import-error-no-module-named-does-exist/32368673#32368673
-  #	PYTHONPATH='.' python3 python/vat/test.py
-
-
-
-
-## ## Build the ENPH 2017
+enig_orig = $(addsuffix .txt, $(addprefix data/enig-2007/orig-txt/, $(enig_files)))
+enph_orig = $(addsuffix .dta, $(addprefix data/enph-2017/orig-dta/, $(enph_files)))
+subsamples = $(addsuffix .csv, $(addprefix data/enph-2017/recip-1/, $(enph_files)))      \
+             $(addsuffix .csv, $(addprefix data/enig-2007/recip-1/, $(enig_files)))      \
+             $(addsuffix .csv, $(addprefix data/enph-2017/recip-10/, $(enph_files)))     \
+             $(addsuffix .csv, $(addprefix data/enig-2007/recip-10/, $(enig_files)))     \
+             $(addsuffix .csv, $(addprefix data/enph-2017/recip-100/, $(enph_files)))    \
+             $(addsuffix .csv, $(addprefix data/enig-2007/recip-100/, $(enig_files)))    \
+             $(addsuffix .csv, $(addprefix data/enph-2017/recip-1000/, $(enph_files)))   \
+             $(addsuffix .csv, $(addprefix data/enig-2007/recip-1000/, $(enig_files)))
 
 enph_files = coicop              \
   factores_ciclo19               \
@@ -43,19 +36,6 @@ enph_files = coicop              \
   st2_sea_enc_hogc3_csv          \
   st2_sea_enc_hog_csv            \
   st2_sea_enc_per_csv
-
-data/enph-2017/enph-2017.orig-dta.tgz:
-	cd data;                               \
-	  mkdir -p enph-2017;                  \
-	  mv enph-2017.orig-dta.tgz enph-2017;
-
-$(addsuffix .dta, $(addprefix data/enph-2017/orig-dta/, $(enph_files))): data/enph-2017/enph-2017.orig-dta.tgz
-	cd data/enph-2017;                  \
-	  tar -xvzf enph-2017.orig-dta.tgz; \
-	  touch orig-dta/*.dta # without this the rule repeats itself
-
-
-## ## Build the ENIG 2007
 
 enig_files = Ig_gsdp_dias_sem \
   Ig_gsdp_gas_dia \
@@ -82,12 +62,37 @@ enig_files = Ig_gsdp_dias_sem \
   Ig_ml_persona \
   Ig_ml_vivienda
 
+
+## ## Build the data for the VAT analysis
+
+
+## ## Build every subsample of the ENPH and the ENIG
+
+subsamples : python/subsample.py $(enig_orig) $(enph_orig)
+	PYTHONPATH='.' python3 python/subsample.py
+
+
+## ## Build the ENPH 2017
+
+data/enph-2017/enph-2017.orig-dta.tgz:
+	cd data;                               \
+	  mkdir -p enph-2017;                  \
+	  mv enph-2017.orig-dta.tgz enph-2017;
+
+$(enph_orig): data/enph-2017/enph-2017.orig-dta.tgz
+	cd data/enph-2017;                  \
+	  tar -xvzf enph-2017.orig-dta.tgz; \
+	  touch orig-dta/*.dta # without this the rule repeats itself
+
+
+## ## Build the ENIG 2007
+
 data/enig-2007/enig-2007.orig-txt.tgz:
 	cd data;                               \
 	  mkdir -p enig-2007;                  \
 	  mv enig-2007.orig-txt.tgz enig-2007;
 
-$(addsuffix .txt, $(addprefix data/enig-2007/orig-txt/, $(enig_files))): data/enig-2007/enig-2007.orig-txt.tgz
+$(enig_orig): data/enig-2007/enig-2007.orig-txt.tgz
 	cd data/enig-2007;                  \
 	  tar -xvzf enig-2007.orig-txt.tgz; \
 	  touch orig-txt/*.txt # without this the rule repeats itself
