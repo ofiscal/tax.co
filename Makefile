@@ -63,6 +63,14 @@ subsamples = $(addsuffix .csv, $(addprefix data/enph-2017/recip-1/, $(enph_files
 # The VAT data build is divided into two stages:
   # "early" (big, slow, hopefully infrequent) and "late"
 
+vat_files = $(vat_files_early) $(vat_files_late)
+vat_files_early = 1.purchases.csv                \
+  2.purchases,prices,taxes.csv
+vat_files_late = 3.person-level-expenditures.csv \
+  4.demog.csv			                 \
+  5.person-demog-expenditures.csv                \
+  6.households.csv
+
 vat_subsamples = $(vat_1) $(vat_10) $(vat_100) $(vat_1000)
 vat_1    = $(addprefix output/vat-data/recip-1/,    $(vat_files))
 vat_10   = $(addprefix output/vat-data/recip-10/,   $(vat_files))
@@ -78,14 +86,6 @@ vat_1_late    = $(addprefix output/vat-data/recip-1/,    $(vat_files_late))
 vat_10_late   = $(addprefix output/vat-data/recip-10/,   $(vat_files_late))
 vat_100_late  = $(addprefix output/vat-data/recip-100/,  $(vat_files_late))
 vat_1000_late = $(addprefix output/vat-data/recip-1000/, $(vat_files_late))
-
-vat_files = $(vat_files_early) $(vat_files_late)
-vat_files_early = 1.purchases.csv                \
-  2.purchases,prices,taxes.csv
-vat_files_late = 3.person-level-expenditures.csv \
-  4.demog.csv			                 \
-  5.person-demog-expenditures.csv                \
-  6.households.csv
 
 
 ## ## Build the data for the VAT analysis
