@@ -1,18 +1,5 @@
 SHELL := bash
-.PHONY = raw
-
-raw: $(enig_orig) $(enph_orig) $(subsamples)
-
-enig_orig = $(addsuffix .txt, $(addprefix data/enig-2007/orig-txt/, $(enig_files)))
-enph_orig = $(addsuffix .dta, $(addprefix data/enph-2017/orig-dta/, $(enph_files)))
-subsamples = $(addsuffix .csv, $(addprefix data/enph-2017/recip-1/, $(enph_files)))      \
-             $(addsuffix .csv, $(addprefix data/enig-2007/recip-1/, $(enig_files)))      \
-             $(addsuffix .csv, $(addprefix data/enph-2017/recip-10/, $(enph_files)))     \
-             $(addsuffix .csv, $(addprefix data/enig-2007/recip-10/, $(enig_files)))     \
-             $(addsuffix .csv, $(addprefix data/enph-2017/recip-100/, $(enph_files)))    \
-             $(addsuffix .csv, $(addprefix data/enig-2007/recip-100/, $(enig_files)))    \
-             $(addsuffix .csv, $(addprefix data/enph-2017/recip-1000/, $(enph_files)))   \
-             $(addsuffix .csv, $(addprefix data/enig-2007/recip-1000/, $(enig_files)))
+.PHONY = raw subsamples vat_subsamples vat_1 vat_10 vat_100 vat_1000
 
 enph_files = coicop              \
   factores_ciclo19               \
@@ -62,13 +49,60 @@ enig_files = Ig_gsdp_dias_sem \
   Ig_ml_persona \
   Ig_ml_vivienda
 
+enig_orig = $(addsuffix .txt, $(addprefix data/enig-2007/orig-txt/, $(enig_files)))
+enph_orig = $(addsuffix .dta, $(addprefix data/enph-2017/orig-dta/, $(enph_files)))
+subsamples = $(addsuffix .csv, $(addprefix data/enph-2017/recip-1/, $(enph_files)))      \
+             $(addsuffix .csv, $(addprefix data/enig-2007/recip-1/, $(enig_files)))      \
+             $(addsuffix .csv, $(addprefix data/enph-2017/recip-10/, $(enph_files)))     \
+             $(addsuffix .csv, $(addprefix data/enig-2007/recip-10/, $(enig_files)))     \
+             $(addsuffix .csv, $(addprefix data/enph-2017/recip-100/, $(enph_files)))    \
+             $(addsuffix .csv, $(addprefix data/enig-2007/recip-100/, $(enig_files)))    \
+             $(addsuffix .csv, $(addprefix data/enph-2017/recip-1000/, $(enph_files)))   \
+             $(addsuffix .csv, $(addprefix data/enig-2007/recip-1000/, $(enig_files)))
+
+vat_subsamples = $(vat_1) $(vat_10) $(vat_100) $(vat_1000)
+vat_1    = $(addprefix output/vat-data/recip-1/,    $(vat_files))
+vat_10   = $(addprefix output/vat-data/recip-10/,   $(vat_files))
+vat_100  = $(addprefix output/vat-data/recip-100/,  $(vat_files))
+vat_1000 = $(addprefix output/vat-data/recip-1000/, $(vat_files))
+
+vat_files = 1.purchases.csv       \
+  2.purchases,prices,taxes.csv	  \
+  3.person-level-expenditures.csv \
+  4.demog.csv			  \
+  5.person-demog-expenditures.csv \
+  6.households.csv
+
 
 ## ## Build the data for the VAT analysis
 
+vat_subsamples: $(vat_1) $(vat_10) $(vat_100) $(vat_1000)
+vat_1:    $(vat_1)
+vat_10:   $(vat_10)
+vat_100:  $(vat_100)
+vat_1000: $(vat_1000)
 
-## ## Build every subsample of the ENPH and the ENIG
+# TODO ? add build.py to the lists of dependencies
+$(vat_1): $(subsamples)
+	PYTHONPATH='.' python3 python/vat/build.py 1
+$(vat_10): $(subsamples)
+	PYTHONPATH='.' python3 python/vat/build.py 10
+$(vat_100): $(subsamples)
+	PYTHONPATH='.' python3 python/vat/build.py 100
+$(vat_1000): $(subsamples)
+	PYTHONPATH='.' python3 python/vat/build.py 1000
 
-subsamples : python/subsample.py $(enig_orig) $(enph_orig)
+
+## ## ## ## Build the ENPH, the ENIG, and subsamples of them
+
+raw: $(enig_orig) $(enph_orig) $(subsamples)
+
+subsamples: $(subsamples)
+
+# TODO ? rather than build these monolithically, make the subsample size a parameter of subsample.py
+  # would be faster if, e.g., you wanted to build only the 1/1000 subsample and not the others
+$(subsamples) : $(enig_orig) $(enph_orig)
+  # TODO ? add python/subsample.py to dependencies
 	PYTHONPATH='.' python3 python/subsample.py
 
 

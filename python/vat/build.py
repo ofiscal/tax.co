@@ -1,5 +1,6 @@
 # The value-added tax.
 
+import sys
 import numpy as np
 import pandas as pd
 import python.util as util
@@ -8,7 +9,7 @@ import python.vat.files as vat_files
 import python.vat.output_io as vat_output_io
 
 
-subsample = 1 # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
+subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
 files = list( vat_files.purchase_file_legends.keys() )
 
 
