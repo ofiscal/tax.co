@@ -13,48 +13,7 @@ subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100
 files = list( vat_files.purchase_file_legends.keys() )
 
 
-if True: # build the purchase data
-  purchases = pd.DataFrame() # will accumulate from each file
-  for file in files:
-    legend = vat_files.purchase_file_legends[file]
-    shuttle = pd.read_csv(
-      datafiles.yearSubsampleSurveyFolder(2017,subsample) + file + '.csv'
-      , usecols = list( legend.keys() )
-    )
-    shuttle = shuttle.rename(columns=legend) # homogenize column names across files
-    shuttle["file-origin"] = file
-  
-    if False: # print summary stats for `shuttle`, before merging with `purchases`
-      print( "\n\nFILE: " + file + "\n" )
-      for colname in shuttle.columns.values:
-        col = shuttle[colname]
-        print("\ncolumn: " + colname)
-        print("missing: " + str(len(col.index)-col.count())
-              + " / "  + str(len(col.index)))
-        print( col.describe() )
-
-    purchases = purchases.append(shuttle)
-  del(shuttle)
-  vat_output_io.saveStage(subsample, purchases, '/1.purchases')
-
-
-if True: # merge coicop, build money-valued variables
-  coicop_vat = pd.read_csv( "data/vat/coicop-vat.csv", sep=';' )
-  purchases = purchases.merge( coicop_vat, on="coicop" )
-
-  purchases["price"] = purchases["value"] / purchases["quantity"]
-  purchases["per-purchase value"] = purchases["value"]
-  purchases["frequency-code"] = purchases["frequency"]
-    # kept for the sake of drawing a table of purchase frequency
-    # with frequencies spread evenly across the x-axis
-  purchases["frequency"].replace( vat_files.frequency_legend, inplace=True )
-  purchases["value"] = purchases["frequency"] * purchases["value"]
-  purchases["vat-paid"] = purchases["value"] * purchases["vat-rate"]
-
-  vat_output_io.saveStage(subsample, purchases, '/2.purchases,prices,taxes')
-
-
-# purchases = vat_output_io.readStage(subsample,'/2.purchases,prices,taxes')
+purchases = vat_output_io.readStage(subsample,'/2.purchases,prices,taxes')
 if True: # build the person expenditure data
   purchases["transactions"] = 1
   people = purchases.groupby(
@@ -71,16 +30,30 @@ if True: # merge demographic statistics
   )
   demog = demog.rename(columns=vat_files.person_file_legend) # homogenize column names across files
 
+
   if True: # normalize some categorical variables to be 0-1
     demog["female"] =   demog["female"] - 1          # orig 1=male,2=female
+    demog["female"] =   demog["female"].map( {0:False,1:True} )
     demog["student"] =  demog["student"]  * (-1) + 2 # orig 1=student,2=not
+    demog["student"] =  demog["student"].map( {0:False,1:True} )
     demog["literate"] = demog["literate"] * (-1) + 2 # orig 1=lit,2=not
+    demog["literate"] = demog["literate"].map( {0:False,1:True} )
     demog["r-indig"] =    demog["race"] == 1
     demog["r-git|rom"] =  demog["race"] == 2
     demog["r-raizal"] =   demog["race"] == 3
     demog["r-palenq"] =   demog["race"] == 4
     demog["r-neg|mul"] =  demog["race"] == 5
     demog["r-whi|mest"] = demog["race"] == 6
+
+  demog["education"] = demog["education"].map( {
+    1 : "Ninguno",
+    2 : "Preescolar",
+    3 : "Basica\n Primaria",
+    4 : "Basica\n Secundaria",
+    5 : "Media",
+    6 : "Superior o\n Universitaria",
+    9 : "No sabe,\n no informa" } )
+
   vat_output_io.saveStage(subsample, demog, '/4.demog')
 
   people = pd.merge( people, demog, how = "right"

@@ -60,17 +60,31 @@ subsamples = $(addsuffix .csv, $(addprefix data/enph-2017/recip-1/, $(enph_files
              $(addsuffix .csv, $(addprefix data/enph-2017/recip-1000/, $(enph_files)))   \
              $(addsuffix .csv, $(addprefix data/enig-2007/recip-1000/, $(enig_files)))
 
+# The VAT data build is divided into two stages:
+  # "early" (big, slow, hopefully infrequent) and "late"
+
 vat_subsamples = $(vat_1) $(vat_10) $(vat_100) $(vat_1000)
 vat_1    = $(addprefix output/vat-data/recip-1/,    $(vat_files))
 vat_10   = $(addprefix output/vat-data/recip-10/,   $(vat_files))
 vat_100  = $(addprefix output/vat-data/recip-100/,  $(vat_files))
 vat_1000 = $(addprefix output/vat-data/recip-1000/, $(vat_files))
 
-vat_files = 1.purchases.csv       \
-  2.purchases,prices,taxes.csv	  \
-  3.person-level-expenditures.csv \
-  4.demog.csv			  \
-  5.person-demog-expenditures.csv \
+vat_1_early    = $(addprefix output/vat-data/recip-1/,    $(vat_files_early))
+vat_10_early   = $(addprefix output/vat-data/recip-10/,   $(vat_files_early))
+vat_100_early  = $(addprefix output/vat-data/recip-100/,  $(vat_files_early))
+vat_1000_early = $(addprefix output/vat-data/recip-1000/, $(vat_files_early))
+
+vat_1_late    = $(addprefix output/vat-data/recip-1/,    $(vat_files_late))
+vat_10_late   = $(addprefix output/vat-data/recip-10/,   $(vat_files_late))
+vat_100_late  = $(addprefix output/vat-data/recip-100/,  $(vat_files_late))
+vat_1000_late = $(addprefix output/vat-data/recip-1000/, $(vat_files_late))
+
+vat_files = $(vat_files_early) $(vat_files_late)
+vat_files_early = 1.purchases.csv \
+  2.purchases,prices,taxes.csv
+vat_files_late = 3.person-level-expenditures.csv \
+  4.demog.csv			                 \
+  5.person-demog-expenditures.csv                \
   6.households.csv
 
 
@@ -82,15 +96,23 @@ vat_10:   $(vat_10)
 vat_100:  $(vat_100)
 vat_1000: $(vat_1000)
 
-# TODO ? add build.py to the lists of dependencies
-$(vat_1): $(subsamples)
-	PYTHONPATH='.' python3 python/vat/build.py 1
-$(vat_10): $(subsamples)
-	PYTHONPATH='.' python3 python/vat/build.py 10
-$(vat_100): $(subsamples)
-	PYTHONPATH='.' python3 python/vat/build.py 100
-$(vat_1000): $(subsamples)
-	PYTHONPATH='.' python3 python/vat/build.py 1000
+$(vat_1_early): $(subsamples) python/vat/build_early.py
+	PYTHONPATH='.' python3 python/vat/build_early.py 1
+$(vat_10_early): $(subsamples) python/vat/build_early.py
+	PYTHONPATH='.' python3 python/vat/build_early.py 10
+$(vat_100_early): $(subsamples) python/vat/build_early.py
+	PYTHONPATH='.' python3 python/vat/build_early.py 100
+$(vat_1000_early): $(subsamples) python/vat/build_early.py
+	PYTHONPATH='.' python3 python/vat/build_early.py 1000
+
+$(vat_1_late): $(subsamples) python/vat/build_late.py
+	PYTHONPATH='.' python3 python/vat/build_late.py 1
+$(vat_10_late): $(subsamples) python/vat/build_late.py
+	PYTHONPATH='.' python3 python/vat/build_late.py 10
+$(vat_100_late): $(subsamples) python/vat/build_late.py
+	PYTHONPATH='.' python3 python/vat/build_late.py 100
+$(vat_1000_late): $(subsamples) python/vat/build_late.py
+	PYTHONPATH='.' python3 python/vat/build_late.py 1000
 
 
 ## ## ## ## Build the ENPH, the ENIG, and subsamples of them
