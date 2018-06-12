@@ -1,6 +1,9 @@
 SHELL := bash
 .PHONY = raw subsamples vat_subsamples vat_1 vat_10 vat_100 vat_1000
 
+
+## ## ## ## ## ## ## ## Variables
+
 enph_files = coicop              \
   factores_ciclo19               \
   hogares_tot_completos          \
@@ -87,6 +90,8 @@ vat_10_late   = $(addprefix output/vat-data/recip-10/,   $(vat_files_late))
 vat_100_late  = $(addprefix output/vat-data/recip-100/,  $(vat_files_late))
 vat_1000_late = $(addprefix output/vat-data/recip-1000/, $(vat_files_late))
 
+
+## ## ## ## ## ## ## ## Recipes
 
 ## ## Build the data for the VAT analysis
 

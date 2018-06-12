@@ -42,7 +42,6 @@ def cdf( series, logx = False, with_mean = True, with_pdf = False, xmin = None, 
     plt.text( series.mean(), 0,
               "mean = " + format( series.mean(), '.2e') )
 
-  print(dmin,dmax)
   plt.gca().set_xlim(left=dmin,right=dmax)
   plt.plot( df["x"],df["cdf"], **kwargs )
 

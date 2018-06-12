@@ -54,6 +54,11 @@ if True: # stats about people
     draw.single_cdf( people["age"], "CDF of age across individuals")
     draw.savefig( vat_pics_dir + "people" , "age" )
 
+    # >>> TODO: people["education"] has dtype = 'O' rather than numeric, so this errs
+      # Here's how to generate a categorical column -- next question is how to plot it.
+        # from pandas.api.types import CategoricalDtype
+        # people["education"] = pd.Series(
+        #   pd.Categorical( people["education"], ordered=True) )
     plt.close()
     draw.single_cdf( people["education"], "CDF of education across individuals")
     draw.savefig( vat_pics_dir + "people" , "education" )
