@@ -51,3 +51,14 @@ def compareDescriptivesByFourColumns(dfDict):
                for k, v in dfDict.items()
               }
     compareDescriptives( dfDict2 )
+
+def summarizeQuantiles (quantileParam, df):
+  # TODO : test: does this change df outside of the function?
+  df["one"] = 1
+  counts = df.groupby( quantileParam )[["one"]]     \
+         .agg('sum').rename(columns = {"one":"count"})
+  mins = df.groupby( quantileParam )[["income"]]    \
+         .agg('min').rename(columns = {"income":"min"})
+  maxs = df.groupby( quantileParam )[["income"]]    \
+         .agg('max').rename(columns = {"income":"max"})
+  return pd.concat([counts,mins,maxs],axis=1)

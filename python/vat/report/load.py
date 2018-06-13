@@ -39,3 +39,17 @@ if True: # create some new variables
 
   people["education"] = pd.Series(
     pd.Categorical( people["education"], ordered=True) )
+
+if True: # create some new data sets
+  if True: # households with income
+    households_w_income = households[ households["income"] > 0 ].copy()
+      # Without the copy (even if I use .loc(), as suggested by the error)
+      # this causes an error about modifying a view.
+    households_w_income["income-decile"] = pd.qcut(
+      households_w_income["income"], 10, labels = False, duplicates='drop')
+
+  if True: # summaries of the income deciles in two data sets
+    household_w_income_decile_summary = \
+      util.summarizeQuantiles("income-decile", households_w_income)
+    household_decile_summary = \
+      util.summarizeQuantiles("income-decile", households)

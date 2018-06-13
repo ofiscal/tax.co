@@ -69,23 +69,6 @@ if True: # stats about people
 
 
 if True: # stats about households with income
-  if True: # build households_w_income from households
-    # >>> TODO : move this data-building to an earlier-stage file
-
-    households_w_income = households[ households["income"] > 0 ].copy()
-      # Without the copy (even if I use .loc(), as suggested by the error)
-      # this causes an error about modifying a view.
-    households_w_income["one"] = 1
-    households_w_income["income-decile"] = pd.qcut(
-      households_w_income["income"], 10, labels = False, duplicates='drop')
-    counts = households_w_income.groupby( "income-decile" )[["one"]]     \
-           .agg('sum').rename(columns = {"one":"count"})
-    mins = households_w_income.groupby( "income-decile" )[["income"]]    \
-           .agg('min').rename(columns = {"income":"min"})
-    maxs = households_w_income.groupby( "income-decile" )[["income"]]    \
-           .agg('max').rename(columns = {"income":"max"})
-    household_w_income_decile_summary = pd.concat([counts,mins,maxs],axis=1)
-
   if True: # CDF of spending / income
     plt.close()
     draw.single_cdf( households_w_income["value"] / households_w_income["income"],
