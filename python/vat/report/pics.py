@@ -1,13 +1,6 @@
 vat_pics_dir = "output/vat-pics/"
 
 
-if True: # TODO: move this to build.py
-  households["vat/income"] = households["vat-paid"] / households["income"]
-  households["value/income"] = households["value"] / households["income"]
-  people["vat/income"] = people["vat-paid"] / people["income"]
-  people["value/income"] = people["value"] / people["income"]
-
-
 if True: # stats about purchases
     plt.close()
     draw.single_cdf( purchases["quantity"], "CDF of quantity per purchase",
@@ -54,13 +47,10 @@ if True: # stats about people
     draw.single_cdf( people["age"], "CDF of age across individuals")
     draw.savefig( vat_pics_dir + "people" , "age" )
 
-    # >>> TODO: people["education"] has dtype = 'O' rather than numeric, so this errs
-      # Here's how to generate a categorical column -- next question is how to plot it.
-        # from pandas.api.types import CategoricalDtype
-        # people["education"] = pd.Series(
-        #   pd.Categorical( people["education"], ordered=True) )
     plt.close()
-    draw.single_cdf( people["education"], "CDF of education across individuals")
+    draw.single_cdf( people["education"],
+                     "CDF of education across individuals",
+                     with_mean = False)
     draw.savefig( vat_pics_dir + "people" , "education" )
 
     plt.close()
@@ -80,7 +70,7 @@ if True: # stats about people
 
 if True: # stats about households with income
   if True: # build households_w_income from households
-    # TODO ? move this data-building to an earlier-stage file
+    # >>> TODO : move this data-building to an earlier-stage file
 
     households_w_income = households[ households["income"] > 0 ].copy()
       # Without the copy (even if I use .loc(), as suggested by the error)
