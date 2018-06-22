@@ -4,6 +4,8 @@ SHELL := bash
 
 ## ## ## ## ## ## ## ## Variables
 
+python_from_here = PYTHONPATH='.' python3
+
 enph_files = coicop              \
   factores_ciclo19               \
   hogares_tot_completos          \
@@ -63,6 +65,31 @@ subsamples = $(addsuffix .csv, $(addprefix data/enph-2017/recip-1/, $(enph_files
              $(addsuffix .csv, $(addprefix data/enph-2017/recip-1000/, $(enph_files)))   \
              $(addsuffix .csv, $(addprefix data/enig-2007/recip-1000/, $(enig_files)))
 
+vat_pics_rootless = ./purchases/value.png                    \
+  ./purchases/frequency.png				     \
+  ./purchases/quantity.png				     \
+  ./purchases/frequency cdf.png				     \
+  ./purchases/vat in pesos.png				     \
+  ./households/oldest.png				     \
+  ./households/transactions per month.png		     \
+  ./households/youngest.png				     \
+  ./households/size.png					     \
+  ./households/max edu.png				     \
+  ./households/VAT over consumption, by income decile.png    \
+  ./households/income.png				     \
+  ./income households/VAT over income, by has-elderly.png    \
+  ./income households/VAT over income, by has-child.png	     \
+  ./income households/spending over income.png		     \
+  ./income households/VAT over income, by income decile.png  \
+  ./people/transactions per month.png			     \
+  ./people/spending per month.png			     \
+  ./people/age.png					     \
+  ./people/education.png				     \
+  ./people/income.png
+
+vat_pics = $(addprefix output/vat-data/, $(vat_pics_rootless))
+
+
 # The VAT data build is divided into two stages:
   # "early" (big, slow, hopefully infrequent) and "late"
 
@@ -93,6 +120,17 @@ vat_1000_late = $(addprefix output/vat-data/recip-1000/, $(vat_files_late))
 
 ## ## ## ## ## ## ## ## Recipes
 
+## ## Draw pictures for the VAT analysis
+
+vat_pics: $(vat_pics)
+
+$(vat_pics): $(vat_1)       \
+  python/draw/shell-load.py \
+  python/vat/report/main.py \
+  python/vat/report/load.py \
+  python/vat/report/pics.py
+	$(python_from_here) python/vat/report/main.py
+
 ## ## Build the data for the VAT analysis
 
 vat_subsamples: $(vat_1) $(vat_10) $(vat_100) $(vat_1000)
@@ -102,22 +140,22 @@ vat_100:  $(vat_100)
 vat_1000: $(vat_1000)
 
 $(vat_1_early): $(subsamples) python/vat/build_early.py
-	PYTHONPATH='.' python3 python/vat/build_early.py 1
+	$(python_from_here) python/vat/build_early.py 1
 $(vat_10_early): $(subsamples) python/vat/build_early.py
-	PYTHONPATH='.' python3 python/vat/build_early.py 10
+	$(python_from_here) python/vat/build_early.py 10
 $(vat_100_early): $(subsamples) python/vat/build_early.py
-	PYTHONPATH='.' python3 python/vat/build_early.py 100
+	$(python_from_here) python/vat/build_early.py 100
 $(vat_1000_early): $(subsamples) python/vat/build_early.py
-	PYTHONPATH='.' python3 python/vat/build_early.py 1000
+	$(python_from_here) python/vat/build_early.py 1000
 
 $(vat_1_late): $(subsamples) python/vat/build_late.py
-	PYTHONPATH='.' python3 python/vat/build_late.py 1
+	$(python_from_here) python/vat/build_late.py 1
 $(vat_10_late): $(subsamples) python/vat/build_late.py
-	PYTHONPATH='.' python3 python/vat/build_late.py 10
+	$(python_from_here) python/vat/build_late.py 10
 $(vat_100_late): $(subsamples) python/vat/build_late.py
-	PYTHONPATH='.' python3 python/vat/build_late.py 100
+	$(python_from_here) python/vat/build_late.py 100
 $(vat_1000_late): $(subsamples) python/vat/build_late.py
-	PYTHONPATH='.' python3 python/vat/build_late.py 1000
+	$(python_from_here) python/vat/build_late.py 1000
 
 
 ## ## ## ## Build the ENPH, the ENIG, and subsamples of them
@@ -130,7 +168,7 @@ subsamples: $(subsamples)
   # would be faster if, e.g., you wanted to build only the 1/1000 subsample and not the others
 $(subsamples) : $(enig_orig) $(enph_orig)
   # TODO ? add python/subsample.py to dependencies
-	PYTHONPATH='.' python3 python/subsample.py
+	$(python_from_here) python/subsample.py
 
 
 ## ## Build the ENPH 2017
