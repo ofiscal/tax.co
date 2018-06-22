@@ -45,14 +45,17 @@ if True: # merge demographic statistics
     demog["r-neg|mul"] =  demog["race"] == 5
     demog["r-whi|mest"] = demog["race"] == 6
 
-  demog["education"] = demog["education"].map( {
-    1 : "Ninguno",
-    2 : "Preescolar",
-    3 : "Basica\n Primaria",
-    4 : "Basica\n Secundaria",
-    5 : "Media",
-    6 : "Superior o\n Universitaria",
-    9 : "No sabe,\n no informa" } )
+  edu_key = { 1 : "Ninguno",
+      2 : "Preescolar",
+      3 : "Basica\n Primaria",
+      4 : "Basica\n Secundaria",
+      5 : "Media",
+      6 : "Superior o\n Universitaria",
+      9 : "No sabe,\n no informa" }
+  demog["education"] = pd.Categorical(
+    demog["education"].map( edu_key ),
+    categories = list( edu_key.values() ),
+    ordered = True)
 
   vat_output_io.saveStage(subsample, demog, '/4.demog')
 
