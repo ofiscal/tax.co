@@ -9,7 +9,10 @@ output/string-columns/
 output/vat-data/
 output/vat-pics/
 all-but-data/
-data/
+data/enig-2007
+data/enph-2017
+data/vat
+data/*.zip
 python/temp.py
 temp
 docker/commands-laptop.txt
