@@ -48,9 +48,7 @@ if True: # stats about people
     draw.savefig( vat_pics_dir + "people" , "age" )
 
     plt.close()
-    draw.single_cdf( people["education"],
-                     "CDF of education across individuals",
-                     with_mean = False)
+    tabulate_series(people["education"]).plot.bar()
     draw.savefig( vat_pics_dir + "people" , "education" )
 
     plt.close()
