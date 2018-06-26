@@ -19,6 +19,14 @@ def tabulate_min_median_max_by_group(df, group_name, param_name):
            .agg('max').rename(columns = {param_name:"max"})
     return pd.concat([counts,mins,maxs,medians],axis=1)
 
+def tabulate_series(series):
+    dff = pd.DataFrame(series)
+    dff["one"] = 1
+    counts = dff.groupby( series.name )[["one"]]               \
+           .agg('sum').rename(columns = {"one":"count"})       \
+        / series.count() # normalize
+    return counts
+
 def describeWithMissing(df):
   x = df.describe()
   y = []
