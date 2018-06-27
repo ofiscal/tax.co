@@ -87,7 +87,7 @@ vat_pics_rootless = ./purchases/value.png                    \
   ./people/education.png                                     \
   ./people/income.png
 
-vat_pics = $(addprefix output/vat-data/, $(vat_pics_rootless))
+vat_pics = $(addprefix output/vat-pics/, $(vat_pics_rootless))
 
 # The VAT data build is divided into two stages:
   # "early" (big, slow, hopefully infrequent) and "late"
