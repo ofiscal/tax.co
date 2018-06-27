@@ -48,7 +48,7 @@ if True: # stats about people
     draw.savefig( vat_pics_dir + "people" , "age" )
 
     plt.close()
-    tabulate_series(people["education"]).plot.bar()
+    util.tabulate_series(people["education"]).plot.bar()
     draw.savefig( vat_pics_dir + "people" , "education" )
 
     plt.close()
