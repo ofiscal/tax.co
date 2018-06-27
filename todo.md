@@ -1,3 +1,7 @@
+Makefile: replace household_w_income etc. to households_w_income (plural)
+
+Makefile: split pics generation
+
 Makefile: share
   share file lists for enph, enig across /Makefile and /data/Makefile
 

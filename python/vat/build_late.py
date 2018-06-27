@@ -143,14 +143,14 @@ if True: # data sets derived from households
                             '/7.households_w_income')
 
   if True: # summaries of the income deciles in two data sets
-    household_w_income_decile_summary = \
+    households_w_income_decile_summary = \
       util.summarizeQuantiles("income-decile", households_w_income)
     vat_output_io.saveStage(subsample,
-                            household_w_income_decile_summary,
-                            '/8.household_w_income_decile_summary')
+                            households_w_income_decile_summary,
+                            '/8.households_w_income_decile_summary')
 
-    household_decile_summary = \
+    households_decile_summary = \
       util.summarizeQuantiles("income-decile", households)
     vat_output_io.saveStage(subsample,
-                            household_decile_summary,
-                            '/9.household_decile_summary')
+                            households_decile_summary,
+                            '/9.households_decile_summary')

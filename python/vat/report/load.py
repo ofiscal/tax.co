@@ -21,7 +21,7 @@ if True: # input the data. copied from output_io.py.
     oio.readStage( subsample, '/6.households')
   households_w_income = \
     oio.readStage( subsample, '/7.households_w_income')
-  household_w_income_decile_summary = \
-    oio.readStage( subsample, '/8.household_w_income_decile_summary')
-  household_decile_summary = \
-    oio.readStage( subsample, '/9.household_decile_summary')
+  households_w_income_decile_summary = \
+    oio.readStage( subsample, '/8.households_w_income_decile_summary')
+  households_decile_summary = \
+    oio.readStage( subsample, '/9.households_decile_summary')

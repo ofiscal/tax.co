@@ -100,8 +100,8 @@ vat_files_late = 3.person-level-expenditures.csv \
   5.person-demog-expenditures.csv                \
   6.households.csv				 \
   7.households_w_income.csv			 \
-  8.household_w_income_decile_summary.csv	 \
-  9.household_decile_summary.csv
+  8.households_w_income_decile_summary.csv	 \
+  9.households_decile_summary.csv
 
 vat_subsamples = $(vat_1) $(vat_10) $(vat_100) $(vat_1000)
 vat_1    = $(addprefix output/vat-data/recip-1/,    $(vat_files))
