@@ -66,6 +66,16 @@ if True: # merge demographic statistics
   people["vat/inc"] = people["vat-paid"]/people["income"]
 
   del(demog)
+
+  people["age-decile"] = pd.qcut(
+    people["age"], 10, labels = False, duplicates='drop')
+  people["income-decile"] = pd.qcut(
+    people["income"], 10, labels = False, duplicates='drop')
+  people["vat/income"] = people["vat-paid"] / people["income"]
+  people["value/income"] = people["value"] / people["income"]
+  people["education"] = pd.Series(
+    pd.Categorical( people["education"], ordered=True) )
+
   vat_output_io.saveStage(subsample, people, '/5.person-demog-expenditures')
 
 
@@ -109,6 +119,38 @@ if True: # aggregate from household-members to households
 
   households["household"] = households.index
     # when there are multiple indices, reset_index is the way to do that
+
+  households["has-child"] = households["age-min"] < 18
+  households["has-elderly"] = households["age-max"] > 65
+
+  households["income-decile"] = pd.qcut(
+    households["income"], 10, labels = False, duplicates='drop')
+
+  households["vat/income"] = households["vat-paid"] / households["income"]
+  households["value/income"] = households["value"] / households["income"]
+
   vat_output_io.saveStage(subsample, households, '/6.households')
 
 # households = vat_output_io.readStage(subsample, '/6.households')
+if True: # data sets derived from households
+  if True: # households with income
+    households_w_income = households[ households["income"] > 0 ].copy()
+      # Without the copy (even if I use .loc(), as suggested by the error)
+      # this causes an error about modifying a view.
+    households_w_income["income-decile"] = pd.qcut(
+      households_w_income["income"], 10, labels = False, duplicates='drop')
+    vat_output_io.saveStage(subsample, households_w_income,
+                            '/7.households_w_income')
+
+  if True: # summaries of the income deciles in two data sets
+    household_w_income_decile_summary = \
+      util.summarizeQuantiles("income-decile", households_w_income)
+    vat_output_io.saveStage(subsample,
+                            household_w_income_decile_summary,
+                            '/8.household_w_income_decile_summary')
+
+    household_decile_summary = \
+      util.summarizeQuantiles("income-decile", households)
+    vat_output_io.saveStage(subsample,
+                            household_decile_summary,
+                            '/9.household_decile_summary')

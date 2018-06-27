@@ -13,43 +13,15 @@ import python.draw.util as draw
 
 if True: # input the data. copied from output_io.py.
   subsample = 1
-  purchases = oio.readStage( subsample, '/2.purchases,prices,taxes') # memory hog
-  people = oio.readStage( subsample, '/5.person-demog-expenditures')
-  households = oio.readStage( subsample, '/6.households')
-
-
-# TODO ? move this to build.py
-if True: # create some new variables
-  households["has-child"] = households["age-min"] < 18
-  households["has-elderly"] = households["age-max"] > 65
-
-  # here's one way to show what the following decile-creating commands do
-      # pd.crosstab(index = people["age"], columns = people["age-decile"])
-  people["age-decile"] = pd.qcut(
-    people["age"], 10, labels = False, duplicates='drop')
-  people["income-decile"] = pd.qcut(
-    people["income"], 10, labels = False, duplicates='drop')
-  households["income-decile"] = pd.qcut(
-    households["income"], 10, labels = False, duplicates='drop')
-
-  households["vat/income"] = households["vat-paid"] / households["income"]
-  households["value/income"] = households["value"] / households["income"]
-  people["vat/income"] = people["vat-paid"] / people["income"]
-  people["value/income"] = people["value"] / people["income"]
-
-  people["education"] = pd.Series(
-    pd.Categorical( people["education"], ordered=True) )
-
-if True: # create some new data sets
-  if True: # households with income
-    households_w_income = households[ households["income"] > 0 ].copy()
-      # Without the copy (even if I use .loc(), as suggested by the error)
-      # this causes an error about modifying a view.
-    households_w_income["income-decile"] = pd.qcut(
-      households_w_income["income"], 10, labels = False, duplicates='drop')
-
-  if True: # summaries of the income deciles in two data sets
-    household_w_income_decile_summary = \
-      util.summarizeQuantiles("income-decile", households_w_income)
-    household_decile_summary = \
-      util.summarizeQuantiles("income-decile", households)
+  purchases = \
+    oio.readStage( subsample, '/2.purchases,prices,taxes') # memory hog
+  people = \
+    oio.readStage( subsample, '/5.person-demog-expenditures')
+  households = \
+    oio.readStage( subsample, '/6.households')
+  households_w_income = \
+    oio.readStage( subsample, '/7.households_w_income')
+  household_w_income_decile_summary = \
+    oio.readStage( subsample, '/8.household_w_income_decile_summary')
+  household_decile_summary = \
+    oio.readStage( subsample, '/9.household_decile_summary')
