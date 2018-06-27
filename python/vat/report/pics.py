@@ -72,7 +72,7 @@ if True: # stats about households with income
     draw.single_cdf( households_w_income["value"] / households_w_income["income"],
                      "CDF of (spending / income) across households",
                      logx = True)
-    draw.savefig( vat_pics_dir + "income households" , "spending-over-income" )
+    draw.savefig( vat_pics_dir + "income-households" , "spending-over-income" )
 
   if True: # the CDF of (VAT / income) by income decile
     plt.close()
@@ -82,7 +82,7 @@ if True: # stats about households with income
     styles = [":","-",":","-",":","-",":","-",":","-"]
     colors = ["red","red","orange","orange","yellow","yellow",
               "green","green","purple","purple"]
-    for i in list(household_w_income_decile_summary.index):
+    for i in list(households_w_income_decile_summary.index):
       draw.cdf( households_w_income                           \
                   [ households_w_income["income-decile"]==i ] \
                   [ "vat/income" ],
@@ -93,7 +93,7 @@ if True: # stats about households with income
                 with_mean = False
       )
     plt.grid(color='b', linestyle=':', linewidth=0.5)
-    draw.savefig(vat_pics_dir + "income households", "VAT-over-income,-by-income-decile.png")
+    draw.savefig(vat_pics_dir + "income-households", "VAT-over-income,-by-income-decile.png")
 
   if True: # the CDF of (VAT / income) across households by has-child
     plt.close()
@@ -110,7 +110,7 @@ if True: # stats about households with income
                 with_mean = False,
                 logx = True)
     plt.grid(color='b', linestyle=':', linewidth=0.5)
-    draw.savefig(vat_pics_dir + "income households", "VAT-over-income,-by-has-child.png")
+    draw.savefig(vat_pics_dir + "income-households", "VAT-over-income,-by-has-child.png")
 
   if True: # the CDF of (VAT / income) across households by has-elderly
     plt.close()
@@ -127,7 +127,7 @@ if True: # stats about households with income
                 with_mean = False,
                 logx = True)
     plt.grid(color='b', linestyle=':', linewidth=0.5)
-    draw.savefig(vat_pics_dir + "income households", "VAT-over-income,-by-has-elderly.png")
+    draw.savefig(vat_pics_dir + "income-households", "VAT-over-income,-by-has-elderly.png")
 
 
 if True: # stats about households
@@ -193,7 +193,7 @@ if True: # stats about households
     plt.ylabel("Probability")
     styles = [":","-",":","-",":","-"]
     colors = ["red","red","green","green","blue","blue"]
-    for i in list(household_decile_summary.index):
+    for i in list(households_decile_summary.index):
       draw.cdf( households                           \
                   [ households["income-decile"]==i ] \
                   ["vat/value"],
