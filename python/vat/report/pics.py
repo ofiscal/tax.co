@@ -1,4 +1,5 @@
-vat_pics_dir = "output/vat-pics/"
+vat_pics_dir = "output/vat-pics/recip-" + str(subsample) + "/"
+if not os.path.exists(vat_pics_dir): os.makedirs(vat_pics_dir)
 
 
 if True: # stats about purchases

@@ -1,5 +1,5 @@
 SHELL := bash
-.PHONY: raw subsamples vat_subsamples vat_1 vat_10 vat_100 vat_1000
+.PHONY: raw subsamples vat_subsamples vat_1 vat_10 vat_100 vat_1000 vat_pics_1 vat_pics_10
 
 
 ##=##=##=##=##=##=##=## Variables
@@ -87,7 +87,10 @@ vat_pics_rootless = ./purchases/value.png                    \
   ./people/education.png                                     \
   ./people/income.png
 
-vat_pics = $(addprefix output/vat-pics/, $(vat_pics_rootless))
+vat_pics_1    = $(addprefix output/vat-pics/recip-1/,    $(vat_pics_rootless))
+vat_pics_10   = $(addprefix output/vat-pics/recip-10/,   $(vat_pics_rootless))
+vat_pics_100  = $(addprefix output/vat-pics/recip-100/,  $(vat_pics_rootless))
+vat_pics_1000 = $(addprefix output/vat-pics/recip-1000/, $(vat_pics_rootless))
 
 # The VAT data build is divided into two stages:
   # "early" (big, slow, hopefully infrequent) and "late"
@@ -124,13 +127,23 @@ vat_1000_late = $(addprefix output/vat-data/recip-1000/, $(vat_files_late))
 
 ##=## Draw pictures for the VAT analysis
 
-vat_pics: $(vat_pics)
-$(vat_pics): $(vat_1)       \
+# TODO: this is awfully verbose
+vat_pics_1: $(vat_pics_1)
+$(vat_pics_1): $(vat_1)       \
   python/draw/shell-load.py \
   python/vat/report/main.py \
   python/vat/report/load.py \
   python/vat/report/pics.py
-	$(python_from_here) python/vat/report/main.py
+	$(python_from_here) python/vat/report/main.py 1
+vat_pics_10: $(vat_pics_10)
+$(vat_pics_10): $(vat_10)       \
+  python/draw/shell-load.py \
+  python/vat/report/main.py \
+  python/vat/report/load.py \
+  python/vat/report/pics.py
+	$(python_from_here) python/vat/report/main.py 10
+
+
 
 ##=## Build the data for the VAT analysis
 

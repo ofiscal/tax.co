@@ -9,10 +9,13 @@ import python.datafiles as datafiles
 import python.vat.files as vatfiles
 import python.vat.output_io as oio
 import python.draw.util as draw
+import sys
+import os
 
+
+subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
 
 if True: # input the data. copied from output_io.py.
-  subsample = 1
   purchases = \
     oio.readStage( subsample, '/2.purchases,prices,taxes') # memory hog
   people = \
