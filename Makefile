@@ -1,6 +1,11 @@
 SHELL := bash
-.PHONY: raw subsamples vat_subsamples vat_1 vat_10 vat_100 vat_1000 vat_pics_1 vat_pics_10
-
+.PHONY: raw subsamples vat_subsamples                         \
+  vat_1 vat_10 vat_100 vat_1000                               \
+  vat_pics_1 vat_pics_10                                      \
+  vat_pics_households_1 vat_pics_households_10                \
+  vat_pics_income-households_1 vat_pics_income-households_10  \
+  vat_pics_people_1 vat_pics_people_10                        \
+  vat_pics_purchases_1 vat_pics_purchases_10
 
 ##=##=##=##=##=##=##=## Variables
 
@@ -65,32 +70,57 @@ subsamples = $(addsuffix .csv, $(addprefix data/enph-2017/recip-1/, $(enph_files
              $(addsuffix .csv, $(addprefix data/enph-2017/recip-1000/, $(enph_files)))   \
              $(addsuffix .csv, $(addprefix data/enig-2007/recip-1000/, $(enig_files)))
 
-vat_pics_rootless = ./purchases/value.png                    \
-  ./purchases/frequency.png                                  \
-  ./purchases/quantity.png                                   \
-  ./purchases/frequency-cdf.png                              \
-  ./purchases/vat-in-pesos.png                               \
-  ./households/oldest.png                                    \
-  ./households/transactions-per-month.png                    \
-  ./households/youngest.png                                  \
-  ./households/size.png                                      \
-  ./households/max-edu.png                                   \
-  ./households/VAT-over-consumption,-by-income-decile.png    \
-  ./households/income.png                                    \
-  ./income-households/VAT-over-income,-by-has-elderly.png    \
-  ./income-households/VAT-over-income,-by-has-child.png      \
-  ./income-households/spending-over-income.png               \
-  ./income-households/VAT-over-income,-by-income-decile.png  \
-  ./people/transactions-per-month.png                        \
-  ./people/spending-per-month.png                            \
-  ./people/age.png                                           \
-  ./people/education.png                                     \
-  ./people/income.png
+vat_pics_rootless =                      \
+  $(vat_pics_households_rootless)        \
+  $(vat_pics_income-households_rootless) \
+  $(vat_pics_people_rootless)            \
+  $(vat_pics_purchases_rootless)         
+vat_pics_households_rootless = households/oldest.png       \
+  households/transactions-per-month.png                    \
+  households/youngest.png                                  \
+  households/size.png                                      \
+  households/max-edu.png                                   \
+  households/VAT-over-consumption,-by-income-decile.png    \
+  households/income.png
+vat_pics_income-households_rootless =                      \
+  income-households/VAT-over-income,-by-has-elderly.png    \
+  income-households/VAT-over-income,-by-has-child.png      \
+  income-households/spending-over-income.png               \
+  income-households/VAT-over-income,-by-income-decile.png
+vat_pics_people_rootless =                                 \
+  people/transactions-per-month.png                        \
+  people/spending-per-month.png                            \
+  people/age.png                                           \
+  people/education.png                                     \
+  people/income.png
+vat_pics_purchases_rootless = purchases/value.png          \
+  purchases/frequency.png                                  \
+  purchases/quantity.png                                   \
+  purchases/frequency-cdf.png                              \
+  purchases/vat-in-pesos.png
 
-vat_pics_1    = $(addprefix output/vat-pics/recip-1/,    $(vat_pics_rootless))
-vat_pics_10   = $(addprefix output/vat-pics/recip-10/,   $(vat_pics_rootless))
-vat_pics_100  = $(addprefix output/vat-pics/recip-100/,  $(vat_pics_rootless))
-vat_pics_1000 = $(addprefix output/vat-pics/recip-1000/, $(vat_pics_rootless))
+vat_pics_households_1    = $(addprefix output/vat-pics/recip-1/,    $(vat_pics_households_rootless))
+vat_pics_households_10   = $(addprefix output/vat-pics/recip-10/,   $(vat_pics_households_rootless))
+vat_pics_households_100  = $(addprefix output/vat-pics/recip-100/,  $(vat_pics_households_rootless))
+vat_pics_households_1000 = $(addprefix output/vat-pics/recip-1000/, $(vat_pics_households_rootless))
+
+vat_pics_income-households_1    = $(addprefix output/vat-pics/recip-1/,    $(vat_pics_income-households_rootless))
+vat_pics_income-households_10   = $(addprefix output/vat-pics/recip-10/,   $(vat_pics_income-households_rootless))
+vat_pics_income-households_100  = $(addprefix output/vat-pics/recip-100/,  $(vat_pics_income-households_rootless))
+vat_pics_income-households_1000 = $(addprefix output/vat-pics/recip-1000/, $(vat_pics_income-households_rootless))
+
+vat_pics_people_1    = $(addprefix output/vat-pics/recip-1/,    $(vat_pics_people_rootless))
+vat_pics_people_10   = $(addprefix output/vat-pics/recip-10/,   $(vat_pics_people_rootless))
+vat_pics_people_100  = $(addprefix output/vat-pics/recip-100/,  $(vat_pics_people_rootless))
+vat_pics_people_1000 = $(addprefix output/vat-pics/recip-1000/, $(vat_pics_people_rootless))
+
+vat_pics_purchases_1    = $(addprefix output/vat-pics/recip-1/,    $(vat_pics_purchases_rootless))
+vat_pics_purchases_10   = $(addprefix output/vat-pics/recip-10/,   $(vat_pics_purchases_rootless))
+vat_pics_purchases_100  = $(addprefix output/vat-pics/recip-100/,  $(vat_pics_purchases_rootless))
+vat_pics_purchases_1000 = $(addprefix output/vat-pics/recip-1000/, $(vat_pics_purchases_rootless))
+
+vat_pics_1 = $(vat_pics_households_1) $(vat_pics_income-households_1) $(vat_pics_people_1) $(vat_pics_purchases_1)
+vat_pics_10 = $(vat_pics_households_10) $(vat_pics_income-households_10) $(vat_pics_people_10) $(vat_pics_purchases_10)
 
 # The VAT data build is divided into two stages:
   # "early" (big, slow, hopefully infrequent) and "late"
@@ -129,20 +159,72 @@ vat_1000_late = $(addprefix output/vat-data/recip-1000/, $(vat_files_late))
 
 # TODO: this is awfully verbose
 vat_pics_1: $(vat_pics_1)
-$(vat_pics_1): $(vat_1)       \
-  python/draw/shell-load.py \
-  python/vat/report/main.py \
-  python/vat/report/load.py \
-  python/vat/report/pics.py
-	$(python_from_here) python/vat/report/main.py 1
-vat_pics_10: $(vat_pics_10)
-$(vat_pics_10): $(vat_10)       \
-  python/draw/shell-load.py \
-  python/vat/report/main.py \
-  python/vat/report/load.py \
-  python/vat/report/pics.py
-	$(python_from_here) python/vat/report/main.py 10
 
+vat_pics_households_1: $(vat_pics_households_1)
+$(vat_pics_households_1): $(vat_1)     \
+  python/draw/shell-load.py            \
+  python/vat/report/main,households.py \
+  python/vat/report/load.py            \
+  python/vat/report/pics,households.py
+	$(python_from_here) python/vat/report/main,households.py 1
+
+vat_pics_income-households_1: $(vat_pics_income-households_1)
+$(vat_pics_income-households_1): $(vat_1)     \
+  python/draw/shell-load.py                   \
+  python/vat/report/main,income-households.py \
+  python/vat/report/load.py                   \
+  python/vat/report/pics,income-households.py
+	$(python_from_here) python/vat/report/main,income-households.py 1
+
+vat_pics_people_1: $(vat_pics_people_1)
+$(vat_pics_people_1): $(vat_1)         \
+  python/draw/shell-load.py            \
+  python/vat/report/main,people.py     \
+  python/vat/report/load.py            \
+  python/vat/report/pics,people.py
+	$(python_from_here) python/vat/report/main,people.py 1
+
+vat_pics_purchases_1: $(vat_pics_purchases_1)
+$(vat_pics_purchases_1): $(vat_1)      \
+  python/draw/shell-load.py            \
+  python/vat/report/main,purchases.py  \
+  python/vat/report/load.py            \
+  python/vat/report/pics,purchases.py
+	$(python_from_here) python/vat/report/main,purchases.py 1
+
+vat_pics_10: $(vat_pics_10)
+
+vat_pics_households_10: $(vat_pics_households_10)
+$(vat_pics_households_10): $(vat_10)        \
+  python/draw/shell-load.py                 \
+  python/vat/report/main,households.py      \
+  python/vat/report/load.py                 \
+  python/vat/report/pics,households.py
+	$(python_from_here) python/vat/report/main,households.py 10
+
+vat_pics_income-households_10: $(vat_pics_income-households_10)
+$(vat_pics_income-households_10): $(vat_10)       \
+  python/draw/shell-load.py                       \
+  python/vat/report/main,income-households.py     \
+  python/vat/report/load.py                       \
+  python/vat/report/pics,income-households.py
+	$(python_from_here) python/vat/report/main,income-households.py 10
+
+vat_pics_people_10: $(vat_pics_people_10)
+$(vat_pics_people_10): $(vat_10)       \
+  python/draw/shell-load.py            \
+  python/vat/report/main,people.py     \
+  python/vat/report/load.py            \
+  python/vat/report/pics,people.py
+	$(python_from_here) python/vat/report/main,people.py 10
+
+vat_pics_purchases_10: $(vat_pics_purchases_10)
+$(vat_pics_purchases_10): $(vat_10)      \
+  python/draw/shell-load.py              \
+  python/vat/report/main,purchases.py    \
+  python/vat/report/load.py              \
+  python/vat/report/pics,purchases.py
+	$(python_from_here) python/vat/report/main,purchases.py 10
 
 
 ##=## Build the data for the VAT analysis

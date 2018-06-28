@@ -1,5 +1,3 @@
-Makefile: split pics generation
-
 Makefile: share
   share file lists for enph, enig across /Makefile and /data/Makefile
 
