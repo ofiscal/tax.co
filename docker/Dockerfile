@@ -27,6 +27,7 @@ RUN apt install -y make && \
     /opt/conda/bin/conda install jupyter -y --quiet
 
 RUN apt install -y texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
+RUN apt install -y texlive-publishers
 
 COPY run-jupyter.sh /root/
 
