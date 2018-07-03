@@ -46,13 +46,13 @@ if True: # stats about households
 
     draw.to_latex(
       util.tabulate_min_median_max_by_group( households, "income-decile", "income" ),
-      "output/vat-tables/",
+      "output/vat-tables/recip-" + str(subsample),
       "income-by-income-decile"
     )
 
     draw.to_latex(
       util.tabulate_min_median_max_by_group( households, "income-decile", "vat/value" ),
-      "output/vat-tables/",
+      "output/vat-tables/recip-" + str(subsample),
       "vat-over-spending-by-income-decile")
 
     plt.close()
