@@ -77,6 +77,11 @@
 
 \journal{Journal Name}
 
+% define this when calling pdflatex, e.g. like this:
+% pdflatex "\newcommand\subsample[0]{10}\input{vat.tex}"
+% as documented here: https://stackoverflow.com/a/1466610
+\providecommand{\subsample}[0]{1} % last argument = default definition
+
 \begin{document}
 
 \begin{frontmatter}
@@ -103,7 +108,6 @@
 %% \cortext[cor1]{}
 %% \address{Address\fnref{label3}}
 %% \fntext[label3]{}
-
 
 %% use optional labels to link authors explicitly to addresses:
 %% \author[label1,label2]{<author name>}
@@ -341,8 +345,8 @@ The VAT falls less heavily on households at the extremes of the education distri
 
 \begin{table}
   \centering
-  \input{"tables/income by income decile"}
-  \caption{The CDF across households of income, by income decile}
+  \input{"../output/vat-tables/recip-\subsample/income-by-income-decile"}
+  \caption{The CDF of income across households, by income decile}
   \label{table:household income by income decile}
 \end{table}
 
