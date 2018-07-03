@@ -5,11 +5,15 @@ SHELL := bash
   vat_pics_households_1 vat_pics_households_10                \
   vat_pics_income-households_1 vat_pics_income-households_10  \
   vat_pics_people_1 vat_pics_people_10                        \
-  vat_pics_purchases_1 vat_pics_purchases_10
+  vat_pics_purchases_1 vat_pics_purchases_10                  \
+  vat_tables_1 vat_tables_10                                  \
+  vat_pdf_1 vat_pdf_10
 
 ##=##=##=##=##=##=##=## Variables
 
 python_from_here = PYTHONPATH='.' python3
+
+##=##=##=## ENIG, ENPH and subsamples
 
 enph_files = coicop              \
   factores_ciclo19               \
@@ -70,11 +74,14 @@ subsamples = $(addsuffix .csv, $(addprefix data/enph-2017/recip-1/, $(enph_files
              $(addsuffix .csv, $(addprefix data/enph-2017/recip-1000/, $(enph_files)))   \
              $(addsuffix .csv, $(addprefix data/enig-2007/recip-1000/, $(enig_files)))
 
+
+##=##=##=## VAT tables
+
 vat_pics_rootless =                      \
   $(vat_pics_households_rootless)        \
   $(vat_pics_income-households_rootless) \
   $(vat_pics_people_rootless)            \
-  $(vat_pics_purchases_rootless)         
+  $(vat_pics_purchases_rootless)
 vat_pics_households_rootless = households/oldest.png       \
   households/transactions-per-month.png                    \
   households/youngest.png                                  \
@@ -122,6 +129,14 @@ vat_pics_purchases_1000 = $(addprefix output/vat-pics/recip-1000/, $(vat_pics_pu
 vat_pics_1 = $(vat_pics_households_1) $(vat_pics_income-households_1) $(vat_pics_people_1) $(vat_pics_purchases_1)
 vat_pics_10 = $(vat_pics_households_10) $(vat_pics_income-households_10) $(vat_pics_people_10) $(vat_pics_purchases_10)
 
+
+##=##=##=## VAT tables
+
+vat_tables_rootless = income-by-income-decile.tex \
+  vat-over-spending-by-income-decile.tex
+vat_tables_1  = $(addprefix output/vat-tables/recip-1/,  $(vat_tables_rootless))
+vat_tables_10 = $(addprefix output/vat-tables/recip-10/, $(vat_tables_rootless))
+
 # The VAT data build is divided into two stages:
   # "early" (big, slow, hopefully infrequent) and "late"
 
@@ -152,16 +167,35 @@ vat_10_late   = $(addprefix output/vat-data/recip-10/,   $(vat_files_late))
 vat_100_late  = $(addprefix output/vat-data/recip-100/,  $(vat_files_late))
 vat_1000_late = $(addprefix output/vat-data/recip-1000/, $(vat_files_late))
 
+##=##=##=## VAT PDF output
+
+vat_pdf_1  = tex/recip-1/vat.pdf
+vat_pdf_10 = tex/recip-10/vat.pdf
 
 ##=##=##=##=##=##=##=## Recipes
 
-##=## Draw pictures for the VAT analysis
+##=## Create the PDF of the VAT analysis
+
+vat_pdf_1: $(vat_pdf_1)
+$(vat_pdf_1): $(vat_pics_1) $(vat_tables_1)
+	cd tex;             \
+	  mkdir -p recip-1; \
+	  pdflatex -output-directory recip-1  "\newcommand\subsample[0]{1}\input{vat.tex}"
+
+vat_pdf_10: $(vat_pdf_10)
+$(vat_pdf_10): $(vat_pics_10) $(vat_tables_10)
+	cd tex;              \
+	  mkdir -p recip-10; \
+	  pdflatex -output-directory recip-10 "\newcommand\subsample[0]{10}\input{vat.tex}"
+
+##=## tex pictures for the VAT analysis
 
 # TODO: this is awfully verbose
 vat_pics_1: $(vat_pics_1)
+vat_tables_1: $(vat_tables_1)
 
 vat_pics_households_1: $(vat_pics_households_1)
-$(vat_pics_households_1): $(vat_1)     \
+$(vat_pics_households_1) $(vat_tables_1): $(vat_1)     \
   python/draw/shell-load.py            \
   python/vat/report/main,households.py \
   python/vat/report/load.py            \
@@ -193,9 +227,10 @@ $(vat_pics_purchases_1): $(vat_1)      \
 	$(python_from_here) python/vat/report/main,purchases.py 1
 
 vat_pics_10: $(vat_pics_10)
+vat_tables_10: $(vat_tables_10)
 
 vat_pics_households_10: $(vat_pics_households_10)
-$(vat_pics_households_10): $(vat_10)        \
+$(vat_pics_households_10) $(vat_tables_10): $(vat_10)        \
   python/draw/shell-load.py                 \
   python/vat/report/main,households.py      \
   python/vat/report/load.py                 \
