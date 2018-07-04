@@ -49,10 +49,10 @@ enig_files = Ig_gsdp_dias_sem    \
   Ig_ml_persona                  \
   Ig_ml_vivienda
 
-enig_orig = $(addsuffix .txt, $(addprefix enig-2007/orig-txt/, $(enig_files)))
 enph_orig = $(addsuffix .dta, $(addprefix enph-2017/orig-dta/, $(enph_files)))
+enig_orig = $(addsuffix .txt, $(addprefix enig-2007/orig-txt/, $(enig_files)))
 
-raw_data: $(enig_orig) $(enph_orig)
+raw_data: $(enph_orig) $(enig_orig)
 
 
 ##=## Build the ENPH 2017
@@ -61,7 +61,7 @@ enph-2017/enph-2017.orig-dta.tgz:
 	mkdir -p enph-2017
 	mv enph-2017.orig-dta.tgz enph-2017
 
-$(enph_orig):
+$(enph_orig): enph-2017/enph-2017.orig-dta.tgz
 	cd enph-2017;                       \
 	  tar -xvzf enph-2017.orig-dta.tgz; \
 	  touch orig-dta/*.dta  # else the rule repeats itself
@@ -73,7 +73,7 @@ enig-2007/enig-2007.orig-txt.tgz:
 	mkdir -p enig-2007;                    \
 	mv enig-2007.orig-txt.tgz enig-2007;
 
-$(enig_orig):
+$(enig_orig): enig-2007/enig-2007.orig-txt.tgz
 	cd enig-2007;                         \
 	  tar -xvzf enig-2007.orig-txt.tgz;   \
 	  touch orig-txt/*.txt  # else the rule repeats itself
