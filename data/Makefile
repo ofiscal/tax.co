@@ -1,5 +1,6 @@
 .PHONY: raw_data
 
+##=##=##=## Variables
 
 enph_files = coicop              \
   factores_ciclo19               \
@@ -52,7 +53,14 @@ enig_files = Ig_gsdp_dias_sem    \
 enph_orig = $(addsuffix .dta, $(addprefix enph-2017/orig-dta/, $(enph_files)))
 enig_orig = $(addsuffix .txt, $(addprefix enig-2007/orig-txt/, $(enig_files)))
 
-raw_data: $(enph_orig) $(enig_orig)
+
+##=##=##=## Recipes
+
+raw_data: $(enph_orig) $(enig_orig) vat/coicop-vat.csv
+
+vat/coicop-vat.csv:
+	mkdir -p vat
+	mv coicop-vat.csv vat
 
 
 ##=## Build the ENPH 2017
