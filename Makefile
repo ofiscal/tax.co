@@ -14,8 +14,8 @@ SHELL := bash
 
 ##=## Non-target variables
 
-subsample?=1 # this can be overridden from the command line, as in "make raw subsamples=10"
-              # valid values are 1, 10, 100 and 1000
+subsample?=1 # default value; can be overridden from the command line, as in "make raw subsamples=10"
+             # valid values are 1, 10, 100 and 1000
 ss=$(strip $(subsample))# removes trailing space
 python_from_here = PYTHONPATH='.' python3
 
