@@ -1,20 +1,28 @@
 SHELL := bash
-.PHONY: raw subsamples vat_subsamples                         \
-  vat_1 vat_10 vat_100 vat_1000                               \
-  vat_pics_1 vat_pics_10                                      \
-  vat_pics_households_1 vat_pics_households_10                \
-  vat_pics_income-households_1 vat_pics_income-households_10  \
-  vat_pics_people_1 vat_pics_people_10                        \
-  vat_pics_purchases_1 vat_pics_purchases_10                  \
-  vat_tables_1 vat_tables_10                                  \
-  vat_pdf_1 vat_pdf_10
+.PHONY: input_subsamples      \
+  vat_data                    \
+  vat_pics                    \
+  vat_pics_households         \
+  vat_pics_income-households  \
+  vat_pics_people             \
+  vat_pics_purchases          \
+  vat_tables                  \
+  vat_pdf
+
 
 ##=##=##=##=##=##=##=## Variables
 
+##=## Non-target variables
+
+subsample?=1 # this can be overridden from the command line, as in "make raw subsamples=10"
+              # valid values are 1, 10, 100 and 1000
+ss=$(strip $(subsample))# removes trailing space
 python_from_here = PYTHONPATH='.' python3
 
-##=##=##=## ENIG, ENPH and subsamples
 
+##=##=##=## Variables: ENIG, ENPH and subsamples
+
+# pitfall: the _csv suffix on these filenames is not a file extension
 enph_files = coicop              \
   factores_ciclo19               \
   hogares_tot_completos          \
@@ -65,17 +73,16 @@ enig_files = Ig_gsdp_dias_sem    \
 
 enig_orig = $(addsuffix .txt, $(addprefix data/enig-2007/orig-txt/, $(enig_files)))
 enph_orig = $(addsuffix .dta, $(addprefix data/enph-2017/orig-dta/, $(enph_files)))
-subsamples = $(addsuffix .csv, $(addprefix data/enph-2017/recip-1/, $(enph_files)))      \
-             $(addsuffix .csv, $(addprefix data/enig-2007/recip-1/, $(enig_files)))      \
-             $(addsuffix .csv, $(addprefix data/enph-2017/recip-10/, $(enph_files)))     \
-             $(addsuffix .csv, $(addprefix data/enig-2007/recip-10/, $(enig_files)))     \
-             $(addsuffix .csv, $(addprefix data/enph-2017/recip-100/, $(enph_files)))    \
-             $(addsuffix .csv, $(addprefix data/enig-2007/recip-100/, $(enig_files)))    \
-             $(addsuffix .csv, $(addprefix data/enph-2017/recip-1000/, $(enph_files)))   \
-             $(addsuffix .csv, $(addprefix data/enig-2007/recip-1000/, $(enig_files)))
+input_subsamples =                                                           \
+  $(addsuffix .csv, $(addprefix data/enph-2017/recip-$(ss)/, $(enph_files))) \
+  $(addsuffix .csv, $(addprefix data/enig-2007/recip-$(ss)/, $(enig_files)))
 
 
-##=##=##=## VAT tables
+##=##=##=## Variables: VAT tables and pictures
+
+vat_tables_rootless = income-by-income-decile.tex \
+  vat-over-spending-by-income-decile.tex
+vat_tables  = $(addprefix output/vat-tables/recip-$(ss)/,  $(vat_tables_rootless))
 
 vat_pics_rootless =                      \
   $(vat_pics_households_rootless)        \
@@ -106,36 +113,18 @@ vat_pics_purchases_rootless = purchases/value.png          \
   purchases/frequency-cdf.png                              \
   purchases/vat-in-pesos.png
 
-vat_pics_households_1    = $(addprefix output/vat-pics/recip-1/,    $(vat_pics_households_rootless))
-vat_pics_households_10   = $(addprefix output/vat-pics/recip-10/,   $(vat_pics_households_rootless))
-vat_pics_households_100  = $(addprefix output/vat-pics/recip-100/,  $(vat_pics_households_rootless))
-vat_pics_households_1000 = $(addprefix output/vat-pics/recip-1000/, $(vat_pics_households_rootless))
-
-vat_pics_income-households_1    = $(addprefix output/vat-pics/recip-1/,    $(vat_pics_income-households_rootless))
-vat_pics_income-households_10   = $(addprefix output/vat-pics/recip-10/,   $(vat_pics_income-households_rootless))
-vat_pics_income-households_100  = $(addprefix output/vat-pics/recip-100/,  $(vat_pics_income-households_rootless))
-vat_pics_income-households_1000 = $(addprefix output/vat-pics/recip-1000/, $(vat_pics_income-households_rootless))
-
-vat_pics_people_1    = $(addprefix output/vat-pics/recip-1/,    $(vat_pics_people_rootless))
-vat_pics_people_10   = $(addprefix output/vat-pics/recip-10/,   $(vat_pics_people_rootless))
-vat_pics_people_100  = $(addprefix output/vat-pics/recip-100/,  $(vat_pics_people_rootless))
-vat_pics_people_1000 = $(addprefix output/vat-pics/recip-1000/, $(vat_pics_people_rootless))
-
-vat_pics_purchases_1    = $(addprefix output/vat-pics/recip-1/,    $(vat_pics_purchases_rootless))
-vat_pics_purchases_10   = $(addprefix output/vat-pics/recip-10/,   $(vat_pics_purchases_rootless))
-vat_pics_purchases_100  = $(addprefix output/vat-pics/recip-100/,  $(vat_pics_purchases_rootless))
-vat_pics_purchases_1000 = $(addprefix output/vat-pics/recip-1000/, $(vat_pics_purchases_rootless))
-
-vat_pics_1 = $(vat_pics_households_1) $(vat_pics_income-households_1) $(vat_pics_people_1) $(vat_pics_purchases_1)
-vat_pics_10 = $(vat_pics_households_10) $(vat_pics_income-households_10) $(vat_pics_people_10) $(vat_pics_purchases_10)
+vat_pics_households = \
+  $(addprefix output/vat-pics/recip-$(ss)/, $(vat_pics_households_rootless))
+vat_pics_income-households = \
+  $(addprefix output/vat-pics/recip-$(ss)/, $(vat_pics_income-households_rootless))
+vat_pics_people    = \
+  $(addprefix output/vat-pics/recip-$(ss)/, $(vat_pics_people_rootless))
+vat_pics_purchases = \
+  $(addprefix output/vat-pics/recip-$(ss)/, $(vat_pics_purchases_rootless))
+vat_pics = $(vat_pics_households) $(vat_pics_income-households) $(vat_pics_people) $(vat_pics_purchases)
 
 
-##=##=##=## VAT tables
-
-vat_tables_rootless = income-by-income-decile.tex \
-  vat-over-spending-by-income-decile.tex
-vat_tables_1  = $(addprefix output/vat-tables/recip-1/,  $(vat_tables_rootless))
-vat_tables_10 = $(addprefix output/vat-tables/recip-10/, $(vat_tables_rootless))
+##=##=##=## Variables: VAT datasets
 
 # The VAT data build is divided into two stages:
   # "early" (big, slow, hopefully infrequent) and "late"
@@ -146,157 +135,89 @@ vat_files_early = 1.purchases.csv                \
 vat_files_late = 3.person-level-expenditures.csv \
   4.demog.csv                                    \
   5.person-demog-expenditures.csv                \
-  6.households.csv				 \
-  7.households_w_income.csv			 \
-  8.households_w_income_decile_summary.csv	 \
+  6.households.csv                               \
+  7.households_w_income.csv                      \
+  8.households_w_income_decile_summary.csv       \
   9.households_decile_summary.csv
 
-vat_subsamples = $(vat_1) $(vat_10) $(vat_100) $(vat_1000)
-vat_1    = $(addprefix output/vat-data/recip-1/,    $(vat_files))
-vat_10   = $(addprefix output/vat-data/recip-10/,   $(vat_files))
-vat_100  = $(addprefix output/vat-data/recip-100/,  $(vat_files))
-vat_1000 = $(addprefix output/vat-data/recip-1000/, $(vat_files))
 
-vat_1_early    = $(addprefix output/vat-data/recip-1/,    $(vat_files_early))
-vat_10_early   = $(addprefix output/vat-data/recip-10/,   $(vat_files_early))
-vat_100_early  = $(addprefix output/vat-data/recip-100/,  $(vat_files_early))
-vat_1000_early = $(addprefix output/vat-data/recip-1000/, $(vat_files_early))
+##=##=##=## Variables: More
 
-vat_1_late    = $(addprefix output/vat-data/recip-1/,    $(vat_files_late))
-vat_10_late   = $(addprefix output/vat-data/recip-10/,   $(vat_files_late))
-vat_100_late  = $(addprefix output/vat-data/recip-100/,  $(vat_files_late))
-vat_1000_late = $(addprefix output/vat-data/recip-1000/, $(vat_files_late))
+vat_pdf = tex/recip-$(ss)/vat.pdf
 
-##=##=##=## VAT PDF output
+vat_data = $(addprefix output/vat-data/recip-$(ss)/, $(vat_files))
+vat_data_early = $(addprefix output/vat-data/recip-$(ss)/,    $(vat_files_early))
+vat_data_late  = $(addprefix output/vat-data/recip-$(ss)/,    $(vat_files_late))
 
-vat_pdf_1  = tex/recip-1/vat.pdf
-vat_pdf_10 = tex/recip-10/vat.pdf
 
 ##=##=##=##=##=##=##=## Recipes
 
-##=## Create the PDF of the VAT analysis
+##=##=##=## Create the PDF of the VAT analysis
 
-vat_pdf_1: $(vat_pdf_1)
-$(vat_pdf_1): $(vat_pics_1) $(vat_tables_1)
-	cd tex;             \
-	  mkdir -p recip-1; \
-	  pdflatex -output-directory recip-1  "\newcommand\subsample[0]{1}\input{vat.tex}"
+# this runs pdflatex twice; the first defines references used in the second
+vat_pdf: $(vat_pdf)
+$(vat_pdf): tex/vat.tex $(vat_pics) $(vat_tables)
+	cd tex;                                                 \
+	  mkdir -p recip-$(ss);                                 \
+	  for i in 1 2; do                                      \
+	    pdflatex -output-directory recip-$(ss)              \
+              "\newcommand\subsample[0]{$(ss)}\input{vat.tex}"; \
+	  done
 
-vat_pdf_10: $(vat_pdf_10)
-$(vat_pdf_10): $(vat_pics_10) $(vat_tables_10)
-	cd tex;              \
-	  mkdir -p recip-10; \
-	  pdflatex -output-directory recip-10 "\newcommand\subsample[0]{10}\input{vat.tex}"
 
-##=## tex pictures for the VAT analysis
+##=##=##=## Create TeX figures for the VAT analysis
 
-# TODO: this is awfully verbose
-vat_pics_1: $(vat_pics_1)
-vat_tables_1: $(vat_tables_1)
+vat_pics: $(vat_pics)
+vat_tables: $(vat_tables)
 
-vat_pics_households_1: $(vat_pics_households_1)
-$(vat_pics_households_1) $(vat_tables_1): $(vat_1)     \
-  python/draw/shell-load.py            \
-  python/vat/report/main,households.py \
-  python/vat/report/load.py            \
+vat_pics_households: $(vat_pics_households)
+$(vat_pics_households) $(vat_tables): $(vat_data)     \
+  python/draw/shell-load.py                           \
+  python/vat/report/main,households.py                \
+  python/vat/report/load.py                           \
   python/vat/report/pics,households.py
-	$(python_from_here) python/vat/report/main,households.py 1
+	$(python_from_here) python/vat/report/main,households.py $(ss)
 
-vat_pics_income-households_1: $(vat_pics_income-households_1)
-$(vat_pics_income-households_1): $(vat_1)     \
-  python/draw/shell-load.py                   \
-  python/vat/report/main,income-households.py \
-  python/vat/report/load.py                   \
+vat_pics_income-households: $(vat_pics_income-households)
+$(vat_pics_income-households): $(vat_data)         \
+  python/draw/shell-load.py                        \
+  python/vat/report/main,income-households.py      \
+  python/vat/report/load.py                        \
   python/vat/report/pics,income-households.py
-	$(python_from_here) python/vat/report/main,income-households.py 1
+	$(python_from_here) python/vat/report/main,income-households.py $(ss)
 
-vat_pics_people_1: $(vat_pics_people_1)
-$(vat_pics_people_1): $(vat_1)         \
+vat_pics_people: $(vat_pics_people)
+$(vat_pics_people): $(vat_data)        \
   python/draw/shell-load.py            \
   python/vat/report/main,people.py     \
   python/vat/report/load.py            \
   python/vat/report/pics,people.py
-	$(python_from_here) python/vat/report/main,people.py 1
+	$(python_from_here) python/vat/report/main,people.py $(ss)
 
-vat_pics_purchases_1: $(vat_pics_purchases_1)
-$(vat_pics_purchases_1): $(vat_1)      \
+vat_pics_purchases: $(vat_pics_purchases)
+$(vat_pics_purchases): $(vat_data)     \
   python/draw/shell-load.py            \
   python/vat/report/main,purchases.py  \
   python/vat/report/load.py            \
   python/vat/report/pics,purchases.py
-	$(python_from_here) python/vat/report/main,purchases.py 1
-
-vat_pics_10: $(vat_pics_10)
-vat_tables_10: $(vat_tables_10)
-
-vat_pics_households_10: $(vat_pics_households_10)
-$(vat_pics_households_10) $(vat_tables_10): $(vat_10)        \
-  python/draw/shell-load.py                 \
-  python/vat/report/main,households.py      \
-  python/vat/report/load.py                 \
-  python/vat/report/pics,households.py
-	$(python_from_here) python/vat/report/main,households.py 10
-
-vat_pics_income-households_10: $(vat_pics_income-households_10)
-$(vat_pics_income-households_10): $(vat_10)       \
-  python/draw/shell-load.py                       \
-  python/vat/report/main,income-households.py     \
-  python/vat/report/load.py                       \
-  python/vat/report/pics,income-households.py
-	$(python_from_here) python/vat/report/main,income-households.py 10
-
-vat_pics_people_10: $(vat_pics_people_10)
-$(vat_pics_people_10): $(vat_10)       \
-  python/draw/shell-load.py            \
-  python/vat/report/main,people.py     \
-  python/vat/report/load.py            \
-  python/vat/report/pics,people.py
-	$(python_from_here) python/vat/report/main,people.py 10
-
-vat_pics_purchases_10: $(vat_pics_purchases_10)
-$(vat_pics_purchases_10): $(vat_10)      \
-  python/draw/shell-load.py              \
-  python/vat/report/main,purchases.py    \
-  python/vat/report/load.py              \
-  python/vat/report/pics,purchases.py
-	$(python_from_here) python/vat/report/main,purchases.py 10
+	$(python_from_here) python/vat/report/main,purchases.py $(ss)
 
 
-##=## Build the data for the VAT analysis
+##=##=##=## Build the data for the VAT analysis
 
-vat_subsamples: $(vat_1) $(vat_10) $(vat_100) $(vat_1000)
-vat_1:    $(vat_1)
-vat_10:   $(vat_10)
-vat_100:  $(vat_100)
-vat_1000: $(vat_1000)
-
-$(vat_1_early): $(subsamples) python/vat/build_early.py
-	$(python_from_here) python/vat/build_early.py 1
-$(vat_10_early): $(subsamples) python/vat/build_early.py
-	$(python_from_here) python/vat/build_early.py 10
-$(vat_100_early): $(subsamples) python/vat/build_early.py
-	$(python_from_here) python/vat/build_early.py 100
-$(vat_1000_early): $(subsamples) python/vat/build_early.py
-	$(python_from_here) python/vat/build_early.py 1000
-
-$(vat_1_late): $(subsamples) python/vat/build_late.py
-	$(python_from_here) python/vat/build_late.py 1
-$(vat_10_late): $(subsamples) python/vat/build_late.py
-	$(python_from_here) python/vat/build_late.py 10
-$(vat_100_late): $(subsamples) python/vat/build_late.py
-	$(python_from_here) python/vat/build_late.py 100
-$(vat_1000_late): $(subsamples) python/vat/build_late.py
-	$(python_from_here) python/vat/build_late.py 1000
+vat_data: $(vat_data_early) $(vat_data_late)
+$(vat_data_early): $(input_subsamples) python/vat/build_early.py
+	$(python_from_here) python/vat/build_early.py $(subsample)
+$(vat_data_late): $(vat_data_early) python/vat/build_late.py
+	$(python_from_here) python/vat/build_late.py $(subsample)
 
 
-##=##=##=## Build the ENPH, the ENIG, and subsamples of them
+##=##=##=## Build subsamples ofthe ENPH and the ENIG
 
-raw: $(enig_orig) $(enph_orig) $(subsamples)
-
-subsamples: $(subsamples)
-
+input_subsamples: $(input_subsamples)
 # TODO ? rather than build these monolithically, make the subsample size a parameter of subsample.py
   # would be faster if, e.g., you wanted to build only the 1/1000 subsample and not the others
-$(subsamples) : $(enig_orig) $(enph_orig)
+  # but on the other hand building every subsample would require loading the input four times
+$(input_subsamples) : $(enig_orig) $(enph_orig)
   # TODO ? add python/subsample.py to dependencies
 	$(python_from_here) python/subsample.py
