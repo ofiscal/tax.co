@@ -110,7 +110,6 @@ vat_pics_people_rootless =                                 \
 vat_pics_purchases_rootless = purchases/value.png          \
   purchases/frequency.png                                  \
   purchases/quantity.png                                   \
-  purchases/frequency-cdf.png                              \
   purchases/vat-in-pesos.png
 
 vat_pics_households = \
