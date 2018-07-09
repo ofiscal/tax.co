@@ -1,22 +1,27 @@
 *~
+
+python/temp.py
+temp
+docker/commands-laptop.txt
+
 .ipynb_checkpoints/
 __pycache__/
 */__pycache__/
 */*/__pycache__/
+
 output/summaries.txt
 output/summary/
 output/string-columns/
 output/vat-data/
 output/vat-pics/
 output/vat-tables/
+
 all-but-data/
+
 data/enig-2007
 data/enph-2017
 data/vat
 data/*.zip
-python/temp.py
-temp
-docker/commands-laptop.txt
 
 tex/recip-1*/
 
