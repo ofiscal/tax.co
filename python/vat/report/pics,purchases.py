@@ -23,7 +23,6 @@ plt.xticks( np.arange(1,11,1),
              , "\"Esporádico\""
              , "Semestral"],
             rotation='vertical')
-plt.gcf().subplots_adjust(bottom=0.30) # labels go out of frame otherwise
 draw.table( purchases, "frequency-code" )
 draw.savefig( vat_pics_dir + "purchases" , "frequency" )
 

@@ -35,7 +35,6 @@ if True: # stats about households
                   "(unused\n value)",
                   "No sabe,\n no informa" ],
                 rotation='vertical')
-    plt.gcf().subplots_adjust(bottom=0.30) # labels go out of frame otherwise
     draw.table( households, "edu-max" )
     draw.savefig( vat_pics_dir + "households" , "max-edu" )
 
