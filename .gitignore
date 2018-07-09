@@ -19,12 +19,6 @@ temp
 docker/commands-laptop.txt
 
 tex/recip-1*/
-tex/*.aux
-tex/*.log
-tex/*.pdf
-tex/*.spl
-tex/*.aux
-
 
 # TODO ? it would be nice not to have to list these
   # instead, move them to a separate Git repo hosted by Javeriana, not Github
