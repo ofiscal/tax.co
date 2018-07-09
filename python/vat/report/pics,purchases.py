@@ -1,5 +1,6 @@
 plt.close()
 draw.single_cdf( purchases["quantity"], "CDF of quantity per purchase",
+                xmin = 1,
                  logx = True)
 draw.savefig( vat_pics_dir + "purchases" , "quantity" )
 
