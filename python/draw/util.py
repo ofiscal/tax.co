@@ -67,7 +67,10 @@ def table( df, colName ):
 
 def savefig( folder, name, **kwargs ):
   if not os.path.exists(folder): os.makedirs(folder)
-  plt.savefig( folder + "/" + name, bbox_inches='tight', **kwargs )
+  plt.savefig( folder + "/" + name,
+               bbox_inches='tight', # ironically, this causes xlabels that might
+                             # otherwise get cut off to appear in their entirety
+               **kwargs )
 
 
 def to_latex( df, folder, name ):
