@@ -6,7 +6,8 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 
-def cdf( series, logx = False, with_mean = True, with_pdf = False, xmin = None, **kwargs ):
+def cdf( series, logx = False, with_mean = True, with_pdf = False
+         , xmin = None, xmax = None, **kwargs ):
   data = pd.DataFrame()
   data["x"] = pd.Series( sorted(series) )
   data["count"] = 1
@@ -15,6 +16,8 @@ def cdf( series, logx = False, with_mean = True, with_pdf = False, xmin = None, 
   if xmin != None:
     dmin = max(dmin,xmin)
   dmax = data["x"].max()
+  if xmax != None:
+    dmax = min(dmax,xmax)
   dstep = (dmax - dmin) / 500 # this resolution is arbitrary
 
   pdf = data.groupby("x").agg('sum')
