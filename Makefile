@@ -172,6 +172,7 @@ vat_tables: $(vat_tables)
 vat_pics_households: $(vat_pics_households)
 $(vat_pics_households) $(vat_tables): $(vat_data)     \
   python/draw/shell-load.py                           \
+  python/draw/util.py                                 \
   python/vat/report/main,households.py                \
   python/vat/report/load.py                           \
   python/vat/report/pics,households.py
@@ -180,6 +181,7 @@ $(vat_pics_households) $(vat_tables): $(vat_data)     \
 vat_pics_income-households: $(vat_pics_income-households)
 $(vat_pics_income-households): $(vat_data)         \
   python/draw/shell-load.py                        \
+  python/draw/util.py                              \
   python/vat/report/main,income-households.py      \
   python/vat/report/load.py                        \
   python/vat/report/pics,income-households.py
@@ -188,6 +190,7 @@ $(vat_pics_income-households): $(vat_data)         \
 vat_pics_people: $(vat_pics_people)
 $(vat_pics_people): $(vat_data)        \
   python/draw/shell-load.py            \
+  python/draw/util.py                  \
   python/vat/report/main,people.py     \
   python/vat/report/load.py            \
   python/vat/report/pics,people.py
@@ -196,6 +199,7 @@ $(vat_pics_people): $(vat_data)        \
 vat_pics_purchases: $(vat_pics_purchases)
 $(vat_pics_purchases): $(vat_data)     \
   python/draw/shell-load.py            \
+  python/draw/util.py                  \
   python/vat/report/main,purchases.py  \
   python/vat/report/load.py            \
   python/vat/report/pics,purchases.py
