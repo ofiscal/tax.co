@@ -8,14 +8,14 @@ if True: # single series
   draw.savefig( vat_pics_dir + "people" , "education" )
 
   plt.close()
+  draw.single_cdf( people["income"], "CDF of income across individuals",
+                   xmin = 10**5, xmax = 10**7, logx = True)
+  draw.savefig( vat_pics_dir + "people" , "income" )
+
+  plt.close()
   draw.single_cdf( people["value"], "CDF of spending per month across individuals",
                    logx = True)
   draw.savefig( vat_pics_dir + "people" , "spending-per-month" )
-
-  plt.close()
-  draw.single_cdf( people["value"], "CDF of income across individuals",
-                   logx = True)
-  draw.savefig( vat_pics_dir + "people" , "income" )
 
   plt.close()
   draw.single_cdf( people["transactions"], "CDF of transactions per month across individuals" )
