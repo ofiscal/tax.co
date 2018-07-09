@@ -65,9 +65,9 @@ def table( df, colName ):
   plt.bar( df[colName], df["count"] )
 
 
-def savefig( folder, name ):
+def savefig( folder, name, **kwargs ):
   if not os.path.exists(folder): os.makedirs(folder)
-  plt.savefig( folder + "/" + name )
+  plt.savefig( folder + "/" + name, bbox_inches='tight', **kwargs )
 
 
 def to_latex( df, folder, name ):
