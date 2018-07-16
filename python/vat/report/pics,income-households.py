@@ -2,6 +2,7 @@ if True: # CDF of spending / income
   plt.close()
   draw.single_cdf( households_w_income["value"] / households_w_income["income"],
                    "CDF of (spending / income) across households",
+                   xmin = 10**(-3), xmax = 10**3,
                    logx = True)
   draw.savefig( vat_pics_dir + "income-households" , "spending-over-income" )
 
