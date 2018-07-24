@@ -244,6 +244,23 @@ Incomes range from 0 to 80 million pesos per month, with a median of 800,000 -- 
   \label{people:income}
 \end{figure}
 
+Income is highly correlated with age. (See Table \ref{table:age by age decile} and Figure \ref{people:income-by-age}.) Nobody in the first decile of age (0-6 years) was reported to earn an income, and so few in the next (7-12) that the distribution is not very meaningful. Among the other deciles, age and income are very strongly correlated; every age decile except the last (age 64+) lies stricly to the right of every younger cohort.
+
+\begin{table}
+  \centering
+  \input{"../output/vat-tables/recip-\subsample/age-by-age-decile"}
+  \caption{Interpreting age deciles}
+  \label{table:age by age decile}
+\end{table}
+
+\begin{figure}[!htbp]
+  \centering\includegraphics
+      [width=0.8\linewidth]
+      {../output/vat-pics/recip-\subsample/people/income,by-age-decile.png}
+  \caption{CDF of income across individuals by age decile}
+  \label{people:income-by-age}
+\end{figure}
+
 The number of transactions per person range from 1 to 144. [[Given that the minimum age is 0, and that 93\% of purchases are household-communal (for the three data sets that include such a variable), the positive minimum number of purchases seems strange.]] See Figure \ref{people:transactions per month}.
 \begin{figure}[!htbp]
   \centering\includegraphics
@@ -367,7 +384,7 @@ The VAT falls less heavily on households at the extremes of the education distri
   \label{table:household income by income decile}
 \end{table}
 
-See Table \ref{table:households income by income decile}.
+See Table \ref{table:household income by income decile}.
 
 \begin{figure}[h]
   \centering\includegraphics

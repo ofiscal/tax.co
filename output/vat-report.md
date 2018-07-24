@@ -49,6 +49,8 @@ The VAT paid on a purchase ranges from 0 to 4.4 million pesos. The average is 70
 
 The 300,000 Colombians surveyed in the ENPH range in age from 0 to 110. Half are under 30. In education, only 5% indicate having less than a primary education; 45% indicate having completed primary or secondary and no further; 23% indicate "media", and 22% indicate having a university education. 53% of respondents are female. Incomes range from 0 to 80 million pesos per month, with a median of 800,000 -- just over the minimum wage. 30% of respondents are students. The number of transactions per person range from 1 to 144. [[Given that the minimum age is 0, and that 93% of purchases are household-communal (for the three data sets that include such a variable), the positive minimum number of purchases seems strange.]]
 
+Income is highly correlated with age. Nobody in the first decile of age (0-6 years) was reported to earn an income, and so few in the next (7-12) that the distribution is not very meaningful. Among the other deciles, age and income are very strongly correlated; every age decile except the last (age 64+) lies stricly to the right of every younger cohort.
+
 
 ## What households look like.
 
