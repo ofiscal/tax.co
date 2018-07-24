@@ -1,3 +1,16 @@
+# TODO: Centralize this code, which is (nearly) duplicated between build_late.py and main,people.py
+edu_key = { 1 : "Ninguno",
+      2 : "Preescolar",
+      3 : "Basica\n Primaria",
+      4 : "Basica\n Secundaria",
+      5 : "Media",
+      6 : "Superior o\n Universitaria",
+      9 : "No sabe,\n no informa" }
+households_w_income["edu-max"] = pd.Series( pd.Categorical(
+    pd.Categorical( households_w_income["edu-max"]
+                   , categories = list( edu_key.values() )
+                   , ordered = True) ) )
+
 if True: # CDF of spending / income
   plt.close()
   draw.single_cdf( households_w_income["value"] / households_w_income["income"],
@@ -60,3 +73,25 @@ if True: # the CDF of (VAT / income) across households by has-elderly
               logx = True)
   plt.grid(color='b', linestyle=':', linewidth=0.5)
   draw.savefig(vat_pics_dir + "income-households", "VAT-over-income,-by-has-elderly.png")
+
+if True: # the CDF of (VAT / income) across households by education
+  plt.close()
+  plt.title("The CDF of (VAT / income) across households"     + "\n" +
+    "by maximum education level among a household's members." + "\n" +
+    "(red = ninguno, orange = preescolar, yellow = primaria," + "\n" +
+    "green = secundaria, blue = media, purple = superior,"    + "\n" +
+    "black = no sabe")
+  plt.xlabel("VAT paid / income")
+  plt.ylabel("Probability")
+  colors = ["red","orange","yellow", "green","blue","purple","black"]
+  categs = list(households_w_income["edu-max"].cat.categories)
+  for (color,categ) in zip ( list (range (0, len(categs))), categs):
+    draw.cdf( households_w_income                             \
+                [ households_w_income["edu-max"]==categ ] \
+                [ "vat/income" ],
+              color = colors[color],
+              with_mean = False,
+              xmin = 0.00001, xmax = 0.5,
+              logx = True)
+  plt.grid(color='b', linestyle=':', linewidth=0.5)
+  draw.savefig(vat_pics_dir + "income-households", "VAT-over-income,-by-max-edu.png")
