@@ -19,10 +19,13 @@ if True: # CDF of spending / income
                    logx = True)
   draw.savefig( vat_pics_dir + "income-households" , "spending-over-income" )
 
-if True: # the CDF of (VAT / income) by income decile
+if True: # CDFs of VAT by income decile
   plt.close()
-  plt.title("The CDF of (VAT / income), by income decile, for income-earning households" + "\n"
+
+  plt.suptitle("CDFs of VAT, by income decile, for income-earning households." + "\n"
             + "(dashed red = least income decile, solid purple = greatest)" )
+
+  plt.subplot(1,2,1)
   plt.xlabel("VAT paid / income")
   plt.ylabel("Probability")
   styles = [":","-",":","-",":","-",":","-",":","-"]
@@ -38,9 +41,32 @@ if True: # the CDF of (VAT / income) by income decile
               with_mean = False
     )
   plt.grid(color='b', linestyle=':', linewidth=0.5)
+
+  plt.subplot(1,2,2)
+  plt.xlabel("VAT paid / spending")
+  styles = [":","-",":","-",":","-",":","-",":","-"]
+  colors = ["red","red","orange","orange","yellow","yellow",
+            "green","green","purple","purple"]
+  for i in list(households_w_income_decile_summary.index):
+    draw.cdf( households_w_income                           \
+                [ households_w_income["income-decile"]==i ] \
+                [ "vat/value" ],
+              linestyle = styles[i],
+              color = colors[i],
+              xmax = 0.15,
+              with_mean = False
+    )
+  plt.grid(color='b', linestyle=':', linewidth=0.5)
+
+  ax = plt.gca()
+  ax.set_yticklabels([])
+
+  fig = plt.gcf()
+  fig.set_size_inches(8,4)
+
   draw.savefig(vat_pics_dir + "income-households", "VAT-over-income,-by-income-decile.png")
 
-if True: # the CDF of (VAT / income) across households by has-child
+if True: # CDFs of VAT across households by has-child
   plt.close()
   plt.suptitle("Two CDFs of VAT across income-earning households" + "\n" +
                "with (solid) and without (dashed) children")
@@ -72,7 +98,6 @@ if True: # the CDF of (VAT / income) across households by has-child
   ax = plt.gca()
   ax.set_yticklabels([])
 
-  # plt.rcParams['figure.figsize'] = 8,5 # working in Jupyter but not the shell
   fig = plt.gcf()
   fig.set_size_inches(8,4)
   draw.savefig(vat_pics_dir + "income-households", "VAT-over-income,-by-has-child.png")
