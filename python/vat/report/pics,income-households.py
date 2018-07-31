@@ -21,7 +21,8 @@ if True: # CDF of spending / income
 
 if True: # the CDF of (VAT / income) by income decile
   plt.close()
-  plt.title("The CDF of (VAT / income), by income decile, for income-earning households")
+  plt.title("The CDF of (VAT / income), by income decile, for income-earning households" + "\n"
+            + "(dashed red = least income decile, solid purple = greatest)" )
   plt.xlabel("VAT paid / income")
   plt.ylabel("Probability")
   styles = [":","-",":","-",":","-",":","-",":","-"]
@@ -33,8 +34,7 @@ if True: # the CDF of (VAT / income) by income decile
                 [ "vat/income" ],
               linestyle = styles[i],
               color = colors[i],
-              logx = True,
-              xmin = 1/(10**6),
+              xmax = 0.15,
               with_mean = False
     )
   plt.grid(color='b', linestyle=':', linewidth=0.5)
@@ -52,8 +52,8 @@ if True: # the CDF of (VAT / income) across households by has-child
                 [ households_w_income["has-child"]==value ] \
                 [ "vat/income" ],
               linestyle = styles[style],
-              with_mean = False,
-              logx = True)
+              xmax = 0.1,
+              with_mean = False )
   plt.grid(color='b', linestyle=':', linewidth=0.5)
   draw.savefig(vat_pics_dir + "income-households", "VAT-over-income,-by-has-child.png")
 
@@ -69,8 +69,8 @@ if True: # the CDF of (VAT / income) across households by has-elderly
                 [ households_w_income["has-elderly"]==value ] \
                 [ "vat/income" ],
               linestyle = styles[style],
-              with_mean = False,
-              logx = True)
+              xmax = 0.1,
+              with_mean = False )
   plt.grid(color='b', linestyle=':', linewidth=0.5)
   draw.savefig(vat_pics_dir + "income-households", "VAT-over-income,-by-has-elderly.png")
 
@@ -91,7 +91,6 @@ if True: # the CDF of (VAT / income) across households by education
                 [ "vat/income" ],
               color = colors[color],
               with_mean = False,
-              xmin = 0.00001, xmax = 0.5,
-              logx = True)
+              xmax = 0.1 )
   plt.grid(color='b', linestyle=':', linewidth=0.5)
   draw.savefig(vat_pics_dir + "income-households", "VAT-over-income,-by-max-edu.png")

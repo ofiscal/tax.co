@@ -66,6 +66,7 @@ if True: # stats about households
                   ["vat/value"],
                 linestyle = styles[i],
                 color = colors[i],
+                xmax = 0.1,
                 with_mean = False
       )
     plt.grid(color='b', linestyle=':', linewidth=0.5)
