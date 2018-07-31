@@ -38,7 +38,7 @@ if True: # stats about households
     draw.table( households, "edu-max" )
     draw.savefig( vat_pics_dir + "households" , "max-edu" )
 
-  if True: # the CDF of (VAT / consumption) by income decile
+  if True: # VAT expenditures by income decile
     # PITFALL: Since 47% of households report zero income, nothing
       # distinguishes the first 5 deciles, so they are grouped together.
       # The "duplicates='drop'" option to pd.qcut achieves that grouping.
@@ -54,20 +54,46 @@ if True: # stats about households
       "output/vat-tables/recip-" + str(subsample),
       "vat-over-spending-by-income-decile")
 
-    plt.close()
-    plt.title("The CDF of (VAT / consumption), by income decile")
-    plt.xlabel("VAT paid / value consumed")
-    plt.ylabel("Probability")
-    styles = [":","-",":","-",":","-"]
-    colors = ["red","red","green","green","blue","blue"]
-    for i in list(households_decile_summary.index):
-      draw.cdf( households                           \
-                  [ households["income-decile"]==i ] \
-                  ["vat/value"],
-                linestyle = styles[i],
-                color = colors[i],
-                xmax = 0.1,
-                with_mean = False
-      )
-    plt.grid(color='b', linestyle=':', linewidth=0.5)
-    draw.savefig(vat_pics_dir + "households", "VAT-over-consumption,-by-income-decile.png")
+    if True: # two CDFs on a figure
+      plt.close()
+
+      plt.suptitle("CDFs of VAT expenditure across households by income decile")
+
+      plt.subplot(1,2,1)
+      plt.xlabel("VAT paid / value consumed")
+      plt.ylabel("Probability")
+      styles = [":","-",":","-",":","-"]
+      colors = ["red","red","green","green","blue","blue"]
+      for i in list(households_decile_summary.index):
+        draw.cdf( households                           \
+                    [ households["income-decile"]==i ] \
+                    ["vat/income"],
+                  linestyle = styles[i],
+                  color = colors[i],
+                  xmax = 0.1,
+                  with_mean = False
+        )
+      plt.grid(color='b', linestyle=':', linewidth=0.5)
+
+      plt.subplot(1,2,2)
+      plt.ylabel("Probability")
+      styles = [":","-",":","-",":","-"]
+      colors = ["red","red","green","green","blue","blue"]
+      for i in list(households_decile_summary.index):
+        draw.cdf( households                           \
+                    [ households["income-decile"]==i ] \
+                    ["vat/value"],
+                  linestyle = styles[i],
+                  color = colors[i],
+                  xmax = 0.1,
+                  with_mean = False
+        )
+      plt.grid(color='b', linestyle=':', linewidth=0.5)
+
+      ax = plt.gca()
+      ax.set_yticklabels([])
+    
+      fig = plt.gcf()
+      fig.set_size_inches(8,4)
+
+      draw.savefig(vat_pics_dir + "households", "VAT-over-consumption,-by-income-decile.png")

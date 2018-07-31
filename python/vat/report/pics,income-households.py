@@ -95,17 +95,21 @@ if True: # CDFs of VAT across households by has-child
               xmax = 0.1,
               with_mean = False )
   plt.grid(color='b', linestyle=':', linewidth=0.5)
+
   ax = plt.gca()
   ax.set_yticklabels([])
 
   fig = plt.gcf()
   fig.set_size_inches(8,4)
+
   draw.savefig(vat_pics_dir + "income-households", "VAT-over-income,-by-has-child.png")
 
 if True: # the CDF of (VAT / income) across households by has-elderly
   plt.close()
-  plt.title("The CDF of (VAT / income) across income-earning households" + "\n" +
+  plt.suptitle("CDFs of VAT across income-earning households" + "\n" +
             "without (solid) and with (dashed) an elderly member")
+
+  plt.subplot(1,2,1)
   plt.xlabel("VAT paid / income")
   plt.ylabel("Probability")
   styles = ["-",":"]
@@ -117,15 +121,35 @@ if True: # the CDF of (VAT / income) across households by has-elderly
               xmax = 0.1,
               with_mean = False )
   plt.grid(color='b', linestyle=':', linewidth=0.5)
+
+  plt.subplot(1,2,2)
+  plt.xlabel("VAT paid / income")
+  styles = ["-",":"]
+  for (style,value) in [(0,False),(1,True)]:
+    draw.cdf( households_w_income                             \
+                [ households_w_income["has-elderly"]==value ] \
+                [ "vat/value" ],
+              linestyle = styles[style],
+              xmax = 0.1,
+              with_mean = False )
+  plt.grid(color='b', linestyle=':', linewidth=0.5)
+
+  ax = plt.gca()
+  ax.set_yticklabels([])
+
+  fig = plt.gcf()
+  fig.set_size_inches(8,4)
+
   draw.savefig(vat_pics_dir + "income-households", "VAT-over-income,-by-has-elderly.png")
 
 if True: # the CDF of (VAT / income) across households by education
   plt.close()
-  plt.title("The CDF of (VAT / income) across income-earning households"     + "\n" +
-    "by maximum education level among a household's members." + "\n" +
-    "(red = ninguno, orange = preescolar, yellow = primaria," + "\n" +
-    "green = secundaria, blue = media, purple = superior,"    + "\n" +
-    "black = no sabe")
+
+  plt.suptitle("CDFs of VAT across income-earning households, by max education level among its members.\n" +
+    "(red = ninguno, orange = preescolar, yellow = primaria, green = secundaria,\n" +
+    "blue = media, purple = superior, black = no sabe")
+
+  plt.subplot(1,2,1)
   plt.xlabel("VAT paid / income")
   plt.ylabel("Probability")
   colors = ["red","orange","yellow", "green","blue","purple","black"]
@@ -138,4 +162,24 @@ if True: # the CDF of (VAT / income) across households by education
               with_mean = False,
               xmax = 0.1 )
   plt.grid(color='b', linestyle=':', linewidth=0.5)
+
+  plt.subplot(1,2,2)
+  plt.xlabel("VAT paid / income")
+  colors = ["red","orange","yellow", "green","blue","purple","black"]
+  categs = list(households_w_income["edu-max"].cat.categories)
+  for (color,categ) in zip ( list (range (0, len(categs))), categs):
+    draw.cdf( households_w_income                             \
+                [ households_w_income["edu-max"]==categ ] \
+                [ "vat/value" ],
+              color = colors[color],
+              with_mean = False,
+              xmax = 0.1 )
+  plt.grid(color='b', linestyle=':', linewidth=0.5)
+
+  ax = plt.gca()
+  ax.set_yticklabels([])
+
+  fig = plt.gcf()
+  fig.set_size_inches(8,4)
+
   draw.savefig(vat_pics_dir + "income-households", "VAT-over-income,-by-max-edu.png")
