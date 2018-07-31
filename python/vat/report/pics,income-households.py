@@ -42,8 +42,10 @@ if True: # the CDF of (VAT / income) by income decile
 
 if True: # the CDF of (VAT / income) across households by has-child
   plt.close()
-  plt.title("The CDF of (VAT / income) across income-earning households" + "\n" +
-            "with (solid) and without (dashed) children")
+  plt.suptitle("Two CDFs of VAT across income-earning households" + "\n" +
+               "with (solid) and without (dashed) children")
+
+  plt.subplot(1,2,1)
   plt.xlabel("VAT paid / income")
   plt.ylabel("Probability")
   styles = ["-",":"]
@@ -55,6 +57,24 @@ if True: # the CDF of (VAT / income) across households by has-child
               xmax = 0.1,
               with_mean = False )
   plt.grid(color='b', linestyle=':', linewidth=0.5)
+
+  plt.subplot(1,2,2)
+  plt.xlabel("VAT paid / spending")
+  styles = ["-",":"]
+  for (style,value) in [(0,False),(1,True)]:
+    draw.cdf( households_w_income                      \
+                [ households_w_income["has-child"]==value ] \
+                [ "vat/value" ],
+              linestyle = styles[style],
+              xmax = 0.1,
+              with_mean = False )
+  plt.grid(color='b', linestyle=':', linewidth=0.5)
+  ax = plt.gca()
+  ax.set_yticklabels([])
+
+  # plt.rcParams['figure.figsize'] = 8,5 # working in Jupyter but not the shell
+  fig = plt.gcf()
+  fig.set_size_inches(8,4)
   draw.savefig(vat_pics_dir + "income-households", "VAT-over-income,-by-has-child.png")
 
 if True: # the CDF of (VAT / income) across households by has-elderly
