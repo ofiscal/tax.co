@@ -14,14 +14,14 @@ households_w_income["edu-max"] = pd.Series( pd.Categorical(
 if True: # CDF of spending / income
   plt.close()
   draw.single_cdf( households_w_income["value"] / households_w_income["income"],
-                   "CDF of (spending / income) across households",
+                   "CDF of (spending / income) across income-earning households",
                    xmin = 10**(-3), xmax = 10**3,
                    logx = True)
   draw.savefig( vat_pics_dir + "income-households" , "spending-over-income" )
 
 if True: # the CDF of (VAT / income) by income decile
   plt.close()
-  plt.title("The CDF of (VAT / income), by income decile")
+  plt.title("The CDF of (VAT / income), by income decile, for income-earning households")
   plt.xlabel("VAT paid / income")
   plt.ylabel("Probability")
   styles = [":","-",":","-",":","-",":","-",":","-"]
@@ -42,7 +42,7 @@ if True: # the CDF of (VAT / income) by income decile
 
 if True: # the CDF of (VAT / income) across households by has-child
   plt.close()
-  plt.title("The CDF of (VAT / income) across households" + "\n" +
+  plt.title("The CDF of (VAT / income) across income-earning households" + "\n" +
             "with (solid) and without (dashed) children")
   plt.xlabel("VAT paid / income")
   plt.ylabel("Probability")
@@ -59,7 +59,7 @@ if True: # the CDF of (VAT / income) across households by has-child
 
 if True: # the CDF of (VAT / income) across households by has-elderly
   plt.close()
-  plt.title("The CDF of (VAT / income) across households" + "\n" +
+  plt.title("The CDF of (VAT / income) across income-earning households" + "\n" +
             "without (solid) and with (dashed) an elderly member")
   plt.xlabel("VAT paid / income")
   plt.ylabel("Probability")
@@ -76,7 +76,7 @@ if True: # the CDF of (VAT / income) across households by has-elderly
 
 if True: # the CDF of (VAT / income) across households by education
   plt.close()
-  plt.title("The CDF of (VAT / income) across households"     + "\n" +
+  plt.title("The CDF of (VAT / income) across income-earning households"     + "\n" +
     "by maximum education level among a household's members." + "\n" +
     "(red = ninguno, orange = preescolar, yellow = primaria," + "\n" +
     "green = secundaria, blue = media, purple = superior,"    + "\n" +
