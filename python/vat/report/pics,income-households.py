@@ -123,7 +123,7 @@ if True: # the CDF of (VAT / income) across households by has-elderly
   plt.grid(color='b', linestyle=':', linewidth=0.5)
 
   plt.subplot(1,2,2)
-  plt.xlabel("VAT paid / income")
+  plt.xlabel("VAT paid / spending")
   styles = ["-",":"]
   for (style,value) in [(0,False),(1,True)]:
     draw.cdf( households_w_income                             \
@@ -164,7 +164,7 @@ if True: # the CDF of (VAT / income) across households by education
   plt.grid(color='b', linestyle=':', linewidth=0.5)
 
   plt.subplot(1,2,2)
-  plt.xlabel("VAT paid / income")
+  plt.xlabel("VAT paid / spending")
   colors = ["red","orange","yellow", "green","blue","purple","black"]
   categs = list(households_w_income["edu-max"].cat.categories)
   for (color,categ) in zip ( list (range (0, len(categs))), categs):
