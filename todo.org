@@ -1,0 +1,15 @@
+CDF / spending: draw that for every income decile
+
+do things by estrato; assume someone's electrical estrato is their estrato
+
+is it half of households or half of individuals who have no income?
+
+is it missing sole proprietor income?
+  is the income data equally missing in the GEIH?
+
+if we had vat as a function of estrato, then we could
+  apply those rates to income data from a survey with more incomme data
+
+put log graphs in an appendix, put everything else linear
+
+every spendinng graph, draw for people even with zero income
