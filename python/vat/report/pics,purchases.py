@@ -3,12 +3,12 @@ if True: # purchase quantity, logx and linear
   draw.single_cdf( purchases["quantity"], "CDF of quantity per purchase",
                    xmin = 1, xmax = 1e3)
   draw.savefig( vat_pics_dir + "purchases" , "quantity" )
-  
+
   plt.close()
   draw.single_cdf( purchases["quantity"], "CDF of quantity per purchase",
                   xmin = 1, logx = True)
   draw.savefig( vat_pics_dir + "purchases/logx" , "quantity" )
-  
+
 plt.close()
 plt.title("Purchase frequency")
 plt.xticks( np.arange(1,11,1),
@@ -37,7 +37,7 @@ if True: # purchase value, logx and linear
                    xmin =1, logx = True)
   draw.savefig( vat_pics_dir + "purchases/logx" , "value" )
 
-if True: # VAT per purchase, logx and linear  
+if True: # VAT per purchase, logx and linear
   plt.close()
   draw.single_cdf( purchases["vat-paid"], "CDF of VAT paid per purchase",
                    xmin = 1, xmax = 1e4)
@@ -47,4 +47,3 @@ if True: # VAT per purchase, logx and linear
   draw.single_cdf( purchases["vat-paid"], "CDF of VAT paid per purchase",
                    xmin = 0.01, logx = True)
   draw.savefig( vat_pics_dir + "purchases/logx" , "vat-in-pesos" )
-  

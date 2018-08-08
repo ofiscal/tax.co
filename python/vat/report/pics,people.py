@@ -17,12 +17,19 @@ if True: # single series
     draw.single_cdf( people["income"], "CDF of income across individuals",
                      xmin = 10**5, xmax = 10**7, logx = True)
     draw.savefig( vat_pics_dir + "people/logx" , "income" )
-  
-  plt.close()
-  draw.single_cdf( people["value"],
-                   "CDF of spending per month across individuals",
-                   logx = True)
-  draw.savefig( vat_pics_dir + "people" , "spending-per-month" )
+
+  if True: # spending, logx and linear
+    plt.close()
+    draw.single_cdf( people["value"],
+                     "CDF of spending per month across individuals",
+                     xmax = 3e6)
+    draw.savefig( vat_pics_dir + "people" , "spending-per-month" )
+
+    plt.close()
+    draw.single_cdf( people["value"],
+                     "CDF of spending per month across individuals",
+                     logx = True)
+    draw.savefig( vat_pics_dir + "people/logx" , "spending-per-month" )
 
   plt.close()
   draw.single_cdf( people["transactions"],
@@ -40,7 +47,30 @@ if True: # age deciles
                  "output/vat-tables/recip-" + str(subsample),
                  "age-by-age-decile" )
 
-if True: # the CDF of income across individuals by age decile
+if True: # the CDF of income across individuals by age decile, logx and linear
+  plt.close()
+  plt.title("The CDF of income across"     + "\n" +
+    "individuals by age decile." + "\n" +
+    "(The youngest are solid lines, the oldest are dashed." + "\n" +
+    "Within those two groups, the youngest are red, the oldest blue.)" )
+  plt.xlabel("Income")
+  plt.ylabel("Probability")
+  styles = ["-"  ,"-"     ,"-"     ,"-"     ,"-",
+            ":"  ,":"     ,":"     ,":"     ,":"]
+  colors = ["red","orange","yellow", "green","blue",
+            "red","orange","yellow", "green","blue"]
+  for styleIndex in list(range(1,10)):
+    draw.cdf( people                            \
+                [ people["age-decile"]==float(styleIndex) ] \
+                [ "income" ],
+              linestyle = styles[styleIndex],
+              color = colors[styleIndex],
+              with_mean = False,
+              xmin = 10**5, xmax = 3e6
+              )
+  plt.grid(color='b', linestyle=':', linewidth=0.5)
+  draw.savefig(vat_pics_dir + "people", "income,by-age-decile.png")
+
   plt.close()
   plt.title("The CDF of income across"     + "\n" +
     "individuals by age decile." + "\n" +
@@ -62,4 +92,4 @@ if True: # the CDF of income across individuals by age decile
               xmin = 10**5, xmax = 10**7,
               logx = True)
   plt.grid(color='b', linestyle=':', linewidth=0.5)
-  draw.savefig(vat_pics_dir + "people", "income,by-age-decile.png")
+  draw.savefig(vat_pics_dir + "people/logx", "income,by-age-decile.png")
