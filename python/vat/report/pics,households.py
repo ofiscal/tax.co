@@ -1,11 +1,11 @@
 if True: # stats about households
   if True: # single series
     plt.close()
-    draw.single_cdf( households["members"], "Household size")
+    draw.single_cdf( households["members"], "Household size", xmax = 10)
     draw.savefig(vat_pics_dir + "households" , "size")
 
     plt.close()
-    draw.single_cdf( households["transactions"], "Transactions per month")
+    draw.single_cdf( households["transactions"], "Transactions per month", xmax = 150)
     draw.savefig( vat_pics_dir + "households" , "transactions-per-month" )
 
     plt.close()

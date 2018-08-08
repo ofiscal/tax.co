@@ -33,7 +33,8 @@ if True: # single series
 
   plt.close()
   draw.single_cdf( people["transactions"],
-                   "CDF of transactions per month across individuals" )
+                   "CDF of transactions per month across individuals",
+                   xmax = 50)
   draw.savefig( vat_pics_dir + "people" , "transactions-per-month" )
 
 

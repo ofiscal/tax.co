@@ -1,16 +1,16 @@
-* TODO code-internal
-** TODO BUG : the dimensions of income-households/spending-over-income.png are responding inversely to the arguments of fig.set_size_inches
+* code-internal
 ** pdflatex: send reports to a file, not stdout
 *** this way it doesn't drown the python error reports
 * check data
+** What about those 200 / 1400 missing COICOP codes?
 ** is it half of households or half of individuals who have no income?
 ** is it missing sole proprietor income?
 *** is the income data equally missing in the GEIH?
-** do 80% of purchases carry 0 VAT?
+** TODO do 80% of purchases carry 0 VAT?
 * add features
-** ? include people/spending
+** ? include people/spending (already drawn)
 ** make x-ticks more readable on some figures (e.g. fig 7, people/income)
-** put log graphs in an appendix, put everything else linear
+** TODO put log graphs in an appendix, put everything else linear
 ** every spendinng graph, draw for people even with zero income
 ** CDF / spending: draw that for every income decile
 ** do things by estrato; assume someone's electrical estrato is their estrato
