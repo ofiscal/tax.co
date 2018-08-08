@@ -1,4 +1,5 @@
-* code-internal
+* TODO code-internal
+** TODO BUG : the dimensions of income-households/spending-over-income.png are responding inversely to the arguments of fig.set_size_inches
 ** pdflatex: send reports to a file, not stdout
 *** this way it doesn't drown the python error reports
 * check data
@@ -15,4 +16,3 @@
 ** do things by estrato; assume someone's electrical estrato is their estrato
 ** if we had VAT as a function of estrato, then we could
 *** apply those rates to income data from a survey with more incomme data
-   

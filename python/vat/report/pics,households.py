@@ -16,12 +16,18 @@ if True: # stats about households
     draw.single_cdf( households["age-max"], "Age of oldest member")
     draw.savefig( vat_pics_dir + "households" , "oldest" )
 
-    plt.close()
-    draw.single_cdf( households["income"], "Household income",
-                     xmin = 10**4, # as a monthly income in pesos, that's basically zero
-                     logx = True)
-    draw.savefig( vat_pics_dir + "households" , "income" )
+    if True: # household income, logx and linear x
+      plt.close()
+      draw.single_cdf( households["income"], "Household income",
+                       xmax = 3e6)
+      draw.savefig( vat_pics_dir + "households" , "income" )
 
+      plt.close()
+      draw.single_cdf( households["income"], "Household income",
+                       xmin = 10**4, # as a monthly income in pesos, that's basically zero
+                       logx = True)
+      draw.savefig( vat_pics_dir + "households/logx" , "income" )
+  
     plt.close()
     plt.title("Highest education level among household members")
     plt.xticks( np.arange(1,10,1),

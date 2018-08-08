@@ -11,13 +11,22 @@ households_w_income["edu-max"] = pd.Series( pd.Categorical(
                    , categories = list( edu_key.values() )
                    , ordered = True) ) )
 
-if True: # CDF of spending / income
+if True: # CDF of spending / income, logx and linear x
+  plt.close()
+  x = households_w_income["value"] / households_w_income["income"]
+  draw.single_cdf( x[ x<10 ], # todo ? not restricting x here => a range error
+                   "CDF of (spending / income) across income-earning households"
+                   , xmin = 0, xmax = 8
+                 )
+  draw.savefig( vat_pics_dir + "income-households" , "spending-over-income" )
+  del(x)
+
   plt.close()
   draw.single_cdf( households_w_income["value"] / households_w_income["income"],
                    "CDF of (spending / income) across income-earning households",
                    xmin = 10**(-3), xmax = 10**3,
                    logx = True)
-  draw.savefig( vat_pics_dir + "income-households" , "spending-over-income" )
+  draw.savefig( vat_pics_dir + "income-households/logx" , "spending-over-income" )
 
 if True: # CDFs of VAT by income decile
   plt.close()
