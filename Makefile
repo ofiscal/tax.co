@@ -102,11 +102,11 @@ vat_pics_income-households_rootless =                      \
   income-households/spending-over-income.png               \
   income-households/VAT-over-income,-by-income-decile.png
 vat_pics_people_rootless =                                 \
-  people/transactions-per-month.png                        \
-  people/spending-per-month.png                            \
   people/age.png                                           \
   people/education.png                                     \
-  people/income.png
+  people/income.png                                        \
+  people/spending-per-month.png                            \
+  people/transactions-per-month.png
 vat_pics_purchases_rootless = purchases/value.png          \
   purchases/frequency.png                                  \
   purchases/quantity.png                                   \

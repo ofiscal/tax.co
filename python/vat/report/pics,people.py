@@ -1,5 +1,9 @@
 if True: # single series
   plt.close()
+  draw.single_cdf( people["age"], "CDF of age across individuals")
+  draw.savefig( vat_pics_dir + "people" , "age" )
+
+  plt.close()
   util.tabulate_series(people["education"]).plot.bar()
   draw.savefig( vat_pics_dir + "people" , "education" )
 
