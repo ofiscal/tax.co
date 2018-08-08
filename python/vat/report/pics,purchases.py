@@ -1,14 +1,14 @@
-plt.close()
-draw.single_cdf( purchases["quantity"], "CDF of quantity per purchase",
-                xmin = 1, logx = True)
-draw.savefig( vat_pics_dir + "purchases" , "quantity" )
-
-# Hard to read; the simple table (next) seems better.
-  # plt.close()
-  # draw.single_cdf( purchases["frequency"], "CDF of purchase frequency",
-  #                  logx = True)
-  # draw.savefig( vat_pics_dir + "purchases" , "frequency-cdf" )
-
+if True: # purchase quantity, with and without logs
+  plt.close()
+  draw.single_cdf( purchases["quantity"], "CDF of quantity per purchase",
+                  xmin = 1)
+  draw.savefig( vat_pics_dir + "purchases" , "quantity" )
+  
+  plt.close()
+  draw.single_cdf( purchases["quantity"], "CDF of quantity per purchase",
+                  xmin = 1, logx = True)
+  draw.savefig( vat_pics_dir + "purchases/logx" , "quantity" )
+  
 plt.close()
 plt.title("Purchase frequency")
 plt.xticks( np.arange(1,11,1),

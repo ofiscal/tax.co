@@ -1,17 +1,19 @@
 if True: # single series
   plt.close()
-  draw.single_cdf( people["age"], "CDF of age across individuals")
-  draw.savefig( vat_pics_dir + "people" , "age" )
-
-  plt.close()
   util.tabulate_series(people["education"]).plot.bar()
   draw.savefig( vat_pics_dir + "people" , "education" )
 
-  plt.close()
-  draw.single_cdf( people["income"], "CDF of income across individuals",
-                   xmin = 10**5, xmax = 10**7, logx = True)
-  draw.savefig( vat_pics_dir + "people" , "income" )
+  if True: # income, logx and normal
+    plt.close()
+    draw.single_cdf( people["income"], "CDF of income across individuals",
+                     xmin = 10**5, xmax = 4e6 )
+    draw.savefig( vat_pics_dir + "people" , "income" )
 
+    plt.close()
+    draw.single_cdf( people["income"], "CDF of income across individuals",
+                     xmin = 10**5, xmax = 10**7, logx = True)
+    draw.savefig( vat_pics_dir + "people/logx" , "income" )
+  
   plt.close()
   draw.single_cdf( people["value"],
                    "CDF of spending per month across individuals",
