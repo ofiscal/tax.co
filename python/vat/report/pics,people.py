@@ -11,6 +11,7 @@ if True: # single series
     plt.close()
     draw.single_cdf( people["income"], "CDF of income across individuals",
                      xmin = 10**5, xmax = 4e6 )
+    plt.gca().xaxis.set_major_formatter(EngFormatter(places=2))
     draw.savefig( vat_pics_dir + "people" , "income" )
 
     plt.close()
@@ -23,6 +24,7 @@ if True: # single series
     draw.single_cdf( people["value"],
                      "CDF of spending per month across individuals",
                      xmax = 3e6)
+    plt.gca().xaxis.set_major_formatter(EngFormatter(places=2))
     draw.savefig( vat_pics_dir + "people" , "spending-per-month" )
 
     plt.close()
@@ -70,6 +72,7 @@ if True: # the CDF of income across individuals by age decile, logx and linear
               xmin = 10**5, xmax = 3e6
               )
   plt.grid(color='b', linestyle=':', linewidth=0.5)
+  plt.gca().xaxis.set_major_formatter(EngFormatter(places=2))
   draw.savefig(vat_pics_dir + "people", "income,by-age-decile.png")
 
   plt.close()
