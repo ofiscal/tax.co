@@ -11,6 +11,7 @@ import python.vat.files as vatfiles
 import python.vat.output_io as oio
 import python.draw.util as draw
 
+from matplotlib.ticker import EngFormatter
 
 subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
 vat_pics_dir = "output/vat-pics/recip-" + str(subsample) + "/"

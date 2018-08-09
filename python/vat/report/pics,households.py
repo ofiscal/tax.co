@@ -20,6 +20,7 @@ if True: # stats about households
       plt.close()
       draw.single_cdf( households["income"], "Household income",
                        xmax = 3e6)
+      plt.gca().xaxis.set_major_formatter(EngFormatter(places=2))
       draw.savefig( vat_pics_dir + "households" , "income" )
 
       plt.close()

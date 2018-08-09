@@ -18,6 +18,7 @@ if True: # CDF of spending / income, logx and linear x
                    "CDF of (spending / income) across income-earning households"
                    , xmin = 0, xmax = 8
                  )
+  plt.gca().xaxis.set_major_formatter(EngFormatter(places=2))
   draw.savefig( vat_pics_dir + "income-households" , "spending-over-income" )
   del(x)
 

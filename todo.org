@@ -9,8 +9,6 @@
 ** TODO do 80% of purchases carry 0 VAT?
 * add features
 ** ? include people/spending (already drawn)
-** make x-ticks more readable on some figures (e.g. fig 7, people/income)
-** TODO put log graphs in an appendix, put everything else linear
 ** every spendinng graph, draw for people even with zero income
 ** CDF / spending: draw that for every income decile
 ** do things by estrato; assume someone's electrical estrato is their estrato
