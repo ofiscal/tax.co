@@ -1,0 +1,28 @@
+* about the data|results
+** the 200 / 1400 missing COICOP codes appear not to matter much
+*** the 80% of purchases that carry 0 VAT are due to a literally 0 VAT, not a NaN VAT
+*** in the 10% sample less than 0.3% of the purchases have a NaN vat rate
+x = purchases["vat-rate"]
+>>> len(x)
+7458243
+>>> len( x[ x.isnull() ] )
+28986
+>>> 28986 / 7458243
+0.0038864381329490067
+* todo
+** DANE ? have they emailed registration confirmation yet
+** code-internal
+*** pdflatex: send reports to a file, not stdout
+**** this way it doesn't drown the python error reports
+** check data
+*** is it half of households or half of individuals who have no income?
+*** is it missing sole proprietor income?
+**** is the income data equally missing in the GEIH?
+** add features
+*** ? include people/spending (already drawn)
+*** make x-ticks more readable on some figures (e.g. fig 7, people/income)
+*** TODO every spendinng graph, draw for people even with zero income
+*** TODO CDF / spending: draw that for every income decile
+*** do things by estrato; assume someone's electrical estrato is their estrato
+*** if we had VAT as a function of estrato, then we could
+**** apply those rates to income data from a survey with more incomme data
