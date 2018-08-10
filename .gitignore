@@ -18,8 +18,15 @@ output/vat-tables/
 
 all-but-data/
 
-data/enig-2007
-data/enph-2017
+data/enig-2007/*.tgz
+data/enig-2007/recip*
+
+data/enph-2017/hand-extracted
+data/enph-2017/pre-publication/*.tgz
+data/enph-2017/pre-publication/recip*
+data/enph-2017/*.tar.gz
+data/enph-2017/recip*
+
 data/vat
 data/*.zip
 

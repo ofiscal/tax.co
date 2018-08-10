@@ -1,4 +1,5 @@
 * about the data|results
+** The ENPH : http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
 ** the 200 / 1400 missing COICOP codes appear not to matter much
 *** the 80% of purchases that carry 0 VAT are due to a literally 0 VAT, not a NaN VAT
 *** in the 10% sample less than 0.3% of the purchases have a NaN vat rate

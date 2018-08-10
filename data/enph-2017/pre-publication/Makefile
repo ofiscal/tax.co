@@ -1,4 +1,4 @@
-.PHONY: raw_data
+.DEFAULT_GOAL := $(enph_orig)
 
 ##=##=##=## Variables
 
@@ -25,25 +25,8 @@ enph_files = coicop              \
   st2_sea_enc_hog_csv            \
   st2_sea_enc_per_csv
 
-enph_orig = $(addsuffix .dta, $(addprefix enph-2017/orig-dta/, $(enph_files)))
+enph_orig = $(addsuffix .dta, $(enph_files)))
 
-
-##=##=##=## Recipes
-
-raw_data: $(enph_orig) vat/coicop-vat.csv
-
-vat/coicop-vat.csv:
-	mkdir -p vat
-	mv coicop-vat.csv vat
-
-
-##=## Build the ENPH 2017
-
-enph-2017/enph-2017.orig-dta.tgz:
-	mkdir -p enph-2017
-	mv enph-2017.orig-dta.tgz enph-2017
-
-$(enph_orig): enph-2017/enph-2017.orig-dta.tgz
-	cd enph-2017;                       \
-	  tar -xvzf enph-2017.orig-dta.tgz; \
-	  touch orig-dta/*.dta  # else the rule repeats itself
+$(enph_orig): enph-2017.orig-dta.tgz
+	tar -xvzf enph-2017.orig-dta.tgz
+	touch orig-dta/*.dta  # else the rule repeats itself
