@@ -1,3 +1,4 @@
+* put filename-cleaned raw data on Sharepoint
 * about the data|results
 ** The ENPH : http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
 ** the 200 / 1400 missing COICOP codes appear not to matter much
