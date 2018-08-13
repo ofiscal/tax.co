@@ -1,4 +1,5 @@
-* put filename-cleaned raw data on Sharepoint
+* put filename-cleaned raw data on OneDrive
+** How I changed them: Change all spaces in filenames to underscores. Change files ending in .txt to end in .csv"
 * about the data|results
 ** The ENPH : http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
 ** the 200 / 1400 missing COICOP codes appear not to matter much
