@@ -1,5 +1,3 @@
-# .DEFAULT_GOAL := test
-
 enph_folders = Caracteristicas_generales_personas                         \
   Gastos_diarios_del_hogar_Urbano_-_Comidas_preparadas_fuera_del_hogar	  \
   Gastos_diarios_personales_Urbano					  \
