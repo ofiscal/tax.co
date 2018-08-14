@@ -1,4 +1,8 @@
 * about the data|results
+** files separated by something other than (;)
+Gastos_menos_frecuentes_-_Articulos.csv
+Gastos_diarios_Urbanos.csv
+
 ** if no SS payments and (or?) making less than min wage, informal
 ** The ENPH : http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
 ** the 200 / 1400 missing COICOP codes appear not to matter much
@@ -24,6 +28,19 @@ x = purchases["vat-rate"]
 *** is it missing sole proprietor income?
 **** is the income data equally missing in the GEIH?
 ** add features
+*** household VAT rates by income decile
+*** regional VAT rates
+at least for ...
+  - Bogota
+  - Medellín
+  - Cali
+  - Barranquilla+Soledad (one metro area)
+  - Bucaramanga
+  - Cartagena
+  - Cúcuta
+  - Ibagué
+  - Pasto
+  - Popayán
 *** ? include people/spending (already drawn)
 *** make x-ticks more readable on some figures (e.g. fig 7, people/income)
 *** TODO every spendinng graph, draw for people even with zero income
