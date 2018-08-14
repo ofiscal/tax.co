@@ -25,6 +25,7 @@ data/enig-2007/orig-txt
 data/enph-2017/*.tar.gz
 data/enph-2017/orig
 data/enph-2017/README*
+data/enph-2017/recip-1*
 data/enph-2017/pre-publication/*.tgz
 data/enph-2017/pre-publication/recip-1*
 data/enph-2017/pre-publication/orig-dta/

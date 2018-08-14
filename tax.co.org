@@ -1,8 +1,4 @@
 * about the data|results
-** files separated by something other than (;)
-Gastos_menos_frecuentes_-_Articulos.csv
-Gastos_diarios_Urbanos.csv
-
 ** if no SS payments and (or?) making less than min wage, informal
 ** The ENPH : http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
 ** the 200 / 1400 missing COICOP codes appear not to matter much
@@ -16,6 +12,10 @@ x = purchases["vat-rate"]
 >>> 28986 / 7458243
 0.0038864381329490067
 * todo
+** TODO NEXT: match old to new file
+# Plan: For each 1/100 sample file in the new, and each in the old that was used in the VAT analysis,
+# create a comma-separated file (not a table) with its name, number of fields, and those fields.
+# View as a spreadsheet. Sort on number of fields. Then match by hand.
 ** put filename-cleaned raw data on OneDrive
 *** How I changed them: Change all spaces in filenames to underscores. Change files ending in .txt to end in .csv"
 
