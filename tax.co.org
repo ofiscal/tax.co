@@ -12,10 +12,8 @@ x = purchases["vat-rate"]
 >>> 28986 / 7458243
 0.0038864381329490067
 * todo
-** TODO NEXT: match old to new file
-# Plan: For each 1/100 sample file in the new, and each in the old that was used in the VAT analysis,
-# create a comma-separated file (not a table) with its name, number of fields, and those fields.
-# View as a spreadsheet. Sort on number of fields. Then match by hand.
+** TODO NEXT: match variables in pre-release ENPH to those in official ENP
+*** there is no file-to-file correspondence; must match individual variables.
 ** put filename-cleaned raw data on OneDrive
 *** How I changed them: Change all spaces in filenames to underscores. Change files ending in .txt to end in .csv"
 

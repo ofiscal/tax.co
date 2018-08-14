@@ -63,5 +63,6 @@ acc2 = sorted(acc, key = lambda x: x[0])
 
 target = open("file-columns.txt","w+")
 for x in acc2:
-  target.write(str(x[0]) + " " + x[1] + "\n")
+  target.write( (str(x[0]) + " " + x[1] + "\n")
+                .lower() )
 target.close()
