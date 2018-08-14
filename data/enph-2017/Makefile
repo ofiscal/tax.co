@@ -32,3 +32,7 @@ $(all): ENPH-2016-official.tar.gz
 	rmdir temp-for-unpacking
 	mkdir orig
 	mv csv dta sav orig
+
+        # replace tab with semicolon, to make these like the others
+	sed -i -r "s/\t/\;/g" orig/csv/Gastos_menos_frecuentes_-_Articulos.csv \
+                              orig/csv/Gastos_diarios_Urbanos.csv
