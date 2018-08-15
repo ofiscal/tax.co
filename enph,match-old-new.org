@@ -1,0 +1,74 @@
+* where "=" appears below, it means for purposes of the VAT analysis.
+* common variables
+** directorio <-> every file
+** orden <-> every official file
+* problem files
+** st2_sea_enc_gdr_csv
+*** TODO in both : nc2r_ca_p3  nc2r_ca_p4_s1  nc2r_ca_p5_s1  nc2r_ca_p6_s1  nc2r_ca_p7_s1  nc2r_ca_p8_s1
+**** gastos_personales_rural_-_comidas_preparadas_fuera_del_hogar
+**** gastos_semanales_rurales
+*** nc2r_ca_p4_s2
+**** gastos_semanales_rurales
+** st2_sea_enc_gmf_csv
+*** gastos_menos_frecuentes_-_articulos
+**** p10270
+**** p10270s2
+**** p10270s3
+**** p10270s4
+*** TODO !! absent
+**** p10270_fc_s1
+**** p10270s1
+
+** st2_sea_enc_gcfhr_ce_csv
+*** TODO absent
+**** nc2r_ce_p4s2 !! absent. this is "unit of measure".
+**** nc2r_ce_p5 !! absent. this is "purchased=1".
+*** most variables <->  gastos_personales_rural
+**** nc2r_ce_p6
+**** nc2r_ce_p7
+**** nc2r_ce_p8
+**** nc2r_ce_p2
+**** nc2r_ce_p4s1
+* files maybe in 1-1 correspondence
+** st2_sea_enc_gcfhr_csv = gastos_semanales_rural_-_comidas_preparadas_fuera_del_hogar
+*** nh_cgprcfh_p1
+*** nh_cgprcfh_p1s1
+*** nh_cgprcfh_p2
+*** nh_cgprcfh_p3
+*** nh_cgprcfh_p4
+*** nh_cgprcfh_p5
+*** nh_cgprcfh_p6
+*** nh_cgprcfh_p7
+** st2_sea_enc_gcfhu_diarios_csv = gastos_diarios_del_hogar_urbano_-_comidas_preparadas_fuera_del_hogar
+*** nh_cgducfh_p1
+*** nh_cgducfh_p1_1
+*** nh_cgducfh_p2
+*** nh_cgducfh_p3
+*** nh_cgducfh_p4
+*** nh_cgducfh_p5
+*** nh_cgducfh_p6
+*** nh_cgducfh_p7
+** st2_sea_enc_gcfhup_diarios_csv = gastos_personales_urbano_-_comidas_preparadas_fuera_del_hogar
+*** nh_cgpucfh_p1
+*** nh_cgpucfh_p1_s1
+*** nh_cgpucfh_p2
+*** nh_cgpucfh_p3
+*** nh_cgpucfh_p4
+*** nh_cgpucfh_p5
+*** nh_cgpucfh_p6
+** st2_sea_enc_gsdp_diarios_csv = gastos_diarios_personales_urbano
+*** nc4_cc_p1_1
+*** nc4_cc_p2
+*** nc4_cc_p3
+*** nc4_cc_p4
+*** nc4_cc_p5
+*** nc4_cc_p6
+** st2_sea_enc_gsdu_diarios_csv = gastos_diarios_urbanos
+*** nh_cgdu_p1
+*** nh_cgdu_p2
+*** nh_cgdu_p3
+*** nh_cgdu_p5
+*** nh_cgdu_p7b1379
+*** nh_cgdu_p8
+*** nh_cgdu_p9
+*** nh_cgdu_p10
