@@ -1,6 +1,6 @@
 * about the data|results
-** if no SS payments and (or?) making less than min wage, informal
 ** The ENPH : http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
+** if no SS payments and (or?) making less than min wage, informal
 ** the 200 / 1400 missing COICOP codes appear not to matter much
 *** the 80% of purchases that carry 0 VAT are due to a literally 0 VAT, not a NaN VAT
 *** in the 10% sample less than 0.3% of the purchases have a NaN vat rate
@@ -13,7 +13,9 @@ x = purchases["vat-rate"]
 0.0038864381329490067
 * todo
 ** TODO NEXT: match variables in pre-release ENPH to those in official ENP
-
+*** load every data set
+*** write a function which, given two data sets and two column names, summarizes them in one table
+*** apply it to every suspected pair, and eyeball the results
 ** put filename-cleaned raw data on OneDrive
 *** How I changed them: Change all spaces in filenames to underscores. Change files ending in .txt to end in .csv"
 
