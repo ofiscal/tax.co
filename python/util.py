@@ -35,6 +35,11 @@ def describeWithMissing(df):
                    ).transpose()
   return yy.append( x )
 
+def compare_2_columns_from_different_tables (df1, colname1, df2, colname2):
+  x = util.describeWithMissing( df1[[ colname1 ]] )
+  y = util.describeWithMissing( df2[[ colname2 ]] )
+  return x.join(y)
+
 def dwmParamByGroup (describeParam, groupParam, df):
   theGroups = df.groupby(groupParam)
   dfs = [ theGroups . get_group(x) [describeParam]
