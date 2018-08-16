@@ -1,4 +1,4 @@
-output_folder = "output/enph_compare-official-to-pre-release/"
+output_folder = "output/enph,compare-official-to-pre-release/"
 
 old_folder = "data/enph-2017/pre-publication/recip-100/"
 
