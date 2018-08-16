@@ -1,4 +1,4 @@
-import pandas as pd
+output_folder = "output/enph_compare-official-to-pre-release/"
 
 old_folder = "data/enph-2017/pre-publication/recip-100/"
 
@@ -44,25 +44,3 @@ new_files = [ "Caracteristicas_generales_personas"
             , "Gastos_semanales_Rurales_-_Mercados"
             , "Viviendas_y_hogares"
             ]
-
-acc = []
-
-for f in old_files:
-  df = pd.read_csv(old_folder + f + ".csv")
-  cols = list(df.columns)
-  acc.append( ( len(cols)
-              , f + str(cols) + "\n" ) )
-
-for f in new_files:
-  df = pd.read_csv(new_folder + f + ".csv")
-  cols = list(df.columns)
-  acc.append( ( len(cols)
-              , f + str(cols) + "\n" ) )
-
-acc2 = sorted(acc, key = lambda x: x[0])
-
-target = open("file-columns.txt","w+")
-for x in acc2:
-  target.write( (str(x[0]) + " " + x[1] + "\n")
-                .lower() )
-target.close()
