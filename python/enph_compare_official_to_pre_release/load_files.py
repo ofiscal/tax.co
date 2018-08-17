@@ -1,4 +1,5 @@
 import python.enph_compare_official_to_pre_release.files as filetree
+import numpy as np
 
 if True: # old files
   coicop                 = pd.read_csv( filetree.old_folder + "coicop.csv")
@@ -25,7 +26,6 @@ if True: # old files
   per                    = pd.read_csv( filetree.old_folder + "st2_sea_enc_per_csv.csv")
 
 
-
 if True: # new files
   caracteristicas_generales_personas                 = pd.read_csv( filetree.new_folder + "Caracteristicas_generales_personas.csv")
   gastos_diarios_urbano__comidas_preparadas_fuera    = pd.read_csv( filetree.new_folder + "Gastos_diarios_del_hogar_Urbano_-_Comidas_preparadas_fuera_del_hogar.csv")
@@ -43,28 +43,27 @@ if True: # new files
   gastos_semanales_rurales__mercados                 = pd.read_csv( filetree.new_folder + "Gastos_semanales_Rurales_-_Mercados.csv")
   viviendas_y_hogares                                = pd.read_csv( filetree.new_folder + "Viviendas_y_hogares.csv")
 
-for df in [ caracteristicas_generales_personas
-          , gastos_diarios_urbano__comidas_preparadas_fuera
-          , gastos_diarios_personales_urbano
-          , gastos_diarios_urbanos
-          , gastos_diarios_urbanos__mercados
-          , gastos_menos_frecuentes__articulos
-          , gastos_menos_frecuentes__medio_de_pago
-          , gastos_personales_rural__comidas_preparadas_fuera
-          , gastos_personales_rural
-          , gastos_personales_urbano__comidas_preparadas_fuera
-          , gastos_semanales_rural__capitulo_c
-          , gastos_semanales_rural__comidas_preparadas_fuera
-          , gastos_semanales_rurales
-          , gastos_semanales_rurales__mercados
-          , viviendas_y_hogares ]:
-  df.columns =  map(str.lower, df.columns)
+newEnphsDfs = [ caracteristicas_generales_personas
+              , gastos_diarios_urbano__comidas_preparadas_fuera
+              , gastos_diarios_personales_urbano
+              , gastos_diarios_urbanos
+              , gastos_diarios_urbanos__mercados
+              , gastos_menos_frecuentes__articulos
+              , gastos_menos_frecuentes__medio_de_pago
+              , gastos_personales_rural__comidas_preparadas_fuera
+              , gastos_personales_rural
+              , gastos_personales_urbano__comidas_preparadas_fuera
+              , gastos_semanales_rural__capitulo_c
+              , gastos_semanales_rural__comidas_preparadas_fuera
+              , gastos_semanales_rurales
+              , gastos_semanales_rurales__mercados
+              , viviendas_y_hogares ]
 
-if True: # clean the new data
-  if True: # gastos_semanales_rural__comidas_preparadas_fuera
-    gastos_semanales_rural__comidas_preparadas_fuera = (
-      pd.read_csv( filetree.new_folder + "Gastos_semanales_Rural_-_Comidas_preparadas_fuera_del_hogar.csv") )
-    x = gastos_semanales_rural__comidas_preparadas_fuera
-    x.columns = map(str.lower, x.columns)
-    x["nh_cgprcfh_p1s1"] = pd.to_numeric( x["nh_cgprcfh_p1s1"].str.strip() )
-    
+for df in newEnphsDfs:
+  df.columns = map(str.lower, df.columns)
+  for c in df.columns:
+    if df[c].dtype == 'O':
+      df[c] = df[c].str.strip()
+      df[c] = df[c].replace("", np.nan)
+      df[c] = pd.to_numeric( df[c]
+                           , errors='ignore' ) # ignore operation if any value won't convert

@@ -5,7 +5,7 @@ import python.enph_compare_official_to_pre_release.files as filetree
 
 
 exec( open("python/enph_compare_official_to_pre_release/load_files.py").read() )
-
+ 
 def go                                                (a,b,c,d):
   return util.compare_2_columns_from_different_tables (a,b,c,d)
 
