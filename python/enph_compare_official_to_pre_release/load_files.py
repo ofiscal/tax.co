@@ -1,3 +1,4 @@
+import pandas as pd
 import python.enph_compare_official_to_pre_release.files as filetree
 import numpy as np
 
@@ -61,9 +62,15 @@ newEnphsDfs = [ caracteristicas_generales_personas
 
 for df in newEnphsDfs:
   df.columns = map(str.lower, df.columns)
+
+gastos_semanales_rural__comidas_preparadas_fuera[  "nh_cgprcfh_p2"] = (
+  gastos_semanales_rural__comidas_preparadas_fuera["nh_cgprcfh_p2"].replace(",1","1") )
+
+for df in newEnphsDfs:
   for c in df.columns:
     if df[c].dtype == 'O':
       df[c] = df[c].str.strip()
       df[c] = df[c].replace("", np.nan)
       df[c] = pd.to_numeric( df[c]
                            , errors='ignore' ) # ignore operation if any value won't convert
+
