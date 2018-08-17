@@ -65,11 +65,11 @@
 *** nc4_cc_p5: value. great match.
 *** nc4_cc_p6: freq. great match
 ** st2_sea_enc_gsdu_diarios_csv = gastos_diarios_urbanos
-*** nh_cgdu_p1
-*** nh_cgdu_p2
-*** nh_cgdu_p3
-*** nh_cgdu_p5
-*** nh_cgdu_p7b1379
-*** nh_cgdu_p8
-*** nh_cgdu_p9
-*** nh_cgdu_p10
+*** nh_cgdu_p1: coicop, plausible
+*** nh_cgdu_p2: quantity, plausible
+*** nh_cgdu_p3: unit-of-measure, close match
+*** nh_cgdu_p5: purchased=1, close match
+*** nh_cgdu_p7b1379: where bought, plausible
+*** nh_cgdu_p8: value, close match
+*** nh_cgdu_p9: freq, close match
+*** nh_cgdu_p10: household-communal, close match
