@@ -31,14 +31,15 @@
 **** nc2r_ce_p4s1
 * files maybe in 1-1 correspondence
 ** st2_sea_enc_gcfhr_csv = gastos_semanales_rural_-_comidas_preparadas_fuera_del_hogar
-*** nh_cgprcfh_p1: unused in VAT analysis. verbal. match plausible.
+*** TODO in the new data all of these variables are at least 7/11 missing
+*** nh_cgprcfh_p1: unused in VAT analysis. verbal. plausible match.
 *** nh_cgprcfh_p1s1: coicop. looks matched, but 7/11 missing in new data
-*** nh_cgprcfh_p2
-*** nh_cgprcfh_p3
-*** nh_cgprcfh_p4
-*** nh_cgprcfh_p5
-*** nh_cgprcfh_p6
-*** nh_cgprcfh_p7
+*** TODO nh_cgprcfh_p2: totally different
+*** nh_cgprcfh_p3: plausible match.
+*** nh_cgprcfh_p4: plausible match.
+*** nh_cgprcfh_p5: plausible match.
+*** nh_cgprcfh_p6: plausible match.
+*** nh_cgprcfh_p7: plausible match but almost entirely missing.
 ** st2_sea_enc_gcfhu_diarios_csv = gastos_diarios_del_hogar_urbano_-_comidas_preparadas_fuera_del_hogar
 *** nh_cgducfh_p1
 *** nh_cgducfh_p1_1
