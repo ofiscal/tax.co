@@ -70,6 +70,14 @@ gastos_diarios_urbano__comidas_preparadas_fuera[  "nh_cgducfh_p2"] = (
   gastos_diarios_urbano__comidas_preparadas_fuera["nh_cgducfh_p2"].replace(
     { ",5":5, ",25":25 } ) )
 
+gastos_personales_urbano__comidas_preparadas_fuera[  "nh_cgpucfh_p2"] = (
+  gastos_personales_urbano__comidas_preparadas_fuera["nh_cgpucfh_p2"].replace(
+    {  ",1":1
+       , ",25":25
+       , ",5":5
+       , "1,4":14
+       , "1,5":15 } ) )
+
 for df in newEnphsDfs:
   for c in df.columns:
     if df[c].dtype == 'O':
