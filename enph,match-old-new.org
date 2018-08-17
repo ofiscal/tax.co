@@ -41,14 +41,14 @@
 *** nh_cgprcfh_p6: plausible match.
 *** nh_cgprcfh_p7: plausible match but almost entirely missing.
 ** st2_sea_enc_gcfhu_diarios_csv = gastos_diarios_del_hogar_urbano_-_comidas_preparadas_fuera_del_hogar
-*** nh_cgducfh_p1
-*** nh_cgducfh_p1_1
-*** nh_cgducfh_p2
-*** nh_cgducfh_p3
-*** nh_cgducfh_p4
-*** nh_cgducfh_p5
-*** nh_cgducfh_p6
-*** nh_cgducfh_p7
+*** nh_cgducfh_p1: verbal. plausible match.
+*** TODO nh_cgducfh_p1_1: coicop. somewhat plausible match.
+*** nh_cgducfh_p2: quantity. plausible match.
+*** nh_cgducfh_p3: purchased=1. great match.
+*** nh_cgducfh_p4: where-bought. good match.
+*** nh_cgducfh_p5: value. good match.
+*** nh_cgducfh_p6: freq. great match.
+*** nh_cgducfh_p7: household-communal. great match.
 ** st2_sea_enc_gcfhup_diarios_csv = gastos_personales_urbano_-_comidas_preparadas_fuera_del_hogar
 *** nh_cgpucfh_p1
 *** nh_cgpucfh_p1_s1

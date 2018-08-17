@@ -18,6 +18,7 @@ go( gcfhr, "nh_cgprcfh_p5"  , gastos_semanales_rural__comidas_preparadas_fuera, 
 go( gcfhr, "nh_cgprcfh_p6"  , gastos_semanales_rural__comidas_preparadas_fuera, "nh_cgprcfh_p6" )
 go( gcfhr, "nh_cgprcfh_p7"  , gastos_semanales_rural__comidas_preparadas_fuera, "nh_cgprcfh_p7" )
 
+go( gcfhu_diarios, "nh_cgducfh_p1"  , gastos_diarios_urbano__comidas_preparadas_fuera, "nh_cgducfh_p1")
 go( gcfhu_diarios, "nh_cgducfh_p1_1", gastos_diarios_urbano__comidas_preparadas_fuera, "nh_cgducfh_p1_1")
 go( gcfhu_diarios, "nh_cgducfh_p2"  , gastos_diarios_urbano__comidas_preparadas_fuera, "nh_cgducfh_p2")
 go( gcfhu_diarios, "nh_cgducfh_p3"  , gastos_diarios_urbano__comidas_preparadas_fuera, "nh_cgducfh_p3")

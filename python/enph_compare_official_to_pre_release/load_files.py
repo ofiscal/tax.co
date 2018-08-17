@@ -66,6 +66,10 @@ for df in newEnphsDfs:
 gastos_semanales_rural__comidas_preparadas_fuera[  "nh_cgprcfh_p2"] = (
   gastos_semanales_rural__comidas_preparadas_fuera["nh_cgprcfh_p2"].replace(",1","1") )
 
+gastos_diarios_urbano__comidas_preparadas_fuera[  "nh_cgducfh_p2"] = (
+  gastos_diarios_urbano__comidas_preparadas_fuera["nh_cgducfh_p2"].replace(
+    { ",5":5, ",25":25 } ) )
+
 for df in newEnphsDfs:
   for c in df.columns:
     if df[c].dtype == 'O':
