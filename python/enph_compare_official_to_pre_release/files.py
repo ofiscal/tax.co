@@ -1,8 +1,8 @@
 output_folder = "output/enph,compare-official-to-pre-release/"
 
-old_folder = "data/enph-2017/pre-publication/recip-100/"
+old_folder = "data/enph-2017/pre-publication/recip-10/"
 
-new_folder = "data/enph-2017/recip-100/"
+new_folder = "data/enph-2017/recip-10/"
 
 old_files = [ "coicop"
             , "factores_ciclo19"

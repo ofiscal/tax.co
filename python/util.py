@@ -28,12 +28,14 @@ def tabulate_series(series):
     return counts
 
 def describeWithMissing(df):
-  x = df.describe()
-  y = []
-  yy = pd.DataFrame( df.isnull().sum()
-                     , columns = ["missing"]
-                   ).transpose()
-  return yy.append( x )
+  most_stats = df.describe()
+  missing_stat = pd.DataFrame( df.isnull().sum()
+                             , columns = ["missing"]
+                             ).transpose()
+  length_stat = pd.DataFrame( [[len(df) for _ in df.columns]]
+                            , index = ["length"]
+                            , columns = df.columns )
+  return length_stat.append( missing_stat.append( most_stats ) )
 
 def compare_2_columns_from_different_tables (df1, colname1, df2, colname2):
   x = describeWithMissing( df1[[ colname1 ]] )

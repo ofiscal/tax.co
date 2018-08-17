@@ -31,8 +31,8 @@
 **** nc2r_ce_p4s1
 * files maybe in 1-1 correspondence
 ** st2_sea_enc_gcfhr_csv = gastos_semanales_rural_-_comidas_preparadas_fuera_del_hogar
-*** nh_cgprcfh_p1
-*** nh_cgprcfh_p1s1
+*** nh_cgprcfh_p1: unused in VAT analysis. verbal. match plausible.
+*** nh_cgprcfh_p1s1: coicop. 
 *** nh_cgprcfh_p2
 *** nh_cgprcfh_p3
 *** nh_cgprcfh_p4

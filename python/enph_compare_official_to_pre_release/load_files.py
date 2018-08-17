@@ -24,6 +24,8 @@ if True: # old files
   hog                    = pd.read_csv( filetree.old_folder + "st2_sea_enc_hog_csv.csv")
   per                    = pd.read_csv( filetree.old_folder + "st2_sea_enc_per_csv.csv")
 
+
+
 if True: # new files
   caracteristicas_generales_personas                 = pd.read_csv( filetree.new_folder + "Caracteristicas_generales_personas.csv")
   gastos_diarios_urbano__comidas_preparadas_fuera    = pd.read_csv( filetree.new_folder + "Gastos_diarios_del_hogar_Urbano_-_Comidas_preparadas_fuera_del_hogar.csv")
@@ -57,3 +59,12 @@ for df in [ caracteristicas_generales_personas
           , gastos_semanales_rurales__mercados
           , viviendas_y_hogares ]:
   df.columns =  map(str.lower, df.columns)
+
+if True: # clean the new data
+  if True: # gastos_semanales_rural__comidas_preparadas_fuera
+    gastos_semanales_rural__comidas_preparadas_fuera = (
+      pd.read_csv( filetree.new_folder + "Gastos_semanales_Rural_-_Comidas_preparadas_fuera_del_hogar.csv") )
+    x = gastos_semanales_rural__comidas_preparadas_fuera
+    x.columns = map(str.lower, x.columns)
+    x["nh_cgprcfh_p1s1"] = pd.to_numeric( x["nh_cgprcfh_p1s1"].str.strip() )
+    
