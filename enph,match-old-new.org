@@ -54,16 +54,16 @@
 *** nh_cgpucfh_p1_s1: coicop, plausible
 *** nh_cgpucfh_p2: quantity, plausible
 *** nh_cgpucfh_p3: purchased=1,  very close match
-*** nh_cgpucfh_p4: where-bought, somewhat plausible
+*** TODO nh_cgpucfh_p4: where-bought, somewhat plausible
 *** nh_cgpucfh_p5: value, very close match
 *** nh_cgpucfh_p6: freq,  very close match
 ** st2_sea_enc_gsdp_diarios_csv = gastos_diarios_personales_urbano
-*** nc4_cc_p1_1
-*** nc4_cc_p2
-*** nc4_cc_p3
-*** nc4_cc_p4
-*** nc4_cc_p5
-*** nc4_cc_p6
+*** nc4_cc_p1_1: coicop, plausible
+*** TODO nc4_cc_p2: quantity. lousy match.
+*** nc4_cc_p3: purchased=1. great match.
+*** nc4_cc_p4: where-bought. poor match.
+*** nc4_cc_p5: value. great match.
+*** nc4_cc_p6: freq. great match
 ** st2_sea_enc_gsdu_diarios_csv = gastos_diarios_urbanos
 *** nh_cgdu_p1
 *** nh_cgdu_p2

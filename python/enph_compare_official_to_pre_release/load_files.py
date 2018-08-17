@@ -78,6 +78,10 @@ gastos_personales_urbano__comidas_preparadas_fuera[  "nh_cgpucfh_p2"] = (
        , "1,4":14
        , "1,5":15 } ) )
 
+# PITFALL: This replaces 1% of all values
+gastos_diarios_personales_urbano["nc4_cc_p2"] = (
+  gastos_diarios_personales_urbano["nc4_cc_p2"].str.replace( ",", "") )
+
 for df in newEnphsDfs:
   for c in df.columns:
     if df[c].dtype == 'O':
