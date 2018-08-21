@@ -1,14 +1,22 @@
+* TODO NEXT
+** do all purchase files have a COICOP code?
+** match the person file
+*** st2_sea_enc_per_csv.csv <-> Caracteristicas_generales_personas.csv
 * where "=" appears below, it means for purposes of the VAT analysis.
 * common variables
 ** directorio <-> every file
 ** orden <-> every official file
 * problem files
 ** st2_sea_enc_gdr_csv
-*** TODO in both : nc2r_ca_p3  nc2r_ca_p4_s1  nc2r_ca_p5_s1  nc2r_ca_p6_s1  nc2r_ca_p7_s1  nc2r_ca_p8_s1
-**** gastos_personales_rural_-_comidas_preparadas_fuera_del_hogar
-**** gastos_semanales_rurales
-*** nc2r_ca_p4_s2
-**** gastos_semanales_rurales
+*** TODO in both : gastos_semanales_rurales  &  gastos_personales_rural_-_comidas_preparadas_fuera_del_hogar
+**** nc2r_ca_p3
+**** nc2r_ca_p4_s1
+**** nc2r_ca_p5_s1
+**** nc2r_ca_p6_s1
+**** nc2r_ca_p7_s1
+**** nc2r_ca_p8_s1
+*** in gastos_semanales_rurales
+**** nc2r_ca_p4_s2
 ** st2_sea_enc_gmf_csv
 *** gastos_menos_frecuentes_-_articulos
 **** p10270
@@ -18,7 +26,6 @@
 *** TODO !! absent
 **** p10270_fc_s1
 **** p10270s1
-
 ** st2_sea_enc_gcfhr_ce_csv
 *** TODO absent
 **** nc2r_ce_p4s2 !! absent. this is "unit of measure".

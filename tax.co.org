@@ -18,7 +18,6 @@ x = purchases["vat-rate"]
 *** apply it to every suspected pair, and eyeball the results
 ** put filename-cleaned raw data on OneDrive
 *** How I changed them: Change all spaces in filenames to underscores. Change files ending in .txt to end in .csv"
-
 ** code-internal
 *** pdflatex: send reports to a file, not stdout
 **** this way it doesn't drown the python error reports
