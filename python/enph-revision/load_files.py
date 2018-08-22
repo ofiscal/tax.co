@@ -2,6 +2,8 @@ import pandas as pd
 import python.enph_compare_official_to_pre_release.files as filetree
 import numpy as np
 
+coicop_vat = pd.read_csv( "data/vat/coicop-vat.csv", sep=';' )
+
 if True: # old files
   coicop                 = pd.read_csv( filetree.old_folder + "coicop.csv")
   factores_ciclo19       = pd.read_csv( filetree.old_folder + "factores_ciclo19.csv")

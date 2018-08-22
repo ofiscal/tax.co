@@ -2,6 +2,7 @@ Spending variables
 * COICOP in the data
 ** two files have a coicop
 *** gastos diarios del hogar urbano - comidas preparadas fuera :: nh_cgducfh_p1_1
+**** the documentation claism its COICOP variable is nh_cgpucfh_p1_s1, but that doesn't exist
 *** gastos personales urbano - comidas preparadas fuera :: nh_cgpucfh_p1_s1
 ** TODO many files might have a mislabeled COICOP
 *** gastos diarios personales urbano :: nc4_cc_p1_1 = "nombre del artículo o servicio", 70 unique numbers, but the docs call it "character"
