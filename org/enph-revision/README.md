@@ -1,0 +1,1 @@
+These files pertain to shoehorning the old analysis, built on a pre-release version of the ENPH, around the new data. First and definitely, that means figuring out what's in the new data; second and maybe, that means finding correspondences between the old and the new.

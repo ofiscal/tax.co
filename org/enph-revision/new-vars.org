@@ -19,7 +19,6 @@ Spending variables
 *** gastos_diarios_urbanos__mercados :: nothing identifies what they purchased!
 *** gastos_diarios_rurales__mercados :: nothing identifies what they purchased!
 *** gastos_menos_frecuentes__medio_de_pago :: nothing applies, but this maybe isn't a list a of purchases
-
 * Questions
 ** what does "Capitulo C" mean?
 *** It's the name of a data set in the new ENPH, but not in the earlier one (unless the name changed).
