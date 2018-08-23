@@ -60,12 +60,15 @@ files_maybe_with_coicop = files_with_coicop + [
 
 if True: # Analysis
   acc = []
-  for (file,name,colnames) in files_maybe_with_coicop:
+  for (file,filename,colnames) in files_maybe_with_coicop:
     for colname in colnames:
-      codes = list( pd.to_numeric( file[colname] )
+      col = file[colname]
+      col2 = col[ -col.isnull() ]
+      df = pd.DataFrame( col2 )
+      codes = list( pd.to_numeric( col2 )
                     .unique() )
-      print( "\n" + name + "[\"" + colname + "\"]")
-      overview( codes, file, colname, acc )
+      print( "\n" + filename + "[\"" + colname + "\"]")
+      overview( codes, df, colname, acc )
 
 if True: # Result
   unrecognized_from_all_files = sorted( list( pd.Series(

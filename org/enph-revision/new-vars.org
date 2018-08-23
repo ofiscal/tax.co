@@ -1,25 +1,26 @@
-Spending variables
 * COICOP in the data
 ** two files have a coicop
 *** gastos diarios del hogar urbano - comidas preparadas fuera :: nh_cgducfh_p1_1
 **** the documentation claism its COICOP variable is nh_cgpucfh_p1_s1, but that doesn't exist
 *** gastos personales urbano - comidas preparadas fuera :: nh_cgpucfh_p1_s1
-** TODO many files might have a mislabeled COICOP
+** these files appear to have a mislabeled COICOP
 *** gastos diarios personales urbano :: nc4_cc_p1_1 = "nombre del artículo o servicio", 70 unique numbers, but the docs call it "character"
 *** gastos_diarios_urbanos :: nh_cgdu_p1 = "nombre del artículo o servicio", 290 unique nums, again called "caracter"
 *** gastos_menos_frecuentes__articulos :: p10270 = "nombre del artículo o servicio", 'caracter'
 *** gastos_personales_rural :: nc2r_ce_p2 = "Nombre del artículo o servicio", 22 unique values, 75% missing
 *** gastos_semanales_rurales :: nc2r_ca_p3 = "nombre de artículo o servicio descripción detallada de la comida (aplica para sección j)", 225 unique values, 2/3 missing
 **** looks like a COICOP
-*** gastos_semanales_rural__capitulo_c :: nc2_cc_p1 = "c. caracteristicas del gasto en alimentos de los hogares 1. alimentos o grupos de alimentos", 25 unique values
 *** gastos_semanales_rural__comidas_preparadas_fuera :: three variables
 **** nh_cgprcfh_p1 = descripción de la comida o alimento adquirido; 5 unique values, 7/11 missing
 **** nh_cgprcfh_p1s1 = "marque con una x, la opción que describa mejor el tipo de comida código de tipo comida o alimento adquirido", 22 unique values, 7/11 missing
 **** nh_cgprcfh_p1s2 = "marque con una x, la opción que describa mejor el tipo de comida", 5 unique, 7/11 missing
-** three files have nothing of the sort
+** TODO three files have nothing of the sort
 *** gastos_diarios_urbanos__mercados :: nothing identifies what they purchased!
 *** gastos_diarios_rurales__mercados :: nothing identifies what they purchased!
 *** gastos_menos_frecuentes__medio_de_pago :: nothing applies, but this maybe isn't a list a of purchases
+** TODO that leaves one more problematic file
+*** gastos_semanales_rural__capitulo_c :: nc2_cc_p1 = "c. caracteristicas del gasto en alimentos de los hogares 1. alimentos o grupos de alimentos", 25 unique values
+** TODO How important are those 200/1400 codes we were already missing?
 * Questions
 ** what does "Capitulo C" mean?
 *** It's the name of a data set in the new ENPH, but not in the earlier one (unless the name changed).
