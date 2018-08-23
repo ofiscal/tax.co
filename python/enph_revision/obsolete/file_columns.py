@@ -1,3 +1,6 @@
+# I used this to look for a correspondence between files in the pre-release and official versions of the ENPH.
+# I discovered that there isn't (a very close) one.
+
 import pandas as pd
 import python.enph_compare_official_to_pre_release.files as filetree
 
