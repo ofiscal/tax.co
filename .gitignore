@@ -22,6 +22,7 @@ all-but-data/
 data/enig-2007/*.tgz
 data/enig-2007/recip-1*
 data/enig-2007/orig-txt
+data/enph-2017/pre-release/
 
 data/enph-2017/*.tar.gz
 data/enph-2017/orig

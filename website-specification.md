@@ -1,4 +1,4 @@
-We have a model of the Colombian tax code. We want Colombian citizens to be able to experiment with it -- for instance, changing the VAT rate and seeing the effect on working couples with children. For that, we would like you to build a website that wraps a GUI around the model, and set it up on a web hosting platform.
+We have a model of the Colombian tax code. We want Colombian citizens to be able to experiment with it -- for instance, changing the VAT rate and seeing the effect on working couples with children. For that, we would like you to build a website that wraps a GUI around the model, and set it up for us at https://www.a2hosting.com.
 
 The model takes in a collection of numbers and words, and produces a collection of numbers and images. The webpage should be a function of that Python code, and of some documents that specify the model's inputs and outputs.
 
@@ -51,3 +51,5 @@ For example, suppose the model generated the following output filenames:
   003.After tax income by income percentile.png
 
 The output webpage should then begin with a number titled "number of people in extreme poverty". After that should be a table titled "Effective tax rates per income decile", with column title, row title and cell values corresponding to the csv content. The page should end with the .png image, titled "After tax income by income percentile".
+
+After you have built the website and gotten it running on a2hosting.com, we will need you to show us how to access it and change things. Then we will test it, by trying a few input-output specifications. Once we are convinced it works, your work will be complete.
