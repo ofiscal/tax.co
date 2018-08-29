@@ -1,3 +1,7 @@
+* verbal good description variables
+** gastos_diarios_urbano__comidas_preparadas_fuera - nh_cgducfh_p1
+** gastos_personales_urbano__comidas_preparadas_fuera - nh_cgpucfh_p1
+** gastos_semanales_rural__comidas_preparadas_fuera - nh_cgprcfh_p1
 * COICOP in the data
 ** two files have a coicop
 *** gastos diarios del hogar urbano - comidas preparadas fuera :: nh_cgducfh_p1_1
