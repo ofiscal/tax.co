@@ -1,3 +1,4 @@
+import pandas as pd
 import python.enph_revision.define_files_and_folders as filetree
 
 
@@ -7,6 +8,7 @@ coicop_vat = pd.read_csv( "data/vat/coicop-vat.csv", sep=';' )
 if True: # files that identify purchases via a COICOP
   # PITFALL: The default behavior of read_csv is to alphabetize columns.
   # Some of these shenanigans are to make columns appear in the order stated.
+
   cols = [ "NH_CGDUCFH_P1_1" # COICOP
          , "NH_CGDUCFH_P1"   # verbal
   ]
@@ -50,18 +52,18 @@ if True: # files that identify purchases via a COICOP
     index_col=False,
     usecols = cols
   )[cols]
+
   cols = [ "NH_CGPUCFH_P1_S1" # verbal
          , "NH_CGPUCFH_P1"    # COICOP
   ]
-
   gastos_personales_urbano__comidas_preparadas_fuera = pd.read_csv(
     filetree.new_folder + "Gastos_personales_Urbano_-_Comidas_preparadas_fuera_del_hogar.csv",
     usecols = cols
   )[cols]
+
   cols = [ "NH_CGPRCFH_P1S1" # verbal
          , "NH_CGPRCFH_P1"   # COICOP
   ] 
-
   gastos_semanales_rural__comidas_preparadas_fuera   = pd.read_csv(
     filetree.new_folder + "Gastos_semanales_Rural_-_Comidas_preparadas_fuera_del_hogar.csv",
     usecols = cols
@@ -106,4 +108,3 @@ newEnphsDfs = [
               # , gastos_semanales_rurales__mercados
               # , viviendas_y_hogares
               ]
-
