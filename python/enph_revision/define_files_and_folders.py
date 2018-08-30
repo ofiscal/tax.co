@@ -1,9 +1,11 @@
+# this needs the variable "subsample" to be defined, as either 1, 10, 100 or 1000
+
 output_folder = "output/enph_revision/"
 if not os.path.exists(output_folder): os.makedirs(output_folder)
 
-old_folder = "data/enph-2017/pre-publication/recip-10/"
+old_folder = "data/enph-2017/pre-publication/recip-" + str(subsample) + "/"
 
-new_folder = "data/enph-2017/recip-10/"
+new_folder = "data/enph-2017/recip-" + str(subsample) + "/"
 
 old_file_names = [ "coicop"
             , "factores_ciclo19"

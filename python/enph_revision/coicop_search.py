@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import os
 
+subsample = 10
 exec( open("python/enph_revision/define_files_and_folders.py").read() )
 exec( open("python/enph_revision/all_data/load.py").read() )
 exec( open("python/enph_revision/all_data/clean.py").read() )
