@@ -1,5 +1,12 @@
 # this needs the variable "subsample" to be defined, as either 1, 10, 100 or 1000
 
+import os
+
+
+try: subsample
+except NameError: subsample = 100
+
+
 output_folder = "output/enph_revision/"
 if not os.path.exists(output_folder): os.makedirs(output_folder)
 
