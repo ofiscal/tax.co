@@ -1,3 +1,14 @@
+# exec( open("python/enph_revision/coicop_search.py").read() )
+
+import pandas as pd
+import numpy as np
+import os
+
+exec( open("python/enph_revision/define_files_and_folders.py").read() )
+exec( open("python/enph_revision/all_data/load.py").read() )
+exec( open("python/enph_revision/all_data/clean.py").read() )
+
+
 bridge_codes = list( coicop_vat["coicop"].unique() )
 
 def overview(codes,source_name,colname,acc):
@@ -13,7 +24,7 @@ def overview(codes,source_name,colname,acc):
     len( unrecognized ) ) )
   acc.append( (source_name, colname, unrecognized) )
 
-if True: # These two file-columns should (per the documentation) include nothing but known COICOP codes
+if True: # These two file-columns should (per the documentation) include nothing but COICOP codes
   files_with_coicop = [
     (   gastos_diarios_urbano__comidas_preparadas_fuera
      , "gastos_diarios_urbano__comidas_preparadas_fuera"
@@ -23,12 +34,12 @@ if True: # These two file-columns should (per the documentation) include nothing
      , ["nh_cgpucfh_p1_s1"])
     ]
 
-if True: # handle the nonuniformity in one file's COICOP-like column
+if True: # Report the few non-numbers in one file's COICOP-like column
   df = gastos_menos_frecuentes__articulos
   colname = "p10270"
-  invs = df[colname].str.contains( "[^0-9\.]", regex=True )
+  non_numbers = df[colname].str.contains( "[^0-9\.]", regex=True )
   print( "gastos_menos_frecuentes__articulos[\"" + colname + "\"] contains these non-numbers: " )
-  print( str( sorted( df[ invs ][colname].unique() ) ) )
+  print( str( sorted( df[ non_numbers ][colname].unique() ) ) )
   del(df,colname)
 
 files_maybe_with_coicop = files_with_coicop + [
@@ -40,7 +51,7 @@ files_maybe_with_coicop = files_with_coicop + [
      ,  ["nh_cgdu_p1"])
 
   # the previous section, titled "... nonuniformity ...", explains this
-  , (   gastos_menos_frecuentes__articulos[ -invs ]
+  , (   gastos_menos_frecuentes__articulos[ -non_numbers ]
      , "gastos_menos_frecuentes__articulos, minus the \"inv\" values"
      ,  ["p10270"])
 
@@ -74,7 +85,8 @@ if True: # Result
   unrecognized_from_all_files = sorted( list( pd.Series(
       [x for (_,_,unrecognized) in acc for x in unrecognized]
     ).unique() ) )
-  print( "Total number of unrecognized COICOP codes: " + str( len( unrecognized_from_all_files ) ) )
+  print( "\n#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-")
+  print( "Total number of unrecognized COICOP codes: " + str( len( unrecognized_from_all_files ) ) + "\n")
   target = open( output_folder + "unrecognized_coicop_codes.txt", "w+")
   for x in unrecognized_from_all_files: target.write( str(x) + "\n" )
   target.close()
