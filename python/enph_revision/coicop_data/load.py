@@ -15,55 +15,64 @@ if True: # files that identify purchases via a COICOP
     index_col=False,
     usecols = cols
   )[cols]
+
   cols = ["NC4_CC_P1_1"]
   gastos_diarios_personales_urbano                   = pd.read_csv(
     filetree.new_folder + "Gastos_diarios_personales_Urbano.csv",
     index_col=False,
     usecols = cols
   )[cols]
+
   cols = ["NH_CGDU_P1"]
   gastos_diarios_urbanos                             = pd.read_csv(
     filetree.new_folder + "Gastos_diarios_Urbanos.csv", 
     index_col=False,   
     usecols = cols
   )[cols]
+
   cols = ["P10270"]
   gastos_menos_frecuentes__articulos                 = pd.read_csv(
     filetree.new_folder + "Gastos_menos_frecuentes_-_Articulos.csv",
     index_col=False,
     usecols = cols
   )[cols]
+
   cols = ["NC2R_CA_P3"]
   gastos_personales_rural__comidas_preparadas_fuera  = pd.read_csv(
     filetree.new_folder + "Gastos_personales_Rural_-_Comidas_preparadas_fuera_del_Hogar.csv",
     index_col=False,
     usecols = cols
   )[cols]
+
   cols = ["NC2R_CE_P2"]
   gastos_personales_rural                            = pd.read_csv(
     filetree.new_folder + "Gastos_personales_Rural.csv",
     index_col=False,
     usecols = cols
   )[cols]
-  cols = [ "NH_CGPUCFH_P1"    # COICOP
-            , "NH_CGPUCFH_P1_S1" # verbal
+  cols = [ "NH_CGPUCFH_P1_S1" # verbal
+         , "NH_CGPUCFH_P1"    # COICOP
   ]
+
   gastos_personales_urbano__comidas_preparadas_fuera = pd.read_csv(
     filetree.new_folder + "Gastos_personales_Urbano_-_Comidas_preparadas_fuera_del_hogar.csv",
     usecols = cols
   )[cols]
-  cols = [ "NH_CGPRCFH_P1"   # COICOP
-         , "NH_CGPRCFH_P1S1" # verbal
+  cols = [ "NH_CGPRCFH_P1S1" # verbal
+         , "NH_CGPRCFH_P1"   # COICOP
   ] 
+
   gastos_semanales_rural__comidas_preparadas_fuera   = pd.read_csv(
     filetree.new_folder + "Gastos_semanales_Rural_-_Comidas_preparadas_fuera_del_hogar.csv",
     usecols = cols
   )[cols]
+
   cols = ["NC2R_CA_P3"]
   gastos_semanales_rurales                           = pd.read_csv(
     filetree.new_folder + "Gastos_semanales_Rurales.csv",
     usecols = cols
   )[cols]
+
   del(cols)
 
 
@@ -73,6 +82,7 @@ if True: # files that identify purchases without a COICOP
     usecols = [ "P10305" # says whether a house is new or old
               , "P10305S1" # value of the purchase
   ] )
+
   gastos_semanales_rural__capitulo_c                 = pd.read_csv(
     filetree.new_folder + "Gastos_semanales_Rural_-_Capitulo_C.csv",
     usecols = ["NC2_CC_P1" # 25 broad categories.
