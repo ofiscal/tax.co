@@ -73,6 +73,7 @@ files_maybe_with_coicop = files_with_coicop + [
 
 if True: # Analysis
   acc = []
+  print( "\n#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-")
   for (file,filename,colnames) in files_maybe_with_coicop:
     for colname in colnames:
       col = file[colname]
@@ -92,3 +93,5 @@ if True: # Result
   target = open( output_folder + "unrecognized_coicop_codes.txt", "w+")
   for x in unrecognized_from_all_files: target.write( str(x) + "\n" )
   target.close()
+
+
