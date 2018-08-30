@@ -48,6 +48,7 @@ new_file_names = [ "Caracteristicas_generales_personas"
 
 coicop_vat = pd.read_csv( "data/vat/coicop-vat.csv", sep=';' )
 
+
 if False: # load old files
   coicop                 = pd.read_csv( old_folder + "coicop.csv")
   factores_ciclo19       = pd.read_csv( old_folder + "factores_ciclo19.csv")
@@ -89,3 +90,20 @@ if True: # load new files
   gastos_semanales_rurales                           = pd.read_csv( new_folder + "Gastos_semanales_Rurales.csv")
   gastos_semanales_rurales__mercados                 = pd.read_csv( new_folder + "Gastos_semanales_Rurales_-_Mercados.csv")
   viviendas_y_hogares                                = pd.read_csv( new_folder + "Viviendas_y_hogares.csv")
+
+
+newEnphsDfs = [ caracteristicas_generales_personas
+              , gastos_diarios_urbano__comidas_preparadas_fuera
+              , gastos_diarios_personales_urbano
+              , gastos_diarios_urbanos
+              , gastos_diarios_urbanos__mercados
+              , gastos_menos_frecuentes__articulos
+              , gastos_menos_frecuentes__medio_de_pago
+              , gastos_personales_rural__comidas_preparadas_fuera
+              , gastos_personales_rural
+              , gastos_personales_urbano__comidas_preparadas_fuera
+              , gastos_semanales_rural__capitulo_c
+              , gastos_semanales_rural__comidas_preparadas_fuera
+              , gastos_semanales_rurales
+              , gastos_semanales_rurales__mercados
+              , viviendas_y_hogares ]
