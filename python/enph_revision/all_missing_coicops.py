@@ -39,15 +39,8 @@ result_string = open( filetree.output_folder + "hard_to_read.csv" ) . read() . s
 def first_word( string ): return string.split(",")[0]
 
 # Stick a newline after every group of rows with the same COICOP.
-def make_readable(previous_coicop, ls):
-  if len(ls) < 2: return ls
-  else:
-    fw = first_word( ls[0] )
-    if previous_coicop == fw: return [       ls[0]] + make_readable( fw, ls[1:] )
-    else:                     return [",,,", ls[0]] + make_readable( fw, ls[1:] )
-
-def make_readable_no_recurse(ls):
-  i = 2 # The first and second lines are always okay.
+def make_readable(ls):
+  i = 2 # The first line (column names) and second line are always okay.
   while i < len(ls):
     prev_coicop = first_word( ls[i-1] )
     this_coicop = first_word( ls[i  ] )
@@ -60,7 +53,7 @@ def make_readable_no_recurse(ls):
 text_file = open("output/enph_revision/missing_coicops_with_context.csv", "w")
 text_file.write(
   "\n".join(
-    make_readable_no_recurse(
+    make_readable(
       result_string
     )
   )
