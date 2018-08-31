@@ -5,8 +5,9 @@ import numpy as np
 import os
 
 
-exec( open("python/enph_revision/coicop_data/load.py").read() )
+exec( open("python/enph_revision/coicop_data/load.py"          ).read() )
 exec( open("python/enph_revision/coicop_data/clean_and_join.py").read() )
+
 
 coicop_data["count"] = 1
 coicop_data["verbal"] = coicop_data["verbal"].fillna( "" )
@@ -29,25 +30,27 @@ unrecognized = set(enph_codes) - set(bridge_codes)
 
 results = grouped[ grouped["coicop"].isin( unrecognized ) ]
 
-# results.to_csv( "output/enph_revision/x.csv" )
+results.to_csv( filetree.output_folder + "hard_to_read.csv"
+                , index=False
+)
 
-result_string = (results . to_string(index=False) . split("\n") )
+result_string = open( filetree.output_folder + "hard_to_read.csv" ) . read() . split("\n")
 
-def first_word( string ): return string.split()[0]
+def first_word( string ): return string.split(",")[0]
 
 # Stick a newline after every group of rows with the same COICOP.
 def make_readable(previous_coicop, ls):
-  if not ls: return []
+  if len(ls) < 2: return ls
   else:
     fw = first_word( ls[0] )
-    if previous_coicop == fw: return [ls[0]] + f( fw, ls[1:] )
-    else: return ["\n"] + [ls[0]] + f( fw, ls[1:] )
+    if previous_coicop == fw: return [       ls[0]] + make_readable( fw, ls[1:] )
+    else:                     return [",,,", ls[0]] + make_readable( fw, ls[1:] )
 
 text_file = open("output/enph_revision/missing_coicops_with_context.csv", "w")
 text_file.write(
   "\n".join(
     make_readable(
-      "anabolic unicorn soldier mildew farm" # because this definitely won't be the first COICOP
+      "anabolic unicorn mildew" # because this definitely won't be the first COICOP
       , result_string
     )
   )
