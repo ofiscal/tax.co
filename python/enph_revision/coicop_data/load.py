@@ -1,9 +1,9 @@
 import pandas as pd
+
 import python.enph_revision.define_files_and_folders as filetree
 
 
 coicop_vat = pd.read_csv( "data/vat/coicop-vat.csv", sep=';' )
-
 
 
 if True: # files that identify purchases via a COICOP
