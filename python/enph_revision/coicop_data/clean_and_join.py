@@ -26,5 +26,8 @@ coicop_and_verbal_files = [ gastos_diarios_urbano__comidas_preparadas_fuera
 for df in coicop_and_verbal_files:
   df.columns = ["coicop","verbal"]
 
+for (file,name) in zip( newEnphsDfs, newEnphsDfNames ):
+  file["file"] = name
+
 coicop_data = pd.concat( coicop_and_verbal_files + coicop_only_files,
                          axis = "rows" )

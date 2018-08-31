@@ -5,6 +5,7 @@ import python.enph_revision.define_files_and_folders as filetree
 coicop_vat = pd.read_csv( "data/vat/coicop-vat.csv", sep=';' )
 
 
+
 if True: # files that identify purchases via a COICOP
   # PITFALL: The default behavior of read_csv is to alphabetize columns.
   # Some of these shenanigans are to make columns appear in the order stated.
@@ -107,4 +108,22 @@ newEnphsDfs = [
               , gastos_semanales_rurales
               # , gastos_semanales_rurales__mercados
               # , viviendas_y_hogares
+              ]
+
+newEnphsDfNames = [
+              # "caracteristicas_generales_personas"
+                "gastos_diarios_urbano__comidas_preparadas_fuera"
+              , "gastos_diarios_personales_urbano"
+              , "gastos_diarios_urbanos"
+              # , "gastos_diarios_urbanos__mercados"
+              , "gastos_menos_frecuentes__articulos"
+              , "gastos_menos_frecuentes__medio_de_pago"
+              , "gastos_personales_rural__comidas_preparadas_fuera"
+              , "gastos_personales_rural"
+              , "gastos_personales_urbano__comidas_preparadas_fuera"
+              , "gastos_semanales_rural__capitulo_c"
+              , "gastos_semanales_rural__comidas_preparadas_fuera"
+              , "gastos_semanales_rurales"
+              # , "gastos_semanales_rurales__mercados"
+              # , "viviendas_y_hogares"
               ]
