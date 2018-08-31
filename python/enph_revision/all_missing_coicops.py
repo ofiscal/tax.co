@@ -46,10 +46,20 @@ def make_readable(previous_coicop, ls):
     if previous_coicop == fw: return [       ls[0]] + make_readable( fw, ls[1:] )
     else:                     return [",,,", ls[0]] + make_readable( fw, ls[1:] )
 
+def make_readable_no_recurse(ls):
+  i = 2 # The first and second lines are always okay.
+  while i < len(ls):
+    prev_coicop = first_word( ls[i-1] )
+    this_coicop = first_word( ls[i  ] )
+    if prev_coicop == this_coicop: i = i+1
+    else:
+      ls.insert(i,",,,")
+      i = i+2
+
 text_file = open("output/enph_revision/missing_coicops_with_context.csv", "w")
 text_file.write(
   "\n".join(
-    make_readable(
+    make_readable_no_recurse(
       "anabolic unicorn mildew" # because this definitely won't be the first COICOP
       , result_string
     )
