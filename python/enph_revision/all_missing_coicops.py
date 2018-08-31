@@ -55,13 +55,13 @@ def make_readable_no_recurse(ls):
     else:
       ls.insert(i,",,,")
       i = i+2
+  return ls
 
 text_file = open("output/enph_revision/missing_coicops_with_context.csv", "w")
 text_file.write(
   "\n".join(
     make_readable_no_recurse(
-      "anabolic unicorn mildew" # because this definitely won't be the first COICOP
-      , result_string
+      result_string
     )
   )
 )
