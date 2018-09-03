@@ -1,3 +1,6 @@
+from python.enph_revision.define_files_and_folders import (new_folder,old_folder)
+import pandas as pd
+
 coicop_vat = pd.read_csv( "data/vat/coicop-vat.csv", sep=';' )
 
 

@@ -3,7 +3,7 @@
 import os
 
 
-subsample = 1
+subsample = 10
 
 output_folder = "output/enph_revision/"
 if not os.path.exists(output_folder): os.makedirs(output_folder)

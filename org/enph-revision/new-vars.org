@@ -1,3 +1,9 @@
+* ENPH asks about income tax
+* for income tax
+** income, kids, voluntary pension fund contributions. 
+** at most 40% of inncome exempt.
+* restaurant variables
+** if bought in cafeteria or restaurant, gets the 8% tax and no VAT, but otherwise they would pay VAT
 * verbal good description variables
 ** gastos_diarios_urbano__comidas_preparadas_fuera - nh_cgducfh_p1
 ** gastos_personales_urbano__comidas_preparadas_fuera - nh_cgpucfh_p1
@@ -31,6 +37,17 @@
 *** gastos_semanales_rural__capitulo_c :: nc2_cc_p1 = "c. caracteristicas del gasto en alimentos de los hogares 1. alimentos o grupos de alimentos", 25 unique values
 **** nc2_cc_p1 has 25 categories, d thinks they are vat-identifiable
 ** TODO How important are those 200/1400 codes we were already missing?
+* non-COICOP vars
+** caracteristicas generales
+*** P6020 = 1 male, 2 female
+*** P6040 = age in years
+*** TODO P6050 ? something about relationship to household
+*** P6080 = race
+*** TODO P5170 ? student
+*** P6170 = student
+*** P8610 = got a beca. many similar questions thereafter.
+*** P6060 = did you skip all 3 meals any day last week because of money?
+*** P6160 = 1=literate, 2=not
 * Questions
 ** what does "Capitulo C" mean?
 *** It's the name of a data set in the new ENPH, but not in the earlier one (unless the name changed).
