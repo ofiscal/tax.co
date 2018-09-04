@@ -1,7 +1,7 @@
 * Use FEX_C (expansion factor)
 * ENPH asks about income tax
 * for income tax
-** income, kids, voluntary pension fund contributions. 
+** income, kids, voluntary pension fund contributions.
 ** at most 40% of a person's inncome can be exempt.
 * restaurant variables
 ** if bought in cafeteria or restaurant, gets the 8% tax and no VAT, but otherwise they would pay VAT
@@ -36,6 +36,13 @@
 **** nc2_cc_p1 has 25 categories, d thinks they are vat-identifiable
 ** TODO How important are those 200/1400 codes we were already missing?
 * TODO non-COICOP vars
+** TODO everything has at least most of these
+*** DIRECTORIO
+*** SECUENCIA_ENCUESTA
+*** SECUENCIA_P
+*** ORDEN
+*** CAP
+*** FEX_C
 ** caracteristicas generales
 *** P6020 = 1 male, 2 female
 *** P6040 = age in years
@@ -98,7 +105,7 @@
 *** TODO NH_CGDUCFH_P3 : how they got it (compra, recibido como pago, regalo, traido de la finca ...)
 *** TODO NH_CGDUCFH_P4 : where gotten, even if not bought
 **** ? how to read the legend
-**** restaurants & cafeterias are among the 
+**** restaurants & cafeterias are among the
 *** NH_CGDUCFH_P5 : value, even if not bought
 *** TODO NH_CGDUCFH_P6 : frequency
 **** ? how to read legend
@@ -131,6 +138,40 @@
 *** p10305 = says whether a house is new or old
 *** p10305s1 = value of the purchase
 *** these purchases are in the last 12 months
+** personales rurales fuera
+*** NC2R_CA_P4_S1 : quantity
+*** NC2R_CA_P5_S1 : how it was gotten
+*** TODO NC2R_CA_P6_S1 : where it was (? gotten, purchases)
+*** NC2R_CA_P7_S1 : value
+*** NC2R_CA_P8_S1 : freq
+** personales rurales
+*** TODO NC2R_CE_P1 ? got it last week (conflicts with frequency)
+*** NC2R_CE_P4S1 : quantity
+*** NC2R_CE_P5S2 : how gotten
+*** NC2R_CE_P6 : where gotten
+*** NC2R_CE_P7 : value
+*** TODO NC2R_CE_P8 : frequency
+**** it would be nice to be sure that frequency and value are orthogonal -- that is, value is the value per purchase, not the total spent on that good last week
+** personales urbano fuera
+*** TODO NH_CGPUCFH_P1_S2 : nothing, right?
+*** NH_CGPUCFH_P2 : quantity
+*** NH_CGPUCFH_P3 : how gotten
+*** NH_CGPUCFH_P4 : where gotten
+*** NH_CGPUCFH_P5 : value
+*** NH_CGPUCFH_P6 : freq
+*** TODO NH_CGPUCFH_P8 ? Lo adquirió a domicilio?
+**** I may have skipped this for some other files
+** semanales rural capitulo c
+*** NC2_CC_P2 : freq
+*** NC2_CC_P3_S1 : value
+*** TODO NC2_CC_P3_S2 : bought in the last week
+**** do we care
+** TODO remaining files
+*** gastos_semanales_rural__comidas_preparadas_fuera
+*** gastos_semanales_rurales
+*** gastos_semanales_rurales__mercados
+*** viviendas_y_hogares
+*** TODO ? capitulo c : rural but no urban
 * Questions
 ** what does "Capitulo C" mean?
 *** It's the name of a data set in the new ENPH, but not in the earlier one (unless the name changed).
