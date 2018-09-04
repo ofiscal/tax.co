@@ -40,15 +40,15 @@
 *** DIRECTORIO
 *** SECUENCIA_ENCUESTA
 *** SECUENCIA_P
-*** ORDEN
-*** CAP
+*** ORDEN = id for family member
+*** TODO CAP
 *** FEX_C
-** caracteristicas generales
+** TODO caracteristicas generales
 *** P6020 = 1 male, 2 female
 *** P6040 = age in years
-*** TODO P6050 ? something about relationship to household
+*** P6050 ? = relationship to head of household
 *** P6080 = race
-*** TODO P5170 ? student
+*** DONE P5170 = student | selected other institutional settings
 *** P6170 = student
 *** P8610 = got a beca. many similar questions thereafter.
 *** P6060 = did you skip all 3 meals any day last week because of money?
@@ -56,14 +56,17 @@
 *** P6210 = highest education level reached
 *** P6210S1 = highest education level passed
 *** P6210S2 = highest diploma, starting at bachellor's
-*** TODO P6250 ? made money for at least an hour last week
-*** TODO P6260 ? P6270 ? worked (maybe making no money) for at least an hour last week
+*** P6240 = last week, main use of time (study, work, look for work ...)
+*** P6250 = in addition to that main use of time, made money for at least an hour last week doing something else
+*** P6260 = even if you didn't work last week, do you have a job (inc. self-employed, business owner)
+*** P6270 : worked without making money for at least an hour last week
 *** P6280 = looked for work in the last 4 weeks
 *** P6300 = wants to work
 *** P6330 = since last job, has tried to find work or start a business
 *** P6340 = in the last yr, has tried to find work or start a business
 *** P6426 = time at most recent job
 *** P6430 = kind of work (firm, government, unpaid family ...)
+*** P6370S1, P6390S1 = economic sector
 *** TODO P6500 = income from (formal employment?) last month
 *** P6590 = gets paid in food too
 *** P6590S1 = estimated value of "food income"
@@ -103,14 +106,15 @@
 ** diarios urbano fuera
 *** NH_CGDUCFH_P2 : quantity
 *** TODO NH_CGDUCFH_P3 : how they got it (compra, recibido como pago, regalo, traido de la finca ...)
-*** TODO NH_CGDUCFH_P4 : where gotten, even if not bought
-**** ? how to read the legend
-**** restaurants & cafeterias are among the
+*** NH_CGDUCFH_P4 : where gotten, even if not bought
+**** TODO ? how to read the legend
+**** TODO restaurant, bar, cafeteria: no VAT. otherwise ignore. street vendors?
 *** NH_CGDUCFH_P5 : value, even if not bought
 *** TODO NH_CGDUCFH_P6 : frequency
-**** ? how to read legend
+**** ? how to read legend. 2.1 appears in it, but 2 and not 2.1 appears in the data.
 *** NH_CGDUCFH_P7 : personal or household
-*** TODO NH_CGDUCFH_P8 ? "si lo adquirió a domicilio"
+*** DONE NH_CGDUCFH_P8 ? "si lo adquirió a domicilio"
+**** was it a delivery. ignore.
 ** diarios personales urbano
 *** NC4_CC_P2 : quantity
 *** NC4_CC_P3 : how they got it
@@ -119,7 +123,8 @@
 *** NC4_CC_P5 : value
 *** NC4_CC_P6 : freq
 ** diarios urbanos
-*** TODO P10250S1A1 ? "Número de orden de la persona qué se le entregó la mesada"
+*** DONE P10250S1A1 ? "Número de orden de la persona qué se le entregó la mesada"
+**** almost always missing. if not missing, drop observation -- it records a within-household transfer of money
 *** NH_CGDU_P2 : quantity
 *** TODO NH_CGDU_P3 & fol ? unit of measure
 *** NH_CGDU_P5 : how they got it
@@ -127,13 +132,13 @@
 *** TODO NH_CGDU_P8 ? value
 **** interacts with quantity? unit of measure?
 *** NH_CGDU_P10 : personal or household
-** DONE diarios urbanos mercados
+** DONE diarios urbanos mercados - very broad and basically zero VAT
 ** articulos
-*** TODO FORMA : no legend
+*** TODO FORMA : no legend. Hopefully same values as the other "how gotten" variables.
 *** VALOR
 *** TODO P10270S2 : where bought (where gotten?)
 *** P10270S3 : frequency
-*** TODO P10270S4 ? more value
+*** DONE P10270S4 = portion of value bought on credit. ignore.
 ** medio
 *** p10305 = says whether a house is new or old
 *** p10305s1 = value of the purchase
@@ -141,18 +146,18 @@
 ** personales rurales fuera
 *** NC2R_CA_P4_S1 : quantity
 *** NC2R_CA_P5_S1 : how it was gotten
-*** TODO NC2R_CA_P6_S1 : where it was (? gotten, purchases)
+*** NC2R_CA_P6_S1 : where it was gotten
 *** NC2R_CA_P7_S1 : value
 *** NC2R_CA_P8_S1 : freq
-** personales rurales
-*** TODO NC2R_CE_P1 ? got it last week (conflicts with frequency)
+** personales rurales 
+*** DONE NC2R_CE_P1 = got it last week. conflicts with frequency, and less information.
 *** NC2R_CE_P4S1 : quantity
 *** NC2R_CE_P5S2 : how gotten
 *** NC2R_CE_P6 : where gotten
 *** NC2R_CE_P7 : value
 *** TODO NC2R_CE_P8 : frequency
 **** it would be nice to be sure that frequency and value are orthogonal -- that is, value is the value per purchase, not the total spent on that good last week
-** personales urbano fuera
+** DONE personales urbano fuera -- all bought at a cafeteria or supermarket; no VAT
 *** TODO NH_CGPUCFH_P1_S2 : nothing, right?
 *** NH_CGPUCFH_P2 : quantity
 *** NH_CGPUCFH_P3 : how gotten
@@ -164,12 +169,11 @@
 ** semanales rural capitulo c
 *** NC2_CC_P2 : freq
 *** NC2_CC_P3_S1 : value
-*** TODO NC2_CC_P3_S2 : bought in the last week
-**** do we care
+*** DONE NC2_CC_P3_S2 : bought in the last week. conflicts & less info relate to freq.
 ** TODO remaining files
 *** gastos_semanales_rural__comidas_preparadas_fuera
 *** gastos_semanales_rurales
-*** gastos_semanales_rurales__mercados
+*** DONE gastos_semanales_rurales__mercados -- very broad and basically 0 VAT
 *** viviendas_y_hogares
 *** TODO ? capitulo c : rural but no urban
 * Questions
