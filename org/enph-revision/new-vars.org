@@ -1,3 +1,4 @@
+* Use FEX_C (expansion factor)
 * ENPH asks about income tax
 * for income tax
 ** income, kids, voluntary pension fund contributions. 
@@ -29,10 +30,7 @@
 **** really broad categories, see nc2_cc_p4. basically 0 vat.
 *** gastos_diarios_rurales__mercados :: nothing identifies what they purchased!
 **** really broad categories, see nc2_cc_p4. basically 0 vat.
-*** gastos_menos_frecuentes__medio_de_pago :: nothing applies, but this maybe isn't a list a of purchases
-**** p10305 = says whether a house is new or old
-**** p10305s1 = value of the purchase
-**** these purchases are in the last 12 months
+*** gastos_menos_frecuentes__medio_de_pago :: includes household purchases, otherwise ignore
 ** todo that leaves one more problematic file
 *** gastos_semanales_rural__capitulo_c :: nc2_cc_p1 = "c. caracteristicas del gasto en alimentos de los hogares 1. alimentos o grupos de alimentos", 25 unique values
 **** nc2_cc_p1 has 25 categories, d thinks they are vat-identifiable
@@ -95,6 +93,44 @@
 *** P7513S10 = inheritance
 *** P7513S11 = income from devolved tax payments
 *** P7516 = spent savings in the last 12 months
+** diarios urbano fuera
+*** NH_CGDUCFH_P2 : quantity
+*** TODO NH_CGDUCFH_P3 : how they got it (compra, recibido como pago, regalo, traido de la finca ...)
+*** TODO NH_CGDUCFH_P4 : where gotten, even if not bought
+**** ? how to read the legend
+**** restaurants & cafeterias are among the 
+*** NH_CGDUCFH_P5 : value, even if not bought
+*** TODO NH_CGDUCFH_P6 : frequency
+**** ? how to read legend
+*** NH_CGDUCFH_P7 : personal or household
+*** TODO NH_CGDUCFH_P8 ? "si lo adquirió a domicilio"
+** diarios personales urbano
+*** NC4_CC_P2 : quantity
+*** NC4_CC_P3 : how they got it
+**** legend differs from that in "diarios urbano fuera"
+*** NC4_CC_P4 : where gotten, even if not bought
+*** NC4_CC_P5 : value
+*** NC4_CC_P6 : freq
+** diarios urbanos
+*** TODO P10250S1A1 ? "Número de orden de la persona qué se le entregó la mesada"
+*** NH_CGDU_P2 : quantity
+*** TODO NH_CGDU_P3 & fol ? unit of measure
+*** NH_CGDU_P5 : how they got it
+*** NH_CGDU_P7B1379 : where gotten
+*** TODO NH_CGDU_P8 ? value
+**** interacts with quantity? unit of measure?
+*** NH_CGDU_P10 : personal or household
+** DONE diarios urbanos mercados
+** articulos
+*** TODO FORMA : no legend
+*** VALOR
+*** TODO P10270S2 : where bought (where gotten?)
+*** P10270S3 : frequency
+*** TODO P10270S4 ? more value
+** medio
+*** p10305 = says whether a house is new or old
+*** p10305s1 = value of the purchase
+*** these purchases are in the last 12 months
 * Questions
 ** what does "Capitulo C" mean?
 *** It's the name of a data set in the new ENPH, but not in the earlier one (unless the name changed).
