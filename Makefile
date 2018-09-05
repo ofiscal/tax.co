@@ -28,6 +28,7 @@ enph_files = Caracteristicas_generales_personas                           \
   Gastos_diarios_personales_Urbano					  \
   Gastos_diarios_Urbanos						  \
   Gastos_diarios_Urbanos_-_Mercados					  \
+  Gastos_diarios_Urbano_-_Capitulo_C                                      \
   Gastos_menos_frecuentes_-_Articulos					  \
   Gastos_menos_frecuentes_-_Medio_de_pago				  \
   Gastos_personales_Rural						  \

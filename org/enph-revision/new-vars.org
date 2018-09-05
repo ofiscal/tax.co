@@ -185,7 +185,9 @@
 *** NC2R_CA_P6_S1 : where bought
 *** NC2R_CA_P7_S1 : value
 *** NC2R_CA_P8_S1 : freq
-** TODO next >>> capitulo c : rural but no urban
+** capitulo c : rural but no urban
+*** NC2_CC_P2 : freq
+*** NC2_CC_P3_S1 : value
 ** DONE remaining files
 *** DONE gastos_semanales_rurales__mercados -- very broad and basically 0 VAT
 *** DONE viviendas_y_hogares -- just mortgages, which are (currently!) exempt

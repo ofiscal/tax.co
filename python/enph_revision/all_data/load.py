@@ -10,6 +10,7 @@ if True: # load new files
   gastos_diarios_personales_urbano                   = pd.read_csv( new_folder + "Gastos_diarios_personales_Urbano.csv")
   gastos_diarios_urbanos                             = pd.read_csv( new_folder + "Gastos_diarios_Urbanos.csv")
   gastos_diarios_urbanos__mercados                   = pd.read_csv( new_folder + "Gastos_diarios_Urbanos_-_Mercados.csv")
+  gastos_diarios_urbanos__capitulo_c                 = pd.read_csv( new_folder + "Gastos_diarios_Urbano_-_Capitulo_C.csv")
   gastos_menos_frecuentes__articulos                 = pd.read_csv( new_folder + "Gastos_menos_frecuentes_-_Articulos.csv")
   gastos_menos_frecuentes__medio_de_pago             = pd.read_csv( new_folder + "Gastos_menos_frecuentes_-_Medio_de_pago.csv")
   gastos_personales_rural__comidas_preparadas_fuera  = pd.read_csv( new_folder + "Gastos_personales_Rural_-_Comidas_preparadas_fuera_del_Hogar.csv")
