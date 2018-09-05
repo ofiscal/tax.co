@@ -1,3 +1,5 @@
+These are obsolete because matching files turned out to be hopeless; I had to instead work on a per-variable basis.
+
 * TODO NEXT
 ** do all purchase files have a COICOP code?
 ** match the person file
