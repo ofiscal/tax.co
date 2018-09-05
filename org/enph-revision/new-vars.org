@@ -21,7 +21,8 @@
 *** gastos_personales_rural :: nc2r_ce_p2 = "Nombre del artículo o servicio", 22 unique values, 75% missing
 *** gastos_semanales_rurales :: nc2r_ca_p3 = "nombre de artículo o servicio descripción detallada de la comida (aplica para sección j)", 225 unique values, 2/3 missing
 **** looks like a COICOP
-*** gastos_semanales_rural__comidas_preparadas_fuera :: three variables
+*** DONE gastos_semanales_rural__comidas_preparadas_fuera :: three variables
+**** these don't matter, because there's a COICOP
 **** nh_cgprcfh_p1 = descripción de la comida o alimento adquirido; 5 unique values, 7/11 missing
 **** nh_cgprcfh_p1s1 = "marque con una x, la opción que describa mejor el tipo de comida código de tipo comida o alimento adquirido", 22 unique values, 7/11 missing
 **** nh_cgprcfh_p1s2 = "marque con una x, la opción que describa mejor el tipo de comida", 5 unique, 7/11 missing
@@ -170,15 +171,27 @@
 *** NC2_CC_P2 : freq
 *** NC2_CC_P3_S1 : value
 *** DONE NC2_CC_P3_S2 : bought in the last week. conflicts & less info relate to freq.
-** TODO remaining files
-*** gastos_semanales_rural__comidas_preparadas_fuera
-*** gastos_semanales_rurales
+** semanales rural fuera
+*** NH_CGPRCFH_P2 : quantity
+*** NH_CGPRCFH_P3 : how gotten
+*** NH_CGPRCFH_P4 : where gotten
+*** NH_CGPRCFH_P5 : value
+*** NH_CGPRCFH_P6 : freq
+*** NH_CGPRCFH_P7 : household or personal
+** semanales rurales
+*** NC2R_CA_P4_S1 : quantity
+*** TODO needed ? NC2R_CA_P4_S2 & fol : unit of measure
+*** NC2R_CA_P5_S1 : Forma de adquisición
+*** NC2R_CA_P6_S1 : where bought
+*** NC2R_CA_P7_S1 : value
+*** NC2R_CA_P8_S1 : freq
+** TODO next >>> capitulo c : rural but no urban
+** DONE remaining files
 *** DONE gastos_semanales_rurales__mercados -- very broad and basically 0 VAT
-*** viviendas_y_hogares
-*** TODO ? capitulo c : rural but no urban
+*** DONE viviendas_y_hogares -- just mortgages, which are (currently!) exempt
 * Questions
 ** what does "Capitulo C" mean?
 *** It's the name of a data set in the new ENPH, but not in the earlier one (unless the name changed).
 *** has spending variables, e.g. "alimentos".
-* Viviendas y hogares
+* TODO Viviendas y hogares
 ** P5100S1 through P5100S4: Cuanto pagan for mortgage -- exempt, even for a second home.
