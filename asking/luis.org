@@ -1,2 +1,6 @@
-* TODO NH_CGDUCFH_P3 : how they got it (compra, recibido como pago, regalo, traido de la finca ...)
-This family of variable lets us identify (but reveals the blurry distinctions between) income, consumption and spending.
+* pending
+** ask about current income, not past income if currently unemployed, right?
+** pension contributions ~ income? spending?
+* emailed
+** TODO NH_CGDUCFH_P3 : how they got it (compra, recibido como pago, regalo, traido de la finca ...)
+ This family of variable lets us identify (but reveals the blurry distinctions between) income, consumption and spending.

@@ -1,5 +1,7 @@
 * missing
+** nh_cgpucfh_p1_s2 : ignore?
 ** carac. general.
+*** cuadernillo 1, page 19: what questions are the last answers on the page for?
 * emailed, awaiting
 ** nc2_cc_p1 = 25 broad categories. vat rates?
 

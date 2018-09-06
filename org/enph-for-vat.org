@@ -1,5 +1,7 @@
+* u
+** bars, cafeterias, restaurants: no VAT. otherwise yes. all four of those "fuera" files are in play.
 * TODO common variables
-** TODO DIRECTORIO
+** TODO DIRECTORIO =? household
 ** TODO SECUENCIA_ENCUESTA
 ** TODO SECUENCIA_P
 ** ORDEN = id for family member
@@ -7,12 +9,12 @@
 ** FEX_C
 * data sets
 ** (at least maybe) VAT-relevant
-*** TODO caracteristicas generales
+*** TODO , david processing : caracteristicas generales
 **** P6020 = 1 male, 2 female
 **** P6040 = age in years
 **** P6050 ? = relationship to head of household
 **** P6080 = race
-**** DONE P5170 = student | selected other institutional settings
+**** P5170 = young (pre-k) student | daycare
 **** P6170 = student
 **** P8610 = got a beca. many similar questions thereafter.
 **** P6060 = did you skip all 3 meals any day last week because of money?
@@ -40,6 +42,7 @@
 **** P6620S1 = estimated value of other non-wage income
 **** TODO P6750 ? some other kind of income
 **** TODO P550 ? income to business, not individual
+***** we want individual income; business income bears a different tax. but are they separable?
 **** P6800 = usual weekly hours worked
 **** P6850 = hours worked last week
 **** ! P6880 = place of work (office, truck, door to door ...)
@@ -60,14 +63,22 @@
 **** P7510S6 = layoff compensation
 **** P7510S9 = income from sale of securities ("Rendimientos por venta de títulos")
 **** I skipped the many questions about government benefits, even "transferencias por victimización"
-**** TODO P7513S3 ? Venta de semovientes?
+**** TODO P7513S3 ? Venta de (semovientes = livestock)?
 **** P7513S5 & fol: income from being paid back for a loan
 **** TODO P7513S8 ? jury awards
 **** P7513S9 = lottery winnings
 **** P7513S10 = inheritance
 **** P7513S11 = income from devolved tax payments
 **** P7516 = spent savings in the last 12 months
-*** TODO david : vat-relevant ? diarios urbano fuera
+*** personales urbano fuera
+**** TODO nh_cgpucfh_p1_s2 : nothing, right?
+**** nh_cgpucfh_p1_s1 : coicop
+**** nh_cgpucfh_p2 : quantity
+**** nh_cgpucfh_p3 : how gotten
+**** nh_cgpucfh_p4 : where gotten
+**** nh_cgpucfh_p5 : value
+**** nh_cgpucfh_p6 : freq
+*** diarios urbano fuera
 **** nh_cgducfh_p1_1 : coicop
 **** NH_CGDUCFH_P2 : quantity
 **** TODO luis : NH_CGDUCFH_P3 : how they got it (compra, recibido como pago, regalo, traido de la finca ...)
@@ -110,7 +121,7 @@
 **** p10305 = says whether a house is new or old
 **** p10305s1 = value of the purchase
 **** these purchases are in the last 12 months
-*** TODO david : vat-relevant ? personales rurales fuera
+*** personales rurales fuera
 **** NC2R_CA_P4_S1 : quantity
 **** NC2R_CA_P5_S1 : how it was gotten
 **** NC2R_CA_P6_S1 : where it was gotten
@@ -130,7 +141,7 @@
 **** NC2_CC_P2 : freq
 **** NC2_CC_P3_S1 : value
 **** DONE NC2_CC_P3_S2 : bought in the last week. conflicts & less info relate to freq.
-*** TODO david : vat-relevant ? semanales rural fuera
+*** semanales rural fuera
 **** NH_CGPRCFH_P2 : quantity
 **** NH_CGPRCFH_P3 : how gotten
 **** NH_CGPRCFH_P4 : where gotten
@@ -154,16 +165,6 @@
 **** NC2_CC_P2 : freq
 **** NC2_CC_P3_S1 : value
 ** DONE files not(PITFALL: currently) VAT-relevant
-*** personales urbano fuera -- all bought at a cafeteria or supermarket; no VAT
-**** TODO NH_CGPUCFH_P1_S2 : nothing, right?
-**** nh_cgpucfh_p1_s1 : coicop
-**** NH_CGPUCFH_P2 : quantity
-**** NH_CGPUCFH_P3 : how gotten
-**** NH_CGPUCFH_P4 : where gotten
-**** NH_CGPUCFH_P5 : value
-**** NH_CGPUCFH_P6 : freq
-**** TODO NH_CGPUCFH_P8 ? Lo adquirió a domicilio?
-***** I may have skipped this for some other files
 *** viviendas_y_hogares -- just mortgages, which are (currently!) exempt
 **** P5100S1 through P5100S4: Cuanto pagan for mortgage -- exempt, even for a second home.
 *** gastos_diarios_urbanos__mercados :: nothing identifies what they purchased!
