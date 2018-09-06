@@ -1,49 +1,11 @@
-* Use FEX_C (expansion factor)
-* ENPH asks about income tax
-* for income tax
-** income, kids, voluntary pension fund contributions.
-** at most 40% of a person's inncome can be exempt.
-* restaurant variables
-** if bought in cafeteria or restaurant, gets the 8% tax and no VAT, but otherwise they would pay VAT
-* verbal good description variables
-** gastos_diarios_urbano__comidas_preparadas_fuera - nh_cgducfh_p1
-** gastos_personales_urbano__comidas_preparadas_fuera - nh_cgpucfh_p1
-** gastos_semanales_rural__comidas_preparadas_fuera - nh_cgprcfh_p1
-* COICOP in the data
-** two files have a coicop
-*** gastos diarios del hogar urbano - comidas preparadas fuera :: nh_cgducfh_p1_1
-**** the documentation claims its COICOP variable is nh_cgpucfh_p1_s1, but that doesn't exist
-*** gastos personales urbano - comidas preparadas fuera :: nh_cgpucfh_p1_s1
-** these files appear to have a mislabeled COICOP
-*** gastos diarios personales urbano :: nc4_cc_p1_1 = "nombre del artículo o servicio", 70 unique numbers, but the docs call it "character"
-*** gastos_diarios_urbanos :: nh_cgdu_p1 = "nombre del artículo o servicio", 290 unique nums, again called "caracter"
-*** gastos_menos_frecuentes__articulos :: p10270 = "nombre del artículo o servicio", 'caracter'
-*** gastos_personales_rural :: nc2r_ce_p2 = "Nombre del artículo o servicio", 22 unique values, 75% missing
-*** gastos_semanales_rurales :: nc2r_ca_p3 = "nombre de artículo o servicio descripción detallada de la comida (aplica para sección j)", 225 unique values, 2/3 missing
-**** looks like a COICOP
-*** DONE gastos_semanales_rural__comidas_preparadas_fuera :: three variables
-**** these don't matter, because there's a COICOP
-**** nh_cgprcfh_p1 = descripción de la comida o alimento adquirido; 5 unique values, 7/11 missing
-**** nh_cgprcfh_p1s1 = "marque con una x, la opción que describa mejor el tipo de comida código de tipo comida o alimento adquirido", 22 unique values, 7/11 missing
-**** nh_cgprcfh_p1s2 = "marque con una x, la opción que describa mejor el tipo de comida", 5 unique, 7/11 missing
-** DONE three files have nothing of the sort
-*** gastos_diarios_urbanos__mercados :: nothing identifies what they purchased!
-**** really broad categories, see nc2_cc_p4. basically 0 vat.
-*** gastos_diarios_rurales__mercados :: nothing identifies what they purchased!
-**** really broad categories, see nc2_cc_p4. basically 0 vat.
-*** gastos_menos_frecuentes__medio_de_pago :: includes household purchases, otherwise ignore
-** todo that leaves one more problematic file
-*** gastos_semanales_rural__capitulo_c :: nc2_cc_p1 = "c. caracteristicas del gasto en alimentos de los hogares 1. alimentos o grupos de alimentos", 25 unique values
-**** nc2_cc_p1 has 25 categories, d thinks they are vat-identifiable
-** TODO How important are those 200/1400 codes we were already missing?
-* TODO non-COICOP vars
-** TODO everything has at least most of these
-*** DIRECTORIO
-*** SECUENCIA_ENCUESTA
-*** SECUENCIA_P
-*** ORDEN = id for family member
-*** TODO CAP
-*** FEX_C
+* TODO common variables
+** TODO DIRECTORIO
+** TODO SECUENCIA_ENCUESTA
+** TODO SECUENCIA_P
+** ORDEN = id for family member
+** TODO CAP
+** FEX_C
+* data sets
 ** TODO caracteristicas generales
 *** P6020 = 1 male, 2 female
 *** P6040 = age in years
@@ -104,7 +66,15 @@
 *** P7513S10 = inheritance
 *** P7513S11 = income from devolved tax payments
 *** P7516 = spent savings in the last 12 months
+** personales urbano fuera 
+*** nh_cgpucfh_p1_s1 : coicop
+*** nh_cgpucfh_p2 : quantity
+*** nh_cgpucfh_p3 : how got
+*** nh_cgpucfh_p4 : where got
+*** nh_cgpucfh_p5 : val
+*** nh_cgpucfh_p6 : freq
 ** diarios urbano fuera
+*** nh_cgducfh_p1_1 : coicop
 *** NH_CGDUCFH_P2 : quantity
 *** TODO luis : NH_CGDUCFH_P3 : how they got it (compra, recibido como pago, regalo, traido de la finca ...)
 *** NH_CGDUCFH_P4 : where gotten, even if not bought
@@ -117,24 +87,26 @@
 *** DONE NH_CGDUCFH_P8 ? "si lo adquirió a domicilio"
 **** was it a delivery. ignore.
 ** diarios personales urbano
-*** NC4_CC_P2 : quantity
-*** NC4_CC_P3 : how they got it
+*** nc4_cc_p1_1 : coicop
+*** nc4_cc_p2 : quantity
+*** nc4_cc_p3 : how they got it
 **** legend differs from that in "diarios urbano fuera"
-*** NC4_CC_P4 : where gotten, even if not bought
-*** NC4_CC_P5 : value
-*** NC4_CC_P6 : freq
+*** nc4_cc_p4 : where gotten, even if not bought
+*** nc4_cc_p5 : value
+*** nc4_cc_p6 : freq
 ** diarios urbanos
-*** DONE P10250S1A1 ? "Número de orden de la persona qué se le entregó la mesada"
+*** done p10250s1a1 ? "número de orden de la persona qué se le entregó la mesada"
 **** almost always missing. if not missing, drop observation -- it records a within-household transfer of money
-*** NH_CGDU_P2 : quantity
-*** TODO NH_CGDU_P3 & fol ? unit of measure
-*** NH_CGDU_P5 : how they got it
-*** NH_CGDU_P7B1379 : where gotten
-*** TODO NH_CGDU_P8 ? value
+*** nh_cgdu_p1 = coicop
+*** nh_cgdu_p2 : quantity
+*** todo nh_cgdu_p3 & fol ? unit of measure
+*** nh_cgdu_p5 : how they got it
+*** nh_cgdu_p7b1379 : where gotten
+*** todo nh_cgdu_p8 ? value
 **** interacts with quantity? unit of measure?
-*** NH_CGDU_P10 : personal or household
-** DONE diarios urbanos mercados - very broad and basically zero VAT
+*** nh_cgdu_p10 : personal or household
 ** articulos
+*** p10270 = COICOP
 *** TODO jeff : FORMA : no legend. Hopefully same values as the other "how gotten" variables.
 *** VALOR
 *** TODO jeff : P10270S2 : where bought (where gotten?)
@@ -152,22 +124,15 @@
 *** NC2R_CA_P8_S1 : freq
 ** personales rurales 
 *** DONE NC2R_CE_P1 = got it last week. conflicts with frequency, and less information.
+*** nc2r_ce_p2 : COICOP
 *** NC2R_CE_P4S1 : quantity
 *** NC2R_CE_P5S2 : how gotten
 *** NC2R_CE_P6 : where gotten
 *** NC2R_CE_P7 : value
 *** TODO NC2R_CE_P8 : frequency
 **** it would be nice to be sure that frequency and value are orthogonal -- that is, value is the value per purchase, not the total spent on that good last week
-** DONE personales urbano fuera -- all bought at a cafeteria or supermarket; no VAT
-*** TODO NH_CGPUCFH_P1_S2 : nothing, right?
-*** NH_CGPUCFH_P2 : quantity
-*** NH_CGPUCFH_P3 : how gotten
-*** NH_CGPUCFH_P4 : where gotten
-*** NH_CGPUCFH_P5 : value
-*** NH_CGPUCFH_P6 : freq
-*** TODO NH_CGPUCFH_P8 ? Lo adquirió a domicilio?
-**** I may have skipped this for some other files
 ** semanales rural capitulo c
+*** TODO david : nc2_cc_p1 : 25 broad categories, maybe VAT-identifiable
 *** NC2_CC_P2 : freq
 *** NC2_CC_P3_S1 : value
 *** DONE NC2_CC_P3_S2 : bought in the last week. conflicts & less info relate to freq.
@@ -178,22 +143,40 @@
 *** NH_CGPRCFH_P5 : value
 *** NH_CGPRCFH_P6 : freq
 *** NH_CGPRCFH_P7 : household or personal
+*** DONE :: more variables
+***** these don't matter, because there's a COICOP
+***** nh_cgprcfh_p1 = descripción de la comida o alimento adquirido; 5 unique values, 7/11 missing
+***** nh_cgprcfh_p1s1 = "marque con una x, la opción que describa mejor el tipo de comida código de tipo comida o alimento adquirido", 22 unique values, 7/11 missing
+***** nh_cgprcfh_p1s2 = "marque con una x, la opción que describa mejor el tipo de comida", 5 unique, 7/11 missing
 ** semanales rurales
-*** NC2R_CA_P4_S1 : quantity
-*** TODO needed ? NC2R_CA_P4_S2 & fol : unit of measure
-*** NC2R_CA_P5_S1 : Forma de adquisición
-*** NC2R_CA_P6_S1 : where bought
-*** NC2R_CA_P7_S1 : value
-*** NC2R_CA_P8_S1 : freq
+*** nc2r_ca_p3 :  coicop
+*** nc2r_ca_p4_s1 : quantity
+*** TODO needed ? nc2r_ca_p4_s2 & fol : unit of measure
+*** nc2r_ca_p5_s1 : forma de adquisición
+*** nc2r_ca_p6_s1 : where bought
+*** nc2r_ca_p7_s1 : value
+*** nc2r_ca_p8_s1 : freq
 ** capitulo c : rural but no urban
 *** NC2_CC_P2 : freq
 *** NC2_CC_P3_S1 : value
-** DONE remaining files
-*** DONE gastos_semanales_rurales__mercados -- very broad and basically 0 VAT
-*** DONE viviendas_y_hogares -- just mortgages, which are (currently!) exempt
-* Questions
-** what does "Capitulo C" mean?
-*** It's the name of a data set in the new ENPH, but not in the earlier one (unless the name changed).
-*** has spending variables, e.g. "alimentos".
-* DONE Viviendas y hogares
-** P5100S1 through P5100S4: Cuanto pagan for mortgage -- exempt, even for a second home.
+** DONE files not (PITFALL: currently) VAT-relevant
+*** personales urbano fuera -- all bought at a cafeteria or supermarket; no VAT
+**** TODO NH_CGPUCFH_P1_S2 : nothing, right?
+**** NH_CGPUCFH_P2 : quantity
+**** NH_CGPUCFH_P3 : how gotten
+**** NH_CGPUCFH_P4 : where gotten
+**** NH_CGPUCFH_P5 : value
+**** NH_CGPUCFH_P6 : freq
+**** TODO NH_CGPUCFH_P8 ? Lo adquirió a domicilio?
+***** I may have skipped this for some other files
+*** viviendas_y_hogares -- just mortgages, which are (currently!) exempt
+**** P5100S1 through P5100S4: Cuanto pagan for mortgage -- exempt, even for a second home.
+*** gastos_diarios_urbanos__mercados :: nothing identifies what they purchased!
+**** four broad purchase categories, see nc2_cc_p4. basically 0 vat.
+*** gastos_semanales_rurales__mercados :: nothing identifies what they purchased!
+**** four broad purchase categories, see nc2_cc_p4. basically 0 vat.
+* probably obsolete
+** DONE verbal good description variables
+*** gastos_diarios_urbano__comidas_preparadas_fuera - nh_cgducfh_p1
+*** gastos_personales_urbano__comidas_preparadas_fuera - nh_cgpucfh_p1
+*** gastos_semanales_rural__comidas_preparadas_fuera - nh_cgprcfh_p1

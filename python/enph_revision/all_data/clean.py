@@ -1,3 +1,7 @@
+import pandas as pd
+import numpy as np
+
+
 for df in newEnphsDfs:
   df.columns = map(str.lower, df.columns)
 
