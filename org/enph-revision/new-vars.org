@@ -26,7 +26,7 @@
 **** nh_cgprcfh_p1 = descripción de la comida o alimento adquirido; 5 unique values, 7/11 missing
 **** nh_cgprcfh_p1s1 = "marque con una x, la opción que describa mejor el tipo de comida código de tipo comida o alimento adquirido", 22 unique values, 7/11 missing
 **** nh_cgprcfh_p1s2 = "marque con una x, la opción que describa mejor el tipo de comida", 5 unique, 7/11 missing
-** TODO three files have nothing of the sort
+** DONE three files have nothing of the sort
 *** gastos_diarios_urbanos__mercados :: nothing identifies what they purchased!
 **** really broad categories, see nc2_cc_p4. basically 0 vat.
 *** gastos_diarios_rurales__mercados :: nothing identifies what they purchased!
@@ -106,7 +106,7 @@
 *** P7516 = spent savings in the last 12 months
 ** diarios urbano fuera
 *** NH_CGDUCFH_P2 : quantity
-*** TODO NH_CGDUCFH_P3 : how they got it (compra, recibido como pago, regalo, traido de la finca ...)
+*** TODO luis : NH_CGDUCFH_P3 : how they got it (compra, recibido como pago, regalo, traido de la finca ...)
 *** NH_CGDUCFH_P4 : where gotten, even if not bought
 **** TODO ? how to read the legend
 **** TODO restaurant, bar, cafeteria: no VAT. otherwise ignore. street vendors?
@@ -135,9 +135,9 @@
 *** NH_CGDU_P10 : personal or household
 ** DONE diarios urbanos mercados - very broad and basically zero VAT
 ** articulos
-*** TODO FORMA : no legend. Hopefully same values as the other "how gotten" variables.
+*** TODO jeff : FORMA : no legend. Hopefully same values as the other "how gotten" variables.
 *** VALOR
-*** TODO P10270S2 : where bought (where gotten?)
+*** TODO jeff : P10270S2 : where bought (where gotten?)
 *** P10270S3 : frequency
 *** DONE P10270S4 = portion of value bought on credit. ignore.
 ** medio
@@ -195,5 +195,5 @@
 ** what does "Capitulo C" mean?
 *** It's the name of a data set in the new ENPH, but not in the earlier one (unless the name changed).
 *** has spending variables, e.g. "alimentos".
-* TODO Viviendas y hogares
+* DONE Viviendas y hogares
 ** P5100S1 through P5100S4: Cuanto pagan for mortgage -- exempt, even for a second home.

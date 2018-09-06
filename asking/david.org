@@ -1,4 +1,8 @@
+* missing
+** carac. general.
 * emailed, awaiting
+** nc2_cc_p1 = 25 broad categories. vat rates?
+
 ** DIRECTORIO
 ** SECUENCIA_ENCUESTA
 ** SECUENCIA_P
