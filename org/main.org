@@ -20,6 +20,8 @@ x = purchases["vat-rate"]
 ** at most 40% of a person's inncome can be exempt.
 
 * VAT / todo
+** using the new ENPH
+*** household-communal: ignorable
 ** code-internal
 *** pdflatex: send reports to a file, not stdout
 **** this way it doesn't drown the python error reports

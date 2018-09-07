@@ -1,8 +1,9 @@
-* missing
-** nh_cgpucfh_p1_s2 : ignore?
+* yet to ask
+* emailed, awaiting
+** nh_cgpucfh_p1_s2 : ignore? (We've already got a COICOP; I don't know what other information this variable could provide. But I can't find a description of it, so I can't rule out the possibility that it's important.)
+** pension contributions: There are a number of variables (at least 5) about pensions in 'caracteristicas generales'. Do the other income variables already incorporate it, or is it a part of income we would not be coutning if we didn't use the pension contribution variable?
 ** carac. general.
 *** cuadernillo 1, page 19: what questions are the last answers on the page for?
-* emailed, awaiting
 ** nc2_cc_p1 = 25 broad categories. vat rates?
 
 ** DIRECTORIO
