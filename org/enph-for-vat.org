@@ -72,17 +72,25 @@
 **** P7516 = spent savings in the last 12 months
 *** rural capitulo c
 **** TODO david processing : nc2_cc_p1 : 25 broad categories, maybe VAT-identifiable
-**** NC2_CC_P2 : freq
-**** NC2_CC_P3_S1 : value
-**** DONE NC2_CC_P3_S2 : bought in the last week. conflicts & less info relate to freq.
+**** nc2_cc_p2 : freq
+**** nc2_cc_p3_s1 : value
+**** DONE nc2_cc_p3_s2 : bought in the last week. conflicts & less info relate to freq.
 *** urban capitulo c
-**** NC2_CC_P1 : 25 broad categories, maybe VAT-identifiable
-**** NC2_CC_P2 : freq
-**** NC2_CC_P3_S1 : value
+**** nc2_cc_p1 : 25 broad categories, maybe vat-identifiable
+**** nc2_cc_p2 : freq
+**** nc2_cc_p3_s1 : value
 *** medio
 **** p10305 = says whether a house is new or old
 **** p10305s1 = value of the purchase
 **** these purchases are in the last 12 months
+*** articulos
+**** p10270 = COICOP
+**** TODO jeff : FORMA : no legend. Hopefully same values as the other "how gotten" variables.
+**** VALOR
+**** TODO jeff : P10270S2 : where bought (where gotten?)
+**** P10270S3 : frequency
+**** DONE P10270S4 = portion of value bought on credit. ignore.
+*** ## -- The rest of these have all 6 purchase variables we rely on. -- ##
 *** personales urbano fuera
 **** TODO david processing : nh_cgpucfh_p1_s2 : nothing, right?
 **** nh_cgpucfh_p1_s1 : coicop
@@ -101,8 +109,8 @@
 **** nh_cgducfh_p5 : value, even if not bought
 **** TODO nh_cgducfh_p6 : frequency
 ***** ? how to read legend. 2.1 appears in it, but 2 and not 2.1 appears in the data.
-**** nh_cgducfh_p7 : personal or household
-**** done nh_cgducfh_p8 ? "si lo adquirió a domicilio"
+**** DONE nh_cgducfh_p7 : personal or household
+**** DONE nh_cgducfh_p8 ? "si lo adquirió a domicilio"
 ***** was it a delivery. ignore.
 *** diarios personales urbano
 **** nc4_cc_p1_1 : coicop
@@ -122,14 +130,8 @@
 **** nh_cgdu_p7b1379 : where gotten
 **** TODO nh_cgdu_p8 ? value
 ***** interacts with quantity? unit of measure?
+**** nh_cgdu_p9 : freq
 **** nh_cgdu_p10 : personal or household
-*** articulos
-**** p10270 = COICOP
-**** TODO jeff : FORMA : no legend. Hopefully same values as the other "how gotten" variables.
-**** VALOR
-**** TODO jeff : P10270S2 : where bought (where gotten?)
-**** P10270S3 : frequency
-**** DONE P10270S4 = portion of value bought on credit. ignore.
 *** personales rural fuera
 **** nc2r_ca_p3 :  coicop
 **** NC2R_CA_P4_S1 : quantity
@@ -147,16 +149,16 @@
 **** TODO NC2R_CE_P8 : frequency
 ***** it would be nice to be sure that frequency and value are orthogonal -- that is, value is the value per purchase, not the total spent on that good last week
 *** semanales rural fuera
-**** NH_CGPRCFH_P2 : quantity
-**** NH_CGPRCFH_P3 : how gotten
-**** NH_CGPRCFH_P4 : where gotten
-**** NH_CGPRCFH_P5 : value
-**** NH_CGPRCFH_P6 : freq
+**** nh_cgprcfh_p1s1 : coicop
+**** nh_cgprcfh_p2 : quantity
+**** nh_cgprcfh_p3 : how gotten
+**** nh_cgprcfh_p4 : where gotten
+**** nh_cgprcfh_p5 : value
+**** nh_cgprcfh_p6 : freq
 **** DONE :: more variables
-***** NH_CGPRCFH_P7 : household or personal
+***** nh_cgprcfh_p7 : household or personal
 ***** these don't matter, because there's a COICOP
 ****** nh_cgprcfh_p1 = descripción de la comida o alimento adquirido; 5 unique values, 7/11 missing
-****** nh_cgprcfh_p1s1 = "marque con una x, la opción que describa mejor el tipo de comida código de tipo comida o alimento adquirido", 22 unique values, 7/11 missing
 ****** nh_cgprcfh_p1s2 = "marque con una x, la opción que describa mejor el tipo de comida", 5 unique, 7/11 missing
 *** semanales rurales
 **** nc2r_ca_p3 :  coicop
