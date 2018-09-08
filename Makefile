@@ -216,6 +216,6 @@ input_subsamples: $(input_subsamples)
 # TODO ? rather than build these monolithically, make the subsample size a parameter of subsample.py
   # would be faster if, e.g., you wanted to build only the 1/1000 subsample and not the others
   # but on the other hand building every subsample would require loading the input four times
-$(input_subsamples) : $(enig_orig) $(enph_orig)
+$(input_subsamples) : python/subsample.py $(enig_orig) $(enph_orig)
   # TODO ? add python/subsample.py to dependencies
 	$(python_from_here) python/subsample.py
