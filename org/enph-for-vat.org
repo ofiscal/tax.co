@@ -90,7 +90,7 @@
 **** TODO jeff : P10270S2 : where bought (where gotten?)
 **** P10270S3 : frequency
 **** DONE P10270S4 = portion of value bought on credit. ignore.
-*** ## -- The rest of these have all 6 purchase variables we rely on. -- ##
+*** DONE ## -- The rest of these have all 6 purchase variables we rely on. -- ##
 *** personales urbano fuera
 **** TODO david processing : nh_cgpucfh_p1_s2 : nothing, right?
 **** nh_cgpucfh_p1_s1 : coicop
