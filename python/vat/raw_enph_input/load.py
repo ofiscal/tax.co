@@ -19,9 +19,6 @@ def collect_files( file_structs ):
     acc = acc.append(shuttle)
   return acc
 
-purchases = pd.DataFrame()
-for i in [ nice_purchases.files
-           , articulos.files
-         ]:
-  purchases = purchases.append( collect_files( i ) )
-del(i)
+purchases = collect_files(
+  nice_purchases.files
+  + articulos.files )
