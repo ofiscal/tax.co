@@ -1,19 +1,10 @@
-# import python.vat.load_enph as enph
 import pandas as pd
+import python.vat.raw_enph_input.config as raw_enph
+from python.vat.raw_enph_input.classes import File
 
 
-subsample = 100
-
-folder = "data/enph-2017/recip-" + str(subsample) + "/"
-
-class NiceFile:
-  def __init__(self,name,filename,col_dict):
-    self.name = name
-    self.filename = filename
-    self.col_dict = col_dict
-
-nice_files = [
-  NiceFile( "urban_personal_fuera"
+files = [
+  File( "urban_personal_fuera"
     , "Gastos_personales_Urbano_-_Comidas_preparadas_fuera_del_hogar.csv"
     , { "NH_CGPUCFH_P1_S1" : "coicop"
         ,"NH_CGPUCFH_P2" : "quantity"
@@ -24,7 +15,7 @@ nice_files = [
     }
   )
 
-  , NiceFile( "urban_diario_fuera"
+  , File( "urban_diario_fuera"
     , "Gastos_diarios_del_hogar_Urbano_-_Comidas_preparadas_fuera_del_hogar.csv"
     , {"NH_CGDUCFH_P1_1" : "coicop"
        ,"NH_CGDUCFH_P2" : "quantity"
@@ -35,7 +26,7 @@ nice_files = [
     }
   )
 
-  , NiceFile( "urban_diario_personal"
+  , File( "urban_diario_personal"
     , "Gastos_diarios_personales_Urbano.csv"
     , {"NC4_CC_P1_1" : "coicop"
       ,"NC4_CC_P2" : "quantity"
@@ -46,7 +37,7 @@ nice_files = [
     }
   )
 
-  , NiceFile( "urban_diario"
+  , File( "urban_diario"
     , "Gastos_diarios_Urbanos.csv"
     , { "P10250S1A1" : "drop-observastion-if-present"
       # almost always missing. if not missing, drop observation -- it records a within-household transfer of money
@@ -59,7 +50,7 @@ nice_files = [
     }
   )
 
-  , NiceFile( "rural_personal_fuera"
+  , File( "rural_personal_fuera"
     , "Gastos_personales_Rural_-_Comidas_preparadas_fuera_del_Hogar.csv"
     , {"NC2R_CA_P3" : " coicop"
        ,"NC2R_CA_P4_S1" : "quantity"
@@ -70,7 +61,7 @@ nice_files = [
     }
   )
 
-  , NiceFile( "rural_personal"
+  , File( "rural_personal"
     , "Gastos_personales_Rural.csv"
     , {"NC2R_CE_P2" : "coicop"
        ,"NC2R_CE_P4S1" : "quantity"
@@ -81,7 +72,7 @@ nice_files = [
     }
   )
 
-  , NiceFile( "rural_semanal_fuera"
+  , File( "rural_semanal_fuera"
     , "Gastos_semanales_Rural_-_Comidas_preparadas_fuera_del_hogar.csv"
     , {"NH_CGPRCFH_P1S1" : "coicop"
        ,"NH_CGPRCFH_P2" : "quantity"
@@ -92,7 +83,7 @@ nice_files = [
     }
   )
 
-  , NiceFile( "rural_semanal"
+  , File( "rural_semanal"
     , "Gastos_semanales_Rurales.csv"
     , {"NC2R_CA_P3" : " coicop"
        ,"NC2R_CA_P4_S1" : "quantity"
@@ -103,15 +94,3 @@ nice_files = [
     }
   )
 ]
-
-purchases = pd.DataFrame()
-for nf in nice_files:
-  shuttle = (
-    pd.read_csv(
-      folder + nf.filename
-      , usecols = list( nf.col_dict.keys() ) )
-    . rename( columns = nf.col_dict        )
-  )
-  shuttle["file-origin"] = nf.name
-  purchases = purchases.append(shuttle)
-del(shuttle)
