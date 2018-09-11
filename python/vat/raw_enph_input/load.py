@@ -19,7 +19,7 @@ def collect_files( file_structs ):
     )
     shuttle["file-origin"] = f.name
     for c in f.corrections:
-      c.correct( shuttle )
+      shuttle = c.correct( shuttle )
     acc = acc.append(shuttle)
   return acc
 

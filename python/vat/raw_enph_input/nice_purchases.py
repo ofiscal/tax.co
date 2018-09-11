@@ -1,6 +1,6 @@
 import pandas as pd
 import python.vat.raw_enph_input.config as raw_enph
-from python.vat.raw_enph_input.classes import File
+from python.vat.raw_enph_input.classes import File, Correction
 
 
 files = [
@@ -39,9 +39,7 @@ files = [
 
   , File( "urban_diario"
     , "Gastos_diarios_Urbanos.csv"
-    , { "P10250S1A1" : "drop-observastion-if-present"
-        # TODO : almost always missing. if not missing, drop observation, because
-        # it records a within-household transfer of money
+    , { "P10250S1A1" : "within-household-transfer"
       , "NH_CGDU_P1" : "coicop"
       , "NH_CGDU_P2" : "quantity"
       , "NH_CGDU_P5" : "how-got"
@@ -49,6 +47,13 @@ files = [
       , "NH_CGDU_P8" : "value"
       , "NH_CGDU_P9" : "freq"
     }
+    , [ # The "within-household transfer" variable is almost always null. If it's not,
+        # drop the observation. Then drop that column.
+        Correction.Drop_Row_If_Column_Satisfies_Predicate( "within-household-transfer"
+                                                           , pd.notnull
+                                                         )
+      , Correction.Drop_Column( "within-household-transfer" )
+    ]
   )
 
   , File( "rural_personal_fuera"
