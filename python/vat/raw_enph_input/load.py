@@ -14,6 +14,8 @@ def collect_files( file_structs ):
       . rename( columns = f.col_dict        )
     )
     shuttle["file-origin"] = f.name
+    for c in f.corrections:
+      c.correct( shuttle )
     acc = acc.append(shuttle)
   return acc
 
@@ -22,5 +24,4 @@ for i in [ nice_purchases.files
            , articulos.files
          ]:
   purchases = purchases.append( collect_files( i ) )
-
-# TODO NEXT >>> corrections. again, use a class.
+del(i)
