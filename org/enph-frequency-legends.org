@@ -13,9 +13,9 @@
 * urban cap c
 ** 2 » 2. Diario
 *** TODO Every other file has "1 » 2. Diario"
-*** TODO Every other file has "2 » 2.1. Varias ..."
+*** TODO Every other file has "2 » 2.1. Varias veces por semana"
 ** 3 » 2.1 varias veces por semana
-*** TODO In every other case 3 means "semanal"
+*** TODO Every other file has "3 » 3. Semanal"
 ** 4 » 3. Semanal
 *** TODO Every other file has "4 » 4. Quincenal".
 ** 5 » 4. Quincenal
@@ -25,9 +25,11 @@
 ** 7 » 6. Bimestral
 *** TODO Every other file has "7 » 7. Trimestral"
 ** 8 » 7. Trimestral
-*** TODO The only other key that starts with 8 read "8 » 8. Anual"
+*** TODO The only other key with an 8 in it read "8 » 8. Anual"
 ** 9 » 9. Esporádica
 ** 1 » 11. Nunca
+*** TODO Both 1 and 11 show up in the data.
+** TODO jeff: what to do about NaN?
 * rural personal
 ** 1 » 2. Diario
 ** 2 » 2.1 Varias veces por semana
@@ -82,7 +84,7 @@
 ** 6 » 6. Bimestral
 ** 7 » 7. Trimestral
 ** 9 » 9. Esporádica
-* articulos
+* articulos 
 ** 3 » 3. Semanal
 ** 4 » 4. Quincenal
 ** 5 » 5. Mensual
@@ -91,6 +93,7 @@
 ** 8 » 8. Anual
 ** 9 » 9. Esporádica
 ** 10 » 10. Semestral
+** TODO jeff: what to do about NaN?
 * urbano diarios personal
 ** 1 » 1. Diario
 ** 2 » 2.1. Varias veces
@@ -107,4 +110,6 @@
 ** 4 » 4. Quincenal
 ** 5 » 5. Mensual
 ** 6 » 6. Bimestral
+** 7 » 7. Trimestral 
 ** 9 » 9. Esporádica
+** TODO jeff: what to do about NaN?
