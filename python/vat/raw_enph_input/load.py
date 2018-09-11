@@ -5,6 +5,7 @@ import python.vat.raw_enph_input.config as raw_enph
 import python.vat.raw_enph_input.nice_purchases as nice_purchases
 import python.vat.raw_enph_input.medios as medios
 import python.vat.raw_enph_input.articulos as articulos
+import python.vat.raw_enph_input.capitulo_c as capitulo_c
 
 
 def collect_files( file_structs ):
@@ -26,4 +27,5 @@ purchases = collect_files(
     nice_purchases.files
   + articulos.files
   + medios.files
+  + capitulo_c.files
 )
