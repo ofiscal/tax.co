@@ -1,7 +1,10 @@
 import pandas as pd
 import python.vat.raw_enph_input.config as raw_enph
-import python.vat.raw_enph_input.articulos as articulos
+
+# input files
 import python.vat.raw_enph_input.nice_purchases as nice_purchases
+import python.vat.raw_enph_input.medios as medios
+import python.vat.raw_enph_input.articulos as articulos
 
 
 def collect_files( file_structs ):
@@ -20,5 +23,7 @@ def collect_files( file_structs ):
   return acc
 
 purchases = collect_files(
-  nice_purchases.files
-  + articulos.files )
+    nice_purchases.files
+  + articulos.files
+  + medios.files
+)

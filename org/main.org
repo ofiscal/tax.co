@@ -12,13 +12,11 @@ x = purchases["vat-rate"]
 0.0038864381329490067
 * restaurant|cafeteria tax / todo
 ** if bought in cafeteria or restaurant, gets the 8% tax and no VAT, but otherwise they would pay VAT
-
 * income tax / todo
 ** ENPH asks about income tax
 ** if no SS payments and (or?) making less than min wage, informal
 ** primary inputs: income, kids, voluntary pension fund contributions.
 ** at most 40% of a person's inncome can be exempt.
-
 * VAT / todo
 ** using the new ENPH
 *** household-communal: ignorable
