@@ -1,0 +1,110 @@
+* Rural cap c
+** 1 » 2. Diario
+** 2 » 2.1. Varias veces por semana
+*** TODO 2.1 is not in the data, so this suggests the first number is the right one.
+** 3 » 3. Semanal
+** 4 » 4. Quincenal
+** 5 » 5. Mensual
+** 6 » 6. Bimestral
+** 7 » 7. Trimestral
+** 9 » 9. Esporádica
+** 11 » 11. Nunca
+*** TODO What does this even mean? Should we drop these observations?
+* urban cap c
+** 2 » 2. Diario
+*** TODO Every other file has "1 » 2. Diario"
+*** TODO Every other file has "2 » 2.1. Varias ..."
+** 3 » 2.1 varias veces por semana
+*** TODO In every other case 3 means "semanal"
+** 4 » 3. Semanal
+*** TODO Every other file has "4 » 4. Quincenal".
+** 5 » 4. Quincenal
+*** TODO Every other file has "5 » 5. Mensual"
+** 6 » 5. Mensual
+*** TODO Every other file has "6 » 6. Bimestral"
+** 7 » 6. Bimestral
+*** TODO Every other file has "7 » 7. Trimestral"
+** 8 » 7. Trimestral
+*** TODO The only other key that starts with 8 read "8 » 8. Anual"
+** 9 » 9. Esporádica
+** 1 » 11. Nunca
+* rural personal
+** 1 » 2. Diario
+** 2 » 2.1 Varias veces por semana
+** 3 » 3.Semanal
+** 4 » 4. Quincenal
+** 5 » 5. Mensual
+** 6 » 6. Bimestral
+** 7 » 7. Trimestral
+** 9 » 9.Esporádico
+* rural semanal fuera
+** 1 » 2. Diario
+** 2 » 2.1. Varias veces por semana
+** 3 » 3. Semanal
+** 4 » 4. Quincenal
+** 5 » 5. Mensual
+** 6 » 6. Bimestral
+** 7 » 7. Trimestral
+** 9 » 9. Esporádica
+* urbano diario fuera
+** 1 » 2. Diario
+** 2 » 2.1. Varias veces por semana
+** 3 » 3. Semanal
+** 4 » 4. Quincenal
+** 5 » 5. Mensual
+** 6 » 6. Bimestral
+** 7 » 7. Trimestral
+** 9 » 9. Esporádica
+* urbano personal fuera
+** 1 » 2. Diario
+** 2 » 2.1. Varias veces por semana
+** 3 » 3. Semanal
+** 4 » 4. Quincenal
+** 5 » 5. Mensual
+** 6 » 6. Bimestral
+** 7 » 7. Trimestral
+** 9 » 9. Esporádica
+* rural semanal
+** 1 » 2. Diario
+** 2 » 2.1. Varias veces por semana
+** 3 » 3. Semanal
+** 4 » 4. Quincenal
+** 5 » 5. Mensual
+** 6 » 6. Bimestral
+** 7 » 7. Trimestral
+** 9 » 9. Esporádica
+* rural personal fuera
+** 1 » 2. Diario
+** 2 » 2.1. Varias veces por semana
+** 3 » 3. Semanal
+** 4 » 4. Quincenal
+** 5 » 5. Mensual
+** 6 » 6. Bimestral
+** 7 » 7. Trimestral
+** 9 » 9. Esporádica
+* articulos
+** 3 » 3. Semanal
+** 4 » 4. Quincenal
+** 5 » 5. Mensual
+** 6 » 6. Bimestral
+** 7 » 7. Trimestral
+** 8 » 8. Anual
+** 9 » 9. Esporádica
+** 10 » 10. Semestral
+* urbano diarios personal
+** 1 » 1. Diario
+** 2 » 2.1. Varias veces
+** 3 » 3. Semanal
+** 4 » 4. Quincenal
+** 5 » 5. Mensual
+** 6 » 6. Bimestral
+** 7 » 7. Trimestral
+** 9 » 9. Esporádica por semana
+* urbano diario
+** 1 » 2. Diario
+** 2 » 2.1. Varias veces por semana
+** 3 » 3. Semanal
+** 4 » 4. Quincenal
+** 5 » 5. Mensual
+** 6 » 6. Bimestral
+** 9 » 9. Esporádica
