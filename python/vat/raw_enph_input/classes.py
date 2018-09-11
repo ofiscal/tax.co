@@ -12,4 +12,10 @@ class Correction:
       self.value = value
     def correct(self,df):
       df[self.col_name] = self.value
-      return df
+  class Apply_Function_To_Column:
+    def __init__(self,col_name,func):
+      self.col_name = col_name
+      self.func = func
+    def correct(self,df):
+      df[self.col_name] = df[self.col_name].apply(self.func)
+

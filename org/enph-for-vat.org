@@ -76,13 +76,13 @@
 **** nc2_cc_p3_s1 : value
 **** DONE nc2_cc_p3_s2 : bought in the last week. conflicts & less info relate to freq.
 *** urban capitulo c
-**** nc2_cc_p1 : 25 broad categories, maybe vat-identifiable
+**** TODO nc2_cc_p1 : 25 broad categories, maybe vat-identifiable.
 **** nc2_cc_p2 : freq
 **** nc2_cc_p3_s1 : value
 *** medio
 **** p10305 = says whether a house is new or old
 **** p10305s1 = value of the purchase
-**** these purchases are in the last 12 months
+**** TODO these purchases are in the last 12 months. How to represent?
 *** articulos
 **** p10270 = COICOP
 **** TODO jeff : FORMA : no legend. Hopefully same values as the other "how gotten" variables.

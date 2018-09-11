@@ -11,5 +11,5 @@ files = [
         , "P10270S2" : "where-got"
         , "P10270S3" : "freq"
     }
-    , [ classes.Correction.Create_Constant_Column( "quantity", 1 ) ]
-  ) ]
+    , [ classes.Correction.Create_Constant_Column( "quantity", 1 )
+] ) ]
