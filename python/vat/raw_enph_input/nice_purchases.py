@@ -53,7 +53,7 @@ files = [
 
   , File( "rural_personal_fuera"
     , "Gastos_personales_Rural_-_Comidas_preparadas_fuera_del_Hogar.csv"
-    , { "NC2R_CA_P3" : " coicop"
+    , { "NC2R_CA_P3" : "coicop"
       , "NC2R_CA_P4_S1" : "quantity"
       , "NC2R_CA_P5_S1" : "how-got"
       , "NC2R_CA_P6_S1" : "where-got"
@@ -86,7 +86,7 @@ files = [
 
   , File( "rural_semanal"
     , "Gastos_semanales_Rurales.csv"
-    , { "NC2R_CA_P3" : " coicop"
+    , { "NC2R_CA_P3" : "coicop"
       , "NC2R_CA_P4_S1" : "quantity"
       , "NC2R_CA_P5_S1" : "how-got"
       , "NC2R_CA_P6_S1" : "where-got"
