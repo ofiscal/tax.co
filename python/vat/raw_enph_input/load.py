@@ -25,8 +25,8 @@ def collect_files( file_structs ):
   return acc
 
 purchases = collect_files(
-    nice_purchases.files
-  + articulos.files
+  articulos.files
   + medios.files
   + capitulo_c.files
+  + nice_purchases.files
 )
