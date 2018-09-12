@@ -85,7 +85,7 @@
 *** 6 » 6. Bimestral
 *** 7 » 7. Trimestral
 *** 9 » 9. Esporádica
-** articulos 
+** articulos
 *** 3 » 3. Semanal
 *** 4 » 4. Quincenal
 *** 5 » 5. Mensual
@@ -111,7 +111,7 @@
 *** 4 » 4. Quincenal
 *** 5 » 5. Mensual
 *** 6 » 6. Bimestral
-*** 7 » 7. Trimestral 
+*** 7 » 7. Trimestral
 *** 9 » 9. Esporádica
 *** TODO jeff: what to do about NaN?
 * how-got
@@ -124,69 +124,69 @@
 ** TODO problems
 *** urban_diario_personal is different; everything else has the same key
 ** rural_personal: takes 1-4
-1 » 01. Compra 
-2 » 02. Recibido como pago por trabajo 
-3 » 03. Regalo 
-4 » 04. Intercambio o Trueque 
-5 » 05. Cultivados en la finca o producidos por el hogar 
-6 » 06. Tomado de un negocio del hogar 
+1 » 01. Compra
+2 » 02. Recibido como pago por trabajo
+3 » 03. Regalo
+4 » 04. Intercambio o Trueque
+5 » 05. Cultivados en la finca o producidos por el hogar
+6 » 06. Tomado de un negocio del hogar
 7 » 07. Otra
 ** rural_personal_fuera: takes 1-3, 6
 1 » 1. Compra
 2 » 2. Recibidos como pago por trabajo
-3 » 3. Regalo o donación 
-4 » 4. Intercambio o trueque 
-5 » 5. Traidos de la finca o producidos por el hogar 
+3 » 3. Regalo o donación
+4 » 4. Intercambio o trueque
+5 » 5. Traidos de la finca o producidos por el hogar
 6 » 6. Tomados de un negocio del hogar
 7 » 7. Otra
 ** rural_semanal: 1-7
 1 » 1. Compra
 2 » 2. Recibidos como pago por trabajo
-3 » 3. Regalo o donación 
-4 » 4. Intercambio o trueque 
-5 » 5. Traidos de la finca o producidos por el hogar 
-6 » 6. Tomados de un negocio del hogar 
+3 » 3. Regalo o donación
+4 » 4. Intercambio o trueque
+5 » 5. Traidos de la finca o producidos por el hogar
+6 » 6. Tomados de un negocio del hogar
 7 » 7. Otra
 ** rural_semanal_fuera: 1-3
-1 » 1.Compra 
-2 » 2.Recibidos como pago por trabajo 
-3 » 3.Regalo 
-4 » 4.Intercambio o trueque 
+1 » 1.Compra
+2 » 2.Recibidos como pago por trabajo
+3 » 3.Regalo
+4 » 4.Intercambio o trueque
 5 » 5.Traidos de la finca o producidos por el hogar
-6 » 6.Tomados de un negocio del hogar 
+6 » 6.Tomados de un negocio del hogar
 7 » 7.Otra
 ** urban_diario: 1-7, NaN
 *** TODO ? NaN
 *** codebook
-1 » 1.Compra 
-2 » 2.Recibidos como pago por trabajo 
+1 » 1.Compra
+2 » 2.Recibidos como pago por trabajo
 3 » 3. Regalo o donación
-4 » 4.Intercambio o trueque 
-5 » 5.Traidos de la finca o producidos por el hogar 
-6 » 6.Tomados de un negocio del hogar 
+4 » 4.Intercambio o trueque
+5 » 5.Traidos de la finca o producidos por el hogar
+6 » 6.Tomados de un negocio del hogar
 7 » 7.Otra
 ** urban_diario_fuera: 1-7
-1 » 1.Compra 
-2 » 2.Recibidos como pago por trabajo 
-3 » 3. Regalo o donación 
-4 » 4.Intercambio o trueque 
-5 » 5.Traidos de la finca o producidos por el hogar 
-6 » 6.Tomados de un negocio del hogar 
+1 » 1.Compra
+2 » 2.Recibidos como pago por trabajo
+3 » 3. Regalo o donación
+4 » 4.Intercambio o trueque
+5 » 5.Traidos de la finca o producidos por el hogar
+6 » 6.Tomados de un negocio del hogar
 7 » 7.Otra
 ** TODO urban_diario_personal: 1-7
-*** 1 » 1. Compra 
-*** TODO 2 » 2. Traídos de la finca o producidos por el hogar. 
-*** TODO (different) 3 » 3. Tomados de un negocio del hogar. 
-*** TODO (different) 4 » 4. Recibidos como pagos por trabajo 
-*** TODO (different) 5 » 5. Regalo o donación 
-*** TODO (different) 6 » 6. Intercambio o trueque 
+*** 1 » 1. Compra
+*** TODO 2 » 2. Traídos de la finca o producidos por el hogar.
+*** TODO (different) 3 » 3. Tomados de un negocio del hogar.
+*** TODO (different) 4 » 4. Recibidos como pagos por trabajo
+*** TODO (different) 5 » 5. Regalo o donación
+*** TODO (different) 6 » 6. Intercambio o trueque
 *** 7 » 7. Otra
 ** urban_personal_fuera: 1-7
-1 » 1. Compra 
+1 » 1. Compra
 2 » 2. Recibidos como pago por trabajo
-3 » 3. Regalo o donación 
+3 » 3. Regalo o donación
 4 » 4. Intercambio o trueque
-5 » 5. Traidos de la finca o producidos por el hogar 
+5 » 5. Traidos de la finca o producidos por el hogar
 6 » 6. Tomados de un negocio del hogar
 7 » 7. Otra
 * where-got
@@ -194,178 +194,188 @@
 *** medios
 *** rural capitulo c
 *** urban capitulo c
-** articulos
-*** 1 » 1 Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
-*** 4 » 4 Supermercados de cajas de compesanción, cooperativas, fondos de empleados y comisariatos
-*** 6 » 6 Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
-*** 7 » 7 Misceláneas de barrio y cacharrerías
-*** 10 » 10 Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
-*** 13 » 13 Vendedores ambulantes
-*** 14 » 14 Sanandrecitos, bodegas y fábricas
-*** 16 » 16 Establecimiento especializado en la venta del artículo o la prestación del servicio
-*** 17 » 17 Farmacias y droguerías
-*** 20 » 20 Persona particular
-*** 21 » 21 Ferias especializada: artesanal, del libro , del hogar, de tecnología, etc.
-*** 22 » 22 A través de internet
-*** 23 » 23 Televentas y ventas por catálogo
-*** 24 » 24 Otro
-*** 26 » 26 En el exterior (fuera del país)
-
-** rural_personal
-*** 1 » 1. Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
-*** 4 » 4 . Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
-*** 6 » 6. Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
-*** 7 » 7. Misceláneas de barrio y cacharrerías
-*** 10 » 10. Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
-*** 13 » 13. Vendedores ambulantes
-*** 14 » 14. Sanandrecitos, bodegas y fábricas
-*** 16 » 16. Establecimiento especializado en la venta del artículo o la prestación del servicios
-*** 17 » 17. Farmacias y droguerías
-*** 18 » 18. Restaurantes
-*** 19 » 19. Cafeterías y establecientos de comidas rápidas
-*** 20 » 20. Persona particular
-*** 21 » 21. Ferias especializada: artesanal, del libro , del hogar, de tecnología, etc.
-*** 22 » 22. A través de internet
-*** 23 » 23. Televentas y ventas por catálogo
-*** 24 » 24. Otro
-*** 25 » 25. Plazoleta de comidas
-
-** rural_personal_fuera
-*** 1 » 1. Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
-*** 2 » 4 . Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
-*** 4 » 6. Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
-*** 6 » 7. Misceláneas de barrio y cacharrerías
-*** 7 » 10. Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
-*** 8 » 13. Vendedores ambulantes
-*** 10 » 14. Sanandrecitos, bodegas y fábricas
-*** 11 » 16. Establecimiento especializado en la venta del artículo o la prestación del servicios
-*** 12 » 17. Farmacias y droguerías
-*** 13 » 18. Restaurantes
-*** 14 » 19. Cafeterías y establecientos de comidas rápidas
-*** 15 » 20. Persona particular
-*** 16 » 21. Ferias especializada: artesanal, del libro , del hogar, de computadores, etc.
-*** 17 » 22. A través de internet
-*** 18 » 23. Televentas y ventas por catálogo
-*** 19 » 24. Otro
-*** 20 » 25. Plazoleta de comidas
-
-** rural_semanal
-*** 1 » 1. Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
-*** 2 » 4 . Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
-*** 4 » 6. Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
-*** 6 » 7. Misceláneas de barrio y cacharrerías
-*** 7 » 10. Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
-*** 8 » 13. Vendedores ambulantes
-*** 10 » 14. Sanandrecitos, bodegas y fábricas
-*** 11 » 16. Establecimiento especializado en la venta del artículo o la prestación del servicios
-*** 12 » 17. Farmacias y droguerías
-*** 13 » 18. Restaurantes
-*** 14 » 19. Cafeterías y establecientos de comidas rápidas
-*** 15 » 20. Persona particular
-*** 16 » 21. Ferias especializada: artesanal, del libro , del hogar, de computadores, etc.
-*** 17 » 22. A través de internet
-*** 18 » 23. Televentas y ventas por catálogo
-*** 19 » 24. Otro
-*** 20 » 25. Plazoleta de comidas
-
-** rural_semanal_fuera
-*** 1 » 1. Almacenes o supermercados de cadena y tiendas por departamento
-*** 2 » 2. Hipermercados
-*** 4 » 4. Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
-*** 6 » 6.Supermercado y tiendas de barrio
-*** 7 » 7.Misceláneas de barrio y cacharrerías
-*** 8 » 8.Cigarrerías, salsamentarias y delikatessen
-*** 10 » 10. Plazas de mercado, galerías y graneros
-*** 11 » 11. Central mayorista de abastecimiento
-*** 12 » 12. Mercados móviles
-*** 13 » 13. Vendedores ambulantes o ventas callejeras
-*** 14 » 14. San Andresitos
-*** 15 » 15. Bodegas o fábricas.
-*** 16 » 16. Establecimiento especializado en la venta del artículo o la prestación del servicio adquirido
-*** 17 » 17. Farmacias y droguerías
-*** 18 » 18. Restaurantes
-*** 19 » 19. Cafeterías y establecimientos de comidas rápidas
-*** 20 » 20. Persona particular
-*** 21 » 21. Ferias especializadas: Artesanal, del hogar, del libro, de computadores, etc.
-*** 22 » 22. A través de internet
-*** 23 » 23. Televentas y ventas por catálogo
-*** 24 » 24. Otro
-
-** urban_diario
-*** 1 » 1. Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
-*** 2 » 4 . Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
-*** 4 » 6. Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
-*** 6 » 7. Misceláneas de barrio y cacharrerías
-*** 7 » 10. Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
-*** 8 » 13. Vendedores ambulantes
-*** 10 » 14. Sanandrecitos, bodegas y fábricas
-*** 11 » 16. Establecimiento especializado en la venta del artículo o la prestación del servicios
-*** 12 » 17. Farmacias y droguerías
-*** 13 » 18. Restaurantes
-*** 14 » 19. Cafeterías y establecientos de comidas rápidas
-*** 15 » 20. Persona particular
-*** 16 » 21. Ferias especializada: artesanal, del libro , del hogar, de computadores, etc.
-*** 17 » 22. A través de internet
-*** 18 » 23. Televentas y ventas por catálogo
-*** 19 » 24. Otro
-*** 20 » 25. Plazoleta de comidas
- 
-** urban_diario_fuera
-*** 1 » 1. Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
-*** 2 » 4 . Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
-*** 4 » 6. Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
-*** 6 » 7. Misceláneas de barrio y cacharrerías
-*** 7 » 10. Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
-*** 8 » 13. Vendedores ambulantes
-*** 10 » 14. Sanandrecitos, bodegas y fábricas
-*** 11 » 16. Establecimiento especializado en la venta del artículo o la prestación del servicios
-*** 12 » 17. Farmacias y droguerías
-*** 13 » 18. Restaurantes
-*** 14 » 19. Cafeterías y establecientos de comidas rápidas
-*** 15 » 20. Persona particular
-*** 16 » 21. Ferias especializada: artesanal, del libro , del hogar, de computadores, etc.
-*** 17 » 22. A través de internet
-*** 18 » 23. Televentas y ventas por catálogo
-*** 19 » 24. Otro
-*** 20 » 25. Plazoleta de comidas
- 
-** urban_diario_personal
-*** 1 » 1. Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
-*** 4 » 4 . Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
-*** 6 » 6. Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
-*** 7 » 7. Misceláneas de barrio y cacharrerías
-*** 10 » 10. Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
-*** 13 » 13. Vendedores ambulantes
-*** 14 » 14. Sanandrecitos, bodegas y fábricas
-*** 16 » 16. Establecimiento especializado en la venta del artículo o la prestación del servicios
-*** 17 » 17. Farmacias y droguerías
-*** 18 » 18. Restaurantes
-*** 19 » 19. Cafeterías y establecientos de comidas rápidas
-*** 20 » 20. Persona particular
-*** 21 » 21. Ferias especializada: artesanal, del libro , del hogar, de tecnología, etc.
-*** 22 » 22. A través de internet
-*** 23 » 23. Televentas y ventas por catálogo
-*** 24 » 24. Otro
-*** 25 » 25. Plazoleta de comidas
-
-** urban_personal_fuera
-*** 1 » 1. Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
-*** 2 » 4 . Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
-*** 4 » 6. Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
-*** 6 » 7. Misceláneas de barrio y cacharrerías
-*** 7 » 10. Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
-*** 8 » 13. Vendedores ambulantes
-*** 10 » 14. Sanandrecitos, bodegas y fábricas
-*** 11 » 16. Establecimiento especializado en la venta del artículo o la prestación del servicios
-*** 12 » 17. Farmacias y droguerías
-*** 13 » 18. Restaurantes
-*** 14 » 19. Cafeterías y establecientos de comidas rápidas
-*** 15 » 20. Persona particular
-*** 16 » 21. Ferias especializada: artesanal, del libro , del hogar, de computadores, etc.
-*** 17 » 22. A través de internet
-*** 18 » 23. Televentas y ventas por catálogo
-*** 19 » 24. Otro
-*** 20 » 25. Plazoleta de comidas
+** this file has its own special legend, with no corrections (for every "x » y", x = y).
+*** rural_semanal_fuera (always reads "x » x")
+**** takes values 1, 4, 6-7, 10, 13, 16, 19, 20, 24
+**** 1 » 1 Almacenes o supermercados de cadena y tiendas por departamento
+**** TODO 2 » 2 Hipermercados
+**** 4 » 4 Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
+**** 6 » 6.Supermercado y tiendas de barrio
+**** 7 » 7.Misceláneas de barrio y cacharrerías
+**** TODO 8 » 8.Cigarrerías, salsamentarias y delikatessen
+**** 10 » 10 Plazas de mercado, galerías y graneros
+**** TODO 11 » 11 Central mayorista de abastecimiento
+**** TODO 12 » 12 Mercados móviles
+**** 13 » 13 Vendedores ambulantes o ventas callejeras
+**** 14 » 14 San Andresitos
+**** TODO 15 » 15 Bodegas o fábricas.
+**** 16 » 16 Establecimiento especializado en la venta del artículo o la prestación del servicio adquirido
+**** 17 » 17 Farmacias y droguerías
+**** 18 » 18 Restaurantes
+**** 19 » 19 Cafeterías y establecimientos de comidas rápidas
+**** 20 » 20 Persona particular
+**** 21 » 21 Ferias especializadas: Artesanal, del hogar, del libro, de computadores, etc.
+**** 22 » 22 A través de internet
+**** 23 » 23 Televentas y ventas por catálogo
+**** 24 » 24 Otro
+** these three files agree, with no corrections (for every "x » y", x = y).
+*** articulos
+**** takes values 1, 4, 6-7, 10, 13-14, 16-17, 20-24, 26
+**** 1 » 1 Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
+**** 4 » 4 Supermercados de cajas de compesanción, cooperativas, fondos de empleados y comisariatos
+**** 6 » 6 Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
+**** 7 » 7 Misceláneas de barrio y cacharrerías
+**** 10 » 10 Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
+**** 13 » 13 Vendedores ambulantes
+**** 14 » 14 Sanandrecitos, bodegas y fábricas
+**** 16 » 16 Establecimiento especializado en la venta del artículo o la prestación del servicio
+**** 17 » 17 Farmacias y droguerías
+**** 20 » 20 Persona particular
+**** 21 » 21 Ferias especializada: artesanal, del libro , del hogar, de tecnología, etc.
+**** 22 » 22 A través de internet
+**** 23 » 23 Televentas y ventas por catálogo
+**** 24 » 24 Otro
+**** 26 » 26 En el exterior (fuera del país)
+*** rural_personal
+**** takes values 4, 6, 16, 19-20
+**** 1 » 1 Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
+**** 4 » 4 Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
+**** 6 » 6 Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
+**** 7 » 7 Misceláneas de barrio y cacharrerías
+**** 10 » 10 Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
+**** 13 » 13 Vendedores ambulantes
+**** 14 » 14 Sanandrecitos, bodegas y fábricas
+**** 16 » 16 Establecimiento especializado en la venta del artículo o la prestación del servicios
+**** 17 » 17 Farmacias y droguerías
+**** 18 » 18 Restaurantes
+**** 19 » 19 Cafeterías y establecientos de comidas rápidas
+**** 20 » 20 Persona particular
+**** 21 » 21 Ferias especializada: artesanal, del libro , del hogar, de tecnología, etc.
+**** 22 » 22 A través de internet
+**** 23 » 23 Televentas y ventas por catálogo
+**** 24 » 24 Otro
+**** 25 » 25 Plazoleta de comidas
+*** urban_diario_personal
+**** takes values 1, 6, 21-25
+**** 1 » 1 Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
+**** 4 » 4 Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
+**** 6 » 6 Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
+**** 7 » 7 Misceláneas de barrio y cacharrerías
+**** 10 » 10 Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
+**** 13 » 13 Vendedores ambulantes
+**** 14 » 14 Sanandrecitos, bodegas y fábricas
+**** 16 » 16 Establecimiento especializado en la venta del artículo o la prestación del servicios
+**** 17 » 17 Farmacias y droguerías
+**** 18 » 18 Restaurantes
+**** 19 » 19 Cafeterías y establecientos de comidas rápidas
+**** 20 » 20 Persona particular
+**** 21 » 21 Ferias especializada: artesanal, del libro , del hogar, de tecnología, etc.
+**** 22 » 22 A través de internet
+**** 23 » 23 Televentas y ventas por catálogo
+**** 24 » 24 Otro
+**** 25 » 25 Plazoleta de comidas
+** these five files agree, with lots of corrections ("x » y", where x and y differ)
+*** rural_personal_fuera
+**** TODO takes values 1, 6, 10, 13, 16, 19-20, 24
+***** 24 appears on the right, and not on the left, of one of these » symbols
+***** everything else appears on both
+**** 1 » 1 Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
+**** 2 » 4 Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
+**** TODO 4 » 6 Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
+**** TODO 6 » 7 Misceláneas de barrio y cacharrerías
+**** TODO 7 » 10 Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
+**** TODO 8 » 13 Vendedores ambulantes
+**** TODO 10 » 14 Sanandrecitos, bodegas y fábricas
+**** TODO 11 » 16 Establecimiento especializado en la venta del artículo o la prestación del servicios
+**** TODO 12 » 17 Farmacias y droguerías
+**** TODO 13 » 18 Restaurantes
+**** TODO 14 » 19 Cafeterías y establecientos de comidas rápidas
+**** TODO 15 » 20 Persona particular
+**** TODO 16 » 21 Ferias especializada: artesanal, del libro , del hogar, de computadores, etc.
+**** TODO 17 » 22 A través de internet
+**** TODO 18 » 23 Televentas y ventas por catálogo
+**** TODO 19 » 24 Otro
+**** TODO 20 » 25 Plazoleta de comidas
+*** rural_semanal
+**** TODO takes values 1, 4, 6-7, 10, 13, 16-17, 19-21, 23-24
+***** 21, 23, 24 appear only on the right
+**** 1 » 1 Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
+**** 2 » 4 Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
+**** TODO 4 » 6 Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
+**** TODO 6 » 7 Misceláneas de barrio y cacharrerías
+**** TODO 7 » 10 Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
+**** TODO 8 » 13 Vendedores ambulantes
+**** TODO 10 » 14 Sanandrecitos, bodegas y fábricas
+**** TODO 11 » 16 Establecimiento especializado en la venta del artículo o la prestación del servicios
+**** TODO 12 » 17 Farmacias y droguerías
+**** TODO 13 » 18 Restaurantes
+**** TODO 14 » 19 Cafeterías y establecientos de comidas rápidas
+**** TODO 15 » 20 Persona particular
+**** TODO 16 » 21 Ferias especializada: artesanal, del libro , del hogar, de computadores, etc.
+**** TODO 17 » 22 A través de internet
+**** TODO 18 » 23 Televentas y ventas por catálogo
+**** TODO 19 » 24 Otro
+**** TODO 20 » 25 Plazoleta de comidas
+*** urban_diario
+**** TODO takes values NaN, 1, 4, 6-7, 10, 13-14, 16-25
+***** 21-25 appear only on the right
+**** 1 » 1 Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
+**** 2 » 4 Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
+**** TODO 4 » 6 Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
+**** TODO 6 » 7 Misceláneas de barrio y cacharrerías
+**** TODO 7 » 10 Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
+**** TODO 8 » 13 Vendedores ambulantes
+**** TODO 10 » 14 Sanandrecitos, bodegas y fábricas
+**** TODO 11 » 16 Establecimiento especializado en la venta del artículo o la prestación del servicios
+**** TODO 12 » 17 Farmacias y droguerías
+**** TODO 13 » 18 Restaurantes
+**** TODO 14 » 19 Cafeterías y establecientos de comidas rápidas
+**** TODO 15 » 20 Persona particular
+**** TODO 16 » 21 Ferias especializada: artesanal, del libro , del hogar, de computadores, etc.
+**** TODO 17 » 22 A través de internet
+**** TODO 18 » 23 Televentas y ventas por catálogo
+**** TODO 19 » 24 Otro
+**** TODO 20 » 25 Plazoleta de comidas
+*** urban_diario_fuera
+**** takes values 1, 4, 6-7, 10, 13-14, 16-21, 24-25
+***** 21-25 are found only on the right
+**** 1 » 1 Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
+**** 2 » 4 Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
+**** TODO 4 » 6 Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
+**** TODO 6 » 7 Misceláneas de barrio y cacharrerías
+**** TODO 7 » 10 Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
+**** TODO 8 » 13 Vendedores ambulantes
+**** TODO 10 » 14 Sanandrecitos, bodegas y fábricas
+**** TODO 11 » 16 Establecimiento especializado en la venta del artículo o la prestación del servicios
+**** TODO 12 » 17 Farmacias y droguerías
+**** TODO 13 » 18 Restaurantes
+**** TODO 14 » 19 Cafeterías y establecientos de comidas rápidas
+**** TODO 15 » 20 Persona particular
+**** TODO 16 » 21 Ferias especializada: artesanal, del libro , del hogar, de computadores, etc.
+**** TODO 17 » 22 A través de internet
+**** TODO 18 » 23 Televentas y ventas por catálogo
+**** TODO 19 » 24 Otro
+**** TODO 20 » 25 Plazoleta de comidas
+*** urban_personal_fuera
+**** takes values 1, 21-25
+***** 21-25 are found only on the right
+**** 1 » 1 Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
+**** 2 » 4 Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
+**** TODO 4 » 6 Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
+**** TODO 6 » 7 Misceláneas de barrio y cacharrerías
+**** TODO 7 » 10 Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
+**** TODO 8 » 13 Vendedores ambulantes
+**** TODO 10 » 14 Sanandrecitos, bodegas y fábricas
+**** TODO 11 » 16 Establecimiento especializado en la venta del artículo o la prestación del servicios
+**** TODO 12 » 17 Farmacias y droguerías
+**** TODO 13 » 18 Restaurantes
+**** TODO 14 » 19 Cafeterías y establecientos de comidas rápidas
+**** TODO 15 » 20 Persona particular
+**** TODO 16 » 21 Ferias especializada: artesanal, del libro , del hogar, de computadores, etc.
+**** TODO 17 » 22 A través de internet
+**** TODO 18 » 23 Televentas y ventas por catálogo
+**** TODO 19 » 24 Otro
+**** TODO 20 » 25 Plazoleta de comidas
 * for copying: another list of those files
 ** articulos
 ** medios

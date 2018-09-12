@@ -1,5 +1,9 @@
 * yet to ask
 * emailed, awaiting
+** How to read "x » y"?
+*** (See "enph-legends.org" for details.)
+*** In the "freq" variables, often "2.1" appears on the right side, and never in the data; likewise 2 is often on the left, and it appears in the data a lot. That suggests the left hand values are the ones to use.
+*** But the "where-got" variables argue the opposite: Any time a value in the data appears on only one side of that » symbol, it's on the right.
 ** For the "forma de adquisición" ("how-got") variables, the "urban_diario_personal" has a totally different legend, except for the extreme values 1 and 7. Everything else has the same legend. Is this because that file was coded differently, or is it an error in the dcumentation?
 
 ** nh_cgpucfh_p1_s2 : ignore? (We've already got a COICOP; I don't know what other information this variable could provide. But I can't find a description of it, so I can't rule out the possibility that it's important.)
