@@ -116,10 +116,10 @@ New houses go to the 5% rate only if they cost more than 880 million cop. There 
 **** nc2r_ca_p5_s1 : forma de adquisición
 1 » 1. Compra
 2 » 2. Recibidos como pago por trabajo
-3 » 3. Regalo o donación 
-4 » 4. Intercambio o trueque 
-5 » 5. Traidos de la finca o producidos por el hogar 
-6 » 6. Tomados de un negocio del hogar 
+3 » 3. Regalo o donación
+4 » 4. Intercambio o trueque
+5 » 5. Traidos de la finca o producidos por el hogar
+6 » 6. Tomados de un negocio del hogar
 7 » 7. Otra
 **** nc2r_ca_p6_s1 : where bought
 **** nc2r_ca_p7_s1 : value

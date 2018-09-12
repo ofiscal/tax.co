@@ -189,6 +189,183 @@
 5 » 5. Traidos de la finca o producidos por el hogar 
 6 » 6. Tomados de un negocio del hogar
 7 » 7. Otra
+* where-got
+** TODO not present in these files
+*** medios
+*** rural capitulo c
+*** urban capitulo c
+** articulos
+*** 1 » 1 Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
+*** 4 » 4 Supermercados de cajas de compesanción, cooperativas, fondos de empleados y comisariatos
+*** 6 » 6 Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
+*** 7 » 7 Misceláneas de barrio y cacharrerías
+*** 10 » 10 Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
+*** 13 » 13 Vendedores ambulantes
+*** 14 » 14 Sanandrecitos, bodegas y fábricas
+*** 16 » 16 Establecimiento especializado en la venta del artículo o la prestación del servicio
+*** 17 » 17 Farmacias y droguerías
+*** 20 » 20 Persona particular
+*** 21 » 21 Ferias especializada: artesanal, del libro , del hogar, de tecnología, etc.
+*** 22 » 22 A través de internet
+*** 23 » 23 Televentas y ventas por catálogo
+*** 24 » 24 Otro
+*** 26 » 26 En el exterior (fuera del país)
+
+** rural_personal
+*** 1 » 1. Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
+*** 4 » 4 . Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
+*** 6 » 6. Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
+*** 7 » 7. Misceláneas de barrio y cacharrerías
+*** 10 » 10. Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
+*** 13 » 13. Vendedores ambulantes
+*** 14 » 14. Sanandrecitos, bodegas y fábricas
+*** 16 » 16. Establecimiento especializado en la venta del artículo o la prestación del servicios
+*** 17 » 17. Farmacias y droguerías
+*** 18 » 18. Restaurantes
+*** 19 » 19. Cafeterías y establecientos de comidas rápidas
+*** 20 » 20. Persona particular
+*** 21 » 21. Ferias especializada: artesanal, del libro , del hogar, de tecnología, etc.
+*** 22 » 22. A través de internet
+*** 23 » 23. Televentas y ventas por catálogo
+*** 24 » 24. Otro
+*** 25 » 25. Plazoleta de comidas
+
+** rural_personal_fuera
+*** 1 » 1. Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
+*** 2 » 4 . Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
+*** 4 » 6. Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
+*** 6 » 7. Misceláneas de barrio y cacharrerías
+*** 7 » 10. Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
+*** 8 » 13. Vendedores ambulantes
+*** 10 » 14. Sanandrecitos, bodegas y fábricas
+*** 11 » 16. Establecimiento especializado en la venta del artículo o la prestación del servicios
+*** 12 » 17. Farmacias y droguerías
+*** 13 » 18. Restaurantes
+*** 14 » 19. Cafeterías y establecientos de comidas rápidas
+*** 15 » 20. Persona particular
+*** 16 » 21. Ferias especializada: artesanal, del libro , del hogar, de computadores, etc.
+*** 17 » 22. A través de internet
+*** 18 » 23. Televentas y ventas por catálogo
+*** 19 » 24. Otro
+*** 20 » 25. Plazoleta de comidas
+
+** rural_semanal
+*** 1 » 1. Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
+*** 2 » 4 . Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
+*** 4 » 6. Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
+*** 6 » 7. Misceláneas de barrio y cacharrerías
+*** 7 » 10. Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
+*** 8 » 13. Vendedores ambulantes
+*** 10 » 14. Sanandrecitos, bodegas y fábricas
+*** 11 » 16. Establecimiento especializado en la venta del artículo o la prestación del servicios
+*** 12 » 17. Farmacias y droguerías
+*** 13 » 18. Restaurantes
+*** 14 » 19. Cafeterías y establecientos de comidas rápidas
+*** 15 » 20. Persona particular
+*** 16 » 21. Ferias especializada: artesanal, del libro , del hogar, de computadores, etc.
+*** 17 » 22. A través de internet
+*** 18 » 23. Televentas y ventas por catálogo
+*** 19 » 24. Otro
+*** 20 » 25. Plazoleta de comidas
+
+** rural_semanal_fuera
+*** 1 » 1. Almacenes o supermercados de cadena y tiendas por departamento
+*** 2 » 2. Hipermercados
+*** 4 » 4. Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
+*** 6 » 6.Supermercado y tiendas de barrio
+*** 7 » 7.Misceláneas de barrio y cacharrerías
+*** 8 » 8.Cigarrerías, salsamentarias y delikatessen
+*** 10 » 10. Plazas de mercado, galerías y graneros
+*** 11 » 11. Central mayorista de abastecimiento
+*** 12 » 12. Mercados móviles
+*** 13 » 13. Vendedores ambulantes o ventas callejeras
+*** 14 » 14. San Andresitos
+*** 15 » 15. Bodegas o fábricas.
+*** 16 » 16. Establecimiento especializado en la venta del artículo o la prestación del servicio adquirido
+*** 17 » 17. Farmacias y droguerías
+*** 18 » 18. Restaurantes
+*** 19 » 19. Cafeterías y establecimientos de comidas rápidas
+*** 20 » 20. Persona particular
+*** 21 » 21. Ferias especializadas: Artesanal, del hogar, del libro, de computadores, etc.
+*** 22 » 22. A través de internet
+*** 23 » 23. Televentas y ventas por catálogo
+*** 24 » 24. Otro
+
+** urban_diario
+*** 1 » 1. Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
+*** 2 » 4 . Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
+*** 4 » 6. Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
+*** 6 » 7. Misceláneas de barrio y cacharrerías
+*** 7 » 10. Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
+*** 8 » 13. Vendedores ambulantes
+*** 10 » 14. Sanandrecitos, bodegas y fábricas
+*** 11 » 16. Establecimiento especializado en la venta del artículo o la prestación del servicios
+*** 12 » 17. Farmacias y droguerías
+*** 13 » 18. Restaurantes
+*** 14 » 19. Cafeterías y establecientos de comidas rápidas
+*** 15 » 20. Persona particular
+*** 16 » 21. Ferias especializada: artesanal, del libro , del hogar, de computadores, etc.
+*** 17 » 22. A través de internet
+*** 18 » 23. Televentas y ventas por catálogo
+*** 19 » 24. Otro
+*** 20 » 25. Plazoleta de comidas
+ 
+** urban_diario_fuera
+*** 1 » 1. Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
+*** 2 » 4 . Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
+*** 4 » 6. Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
+*** 6 » 7. Misceláneas de barrio y cacharrerías
+*** 7 » 10. Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
+*** 8 » 13. Vendedores ambulantes
+*** 10 » 14. Sanandrecitos, bodegas y fábricas
+*** 11 » 16. Establecimiento especializado en la venta del artículo o la prestación del servicios
+*** 12 » 17. Farmacias y droguerías
+*** 13 » 18. Restaurantes
+*** 14 » 19. Cafeterías y establecientos de comidas rápidas
+*** 15 » 20. Persona particular
+*** 16 » 21. Ferias especializada: artesanal, del libro , del hogar, de computadores, etc.
+*** 17 » 22. A través de internet
+*** 18 » 23. Televentas y ventas por catálogo
+*** 19 » 24. Otro
+*** 20 » 25. Plazoleta de comidas
+ 
+** urban_diario_personal
+*** 1 » 1. Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
+*** 4 » 4 . Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
+*** 6 » 6. Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
+*** 7 » 7. Misceláneas de barrio y cacharrerías
+*** 10 » 10. Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
+*** 13 » 13. Vendedores ambulantes
+*** 14 » 14. Sanandrecitos, bodegas y fábricas
+*** 16 » 16. Establecimiento especializado en la venta del artículo o la prestación del servicios
+*** 17 » 17. Farmacias y droguerías
+*** 18 » 18. Restaurantes
+*** 19 » 19. Cafeterías y establecientos de comidas rápidas
+*** 20 » 20. Persona particular
+*** 21 » 21. Ferias especializada: artesanal, del libro , del hogar, de tecnología, etc.
+*** 22 » 22. A través de internet
+*** 23 » 23. Televentas y ventas por catálogo
+*** 24 » 24. Otro
+*** 25 » 25. Plazoleta de comidas
+
+** urban_personal_fuera
+*** 1 » 1. Almacenes, supermercado de cadena, tiendas por departamento o hipermercados
+*** 2 » 4 . Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
+*** 4 » 6. Supermercado de barrio, tiendas de barrio, cigarrerías, salsamentarias y delicatessen
+*** 6 » 7. Misceláneas de barrio y cacharrerías
+*** 7 » 10. Plazas de mercado, galerías, mercados móviles, central mayorista de abastecimiento y graneros
+*** 8 » 13. Vendedores ambulantes
+*** 10 » 14. Sanandrecitos, bodegas y fábricas
+*** 11 » 16. Establecimiento especializado en la venta del artículo o la prestación del servicios
+*** 12 » 17. Farmacias y droguerías
+*** 13 » 18. Restaurantes
+*** 14 » 19. Cafeterías y establecientos de comidas rápidas
+*** 15 » 20. Persona particular
+*** 16 » 21. Ferias especializada: artesanal, del libro , del hogar, de computadores, etc.
+*** 17 » 22. A través de internet
+*** 18 » 23. Televentas y ventas por catálogo
+*** 19 » 24. Otro
+*** 20 » 25. Plazoleta de comidas
 * for copying: another list of those files
 ** articulos
 ** medios
