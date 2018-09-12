@@ -1,115 +1,204 @@
-* Rural cap c
-** 1 » 2. Diario
-** 2 » 2.1. Varias veces por semana
-*** TODO 2.1 is not in the data, so this suggests the first number is the right one.
-** 3 » 3. Semanal
-** 4 » 4. Quincenal
-** 5 » 5. Mensual
-** 6 » 6. Bimestral
-** 7 » 7. Trimestral
-** 9 » 9. Esporádica
-** 11 » 11. Nunca
-*** TODO What does this even mean? Should we drop these observations?
-* urban cap c
-** 2 » 2. Diario
-*** TODO Every other file has "1 » 2. Diario"
-*** TODO Every other file has "2 » 2.1. Varias veces por semana"
-** 3 » 2.1 varias veces por semana
-*** TODO Every other file has "3 » 3. Semanal"
-** 4 » 3. Semanal
-*** TODO Every other file has "4 » 4. Quincenal".
-** 5 » 4. Quincenal
-*** TODO Every other file has "5 » 5. Mensual"
-** 6 » 5. Mensual
-*** TODO Every other file has "6 » 6. Bimestral"
-** 7 » 6. Bimestral
-*** TODO Every other file has "7 » 7. Trimestral"
-** 8 » 7. Trimestral
-*** TODO The only other key with an 8 in it read "8 » 8. Anual"
-** 9 » 9. Esporádica
-** 1 » 11. Nunca
-*** TODO Both 1 and 11 show up in the data.
-** TODO jeff: what to do about NaN?
-* rural personal
-** 1 » 2. Diario
-** 2 » 2.1 Varias veces por semana
-** 3 » 3.Semanal
-** 4 » 4. Quincenal
-** 5 » 5. Mensual
-** 6 » 6. Bimestral
-** 7 » 7. Trimestral
-** 9 » 9.Esporádico
-* rural semanal fuera
-** 1 » 2. Diario
-** 2 » 2.1. Varias veces por semana
-** 3 » 3. Semanal
-** 4 » 4. Quincenal
-** 5 » 5. Mensual
-** 6 » 6. Bimestral
-** 7 » 7. Trimestral
-** 9 » 9. Esporádica
-* urbano diario fuera
-** 1 » 2. Diario
-** 2 » 2.1. Varias veces por semana
-** 3 » 3. Semanal
-** 4 » 4. Quincenal
-** 5 » 5. Mensual
-** 6 » 6. Bimestral
-** 7 » 7. Trimestral
-** 9 » 9. Esporádica
-* urbano personal fuera
-** 1 » 2. Diario
-** 2 » 2.1. Varias veces por semana
-** 3 » 3. Semanal
-** 4 » 4. Quincenal
-** 5 » 5. Mensual
-** 6 » 6. Bimestral
-** 7 » 7. Trimestral
-** 9 » 9. Esporádica
-* rural semanal
-** 1 » 2. Diario
-** 2 » 2.1. Varias veces por semana
-** 3 » 3. Semanal
-** 4 » 4. Quincenal
-** 5 » 5. Mensual
-** 6 » 6. Bimestral
-** 7 » 7. Trimestral
-** 9 » 9. Esporádica
-* rural personal fuera
-** 1 » 2. Diario
-** 2 » 2.1. Varias veces por semana
-** 3 » 3. Semanal
-** 4 » 4. Quincenal
-** 5 » 5. Mensual
-** 6 » 6. Bimestral
-** 7 » 7. Trimestral
-** 9 » 9. Esporádica
-* articulos 
-** 3 » 3. Semanal
-** 4 » 4. Quincenal
-** 5 » 5. Mensual
-** 6 » 6. Bimestral
-** 7 » 7. Trimestral
-** 8 » 8. Anual
-** 9 » 9. Esporádica
-** 10 » 10. Semestral
-** TODO jeff: what to do about NaN?
-* urbano diarios personal
-** 1 » 1. Diario
-** 2 » 2.1. Varias veces
-** 3 » 3. Semanal
-** 4 » 4. Quincenal
-** 5 » 5. Mensual
-** 6 » 6. Bimestral
-** 7 » 7. Trimestral
-** 9 » 9. Esporádica por semana
-* urbano diario
-** 1 » 2. Diario
-** 2 » 2.1. Varias veces por semana
-** 3 » 3. Semanal
-** 4 » 4. Quincenal
-** 5 » 5. Mensual
-** 6 » 6. Bimestral
-** 7 » 7. Trimestral 
-** 9 » 9. Esporádica
-** TODO jeff: what to do about NaN?
+* frequency
+** rural cap c
+*** 1 » 2. Diario
+*** 2 » 2.1. Varias veces por semana
+**** TODO 2.1 is not in the data, so this suggests the first number is the right one.
+*** 3 » 3. Semanal
+*** 4 » 4. Quincenal
+*** 5 » 5. Mensual
+*** 6 » 6. Bimestral
+*** 7 » 7. Trimestral
+*** 9 » 9. Esporádica
+*** 11 » 11. Nunca
+**** TODO What does this even mean? Should we drop these observations?
+** urban cap c
+*** 2 » 2. Diario
+**** TODO Every other file has "1 » 2. Diario"
+**** TODO Every other file has "2 » 2.1. Varias veces por semana"
+*** 3 » 2.1 varias veces por semana
+**** TODO Every other file has "3 » 3. Semanal"
+*** 4 » 3. Semanal
+**** TODO Every other file has "4 » 4. Quincenal".
+*** 5 » 4. Quincenal
+**** TODO Every other file has "5 » 5. Mensual"
+*** 6 » 5. Mensual
+**** TODO Every other file has "6 » 6. Bimestral"
+*** 7 » 6. Bimestral
+**** TODO Every other file has "7 » 7. Trimestral"
+*** 8 » 7. Trimestral
+**** TODO The only other key with an 8 in it read "8 » 8. Anual"
+*** 9 » 9. Esporádica
+*** 1 » 11. Nunca
+**** TODO Both 1 and 11 show up in the data.
+*** TODO jeff: what to do about NaN?
+** rural personal
+*** 1 » 2. Diario
+*** 2 » 2.1 Varias veces por semana
+*** 3 » 3.Semanal
+*** 4 » 4. Quincenal
+*** 5 » 5. Mensual
+*** 6 » 6. Bimestral
+*** 7 » 7. Trimestral
+*** 9 » 9.Esporádico
+** rural semanal fuera
+*** 1 » 2. Diario
+*** 2 » 2.1. Varias veces por semana
+*** 3 » 3. Semanal
+*** 4 » 4. Quincenal
+*** 5 » 5. Mensual
+*** 6 » 6. Bimestral
+*** 7 » 7. Trimestral
+*** 9 » 9. Esporádica
+** urbano diario fuera
+*** 1 » 2. Diario
+*** 2 » 2.1. Varias veces por semana
+*** 3 » 3. Semanal
+*** 4 » 4. Quincenal
+*** 5 » 5. Mensual
+*** 6 » 6. Bimestral
+*** 7 » 7. Trimestral
+*** 9 » 9. Esporádica
+** urbano personal fuera
+*** 1 » 2. Diario
+*** 2 » 2.1. Varias veces por semana
+*** 3 » 3. Semanal
+*** 4 » 4. Quincenal
+*** 5 » 5. Mensual
+*** 6 » 6. Bimestral
+*** 7 » 7. Trimestral
+*** 9 » 9. Esporádica
+** rural semanal
+*** 1 » 2. Diario
+*** 2 » 2.1. Varias veces por semana
+*** 3 » 3. Semanal
+*** 4 » 4. Quincenal
+*** 5 » 5. Mensual
+*** 6 » 6. Bimestral
+*** 7 » 7. Trimestral
+*** 9 » 9. Esporádica
+** rural personal fuera
+*** 1 » 2. Diario
+*** 2 » 2.1. Varias veces por semana
+*** 3 » 3. Semanal
+*** 4 » 4. Quincenal
+*** 5 » 5. Mensual
+*** 6 » 6. Bimestral
+*** 7 » 7. Trimestral
+*** 9 » 9. Esporádica
+** articulos 
+*** 3 » 3. Semanal
+*** 4 » 4. Quincenal
+*** 5 » 5. Mensual
+*** 6 » 6. Bimestral
+*** 7 » 7. Trimestral
+*** 8 » 8. Anual
+*** 9 » 9. Esporádica
+*** 10 » 10. Semestral
+*** TODO jeff: what to do about NaN?
+** urbano diarios personal
+*** 1 » 1. Diario
+*** 2 » 2.1. Varias veces
+*** 3 » 3. Semanal
+*** 4 » 4. Quincenal
+*** 5 » 5. Mensual
+*** 6 » 6. Bimestral
+*** 7 » 7. Trimestral
+*** 9 » 9. Esporádica por semana
+** urbano diario
+*** 1 » 2. Diario
+*** 2 » 2.1. Varias veces por semana
+*** 3 » 3. Semanal
+*** 4 » 4. Quincenal
+*** 5 » 5. Mensual
+*** 6 » 6. Bimestral
+*** 7 » 7. Trimestral 
+*** 9 » 9. Esporádica
+*** TODO jeff: what to do about NaN?
+* how-got
+** articulos: takes values 1-7
+*** TODO no description
+** not present in these files
+*** medios
+*** rural capitulo c
+*** urban capitulo c
+** TODO problems
+*** urban_diario_personal is different; everything else has the same key
+** rural_personal: takes 1-4
+1 » 01. Compra 
+2 » 02. Recibido como pago por trabajo 
+3 » 03. Regalo 
+4 » 04. Intercambio o Trueque 
+5 » 05. Cultivados en la finca o producidos por el hogar 
+6 » 06. Tomado de un negocio del hogar 
+7 » 07. Otra
+** rural_personal_fuera: takes 1-3, 6
+1 » 1. Compra
+2 » 2. Recibidos como pago por trabajo
+3 » 3. Regalo o donación 
+4 » 4. Intercambio o trueque 
+5 » 5. Traidos de la finca o producidos por el hogar 
+6 » 6. Tomados de un negocio del hogar
+7 » 7. Otra
+** rural_semanal: 1-7
+1 » 1. Compra
+2 » 2. Recibidos como pago por trabajo
+3 » 3. Regalo o donación 
+4 » 4. Intercambio o trueque 
+5 » 5. Traidos de la finca o producidos por el hogar 
+6 » 6. Tomados de un negocio del hogar 
+7 » 7. Otra
+** rural_semanal_fuera: 1-3
+1 » 1.Compra 
+2 » 2.Recibidos como pago por trabajo 
+3 » 3.Regalo 
+4 » 4.Intercambio o trueque 
+5 » 5.Traidos de la finca o producidos por el hogar
+6 » 6.Tomados de un negocio del hogar 
+7 » 7.Otra
+** urban_diario: 1-7, NaN
+*** TODO ? NaN
+*** codebook
+1 » 1.Compra 
+2 » 2.Recibidos como pago por trabajo 
+3 » 3. Regalo o donación
+4 » 4.Intercambio o trueque 
+5 » 5.Traidos de la finca o producidos por el hogar 
+6 » 6.Tomados de un negocio del hogar 
+7 » 7.Otra
+** urban_diario_fuera: 1-7
+1 » 1.Compra 
+2 » 2.Recibidos como pago por trabajo 
+3 » 3. Regalo o donación 
+4 » 4.Intercambio o trueque 
+5 » 5.Traidos de la finca o producidos por el hogar 
+6 » 6.Tomados de un negocio del hogar 
+7 » 7.Otra
+** TODO urban_diario_personal: 1-7
+*** 1 » 1. Compra 
+*** TODO 2 » 2. Traídos de la finca o producidos por el hogar. 
+*** TODO (different) 3 » 3. Tomados de un negocio del hogar. 
+*** TODO (different) 4 » 4. Recibidos como pagos por trabajo 
+*** TODO (different) 5 » 5. Regalo o donación 
+*** TODO (different) 6 » 6. Intercambio o trueque 
+*** 7 » 7. Otra
+** urban_personal_fuera: 1-7
+1 » 1. Compra 
+2 » 2. Recibidos como pago por trabajo
+3 » 3. Regalo o donación 
+4 » 4. Intercambio o trueque
+5 » 5. Traidos de la finca o producidos por el hogar 
+6 » 6. Tomados de un negocio del hogar
+7 » 7. Otra
+* for copying: another list of those files
+** articulos
+** medios
+** rural capitulo c
+** urban capitulo c
+** rural_personal
+** rural_personal_fuera
+** rural_semanal
+** rural_semanal_fuera
+** urban_diario
+** urban_diario_fuera
+** urban_diario_personal
+** urban_personal_fuera

@@ -1,5 +1,7 @@
 * yet to ask
 * emailed, awaiting
+** For the "forma de adquisición" ("how-got") variables, the "urban_diario_personal" has a totally different legend, except for the extreme values 1 and 7. Everything else has the same legend. Is this because that file was coded differently, or is it an error in the dcumentation?
+
 ** nh_cgpucfh_p1_s2 : ignore? (We've already got a COICOP; I don't know what other information this variable could provide. But I can't find a description of it, so I can't rule out the possibility that it's important.)
 ** pension contributions: There are a number of variables (at least 5) about pensions in 'caracteristicas generales'. Do the other income variables already incorporate it, or is it a part of income we would not be coutning if we didn't use the pension contribution variable?
 ** carac. general.
