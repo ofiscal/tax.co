@@ -70,6 +70,19 @@
 **** P7513S10 = inheritance
 **** P7513S11 = income from devolved tax payments
 **** P7516 = spent savings in the last 12 months
+*** articulos
+**** p10270 = COICOP
+**** TODO jeff : FORMA : no legend. Hopefully same values as the other "how gotten" variables.
+**** VALOR
+**** TODO jeff : P10270S2 : where bought (where gotten?)
+**** P10270S3 : frequency
+**** DONE P10270S4 = portion of value bought on credit. ignore.
+*** medio
+**** TODO "[4:20 PM, 9/11/2018] David Suárez Castellanos: Old houses don't have vat
+New houses go to the 5% rate only if they cost more than 880 million cop. There are no specific coicops for these alternatives and you cannot know from the survey if the house inhabited by the household is new; however, you can tell for other houses by looking at questions p10305 and p10305s1"
+**** p10305 = says whether a house is new or old
+**** p10305s1 = value of the purchase
+**** TODO these purchases are in the last 12 months. How to represent?
 *** rural capitulo c
 **** TODO david processing : nc2_cc_p1 : 25 broad categories, maybe VAT-identifiable
 **** nc2_cc_p2 : freq
@@ -79,69 +92,8 @@
 **** TODO nc2_cc_p1 : 25 broad categories, maybe vat-identifiable.
 **** nc2_cc_p2 : freq
 **** nc2_cc_p3_s1 : value
-*** medio
-**** TODO "[4:20 PM, 9/11/2018] David Suárez Castellanos: Old houses don't have vat
-New houses go to the 5% rate only if they cost more than 880 million cop. There are no specific coicops for these alternatives and you cannot know from the survey if the house inhabited by the household is new; however, you can tell for other houses by looking at questions p10305 and p10305s1"
-**** p10305 = says whether a house is new or old
-**** p10305s1 = value of the purchase
-**** TODO these purchases are in the last 12 months. How to represent?
-*** articulos
-**** p10270 = COICOP
-**** TODO jeff : FORMA : no legend. Hopefully same values as the other "how gotten" variables.
-**** VALOR
-**** TODO jeff : P10270S2 : where bought (where gotten?)
-**** P10270S3 : frequency
-**** DONE P10270S4 = portion of value bought on credit. ignore.
 *** DONE ## -- The rest of these have all 6 purchase variables we rely on. -- ##
-*** personales urbano fuera
-**** TODO david processing : nh_cgpucfh_p1_s2 : nothing, right?
-**** nh_cgpucfh_p1_s1 : coicop
-**** nh_cgpucfh_p2 : quantity
-**** nh_cgpucfh_p3 : how gotten
-**** nh_cgpucfh_p4 : where gotten
-**** nh_cgpucfh_p5 : value
-**** nh_cgpucfh_p6 : freq
-*** diarios urbano fuera
-**** nh_cgducfh_p1_1 : coicop
-**** nh_cgducfh_p2 : quantity
-**** TODO luis : nh_cgducfh_p3 : how they got it (compra, recibido como pago, regalo, traido de la finca ...)
-**** nh_cgducfh_p4 : where gotten, even if not bought
-***** TODO ? how to read the legend
-***** TODO david processing : restaurant, bar, cafeteria: no vat. otherwise ignore. street vendors?
-**** nh_cgducfh_p5 : value, even if not bought
-**** TODO nh_cgducfh_p6 : frequency
-***** ? how to read legend. 2.1 appears in it, but 2 and not 2.1 appears in the data.
-**** DONE nh_cgducfh_p7 : personal or household
-**** DONE nh_cgducfh_p8 ? "si lo adquirió a domicilio"
-***** was it a delivery. ignore.
-*** diarios personales urbano
-**** nc4_cc_p1_1 : coicop
-**** nc4_cc_p2 : quantity
-**** nc4_cc_p3 : how they got it
-***** legend differs from that in "diarios urbano fuera"
-**** nc4_cc_p4 : where gotten, even if not bought
-**** nc4_cc_p5 : value
-**** nc4_cc_p6 : freq
-*** diarios urbanos
-**** p10250s1a1 ? "número de orden de la persona qué se le entregó la mesada"
-***** almost always missing. if not missing, drop observation -- it records a within-household transfer of money
-**** nh_cgdu_p1 = coicop
-**** nh_cgdu_p2 : quantity
-**** TODO nh_cgdu_p3 & fol ? unit of measure
-**** nh_cgdu_p5 : how they got it
-**** nh_cgdu_p7b1379 : where gotten
-**** TODO nh_cgdu_p8 ? value
-***** interacts with quantity? unit of measure?
-**** nh_cgdu_p9 : freq
-**** nh_cgdu_p10 : personal or household
-*** personales rural fuera
-**** nc2r_ca_p3 :  coicop
-**** NC2R_CA_P4_S1 : quantity
-**** NC2R_CA_P5_S1 : how it was gotten
-**** NC2R_CA_P6_S1 : where it was gotten
-**** NC2R_CA_P7_S1 : value
-**** NC2R_CA_P8_S1 : freq
-*** personales rurales
+*** rural personal
 **** DONE NC2R_CE_P1 = got it last week. conflicts with frequency, and less information.
 **** nc2r_ce_p2 : COICOP
 **** NC2R_CE_P4S1 : quantity
@@ -150,19 +102,14 @@ New houses go to the 5% rate only if they cost more than 880 million cop. There 
 **** NC2R_CE_P7 : value
 **** TODO NC2R_CE_P8 : frequency
 ***** it would be nice to be sure that frequency and value are orthogonal -- that is, value is the value per purchase, not the total spent on that good last week
-*** semanales rural fuera
-**** nh_cgprcfh_p1s1 : coicop
-**** nh_cgprcfh_p2 : quantity
-**** nh_cgprcfh_p3 : how gotten
-**** nh_cgprcfh_p4 : where gotten
-**** nh_cgprcfh_p5 : value
-**** nh_cgprcfh_p6 : freq
-**** DONE :: more variables
-***** nh_cgprcfh_p7 : household or personal
-***** these don't matter, because there's a COICOP
-****** nh_cgprcfh_p1 = descripción de la comida o alimento adquirido; 5 unique values, 7/11 missing
-****** nh_cgprcfh_p1s2 = "marque con una x, la opción que describa mejor el tipo de comida", 5 unique, 7/11 missing
-*** semanales rurales
+*** rural personal fuera
+**** nc2r_ca_p3 :  coicop
+**** NC2R_CA_P4_S1 : quantity
+**** NC2R_CA_P5_S1 : how it was gotten
+**** NC2R_CA_P6_S1 : where it was gotten
+**** NC2R_CA_P7_S1 : value
+**** NC2R_CA_P8_S1 : freq
+*** rural semanal
 **** nc2r_ca_p3 :  coicop
 **** nc2r_ca_p4_s1 : quantity
 **** TODO needed ? nc2r_ca_p4_s2 & fol : unit of measure
@@ -177,6 +124,60 @@ New houses go to the 5% rate only if they cost more than 880 million cop. There 
 **** nc2r_ca_p6_s1 : where bought
 **** nc2r_ca_p7_s1 : value
 **** nc2r_ca_p8_s1 : freq
+*** rural semanal fuera
+**** nh_cgprcfh_p1s1 : coicop
+**** nh_cgprcfh_p2 : quantity
+**** nh_cgprcfh_p3 : how gotten
+**** nh_cgprcfh_p4 : where gotten
+**** nh_cgprcfh_p5 : value
+**** nh_cgprcfh_p6 : freq
+**** DONE :: more variables
+***** nh_cgprcfh_p7 : household or personal
+***** these don't matter, because there's a COICOP
+****** nh_cgprcfh_p1 = descripción de la comida o alimento adquirido; 5 unique values, 7/11 missing
+****** nh_cgprcfh_p1s2 = "marque con una x, la opción que describa mejor el tipo de comida", 5 unique, 7/11 missing
+*** urban diario
+**** p10250s1a1 ? "número de orden de la persona qué se le entregó la mesada"
+***** almost always missing. if not missing, drop observation -- it records a within-household transfer of money
+**** nh_cgdu_p1 = coicop
+**** nh_cgdu_p2 : quantity
+**** TODO nh_cgdu_p3 & fol ? unit of measure
+**** nh_cgdu_p5 : how they got it
+**** nh_cgdu_p7b1379 : where gotten
+**** TODO nh_cgdu_p8 ? value
+***** interacts with quantity? unit of measure?
+**** nh_cgdu_p9 : freq
+**** nh_cgdu_p10 : personal or household
+*** urban diario fuera
+**** nh_cgducfh_p1_1 : coicop
+**** nh_cgducfh_p2 : quantity
+**** TODO luis : nh_cgducfh_p3 : how they got it (compra, recibido como pago, regalo, traido de la finca ...)
+**** nh_cgducfh_p4 : where gotten, even if not bought
+***** TODO ? how to read the legend
+***** TODO david processing : restaurant, bar, cafeteria: no vat. otherwise ignore. street vendors?
+**** nh_cgducfh_p5 : value, even if not bought
+**** TODO nh_cgducfh_p6 : frequency
+***** ? how to read legend. 2.1 appears in it, but 2 and not 2.1 appears in the data.
+**** DONE nh_cgducfh_p7 : personal or household
+**** DONE nh_cgducfh_p8 ? "si lo adquirió a domicilio"
+***** was it a delivery. ignore.
+*** urban diario personal
+**** nc4_cc_p1_1 : coicop
+**** nc4_cc_p2 : quantity
+**** nc4_cc_p3 : how they got it
+***** legend differs from that in "diarios urbano fuera"
+**** nc4_cc_p4 : where gotten, even if not bought
+**** nc4_cc_p5 : value
+**** nc4_cc_p6 : freq
+*** urban personal fuera
+**** TODO david processing : nh_cgpucfh_p1_s2 : nothing, right?
+**** nh_cgpucfh_p1_s1 : coicop
+**** nh_cgpucfh_p2 : quantity
+**** nh_cgpucfh_p3 : how gotten
+**** nh_cgpucfh_p4 : where gotten
+**** nh_cgpucfh_p5 : value
+**** nh_cgpucfh_p6 : freq
+
 ** DONE files not(PITFALL: currently) VAT-relevant
 *** viviendas_y_hogares -- just mortgages, which are (currently!) exempt
 **** P5100S1 through P5100S4: Cuanto pagan for mortgage -- exempt, even for a second home.
