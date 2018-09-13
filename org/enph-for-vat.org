@@ -79,7 +79,7 @@
 **** DONE P10270S4 = portion of value bought on credit. ignore.
 *** medio
 **** TODO "[4:20 PM, 9/11/2018] David Suárez Castellanos: Old houses don't have vat
-New houses go to the 5% rate only if they cost more than 880 million cop. There are no specific coicops for these alternatives and you cannot know from the survey if the house inhabited by the household is new; however, you can tell for other houses by looking at questions p10305 and p10305s1"
+New houses go to the 5% rate only if they cost more than 880 million cop. There are no specific coicops for these alternatives and you cannot know from the survey if the house inhabited by the household is new
 **** p10305 = says whether a house is new or old
 **** p10305s1 = value of the purchase
 **** TODO these purchases are in the last 12 months. How to represent?
