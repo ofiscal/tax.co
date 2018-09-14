@@ -114,9 +114,10 @@ purchase_file_legends = { # keys are filenames
     }
 }
 
-format_purchase_fields_as_strings = {}
-for k1 in purchase_file_legends.keys():
-  x = {}
-  for v2 in purchase_file_legends[k1].values():
-    x[v2] = 'str'
-  format_purchase_fields_as_strings[k1] = x
+# # This appears never to get used, so I have commented it out.
+# format_purchase_fields_as_strings = {}
+# for filename in purchase_file_legends.keys():
+#   x = {}
+#   for v2 in purchase_file_legends[filename].values():
+#     x[v2] = 'str'
+#   format_purchase_fields_as_strings[filename] = x
