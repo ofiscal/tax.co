@@ -25,4 +25,4 @@ def check(file_name,col_name):
 
 for fn in file_names:
   print("\n\n" + fn)
-  check(fn,"how-got")
+  check(fn,"freq")

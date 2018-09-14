@@ -1,12 +1,13 @@
+* TODO next: add FEX_C
 * u
 ** bars, cafeterias, restaurants: no VAT. otherwise yes. all four of those "fuera" files are in play.
 * TODO common variables
-** TODO DIRECTORIO =? household
-** TODO SECUENCIA_ENCUESTA
-** TODO SECUENCIA_P
+** DONE DIRECTORIO = household = group living together, sharing food and not paying rent to the hosuehold. Every person belongs to exactly one household.
+** DONE SECUENCIA_ENCUESTA : ignore
+** DONE SECUENCIA_P : ignore
 ** ORDEN = id for family member
-** TODO CAP
-** FEX_C
+** DONE CAP = which chapter of Cuadernillo 2 an expenditure comes from. Redundant, given COICOP.
+** FEX_C : household, not individual, weight. Proportional to the selection probability.
 * data sets
 ** (at least maybe) VAT-relevant
 *** TODO , david processing : caracteristicas generales
@@ -33,7 +34,7 @@
 **** P6426 = time at most recent job
 **** P6430 = kind of work (firm, government, unpaid family ...)
 **** P6370S1, P6390S1 = economic sector
-**** TODO P6500 = income from (formal employment?) last month
+**** DONE P6500 = income from formal employment ("asalariado") last month
 **** P6590 = gets paid in food too
 **** P6590S1 = estimated value of "food income"
 **** P6600 = gets paid in lodging, too
@@ -72,7 +73,7 @@
 **** P7516 = spent savings in the last 12 months
 *** articulos
 **** p10270 = COICOP
-**** TODO jeff : FORMA : no legend. Hopefully same values as the other "how gotten" variables.
+**** FORMA : no legend. Hopefully same values as the other "how gotten" variables.
 **** VALOR
 **** TODO jeff : P10270S2 : where bought (where gotten?)
 **** P10270S3 : frequency
@@ -170,14 +171,13 @@ New houses go to the 5% rate only if they cost more than 880 million cop. There 
 **** nc4_cc_p5 : value
 **** nc4_cc_p6 : freq
 *** urban personal fuera
-**** TODO david processing : nh_cgpucfh_p1_s2 : nothing, right?
+**** DONE : nh_cgpucfh_p1_s2 : can't be anything.
 **** nh_cgpucfh_p1_s1 : coicop
 **** nh_cgpucfh_p2 : quantity
 **** nh_cgpucfh_p3 : how gotten
 **** nh_cgpucfh_p4 : where gotten
 **** nh_cgpucfh_p5 : value
 **** nh_cgpucfh_p6 : freq
-
 ** DONE files not(PITFALL: currently) VAT-relevant
 *** viviendas_y_hogares -- just mortgages, which are (currently!) exempt
 **** P5100S1 through P5100S4: Cuanto pagan for mortgage -- exempt, even for a second home.

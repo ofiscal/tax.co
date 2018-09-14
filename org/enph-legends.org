@@ -1,3 +1,11 @@
+* news
+** they are asked on the 15th about consumption on days 1-14
+** value = spending, not price / unit
+** value = spending summed across all days, not per instance of shopping
+** TODO david asking : value might be averaged monthly spending, or might be just the value of the observed purchases
+** if frequency missing, discard observation
+*** TODO jeff: if lots of values are missing, we should try bounding this -- an upper bound would come from substituting Nan -> diario, lower from NaN -> (?).
+** where-got: use the value on the right
 * frequency
 ** rural cap c
 *** 1 » 2. Diario
@@ -11,7 +19,7 @@
 *** 9 » 9. Esporádica
 *** 11 » 11. Nunca
 **** TODO What does this even mean? Should we drop these observations?
-** urban cap c
+** DONE urban cap c -- ignore the documentation, treat as the other files
 *** 2 » 2. Diario
 **** TODO Every other file has "1 » 2. Diario"
 **** TODO Every other file has "2 » 2.1. Varias veces por semana"
@@ -113,16 +121,15 @@
 *** 6 » 6. Bimestral
 *** 7 » 7. Trimestral
 *** 9 » 9. Esporádica
-*** TODO jeff: what to do about NaN?
+**** TODO jeff: what to do about NaN?
 * how-got
 ** articulos: takes values 1-7
-*** TODO no description
+*** DONE no description, but same coding as the majority of the files
 ** not present in these files
 *** medios
 *** rural capitulo c
 *** urban capitulo c
-** TODO problems
-*** urban_diario_personal is different; everything else has the same key
+** TODO urban_diario_personal is different; everything else has the same key
 ** rural_personal: takes 1-4
 1 » 01. Compra
 2 » 02. Recibido como pago por trabajo
@@ -173,13 +180,14 @@
 5 » 5.Traidos de la finca o producidos por el hogar
 6 » 6.Tomados de un negocio del hogar
 7 » 7.Otra
-** TODO urban_diario_personal: 1-7
+** TODO david asking : urban_diario_personal: 1-7
+*** TODO see "different" below. For now interpret the same as the others, b/c the cuadernillo is probably right; however, david is asking.
 *** 1 » 1. Compra
-*** TODO 2 » 2. Traídos de la finca o producidos por el hogar.
-*** TODO (different) 3 » 3. Tomados de un negocio del hogar.
-*** TODO (different) 4 » 4. Recibidos como pagos por trabajo
-*** TODO (different) 5 » 5. Regalo o donación
-*** TODO (different) 6 » 6. Intercambio o trueque
+*** (different) 2 » 2. Traídos de la finca o producidos por el hogar.
+*** (different) 3 » 3. Tomados de un negocio del hogar.
+*** (different) 4 » 4. Recibidos como pagos por trabajo
+*** (different) 5 » 5. Regalo o donación
+*** (different) 6 » 6. Intercambio o trueque
 *** 7 » 7. Otra
 ** urban_personal_fuera: 1-7
 1 » 1. Compra
@@ -192,8 +200,9 @@
 * where-got
 ** TODO not present in these files
 *** medios
-*** rural capitulo c
-*** urban capitulo c
+*** for these files each observation aggregates spending over many categories into 25, but otherwise similar to COICOP files
+**** rural capitulo c
+**** urban capitulo c
 ** this file has its own special legend, with no corrections (for every "x » y", x = y).
 *** rural_semanal_fuera (always reads "x » x")
 **** takes values 1, 4, 6-7, 10, 13, 16, 19, 20, 24
