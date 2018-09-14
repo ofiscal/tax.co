@@ -15,7 +15,7 @@ files = list( vat_files.purchase_file_legends.keys() )
 
 purchases = vat_output_io.readStage(subsample,'/2.purchases,prices,taxes')
 if True: # build the person expenditure data
-  purchases["transactions"] = 1
+  purchases["transactions"] = 1 # useful later, when it is summed
   people = purchases.groupby(
     ['household', 'household-member'])['value','vat-paid',"transactions"].agg('sum')
   people = people.reset_index(level = ['household', 'household-member'])

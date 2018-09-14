@@ -1,17 +1,104 @@
 * frequency
-** rural cap c
-*** 1 » 2. Diario
-*** 2 » 2.1. Varias veces por semana
-**** TODO 2.1 is not in the data, so this suggests the first number is the right one.
-*** 3 » 3. Semanal
-*** 4 » 4. Quincenal
-*** 5 » 5. Mensual
-*** 6 » 6. Bimestral
-*** 7 » 7. Trimestral
-*** 9 » 9. Esporádica
-*** 11 » 11. Nunca
-**** TODO What does this even mean? Should we drop these observations?
-** urban cap c
+** almost all use the same key
+*** TODO use this one: rural cap c
+**** 1 » 2. Diario
+**** 2 » 2.1. Varias veces por semana
+***** TODO 2.1 is not in the data, so this suggests the first number is the right one.
+**** 3 » 3. Semanal
+**** 4 » 4. Quincenal
+**** 5 » 5. Mensual
+**** 6 » 6. Bimestral
+**** 7 » 7. Trimestral
+**** 8 » 8. Anual (not present in this file, but others) 
+**** 9 » 9. Esporádica
+**** 10 » 10. Semestral (not present in this file, but others)
+**** 11 » 11. Nunca
+***** TODO What does this even mean? Should we drop these observations?
+*** rural personal
+**** 1 » 2. Diario
+**** 2 » 2.1 Varias veces por semana
+**** 3 » 3.Semanal
+**** 4 » 4. Quincenal
+**** 5 » 5. Mensual
+**** 6 » 6. Bimestral
+**** 7 » 7. Trimestral
+**** 9 » 9.Esporádico
+*** rural semanal fuera
+**** 1 » 2. Diario
+**** 2 » 2.1. Varias veces por semana
+**** 3 » 3. Semanal
+**** 4 » 4. Quincenal
+**** 5 » 5. Mensual
+**** 6 » 6. Bimestral
+**** 7 » 7. Trimestral
+**** 9 » 9. Esporádica
+*** urbano diario fuera
+**** 1 » 2. Diario
+**** 2 » 2.1. Varias veces por semana
+**** 3 » 3. Semanal
+**** 4 » 4. Quincenal
+**** 5 » 5. Mensual
+**** 6 » 6. Bimestral
+**** 7 » 7. Trimestral
+**** 9 » 9. Esporádica
+*** urbano personal fuera
+**** 1 » 2. Diario
+**** 2 » 2.1. Varias veces por semana
+**** 3 » 3. Semanal
+**** 4 » 4. Quincenal
+**** 5 » 5. Mensual
+**** 6 » 6. Bimestral
+**** 7 » 7. Trimestral
+**** 9 » 9. Esporádica
+*** rural semanal
+**** 1 » 2. Diario
+**** 2 » 2.1. Varias veces por semana
+**** 3 » 3. Semanal
+**** 4 » 4. Quincenal
+**** 5 » 5. Mensual
+**** 6 » 6. Bimestral
+**** 7 » 7. Trimestral
+**** 9 » 9. Esporádica
+
+*** rural personal fuera
+**** 1 » 2. Diario
+**** 2 » 2.1. Varias veces por semana
+**** 3 » 3. Semanal
+**** 4 » 4. Quincenal
+**** 5 » 5. Mensual
+**** 6 » 6. Bimestral
+**** 7 » 7. Trimestral
+**** 9 » 9. Esporádica
+*** articulos
+**** 3 » 3. Semanal
+**** 4 » 4. Quincenal
+**** 5 » 5. Mensual
+**** 6 » 6. Bimestral
+**** 7 » 7. Trimestral
+**** 8 » 8. Anual
+**** 9 » 9. Esporádica
+**** 10 » 10. Semestral
+**** TODO jeff: what to do about NaN?
+*** urbano diarios personal
+**** 1 » 1. Diario
+**** 2 » 2.1. Varias veces
+**** 3 » 3. Semanal
+**** 4 » 4. Quincenal
+**** 5 » 5. Mensual
+**** 6 » 6. Bimestral
+**** 7 » 7. Trimestral
+**** 9 » 9. Esporádica por semana
+*** urbano diario
+**** 1 » 2. Diario
+**** 2 » 2.1. Varias veces por semana
+**** 3 » 3. Semanal
+**** 4 » 4. Quincenal
+**** 5 » 5. Mensual
+**** 6 » 6. Bimestral
+**** 7 » 7. Trimestral
+**** 9 » 9. Esporádica
+**** TODO jeff: what to do about NaN?
+** TODO weird : urban cap c
 *** 2 » 2. Diario
 **** TODO Every other file has "1 » 2. Diario"
 **** TODO Every other file has "2 » 2.1. Varias veces por semana"
@@ -30,89 +117,6 @@
 *** 9 » 9. Esporádica
 *** 1 » 11. Nunca
 **** TODO Both 1 and 11 show up in the data.
-*** TODO jeff: what to do about NaN?
-** rural personal
-*** 1 » 2. Diario
-*** 2 » 2.1 Varias veces por semana
-*** 3 » 3.Semanal
-*** 4 » 4. Quincenal
-*** 5 » 5. Mensual
-*** 6 » 6. Bimestral
-*** 7 » 7. Trimestral
-*** 9 » 9.Esporádico
-** rural semanal fuera
-*** 1 » 2. Diario
-*** 2 » 2.1. Varias veces por semana
-*** 3 » 3. Semanal
-*** 4 » 4. Quincenal
-*** 5 » 5. Mensual
-*** 6 » 6. Bimestral
-*** 7 » 7. Trimestral
-*** 9 » 9. Esporádica
-** urbano diario fuera
-*** 1 » 2. Diario
-*** 2 » 2.1. Varias veces por semana
-*** 3 » 3. Semanal
-*** 4 » 4. Quincenal
-*** 5 » 5. Mensual
-*** 6 » 6. Bimestral
-*** 7 » 7. Trimestral
-*** 9 » 9. Esporádica
-** urbano personal fuera
-*** 1 » 2. Diario
-*** 2 » 2.1. Varias veces por semana
-*** 3 » 3. Semanal
-*** 4 » 4. Quincenal
-*** 5 » 5. Mensual
-*** 6 » 6. Bimestral
-*** 7 » 7. Trimestral
-*** 9 » 9. Esporádica
-** rural semanal
-*** 1 » 2. Diario
-*** 2 » 2.1. Varias veces por semana
-*** 3 » 3. Semanal
-*** 4 » 4. Quincenal
-*** 5 » 5. Mensual
-*** 6 » 6. Bimestral
-*** 7 » 7. Trimestral
-*** 9 » 9. Esporádica
-** rural personal fuera
-*** 1 » 2. Diario
-*** 2 » 2.1. Varias veces por semana
-*** 3 » 3. Semanal
-*** 4 » 4. Quincenal
-*** 5 » 5. Mensual
-*** 6 » 6. Bimestral
-*** 7 » 7. Trimestral
-*** 9 » 9. Esporádica
-** articulos
-*** 3 » 3. Semanal
-*** 4 » 4. Quincenal
-*** 5 » 5. Mensual
-*** 6 » 6. Bimestral
-*** 7 » 7. Trimestral
-*** 8 » 8. Anual
-*** 9 » 9. Esporádica
-*** 10 » 10. Semestral
-*** TODO jeff: what to do about NaN?
-** urbano diarios personal
-*** 1 » 1. Diario
-*** 2 » 2.1. Varias veces
-*** 3 » 3. Semanal
-*** 4 » 4. Quincenal
-*** 5 » 5. Mensual
-*** 6 » 6. Bimestral
-*** 7 » 7. Trimestral
-*** 9 » 9. Esporádica por semana
-** urbano diario
-*** 1 » 2. Diario
-*** 2 » 2.1. Varias veces por semana
-*** 3 » 3. Semanal
-*** 4 » 4. Quincenal
-*** 5 » 5. Mensual
-*** 6 » 6. Bimestral
-*** 7 » 7. Trimestral
-*** 9 » 9. Esporádica
 *** TODO jeff: what to do about NaN?
 * how-got
 ** articulos: takes values 1-7
@@ -376,6 +380,10 @@
 **** TODO 18 » 23 Televentas y ventas por catálogo
 **** TODO 19 » 24 Otro
 **** TODO 20 » 25 Plazoleta de comidas
+* new-or-old-house
+** If value > 880 million COP, and new, then it gets taxed.
+** But the survey only records whether a house is new if it is a house that the household does *not* live in.
+** This seems like a small enough fraction of commerce to ignore for now.
 * for copying: another list of those files
 ** articulos
 ** medios
