@@ -10,6 +10,7 @@ class Correction:
     # because the operations before them are destructive. However, "drop" is not destructive.
     # For compatibility with Drop_Row_If_Column_Satisfies_Predicate, therefore, every "correct" function
     # must return the data frame it operates on.
+
   class Create_Constant_Column:
     def __init__(self,col_name,value):
       self.col_name = col_name
@@ -17,6 +18,7 @@ class Correction:
     def correct(self,df):
       df[self.col_name] = self.value
       return df
+
   class Apply_Function_To_Column:
     def __init__(self,col_name,func):
       self.col_name = col_name
@@ -24,6 +26,7 @@ class Correction:
     def correct(self,df):
       df[self.col_name] = df[self.col_name].apply(self.func)
       return df
+
   class Drop_Row_If_Column_Satisfies_Predicate:
     def __init__(self,col_name,pred):
       self.col_name = col_name
@@ -33,6 +36,7 @@ class Correction:
         df[ self.pred( df[self.col_name] )
         ].index
       )
+
   class Drop_Column:
     def __init__(self,col_name):
       self.col_name = col_name

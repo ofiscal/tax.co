@@ -6,7 +6,6 @@
 *** investment, business income
 *** transfer : from gov't or charity or family or alimony
 ** next: add FEX_C
-
 * about the data|results
 ** The ENPH : http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
 ** the 200 / 1400 missing COICOP codes appear not to matter much

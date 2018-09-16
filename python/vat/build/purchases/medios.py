@@ -1,7 +1,7 @@
 # This file is relevant only to the extent that it records house purchases.
 
 import pandas as pd
-import python.vat.raw_enph_input.classes as classes
+import python.vat.build.classes as classes
 
 
 files = [

@@ -1,6 +1,6 @@
 import pandas as pd
-import python.vat.raw_enph_input.config as raw_enph
-from python.vat.raw_enph_input.classes import File, Correction
+import python.vat.build.config as raw_enph
+from python.vat.build.classes import File, Correction
 
 
 files = [

@@ -1,5 +1,5 @@
 import pandas as pd
-import python.vat.raw_enph_input.classes as classes
+import python.vat.build.classes as classes
 
 files = [
   classes.File( "articulos"

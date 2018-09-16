@@ -1,12 +1,12 @@
 import pandas as pd
 
-import python.vat.raw_enph_input.config as raw_enph
+import python.vat.build.config as raw_enph
 
 # input files
-import python.vat.raw_enph_input.files.nice_purchases as nice_purchases
-import python.vat.raw_enph_input.files.medios as medios
-import python.vat.raw_enph_input.files.articulos as articulos
-import python.vat.raw_enph_input.files.capitulo_c as capitulo_c
+import python.vat.build.purchases.nice_purchases as nice_purchases
+import python.vat.build.purchases.medios as medios
+import python.vat.build.purchases.articulos as articulos
+import python.vat.build.purchases.capitulo_c as capitulo_c
 
 
 def collect_files( file_structs ):
