@@ -1,3 +1,12 @@
+* TODO next
+** does FEX_C apply at the household or the individual level?
+*** This should be answered by whether it's constant within households.
+** kinds of income
+*** labor
+*** investment, business income
+*** transfer : from gov't or charity or family or alimony
+** next: add FEX_C
+
 * about the data|results
 ** The ENPH : http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
 ** the 200 / 1400 missing COICOP codes appear not to matter much
@@ -29,7 +38,6 @@ x = purchases["vat-rate"]
 *** is it missing sole proprietor income?
 **** is the income data equally missing in the GEIH?
 ** add features
-*** TODO Use FEX_C (expansion factor)
 *** household VAT rates by income decile
 *** regional VAT rates
 at least for ...

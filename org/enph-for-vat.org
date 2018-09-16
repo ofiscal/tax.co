@@ -1,6 +1,5 @@
-* TODO next: add FEX_C
 * u
-** bars, cafeterias, restaurants: no VAT. otherwise yes. all four of those "fuera" files are in play.
+** bars, cafeterias, restaurants: no VAT. otherwise yes. all four of those "fuera" files are in play. can't discard those observations; just assign 0 VAT.
 * TODO common variables
 ** DONE DIRECTORIO = household = group living together, sharing food and not paying rent to the hosuehold. Every person belongs to exactly one household.
 ** DONE SECUENCIA_ENCUESTA : ignore
@@ -34,36 +33,51 @@
 **** P6426 = time at most recent job
 **** P6430 = kind of work (firm, government, unpaid family ...)
 **** P6370S1, P6390S1 = economic sector
-**** DONE P6500 = income from formal employment ("asalariado") last month
-**** P6590 = gets paid in food too
+**** TODO P6510S2 and similar: "Did you include this other kind of income in your asalariado (next) report?" If not, must add.
+**** TODO P6500 = income from formal employment ("asalariado") last month
+***** a dummy with this > 0 should be perfecty corr'd with pension contrib's
+**** DONE P6590 = gets paid in food too. don't count.
 **** P6590S1 = estimated value of "food income"
-**** P6600 = gets paid in lodging, too
-**** P6600S1 = estimated value of "lodging income"
-**** P6620 = receives other non-wage income
-**** P6620S1 = estimated value of other non-wage income
-**** TODO P6750 ? some other kind of income
-**** TODO P550 ? income to business, not individual
+**** DONE P6600 = gets paid in lodging, too. don't count.
+**** DONE P6600S1 = estimated value of "lodging income". ignore.
+**** DONE P6620 = receives other non-wage income
+**** DONE P6620S1 = estimated value of other non-wage income. ignore.
+**** TODO : pension contribs = formality.
+**** TODO P6750 = honorarios = contractor income. orthogonal to asalariado income. include.
+**** TODO P550 ? rural income to business, count as to individual
 ***** we want individual income; business income bears a different tax. but are they separable?
 **** P6800 = usual weekly hours worked
 **** P6850 = hours worked last week
 **** ! P6880 = place of work (office, truck, door to door ...)
 **** P6920 = contributing to a pension fund
 **** TODO P6920S1 = pension contributions (no unit of time given!)
+**** DONE P6940 = useful to determine whether contractor. maybe use someday
+***** valor pagado = contractor, paid out of pocket. descontado = employer took it from paycheck before paying you.
+***** If they answer C, they're wrong.
 **** P9450 & following: caja de compensación familiar
 **** P7040 & following = second job
-**** TODO P7070 = earned at second job
+**** DONE P7070 = earned at second job. per david per his contact, negligible.
 ***** does the other income variable not include second-job income?
 **** TODO P7422 & following: "ingresos por concepto de trabajo"
-**** TODO P7500S1 & fol; P7513S1 & fol: real estate rental income
-**** P7500S5 & fol: vehicular rental income
-**** TODO P7500S2 & fol, P7513S12 ? income from a pension or for being old or sick
-**** P7500S3 & fol: alimony
-**** P7510S1 & fol: remittance income
-**** TODO P7510S3 & fol: help from private ?firms
-**** TODO P7510S5 ? P7510S10 ? P7513S4 ? investment income
-**** P7510S6 = layoff compensation
-**** P7510S9 = income from sale of securities ("Rendimientos por venta de títulos")
-**** I skipped the many questions about government benefits, even "transferencias por victimización"
+***** should include all labobr (not capital) income. maybe make this the primary income varibale.
+**** TODO P7500S1 & fol; P7513S1 & fol: real estate rental income. yes, include.
+**** TODO P7500S5 & fol: vehicular rental income. include.
+**** TODO P7500S2 & fol, P7513S12 ? income from a pension or for being old or sick. include.
+**** TODO P7500S3 & fol: alimony. ignore, to avoid double-counting.
+**** TODO P7510S1 & fol: remittance income. include.
+**** TODO P7510S3 & fol: help from private ?firms. include.
+**** TODO P7510S5 ? P7510S10 ? P7513S4 ? investment income. include.
+**** TODO P7510S6 = layoff compensation. include.
+**** TODO P7510S9 = income from sale of securities ("Rendimientos por venta de títulos"). include.
+***** should not be a big fraction of income for most of the population.
+**** TODO I skipped the many questions about government benefits, even "transferencias por victimización"
+***** P1668S1 : income if including transfers.
+***** all these things are similar, treat the same.
+***** probably shouldn't be much given "en especie". do not include.
+**** TODO P7513S1 : ingresos ocasionales, ventas.
+***** could include if had frequency. luis, david will estimate
+**** Don't count loans -- you don't pay for your income with later income.
+**** All "ingreso ocasional" needs a frequency, we can assume initially that it's small.
 **** TODO P7513S3 ? Venta de (semovientes = livestock)?
 **** P7513S5 & fol: income from being paid back for a loan
 **** TODO P7513S8 ? jury awards

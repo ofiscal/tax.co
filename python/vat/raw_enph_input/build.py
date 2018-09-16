@@ -26,7 +26,9 @@ def collect_files( file_structs ):
 
 purchases = collect_files(
   articulos.files
-  + medios.files
+  # + medios.files
+    # The tax only applies if the purchase is more than 880 million pesos,
+    # and the data only records purchases of a second home.
   + capitulo_c.files
   + nice_purchases.files
 )

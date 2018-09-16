@@ -1,4 +1,5 @@
 * yet to ask
+** bars, cafeterias, restaurants: no VAT. otherwise yes. all four of those "fuera" files are in play.
 * emailed, awaiting
 ** How to read "x » y"?
 *** (See "enph-legends.org" for details.)

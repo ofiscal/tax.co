@@ -107,7 +107,7 @@
 **** 9 » 9. Esporádica
 **** TODO jeff: what to do about NaN?
 ** TODO weird : urban cap c
-* how-got
+* how-got: use (for VAT) only value 1.
 ** articulos: takes values 1-7
 *** DONE no description, but same coding as the majority of the files
 ** not present in these files
@@ -182,7 +182,7 @@
 5 » 5. Traidos de la finca o producidos por el hogar
 6 » 6. Tomados de un negocio del hogar
 7 » 7. Otra
-* where-got
+* where-got: relevant only for food
 ** TODO not present in these files
 *** medios
 *** for these files each observation aggregates spending over many categories into 25, but otherwise similar to COICOP files
@@ -370,10 +370,6 @@
 **** TODO 18 » 23 Televentas y ventas por catálogo
 **** TODO 19 » 24 Otro
 **** TODO 20 » 25 Plazoleta de comidas
-* new-or-old-house
-** If value > 880 million COP, and new, then it gets taxed.
-** But the survey only records whether a house is new if it is a house that the household does *not* live in.
-** This seems like a small enough fraction of commerce to ignore for now.
 * for copying: another list of those files
 ** articulos
 ** medios

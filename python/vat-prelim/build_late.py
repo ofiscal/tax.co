@@ -93,7 +93,7 @@ if True: # aggregate from household-members to households
     ) . rename( columns = {'age' : 'age-min',
                            'female' : 'has-male',
     } )
-  h_min["has-male"] = 1 - h_min["has-male"]
+  h_min["has-male"] = 1 - h_min["has-male"] # TODO ? asymmetric
   h_max = people.groupby(
       ['household']
     ) ['age','literate','student','female','education',
@@ -120,6 +120,8 @@ if True: # aggregate from household-members to households
   households["household"] = households.index
     # when there are multiple indices, reset_index is the way to do that
 
+  # TODO : < 10 also interesting, because work legal at age 10 or more
+    # 10 or above in rural, 12 or above urban
   households["has-child"] = households["age-min"] < 18
   households["has-elderly"] = households["age-max"] > 65
 
