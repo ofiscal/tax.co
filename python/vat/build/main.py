@@ -1,6 +1,6 @@
 import pandas as pd
 
-import python.vat.build.config as raw_enph
+import python.vat.build.common as common
 
 # input files
 import python.vat.build.purchases.nice_purchases as nice_purchases
@@ -14,7 +14,7 @@ def collect_files( file_structs ):
   for f in file_structs:
     shuttle = (
       pd.read_csv(
-        raw_enph.folder + f.filename
+        common.folder + f.filename
         , usecols = list( f.col_dict.keys() ) )
       . rename( columns = f.col_dict        )
     )
