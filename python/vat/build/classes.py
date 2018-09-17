@@ -19,12 +19,24 @@ class Correction:
       df[self.col_name] = self.value
       return df
 
+  class Replace_Substring_In_Column:
+    def __init__(self,col_name,before,after):
+      self.col_name = col_name
+      self.before = before
+      self.after = after
+    def correct(self,df):
+      df[self.col_name] = ( df[self.col_name]
+                            .astype(str)
+                            .str.replace( self.before, self.after ) )
+      return df
+
   class Apply_Function_To_Column:
     def __init__(self,col_name,func):
       self.col_name = col_name
       self.func = func
     def correct(self,df):
-      df[self.col_name] = df[self.col_name].apply(self.func)
+      df[self.col_name] = ( df[self.col_name]
+                            .apply(self.func) )
       return df
 
   class Drop_Row_If_Column_Satisfies_Predicate:

@@ -14,7 +14,7 @@ files = [
       , "NC2R_CE_P6" : "where-got"
       , "NC2R_CE_P7" : "value"
       , "NC2R_CE_P8" : "freq"
-    }
+    }, common.corrections
   )
 
   , File( "rural_personal_fuera"
@@ -26,7 +26,7 @@ files = [
       , "NC2R_CA_P6_S1" : "where-got"
       , "NC2R_CA_P7_S1" : "value"
       , "NC2R_CA_P8_S1" : "freq"
-    }
+    }, common.corrections
   )
 
   , File( "rural_semanal"
@@ -38,7 +38,7 @@ files = [
       , "NC2R_CA_P6_S1" : "where-got"
       , "NC2R_CA_P7_S1" : "value"
       , "NC2R_CA_P8_S1" : "freq"
-    }
+    }, common.corrections
   )
 
   , File( "rural_semanal_fuera"
@@ -50,7 +50,7 @@ files = [
       , "NH_CGPRCFH_P4" : "where-got"
       , "NH_CGPRCFH_P5" : "value"
       , "NH_CGPRCFH_P6" : "freq"
-    }
+    }, common.corrections
   )
 
   , File( "urban_diario"
@@ -64,13 +64,14 @@ files = [
       , "NH_CGDU_P8" : "value"
       , "NH_CGDU_P9" : "freq"
     }
-    , [ # The "within-household transfer" variable is almost always null. If it's not,
+    , common.corrections +
+      [ # The "within-household transfer" variable is almost always null. If it's not,
         # drop the observation. Then drop that column.
         Correction.Drop_Row_If_Column_Satisfies_Predicate( "within-household-transfer"
                                                            , pd.notnull
                                                          )
       , Correction.Drop_Column( "within-household-transfer" )
-    ]
+      ]
   )
 
   , File( "urban_diario_fuera"
@@ -82,7 +83,7 @@ files = [
       , "NH_CGDUCFH_P4" : "where-got"
       , "NH_CGDUCFH_P5" : "value"
       , "NH_CGDUCFH_P6" : "freq"
-    }
+    }, common.corrections
   )
 
   , File( "urban_diario_personal"
@@ -94,7 +95,7 @@ files = [
       , "NC4_CC_P4" : "where-got"
       , "NC4_CC_P5" : "value"
       , "NC4_CC_P6" : "freq"
-    }
+    }, common.corrections
   )
 
   , File( "urban_personal_fuera"
@@ -106,6 +107,6 @@ files = [
       , "NH_CGPUCFH_P4" : "where-got"
       , "NH_CGPUCFH_P5" : "value"
       , "NH_CGPUCFH_P6" : "freq"
-    }
+    }, common.corrections
   )
 ]
