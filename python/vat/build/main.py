@@ -35,13 +35,18 @@ def to_numbers(df):
                            , errors='ignore' ) # ignore operation if any value won't convert
   return df
 
-purchases = to_numbers( collect_files(
+purchases = collect_files(
   articulos.files
   # + medios.files
     # The tax only applies if the purchase is more than 880 million pesos,
     # and the data only records purchases of a second home.
   + capitulo_c.files
   + nice_purchases.files
-) )
+)
 
-people = to_numbers( collect_files( people.files ) )
+for c in common.coicop_corrections:
+  purchases = c.correct( purchases )
+
+purchases = to_numbers(purchases)
+
+# people = to_numbers( collect_files( people.files ) )

@@ -57,6 +57,18 @@ class Correction:
         ].index
       )
 
+  class Replace_Entirely_If_Substring_Is_In_Column:
+    def __init__(self,col_name,substring,replacement):
+      self.col_name = col_name
+      self.substring = substring
+      self.replacement = replacement
+    def correct(self,df):
+      df.loc[ (~ df[self.col_name].isna() )
+              & df[self.col_name].str.contains( self.substring )
+            , self.col_name
+      ] = self.replacement
+      return df
+
   class Drop_Column:
     def __init__(self,col_name):
       self.col_name = col_name
