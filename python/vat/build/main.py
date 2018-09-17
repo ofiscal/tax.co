@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 import python.vat.build.common as common
 
@@ -7,6 +8,7 @@ import python.vat.build.purchases.nice_purchases as nice_purchases
 import python.vat.build.purchases.medios as medios
 import python.vat.build.purchases.articulos as articulos
 import python.vat.build.purchases.capitulo_c as capitulo_c
+import python.vat.build.people as people
 
 
 def collect_files( file_structs ):
@@ -32,3 +34,14 @@ purchases = collect_files(
   + capitulo_c.files
   + nice_purchases.files
 )
+
+people = collect_files( people.files )
+
+# turn everything to numbers if possible
+for df in [people]:
+  for c in df.columns:
+    if df[c].dtype == 'O':
+      df[c] = df[c].str.strip()
+      df[c] = df[c].replace("", np.nan)
+      df[c] = pd.to_numeric( df[c]
+                           , errors='ignore' ) # ignore operation if any value won't convert

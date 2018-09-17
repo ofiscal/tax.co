@@ -1,4 +1,12 @@
-# To check the values present in the data against those described in the data documentation.
+data.people["beca"].unique()
+non_numbers = people["female"].str.contains( "[^0-9\.\,]", regex=True )
+
+
+for c in data.people.columns:
+  util.describeWithMissing( data.people[[c]] )
+
+
+## older; to check the values present in the data against those described in the data documentation.
 
 file_names = [
     "articulos"
@@ -26,3 +34,4 @@ def check(file_name,col_name):
 for fn in file_names:
   print("\n\n" + fn)
   check(fn,"freq")
+
