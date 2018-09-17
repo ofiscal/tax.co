@@ -13,6 +13,7 @@ files = [
       , "NC2_CC_P2"    : "freq"
       , "NC2_CC_P3_S1" : "value"
     }, common.corrections
+      + common.purchase_corrections
       + [ classes.Correction.Create_Constant_Column( "quantity", 1 )
         # TODO : "how-got"
         # TODO : "where-got"
@@ -26,6 +27,7 @@ files = [
       , "NC2_CC_P2"    : "freq"
       , "NC2_CC_P3_S1" : "value"
     }, common.corrections
+      + common.purchase_corrections
       + [ classes.Correction.Create_Constant_Column( "quantity", 1 )
         # TODO : "how-got"
         # TODO : "where-got"

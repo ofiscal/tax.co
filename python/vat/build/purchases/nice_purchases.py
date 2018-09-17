@@ -15,6 +15,7 @@ files = [
       , "NC2R_CE_P7" : "value"
       , "NC2R_CE_P8" : "freq"
     }, common.corrections
+      + common.purchase_corrections
   )
 
   , File( "rural_personal_fuera"
@@ -27,6 +28,7 @@ files = [
       , "NC2R_CA_P7_S1" : "value"
       , "NC2R_CA_P8_S1" : "freq"
     }, common.corrections
+      + common.purchase_corrections
   )
 
   , File( "rural_semanal"
@@ -39,6 +41,7 @@ files = [
       , "NC2R_CA_P7_S1" : "value"
       , "NC2R_CA_P8_S1" : "freq"
     }, common.corrections
+      + common.purchase_corrections
   )
 
   , File( "rural_semanal_fuera"
@@ -51,6 +54,7 @@ files = [
       , "NH_CGPRCFH_P5" : "value"
       , "NH_CGPRCFH_P6" : "freq"
     }, common.corrections
+      + common.purchase_corrections
   )
 
   , File( "urban_diario"
@@ -64,13 +68,14 @@ files = [
       , "NH_CGDU_P8" : "value"
       , "NH_CGDU_P9" : "freq"
     }
-    , common.corrections +
-      [ # The "within-household transfer" variable is almost always null. If it's not,
+    , common.corrections
+      + common.purchase_corrections
+      + [ # The "within-household transfer" variable is almost always null. If it's not,
         # drop the observation. Then drop that column.
         Correction.Drop_Row_If_Column_Satisfies_Predicate( "within-household-transfer"
                                                            , pd.notnull
                                                          )
-      , Correction.Drop_Column( "within-household-transfer" )
+        , Correction.Drop_Column( "within-household-transfer" )
       ]
   )
 
@@ -84,6 +89,7 @@ files = [
       , "NH_CGDUCFH_P5" : "value"
       , "NH_CGDUCFH_P6" : "freq"
     }, common.corrections
+      + common.purchase_corrections
   )
 
   , File( "urban_diario_personal"
@@ -96,6 +102,7 @@ files = [
       , "NC4_CC_P5" : "value"
       , "NC4_CC_P6" : "freq"
     }, common.corrections
+      + common.purchase_corrections
   )
 
   , File( "urban_personal_fuera"
@@ -108,5 +115,6 @@ files = [
       , "NH_CGPUCFH_P5" : "value"
       , "NH_CGPUCFH_P6" : "freq"
     }, common.corrections
+      + common.purchase_corrections
   )
 ]

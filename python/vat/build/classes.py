@@ -19,6 +19,14 @@ class Correction:
       df[self.col_name] = self.value
       return df
 
+  class Replace_Missing_Values:
+    def __init__(self,col_name,value):
+      self.col_name = col_name
+      self.value = value
+    def correct(self,df):
+      df[self.col_name] = df[self.col_name].fillna( self.value )
+      return df
+
   class Replace_Substring_In_Column:
     def __init__(self,col_name,before,after):
       self.col_name = col_name

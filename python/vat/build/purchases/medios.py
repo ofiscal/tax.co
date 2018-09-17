@@ -13,6 +13,7 @@ files = [
       , "P10305S1" : "value"
     }
     , common.corrections
+      + common.purchase_corrections
       + [ classes.Correction.Create_Constant_Column( "quantity", 1 )
         # TODO : "coicop"
         # TODO : "how-got"
