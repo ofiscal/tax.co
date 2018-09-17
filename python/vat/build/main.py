@@ -26,13 +26,22 @@ def collect_files( file_structs ):
     acc = acc.append(shuttle)
   return acc
 
-purchases = collect_files(
+def to_numbers(df):
+  for c in df.columns:
+    if df[c].dtype == 'O':
+      df[c] = df[c].str.strip()
+      df[c] = df[c].replace("", np.nan)
+      df[c] = pd.to_numeric( df[c]
+                           , errors='ignore' ) # ignore operation if any value won't convert
+  return df
+
+purchases = to_numbers( collect_files(
   articulos.files
   # + medios.files
     # The tax only applies if the purchase is more than 880 million pesos,
     # and the data only records purchases of a second home.
   + capitulo_c.files
   + nice_purchases.files
-)
+) )
 
-people = collect_files( people.files )
+people = to_numbers( collect_files( people.files ) )
