@@ -12,8 +12,8 @@ files = [
       , "NC2_CC_P1"    : "25-broad-categs"
       , "NC2_CC_P2"    : "freq"
       , "NC2_CC_P3_S1" : "value"
-    }
-    , [ classes.Correction.Create_Constant_Column( "quantity", 1 )
+    }, common.corrections
+      + [ classes.Correction.Create_Constant_Column( "quantity", 1 )
         # TODO : "how-got"
         # TODO : "where-got"
         # TODO : "freq"
@@ -25,8 +25,8 @@ files = [
       , "NC2_CC_P1"    : "25-broad-categs"
       , "NC2_CC_P2"    : "freq"
       , "NC2_CC_P3_S1" : "value"
-    }
-    , [ classes.Correction.Create_Constant_Column( "quantity", 1 )
+    }, common.corrections
+      + [ classes.Correction.Create_Constant_Column( "quantity", 1 )
         # TODO : "how-got"
         # TODO : "where-got"
         # TODO : "freq"

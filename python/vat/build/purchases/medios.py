@@ -12,7 +12,8 @@ files = [
       , "P10305"   : "new-or-old-house"
       , "P10305S1" : "value"
     }
-    , [ classes.Correction.Create_Constant_Column( "quantity", 1 )
+    , common.corrections
+      + [ classes.Correction.Create_Constant_Column( "quantity", 1 )
         # TODO : "coicop"
         # TODO : "how-got"
         # TODO : "where-got"
