@@ -45,11 +45,13 @@ purchases = collect_files(
   + nice_purchases.files
 )
 
+
 for c in [
   Correction.Replace_Substring_In_Column( "quantity", ",", "." )
   , Correction.Replace_Missing_Values( "quantity", 1 )
+  , Correction.Change_Column_Type( "coicop", str )
   , Correction.Replace_Entirely_If_Substring_Is_In_Column( "coicop", "inv", np.nan )
-]: purchases = c.correct( purchases )
+]: p2 = c.correct( p2 )
 
 purchases = to_numbers(purchases)
 

@@ -1,3 +1,6 @@
+import numpy as np
+import math
+
 class File:
   def __init__(self,name,filename,col_dict,corrections=[]):
     self.name = name
@@ -81,3 +84,16 @@ class Correction:
       self.col_name = col_name
     def correct(self,df):
       return df.drop( self.col_name, axis = 'columns' )
+
+  class Change_Column_Type:
+    def __init__(self,col_name,new_type): # PITFALL: new_type should be, e.g., str, not "str"
+      self.col_name = col_name
+      self.new_type = new_type
+    def correct(self,df):
+      df[self.col_name] = df[self.col_name] . astype(self.new_type)
+      return df
+
+#      df[self.col_name] = ( df[self.col_name]
+#                            .apply( lambda x:
+#                                    np.nan if math.isnan(x) else new_type(x) ) )
+#      return df
