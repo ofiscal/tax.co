@@ -19,6 +19,13 @@ class Correction:
       df[self.col_name] = self.value
       return df
 
+  class Rename_Column:
+    def __init__(self,old,new):
+      self.old = old
+      self.new = new
+    def correct(self,df):
+      return df.rename( columns = {self.old : self.new} )
+
   class Replace_Missing_Values:
     def __init__(self,col_name,value):
       self.col_name = col_name

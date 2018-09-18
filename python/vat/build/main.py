@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 
+from python.vat.build.classes import Correction
 import python.vat.build.common as common
 
 # input files
@@ -44,9 +45,21 @@ purchases = collect_files(
   + nice_purchases.files
 )
 
-for c in common.coicop_corrections:
-  purchases = c.correct( purchases )
+for c in [
+  Correction.Replace_Substring_In_Column( "quantity", ",", "." )
+  , Correction.Replace_Missing_Values( "quantity", 1 )
+  , Correction.Replace_Entirely_If_Substring_Is_In_Column( "coicop", "inv", np.nan )
+]: purchases = c.correct( purchases )
 
 purchases = to_numbers(purchases)
+
+for c in [
+  Correction.Apply_Function_To_Column(
+    "how-got"
+    , lambda x: 1 if x==1 else
+      # HACK: x >= 0 yields true for numbers, false for NaN
+      (0 if x >= 0 else np.nan) )
+  , Correction.Rename_Column("how-got", "is-purchase")
+]: c.correct( purchases )
 
 # people = to_numbers( collect_files( people.files ) )

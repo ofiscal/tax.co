@@ -13,5 +13,4 @@ files = [
       , "P10270S3" : "freq"
     }, [ classes.Correction.Create_Constant_Column( "quantity", 1 ) ]
       + common.corrections
-      + common.purchase_corrections
 ) ]
