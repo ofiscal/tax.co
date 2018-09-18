@@ -29,6 +29,16 @@ class Correction:
     def correct(self,df):
       return df.rename( columns = {self.old : self.new} )
 
+  class Replace_In_Column:
+    # Anything not mentioned in the dictionary is left unchanged.
+    def __init__(self,col_name,dct):
+      self.col_name = col_name
+      self.dct = dct
+    def correct(self,df):
+      df[self.col_name] = ( df[self.col_name]
+                            .replace( self.dct ) )
+      return df
+
   class Replace_Missing_Values:
     def __init__(self,col_name,value):
       self.col_name = col_name
@@ -92,8 +102,3 @@ class Correction:
     def correct(self,df):
       df[self.col_name] = df[self.col_name] . astype(self.new_type)
       return df
-
-#      df[self.col_name] = ( df[self.col_name]
-#                            .apply( lambda x:
-#                                    np.nan if math.isnan(x) else new_type(x) ) )
-#      return df

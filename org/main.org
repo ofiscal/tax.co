@@ -1,4 +1,6 @@
 * TODO next
+** frequency: remap urban cap c to match the others
+** frequency: interpret it
 ** does FEX_C apply at the household or the individual level?
 *** This should be answered by whether it's constant within households.
 ** kinds of income

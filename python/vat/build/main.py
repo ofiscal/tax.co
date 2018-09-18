@@ -45,13 +45,36 @@ purchases = collect_files(
   + nice_purchases.files
 )
 
-
-for c in [
+for c in [ # TODO ? This might be easier to understand without the Correction class.
   Correction.Replace_Substring_In_Column( "quantity", ",", "." )
   , Correction.Replace_Missing_Values( "quantity", 1 )
+
   , Correction.Change_Column_Type( "coicop", str )
   , Correction.Replace_Entirely_If_Substring_Is_In_Column( "coicop", "inv", np.nan )
-]: p2 = c.correct( p2 )
+
+  # The rest of these variables need the same number-string-cleaning process:
+    , Correction.Change_Column_Type( "where-got", str )
+      # same as this: purchases["where-got"] = purchases["where-got"] . astype( str )
+    , Correction.Replace_In_Column( "where-got"
+                                  , { ' ' : np.nan
+                                    , "nan" : np.nan } ) # 'nan's are created from the cast to type str
+      # same as this: purchases["where-got"] = purchases["where-got"] . replace( <that same dictionary> )
+
+    , Correction.Change_Column_Type( "freq", str )
+    , Correction.Replace_In_Column( "freq"
+                                  , { ' ' : np.nan
+                                    , "nan" : np.nan } )
+
+    , Correction.Change_Column_Type( "how-got", str )
+    , Correction.Replace_In_Column( "how-got"
+                                  , { ' ' : np.nan
+                                    , "nan" : np.nan } )
+
+    , Correction.Change_Column_Type( "value", str )
+    , Correction.Replace_In_Column( "value"
+                                  , { ' ' : np.nan
+                                    , "nan" : np.nan } )
+]: purchases = c.correct( purchases )
 
 purchases = to_numbers(purchases)
 
