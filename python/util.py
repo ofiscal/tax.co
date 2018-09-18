@@ -43,10 +43,10 @@ def compare_2_columns_from_different_tables (df1, colname1, df2, colname2):
   return pd.merge(x, y, left_index=True, right_index=True)
 
 def dwmParamByGroup (describeParam, groupParam, df):
-  theGroups = df.groupby(groupParam)
-  dfs = [ theGroups . get_group(x) [describeParam]
-          . rename( columns = {describeParam : str(x) } )
-          for x in theGroups.groups]
+  theGroups = df.groupby("file-origin")
+  dfs = [ theGroups.get_group(x) [[describeParam]]
+          . rename( columns = {describeParam : x } )
+          for x in theGroups.groups.keys()]
   return describeWithMissing( pd.concat( dfs,axis=1 ) )
 
 def compareDescriptives(dfDict):
