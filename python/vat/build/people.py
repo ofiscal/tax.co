@@ -15,11 +15,11 @@ files = [
       , "P8610"      : "beca"
       , "P6060"      : "skipped 3 meals"
       , "P6160"      : "literate"
-      , "P6210"      : "education"
+      , "P6210"      : "education" # highest level completed
       , "P6240"      : "time use"
+      , "P6300"      : "want to work"
       , "P6800"      : "hours worked, usual"
       , "P6850"      : "hours worked, last week"
-      , "P6300"      : "want to work"
       , "P7422"      : "labor income, all"
       , "P6500"      : "labor income, formal"
       , "P6510S1"    : "labor income, overtime"

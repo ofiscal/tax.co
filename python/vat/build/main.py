@@ -92,9 +92,15 @@ if False: # purchases
 
 if True: # people
   people = to_numbers( collect_files( people.files ) )
-  
+
   people["female"] = people["female"] - 1 # originally 1=male, 2=female
-  
+
+  people["student"]         = 2 - people["student"] # originally 1=student, 2=not
+  people["beca"]            = 2 - people["beca"] # originally 1=received beca ("en dinero o especie"), 2=not
+  people["skipped 3 meals"] = 2 - people["skipped 3 meals"] # originally 1=yes, 2=no
+  people["literate"]        = 2 - people["literate"] # originally 1=yes, 2=no
+  people["want to work"]    = 2 - people["want to work"] # originally 1=yes, 2=no
+
   race_key = {
       1 : "Indigena"
     , 2 : "Gitano-Roma"
@@ -108,3 +114,27 @@ if True: # people
     , categories = list( race_key.values() )
     , ordered = True # might help for drawing pictures
   )
+
+  edu_key = { 1 : "Ninguno",
+      2 : "Preescolar",
+      3 : "Basica\n Primaria",
+      4 : "Basica\n Secundaria",
+      5 : "Media",
+      6 : "Superior o\n Universitaria",
+      9 : "No sabe,\n no informa" }
+  people["education"] = pd.Categorical(
+    people["education"].map( edu_key ),
+    categories = list( edu_key.values() ),
+    ordered = True)
+
+  time_key = { 1 : "work" # Trabajando
+             , 2 : "search" # Buscando trabajo
+             , 3 : "study" # Estudiando
+             , 4 : "household" # Oficios del hogar
+             , 5 : "disabled" # Incapacitado permanente para trabajar
+             , 6 : "other" # Otra actividad
+  }
+  people["time use"] = pd.Categorical(
+    people["time use"].map( time_key ),
+    categories = list( time_key.values() ),
+    ordered = True)
