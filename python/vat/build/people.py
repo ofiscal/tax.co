@@ -44,5 +44,7 @@ files = [
       , "P1668S3A2"  : "benefit income, Familias en su Tierra"
       , "P1668S4A2"  : "benefit income, Jovenes en Accion"
       , "P1668S5A2"  : "benefit income, Transferencias por Victimizacion"
-    }, common.corrections
+    } , common.corrections
+      + [classes.Correction.Drop_Column( "file-origin" )
+        ]
 ) ]
