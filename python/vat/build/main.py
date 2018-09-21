@@ -105,11 +105,15 @@ if True: # people
             , "want to work"    # originally 1=yes, 2=no
   ]: people[cn] = 2 - people[cn]
 
-
   re = regex.compile( ".*income.*" )
   income_columns = [c for c in people.columns if re.match( c )]
   people[ income_columns ] = people[income_columns] . fillna(0)
   del(re, income_columns)
+
+  people["labor income, formal"] = ( people["labor income, formal"]
+    + people["labor income, overtime overlooked"] * people["labor income, overtime"] )
+  people = people.drop( columns = [ "labor income, overtime overlooked"
+                                    , "labor income, overtime" ] )
 
   race_key = {
       1 : "Indigena"
