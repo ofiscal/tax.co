@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import re as regex
 
 from python.vat.build.classes import Correction
 import python.vat.build.common as common
@@ -93,13 +94,22 @@ if False: # purchases
 if True: # people
   people = to_numbers( collect_files( people.files ) )
 
-  people["female"] = people["female"] - 1 # originally 1=male, 2=female
+  for cn in [ "female"                            # originally 1=male, 2=female
+            , "labor income, overtime overlooked" # originally 1=included, 2=overlooked
+  ]: people[cn] = people[cn] - 1
 
-  people["student"]         = 2 - people["student"] # originally 1=student, 2=not
-  people["beca"]            = 2 - people["beca"] # originally 1=received beca ("en dinero o especie"), 2=not
-  people["skipped 3 meals"] = 2 - people["skipped 3 meals"] # originally 1=yes, 2=no
-  people["literate"]        = 2 - people["literate"] # originally 1=yes, 2=no
-  people["want to work"]    = 2 - people["want to work"] # originally 1=yes, 2=no
+  for cn in [ "student"         # originally 1=student, 2=not
+            , "beca"            # originally 1=received beca ("en dinero o especie"), 2=not
+            , "skipped 3 meals" # originally 1=yes, 2=no
+            , "literate"        # originally 1=yes, 2=no
+            , "want to work"    # originally 1=yes, 2=no
+  ]: people[cn] = 2 - people[cn]
+
+
+  re = regex.compile( ".*income.*" )
+  income_columns = [c for c in people.columns if re.match( c )]
+  people[ income_columns ] = people[income_columns] . fillna(0)
+  del(re, income_columns)
 
   race_key = {
       1 : "Indigena"
@@ -112,8 +122,7 @@ if True: # people
   people["race"] = pd.Categorical(
     people["race"].map( race_key )
     , categories = list( race_key.values() )
-    , ordered = True # might help for drawing pictures
-  )
+    , ordered = True)
 
   edu_key = { 1 : "Ninguno",
       2 : "Preescolar",
