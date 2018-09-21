@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import math as math
 
 def printInRed(message):
@@ -35,7 +36,9 @@ def describeWithMissing(df):
   length_stat = pd.DataFrame( [[len(df) for _ in df.columns]]
                             , index = ["length"]
                             , columns = df.columns )
-  return length_stat.append( missing_stat.append( most_stats ) )
+  nums = df.select_dtypes(include=[np.number]) # subset of the columns
+  zeroes = pd.DataFrame( [nums.apply( lambda col: len( col[col==0] ) / len(nums) )] )
+  return zeroes.append( length_stat.append( missing_stat.append( most_stats ) ) )
 
 def compare_2_columns_from_different_tables (df1, colname1, df2, colname2):
   x = describeWithMissing( df1[[ colname1 ]] )
