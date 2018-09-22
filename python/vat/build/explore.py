@@ -1,6 +1,33 @@
+import pandas as pd
+import numpy as np
+
+import python.util as util
+import python.vat.build.classes as classes
+import python.vat.build.common as common
+import python.vat.build.main as data
+
+
+### How I determined which "total labor income" variable to use, and which to ignore.
+
+df = data.people.filter(regex="labor").copy()
+df = df[ (df.T != 0).any() ] # delete the all-zero rows
+
+df = df.rename( columns = dict( zip(
+  df.columns,
+  ["formal", "contractor", "rural business", "all ? 1", "all ? 2"] ) ) )
+
+df["formal - ?1"] = df["formal"] - df["all ? 1"]
+df["formal - ?2"] = df["formal"] - df["all ? 2"]
+
+dfc = df.drop( columns = ["contractor", "rural business"] )
+
+util.describeWithMissing( dfc )
+
+
+#### 
+
 data.people["beca"].unique()
 non_numbers = people["female"].str.contains( "[^0-9\.\,]", regex=True )
-
 
 for c in data.people.columns:
   util.describeWithMissing( data.people[[c]] )
@@ -34,4 +61,3 @@ def check(file_name,col_name):
 for fn in file_names:
   print("\n\n" + fn)
   check(fn,"freq")
-

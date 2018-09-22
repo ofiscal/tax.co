@@ -20,9 +20,8 @@ files = [
       , "P6300"      : "want to work"
       , "P6800"      : "hours worked, usual"
       , "P6850"      : "hours worked, last week"
-      , "P7422"      : "labor income, all"
-      , "P6500"      : "labor income, formal" # the quantity referred to by the "overlooked" questions
       , "P7422S1"    : "labor income, ?1"
+      , "P6500"      : "labor income, formal" # the quantity referred to by the "overlooked" questions
       , "P7472S1"    : "labor income, ?2"
       , "P6510S1"    : "labor income, overtime"
       , "P6510S2"    : "labor income, overtime overlooked"

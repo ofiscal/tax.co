@@ -10,7 +10,7 @@ import python.vat.build.purchases.nice_purchases as nice_purchases
 import python.vat.build.purchases.medios as medios
 import python.vat.build.purchases.articulos as articulos
 import python.vat.build.purchases.capitulo_c as capitulo_c
-import python.vat.build.people as people
+import python.vat.build.people as ppl
 
 
 def collect_files( file_structs ):
@@ -92,7 +92,7 @@ if False: # purchases
 
 
 if True: # people
-  people = to_numbers( collect_files( people.files ) )
+  people = to_numbers( collect_files( ppl.files ) )
 
   for cn in [ "female"                            # originally 1=male, 2=female
             , "labor income, overtime overlooked" # originally 1=included, 2=overlooked
