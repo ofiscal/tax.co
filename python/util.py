@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import math as math
 
+
 def printInRed(message):
     """from https://stackoverflow.com/a/287934/916142"""
     CSI="\x1B["
@@ -46,11 +47,18 @@ def compare_2_columns_from_different_tables (df1, colname1, df2, colname2):
   return pd.merge(x, y, left_index=True, right_index=True)
 
 def dwmParamByGroup (describeParam, groupParam, df):
-  theGroups = df.groupby("file-origin")
-  dfs = [ theGroups.get_group(x) [[describeParam]]
-          . rename( columns = {describeParam : x } )
-          for x in theGroups.groups.keys()]
-  return describeWithMissing( pd.concat( dfs,axis=1 ) )
+  theGroups = df.groupby( groupParam )
+  dfs = [
+      describeWithMissing (
+        theGroups.get_group(x) [[describeParam]]
+        . rename( columns = {describeParam : x } ) )
+      for x in theGroups.groups.keys()]
+  return pd.concat( dfs,axis=1 )
+
+def dwmByGroup (groupParam, df):
+  for c in df.columns:
+    print( "\n" + c )
+    print( dwmParamByGroup( c, groupParam, df ) )
 
 def compareDescriptives(dfDict):
   """ builds a table of summary statistics for each data set in the input dictionary """
