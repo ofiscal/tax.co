@@ -1,6 +1,20 @@
 * yet to ask
 ** bars, cafeterias, restaurants: no VAT. otherwise yes. all four of those "fuera" files are in play.
 * emailed, awaiting
+** purchase variables
+*** quantity: do we even need it?
+*** default values?
+**** coicop: for rural_personal, rural_personal_fuera, rural_semanal, rural_semanal_fuera, 60+ % missing
+***** we could just state in the paper that it's an undercount for rural folks
+***** or compute the average tax rate among purchases with known coicop, and attribute that to the ones without
+**** freq: rural_personal, rural_personal_fuera, rural_semanal, rural_semanal_fuera, urban_diario_fuera: very missing
+***** you would think for "diario" it might be daily, no?
+**** TODO ? is-purchase: default = 1
+***** There are four fields, all rural, with a big fraction of missing values in the "is-purchase" column. They also have a substantial fraction of non-purchase values among the non-missing values: in one case only 64% of acquisitions are (when known) purchases; in another .8, another .85, and the last .97.
+**** where-got: if missing, assume taxed, yes?
+*** outliers
+**** household-member: rural_semanal and urban_diario both reach at least to 82
+
 ** How to read "x » y"?
 *** (See "enph-legends.org" for details.)
 *** In the "freq" variables, often "2.1" appears on the right side, and never in the data; likewise 2 is often on the left, and it appears in the data a lot. That suggests the left hand values are the ones to use.
