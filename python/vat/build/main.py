@@ -38,7 +38,7 @@ def to_numbers(df):
   return df
 
 
-if False: # purchases
+if True: # purchases
   purchases = collect_files(
     articulos.files
     # + medios.files
@@ -88,7 +88,7 @@ if False: # purchases
         # HACK: x >= 0 yields true for numbers, false for NaN
         (0 if x >= 0 else np.nan) )
     , Correction.Rename_Column("how-got", "is-purchase")
-  ]: c.correct( purchases )
+  ]: purchases = c.correct( purchases )
 
 
 if True: # people
