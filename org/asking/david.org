@@ -3,9 +3,6 @@
 * emailed, awaiting
 ** purchase variables
 *** default values?
-**** coicop: for rural_personal, rural_personal_fuera, rural_semanal, rural_semanal_fuera, 60+ % missing
-***** we could just state in the paper that it's an undercount for rural folks
-***** or compute the average tax rate among purchases with known coicop, and attribute that to the ones without
 **** freq: rural_personal, rural_personal_fuera, rural_semanal, rural_semanal_fuera, urban_diario_fuera: very missing
 ***** freq missing only if not a purchase, so we can ignore
 **** TODO ? is-purchase: default = 1
@@ -38,6 +35,8 @@
 * answered & ignorable
 ** how-got: inconsistent, but we're immune, because we only use the value 1
 *** For the "forma de adquisición" ("how-got") variables, the "urban_diario_personal" has a totally different legend, except for the extreme values 1 and 7. Everything else has the same legend. Is this because that file was coded differently, or is it an error in the dcumentation?
+** when COICOP is missing, everything is missing except some stuff in articulos -- but only 63/211,113 of that has no COICOP
+*** value, quantity, is-purchase, freq
 * answered & discoverable in my email
 ** How to read "x » y"?
 *** (See "enph-legends.org" for details.)

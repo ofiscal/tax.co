@@ -7,6 +7,14 @@ import python.vat.build.common as common
 import python.vat.build.main as data
 
 
+
+df0 = data.purchases[ data.purchases[ "coicop" ] . isnull() ]
+util.dwmByGroup( "file-origin", df0 )
+
+for c in data.people.filter(regex="income").columns:
+  util.describeWithMissing( data.people[[c]] )
+
+
 ### How I determined which "total labor income" variable to use, and which to ignore.
 
 df = data.people.filter(regex="labor").copy()
@@ -24,7 +32,7 @@ dfc = df.drop( columns = ["contractor", "rural business"] )
 util.describeWithMissing( dfc )
 
 
-#### 
+####
 
 data.people["beca"].unique()
 non_numbers = people["female"].str.contains( "[^0-9\.\,]", regex=True )

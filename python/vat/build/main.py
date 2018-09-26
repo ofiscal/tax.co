@@ -81,6 +81,13 @@ if True: # purchases
 
   purchases = to_numbers(purchases)
 
+  purchases = purchases[ ~ purchases[ "coicop" ] . isnull() ]
+    # Why: For every file but "articulos", observations with no coicop have
+    # no value, quantity, is-purchase or frequency. And only 63 / 211,000
+    # observations in "articulos" have a missing COICOP. A way see that:
+      # df0 = data.purchases[ data.purchases[ "coicop" ] . isnull() ]
+      # util.dwmByGroup( "file-origin", df0 )
+
   for c in [
     Correction.Apply_Function_To_Column(
       "how-got"
