@@ -2,35 +2,30 @@
 ** bars, cafeterias, restaurants: no VAT. otherwise yes. all four of those "fuera" files are in play.
 * emailed, awaiting
 ** purchase variables
-*** quantity: do we even need it?
 *** default values?
 **** coicop: for rural_personal, rural_personal_fuera, rural_semanal, rural_semanal_fuera, 60+ % missing
 ***** we could just state in the paper that it's an undercount for rural folks
 ***** or compute the average tax rate among purchases with known coicop, and attribute that to the ones without
 **** freq: rural_personal, rural_personal_fuera, rural_semanal, rural_semanal_fuera, urban_diario_fuera: very missing
-***** you would think for "diario" it might be daily, no?
+***** freq missing only if not a purchase, so we can ignore
 **** TODO ? is-purchase: default = 1
-***** There are four fields, all rural, with a big fraction of missing values in the "is-purchase" column. They also have a substantial fraction of non-purchase values among the non-missing values: in one case only 64% of acquisitions are (when known) purchases; in another .8, another .85, and the last .97.
+***** My initial thoughts
+****** There are four fields, all rural, with a big fraction of missing values in the "is-purchase" column. They also have a substantial fraction of non-purchase values among the non-missing values: in one case only 64% of acquisitions are (when known) purchases; in another .8, another .85, and the last .97.
+***** david's answer
+****** sometimes missing because they didn't buy it
+****** sometimes missing because it's a within-household transfer
+****** TODO are there any other cases? to answer this, need David to give a complete list of the COICOP codes indicating within-household transfer
 **** where-got: if missing, assume taxed, yes?
 *** outliers
 **** household-member: rural_semanal and urban_diario both reach at least to 82
 
-** How to read "x » y"?
-*** (See "enph-legends.org" for details.)
-*** In the "freq" variables, often "2.1" appears on the right side, and never in the data; likewise 2 is often on the left, and it appears in the data a lot. That suggests the left hand values are the ones to use.
-*** But the "where-got" variables argue the opposite: Any time a value in the data appears on only one side of that » symbol, it's on the right.
-** For the "forma de adquisición" ("how-got") variables, the "urban_diario_personal" has a totally different legend, except for the extreme values 1 and 7. Everything else has the same legend. Is this because that file was coded differently, or is it an error in the dcumentation?
 ** nh_cgpucfh_p1_s2 : ignore? (We've already got a COICOP; I don't know what other information this variable could provide. But I can't find a description of it, so I can't rule out the possibility that it's important.)
 ** pension contributions: There are a number of variables (at least 5) about pensions in 'caracteristicas generales'. Do the other income variables already incorporate it, or is it a part of income we would not be coutning if we didn't use the pension contribution variable?
 ** carac. general.
 *** cuadernillo 1, page 19: what questions are the last answers on the page for?
+**** they are repeats of the answer section for up to four more household members, where questions are only stated once on the previous page, and answers are also on the previous page, for the first two members
 ** nc2_cc_p1 = 25 broad categories. vat rates?
-** DIRECTORIO
-** SECUENCIA_ENCUESTA
-** SECUENCIA_P
-** CAP
-** TODO NC2R_CE_P8 : frequency
-*** it would be nice to be sure that frequency and value are orthogonal -- that is, value is the value per purchase, not the total spent on that good last week
+** TODO NC2R_CE_P8 : frequency. yes, it's orthogonal to value.
 ** NH_CGDUCFH_P4 : where gotten, even if not bought
 *** TODO ? how to read the legend
 *** restaurant, bar, cafeteria: no VAT. otherwise ignore. not quite right -- guys selling on street, for example
@@ -40,3 +35,11 @@
 *** Hopefully we can ignore, but can we? 
 *** Do we only need to know price, quantity and frequency?
 *** Is it relevant that this is not in every data set?
+* answered & ignorable
+** how-got: inconsistent, but we're immune, because we only use the value 1
+*** For the "forma de adquisición" ("how-got") variables, the "urban_diario_personal" has a totally different legend, except for the extreme values 1 and 7. Everything else has the same legend. Is this because that file was coded differently, or is it an error in the dcumentation?
+* answered & discoverable in my email
+** How to read "x » y"?
+*** (See "enph-legends.org" for details.)
+*** In the "freq" variables, often "2.1" appears on the right side, and never in the data; likewise 2 is often on the left, and it appears in the data a lot. That suggests the left hand values are the ones to use.
+*** But the "where-got" variables argue the opposite: Any time a value in the data appears on only one side of that » symbol, it's on the right.

@@ -1,13 +1,18 @@
 * TODO next
+** add frequencia to the capitulo c legend code
+** value = expense; price = value / quantity
+*** David used real data, e.g. rice price.
 ** frequency: remap urban cap c to match the others
+** where-bought: search for "no vat" in enph.org
+** how-got: see enph.org
 ** frequency: interpret it
-** does FEX_C apply at the household or the individual level?
-*** This should be answered by whether it's constant within households.
+** FEX_C = household weight. constant within member, purchase.
 ** kinds of income
 *** labor
 *** investment, business income
 *** transfer : from gov't or charity or family or alimony
 ** next: add FEX_C
+** no VAT on land purchases
 * about the data|results
 ** The ENPH : http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
 ** the 200 / 1400 missing COICOP codes appear not to matter much
@@ -41,7 +46,16 @@ x = purchases["vat-rate"]
 ** add features
 *** household VAT rates by income decile
 *** regional VAT rates
-at least for ...
+
+>>> df[ "joined" ] = df[ "DOMINIO" ] + " + " + df["REGION"]
+>>> for c in sorted( df[ "joined" ].unique() ): print(c)
+
+centro poblado = smallest unit
+otras cabeceras = bigger, aggregate of municipalities
+bigger yet are cities, which are identified by name
+rural disperso = by area biggest, but low population (and low density)
+
+Luis wanted at least for ...
   - Bogota
   - Medellín
   - Cali
@@ -52,10 +66,12 @@ at least for ...
   - Ibagué
   - Pasto
   - Popayán
+
 *** ? include people/spending (already drawn)
 *** make x-ticks more readable on some figures (e.g. fig 7, people/income)
 *** TODO every spendinng graph, draw for people even with zero income
 *** TODO CDF / spending: draw that for every income decile
-*** do things by estrato; assume someone's electrical estrato is their estrato
+*** TODO do things by estrato; assume someone's electrical estrato is their estrato
+***** P8520S1A1
 *** if we had VAT as a function of estrato, then we could
 **** apply those rates to income data from a survey with more incomme data
