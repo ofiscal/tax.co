@@ -1,14 +1,11 @@
 * news
-** TODO Supposedly, COICOP is missing whenever they did not buy it. This implies we should find the same set of observations, albeit maybe missing, for each household. We don't. And yet when there's no COICOP, the other data is (basically) totally missing. Which suggests we can't use it. However, not all data sets are like that -- particularly the urban data sets will have values even when there's no coicop.
 ** they are asked on the 15th about consumption on days 1-14
 ** value = spending, not price / unit
 ** value = spending summed across all days, not per instance of shopping
-** TODO david asking : value might be averaged monthly spending, or might be just the value of the observed purchases
 ** if frequency missing, discard observation
-*** TODO jeff: if lots of values are missing, we should try bounding this -- an upper bound would come from substituting Nan -> diario, lower from NaN -> (?).
+*** when purchase=1, freq is almost never missing, for each file
 ** where-got: use the value on the right
 ** bars, cafeterias, restaurants: no VAT. otherwise yes. all four of those "fuera" files are in play. can't discard those observations; just assign 0 VAT.
-** TODO : 'viviendas y hogares' includes cost of primary house: P5102
 * TODO common variables
 ** TODO DIRECTORIO = household = group living together, sharing food and not paying rent to the hosuehold. Every person belongs to exactly one household.
 ** DONE SECUENCIA_ENCUESTA : ignore
@@ -106,12 +103,12 @@
 **** TODO jeff : P10270S2 : where bought (where gotten?)
 **** P10270S3 : frequency
 **** DONE P10270S4 = portion of value bought on credit. ignore.
-*** medio
-**** TODO "[4:20 PM, 9/11/2018] David Suárez Castellanos: Old houses don't have vat
+*** DONE medio
+**** "[4:20 PM, 9/11/2018] David Suárez Castellanos: Old houses don't have vat
 New houses go to the 5% rate only if they cost more than 880 million cop. There are no specific coicops for these alternatives and you cannot know from the survey if the house inhabited by the household is new
 **** p10305 = says whether a house is new or old
 **** p10305s1 = value of the purchase
-**** TODO these purchases are in the last 12 months. How to represent?
+**** these purchases are in the last 12 months. How to represent?
 *** rural capitulo c
 **** TODO david processing : nc2_cc_p1 : 25 broad categories, maybe VAT-identifiable
 **** nc2_cc_p2 : freq
@@ -275,7 +272,6 @@ New houses go to the 5% rate only if they cost more than 880 million cop. There 
 ***** 6 » 6. Bimestral
 ***** 7 » 7. Trimestral
 ***** 9 » 9. Esporádica
-
 **** rural personal fuera
 ***** 1 » 2. Diario
 ***** 2 » 2.1. Varias veces por semana

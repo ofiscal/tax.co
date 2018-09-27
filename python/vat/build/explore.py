@@ -7,6 +7,12 @@ import python.vat.build.common as common
 import python.vat.build.main as data
 
 
+# Even when purhcase=1, in some files there are a substantial number
+# of observations where where-got is missing.
+util.dwmByGroup( "file-origin",
+                 data.purchases[ data.purchases["is-purchase"]==1 ]
+                 [["file-origin","freq"]] )
+
 for c in data.people.filter(regex="income").columns:
   util.describeWithMissing( data.people[[c]] )
 

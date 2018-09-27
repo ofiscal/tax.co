@@ -1,20 +1,20 @@
 * TODO next
-** add frequencia to the capitulo c legend code
+** TODO next: add region, estrato (see below)
+** frequency
+*** remap urban cap c to match the others
+*** once it's interpretable, add it to the capitulo c legend code
 ** value = expense; price = value / quantity
 *** David used real data, e.g. rice price, to figure this out. Genius.
-** frequency: remap urban cap c to match the others
 ** where-bought: search for "no vat" in enph.org
 ** how-got: see enph.org
-** frequency: interpret it
 ** kinds of income
 *** labor
 *** investment, business income
 *** transfer : from gov't or charity or family or alimony
-** no VAT on land purchases
 * judgment calls to explain in paper
 ** where-got: if missing, assume taxed
 # Even when purhcase=1, in some files there are a substantial number
-# of observations where where-got is missing. A way to see:
+# of observations where where-got is missing. A way to see that:
 util.dwmByGroup( "file-origin",
                  data.purchases[ data.purchases["is-purchase"]==1 ]
                  [["file-origin","where-got"]] )
@@ -22,6 +22,11 @@ util.dwmByGroup( "file-origin",
 *** when is-purchase=1, freq is undefined only .015 % of the time
 *** so omitting purchase!=1 observations won't bias our estimate of VAT
 *** it will, however, bias (downward) our estimate of consumption
+** we don't include property purchases
+*** there is no VAT on land purchases
+*** there is 5% VAT for purchases of *new* homes in excess of 880 M pesos
+**** but the data only reports newness in the case of second homes
+**** that's a very small fraction of the economy
 * would be nice
 ** to have a default value for freq
 *** when is-purchase=1, freq is undefined only .015 % of the time
@@ -60,7 +65,6 @@ x = purchases["vat-rate"]
 ** add features
 *** household VAT rates by income decile
 *** regional VAT rates
-
 >>> df[ "joined" ] = df[ "DOMINIO" ] + " + " + df["REGION"]
 >>> for c in sorted( df[ "joined" ].unique() ): print(c)
 
@@ -80,7 +84,6 @@ Luis wanted at least for ...
   - Ibagué
   - Pasto
   - Popayán
-
 *** ? include people/spending (already drawn)
 *** make x-ticks more readable on some figures (e.g. fig 7, people/income)
 *** TODO every spendinng graph, draw for people even with zero income
