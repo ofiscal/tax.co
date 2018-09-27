@@ -1,30 +1,21 @@
 * yet to ask
 ** bars, cafeterias, restaurants: no VAT. otherwise yes. all four of those "fuera" files are in play.
 * emailed, awaiting
-** purchase variables
-*** default values?
-**** freq: rural_personal, rural_personal_fuera, rural_semanal, rural_semanal_fuera, urban_diario_fuera: very missing
-***** freq missing only if not a purchase, so we can ignore
-**** TODO ? is-purchase: default = 1
-***** My initial thoughts
-****** There are four fields, all rural, with a big fraction of missing values in the "is-purchase" column. They also have a substantial fraction of non-purchase values among the non-missing values: in one case only 64% of acquisitions are (when known) purchases; in another .8, another .85, and the last .97.
-***** david's answer
-****** sometimes missing because they didn't buy it
-****** sometimes missing because it's a within-household transfer
-****** TODO are there any other cases? to answer this, need David to give a complete list of the COICOP codes indicating within-household transfer
-**** where-got: if missing, assume taxed, yes?
-*** outliers
-**** household-member: rural_semanal and urban_diario both reach at least to 82
-
+** TODO david : default value for is-purchase ?
+*** My initial thoughts
+**** There are four fields, all rural, with a big fraction of missing values in the "is-purchase" column. They also have a substantial fraction of non-purchase values among the non-missing values: in one case only 64% of acquisitions are (when known) purchases; in another .8, another .85, and the last .97.
+*** david's answer
+**** sometimes missing because they didn't buy it
+**** sometimes missing because it's a within-household transfer
+**** TODO are there any other cases? to answer this, need David to give a complete list of the COICOP codes indicating within-household transfer
+** outliers
+*** household-member: rural_semanal and urban_diario both reach at least to 82
 ** nh_cgpucfh_p1_s2 : ignore? (We've already got a COICOP; I don't know what other information this variable could provide. But I can't find a description of it, so I can't rule out the possibility that it's important.)
 ** pension contributions: There are a number of variables (at least 5) about pensions in 'caracteristicas generales'. Do the other income variables already incorporate it, or is it a part of income we would not be coutning if we didn't use the pension contribution variable?
-** carac. general.
-*** cuadernillo 1, page 19: what questions are the last answers on the page for?
-**** they are repeats of the answer section for up to four more household members, where questions are only stated once on the previous page, and answers are also on the previous page, for the first two members
 ** nc2_cc_p1 = 25 broad categories. vat rates?
 ** TODO NC2R_CE_P8 : frequency. yes, it's orthogonal to value.
 ** NH_CGDUCFH_P4 : where gotten, even if not bought
-*** TODO ? how to read the legend
+*** TODO david : how to read the legend
 *** restaurant, bar, cafeteria: no VAT. otherwise ignore. not quite right -- guys selling on street, for example
 ** TODO NH_CGDUCFH_P6 : frequency
 *** ? how to read legend. 2.1 appears in it, but 2 and not 2.1 appears in the data.
@@ -37,6 +28,15 @@
 *** For the "forma de adquisición" ("how-got") variables, the "urban_diario_personal" has a totally different legend, except for the extreme values 1 and 7. Everything else has the same legend. Is this because that file was coded differently, or is it an error in the dcumentation?
 ** when COICOP is missing, everything is missing except some stuff in articulos -- but only 63/211,113 of that has no COICOP
 *** value, quantity, is-purchase, freq
+** carac. general.
+*** cuadernillo 1, page 19: what questions are the last answers on the page for?
+**** they are repeats of the answer section for up to four more household members, where questions are only stated once on the previous page, and answers are also on the previous page, for the first two members
+
+** FEX_C = household weight. constant within member, purchase.
+*** I tested, it really is:
+data.purchases[["household","household-member","weight"]].sort_values(
+  ["household","household-member","weight"] ) [["household","weight"]]
+
 * answered & discoverable in my email
 ** How to read "x » y"?
 *** (See "enph-legends.org" for details.)

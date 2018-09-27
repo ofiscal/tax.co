@@ -1,18 +1,32 @@
 * TODO next
 ** add frequencia to the capitulo c legend code
 ** value = expense; price = value / quantity
-*** David used real data, e.g. rice price.
+*** David used real data, e.g. rice price, to figure this out. Genius.
 ** frequency: remap urban cap c to match the others
 ** where-bought: search for "no vat" in enph.org
 ** how-got: see enph.org
 ** frequency: interpret it
-** FEX_C = household weight. constant within member, purchase.
 ** kinds of income
 *** labor
 *** investment, business income
 *** transfer : from gov't or charity or family or alimony
-** next: add FEX_C
 ** no VAT on land purchases
+* judgment calls to explain in paper
+** where-got: if missing, assume taxed
+# Even when purhcase=1, in some files there are a substantial number
+# of observations where where-got is missing. A way to see:
+util.dwmByGroup( "file-origin",
+                 data.purchases[ data.purchases["is-purchase"]==1 ]
+                 [["file-origin","where-got"]] )
+** freq: if missing, discarded
+*** when is-purchase=1, freq is undefined only .015 % of the time
+*** so omitting purchase!=1 observations won't bias our estimate of VAT
+*** it will, however, bias (downward) our estimate of consumption
+* would be nice
+** to have a default value for freq
+*** when is-purchase=1, freq is undefined only .015 % of the time
+*** so omitting purchase!=1 observations won't bias our estimate of VAT
+*** it will, however, bias (downward) our estimate of consumption
 * about the data|results
 ** The ENPH : http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
 ** the 200 / 1400 missing COICOP codes appear not to matter much

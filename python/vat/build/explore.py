@@ -7,10 +7,6 @@ import python.vat.build.common as common
 import python.vat.build.main as data
 
 
-
-df0 = data.purchases[ data.purchases[ "coicop" ] . isnull() ]
-util.dwmByGroup( "file-origin", df0 )
-
 for c in data.people.filter(regex="income").columns:
   util.describeWithMissing( data.people[[c]] )
 
