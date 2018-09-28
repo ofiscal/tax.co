@@ -1,3 +1,4 @@
+* news
 * yet to ask
 * probably redundant
 ** bars, cafeterias, restaurants: no VAT. otherwise yes. all four of those "fuera" files are in play.
