@@ -7,53 +7,52 @@ If I want to know what a household spent, I should exclude persons marked 6-8?
 Will the expenditures of a person marked 6-8 be recorded in the household in which they are (say) a maid, or in a different household, or in no household?
 **** exmployment status
  p6430 - the kinds of employment. 1-3 = asalriado, 4-5 = independent (business owner + contractor), Jornalero/peon = someone working someone else's land, informally, maybe paid in money or in kind but no contract, not considered asalariado.
-
 **** P6500-P6640S1 : Info for asalariados
  not contractors, not business owners. The basis for all the "overlook" questions is p6500 (labor income). The survey includes in-kind payments.
 
- DIAN counts in-kind payments as income for tax purposes, so we'd better.
+DIAN counts in-kind payments as income for tax purposes, so we'd better.
 
- "Subsidio" in this context can mean something given by the employer, not nec'y the gov't.
+"Subsidio" in this context can mean something given by the employer, not nec'y the gov't.
 
- The in-kind payments are never included in P6500, so there are no "did you include this in that" questions for those.
+The in-kind payments are never included in P6500, so there are no "did you include this in that" questions for those.
 
- Questions P6630S1-P6630S6A1 refer to the last twelve months, not the last month. So divide by 12 and add to p6500
+Questions P6630S1-P6630S6A1 refer to the last twelve months, not the last month. So divide by 12 and add to p6500
 
 **** p6765-P1651S1 : Info for "independientes"   
- = (self-employed, temporary workers, contractors). That classification as "independientes" is obtained from answers to question P6430-options 4 and 5. Option g for P6765 implies the filling of an extra form (“modulo de negocios”: info is relevant for small businesses in activities related to commerce, industry, and services).
+= (self-employed, temporary workers, contractors). That classification as "independientes" is obtained from answers to question P6430-options 4 and 5. Option g for P6765 implies the filling of an extra form (“modulo de negocios”: info is relevant for small businesses in activities related to commerce, industry, and services).
 
- P6750 = main income question. Must divide by P676, # of months.
+P6750 = main income question. Must divide by P676, # of months.
 
- p550 = something to add after dividing by 12 if it exists.
+p550 = something to add after dividing by 12 if it exists.
 
- TODO - Does P6750 include P6779S1, or should we add it?
- TODO - Does P6750 already reduced by P1651S1, or should we subtract it?
+TODO - Does P6750 include P6779S1, or should we add it?
+TODO - Does P6750 already reduced by P1651S1, or should we subtract it?
     That's an insurance paid by the contractor in case of non-fulfillment.
 
 **** P6790-P9450S1: Info for both asalariados and independientes: for instance, questions about pension contributions, frequency of wage payments, among others.
 
- Could use P6800 or P6850 to get hours.
+Could use P6800 or P6850 to get hours.
 
- P6920S1 = pension contributions
+P6920S1 = pension contributions
 
- P6940's option C is legally impossible.
+P6940's option C is legally impossible.
 
- For each of these 4 cases:
+For each of these 4 cases:
    Asalariado & paying all of it
    Asalariado & paying some, the employer the rest
    Independent & paying nothing
    Independent & paying all of it
- suppose the employer spends 10 on the employee, and 1 goes to pensions. What will questions P6920S1 and the main income question (P6500 or P6750) say? Same for P6990S1, P9450S1
+suppose the employer spends 10 on the employee, and 1 goes to pensions. What will questions P6920S1 and the main income question (P6500 or P6750) say? Same for P6990S1, P9450S1
 
 **** P7040-p7070: Info about second job. Very general info about additional jobs.
- P7070 = main income at that second job. No overlap with the previous main income question
+P7070 = main income at that second job. No overlap with the previous main income question
 **** p7310-P7472S1: Info for unemployed and inactives  
 
- P9460 = unemployment income. Taxed as income?
+P9460 = unemployment income. Taxed as income?
 
- P7422(S1) correspond to labor income earned in last month for people that are classified as unemployed according to the survey. "Inactive" is different.
+P7422(S1) correspond to labor income earned in last month for people that are classified as unemployed according to the survey. "Inactive" is different.
 
- p7472 : labor income earned in last month for people that are classified as inactivos (students, retired, unpaid domestic) according to the survey. The classification as inactive or unemployed comes from the module for labor force (questions p6240 to p6350).
+p7472 : labor income earned in last month for people that are classified as inactivos (students, retired, unpaid domestic) according to the survey. The classification as inactive or unemployed comes from the module for labor force (questions p6240 to p6350).
 
 **** P7500S1 - P7500S5A1 : rental income
 
@@ -90,96 +89,89 @@ Codes: 98 means people know they receive income but do not know the amount; 00 m
 *** when purchase=1, freq is almost never missing, for each file
 ** where-got: use the value on the right
 ** bars, cafeterias, restaurants: no VAT. otherwise yes. all four of those "fuera" files are in play. can't discard those observations; just assign 0 VAT.
-* TODO common variables
-** TODO DIRECTORIO = household = group living together, sharing food and not paying rent to the hosuehold. Every person belongs to exactly one household.
-** DONE SECUENCIA_ENCUESTA : ignore
-** DONE SECUENCIA_P : ignore
-** TODO ORDEN = id for family member
-** DONE CAP = which chapter of Cuadernillo 2 an expenditure comes from. Redundant, given COICOP.
-** TODO FEX_C : household, not individual, weight. Proportional to the selection probability.
 * data sets
+** caracteristicas generales
+*** misc
+**** P6020 = 1 male, 2 female
+**** P6040 = age in years
+**** P6050 ? = relationship to head of household
+**** P6080 = race
+**** P6060 = did you skip all 3 meals any day last week because of money?
+*** edu (see also "time use" below)
+**** P5170 = young (pre-k) student | daycare
+**** P6170 = student
+**** P8610 = got a beca. many similar questions thereafter.
+**** P6160 = 1=literate, 2=not
+**** P6210 = highest education level reached
+**** P6210S1 = highest education level passed
+**** P6210S2 = highest diploma, starting at bachellor's
+*** time use
+**** P6240 = last week, main use of time (study, work, look for work ...)
+**** P6800 = usual weekly hours worked
+**** P6850 = hours worked last week
+*** work (see also "time use" above)
+**** P6250 = in addition to that main use of time, made money for at least an hour last week doing something else
+**** P6260 = even if you didn't work last week, do you have a job (inc. self-employed, business owner)
+**** P6270 : worked without making money for at least an hour last week
+**** P6280 = looked for work in the last 4 weeks
+**** P6300 = wants to work
+**** P6330 = since last job, has tried to find work or start a business
+**** P6340 = in the last yr, has tried to find work or start a business
+**** P6426 = time at most recent job
+**** P6430 = kind of work (firm, government, unpaid family ...)
+**** P6370S1, P6390S1 = economic sector
+**** ! P6880 = place of work (office, truck, door to door ...)
+*** income
+**** TODO P6510S1, P6510S2 and similar: "Overtime pay" and "Did you include this other kind of income in your asalariado (next) report?" If not, must add.
+**** TODO P6500 = income from formal employment ("asalariado") last month
+***** "this > 0" should be perfecty corr'd with pension contrib's
+**** DONE P6590 = gets paid in food too. don't count.
+**** P6590S1 = estimated value of "food income"
+**** DONE P6600 = gets paid in lodging, too. don't count.
+**** DONE P6600S1 = estimated value of "lodging income". ignore.
+**** DONE P6620 = receives other non-wage income
+**** DONE P6620S1 = estimated value of other non-wage income. ignore.
+**** TODO ??? pension contribs = formality.
+**** TODO P6750 = honorarios = contractor income. orthogonal to asalariado income. include.
+**** TODO P550 ? rural income to business, count as to individual
+***** we want individual income; business income bears a different tax. but are they separable?
+**** P6920 = contributing to a pension fund
+**** TODO P6920S1 = pension contributions (no unit of time given!)
+**** DONE P6940 = useful to determine whether contractor. maybe use someday
+***** valor pagado = contractor, paid out of pocket. descontado = employer took it from paycheck before paying you.
+***** If they answer C, they're wrong.
+**** P9450 & following: caja de compensación familiar
+**** P7040 & following = second job
+**** DONE P7070 = earned at second job. per david per his contact, negligible.
+***** does the other income variable not include second-job income?
+**** TODO P7422 & following: "ingresos por concepto de trabajo"
+***** should include all labobr (not capital) income. maybe make this the primary income varibale.
+**** TODO P7500S1 & fol; P7513S1 & fol: real estate rental income. yes, include.
+**** TODO P7500S5 & fol: vehicular rental income. include.
+**** TODO P7500S2 & fol, P7513S12 ? income from a pension or for being old or sick. include.
+**** TODO P7500S3 & fol: alimony. ignore, to avoid double-counting.
+**** TODO P7510S1 & fol: remittance income. include.
+**** TODO P7510S3 & fol: help from private ?firms. include.
+**** TODO P7510S5 ? P7510S10 ? P7513S4 ? investment income. include.
+**** TODO P7510S6 = layoff compensation. include.
+**** TODO P7510S9 = income from sale of securities ("Rendimientos por venta de títulos"). include.
+***** should not be a big fraction of income for most of the population.
+**** TODO I skipped the many questions about government benefits, even "transferencias por victimización"
+***** P1668S1 : income if including transfers.
+***** all these things are similar, treat the same.
+***** probably shouldn't be much given "en especie". do not include.
+**** TODO P7513S1 : ingresos ocasionales, ventas.
+***** could include if had frequency. luis, david will estimate
+**** TODO Don't count loans -- you don't pay for your income with later income.
+**** TODO All "ingreso ocasional" needs a frequency, we can assume initially that it's small.
+**** TODO P7513S3 ? Venta de (semovientes = livestock)?
+**** P7513S5 & fol: income from being paid back for a loan
+**** TODO P7513S8 ? jury awards
+**** P7513S9 = lottery winnings
+**** P7513S10 = inheritance
+**** P7513S11 = income from devolved tax payments
+*** P7516 = spent savings in the last 12 months
 ** (at least maybe) VAT-relevant
-*** caracteristicas generales
-**** misc
-***** P6020 = 1 male, 2 female
-***** P6040 = age in years
-***** P6050 ? = relationship to head of household
-***** P6080 = race
-***** P6060 = did you skip all 3 meals any day last week because of money?
-**** edu (see also "time use" below)
-***** P5170 = young (pre-k) student | daycare
-***** P6170 = student
-***** P8610 = got a beca. many similar questions thereafter.
-***** P6160 = 1=literate, 2=not
-***** P6210 = highest education level reached
-***** P6210S1 = highest education level passed
-***** P6210S2 = highest diploma, starting at bachellor's
-**** time use
-***** P6240 = last week, main use of time (study, work, look for work ...)
-***** P6800 = usual weekly hours worked
-***** P6850 = hours worked last week
-**** work (see also "time use" above)
-***** P6250 = in addition to that main use of time, made money for at least an hour last week doing something else
-***** P6260 = even if you didn't work last week, do you have a job (inc. self-employed, business owner)
-***** P6270 : worked without making money for at least an hour last week
-***** P6280 = looked for work in the last 4 weeks
-***** P6300 = wants to work
-***** P6330 = since last job, has tried to find work or start a business
-***** P6340 = in the last yr, has tried to find work or start a business
-***** P6426 = time at most recent job
-***** P6430 = kind of work (firm, government, unpaid family ...)
-***** P6370S1, P6390S1 = economic sector
-***** ! P6880 = place of work (office, truck, door to door ...)
-**** income
-***** TODO P6510S1, P6510S2 and similar: "Overtime pay" and "Did you include this other kind of income in your asalariado (next) report?" If not, must add.
-***** TODO P6500 = income from formal employment ("asalariado") last month
-****** "this > 0" should be perfecty corr'd with pension contrib's
-***** DONE P6590 = gets paid in food too. don't count.
-***** P6590S1 = estimated value of "food income"
-***** DONE P6600 = gets paid in lodging, too. don't count.
-***** DONE P6600S1 = estimated value of "lodging income". ignore.
-***** DONE P6620 = receives other non-wage income
-***** DONE P6620S1 = estimated value of other non-wage income. ignore.
-***** TODO ??? pension contribs = formality.
-***** TODO P6750 = honorarios = contractor income. orthogonal to asalariado income. include.
-***** TODO P550 ? rural income to business, count as to individual
-****** we want individual income; business income bears a different tax. but are they separable?
-***** P6920 = contributing to a pension fund
-***** TODO P6920S1 = pension contributions (no unit of time given!)
-***** DONE P6940 = useful to determine whether contractor. maybe use someday
-****** valor pagado = contractor, paid out of pocket. descontado = employer took it from paycheck before paying you.
-****** If they answer C, they're wrong.
-***** P9450 & following: caja de compensación familiar
-***** P7040 & following = second job
-***** DONE P7070 = earned at second job. per david per his contact, negligible.
-****** does the other income variable not include second-job income?
-***** TODO P7422 & following: "ingresos por concepto de trabajo"
-****** should include all labobr (not capital) income. maybe make this the primary income varibale.
-***** TODO P7500S1 & fol; P7513S1 & fol: real estate rental income. yes, include.
-***** TODO P7500S5 & fol: vehicular rental income. include.
-***** TODO P7500S2 & fol, P7513S12 ? income from a pension or for being old or sick. include.
-***** TODO P7500S3 & fol: alimony. ignore, to avoid double-counting.
-***** TODO P7510S1 & fol: remittance income. include.
-***** TODO P7510S3 & fol: help from private ?firms. include.
-***** TODO P7510S5 ? P7510S10 ? P7513S4 ? investment income. include.
-***** TODO P7510S6 = layoff compensation. include.
-***** TODO P7510S9 = income from sale of securities ("Rendimientos por venta de títulos"). include.
-****** should not be a big fraction of income for most of the population.
-***** TODO I skipped the many questions about government benefits, even "transferencias por victimización"
-****** P1668S1 : income if including transfers.
-****** all these things are similar, treat the same.
-****** probably shouldn't be much given "en especie". do not include.
-***** TODO P7513S1 : ingresos ocasionales, ventas.
-****** could include if had frequency. luis, david will estimate
-***** TODO Don't count loans -- you don't pay for your income with later income.
-***** TODO All "ingreso ocasional" needs a frequency, we can assume initially that it's small.
-***** TODO P7513S3 ? Venta de (semovientes = livestock)?
-***** P7513S5 & fol: income from being paid back for a loan
-***** TODO P7513S8 ? jury awards
-***** P7513S9 = lottery winnings
-***** P7513S10 = inheritance
-***** P7513S11 = income from devolved tax payments
-**** P7516 = spent savings in the last 12 months
 *** articulos
 **** p10270 = COICOP
 **** FORMA : no legend. Hopefully same values as the other "how gotten" variables.
@@ -294,7 +286,25 @@ New houses go to the 5% rate only if they cost more than 880 million cop. There 
 **** four broad purchase categories, see nc2_cc_p4. basically 0 vat.
 *** gastos_semanales_rurales__mercados :: nothing identifies what they purchased!
 **** four broad purchase categories, see nc2_cc_p4. basically 0 vat.
-* purchase file legends
+* variables
+** DONE ignorable variables
+*** household-communal
+*** DONE can ignore : NH_CGDU_P3 & following ? unit of measure
+**** to calculate expenditure we only need value and frequency
+*** DONE SECUENCIA_ENCUESTA : ignore
+*** DONE SECUENCIA_P : ignore
+*** DONE CAP = which chapter of Cuadernillo 2 an expenditure comes from. Redundant, given COICOP.
+
+** DONE processed variables
+*** DONE DIRECTORIO = household = group living together, sharing food and not paying rent to the hosuehold. Every person belongs to exactly one household.
+*** DONE ORDEN = id for family member
+*** COICOP: when it is missing, everything* is missing except some stuff in articulos -- but only 63/211,113 of that has no COICOP
+**** * value, quantity, is-purchase, freq
+*** FEX_C = household, not individual, weight
+**** Proportional to the selection probability
+**** constant within member, purchase. (I tested, it really is.)
+ data.purchases[["household","household-member","weight"]].sort_values(
+   ["household","household-member","weight"] ) [["household","weight"]]
 ** frequency
 *** almost all use the same key
 **** TODO use this one: rural cap c
@@ -395,81 +405,91 @@ New houses go to the 5% rate only if they cost more than 880 million cop. There 
 ***** 9 » 9. Esporádica
 ***** TODO jeff: what to do about NaN?
 *** TODO weird : urban cap c. (same as rural cap c, I'm guessing?)
-** how-got: use (for VAT) only value 1.
-*** articulos: takes values 1-7
-**** DONE no description, but same coding as the majority of the files
-*** not present in these files
-**** medios
-**** rural capitulo c
-**** urban capitulo c
-*** TODO urban_diario_personal is different; everything else has the same key
-*** rural_personal: takes 1-4
- 1 » 01. Compra
- 2 » 02. Recibido como pago por trabajo
- 3 » 03. Regalo
- 4 » 04. Intercambio o Trueque
- 5 » 05. Cultivados en la finca o producidos por el hogar
- 6 » 06. Tomado de un negocio del hogar
- 7 » 07. Otra
-*** rural_personal_fuera: takes 1-3, 6
- 1 » 1. Compra
- 2 » 2. Recibidos como pago por trabajo
- 3 » 3. Regalo o donación
- 4 » 4. Intercambio o trueque
- 5 » 5. Traidos de la finca o producidos por el hogar
- 6 » 6. Tomados de un negocio del hogar
- 7 » 7. Otra
-*** rural_semanal: 1-7
- 1 » 1. Compra
- 2 » 2. Recibidos como pago por trabajo
- 3 » 3. Regalo o donación
- 4 » 4. Intercambio o trueque
- 5 » 5. Traidos de la finca o producidos por el hogar
- 6 » 6. Tomados de un negocio del hogar
- 7 » 7. Otra
-*** rural_semanal_fuera: 1-3
- 1 » 1.Compra
- 2 » 2.Recibidos como pago por trabajo
- 3 » 3.Regalo
- 4 » 4.Intercambio o trueque
- 5 » 5.Traidos de la finca o producidos por el hogar
- 6 » 6.Tomados de un negocio del hogar
- 7 » 7.Otra
-*** urban_diario: 1-7, NaN
-**** TODO ? NaN
-**** codebook
- 1 » 1.Compra
- 2 » 2.Recibidos como pago por trabajo
- 3 » 3. Regalo o donación
- 4 » 4.Intercambio o trueque
- 5 » 5.Traidos de la finca o producidos por el hogar
- 6 » 6.Tomados de un negocio del hogar
- 7 » 7.Otra
-*** urban_diario_fuera: 1-7
- 1 » 1.Compra
- 2 » 2.Recibidos como pago por trabajo
- 3 » 3. Regalo o donación
- 4 » 4.Intercambio o trueque
- 5 » 5.Traidos de la finca o producidos por el hogar
- 6 » 6.Tomados de un negocio del hogar
- 7 » 7.Otra
-*** TODO david asking : urban_diario_personal: 1-7
-**** TODO see "different" below. For now interpret the same as the others, b/c the cuadernillo is probably right; however, david is asking.
-**** 1 » 1. Compra
-**** (different) 2 » 2. Traídos de la finca o producidos por el hogar.
-**** (different) 3 » 3. Tomados de un negocio del hogar.
-**** (different) 4 » 4. Recibidos como pagos por trabajo
-**** (different) 5 » 5. Regalo o donación
-**** (different) 6 » 6. Intercambio o trueque
-**** 7 » 7. Otra
-*** urban_personal_fuera: 1-7
- 1 » 1. Compra
- 2 » 2. Recibidos como pago por trabajo
- 3 » 3. Regalo o donación
- 4 » 4. Intercambio o trueque
- 5 » 5. Traidos de la finca o producidos por el hogar
- 6 » 6. Tomados de un negocio del hogar
- 7 » 7. Otra
+** how-got: use (for VAT) only value 1
+*** how-got is inconsistent, but we're unaffected, because we only use the value 1
+**** For the "forma de adquisición" ("how-got") variables, the "urban_diario_personal" has a totally different legend, except for the extreme values 1 and 7. Everything else has the same legend. Is this because that file was coded differently, or is it an error in the dcumentation?
+*** DONE : not important : what to do when it's missing
+**** once we exclude codes without a COICOP, is-purchase is almost never missing
+**** after excluding code without a value, it is literally never missing
+**** two, and maybe every, reason it might be missing
+***** sometimes missing because they didn't buy it
+***** sometimes missing because it's a within-household transfer
+
+*** how-got by file
+**** articulos: takes values 1-7
+***** DONE no description, but same coding as the majority of the files
+**** not present in these files
+***** medios
+***** rural capitulo c
+***** urban capitulo c
+**** TODO urban_diario_personal is different; everything else has the same key
+**** rural_personal: takes 1-4
+  1 » 01. Compra
+  2 » 02. Recibido como pago por trabajo
+  3 » 03. Regalo
+  4 » 04. Intercambio o Trueque
+  5 » 05. Cultivados en la finca o producidos por el hogar
+  6 » 06. Tomado de un negocio del hogar
+  7 » 07. Otra
+**** rural_personal_fuera: takes 1-3, 6
+  1 » 1. Compra
+  2 » 2. Recibidos como pago por trabajo
+  3 » 3. Regalo o donación
+  4 » 4. Intercambio o trueque
+  5 » 5. Traidos de la finca o producidos por el hogar
+  6 » 6. Tomados de un negocio del hogar
+  7 » 7. Otra
+**** rural_semanal: 1-7
+  1 » 1. Compra
+  2 » 2. Recibidos como pago por trabajo
+  3 » 3. Regalo o donación
+  4 » 4. Intercambio o trueque
+  5 » 5. Traidos de la finca o producidos por el hogar
+  6 » 6. Tomados de un negocio del hogar
+  7 » 7. Otra
+**** rural_semanal_fuera: 1-3
+  1 » 1.Compra
+  2 » 2.Recibidos como pago por trabajo
+  3 » 3.Regalo
+  4 » 4.Intercambio o trueque
+  5 » 5.Traidos de la finca o producidos por el hogar
+  6 » 6.Tomados de un negocio del hogar
+  7 » 7.Otra
+**** urban_diario: 1-7, NaN
+***** TODO ? NaN
+***** codebook
+  1 » 1.Compra
+  2 » 2.Recibidos como pago por trabajo
+  3 » 3. Regalo o donación
+  4 » 4.Intercambio o trueque
+  5 » 5.Traidos de la finca o producidos por el hogar
+  6 » 6.Tomados de un negocio del hogar
+  7 » 7.Otra
+**** urban_diario_fuera: 1-7
+  1 » 1.Compra
+  2 » 2.Recibidos como pago por trabajo
+  3 » 3. Regalo o donación
+  4 » 4.Intercambio o trueque
+  5 » 5.Traidos de la finca o producidos por el hogar
+  6 » 6.Tomados de un negocio del hogar
+  7 » 7.Otra
+**** TODO david asking : urban_diario_personal: 1-7
+***** TODO see "different" below. For now interpret the same as the others, b/c the cuadernillo is probably right; however, david is asking.
+***** 1 » 1. Compra
+***** (different) 2 » 2. Traídos de la finca o producidos por el hogar.
+***** (different) 3 » 3. Tomados de un negocio del hogar.
+***** (different) 4 » 4. Recibidos como pagos por trabajo
+***** (different) 5 » 5. Regalo o donación
+***** (different) 6 » 6. Intercambio o trueque
+***** 7 » 7. Otra
+**** urban_personal_fuera: 1-7
+  1 » 1. Compra
+  2 » 2. Recibidos como pago por trabajo
+  3 » 3. Regalo o donación
+  4 » 4. Intercambio o trueque
+  5 » 5. Traidos de la finca o producidos por el hogar
+  6 » 6. Tomados de un negocio del hogar
+  7 » 7. Otra
 ** where-got: relevant only for food
 *** not present in these files; can assume bought in a place that charges VAT
 **** medios. can ignore -- this file is only useful to us for purchasess of extremely expensive (> $ 880 m) second homes
@@ -658,7 +678,12 @@ New houses go to the 5% rate only if they cost more than 880 million cop. There 
 ***** TODO 18 » 23 Televentas y ventas por catálogo
 ***** TODO 19 » 24 Otro
 ***** TODO 20 » 25 Plazoleta de comidas
-** for copying: another list of those files
+* legends
+** how to read "x » y"?
+*** In the "freq" variables, often "2.1" appears on the right side, and never in the data; likewise 2 is often on the left, and it appears in the data a lot. That suggests the left hand values are the ones to use.
+*** But the "where-got" variables argue the opposite: Any time a value in the data appears on only one side of that » symbol, it's on the right.
+* seldom used
+** for copying: an empty list of the purchase files
 *** articulos
 *** medios
 *** rural capitulo c
@@ -671,8 +696,11 @@ New houses go to the 5% rate only if they cost more than 880 million cop. There 
 *** urban_diario_fuera
 *** urban_diario_personal
 *** urban_personal_fuera
-* probably obsolete
-** DONE verbal good description variables
-*** gastos_diarios_urbano__comidas_preparadas_fuera - nh_cgducfh_p1
-*** gastos_personales_urbano__comidas_preparadas_fuera - nh_cgpucfh_p1
-*** gastos_semanales_rural__comidas_preparadas_fuera - nh_cgprcfh_p1
+** source forms
+*** cuadernillo 1, page 19 (carac. general.): what questions are the last answers on the page for?
+**** they are repeats of the answer section for up to four more household members, where questions are only stated once on the previous page, and answers are also on the previous page, for the first two members
+** probably obsolete
+*** DONE verbal good description variables
+**** gastos_diarios_urbano__comidas_preparadas_fuera - nh_cgducfh_p1
+**** gastos_personales_urbano__comidas_preparadas_fuera - nh_cgpucfh_p1
+**** gastos_semanales_rural__comidas_preparadas_fuera - nh_cgprcfh_p1

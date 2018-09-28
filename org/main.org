@@ -27,6 +27,9 @@ util.dwmByGroup( "file-origin",
 *** there is 5% VAT for purchases of *new* homes in excess of 880 M pesos
 **** but the data only reports newness in the case of second homes
 **** that's a very small fraction of the economy
+** more than 2/3 of the "capitulo c" observations have no associated value
+*** and they are only divided into 25 broad categories, with no associated quantity variable, so imputation is infeasible
+*** Those value-missing observations are 19.2% of our data.
 * would be nice
 ** to have a default value for freq
 *** when is-purchase=1, freq is undefined only .015 % of the time
@@ -52,8 +55,6 @@ x = purchases["vat-rate"]
 ** primary inputs: income, kids, voluntary pension fund contributions.
 ** at most 40% of a person's inncome can be exempt.
 * VAT / todo
-** using the new ENPH
-*** household-communal: ignorable
 ** code-internal
 *** pdflatex: send reports to a file, not stdout
 **** this way it doesn't drown the python error reports
