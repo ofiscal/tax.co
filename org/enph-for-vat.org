@@ -1,86 +1,107 @@
 * data sets
+** weird : an expenditure from caracteristicas generales
+*** P5180S1, P5180S2 : daily payment for, value of food at school
+*** P6180S1, P6180S2 : daily payment for, value of food at university 
+*** P6090 - ... : health insurance
+**** and how split between employer, employee
 ** caracteristicas generales
-*** misc
-**** P6020 = 1 male, 2 female
-**** P6040 = age in years
-**** P6050 ? = relationship to head of household
-**** P6080 = race
-**** P6060 = did you skip all 3 meals any day last week because of money?
-*** edu (see also "time use" below)
-**** P5170 = young (pre-k) student | daycare
-**** P6170 = student
-**** P8610 = got a beca. many similar questions thereafter.
-**** P6160 = 1=literate, 2=not
-**** P6210 = highest education level reached
-**** P6210S1 = highest education level passed
-**** P6210S2 = highest diploma, starting at bachellor's
-*** time use
-**** P6240 = last week, main use of time (study, work, look for work ...)
-**** P6800 = usual weekly hours worked
-**** P6850 = hours worked last week
-*** work (see also "time use" above)
-**** P6250 = in addition to that main use of time, made money for at least an hour last week doing something else
-**** P6260 = even if you didn't work last week, do you have a job (inc. self-employed, business owner)
-**** P6270 : worked without making money for at least an hour last week
-**** P6280 = looked for work in the last 4 weeks
-**** P6300 = wants to work
-**** P6330 = since last job, has tried to find work or start a business
-**** P6340 = in the last yr, has tried to find work or start a business
-**** P6426 = time at most recent job
-**** P6430 = kind of work (firm, government, unpaid family ...)
-**** P6370S1, P6390S1 = economic sector
-**** ! P6880 = place of work (office, truck, door to door ...)
-*** income
-**** TODO P6510S1, P6510S2 and similar: "Overtime pay" and "Did you include this other kind of income in your asalariado (next) report?" If not, must add.
-**** TODO P6500 = income from formal employment ("asalariado") last month
-***** "this > 0" should be perfecty corr'd with pension contrib's
-**** DONE P6590 = gets paid in food too. don't count.
-**** P6590S1 = estimated value of "food income"
-**** DONE P6600 = gets paid in lodging, too. don't count.
-**** DONE P6600S1 = estimated value of "lodging income". ignore.
-**** DONE P6620 = receives other non-wage income
-**** DONE P6620S1 = estimated value of other non-wage income. ignore.
-**** TODO ??? pension contribs = formality.
-**** TODO P6750 = honorarios = contractor income. orthogonal to asalariado income. include.
-**** TODO P550 ? rural income to business, count as to individual
-***** we want individual income; business income bears a different tax. but are they separable?
-**** P6920 = contributing to a pension fund
-**** TODO P6920S1 = pension contributions (no unit of time given!)
-**** DONE P6940 = useful to determine whether contractor. maybe use someday
-***** valor pagado = contractor, paid out of pocket. descontado = employer took it from paycheck before paying you.
-***** If they answer C, they're wrong.
-**** P9450 & following: caja de compensación familiar
-**** P7040 & following = second job
-**** DONE P7070 = earned at second job. per david per his contact, negligible.
-***** does the other income variable not include second-job income?
-**** TODO P7422 & following: "ingresos por concepto de trabajo"
-***** should include all labobr (not capital) income. maybe make this the primary income varibale.
-**** TODO P7500S1 & fol; P7513S1 & fol: real estate rental income. yes, include.
-**** TODO P7500S5 & fol: vehicular rental income. include.
-**** TODO P7500S2 & fol, P7513S12 ? income from a pension or for being old or sick. include.
-**** TODO P7500S3 & fol: alimony. ignore, to avoid double-counting.
-**** TODO P7510S1 & fol: remittance income. include.
-**** TODO P7510S3 & fol: help from private ?firms. include.
-**** TODO P7510S5 ? P7510S10 ? P7513S4 ? investment income. include.
-**** TODO P7510S6 = layoff compensation. include.
-**** TODO P7510S9 = income from sale of securities ("Rendimientos por venta de títulos"). include.
-***** should not be a big fraction of income for most of the population.
-**** TODO I skipped the many questions about government benefits, even "transferencias por victimización"
-***** P1668S1 : income if including transfers.
-***** all these things are similar, treat the same.
-***** probably shouldn't be much given "en especie". do not include.
-**** TODO P7513S1 : ingresos ocasionales, ventas.
-***** could include if had frequency. luis, david will estimate
-**** TODO Don't count loans -- you don't pay for your income with later income.
-**** TODO All "ingreso ocasional" needs a frequency, we can assume initially that it's small.
-**** TODO P7513S3 ? Venta de (semovientes = livestock)?
-**** P7513S5 & fol: income from being paid back for a loan
-**** TODO P7513S8 ? jury awards
-**** P7513S9 = lottery winnings
-**** P7513S10 = inheritance
-**** P7513S11 = income from devolved tax payments
-*** P7516 = spent savings in the last 12 months
-** (at least maybe) VAT-relevant
+*** these are mostly in order, except ... 
+**** the edu incomeThat's under "edu" in the survey
+but under "income" here
+**** the purchase information
+which here is filed outside of "caracteristicas generales"
+*** variables by survey section
+**** misc
+***** P6020 = 1 male, 2 female
+***** P6040 = age in years
+***** P6050 ? = relationship to head of household
+***** P6080 = race
+***** P5170 = pre-k|daycare. missing for everybody aged 5 or above
+***** P6060 = did you skip all 3 meals any day last week because of money?
+***** P6081 - ... = whether mother, father live there, elsewhere or are deceased
+***** P1650 - ... : marital status
+**** health insurance : see above
+**** edu (see also "time use" below)
+***** P5170 = young (pre-k) student | daycare
+***** P6170 = student
+***** P8610 = got a beca. many similar questions thereafter.
+***** P6160 = 1=literate, 2=not
+***** P6210 = highest education level reached
+***** P6210S1 = highest education level passed
+***** P6210S2 = highest diploma, starting at bachelor's
+**** time use
+***** P6240 = last week, main use of time (study, work, look for work ...)
+***** P6800 = usual weekly hours worked
+***** P6850 = hours worked last week
+**** work (see also "time use" above)
+***** p6430 - kind of exmployment
+   1-3 = asalriado
+   4-5 = independent (business owner + contractor)
+   jornalero/peon = someone working someone else's land, informally, maybe paid in money or in kind but no contract, not considered asalariado.
+***** P6250 = in addition to that main use of time, made money for at least an hour last week doing something else
+***** P6260 = even if you didn't work last week, do you have a job (inc. self-employed, business owner)
+***** P6270 : worked without making money for at least an hour last week
+***** P6280 = looked for work in the last 4 weeks
+***** P6300 = wants to work
+***** P6330 = since last job, has tried to find work or start a business
+***** P6340 = in the last yr, has tried to find work or start a business
+***** P6426 = time at most recent job
+***** P6430 = kind of work (firm, government, unpaid family ...)
+***** P6370S1, P6390S1 = economic sector
+***** ! P6880 = place of work (office, truck, door to door ...)
+**** income
+***** P8610S1, P8610S2 : beca income : money, in-kind
+***** P8612S1, P8612S2 : income for edu but not a-beca : money, in-kind
+***** TODO P6510S1, P6510S2 and similar: "Overtime pay" and "Did you include this other kind of income in your asalariado (next) report?" If not, must add.
+***** TODO P6500 = income from formal employment ("asalariado") last month
+****** "this > 0" should be perfecty corr'd with pension contrib's
+***** DONE P6590 = gets paid in food too. don't count.
+***** P6590S1 = estimated value of "food income"
+***** DONE P6600 = gets paid in lodging, too. don't count.
+***** DONE P6600S1 = estimated value of "lodging income". ignore.
+***** DONE P6620 = receives other non-wage income
+***** DONE P6620S1 = estimated value of other non-wage income. ignore.
+***** TODO ??? pension contribs = formality.
+***** TODO P6750 = honorarios = contractor income. orthogonal to asalariado income. include.
+***** TODO P550 ? rural income to business, count as to individual
+****** we want individual income; business income bears a different tax. but are they separable?
+***** P6920 = contributing to a pension fund
+***** TODO P6920S1 = pension contributions (no unit of time given!)
+***** DONE P6940 = useful to determine whether contractor. maybe use someday
+****** valor pagado = contractor, paid out of pocket. descontado = employer took it from paycheck before paying you.
+****** If they answer C, they're wrong.
+***** P9450 & following: caja de compensación familiar
+***** P7040 & following = second job
+***** DONE P7070 = earned at second job. per david per his contact, negligible.
+****** does the other income variable not include second-job income?
+***** TODO P7422 & following: "ingresos por concepto de trabajo"
+****** should include all labobr (not capital) income. maybe make this the primary income varibale.
+***** TODO P7500S1 & fol; P7513S1 & fol: real estate rental income. yes, include.
+***** TODO P7500S5 & fol: vehicular rental income. include.
+***** TODO P7500S2 & fol, P7513S12 ? income from a pension or for being old or sick. include.
+***** TODO P7500S3 & fol: alimony. ignore, to avoid double-counting.
+***** TODO P7510S1 & fol: remittance income. include.
+***** TODO P7510S3 & fol: help from private ?firms. include.
+***** TODO P7510S5 ? P7510S10 ? P7513S4 ? investment income. include.
+***** TODO P7510S6 = layoff compensation. include.
+***** TODO P7510S9 = income from sale of securities ("Rendimientos por venta de títulos"). include.
+****** should not be a big fraction of income for most of the population.
+***** TODO I skipped the many questions about government benefits, even "transferencias por victimización"
+****** P1668S1 : income if including transfers.
+****** all these things are similar, treat the same.
+****** probably shouldn't be much given "en especie". do not include.
+***** TODO P7513S1 : ingresos ocasionales, ventas.
+****** could include if had frequency. luis, david will estimate
+***** TODO Don't count loans -- you don't pay for your income with later income.
+***** TODO All "ingreso ocasional" needs a frequency, we can assume initially that it's small.
+***** TODO P7513S3 ? Venta de (semovientes = livestock)?
+***** P7513S5 & fol: income from being paid back for a loan
+***** TODO P7513S8 ? jury awards
+***** P7513S9 = lottery winnings
+***** P7513S10 = inheritance
+***** P7513S11 = income from devolved tax payments
+**** P7516 = spent savings in the last 12 months
+** purchase data sets, (at least maybe) VAT-relevant
 *** articulos
 **** p10270 = COICOP
 **** FORMA : no legend. Hopefully same values as the other "how gotten" variables.
@@ -204,7 +225,6 @@ New houses go to the 5% rate only if they cost more than 880 million cop. There 
 *** DONE SECUENCIA_P : ignore
 *** DONE CAP = which chapter of Cuadernillo 2 an expenditure comes from. Redundant, given COICOP.
 ** DONE processed variables
-*** DIRECTORIO = household = group living together, sharing food and not paying rent to the hosuehold. Every person belongs to exactly one household.
 *** ORDEN = id for family member
 *** COICOP: when it is missing, everything* is missing except some stuff in articulos -- but only 63/211,113 of that has no COICOP
 **** * value, quantity, is-purchase, freq
@@ -214,6 +234,13 @@ New houses go to the 5% rate only if they cost more than 880 million cop. There 
 **** constant within member, purchase. (I tested, it really is.)
  data.purchases[["household","household-member","weight"]].sort_values(
    ["household","household-member","weight"] ) [["household","weight"]]
+** DIRECTORIO = household 
+*** TODO david : incorporate P6050 = "unidad de gasto"
+ If equal to 6,7, or 8, kind of part of the household but not really?
+ If I want to know what a household spent, I should exclude persons marked 6-8?
+ Will the expenditures of a person marked 6-8 be recorded in the household in which they are (say) a maid, or in a different household, or in no household?
+
+*** group living together, sharing food and not paying rent to the hosuehold. Every person belongs to exactly one household.
 ** frequency
 *** if frequency missing, discard observation
 **** DONE when purchase=1, freq is almost never missing, for each file

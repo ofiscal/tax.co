@@ -1,10 +1,4 @@
 * TODO email 2018 09 27
-*** TODO P6050 = "unidad de gasto"
- If equal to 6,7, or 8, kind of part of the household but not really?
- If I want to know what a household spent, I should exclude persons marked 6-8?
- Will the expenditures of a person marked 6-8 be recorded in the household in which they are (say) a maid, or in a different household, or in no household?
-*** exmployment status
- p6430 - the kinds of employment. 1-3 = asalriado, 4-5 = independent (business owner + contractor), Jornalero/peon = someone working someone else's land, informally, maybe paid in money or in kind but no contract, not considered asalariado.
 *** P6500-P6640S1 : Info for asalariados
   not contractors, not business owners. The basis for all the "overlook" questions is p6500 (labor income). The survey includes in-kind payments.
  DIAN counts in-kind payments as income for tax purposes, so we'd better.
@@ -47,7 +41,6 @@
  P7513S5 = "Reembolsoso de dinero prestado por usted o a otra persona"
  P7513S7A1 = " Préstamos particulares"
 *** P7513S8 = jury awards
-
 * TODO next
 ** TODO next: add region, estrato (see below)
 ** frequency
@@ -115,6 +108,10 @@ x = purchases["vat-rate"]
 *** pdflatex: send reports to a file, not stdout
 **** this way it doesn't drown the python error reports
 ** check data
+*** are these two variables ever both > 0 ?
+**** P5180S1, P5180S2 : daily payment for, value of food at school
+**** P6180S1, P6180S2 : daily payment for, value of food at university
+
 *** TODO what are the biggest expenditures in the zero-vat set? good to check those vat rates.
 *** is it half of households or half of individuals who have no income?
 *** is it missing sole proprietor income?
