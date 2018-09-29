@@ -6,7 +6,8 @@
 **** and how split between employer, employee
 ** caracteristicas generales
 *** these are mostly in order, except ... 
-**** the edu incomeThat's under "edu" in the survey
+**** the edu income
+That's under "edu" in the survey
 but under "income" here
 **** the purchase information
 which here is filed outside of "caracteristicas generales"
@@ -50,56 +51,118 @@ which here is filed outside of "caracteristicas generales"
 ***** P6370S1, P6390S1 = economic sector
 ***** ! P6880 = place of work (office, truck, door to door ...)
 **** income
-***** P8610S1, P8610S2 : beca income : money, in-kind
-***** P8612S1, P8612S2 : income for edu but not a-beca : money, in-kind
-***** TODO P6510S1, P6510S2 and similar: "Overtime pay" and "Did you include this other kind of income in your asalariado (next) report?" If not, must add.
-***** TODO P6500 = income from formal employment ("asalariado") last month
-****** "this > 0" should be perfecty corr'd with pension contrib's
-***** DONE P6590 = gets paid in food too. don't count.
-***** P6590S1 = estimated value of "food income"
-***** DONE P6600 = gets paid in lodging, too. don't count.
-***** DONE P6600S1 = estimated value of "lodging income". ignore.
-***** DONE P6620 = receives other non-wage income
-***** DONE P6620S1 = estimated value of other non-wage income. ignore.
-***** TODO ??? pension contribs = formality.
-***** TODO P6750 = honorarios = contractor income. orthogonal to asalariado income. include.
-***** TODO P550 ? rural income to business, count as to individual
-****** we want individual income; business income bears a different tax. but are they separable?
-***** P6920 = contributing to a pension fund
-***** TODO P6920S1 = pension contributions (no unit of time given!)
-***** DONE P6940 = useful to determine whether contractor. maybe use someday
-****** valor pagado = contractor, paid out of pocket. descontado = employer took it from paycheck before paying you.
-****** If they answer C, they're wrong.
-***** P9450 & following: caja de compensación familiar
-***** P7040 & following = second job
-***** DONE P7070 = earned at second job. per david per his contact, negligible.
-****** does the other income variable not include second-job income?
-***** TODO P7422 & following: "ingresos por concepto de trabajo"
-****** should include all labobr (not capital) income. maybe make this the primary income varibale.
-***** TODO P7500S1 & fol; P7513S1 & fol: real estate rental income. yes, include.
-***** TODO P7500S5 & fol: vehicular rental income. include.
-***** TODO P7500S2 & fol, P7513S12 ? income from a pension or for being old or sick. include.
-***** TODO P7500S3 & fol: alimony. ignore, to avoid double-counting.
-***** TODO P7510S1 & fol: remittance income. include.
-***** TODO P7510S3 & fol: help from private ?firms. include.
-***** TODO P7510S5 ? P7510S10 ? P7513S4 ? investment income. include.
-***** TODO P7510S6 = layoff compensation. include.
-***** TODO P7510S9 = income from sale of securities ("Rendimientos por venta de títulos"). include.
-****** should not be a big fraction of income for most of the population.
-***** TODO I skipped the many questions about government benefits, even "transferencias por victimización"
-****** P1668S1 : income if including transfers.
-****** all these things are similar, treat the same.
-****** probably shouldn't be much given "en especie". do not include.
-***** TODO P7513S1 : ingresos ocasionales, ventas.
-****** could include if had frequency. luis, david will estimate
-***** TODO Don't count loans -- you don't pay for your income with later income.
-***** TODO All "ingreso ocasional" needs a frequency, we can assume initially that it's small.
-***** TODO P7513S3 ? Venta de (semovientes = livestock)?
-***** P7513S5 & fol: income from being paid back for a loan
-***** TODO P7513S8 ? jury awards
-***** P7513S9 = lottery winnings
-***** P7513S10 = inheritance
-***** P7513S11 = income from devolved tax payments
+***** edu, 12 months of income (out of order)
+****** P8610S1, P8610S2 : beca income : money, in-kind
+****** P8612S1, P8612S2 : income for edu but not a-beca : money, in-kind
+***** P6500-P6640S1 : asalariados
+****** clarifications
+   Not contractors, not business owners. The basis for all the "overlook" questions is p6500 (labor income). The survey includes in-kind payments.
+   DIAN counts in-kind payments as income for tax purposes, so we'd better.
+   "Subsidio" in this context can mean something given by the employer, not nec'y the gov't.
+   No in-kind payments are included in P6500, so there are no "did you include this in that" questions for in-kind payments.
+   Questions P6630S1-P6630S6A1 refer to the last twelve months, not the last month. So divide by 12 and add to p6500
+****** TODO make separate "money" and "in-kind" variables for each categ.
+****** monthly variables
+******* P6500 = income from formal employment ("asalariado") last month
+******* P6510S1, P6510S2 and similar: "Overtime pay" and "Did you include this other kind of income in your asalariado (next) report?" If not, must add.
+******* P6590S1 = estimated value of "food income"
+******* P6600S1 = estimated value of "lodging income"
+******* P6610S1 = estimated value of "transport income"
+******* P6620S1 = estimated value of other non-wage income. ignore.
+******* P6585S1A1, P6585S1A2 = food help & whether in 6500
+******* P6585S2A1, P6585S2A2 = transport help & whether in 6500
+******* P6585S3A1, P6585S3A2 = subsidio familiar & whether in 6500
+******* P1653S1A1, P1653S1A2 = (unusual?) bonus & whether in 6500
+******* P1653S2A1, P1653S2A2 = monthly bonus & whether in 6500
+******* P1653S3A1, P1653S3A2 = viaticum & whether in 6500
+******* P1653S4A1, P1653S4A2 = "gastos de representacion" & whether in 6500
+****** yearly variables
+******* P6630S1A1 = "prima de servicios"
+******* P6630S2A1 = christmas bonus
+******* P6630S3A1 = vacation bonus
+******* P6630S4A1 = viaticum
+******* P6630S5A1 = yearly bonus
+******* P6630S6A1 = work accident payments
+***** SKIP hours last week
+***** P6765-P1651S1 : independientes
+****** clarifications
+independientes = self-employed, temporary workers, contractors. That classification as "independientes" is obtained from answers to question P6430-options 4 and 5. Option g for P6765 implies the filling of an extra form (“modulo de negocios”: info is relevant for small businesses in activities related to commerce, industry, and services).
+****** P6750 = income
+****** TODO P676, # of months' income reported
+divide P6750 by this to get monthly.
+****** P550 = *yearly* rural income
+****** TODO david : P6779S1 : viaticum *last month*
+Is P6750 already increased by P6779S1, or should we add it?
+If it's included, that's weird, because it's monthly
+****** TODO david : P1651S1 : fulfillment insurance
+Is P6750 already reduced by P1651S1, or should we *subtract* it?
+(It's an insurance paid by the contractor in case of non-fulfillment.)
+Also, is it monthly?
+***** for *both* asalariados and independents
+****** P6790 - ... = time spent working
+****** P6880 : where they work (door to door, driving, farm, factory, ...)
+****** TODO ambiguous in two senses
+******* The salary inclusion ambiguity
+ For each of these 4 cases:
+    Asalariado & paying all of it
+    Asalariado & paying some, the employer the rest
+    Independent & paying nothing
+    Independent & paying all of it
+ suppose the employer spends 10 on the employee, and 1 goes to pensions. What will questions P6920S1 and the main income question (P6500 or P6750) say? Same for P6990S1, P9450S1
+******* The period ambiguity : are these all monthly amounts?
+******* pension contribs
+******** P6920 = contributing to a pension fund
+******** TODO P6920S1 = pension contributions (no unit of time given!)
+******** TODO P6940 = who pays the pension contributions
+  option C is illegal
+******* P6990* : work injury insurance
+******* P9450* : caja de compensacion
+***** P7040 - ... = second job
+****** P7070 = last month's income
+***** P7310 - ... : unemployed (at least mostly)
+****** TODO david : period ? P9460S1 : unemployment benefits
+****** P7422S1 : last momth's income
+***** >>>
+***** P7472 : "inactive"
+****** definition
+inactive = students, retired, unpaid domestic. comes from the module for labor force (questions p6240 to p6350).
+****** P7472S1 : last month's income
+***** rental income last month
+****** P7500S1A1 : rental income, real estate, developed
+****** P7500S4A1 : rental income, real estate, undeveloped
+****** P7500S5A1 : rental income, vehicle | equipment
+***** benefits
+****** P7500S2A1 : month pension for old|sick
+****** TODO P7500S3A1 : month alimony. *ignore*, to avoid double-counting.
+****** P7510S1A1 = *year* of remittance income, domestic
+****** P7510S2A1 = *year* of remittance income, foreign
+****** P7510S3A1 = *year* of help from private domestic ?firms
+****** P7510S4A1 = *year* of help from private foreign ?firms
+***** mixed up
+****** P7510S5A1 = *year* of interest income
+****** P7510S6A1 = *year* of benefits, cesantia income
+for each year of work, a month of salary, paid after leaving
+****** P7510S10A1 = *year* of dividend income
+****** TODO P7510S9A1 = *year* of (stock?) sale income
+***** TODO <<< RESUME HERE >>>
+***** benefits
+****** TODO P7513S4 ? investment income. include.
+****** TODO P7510S9 = income from sale of securities ("Rendimientos por venta de títulos"). include.
+******* should not be a big fraction of income for most of the population.
+****** TODO I skipped the many questions about government benefits, even "transferencias por victimización"
+******* P1668S1 : income if including transfers.
+******* all these things are similar, treat the same.
+******* probably shouldn't be much given "en especie". do not include.
+****** TODO P7513S1 : ingresos ocasionales, ventas.
+******* could include if had frequency. luis, david will estimate
+****** TODO Don't count loans -- you don't pay for your income with later income.
+****** TODO All "ingreso ocasional" needs a frequency, we can assume initially that it's small.
+****** TODO P7513S3 ? Venta de (semovientes = livestock)?
+****** P7513S5 & fol: income from being paid back for a loan
+****** TODO P7513S8 ? jury awards
+****** P7513S9 = lottery winnings
+****** P7513S10 = inheritance
+****** P7513S11 = income from devolved tax payments
 **** P7516 = spent savings in the last 12 months
 ** purchase data sets, (at least maybe) VAT-relevant
 *** articulos

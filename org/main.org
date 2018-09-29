@@ -1,37 +1,4 @@
 * TODO email 2018 09 27
-*** P6500-P6640S1 : Info for asalariados
-  not contractors, not business owners. The basis for all the "overlook" questions is p6500 (labor income). The survey includes in-kind payments.
- DIAN counts in-kind payments as income for tax purposes, so we'd better.
- "Subsidio" in this context can mean something given by the employer, not nec'y the gov't.
- The in-kind payments are never included in P6500, so there are no "did you include this in that" questions for those.
- Questions P6630S1-P6630S6A1 refer to the last twelve months, not the last month. So divide by 12 and add to p6500
-*** p6765-P1651S1 : Info for "independientes"   
- = (self-employed, temporary workers, contractors). That classification as "independientes" is obtained from answers to question P6430-options 4 and 5. Option g for P6765 implies the filling of an extra form (“modulo de negocios”: info is relevant for small businesses in activities related to commerce, industry, and services).
- P6750 = main income question. Must divide by P676, # of months.
- p550 = something to add after dividing by 12 if it exists.
- TODO - Does P6750 include P6779S1, or should we add it?
- TODO - Does P6750 already reduced by P1651S1, or should we subtract it?
-     That's an insurance paid by the contractor in case of non-fulfillment.
-*** P6790-P9450S1: Info for both asalariados and independientes: for instance, questions about pension contributions, frequency of wage payments, among others.
- Could use P6800 or P6850 to get hours.
- P6920S1 = pension contributions
- P6940's option C is legally impossible.
- For each of these 4 cases:
-    Asalariado & paying all of it
-    Asalariado & paying some, the employer the rest
-    Independent & paying nothing
-    Independent & paying all of it
- suppose the employer spends 10 on the employee, and 1 goes to pensions. What will questions P6920S1 and the main income question (P6500 or P6750) say? Same for P6990S1, P9450S1
-*** P7040-p7070: Info about second job. Very general info about additional jobs.
- P7070 = main income at that second job. No overlap with the previous main income question
-*** p7310-P7472S1: Info for unemployed and inactives  
- P9460 = unemployment income. Taxed as income?
- P7422(S1) correspond to labor income earned in last month for people that are classified as unemployed according to the survey. "Inactive" is different.
- p7472 : labor income earned in last month for people that are classified as inactivos (students, retired, unpaid domestic) according to the survey. The classification as inactive or unemployed comes from the module for labor force (questions p6240 to p6350).
-*** P7500S1 - P7500S5A1 : rental income
-*** P7500S2 - P7510S4A1 : benefits income
-*** P7510S5(A1), P7510S10*, P7510S9* : investment income
-*** P7510S6 : "cesantias" = for each year of work, a month of salary, paid after leaving
 *** P1668S1 - P1668S6: other benefits
 *** P7513S1 - P7513S12A1 : infrequent earnings : sale, lottery, ...
 **** these seem to overlap:
@@ -42,6 +9,9 @@
  P7513S7A1 = " Préstamos particulares"
 *** P7513S8 = jury awards
 * TODO next
+** unsorted
+*** "P6500 (asalariado income) > 0" should be perfecty corr'd with pension contrib's
+*** TODO ??? pension contribs = formality.
 ** TODO next: add region, estrato (see below)
 ** frequency
 *** remap urban cap c to match the others
@@ -55,6 +25,7 @@
 *** investment, business income
 *** transfer : from gov't or charity or family or alimony
 * to explain in paper : institution details | judgment calls
+** P7500S3A1 : alimony. ignoring, to avoid double-counting.
 ** terms in the ENPH
 *** Unemployed
 During the past four weeks, actively searching for a job and available last week to start in case of success; or employed at least 2 weeks over the last 12 months, has actively searched after last job and was available last week to start in case of success; or not employed at least 2 weeks over the last 12 months, has actively searched after last job and was available last week to start in case of success.
