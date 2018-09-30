@@ -1,17 +1,14 @@
-* TODO email 2018 09 27
-*** P1668S1 - P1668S6: other benefits
-*** P7513S1 - P7513S12A1 : infrequent earnings : sale, lottery, ...
-**** these seem to overlap:
+* TODO next
+** some questions that seem to overlap
+*** sale of title
  P7510S9 = "rendimientos por venta de titulos"
  P7513S4 = "Ventas de acciones y de títulos valores"
-**** these seem to overlap:
+*** loans
  P7513S5 = "Reembolsoso de dinero prestado por usted o a otra persona"
  P7513S7A1 = " Préstamos particulares"
-*** P7513S8 = jury awards
-* TODO next
 ** unsorted
 *** "P6500 (asalariado income) > 0" should be perfecty corr'd with pension contrib's
-*** TODO ??? pension contribs = formality.
+*** ??? pension contribs = formality.
 ** TODO next: add region, estrato (see below)
 ** frequency
 *** remap urban cap c to match the others
@@ -25,6 +22,9 @@
 *** investment, business income
 *** transfer : from gov't or charity or family or alimony
 * to explain in paper : institution details | judgment calls
+** we include infrequent income in monthly income
+sales, loan repayment, jury awards, gambling winnings, inheritance ...
+** We on't count borrowing as income, because you don't pay for your income with later income.
 ** P7500S3A1 : alimony. ignoring, to avoid double-counting.
 ** terms in the ENPH
 *** Unemployed

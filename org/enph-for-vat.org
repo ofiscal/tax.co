@@ -38,7 +38,7 @@ which here is filed outside of "caracteristicas generales"
 ***** p6430 - kind of exmployment
    1-3 = asalriado
    4-5 = independent (business owner + contractor)
-   jornalero/peon = someone working someone else's land, informally, maybe paid in money or in kind but no contract, not considered asalariado.
+   jornalero/peon = someone working someone else's land, informally, maybe paid in money or in-kind but no contract, not considered asalariado.
 ***** P6250 = in addition to that main use of time, made money for at least an hour last week doing something else
 ***** P6260 = even if you didn't work last week, do you have a job (inc. self-employed, business owner)
 ***** P6270 : worked without making money for at least an hour last week
@@ -122,8 +122,7 @@ Also, is it monthly?
 ***** P7310 - ... : unemployed (at least mostly)
 ****** TODO david : period ? P9460S1 : unemployment benefits
 ****** P7422S1 : last momth's income
-***** >>>
-***** P7472 : "inactive"
+***** P7472 - ... : "inactive"
 ****** definition
 inactive = students, retired, unpaid domestic. comes from the module for labor force (questions p6240 to p6350).
 ****** P7472S1 : last month's income
@@ -144,25 +143,31 @@ inactive = students, retired, unpaid domestic. comes from the module for labor f
 for each year of work, a month of salary, paid after leaving
 ****** P7510S10A1 = *year* of dividend income
 ****** TODO P7510S9A1 = *year* of (stock?) sale income
-***** TODO <<< RESUME HERE >>>
-***** benefits
-****** TODO P7513S4 ? investment income. include.
-****** TODO P7510S9 = income from sale of securities ("Rendimientos por venta de títulos"). include.
-******* should not be a big fraction of income for most of the population.
-****** TODO I skipped the many questions about government benefits, even "transferencias por victimización"
-******* P1668S1 : income if including transfers.
-******* all these things are similar, treat the same.
-******* probably shouldn't be much given "en especie". do not include.
-****** TODO P7513S1 : ingresos ocasionales, ventas.
-******* could include if had frequency. luis, david will estimate
-****** TODO Don't count loans -- you don't pay for your income with later income.
-****** TODO All "ingreso ocasional" needs a frequency, we can assume initially that it's small.
-****** TODO P7513S3 ? Venta de (semovientes = livestock)?
-****** P7513S5 & fol: income from being paid back for a loan
-****** TODO P7513S8 ? jury awards
-****** P7513S9 = lottery winnings
-****** P7513S10 = inheritance
-****** P7513S11 = income from devolved tax payments
+***** *year* of benefits
+****** P1668S1A1 : familias en accion, money
+****** P1668S1A4 : familias en accion, in-kind
+****** P1668S2A2 : programa de adultos mayores, money
+****** P1668S2A4 : programa de adultos mayores, in-kind
+****** P1668S3A2 : familias en su tierra, money
+****** P1668S3A4 : familias en su tierra, in-kind
+****** P1668S4A2 : jovenes en accion, money
+****** P1668S4A4 : jovenes en accion, in-kind
+****** P1668S5A2 : transferencias por victimizacion, money
+****** P1668S5A4 : transferencias por victimizacion, in-kind
+***** *year* of income from sales | investment
+****** P7513S1A1 : sale, real estate
+****** P7513S2A1 : sale, vehicle | equipment
+****** P7513S3A1 : sale, livestock
+****** P7513S4A1 : sale, stock
+****** P7513S5A1 : income from personal loan repayment 
+****** P7513S6A1 : income from bank bond repayment
+****** P7513S7A1 : income from loan repayment, other
+***** *year* of weird income
+****** P7513S8A1 : jury awards
+****** P7513S9A1 : gambling
+****** P7513S10A1 : inheritance
+****** P7513S11A1 : tax refund
+****** P7513S12A1 : refunds : seguros educativos, incapacidad o invalidez
 **** P7516 = spent savings in the last 12 months
 ** purchase data sets, (at least maybe) VAT-relevant
 *** articulos
