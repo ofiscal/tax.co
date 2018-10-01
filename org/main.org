@@ -1,4 +1,5 @@
 * TODO next
+** maybe separate pensions from other benefits?
 ** some questions that seem to overlap
 *** sale of title
  P7510S9 = "rendimientos por venta de titulos"

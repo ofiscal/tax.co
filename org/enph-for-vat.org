@@ -53,69 +53,68 @@ which here is filed outside of "caracteristicas generales"
 ***** UNUSED : P6880 = place of work (office, truck, door to door ...)
 **** income
 ***** edu, 12 months of income (out of order)
-****** P8610S1 : income, yearly : edu, beca, cash
-****** P8610S2 : income, yearly : edu, beca, in-kind
-****** P8612S1 : income, yearly : edu, non-beca, cash
-****** P8612S2 : income, yearly : edu, non-beca, in-kind
+****** P8610S1 : income, year : grant : edu, beca
+****** P8610S2 : income, year : grant : edu, beca, in-kind
+****** P8612S1 : income, year : grant : edu, non-beca
+****** P8612S2 : income, year : grant : edu, non-beca, in-kind
 ***** P6500-P6640S1 : asalariados
 ****** clarifications
    Not contractors, not business owners. The basis for all the "overlook" questions is p6500 (labor income). The survey includes in-kind payments.
    DIAN counts in-kind payments as income for tax purposes, so we'd better.
    "Subsidio" in this context can mean something given by the employer, not nec'y the gov't.
    No in-kind payments are included in P6500, so there are no "did you include this in that" questions for in-kind payments.
-   Questions P6630S1-P6630S6A1 refer to the last twelve months, not the last month. So divide by 12 and add to p6500
 ****** TODO make separate "cash" and "in-kind" variables for each categ.
 ****** monthly variables
-******* P6500 = income, monthly : formal employment
+******* P6500 = income, month : labor : formal employment
 as an "asalariado" last month
-******* P6510S1 = income, monthly : overtime
-******* P6510S2 = income, monthly : overtime, included in 6500
+******* P6510S1 = income, month : labor : overtime
+******* P6510S2 = income, month : labor : overtime, included in 6500
 Other question pairs are similar: "Overtime pay" and "Did you include overtime pay in your asalariado (next) report?" If not, must add.
-******* P6590S1 = income, monthly : food, in-kind
-******* P6600S1 = income, monthly : lodging, in-kind
-******* P6610S1 = income, monthly : transport, in-kind
-******* P6620S1 = income, monthly : other, in-kind
-******* P6585S1A1 = income subsidy, monthly : food
-******* P6585S1A2 = income subsidy, monthly : food, included in 6500
-******* P6585S2A1 = income subsidy, monthly : transport
-******* P6585S2A2 = income subsidy, monthly : transport, included in 6500
-******* P6585S3A1 = income subsidy, monthly : familiar
-******* P6585S3A2 = income subsidy, monthly : familiar, included in 6500
-******* P1653S1A1 = income, monthly : special bonus
-******* P1653S1A2 = income, monthly : special bonus, included in 6500
-******* P1653S2A1 = income, monthly : bonus
-******* P1653S2A2 = income, monthly : bonus, included in 6500
-******* P1653S3A1 = income, monthly : viaticum
-******* P1653S3A2 = income, monthly : viaticum, included in 6500
-******* P1653S4A1 = income, monthly : gastos de representacion
-******* P1653S4A2 = income, monthly : gastos de representacion, included in 6500
+******* P6590S1 = income, month : labor : food, in-kind
+******* P6600S1 = income, month : labor : lodging, in-kind
+******* P6610S1 = income, month : labor : transport, in-kind
+******* P6620S1 = income, month : labor : other, in-kind
+******* P6585S1A1 = income, month : labor : food
+******* P6585S1A2 = income, month : labor : food, included in 6500
+******* P6585S2A1 = income, month : labor : transport
+******* P6585S2A2 = income, month : labor : transport, included in 6500
+******* P6585S3A1 = income, month : labor : familiar
+******* P6585S3A2 = income, month : labor : familiar, included in 6500
+******* P1653S1A1 = income, month : labor : bonus ?2
+******* P1653S1A2 = income, month : labor : bonus ?2, included in 6500
+******* P1653S2A1 = income, month : labor : bonus
+******* P1653S2A2 = income, month : labor : bonus, included in 6500
+******* P1653S3A1 = income, month : labor : viaticum
+******* P1653S3A2 = income, month : labor : viaticum, included in 6500
+******* P1653S4A1 = income, month : labor : gastos de representacion
+******* P1653S4A2 = income, month : labor : gastos de representacion, included in 6500
 ****** yearly variables
-******* P6630S1A1 = income, yearly : prima de servicios
-******* P6630S2A1 = income, yearly : christmas bonus
-******* P6630S3A1 = income, yearly : vacation bonus
-******* P6630S4A1 = income, yearly : viaticum
-******* P6630S5A1 = income, yearly : bonus
-******* P6630S6A1 = income, yearly : work accident payments
+******* P6630S1A1 = income, year : labor : prima de servicios
+******* P6630S2A1 = income, year : labor : christmas bonus
+******* P6630S3A1 = income, year : labor : vacation bonus
+******* P6630S4A1 = income, year : labor : viaticum
+******* P6630S5A1 = income, year : labor : bonus
+******* P6630S6A1 = income, year : labor : work accident payments
 ***** SKIP hours last week
-***** TODO <<< RESUME HERE >>>
 ***** P6765-P1651S1 : independientes
-****** clarifications
+****** definition
 independientes = self-employed, temporary workers, contractors. That classification as "independientes" is obtained from answers to question P6430-options 4 and 5. Option g for P6765 implies the filling of an extra form (“modulo de negocios”: info is relevant for small businesses in activities related to commerce, industry, and services).
-****** P6750 = income
-****** TODO P676, # of months' income reported
-divide P6750 by this to get monthly.
-****** P550 = *yearly* rural income
-****** TODO david : P6779S1 : viaticum *last month*
+****** P6750 = income, month : labor : independent
+****** TODO P676 = income, month : labor : independent, months
+divide P6750 by this to get monthly
+hopefully this is usually 1 or missing
+******                 P550 = income, year : labor : rural
+****** TODO david : P6779S1 : income, month : labor : viaticum ?2
 Is P6750 already increased by P6779S1, or should we add it?
 If it's included, that's weird, because it's monthly
-****** TODO david : P1651S1 : fulfillment insurance
+****** TODO david : UNUSED : P1651S1 : fulfillment insurance
 Is P6750 already reduced by P1651S1, or should we *subtract* it?
 (It's an insurance paid by the contractor in case of non-fulfillment.)
 Also, is it monthly?
 ***** for *both* asalariados and independents
-****** P6790 - ... = time spent working
-****** P6880 : where they work (door to door, driving, farm, factory, ...)
-****** TODO ambiguous in two senses
+****** UNUSED : P6790 - ... = time spent working
+****** UNUSED : P6880 : where they work (door to door, driving, farm, factory, ...)
+****** TODO contribution variables : ambiguous in two senses
 ******* The salary inclusion ambiguity
  For each of these 4 cases:
     Asalariado & paying all of it
@@ -129,59 +128,61 @@ Also, is it monthly?
 ******** TODO P6920S1 = pension contributions (no unit of time given!)
 ******** TODO P6940 = who pays the pension contributions
   option C is illegal
-******* P6990* : work injury insurance
-******* P9450* : caja de compensacion
+******* UNUSED : P6990* : work injury insurance
+******* UNUSED : P9450* : caja de compensacion
 ***** P7040 - ... = second job
-****** P7070 = last month's income
+****** P7070 = income, month : labor : job 2
 ***** P7310 - ... : unemployed (at least mostly)
-****** TODO david : period ? P9460S1 : unemployment benefits
-****** P7422S1 : last momth's income
+****** TODO david : period ? P9460S1 : income, month : benefit : unemployment
+****** P7422S1 : income, month : labor : as unemployed
 ***** P7472 - ... : "inactive"
 ****** definition
 inactive = students, retired, unpaid domestic. comes from the module for labor force (questions p6240 to p6350).
-****** P7472S1 : last month's income
+****** P7472S1 : income, month : labor : as inactive
 ***** rental income last month
-****** P7500S1A1 : rental income, real estate, developed
-****** P7500S4A1 : rental income, real estate, undeveloped
-****** P7500S5A1 : rental income, vehicle | equipment
+****** P7500S1A1 : income, month : rental : real estate, developed
+****** P7500S4A1 : income, month : rental : real estate, undeveloped
+****** P7500S5A1 : income, month : rental : vehicle | equipment
 ***** benefits
-****** P7500S2A1 : month pension for old|sick
-****** TODO P7500S3A1 : month alimony. *ignore*, to avoid double-counting.
-****** P7510S1A1 = *year* of remittance income, domestic
-****** P7510S2A1 = *year* of remittance income, foreign
-****** P7510S3A1 = *year* of help from private domestic ?firms
-****** P7510S4A1 = *year* of help from private foreign ?firms
-***** mixed up
-****** P7510S5A1 = *year* of interest income
-****** P7510S6A1 = *year* of benefits, cesantia income
+****** P7500S2A1 : income, month : benefit : pension for age | illness
+****** TODO P7500S3A1 : month alimony. *ignoring*, to avoid double-count.
+I'm emailing Luis about it.
+****** P7510S1A1 = income, year : grant : remittance, domestic
+****** P7510S2A1 = income, year : grant : remittance, foreign
+****** P7510S3A1 = income, year : grant : from private domestic ?firms
+****** P7510S4A1 = income, year : grant : from private foreign ?firms
+***** investment income
+****** P7510S5A1  = income, year : investment : interest
+****** P7510S6A1  = income, year : benefit : cesantia
 for each year of work, a month of salary, paid after leaving
-****** P7510S10A1 = *year* of dividend income
-****** TODO P7510S9A1 = *year* of (stock?) sale income
+****** P7510S10A1 = income, year : investment : dividends
+****** P7510S9A1  = income, year : sale : ?stock
 ***** *year* of benefits
-****** P1668S1A1 : familias en accion, cash
-****** P1668S1A4 : familias en accion, in-kind
-****** P1668S2A2 : programa de adultos mayores, cash
-****** P1668S2A4 : programa de adultos mayores, in-kind
-****** P1668S3A2 : familias en su tierra, cash
-****** P1668S3A4 : familias en su tierra, in-kind
-****** P1668S4A2 : jovenes en accion, cash
-****** P1668S4A4 : jovenes en accion, in-kind
-****** P1668S5A2 : transferencias por victimizacion, cash
-****** P1668S5A4 : transferencias por victimizacion, in-kind
+****** P1668S1A1 : income, year : benefit : familias en accion
+****** P1668S1A4 : income, year : benefit : familias en accion, in-kind
+****** P1668S2A2 : income, year : benefit : programa de adultos mayores
+****** P1668S2A4 : income, year : benefit : programa de adultos mayores, in-kind
+****** P1668S3A2 : income, year : benefit : familias en su tierra
+****** P1668S3A4 : income, year : benefit : familias en su tierra, in-kind
+****** P1668S4A2 : income, year : benefit : jovenes en accion
+****** P1668S4A4 : income, year : benefit : jovenes en accion, in-kind
+****** P1668S5A2 : income, year : benefit : transferencias por victimizacion
+****** P1668S5A4 : income, year : benefit : transferencias por victimizacion, in-kind
 ***** *year* of income from sales | investment
-****** P7513S1A1 : sale, real estate
-****** P7513S2A1 : sale, vehicle | equipment
-****** P7513S3A1 : sale, livestock
-****** P7513S4A1 : sale, stock
-****** P7513S5A1 : income from personal loan repayment 
-****** P7513S6A1 : income from bank bond repayment
-****** P7513S7A1 : income from loan repayment, other
+****** P7513S1A1 : income, year : sale : real estate
+****** P7513S2A1 : income, year : sale : vehicle | equipment
+****** P7513S3A1 : income, year : sale : livestock
+****** P7513S4A1 : income, year : sale : stock ?2
+****** P7513S5A1 : income, year : repayment : by person
+****** P7513S6A1 : income, year : repayment : by bank
+****** P7513S7A1 : income, year : repayment : by other
 ***** *year* of weird income
-****** P7513S8A1 : jury awards
-****** P7513S9A1 : gambling
-****** P7513S10A1 : inheritance
-****** P7513S11A1 : tax refund
-****** P7513S12A1 : refunds : seguros educativos, incapacidad o invalidez
+****** P7513S8A1  : income, year : occasional : jury awards
+****** P7513S9A1  : income, year : occasional : gambling
+****** P7513S10A1 : income, year : occasional : inheritance
+****** P7513S11A1 : income, year : occasional : refund, tax
+****** P7513S12A1 : income, year : occasional : refund, other
+seguros educativos, incapacidad o invalidez
 **** P7516 = spent savings in the last 12 months
 ** purchase data sets, (at least maybe) VAT-relevant
 *** articulos
