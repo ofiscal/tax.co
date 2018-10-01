@@ -1,3 +1,6 @@
+* notation
+** UNUSED means the code does not make mention of this variable
+** DISABLED means the variable is commented out in the code
 * data sets
 ** weird : an expenditure from caracteristicas generales
 *** P5180S1, P5180S2 : daily payment for, value of food at school
@@ -15,45 +18,45 @@ which here is filed outside of "caracteristicas generales"
 **** misc
 ***** P6020 = 1 male, 2 female
 ***** P6040 = age in years
-***** P6050 ? = relationship to head of household
+***** UNUSED : P6050 ? = relationship to head of household
 ***** P6080 = race
 ***** P5170 = pre-k|daycare. missing for everybody aged 5 or above
 ***** P6060 = did you skip all 3 meals any day last week because of money?
-***** P6081 - ... = whether mother, father live there, elsewhere or are deceased
-***** P1650 - ... : marital status
+***** UNUSED : P6081 - ... = whether mother, father live there, elsewhere or are deceased
+***** UNUSED : P1650 - ... : marital status
 **** health insurance : see above
 **** edu (see also "time use" below)
-***** P5170 = young (pre-k) student | daycare
-***** P6170 = student
-***** P8610 = got a beca. many similar questions thereafter.
 ***** P6160 = 1=literate, 2=not
+***** P6170 = student
 ***** P6210 = highest education level reached
-***** P6210S1 = highest education level passed
-***** P6210S2 = highest diploma, starting at bachelor's
+***** UNUSED : P6210S1 = highest education level passed
+***** UNUSED : P6210S2 = highest diploma, starting at bachelor's
 **** time use
-***** P6240 = last week, main use of time (study, work, look for work ...)
-***** P6800 = usual weekly hours worked
-***** P6850 = hours worked last week
+***** UNUSED : P6240 = last week, main use of time (study, work, look for work ...)
+***** UNUSED : P6800 = usual weekly hours worked
+***** UNUSED : P6850 = hours worked last week
 **** work (see also "time use" above)
-***** p6430 - kind of exmployment
+***** UNUSED : P6430 - kind of exmployment
    1-3 = asalriado
    4-5 = independent (business owner + contractor)
    jornalero/peon = someone working someone else's land, informally, maybe paid in money or in-kind but no contract, not considered asalariado.
-***** P6250 = in addition to that main use of time, made money for at least an hour last week doing something else
-***** P6260 = even if you didn't work last week, do you have a job (inc. self-employed, business owner)
-***** P6270 : worked without making money for at least an hour last week
-***** P6280 = looked for work in the last 4 weeks
-***** P6300 = wants to work
-***** P6330 = since last job, has tried to find work or start a business
-***** P6340 = in the last yr, has tried to find work or start a business
-***** P6426 = time at most recent job
-***** P6430 = kind of work (firm, government, unpaid family ...)
-***** P6370S1, P6390S1 = economic sector
-***** ! P6880 = place of work (office, truck, door to door ...)
+***** UNUSED : P6250 = in addition to that main use of time, made money for at least an hour last week doing something else
+***** UNUSED : P6260 = even if you didn't work last week, do you have a job (inc. self-employed, business owner)
+***** UNUSED : P6270 : worked without making money for at least an hour last week
+***** UNUSED : P6280 = looked for work in the last 4 weeks
+***** UNUSED : P6300 = wants to work
+***** UNUSED : P6330 = since last job, has tried to find work or start a business
+***** UNUSED : P6340 = in the last yr, has tried to find work or start a business
+***** UNUSED : P6426 = time at most recent job
+***** UNUSED : P6430 = kind of work (firm, government, unpaid family ...)
+***** UNUSED : P6370S1, P6390S1 = economic sector
+***** UNUSED : P6880 = place of work (office, truck, door to door ...)
 **** income
 ***** edu, 12 months of income (out of order)
-****** P8610S1, P8610S2 : beca income : money, in-kind
-****** P8612S1, P8612S2 : income for edu but not a-beca : money, in-kind
+****** P8610S1 : income, yearly : edu, beca, cash
+****** P8610S2 : income, yearly : edu, beca, in-kind
+****** P8612S1 : income, yearly : edu, non-beca, cash
+****** P8612S2 : income, yearly : edu, non-beca, in-kind
 ***** P6500-P6640S1 : asalariados
 ****** clarifications
    Not contractors, not business owners. The basis for all the "overlook" questions is p6500 (labor income). The survey includes in-kind payments.
@@ -61,29 +64,40 @@ which here is filed outside of "caracteristicas generales"
    "Subsidio" in this context can mean something given by the employer, not nec'y the gov't.
    No in-kind payments are included in P6500, so there are no "did you include this in that" questions for in-kind payments.
    Questions P6630S1-P6630S6A1 refer to the last twelve months, not the last month. So divide by 12 and add to p6500
-****** TODO make separate "money" and "in-kind" variables for each categ.
+****** TODO make separate "cash" and "in-kind" variables for each categ.
 ****** monthly variables
-******* P6500 = income from formal employment ("asalariado") last month
-******* P6510S1, P6510S2 and similar: "Overtime pay" and "Did you include this other kind of income in your asalariado (next) report?" If not, must add.
-******* P6590S1 = estimated value of "food income"
-******* P6600S1 = estimated value of "lodging income"
-******* P6610S1 = estimated value of "transport income"
-******* P6620S1 = estimated value of other non-wage income. ignore.
-******* P6585S1A1, P6585S1A2 = food help & whether in 6500
-******* P6585S2A1, P6585S2A2 = transport help & whether in 6500
-******* P6585S3A1, P6585S3A2 = subsidio familiar & whether in 6500
-******* P1653S1A1, P1653S1A2 = (unusual?) bonus & whether in 6500
-******* P1653S2A1, P1653S2A2 = monthly bonus & whether in 6500
-******* P1653S3A1, P1653S3A2 = viaticum & whether in 6500
-******* P1653S4A1, P1653S4A2 = "gastos de representacion" & whether in 6500
+******* P6500 = income, monthly : formal employment
+as an "asalariado" last month
+******* P6510S1 = income, monthly : overtime
+******* P6510S2 = income, monthly : overtime, included in 6500
+Other question pairs are similar: "Overtime pay" and "Did you include overtime pay in your asalariado (next) report?" If not, must add.
+******* P6590S1 = income, monthly : food, in-kind
+******* P6600S1 = income, monthly : lodging, in-kind
+******* P6610S1 = income, monthly : transport, in-kind
+******* P6620S1 = income, monthly : other, in-kind
+******* P6585S1A1 = income subsidy, monthly : food
+******* P6585S1A2 = income subsidy, monthly : food, included in 6500
+******* P6585S2A1 = income subsidy, monthly : transport
+******* P6585S2A2 = income subsidy, monthly : transport, included in 6500
+******* P6585S3A1 = income subsidy, monthly : familiar
+******* P6585S3A2 = income subsidy, monthly : familiar, included in 6500
+******* P1653S1A1 = income, monthly : special bonus
+******* P1653S1A2 = income, monthly : special bonus, included in 6500
+******* P1653S2A1 = income, monthly : bonus
+******* P1653S2A2 = income, monthly : bonus, included in 6500
+******* P1653S3A1 = income, monthly : viaticum
+******* P1653S3A2 = income, monthly : viaticum, included in 6500
+******* P1653S4A1 = income, monthly : gastos de representacion
+******* P1653S4A2 = income, monthly : gastos de representacion, included in 6500
 ****** yearly variables
-******* P6630S1A1 = "prima de servicios"
-******* P6630S2A1 = christmas bonus
-******* P6630S3A1 = vacation bonus
-******* P6630S4A1 = viaticum
-******* P6630S5A1 = yearly bonus
-******* P6630S6A1 = work accident payments
+******* P6630S1A1 = income, yearly : prima de servicios
+******* P6630S2A1 = income, yearly : christmas bonus
+******* P6630S3A1 = income, yearly : vacation bonus
+******* P6630S4A1 = income, yearly : viaticum
+******* P6630S5A1 = income, yearly : bonus
+******* P6630S6A1 = income, yearly : work accident payments
 ***** SKIP hours last week
+***** TODO <<< RESUME HERE >>>
 ***** P6765-P1651S1 : independientes
 ****** clarifications
 independientes = self-employed, temporary workers, contractors. That classification as "independientes" is obtained from answers to question P6430-options 4 and 5. Option g for P6765 implies the filling of an extra form (“modulo de negocios”: info is relevant for small businesses in activities related to commerce, industry, and services).
@@ -144,15 +158,15 @@ for each year of work, a month of salary, paid after leaving
 ****** P7510S10A1 = *year* of dividend income
 ****** TODO P7510S9A1 = *year* of (stock?) sale income
 ***** *year* of benefits
-****** P1668S1A1 : familias en accion, money
+****** P1668S1A1 : familias en accion, cash
 ****** P1668S1A4 : familias en accion, in-kind
-****** P1668S2A2 : programa de adultos mayores, money
+****** P1668S2A2 : programa de adultos mayores, cash
 ****** P1668S2A4 : programa de adultos mayores, in-kind
-****** P1668S3A2 : familias en su tierra, money
+****** P1668S3A2 : familias en su tierra, cash
 ****** P1668S3A4 : familias en su tierra, in-kind
-****** P1668S4A2 : jovenes en accion, money
+****** P1668S4A2 : jovenes en accion, cash
 ****** P1668S4A4 : jovenes en accion, in-kind
-****** P1668S5A2 : transferencias por victimizacion, money
+****** P1668S5A2 : transferencias por victimizacion, cash
 ****** P1668S5A4 : transferencias por victimizacion, in-kind
 ***** *year* of income from sales | investment
 ****** P7513S1A1 : sale, real estate
@@ -284,7 +298,7 @@ New houses go to the 5% rate only if they cost more than 880 million cop. There 
 **** four broad purchase categories, see nc2_cc_p4. basically 0 vat.
 *** gastos_semanales_rurales__mercados :: nothing identifies what they purchased!
 **** four broad purchase categories, see nc2_cc_p4. basically 0 vat.
-* variables
+* variables, common across data sets
 ** DONE ignorable variables
 *** household-communal
 *** DONE can ignore : NH_CGDU_P3 & following ? unit of measure
@@ -686,7 +700,7 @@ New houses go to the 5% rate only if they cost more than 880 million cop. There 
 ***** TODO 18 » 23 Televentas y ventas por catálogo
 ***** TODO 19 » 24 Otro
 ***** TODO 20 » 25 Plazoleta de comidas
-* legends
+* legends, common across data sets
 ** how to read "x » y"?
 *** In the "freq" variables, often "2.1" appears on the right side, and never in the data; likewise 2 is often on the left, and it appears in the data a lot. That suggests the left hand values are the ones to use.
 *** But the "where-got" variables argue the opposite: Any time a value in the data appears on only one side of that » symbol, it's on the right.

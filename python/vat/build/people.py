@@ -11,15 +11,46 @@ files = [
       , "P6040"      : "age"
       , "P6080"      : "race"
       , "P5170"      : "pre-k|daycare"
-      , "P6170"      : "student"
-      , "P8610"      : "beca"
       , "P6060"      : "skipped 3 meals"
       , "P6160"      : "literate"
+      , "P6170"      : "student"
       , "P6210"      : "education" # highest level completed
-      , "P6240"      : "time use"
-      , "P6300"      : "want to work"
-      , "P6800"      : "hours worked, usual"
-      , "P6850"      : "hours worked, last week"
+
+****** P8610S1 : income, yearly : edu, beca, cash
+****** P8610S2 : income, yearly : edu, beca, in-kind
+****** P8612S1 : income, yearly : edu, non-beca, cash
+****** P8612S2 : income, yearly : edu, non-beca, in-kind
+
+******* P6500 = income, monthly : formal employment
+        # was  "P6500"      : "labor income, formal" # the quantity referred to by the "overlooked" questions
+******* P6510S1 = income, monthly : overtime
+******* P6510S2 = income, monthly : overtime, included in 6500
+******* P6590S1 = income, monthly : food, in-kind
+******* P6600S1 = income, monthly : lodging, in-kind
+******* P6610S1 = income, monthly : transport, in-kind
+******* P6620S1 = income, monthly : other, in-kind
+******* P6585S1A1 = income subsidy, monthly : food
+******* P6585S1A2 = income subsidy, monthly : food, included in 6500
+******* P6585S2A1 = income subsidy, monthly : transport
+******* P6585S2A2 = income subsidy, monthly : transport, included in 6500
+******* P6585S3A1 = income subsidy, monthly : familiar
+******* P6585S3A2 = income subsidy, monthly : familiar, included in 6500
+******* P1653S1A1 = income, monthly : special bonus
+******* P1653S1A2 = income, monthly : special bonus, included in 6500
+******* P1653S2A1 = income, monthly : bonus
+******* P1653S2A2 = income, monthly : bonus, included in 6500
+******* P1653S3A1 = income, monthly : viaticum
+******* P1653S3A2 = income, monthly : viaticum, included in 6500
+******* P1653S4A1 = income, monthly : gastos de representacion
+******* P1653S4A2 = income, monthly : gastos de representacion, included in 6500
+
+******* P6630S1A1 = income, yearly : prima de servicios
+******* P6630S2A1 = income, yearly : christmas bonus
+******* P6630S3A1 = income, yearly : vacation bonus
+******* P6630S4A1 = income, yearly : viaticum
+******* P6630S5A1 = income, yearly : bonus
+******* P6630S6A1 = income, yearly : work accident payments
+
       , "P7422S1"    : "labor income, ?1"
       , "P6500"      : "labor income, formal" # the quantity referred to by the "overlooked" questions
       , "P7472S1"    : "labor income, ?2"
