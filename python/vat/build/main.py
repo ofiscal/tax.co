@@ -91,10 +91,13 @@ if True: # people
     people[ income_columns ] = people[income_columns] . fillna(0)
     del(re, income_columns)
 
-#  people["labor income, formal"] = ( people["labor income, formal"]
-#    + people["labor income, overtime overlooked"] * people["labor income, overtime"] )
-#  people = people.drop( columns = [ "labor income, overtime overlooked"
-#                                    , "labor income, overtime" ] )
+    if True: # labor income
+
+      for (quantity, forgot) in ppl.inclusion_pairs:
+        # after this, we can simply sum all monthly labor income variables
+        people[ quantity ] = people[ quantity ] * people[ forgot ]
+
+      people = people.drop( columns = [ forgot for (quantity, forgot) in ppl.inclusion_pairs ] )
 
   race_key = {
       1 : "Indigena"
