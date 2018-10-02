@@ -36,7 +36,7 @@ files = [
       , "P7472S1"    : "income, month : labor : as inactive"
       , "P7422S1"    : "income, month : labor : as unemployed"
       , "P6750"      : "income, month : labor : independent"
-      , "P676"       : "income, month : labor : independent, months"
+      , "P6760"       : "income, month : labor : independent, months"
                        # divide P6750 by this to get monthly
                        # hopefully this is usually 1 or missing
 
@@ -105,6 +105,7 @@ files = [
       , "P7513S4A1"  : "income, year : sale : stock ?2"
       , "P7513S2A1"  : "income, year : sale : vehicle | equipment"
 
+# Earlier names this code used for the income in the official ENPH release
 #       , "P7422S1"    : "labor income, ?1"
 #       , "P6500"      : "labor income, formal" # the quantity referred to by the "overlooked" questions
 #       , "P7472S1"    : "labor income, ?2"
