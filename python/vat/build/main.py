@@ -99,17 +99,28 @@ if True: # people
 
     re_in_kind       = regex.compile( "^income, year : benefit.*in.kind$" )
 
-    if True: # benefit income <<< RESUME HERE >>>
+    if True: # benefit income
       re_benefit  = regex.compile( "^income.* : benefit" )
-      cols_benefit_cash    = [c for c in people.columns
-                              if re_benefit.match(c) and not re_in_kind.match(c) ]
-      cols_benefit_in_kind = [c for c in people.columns
-                              if re_benefit.match(c) and     re_in_kind.match(c) ]
+      cols_benefit_cash    = [ c for c in people.columns
+                               if re_benefit.match(c) and not re_in_kind.match(c) ]
+      cols_benefit_in_kind = [ c for c in people.columns
+                               if re_benefit.match(c) and     re_in_kind.match(c) ]
       people["total income, monthly : benefits, cash"] = (
         people[ cols_benefit_cash ].sum( axis=1 ) )
       people["total income, monthly : benefits, in-kind"] = (
         people[ cols_benefit_in_kind ].sum( axis=1 ) )
       people = people.drop( columns = cols_benefit_in_kind + cols_benefit_cash )
+
+    if True: # capital income
+      re_capital = regex.compile( "^income.* : (investment|repayment|rental|sale) : .*" )
+      cols_capital = [ c for c in people.columns
+                       if re_capital.match(c) ]
+      people["total income, monthly : capital"] = (
+        people[ cols_capital ].sum( axis=1 ) )
+      people = people.drop( columns = cols_capital )
+
+    # <<< RESUME HERE >>>
+    # PITFALL : Yearly income variables have at this point been divided by 12, but their names are unchanged.
 
     if True: # labor income
       for (quantity, forgot) in ppl.inclusion_pairs:
