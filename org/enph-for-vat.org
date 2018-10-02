@@ -100,7 +100,7 @@ Other question pairs are similar: "Overtime pay" and "Did you include overtime p
 ****** definition
 independientes = self-employed, temporary workers, contractors. That classification as "independientes" is obtained from answers to question P6430-options 4 and 5. Option g for P6765 implies the filling of an extra form (“modulo de negocios”: info is relevant for small businesses in activities related to commerce, industry, and services).
 ****** P6750 = income, month : labor : independent
-****** TODO P676 = income, month : labor : independent, months
+****** TODO P6760 = income, month : labor : independent, months
 divide P6750 by this to get monthly
 hopefully this is usually 1 or missing
 ******                 P550 = income, year : labor : rural

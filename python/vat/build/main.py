@@ -76,20 +76,21 @@ if True: # purchases
 if True: # people
   people = common.to_numbers( common.collect_files( ppl.files ) )
 
-  for cn in [ "female"                            # originally 1=male, 2=female
-#            , "labor income, overtime overlooked" # originally 1=included, 2=overlooked
-  ]: people[cn] = people[cn] - 1
+  for cn in ( [ "female" ] +                           # originally 1=male, 2=female
+              [included for (quantity,included) in ppl.inclusion_pairs]
+  ): people[cn] = people[cn] - 1
 
   for cn in [ "student"         # originally 1=student, 2=not
             , "skipped 3 meals" # originally 1=yes, 2=no
             , "literate"        # originally 1=yes, 2=no
   ]: people[cn] = 2 - people[cn]
 
-#  re = regex.compile( ".*income.*" )
-#  income_columns = [c for c in people.columns if re.match( c )]
-#  people[ income_columns ] = people[income_columns] . fillna(0)
-#  del(re, income_columns)
-#
+  if True: # income
+    re = regex.compile( ".*income.*" )
+    income_columns = [c for c in people.columns if re.match( c )]
+    people[ income_columns ] = people[income_columns] . fillna(0)
+    del(re, income_columns)
+
 #  people["labor income, formal"] = ( people["labor income, formal"]
 #    + people["labor income, overtime overlooked"] * people["labor income, overtime"] )
 #  people = people.drop( columns = [ "labor income, overtime overlooked"
