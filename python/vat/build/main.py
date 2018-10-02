@@ -87,66 +87,80 @@ if True: # people
     ]: people[cn] = 2 - people[cn]
 
   if True: # income
-    re = regex.compile( ".*income.*" )
-    income_columns = [c for c in people.columns if re.match( c )]
-    people[ income_columns ] = people[income_columns] . fillna(0)
-    del(re, income_columns)
+    if True: # fill NaN values with 0
+      re = regex.compile( ".*income.*" )
+      income_columns = [c for c in people.columns if re.match( c )]
+      people[ income_columns ] = people[income_columns] . fillna(0)
+      del(re, income_columns)
 
-    # divide yearly income variables by 12
-    re_year_income  = regex.compile( "^income, year" )
-    for c in [c for c in people.columns if re_year_income.match( c )]:
-      people[c] = people[c] / 12
+    if True: # divide yearly income variables by 12
+      re_year_income  = regex.compile( "^income, year" )
+      for c in [c for c in people.columns if re_year_income.match( c )]:
+        people[c] = people[c] / 12
+
+    # PITFALL : Yearly income variables have now been divided by 12, but their names are unchanged.
+      # (Once all the totals have been computed, those components will have all been dropped,
+      # but until then it could be confusing.)
 
     re_in_kind       = regex.compile( "^income.* : .* : .* in.kind$" )
 
-    if True: # benefit income (cash + in-kind)
-      re_benefit  = regex.compile( "^income.* : benefit" )
-      cols_benefit_cash    = [ c for c in people.columns
-                               if re_benefit.match(c) and not re_in_kind.match(c) ]
-      cols_benefit_in_kind = [ c for c in people.columns
-                               if re_benefit.match(c) and     re_in_kind.match(c) ]
-      people["total income, monthly : benefit, cash"] = (
-        people[ cols_benefit_cash ].sum( axis=1 ) )
-      people["total income, monthly : benefit, in-kind"] = (
-        people[ cols_benefit_in_kind ].sum( axis=1 ) )
-      people = people.drop( columns = cols_benefit_in_kind + cols_benefit_cash )
+    if True: # compute income totals, drop components
+      if True: # benefit income (cash + in-kind)
+        re_benefit  = regex.compile( "^income.* : benefit" )
+        cols_benefit_cash    = [ c for c in people.columns
+                                 if re_benefit.match(c) and not re_in_kind.match(c) ]
+        cols_benefit_in_kind = [ c for c in people.columns
+                                 if re_benefit.match(c) and     re_in_kind.match(c) ]
+        people["total income, monthly : benefit, cash"] = (
+          people[ cols_benefit_cash ].sum( axis=1 ) )
+        people["total income, monthly : benefit, in-kind"] = (
+          people[ cols_benefit_in_kind ].sum( axis=1 ) )
+        people = people.drop( columns = cols_benefit_in_kind + cols_benefit_cash )
 
-    if True: # capital income (cash only)
-      re_capital = regex.compile( "^income.* : (investment|repayment|rental|sale) : .*" )
-      cols_capital = [ c for c in people.columns
-                       if re_capital.match(c) ]
-      people["total income, monthly : capital"] = (
-        people[ cols_capital ].sum( axis=1 ) )
-      people = people.drop( columns = cols_capital )
+      if True: # capital income (cash only)
+        re_capital = regex.compile( "^income.* : (investment|repayment|rental|sale) : .*" )
+        cols_capital = [ c for c in people.columns
+                         if re_capital.match(c) ]
+        people["total income, monthly : capital"] = (
+          people[ cols_capital ].sum( axis=1 ) )
+        people = people.drop( columns = cols_capital )
 
-    if True: # grant income (cash + in-kind)
-      re_grant  = regex.compile( "^income.* : grant : " )
-      cols_grant_cash    = [ c for c in people.columns
-                               if re_grant.match(c) and not re_in_kind.match(c) ]
-      cols_grant_in_kind = [ c for c in people.columns
-                               if re_grant.match(c) and     re_in_kind.match(c) ]
-      people["total income, monthly : grant, cash"] = (
-        people[ cols_grant_cash ].sum( axis=1 ) )
-      people["total income, monthly : grant, in-kind"] = (
-        people[ cols_grant_in_kind ].sum( axis=1 ) )
-      people = people.drop( columns = cols_grant_in_kind + cols_grant_cash )
+      if True: # grant income (cash + in-kind)
+        re_grant  = regex.compile( "^income.* : grant : " )
+        cols_grant_cash    = [ c for c in people.columns
+                                 if re_grant.match(c) and not re_in_kind.match(c) ]
+        cols_grant_in_kind = [ c for c in people.columns
+                                 if re_grant.match(c) and     re_in_kind.match(c) ]
+        people["total income, monthly : grant, cash"] = (
+          people[ cols_grant_cash ].sum( axis=1 ) )
+        people["total income, monthly : grant, in-kind"] = (
+          people[ cols_grant_in_kind ].sum( axis=1 ) )
+        people = people.drop( columns = cols_grant_in_kind + cols_grant_cash )
 
-    if True: # infrequent income (cash only)
-      re_infrequent = regex.compile( "^income, year : infrequent : " )
-      cols_infrequent = [ c for c in people.columns
-                       if re_infrequent.match(c) ]
-      people["total income, monthly : infrequent"] = (
-        people[ cols_infrequent ].sum( axis=1 ) )
-      people = people.drop( columns = cols_infrequent )
+      if True: # infrequent income (cash only)
+        re_infrequent = regex.compile( "^income, year : infrequent : " )
+        cols_infrequent = [ c for c in people.columns
+                         if re_infrequent.match(c) ]
+        people["total income, monthly : infrequent"] = (
+          people[ cols_infrequent ].sum( axis=1 ) )
+        people = people.drop( columns = cols_infrequent )
 
-    # <<< RESUME HERE >>>
-    # PITFALL : Yearly income variables have at this point been divided by 12, but their names are unchanged.
-
-    if True: # labor income
-      for (quantity, forgot) in ppl.inclusion_pairs:
-        # after this, we can simply sum all monthly labor income variables
-        people[ quantity ] = people[ quantity ] * people[ forgot ]
-      people = people.drop( columns = [ forgot for (quantity, forgot) in ppl.inclusion_pairs ] )
+      if True: # labor income
+        if True: # after this, we can simply sum all monthly labor income variables
+          for (quantity, forgot) in ppl.inclusion_pairs:
+            people[ quantity ] = people[ quantity ] * people[ forgot ]
+          people = people.drop( columns = [ forgot for (_, forgot) in ppl.inclusion_pairs ] )
+    
+        re_labor  = regex.compile( "^income.* : labor : " )
+        cols_labor_cash    = [ c for c in people.columns
+                                 if re_labor.match(c) and not re_in_kind.match(c) ]
+        cols_labor_in_kind = [ c for c in people.columns
+                                 if re_labor.match(c) and     re_in_kind.match(c) ]
+        people["total income, monthly : labor, cash"] = (
+          people[ cols_labor_cash ].sum( axis=1 ) )
+        people["total income, monthly : labor, in-kind"] = (
+          people[ cols_labor_in_kind ].sum( axis=1 ) )
+        people = people.drop( columns = cols_labor_in_kind + cols_labor_cash )
 
   if True: # format some categorical variables
     race_key = {
