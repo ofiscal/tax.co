@@ -41,7 +41,8 @@ files = [
         , "P6760"      : "income, month : labor : independent, months"
                          # divide P6750 by this to get monthly
                          # hopefully this is usually 1 or missing
-  
+
+        # below, in the variable `inclusion_pairs`, these are grouped
         , "P1653S1A1"  : "income, month : labor : bonus ?2"
         , "P1653S1A2"  : "income, month : labor : bonus ?2, included in 6500"
         , "P1653S2A1"  : "income, month : labor : bonus"

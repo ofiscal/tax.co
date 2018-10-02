@@ -76,14 +76,15 @@ if True: # purchases
 if True: # people
   people = common.to_numbers( common.collect_files( ppl.files ) )
 
-  for cn in ( [ "female" ] +                           # originally 1=male, 2=female
-              [included for (quantity,included) in ppl.inclusion_pairs]
-  ): people[cn] = people[cn] - 1
+  if True: # adjust the labels (they stay integers) on some boolean variables
+    for cn in ( [ "female" ] +                           # originally 1=male, 2=female
+                [included for (quantity,included) in ppl.inclusion_pairs]
+    ): people[cn] = people[cn] - 1
 
-  for cn in [ "student"         # originally 1=student, 2=not
-            , "skipped 3 meals" # originally 1=yes, 2=no
-            , "literate"        # originally 1=yes, 2=no
-  ]: people[cn] = 2 - people[cn]
+    for cn in [ "student"         # originally 1=student, 2=not
+              , "skipped 3 meals" # originally 1=yes, 2=no
+              , "literate"        # originally 1=yes, 2=no
+    ]: people[cn] = 2 - people[cn]
 
   if True: # income
     re = regex.compile( ".*income.*" )
@@ -96,53 +97,60 @@ if True: # people
     for c in [c for c in people.columns if re_year_income.match( c )]:
       people[c] = people[c] / 12
 
-    if True: # benefit income
-      re_year_benefit  = regex.compile( "^income, year : benefit" )
-      re_month_benefit = regex.compile( "^income, month : benefit" )
-      re_in_kind       = regex.compile( "^income, year : benefit.*in.kind$" )
-      [c for c in people.columns if re_year_benefit.match(c) and not re_in_kind.match(c) ]
+    re_in_kind       = regex.compile( "^income, year : benefit.*in.kind$" )
+
+    if True: # benefit income <<< RESUME HERE >>>
+      re_benefit  = regex.compile( "^income.* : benefit" )
+      cols_benefit_cash    = [c for c in people.columns
+                              if re_benefit.match(c) and not re_in_kind.match(c) ]
+      cols_benefit_in_kind = [c for c in people.columns
+                              if re_benefit.match(c) and     re_in_kind.match(c) ]
+      people["total income, monthly : benefits, cash"] = (
+        people[ cols_benefit_cash ].sum( axis=1 ) )
+      people["total income, monthly : benefits, in-kind"] = (
+        people[ cols_benefit_in_kind ].sum( axis=1 ) )
+      people = people.drop( columns = cols_benefit_in_kind + cols_benefit_cash )
 
     if True: # labor income
-
       for (quantity, forgot) in ppl.inclusion_pairs:
         # after this, we can simply sum all monthly labor income variables
         people[ quantity ] = people[ quantity ] * people[ forgot ]
-
       people = people.drop( columns = [ forgot for (quantity, forgot) in ppl.inclusion_pairs ] )
 
-  race_key = {
-      1 : "Indigena"
-    , 2 : "Gitano-Roma"
-    , 3 : "Raizal" # "del archipiélago de San Andrés y Providencia"
-    , 4 : "Palenquero" # "de San Basilio o descendiente"
-    , 5 : "Negro" # "Negro(a), mulato(a), afrocolombiano(a) o afrodescendiente"
-    , 6 : "Ninguno" # "Ninguno de los anteriores (mestizo, blanco, etc.)"
-    }
-  people["race"] = pd.Categorical(
-    people["race"].map( race_key )
-    , categories = list( race_key.values() )
-    , ordered = True)
+  if True: # format some categorical variables
+    race_key = {
+        1 : "Indigena"
+      , 2 : "Gitano-Roma"
+      , 3 : "Raizal" # "del archipiélago de San Andrés y Providencia"
+      , 4 : "Palenquero" # "de San Basilio o descendiente"
+      , 5 : "Negro" # "Negro(a), mulato(a), afrocolombiano(a) o afrodescendiente"
+      , 6 : "Ninguno" # "Ninguno de los anteriores (mestizo, blanco, etc.)"
+      }
+    people["race"] = pd.Categorical(
+      people["race"].map( race_key )
+      , categories = list( race_key.values() )
+      , ordered = True)
 
-  edu_key = { 1 : "Ninguno",
-      2 : "Preescolar",
-      3 : "Basica\n Primaria",
-      4 : "Basica\n Secundaria",
-      5 : "Media",
-      6 : "Superior o\n Universitaria",
-      9 : "No sabe,\n no informa" }
-  people["education"] = pd.Categorical(
-    people["education"].map( edu_key ),
-    categories = list( edu_key.values() ),
-    ordered = True)
+    edu_key = { 1 : "Ninguno",
+        2 : "Preescolar",
+        3 : "Basica\n Primaria",
+        4 : "Basica\n Secundaria",
+        5 : "Media",
+        6 : "Superior o\n Universitaria",
+        9 : "No sabe,\n no informa" }
+    people["education"] = pd.Categorical(
+      people["education"].map( edu_key ),
+      categories = list( edu_key.values() ),
+      ordered = True)
 
-  #time_key = { 1 : "work" # Trabajando
-  #           , 2 : "search" # Buscando trabajo
-  #           , 3 : "study" # Estudiando
-  #           , 4 : "household" # Oficios del hogar
-  #           , 5 : "disabled" # Incapacitado permanente para trabajar
-  #           , 6 : "other" # Otra actividad
-  #}
-  #people["time use"] = pd.Categorical(
-  #  people["time use"].map( time_key ),
-  #  categories = list( time_key.values() ),
-  #  ordered = True)
+    #time_key = { 1 : "work" # Trabajando
+    #           , 2 : "search" # Buscando trabajo
+    #           , 3 : "study" # Estudiando
+    #           , 4 : "household" # Oficios del hogar
+    #           , 5 : "disabled" # Incapacitado permanente para trabajar
+    #           , 6 : "other" # Otra actividad
+    #}
+    #people["time use"] = pd.Categorical(
+    #  people["time use"].map( time_key ),
+    #  categories = list( time_key.values() ),
+    #  ordered = True)
