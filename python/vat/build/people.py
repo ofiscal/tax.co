@@ -33,8 +33,14 @@ files = [
       , "P1668S5A4"  : "income, year : benefit : transferencias por victimizacion, in-kind"
 
       , "P6500"      : "income, month : labor : formal employment"
+      , "P7070"      : "income, month : labor : job 2"
       , "P7472S1"    : "income, month : labor : as inactive"
       , "P7422S1"    : "income, month : labor : as unemployed"
+      , "P6750"      : "income, month : labor : independent"
+      , "P676"       : "income, month : labor : independent, months"
+                       # divide P6750 by this to get monthly
+                       # hopefully this is usually 1 or missing
+
       , "P1653S1A1"  : "income, month : labor : bonus ?2"
       , "P1653S1A2"  : "income, month : labor : bonus ?2, included in 6500"
       , "P1653S2A1"  : "income, month : labor : bonus"
@@ -46,11 +52,6 @@ files = [
 
       , "P1653S4A1"  : "income, month : labor : gastos de representacion"
       , "P1653S4A2"  : "income, month : labor : gastos de representacion, included in 6500"
-      , "P6750"      : "income, month : labor : independent"
-      , "P676"       : "income, month : labor : independent, months"
-                                       # divide P6750 by this to get monthly
-                                       # hopefully this is usually 1 or missing
-      , "P7070"      : "income, month : labor : job 2"
       , "P6510S1"    : "income, month : labor : overtime"
       , "P6510S2"    : "income, month : labor : overtime, included in 6500"
       , "P6585S2A1"  : "income, month : labor : transport"
