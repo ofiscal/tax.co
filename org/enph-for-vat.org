@@ -92,7 +92,7 @@ Other question pairs are similar: "Overtime pay" and "Did you include overtime p
 ******* P6630S1A1 = income, year : labor : prima de servicios
 ******* P6630S2A1 = income, year : labor : christmas bonus
 ******* P6630S3A1 = income, year : labor : vacation bonus
-******* P6630S4A1 = income, year : labor : viaticum
+******* P6630S4A1 = income, year : labor : viaticum ?3
 ******* P6630S5A1 = income, year : labor : bonus
 ******* P6630S6A1 = income, year : labor : work accident payments
 ***** SKIP hours last week
@@ -177,11 +177,11 @@ for each year of work, a month of salary, paid after leaving
 ****** P7513S6A1 : income, year : repayment : by bank
 ****** P7513S7A1 : income, year : repayment : by other
 ***** *year* of weird income
-****** P7513S8A1  : income, year : occasional : jury awards
-****** P7513S9A1  : income, year : occasional : gambling
-****** P7513S10A1 : income, year : occasional : inheritance
-****** P7513S11A1 : income, year : occasional : refund, tax
-****** P7513S12A1 : income, year : occasional : refund, other
+****** P7513S8A1  : income, year : infrequent : jury awards
+****** P7513S9A1  : income, year : infrequent : gambling
+****** P7513S10A1 : income, year : infrequent : inheritance
+****** P7513S11A1 : income, year : infrequent : refund, tax
+****** P7513S12A1 : income, year : infrequent : refund, other
 seguros educativos, incapacidad o invalidez
 **** P7516 = spent savings in the last 12 months
 ** purchase data sets, (at least maybe) VAT-relevant

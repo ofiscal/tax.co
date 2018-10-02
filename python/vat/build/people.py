@@ -25,7 +25,6 @@ files = [
       , "P1668S4A2"  : "income, year : benefit : jovenes en accion"
       , "P1668S2A2"  : "income, year : benefit : programa de adultos mayores"
       , "P1668S5A2"  : "income, year : benefit : transferencias por victimizacion"
-
       , "P1668S1A4"  : "income, year : benefit : familias en accion, in-kind"
       , "P1668S3A4"  : "income, year : benefit : familias en su tierra, in-kind"
       , "P1668S4A4"  : "income, year : benefit : jovenes en accion, in-kind"
@@ -49,23 +48,23 @@ files = [
       , "P6585S3A2"  : "income, month : labor : familiar, included in 6500"
       , "P6585S1A1"  : "income, month : labor : food"
       , "P6585S1A2"  : "income, month : labor : food, included in 6500"
-
       , "P1653S4A1"  : "income, month : labor : gastos de representacion"
       , "P1653S4A2"  : "income, month : labor : gastos de representacion, included in 6500"
       , "P6510S1"    : "income, month : labor : overtime"
       , "P6510S2"    : "income, month : labor : overtime, included in 6500"
       , "P6585S2A1"  : "income, month : labor : transport"
       , "P6585S2A2"  : "income, month : labor : transport, included in 6500"
-      , "P6779S1"    : "income, month : labor : viaticum ?2"
       , "P1653S3A1"  : "income, month : labor : viaticum"
       , "P1653S3A2"  : "income, month : labor : viaticum, included in 6500"
+
+      , "P6779S1"    : "income, month : labor : viaticum ?2"
 
       , "P550"       : "income, year : labor : rural"
       , "P6630S5A1"  : "income, year : labor : bonus"
       , "P6630S2A1"  : "income, year : labor : christmas bonus"
       , "P6630S1A1"  : "income, year : labor : prima de servicios"
       , "P6630S3A1"  : "income, year : labor : vacation bonus"
-      , "P6630S4A1"  : "income, year : labor : viaticum"
+      , "P6630S4A1"  : "income, year : labor : viaticum ?3"
       , "P6630S6A1"  : "income, year : labor : work accident payments"
 
       , "P6590S1"    : "income, month : labor : food, in-kind"
@@ -83,11 +82,11 @@ files = [
       , "P7510S1A1"  : "income, year : grant : remittance, domestic"
       , "P7510S2A1"  : "income, year : grant : remittance, foreign"
 
-      , "P7513S9A1"  : "income, year : occasional : gambling"
-      , "P7513S10A1" : "income, year : occasional : inheritance"
-      , "P7513S8A1"  : "income, year : occasional : jury awards"
-      , "P7513S12A1" : "income, year : occasional : refund, other"
-      , "P7513S11A1" : "income, year : occasional : refund, tax"
+      , "P7513S9A1"  : "income, year : infrequent : gambling"
+      , "P7513S10A1" : "income, year : infrequent : inheritance"
+      , "P7513S8A1"  : "income, year : infrequent : jury awards"
+      , "P7513S12A1" : "income, year : infrequent : refund, other"
+      , "P7513S11A1" : "income, year : infrequent : refund, tax"
 
       , "P7510S10A1" : "income, year : investment : dividends"
       , "P7510S5A1"  : "income, year : investment : interest"
