@@ -91,6 +91,17 @@ if True: # people
     people[ income_columns ] = people[income_columns] . fillna(0)
     del(re, income_columns)
 
+    # divide yearly income variables by 12
+    re_year_income  = regex.compile( "^income, year" )
+    for c in [c for c in people.columns if re_year_income.match( c )]:
+      people[c] = people[c] / 12
+
+    if True: # benefit income
+      re_year_benefit  = regex.compile( "^income, year : benefit" )
+      re_month_benefit = regex.compile( "^income, month : benefit" )
+      re_in_kind       = regex.compile( "^income, year : benefit.*in.kind$" )
+      [c for c in people.columns if re_year_benefit.match(c) and not re_in_kind.match(c) ]
+
     if True: # labor income
 
       for (quantity, forgot) in ppl.inclusion_pairs:
