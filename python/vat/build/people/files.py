@@ -16,7 +16,7 @@ files = [
       , "P6170"      : "student"
       , "P6210"      : "education" # highest level completed
 
-      # benefits
+      # benefit income
         , "P7500S2A1"  : "income, month : benefit : pension for age | illness"
         , "P9460S1"    : "income, month : benefit : unemployment"
   
