@@ -428,6 +428,15 @@ Asks if the purchase was for breakfast, lunch or dinner.
 ***** 9 » 9. Esporádica
 ***** TODO jeff: what to do about NaN?
 *** TODO weird legend : urban cap c. (same as rural cap c, I'm guessing?)
+2 » 2. Diario 
+3 » 2.1 varias veces por semana 
+4 » 3. Semanal 
+5 » 4. Quincenal 
+6 » 5. Mensual 
+7 » 6. Bimestral 
+8 » 7. Trimestral 
+9 » 9. Esporádica 
+1 » 11. Nunca
 ** how-got: use (for VAT) only value 1
 *** how-got is inconsistent, but we're unaffected, because we only use the value 1
 **** For the "forma de adquisición" ("how-got") variables, the "urban_diario_personal" has a totally different legend, except for the extreme values 1 and 7. Everything else has the same legend. Is this because that file was coded differently, or is it an error in the dcumentation?

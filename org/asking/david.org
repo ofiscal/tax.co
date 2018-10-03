@@ -1,62 +1,90 @@
 * news
 * yet to ask
 * asking
-** Is there a good default frequency to use?
-*** the question
-Below, for the 1/100 sample, I've gone through each file origin and indicated the number of "weight" observations (because that's never missing) and the number of "freq" observations. Notice that for some kinds of files, freq is very missing. If there was a reasonable defautl frequency to use for those files, we could avoid throwing out a lot of observations (in total, 1 in 14 is missing a frequency value).
+** freq
+*** Is there a good default value?
+**** the question
+ Below, for the 1/100 sample, I've gone through each file origin and indicated the number of "weight" observations (because that's never missing) and the number of "freq" observations. Notice that for some kinds of files, freq is very missing. If there was a reasonable defautl frequency to use for those files, we could avoid throwing out a lot of observations (in total, 1 in 14 is missing a frequency value).
 
-I thought maybe the default for "menos frecuentes - articulos" would be yearly, and for the "semanal" files, weekly, and the "diaro" files, daily -- but that's based on very little information ...
+ I thought maybe the default for "menos frecuentes - articulos" would be yearly, and for the "semanal" files, weekly, and the "diaro" files, daily -- but that's based on very little information ...
 
-*** the data supporting it
-articulos
-weight         21109
-freq           20209
+**** the data supporting it
+ articulos
+ weight         21109
+ freq           20209
 
-urban capitulo c
-weight         3606
-freq           3606
+ urban capitulo c
+ weight         3606
+ freq           3606
 
-rural capitulo c
-weight         459
-freq           459
+ rural capitulo c
+ weight         459
+ freq           459
 
-rural_personal
-weight         48
-freq           48
+ rural_personal
+ weight         48
+ freq           48
 
-rural_personal_fuera
-weight         14
-freq            9
+ rural_personal_fuera
+ weight         14
+ freq            9
 
-rural_semanal
-weight         858
-freq           731
+ rural_semanal
+ weight         858
+ freq           731
 
-rural_semanal_fuera
-weight         42
-freq           40
+ rural_semanal_fuera
+ weight         42
+ freq           40
 
-urban_diario
-weight         33302
-freq           32059
+ urban_diario
+ weight         33302
+ freq           32059
 
-urban_diario_fuera
-weight         5040
-freq           3928
+ urban_diario_fuera
+ weight         5040
+ freq           3928
 
-urban_diario_personal
-weight         5249
-freq           4984
+ urban_diario_personal
+ weight         5249
+ freq           4984
 
-urban_personal_fuera
-weight         4760
-freq           3922
+ urban_personal_fuera
+ weight         4760
+ freq           3922
 
-*** how I generated that data
-df = data.purchases[ ["weight","freq","file-origin"] ]
-for fo in df["file-origin"].unique():
-  print( "\n" + fo )
-  print( df[ df["file-origin"]==fo] .count() )
+**** how I generated that data
+ df = data.purchases[ ["weight","freq","file-origin"] ]
+ for fo in df["file-origin"].unique():
+   print( "\n" + fo )
+   print( df[ df["file-origin"]==fo] .count() )
+*** Should we use two legends?
+**** the question
+ Below I have included two legends. The first is for rural capitulo c. All of the other files agree with it, except they are subsets of it. Therefore it should be safe to use the rural cap c file in almost all cases.
+
+ But the urban capitulo c file has a totally different frequency legend. Is that legend correct? That is, should I use two frequency legends: urban capitulo c for urban capitulo c, and rural capitulo c for everything else? Are the left-hand values the ones to use in both cases?
+**** rural cap c
+ 1 » 2. Diario
+ 2 » 2.1. Varias veces por semana
+ 3 » 3. Semanal
+ 4 » 4. Quincenal
+ 5 » 5. Mensual
+ 6 » 6. Bimestral
+ 7 » 7. Trimestral
+ 8 » 8. Anual (not present in this file, but others)
+ 9 » 9. Esporádica
+ 10 » 10. Semestral (not present in this file, but others)
+ 11 » 11. Nunca
+**** urban cap c. (same as rural cap c, I'm guessing?)
+ 2 » 2. Diario 
+ 3 » 2.1 varias veces por semana 
+ 4 » 3. Semanal 
+ 5 » 4. Quincenal 
+ 6 » 5. Mensual 
+ 7 » 6. Bimestral 
+ 8 » 7. Trimestral 
+ 9 » 9. Esporádica 
+ 1 » 11. Nunca
 * probably redundant
 ** bars, cafeterias, restaurants: no VAT. otherwise yes. all four of those "fuera" files are in play.
 ** nh_cgpucfh_p1_s2 : ignore? (We've already got a COICOP; I don't know what other information this variable could provide. But I can't find a description of it, so I can't rule out the possibility that it's important.)
