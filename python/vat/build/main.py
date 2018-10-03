@@ -152,6 +152,7 @@ if True: # people
         if True: # normalize independent labor income to one months' worth
           s = "income, month : labor : independent"
           people[s] = people[s] * people[s + ", months"]
+          people = people.drop( columns = [s + ", months"] )
           del(s)
 
         if True: # after this, we can simply sum all monthly labor income variables
