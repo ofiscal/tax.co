@@ -18,14 +18,10 @@
 *** David used real data, e.g. rice price, to figure this out. Genius.
 ** where-bought: search for "no vat" in enph.org
 ** how-got: see enph.org
-** kinds of income
-*** labor
-*** investment, business income
-*** transfer : from gov't or charity or family or alimony
 * to explain in paper : institution details | judgment calls
 ** we include infrequent income in monthly income
 sales, loan repayment, jury awards, gambling winnings, inheritance ...
-** We on't count borrowing as income, because you don't pay for your income with later income.
+** We don't count borrowing as income, because you don't pay for your income with later income.
 ** P7500S3A1 : alimony. ignoring, to avoid double-counting.
 ** terms in the ENPH
 *** Unemployed
@@ -83,7 +79,6 @@ x = purchases["vat-rate"]
 *** are these two variables ever both > 0 ?
 **** P5180S1, P5180S2 : daily payment for, value of food at school
 **** P6180S1, P6180S2 : daily payment for, value of food at university
-
 *** TODO what are the biggest expenditures in the zero-vat set? good to check those vat rates.
 *** is it half of households or half of individuals who have no income?
 *** is it missing sole proprietor income?

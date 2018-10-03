@@ -87,7 +87,10 @@ if True: # people
     ]: people[cn] = 2 - people[cn]
 
   if True: # income
-    if True: # fill NaN values with 0
+    if True: # fill NaN values (one column's with 1, the rest's with 0)
+      people[   "income, month : labor : independent, months" ] = (
+        people[ "income, month : labor : independent, months" ] . fillna(1) )
+
       re = regex.compile( ".*income.*" )
       income_columns = [c for c in people.columns if re.match( c )]
       people[ income_columns ] = people[income_columns] . fillna(0)
@@ -146,6 +149,11 @@ if True: # people
         people = people.drop( columns = cols_infrequent )
 
       if True: # labor income
+        if True: # normalize independent labor income to one months' worth
+          s = "income, month : labor : independent"
+          people[s] = people[s] * people[s + ", months"]
+          del(s)
+
         if True: # after this, we can simply sum all monthly labor income variables
           for (quantity, forgot) in ppl.inclusion_pairs:
             people[ quantity ] = people[ quantity ] * people[ forgot ]

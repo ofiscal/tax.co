@@ -63,7 +63,6 @@ which here is filed outside of "caracteristicas generales"
    DIAN counts in-kind payments as income for tax purposes, so we'd better.
    "Subsidio" in this context can mean something given by the employer, not nec'y the gov't.
    No in-kind payments are included in P6500, so there are no "did you include this in that" questions for in-kind payments.
-****** TODO make separate "cash" and "in-kind" variables for each categ.
 ****** monthly variables
 ******* P6500 = income, month : labor : formal employment
 as an "asalariado" last month
