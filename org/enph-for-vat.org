@@ -101,7 +101,7 @@ independientes = self-employed, temporary workers, contractors. That classificat
 ****** P6750 = income, month : labor : independent
 ****** P6760 = income, month : labor : independent, months
 divide P6750 by this to get monthly
-hopefully this is usually 1 or missing
+the definition of P6750 contradicts the definition of this a little bit, but David says the treatment in place is correct.
 ******                 P550 = income, year : labor : rural
 ****** TODO david : P6779S1 : income, month : labor : viaticum ?2
 Is P6750 already increased by P6779S1, or should we add it?
@@ -110,6 +110,7 @@ If it's included, that's weird, because it's monthly
 Is P6750 already reduced by P1651S1, or should we *subtract* it?
 (It's an insurance paid by the contractor in case of non-fulfillment.)
 Also, is it monthly?
+***** 
 ***** for *both* asalariados and independents
 ****** UNUSED : P6790 - ... = time spent working
 ****** UNUSED : P6880 : where they work (door to door, driving, farm, factory, ...)
@@ -429,12 +430,11 @@ New houses go to the 5% rate only if they cost more than 880 million cop. There 
 *** how-got is inconsistent, but we're unaffected, because we only use the value 1
 **** For the "forma de adquisición" ("how-got") variables, the "urban_diario_personal" has a totally different legend, except for the extreme values 1 and 7. Everything else has the same legend. Is this because that file was coded differently, or is it an error in the dcumentation?
 *** DONE : not important : what to do when it's missing
-**** once we exclude codes without a COICOP, is-purchase is almost never missing
+**** once we exclude codes with neither a COICOP nor a 25-broad-categs, is-purchase is almost never missing
 **** after excluding code without a value, it is literally never missing
 **** two, and maybe every, reason it might be missing
 ***** sometimes missing because they didn't buy it
 ***** sometimes missing because it's a within-household transfer
-
 *** how-got by file
 **** articulos: takes values 1-7
 ***** DONE no description, but same coding as the majority of the files

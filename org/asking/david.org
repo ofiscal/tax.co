@@ -1,12 +1,6 @@
 * news
 * yet to ask
 * asking
-** These seem to contradict each other
-"P6750"      : "income, month : labor : independent"
-  This one asks how much they made last month.
-"P6760"      : "income, month : labor : independent, months"
-  This one, immediately next, asks how many months's income the last number reports.
-What I've done is fill in any missing values in the latter with 1, and then divide the former by the latter. I just want to make sure that's correct.
 * probably redundant
 ** bars, cafeterias, restaurants: no VAT. otherwise yes. all four of those "fuera" files are in play.
 ** nh_cgpucfh_p1_s2 : ignore? (We've already got a COICOP; I don't know what other information this variable could provide. But I can't find a description of it, so I can't rule out the possibility that it's important.)

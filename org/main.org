@@ -21,6 +21,7 @@ Luis wanted at least for ...
   - Popayán
 ** TODO add estrato; assume someone's electrical estrato is their estrato
 **** P8520S1A1
+** how-got: purchase if 1, otherwise not
 ** maybe separate pensions from other benefits?
 ** some questions that seem to overlap
 *** sale of title
@@ -38,7 +39,6 @@ Luis wanted at least for ...
 ** value = expense; price = value / quantity
 *** David used real data, e.g. rice price, to figure this out. Genius.
 ** where-bought: search for "no vat" in enph.org
-** how-got: see enph.org
 * to explain in paper : institution details | judgment calls
 ** we include infrequent income in monthly income
 sales, loan repayment, jury awards, gambling winnings, inheritance ...

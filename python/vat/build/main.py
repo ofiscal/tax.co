@@ -56,7 +56,10 @@ if True: # purchases
 
   purchases = common.to_numbers(purchases)
 
-  purchases = purchases[ ~ purchases[ "coicop" ] . isnull() ]
+  purchases = purchases[
+    (  ~ purchases[ "coicop"          ] . isnull())
+    | (~ purchases[ "25-broad-categs" ] . isnull())
+  ]
     # Why: For every file but "articulos", observations with no coicop have
     # no value, quantity, is-purchase or frequency. And only 63 / 211,000
     # observations in "articulos" have a missing COICOP. A way see that:
@@ -73,10 +76,10 @@ if True: # purchases
   ]: purchases = c.correct( purchases )
 
 
-if True: # people
+if False: # people
   people = common.to_numbers( common.collect_files( ppl.files ) )
 
-  if True: # adjust the labels (they stay integers) on some boolean variables
+  if True: # remap some boolean integers
     for cn in ( [ "female" ] +                           # originally 1=male, 2=female
                 [included for (quantity,included) in ppl.inclusion_pairs]
     ): people[cn] = people[cn] - 1

@@ -17,6 +17,11 @@ for c in data.people.filter(regex="income").columns:
   util.describeWithMissing( data.people[[c]] )
 
 
+data.purchases[
+  (~ data.purchases["coicop"].isnull())
+  | (~ data.purchases["25-broad-categs"].isnull()) ].count()
+
+
 ### How I determined which "total labor income" variable to use, and which to ignore.
 
 df = data.people.filter(regex="labor").copy()

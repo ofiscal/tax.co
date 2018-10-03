@@ -4,7 +4,7 @@ import pandas as pd
 import math
 
 
-subsample = 100
+subsample = 10
 
 folder = "data/enph-2017/recip-" + str(subsample) + "/"
 
