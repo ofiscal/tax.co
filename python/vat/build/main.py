@@ -56,9 +56,10 @@ if True: # purchases
 
   purchases = common.to_numbers(purchases)
 
-  purchases = purchases[
-    (  ~ purchases[ "coicop"          ] . isnull())
-    | (~ purchases[ "25-broad-categs" ] . isnull())
+  purchases = purchases[ # must have a value and a coicop-like variable
+    ( (  ~ purchases[ "coicop"          ] . isnull())
+      | (~ purchases[ "25-broad-categs" ] . isnull()) )
+    & (  ~ purchases[ "value"           ] . isnull())
   ]
     # Why: For every file but "articulos", observations with no coicop have
     # no value, quantity, is-purchase or frequency. And only 63 / 211,000
@@ -72,7 +73,7 @@ if True: # purchases
       , lambda x: 1 if x==1 else
         # HACK: x >= 0 yields true for numbers, false for NaN
         (0 if x >= 0 else np.nan) )
-    , Correction.Rename_Column("how-got", "is-purchase")
+    , Correction.Rename_Column( "how-got", "is-purchase" )
   ]: purchases = c.correct( purchases )
 
 

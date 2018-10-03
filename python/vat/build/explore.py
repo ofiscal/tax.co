@@ -4,7 +4,7 @@ import numpy as np
 import python.util as util
 import python.vat.build.classes as classes
 import python.vat.build.common as common
-import python.vat.build.main as data
+import python.vat.build.main as data  
 
 
 # Even when purhcase=1, in some files there are a substantial number

@@ -251,6 +251,7 @@ New houses go to the 5% rate only if they cost more than 880 million cop. There 
 ***** these don't matter, because there's a COICOP
 ****** nh_cgprcfh_p1 = descripción de la comida o alimento adquirido; 5 unique values, 7/11 missing
 ****** nh_cgprcfh_p1s2 = "marque con una x, la opción que describa mejor el tipo de comida", 5 unique, 7/11 missing
+breakfast, lunch or dinner
 *** urban diario
 **** p10250s1a1 ? "número de orden de la persona qué se le entregó la mesada"
 ***** almost always missing. if not missing, drop observation -- it records a within-household transfer of money
@@ -285,7 +286,8 @@ New houses go to the 5% rate only if they cost more than 880 million cop. There 
 **** nc4_cc_p5 : value
 **** nc4_cc_p6 : freq
 *** urban personal fuera
-**** DONE : nh_cgpucfh_p1_s2 : can't be anything.
+**** DONE : nh_cgpucfh_p1_s2 : not important
+Asks if the purchase was for breakfast, lunch or dinner.
 **** nh_cgpucfh_p1_s1 : coicop
 **** nh_cgpucfh_p2 : quantity
 **** nh_cgpucfh_p3 : how gotten
