@@ -327,6 +327,7 @@ Asks if the purchase was for breakfast, lunch or dinner.
 
 *** group living together, sharing food and not paying rent to the hosuehold. Every person belongs to exactly one household.
 ** frequency
+*** use the LHS of the >> symbol
 *** if frequency missing, discard observation
 **** DONE when purchase=1, freq is almost never missing, for each file
 *** almost all use the same key
@@ -535,8 +536,8 @@ Asks if the purchase was for breakfast, lunch or dinner.
 ***** 1 » 1 Almacenes o supermercados de cadena y tiendas por departamento
 ***** TODO 2 » 2 Hipermercados
 ***** 4 » 4 Supermercados de cajas de compesanciónm, cooperativas, fondos de empleados y comisariatos
-***** 6 » 6.Supermercado y tiendas de barrio
-***** 7 » 7.Misceláneas de barrio y cacharrerías
+***** no vat 6 » 6.Supermercado y tiendas de barrio
+***** no vat 7 » 7.Misceláneas de barrio y cacharrerías
 ***** no vat - TODO 8 » 8.Cigarrerías, salsamentarias y delikatessen
 ***** no vat - 10 » 10 Plazas de mercado, galerías y graneros
 ***** no vat - TODO 11 » 11 Central mayorista de abastecimiento
@@ -546,8 +547,8 @@ Asks if the purchase was for breakfast, lunch or dinner.
 ***** TODO 15 » 15 Bodegas o fábricas.
 ***** 16 » 16 Establecimiento especializado en la venta del artículo o la prestación del servicio adquirido
 ***** 17 » 17 Farmacias y droguerías
-***** 18 » 18 Restaurantes
-***** 19 » 19 Cafeterías y establecimientos de comidas rápidas
+***** depends on COICOP : 18 » 18 Restaurantes
+***** depends on COICOP : 19 » 19 Cafeterías y establecimientos de comidas rápidas
 ***** no vat - 20 » 20 Persona particular
 ***** 21 » 21 Ferias especializadas: Artesanal, del hogar, del libro, de computadores, etc.
 ***** 22 » 22 A través de internet

@@ -1,9 +1,49 @@
 * TODO next
-** TODO next: add region
->>> df = pd.read_csv( "data/enph-2017/recip-100/" + "Viviendas_y_hogares.csv" )
->>> df[ "joined" ] = df[ "DOMINIO" ] + " + " + df["REGION"]
->>> for c in sorted( df[ "joined" ].unique() ): print(c)
+** update the backup on sharepoint of the coicop-vat bridge
+** region : no VAT in San Andres
+** TODO frequency
+*** use the rural cap c legend for everything
+**** it's consistent with everything but the urban cap c legend, which david says is garbage
+** where-got
+*** use the rural_semanal_fuera key; it's a superset of the others
+*** TODO david : we believe there is no interaction between where-got and coicop
+** TODO with David : coicop: lots of special cases
+*** 5310101
+DS guesses 19% more often
+5% if: 
+  price < (30 uvt (unidad de valor tributario), aprox. $955800 COP)
+  AND estrato <= 3
+  AND gave back old fridge when made this purchase (not knowable in our data)
+19% otherwise
+c.f article 468.1 of tax code
+*** 7110101 : bears on INC
+In addition to VAT, these are taxed with the impuesto nacional al consumo, INC: for vehicles with value below USD$30000 the rate for the INC is 8%; if the value is above USD$30000, the rate is 16%. (INC is charged at the end of the supply chain only.)
+*** 7110102
+**** our heuristic: assume they sell for less than they bought, therefore 0 VAT
+**** what I wrote after talking to David
+= second hand purchases of vehicles
+Suppose Manufacturer sells to Alice (an ordinary person), and Alice sells to Bob. Alice paid PA, which is equal to PM (what the manufacturer collects) + TA (VAT charged to Alice). Then Bob pays PB, which equals ...
 
+okay something like that. Alice paid X. Now Alice sells to Bob. Alice collects Y from Bob. If Y > X, then Bob pays VAT equal to 0.19*(Y-X).
+**** what David emailed that I didn't understand so I talked to him (above)
+special tax base for VAT purposes: If a retailer buys a used car priced initially at $20 and resells it at $22, the vat rate is applied to the difference. In addition, these transactions are also taxed with the impuesto nacional al consumo, INC: for vehicles with value below USD$30000 the rate for the INC is 8%; if the value is above USD$30000, the rate is 16%
+*** 7120101
+**** upshot : call it 0.12, the average of electric bike rate (5) and motorbike (19)
+**** details from David's email
+goods with different tax rates. Minor details regarding VAT exclusions for Amazonas, Vaup�s, Guain�a. In addition, only motorbikes are taxed with the impuesto nacional al consumo, INC: an extra 8% is charged if engine is above 200 c.c.
+*** TODO 7130101 : VAT rate depends on price
+Depending on value an nature. If value is below 50 UVT (aprox $1593000 COP) the VAT rate is 5%, otherwise 19%
+*** 7219901, Motores para veh�culo
+VAT could be 0, 5 or 19
+We're guessing 15
+*** 7219902, misc car goods
+Mostly 19, we're saying 19.
+*** 7350101, mixed transport
+19 for air travel, otherwise 0; we're saying 0.
+*** 8200203, smart phones
+0 VAT if cheap, 19 if expensive
+threshold at 22UVT, aprox. $700800 COP
+** interpret region
 centro poblado = smallest unit
 otras cabeceras = bigger, aggregate of municipalities
 bigger yet are cities, which are identified by name
@@ -20,11 +60,8 @@ Luis wanted at least for ...
   - Ibagué
   - Pasto
   - Popayán
-** TODO add estrato; assume someone's electrical estrato is their estrato
-**** P8520S1A1
 ** TODO start saving build stages
 *** but don't overwrite pre-release data!
-** how-got: purchase if 1, otherwise not
 ** maybe separate pensions from other benefits?
 ** some questions that seem to overlap
 *** sale of title
@@ -36,13 +73,13 @@ Luis wanted at least for ...
 ** unsorted
 *** "P6500 (asalariado income) > 0" should be perfecty corr'd with pension contrib's
 *** ??? pension contribs = formality.
-** frequency
-*** remap urban cap c to match the others
-*** once it's interpretable, add it to the capitulo c legend code
 ** value = expense; price = value / quantity
 *** David used real data, e.g. rice price, to figure this out. Genius.
 ** where-bought: search for "no vat" in enph.org
 * to explain in paper : institution details | judgment calls
+** no vat 6 » 6.Supermercado y tiendas de barrio
+Supermarkets charge VAT, but there are more tiendas de barrio, so we're saying none.
+** all the special COICOP-dependent VAT rates
 ** we include infrequent income in monthly income
 sales, loan repayment, jury awards, gambling winnings, inheritance ...
 ** We don't count borrowing as income, because you don't pay for your income with later income.

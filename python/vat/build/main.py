@@ -20,6 +20,11 @@ if True: # buildings
   buildings = buildings.drop( columns = ["file-origin"] )
 
 
+if True: # VAT dictionaries
+  # capitulo c is comma-separated
+  # coicop is semicolon-separated
+
+
 if False: # purchases
   purchases = common.collect_files(
     articulos.files
