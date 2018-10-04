@@ -1,5 +1,3 @@
-# This file is relevant only to the extent that it records house purchases.
-
 import pandas as pd
 from numpy import nan
 import python.vat.build.classes as classes

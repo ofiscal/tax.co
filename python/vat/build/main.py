@@ -6,14 +6,21 @@ from python.vat.build.classes import Correction
 import python.vat.build.common as common
 
 # input files
+import python.vat.build.buildings.files as bldg
+import python.vat.build.people.files as ppl
 import python.vat.build.purchases.nice_purchases as nice_purchases
 import python.vat.build.purchases.medios as medios
 import python.vat.build.purchases.articulos as articulos
 import python.vat.build.purchases.capitulo_c as capitulo_c
-import python.vat.build.people.files as ppl
 
 
-if True: # purchases
+if True: # buildings
+  buildings = common.collect_files( bldg.files )
+  buildings["estrato"] = buildings["estrato"].replace(' ', np.nan)
+  buildings = buildings.drop( columns = ["file-origin"] )
+
+
+if False: # purchases
   purchases = common.collect_files(
     articulos.files
     # + medios.files
