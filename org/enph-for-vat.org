@@ -319,8 +319,6 @@ Asks if the purchase was for breakfast, lunch or dinner.
 ** frequency
 *** yes, it's orthogonal to value.
 *** use the LHS of the >> symbol
-*** if frequency missing, discard observation
-**** DONE when purchase=1, freq is almost never missing, for each file
 *** almost all use the same key
 **** TODO use this one: rural cap c
 ***** 1 » 2. Diario
@@ -704,7 +702,7 @@ Asks if the purchase was for breakfast, lunch or dinner.
 ***** TODO 19 » 24 Otro
 ***** TODO 20 » 25 Plazoleta de comidas
 * legends, common across data sets
-** how to read "x » y" : usually RHS, but freq : RHS
+** how to read "x » y" : usually RHS, but freq : LHS
 * seldom used
 ** for copying: an empty list of the purchase files
 *** articulos

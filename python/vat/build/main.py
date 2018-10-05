@@ -70,17 +70,17 @@ if True: # purchases
   purchases = common.to_numbers(purchases)
 
   purchases = purchases[ # must have a value and a coicop-like variable
-    ( (  ~ purchases[ "coicop"          ] . isnull())
-      | (~ purchases[ "25-broad-categs" ] . isnull()) )
-    & (  ~ purchases[ "value"           ] . isnull())
-  ]
     # Why: For every file but "articulos", observations with no coicop have
     # no value, quantity, is-purchase or frequency. And only 63 / 211,000
     # observations in "articulos" have a missing COICOP. A way see that:
       # df0 = data.purchases[ data.purchases[ "coicop" ] . isnull() ]
       # util.dwmByGroup( "file-origin", df0 )
+    ( (  ~ purchases[ "coicop"          ] . isnull())
+      | (~ purchases[ "25-broad-categs" ] . isnull()) )
+    & (  ~ purchases[ "value"           ] . isnull())
+  ]
 
-  for c in [
+  for c in [ # how-got 1 -> is-purchase 1, nan -> nan, otherwise -> 0
     Correction.Apply_Function_To_Column(
       "how-got"
       , lambda x: 1 if x==1 else
@@ -88,6 +88,26 @@ if True: # purchases
         (0 if x >= 0 else np.nan) )
     , Correction.Rename_Column( "how-got", "is-purchase" )
   ]: purchases = c.correct( purchases )
+
+  if True: # frequency
+    frequency_key = {
+        1  : (365.25/12) / 1   # 1  » Diario
+      , 2  : (365.25/12) / 3.5 # 2  » Varias veces por semana
+      , 3  : (365.25/12) / 7   # 3  » Semanal
+      , 4  : (365.25/12) / 15  # 4  » Quincenal
+      , 5  : 1 / 1             # 5  » Mensual
+      , 6  : 1 / 2             # 6  » Bimestral
+      , 7  : 1 / 3             # 7  » Trimestral
+      , 8  : 1 / 12            # 8  » Anual
+      , 9  : 1 / (3*12)        # 9  » Esporádica
+      , 10 : 1 / 6             # 10 » Semestral
+      , 11 : np.nan            # 11 » Nunca
+    }
+    purchases["freq"].replace( frequency_key, inplace=True )
+    purchases = purchases.drop(
+      purchases[ purchases["freq"].isnull() ]
+      .index
+    )
 
 
 if False: # people

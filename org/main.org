@@ -1,12 +1,15 @@
 * TODO next
-** compute .csv diff, send to David to check
-** update from laptop the backup on sharepoint of the coicop-vat bridge
+** goods that dodge the VAT
+*** summarized with a parameter, "share of final good that escapes the VAT"
+*** the rules : exemptions, exclusions and refunds 
+If the final good is exempt, and an input carries VAT, the final seller *is* eligible for a refund of the VAT on the input.
+If the final good is excluded, and an input carries VAT, the final seller is *not* eligible for a refund of the VAT on the input.
+** update coicop-vat bridge on desktop
 ** TODO These error codes apply to all income and expense variables
 including ordinary purchases
 98 means people know they moved some money but do not know the amount;
 00 means no
 99 means people do not know if it happened
-** ? when unsure of VAT, provide a min and max, make two estimates
 ** region : no VAT in San Andres
 ** TODO frequency
 *** use the rural cap c legend for everything

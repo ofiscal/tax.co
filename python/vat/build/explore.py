@@ -17,7 +17,7 @@ import python.vat.build.purchases.capitulo_c as capitulo_c
 
 
 
-df = pd.DataFrame( [[1,2],[3,4]], columns = ["a","b"] )
+df = pd.DataFrame( [[1,2],[3,np.nan]], columns = ["a","b"] )
 df2 = df.drop( df[ df["a"]==1 ].index )
 df2
 df3 = classes.Correction.Drop_Row_If_Column_Equals( "a", 1 ).correct( df )
