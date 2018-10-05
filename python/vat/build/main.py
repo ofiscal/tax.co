@@ -25,6 +25,7 @@ if True: # VAT dictionaries
   # coicop is semicolon-separated
   pass
 
+
 if True: # purchases
   purchases = common.collect_files(
     articulos.files
@@ -182,7 +183,7 @@ if False: # people
           for (quantity, forgot) in ppl.inclusion_pairs:
             people[ quantity ] = people[ quantity ] * people[ forgot ]
           people = people.drop( columns = [ forgot for (_, forgot) in ppl.inclusion_pairs ] )
-    
+
         re_labor  = regex.compile( "^income.* : labor : " )
         cols_labor_cash    = [ c for c in people.columns
                                  if re_labor.match(c) and not re_in_kind.match(c) ]

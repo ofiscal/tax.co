@@ -1,7 +1,5 @@
 * news
 * yet to ask
-** Do the error codes 98 and 99 apply to ordinary purchases too?
-** NC2_CC_P3_S2 : Discard if they did, or if they didn't?
 * asking
 ** freq
 *** Is there a good default value?

@@ -1,11 +1,45 @@
-import pandas as pd
-import numpy as np
+import python.vat.build.main as data  
 
 import python.util as util
 import python.vat.build.classes as classes
 import python.vat.build.common as common
-import python.vat.build.main as data  
 
+import pandas as pd
+import numpy as np
+import re as regex
+
+import python.vat.build.buildings.files as bldg
+import python.vat.build.people.files as ppl
+import python.vat.build.purchases.nice_purchases as nice_purchases
+import python.vat.build.purchases.medios as medios
+import python.vat.build.purchases.articulos as articulos
+import python.vat.build.purchases.capitulo_c as capitulo_c
+
+
+
+df = pd.DataFrame( [[1,2],[3,4]], columns = ["a","b"] )
+df2 = df.drop( df[ df["a"]==1 ].index )
+df2
+df3 = classes.Correction.Drop_Row_If_Column_Equals( "a", 1 ).correct( df )
+df3
+
+df = pd.read_csv( "data/enph-2017/recip-100/"
+                  + "Gastos_diarios_Urbano_-_Capitulo_C.csv" )
+df = pd.read_csv( "data/enph-2017/recip-100/"
+                  + "Gastos_semanales_Rural_-_Capitulo_C.csv" )
+df["NC2_CC_P3_S2"].unique()
+
+dfd = classes.Correction.Drop_Row_If_Column_Equals(
+  "NC2_CC_P3_S2", 2 ).correct( df )  
+dfd["NC2_CC_P3_S2"].unique()
+
+x = common.collect_files(
+    capitulo_c.files
+  )
+
+x[ x["duplicated"]==2 ]["file-origin"].unique()
+purchases[ purchases["duplicated"]==2 ]["file-origin"].unique()
+data.purchases[ data.purchases["duplicated"]==2 ]["file-origin"].unique()
 
 # Even when purhcase=1, in some files there are a substantial number
 # of observations where where-got is missing.

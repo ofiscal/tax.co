@@ -77,6 +77,17 @@ class Correction:
         ].index
       )
 
+  class Drop_Row_If_Column_Equals:
+    def __init__(self,col_name,value):
+      self.col_name = col_name
+      self.value = value
+    def correct(self,df):
+      return df.drop(
+        df[
+          df[self.col_name] == self.value
+        ] . index
+      )
+
   class Replace_Entirely_If_Substring_Is_In_Column:
     def __init__(self,col_name,substring,replacement):
       self.col_name = col_name

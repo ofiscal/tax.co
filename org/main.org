@@ -1,5 +1,6 @@
 * TODO next
 ** TODO These error codes apply to all income and expense variables
+including ordinary purchases
 98 means people know they moved some money but do not know the amount; 
 00 means no
 99 means people do not know if it happened
