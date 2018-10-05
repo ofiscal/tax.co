@@ -106,11 +106,6 @@ the definition of P6750 contradicts the definition of this a little bit, but Dav
 ****** TODO david : P6779S1 : income, month : labor : viaticum ?2
 Is P6750 already increased by P6779S1, or should we add it?
 If it's included, that's weird, because it's monthly
-****** TODO david : UNUSED : P1651S1 : fulfillment insurance
-Is P6750 already reduced by P1651S1, or should we *subtract* it?
-(It's an insurance paid by the contractor in case of non-fulfillment.)
-Also, is it monthly?
-***** 
 ***** for *both* asalariados and independents
 ****** UNUSED : P6790 - ... = time spent working
 ****** UNUSED : P6880 : where they work (door to door, driving, farm, factory, ...)
@@ -133,7 +128,7 @@ Also, is it monthly?
 ***** P7040 - ... = second job
 ****** P7070 = income, month : labor : job 2
 ***** P7310 - ... : unemployed (at least mostly)
-****** TODO david : period ? P9460S1 : income, month : benefit : unemployment
+****** P9460S1 : income, month : benefit : unemployment
 ****** P7422S1 : income, month : labor : as unemployed
 ***** P7472 - ... : "inactive"
 ****** definition
@@ -320,13 +315,9 @@ Asks if the purchase was for breakfast, lunch or dinner.
  data.purchases[["household","household-member","weight"]].sort_values(
    ["household","household-member","weight"] ) [["household","weight"]]
 ** DIRECTORIO = household 
-*** TODO david : incorporate P6050 = "unidad de gasto"
- If equal to 6,7, or 8, kind of part of the household but not really?
- If I want to know what a household spent, I should exclude persons marked 6-8?
- Will the expenditures of a person marked 6-8 be recorded in the household in which they are (say) a maid, or in a different household, or in no household?
-
 *** group living together, sharing food and not paying rent to the hosuehold. Every person belongs to exactly one household.
 ** frequency
+*** yes, it's orthogonal to value.
 *** use the LHS of the >> symbol
 *** if frequency missing, discard observation
 **** DONE when purchase=1, freq is almost never missing, for each file
@@ -713,13 +704,7 @@ Asks if the purchase was for breakfast, lunch or dinner.
 ***** TODO 19 » 24 Otro
 ***** TODO 20 » 25 Plazoleta de comidas
 * legends, common across data sets
-** how to read "x » y"?
-*** In the "freq" variables, often "2.1" appears on the right side, and never in the data; likewise 2 is often on the left, and it appears in the data a lot. That suggests the left hand values are the ones to use.
-*** But the "where-got" variables argue the opposite: Any time a value in the data appears on only one side of that » symbol, it's on the right.
-** Error codes: 
-98 means people know they receive income but do not know the amount; 
-00 means no income; 
-99 means people do not know if they are receiving income.
+** how to read "x » y" : usually RHS, but freq : RHS
 * seldom used
 ** for copying: an empty list of the purchase files
 *** articulos

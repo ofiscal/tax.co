@@ -1,9 +1,22 @@
 * TODO next
+** TODO These error codes apply to all income and expense variables
+98 means people know they moved some money but do not know the amount; 
+00 means no
+99 means people do not know if it happened
+
+** discard non-household household members
+P6050 = "unidad de gasto", if equal to 6,7, or 8
+** ? when unsure of VAT, provide a min and max, make two estimates
+** TODO some cap c observations should be discarded
+For both urban and rural, if NC2_CC_P3_S2 is yes, discard.
+  That's because they'll show up in another file, disaggregated to COICOP level.
 ** update the backup on sharepoint of the coicop-vat bridge
 ** region : no VAT in San Andres
 ** TODO frequency
 *** use the rural cap c legend for everything
-**** it's consistent with everything but the urban cap c legend, which david says is garbage
+**** it's consistent with everything but the urban cap c legend, which appears to be wrong; the Stata legends are consistent
+*** if "nunca", discard
+** TODO value : if 99 in capitulo C, discard
 ** where-got
 *** use the rural_semanal_fuera key; it's a superset of the others
 *** TODO david : we believe there is no interaction between where-got and coicop
@@ -75,11 +88,22 @@ Luis wanted at least for ...
 *** ??? pension contribs = formality.
 ** value = expense; price = value / quantity
 *** David used real data, e.g. rice price, to figure this out. Genius.
-** where-bought: search for "no vat" in enph.org
 * to explain in paper : institution details | judgment calls
+** benefits/expenses that we ignored
+*** P1651S1 : fulfillment insurance : ignonred
+ambiguous whether it's an expense or part of salary, and the frequency is roughly unavailable -- we know the freq only for the most recent contract.
+
+"¿Por este trabajo, le descontarono pagó póliza de cumplimiento? ¿cuánto?"
+*** more
+ambiguous definition, missing values, impossible values
+
+P6920* : pension fund contributions
+P6990* : work injury insurance
+P9450* : caja de compensacion
 ** no vat 6 » 6.Supermercado y tiendas de barrio
 Supermarkets charge VAT, but there are more tiendas de barrio, so we're saying none.
-** all the special COICOP-dependent VAT rates
+
+Could go into more detail, about each category.
 ** we include infrequent income in monthly income
 sales, loan repayment, jury awards, gambling winnings, inheritance ...
 ** We don't count borrowing as income, because you don't pay for your income with later income.
@@ -108,6 +132,10 @@ util.dwmByGroup( "file-origin",
 ** more than 2/3 of the "capitulo c" observations have no associated value
 *** and they are only divided into 25 broad categories, with no associated quantity variable, so imputation is infeasible
 *** Those value-missing observations are 19.2% of our data.
+Hopefully that will be close to 0 after discarding:
+  frequency = nunca
+  ~ bought it in the last week
+  value = 99
 * would be nice
 ** to have a default value for freq
 *** when is-purchase=1, freq is undefined only .015 % of the time
@@ -142,8 +170,6 @@ x = purchases["vat-rate"]
 **** P6180S1, P6180S2 : daily payment for, value of food at university
 *** TODO what are the biggest expenditures in the zero-vat set? good to check those vat rates.
 *** is it half of households or half of individuals who have no income?
-*** is it missing sole proprietor income?
-**** is the income data equally missing in the GEIH?
 ** add features
 *** household VAT rates by income decile
 *** ? include people/spending (already drawn)

@@ -58,44 +58,6 @@
  for fo in df["file-origin"].unique():
    print( "\n" + fo )
    print( df[ df["file-origin"]==fo] .count() )
-*** Should we use two legends?
-**** the question
- Below I have included two legends. The first is for rural capitulo c. All of the other files agree with it, except they are subsets of it. Therefore it should be safe to use the rural cap c file in almost all cases.
-
- But the urban capitulo c file has a totally different frequency legend. Is that legend correct? That is, should I use two frequency legends: urban capitulo c for urban capitulo c, and rural capitulo c for everything else? Are the left-hand values the ones to use in both cases?
-**** rural cap c
- 1 » 2. Diario
- 2 » 2.1. Varias veces por semana
- 3 » 3. Semanal
- 4 » 4. Quincenal
- 5 » 5. Mensual
- 6 » 6. Bimestral
- 7 » 7. Trimestral
- 8 » 8. Anual (not present in this file, but others)
- 9 » 9. Esporádica
- 10 » 10. Semestral (not present in this file, but others)
- 11 » 11. Nunca
-**** urban cap c. (same as rural cap c, I'm guessing?)
- 2 » 2. Diario 
- 3 » 2.1 varias veces por semana 
- 4 » 3. Semanal 
- 5 » 4. Quincenal 
- 6 » 5. Mensual 
- 7 » 6. Bimestral 
- 8 » 7. Trimestral 
- 9 » 9. Esporádica 
- 1 » 11. Nunca
-* probably redundant
-** bars, cafeterias, restaurants: no VAT. otherwise yes. all four of those "fuera" files are in play.
-** nh_cgpucfh_p1_s2 : ignore? (We've already got a COICOP; I don't know what other information this variable could provide. But I can't find a description of it, so I can't rule out the possibility that it's important.)
-** pension contributions: There are a number of variables (at least 5) about pensions in 'caracteristicas generales'. Do the other income variables already incorporate it, or is it a part of income we would not be coutning if we didn't use the pension contribution variable?
-** nc2_cc_p1 = 25 broad categories. vat rates?
-** DONE NC2R_CE_P8 : frequency. yes, it's orthogonal to value.
-** NH_CGDUCFH_P4 : where gotten, even if not bought
-*** TODO david : how to read the legend
-*** restaurant, bar, cafeteria: no VAT. otherwise ignore. not quite right -- guys selling on street, for example
-** TODO NH_CGDUCFH_P6 : frequency
-*** ? how to read legend. 2.1 appears in it, but 2 and not 2.1 appears in the data.
 * meh
 ** outliers
 *** household-member: rural_semanal and urban_diario both reach at least to 82

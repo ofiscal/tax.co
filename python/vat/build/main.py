@@ -23,7 +23,7 @@ if True: # buildings
 if True: # VAT dictionaries
   # capitulo c is comma-separated
   # coicop is semicolon-separated
-
+  pass
 
 if False: # purchases
   purchases = common.collect_files(
