@@ -25,7 +25,7 @@ if True: # VAT dictionaries
   # coicop is semicolon-separated
   pass
 
-if False: # purchases
+if True: # purchases
   purchases = common.collect_files(
     articulos.files
     # + medios.files
@@ -89,7 +89,7 @@ if False: # purchases
   ]: purchases = c.correct( purchases )
 
 
-if True: # people
+if False: # people
   people = common.to_numbers( common.collect_files( ppl.files ) )
 
   if True: # drop non-members of household

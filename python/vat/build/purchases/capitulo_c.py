@@ -4,6 +4,12 @@ import python.vat.build.classes as classes
 import python.vat.build.common as common
 
 
+capitulo_c_corrections = [
+    classes.Correction.Create_Constant_Column( "quantity", 1 )
+  , classes.Correction.Create_Constant_Column( "how-got", 1 )
+  , classes.Correction.Create_Constant_Column( "coicop", nan )
+]
+
 files = [
   classes.File( "urban capitulo c"
     , "Gastos_diarios_Urbano_-_Capitulo_C.csv"
@@ -11,9 +17,8 @@ files = [
       , "NC2_CC_P1"    : "25-broad-categs"
       , "NC2_CC_P2"    : "freq"
       , "NC2_CC_P3_S1" : "value"
-    }, [ classes.Correction.Create_Constant_Column( "quantity", 1 )
-       , classes.Correction.Create_Constant_Column( "how-got", 1 )
-       , classes.Correction.Create_Constant_Column( "coicop", nan ) ]
+      , "NC2_CC_P3_S2" : "duplicated"
+    },  capitulo_c_corrections
       + common.corrections
         # TODO : "where-got": assume purchase
         # TODO : "freq"
@@ -25,9 +30,8 @@ files = [
       , "NC2_CC_P1"    : "25-broad-categs"
       , "NC2_CC_P2"    : "freq"
       , "NC2_CC_P3_S1" : "value"
-    }, [ classes.Correction.Create_Constant_Column( "quantity", 1 )
-       , classes.Correction.Create_Constant_Column( "how-got", 1 )
-       , classes.Correction.Create_Constant_Column( "coicop", nan ) ]
+      , "NC2_CC_P3_S2" : "duplicated"
+    },  capitulo_c_corrections
       + common.corrections
         # TODO : "where-got"
         # TODO : "freq"
