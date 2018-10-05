@@ -1,5 +1,6 @@
 * news
 * yet to ask
+** Do the error codes 98 and 99 apply to ordinary purchases too?
 * asking
 ** freq
 *** Is there a good default value?

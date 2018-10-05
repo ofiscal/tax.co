@@ -3,9 +3,6 @@
 98 means people know they moved some money but do not know the amount; 
 00 means no
 99 means people do not know if it happened
-
-** discard non-household household members
-P6050 = "unidad de gasto", if equal to 6,7, or 8
 ** ? when unsure of VAT, provide a min and max, make two estimates
 ** TODO some cap c observations should be discarded
 For both urban and rural, if NC2_CC_P3_S2 is yes, discard.

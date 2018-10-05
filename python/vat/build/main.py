@@ -89,12 +89,19 @@ if False: # purchases
   ]: purchases = c.correct( purchases )
 
 
-if False: # people
+if True: # people
   people = common.to_numbers( common.collect_files( ppl.files ) )
+
+  if True: # drop non-members of household
+    people = people.drop(
+      people[
+        people["relationship"].isin( [6,7,8] )
+      ].index )
 
   if True: # remap some boolean integers
     for cn in ( [ "female" ] +                           # originally 1=male, 2=female
                 [included for (quantity,included) in ppl.inclusion_pairs]
+                  # originally 1=included, 2=forgot
     ): people[cn] = people[cn] - 1
 
     for cn in [ "student"         # originally 1=student, 2=not

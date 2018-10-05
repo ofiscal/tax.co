@@ -7,6 +7,7 @@ files = [
   classes.File( "people"
     , "Caracteristicas_generales_personas.csv"
     , { **common.variables
+      , "P6050"      : "relationship"
       , "P6020"      : "female"
       , "P6040"      : "age"
       , "P6080"      : "race"
