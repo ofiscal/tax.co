@@ -4,11 +4,11 @@
 * data sets
 ** weird : an expenditure from caracteristicas generales
 *** P5180S1, P5180S2 : daily payment for, value of food at school
-*** P6180S1, P6180S2 : daily payment for, value of food at university 
+*** P6180S1, P6180S2 : daily payment for, value of food at university
 *** P6090 - ... : health insurance
 **** and how split between employer, employee
 ** caracteristicas generales
-*** these are mostly in order, except ... 
+*** these are mostly in order, except ...
 **** the edu income
 That's under "edu" in the survey
 but under "income" here
@@ -314,7 +314,7 @@ Asks if the purchase was for breakfast, lunch or dinner.
 **** constant within member, purchase. (I tested, it really is.)
  data.purchases[["household","household-member","weight"]].sort_values(
    ["household","household-member","weight"] ) [["household","weight"]]
-** DIRECTORIO = household 
+** DIRECTORIO = household
 *** group living together, sharing food and not paying rent to the hosuehold. Every person belongs to exactly one household.
 ** frequency
 *** yes, it's orthogonal to value.
@@ -420,14 +420,14 @@ Asks if the purchase was for breakfast, lunch or dinner.
 ***** 9 » 9. Esporádica
 ***** TODO jeff: what to do about NaN?
 *** TODO weird legend : urban cap c. (same as rural cap c, I'm guessing?)
-2 » 2. Diario 
-3 » 2.1 varias veces por semana 
-4 » 3. Semanal 
-5 » 4. Quincenal 
-6 » 5. Mensual 
-7 » 6. Bimestral 
-8 » 7. Trimestral 
-9 » 9. Esporádica 
+2 » 2. Diario
+3 » 2.1 varias veces por semana
+4 » 3. Semanal
+5 » 4. Quincenal
+6 » 5. Mensual
+7 » 6. Bimestral
+8 » 7. Trimestral
+9 » 9. Esporádica
 1 » 11. Nunca
 ** how-got: use (for VAT) only value 1
 *** how-got is inconsistent, but we're unaffected, because we only use the value 1

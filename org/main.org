@@ -1,14 +1,12 @@
 * TODO next
+** compute .csv diff, send to David to check
+** update from laptop the backup on sharepoint of the coicop-vat bridge
 ** TODO These error codes apply to all income and expense variables
 including ordinary purchases
-98 means people know they moved some money but do not know the amount; 
+98 means people know they moved some money but do not know the amount;
 00 means no
 99 means people do not know if it happened
 ** ? when unsure of VAT, provide a min and max, make two estimates
-** TODO some cap c observations should be discarded
-For both urban and rural, if NC2_CC_P3_S2 is yes, discard.
-  That's because they'll show up in another file, disaggregated to COICOP level.
-** update the backup on sharepoint of the coicop-vat bridge
 ** region : no VAT in San Andres
 ** TODO frequency
 *** use the rural cap c legend for everything
@@ -21,7 +19,7 @@ For both urban and rural, if NC2_CC_P3_S2 is yes, discard.
 ** TODO with David : coicop: lots of special cases
 *** 5310101
 DS guesses 19% more often
-5% if: 
+5% if:
   price < (30 uvt (unidad de valor tributario), aprox. $955800 COP)
   AND estrato <= 3
   AND gave back old fridge when made this purchase (not knowable in our data)
@@ -29,7 +27,7 @@ DS guesses 19% more often
 c.f article 468.1 of tax code
 *** 7110101 : bears on INC
 In addition to VAT, these are taxed with the impuesto nacional al consumo, INC: for vehicles with value below USD$30000 the rate for the INC is 8%; if the value is above USD$30000, the rate is 16%. (INC is charged at the end of the supply chain only.)
-*** 7110102
+*** 7110102 : make a parameter equal to the maximum of 0 and the premium expressed as a fraction of the earlier price. Initially we'll use 0.
 **** our heuristic: assume they sell for less than they bought, therefore 0 VAT
 **** what I wrote after talking to David
 = second hand purchases of vehicles
@@ -38,22 +36,79 @@ Suppose Manufacturer sells to Alice (an ordinary person), and Alice sells to Bob
 okay something like that. Alice paid X. Now Alice sells to Bob. Alice collects Y from Bob. If Y > X, then Bob pays VAT equal to 0.19*(Y-X).
 **** what David emailed that I didn't understand so I talked to him (above)
 special tax base for VAT purposes: If a retailer buys a used car priced initially at $20 and resells it at $22, the vat rate is applied to the difference. In addition, these transactions are also taxed with the impuesto nacional al consumo, INC: for vehicles with value below USD$30000 the rate for the INC is 8%; if the value is above USD$30000, the rate is 16%
-*** 7120101
-**** upshot : call it 0.12, the average of electric bike rate (5) and motorbike (19)
-**** details from David's email
+*** 7120101 : powered bikes : two exceptions
+**** rate is 5% for electric bike, 19% for motorbike
+**** use another parameter : probability that it's an electric bike
+**** in a few low-population areas, it is excluded
+Use for those regions that same parameter, the fraction of IVA from the supply chain passed on effectively if not legislatively to the consumer.
+
 goods with different tax rates. Minor details regarding VAT exclusions for Amazonas, Vaup�s, Guain�a. In addition, only motorbikes are taxed with the impuesto nacional al consumo, INC: an extra 8% is charged if engine is above 200 c.c.
 *** TODO 7130101 : VAT rate depends on price
 Depending on value an nature. If value is below 50 UVT (aprox $1593000 COP) the VAT rate is 5%, otherwise 19%
 *** 7219901, Motores para veh�culo
+Use two more parameters: Pr(motor diesel) & Pr(electric motor)
 VAT could be 0, 5 or 19
 We're guessing 15
 *** 7219902, misc car goods
-Mostly 19, we're saying 19.
+Make a parameter: Pr(carburator)
+5% carburators, 19% anything else.
 *** 7350101, mixed transport
-19 for air travel, otherwise 0; we're saying 0.
+param: Pr(air travel)
+19 for air travel, otherwise 0.
 *** 8200203, smart phones
 0 VAT if cheap, 19 if expensive
 threshold at 22UVT, aprox. $700800 COP
+*** 8300204, Servicio telefï¿½nico residencial (local y larga distancia)
+Another parameter: The fraction of the expenditure on which VAT is charged.
+
+These are land line minutes.
+The first 325 are VAT-free. After that, 19%.
+*** 8300301, Servicios de acceso a Internet bla bla
+19% if estrato > 3, else 0.
+*** 8300303, Internet cafe
+Excluded. Uses the excluded parameter used elsewhere.
+19% until final consumer.
+*** 9130101, Computadores personales de escritorio (PC, all in one)
+19% if above 50UVT, aprox. $1593000 COP
+else 0
+*** 9130110, Computadores portï¿½tiles
+19% above 50UVT, aprox. $1593000 COP
+else 0
+*** 9130111, Tabletas (ipads)
+19% above 22UVT, aprox. $700800; else 0
+*** 9310202, Bicicletas para niï¿½o(a), triciclos, columpios
+If below 50 UVT (aprox $1593000 COP) the VAT rate is 5%
+If electric (parameter), it's 5%.
+Else it's 19%.
+*** 9330501, Semillas, bulbos de plantas, cï¿½sped, fertilizantes, fungicidas, abonos, materas, macetas y tiestos para flores y plantas
+Two parameters: The common exclusion parameter, and how much of flower stuff is fertilizers.
+Almost everything 19%, but fertilizers are excluded.
+*** 9520301, Revistas sueltas, comics, novelas grï¿½ficas, historietas, cuentos y cuadernillos para colorear
+19% unless culturally awesome (parameter)
+*** 9540202, Bolï¿½grafos, estilï¿½grafos, plumas, marcadores, plumones y resaltadores
+new param: some 0, some 19
+*** 12320401, Artï¿½culos personales varios como: gafas de sol, lentes de contacto, cosmeticos, bastones, paraguas y sombrillas, abanicos, llaveros, etc
+lentes & lentes de contacto are excluded
+others cost 19%
+*** 12709903, Servicio de fotocopias, reducciones, ampliaciones, laminaciones, argollados, impresiï¿½n de hojas y documentos, servicio de scanner, servicio de quemado de CD o DVD y trabajos en computador
+Not mentioned in tax code, so would assume 19%. But, people buy these services in tiny shops that would not charge VAT, so in our table we're saying 0.
+** TODO non-coicop: special cases too
+*** 3 : param for % that is rice
+rice has a 0 rate, others 5
+*** 9 : param for % of queso that is campesino
+campesino : 0 vat
+else : 5 vat
+*** 18 : param for % that is panela
+panela is excluded
+others 5%
+*** 19 : param for % bocadillo | arequipe
+bocadillo & arequipe are excluded
+others are 19%
+*** 21 : % salt
+salt is excluded
+others are 19%
+*** 24 : % water
+water exempt, others excluded
 ** interpret region
 centro poblado = smallest unit
 otras cabeceras = bigger, aggregate of municipalities
@@ -87,6 +142,7 @@ Luis wanted at least for ...
 ** value = expense; price = value / quantity
 *** David used real data, e.g. rice price, to figure this out. Genius.
 * to explain in paper : institution details | judgment calls
+** all the COICOP exceptions
 ** benefits/expenses that we ignored
 *** P1651S1 : fulfillment insurance : ignonred
 ambiguous whether it's an expense or part of salary, and the frequency is roughly unavailable -- we know the freq only for the most recent contract.
@@ -109,7 +165,7 @@ sales, loan repayment, jury awards, gambling winnings, inheritance ...
 ** terms in the ENPH
 *** Unemployed
 During the past four weeks, actively searching for a job and available last week to start in case of success; or employed at least 2 weeks over the last 12 months, has actively searched after last job and was available last week to start in case of success; or not employed at least 2 weeks over the last 12 months, has actively searched after last job and was available last week to start in case of success.
-*** Inactive 
+*** Inactive
 Permanent disability; or During the past four weeks, actively searching for a job and not available last week to start in case of success; or not willing to work; or full-time students; or employed at least 2 weeks over the last 12 months but has not actively searched after last job; or full time domestic work; or has not searched for a job during the past 12 months; or has searched a job over the last 12 months but was not available to start last week in case of success.
 ** they are asked on the 15th about consumption on days 1-14
 ** where-got: if missing, assume taxed
