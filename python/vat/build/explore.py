@@ -16,6 +16,66 @@ import python.vat.build.purchases.articulos as articulos
 import python.vat.build.purchases.capitulo_c as capitulo_c
 
 
+util.describeWithMissing(
+  data.people[ data.people["age"] >= 18 ]
+  [ data.cols_benefit_in_kind + data.cols_benefit_cash ]
+)
+
+raw = pd.read_csv( "data/enph-2017/recip-100/Caracteristicas_generales_personas.csv" )
+raw = common.to_numbers(
+  raw.rename( columns = {
+    "P6040"      : "age"
+  , "P1668S1A4"  : "familias en accion"
+  , "P1668S3A4"  : "familias en su tierra"
+  , "P1668S4A4"  : "jovenes en accion"
+  , "P1668S2A4"  : "programa de adultos mayores"
+  , "P1668S5A4"  : "transferencias por victimizacion"
+} ) )
+
+util.describeWithMissing( raw[ raw["age"] >= 18 ]
+                          [[ "familias en accion"
+                             , "familias en su tierra"
+                             , "jovenes en accion"
+                             , "programa de adultos mayores"
+                             , "transferencias por victimizacion"
+                             ]] )
+
+util.describeWithMissing( data.people[ data.people["age"] >= 18 ]
+  [["income, year : benefit : familias en accion, in-kind"
+  , "income, year : benefit : familias en su tierra, in-kind"
+  , "income, year : benefit : jovenes en accion, in-kind"
+  , "income, year : benefit : programa de adultos mayores, in-kind"
+  , "income, year : benefit : transferencias por victimizacion, in-kind"
+  , "total income, monthly : benefit, cash"
+  , "total income, monthly : benefit, in-kind"
+]] )
+
+
+
+df = data.people.copy()
+df = df.rename( columns = {
+    'total income, monthly : labor, cash'    : "labor cash"
+  , 'total income, monthly : labor, in-kind' : "labor in-kind"
+  , 'total income, monthly : capital'        : "capital"
+} )
+df["total"] = df["labor cash"] + df["labor in-kind"] + df["capital"]
+df["total cash"] = df["labor cash"] + df["capital"]
+util.describeWithMissing( df[ df["age"] >= 18]
+                          [["labor cash","labor in-kind","capital","total","total cash"]]
+)
+
+util.describeWithMissing( df[ df["age"] >= 18]
+[[ 'total income, monthly : benefit, cash',
+   'total income, monthly : benefit, in-kind', 'capital',
+   'total income, monthly : grant, cash',
+   'total income, monthly : grant, in-kind',
+   'total income, monthly : infrequent', 'labor cash', 'labor in-kind'
+   ]]
+)
+
+
+
+
 
 df = pd.DataFrame( [[1,2],[3,np.nan]], columns = ["a","b"] )
 df2 = df.drop( df[ df["a"]==1 ].index )

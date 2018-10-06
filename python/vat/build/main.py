@@ -110,7 +110,7 @@ if True: # purchases
     )
 
 
-if False: # people
+if True: # people
   people = common.to_numbers( common.collect_files( ppl.files ) )
 
   if True: # drop non-members of household

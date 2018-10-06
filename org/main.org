@@ -1,4 +1,7 @@
 * TODO next
+** TODO P6207M1 : source of that money is in the questions after it.
+ICETEX = government
+** TODO Where the VAT is .19, the VAT burden is (0.19 / 1+0.19)
 ** goods that dodge the VAT
 *** summarized with a parameter, "share of final good that escapes the VAT"
 *** the rules : exemptions, exclusions and refunds 
@@ -11,10 +14,6 @@ including ordinary purchases
 00 means no
 99 means people do not know if it happened
 ** region : no VAT in San Andres
-** TODO frequency
-*** use the rural cap c legend for everything
-**** it's consistent with everything but the urban cap c legend, which appears to be wrong; the Stata legends are consistent
-*** if "nunca", discard
 ** TODO value : if 99 in capitulo C, discard
 ** where-got
 *** use the rural_semanal_fuera key; it's a superset of the others
@@ -167,7 +166,15 @@ sales, loan repayment, jury awards, gambling winnings, inheritance ...
 ** P7500S3A1 : alimony. ignoring, to avoid double-counting.
 ** terms in the ENPH
 *** Unemployed
-During the past four weeks, actively searching for a job and available last week to start in case of success; or employed at least 2 weeks over the last 12 months, has actively searched after last job and was available last week to start in case of success; or not employed at least 2 weeks over the last 12 months, has actively searched after last job and was available last week to start in case of success.
+Any of the following qualify. The first is the bulk of them.
+
+- During the past four weeks, actively searching for a job and available last week to start in case of success; 
+  P6240 : time use # 2 = buscando trabajo
+  P6350 : available to work # 1 = available
+
+- Employed at least 2 weeks over the last 12 months, has actively searched after last job and was available last week to start in case of success; 
+
+- Not employed at least 2 weeks over the last 12 months, has actively searched after last job and was available last week to start in case of success.
 *** Inactive
 Permanent disability; or During the past four weeks, actively searching for a job and not available last week to start in case of success; or not willing to work; or full-time students; or employed at least 2 weeks over the last 12 months but has not actively searched after last job; or full time domestic work; or has not searched for a job during the past 12 months; or has searched a job over the last 12 months but was not available to start last week in case of success.
 ** they are asked on the 15th about consumption on days 1-14
