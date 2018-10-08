@@ -54,16 +54,15 @@ if True: # add VAT to purchases
     purchases.loc[  purchases[x].isnull(), result] = purchases[y]
     purchases = purchases.drop( columns = [x,y] )
 
+  purchases["freq-code"] = purchases["freq"]
+    # kept for the sake of drawing a table of purchase frequency
+    # with frequencies spread evenly across the x-axis
+  purchases["freq"].replace( purchases_main.freq_key
+                           , inplace=True )
+  purchases = purchases.drop(
+    purchases[ purchases["freq"].isnull() ]
+    .index
+  )
 
-#  purchases["freq-code"] = purchases["freq"]
-#    # kept for the sake of drawing a table of purchase frequency
-#    # with frequencies spread evenly across the x-axis
-#  purchases["freq"].replace( purchases_main.freq_key
-#                           , inplace=True )
-#  purchases = purchases.drop(
-#    purchases[ purchases["freq"].isnull() ]
-#    .index
-#  )
-#
 #  purchases["value"] = purchases["freq"] * purchases["value"]
 #  purchases["vat-paid"] = purchases["value"] * purchases["vat-fraction"]
