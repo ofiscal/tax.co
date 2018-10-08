@@ -21,9 +21,11 @@ if True: # buildings
 
 
 if True: # VAT dictionaries
-  # capitulo c is comma-separated
-  # coicop is semicolon-separated
-  pass
+  vat_cap_c = pd.read_csv( "data/vat/" + "vat-for-capitulo-c.csv"
+                         , encoding = "latin1" )
+  vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
+                          , sep = ";"
+                          , encoding = "latin1" )
 
 
 if True: # purchases
