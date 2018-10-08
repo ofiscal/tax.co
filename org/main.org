@@ -1,4 +1,5 @@
 * TODO next
+** Why is household-member part of the purchase data?
 ** TODO P6207M1 : source of that money is in the questions after it.
 ICETEX = government
 ** TODO Where the VAT is .19, the VAT burden is (0.19 / 1+0.19)
