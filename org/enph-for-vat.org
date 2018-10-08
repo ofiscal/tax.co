@@ -512,6 +512,8 @@ Asks if the purchase was for breakfast, lunch or dinner.
   6 » 6. Tomados de un negocio del hogar
   7 » 7. Otra
 ** where-got
+*** CORRECTION : Ignore the parts below that say "no vat".
+Even a tiny bodega has incentive to charge VAT (unless they add more than half the product's value), to be reimbursed. A callejero is probably not getting reimbursed, but the value they add is very small, and the VAT from the rest of the production chain will still reach the consumer.
 *** use the value on the right
 *** relevant only for food
 *** not present in these files; can assume bought in a place that charges VAT
@@ -536,8 +538,8 @@ Asks if the purchase was for breakfast, lunch or dinner.
 ***** TODO 15 » 15 Bodegas o fábricas.
 ***** 16 » 16 Establecimiento especializado en la venta del artículo o la prestación del servicio adquirido
 ***** 17 » 17 Farmacias y droguerías
-***** depends on COICOP : 18 » 18 Restaurantes
-***** depends on COICOP : 19 » 19 Cafeterías y establecimientos de comidas rápidas
+***** 18 » 18 Restaurantes
+***** 19 » 19 Cafeterías y establecimientos de comidas rápidas
 ***** no vat - 20 » 20 Persona particular
 ***** 21 » 21 Ferias especializadas: Artesanal, del hogar, del libro, de computadores, etc.
 ***** 22 » 22 A través de internet

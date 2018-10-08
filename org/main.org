@@ -1,21 +1,10 @@
 * TODO next
-** TODO These error codes apply to all income and expense variables
-including ordinary purchases
-98 means people know they moved some money but do not know the amount;
-00 means no
-99 means people do not know if it happened
-
-** TODO value : if 99 in capitulo C, discard
-** TODO where-got
-*** use the rural_semanal_fuera key; it's a superset of the others
-*** TODO david : we believe there is no interaction between where-got and coicop
-
 ** TODO Where the VAT is .19, the VAT burden is (0.19 / 1+0.19)
 ** TODO P6207M1 : source of that money is in the questions after it.
 ICETEX = government
 ** goods that dodge the VAT
 *** summarized with a parameter, "share of final good that escapes the VAT"
-*** the rules : exemptions, exclusions and refunds 
+*** the rules : exemptions, exclusions and refunds
 If the final good is exempt, and an input carries VAT, the final seller *is* eligible for a refund of the VAT on the input.
 If the final good is excluded, and an input carries VAT, the final seller is *not* eligible for a refund of the VAT on the input.
 ** update coicop-vat bridge on desktop
@@ -170,11 +159,11 @@ sales, loan repayment, jury awards, gambling winnings, inheritance ...
 *** Unemployed
 Any of the following qualify. The first is the bulk of them.
 
-- During the past four weeks, actively searching for a job and available last week to start in case of success; 
+- During the past four weeks, actively searching for a job and available last week to start in case of success;
   P6240 : time use # 2 = buscando trabajo
   P6350 : available to work # 1 = available
 
-- Employed at least 2 weeks over the last 12 months, has actively searched after last job and was available last week to start in case of success; 
+- Employed at least 2 weeks over the last 12 months, has actively searched after last job and was available last week to start in case of success;
 
 - Not employed at least 2 weeks over the last 12 months, has actively searched after last job and was available last week to start in case of success.
 *** Inactive
@@ -207,6 +196,16 @@ Hopefully that will be close to 0 after discarding:
 *** when is-purchase=1, freq is undefined only .015 % of the time
 *** so omitting purchase!=1 observations won't bias our estimate of VAT
 *** it will, however, bias (downward) our estimate of consumption
+** These error codes apply to all income and expense variables
+*** the error codes
+including ordinary purchase value
+98 means people know they moved some money but do not know the amount;
+00 means no
+99 means people do not know if it happened
+*** why it's safe to ignore for now
+In almost every variable in both people (income) and purchases (value), these error codes do not appear.
+In the few variables where they do, they make up a miniscule fraction of observations -- the highest I saw was 0.2%.
+And 98 or 99 pesos is almost no money, so including it in someone's total income or total purchase value is not going to meaningfully change the total.
 * about the data|results
 ** The ENPH : http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
 ** the 200 / 1400 missing COICOP codes appear not to matter much
