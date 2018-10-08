@@ -1,7 +1,6 @@
-from python.vat.build.classes import File, Correction
+from python.vat.build.classes import Correction
 import numpy as np
 import pandas as pd
-import math
 
 
 subsample = 100
