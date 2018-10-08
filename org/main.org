@@ -8,8 +8,8 @@ ICETEX = government
 *** the rules : exemptions, exclusions and refunds
 If the final good is exempt, and an input carries VAT, the final seller *is* eligible for a refund of the VAT on the input.
 If the final good is excluded, and an input carries VAT, the final seller is *not* eligible for a refund of the VAT on the input.
-** update coicop-vat bridge on desktop
-** region : no VAT in San Andres
+** update coicop-vat bridge on OneDrive
+** TODO region : no VAT in San Andres
 ** TODO with David : coicop: lots of special cases
 *** 5310101
 DS guesses 19% more often

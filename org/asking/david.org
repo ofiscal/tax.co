@@ -1,5 +1,6 @@
 * news
 * yet to ask
+** VAT rate(s) for coicop 12620105
 * asking
 ** freq
 *** Is there a good default value?
