@@ -16,6 +16,20 @@ import python.vat.build.purchases.articulos as articulos
 import python.vat.build.purchases.capitulo_c as capitulo_c
 
 
+dfc = data.purchases[ data.purchases["file-origin"]=="rural capitulo c" ]
+
+data.purchases[[ "vat", "vat_x","vat_y" ]]
+data.purchases[[  "min vat frac", "min vat frac_x","min vat frac_y" ]]
+data.purchases[[  "min vat frac", "max vat frac_x","max vat frac_y" ]]
+data.purchases[[  "min vat", "min vat_x","min vat_y" ]]
+data.purchases[[  "min vat", "max vat_x","max vat_y" ]]
+
+dfc[[  "min vat frac", "min vat frac_x","min vat frac_y" ]]
+dfc[[  "min vat frac", "max vat frac_x","max vat frac_y" ]]
+dfc[[  "min vat", "min vat_x","min vat_y" ]]
+dfc[[  "min vat", "max vat_x","max vat_y" ]]
+
+
 util.describeWithMissing(
   data.people[ data.people["age"] >= 18 ]
   [ data.cols_benefit_in_kind + data.cols_benefit_cash ]
