@@ -47,9 +47,9 @@ if True: # add VAT to purchases
 
   for (result, x, y) in [ ("vat", "vat_x","vat_y")
                       , ("min vat frac", "min vat frac_x","min vat frac_y")
-                      , ("min vat frac", "max vat frac_x","max vat frac_y")
+                      , ("max vat frac", "max vat frac_x","max vat frac_y")
                       , ("min vat", "min vat_x","min vat_y")
-                      , ("min vat", "max vat_x","max vat_y") ]:
+                      , ("max vat", "max vat_x","max vat_y") ]:
     purchases.loc[ ~purchases[x].isnull(), result] = purchases[x]
     purchases.loc[  purchases[x].isnull(), result] = purchases[y]
     purchases = purchases.drop( columns = [x,y] )
@@ -64,5 +64,6 @@ if True: # add VAT to purchases
     .index
   )
 
-#  purchases["value"] = purchases["freq"] * purchases["value"]
-#  purchases["vat-paid"] = purchases["value"] * purchases["vat-fraction"]
+  purchases["value"] = purchases["freq"] * purchases["value"]
+  purchases["vat paid, max"] = purchases["value"] * purchases["max vat frac"]
+  purchases["vat paid, min"] = purchases["value"] * purchases["min vat frac"]
