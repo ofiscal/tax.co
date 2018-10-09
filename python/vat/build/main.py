@@ -5,7 +5,7 @@ import python.vat.build.common as common
 
 # input files
 import python.vat.build.buildings.files as bldg
-# from python.vat.build.people.main import people
+from python.vat.build.people.main import people
 from   python.vat.build.purchases.main import purchases
 import python.vat.build.purchases.main as purchases_main
 

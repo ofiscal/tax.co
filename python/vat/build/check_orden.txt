@@ -1,0 +1,60 @@
+All purchases
+          household-member
+0                 0.000000
+length        69051.000000
+missing           0.000000
+count         69051.000000
+mean              8.206022
+std              10.721482
+min               1.000000
+25%               2.000000
+50%               4.000000
+75%              11.000000
+max             149.000000
+
+("ORDEN" = household-member)
+
+
+Gastos_diarios_Urbanos.csv
+                ORDEN
+0            0.000000
+length   33935.000000
+missing      0.000000
+count    33935.000000
+mean         4.482245
+std          4.928687
+min          1.000000
+25%          2.000000
+50%          3.000000
+75%          5.000000
+max         82.000000
+
+
+Gastos_menos_frecuentes_-_Articulos.csv
+                ORDEN
+0            0.000000
+length   21113.000000
+missing      0.000000
+count    21113.000000
+mean        17.277128
+std         14.229420
+min          1.000000
+25%          7.000000
+50%         14.000000
+75%         24.000000
+max        149.000000
+
+
+Gastos_diarios_Urbano_-_Capitulo_C.csv
+                ORDEN
+0            0.000000
+length   20360.000000
+missing      0.000000
+count    20360.000000
+mean        12.970285
+std          7.244134
+min          1.000000
+25%          7.000000
+50%         13.000000
+75%         19.000000
+max         25.000000
