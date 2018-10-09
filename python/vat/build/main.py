@@ -5,7 +5,7 @@ import python.vat.build.common as common
 
 # input files
 import python.vat.build.buildings.files as bldg
-from python.vat.build.people.main import people
+# from python.vat.build.people.main import people
 from   python.vat.build.purchases.main import purchases
 import python.vat.build.purchases.main as purchases_main
 
@@ -74,4 +74,10 @@ if True: # add VAT to purchases
 
 if True: # sum purchases within person
   purchases["transactions"] = 1 # useful later, when it is summed
-  # data.purchases.filter(regex="vat").columns:
+  purchase_sums = purchases.groupby( ["household", "household-member"]
+           ) [ "value"
+             , "transactions"
+             , "vat paid, max"
+             , "vat paid, min"
+           ] . agg("sum")
+  purchase_sums = purchase_sums.reset_index( level = ["household", "household-member"] )

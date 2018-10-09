@@ -1,4 +1,5 @@
 * TODO next
+** TODO In purchases, why does household_member have such a big range?
 ** TODO P6207M1 : source of that money is in the questions after it.
 ICETEX = government
 ** TODO sort income by source, not "benefit" and "grant"
