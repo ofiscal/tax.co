@@ -1,6 +1,8 @@
 * news
 * yet to ask
 ** VAT rate(s) for coicop 12620105
+** can we distinguish between gov and private pension in
+P7500S2A1
 * asking
 ** freq
 *** Is there a good default value?
