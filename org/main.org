@@ -1,8 +1,7 @@
 * TODO next
-** TODO Where the VAT is .19, the VAT burden is (0.19 / 1+0.19)
-** Why is household-member part of the purchase data?
 ** TODO P6207M1 : source of that money is in the questions after it.
 ICETEX = government
+** TODO sort income by source, not "benefit" and "grant"
 ** goods that dodge the VAT
 *** summarized with a parameter, "share of final good that escapes the VAT"
 *** the rules : exemptions, exclusions and refunds
@@ -10,7 +9,7 @@ If the final good is exempt, and an input carries VAT, the final seller *is* eli
 If the final good is excluded, and an input carries VAT, the final seller is *not* eligible for a refund of the VAT on the input.
 ** update coicop-vat bridge on OneDrive
 ** TODO region : no VAT in San Andres
-** TODO with David : coicop: lots of special cases
+** TODO coicop -> vat : special cases
 *** 5310101
 DS guesses 19% more often
 5% if:
@@ -86,7 +85,7 @@ lentes & lentes de contacto are excluded
 others cost 19%
 *** 12709903, Servicio de fotocopias, reducciones, ampliaciones, laminaciones, argollados, impresiï¿½n de hojas y documentos, servicio de scanner, servicio de quemado de CD o DVD y trabajos en computador
 Not mentioned in tax code, so would assume 19%. But, people buy these services in tiny shops that would not charge VAT, so in our table we're saying 0.
-** TODO non-coicop: special cases too
+** TODO non-coicop -> vat : special cases
 *** 3 : param for % that is rice
 rice has a 0 rate, others 5
 *** 9 : param for % of queso that is campesino

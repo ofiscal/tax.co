@@ -27,14 +27,15 @@ if True: # VAT dictionaries
                           , encoding = "latin1" )
 
   for (vat,frac) in [ ("vat"    ,     "vat frac")
-                    , ("min vat", "min vat frac")
-                    , ("max vat", "max vat frac") ]:
+                    , ("vat, min", "vat frac, min")
+                    , ("vat, max", "vat frac, max") ]:
     vat_cap_c[frac]  = vat_cap_c[vat]  / (1 + vat_cap_c[vat])
     vat_coicop[frac] = vat_coicop[vat] / (1 + vat_coicop[vat])
 
   # Multiplying vat-fraction by value (payment)
     # results in the fraction  of the value attributable to the vat.
     # For instance, if the VAT were 20%, then (0.2 / 1.2) is that fraction.
+
 
 if True: # add VAT to purchases
   purchases = purchases.merge( vat_coicop, how = "left", on="coicop" )
@@ -46,10 +47,12 @@ if True: # add VAT to purchases
   # the two that were selected from.
 
   for (result, x, y) in [ ("vat", "vat_x","vat_y")
-                      , ("min vat frac", "min vat frac_x","min vat frac_y")
-                      , ("max vat frac", "max vat frac_x","max vat frac_y")
-                      , ("min vat", "min vat_x","min vat_y")
-                      , ("max vat", "max vat_x","max vat_y") ]:
+                        , ("vat frac", "vat frac_x","vat frac_y")
+                        , ("description", "description_x","description_y")
+                        , ("vat frac, min", "vat frac, min_x","vat frac, min_y")
+                        , ("vat frac, max", "vat frac, max_x","vat frac, max_y")
+                        , ("vat, min", "vat, min_x","vat, min_y")
+                        , ("vat, max", "vat, max_x","vat, max_y") ]:
     purchases.loc[ ~purchases[x].isnull(), result] = purchases[x]
     purchases.loc[  purchases[x].isnull(), result] = purchases[y]
     purchases = purchases.drop( columns = [x,y] )
@@ -65,5 +68,10 @@ if True: # add VAT to purchases
   )
 
   purchases["value"] = purchases["freq"] * purchases["value"]
-  purchases["vat paid, max"] = purchases["value"] * purchases["max vat frac"]
-  purchases["vat paid, min"] = purchases["value"] * purchases["min vat frac"]
+  purchases["vat paid, max"] = purchases["value"] * purchases["vat frac, max"]
+  purchases["vat paid, min"] = purchases["value"] * purchases["vat frac, min"]
+
+
+if True: # sum purchases within person
+  purchases["transactions"] = 1 # useful later, when it is summed
+  # data.purchases.filter(regex="vat").columns:
