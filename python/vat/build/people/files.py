@@ -15,10 +15,8 @@ demog = {
   , "P6210"      : "education" # highest level completed
 }
 
-income_benefit = {
-    "P7500S2A1"  : "income, month : pension : age | illness"
-  , "P9460S1"    : "income, month : govt : unemployment"
-
+income_govt = {
+    "P9460S1"    : "income, month : govt : unemployment"
   , "P1668S1A1"  : "income, year : govt : familias en accion"
   , "P1668S3A2"  : "income, year : govt : familias en su tierra"
   , "P1668S4A2"  : "income, year : govt : jovenes en accion"
@@ -62,7 +60,6 @@ income_labor = {
   , "P6779S1"    : "income, month : labor : viaticum ?2"
 
   , "P550"       : "income, year : labor : rural"
-  , "P7510S6A1"  : "income, year : labor : cesantia"
   , "P6630S5A1"  : "income, year : labor : bonus"
   , "P6630S2A1"  : "income, year : labor : christmas bonus"
   , "P6630S1A1"  : "income, year : labor : prima de servicios"
@@ -76,16 +73,19 @@ income_labor = {
   , "P6610S1"    : "income, month : labor : transport, in-kind"
 }
 
-income_grant = {
-    "P8610S2"    : "income, year : grant : edu, beca, in-kind"
-  , "P8612S2"    : "income, year : grant : edu, non-beca, in-kind"
+income_edu = {
+    "P8610S2"    : "income, year : edu : beca, in-kind"
+  , "P8612S2"    : "income, year : edu : non-beca, in-kind"
+  , "P8610S1"    : "income, year : edu : beca"
+  , "P8612S1"    : "income, year : edu : non-beca"
+}
 
-  , "P8610S1"    : "income, year : grant : edu, beca"
-  , "P8612S1"    : "income, year : grant : edu, non-beca"
-  , "P7510S3A1"  : "income, year : grant : from private domestic ?firms"
-  , "P7510S4A1"  : "income, year : grant : from private foreign ?firms"
-  , "P7510S1A1"  : "income, year : grant : remittance, domestic"
-  , "P7510S2A1"  : "income, year : grant : remittance, foreign"
+income_private = {
+    "P7500S3A1"  : "income, month : private : alimony"
+  , "P7510S3A1"  : "income, year : private : from private domestic ?firms"
+  , "P7510S4A1"  : "income, year : private : from private foreign ?firms"
+  , "P7510S1A1"  : "income, year : private : remittance, domestic"
+  , "P7510S2A1"  : "income, year : private : remittance, foreign"
 }
 
 income_infrequent = {
@@ -113,6 +113,16 @@ income_capital = {
   , "P7513S1A1"  : "income, year : sale : real estate"
   , "P7513S4A1"  : "income, year : sale : stock ?2"
   , "P7513S2A1"  : "income, year : sale : vehicle | equipment"
+}
+
+income = { **income_govt
+         , **income_labor
+         , **income_edu
+         , **income_private
+         , **income_infrequent
+         , **income_capital
+         , "P7500S2A1"  : "income, month : pension : age | illness"
+         , "P7510S6A1"  : "income, year : cesantia"
 }
 
 beca_govt = {
@@ -158,11 +168,7 @@ files = [
     , "Caracteristicas_generales_personas.csv"
     , { **common.variables
       , **demog
-      , **income_benefit
-      , **income_labor
-      , **income_grant
-      , **income_infrequent
-      , **income_capital
+      , **income
       , **beca_sources
     } , common.corrections
       + [classes.Correction.Drop_Column( "file-origin" )
