@@ -33,8 +33,9 @@ if True: # income
 
     re = regex.compile( ".*income.*" )
     income_columns = [c for c in people.columns if re.match( c )]
-    people[ income_columns ] = people[income_columns] . fillna(0)
-    del(re, income_columns)
+    columns_to_convert = income_columns + list( files.beca_sources.values() )
+    people[columns_to_convert] = people[columns_to_convert] . fillna(0)
+    del(re, income_columns, columns_to_convert)
 
   if True: # divide yearly income variables by 12
     re_year_income  = regex.compile( "^income, year" )

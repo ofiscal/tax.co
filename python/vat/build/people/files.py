@@ -129,7 +129,10 @@ beca_private = {
   , "P6207M9"  : "beca from organismo internacional"
   , "P6207M10" : "beca from Universidades y ONGs"
 }
-beca_sources = { **beca_govt, **beca_private }
+beca_sources = { **beca_govt
+               , **beca_private
+               , "P6236" : "non-beca source" # PITFALL : a space-separated list of ints
+}
 
 inclusion_pairs = [
      ( "income, month : labor : bonus ?2"
@@ -161,7 +164,6 @@ files = [
       , **income_infrequent
       , **income_capital
       , **beca_sources
-      , "P6236" : "non-beca source" # PITFALL : a space-separated list of ints
     } , common.corrections
       + [classes.Correction.Drop_Column( "file-origin" )
         ]
