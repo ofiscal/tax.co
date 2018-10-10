@@ -6,10 +6,10 @@ import re
 
 #### considering all variables ####
 beca_col_map = {
-    "P8610S2"  : "grant : edu, beca, in-kind"
-  , "P8612S2"  : "grant : edu, non-beca, in-kind"
-  , "P8610S1"  : "grant : edu, beca"
-  , "P8612S1"  : "grant : edu, non-beca"
+    "P8610S2"    : "income, year : edu : beca, in-kind"
+  , "P8612S2"    : "income, year : edu : non-beca, in-kind"
+  , "P8610S1"    : "income, year : edu : beca"
+  , "P8612S1"    : "income, year : edu : non-beca"
   , "P6207M1"  : "beca from same school"
   , "P6207M2"  : "beca from ICETEX"
   , "P6207M3"  : "beca from gov, central"
@@ -25,7 +25,7 @@ beca_col_map = {
 
 df = pd.read_csv( "data/enph-2017/recip-1/" + "Caracteristicas_generales_personas.csv"
                 , usecols =  beca_col_map.keys()
-#    ) . replace( ' ', np.nan
+    ) . replace( ' ', np.nan
     ) . rename( columns = beca_col_map )
 df["non-beca sources"].unique()
 

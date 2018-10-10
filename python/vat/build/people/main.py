@@ -53,15 +53,49 @@ if True: # income
 
   if True: # compute income totals, drop components
     if True: # divide educational income by source (government or private)
-      people["beca sources, govt"]    = people[ list( files.beca_sources_govt   .values()
-                                        ) ] . sum( axis=1 )
-      people["beca sources, private"] = people[ list( files.beca_sources_private.values()
-                                        ) ] . sum( axis=1 )
       people["non-beca sources"] = people["non-beca sources"] . apply( str )
+        # if none of the values includes more than one source (true in subsamples),
+        # it is by default interpreted as a number.
+
       people["non-beca sources, govt"] = people["non-beca sources"
                                          ] . apply( files.count_public )
       people["non-beca sources, private"] = people["non-beca sources"
                                          ] . apply( files.count_private )
+      people["non-beca sources, total"] = ( people["non-beca sources, govt"]
+                                          + people["non-beca sources, private"] )
+
+      people["beca sources, govt"]    = people[ list( files.beca_sources_govt   .values()
+                                        ) ] . sum( axis=1 )
+      people["beca sources, private"] = people[ list( files.beca_sources_private.values()
+                                        ) ] . sum( axis=1 )
+      people["beca sources, total"] = ( people["beca sources, govt"]
+                                      + people["beca sources, private"] )
+
+      people["income, month : govt : beca"]        = ( people["income, year : edu : beca"]
+        * people["beca sources, govt"]    / people["beca sources, total"] )
+      people["income, month : private : beca"]     = ( people["income, year : edu : beca"]
+        * people["beca sources, private"] / people["beca sources, total"] )
+      people["income, month : govt : non-beca"]    = ( people["income, year : edu : non-beca"]
+        * people["non-beca sources, govt"]    / people["non-beca sources, total"] )
+      people["income, month : private : non-beca"] = ( people["income, year : edu : non-beca"]
+        * people["non-beca sources, private"] / people["non-beca sources, total"] )
+
+      people["income, month : govt : beca, in-kind"]        = (
+        people["income, year : edu : beca, in-kind"]
+        * people["beca sources, govt"]    / people["beca sources, total"] )
+      people["income, month : private : beca, in-kind"]     = (
+        people["income, year : edu : beca, in-kind"]
+        * people["beca sources, private"]    / people["beca sources, total"] )
+      people["income, month : govt : non-beca, in-kind"]    = (
+        people["income, year : edu : non-beca, in-kind"]
+        * people["non-beca sources, govt"]    / people["non-beca sources, total"] )
+      people["income, month : private : non-beca, in-kind"] = (
+        people["income, year : edu : non-beca, in-kind"]
+        * people["non-beca sources, private"]    / people["non-beca sources, total"] )
+
+      new_income_variables = people.filter(
+        regex = "^income, month : (govt|private) : (beca|non-\beca)" )
+      new_income_variables.fillna(0)
     
     if True: # benefit income (cash + in-kind)
       re_benefit  = regex.compile( "^income.* : benefit" )
