@@ -18,20 +18,19 @@ files = [
       , "P6210"      : "education" # highest level completed
 
       # benefit income
-        , "P7500S2A1"  : "income, month : benefit : pension for age | illness"
-        , "P9460S1"    : "income, month : benefit : unemployment"
+        , "P7500S2A1"  : "income, month : pension : age | illness"
+        , "P9460S1"    : "income, month : govt : unemployment"
   
-        , "P7510S6A1"  : "income, year : benefit : cesantia"
-        , "P1668S1A1"  : "income, year : benefit : familias en accion"
-        , "P1668S3A2"  : "income, year : benefit : familias en su tierra"
-        , "P1668S4A2"  : "income, year : benefit : jovenes en accion"
-        , "P1668S2A2"  : "income, year : benefit : programa de adultos mayores"
-        , "P1668S5A2"  : "income, year : benefit : transferencias por victimizacion"
-        , "P1668S1A4"  : "income, year : benefit : familias en accion, in-kind"
-        , "P1668S3A4"  : "income, year : benefit : familias en su tierra, in-kind"
-        , "P1668S4A4"  : "income, year : benefit : jovenes en accion, in-kind"
-        , "P1668S2A4"  : "income, year : benefit : programa de adultos mayores, in-kind"
-        , "P1668S5A4"  : "income, year : benefit : transferencias por victimizacion, in-kind"
+        , "P1668S1A1"  : "income, year : govt : familias en accion"
+        , "P1668S3A2"  : "income, year : govt : familias en su tierra"
+        , "P1668S4A2"  : "income, year : govt : jovenes en accion"
+        , "P1668S2A2"  : "income, year : govt : programa de adultos mayores"
+        , "P1668S5A2"  : "income, year : govt : transferencias por victimizacion"
+        , "P1668S1A4"  : "income, year : govt : familias en accion, in-kind"
+        , "P1668S3A4"  : "income, year : govt : familias en su tierra, in-kind"
+        , "P1668S4A4"  : "income, year : govt : jovenes en accion, in-kind"
+        , "P1668S2A4"  : "income, year : govt : programa de adultos mayores, in-kind"
+        , "P1668S5A4"  : "income, year : govt : transferencias por victimizacion, in-kind"
 
       # labor income
         , "P6500"      : "income, month : labor : formal employment"
@@ -64,6 +63,7 @@ files = [
         , "P6779S1"    : "income, month : labor : viaticum ?2"
   
         , "P550"       : "income, year : labor : rural"
+        , "P7510S6A1"  : "income, year : labor : cesantia"
         , "P6630S5A1"  : "income, year : labor : bonus"
         , "P6630S2A1"  : "income, year : labor : christmas bonus"
         , "P6630S1A1"  : "income, year : labor : prima de servicios"
@@ -79,7 +79,7 @@ files = [
       # grant income
         , "P8610S2"    : "income, year : grant : edu, beca, in-kind"
         , "P8612S2"    : "income, year : grant : edu, non-beca, in-kind"
-  
+
         , "P8610S1"    : "income, year : grant : edu, beca"
         , "P8612S1"    : "income, year : grant : edu, non-beca"
         , "P7510S3A1"  : "income, year : grant : from private domestic ?firms"
