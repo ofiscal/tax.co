@@ -115,6 +115,23 @@ income_capital = {
   , "P7513S2A1"  : "income, year : sale : vehicle | equipment"
 }
 
+beca_sources = {
+    "P8610S2"  : "grant : edu, beca, in-kind"
+  , "P8612S2"  : "grant : edu, non-beca, in-kind"
+  , "P8610S1"  : "grant : edu, beca"
+  , "P8612S1"  : "grant : edu, non-beca"
+  , "P6207M1"  : "beca from same school"
+  , "P6207M2"  : "beca from ICETEX"
+  , "P6207M3"  : "beca from gov, central"
+  , "P6207M4"  : "beca from gov, peripheral"
+  , "P6207M5"  : "beca from another public entity"
+  , "P6207M6"  : "beca from empresa publica ~familiar"
+  , "P6207M7"  : "beca from empresa privada ~familiar"
+  , "P6207M8"  : "beca from other private"
+  , "P6207M9"  : "beca from organismo internacional"
+  , "P6207M10" : "beca from Universidades y ONGs"
+}
+
 inclusion_pairs = [
      ( "income, month : labor : bonus ?2"
        , "income, month : labor : bonus ?2, included in 6500"
@@ -144,6 +161,8 @@ files = [
       , **income_grant
       , **income_infrequent
       , **income_capital
+      , **beca_sources
+      , "P6236" : "non-beca source" # PITFALL : a space-separated list of ints
     } , common.corrections
       + [classes.Correction.Drop_Column( "file-origin" )
         ]
