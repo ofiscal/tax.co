@@ -1,5 +1,4 @@
 * TODO next
-** edu income
 ** PITFALL ! people["non-beca sources"] sometimes turns numeric
 It is a space-separated list of integers.
 In the 1/100 sample it has no lists greater than 1, so it is converted automatically to numeric.

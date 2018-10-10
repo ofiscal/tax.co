@@ -102,17 +102,17 @@ if True: # income
                             people.filter( regex = "(^beca)|(edu : .*beca)|(beca source)"
                             ).columns )
     
-    if True: # benefit income (cash + in-kind)
-      re_benefit  = regex.compile( "^income.* : benefit" )
-      cols_benefit_cash    = [ c for c in people.columns
-                               if re_benefit.match(c) and not re_in_kind.match(c) ]
-      cols_benefit_in_kind = [ c for c in people.columns
-                               if re_benefit.match(c) and     re_in_kind.match(c) ]
-      people["total income, monthly : benefit, cash"] = (
-        people[ cols_benefit_cash ].sum( axis=1 ) )
-      people["total income, monthly : benefit, in-kind"] = (
-        people[ cols_benefit_in_kind ].sum( axis=1 ) )
-      people = people.drop( columns = cols_benefit_in_kind + cols_benefit_cash )
+    if True: # govt income (cash + in-kind)
+      re_govt  = regex.compile( "^income.* : govt" )
+      cols_govt_cash    = [ c for c in people.columns
+                               if re_govt.match(c) and not re_in_kind.match(c) ]
+      cols_govt_in_kind = [ c for c in people.columns
+                               if re_govt.match(c) and     re_in_kind.match(c) ]
+      people["total income, monthly : govt, cash"] = (
+        people[ cols_govt_cash ].sum( axis=1 ) )
+      people["total income, monthly : govt, in-kind"] = (
+        people[ cols_govt_in_kind ].sum( axis=1 ) )
+      people = people.drop( columns = cols_govt_in_kind + cols_govt_cash )
 
     if True: # capital income (cash only)
       re_capital = regex.compile( "^income.* : (investment|repayment|rental|sale) : .*" )
@@ -122,17 +122,17 @@ if True: # income
         people[ cols_capital ].sum( axis=1 ) )
       people = people.drop( columns = cols_capital )
 
-    if True: # grant income (cash + in-kind)
-      re_grant  = regex.compile( "^income.* : grant : " )
-      cols_grant_cash    = [ c for c in people.columns
-                               if re_grant.match(c) and not re_in_kind.match(c) ]
-      cols_grant_in_kind = [ c for c in people.columns
-                               if re_grant.match(c) and     re_in_kind.match(c) ]
-      people["total income, monthly : grant, cash"] = (
-        people[ cols_grant_cash ].sum( axis=1 ) )
-      people["total income, monthly : grant, in-kind"] = (
-        people[ cols_grant_in_kind ].sum( axis=1 ) )
-      people = people.drop( columns = cols_grant_in_kind + cols_grant_cash )
+    if True: # private income (cash + in-kind)
+      re_private  = regex.compile( "^income.* : private : " )
+      cols_private_cash    = [ c for c in people.columns
+                               if re_private.match(c) and not re_in_kind.match(c) ]
+      cols_private_in_kind = [ c for c in people.columns
+                               if re_private.match(c) and     re_in_kind.match(c) ]
+      people["total income, monthly : private, cash"] = (
+        people[ cols_private_cash ].sum( axis=1 ) )
+      people["total income, monthly : private, in-kind"] = (
+        people[ cols_private_in_kind ].sum( axis=1 ) )
+      people = people.drop( columns = cols_private_in_kind + cols_private_cash )
 
     if True: # infrequent income (cash only)
       re_infrequent = regex.compile( "^income, year : infrequent : " )
