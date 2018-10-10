@@ -61,6 +61,9 @@ if True: # merge demographic statistics
 
   people = pd.merge( people, demog, how = "right"
                      , on=["household","household-member"] )
+
+  # <<< RESUME transfer here >>>
+
   people["value/inc"] = people["value"]/people["income"]
   people["vat/value"] = people["vat-paid"]/people["value"]
   people["vat/inc"] = people["vat-paid"]/people["income"]
