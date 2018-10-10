@@ -127,8 +127,8 @@ income = { **income_govt
 
 beca_govt = {
     "P6207M2"  : "beca from ICETEX"
-  , "P6207M3"  : "beca from gov, central"
-  , "P6207M4"  : "beca from gov, peripheral"
+  , "P6207M3"  : "beca from govt, central"
+  , "P6207M4"  : "beca from govt, peripheral"
   , "P6207M5"  : "beca from another public entity"
   , "P6207M6"  : "beca from empresa publica ~familiar"
 }

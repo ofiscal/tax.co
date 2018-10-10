@@ -50,7 +50,10 @@ if True: # income
 
   if True: # compute income totals, drop components
     if True: # divide educational income by source (government or private)
-      pass
+      people["beca sources, govt"]    = people[ list( files.beca_govt   .values() )
+                                        ] . sum( axis=1 )
+      people["beca sources, private"] = people[ list( files.beca_private.values() )
+                                        ] . sum( axis=1 )
 
     if True: # benefit income (cash + in-kind)
       re_benefit  = regex.compile( "^income.* : benefit" )
