@@ -96,6 +96,11 @@ if True: # income
       new_income_variables = people.filter(
         regex = "^income, month : (govt|private) : (beca|non-\beca)" )
       new_income_variables.fillna(0)
+
+      del(new_income_variables)
+      people = people.drop( columns =
+                            people.filter( regex = "(^beca)|(edu : .*beca)|(beca source)"
+                            ).columns )
     
     if True: # benefit income (cash + in-kind)
       re_benefit  = regex.compile( "^income.* : benefit" )
