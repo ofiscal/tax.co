@@ -20,13 +20,15 @@ beca_col_map = {
   , "P6207M8"  : "beca from other private"
   , "P6207M9"  : "beca from organismo internacional"
   , "P6207M10" : "beca from Universidades y ONGs"
-  , "P6236"    : "non-beca source" # PITFALL : This is a list, encoded as  a string
+  , "P6236"    : "non-beca sources" # PITFALL : This is a list, encoded as  a string
 }
 
 df = pd.read_csv( "data/enph-2017/recip-1/" + "Caracteristicas_generales_personas.csv"
                 , usecols =  beca_col_map.keys()
-    ) . replace( ' ', np.nan
+#    ) . replace( ' ', np.nan
     ) . rename( columns = beca_col_map )
+df["non-beca sources"].unique()
+
 should_be_numbers = df.filter( regex = "^((?!beca source).)*$" )
 should_be_numbers = should_be_numbers . astype( 'float' )
 
@@ -39,7 +41,6 @@ for v in sorted( df["non-beca source"].astype('str').unique() ): print(v)
   # Eyeballing the results of that, 10 of the 24 observations received from maybe* outside the government,
   # while almost all of them received from the government. Therefore I'm calling this government income.
   # * maybe because "from a university" is ambiguous -- the university might be public
-
 
 
 #### considering only government sources ####

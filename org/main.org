@@ -1,4 +1,7 @@
 * TODO next
+** PITFALL ! people["non-beca sources"] sometimes turns numeric
+It is a space-separated list of integers.
+In the 1/100 sample it has no lists greater than 1, so it is converted automatically to numeric.
 ** TODO P6207M1 : source of that money is in the questions after it.
 ICETEX = government
 ** TODO sort income by source, not "benefit" and "grant"
@@ -218,6 +221,11 @@ x = purchases["vat-rate"]
 28986
 >>> 28986 / 7458243
 0.0038864381329490067
+** this educational income has an ambiguous source:
+but zero people in the sample received any of it:
+  , "P6207M6"  : "beca from empresa publica ~familiar"
+  , "P6207M7"  : "beca from empresa privada ~familiar"
+
 * restaurant|cafeteria tax / todo
 ** if bought in cafeteria or restaurant, gets the 8% tax and no VAT, but otherwise they would pay VAT
 * income tax / todo

@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import python.vat.build.classes as classes
 import python.vat.build.common as common
@@ -125,23 +126,20 @@ income = { **income_govt
          , "P7510S6A1"  : "income, year : cesantia"
 }
 
-beca_govt = {
+beca_sources_govt = {
     "P6207M2"  : "beca from ICETEX"
   , "P6207M3"  : "beca from govt, central"
   , "P6207M4"  : "beca from govt, peripheral"
+}
+
+beca_sources_private = {
+    "P6207M1"  : "beca from same school"
   , "P6207M5"  : "beca from another public entity"
   , "P6207M6"  : "beca from empresa publica ~familiar"
-}
-beca_private = {
-    "P6207M1"  : "beca from same school"
   , "P6207M7"  : "beca from empresa privada ~familiar"
   , "P6207M8"  : "beca from other private"
   , "P6207M9"  : "beca from organismo internacional"
   , "P6207M10" : "beca from Universidades y ONGs"
-}
-beca_sources = { **beca_govt
-               , **beca_private
-               , "P6236" : "non-beca source" # PITFALL : a space-separated list of ints
 }
 
 inclusion_pairs = [
@@ -169,8 +167,30 @@ files = [
     , { **common.variables
       , **demog
       , **income
-      , **beca_sources
+      , **beca_sources_govt
+      , **beca_sources_private
+      , "P6236" : "non-beca sources" # PITFALL : a space-separated list of ints
     } , common.corrections
       + [classes.Correction.Drop_Column( "file-origin" )
         ]
 ) ]
+
+# count public sources of funding in the "non-beca sources" variable
+def count_public(list_as_str):
+  stripped = list_as_str . strip()
+  if stripped in [np.nan, ""]: return 0
+  else:
+    num_list = map( float
+                  , stripped . split(" ") )
+    sources = filter( lambda x: x in [2,3,4], num_list )
+    return len( list( sources ) )
+
+# count private sources of funding in the "non-beca sources" variable
+def count_private(list_as_str):
+  stripped = list_as_str . strip()
+  if stripped in [np.nan, ""]: return 0
+  else:
+    num_list = map( float
+                  , stripped . split(" ") )
+    sources = filter( lambda x: not x in [2,3,4], num_list )
+    return len( list( sources ) )

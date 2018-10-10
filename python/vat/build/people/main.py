@@ -7,7 +7,8 @@ import python.vat.build.common as common
 import python.vat.build.people.files as files
 
 
-people = common.to_numbers( common.collect_files( files.files ) )
+people = common.to_numbers( common.collect_files( files.files )
+                            , skip_columns = ["non-beca sources"] )
 
 if True: # drop non-members of household
   people = people.drop(
@@ -33,7 +34,9 @@ if True: # income
 
     re = regex.compile( ".*income.*" )
     income_columns = [c for c in people.columns if re.match( c )]
-    columns_to_convert = income_columns + list( files.beca_sources.values() )
+    columns_to_convert = ( income_columns
+                         + list( files.beca_sources_private.values() )
+                         + list( files.beca_sources_govt.values() ) )
     people[columns_to_convert] = people[columns_to_convert] . fillna(0)
     del(re, income_columns, columns_to_convert)
 
@@ -50,11 +53,16 @@ if True: # income
 
   if True: # compute income totals, drop components
     if True: # divide educational income by source (government or private)
-      people["beca sources, govt"]    = people[ list( files.beca_govt   .values() )
-                                        ] . sum( axis=1 )
-      people["beca sources, private"] = people[ list( files.beca_private.values() )
-                                        ] . sum( axis=1 )
-
+      people["beca sources, govt"]    = people[ list( files.beca_sources_govt   .values()
+                                        ) ] . sum( axis=1 )
+      people["beca sources, private"] = people[ list( files.beca_sources_private.values()
+                                        ) ] . sum( axis=1 )
+      people["non-beca sources"] = people["non-beca sources"] . apply( str )
+      people["non-beca sources, govt"] = people["non-beca sources"
+                                         ] . apply( files.count_public )
+      people["non-beca sources, private"] = people["non-beca sources"
+                                         ] . apply( files.count_private )
+    
     if True: # benefit income (cash + in-kind)
       re_benefit  = regex.compile( "^income.* : benefit" )
       cols_benefit_cash    = [ c for c in people.columns
