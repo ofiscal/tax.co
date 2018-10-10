@@ -48,6 +48,9 @@ if True: # income
   re_in_kind       = regex.compile( "^income.* : .* : .* in.kind$" )
 
   if True: # compute income totals, drop components
+    if True: # divide educational income by source (government or private)
+      pass
+
     if True: # benefit income (cash + in-kind)
       re_benefit  = regex.compile( "^income.* : benefit" )
       cols_benefit_cash    = [ c for c in people.columns
@@ -100,16 +103,17 @@ if True: # income
           people[ quantity ] = people[ quantity ] * people[ forgot ]
         people = people.drop( columns = [ forgot for (_, forgot) in files.inclusion_pairs ] )
 
-      re_labor  = regex.compile( "^income.* : labor : " )
-      cols_labor_cash    = [ c for c in people.columns
-                               if re_labor.match(c) and not re_in_kind.match(c) ]
-      cols_labor_in_kind = [ c for c in people.columns
-                               if re_labor.match(c) and     re_in_kind.match(c) ]
-      people["total income, monthly : labor, cash"] = (
-        people[ cols_labor_cash ].sum( axis=1 ) )
-      people["total income, monthly : labor, in-kind"] = (
-        people[ cols_labor_in_kind ].sum( axis=1 ) )
-      people = people.drop( columns = cols_labor_in_kind + cols_labor_cash )
+      if True: # compute sums
+        re_labor  = regex.compile( "^income.* : labor : " )
+        cols_labor_cash    = [ c for c in people.columns
+                                 if re_labor.match(c) and not re_in_kind.match(c) ]
+        cols_labor_in_kind = [ c for c in people.columns
+                                 if re_labor.match(c) and     re_in_kind.match(c) ]
+        people["total income, monthly : labor, cash"] = (
+          people[ cols_labor_cash ].sum( axis=1 ) )
+        people["total income, monthly : labor, in-kind"] = (
+          people[ cols_labor_in_kind ].sum( axis=1 ) )
+        people = people.drop( columns = cols_labor_in_kind + cols_labor_cash )
 
 if True: # format some categorical variables
   race_key = {

@@ -82,6 +82,7 @@ if True: # sum purchases within person
            ] . agg("sum")
   purchase_sums = purchase_sums.reset_index( level = ["household", "household-member"] )
 
+
 if True: # merge purchase sums into people
   people = pd.merge( people, purchase_sums, how = "left"
                    , on=["household","household-member"] )

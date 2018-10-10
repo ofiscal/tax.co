@@ -20,18 +20,15 @@ beca_col_map = {
   , "P6207M8" : "beca from other private"
   , "P6207M9" : "beca from organismo internacional"
   , "P6207M10" : "beca from Universidades y ONGs"
-#  , "P6236" : "non-beca source" # PITFALL : This is a list, encoded as  a string
+  , "P6236" : "non-beca source" # PITFALL : This is a list, encoded as  a string
 }
 
 df = pd.read_csv( "data/enph-2017/recip-1/" + "Caracteristicas_generales_personas.csv"
                 , usecols =  beca_col_map.keys()
     ) . replace( ' ', np.nan
     ) . rename( columns = beca_col_map )
-x = df["non-beca source"]
-df = ( df
-       # . drop( columns = "non-beca source"
-     ) . astype( 'float' )
-df["non-beca source"] = x
+should_be_numbers = df.filter( regex = "^((?!beca source).)*$" )
+should_be_numbers = should_be_numbers . astype( 'float' )
 
 df.sum()
 
