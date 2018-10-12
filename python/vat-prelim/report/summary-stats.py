@@ -15,10 +15,10 @@ for i in range(20):
 
 
 # Household spending and taxes
-util.describeWithMissing( households [["value/inc"]] )
+util.describeWithMissing( households [["value/income"]] )
 util.describeWithMissing( households [["vat/income"]] )
 util.describeWithMissing(
-  households [ households["value/inc"] !=  np.inf ] [["value/inc"]]
+  households [ households["value/income"] !=  np.inf ] [["value/income"]]
 )
 
 util.dwmParamByGroup("vat/income", "has-child",households).round(3)
@@ -44,7 +44,7 @@ util.dwmParamByGroup("vat/income","edu-max",
 util.dwmParamByGroup("vat/income","age-decile",people)
 util.dwmParamByGroup("vat/income","age-decile",
                      people[ people["income"] > 0 ] )
-util.dwmParamByGroup("value/inc","age-decile",
+util.dwmParamByGroup("value/income","age-decile",
                      people[ people["income"] > 0 ] )
 
 util.dwmParamByGroup("vat/income","income-decile",people)

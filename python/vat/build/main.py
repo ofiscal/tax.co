@@ -87,8 +87,8 @@ if True: # merge purchase sums into people
   people = pd.merge( people, purchase_sums, how = "left"
                    , on=["household","household-member"] )
 
-  people["value/income"] = people["value"]/people["income"]
   people["vat/value, min"] = people["vat-paid, min"]/people["value"]
   people["vat/value, max"] = people["vat-paid, max"]/people["value"]
   people["vat/income, min"] = people["vat-paid, min"]/people["income"]
   people["vat/income, max"] = people["vat-paid, max"]/people["income"]
+  people["value/income"] = people["value"]/people["income"]
