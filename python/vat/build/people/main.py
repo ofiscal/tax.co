@@ -101,7 +101,7 @@ if True: # income
       people = people.drop( columns =
                             people.filter( regex = "(^beca)|(edu : .*beca)|(beca source)"
                             ).columns )
-    
+
     if True: # govt income (cash + in-kind)
       re_govt  = regex.compile( "^income.* : govt" )
       cols_govt_cash    = [ c for c in people.columns
@@ -170,11 +170,11 @@ if True: # income
         income_short_name_dict_cash = {
             'income, month : pension : age | illness'  : "income, pension"
           , 'income, year : cesantia'                  : "income, cesantia"
-          , 'total income, monthly : govt, cash'       : "income, govt"
           , 'total income, monthly : capital'          : "income, capital"
-          , 'total income, monthly : private, cash'    : "income, private"
           , 'total income, monthly : infrequent'       : "income, infrequent"
-          , 'total income, monthly : labor, cash'      : "income, labor"
+          , 'total income, monthly : govt, cash'       : "income, govt, cash"
+          , 'total income, monthly : private, cash'    : "income, private, cash"
+          , 'total income, monthly : labor, cash'      : "income, labor, cash"
           }
         income_short_name_dict_in_kind = {
             'total income, monthly : govt, in-kind'    : "income, govt, in-kind"
@@ -185,12 +185,14 @@ if True: # income
                                           , **income_short_name_dict_in_kind
         } )
 
-      if True: # compute income totals -- all cash, all in-kind and all
+      if True: # compute across-category sums
         people["income, cash"]    = people[ list( income_short_name_dict_cash   .values() )
                                     ].sum(axis=1)
         people["income, in-kind"] = people[ list( income_short_name_dict_in_kind.values() )
                                     ].sum(axis=1)
-        people["income, total"] = people["income, cash"] + people["income, in-kind"]
+
+        for c in ["income", "income, govt", "income, private", "income, labor"]:
+          people[c + ", total"] = people[c + ", cash"] + people[c + ", in-kind"]
 
 if True: # format some categorical variables
   race_key = {
