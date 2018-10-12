@@ -64,7 +64,7 @@ if True: # merge demographic statistics
 
   people["value/inc"] = people["value"]/people["income"]
   people["vat/value"] = people["vat-paid"]/people["value"]
-  people["vat/inc"] = people["vat-paid"]/people["income"]
+  people["vat/income"] = people["vat-paid"]/people["income"]
 
   del(demog)
 
@@ -118,7 +118,7 @@ if True: # aggregate from household-members to households
 
   households["value/inc"] = households["value"]/households["income"]
   households["vat/value"] = households["vat-paid"]/households["value"]
-  households["vat/inc"] = households["vat-paid"]/households["income"]
+  households["vat/income"] = households["vat-paid"]/households["income"]
 
   households["household"] = households.index
     # when there are multiple indices, reset_index is the way to do that
