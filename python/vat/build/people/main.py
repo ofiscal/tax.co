@@ -207,6 +207,12 @@ if True: # format some categorical variables
     people["race"].map( race_key )
     , categories = list( race_key.values() )
     , ordered = True)
+  people["race, indig"]    = people["race"] == 1
+  people["race, git|rom"]  = people["race"] == 2
+  people["race, raizal"]   = people["race"] == 3
+  people["race, palenq"]   = people["race"] == 4
+  people["race, neg|mul"]  = people["race"] == 5
+  people["race, whi|mest"] = people["race"] == 6
 
   edu_key = { 1 : "Ninguno",
       2 : "Preescolar",
