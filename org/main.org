@@ -1,8 +1,5 @@
 * TODO next
-** PITFALL ! people["non-beca sources"] sometimes turns numeric
-It is a space-separated list of integers.
-In the 1/100 sample it has no lists greater than 1, so it is converted automatically to numeric.
-** These error codes apply to all income and expense variables
+** TODO These error codes apply to all income and expense variables
 *** why to use them
 The summary measures are otherwise hard to buy -- I see, for instance, a lot of values of 8.17 (that's 98 / 12) for monthly income measures.
 *** the error codes
@@ -14,17 +11,19 @@ including ordinary purchase value
 In almost every variable in both people (income) and purchases (value), these error codes do not appear.
 In the few variables where they do, they make up a miniscule fraction of observations -- the highest I saw was 0.2%.
 And 98 or 99 pesos is almost no money, so including it in someone's total income or total purchase value is not going to meaningfully change the total.
+** TODO region : no VAT in San Andres
 
-** TODO P6207M1 : source of that money is in the questions after it.
-ICETEX = government
-** TODO sort income by source, not "benefit" and "grant"
+** TODO start saving build stages
+*** but don't overwrite pre-release data!
+** PITFALL ! people["non-beca sources"] sometimes turns numeric
+It is a space-separated list of integers.
+In the 1/100 sample it has no lists greater than 1, so it is converted automatically to numeric.
 ** goods that dodge the VAT
 *** summarized with a parameter, "share of final good that escapes the VAT"
 *** the rules : exemptions, exclusions and refunds
 If the final good is exempt, and an input carries VAT, the final seller *is* eligible for a refund of the VAT on the input.
 If the final good is excluded, and an input carries VAT, the final seller is *not* eligible for a refund of the VAT on the input.
 ** update coicop-vat bridge on OneDrive
-** TODO region : no VAT in San Andres
 ** TODO coicop -> vat : special cases
 *** 5310101
 DS guesses 19% more often
@@ -135,9 +134,6 @@ Luis wanted at least for ...
   - Ibagué
   - Pasto
   - Popayán
-** TODO start saving build stages
-*** but don't overwrite pre-release data!
-** maybe separate pensions from other benefits?
 ** some questions that seem to overlap
 *** sale of title
  P7510S9 = "rendimientos por venta de titulos"
