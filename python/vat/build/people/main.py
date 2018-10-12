@@ -192,7 +192,7 @@ if True: # income
                                     ].sum(axis=1)
 
         for c in ["income", "income, govt", "income, private", "income, labor"]:
-          people[c + ", total"] = people[c + ", cash"] + people[c + ", in-kind"]
+          people[c] = people[c + ", cash"] + people[c + ", in-kind"]
 
 if True: # format some categorical variables
   race_key = {
