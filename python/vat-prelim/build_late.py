@@ -64,7 +64,7 @@ if True: # merge demographic statistics
 
   people["value/inc"] = people["value"]/people["income"]
   people["vat/value"] = people["vat-paid"]/people["value"]
-  people["vat/income"] = people["vat-paid"]/people["income"]
+  people["vat/income"] = people["vat-paid"] / people["income"]
 
   del(demog)
 
@@ -74,7 +74,6 @@ if True: # merge demographic statistics
     people["age"], 10, labels = False, duplicates='drop')
   people["income-decile"] = pd.qcut(
     people["income"], 10, labels = False, duplicates='drop')
-  people["vat/income"] = people["vat-paid"] / people["income"]
   people["value/income"] = people["value"] / people["income"]
   people["education"] = pd.Series(
     pd.Categorical( people["education"], ordered=True) )
