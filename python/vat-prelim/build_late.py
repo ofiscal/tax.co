@@ -68,8 +68,6 @@ if True: # merge demographic statistics
 
   del(demog)
 
-  # <<< RESUME transfer here >>>
-
   people["age-decile"] = pd.qcut(
     people["age"], 10, labels = False, duplicates='drop')
   people["income-decile"] = pd.qcut(
@@ -114,28 +112,24 @@ if True: # aggregate from household-members to households
   households = pd.concat( [h_sum,h_min,h_max]
                          , axis=1 )
 
-  households["value/income"] = households["value"]/households["income"]
+  households["value/income"] = households["value"] / households["income"]
   households["vat/value"] = households["vat-paid"]/households["value"]
-  households["vat/income"] = households["vat-paid"]/households["income"]
+  households["vat/income"] = households["vat-paid"] / households["income"]
 
   households["household"] = households.index
     # when there are multiple indices, reset_index is the way to do that
 
-  # TODO : < 10 also interesting, because work legal at age 10 or more
-    # 10 or above in rural, 12 or above urban
   households["has-child"] = households["age-min"] < 18
   households["has-elderly"] = households["age-max"] > 65
 
   households["income-decile"] = pd.qcut(
     households["income"], 10, labels = False, duplicates='drop')
 
-  households["vat/income"] = households["vat-paid"] / households["income"]
-  households["value/income"] = households["value"] / households["income"]
-
   vat_output_io.saveStage(subsample, households, '/6.households')
 
 # households = vat_output_io.readStage(subsample, '/6.households')
 if True: # data sets derived from households
+
   if True: # households with income
     households_w_income = households[ households["income"] > 0 ].copy()
       # Without the copy (even if I use .loc(), as suggested by the error)
