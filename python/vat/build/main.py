@@ -3,19 +3,15 @@ import numpy as np
 
 import python.vat.build.common as common
 import python.util as util
+import python.vat.build.output_io as oio
 
 # input files
-import python.vat.build.buildings.files as bldg
 from python.vat.build.people.main import people
 from   python.vat.build.purchases.main import purchases
 import python.vat.build.purchases.main as purchases_main
 
 
-if True: # buildings
-  buildings = common.collect_files( bldg.files )
-  buildings["estrato"] = buildings["estrato"].replace(' ', np.nan)
-  buildings = buildings.drop( columns = ["file-origin"] )
-
+buildings = oio.readStage( common.subsample, "/buildings" )
 
 if True: # VAT dictionaries
   vat_cap_c = pd.read_csv( "data/vat/" + "vat-for-capitulo-c.csv"
