@@ -154,7 +154,7 @@ if True: # income
           people[ quantity ] = people[ quantity ] * people[ forgot ]
         people = people.drop( columns = [ forgot for (_, forgot) in files.inclusion_pairs ] )
 
-      if True: # compute sums
+      if True: # compute within-category sums
         re_labor  = regex.compile( "^income.* : labor : " )
         cols_labor_cash    = [ c for c in people.columns
                                  if re_labor.match(c) and not re_in_kind.match(c) ]
@@ -165,6 +165,32 @@ if True: # income
         people["total income, monthly : labor, in-kind"] = (
           people[ cols_labor_in_kind ].sum( axis=1 ) )
         people = people.drop( columns = cols_labor_in_kind + cols_labor_cash )
+
+      if True: # homogenize, shorten income variable names
+        income_short_name_dict_cash = {
+            'income, month : pension : age | illness'  : "income, pension"
+          , 'income, year : cesantia'                  : "income, cesantia"
+          , 'total income, monthly : govt, cash'       : "income, govt"
+          , 'total income, monthly : capital'          : "income, capital"
+          , 'total income, monthly : private, cash'    : "income, private"
+          , 'total income, monthly : infrequent'       : "income, infrequent"
+          , 'total income, monthly : labor, cash'      : "income, labor"
+          }
+        income_short_name_dict_in_kind = {
+            'total income, monthly : govt, in-kind'    : "income, govt, in-kind"
+          , 'total income, monthly : private, in-kind' : "income, private, in-kind"
+          , 'total income, monthly : labor, in-kind'   : "income, labor, in-kind"
+          }
+        people = people.rename( columns = { **income_short_name_dict_cash
+                                          , **income_short_name_dict_in_kind
+        } )
+
+      if True: # compute income totals -- all cash, all in-kind and all
+        people["income, cash"]    = people[ list( income_short_name_dict_cash   .values() )
+                                    ].sum(axis=1)
+        people["income, in-kind"] = people[ list( income_short_name_dict_in_kind.values() )
+                                    ].sum(axis=1)
+        people["income, total"] = people["income, cash"] + people["income, in-kind"]
 
 if True: # format some categorical variables
   race_key = {
