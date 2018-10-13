@@ -11,7 +11,6 @@ from   python.vat.build.purchases.main import purchases
 import python.vat.build.purchases.main as purchases_main
 
 
-buildings = oio.readStage( common.subsample, "/buildings" )
 vat_coicop = oio.readStage( common.subsample, "/vat_coicop" )
 vat_cap_c = oio.readStage( common.subsample, "/vat_cap_c" )
 
