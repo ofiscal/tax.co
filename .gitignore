@@ -10,11 +10,8 @@ __pycache__/
 */*/__pycache__/
 
 output/summaries.txt
-output/summary/
-output/string-columns/
-output/vat-data/
-output/vat-pics/
-output/vat-tables/
+output/vat-prelim/
+output/vat/
 output/enph_revision/
 
 all-but-data/

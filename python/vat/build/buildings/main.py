@@ -19,9 +19,8 @@ files = [
     }
 ) ]
 
-if True: # buildings
-  buildings = common.collect_files( files )
-  buildings["estrato"] = buildings["estrato"].replace(' ', np.nan)
-  buildings = buildings.drop( columns = ["file-origin"] )
+buildings = common.collect_files( files )
+buildings["estrato"] = buildings["estrato"].replace(' ', np.nan)
+buildings = buildings.drop( columns = ["file-origin"] )
 
 oio.saveStage(subsample, buildings, '/buildings')
