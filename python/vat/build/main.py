@@ -10,8 +10,10 @@ from   python.vat.build.people.main    import people
 from   python.vat.build.purchases.main import purchases, freq_key
 
 
-vat_coicop = oio.readStage( common.subsample, "/vat_coicop" )
+buildings = oio.readStage( common.subsample, "/buildings" )
+people = oio.readStage( common.subsample, "/people" )
 vat_cap_c = oio.readStage( common.subsample, "/vat_cap_c" )
+vat_coicop = oio.readStage( common.subsample, "/vat_coicop" )
 
 
 if True: # add VAT to purchases

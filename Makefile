@@ -2,6 +2,7 @@ SHELL := bash
 .PHONY: \
   input_subsamples \
   buildings \
+  people \
   vat_rates
 
 
@@ -45,6 +46,8 @@ input_subsamples =                                                           \
 
 buildings = output/vat/data/recip-$(ss)/buildings.csv
 
+people = output/vat/data/recip-$(ss)/people.csv
+
 vat_rates = output/vat/data/recip-$(ss)/vat_coicop.csv \
   output/vat/data/recip-$(ss)/vat_cap_c.csv
 
@@ -75,3 +78,11 @@ $(buildings): $(input_subsamples) python/vat/build/buildings/main.py \
   python/vat/build/common.py \
   python/vat/build/output_io.py
 	$(python_from_here) python/vat/build/buildings/main.py $(subsample)
+
+people: $(people)
+$(people): $(input_subsamples) python/vat/build/people/main.py \
+  python/vat/build/classes.py \
+  python/vat/build/people/files.py \
+  python/vat/build/common.py \
+  python/vat/build/output_io.py
+	$(python_from_here) python/vat/build/people/main.py $(subsample)

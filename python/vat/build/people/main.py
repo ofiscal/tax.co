@@ -1,14 +1,18 @@
+import sys
 import pandas as pd
 import re as regex
 
 from python.vat.build.classes import Correction
 import python.vat.build.common as common
-
 import python.vat.build.people.files as files
+import python.vat.build.output_io as oio
 
 
-people = common.to_numbers( common.collect_files( files.files )
-                            , skip_columns = ["non-beca sources"] )
+subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
+
+people = common.to_numbers( common.collect_files( files.files
+                                                , subsample = subsample )
+                          , skip_columns = ["non-beca sources"] )
 
 if True: # drop non-members of household
   people = people.drop(
@@ -237,3 +241,5 @@ if True: # format some categorical variables
   #  people["time use"].map( time_key ),
   #  categories = list( time_key.values() ),
   #  ordered = True)
+
+oio.saveStage(subsample, people, '/people')
