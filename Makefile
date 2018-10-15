@@ -2,8 +2,8 @@ SHELL := bash
 .PHONY: \
   input_subsamples \
   buildings \
-  people \
-  people_buildings \
+  people_1 \
+  people_2_buildings \
   purchases \
   purchases_vat_and_sums \
   vat_rates
@@ -48,11 +48,11 @@ input_subsamples =                                                           \
   $(addsuffix .csv, $(addprefix data/enph-2017/recip-$(ss)/, $(enph_files)))
 
 buildings = output/vat/data/recip-$(ss)/buildings.csv
-people = output/vat/data/recip-$(ss)/people.csv
+people_1 = output/vat/data/recip-$(ss)/people_1.csv
 purchases = output/vat/data/recip-$(ss)/purchases.csv
 purchases_vat_and_sums = output/vat/data/recip-$(ss)/purchases_vat.csv \
   output/vat/data/recip-$(ss)/purchase_sums.csv
-people_buildings = output/vat/data/recip-$(ss)/people_buildings.csv
+people_2_buildings = output/vat/data/recip-$(ss)/people_2_buildings.csv
 vat_rates = output/vat/data/recip-$(ss)/vat_coicop.csv \
   output/vat/data/recip-$(ss)/vat_cap_c.csv
 
@@ -83,19 +83,19 @@ $(buildings): python/vat/build/buildings.py \
   $(input_subsamples)
 	$(python_from_here) python/vat/build/buildings.py $(subsample)
 
-people: $(people)
-$(people): python/vat/build/people/main.py \
+people_1: $(people_1)
+$(people_1): python/vat/build/people/main.py \
   python/vat/build/people/files.py \
   python/vat/build/common.py \
   python/vat/build/output_io.py \
   $(input_subsamples)
 	$(python_from_here) python/vat/build/people/main.py $(subsample)
 
-people_buildings: $(people_buildings)
-$(people_buildings): python/vat/build/people_buildings.py \
+people_2_buildings: $(people_2_buildings)
+$(people_2_buildings): python/vat/build/people_2_buildings.py \
   python/vat/build/output_io.py \
-  $(buildings) $(people)
-	$(python_from_here) python/vat/build/people_buildings.py $(subsample)
+  $(buildings) $(people_1)
+	$(python_from_here) python/vat/build/people_2_buildings.py $(subsample)
 
 purchases: $(purchases)
 $(purchases): python/vat/build/purchases/main.py \
