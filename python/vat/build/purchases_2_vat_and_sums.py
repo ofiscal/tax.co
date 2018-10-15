@@ -8,7 +8,7 @@ subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100
 
 
 if True: # input files
-  purchases = oio.readStage( subsample, "/purchases" )
+  purchases = oio.readStage( subsample, "/purchases_1" )
   vat_cap_c = oio.readStage( subsample, "/vat_cap_c" )
   vat_coicop = oio.readStage( subsample, "/vat_coicop" )
 
@@ -47,7 +47,7 @@ if True: # add VAT to purchases
   purchases["vat paid, max"] = purchases["value"] * purchases["vat frac, max"]
   purchases["vat paid, min"] = purchases["value"] * purchases["vat frac, min"]
 
-  oio.saveStage(subsample, purchases, '/purchases_vat')
+  oio.saveStage(subsample, purchases, '/purchases_2_vat')
 
 
 if True: # sum purchases within person

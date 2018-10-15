@@ -4,8 +4,8 @@ SHELL := bash
   buildings \
   people_1 \
   people_2_buildings \
-  purchases \
-  purchases_vat_and_sums \
+  purchases_1 \
+  purchases_2_vat_and_sums \
   vat_rates
 
 
@@ -49,8 +49,8 @@ input_subsamples =                                                           \
 
 buildings = output/vat/data/recip-$(ss)/buildings.csv
 people_1 = output/vat/data/recip-$(ss)/people_1.csv
-purchases = output/vat/data/recip-$(ss)/purchases.csv
-purchases_vat_and_sums = output/vat/data/recip-$(ss)/purchases_vat.csv \
+purchases_1 = output/vat/data/recip-$(ss)/purchases_1.csv
+purchases_2_vat_and_sums = output/vat/data/recip-$(ss)/purchases_2_vat.csv \
   output/vat/data/recip-$(ss)/purchase_sums.csv
 people_2_buildings = output/vat/data/recip-$(ss)/people_2_buildings.csv
 vat_rates = output/vat/data/recip-$(ss)/vat_coicop.csv \
@@ -97,8 +97,8 @@ $(people_2_buildings): python/vat/build/people_2_buildings.py \
   $(buildings) $(people_1)
 	$(python_from_here) python/vat/build/people_2_buildings.py $(subsample)
 
-purchases: $(purchases)
-$(purchases): python/vat/build/purchases/main.py \
+purchases_1: $(purchases_1)
+$(purchases_1): python/vat/build/purchases/main.py \
   python/vat/build/classes.py \
   python/vat/build/common.py \
   python/vat/build/output_io.py \
@@ -109,10 +109,10 @@ $(purchases): python/vat/build/purchases/main.py \
   $(input_subsamples)
 	$(python_from_here) python/vat/build/purchases/main.py $(subsample)
 
-purchases_vat_and_sums: $(purchases_vat_and_sums)
-$(purchases_vat_and_sums): python/vat/build/purchases_vat_and_sums.py \
+purchases_2_vat_and_sums: $(purchases_2_vat_and_sums)
+$(purchases_2_vat_and_sums): python/vat/build/purchases_2_vat_and_sums.py \
   python/vat/build/output_io.py \
   python/vat/build/legends.py \
   $(vat_rates) \
-  output/vat/data/recip-$(ss)/purchases.csv
-	$(python_from_here) python/vat/build/purchases_vat_and_sums.py $(subsample)
+  output/vat/data/recip-$(ss)/purchases_1.csv
+	$(python_from_here) python/vat/build/purchases_2_vat_and_sums.py $(subsample)
