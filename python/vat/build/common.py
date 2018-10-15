@@ -5,8 +5,6 @@ import pandas as pd
 
 subsample = 100
 
-folder = "data/enph-2017/recip-" + str(subsample) + "/"
-
 variables = { "DIRECTORIO" : "household"
             , "ORDEN" : "household-member"
             , "FEX_C" : "weight"
@@ -17,12 +15,12 @@ corrections = [
   Correction.Replace_Substring_In_Column( "weight", ",", "." )
 ]
 
-def collect_files( file_structs ):
+def collect_files( file_structs, subsample=subsample ):
   acc = pd.DataFrame()
   for f in file_structs:
     shuttle = (
       pd.read_csv(
-        folder + f.filename
+        "data/enph-2017/recip-" + str(subsample) + "/" + f.filename
         , usecols = list( f.col_dict.keys() )
       ) . rename( columns = f.col_dict        )
     )

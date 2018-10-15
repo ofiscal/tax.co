@@ -19,7 +19,7 @@ files = [
     }
 ) ]
 
-buildings = common.collect_files( files )
+buildings = common.collect_files( files, subsample=subsample )
 buildings["estrato"] = buildings["estrato"].replace(' ', np.nan)
 buildings = buildings.drop( columns = ["file-origin"] )
 
