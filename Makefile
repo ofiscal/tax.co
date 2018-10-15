@@ -63,23 +63,23 @@ $(input_subsamples) : python/subsample.py $(enph_orig)
 	$(python_from_here) python/subsample.py
 
 vat_rates: $(vat_rates)
-$(vat_rates): python/vat/build/vat-rates/main.py \
+$(vat_rates): python/vat/build/vat_rates.py \
   data/vat/vat-by-coicop.csv \
   data/vat/vat-for-capitulo-c.csv \
   python/vat/build/classes.py \
   python/vat/build/common.py \
   python/vat/build/output_io.py
-	$(python_from_here) python/vat/build/vat-rates/main.py $(subsample)
+	$(python_from_here) python/vat/build/vat_rates.py $(subsample)
 
 
 ##=##=##=## Build things from the ENPH
 
 buildings: $(buildings)
-$(buildings): $(input_subsamples) python/vat/build/buildings/main.py \
+$(buildings): $(input_subsamples) python/vat/build/buildings.py \
   python/vat/build/classes.py \
   python/vat/build/common.py \
   python/vat/build/output_io.py
-	$(python_from_here) python/vat/build/buildings/main.py $(subsample)
+	$(python_from_here) python/vat/build/buildings.py $(subsample)
 
 people: $(people)
 $(people): $(input_subsamples) python/vat/build/people/main.py \

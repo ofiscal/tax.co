@@ -1,3 +1,5 @@
+import numpy as np
+
 freq = {
     1  : (365.25/12) / 1   # 1  » Diario
   , 2  : (365.25/12) / 3.5 # 2  » Varias veces por semana
