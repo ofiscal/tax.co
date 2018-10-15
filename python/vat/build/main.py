@@ -7,20 +7,8 @@ import python.vat.build.output_io as oio
 
 
 if True: # input files
-  buildings = oio.readStage( common.subsample, "/buildings" )
   people = oio.readStage( common.subsample, "/people_buildings" )
-  purchases = oio.readStage( common.subsample, "/purchases_vat" )
-
-
-if True: # sum purchases within person
-  purchases["transactions"] = 1 # useful later, when it is summed
-  purchase_sums = purchases.groupby( ["household", "household-member"]
-           ) [ "value"
-             , "transactions"
-             , "vat paid, max"
-             , "vat paid, min"
-           ] . agg("sum")
-  purchase_sums = purchase_sums.reset_index( level = ["household", "household-member"] )
+  purchase_sums = oio.readStage( common.subsample, "/purchase_sums" )
 
 
 if True: # merge purchase sums into people

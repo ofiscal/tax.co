@@ -5,7 +5,7 @@ SHELL := bash
   people \
   people_buildings \
   purchases \
-  purchases_vat \
+  purchases_vat_and_sums \
   vat_rates
 
 
@@ -50,7 +50,8 @@ input_subsamples =                                                           \
 buildings = output/vat/data/recip-$(ss)/buildings.csv
 people = output/vat/data/recip-$(ss)/people.csv
 purchases = output/vat/data/recip-$(ss)/purchases.csv
-purchases_vat = output/vat/data/recip-$(ss)/purchases_vat.csv
+purchases_vat_and_sums = output/vat/data/recip-$(ss)/purchases_vat.csv \
+  output/vat/data/recip-$(ss)/purchase_sums.csv
 people_buildings = output/vat/data/recip-$(ss)/people_buildings.csv
 vat_rates = output/vat/data/recip-$(ss)/vat_coicop.csv \
   output/vat/data/recip-$(ss)/vat_cap_c.csv
@@ -87,7 +88,7 @@ $(people): python/vat/build/people/main.py \
   python/vat/build/people/files.py \
   python/vat/build/common.py \
   python/vat/build/output_io.py \
-  $(input_subsamples) 
+  $(input_subsamples)
 	$(python_from_here) python/vat/build/people/main.py $(subsample)
 
 people_buildings: $(people_buildings)
@@ -105,13 +106,13 @@ $(purchases): python/vat/build/purchases/main.py \
   python/vat/build/purchases/medios.py \
   python/vat/build/purchases/articulos.py \
   python/vat/build/purchases/capitulo_c.py \
-  $(input_subsamples) 
+  $(input_subsamples)
 	$(python_from_here) python/vat/build/purchases/main.py $(subsample)
 
-purchases_vat: $(purchases_vat)
-$(purchases_vat): python/vat/build/purchases_vat.py \
+purchases_vat_and_sums: $(purchases_vat_and_sums)
+$(purchases_vat_and_sums): python/vat/build/purchases_vat_and_sums.py \
   python/vat/build/output_io.py \
   python/vat/build/legends.py \
-  output/vat/data/recip-$(ss)/purchases.csv \
-  $(vat_rates)
-	$(python_from_here) python/vat/build/purchases_vat.py $(subsample)
+  $(vat_rates) \
+  output/vat/data/recip-$(ss)/purchases.csv
+	$(python_from_here) python/vat/build/purchases_vat_and_sums.py $(subsample)
