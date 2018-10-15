@@ -48,6 +48,8 @@ buildings = output/vat/data/recip-$(ss)/buildings.csv
 
 people = output/vat/data/recip-$(ss)/people.csv
 
+purchases = output/vat/data/recip-$(ss)/purchases.csv
+
 vat_rates = output/vat/data/recip-$(ss)/vat_coicop.csv \
   output/vat/data/recip-$(ss)/vat_cap_c.csv
 
@@ -86,3 +88,14 @@ $(people): $(input_subsamples) python/vat/build/people/main.py \
   python/vat/build/common.py \
   python/vat/build/output_io.py
 	$(python_from_here) python/vat/build/people/main.py $(subsample)
+
+purchases: $(purchases)
+$(purchases): $(input_subsamples) python/vat/build/purchases/main.py \
+  python/vat/build/purchases/nice_purchases.py \
+  python/vat/build/purchases/medios.py \
+  python/vat/build/purchases/articulos.py \
+  python/vat/build/purchases/capitulo_c.py \
+  python/vat/build/classes.py \
+  python/vat/build/common.py \
+  python/vat/build/output_io.py
+	$(python_from_here) python/vat/build/purchases/main.py $(subsample)

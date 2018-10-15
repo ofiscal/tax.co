@@ -4,16 +4,15 @@ import numpy as np
 import python.vat.build.common as common
 import python.util as util
 import python.vat.build.output_io as oio
-
-# input files
-from   python.vat.build.people.main    import people
-from   python.vat.build.purchases.main import purchases, freq_key
+import python.vat.build.legends as legends
 
 
-buildings = oio.readStage( common.subsample, "/buildings" )
-people = oio.readStage( common.subsample, "/people" )
-vat_cap_c = oio.readStage( common.subsample, "/vat_cap_c" )
-vat_coicop = oio.readStage( common.subsample, "/vat_coicop" )
+if True: # input files
+  buildings = oio.readStage( common.subsample, "/buildings" )
+  people = oio.readStage( common.subsample, "/people" )
+  purchases = oio.readStage( common.subsample, "/purchases" )
+  vat_cap_c = oio.readStage( common.subsample, "/vat_cap_c" )
+  vat_coicop = oio.readStage( common.subsample, "/vat_coicop" )
 
 
 if True: # add VAT to purchases
@@ -39,7 +38,7 @@ if True: # add VAT to purchases
   purchases["freq-code"] = purchases["freq"]
     # kept for the sake of drawing a table of purchase frequency
     # with frequencies spread evenly across the x-axis
-  purchases["freq"].replace( freq_key
+  purchases["freq"].replace( legends.freq
                            , inplace=True )
   purchases = purchases.drop(
     purchases[ purchases["freq"].isnull() ]

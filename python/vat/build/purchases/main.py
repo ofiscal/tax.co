@@ -1,7 +1,9 @@
+import sys
 import numpy as np
 
 from python.vat.build.classes import Correction
 import python.vat.build.common as common
+import python.vat.build.output_io as oio
 
 # input files
 import python.vat.build.purchases.nice_purchases as nice_purchases
@@ -10,6 +12,8 @@ import python.vat.build.purchases.articulos as articulos
 import python.vat.build.purchases.capitulo_c as capitulo_c
 
 
+subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
+
 purchases = common.collect_files(
   articulos.files
   # + medios.files
@@ -17,6 +21,7 @@ purchases = common.collect_files(
     # and the data only records purchases of a second home.
   + capitulo_c.files
   + nice_purchases.files
+  , subsample = subsample
 )
 
 for c in [ # TODO ? This might be easier to understand without the Correction class.
@@ -77,16 +82,4 @@ for c in [ # how-got 1 -> is-purchase 1, nan -> nan, otherwise -> 0
   , Correction.Rename_Column( "how-got", "is-purchase" )
 ]: purchases = c.correct( purchases )
 
-freq_key = {
-    1  : (365.25/12) / 1   # 1  » Diario
-  , 2  : (365.25/12) / 3.5 # 2  » Varias veces por semana
-  , 3  : (365.25/12) / 7   # 3  » Semanal
-  , 4  : (365.25/12) / 15  # 4  » Quincenal
-  , 5  : 1 / 1             # 5  » Mensual
-  , 6  : 1 / 2             # 6  » Bimestral
-  , 7  : 1 / 3             # 7  » Trimestral
-  , 8  : 1 / 12            # 8  » Anual
-  , 9  : 1 / (3*12)        # 9  » Esporádica
-  , 10 : 1 / 6             # 10 » Semestral
-  , 11 : np.nan            # 11 » Nunca
-}
+oio.saveStage(subsample, purchases, '/purchases')
