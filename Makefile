@@ -3,6 +3,9 @@ SHELL := bash
   input_subsamples \
   buildings \
   people \
+  people_buildings \
+  purchases \
+  purchases_vat \
   vat_rates
 
 
@@ -45,13 +48,10 @@ input_subsamples =                                                           \
   $(addsuffix .csv, $(addprefix data/enph-2017/recip-$(ss)/, $(enph_files)))
 
 buildings = output/vat/data/recip-$(ss)/buildings.csv
-
 people = output/vat/data/recip-$(ss)/people.csv
-
 purchases = output/vat/data/recip-$(ss)/purchases.csv
-
 purchases_vat = output/vat/data/recip-$(ss)/purchases_vat.csv
-
+people_buildings = output/vat/data/recip-$(ss)/people_buildings.csv
 vat_rates = output/vat/data/recip-$(ss)/vat_coicop.csv \
   output/vat/data/recip-$(ss)/vat_cap_c.csv
 
@@ -89,6 +89,12 @@ $(people): python/vat/build/people/main.py \
   python/vat/build/output_io.py \
   $(input_subsamples) 
 	$(python_from_here) python/vat/build/people/main.py $(subsample)
+
+people_buildings: $(people_buildings)
+$(people_buildings): python/vat/build/people_buildings.py \
+  python/vat/build/output_io.py \
+  $(buildings) $(people)
+	$(python_from_here) python/vat/build/people_buildings.py $(subsample)
 
 purchases: $(purchases)
 $(purchases): python/vat/build/purchases/main.py \
