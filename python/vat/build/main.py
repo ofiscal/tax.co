@@ -6,9 +6,8 @@ import python.util as util
 import python.vat.build.output_io as oio
 
 # input files
-from python.vat.build.people.main import people
-from   python.vat.build.purchases.main import purchases
-import python.vat.build.purchases.main as purchases_main
+from   python.vat.build.people.main    import people
+from   python.vat.build.purchases.main import purchases, freq_key
 
 
 vat_coicop = oio.readStage( common.subsample, "/vat_coicop" )
@@ -38,7 +37,7 @@ if True: # add VAT to purchases
   purchases["freq-code"] = purchases["freq"]
     # kept for the sake of drawing a table of purchase frequency
     # with frequencies spread evenly across the x-axis
-  purchases["freq"].replace( purchases_main.freq_key
+  purchases["freq"].replace( freq_key
                            , inplace=True )
   purchases = purchases.drop(
     purchases[ purchases["freq"].isnull() ]

@@ -1,7 +1,6 @@
 # WEIRD: This program creates 4 separate bridges, one for each subsample, even though they are identical.
 # These data sets are tiny; it seems better to treat them like the others than to complicate the code.
 
-import sys
 import pandas as pd
 import numpy as np
 
