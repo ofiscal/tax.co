@@ -2,7 +2,6 @@ import sys
 import pandas as pd
 import re as regex
 
-from python.vat.build.classes import Correction
 import python.vat.build.common as common
 import python.vat.build.people.files as files
 import python.vat.build.output_io as oio

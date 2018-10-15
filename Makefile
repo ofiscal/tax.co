@@ -50,6 +50,8 @@ people = output/vat/data/recip-$(ss)/people.csv
 
 purchases = output/vat/data/recip-$(ss)/purchases.csv
 
+purchases_vat = output/vat/data/recip-$(ss)/purchases_vat.csv
+
 vat_rates = output/vat/data/recip-$(ss)/vat_coicop.csv \
   output/vat/data/recip-$(ss)/vat_cap_c.csv
 
@@ -59,43 +61,51 @@ vat_rates = output/vat/data/recip-$(ss)/vat_coicop.csv \
 ##=##=##=## subsample, or very slightly tweak, some input data sets
 
 input_subsamples: $(input_subsamples)
-$(input_subsamples) : python/subsample.py $(enph_orig)
+$(input_subsamples): python/subsample.py $(enph_orig)
 	$(python_from_here) python/subsample.py
 
 vat_rates: $(vat_rates)
 $(vat_rates): python/vat/build/vat_rates.py \
+  python/vat/build/output_io.py \
   data/vat/vat-by-coicop.csv \
-  data/vat/vat-for-capitulo-c.csv \
-  python/vat/build/classes.py \
-  python/vat/build/common.py \
-  python/vat/build/output_io.py
+  data/vat/vat-for-capitulo-c.csv
 	$(python_from_here) python/vat/build/vat_rates.py $(subsample)
 
 
 ##=##=##=## Build things from the ENPH
 
 buildings: $(buildings)
-$(buildings): $(input_subsamples) python/vat/build/buildings.py \
+$(buildings): python/vat/build/buildings.py \
   python/vat/build/classes.py \
   python/vat/build/common.py \
-  python/vat/build/output_io.py
+  python/vat/build/output_io.py \
+  $(input_subsamples)
 	$(python_from_here) python/vat/build/buildings.py $(subsample)
 
 people: $(people)
-$(people): $(input_subsamples) python/vat/build/people/main.py \
-  python/vat/build/classes.py \
+$(people): python/vat/build/people/main.py \
   python/vat/build/people/files.py \
   python/vat/build/common.py \
-  python/vat/build/output_io.py
+  python/vat/build/output_io.py \
+  $(input_subsamples) 
 	$(python_from_here) python/vat/build/people/main.py $(subsample)
 
 purchases: $(purchases)
-$(purchases): $(input_subsamples) python/vat/build/purchases/main.py \
+$(purchases): python/vat/build/purchases/main.py \
+  python/vat/build/classes.py \
+  python/vat/build/common.py \
+  python/vat/build/output_io.py \
   python/vat/build/purchases/nice_purchases.py \
   python/vat/build/purchases/medios.py \
   python/vat/build/purchases/articulos.py \
   python/vat/build/purchases/capitulo_c.py \
-  python/vat/build/classes.py \
-  python/vat/build/common.py \
-  python/vat/build/output_io.py
+  $(input_subsamples) 
 	$(python_from_here) python/vat/build/purchases/main.py $(subsample)
+
+purchases_vat: $(purchases_vat)
+$(purchases_vat): python/vat/build/purchases_vat.py \
+  python/vat/build/output_io.py \
+  python/vat/build/legends.py \
+  output/vat/data/recip-$(ss)/purchases.csv \
+  $(vat_rates)
+	$(python_from_here) python/vat/build/purchases_vat.py $(subsample)

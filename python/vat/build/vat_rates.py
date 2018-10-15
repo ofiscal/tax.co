@@ -1,9 +1,6 @@
 import sys
 import pandas as pd
-import numpy as np
 
-import python.vat.build.classes as classes
-import python.vat.build.common as common
 import python.vat.build.output_io as oio
 
 
