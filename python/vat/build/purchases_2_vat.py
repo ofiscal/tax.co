@@ -8,9 +8,43 @@ subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100
 
 
 if True: # input files
-  purchases = oio.readStage( subsample, "purchases_1_5_no_origin" )
-  vat_cap_c = oio.readStage( subsample, "vat_cap_c_brief" )
-  vat_coicop = oio.readStage( subsample, "vat_coicop_brief" )
+  # This data set is too big unless I down cast the numbers
+  purchases = oio.readStage( subsample
+                           , "purchases_1_5_no_origin"
+                           , dtype = {
+                               "25-broad-categs" : "float32"
+                             , "coicop" : "float32"
+                             , "freq" : "float32"
+                             , "household" : "int32"
+                             , "household-member" : "int32"
+                             , "is-purchase" : "float32"
+                             , "quantity" : "float32"
+                             , "value" : "float32"
+                             , "weight" : "float32"
+                             , "where-got" : "float32"
+                           } )
+  vat_cap_c = oio.readStage( subsample
+                           , "vat_cap_c_brief"
+                           , dtype = {
+                             "25-broad-categs" : "int32"
+                             , "vat" : "float32"
+                             , "vat, min" : "float32"
+                             , "vat, max" : "float32"
+                             , "vat frac" : "float32"
+                             , "vat frac, min" : "float32"
+                             , "vat frac, max" : "float32"
+                           } )
+  vat_coicop = oio.readStage( subsample
+                            , "vat_coicop_brief"
+                            , dtype = {
+                                "coicop" : "int32"
+                              , "vat" : "float32"
+                              , "vat, min" : "float32"
+                              , "vat, max" : "float32"
+                              , "vat frac" : "float32"
+                              , "vat frac, min" : "float32"
+                              , "vat frac, max" : "float32"
+                            } )
 
 
 if True: # add VAT to purchases
