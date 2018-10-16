@@ -1,6 +1,5 @@
 SHELL := bash
-.PHONY: \
-  input_subsamples \
+.PHONY: input_subsamples \
   buildings \
   households \
   people_1 \
@@ -9,7 +8,8 @@ SHELL := bash
   purchases_1 \
   purchases_2_vat \
   purchase_sums \
-  vat_rates
+  vat_rates \
+  purchase_pics
 
 
 ##=##=##=##=##=##=##=## Variables
@@ -67,6 +67,16 @@ vat_rates =          output/vat/data/recip-$(ss)/vat_coicop.csv \
                      output/vat/data/recip-$(ss)/vat_coicop_brief.csv \
                      output/vat/data/recip-$(ss)/vat_cap_c_brief.csv
 
+purchase_pics =      output/vat/pics/recip-$(ss)/purchases/frequency.png \
+                     output/vat/pics/recip-$(ss)/purchases/quantity.png \
+                     output/vat/pics/recip-$(ss)/purchases/value.png \
+                     output/vat/pics/recip-$(ss)/purchases/vat-in-pesos,max.png \
+                     output/vat/pics/recip-$(ss)/purchases/vat-in-pesos,min.png \
+                     output/vat/pics/recip-$(ss)/purchases/logx/quantity.png \
+                     output/vat/pics/recip-$(ss)/purchases/logx/value.png \
+                     output/vat/pics/recip-$(ss)/purchases/logx/vat-in-pesos,max.png \
+                     output/vat/pics/recip-$(ss)/purchases/logx/vat-in-pesos,min.png
+
 
 ##=##=##=##=##=##=##=## Recipes
 
@@ -84,7 +94,7 @@ $(vat_rates): python/vat/build/vat_rates.py \
 	$(python_from_here) python/vat/build/vat_rates.py $(subsample)
 
 
-##=##=##=## Build things from the ENPH
+##=##=##=## Build data from the ENPH
 
 buildings: $(buildings)
 $(buildings): python/vat/build/buildings.py \
@@ -146,3 +156,11 @@ $(purchase_sums): python/vat/build/purchase_sums.py \
   python/vat/build/output_io.py \
   $(purchases_2_vat)
 	$(python_from_here) python/vat/build/purchase_sums.py $(subsample)
+
+
+##=##=##=## Make charts, diagrams, tiny latex tables
+
+purchase_pics: $(purchase_pics)
+$(purchase_pics): python/vat/report/purchases.py \
+  $(purchases_2_vat)
+	$(python_from_here) python/vat/report/purchases.py $(subsample)

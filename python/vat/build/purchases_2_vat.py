@@ -8,7 +8,7 @@ subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100
 
 
 if True: # input files
-  # This data set is too big unless I down cast the numbers
+  # This data set is too big unless I down-cast the numbers.
   purchases = oio.readStage( subsample
                            , "purchases_1_5_no_origin"
                            , dtype = {
