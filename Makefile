@@ -131,10 +131,15 @@ $(purchases_1): python/vat/build/purchases/main.py \
 	$(python_from_here) python/vat/build/purchases/main.py $(subsample)
 
 purchases_2_vat: $(purchases_2_vat)
-purchase_sums: $(purchase_sums)
-$(purchases_2_vat) $(purchase_sums): python/vat/build/purchases_2_vat_and_sums.py \
+$(purchases_2_vat): python/vat/build/purchases_2_vat.py \
   python/vat/build/output_io.py \
   python/vat/build/legends.py \
   $(vat_rates) \
   output/vat/data/recip-$(ss)/purchases_1.csv
-	$(python_from_here) python/vat/build/purchases_2_vat_and_sums.py $(subsample)
+	$(python_from_here) python/vat/build/purchases_2_vat.py $(subsample)
+
+purchase_sums: $(purchase_sums)
+$(purchase_sums): python/vat/build/purchase_sums.py \
+  python/vat/build/output_io.py \
+  $(purchases_2_vat)
+	$(python_from_here) python/vat/build/purchase_sums.py $(subsample)
