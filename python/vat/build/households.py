@@ -9,6 +9,17 @@ subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100
 
 people = oio.readStage( subsample, "people_3_purchases" )
 
+edu_key = { 1 : "Ninguno",
+    2 : "Preescolar",
+    3 : "Basica\n Primaria",
+    4 : "Basica\n Secundaria",
+    5 : "Media",
+    6 : "Superior o\n Universitaria",
+    9 : "No sabe,\n no informa" }
+people["education"] = pd.Categorical(
+  people["education"],
+  categories = list( edu_key.values() ),
+  ordered = True)
 
 if True: # aggregate from household members to households
   people["members"] = 1

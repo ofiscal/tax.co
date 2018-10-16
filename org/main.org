@@ -206,6 +206,19 @@ Hopefully that will be close to 0 after discarding:
 *** when is-purchase=1, freq is undefined only .015 % of the time
 *** so omitting purchase!=1 observations won't bias our estimate of VAT
 *** it will, however, bias (downward) our estimate of consumption
+* about the code
+** categorical variables require a "map" step only when created, not when read
+It's to convert them from a number to a string.
+For instance, creating the "people" table looks like this:
+  people["race"] = pd.Categorical(
+    people["race"].map( race_key )
+    , categories = list( race_key.values() )
+    , ordered = True)
+whereas reading it would look like this:
+  people["race"] = pd.Categorical(
+    people["race"]
+    , categories = list( race_key.values() )
+    , ordered = True)
 * about the data|results
 ** The ENPH : http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
 ** the 200 / 1400 missing COICOP codes appear not to matter much

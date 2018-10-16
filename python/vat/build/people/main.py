@@ -1,4 +1,5 @@
 import sys
+import numpy as np
 import pandas as pd
 import re as regex
 
@@ -225,8 +226,10 @@ if True: # format some categorical variables
       6 : "Superior o\n Universitaria",
       9 : "No sabe,\n no informa" }
   people["education"] = pd.Categorical(
-    people["education"].map( edu_key ),
-    categories = list( edu_key.values() ),
+    people["education"]
+      .map( {np.nan : 9} )
+      .map( edu_key )
+    , categories = list( edu_key.values() ),
     ordered = True)
 
   #time_key = { 1 : "work" # Trabajando

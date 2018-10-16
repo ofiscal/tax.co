@@ -9,7 +9,8 @@ SHELL := bash
   purchases_2_vat \
   purchase_sums \
   vat_rates \
-  purchase_pics
+  purchase_pics \
+  household_pics
 
 
 ##=##=##=##=##=##=##=## Variables
@@ -76,6 +77,16 @@ purchase_pics =      output/vat/pics/recip-$(ss)/purchases/frequency.png \
                      output/vat/pics/recip-$(ss)/purchases/logx/value.png \
                      output/vat/pics/recip-$(ss)/purchases/logx/vat-in-pesos,max.png \
                      output/vat/pics/recip-$(ss)/purchases/logx/vat-in-pesos,min.png
+
+household_pics = \
+  output/vat/pics/recip-$(ss)/households/income.png \
+  output/vat/pics/recip-$(ss)/households/logx/income.png \
+  output/vat/pics/recip-$(ss)/households/max-edu.png \
+  output/vat/pics/recip-$(ss)/households/oldest.png \
+  output/vat/pics/recip-$(ss)/households/size.png \
+  output/vat/pics/recip-$(ss)/households/transactions-per-month.png \
+  output/vat/pics/recip-$(ss)/households/VAT-over-consumption,-by-income-decile.png \
+  output/vat/pics/recip-$(ss)/households/youngest.png
 
 
 ##=##=##=##=##=##=##=## Recipes
@@ -164,3 +175,8 @@ purchase_pics: $(purchase_pics)
 $(purchase_pics): python/vat/report/purchases.py \
   $(purchases_2_vat)
 	$(python_from_here) python/vat/report/purchases.py $(subsample)
+
+household_pics: $(household_pics)
+$(household_pics): python/vat/report/households.py \
+  $(households)
+	$(python_from_here) python/vat/report/households.py $(subsample)
