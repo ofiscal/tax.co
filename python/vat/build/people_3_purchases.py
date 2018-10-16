@@ -7,8 +7,8 @@ subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100
 
 
 if True: # input files
-  people = oio.readStage( subsample, "/people_2_buildings" )
-  purchase_sums = oio.readStage( subsample, "/purchase_sums" )
+  people = oio.readStage( subsample, "people_2_buildings" )
+  purchase_sums = oio.readStage( subsample, "purchase_sums" )
 
 
 if True: # merge purchase sums into people
@@ -28,4 +28,4 @@ if True: # merge purchase sums into people
     people["income"], 10, labels = False, duplicates='drop')
 
 
-oio.saveStage(subsample, people, '/people_3_purchases')
+oio.saveStage(subsample, people, 'people_3_purchases')

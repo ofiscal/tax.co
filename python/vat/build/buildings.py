@@ -26,4 +26,4 @@ buildings = common.collect_files( files, subsample=1 )
 buildings["estrato"] = buildings["estrato"].replace(' ', np.nan)
 buildings = buildings.drop( columns = ["file-origin"] )
 
-oio.saveStage(subsample, buildings, '/buildings')
+oio.saveStage(subsample, buildings, 'buildings')

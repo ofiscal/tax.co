@@ -29,5 +29,5 @@ for (vat,frac) in [ ("vat"    ,     "vat frac")
     # results in the fraction  of the value attributable to the vat.
     # For instance, if the VAT were 20%, then (0.2 / 1.2) is that fraction.
 
-oio.saveStage(subsample, vat_coicop, '/vat_coicop')
-oio.saveStage(subsample, vat_cap_c, '/vat_cap_c')
+oio.saveStage(subsample, vat_coicop, 'vat_coicop')
+oio.saveStage(subsample, vat_cap_c, 'vat_cap_c')

@@ -82,4 +82,4 @@ for c in [ # how-got 1 -> is-purchase 1, nan -> nan, otherwise -> 0
   , Correction.Rename_Column( "how-got", "is-purchase" )
 ]: purchases = c.correct( purchases )
 
-oio.saveStage(subsample, purchases, '/purchases_1')
+oio.saveStage(subsample, purchases, 'purchases_1')

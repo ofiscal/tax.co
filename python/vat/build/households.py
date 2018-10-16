@@ -7,7 +7,7 @@ import python.vat.build.output_io as oio
 
 subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
 
-people = oio.readStage( subsample, "/people_3_purchases" )
+people = oio.readStage( subsample, "people_3_purchases" )
 
 
 if True: # aggregate from household members to households
@@ -79,10 +79,10 @@ if True: # data sets derived from households
 
 if True: # save
   oio.saveStage(subsample, households
-                       , '/households' )
+                       , 'households' )
   oio.saveStage(subsample, households_w_income
-                       , '/households_w_income' )
+                       , 'households_w_income' )
   oio.saveStage(subsample, households_w_income_decile_summary
-                       , '/households_w_income_decile_summary' )
+                       , 'households_w_income_decile_summary' )
   oio.saveStage(subsample, households_decile_summary
-                       , '/households_decile_summary' )
+                       , 'households_decile_summary' )

@@ -241,4 +241,4 @@ if True: # format some categorical variables
   #  categories = list( time_key.values() ),
   #  ordered = True)
 
-oio.saveStage(subsample, people, '/people_1')
+oio.saveStage(subsample, people, 'people_1')
