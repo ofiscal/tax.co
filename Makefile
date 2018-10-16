@@ -115,7 +115,7 @@ $(people_2_buildings): python/vat/build/people_2_buildings.py \
 people_3_purchases: $(people_3_purchases)
 $(people_3_purchases): python/vat/build/people_3_purchases.py \
   python/vat/build/output_io.py \
-  $(people_2_buildings)
+  $(people_2_buildings) $(purchase_sums)
 	$(python_from_here) python/vat/build/people_3_purchases.py $(subsample)
 
 purchases_1: $(purchases_1)
