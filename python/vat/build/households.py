@@ -5,9 +5,7 @@ import python.util as util
 import python.vat.build.output_io as oio
 
 
-# subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
-
-subsample = 1000
+subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
 
 people = oio.readStage( subsample, "/people_3_purchases" )
 
@@ -77,3 +75,14 @@ if True: # data sets derived from households
 
     households_decile_summary = \
       util.summarizeQuantiles("income-decile", households)
+
+
+if True: # save
+  oio.saveStage(subsample, households
+                       , '/households' )
+  oio.saveStage(subsample, households_w_income
+                       , '/households_w_income' )
+  oio.saveStage(subsample, households_w_income_decile_summary
+                       , '/households_w_income_decile_summary' )
+  oio.saveStage(subsample, households_decile_summary
+                       , '/households_decile_summary' )
