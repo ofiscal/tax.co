@@ -32,7 +32,7 @@ for (vat,frac) in [ ("vat"    ,     "vat frac")
 oio.saveStage(subsample, vat_coicop, 'vat_coicop')
 oio.saveStage(subsample, vat_cap_c, 'vat_cap_c')
 
-vat_coicop = vat_coicop.drop( columns = ["description"] )
+vat_coicop = vat_coicop.drop( columns = ["description","Notes"] )
 vat_cap_c = vat_cap_c.drop( columns = ["description"] )
 
 oio.saveStage(subsample, vat_coicop, 'vat_coicop_brief')
