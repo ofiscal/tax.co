@@ -8,9 +8,9 @@ subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100
 
 
 if True: # input files
-  purchases = oio.readStage( subsample, "purchases_1" )
-  vat_cap_c = oio.readStage( subsample, "vat_cap_c" )
-  vat_coicop = oio.readStage( subsample, "vat_coicop" )
+  purchases = oio.readStage( subsample, "purchases_1_5_no_origin" )
+  vat_cap_c = oio.readStage( subsample, "vat_cap_c_brief" )
+  vat_coicop = oio.readStage( subsample, "vat_coicop_brief" )
 
 
 if True: # add VAT to purchases
@@ -24,7 +24,6 @@ if True: # add VAT to purchases
 
   for (result, x, y) in [ ("vat", "vat_x","vat_y")
                         , ("vat frac", "vat frac_x","vat frac_y")
-                        , ("description", "description_x","description_y")
                         , ("vat frac, min", "vat frac, min_x","vat frac, min_y")
                         , ("vat frac, max", "vat frac, max_x","vat frac, max_y")
                         , ("vat, min", "vat, min_x","vat, min_y")

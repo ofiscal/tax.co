@@ -83,3 +83,7 @@ for c in [ # how-got 1 -> is-purchase 1, nan -> nan, otherwise -> 0
 ]: purchases = c.correct( purchases )
 
 oio.saveStage(subsample, purchases, 'purchases_1')
+
+purchases = purchases.drop( columns = ["file-origin"] )
+
+oio.saveStage(subsample, purchases, 'purchases_1_5_no_origin')
