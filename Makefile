@@ -4,8 +4,10 @@ SHELL := bash
   buildings \
   people_1 \
   people_2_buildings \
+  people_3_purchases \
   purchases_1 \
-  purchases_2_vat_and_sums \
+  purchases_2_vat \
+  purchase_sums \
   vat_rates
 
 
@@ -49,10 +51,11 @@ input_subsamples =                                                           \
 
 buildings = output/vat/data/recip-$(ss)/buildings.csv
 people_1 = output/vat/data/recip-$(ss)/people_1.csv
-purchases_1 = output/vat/data/recip-$(ss)/purchases_1.csv
-purchases_2_vat_and_sums = output/vat/data/recip-$(ss)/purchases_2_vat.csv \
-  output/vat/data/recip-$(ss)/purchase_sums.csv
 people_2_buildings = output/vat/data/recip-$(ss)/people_2_buildings.csv
+people_3_purchases = output/vat/data/recip-$(ss)/people_3_purchases.csv
+purchases_1 = output/vat/data/recip-$(ss)/purchases_1.csv
+purchases_2_vat = output/vat/data/recip-$(ss)/purchases_2_vat.csv
+purchase_sums = output/vat/data/recip-$(ss)/purchase_sums.csv
 vat_rates = output/vat/data/recip-$(ss)/vat_coicop.csv \
   output/vat/data/recip-$(ss)/vat_cap_c.csv
 
@@ -97,6 +100,12 @@ $(people_2_buildings): python/vat/build/people_2_buildings.py \
   $(buildings) $(people_1)
 	$(python_from_here) python/vat/build/people_2_buildings.py $(subsample)
 
+people_3_purchases: $(people_3_purchases)
+$(people_3_purchases): python/vat/build/people_3_purchases.py \
+  python/vat/build/output_io.py \
+  $(people_2_buildings)
+	$(python_from_here) python/vat/build/people_3_purchases.py $(subsample)
+
 purchases_1: $(purchases_1)
 $(purchases_1): python/vat/build/purchases/main.py \
   python/vat/build/classes.py \
@@ -109,8 +118,9 @@ $(purchases_1): python/vat/build/purchases/main.py \
   $(input_subsamples)
 	$(python_from_here) python/vat/build/purchases/main.py $(subsample)
 
-purchases_2_vat_and_sums: $(purchases_2_vat_and_sums)
-$(purchases_2_vat_and_sums): python/vat/build/purchases_2_vat_and_sums.py \
+purchases_2_vat: $(purchases_2_vat)
+purchase_sums: $(purchase_sums)
+$(purchases_2_vat) $(purchase_sums): python/vat/build/purchases_2_vat_and_sums.py \
   python/vat/build/output_io.py \
   python/vat/build/legends.py \
   $(vat_rates) \

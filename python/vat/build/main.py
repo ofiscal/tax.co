@@ -1,30 +1,15 @@
+import sys
 import pandas as pd
-import numpy as np
 
-import python.vat.build.common as common
 import python.util as util
 import python.vat.build.output_io as oio
 
 
-if True: # input files
-  people = oio.readStage( common.subsample, "/people_buildings" )
-  purchase_sums = oio.readStage( common.subsample, "/purchase_sums" )
+# subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
 
+subsample = 1000
 
-if True: # merge purchase sums into people
-  people = pd.merge( people, purchase_sums, how = "left"
-                   , on=["household","household-member"] )
-
-  people["vat/value, min" ] = people["vat paid, min"] / people["value" ]
-  people["vat/value, max" ] = people["vat paid, max"] / people["value" ]
-  people["vat/income, min"] = people["vat paid, min"] / people["income"]
-  people["vat/income, max"] = people["vat paid, max"] / people["income"]
-  people["value/income"   ] = people["value"]         / people["income"]
-
-  people["age-decile"] = pd.qcut(
-    people["age"], 10, labels = False, duplicates='drop')
-  people["income-decile"] = pd.qcut(
-    people["income"], 10, labels = False, duplicates='drop')
+people = oio.readStage( subsample, "/people_3_purchases" )
 
 
 if True: # aggregate from household members to households
