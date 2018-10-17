@@ -9,6 +9,7 @@ SHELL := bash
   purchases_2_vat \
   purchase_sums \
   vat_rates \
+  pics \
   purchase_pics \
   people_pics \
   household_pics
@@ -99,6 +100,8 @@ household_pics = \
   output/vat/pics/recip-$(ss)/households/transactions-per-month.png \
   output/vat/pics/recip-$(ss)/households/VAT-over-consumption,-by-income-decile.png \
   output/vat/pics/recip-$(ss)/households/youngest.png
+
+pics = $(purchase_pics) $(people_pics) $(household_pics)
 
 
 ##=##=##=##=##=##=##=## Recipes
@@ -197,3 +200,5 @@ people_pics: $(people_pics)
 $(people_pics): python/vat/report/people.py \
   $(people_3_purchases)
 	$(python_from_here) python/vat/report/people.py $(subsample)
+
+pics: $(pics)
