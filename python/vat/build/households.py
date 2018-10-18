@@ -23,6 +23,9 @@ people["education"] = pd.Categorical(
 
 if True: # aggregate from household members to households
   people["members"] = 1
+  h_first = people.groupby( ['household']
+    ) ['region-1','region-2','estrato' # these are constant within household
+    ] . agg('first')
   h_sum = people.groupby(
       ['household']
     ) ['value','vat paid, min','vat paid, max', 'transactions','income','members'
@@ -51,8 +54,8 @@ if True: # aggregate from household members to households
                            'race, palenq' : 'has-palenq',
                            'race, whi|mest' : 'has-whi|mest'
     } )
-  households = pd.concat( [h_sum,h_min,h_max]
-                         , axis=1 )
+  households = pd.concat( [h_first,h_sum,h_min,h_max]
+                        , axis=1 )
 
   households["vat/value, min"] = households["vat paid, min"]/households["value"]
   households["vat/value, max"] = households["vat paid, max"]/households["value"]

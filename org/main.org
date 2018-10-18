@@ -15,7 +15,6 @@ In almost every variable in both people (income) and purchases (value), these er
 In the few variables where they do, they make up a miniscule fraction of observations -- the highest I saw was 0.2%.
 And 98 or 99 pesos is almost no money, so including it in someone's total income or total purchase value is not going to meaningfully change the total.
 ** TODO region : no VAT in San Andres
-
 ** PITFALL ! people["non-beca sources"] sometimes turns numeric
 It is a space-separated list of integers.
 In the 1/100 sample it has no lists greater than 1, so it is converted automatically to numeric.
