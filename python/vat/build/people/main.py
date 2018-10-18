@@ -199,17 +199,9 @@ if True: # income
           people[c] = people[c + ", cash"] + people[c + ", in-kind"]
 
 if True: # format some categorical variables
-  race_key = {
-      1 : "Indigena"
-    , 2 : "Gitano-Roma"
-    , 3 : "Raizal" # "del archipiélago de San Andrés y Providencia"
-    , 4 : "Palenquero" # "de San Basilio o descendiente"
-    , 5 : "Negro" # "Negro(a), mulato(a), afrocolombiano(a) o afrodescendiente"
-    , 6 : "Ninguno" # "Ninguno de los anteriores (mestizo, blanco, etc.)"
-    }
   people["race"] = pd.Categorical(
-    people["race"].map( race_key )
-    , categories = list( race_key.values() )
+    people["race"].map( files.race_key )
+    , categories = list( files.race_key.values() )
     , ordered = True)
   people["race, indig"]    = people["race"] == 1
   people["race, git|rom"]  = people["race"] == 2
@@ -225,7 +217,7 @@ if True: # format some categorical variables
     , categories = list( files.edu_key.values() ),
     ordered = True)
 
-  #time_key = { 1 : "work" # Trabajando
+  #time_use_key = { 1 : "work" # Trabajando
   #           , 2 : "search" # Buscando trabajo
   #           , 3 : "study" # Estudiando
   #           , 4 : "household" # Oficios del hogar
@@ -233,8 +225,8 @@ if True: # format some categorical variables
   #           , 6 : "other" # Otra actividad
   #}
   #people["time use"] = pd.Categorical(
-  #  people["time use"].map( time_key ),
-  #  categories = list( time_key.values() ),
+  #  people["time use"].map( time_use_key ),
+  #  categories = list( time_use_key.values() ),
   #  ordered = True)
 
 oio.saveStage(subsample, people, 'people_1')

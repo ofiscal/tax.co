@@ -12,6 +12,14 @@ edu_key = { 1 : "Ninguno",
     6 : "Superior o\n Universitaria",
     9 : "No sabe,\n no informa" }
 
+race_key = { 1 : "Indigena"
+    , 2 : "Gitano-Roma"
+    , 3 : "Raizal" # "del archipiélago de San Andrés y Providencia"
+    , 4 : "Palenquero" # "de San Basilio o descendiente"
+    , 5 : "Negro" # "Negro(a), mulato(a), afrocolombiano(a) o afrodescendiente"
+    , 6 : "Ninguno" # "Ninguno de los anteriores (mestizo, blanco, etc.)"
+    }
+
 demog = {
     "P6050"      : "relationship"
   , "P6020"      : "female"
