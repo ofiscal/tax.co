@@ -16,6 +16,9 @@ if True: # merge purchase sums into people
                    , how = "left"
                    , on=["household","household-member"] )
 
+  people[ people["region-1"] == "SAN ANDRÉS" ]["vat paid, min"] = 0
+  people[ people["region-1"] == "SAN ANDRÉS" ]["vat paid, max"] = 0
+
   people["vat/value, min" ] = people["vat paid, min"] / people["value" ]
   people["vat/value, max" ] = people["vat paid, max"] / people["value" ]
   people["vat/income, min"] = people["vat paid, min"] / people["income"]

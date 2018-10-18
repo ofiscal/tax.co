@@ -1,7 +1,5 @@
 * TODO next
-** factor out the common code in any categorical variable interpretations
-egrep -i "edu.*categ" -r ..
-currently education is the only one
+** TODO subsample based only on household
 ** TODO These error codes apply to all income and expense variables
 *** why to use them
 The summary measures are otherwise hard to buy -- I see, for instance, a lot of values of 8.17 (that's 98 / 12) for monthly income measures.
@@ -14,7 +12,6 @@ including ordinary purchase value
 In almost every variable in both people (income) and purchases (value), these error codes do not appear.
 In the few variables where they do, they make up a miniscule fraction of observations -- the highest I saw was 0.2%.
 And 98 or 99 pesos is almost no money, so including it in someone's total income or total purchase value is not going to meaningfully change the total.
-** TODO region : no VAT in San Andres
 ** PITFALL ! people["non-beca sources"] sometimes turns numeric
 It is a space-separated list of integers.
 In the 1/100 sample it has no lists greater than 1, so it is converted automatically to numeric.
