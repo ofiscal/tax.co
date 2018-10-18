@@ -4,6 +4,14 @@ import python.vat.build.classes as classes
 import python.vat.build.common as common
 
 
+edu_key = { 1 : "Ninguno",
+    2 : "Preescolar",
+    3 : "Basica\n Primaria",
+    4 : "Basica\n Secundaria",
+    5 : "Media",
+    6 : "Superior o\n Universitaria",
+    9 : "No sabe,\n no informa" }
+
 demog = {
     "P6050"      : "relationship"
   , "P6020"      : "female"

@@ -218,18 +218,11 @@ if True: # format some categorical variables
   people["race, neg|mul"]  = people["race"] == 5
   people["race, whi|mest"] = people["race"] == 6
 
-  edu_key = { 1 : "Ninguno",
-      2 : "Preescolar",
-      3 : "Basica\n Primaria",
-      4 : "Basica\n Secundaria",
-      5 : "Media",
-      6 : "Superior o\n Universitaria",
-      9 : "No sabe,\n no informa" }
   people["education"] = pd.Categorical(
-    people["education"]
-      .map( {np.nan : 9} )
-      .map( edu_key )
-    , categories = list( edu_key.values() ),
+    people["education"
+      ] . fillna( 9
+      ) . map( files.edu_key )
+    , categories = list( files.edu_key.values() ),
     ordered = True)
 
   #time_key = { 1 : "work" # Trabajando

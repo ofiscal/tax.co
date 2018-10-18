@@ -3,23 +3,15 @@ import pandas as pd
 
 import python.util as util
 import python.vat.build.output_io as oio
+from python.vat.build.people.files import edu_key
 
 
 subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
 
 people = oio.readStage( subsample, "people_3_purchases" )
 
-edu_key = { 1 : "Ninguno",
-    2 : "Preescolar",
-    3 : "Basica\n Primaria",
-    4 : "Basica\n Secundaria",
-    5 : "Media",
-    6 : "Superior o\n Universitaria",
-    9 : "No sabe,\n no informa" }
-people["education"] = pd.Categorical(
-  people["education"],
-  categories = list( edu_key.values() ),
-  ordered = True)
+people["education"] = util.interpretCategorical( people["education"]
+                                               , edu_key )
 
 if True: # aggregate from household members to households
   people["members"] = 1

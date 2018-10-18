@@ -3,6 +3,11 @@ import numpy as np
 import math as math
 
 
+def interpretCategorical( column, categories ):
+  return pd.Categorical( column
+                       , categories = categories
+                       , ordered = True)
+
 def printInRed(message):
     """from https://stackoverflow.com/a/287934/916142"""
     CSI="\x1B["
