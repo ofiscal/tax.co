@@ -12,22 +12,21 @@ folder = datafiles.yearSurveyFolder(2017)
 def find_input(name):
   return folder + "orig/csv/" + name + '.csv'
 
+if True: # read, subsample household indices
+  print("Subsampling household indices (from Viviendas_y_hogares).")
+  household_indices = pd.read_csv( find_input( "Viviendas_y_hogares" )
+                                 , usecols = ["DIRECTORIO"] # DIRECTORIO = household
+                                 , sep = ";" )
+  household_index_samples = {}
+  for subsample in [1,10,100,1000]:
+    if subsample==1: household_index_samples[ subsample
+                       ] = household_indices
+    else:            household_index_samples[ subsample
+                       ] = household_indices.sample( frac = 1/subsample )
 
-if True: # read, subsample households
-  households_filename = "Viviendas_y_hogares"
-  print("now (henceforth) processing: " + households_filename)
-  households = pd.read_csv( find_input( households_filename )
-                          , usecols = ["DIRECTORIO"] # DIRECTORIO = household
-                          , sep = ";"
-  )
 
-  household_samples = {1 : households}
-  for denom in [10,100,1000]:
-    household_samples[ denom ] = households.sample( frac = 1/denom )
-
-
-if True: ## Subsample the rest of the ENPH
-  names = list( set( datafiles.files[2017] ) - set( {households_filename} ) )
+if True: ## Subsample each file (including Viviendas) based on that
+  names = datafiles.files[2017]
 
   for subsample in [1,10,100,1000]:
     subfolder = folder + "recip-" + str(subsample)
@@ -35,14 +34,14 @@ if True: ## Subsample the rest of the ENPH
       os.makedirs( subfolder )
 
   for name in names:
-    print("now (henceforth) processing: " + name)
+    print("Processing " + name + ".")
     data = pd.read_csv(folder + "orig/csv/" + name + '.csv', sep=";")
 
     for subsample in [1,10,100,1000]:
       if subsample == 1: # skip a pointless merge
             shuttle = data
       else: shuttle = pd.merge( data
-                              , household_samples[subsample]
+                              , household_index_samples[subsample]
                               , on="DIRECTORIO" )
       shuttle.to_csv(
         folder + "recip-" + str(subsample) + "/" + name + ".csv" )

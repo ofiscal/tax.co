@@ -1,5 +1,4 @@
 * TODO next
-** TODO subsample based only on household
 ** TODO These error codes apply to all income and expense variables
 *** why to use them
 The summary measures are otherwise hard to buy -- I see, for instance, a lot of values of 8.17 (that's 98 / 12) for monthly income measures.
