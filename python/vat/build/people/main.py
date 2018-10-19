@@ -124,7 +124,13 @@ if True: # income
                        if re_capital.match(c) ]
       people["total income, monthly : capital"] = (
         people[ cols_capital ].sum( axis=1 ) )
-      people = people.drop( columns = cols_capital )
+
+      # drop most components, but keep dividend income, and create capital minus dividends
+      people = people.drop( columns = list( set ( cols_capital )
+                                          - set ( ["income, year : investment : dividends"] )
+      ) )
+      people["income, capital w/o dividends"] = people["total income, monthly : capital"
+                                                ] - people["income, year : investment : dividends"]
 
     if True: # private income (cash + in-kind)
       re_private  = regex.compile( "^income.* : private : " )
@@ -175,6 +181,7 @@ if True: # income
             'income, month : pension : age | illness'  : "income, pension"
           , 'income, year : cesantia'                  : "income, cesantia"
           , 'total income, monthly : capital'          : "income, capital"
+          , "income, year : investment : dividends"    : "income, capital, dividends"
           , 'total income, monthly : infrequent'       : "income, infrequent"
           , 'total income, monthly : govt, cash'       : "income, govt, cash"
           , 'total income, monthly : private, cash'    : "income, private, cash"
