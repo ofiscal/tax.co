@@ -15,8 +15,9 @@ def printInRed(message):
 
 # Keeping this only to avoid breaking vat/report/*.py
 # tabulate_stats_by_group is better, because it:
-#   takes missing into account
-#   adds means
+#   takes missing values into account
+#   includes means
+#   includes statistics on nonzero values
 #   does not modify its arguments
 def tabulate_min_median_max_by_group(df, group_name, param_name):
     dff = df
@@ -32,19 +33,29 @@ def tabulate_min_median_max_by_group(df, group_name, param_name):
     return pd.concat([counts,mins,maxs,medians],axis=1)
 
 def tabulate_stats_by_group(df, group_name, param_name):
-    dff = df[ ~ df[param_name].isnull() ].copy()
-    dff["one"] = 1
-    counts = dff.groupby( group_name )[["one"]]               \
-           .agg('sum').rename(columns = {"one":"count"})
-    mins = dff.groupby( group_name )[[param_name]]            \
-           .agg('min').rename(columns = {param_name:"min"})
-    medians = dff.groupby( group_name )[[param_name]]         \
-           .agg('median').rename(columns = {param_name:"median"})
-    maxs = dff.groupby( group_name )[[param_name]]     \
-           .agg('max').rename(columns = {param_name:"max"})
-    means = dff.groupby( group_name )[[param_name]]     \
-           .agg('mean').rename(columns = {param_name:"mean"})
-    return pd.concat([counts,mins,maxs,medians,means],axis=1)
+  dff = df[ ~ df[param_name].isnull() ].copy()
+  dff["one"] = 1
+  counts = dff.groupby( group_name )[["one"]]               \
+         .agg('sum').rename(columns = {"one":"count"})
+  nonzeros = dff[ dff[param_name] != 0
+               ].groupby( group_name )[["one"
+       ]].agg('sum').rename(columns = {"one":"nonzero"})
+  mins = dff.groupby( group_name )[[param_name]]            \
+         .agg('min').rename(columns = {param_name:"min"})
+  medians = dff.groupby( group_name )[[param_name]]         \
+         .agg('median').rename(columns = {param_name:"median"})
+  medians_nonzero = dff[ dff[param_name] != 0
+                       ].groupby( group_name )[[param_name
+       ]].agg('median').rename(columns = {param_name:"median_nonzero"})
+  maxs = dff.groupby( group_name )[[param_name]]     \
+         .agg('max').rename(columns = {param_name:"max"})
+  means = dff.groupby( group_name )[[param_name]]     \
+         .agg('mean').rename(columns = {param_name:"mean"})
+  means_nonzero = dff[ dff[param_name] != 0
+                       ].groupby( group_name )[[param_name
+       ]].agg('mean').rename(columns = {param_name:"mean_nonzero"})
+  return pd.concat([counts,nonzeros,mins,maxs
+                    ,medians,medians_nonzero,means,means_nonzero],axis=1)
 
 def tabulate_series(series):
     dff = pd.DataFrame(series)
