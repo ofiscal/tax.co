@@ -10,7 +10,6 @@
   Infrequent Income
   Household Size
   Female-Headed
-  number of household members
   VAT/Income
 ** groups
   all
