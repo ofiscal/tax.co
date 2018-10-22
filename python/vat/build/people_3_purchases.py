@@ -19,6 +19,8 @@ if True: # merge purchase sums into people
   for s in ["min","max"]:
     people.loc[ people["region-1"] == "SAN ANDRÉS", "vat paid, " + s ] = 0
 
+
+if True: # create a few more variables
   people["vat/value, min" ] = people["vat paid, min"] / people["value" ]
   people["vat/value, max" ] = people["vat paid, max"] / people["value" ]
   people["vat/income, min"] = people["vat paid, min"] / people["income"]
@@ -29,6 +31,8 @@ if True: # merge purchase sums into people
     people["age"], 10, labels = False, duplicates='drop')
   people["income-decile"] = pd.qcut(
     people["income"], 10, labels = False, duplicates='drop')
+
+  people["female head"] = people["female"] * (people["household-member"]==1)
 
 
 oio.saveStage(subsample, people, 'people_3_purchases')
