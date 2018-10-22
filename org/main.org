@@ -1,3 +1,49 @@
+* summary table
+** variables:
+  income
+  Labor + Cesantia
+  capital w/o dividends
+  Dividend
+  Pension
+  govt
+  private
+  Infrequent Income
+  Household Size
+  Female-Headed
+  number of household members
+  VAT/Income
+** groups
+  all
+  female-headed
+  decile
+*** place:
+    Bogotá
+    Medellín
+    Cali
+    Barranquilla
+    Bucaramanga
+    Cúcuta
+    Tunja
+    Cartagena
+    Santa Marta
+    Ibagué
+** strategy
+let vars = list of names of variables of interest
+let groupDict = {}
+for each kind of group (e.g. decile)
+  let varDict = {}
+  for each var in vars:
+    let df = run tabulate_stats_by_group( households, kind-of-group, var )
+    prefix the word var to every column name in df
+    insert into varDict the association ( var : df )
+  insert into groupDict the horizontal concatenation of varDict.values()
+    that is, to end up with lots of columns, all with the same groups
+return the vertical concatenation of grupdDict.values()
+transpose
+  now groups are columns, quantities summarized are rows
+keep only the rows and columns of interest
+  ditch the group "non-female head of household"
+  ditch lots of rows
 * TODO next
 ** TODO These error codes apply to all income and expense variables
 *** why to use them
@@ -11,6 +57,14 @@ including ordinary purchase value
 In almost every variable in both people (income) and purchases (value), these error codes do not appear.
 In the few variables where they do, they make up a miniscule fraction of observations -- the highest I saw was 0.2%.
 And 98 or 99 pesos is almost no money, so including it in someone's total income or total purchase value is not going to meaningfully change the total.
+** broken (currently unused) columns
+problems in people_1:
+  race is boolean; summarizes to NaN
+problems in households:
+  has-child is NaN
+  has-elderly is NaN
+  has-(any race) is 0
+   this might be because race is boolean in people_1
 ** PITFALL ! people["non-beca sources"] sometimes turns numeric
 It is a space-separated list of integers.
 In the 1/100 sample it has no lists greater than 1, so it is converted automatically to numeric.
