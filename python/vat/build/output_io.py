@@ -8,7 +8,7 @@ def saveStage(subsample,data,name):
   data.to_csv( path + '/' + name + ".csv"
              , index = False )
 
-def readStage(subsample,name,**kwargs): # to skip rebuilding something
+def readStage(subsample,name,**kwargs):
   path = 'output/vat/data/recip-' + str(subsample)
   return pd.read_csv( path + '/' + name + ".csv"
                     , **kwargs )

@@ -1,5 +1,6 @@
 import sys
 import pandas as pd
+import numpy as np
 
 import python.util as util
 import python.vat.build.output_io as oio
@@ -11,7 +12,7 @@ subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100
 people = oio.readStage( subsample, "people_3_purchases" )
 
 people["education"] = util.interpretCategorical( people["education"]
-                                               , edu_key )
+                                               , edu_key.values() )
 
 if True: # aggregate from household members to households
   people["members"] = 1
