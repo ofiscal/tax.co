@@ -32,7 +32,7 @@ if True: # aggregate from household members to households
   h_min["has-male"] = 1 - h_min["has-male"] # TODO ? asymmetric
   h_max = people.groupby(
       ['household']
-    ) ['age','literate','student','female','education',
+    ) ['age','literate','student','female','female head','education',
        'race, indig', 'race, git|rom', 'race, raizal', 'race, palenq', 'race, whi|mest'
     ] . agg('max'
     ) . rename( columns = {'age' : 'age-max',

@@ -187,18 +187,18 @@ $(purchase_sums): python/vat/build/purchase_sums.py \
 ##=##=##=## Make charts, diagrams, tiny latex tables
 
 purchase_pics: $(purchase_pics)
-$(purchase_pics): python/vat/report/purchases.py \
+$(purchase_pics): python/vat/report/pics/purchases.py \
   $(purchases_2_vat)
-	$(python_from_here) python/vat/report/purchases.py $(subsample)
+	$(python_from_here) python/vat/report/pics/purchases.py $(subsample)
 
 household_pics: $(household_pics)
-$(household_pics): python/vat/report/households.py \
+$(household_pics): python/vat/report/pics/households.py \
   $(households)
-	$(python_from_here) python/vat/report/households.py $(subsample)
+	$(python_from_here) python/vat/report/pics/households.py $(subsample)
 
 people_pics: $(people_pics)
-$(people_pics): python/vat/report/people.py \
+$(people_pics): python/vat/report/pics/people.py \
   $(people_3_purchases)
-	$(python_from_here) python/vat/report/people.py $(subsample)
+	$(python_from_here) python/vat/report/pics/people.py $(subsample)
 
 pics: $(pics)
