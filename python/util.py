@@ -3,6 +3,12 @@ import numpy as np
 import math as math
 
 
+def pad_column_as_int( length, column ):
+  format_str = '{0:0>' + str(length) + '}'
+  return column . apply( str                 # in case it was numeric
+              ) . str.replace("\.0",""       # remove trailing ".0"
+              ) . apply( format_str.format ) # add extra characters
+
 def interpretCategorical( column, categories ):
   return pd.Categorical( column
                        , categories = categories
