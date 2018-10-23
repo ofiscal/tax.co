@@ -12,7 +12,8 @@ SHELL := bash
   pics \
   purchase_pics \
   people_pics \
-  household_pics
+  household_pics \
+  overview
 
 
 ##=##=##=##=##=##=##=## Variables
@@ -202,3 +203,10 @@ $(people_pics): python/vat/report/pics/people.py \
 	$(python_from_here) python/vat/report/pics/people.py $(subsample)
 
 pics: $(pics)
+
+overview: python/vat/report/tables/overview.py \
+  python/util.py \
+  python/vat/build/output_io.py \
+  python/vat/build/people/files.py \
+  $(households)
+	$(python_from_here) python/vat/report/tables/overview.py $(subsample)
