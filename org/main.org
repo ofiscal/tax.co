@@ -1,3 +1,5 @@
+* TODO ? is vat too low
+? what if we exclude capitulo c files
 * summary table
 ** variables:
   income
