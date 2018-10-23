@@ -104,6 +104,8 @@ household_pics = \
 
 pics = $(purchase_pics) $(people_pics) $(household_pics)
 
+overview = output/vat/tables/recip-$(ss)/overview.csv
+
 
 ##=##=##=##=##=##=##=## Recipes
 
@@ -204,7 +206,8 @@ $(people_pics): python/vat/report/pics/people.py \
 
 pics: $(pics)
 
-overview: python/vat/report/tables/overview.py \
+overview: $(overview)
+$(overview): python/vat/report/tables/overview.py \
   python/util.py \
   python/vat/build/output_io.py \
   python/vat/build/people/files.py \

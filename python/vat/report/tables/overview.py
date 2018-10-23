@@ -1,3 +1,4 @@
+import os
 import sys
 import pandas as pd
 
@@ -6,8 +7,7 @@ import python.vat.build.output_io as oio
 from python.vat.build.people.files import edu_key
 
 
-# subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
-subsample = 10
+subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
 
 households = oio.readStage( subsample, "households" )
 
@@ -46,6 +46,8 @@ for gv in groupVars:
     varSummaries.append( t )
   groupSummaries.append( pd.concat( varSummaries, axis = 1 ) )
 
+output_dir = "output/vat/tables/recip-" + str(subsample) + "/"
+if not os.path.exists(output_dir): os.makedirs(output_dir)
 pd.concat( groupSummaries, axis = 0
          ) . transpose(
-         ) . to_csv( "output/vat/tables/summaries.csv" )
+         ) . to_csv( output_dir + "overview.csv" )
