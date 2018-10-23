@@ -9,17 +9,19 @@ from python.vat.build.people.files import edu_key
 
 subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
 
-households = oio.readStage( subsample, "households" )
+households = oio.readStage( subsample, "households"
+             ) . rename( columns = {"income, capital, dividends" : "income, dividends"} )
+
+households["income, labor + cesantia"] = households["income, labor"] + households["income, cesantia"]
 
 vars = [ "income"
-       , "income, pension"
-       , "income, cesantia"
-       , "income, capital, dividends"
+       , "income, labor + cesantia"
        , "income, capital w/o dividends"
-       , "income, infrequent"
+       , "income, dividends"
+       , "income, pension"
        , "income, govt"
        , "income, private"
-       , "income, labor"
+       , "income, infrequent"
        , "members"
        , "female head"
        , "vat/income, min"
@@ -46,8 +48,32 @@ for gv in groupVars:
     varSummaries.append( t )
   groupSummaries.append( pd.concat( varSummaries, axis = 1 ) )
 
+df_tmi = pd.concat( groupSummaries, axis = 0
+                  ) . transpose()
+
 output_dir = "output/vat/tables/recip-" + str(subsample) + "/"
+
 if not os.path.exists(output_dir): os.makedirs(output_dir)
-pd.concat( groupSummaries, axis = 0
-         ) . transpose(
-         ) . to_csv( output_dir + "overview.csv" )
+
+df_tmi.to_csv( output_dir + "overview, tmi.csv" )
+
+df = df_tmi.ix[[
+    "income: mean"
+  , "income: min"
+  , "income: max"
+  , "income, labor + cesantia: mean"
+  , "income, capital w/o dividends: mean"
+  , "income, dividends: mean"
+  , "income, pension: mean"
+  , "income, govt: mean"
+  , "income, private: mean"
+  , "income, infrequent: mean"
+  , "members: mean"
+  , "female head: mean"
+  , "vat/income, min: median"
+  , "vat/income, min: mean"
+  , "vat/income, max: median"
+  , "vat/income, max: mean"
+]]
+
+df.to_csv( output_dir + "overview.csv" )
