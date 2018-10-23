@@ -1,5 +1,5 @@
 * TODO ? is vat too low
-** ? what if we exclude capitulo c files
+** DONE what if we exclude capitulo c files
   no, those are a very small fraction of total purchases
 >>> subsample = 10
 >>> purchases = oio.readStage( subsample, "purchases_2_vat" )
@@ -16,6 +16,9 @@ min             1.000000  1.110101e+06
 50%            15.000000  1.220801e+06
 75%            20.000000  8.300305e+06
 max            25.000000  1.270990e+07
+** what if we delete those 98 and 99 values
+If they are in the "value" column, they should not make a difference for overall purchase volume.
+But maybe they're in some other column?
 * summary table
 ** variables:
   income

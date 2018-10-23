@@ -24,6 +24,7 @@ if True: # input files
                              , "weight" : "float32"
                              , "where-got" : "float32"
                            } )
+
   vat_cap_c = oio.readStage( subsample
                            , "vat_cap_c_brief"
                            , dtype = {
@@ -35,6 +36,7 @@ if True: # input files
                              , "vat frac, min" : "float32"
                              , "vat frac, max" : "float32"
                            } )
+
   vat_coicop = oio.readStage( subsample
                             , "vat_coicop_brief"
                             , dtype = {
@@ -47,11 +49,22 @@ if True: # input files
                               , "vat frac, max" : "float32"
                             } )
 
+  vat_coicop_2_digit = pd.read_csv( "python/vat/build/vat_approx/2-digit.csv" )
+  vat_coicop_3_digit = pd.read_csv( "python/vat/build/vat_approx/3-digit.csv" )
+
+if True: # 8-pad everything coicop-like
+  purchases["coicop"] = util.pad_column_as_int( 8, purchases["coicop"] )
+  vat_coicop        ["coicop"] = util.pad_column_as_int( 8, vat_coicop        ["coicop"] )
+  vat_coicop_2_digit["coicop"] = util.pad_column_as_int( 2, vat_coicop_2_digit["coicop"] )
+  vat_coicop_3_digit["coicop"] = util.pad_column_as_int( 3, vat_coicop_3_digit["coicop"] )
+
 
 if True: # add VAT to COICOP-labeled purchases
   if True: # use the primary bridge
     purchases_coicop = purchases.merge( vat_coicop, how = "left", on="coicop" )
 
+  if False: # TODO: merge on the 2- and 3-digit approximations instead
+    pass
 
 if True: # add VAT to capitulo-c-labeled purchases
   purchases_cap_c = purchases.merge( vat_cap_c, how = "left", on="25-broad-categs" )
