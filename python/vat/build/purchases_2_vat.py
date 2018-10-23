@@ -1,8 +1,9 @@
 import sys
+import pandas as pd
 
 import python.vat.build.output_io as oio
 import python.vat.build.legends as legends
-
+import python.util as util
 
 subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
 
@@ -49,27 +50,15 @@ if True: # input files
 
 if True: # add VAT to COICOP-labeled purchases
   if True: # use the primary bridge
-    purchases = purchases.merge( vat_coicop, how = "left", on="coicop" )
+    purchases_coicop = purchases.merge( vat_coicop, how = "left", on="coicop" )
 
 
 if True: # add VAT to capitulo-c-labeled purchases
-  purchases = purchases.merge( vat_cap_c, how = "left", on="25-broad-categs" )
+  purchases_cap_c = purchases.merge( vat_cap_c, how = "left", on="25-broad-categs" )
+  purchases = purchases_coicop . combine_first( purchases_cap_c )
 
-  # Since vat_cap_c and vat_coicop have like-named columns, the second merge causes
-  # a proliferation of like-named columns ending in _x or _y. The next section picks,
-  # for each pair name_x and name_y, a master value for the name column, then discards
-  # the two that were selected from.
 
-  for (result, x, y) in [ ("vat", "vat_x","vat_y")
-                        , ("vat frac", "vat frac_x","vat frac_y")
-                        , ("vat frac, min", "vat frac, min_x","vat frac, min_y")
-                        , ("vat frac, max", "vat frac, max_x","vat frac, max_y")
-                        , ("vat, min", "vat, min_x","vat, min_y")
-                        , ("vat, max", "vat, max_x","vat, max_y") ]:
-    purchases.loc[ ~purchases[x].isnull(), result] = purchases[x]
-    purchases.loc[  purchases[x].isnull(), result] = purchases[y]
-    purchases = purchases.drop( columns = [x,y] )
-
+if True: # compute a few more variables
   purchases["freq-code"] = purchases["freq"]
     # kept for the sake of drawing a table of purchase frequency
     # with frequencies spread evenly across the x-axis
