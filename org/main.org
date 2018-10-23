@@ -1,5 +1,21 @@
 * TODO ? is vat too low
-? what if we exclude capitulo c files
+** ? what if we exclude capitulo c files
+  no, those are a very small fraction of total purchases
+>>> subsample = 10
+>>> purchases = oio.readStage( subsample, "purchases_2_vat" )
+>>> util.describeWithMissing( purchases[[[[ "25-broad-categs", "coicop"]] ]] )
+         25-broad-categs        coicop
+0               0.000000  0.000000e+00
+length     689761.000000  6.897610e+05
+missing    657576.000000  3.218500e+04
+count       32185.000000  6.575760e+05
+mean           13.866801  4.833412e+06
+std             7.151346  4.292508e+06
+min             1.000000  1.110101e+06
+25%             7.000000  1.160111e+06
+50%            15.000000  1.220801e+06
+75%            20.000000  8.300305e+06
+max            25.000000  1.270990e+07
 * summary table
 ** variables:
   income
@@ -57,6 +73,11 @@ including ordinary purchase value
 In almost every variable in both people (income) and purchases (value), these error codes do not appear.
 In the few variables where they do, they make up a miniscule fraction of observations -- the highest I saw was 0.2%.
 And 98 or 99 pesos is almost no money, so including it in someone's total income or total purchase value is not going to meaningfully change the total.
+** change output/vat-tables to output/vat/tables
+./vat/report/pics/people.py:                 "output/vat-tables/recip-" + str(subsample),
+./vat/report/pics/households.py:    "output/vat-tables/recip-" + str(subsample),
+./vat/report/pics/households.py:    "output/vat-tables/recip-" + str(subsample),
+./vat/report/pics/households.py:    "output/vat-tables/recip-" + str(subsample)
 ** broken (currently unused) columns
 problems in people_1:
   race is boolean; summarizes to NaN
