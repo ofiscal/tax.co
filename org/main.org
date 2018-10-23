@@ -28,16 +28,15 @@
     Ibagué
 ** strategy
 let vars = list of names of variables of interest
-let groupDict = {}
+let groupList = []
 for each kind of group (e.g. decile)
-  let varDict = {}
+  let varList = []
   for each var in vars:
     let df = run tabulate_stats_by_group( households, kind-of-group, var )
     prefix the word var to every column name in df
-    insert into varDict the association ( var : df )
-  insert into groupDict the horizontal concatenation of varDict.values()
-    that is, to end up with lots of columns, all with the same groups
-return the vertical concatenation of grupdDict.values()
+    insert df into varList
+  insert into groupList the horizontal (widening) concatenation of varList.values()
+return the vertical (lengthening) concatenation of groupList
 transpose
   now groups are columns, quantities summarized are rows
 keep only the rows and columns of interest

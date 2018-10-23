@@ -21,7 +21,7 @@ if True: # aggregate from household members to households
     ] . agg('first')
   h_sum = people.groupby(
       ['household']
-    ) ['value','vat paid, min','vat paid, max', 'transactions','income','members'
+    ) [  'value','vat paid, min','vat paid, max', 'transactions','income','members'
        , 'income, pension'
        , 'income, cesantia'
        , 'income, capital, dividends'
