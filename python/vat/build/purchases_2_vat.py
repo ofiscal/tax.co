@@ -47,8 +47,12 @@ if True: # input files
                             } )
 
 
-if True: # add VAT to purchases
-  purchases = purchases.merge( vat_coicop, how = "left", on="coicop" )
+if True: # add VAT to COICOP-labeled purchases
+  if True: # use the primary bridge
+    purchases = purchases.merge( vat_coicop, how = "left", on="coicop" )
+
+
+if True: # add VAT to capitulo-c-labeled purchases
   purchases = purchases.merge( vat_cap_c, how = "left", on="25-broad-categs" )
 
   # Since vat_cap_c and vat_coicop have like-named columns, the second merge causes
