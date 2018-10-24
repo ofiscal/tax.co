@@ -6,10 +6,17 @@ subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100
 enph_subsample = "data/enph-2017/recip-" + str( subsample ) + "/"
 
 common_dict = {"DIRECTORIO" : "household", "ORDEN":"member", "FEX_C":"weight"}
+inv_common_dict = {v:k for k,v in common_dict.items()}
+
+#               , inv_col_dict   ["value"]  : 'float64'
+#               , inv_col_dict   ["freq"]   : 'float64'
+#               , inv_common_dict["weight"] : 'float64'
 
 def myReadCsv( filename, col_dict ):
+  inv_col_dict = {v:k for k,v in col_dict.items()}
   return pd.read_csv(
       enph_subsample + filename + ".csv"
+    , dtype = { inv_col_dict   ["coicop"] : 'object' }
     , usecols = list(common_dict.keys()) + list(col_dict.keys())
     ) . rename( columns = {**common_dict, **col_dict} )
 
@@ -71,9 +78,10 @@ files_and_names = [ ("rur_pers"     , rur_pers)
 
 for name, df in files_and_names: df["file"] = name
 
+acc = []
 for name, df in files_and_names:
-  print("\n" + name)
-  print( df.dtypes )
+  acc.append( pd.DataFrame( df.dtypes ) )
+  myDtypes = pd.concat( acc, axis = 1 )
 
 purchases = pd.concat( map( lambda pair: pair[1]
                           , files_and_names ) )
