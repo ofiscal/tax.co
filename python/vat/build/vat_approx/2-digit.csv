@@ -1,4 +1,4 @@
-coicop,vat,"vat, min","vat, max","vat frac, min","vat frac, max"
+coicop-2-digit,vat,"vat, min","vat, max","vat frac, min","vat frac, max"
 1,0,0,0,0,0
 2,0,0,0,0,0
 3,0.19,0.19,0.19,0.159663865546219,0.159663865546219

@@ -8,7 +8,8 @@ import python.util as util
 import python.vat.build.legends as legends
 
 
-subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
+#subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
+subsample = 10
 
 enph_subsample = "data/enph-2017/recip-" + str( subsample ) + "/"
 
@@ -111,4 +112,3 @@ if True: # clean
 if True: # replace value with montly spending on that item
   purchases["freq"] = purchases["freq"] . replace( legends.freq )
   purchases["value"] = purchases["value"] * purchases["freq"]
-
