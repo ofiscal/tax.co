@@ -1,4 +1,5 @@
 import sys
+import numpy as np
 import pandas as pd
 
 subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
@@ -83,21 +84,12 @@ purchases = pd.concat( map( lambda pair: pair[1]
 purchases["weight"] = purchases["weight"] . str.replace( ",", "." )
 purchases["weight"] = pd.to_numeric( purchases["weight"] )
 
+purchases["value"] = purchases["value"] . map( str )
+purchases.loc[ purchases["value"].str.contains( "[^0-9\.]")
+            , "value" ] = np.nan
+purchases["value"] = pd.to_numeric( purchases["value"] )
 
-###### exploratory #######
-
-acc = []
-for name, df in files_and_names:
-  x = pd.DataFrame( df.dtypes ) . rename( columns = {0:name} )
-  acc.append( x )
-  myDtypes = pd.concat( acc, axis = 1 )
-
-myDtypes.transpose()
-
-dfs = pd.concat( [rur_pers, rur_pers_fue, rur_sem, rur_sem_fue ] )
-dfs[ dfs["value"].str.contains( "[^0-9\.]")
-   ] ["value"] . unique()
-dfs[ dfs["freq"].str.contains( "[^0-9\.]")
-   ] ["freq"] . unique()
-dfs[ dfs["weight"].str.contains( "[^0-9\.]")
-   ] ["weight"] . unique()
+purchases["freq"] = purchases["freq"] . map( str )
+purchases.loc[ purchases["freq"].str.contains( "[^0-9\.]")
+            , "freq" ] = np.nan
+purchases["freq"] = pd.to_numeric( purchases["freq"] )
