@@ -41,7 +41,7 @@ groupSummaries = []
 for gv in groupVars:
   varSummaries = []
   for v in vars:
-    t = util.tabulate_stats_by_group( households, gv, v )
+    t = util.tabulate_stats_by_group( households, gv, v, "weight" )
     t = t.rename( columns = dict( zip( t.columns
                                       , map( lambda x: v + ": " + x
                                            , t.columns ) ) )
