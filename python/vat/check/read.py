@@ -10,13 +10,13 @@ inv_common_dict = {v:k for k,v in common_dict.items()}
 
 #               , inv_col_dict   ["value"]  : 'float64'
 #               , inv_col_dict   ["freq"]   : 'float64'
-#               , inv_common_dict["weight"] : 'float64'
 
 def myReadCsv( filename, col_dict ):
   inv_col_dict = {v:k for k,v in col_dict.items()}
   return pd.read_csv(
       enph_subsample + filename + ".csv"
-    , dtype = { inv_col_dict   ["coicop"] : 'object' }
+    , dtype = { inv_col_dict["coicop"] : 'object'
+              , "FEX_C" : 'object' }
     , usecols = list(common_dict.keys()) + list(col_dict.keys())
     ) . rename( columns = {**common_dict, **col_dict} )
 
@@ -78,10 +78,26 @@ files_and_names = [ ("rur_pers"     , rur_pers)
 
 for name, df in files_and_names: df["file"] = name
 
-acc = []
-for name, df in files_and_names:
-  acc.append( pd.DataFrame( df.dtypes ) )
-  myDtypes = pd.concat( acc, axis = 1 )
-
 purchases = pd.concat( map( lambda pair: pair[1]
                           , files_and_names ) )
+purchases["weight"] = purchases["weight"] . str.replace( ",", "." )
+purchases["weight"] = pd.to_numeric( purchases["weight"] )
+
+
+###### exploratory #######
+
+acc = []
+for name, df in files_and_names:
+  x = pd.DataFrame( df.dtypes ) . rename( columns = {0:name} )
+  acc.append( x )
+  myDtypes = pd.concat( acc, axis = 1 )
+
+myDtypes.transpose()
+
+dfs = pd.concat( [rur_pers, rur_pers_fue, rur_sem, rur_sem_fue ] )
+dfs[ dfs["value"].str.contains( "[^0-9\.]")
+   ] ["value"] . unique()
+dfs[ dfs["freq"].str.contains( "[^0-9\.]")
+   ] ["freq"] . unique()
+dfs[ dfs["weight"].str.contains( "[^0-9\.]")
+   ] ["weight"] . unique()
