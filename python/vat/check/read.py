@@ -1,6 +1,11 @@
+# exec( open( "python/vat/check/read.py" ) . read() )
+
 import sys
 import numpy as np
 import pandas as pd
+
+import python.util as util
+import python.vat.build.legends as legends
 
 
 subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
@@ -101,3 +106,9 @@ if True: # clean
   purchases.loc[ purchases["freq"].str.contains( "[^0-9\.]")
               , "freq" ] = np.nan
   purchases["freq"] = pd.to_numeric( purchases["freq"] )
+
+
+if True: # replace value with montly spending on that item
+  purchases["freq"] = purchases["freq"] . replace( legends.freq )
+  purchases["value"] = purchases["value"] * purchases["freq"]
+
