@@ -17,7 +17,7 @@ people["education"] = util.interpretCategorical( people["education"]
 if True: # aggregate from household members to households
   people["members"] = 1
   h_first = people.groupby( ['household']
-    ) ['region-1','region-2','estrato' # these are constant within household
+    ) ['region-1','region-2','estrato', 'weight' # these are constant within household
     ] . agg('first')
   h_sum = people.groupby(
       ['household']
