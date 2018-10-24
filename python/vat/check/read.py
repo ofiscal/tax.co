@@ -81,6 +81,11 @@ for name, df in files_and_names: df["file"] = name
 
 purchases = pd.concat( map( lambda pair: pair[1]
                           , files_and_names ) )
+
+purchases.loc[
+  purchases["coicop"] . str.contains( "( |inv)" )
+  , "coicop" ] = np.nan
+
 purchases["weight"] = purchases["weight"] . str.replace( ",", "." )
 purchases["weight"] = pd.to_numeric( purchases["weight"] )
 
