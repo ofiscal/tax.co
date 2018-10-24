@@ -40,8 +40,8 @@ def tabulate_min_median_max_by_group(df, group_name, param_name):
 
 def tabulate_stats_by_group(df, group_name, param_name, weight_name=None):
   if weight_name != None:
-    total_weight = df[weight_name].sum()
     dff = df[ ~ df[param_name].isnull() ].copy()
+    total_weight = dff[weight_name].sum()
     dff["val*weight"] = dff[param_name] * dff[weight_name]
     num_obs = len( dff )
     dff_no_0 = dff[ dff[param_name] != 0 ]

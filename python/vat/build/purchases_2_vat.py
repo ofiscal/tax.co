@@ -65,10 +65,10 @@ if True: # add vat to coicop-labeled purchases
 
   # PITFALL: The following are alternatives. Use only one.
 
-  if True: # use the primary bridge
+  if False: # use the primary bridge
     purchases_coicop = purchases.merge( vat_coicop, how = "left", on="coicop" )
 
-  if False: # merge on the 2- and 3-digit approximations instead
+  if True: # merge on the 2- and 3-digit approximations instead
     purchases_2_digit = purchases.merge( vat_coicop_2_digit, how = "left"
                           , left_on="coicop, 2-digit", right_on="coicop"
                       ) . rename( columns = {"coicop_x" : "coicop"}
