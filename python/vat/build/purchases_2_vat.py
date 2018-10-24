@@ -5,8 +5,9 @@ import python.vat.build.output_io as oio
 import python.vat.build.legends as legends
 import python.util as util
 
-subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
 
+# subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
+subsample = 100
 
 if True: # input files
   # This data set is too big unless I down-cast the numbers.
@@ -53,28 +54,43 @@ if True: # input files
   vat_coicop_3_digit = pd.read_csv( "python/vat/build/vat_approx/3-digit.csv" )
 
 if True: # 8-pad everything coicop-like
-  purchases["coicop"] = util.pad_column_as_int( 8, purchases["coicop"] )
+  purchases         ["coicop"] = util.pad_column_as_int( 8, purchases         ["coicop"] )
   vat_coicop        ["coicop"] = util.pad_column_as_int( 8, vat_coicop        ["coicop"] )
   vat_coicop_2_digit["coicop"] = util.pad_column_as_int( 2, vat_coicop_2_digit["coicop"] )
   vat_coicop_3_digit["coicop"] = util.pad_column_as_int( 3, vat_coicop_3_digit["coicop"] )
 
+  purchases["coicop, 2-digit"] = purchases["coicop"] . apply( lambda s: s[0:2] )
+  purchases["coicop, 3-digit"] = purchases["coicop"] . apply( lambda s: s[0:3] )
 
-if True: # add VAT to COICOP-labeled purchases
-  if True: # use the primary bridge
+if True: # add vat to coicop-labeled purchases
+
+  # PITFALL: The following are alternatives. Use only one.
+
+  if False: # use the primary bridge
     purchases_coicop = purchases.merge( vat_coicop, how = "left", on="coicop" )
 
-  if False: # TODO: merge on the 2- and 3-digit approximations instead
-    pass
+  if True: # merge on the 2- and 3-digit approximations instead
+    purchases_2_digit = purchases.merge( vat_coicop_2_digit, how = "left"
+                          , left_on="coicop, 2-digit", right_on="coicop"
+                      ) . rename( columns = {"coicop_x" : "coicop"}
+                      ) . drop( columns = ["coicop_y"] )
+    purchases_3_digit = purchases.merge( vat_coicop_3_digit, how = "left"
+                          , left_on="coicop, 3-digit", right_on="coicop"
+                      ) . rename( columns = {"coicop_x" : "coicop"}
+                      ) . drop( columns = ["coicop_y"] )
+    purchases_coicop = purchases_2_digit . combine_first( purchases_3_digit )
 
-if True: # add VAT to capitulo-c-labeled purchases
+if True: # add vat to capitulo-c-labeled purchases
   purchases_cap_c = purchases.merge( vat_cap_c, how = "left", on="25-broad-categs" )
   purchases = purchases_coicop . combine_first( purchases_cap_c )
 
+if False: # drop anything missing min vat (which implies max also missing)
+  purchases = purchases[ ~ purchases["vat, min"] . isnull() ]
 
 if True: # compute a few more variables
   purchases["freq-code"] = purchases["freq"]
-    # kept for the sake of drawing a table of purchase frequency
-    # with frequencies spread evenly across the x-axis
+    # Kept for the sake of drawing a table of purchase frequency,
+    # with frequencies spread evenly across the x-axis.
   purchases["freq"].replace( legends.freq
                            , inplace=True )
   purchases = purchases.drop(
