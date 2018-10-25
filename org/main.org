@@ -1,5 +1,11 @@
 * TODO eliminate manual boolean flags determining behavior
-in purchases_2_vat.py and vat_rates.py
+add strategy suffix to all files downstream of vat_rates
+  purchases_2_vat
+  purchase_sums
+  purchase_pics
+  people_3_purchases
+  households
+  overview
 
 ways to run:
   const-<rate>

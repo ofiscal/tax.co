@@ -30,6 +30,8 @@ s_vat_strategy=$(strip $(vat_strategy))# removes trailing space
 vat_const_rate?=""# default value
 s_vat_const_rate=$(patsubst "%",%,$(strip $(vat_const_rate)))
   # removes trailing space and "s
+strategy_suffix=$(strip $(s_vat_strategy)_$(s_vat_const_rate))
+
 python_from_here = PYTHONPATH='.' python3
 
 
@@ -74,10 +76,10 @@ purchases_1 =        output/vat/data/recip-$(ss)/purchases_1.csv \
 purchases_2_vat =    output/vat/data/recip-$(ss)/purchases_2_vat.csv
 purchase_sums =      output/vat/data/recip-$(ss)/purchase_sums.csv
 vat_rates = \
-  output/vat/data/recip-$(ss)/vat_coicop_$(s_vat_strategy)_$(s_vat_const_rate).csv \
-  output/vat/data/recip-$(ss)/vat_cap_c_$(s_vat_strategy)_$(s_vat_const_rate).csv \
-  output/vat/data/recip-$(ss)/vat_coicop_brief_$(s_vat_strategy)_$(s_vat_const_rate).csv \
-  output/vat/data/recip-$(ss)/vat_cap_c_brief_$(s_vat_strategy)_$(s_vat_const_rate).csv
+  output/vat/data/recip-$(ss)/vat_coicop_$(strategy_suffix).csv \
+  output/vat/data/recip-$(ss)/vat_cap_c_$(strategy_suffix).csv \
+  output/vat/data/recip-$(ss)/vat_coicop_brief_$(strategy_suffix).csv \
+  output/vat/data/recip-$(ss)/vat_cap_c_brief_$(strategy_suffix).csv
 
 purchase_pics =      output/vat/pics/recip-$(ss)/purchases/frequency.png \
                      output/vat/pics/recip-$(ss)/purchases/quantity.png \
