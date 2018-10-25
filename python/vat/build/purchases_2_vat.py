@@ -5,13 +5,12 @@ import numpy as np
 import python.vat.build.output_io as oio
 import python.vat.build.legends as legends
 import python.util as util
+import python.vat.build.common as common
 
-
-subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
 
 if True: # input files
   # This data set is too big unless I down-cast the numbers.
-  purchases = oio.readStage( subsample
+  purchases = oio.readStage( common.subsample
                            , "purchases_1_5_no_origin"
                            , dtype = {
                                "25-broad-categs" : "float32"
@@ -26,7 +25,7 @@ if True: # input files
                              , "where-got" : "float32"
                            } )
 
-  vat_cap_c = oio.readStage( subsample
+  vat_cap_c = oio.readStage( common.subsample
                            , "vat_cap_c_brief"
                            , dtype = {
                              "25-broad-categs" : "int32"
@@ -38,7 +37,7 @@ if True: # input files
                              , "vat frac, max" : "float32"
                            } )
 
-  vat_coicop = oio.readStage( subsample
+  vat_coicop = oio.readStage( common.subsample
                             , "vat_coicop_brief"
                             , dtype = {
                                 "coicop" : "int32"
@@ -114,4 +113,4 @@ if True: # handle freq, value, vat paid
   purchases["vat paid, max"] = purchases["value"] * purchases["vat frac, max"]
   purchases["vat paid, min"] = purchases["value"] * purchases["vat frac, min"]
 
-  oio.saveStage(subsample, purchases, 'purchases_2_vat')
+  oio.saveStage(common.subsample, purchases, 'purchases_2_vat')

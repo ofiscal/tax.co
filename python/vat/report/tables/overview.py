@@ -5,11 +5,10 @@ import pandas as pd
 import python.util as util
 import python.vat.build.output_io as oio
 from python.vat.build.people.files import edu_key
+import python.vat.build.common as common
 
 
-subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
-
-households = oio.readStage( subsample, "households"
+households = oio.readStage( common.subsample, "households"
              ) . rename( columns = {"income, capital, dividends" : "income, dividends"} )
 
 households["income, labor + cesantia"] = households["income, labor"] + households["income, cesantia"]
@@ -55,7 +54,7 @@ for gv in groupVars:
 df_tmi = pd.concat( groupSummaries, axis = 0
                   ) . transpose()
 
-output_dir = "output/vat/tables/recip-" + str(subsample) + "/"
+output_dir = "output/vat/tables/recip-" + str(common.subsample) + "/"
 
 if not os.path.exists(output_dir): os.makedirs(output_dir)
 

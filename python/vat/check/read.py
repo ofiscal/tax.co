@@ -6,12 +6,10 @@ import pandas as pd
 
 import python.util as util
 import python.vat.build.legends as legends
+import python.vat.build.common as common
 
 
-#subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
-subsample = 10
-
-enph_subsample = "data/enph-2017/recip-" + str( subsample ) + "/"
+enph_subsample = "data/enph-2017/recip-" + str( common.subsample ) + "/"
 
 common_dict = {"DIRECTORIO" : "household", "ORDEN":"member", "FEX_C":"weight"}
 inv_common_dict = {v:k for k,v in common_dict.items()}

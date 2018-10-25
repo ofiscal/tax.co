@@ -2,15 +2,14 @@ import sys
 import pandas as pd
 
 import python.vat.build.output_io as oio
+import python.vat.build.common as common
 
 
-subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
-
-buildings = oio.readStage(subsample, '/buildings')
-people = oio.readStage(subsample, '/people_1')
+buildings = oio.readStage(common.subsample, '/buildings')
+people = oio.readStage(common.subsample, '/people_1')
 
 people = pd.merge( people, buildings
                  , how = "left"
                  , on="household" )
 
-oio.saveStage(subsample, people, '/people_2_buildings')
+oio.saveStage(common.subsample, people, '/people_2_buildings')

@@ -14,12 +14,12 @@ if True: # more imports
   
   import python.vat.build.output_io as oio
   import python.draw.util as draw
+  import python.vat.build.common as common
 
 
-subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
-vat_pics_dir = "output/vat/pics/recip-" + str(subsample) + "/"
+vat_pics_dir = "output/vat/pics/recip-" + str(common.subsample) + "/"
 if not os.path.exists(vat_pics_dir): os.makedirs(vat_pics_dir)
-purchases = oio.readStage( subsample, 'purchases_2_vat')
+purchases = oio.readStage( common.subsample, 'purchases_2_vat')
 
 
 if True: # purchase quantity, logx and linear

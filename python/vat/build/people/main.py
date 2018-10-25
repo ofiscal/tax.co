@@ -8,10 +8,8 @@ import python.vat.build.people.files as files
 import python.vat.build.output_io as oio
 
 
-subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
-
 people = common.to_numbers( common.collect_files( files.files
-                                                , subsample = subsample )
+                                                , subsample = common.subsample )
                           , skip_columns = ["non-beca sources"] )
 
 if True: # drop non-members of household
@@ -236,4 +234,4 @@ if True: # format some categorical variables
   #  categories = list( time_use_key.values() ),
   #  ordered = True)
 
-oio.saveStage(subsample, people, 'people_1')
+oio.saveStage(common.subsample, people, 'people_1')

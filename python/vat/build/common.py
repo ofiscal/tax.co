@@ -6,6 +6,15 @@ import pandas as pd
 
 subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
 
+vat_strategy = sys.argv[2] # Valid: const | approx | detail
+
+if vat_strategy == "const":
+  vat_const_rate = float(sys.argv[3])  # float: 0.19, 0.107, etc.
+else:
+  vat_const_rate = ""
+
+vat_strategy_suffix = vat_strategy + "_" + str(vat_const_rate)
+
 variables = { "DIRECTORIO" : "household"
             , "ORDEN" : "household-member"
             , "FEX_C" : "weight"

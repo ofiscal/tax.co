@@ -141,14 +141,14 @@ $(buildings): python/vat/build/buildings.py \
   python/vat/build/common.py \
   python/vat/build/output_io.py \
   $(input_subsamples)
-	$(python_from_here) python/vat/build/buildings.py $(subsample)
+	$(python_from_here) python/vat/build/buildings.py $(subsample) $(vat_strategy) $(vat_const_rate)
 
 households: $(households)
 $(households): python/vat/build/households.py \
   python/util.py \
   python/vat/build/output_io.py \
   $(people_3_purchases)
-	$(python_from_here) python/vat/build/households.py $(subsample)
+	$(python_from_here) python/vat/build/households.py $(subsample) $(vat_strategy) $(vat_const_rate)
 
 people_1: $(people_1)
 $(people_1): python/vat/build/people/main.py \
@@ -156,19 +156,19 @@ $(people_1): python/vat/build/people/main.py \
   python/vat/build/common.py \
   python/vat/build/output_io.py \
   $(input_subsamples)
-	$(python_from_here) python/vat/build/people/main.py $(subsample)
+	$(python_from_here) python/vat/build/people/main.py $(subsample) $(vat_strategy) $(vat_const_rate)
 
 people_2_buildings: $(people_2_buildings)
 $(people_2_buildings): python/vat/build/people_2_buildings.py \
   python/vat/build/output_io.py \
   $(buildings) $(people_1)
-	$(python_from_here) python/vat/build/people_2_buildings.py $(subsample)
+	$(python_from_here) python/vat/build/people_2_buildings.py $(subsample) $(vat_strategy) $(vat_const_rate)
 
 people_3_purchases: $(people_3_purchases)
 $(people_3_purchases): python/vat/build/people_3_purchases.py \
   python/vat/build/output_io.py \
   $(people_2_buildings) $(purchase_sums)
-	$(python_from_here) python/vat/build/people_3_purchases.py $(subsample)
+	$(python_from_here) python/vat/build/people_3_purchases.py $(subsample) $(vat_strategy) $(vat_const_rate)
 
 purchases_1: $(purchases_1)
 $(purchases_1): python/vat/build/purchases/main.py \
@@ -180,7 +180,7 @@ $(purchases_1): python/vat/build/purchases/main.py \
   python/vat/build/purchases/articulos.py \
   python/vat/build/purchases/capitulo_c.py \
   $(input_subsamples)
-	$(python_from_here) python/vat/build/purchases/main.py $(subsample)
+	$(python_from_here) python/vat/build/purchases/main.py $(subsample) $(vat_strategy) $(vat_const_rate)
 
 purchases_2_vat: $(purchases_2_vat)
 $(purchases_2_vat): python/vat/build/purchases_2_vat.py \
@@ -188,13 +188,13 @@ $(purchases_2_vat): python/vat/build/purchases_2_vat.py \
   python/vat/build/legends.py \
   $(vat_rates) \
   output/vat/data/recip-$(ss)/purchases_1.csv
-	$(python_from_here) python/vat/build/purchases_2_vat.py $(subsample)
+	$(python_from_here) python/vat/build/purchases_2_vat.py $(subsample) $(vat_strategy) $(vat_const_rate)
 
 purchase_sums: $(purchase_sums)
 $(purchase_sums): python/vat/build/purchase_sums.py \
   python/vat/build/output_io.py \
   $(purchases_2_vat)
-	$(python_from_here) python/vat/build/purchase_sums.py $(subsample)
+	$(python_from_here) python/vat/build/purchase_sums.py $(subsample) $(vat_strategy) $(vat_const_rate)
 
 
 ##=##=##=## Make charts, diagrams, tiny latex tables
@@ -202,17 +202,17 @@ $(purchase_sums): python/vat/build/purchase_sums.py \
 purchase_pics: $(purchase_pics)
 $(purchase_pics): python/vat/report/pics/purchases.py \
   $(purchases_2_vat)
-	$(python_from_here) python/vat/report/pics/purchases.py $(subsample)
+	$(python_from_here) python/vat/report/pics/purchases.py $(subsample) $(vat_strategy) $(vat_const_rate)
 
 household_pics: $(household_pics)
 $(household_pics): python/vat/report/pics/households.py \
   $(households)
-	$(python_from_here) python/vat/report/pics/households.py $(subsample)
+	$(python_from_here) python/vat/report/pics/households.py $(subsample) $(vat_strategy) $(vat_const_rate)
 
 people_pics: $(people_pics)
 $(people_pics): python/vat/report/pics/people.py \
   $(people_3_purchases)
-	$(python_from_here) python/vat/report/pics/people.py $(subsample)
+	$(python_from_here) python/vat/report/pics/people.py $(subsample) $(vat_strategy) $(vat_const_rate)
 
 pics: $(pics)
 
@@ -222,4 +222,4 @@ $(overview): python/vat/report/tables/overview.py \
   python/vat/build/output_io.py \
   python/vat/build/people/files.py \
   $(households)
-	$(python_from_here) python/vat/report/tables/overview.py $(subsample)
+	$(python_from_here) python/vat/report/tables/overview.py $(subsample) $(vat_strategy) $(vat_const_rate)

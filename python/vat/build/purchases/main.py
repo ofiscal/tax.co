@@ -12,8 +12,6 @@ import python.vat.build.purchases.articulos as articulos
 import python.vat.build.purchases.capitulo_c as capitulo_c
 
 
-subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
-
 purchases = common.collect_files(
   articulos.files
   # + medios.files
@@ -21,7 +19,7 @@ purchases = common.collect_files(
     # and the data only records purchases of a second home.
   + capitulo_c.files
   + nice_purchases.files
-  , subsample = subsample
+  , subsample = common.subsample
 )
 
 for c in [ # TODO ? This might be easier to understand without the Correction class.
@@ -82,8 +80,8 @@ for c in [ # how-got 1 -> is-purchase 1, nan -> nan, otherwise -> 0
   , Correction.Rename_Column( "how-got", "is-purchase" )
 ]: purchases = c.correct( purchases )
 
-oio.saveStage(subsample, purchases, 'purchases_1')
+oio.saveStage(common.subsample, purchases, 'purchases_1')
 
 purchases = purchases.drop( columns = ["file-origin"] )
 
-oio.saveStage(subsample, purchases, 'purchases_1_5_no_origin')
+oio.saveStage(common.subsample, purchases, 'purchases_1_5_no_origin')

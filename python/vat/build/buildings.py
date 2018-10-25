@@ -6,11 +6,10 @@ import python.vat.build.common as common
 import python.vat.build.output_io as oio
 
 
-subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
-  # PITFALL: Except for the save at the end, this argument is ignored; the program uses
-  # the full sample always, because it's a small file, and merged with others.
-  # If it was subsampled at 1/n, and the other one was as well,
-  # then their merge would be subsampled at 1/n^2.
+# PITFALL: Except for the save at the end, subsample is ignored; the program uses
+# the full sample always, because it's a small file, and merged with others.
+# If it was subsampled at 1/n, and the other one was as well,
+# then their merge would be subsampled at 1/n^2.
 
 files = [
   classes.File( "buildings"
@@ -22,8 +21,8 @@ files = [
     }
 ) ]
 
-buildings = common.collect_files( files, subsample=1 )
+buildings = common.collect_files( files, subsample=1 ) # see PITFALL above
 buildings["estrato"] = buildings["estrato"].replace(' ', np.nan)
 buildings = buildings.drop( columns = ["file-origin"] )
 
-oio.saveStage(subsample, buildings, 'buildings')
+oio.saveStage(common.subsample, buildings, 'buildings') # see PITFALL above

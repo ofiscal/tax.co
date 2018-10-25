@@ -1,10 +1,9 @@
 import sys
 import python.vat.build.output_io as oio
+import python.vat.build.common as common
 
 
-subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
-purchases = oio.readStage( subsample, "purchases_2_vat" )
-
+purchases = oio.readStage( common.subsample, "purchases_2_vat" )
 
 if True: # sum purchases within person
   purchases["transactions"] = 1 # useful later, when it is summed
@@ -16,4 +15,4 @@ if True: # sum purchases within person
            ] . agg("sum")
   purchase_sums = purchase_sums.reset_index( level = ["household", "household-member"] )
 
-  oio.saveStage( subsample, purchase_sums, "purchase_sums" )
+  oio.saveStage( common.subsample, purchase_sums, "purchase_sums" )

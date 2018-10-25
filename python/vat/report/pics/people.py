@@ -18,12 +18,12 @@ if True: # more imports
   import python.util as util
   import python.draw.util as draw
   import python.vat.build.output_io as oio
+  import python.vat.build.common as common
 
 
-subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
-vat_pics_dir = "output/vat/pics/recip-" + str(subsample) + "/"
+vat_pics_dir = "output/vat/pics/recip-" + str(common.subsample) + "/"
 if not os.path.exists(vat_pics_dir): os.makedirs(vat_pics_dir)
-people = oio.readStage( subsample, 'people_3_purchases')
+people = oio.readStage( common.subsample, 'people_3_purchases')
 
 edu_key = { 1 : "Ninguno",
     2 : "Preescolar",
@@ -87,7 +87,7 @@ if True: # age deciles
   ageMaxs = ageGroups.agg("max").rename(columns={"age":"max"})
   ageDeciles = pd.concat([ageMins,ageMaxs],axis=1)
   draw.to_latex( ageDeciles,
-                 "output/vat-tables/recip-" + str(subsample),
+                 "output/vat-tables/recip-" + str(common.subsample),
                  "age-by-age-decile" )
 
 if True: # the CDF of income across individuals by age decile, logx and linear

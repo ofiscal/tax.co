@@ -5,11 +5,10 @@ import numpy as np
 import python.util as util
 import python.vat.build.output_io as oio
 from python.vat.build.people.files import edu_key
+import python.vat.build.common as common
 
 
-subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
-
-people = oio.readStage( subsample, "people_3_purchases" )
+people = oio.readStage( common.subsample, "people_3_purchases" )
 
 people["education"] = util.interpretCategorical( people["education"]
                                                , edu_key.values() )
@@ -93,11 +92,11 @@ if True: # data sets derived from households
 
 
 if True: # save
-  oio.saveStage(subsample, households
+  oio.saveStage(common.subsample, households
                        , 'households' )
-  oio.saveStage(subsample, households_w_income
+  oio.saveStage(common.subsample, households_w_income
                        , 'households_w_income' )
-  oio.saveStage(subsample, households_w_income_decile_summary
+  oio.saveStage(common.subsample, households_w_income_decile_summary
                        , 'households_w_income_decile_summary' )
-  oio.saveStage(subsample, households_decile_summary
+  oio.saveStage(common.subsample, households_decile_summary
                        , 'households_decile_summary' )

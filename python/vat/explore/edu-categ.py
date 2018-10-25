@@ -4,13 +4,12 @@ import pandas as pd
 import python.util as util
 import python.vat.build.output_io as oio
 from python.vat.build.people.files import edu_key
+import python.vat.build.common as common
 
 
-subsample = 100 # int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
-
-people = oio.readStage( subsample, "people_3_purchases" )
-households = oio.readStage( subsample, "households" )
-purchase_sums = oio.readStage( subsample, "purchase_sums" )
+people = oio.readStage( common.subsample, "people_3_purchases" )
+households = oio.readStage( common.subsample, "households" )
+purchase_sums = oio.readStage( common.subsample, "purchase_sums" )
 
 if False: people["education"] = pd.Categorical( people["education"]
                 , categories = list( edu_key.values() )

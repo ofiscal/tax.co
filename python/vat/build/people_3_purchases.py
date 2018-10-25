@@ -1,14 +1,12 @@
 import sys
 import pandas as pd
 import python.vat.build.output_io as oio
-
-
-subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
+import python.vat.build.common as common
 
 
 if True: # input files
-  people = oio.readStage( subsample, "people_2_buildings" )
-  purchase_sums = oio.readStage( subsample, "purchase_sums" )
+  people = oio.readStage( common.subsample, "people_2_buildings" )
+  purchase_sums = oio.readStage( common.subsample, "purchase_sums" )
 
 
 if True: # merge purchase sums into people
@@ -35,4 +33,4 @@ if True: # create a few more variables
   people["female head"] = people["female"] * (people["household-member"]==1)
 
 
-oio.saveStage(subsample, people, 'people_3_purchases')
+oio.saveStage(common.subsample, people, 'people_3_purchases')

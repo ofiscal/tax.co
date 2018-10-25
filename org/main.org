@@ -80,6 +80,7 @@ keep only the rows and columns of interest
   ditch the group "non-female head of household"
   ditch lots of rows
 * TODO next
+** add gpl license to code
 ** TODO These error codes apply to all income and expense variables
 *** why to use them
 The summary measures are otherwise hard to buy -- I see, for instance, a lot of values of 8.17 (that's 98 / 12) for monthly income measures.
