@@ -19,12 +19,12 @@ vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
                         , sep = ";"
                         , encoding = "latin1" )
 
-if False: # short-circuit the vat-code keys; set everything to 19
-  pass
-  #vat_cap_c[ "vat, min"] = 0.19
-  #vat_cap_c[ "vat, max"] = 0.19
-  #vat_coicop["vat, min"] = 0.19
-  #vat_coicop["vat, max"] = 0.19
+if True: # short-circuit the vat-code keys; set everything to 19
+  common_vat = 0.17
+  vat_cap_c[ "vat, min"] = common_vat
+  vat_cap_c[ "vat, max"] = common_vat
+  vat_coicop["vat, min"] = common_vat
+  vat_coicop["vat, max"] = common_vat
 
 for (vat,frac) in [ ("vat"    ,     "vat frac")
                   , ("vat, min", "vat frac, min")

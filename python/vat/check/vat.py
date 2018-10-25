@@ -33,7 +33,8 @@ purchases.loc[ purchases["coicop"] . str.contains( "[^0-9]" )
 purchases_2 = purchases.merge( coicop_2_digit, how = "left", on = "coicop-2-digit" )
 purchases_3 = purchases.merge( coicop_3_digit, how = "left", on = "coicop-3-digit" )
 
-purchases = purchases_3.combine_first( purchases_2 )
+purchases = purchases_2.combine_first( purchases_3 ) # Either order works here.
+  # (In theory and after testing.)
 purchases["one"] = 1
 
-util.tabulate_stats_by_group( purchases, "one", "vat-frac", "weight" )
+x = util.tabulate_stats_by_group( purchases, "one", "vat-frac", "weight" )

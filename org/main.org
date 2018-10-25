@@ -1,3 +1,5 @@
+* TODO PITFALL : there are manual boolean flags determining behavior
+in purchases_2_vat.py and vat_rates.py
 * TODO ? is vat too low
 ** DONE what if we exclude capitulo c files
   no, those are a very small fraction of total purchases
