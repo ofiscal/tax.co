@@ -1,9 +1,10 @@
+import sys
 from python.vat.build.classes import Correction
 import numpy as np
 import pandas as pd
 
 
-subsample = 100
+subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
 
 variables = { "DIRECTORIO" : "household"
             , "ORDEN" : "household-member"

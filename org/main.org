@@ -13,8 +13,6 @@ ways to run:
   big-bridge
 
 output structure
-
-
 * TODO "add to all the results Median (VAT/Income) with median VAT, and Average (VAT/Income) with average VAT"
 * TODO ? is vat too low
 ** DONE what if we exclude capitulo c files
