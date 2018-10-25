@@ -38,17 +38,17 @@ for (vat,frac) in [ ("vat"    ,     "vat frac")
 if True: # save
   oio.saveStage( common.subsample
                , vat_coicop
-               , 'vat_coicop_' + common.vat_strategy_suffix )
+               , 'vat_coicop.' + common.vat_strategy_suffix )
   oio.saveStage( common.subsample
                , vat_cap_c
-               , 'vat_cap_c_'  + common.vat_strategy_suffix )
+               , 'vat_cap_c.'  + common.vat_strategy_suffix )
 
   vat_coicop = vat_coicop.drop( columns = ["description","Notes"] )
   vat_cap_c = vat_cap_c.drop( columns = ["description"] )
 
   oio.saveStage( common.subsample
                , vat_coicop
-               , 'vat_coicop_brief_' + common.vat_strategy_suffix )
+               , 'vat_coicop_brief.' + common.vat_strategy_suffix )
   oio.saveStage( common.subsample
                , vat_cap_c
-               , 'vat_cap_c_brief_'   + common.vat_strategy_suffix )
+               , 'vat_cap_c_brief.'   + common.vat_strategy_suffix )

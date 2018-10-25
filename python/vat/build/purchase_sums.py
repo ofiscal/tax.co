@@ -3,7 +3,7 @@ import python.vat.build.output_io as oio
 import python.vat.build.common as common
 
 
-purchases = oio.readStage( common.subsample, "purchases_2_vat" )
+purchases = oio.readStage( common.subsample, "purchases_2_vat." + common.vat_strategy_suffix )
 
 if True: # sum purchases within person
   purchases["transactions"] = 1 # useful later, when it is summed
@@ -15,4 +15,4 @@ if True: # sum purchases within person
            ] . agg("sum")
   purchase_sums = purchase_sums.reset_index( level = ["household", "household-member"] )
 
-  oio.saveStage( common.subsample, purchase_sums, "purchase_sums" )
+  oio.saveStage( common.subsample, purchase_sums, "purchase_sums." + common.vat_strategy_suffix )
