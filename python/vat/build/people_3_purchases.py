@@ -6,7 +6,7 @@ import python.vat.build.common as common
 
 if True: # input files
   people = oio.readStage( common.subsample, "people_2_buildings" )
-  purchase_sums = oio.readStage( common.subsample, "purchase_sums" )
+  purchase_sums = oio.readStage( common.subsample, "purchase_sums." + common.vat_strategy_suffix )
 
 
 if True: # merge purchase sums into people
@@ -33,4 +33,4 @@ if True: # create a few more variables
   people["female head"] = people["female"] * (people["household-member"]==1)
 
 
-oio.saveStage(common.subsample, people, 'people_3_purchases')
+oio.saveStage( common.subsample, people, 'people_3_purchases.' + common.vat_strategy_suffix )
