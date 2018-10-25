@@ -8,7 +8,7 @@ from python.vat.build.people.files import edu_key
 import python.vat.build.common as common
 
 
-people = oio.readStage( common.subsample, "people_3_purchases" )
+people = oio.readStage( common.subsample, "people_3_purchases." + common.vat_strategy_suffix )
 
 people["education"] = util.interpretCategorical( people["education"]
                                                , edu_key.values() )
@@ -92,11 +92,11 @@ if True: # data sets derived from households
 
 
 if True: # save
-  oio.saveStage(common.subsample, households
-                       , 'households' )
-  oio.saveStage(common.subsample, households_w_income
-                       , 'households_w_income' )
-  oio.saveStage(common.subsample, households_w_income_decile_summary
-                       , 'households_w_income_decile_summary' )
-  oio.saveStage(common.subsample, households_decile_summary
-                       , 'households_decile_summary' )
+  oio.saveStage( common.subsample, households
+                        , 'households.' + common.vat_strategy_suffix )
+  oio.saveStage( common.subsample, households_w_income
+                        , 'households_w_income.' + common.vat_strategy_suffix )
+  oio.saveStage( common.subsample, households_w_income_decile_summary
+                        , 'households_w_income_decile_summary.' + common.vat_strategy_suffix )
+  oio.saveStage( common.subsample, households_decile_summary
+                       , 'households_decile_summary.' + common.vat_strategy_suffix )

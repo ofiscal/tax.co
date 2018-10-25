@@ -1,3 +1,8 @@
+# PITFALL: vat_const_rate should only be specified (when calling make from the command line)
+# if using the const strategy. It is used in the commands below in all cases, which in cases
+# other than the const strategy only works if it is undefined, i.e. equal to the empty string
+# (without even quotation marks).
+
 SHELL := bash
 .PHONY: input_subsamples \
   buildings \
@@ -27,7 +32,8 @@ ss=$(strip $(subsample))# removes trailing space
 vat_strategy?=approx
   # default value; can be overridden from command line, ala "make raw vat_strategy=detail"
 s_vat_strategy=$(strip $(vat_strategy))# removes trailing space
-vat_const_rate?=""# default value
+vat_const_rate?=
+  # by default it is the empty string, without even quotation marks
 s_vat_const_rate=$(patsubst "%",%,$(strip $(vat_const_rate)))
   # removes trailing space and "s
 strategy_suffix=$(strip $(s_vat_strategy)_$(s_vat_const_rate))
@@ -64,10 +70,11 @@ input_subsamples =                                                           \
   $(addsuffix .csv, $(addprefix data/enph-2017/recip-$(ss)/, $(enph_files)))
 
 buildings =          output/vat/data/recip-$(ss)/buildings.csv
-households =         output/vat/data/recip-$(ss)/households.csv \
-                     output/vat/data/recip-$(ss)/households_w_income.csv \
-                     output/vat/data/recip-$(ss)/households_w_income_decile_summary.csv \
-                     output/vat/data/recip-$(ss)/households_decile_summary.csv
+households = \
+  output/vat/data/recip-$(ss)/households.$(strategy_suffix).csv \
+  output/vat/data/recip-$(ss)/households_w_income.$(strategy_suffix).csv \
+  output/vat/data/recip-$(ss)/households_w_income_decile_summary.$(strategy_suffix).csv \
+  output/vat/data/recip-$(ss)/households_decile_summary.$(strategy_suffix).csv
 people_1 =           output/vat/data/recip-$(ss)/people_1.csv
 people_2_buildings = output/vat/data/recip-$(ss)/people_2_buildings.csv
 people_3_purchases = output/vat/data/recip-$(ss)/people_3_purchases.$(strategy_suffix).csv
@@ -114,7 +121,7 @@ household_pics = \
 
 pics = $(purchase_pics) $(people_pics) $(household_pics)
 
-overview = output/vat/tables/recip-$(ss)/overview.csv
+overview = output/vat/tables/recip-$(ss)/overview.$(strategy_suffix).csv
 
 
 ##=##=##=##=##=##=##=## Recipes

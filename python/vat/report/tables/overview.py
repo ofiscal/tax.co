@@ -8,7 +8,7 @@ from python.vat.build.people.files import edu_key
 import python.vat.build.common as common
 
 
-households = oio.readStage( common.subsample, "households"
+households = oio.readStage( common.subsample, "households." + common.vat_strategy_suffix
              ) . rename( columns = {"income, capital, dividends" : "income, dividends"} )
 
 households["income, labor + cesantia"] = households["income, labor"] + households["income, cesantia"]
@@ -58,7 +58,7 @@ output_dir = "output/vat/tables/recip-" + str(common.subsample) + "/"
 
 if not os.path.exists(output_dir): os.makedirs(output_dir)
 
-df_tmi.to_csv( output_dir + "overview, tmi.csv" )
+df_tmi.to_csv( output_dir + "overview, tmi." + common.vat_strategy_suffix + ".csv" )
 
 df = df_tmi.ix[[
     "income: mean"
@@ -87,4 +87,5 @@ df = df_tmi.ix[[
   , "vat/income, max: mean"
 ]]
 
-df.to_csv( output_dir + "overview.csv" )
+df.to_csv( output_dir + "overview, tmi." + common.vat_strategy_suffix + ".csv" )
+df.to_csv( output_dir + "overview." + common.vat_strategy_suffix + ".csv" )
