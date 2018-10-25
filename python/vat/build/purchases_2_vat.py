@@ -26,7 +26,7 @@ if True: # input files
                            } )
 
   vat_cap_c = oio.readStage( common.subsample
-                           , "vat_cap_c_brief"
+                           , "vat_cap_c_brief_" + common.vat_strategy_suffix
                            , dtype = {
                              "25-broad-categs" : "int32"
                              , "vat" : "float32"
@@ -38,7 +38,7 @@ if True: # input files
                            } )
 
   vat_coicop = oio.readStage( common.subsample
-                            , "vat_coicop_brief"
+                            , "vat_coicop_brief_" + common.vat_strategy_suffix
                             , dtype = {
                                 "coicop" : "int32"
                               , "vat" : "float32"
@@ -113,4 +113,4 @@ if True: # handle freq, value, vat paid
   purchases["vat paid, max"] = purchases["value"] * purchases["vat frac, max"]
   purchases["vat paid, min"] = purchases["value"] * purchases["vat frac, min"]
 
-  oio.saveStage(common.subsample, purchases, 'purchases_2_vat')
+  oio.saveStage(common.subsample, purchases, "purchases_2_vat_" + common.vat_strategy_suffix )

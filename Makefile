@@ -73,7 +73,7 @@ people_2_buildings = output/vat/data/recip-$(ss)/people_2_buildings.csv
 people_3_purchases = output/vat/data/recip-$(ss)/people_3_purchases.csv
 purchases_1 =        output/vat/data/recip-$(ss)/purchases_1.csv \
                      output/vat/data/recip-$(ss)/purchases_1_5_no_origin
-purchases_2_vat =    output/vat/data/recip-$(ss)/purchases_2_vat.csv
+purchases_2_vat =    output/vat/data/recip-$(ss)/purchases_2_vat_$(strategy_suffix).csv
 purchase_sums =      output/vat/data/recip-$(ss)/purchase_sums.csv
 vat_rates = \
   output/vat/data/recip-$(ss)/vat_coicop_$(strategy_suffix).csv \

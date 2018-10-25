@@ -1,11 +1,15 @@
 * TODO eliminate manual boolean flags determining behavior
 add strategy suffix to all files downstream of vat_rates
-  purchases_2_vat
-  purchase_sums
-  purchase_pics
-  people_3_purchases
-  households
-  overview
+  vat_rates -> 
+    purchases_2_vat ->
+      purchase_sums -> 
+        people_3_purchases ->
+          households
+          people_pics
+      purchase_pics
+  households ->
+    household_pics
+    overview
 
 ways to run:
   const-<rate>
