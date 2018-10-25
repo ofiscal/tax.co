@@ -20,9 +20,16 @@ SHELL := bash
 
 ##=##=##=##  Non-file variables
 
-subsample?=1 # default value; can be overridden from the command line, as in "make raw subsample=10"
-             # valid values are 1, 10, 100 and 1000
+subsample?=1
+  # default value; can be overridden from the command line, as in "make raw subsample=10"
+  # valid values are 1, 10, 100 and 1000
 ss=$(strip $(subsample))# removes trailing space
+vat_strategy?=approx
+  # default value; can be overridden from command line, ala "make raw vat_strategy=detail"
+s_vat_strategy=$(strip $(vat_strategy))# removes trailing space
+vat_const_rate?=""# default value
+s_vat_const_rate=$(patsubst "%",%,$(strip $(vat_const_rate)))
+  # removes trailing space and "s
 python_from_here = PYTHONPATH='.' python3
 
 
@@ -66,10 +73,11 @@ purchases_1 =        output/vat/data/recip-$(ss)/purchases_1.csv \
                      output/vat/data/recip-$(ss)/purchases_1_5_no_origin
 purchases_2_vat =    output/vat/data/recip-$(ss)/purchases_2_vat.csv
 purchase_sums =      output/vat/data/recip-$(ss)/purchase_sums.csv
-vat_rates =          output/vat/data/recip-$(ss)/vat_coicop.csv \
-                     output/vat/data/recip-$(ss)/vat_cap_c.csv \
-                     output/vat/data/recip-$(ss)/vat_coicop_brief.csv \
-                     output/vat/data/recip-$(ss)/vat_cap_c_brief.csv
+vat_rates = \
+  output/vat/data/recip-$(ss)/vat_coicop_$(s_vat_strategy)_$(s_vat_const_rate).csv \
+  output/vat/data/recip-$(ss)/vat_cap_c_$(s_vat_strategy)_$(s_vat_const_rate).csv \
+  output/vat/data/recip-$(ss)/vat_coicop_brief_$(s_vat_strategy)_$(s_vat_const_rate).csv \
+  output/vat/data/recip-$(ss)/vat_cap_c_brief_$(s_vat_strategy)_$(s_vat_const_rate).csv
 
 purchase_pics =      output/vat/pics/recip-$(ss)/purchases/frequency.png \
                      output/vat/pics/recip-$(ss)/purchases/quantity.png \
@@ -120,7 +128,7 @@ $(vat_rates): python/vat/build/vat_rates.py \
   python/vat/build/output_io.py \
   data/vat/vat-by-coicop.csv \
   data/vat/vat-for-capitulo-c.csv
-	$(python_from_here) python/vat/build/vat_rates.py $(subsample)
+	$(python_from_here) python/vat/build/vat_rates.py $(subsample) $(vat_strategy) $(vat_const_rate)
 
 
 ##=##=##=## Build data from the ENPH

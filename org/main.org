@@ -1,5 +1,15 @@
-* TODO PITFALL : there are manual boolean flags determining behavior
+* TODO eliminate manual boolean flags determining behavior
 in purchases_2_vat.py and vat_rates.py
+
+ways to run:
+  const-<rate>
+  approx-bridge
+  big-bridge
+
+output structure
+
+
+* TODO "add to all the results Median (VAT/Income) with median VAT, and Average (VAT/Income) with average VAT"
 * TODO ? is vat too low
 ** DONE what if we exclude capitulo c files
   no, those are a very small fraction of total purchases
