@@ -5,6 +5,8 @@ import os as os
 import matplotlib
 import matplotlib.pyplot as plt
 
+import python.vat.build.common as common
+
 
 def cdf( series, logx = False, with_mean = True, with_pdf = False
          , xmin = None, xmax = None, **kwargs ):
@@ -67,10 +69,10 @@ def table( df, colName ):
 
 def savefig( folder, name, **kwargs ):
   if not os.path.exists(folder): os.makedirs(folder)
-  plt.savefig( folder + "/" + name,
-               bbox_inches='tight', # ironically, this causes xlabels that might
-                             # otherwise get cut off to appear in their entirety
-               **kwargs )
+  plt.savefig( folder + "/" + name
+             , bbox_inches='tight' # ironically, this causes xlabels that might
+                            # otherwise get cut off to appear in their entirety
+             , **kwargs )
 
 
 def to_latex( df, folder, name ):

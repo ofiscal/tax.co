@@ -21,9 +21,9 @@ if True: # more imports
   import python.vat.build.common as common
 
 
-vat_pics_dir = "output/vat/pics/recip-" + str(common.subsample) + "/"
+vat_pics_dir = "output/vat/pics/recip-" + str(common.subsample) + "/" + common.vat_strategy_suffix + "/"
 if not os.path.exists(vat_pics_dir): os.makedirs(vat_pics_dir)
-people = oio.readStage( common.subsample, 'people_3_purchases')
+people = oio.readStage( common.subsample, 'people_3_purchases.' + common.vat_strategy_suffix )
 
 edu_key = { 1 : "Ninguno",
     2 : "Preescolar",

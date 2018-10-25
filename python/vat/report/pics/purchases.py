@@ -17,9 +17,9 @@ if True: # more imports
   import python.vat.build.common as common
 
 
-vat_pics_dir = "output/vat/pics/recip-" + str(common.subsample) + "/"
+vat_pics_dir = "output/vat/pics/recip-" + str(common.subsample) + "/" + common.vat_strategy_suffix + "/"
 if not os.path.exists(vat_pics_dir): os.makedirs(vat_pics_dir)
-purchases = oio.readStage( common.subsample, 'purchases_2_vat')
+purchases = oio.readStage( common.subsample, 'purchases_2_vat.' + common.vat_strategy_suffix )
 
 
 if True: # purchase quantity, logx and linear

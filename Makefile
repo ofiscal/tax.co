@@ -88,36 +88,37 @@ vat_rates = \
   output/vat/data/recip-$(ss)/vat_coicop_brief.$(strategy_suffix).csv \
   output/vat/data/recip-$(ss)/vat_cap_c_brief.$(strategy_suffix).csv
 
-purchase_pics =      output/vat/pics/recip-$(ss)/purchases/frequency.png \
-                     output/vat/pics/recip-$(ss)/purchases/quantity.png \
-                     output/vat/pics/recip-$(ss)/purchases/value.png \
-                     output/vat/pics/recip-$(ss)/purchases/vat-in-pesos,max.png \
-                     output/vat/pics/recip-$(ss)/purchases/vat-in-pesos,min.png \
-                     output/vat/pics/recip-$(ss)/purchases/logx/quantity.png \
-                     output/vat/pics/recip-$(ss)/purchases/logx/value.png \
-                     output/vat/pics/recip-$(ss)/purchases/logx/vat-in-pesos,max.png \
-                     output/vat/pics/recip-$(ss)/purchases/logx/vat-in-pesos,min.png
+purchase_pics = \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/purchases/frequency.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/purchases/quantity.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/purchases/value.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/purchases/vat-in-pesos,max.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/purchases/vat-in-pesos,min.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/purchases/logx/quantity.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/purchases/logx/value.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/purchases/logx/vat-in-pesos,max.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/purchases/logx/vat-in-pesos,min.png
 
 people_pics = \
-  output/vat/pics/recip-$(ss)/people/age.png \
-  output/vat/pics/recip-$(ss)/people/education.png \
-  output/vat/pics/recip-$(ss)/people/income,by-age-decile.png \
-  output/vat/pics/recip-$(ss)/people/income.png \
-  output/vat/pics/recip-$(ss)/people/spending-per-month.png \
-  output/vat/pics/recip-$(ss)/people/transactions-per-month.png \
-  output/vat/pics/recip-$(ss)/people/logx/income,by-age-decile.png \
-  output/vat/pics/recip-$(ss)/people/logx/income.png \
-  output/vat/pics/recip-$(ss)/people/logx/spending-per-month.png
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/people/age.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/people/education.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/people/income,by-age-decile.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/people/income.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/people/spending-per-month.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/people/transactions-per-month.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/people/logx/income,by-age-decile.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/people/logx/income.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/people/logx/spending-per-month.png
 
 household_pics = \
-  output/vat/pics/recip-$(ss)/households/income.png \
-  output/vat/pics/recip-$(ss)/households/logx/income.png \
-  output/vat/pics/recip-$(ss)/households/max-edu.png \
-  output/vat/pics/recip-$(ss)/households/oldest.png \
-  output/vat/pics/recip-$(ss)/households/size.png \
-  output/vat/pics/recip-$(ss)/households/transactions-per-month.png \
-  output/vat/pics/recip-$(ss)/households/VAT-over-consumption,-by-income-decile.png \
-  output/vat/pics/recip-$(ss)/households/youngest.png
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/households/income.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/households/logx/income.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/households/max-edu.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/households/oldest.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/households/size.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/households/transactions-per-month.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/households/VAT-over-consumption,-by-income-decile.png \
+  output/vat/pics/recip-$(ss)/$(strategy_suffix)/households/youngest.png
 
 pics = $(purchase_pics) $(people_pics) $(household_pics)
 

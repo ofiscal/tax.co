@@ -1,22 +1,3 @@
-* TODO eliminate manual boolean flags determining behavior
-add strategy suffix to all files downstream of vat_rates
-  vat_rates -> 
-    purchases_2_vat ->
-      purchase_sums -> 
-        people_3_purchases ->
-          households
-          people_pics
-      purchase_pics
-  households ->
-    household_pics
-    overview
-
-ways to run:
-  const-<rate>
-  approx-bridge
-  big-bridge
-
-output structure
 * TODO "add to all the results Median (VAT/Income) with median VAT, and Average (VAT/Income) with average VAT"
 * TODO ? is vat too low
 ** DONE what if we exclude capitulo c files
