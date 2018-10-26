@@ -1,0 +1,6 @@
+# https://github.com/aviaviavi/toodles/blob/master/.toodles.yaml
+ignore:
+- data
+- data-doc
+- output
+- tex/recip*

@@ -1,4 +1,6 @@
-# This file is relevant only to the extent that it records house purchases.
+# This file would be relevant, because it records house purchases,
+# except that the VAT is charged only on sales of new homes, which
+# quality is not reported in the ENPH.
 
 import pandas as pd
 from numpy import nan
@@ -16,6 +18,6 @@ files = [
        , classes.Correction.Create_Constant_Column( "how-got", 1 )
        , classes.Correction.Create_Constant_Column( "coicop", nan ) ]
       + common.corrections
-        # TODO : "where-got"
-        # TODO : "freq" = in the last year
+        # todo : "where-got"
+        # todo : "freq" = in the last year
 ) ]
