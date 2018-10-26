@@ -9,4 +9,14 @@ df = pd.DataFrame( [  [1,2  ,1]
                     , [1,8  ,2]
                     , [1,8  ,2]
                    ], columns = ["ignoring","examining","group"] )
+
+df
+
 util.tabulate_stats_by_group( df, "group", "examining" )
+
+df
+
+summarizeQuantiles( "group"
+                       , df.rename( columns = {"examining":"income"} ) )
+
+df

@@ -160,8 +160,9 @@ def compareDescriptivesByFourColumns(dfDict):
     compareDescriptives( dfDict2 )
 
 def summarizeQuantiles (quantileParam, df):
-  # TODO : test: does this change df outside of the function?
+  # TODO summarizeQuantiles should not assume a column named "income".
   df["one"] = 1
+  df = df[ ~ df["income"].isnull() ]
   counts = df.groupby( quantileParam )[["one"]]     \
          .agg('sum').rename(columns = {"one":"count"})
   mins = df.groupby( quantileParam )[["income"]]    \
