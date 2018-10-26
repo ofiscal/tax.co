@@ -87,5 +87,4 @@ df = df_tmi.ix[[
   , "vat/income, max: mean"
 ]]
 
-df.to_csv( output_dir + "overview, tmi." + common.vat_strategy_suffix + ".csv" )
 df.to_csv( output_dir + "overview." + common.vat_strategy_suffix + ".csv" )

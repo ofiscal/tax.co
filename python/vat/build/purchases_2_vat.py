@@ -52,7 +52,7 @@ if True: # input files
   vat_coicop_2_digit = pd.read_csv( "python/vat/build/vat_approx/2-digit.csv" )
   vat_coicop_3_digit = pd.read_csv( "python/vat/build/vat_approx/3-digit.csv" )
 
-if True: # 8-pad everything coicop-like
+if True: # pad everything coicop-like with 0s on the left
   purchases         ["coicop"] = util.pad_column_as_int( 8, purchases         ["coicop"] )
     # This creates some "00000nan" values. After creating 2- and 3-digit
     # prefixes, we can turn those back into NaN.
@@ -77,19 +77,14 @@ if True: # 8-pad everything coicop-like
 
 if True: # add vat to coicop-labeled purchases
 
-  # PITFALL: The following are alternatives. Use only one.
-
-  if True: # use the primary bridge
-    purchases_coicop = purchases.merge( vat_coicop, how = "left", on="coicop" )
-
-  if False: # merge on the 2- and 3-digit approximations instead
+  if common.vat_strategy == "approx":
     purchases_2_digit = purchases.merge( vat_coicop_2_digit, how = "left"
-                          , on="coicop-2-digit"
-                      ) . drop( columns = ["coicop_y"] )
+                          , on="coicop-2-digit" )
     purchases_3_digit = purchases.merge( vat_coicop_3_digit, how = "left"
-                          , on="coicop-3-digit"
-                      ) . drop( columns = ["coicop_y"] )
+                          , on="coicop-3-digit" )
     purchases_coicop = purchases_2_digit . combine_first( purchases_3_digit )
+  else: # PITFALL: For both const and detail strategies, use the primary bridge
+    purchases_coicop = purchases.merge( vat_coicop, how = "left", on="coicop" )
 
 if True: # add vat to capitulo-c-labeled purchases
   purchases_cap_c = purchases.merge( vat_cap_c, how = "left", on="25-broad-categs" )

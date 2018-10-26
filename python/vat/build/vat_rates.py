@@ -24,7 +24,7 @@ if common.vat_strategy == 'const': # short-circuit the vat-code keys; set everyt
   vat_coicop["vat, min"] = common.vat_const_rate
   vat_coicop["vat, max"] = common.vat_const_rate
 
-for (vat,frac) in [ ("vat"    ,     "vat frac")
+for (vat,frac) in [ ("vat"     , "vat frac")
                   , ("vat, min", "vat frac, min")
                   , ("vat, max", "vat frac, max") ]:
   vat_cap_c[frac]  = vat_cap_c[vat]  / (1 + vat_cap_c[vat])
