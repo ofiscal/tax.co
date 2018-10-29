@@ -18,6 +18,6 @@ files = [
        , classes.Correction.Create_Constant_Column( "how-got", 1 )
        , classes.Correction.Create_Constant_Column( "coicop", nan ) ]
       + common.corrections
-        # todo : "where-got"
-        # todo : "freq" = in the last year
+        # TODO (#safe) : "where-got"
+        # TODO (#safe) : "freq" = in the last year
 ) ]

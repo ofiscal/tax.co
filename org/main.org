@@ -1,4 +1,13 @@
-* TODO accuracy
+* TODO safety  (#safe)
+** TODO drop the Correction class
+** TODO update coicop-vat bridge on OneDrive
+** report/pics send some output to output/vat/tables rather than /pics
+The Makefile pseudo targets, rather than *_pics, should be called *_reports, and should include those tables.
+** pdflatex: send reports to a file, not stdout
+*** this way it doesn't drown the python error reports
+
+** centralize routines for categorical variables
+* TODO accuracy (#right) 
 ** TODO These error codes apply to all income and expense variables
 *** why to use them
 The summary measures are otherwise hard to buy -- I see, for instance, a lot of values of 8.17 (that's 98 / 12) for monthly income measures.
@@ -28,19 +37,11 @@ problems in households:
 *** so omitting purchase!=1 observations won't bias our estimate of VAT
 *** it will, however, bias (downward) our estimate of consumption
 
-* TODO sanity
+* TODO sanity (#sane) 
 ** are these two variables ever both > 0 ?
 *** P5180S1, P5180S2 : daily payment for, value of food at school
 *** P6180S1, P6180S2 : daily payment for, value of food at university
-
-* TODO safety
-** TODO update coicop-vat bridge on OneDrive
-** report/pics send some output to output/vat/tables rather than /pics
-The Makefile pseudo targets, rather than *_pics, should be called *_reports, and should include those tables.
-** pdflatex: send reports to a file, not stdout
-*** this way it doesn't drown the python error reports
-
-* TODO features
+* TODO features (#feature)
 ** goods that dodge the VAT
 *** summarized with a parameter, "share of final good that escapes the VAT"
 *** the rules : exemptions, exclusions and refunds
@@ -140,6 +141,9 @@ others are 19%
 *** 24 : % water
 water exempt, others excluded
 
+** add "has under 10|12", ala "has child" 
+(Currently we define has-child == min age < 18.)
+< 10 is interesting because work becomes legal at age (10 rural, 12 urban).
 ** restaurant|cafeteria tax / todo
 *** if bought in cafeteria or restaurant, gets the 8% tax and no VAT, but otherwise they would pay VAT
 
@@ -149,7 +153,7 @@ water exempt, others excluded
 *** primary inputs: income, kids, voluntary pension fund contributions.
 *** at most 40% of a person's inncome can be exempt.
 
-* TODO unsorted, low import
+* TODO unsorted, low import (#meh)
 ** mild data concerns
 *** some income questions that could overlap
 we assume they don't
@@ -181,6 +185,11 @@ whereas reading it would look like this:
     people["race"]
     , categories = list( race_key.values() )
     , ordered = True)
+** range errors in cdfs sometimes disappear when the xrange is restricted
+  draw.single_cdf( x[ x<10 ], # PITFALL : not restricting x here => a range error
+                   "cdf of (spending / income) across income-earning households"
+                   , xmin = 0, xmax = 8
+                 )
 * to explain in paper : institution details | judgment calls
 ** all the COICOP exceptions
 ** benefits/expenses that we ignored

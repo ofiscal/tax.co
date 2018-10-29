@@ -22,8 +22,7 @@ files = [
       , "NC2_CC_P3_S2" : "duplicated"
     },  capitulo_c_corrections
       + common.corrections
-        # TODO : "where-got": assume purchase
-        # TODO : "freq"
+        # TODO (#right) "where-got": assume purchase
   )
 
   , classes.File( "rural capitulo c"
@@ -40,6 +39,5 @@ files = [
                                                 , '2' : 2} )
       ] + capitulo_c_corrections
         + common.corrections
-        # TODO : "where-got"
-        # TODO : "freq"
+        # TODO (#right) : "where-got"
 ) ]

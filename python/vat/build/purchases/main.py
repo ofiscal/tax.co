@@ -22,7 +22,7 @@ purchases = common.collect_files(
   , subsample = common.subsample
 )
 
-for c in [ # TODO ? This might be easier to understand without the Correction class.
+for c in [ # TODO (#safe) Drop the Correction class
   Correction.Replace_Substring_In_Column( "quantity", ",", "." )
   , Correction.Replace_Missing_Values( "quantity", 1 )
 

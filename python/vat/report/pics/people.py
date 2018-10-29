@@ -81,7 +81,7 @@ if True: # single series
 
 
 if True: # age deciles
-  # TODO ? unify this with util.tabulate_min_median_max_by_group
+  # TODO (#safe|#unduplicate) use util.tabulate_min_median_max_by_group
   ageGroups = people[["age-decile","age"]].groupby("age-decile")
   ageMins = ageGroups.agg("min").rename(columns={"age":"min"})
   ageMaxs = ageGroups.agg("max").rename(columns={"age":"max"})

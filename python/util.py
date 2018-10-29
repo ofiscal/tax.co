@@ -160,7 +160,7 @@ def compareDescriptivesByFourColumns(dfDict):
     compareDescriptives( dfDict2 )
 
 def summarizeQuantiles (quantileParam, df):
-  # TODO (p=0) summarizeQuantiles should not assume a column named "income".
+  # TODO (p=0|#clean) summarizeQuantiles should not assume a column named "income".
   df["one"] = 1
   df = df[ ~ df["income"].isnull() ]
   counts = df.groupby( quantileParam )[["one"]]     \

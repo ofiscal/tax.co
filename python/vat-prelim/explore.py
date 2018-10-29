@@ -26,7 +26,7 @@ if True: # read data
 # Why no vat for so many?
 ##
 
-final1 = final[1].drop( "Unnamed: 0", axis=1 ) # TODO : where did this come from?
+final1 = final[1].drop( "Unnamed: 0", axis=1 ) # TODO (#stale|p=-10) Where did this come from?
 final_novat = final [1] [ final [1] ["vat-paid"] <= 0
                     ]
 if True: # show some things

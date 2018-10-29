@@ -1,4 +1,4 @@
-# TODO: Centralize this code, which is (nearly) duplicated between build_late.py and main,people.py
+# TODO (#stale|p=-10): Centralize this code, which is (nearly) duplicated between build_late.py and main,people.py
 edu_key = { 1 : "Ninguno",
       2 : "Preescolar",
       3 : "Basica\n Primaria",
@@ -11,11 +11,11 @@ households_w_income["edu-max"] = pd.Series( pd.Categorical(
                    , categories = list( edu_key.values() )
                    , ordered = True) ) )
 
-if True: # CDF of spending / income, logx and linear x
+if True: # cdf of spending / income, logx and linear x
   plt.close()
   x = households_w_income["value"] / households_w_income["income"]
-  draw.single_cdf( x[ x<10 ], # todo ? not restricting x here => a range error
-                   "CDF of (spending / income) across income-earning households"
+  draw.single_cdf( x[ x<10 ], # PITFALL : not restricting x here => a range error
+                   "cdf of (spending / income) across income-earning households"
                    , xmin = 0, xmax = 8
                  )
   plt.gca().xaxis.set_major_formatter(EngFormatter(places=2))
