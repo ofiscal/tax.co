@@ -11,34 +11,9 @@ including ordinary purchase value
 In almost every variable in both people (income) and purchases (value), these error codes do not appear.
 In the few variables where they do, they make up a miniscule fraction of observations -- the highest I saw was 0.2%.
 And 98 or 99 pesos is almost no money, so including it in someone's total income or total purchase value is not going to meaningfully change the total.
-
-* TODO safety
-** report/pics send some output to output/vat/tables rather than /pics
-The Makefile pseudo targets, rather than *_pics, should be called *_reports, and should include those tables.
-* DONE is vat too low
-** DONE what if we exclude capitulo c files
-  no, those are a very small fraction of total purchases
->>> subsample = 10
->>> purchases = oio.readStage( subsample, "purchases_2_vat" )
->>> util.describeWithMissing( purchases[[[[ "25-broad-categs", "coicop"]] ]] )
-         25-broad-categs        coicop
-0               0.000000  0.000000e+00
-length     689761.000000  6.897610e+05
-missing    657576.000000  3.218500e+04
-count       32185.000000  6.575760e+05
-mean           13.866801  4.833412e+06
-std             7.151346  4.292508e+06
-min             1.000000  1.110101e+06
-25%             7.000000  1.160111e+06
-50%            15.000000  1.220801e+06
-75%            20.000000  8.300305e+06
-max            25.000000  1.270990e+07
-* TODO next
-** change output/vat-tables to output/vat/tables
-./vat/report/pics/people.py:                 "output/vat-tables/recip-" + str(subsample),
-./vat/report/pics/households.py:    "output/vat-tables/recip-" + str(subsample),
-./vat/report/pics/households.py:    "output/vat-tables/recip-" + str(subsample),
-./vat/report/pics/households.py:    "output/vat-tables/recip-" + str(subsample)
+** TODO PITFALL ! people["non-beca sources"] sometimes turns numeric
+It is a space-separated list of integers.
+In the 1/100 sample it has no lists greater than 1, so it is converted automatically to numeric.
 ** broken (currently unused) columns
 problems in people_1:
   race is boolean; summarizes to NaN
@@ -47,15 +22,30 @@ problems in households:
   has-elderly is NaN
   has-(any race) is 0
    this might be because race is boolean in people_1
-** PITFALL ! people["non-beca sources"] sometimes turns numeric
-It is a space-separated list of integers.
-In the 1/100 sample it has no lists greater than 1, so it is converted automatically to numeric.
+
+** ? a default value for freq
+*** when is-purchase=1, freq is undefined only .015 % of the time
+*** so omitting purchase!=1 observations won't bias our estimate of VAT
+*** it will, however, bias (downward) our estimate of consumption
+
+* TODO sanity
+** are these two variables ever both > 0 ?
+*** P5180S1, P5180S2 : daily payment for, value of food at school
+*** P6180S1, P6180S2 : daily payment for, value of food at university
+
+* TODO safety
+** TODO update coicop-vat bridge on OneDrive
+** report/pics send some output to output/vat/tables rather than /pics
+The Makefile pseudo targets, rather than *_pics, should be called *_reports, and should include those tables.
+** pdflatex: send reports to a file, not stdout
+*** this way it doesn't drown the python error reports
+
+* TODO features
 ** goods that dodge the VAT
 *** summarized with a parameter, "share of final good that escapes the VAT"
 *** the rules : exemptions, exclusions and refunds
 If the final good is exempt, and an input carries VAT, the final seller *is* eligible for a refund of the VAT on the input.
 If the final good is excluded, and an input carries VAT, the final seller is *not* eligible for a refund of the VAT on the input.
-** update coicop-vat bridge on OneDrive
 ** TODO coicop -> vat : special cases
 *** 5310101
 DS guesses 19% more often
@@ -149,35 +139,48 @@ salt is excluded
 others are 19%
 *** 24 : % water
 water exempt, others excluded
-** interpret region
-centro poblado = smallest unit
-otras cabeceras = bigger, aggregate of municipalities
-bigger yet are cities, which are identified by name
-rural disperso = by area biggest, but low population (and low density)
 
-Luis wanted at least for ...
-  - Bogota
-  - Medellín
-  - Cali
-  - Barranquilla+Soledad (one metro area)
-  - Bucaramanga
-  - Cartagena
-  - Cúcuta
-  - Ibagué
-  - Pasto
-  - Popayán
-** some questions that seem to overlap
-*** sale of title
- P7510S9 = "rendimientos por venta de titulos"
- P7513S4 = "Ventas de acciones y de títulos valores"
-*** loans
- P7513S5 = "Reembolsoso de dinero prestado por usted o a otra persona"
- P7513S7A1 = " Préstamos particulares"
-** unsorted
-*** "P6500 (asalariado income) > 0" should be perfecty corr'd with pension contrib's
-*** ??? pension contribs = formality.
-** value = expense; price = value / quantity
-*** David used real data, e.g. rice price, to figure this out. Genius.
+** restaurant|cafeteria tax / todo
+*** if bought in cafeteria or restaurant, gets the 8% tax and no VAT, but otherwise they would pay VAT
+
+** income tax / todo
+*** ENPH asks about income tax
+*** if no SS payments and (or?) making less than min wage, informal
+*** primary inputs: income, kids, voluntary pension fund contributions.
+*** at most 40% of a person's inncome can be exempt.
+
+* TODO unsorted, low import
+** mild data concerns
+*** some income questions that could overlap
+we assume they don't
+**** sale of title
+  P7510S9 = "rendimientos por venta de titulos"
+  P7513S4 = "Ventas de acciones y de títulos valores"
+**** loans
+  P7513S5 = "Reembolsoso de dinero prestado por usted o a otra persona"
+  P7513S7A1 = " Préstamos particulares"
+*** this educational income has an ambiguous source
+ but zero people in the sample received any of it:
+   , "P6207M6"  : "beca from empresa publica ~familiar"
+   , "P6207M7"  : "beca from empresa privada ~familiar"
+** "P6500 (asalariado income) > 0" should be perfecty corr'd with pension contrib's
+** ??? pension contribs = formality.
+* TODO PITFALLs in code
+** some things are already drawn but not included in the report
+*** people/spending
+
+** categorical variables require a "map" step only when created, not when read
+It's to convert them from a number to a string.
+For instance, creating the "people" table looks like this:
+  people["race"] = pd.Categorical(
+    people["race"].map( race_key )
+    , categories = list( race_key.values() )
+    , ordered = True)
+whereas reading it would look like this:
+  people["race"] = pd.Categorical(
+    people["race"]
+    , categories = list( race_key.values() )
+    , ordered = True)
 * to explain in paper : institution details | judgment calls
 ** all the COICOP exceptions
 ** benefits/expenses that we ignored
@@ -235,26 +238,7 @@ Hopefully that will be close to 0 after discarding:
   frequency = nunca
   ~ bought it in the last week
   value = 99
-* would be nice
-** to have a default value for freq
-*** when is-purchase=1, freq is undefined only .015 % of the time
-*** so omitting purchase!=1 observations won't bias our estimate of VAT
-*** it will, however, bias (downward) our estimate of consumption
-* about the code
-** categorical variables require a "map" step only when created, not when read
-It's to convert them from a number to a string.
-For instance, creating the "people" table looks like this:
-  people["race"] = pd.Categorical(
-    people["race"].map( race_key )
-    , categories = list( race_key.values() )
-    , ordered = True)
-whereas reading it would look like this:
-  people["race"] = pd.Categorical(
-    people["race"]
-    , categories = list( race_key.values() )
-    , ordered = True)
-* about the data|results
-** The ENPH : http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
+* discovered from the data
 ** the 200 / 1400 missing COICOP codes appear not to matter much
 *** the 80% of purchases that carry 0 VAT are due to a literally 0 VAT, not a NaN VAT
 *** in the 10% sample less than 0.3% of the purchases have a NaN vat rate
@@ -265,33 +249,21 @@ x = purchases["vat-rate"]
 28986
 >>> 28986 / 7458243
 0.0038864381329490067
-** this educational income has an ambiguous source:
-but zero people in the sample received any of it:
-  , "P6207M6"  : "beca from empresa publica ~familiar"
-  , "P6207M7"  : "beca from empresa privada ~familiar"
+** most purchases use coicop, not capitulo c codes
+  capitulo c is a very small fraction of total purchases
+>>> subsample = 10
+>>> purchases = oio.readStage( subsample, "purchases_2_vat" )
+>>> util.describeWithMissing( purchases[[[[ "25-broad-categs", "coicop"]] ]] )
+         25-broad-categs        coicop
+0               0.000000  0.000000e+00
+length     689761.000000  6.897610e+05
+missing    657576.000000  3.218500e+04
+count       32185.000000  6.575760e+05
+mean           13.866801  4.833412e+06
+std             7.151346  4.292508e+06
+min             1.000000  1.110101e+06
+25%             7.000000  1.160111e+06
+50%            15.000000  1.220801e+06
+75%            20.000000  8.300305e+06
+max            25.000000  1.270990e+07
 
-* restaurant|cafeteria tax / todo
-** if bought in cafeteria or restaurant, gets the 8% tax and no VAT, but otherwise they would pay VAT
-* income tax / todo
-** ENPH asks about income tax
-** if no SS payments and (or?) making less than min wage, informal
-** primary inputs: income, kids, voluntary pension fund contributions.
-** at most 40% of a person's inncome can be exempt.
-* VAT / todo
-** code-internal
-*** pdflatex: send reports to a file, not stdout
-**** this way it doesn't drown the python error reports
-** check data
-*** are these two variables ever both > 0 ?
-**** P5180S1, P5180S2 : daily payment for, value of food at school
-**** P6180S1, P6180S2 : daily payment for, value of food at university
-*** TODO what are the biggest expenditures in the zero-vat set? good to check those vat rates.
-*** is it half of households or half of individuals who have no income?
-** add features
-*** household VAT rates by income decile
-*** ? include people/spending (already drawn)
-*** make x-ticks more readable on some figures (e.g. fig 7, people/income)
-*** TODO every spendinng graph, draw for people even with zero income
-*** TODO CDF / spending: draw that for every income decile
-*** if we had VAT as a function of estrato, then we could
-**** apply those rates to income data from a survey with more incomme data

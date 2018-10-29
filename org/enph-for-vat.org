@@ -1,3 +1,4 @@
+* The ENPH : http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
 * notation
 ** UNUSED means the code does not make mention of this variable
 ** DISABLED means the variable is commented out in the code
@@ -7,6 +8,13 @@
 *** P6180S1, P6180S2 : daily payment for, value of food at university
 *** P6090 - ... : health insurance
 **** and how split between employer, employee
+** viviendas y hogares
+*** region: interpretation
+ centro poblado = smallest unit
+ otras cabeceras = bigger, aggregate of municipalities
+ bigger yet are cities, which are identified by name
+ rural disperso = by area biggest, but low population (and low density)
+
 ** caracteristicas generales
 *** these are mostly in order, except ...
 **** the edu income
@@ -297,6 +305,9 @@ Asks if the purchase was for breakfast, lunch or dinner.
 *** gastos_semanales_rurales__mercados :: nothing identifies what they purchased!
 **** four broad purchase categories, see nc2_cc_p4. basically 0 vat.
 * variables, common across data sets
+** value = expense; price = value / quantity
+*** David used real data, e.g. rice price, to figure this out. Genius.
+
 ** DONE ignorable variables
 *** household-communal
 *** DONE can ignore : NH_CGDU_P3 & following ? unit of measure
