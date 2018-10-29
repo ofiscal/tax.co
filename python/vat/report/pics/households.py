@@ -80,18 +80,18 @@ if True: # VAT expenditures by income decile
 
   draw.to_latex(
     util.tabulate_min_median_max_by_group( households, "income-decile", "income" ),
-    "output/vat-tables/recip-" + str(common.subsample),
+    "output/vat/tables/recip-" + str(common.subsample),
     "income-by-income-decile"
   )
 
   draw.to_latex(
     util.tabulate_min_median_max_by_group( households, "income-decile", "vat/value, min" ),
-    "output/vat-tables/recip-" + str(common.subsample),
+    "output/vat/tables/recip-" + str(common.subsample),
     "vat-over-spending,min,-by-income-decile")
 
   draw.to_latex(
     util.tabulate_min_median_max_by_group( households, "income-decile", "vat/value, max" ),
-    "output/vat-tables/recip-" + str(common.subsample),
+    "output/vat/tables/recip-" + str(common.subsample),
     "vat-over-spending,max,-by-income-decile")
 
 

@@ -87,7 +87,7 @@ if True: # age deciles
   ageMaxs = ageGroups.agg("max").rename(columns={"age":"max"})
   ageDeciles = pd.concat([ageMins,ageMaxs],axis=1)
   draw.to_latex( ageDeciles,
-                 "output/vat-tables/recip-" + str(common.subsample),
+                 "output/vat/tables/recip-" + str(common.subsample),
                  "age-by-age-decile" )
 
 if True: # the CDF of income across individuals by age decile, logx and linear
