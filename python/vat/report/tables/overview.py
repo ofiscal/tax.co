@@ -3,6 +3,7 @@ import sys
 import pandas as pd
 
 import python.util as util
+import python.draw.util as draw
 import python.vat.build.output_io as oio
 from python.vat.build.people.files import edu_key
 import python.vat.build.common as common
@@ -60,7 +61,8 @@ output_dir = "output/vat/tables/recip-" + str(common.subsample) + "/"
 
 if not os.path.exists(output_dir): os.makedirs(output_dir)
 
-df_tmi.to_csv( output_dir + "overview, tmi." + common.vat_strategy_suffix + ".csv" )
+df_tmi.to_csv( output_dir      + "overview, tmi." + common.vat_strategy_suffix + ".csv" )
+draw.to_latex( df_tmi, output_dir, "overview, tmi." + common.vat_strategy_suffix )
 
 df = df_tmi.ix[[
     "income: mean"
@@ -91,4 +93,5 @@ df = df_tmi.ix[[
   , "vat/income, max: mean"
 ]]
 
-df.to_csv( output_dir + "overview." + common.vat_strategy_suffix + ".csv" )
+df.to_csv(         output_dir + "overview." + common.vat_strategy_suffix + ".csv" )
+draw.to_latex( df, output_dir, "overview." + common.vat_strategy_suffix )
