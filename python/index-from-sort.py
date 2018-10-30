@@ -14,7 +14,3 @@ def sort_household_by_income_then_make_index(df):
   return dff
 
 x = grouped.apply( sort_household_by_income_then_make_index )
-
-y = [g for _,g in grouped]
-
-pd.concat(y)
