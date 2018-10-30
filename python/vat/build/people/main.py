@@ -201,7 +201,19 @@ if True: # income
                                     ].sum(axis=1)
 
         for c in ["income", "income, govt", "income, private", "income, labor"]:
-          people[c] = people[c + ", cash"] + people[c + ", in-kind"]
+            people[c] = people[c + ", cash"] + people[c + ", in-kind"]
+
+if True: # compute each household member's income rank
+  def sort_household_by_labor_income_then_make_index(df):
+    dff = df.sort_values("income, labor", ascending = False)
+    dff["member-by-income"] = range(1, len(dff) + 1)
+    return dff
+  
+  people = people . groupby('household'
+                ) . apply( sort_household_by_labor_income_then_make_index
+                ) . drop( columns = "household" # one level of the index holds the same information
+                ) . reset_index(
+                ) . drop( columns = "level_1" ) # the other part of the index is unneeded
 
 if True: # format some categorical variables
   people["race"] = pd.Categorical(
