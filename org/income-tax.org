@@ -1,5 +1,9 @@
 * SS contrib's
-David sent me a spreadsheet and walked me through social security contributions on it.
+** refs
+"rentas naturales.xlsx"
+the tax code
+  https://www.dian.gov.co/atencionciudadano/formulariosinstructivos/Formularios/2018/Formulario_210_2018.pdf
+** algorithm
 There are three kinds of SS contribs, and two kinds of employee (salaried and contractor). Both pay all three if they make enough money. Salaried employees' employers contribute some also. The rates change at certain thresholds. The tax rate for SS contrib's is tax / income for contractors, and tax / (employer burden = income + employer contrib's) for employees.
 * labor & pension(receipt) income
 ** might not need
