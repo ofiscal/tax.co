@@ -49,8 +49,28 @@ if True: # input files
                               , "vat frac, max" : "float32"
                             } )
 
-  vat_coicop_2_digit = pd.read_csv( "python/vat/build/vat_approx/2-digit.csv" )
-  vat_coicop_3_digit = pd.read_csv( "python/vat/build/vat_approx/3-digit.csv" )
+  if common.vat_strategy == "prop-2018-11-31":
+    vat_coicop_2_digit = pd.read_csv( "python/vat/build/vat_prop.2018_11_31/2-digit.csv" )
+    vat_coicop_3_digit = pd.read_csv( "python/vat/build/vat_prop.2018_11_31/3-digit.csv" )
+
+    # PITFALL: We want to replace VAT values, not column prefixes.
+    # Hence the "T1 T2 T1-inverse" strategy here, to preserve the coicop-*-digit columns.
+    orig_key_2_digit = vat_coicop_2_digit["coicop-2-digit"]
+    orig_key_3_digit = vat_coicop_3_digit["coicop-3-digit"]
+    vat_coicop_2_digit = vat_coicop_2_digit.replace(1, float(common.vat_flat_rate))
+    vat_coicop_3_digit = vat_coicop_3_digit.replace(1, float(common.vat_flat_rate))
+    vat_coicop_2_digit["coicop-2-digit"] = vat_coicop_2_digit
+    vat_coicop_3_digit["coicop-3-digit"] = vat_coicop_3_digit
+
+  else: # Always read, but the only way these are used is if vat_strategy is approx.
+    vat_coicop_2_digit = pd.read_csv( "python/vat/build/vat_approx/2-digit.csv" )
+    vat_coicop_3_digit = pd.read_csv( "python/vat/build/vat_approx/3-digit.csv" )
+
+if True: # add columns to the approx|prop-2018-11-31 bridges
+  vat_coicop_2_digit["vat frac, min"] = vat_coicop_2_digit[ "vat, min"
+                                      ] . apply( lambda x: x / (1+x) )
+  vat_coicop_3_digit["vat frac, min"] = vat_coicop_3_digit[ "vat, min"
+                                      ] . apply( lambda x: x / (1+x) )
 
 if True: # pad everything coicop-like with 0s on the left
   purchases         ["coicop"] = util.pad_column_as_int( 8, purchases         ["coicop"] )
@@ -74,10 +94,8 @@ if True: # pad everything coicop-like with 0s on the left
                , "coicop-3-digit"
                ] = np.nan
 
-
 if True: # add vat to coicop-labeled purchases
-
-  if common.vat_strategy == "approx":
+  if common.vat_strategy in ["approx","prop-2018-11-31"]:
     purchases_2_digit = purchases.merge( vat_coicop_2_digit, how = "left"
                           , on="coicop-2-digit" )
     purchases_3_digit = purchases.merge( vat_coicop_3_digit, how = "left"
