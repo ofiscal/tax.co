@@ -1,4 +1,8 @@
-* The ENPH : http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
+* refs
+** The ENPH
+http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
+** pictures of it from DANE
+ https://www.dane.gov.co/files/investigaciones/boletines/enph/boletin-enph-2017.pdf
 * notation
 ** UNUSED means the code does not make mention of this variable
 ** DISABLED means the variable is commented out in the code
