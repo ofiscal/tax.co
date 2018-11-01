@@ -8,7 +8,6 @@ It's also inefficient to use the detail bridge for the const strategy. Ought to 
 The Makefile pseudo targets, rather than *_pics, should be called *_reports, and should include those tables.
 ** pdflatex: send reports to a file, not stdout
 *** this way it doesn't drown the python error reports
-
 ** centralize routines for categorical variables
 * TODO accuracy (#right) 
 ** TODO These error codes apply to all income and expense variables
