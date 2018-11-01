@@ -11,6 +11,7 @@ __pycache__/
 
 output/summaries.txt
 output/vat-prelim/
+output/vat.*/
 output/vat/
 output/enph_revision/
 

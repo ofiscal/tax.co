@@ -69,7 +69,11 @@ if True: # input files
 if True: # add columns to the approx|prop-2018-11-31 bridges
   vat_coicop_2_digit["vat frac, min"] = vat_coicop_2_digit[ "vat, min"
                                       ] . apply( lambda x: x / (1+x) )
+  vat_coicop_2_digit["vat frac, max"] = vat_coicop_2_digit[ "vat, max"
+                                      ] . apply( lambda x: x / (1+x) )
   vat_coicop_3_digit["vat frac, min"] = vat_coicop_3_digit[ "vat, min"
+                                      ] . apply( lambda x: x / (1+x) )
+  vat_coicop_3_digit["vat frac, max"] = vat_coicop_3_digit[ "vat, max"
                                       ] . apply( lambda x: x / (1+x) )
 
 if True: # pad everything coicop-like with 0s on the left
@@ -123,7 +127,7 @@ if True: # handle freq, value, vat paid
   )
 
   purchases["value"] = purchases["freq"] * purchases["value"]
-  purchases["vat paid, max"] = purchases["value"] * purchases["vat frac, max"]
   purchases["vat paid, min"] = purchases["value"] * purchases["vat frac, min"]
+  purchases["vat paid, max"] = purchases["value"] * purchases["vat frac, max"]
 
   oio.saveStage(common.subsample, purchases, "purchases_2_vat." + common.vat_strategy_suffix )
