@@ -27,7 +27,7 @@ if True: # create a few more variables
 
   people["age-decile"] = pd.qcut(
     people["age"], 10, labels = False, duplicates='drop')
-  people["income-decile"] = pd.qcut(
+  people["income-decile"] = pd.qcut( # PITFALL: there's a different such variable at the household level
     people["income"], 10, labels = False, duplicates='drop')
 
   people["female head"] = people["female"] * (people["household-member"]==1)

@@ -26,15 +26,15 @@ def printInRed(message):
 #   includes statistics on nonzero values
 #   does not modify its arguments
 def tabulate_min_median_max_by_group(df, group_name, param_name):
-    dff = df
+    dff = df.copy()
     dff["one"] = 1
-    counts = df.groupby( group_name )[["one"]]               \
+    counts = dff.groupby( group_name )[["one"]]               \
            .agg('sum').rename(columns = {"one":"count"})
-    mins = df.groupby( group_name )[[param_name]]            \
+    mins = dff.groupby( group_name )[[param_name]]            \
            .agg('min').rename(columns = {param_name:"min"})
-    medians = df.groupby( group_name )[[param_name]]         \
+    medians = dff.groupby( group_name )[[param_name]]         \
            .agg('median').rename(columns = {param_name:"median"})
-    maxs = df.groupby( group_name )[[param_name]]     \
+    maxs = dff.groupby( group_name )[[param_name]]     \
            .agg('max').rename(columns = {param_name:"max"})
     return pd.concat([counts,mins,maxs,medians],axis=1)
 
@@ -103,7 +103,7 @@ def tabulate_stats_by_group(df, group_name, param_name, weight_name=None):
                       ,medians,medians_nonzero,means,means_nonzero],axis=1)
 
 def tabulate_series(series):
-    dff = pd.DataFrame(series)
+    dff = pd.DataFrame(series).copy()
     dff["one"] = 1
     counts = dff.groupby( series.name )[["one"]]               \
            .agg('sum').rename(columns = {"one":"count"})       \
@@ -161,12 +161,13 @@ def compareDescriptivesByFourColumns(dfDict):
 
 def summarizeQuantiles (quantileParam, df):
   # TODO (p=0|#clean) summarizeQuantiles should not assume a column named "income".
-  df["one"] = 1
-  df = df[ ~ df["income"].isnull() ]
-  counts = df.groupby( quantileParam )[["one"]]     \
+  dff = df.copy()
+  dff["one"] = 1
+  dff = dff[ ~ dff["income"].isnull() ]
+  counts = dff.groupby( quantileParam )[["one"]]     \
          .agg('sum').rename(columns = {"one":"count"})
-  mins = df.groupby( quantileParam )[["income"]]    \
+  mins = dff.groupby( quantileParam )[["income"]]    \
          .agg('min').rename(columns = {"income":"min"})
-  maxs = df.groupby( quantileParam )[["income"]]    \
+  maxs = dff.groupby( quantileParam )[["income"]]    \
          .agg('max').rename(columns = {"income":"max"})
   return pd.concat([counts,mins,maxs],axis=1)

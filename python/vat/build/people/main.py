@@ -208,7 +208,7 @@ if True: # compute each household member's income rank
     dff = df.sort_values("income, labor", ascending = False)
     dff["member-by-income"] = range(1, len(dff) + 1)
     return dff
-  
+
   people = people . groupby('household'
                 ) . apply( sort_household_by_labor_income_then_make_index
                 ) . drop( columns = "household" # one level of the index holds the same information

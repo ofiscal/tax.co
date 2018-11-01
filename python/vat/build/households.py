@@ -70,8 +70,10 @@ if True: # aggregate from household members to households
   households["has-child"] = households["age-min"] < 18
   households["has-elderly"] = households["age-max"] > 65
 
-  households["income-decile"] = pd.qcut(
+  households["income-decile"] = pd.qcut( # PITFALL: there's a different such variable at the person level
     households["income"], 10, labels = False, duplicates='drop')
+
+  households["one"] = 1
 
 
 if True: # data sets derived from households
