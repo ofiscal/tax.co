@@ -1,4 +1,5 @@
 * TODO safety  (#safe)
+** TODO use the UVT rather than fixed peso amounts
 ** TODO the vat-strategy logic needs cleaning
 It's confusing -- the strategies are all mixed up. For instance the detail bridge is used for the const strategy.
 It's also inefficient to use the detail bridge for the const strategy. Ought to use approx instead -- or better, make a data set like prop-2018-11-31, but all 1s.
