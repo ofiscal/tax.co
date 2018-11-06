@@ -1,4 +1,5 @@
 * TODO safety  (#safe)
+** rename contractor|employee -> asalariado|independiente
 ** TODO python/vat/build/ overlaps ss_contrib
 build ought to be a higher category than vat
 ** TODO use the UVT rather than fixed peso amounts

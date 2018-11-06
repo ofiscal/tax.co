@@ -18,6 +18,10 @@ if True: # drop non-members of household
       people["relationship"].isin( [6,7,8] )
     ].index )
 
+if True: # make contractor a 0 or a 1
+  people["contractor"] = people[ "contractor"
+                         ] . apply( lambda x: 1 if x in [4,5] else 0 )
+
 if True: # remap some boolean integers
   for cn in ( [ "female" ] +                           # originally 1=male, 2=female
               [included for (quantity,included) in files.inclusion_pairs]

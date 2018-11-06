@@ -30,6 +30,8 @@ demog = {
   , "P6160"      : "literate"
   , "P6170"      : "student"
   , "P6210"      : "education" # highest level completed
+  , "P6430"      : "contractor" # 1-3 = asalariado; 4-5 = contractor
+                                # other = no income
 }
 
 income_govt = {
