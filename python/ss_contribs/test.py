@@ -40,7 +40,7 @@ def ss_contribs(
                      , contractor.copy()
                    ] , index = ["income","contractor"]
                    ) . transpose()
-  for tax_type in ss_contrib_schedules.keys():
+  for tax_type in schedMapMap.keys():
     schedMap = schedMapMap[ tax_type ]
     for whether_contractor in [0,1]:
       sched = schedMap[ intToContractorKey( whether_contractor ) ]
@@ -48,8 +48,9 @@ def ss_contribs(
                     , tax_type
             ] = df[ df["contractor"] == whether_contractor
                   ] [ "income"
-                  ] . apply( lambda x: accumulate_across_marginal_rates( sched, x ) )
-  return df[ list( ss_contrib_schedules.keys() ) ]
+                  ] . apply(
+                    lambda x: accumulate_across_marginal_rates( sched, x ) )
+  return df[ list( schedMapMap.keys() ) ]
 
 class Test_accumulate_across_marginal_rates(unittest.TestCase):
   def test_one_number(self):
