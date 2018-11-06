@@ -17,13 +17,8 @@ if not os.path.exists(output_dir): os.makedirs(output_dir)
 if True: # Get, prepare the data
   households = oio.readStage( common.subsample, "households."        + common.vat_strategy_suffix
                ) . rename( columns = {"income, capital, dividends" : "income, dividends"} )
-  people     = oio.readStage( common.subsample, "people_3_purchases." + common.vat_strategy_suffix
-               ) . rename( columns = {"income, capital, dividends" : "income, dividends"} )
-  people = people[ people[ "member-by-income" ] < 6 ]
-  people["one"] = 1
 
   households["income, labor + cesantia"] = households["income, labor"] + households["income, cesantia"]
-  people    ["income, labor + cesantia"] = people["income, labor"]     + people["income, cesantia"]
 
 
 if True: # create a summary dataframe
@@ -35,6 +30,11 @@ if True: # create a summary dataframe
          , "income, govt"
          , "income, private"
          , "income, infrequent"
+         , "income, labor, rank 1"
+         , "income, labor, rank 2"
+         , "income, labor, rank 3"
+         , "income, labor, rank 4"
+         , "income, labor, rank 5"
          , "members"
          , "female head"
          , "value"
@@ -46,28 +46,29 @@ if True: # create a summary dataframe
          , "vat/value, min"
          , "vat/value, max"
          ]
-  peopleVars = [ "income, labor + cesantia" ]
 
   householdGroupVars = [ "one"
                       , "female head"
                       , "income-decile"
                       , "region-2" ]
-  peopleGroupVars = [ "member-by-income" ]
 
+  # PITFALL: Earlier, this looped over two data sets, households and people.
+  # Now its outermost loop is unnecessary.
   summaryDict = {}
-  for (unit, df, vs, gvs) in [ ( "households", households, householdVars, householdGroupVars )
-                             , ( "people"    , people    , peopleVars   , peopleGroupVars    ) ] :
+  for (unit, df, vs, gvs) in [
+      ( "households", households, householdVars, householdGroupVars ) ]:
     groupSummaries = []
     for gv in gvs:
       varSummaries = []
       for v in vs:
         t = util.tabulate_stats_by_group( df, gv, v, "weight" )
-        t = t.rename( columns = dict( zip( t.columns
-                                         , map( lambda x: v + ": " + x
-                                              , t.columns ) ) )
-                    , index    = dict( zip( t.index
-                                          , map( lambda x: gv + ": " + str(x)
-                                               , t.index ) ) )
+        t = t.rename(
+          columns = dict( zip( t.columns
+                              , map( lambda x: v + ": " + x
+                                   , t.columns ) ) )
+          , index    = dict( zip( t.index
+                                , map( lambda x: str(gv) + ": " + str(x)
+                                     , t.index ) ) )
                     )
         varSummaries . append( t )
       groupSummaries . append( pd.concat( varSummaries, axis = 1 ) )
@@ -92,6 +93,16 @@ if True: # save
     , "income, govt: mean"
     , "income, private: mean"
     , "income, infrequent: mean"
+    , "income, labor, rank 1: mean"
+    , "income, labor, rank 1: mean_nonzero"
+    , "income, labor, rank 2: mean"
+    , "income, labor, rank 2: mean_nonzero"
+    , "income, labor, rank 3: mean"
+    , "income, labor, rank 3: mean_nonzero"
+    , "income, labor, rank 4: mean"
+    , "income, labor, rank 4: mean_nonzero"
+    , "income, labor, rank 5: mean"
+    , "income, labor, rank 5: mean_nonzero"
     , "members: mean"
     , "female head: mean"
     , "value: median"

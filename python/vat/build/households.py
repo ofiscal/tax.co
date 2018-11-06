@@ -13,6 +13,19 @@ people = oio.readStage( common.subsample, "people_4_ss." + common.vat_strategy_s
 people["education"] = util.interpretCategorical( people["education"]
                                                , edu_key.values() )
 
+if True: # compute five columns for top five member incomes
+  people["income, labor, rank 1"] = (
+    people["income, labor"] * (people["member-by-income"] == 1) )
+  people["income, labor, rank 2"] = (
+    people["income, labor"] * (people["member-by-income"] == 2) )
+  people["income, labor, rank 3"] = (
+    people["income, labor"] * (people["member-by-income"] == 3) )
+  people["income, labor, rank 4"] = (
+    people["income, labor"] * (people["member-by-income"] == 4) )
+  people["income, labor, rank 5"] = (
+    people["income, labor"] * (people["member-by-income"] == 5) )
+
+
 if True: # aggregate from household members to households
   people["members"] = 1
   h_first = people.groupby( ['household']
@@ -22,6 +35,11 @@ if True: # aggregate from household members to households
       ['household']
     ) [  'value'
        ,'vat paid, min','vat paid, max'
+       , "income, labor, rank 1"
+       , "income, labor, rank 2"
+       , "income, labor, rank 3"
+       , "income, labor, rank 4"
+       , "income, labor, rank 5"
        , "pension", "salud", "solidaridad"
        , 'transactions','income','members'
        , 'income, pension'
