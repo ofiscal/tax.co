@@ -44,6 +44,9 @@ if True: # income
                          + list( files.beca_sources_private.values() )
                          + list( files.beca_sources_govt.values() ) )
     people[columns_to_convert] = people[columns_to_convert] . fillna(0)
+    for c in columns_to_convert: # 98 and 99 are error codes -- "don't know" and "won't say"
+      people[c] = people[c].apply(
+        lambda x : 0 if ((x >= 98) & (x <= 99)) else x )
     del(re, income_columns, columns_to_convert)
 
   if True: # divide yearly income variables by 12
