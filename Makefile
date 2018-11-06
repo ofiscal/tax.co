@@ -79,6 +79,7 @@ households = \
 people_1 =           output/vat/data/recip-$(ss)/people_1.csv
 people_2_buildings = output/vat/data/recip-$(ss)/people_2_buildings.csv
 people_3_purchases = output/vat/data/recip-$(ss)/people_3_purchases.$(strategy_suffix).csv
+people_4_ss        = output/vat/data/recip-$(ss)/people_4_ss.$(strategy_suffix).csv
 purchases_1 =        output/vat/data/recip-$(ss)/purchases_1.csv \
                      output/vat/data/recip-$(ss)/purchases_1_5_no_origin
 purchases_2_vat =    output/vat/data/recip-$(ss)/purchases_2_vat.$(strategy_suffix).csv
@@ -156,7 +157,7 @@ households: $(households)
 $(households): python/vat/build/households.py \
   python/util.py \
   python/vat/build/output_io.py \
-  $(people_3_purchases)
+  $(people_4_ss)
 	$(python_from_here) python/vat/build/households.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
 people_1: $(people_1)
@@ -178,6 +179,13 @@ $(people_3_purchases): python/vat/build/people_3_purchases.py \
   python/vat/build/output_io.py \
   $(people_2_buildings) $(purchase_sums)
 	$(python_from_here) python/vat/build/people_3_purchases.py $(subsample) $(vat_strategy) $(vat_flat_rate)
+
+people_4_ss: $(people_4_ss)
+$(people_4_ss): python/vat/build/people_4_ss.py \
+  python/vat/build/ss_contribs.py \
+  python/vat/build/output_io.py \
+  $(people_3_purchases)
+	$(python_from_here) python/vat/build/people_4_ss.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
 purchases_1: $(purchases_1)
 $(purchases_1): python/vat/build/purchases/main.py \
@@ -220,7 +228,7 @@ $(household_pics): python/vat/report/pics/households.py \
 
 people_pics: $(people_pics)
 $(people_pics): python/vat/report/pics/people.py \
-  $(people_3_purchases)
+  $(people_4_ss)
 	$(python_from_here) python/vat/report/pics/people.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
 pics: $(pics)

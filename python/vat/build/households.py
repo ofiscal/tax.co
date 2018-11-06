@@ -8,7 +8,7 @@ from python.vat.build.people.files import edu_key
 import python.vat.build.common as common
 
 
-people = oio.readStage( common.subsample, "people_3_purchases." + common.vat_strategy_suffix )
+people = oio.readStage( common.subsample, "people_4_ss." + common.vat_strategy_suffix )
 
 people["education"] = util.interpretCategorical( people["education"]
                                                , edu_key.values() )
@@ -20,7 +20,10 @@ if True: # aggregate from household members to households
     ] . agg('first')
   h_sum = people.groupby(
       ['household']
-    ) [  'value','vat paid, min','vat paid, max', 'transactions','income','members'
+    ) [  'value'
+       ,'vat paid, min','vat paid, max'
+       , "pension", "salud", "solidaridad"
+       , 'transactions','income','members'
        , 'income, pension'
        , 'income, cesantia'
        , 'income, capital, dividends'
