@@ -14,6 +14,17 @@ people["education"] = util.interpretCategorical( people["education"]
                                                , edu_key.values() )
 
 if True: # compute five columns for top five member incomes
+  people["income, rank 1"] = (
+    people["income"] * (people["member-by-income"] == 1) )
+  people["income, rank 2"] = (
+    people["income"] * (people["member-by-income"] == 2) )
+  people["income, rank 3"] = (
+    people["income"] * (people["member-by-income"] == 3) )
+  people["income, rank 4"] = (
+    people["income"] * (people["member-by-income"] == 4) )
+  people["income, rank 5"] = (
+    people["income"] * (people["member-by-income"] == 5) )
+
   people["income, labor, rank 1"] = (
     people["income, labor"] * (people["member-by-income"] == 1) )
   people["income, labor, rank 2"] = (
@@ -35,6 +46,11 @@ if True: # aggregate from household members to households
       ['household']
     ) [  'value'
        ,'vat paid, min','vat paid, max'
+       , "income, rank 1"
+       , "income, rank 2"
+       , "income, rank 3"
+       , "income, rank 4"
+       , "income, rank 5"
        , "income, labor, rank 1"
        , "income, labor, rank 2"
        , "income, labor, rank 3"
