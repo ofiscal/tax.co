@@ -53,8 +53,8 @@ if True: # input files
     vat_coicop_2_digit = pd.read_csv( "python/build/vat_prop.2018_11_31/2-digit.csv" )
     vat_coicop_3_digit = pd.read_csv( "python/build/vat_prop.2018_11_31/3-digit.csv" )
 
-    # PITFALL: We want to replace VAT values, not column prefixes.
-    # Hence the "T1 T2 T1-inverse" strategy here, to preserve the coicop-*-digit columns.
+    # PITFALL: We want to replace 1 in the VAT rate columns, but not in the coicop-prefix columns.
+    # This replaces both, then restores the original prefixes.
     orig_key_2_digit = vat_coicop_2_digit["coicop-2-digit"]
     orig_key_3_digit = vat_coicop_3_digit["coicop-3-digit"]
     vat_coicop_2_digit = vat_coicop_2_digit.replace(1, float(common.vat_flat_rate))
@@ -66,7 +66,7 @@ if True: # input files
     vat_coicop_2_digit = pd.read_csv( "python/build/vat_approx/2-digit.csv" )
     vat_coicop_3_digit = pd.read_csv( "python/build/vat_approx/3-digit.csv" )
 
-if True: # add columns to the approx|prop-2018-11-31 bridges
+if True: # add columns to the coicop-prefix bridges
   vat_coicop_2_digit["vat frac, min"] = vat_coicop_2_digit[ "vat, min"
                                       ] . apply( lambda x: x / (1+x) )
   vat_coicop_2_digit["vat frac, max"] = vat_coicop_2_digit[ "vat, max"
@@ -76,7 +76,7 @@ if True: # add columns to the approx|prop-2018-11-31 bridges
   vat_coicop_3_digit["vat frac, max"] = vat_coicop_3_digit[ "vat, max"
                                       ] . apply( lambda x: x / (1+x) )
 
-if True: # pad everything coicop-like with 0s on the left
+if True: # left-pad every coicop value (including coicop prefixes) with 0s
   purchases         ["coicop"] = util.pad_column_as_int( 8, purchases         ["coicop"] )
     # This creates some "00000nan" values. After creating 2- and 3-digit
     # prefixes, we can turn those back into NaN.

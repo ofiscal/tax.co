@@ -1,10 +1,42 @@
 * TODO safety  (#safe)
-** TODO python/vat/build/ overlaps ss_contrib
-build ought to be a higher category than vat
-** TODO use the UVT rather than fixed peso amounts
 ** TODO the vat-strategy logic needs cleaning
+*** how to change those two strategy-conditioning files
+In the case of the const strategy, don't use any keys -- neither cap_c nor coicop.
+Instead just create the vat rate columns.
+
+There's only this region of code to change. Notice that currently, cap_c gets merged in no matter what. That should only happen if the strategy is not const.
+
+  if True: # add vat to coicop-labeled purchases
+    if common.vat_strategy in ["approx","prop-2018-11-31"]:
+      purchases_2_digit = purchases.merge( vat_coicop_2_digit, how = "left"
+                            , on="coicop-2-digit" )
+      purchases_3_digit = purchases.merge( vat_coicop_3_digit, how = "left"
+                            , on="coicop-3-digit" )
+      purchases_coicop = purchases_2_digit . combine_first( purchases_3_digit )
+    else: # PITFALL: For both const and detail strategies, use the primary bridge
+      purchases_coicop = purchases.merge( vat_coicop, how = "left", on="coicop" )
+
+  if True: # add vat to capitulo-c-labeled purchases
+    purchases_cap_c = purchases.merge( vat_cap_c, how = "left", on="25-broad-categs" )
+    purchases = purchases_coicop . combine_first( purchases_cap_c )
+
+*** probelms
 It's confusing -- the strategies are all mixed up. For instance the detail bridge is used for the const strategy.
-It's also inefficient to use the detail bridge for the const strategy. Ought to use approx instead -- or better, make a data set like prop-2018-11-31, but all 1s.
+It's inefficient to use the detail bridge for the const strategy. Ought to use approx instead -- or better, make a data set like prop-2018-11-31, but all 1s.
+*** code review
+**** Only two files condition seriously
+Only two files do serious conditioning on the vat_strategy: vat_rates.py and purchases_2_vat.py. (Other files change the names of their inputs and outputs based on the vat_strategy, but their logic is unchanged.)
+**** vat_rates.py
+vat_rates.py creates our vat keys: the files vat_coicop*.S.csv and vat_cap_c*.S.csv, where * is "" or "_brief", and S is the vat_strategy suffix. The vat_cap_c files use 8-digit coicop codes, not 2- or 3-digit approximations. These files are created for every VAT strategy, whether or not they are used downstream. That's a tiny inefficiency, because they are tiny files.
+
+However, to actually *use* those vat keys in the case of the const strategies is very inefficient. Better would be to use no key at all.
+**** purchases_2_vat.py
+It inputs these 5 files:
+  purchases_1_5_no_origin
+  vat_(cap_c|coicop)_brief
+  vat_coicop_(2|3)_digit -- version imported depends whether strategy == prop*
+
+** TODO use the UVT rather than fixed peso amounts
 ** TODO ? drop the Correction class
 ** TODO update coicop-vat bridge on OneDrive
 ** report/pics send some output to output/vat/tables rather than /pics
@@ -12,7 +44,9 @@ The Makefile pseudo targets, rather than *_pics, should be called *_reports, and
 ** pdflatex: send reports to a file, not stdout
 *** this way it doesn't drown the python error reports
 ** centralize routines for categorical variables
-* TODO accuracy (#right) 
+* TODO speed (#speed)
+** the different vat strategies ought to build separate versions only of what differs
+* TODO accuracy (#right)
 ** TODO These error codes apply to all income and expense variables
 *** why to use them
 The summary measures are otherwise hard to buy -- I see, for instance, a lot of values of 8.17 (that's 98 / 12) for monthly income measures.
@@ -42,7 +76,7 @@ problems in households:
 *** so omitting purchase!=1 observations won't bias our estimate of VAT
 *** it will, however, bias (downward) our estimate of consumption
 
-* TODO sanity (#sane) 
+* TODO sanity (#sane)
 ** are these two variables ever both > 0 ?
 *** P5180S1, P5180S2 : daily payment for, value of food at school
 *** P6180S1, P6180S2 : daily payment for, value of food at university
@@ -146,7 +180,7 @@ others are 19%
 *** 24 : % water
 water exempt, others excluded
 
-** add "has under 10|12", ala "has child" 
+** add "has under 10|12", ala "has child"
 (Currently we define has-child == min age < 18.)
 < 10 is interesting because work becomes legal at age (10 rural, 12 urban).
 ** restaurant|cafeteria tax / todo
@@ -280,4 +314,3 @@ min             1.000000  1.110101e+06
 50%            15.000000  1.220801e+06
 75%            20.000000  8.300305e+06
 max            25.000000  1.270990e+07
-

@@ -1,3 +1,8 @@
+# PURPOSE : This creates:
+  # a bridge from 8-digit COICOP to VAT rate
+  # a bridge from the 25 "capitulo c" codes to a VAT rate
+  # two more, briefer versions of those two keys
+
 import sys
 import pandas as pd
 
