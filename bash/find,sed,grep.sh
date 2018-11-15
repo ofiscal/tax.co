@@ -1,4 +1,5 @@
-sed -i "s/python\/vat\/build/python\/build/g" purchases_2_vat.py
+
+sed -i "s/python\/vat\/report/python\/report/g" Makefile
 
 find . -name "*.py" -print0 | xargs -0 sed -i "s/python\/vat\/build/python\/build/g"
 python/vat/build/

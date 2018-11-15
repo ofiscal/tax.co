@@ -217,26 +217,26 @@ $(purchase_sums): python/build/purchase_sums.py \
 ##=##=##=## Make charts, diagrams, tiny latex tables
 
 purchase_pics: $(purchase_pics)
-$(purchase_pics): python/vat/report/pics/purchases.py \
+$(purchase_pics): python/report/pics/purchases.py \
   $(purchases_2_vat)
-	$(python_from_here) python/vat/report/pics/purchases.py $(subsample) $(vat_strategy) $(vat_flat_rate)
+	$(python_from_here) python/report/pics/purchases.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
 household_pics: $(household_pics)
-$(household_pics): python/vat/report/pics/households.py \
+$(household_pics): python/report/pics/households.py \
   $(households)
-	$(python_from_here) python/vat/report/pics/households.py $(subsample) $(vat_strategy) $(vat_flat_rate)
+	$(python_from_here) python/report/pics/households.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
 people_pics: $(people_pics)
-$(people_pics): python/vat/report/pics/people.py \
+$(people_pics): python/report/pics/people.py \
   $(people_4_ss)
-	$(python_from_here) python/vat/report/pics/people.py $(subsample) $(vat_strategy) $(vat_flat_rate)
+	$(python_from_here) python/report/pics/people.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
 pics: $(pics)
 
 overview: $(overview)
-$(overview): python/vat/report/tables/overview.py \
+$(overview): python/report/tables/overview.py \
   python/util.py \
   python/build/output_io.py \
   python/build/people/files.py \
   $(households)
-	$(python_from_here) python/vat/report/tables/overview.py $(subsample) $(vat_strategy) $(vat_flat_rate)
+	$(python_from_here) python/report/tables/overview.py $(subsample) $(vat_strategy) $(vat_flat_rate)

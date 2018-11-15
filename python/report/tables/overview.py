@@ -1,4 +1,4 @@
-# exec( open( "python/vat/report/tables/overview.py" ) . read() )
+# exec( open( "python/report/tables/overview.py" ) . read() )
 
 import os
 import sys
