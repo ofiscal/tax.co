@@ -1,0 +1,1 @@
+These tables assign tax rates to goods based on the first two or three digits of each good's COICOP. They are the approximation DANE used to estimate VAT burden.
