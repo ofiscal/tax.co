@@ -1,8 +1,8 @@
 import sys
 import pandas as pd
 
-import python.vat.build.common as common
-import python.vat.build.output_io as oio
+import python.build.common as common
+import python.build.output_io as oio
 
 
 # PITFALL|WART: If the vat_strategy is "approx" or "detail", this produces the same files,

@@ -1,15 +1,15 @@
 import sys
 import numpy as np
 
-from python.vat.build.classes import Correction
-import python.vat.build.common as common
-import python.vat.build.output_io as oio
+from python.build.classes import Correction
+import python.build.common as common
+import python.build.output_io as oio
 
 # input files
-import python.vat.build.purchases.nice_purchases as nice_purchases
-import python.vat.build.purchases.medios as medios
-import python.vat.build.purchases.articulos as articulos
-import python.vat.build.purchases.capitulo_c as capitulo_c
+import python.build.purchases.nice_purchases as nice_purchases
+import python.build.purchases.medios as medios
+import python.build.purchases.articulos as articulos
+import python.build.purchases.capitulo_c as capitulo_c
 
 
 purchases = common.collect_files(

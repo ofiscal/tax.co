@@ -1,6 +1,6 @@
 import pandas as pd
-import python.vat.build.classes as classes
-import python.vat.build.common as common
+import python.build.classes as classes
+import python.build.common as common
 
 files = [
   classes.File( "articulos"

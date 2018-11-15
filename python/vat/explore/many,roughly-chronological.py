@@ -1,19 +1,19 @@
-import python.vat.build.main as data  
+import python.build.main as data  
 
 import python.util as util
-import python.vat.build.classes as classes
-import python.vat.build.common as common
+import python.build.classes as classes
+import python.build.common as common
 
 import pandas as pd
 import numpy as np
 import re as regex
 
-import python.vat.build.buildings.files as bldg
-import python.vat.build.people.files as ppl
-import python.vat.build.purchases.nice_purchases as nice_purchases
-import python.vat.build.purchases.medios as medios
-import python.vat.build.purchases.articulos as articulos
-import python.vat.build.purchases.capitulo_c as capitulo_c
+import python.build.buildings.files as bldg
+import python.build.people.files as ppl
+import python.build.purchases.nice_purchases as nice_purchases
+import python.build.purchases.medios as medios
+import python.build.purchases.articulos as articulos
+import python.build.purchases.capitulo_c as capitulo_c
 
 
 dfc = data.purchases[ data.purchases["file-origin"]=="rural capitulo c" ]

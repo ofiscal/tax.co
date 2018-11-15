@@ -136,82 +136,82 @@ $(input_subsamples): python/subsample.py $(enph_orig)
 	$(python_from_here) python/subsample.py
 
 vat_rates: $(vat_rates)
-$(vat_rates): python/vat/build/vat_rates.py \
-  python/vat/build/output_io.py \
+$(vat_rates): python/build/vat_rates.py \
+  python/build/output_io.py \
   data/vat/vat-by-coicop.csv \
   data/vat/vat-for-capitulo-c.csv
-	$(python_from_here) python/vat/build/vat_rates.py $(subsample) $(vat_strategy) $(vat_flat_rate)
+	$(python_from_here) python/build/vat_rates.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
 
 ##=##=##=## Build data from the ENPH
 
 buildings: $(buildings)
-$(buildings): python/vat/build/buildings.py \
-  python/vat/build/classes.py \
-  python/vat/build/common.py \
-  python/vat/build/output_io.py \
+$(buildings): python/build/buildings.py \
+  python/build/classes.py \
+  python/build/common.py \
+  python/build/output_io.py \
   $(input_subsamples)
-	$(python_from_here) python/vat/build/buildings.py $(subsample) $(vat_strategy) $(vat_flat_rate)
+	$(python_from_here) python/build/buildings.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
 households: $(households)
-$(households): python/vat/build/households.py \
+$(households): python/build/households.py \
   python/util.py \
-  python/vat/build/output_io.py \
+  python/build/output_io.py \
   $(people_4_ss)
-	$(python_from_here) python/vat/build/households.py $(subsample) $(vat_strategy) $(vat_flat_rate)
+	$(python_from_here) python/build/households.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
 people_1: $(people_1)
-$(people_1): python/vat/build/people/main.py \
-  python/vat/build/people/files.py \
-  python/vat/build/common.py \
-  python/vat/build/output_io.py \
+$(people_1): python/build/people/main.py \
+  python/build/people/files.py \
+  python/build/common.py \
+  python/build/output_io.py \
   $(input_subsamples)
-	$(python_from_here) python/vat/build/people/main.py $(subsample) $(vat_strategy) $(vat_flat_rate)
+	$(python_from_here) python/build/people/main.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
 people_2_buildings: $(people_2_buildings)
-$(people_2_buildings): python/vat/build/people_2_buildings.py \
-  python/vat/build/output_io.py \
+$(people_2_buildings): python/build/people_2_buildings.py \
+  python/build/output_io.py \
   $(buildings) $(people_1)
-	$(python_from_here) python/vat/build/people_2_buildings.py $(subsample) $(vat_strategy) $(vat_flat_rate)
+	$(python_from_here) python/build/people_2_buildings.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
 people_3_purchases: $(people_3_purchases)
-$(people_3_purchases): python/vat/build/people_3_purchases.py \
-  python/vat/build/output_io.py \
+$(people_3_purchases): python/build/people_3_purchases.py \
+  python/build/output_io.py \
   $(people_2_buildings) $(purchase_sums)
-	$(python_from_here) python/vat/build/people_3_purchases.py $(subsample) $(vat_strategy) $(vat_flat_rate)
+	$(python_from_here) python/build/people_3_purchases.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
 people_4_ss: $(people_4_ss)
-$(people_4_ss): python/vat/build/people_4_ss.py \
-  python/vat/build/ss_contribs.py \
-  python/vat/build/output_io.py \
+$(people_4_ss): python/build/people_4_ss.py \
+  python/build/ss_contribs.py \
+  python/build/output_io.py \
   $(people_3_purchases)
-	$(python_from_here) python/vat/build/people_4_ss.py $(subsample) $(vat_strategy) $(vat_flat_rate)
+	$(python_from_here) python/build/people_4_ss.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
 purchases_1: $(purchases_1)
-$(purchases_1): python/vat/build/purchases/main.py \
-  python/vat/build/classes.py \
-  python/vat/build/common.py \
-  python/vat/build/output_io.py \
-  python/vat/build/purchases/nice_purchases.py \
-  python/vat/build/purchases/medios.py \
-  python/vat/build/purchases/articulos.py \
-  python/vat/build/purchases/capitulo_c.py \
+$(purchases_1): python/build/purchases/main.py \
+  python/build/classes.py \
+  python/build/common.py \
+  python/build/output_io.py \
+  python/build/purchases/nice_purchases.py \
+  python/build/purchases/medios.py \
+  python/build/purchases/articulos.py \
+  python/build/purchases/capitulo_c.py \
   $(input_subsamples)
-	$(python_from_here) python/vat/build/purchases/main.py $(subsample) $(vat_strategy) $(vat_flat_rate)
+	$(python_from_here) python/build/purchases/main.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
 purchases_2_vat: $(purchases_2_vat)
-$(purchases_2_vat): python/vat/build/purchases_2_vat.py \
-  python/vat/build/output_io.py \
-  python/vat/build/legends.py \
+$(purchases_2_vat): python/build/purchases_2_vat.py \
+  python/build/output_io.py \
+  python/build/legends.py \
   $(vat_rates) \
   output/vat/data/recip-$(ss)/purchases_1.csv
-	$(python_from_here) python/vat/build/purchases_2_vat.py $(subsample) $(vat_strategy) $(vat_flat_rate)
+	$(python_from_here) python/build/purchases_2_vat.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
 purchase_sums: $(purchase_sums)
-$(purchase_sums): python/vat/build/purchase_sums.py \
-  python/vat/build/output_io.py \
+$(purchase_sums): python/build/purchase_sums.py \
+  python/build/output_io.py \
   $(purchases_2_vat)
-	$(python_from_here) python/vat/build/purchase_sums.py $(subsample) $(vat_strategy) $(vat_flat_rate)
+	$(python_from_here) python/build/purchase_sums.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
 
 ##=##=##=## Make charts, diagrams, tiny latex tables
@@ -236,7 +236,7 @@ pics: $(pics)
 overview: $(overview)
 $(overview): python/vat/report/tables/overview.py \
   python/util.py \
-  python/vat/build/output_io.py \
-  python/vat/build/people/files.py \
+  python/build/output_io.py \
+  python/build/people/files.py \
   $(households)
 	$(python_from_here) python/vat/report/tables/overview.py $(subsample) $(vat_strategy) $(vat_flat_rate)

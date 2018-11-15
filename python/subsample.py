@@ -4,7 +4,7 @@
 import os
 import pandas as pd
 
-import python.datafiles as datafiles
+import python.build.datafiles as datafiles
 
 
 folder = datafiles.yearSurveyFolder(2017)

@@ -1,8 +1,8 @@
 import sys
 import pandas as pd
-import python.vat.build.output_io as oio
-import python.vat.build.ss_contribs as ss
-import python.vat.build.common as common
+import python.build.output_io as oio
+import python.build.ss_contribs as ss
+import python.build.common as common
 
 
 people = oio.readStage( common.subsample

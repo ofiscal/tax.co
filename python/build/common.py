@@ -1,5 +1,5 @@
 import sys
-from python.vat.build.classes import Correction
+from python.build.classes import Correction
 import numpy as np
 import pandas as pd
 

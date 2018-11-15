@@ -1,5 +1,5 @@
 import pandas as pd
-import python.datafiles as datafiles
+import python.build.datafiles as datafiles
 
 # (filename,colname) = ("st2_sea_enc_gcfhr_ce_csv","nc2r_ce_p2")
 # df = pd.read_csv( datafiles.yearSurveyFolder(2017) + "recip-100/" + filename + ".csv")

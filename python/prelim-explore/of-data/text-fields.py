@@ -2,7 +2,7 @@
 # Write to a file tree the leaves of which correspond to columns.
 
 import pandas as pd
-import python.datafiles as datafiles
+import python.build.datafiles as datafiles
 import os as os
 
 for (survey,year) in [("enig",2007),("enph",2017)]:

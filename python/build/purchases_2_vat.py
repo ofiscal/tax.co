@@ -2,10 +2,10 @@ import sys
 import pandas as pd
 import numpy as np
 
-import python.vat.build.output_io as oio
-import python.vat.build.legends as legends
+import python.build.output_io as oio
+import python.build.legends as legends
 import python.util as util
-import python.vat.build.common as common
+import python.build.common as common
 
 
 if True: # input files
@@ -50,8 +50,8 @@ if True: # input files
                             } )
 
   if common.vat_strategy == "prop-2018-11-31":
-    vat_coicop_2_digit = pd.read_csv( "python/vat/build/vat_prop.2018_11_31/2-digit.csv" )
-    vat_coicop_3_digit = pd.read_csv( "python/vat/build/vat_prop.2018_11_31/3-digit.csv" )
+    vat_coicop_2_digit = pd.read_csv( "python/build/vat_prop.2018_11_31/2-digit.csv" )
+    vat_coicop_3_digit = pd.read_csv( "python/build/vat_prop.2018_11_31/3-digit.csv" )
 
     # PITFALL: We want to replace VAT values, not column prefixes.
     # Hence the "T1 T2 T1-inverse" strategy here, to preserve the coicop-*-digit columns.
@@ -63,8 +63,8 @@ if True: # input files
     vat_coicop_3_digit["coicop-3-digit"] = vat_coicop_3_digit
 
   else: # Always read, but the only way these are used is if vat_strategy is approx.
-    vat_coicop_2_digit = pd.read_csv( "python/vat/build/vat_approx/2-digit.csv" )
-    vat_coicop_3_digit = pd.read_csv( "python/vat/build/vat_approx/3-digit.csv" )
+    vat_coicop_2_digit = pd.read_csv( "python/build/vat_approx/2-digit.csv" )
+    vat_coicop_3_digit = pd.read_csv( "python/build/vat_approx/3-digit.csv" )
 
 if True: # add columns to the approx|prop-2018-11-31 bridges
   vat_coicop_2_digit["vat frac, min"] = vat_coicop_2_digit[ "vat, min"

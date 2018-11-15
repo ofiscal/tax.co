@@ -17,8 +17,8 @@ if True: # more imports
 
   import python.util as util
   import python.draw.util as draw
-  import python.vat.build.output_io as oio
-  import python.vat.build.common as common
+  import python.build.output_io as oio
+  import python.build.common as common
 
 
 vat_pics_dir = "output/vat/pics/recip-" + str(common.subsample) + "/" + common.vat_strategy_suffix + "/"

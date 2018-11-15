@@ -1,5 +1,9 @@
+sed -i "s/python\/vat\/build/python\/build/g" purchases_2_vat.py
+
+find . -name "*.py" -print0 | xargs -0 sed -i "s/python\/vat\/build/python\/build/g"
+python/vat/build/
+
 find . -name "*.py" -print0 | xargs -0 sed -i "s/contractor/independiente/g"
-find . -name "*.py" -print0 | xargs -0 sed -i "s/employee/asalariado/g"
 
 git diff | egrep -v "^.$" | egrep "^\+" | wc
   # count adds or deletes in the diff, ignore blank lines

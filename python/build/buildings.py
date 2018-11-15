@@ -1,9 +1,9 @@
 import sys
 import numpy as np
 
-import python.vat.build.classes as classes
-import python.vat.build.common as common
-import python.vat.build.output_io as oio
+import python.build.classes as classes
+import python.build.common as common
+import python.build.output_io as oio
 
 
 # PITFALL: Except for the save at the end, subsample is ignored; the program uses

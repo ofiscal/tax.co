@@ -4,8 +4,8 @@
 
 import pandas as pd
 from numpy import nan
-import python.vat.build.classes as classes
-import python.vat.build.common as common
+import python.build.classes as classes
+import python.build.common as common
 
 
 files = [

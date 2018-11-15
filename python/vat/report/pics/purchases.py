@@ -12,9 +12,9 @@ if True: # more imports
   import os
   import numpy as np
   
-  import python.vat.build.output_io as oio
+  import python.build.output_io as oio
   import python.draw.util as draw
-  import python.vat.build.common as common
+  import python.build.common as common
 
 
 vat_pics_dir = "output/vat/pics/recip-" + str(common.subsample) + "/" + common.vat_strategy_suffix + "/"

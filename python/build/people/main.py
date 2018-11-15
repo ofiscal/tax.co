@@ -3,9 +3,9 @@ import numpy as np
 import pandas as pd
 import re as regex
 
-import python.vat.build.common as common
-import python.vat.build.people.files as files
-import python.vat.build.output_io as oio
+import python.build.common as common
+import python.build.people.files as files
+import python.build.output_io as oio
 
 
 people = common.to_numbers( common.collect_files( files.files

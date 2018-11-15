@@ -5,8 +5,8 @@ import numpy as np
 import pandas as pd
 
 import python.util as util
-import python.vat.build.legends as legends
-import python.vat.build.common as common
+import python.build.legends as legends
+import python.build.common as common
 
 
 enph_subsample = "data/enph-2017/recip-" + str( common.subsample ) + "/"

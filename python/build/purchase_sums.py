@@ -1,6 +1,6 @@
 import sys
-import python.vat.build.output_io as oio
-import python.vat.build.common as common
+import python.build.output_io as oio
+import python.build.common as common
 
 
 purchases = oio.readStage( common.subsample, "purchases_2_vat." + common.vat_strategy_suffix )

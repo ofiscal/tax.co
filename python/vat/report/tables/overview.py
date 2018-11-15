@@ -6,8 +6,8 @@ import pandas as pd
 
 import python.util as util
 import python.draw.util as draw
-import python.vat.build.output_io as oio
-import python.vat.build.common as common
+import python.build.output_io as oio
+import python.build.common as common
 
 
 output_dir = "output/vat/tables/recip-" + str(common.subsample) + "/"

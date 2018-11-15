@@ -2,9 +2,9 @@ import sys
 import pandas as pd
 
 import python.util as util
-import python.vat.build.output_io as oio
-from python.vat.build.people.files import edu_key
-import python.vat.build.common as common
+import python.build.output_io as oio
+from python.build.people.files import edu_key
+import python.build.common as common
 
 
 people = oio.readStage( common.subsample, "people_3_purchases" )

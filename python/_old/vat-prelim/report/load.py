@@ -6,7 +6,7 @@ import pandas as pd
 from pandas.api.types import CategoricalDtype
 
 import python.util as util
-import python.datafiles as datafiles
+import python.build.datafiles as datafiles
 import python.vat.legends as vatfiles
 import python.vat.output_io as oio
 import python.draw.util as draw

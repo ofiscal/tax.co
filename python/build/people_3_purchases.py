@@ -1,7 +1,7 @@
 import sys
 import pandas as pd
-import python.vat.build.output_io as oio
-import python.vat.build.common as common
+import python.build.output_io as oio
+import python.build.common as common
 
 
 if True: # input files

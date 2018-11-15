@@ -1,6 +1,6 @@
 import pandas as pd
-from python.vat.build.classes import File, Correction
-import python.vat.build.common as common
+from python.build.classes import File, Correction
+import python.build.common as common
 
 
 files = [
