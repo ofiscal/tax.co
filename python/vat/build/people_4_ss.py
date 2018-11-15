@@ -10,31 +10,31 @@ people = oio.readStage( common.subsample
 
 ss_contrib_schedules = {
     "pension" : {
-      "contractor" : [ (0  , 0.0)
+      "independiente" : [ (0  , 0.0)
                      , (1e6, 0.1)
                      , (5e6, 0.2) ]
-      , "employee" : [ (0  , 0.1)
+      , "asalariado" : [ (0  , 0.1)
                      , (1e6, 0.2)
                      , (5e6, 0.3) ]
     } , "salud" :  {
-      "contractor" : [ (0  , 0.01)
+      "independiente" : [ (0  , 0.01)
                      , (1e6, 0.01)
                      , (5e6, 0.02) ]
-      , "employee" : [ (0  , 0.01)
+      , "asalariado" : [ (0  , 0.01)
                      , (1e6, 0.02)
                      , (5e6, 0.03) ]
     } , "solidaridad" :  {
-      "contractor" : [ (0  , 0.001)
+      "independiente" : [ (0  , 0.001)
                      , (1e6, 0.001)
                      , (5e6, 0.002) ]
-      , "employee" : [ (0  , 0.001)
+      , "asalariado" : [ (0  , 0.001)
                      , (1e6, 0.002)
                      , (5e6, 0.003) ]
     }
   }
 
 ss_df = ss.ss_contribs( ss_contrib_schedules
-                      , people["contractor"]
+                      , people["independiente"]
                       , people["income, labor"]
 )
 

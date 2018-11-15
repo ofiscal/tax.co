@@ -30,23 +30,23 @@ def ss_contribs(
   schedMapMap # a map from tax type (pension | salud | solidaridad) to
               # a map from whether the work is contract work ( 0 | 1 ) to
               # a schedule of marginal rates (see _accumulate_across_marginal_rates)
-  , contractor # a column of 0-1 indicators of whether someone is a contractor
+  , independiente # a column of 0-1 indicators of whether someone is a independiente
   , income ):  # a column of numbers
   def intToContractorKey(i):
-    if   i == 1 : return "contractor"
-    elif i == 0 : return "employee"
+    if   i == 1 : return "independiente"
+    elif i == 0 : return "asalariado"
     else        : raise ValueError( "intToContractorKey should receive 0 or 1." )
   df = pd.DataFrame( [ income.copy()
-                     , contractor.copy()
-                   ] , index = ["income","contractor"]
+                     , independiente.copy()
+                   ] , index = ["income","independiente"]
                    ) . transpose()
   for tax_type in schedMapMap.keys():
     schedMap = schedMapMap[ tax_type ]
-    for whether_contractor in [0,1]:
-      sched = schedMap[ intToContractorKey( whether_contractor ) ]
-      df.loc[       df["contractor"] == whether_contractor
+    for whether_independiente in [0,1]:
+      sched = schedMap[ intToContractorKey( whether_independiente ) ]
+      df.loc[       df["independiente"] == whether_independiente
                     , tax_type
-            ] = df[ df["contractor"] == whether_contractor
+            ] = df[ df["independiente"] == whether_independiente
                   ] [ "income"
                   ] . apply(
                     lambda x: accumulate_across_marginal_rates( sched, x ) )
@@ -64,35 +64,35 @@ class Test_accumulate_across_marginal_rates(unittest.TestCase):
       [ [ 0, 0   ]
       , [ 1, 1e6 ]
       , [ 0, 2e6 ]
-      ] , columns = ["contractor","income"]
+      ] , columns = ["independiente","income"]
     )
     ss_contrib_schedules = {
       "pension" : {
-        "contractor" : [ (0  , 0.0)
+        "independiente" : [ (0  , 0.0)
                        , (1e6, 0.1)
                        , (5e6, 0.2) ]
-        , "employee" : [ (0  , 0.1)
+        , "asalariado" : [ (0  , 0.1)
                        , (1e6, 0.2)
                        , (5e6, 0.3) ]
       } , "salud" :  {
-        "contractor" : [ (0  , 0.01)
+        "independiente" : [ (0  , 0.01)
                        , (1e6, 0.01)
                        , (5e6, 0.02) ]
-        , "employee" : [ (0  , 0.01)
+        , "asalariado" : [ (0  , 0.01)
                        , (1e6, 0.02)
                        , (5e6, 0.03) ]
       } , "solidaridad" :  {
-        "contractor" : [ (0  , 0.001)
+        "independiente" : [ (0  , 0.001)
                        , (1e6, 0.001)
                        , (5e6, 0.002) ]
-        , "employee" : [ (0  , 0.001)
+        , "asalariado" : [ (0  , 0.001)
                        , (1e6, 0.002)
                        , (5e6, 0.003) ]
       }
     }
     self.assertTrue(
       (
-        ss_contribs( ss_contrib_schedules, ppl["contractor"], ppl["income"] )
+        ss_contribs( ss_contrib_schedules, ppl["independiente"], ppl["income"] )
         == pd.DataFrame( [
             [ 0  , 0  , 0   ]
           , [ 0  , 1e4, 1e3 ]

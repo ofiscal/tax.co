@@ -137,12 +137,12 @@ df = df[ (df.T != 0).any() ] # delete the all-zero rows
 
 df = df.rename( columns = dict( zip(
   df.columns,
-  ["formal", "contractor", "rural business", "all ? 1", "all ? 2"] ) ) )
+  ["formal", "independiente", "rural business", "all ? 1", "all ? 2"] ) ) )
 
 df["formal - ?1"] = df["formal"] - df["all ? 1"]
 df["formal - ?2"] = df["formal"] - df["all ? 2"]
 
-dfc = df.drop( columns = ["contractor", "rural business"] )
+dfc = df.drop( columns = ["independiente", "rural business"] )
 
 util.describeWithMissing( dfc )
 
