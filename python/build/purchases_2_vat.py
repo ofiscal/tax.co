@@ -98,19 +98,29 @@ if True: # left-pad every coicop value (including coicop prefixes) with 0s
                , "coicop-3-digit"
                ] = np.nan
 
-if True: # add vat to coicop-labeled purchases
-  if common.vat_strategy in ["approx","prop-2018-11-31"]:
-    purchases_2_digit = purchases.merge( vat_coicop_2_digit, how = "left"
-                          , on="coicop-2-digit" )
-    purchases_3_digit = purchases.merge( vat_coicop_3_digit, how = "left"
-                          , on="coicop-3-digit" )
-    purchases_coicop = purchases_2_digit . combine_first( purchases_3_digit )
-  else: # PITFALL: For both const and detail strategies, use the primary bridge
-    purchases_coicop = purchases.merge( vat_coicop, how = "left", on="coicop" )
+if True: # add these columns: ["vat", "vat, min", "vat, max"]\
+  if common.vat_strategy == "const":
+    purchases["vat"]           = common.vat_flat_rate
+    purchases["vat, min"]      = common.vat_flat_rate
+    purchases["vat, max"]      = common.vat_flat_rate
+    purchases["vat frac"]      = common.vat_flat_rate / (1 + common.vat_flat_rate)
+    purchases["vat frac, min"] = common.vat_flat_rate / (1 + common.vat_flat_rate)
+    purchases["vat frac, max"] = common.vat_flat_rate / (1 + common.vat_flat_rate)
+  else:
+    if True: # add vat to coicop-labeled purchases
+      if common.vat_strategy in ["approx","prop-2018-11-31"]:
+        purchases_2_digit = purchases.merge( vat_coicop_2_digit, how = "left"
+                              , on="coicop-2-digit" )
+        purchases_3_digit = purchases.merge( vat_coicop_3_digit, how = "left"
+                              , on="coicop-3-digit" )
+        purchases_coicop = purchases_2_digit . combine_first( purchases_3_digit )
 
-if True: # add vat to capitulo-c-labeled purchases
-  purchases_cap_c = purchases.merge( vat_cap_c, how = "left", on="25-broad-categs" )
-  purchases = purchases_coicop . combine_first( purchases_cap_c )
+      if common.vat_strategy == "detail":
+        purchases_coicop = purchases.merge( vat_coicop, how = "left", on="coicop" )
+
+    if True: # add vat to capitulo-c-labeled purchases
+      purchases_cap_c = purchases.merge( vat_cap_c, how = "left", on="25-broad-categs" )
+      purchases = purchases_coicop . combine_first( purchases_cap_c )
 
 if False: # drop anything missing min vat (which implies max also missing)
   purchases = purchases[ ~ purchases["vat, min"] . isnull() ]
