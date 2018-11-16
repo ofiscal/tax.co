@@ -110,6 +110,9 @@ if True: # aggregate from household members to households
   households["income-decile"] = pd.qcut( # PITFALL: there's a different such variable at the person level
     households["income"], 10, labels = False, duplicates='drop')
 
+  households["income-percentile"] = pd.qcut( # PITFALL: there's a different such variable at the person level
+    households["income"], 100, labels = False, duplicates='drop')
+
   households["one"] = 1
 
 

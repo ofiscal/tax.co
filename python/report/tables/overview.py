@@ -54,7 +54,8 @@ if True: # create a summary dataframe
 
   householdGroupVars = [ "one"
                       , "female head"
-                      , "income-decile"
+                      # , "income-decile"
+                      , "income-percentile"
                       , "region-2" ]
 
   # PITFALL: Earlier, this looped over two data sets, households and people.

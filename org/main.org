@@ -1,3 +1,5 @@
+* TODO organize
+** bury the approx bridge
 * TODO safety  (#safe)
 ** TODO the vat-strategy logic needs cleaning
 *** how to change those two strategy-conditioning files
