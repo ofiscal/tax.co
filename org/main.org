@@ -1,6 +1,9 @@
 * TODO organize
 ** bury the approx bridge
 * TODO safety  (#safe)
+** TODO replace strategy name strings with variables defined in common
+e.g. common.detail = "detail"
+Better yet would be an enum type.
 ** TODO the vat-strategy logic needs cleaning
 *** how to change those two strategy-conditioning files
 In the case of the const strategy, don't use any keys -- neither cap_c nor coicop.
@@ -83,6 +86,7 @@ problems in households:
 *** P5180S1, P5180S2 : daily payment for, value of food at school
 *** P6180S1, P6180S2 : daily payment for, value of food at university
 * TODO features (#feature)
+** TODO Allow approx to vary like prop-2018-11-31
 ** goods that dodge the VAT
 *** summarized with a parameter, "share of final good that escapes the VAT"
 *** the rules : exemptions, exclusions and refunds
