@@ -1,29 +1,30 @@
 #!/bin/bash
 
-echo; date; echo
+# There is only one variety of the detail strategy.
+echo; echo detail; date
 make overview subsample=$1 vat_strategy=detail
 
-echo; date; echo
-#make overview subsample=$1 vat_strategy=approx vat_flat_rate=0.19
-#echo; date; echo
-make overview subsample=$1 vat_strategy=approx vat_flat_rate=0.18
+# For each of the others we can specify some constant tax rates.
+for vat_strategy in approx; do
+    for vat_flat_rate in 0.19 0.18; do
+        echo; echo $vat_strategy $vat_flat_rate; date
+        make overview subsample=$1 vat_strategy=$vat_strategy vat_flat_rate=$vat_flat_rate
+    done
+done
+
+# That list of tax rates can be empty, in which case the loop does nothing.
+for vat_strategy in prop-2018-11-31; do
+    for vat_flat_rate in 0.17; do
+        echo; echo $vat_strategy $vat_flat_rate; date
+        make overview subsample=$1 vat_strategy=$vat_strategy vat_flat_rate=$vat_flat_rate
+    done
+done
+
+for vat_strategy in const; do
+    for vat_flat_rate in; do
+        echo; echo $vat_strategy $vat_flat_rate; date
+        make overview subsample=$1 vat_strategy=$vat_strategy vat_flat_rate=$vat_flat_rate
+    done
+done
 
 echo; date; echo
-#make overview subsample=$1 vat_strategy=prop-2018-11-31 vat_flat_rate=0.18
-#echo; date; echo
-#make overview subsample=$1 vat_strategy=prop-2018-11-31 vat_flat_rate=0.17
-#echo; date; echo
-#make overview subsample=$1 vat_strategy=prop-2018-11-31 vat_flat_rate=0.16
-#echo; date; echo
-#make overview subsample=$1 vat_strategy=prop-2018-11-31 vat_flat_rate=0.15
-
-#echo; date; echo
-#make overview subsample=$1 vat_strategy=const vat_flat_rate=0.18
-#echo; date; echo
-#make overview subsample=$1 vat_strategy=const vat_flat_rate=0.17
-#echo; date; echo
-#make overview subsample=$1 vat_strategy=const vat_flat_rate=0.16
-#echo; date; echo
-#make overview subsample=$1 vat_strategy=const vat_flat_rate=0.107
-
-#echo; date; echo
