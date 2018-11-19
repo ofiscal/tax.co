@@ -2,6 +2,7 @@
 ** TODO why is make rebuilding everything when I switch branches?
 https://stackoverflow.com/questions/53346078/problem-make-rebuilds-entire-project-after-switching-branches-in-git/53349159#53349159
 ** the different vat strategies ought to build separate versions only of what differs
+e.g. in the people data, only rebuild the tax payments when the tax rates change
 * TODO safety (#safe)
 ** TODO replace strategy name strings with variables defined in common
 e.g. common.detail = "detail"
