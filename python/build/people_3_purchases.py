@@ -1,5 +1,7 @@
 import sys
 import pandas as pd
+
+import python.util as util
 import python.build.output_io as oio
 import python.build.common as common
 
@@ -27,8 +29,8 @@ if True: # create a few more variables
 
   people["age-decile"] = pd.qcut(
     people["age"], 10, labels = False, duplicates='drop')
-  people["income-decile"] = pd.qcut( # PITFALL: there's a different such variable at the household level
-    people["income"], 10, labels = False, duplicates='drop')
+  people["income-decile"] = ( # PITFALL: there's a different such variable at the household level
+    util.noisyQuantile( 10, 0, 1, people["income"] ) )
 
   people["female head"] = people["female"] * (people["household-member"]==1)
 

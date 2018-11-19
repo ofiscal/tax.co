@@ -1,6 +1,3 @@
-* TODO maybe a bug
-** Why are there only 98 income percentiles in the overview?
-See test-qcut.py.
 * TODO speed (#speed)
 ** TODO why is make rebuilding everything when I switch branches?
 https://stackoverflow.com/questions/53346078/problem-make-rebuilds-entire-project-after-switching-branches-in-git/53349159#53349159

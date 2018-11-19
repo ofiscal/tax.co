@@ -108,37 +108,19 @@ if True: # aggregate from household members to households
   households["has-child"] = households["age-min"] < 18
   households["has-elderly"] = households["age-max"] > 65
 
-  households["income-decile"] = pd.qcut( # PITFALL: there's a different such variable at the person level
-    households["income"], 10, labels = False, duplicates='drop')
+  households["income-decile"] = ( # PITFALL: there's a different such variable at the person level
+    util.noisyQuantile( 10, 0, 1, households["income"] ) )
 
-  households["income-percentile"] = pd.qcut( # PITFALL: there's a different such variable at the person level
-    households["income"], 100, labels = False, duplicates='drop')
+  households["income-percentile"] = ( # PITFALL: there's a different such variable at the person level
+    util.noisyQuantile( 100, 0, 1, households["income"] ) )
 
   households["one"] = 1
 
-
-if True: # data sets derived from households
-  if True: # households with income
-    households_w_income = households[ households["income"] > 0 ].copy()
-      # Without the copy (even if I use .loc(), as suggested by the error)
-      # this causes an error about modifying a view.
-    households_w_income["income-decile"] = pd.qcut(
-      households_w_income["income"], 10, labels = False, duplicates='drop')
-
-  if True: # summaries of the income deciles in two data sets
-    households_w_income_decile_summary = \
-      util.summarizeQuantiles("income-decile", households_w_income)
-
-    households_decile_summary = \
-      util.summarizeQuantiles("income-decile", households)
+  households_decile_summary = util.summarizeQuantiles("income-decile", households)
 
 
 if True: # save
   oio.saveStage( common.subsample, households
                         , 'households.' + common.vat_strategy_suffix )
-  oio.saveStage( common.subsample, households_w_income
-                        , 'households_w_income.' + common.vat_strategy_suffix )
-  oio.saveStage( common.subsample, households_w_income_decile_summary
-                        , 'households_w_income_decile_summary.' + common.vat_strategy_suffix )
   oio.saveStage( common.subsample, households_decile_summary
                        , 'households_decile_summary.' + common.vat_strategy_suffix )

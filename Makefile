@@ -73,8 +73,6 @@ input_subsamples =                                                           \
 buildings =          output/vat/data/recip-$(ss)/buildings.csv
 households = \
   output/vat/data/recip-$(ss)/households.$(strategy_suffix).csv \
-  output/vat/data/recip-$(ss)/households_w_income.$(strategy_suffix).csv \
-  output/vat/data/recip-$(ss)/households_w_income_decile_summary.$(strategy_suffix).csv \
   output/vat/data/recip-$(ss)/households_decile_summary.$(strategy_suffix).csv
 people_1 =           output/vat/data/recip-$(ss)/people_1.csv
 people_2_buildings = output/vat/data/recip-$(ss)/people_2_buildings.csv
