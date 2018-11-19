@@ -1,6 +1,11 @@
-* TODO organize
-** bury the approx bridge
-* TODO safety  (#safe)
+* TODO maybe a bug
+** Why are there only 98 income percentiles in the overview?
+See test-qcut.py.
+* TODO speed (#speed)
+** TODO why is make rebuilding everything when I switch branches?
+https://stackoverflow.com/questions/53346078/problem-make-rebuilds-entire-project-after-switching-branches-in-git/53349159#53349159
+** the different vat strategies ought to build separate versions only of what differs
+* TODO safety (#safe)
 ** TODO replace strategy name strings with variables defined in common
 e.g. common.detail = "detail"
 Better yet would be an enum type.
@@ -49,8 +54,6 @@ The Makefile pseudo targets, rather than *_pics, should be called *_reports, and
 ** pdflatex: send reports to a file, not stdout
 *** this way it doesn't drown the python error reports
 ** centralize routines for categorical variables
-* TODO speed (#speed)
-** the different vat strategies ought to build separate versions only of what differs
 * TODO accuracy (#right)
 ** TODO These error codes apply to all income and expense variables
 *** why to use them
