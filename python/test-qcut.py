@@ -24,6 +24,8 @@ s = pd.read_csv( "output/vat/data/recip-1/households.const_0.18.csv"
                  , usecols = ["income"] )
 len(s)
 len( s[ s["income"] <= 0 ] )
+
+# Here's a solution.
 epsilon = 1
 noise = pd.Series( np.random.uniform( -epsilon, epsilon, len(s) ) )
 s["income+noise"] = s["income"] + noise
