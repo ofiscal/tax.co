@@ -1,0 +1,18 @@
+* IO is in one page, "Supuestos y Resultados"
+* In the inter-sector trade page, transfer is from thing in vertical axis to the thing in the horizontal.
+* The units on that page are in millions of pesos
+* "Subsidio a IVA (% devolución de mayor recaudación)" is a percentage of the new revenue from the new IVA-taxed goods, devolved to poor people
+* utilidades = profits
+* key
+the first and last are taxes on individuals, the middle two on firms
+Salarios
+CREE
+Utilidades
+Dividendos
+
+* Precios Administrados = fiat prices, not market prices
+* Servicios inmobiliarios = rent
+ the initial price is market, but changes in it are fixed, tied to inflation
+*  FBK ext = foreign investment into colombia
+*  Prestamo neto = net borrowing of Colombia from abroad
+* Escenarios page summarizes results from the previous, "Supuestos y Resultados"

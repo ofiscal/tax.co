@@ -1,9 +1,13 @@
-* TODO speed (#speed)
-** TODO why is make rebuilding everything when I switch branches?
-https://stackoverflow.com/questions/53346078/problem-make-rebuilds-entire-project-after-switching-branches-in-git/53349159#53349159
-** the different vat strategies ought to build separate versions only of what differs
-e.g. in the people data, only rebuild the tax payments when the tax rates change
+* TODO get estimates to María del Rosario Guerra
+** use DANE's COICOP-VAT bridge
+** Identify the top 5, 10 and 20 products most consumed by each decile
+** Effects on revenue and total expenditure of a vat of 0% and 5% on the top 5, 10 and 20 products consumed by the bottom 60% of income earners
+** Before and after tax reform Gini
+Gini = Num / Denom where
+  Num = Sum over all i,j of |xi - xj|
+  Denom = 2 * n * (Sum over all i of xi^2)
 * TODO safety (#safe)
+** TODO collect tests, use HUnit
 ** TODO replace strategy name strings with variables defined in common
 e.g. common.detail = "detail"
 Better yet would be an enum type.
@@ -82,6 +86,9 @@ problems in households:
 *** so omitting purchase!=1 observations won't bias our estimate of VAT
 *** it will, however, bias (downward) our estimate of consumption
 
+* TODO development cycle speed (#cycle)
+** the different vat strategies ought to build separate versions only of what differs
+e.g. in the people data, only rebuild the tax payments when the tax rates change
 * TODO sanity (#sane)
 ** are these two variables ever both > 0 ?
 *** P5180S1, P5180S2 : daily payment for, value of food at school
