@@ -114,7 +114,7 @@ if True: # add these columns: ["vat", "vat, min", "vat, max"]
                               , on="coicop-3-digit" )
         purchases_coicop = purchases_2_digit . combine_first( purchases_3_digit )
 
-      if common.vat_strategy == "detail":
+      if common.vat_strategy in ["detail","finance_ministry"]:
         purchases_coicop = purchases.merge( vat_coicop, how = "left", on="coicop" )
 
     if True: # add vat to capitulo-c-labeled purchases

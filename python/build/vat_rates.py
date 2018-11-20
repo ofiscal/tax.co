@@ -10,18 +10,24 @@ import python.build.common as common
 import python.build.output_io as oio
 
 
-# PITFALL|WART: If the vat_strategy is "approx" or "detail", this produces the same files,
-# but saves them with different names. That's done so I can avoid using conditional logic
-# in the Makefile.
+# PITFALL|WART: For many values of common.vat_strategy, this produces the same files,
+# but saves them with different names. Moreover often they go unused downstream.
+# That's done so I can avoid using conditional logic in the Makefile.
+# They are small files, so the processing and memory cost is negligible. (It's about 1s of CPU time.)
 
 vat_cap_c = pd.read_csv( "data/vat/" + "vat-for-capitulo-c.csv"
                        , encoding = "latin1"
             ) . rename( columns = { "CODE" : "25-broad-categs"
                                   , "DESCRIPTION" : "description"
             } )
-vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
-                        , sep = ";"
-                        , encoding = "latin1" )
+
+if common.vat_strategy == "finance_ministry":
+      vat_coicop = pd.read_csv( "python/build/vat_finance_ministry/" + "vat-by-coicop.csv"
+                              , sep = ","
+                              , encoding = "latin1" )
+else: vat_coicop = pd.read_csv( "data/vat/"                          + "vat-by-coicop.csv"
+                              , sep = ";" # TODO PITFALL
+                              , encoding = "latin1" )
 
 if common.vat_strategy == 'const': # short-circuit the vat-code keys; set everything to 19
   vat_cap_c[ "vat, min"] = common.vat_flat_rate
@@ -39,7 +45,6 @@ for (vat,frac) in [ ("vat"     , "vat frac")
     # results in the fraction  of the value attributable to the vat.
     # For instance, if the VAT were 20%, then (0.2 / 1.2) is that fraction.
 
-
 if True: # save
   oio.saveStage( common.subsample
                , vat_coicop
@@ -48,7 +53,9 @@ if True: # save
                , vat_cap_c
                , 'vat_cap_c.'  + common.vat_strategy_suffix )
 
-  vat_coicop = vat_coicop.drop( columns = ["description","Notes"] )
+  vat_coicop = vat_coicop.drop( columns = ["description"] )
+  if common.vat_strategy != 'finance_ministry':
+    vat_coicop = vat_coicop.drop( columns = ["Notes"] )
   vat_cap_c = vat_cap_c.drop( columns = ["description"] )
 
   oio.saveStage( common.subsample

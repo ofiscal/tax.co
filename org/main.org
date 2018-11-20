@@ -1,5 +1,6 @@
 * TODO get estimates to María del Rosario Guerra
-** use DANE's COICOP-VAT bridge
+** use the Ministry of Finance's COICOP-VAT bridge
+*** TODO make sure there are no more missing values in purchases_2_vat.csv with that key than with the detail key
 ** Identify the top 5, 10 and 20 products most consumed by each decile
 ** Effects on revenue and total expenditure of a vat of 0% and 5% on the top 5, 10 and 20 products consumed by the bottom 60% of income earners
 ** Before and after tax reform Gini

@@ -1,26 +1,22 @@
 #!/bin/bash
 
-# There is only one variety of the detail strategy.
-echo; echo detail; date
-make overview subsample=$1 vat_strategy=detail
+# The implemented strategies for computing a coicop-vat bridge are these:
+# detail
+# approx
+# finance_ministry
+# prop-2018-11-31
+# const
 
-# For each of the others we can specify some constant tax rates.
-for vat_strategy in approx; do
-    for vat_flat_rate in 0.18; do
-        echo; echo $vat_strategy $vat_flat_rate; date
-        make overview subsample=$1 vat_strategy=$vat_strategy vat_flat_rate=$vat_flat_rate
-    done
+# Note that a loop below might "loop" over zero items.
+
+# There is only one variety of the detail and finance_ministry strategies.
+for vat_strategy in finance_ministry; do
+    echo; echo $vat_strategy; date
+    make overview subsample=$1 vat_strategy=detail
 done
 
-# That list of tax rates can be empty, in which case the loop does nothing.
-for vat_strategy in prop-2018-11-31; do
-    for vat_flat_rate in; do
-        echo; echo $vat_strategy $vat_flat_rate; date
-        make overview subsample=$1 vat_strategy=$vat_strategy vat_flat_rate=$vat_flat_rate
-    done
-done
-
-for vat_strategy in const; do
+# For each of the other strategies, we can specify some constant tax rates.
+for vat_strategy in; do
     for vat_flat_rate in; do
         echo; echo $vat_strategy $vat_flat_rate; date
         make overview subsample=$1 vat_strategy=$vat_strategy vat_flat_rate=$vat_flat_rate
