@@ -1,9 +1,27 @@
 * TODO get estimates to María del Rosario Guerra
-** use the Ministry of Finance's COICOP-VAT bridge
-*** TODO make sure there are no more missing values in purchases_2_vat.csv with that key than with the detail key
-** Identify the top 5, 10 and 20 products most consumed by each decile
 ** Effects on revenue and total expenditure of a vat of 0% and 5% on the top 5, 10 and 20 products consumed by the bottom 60% of income earners
+Extract from households a subset including the columns for household and for income decile.
+Merge that with the purchases_2_vat data.
+Drop the top 4 deciles.
+Sort.
+Identify the top 5,10,20 goods.
+Create 3 copies of the "detail" bridge where those tax rates have been dropped to 0.
+  Note that some of them will already be at zero.
+Dub a new vat strategy, "del_rosario_2018_11_20", and a new strategy parameter, "number_exempted", which can be 5,10 or 20.
+"vat paid" is already part of the overview table that the makefile produced.
+Under our assumptions, expenditures don't change.
+** Identify the top 5, 10 and 20 products most consumed by each decile
+Extract from households a subset including the columns for household and for income decile.
+Merge that with the purchases_2_vat data.
+For each decile:
+    Sum purchases by COICOP.
+    Sort.
+    Identify the top 5, 10, 20.
+** use the Ministry of Finance's COICOP-VAT bridge
+*** TODO They wrote 19 where we have 0.19; harmonize.
+*** TODO make sure there are no more missing values in purchases_2_vat.csv with that key than with the detail key
 ** Before and after tax reform Gini
+This is not a clearly defined goal.
 Gini = Num / Denom where
   Num = Sum over all i,j of |xi - xj|
   Denom = 2 * n * (Sum over all i of xi^2)
