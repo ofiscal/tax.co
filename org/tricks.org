@@ -1,2 +1,5 @@
 * get pandas to display tables in scientific notation
 pd.set_option('display.float_format', '{:.2g}'.format)
+* makefile --trace explains why it wants to rebuild something
+Kind of useless, though -- it only restates the dependency section of the target it wants to rebuild.
+A natural companion to --dry-run.

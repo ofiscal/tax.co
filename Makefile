@@ -18,7 +18,8 @@ SHELL := bash
   purchase_pics \
   people_pics \
   household_pics \
-  overview
+  overview \
+  goods_by_income_decile
 
 
 ##=##=##=##=##=##=##=## Variables
@@ -79,7 +80,7 @@ people_2_buildings = output/vat/data/recip-$(ss)/people_2_buildings.csv
 people_3_purchases = output/vat/data/recip-$(ss)/people_3_purchases.$(strategy_suffix).csv
 people_4_ss        = output/vat/data/recip-$(ss)/people_4_ss.$(strategy_suffix).csv
 purchases_1 =        output/vat/data/recip-$(ss)/purchases_1.csv \
-                     output/vat/data/recip-$(ss)/purchases_1_5_no_origin
+                     output/vat/data/recip-$(ss)/purchases_1_5_no_origin.csv
 purchases_2_vat =    output/vat/data/recip-$(ss)/purchases_2_vat.$(strategy_suffix).csv
 purchase_sums =      output/vat/data/recip-$(ss)/purchase_sums.$(strategy_suffix).csv
 vat_rates = \
@@ -123,6 +124,8 @@ household_pics = \
 pics = $(purchase_pics) $(people_pics) $(household_pics)
 
 overview = output/vat/tables/recip-$(ss)/overview.$(strategy_suffix).csv
+
+goods_by_income_decile = output/vat/tables/recip-$(ss)/goods_by_income_decile.csv
 
 
 ##=##=##=##=##=##=##=## Recipes
@@ -253,3 +256,13 @@ $(overview): python/report/tables/overview.py \
   $(households)
 	date
 	$(python_from_here) python/report/tables/overview.py $(subsample) $(vat_strategy) $(vat_flat_rate)
+
+# PITFALL: Always reads households from the detail vat strategy, because irrelevant.
+goods_by_income_decile: $(goods_by_income_decile)
+$(goods_by_income_decile): python/build/goods-by-income-decile.py \
+  python/build/common.py \
+  output/vat/data/recip-$(ss)/households.detail_.csv \
+  output/vat/data/recip-$(ss)/purchases_1_5_no_origin.csv
+	date
+	echo $(purchases_1)
+	$(python_from_here) python/build/goods-by-income-decile.py $(subsample) $(vat_strategy) $(vat_flat_rate)

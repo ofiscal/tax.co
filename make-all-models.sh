@@ -12,7 +12,7 @@
 # There is only one variety of the detail and finance_ministry strategies.
 for vat_strategy in finance_ministry; do
     echo; echo $vat_strategy; date
-    make overview subsample=$1 vat_strategy=detail
+    make overview subsample=$1 vat_strategy=$vat_strategy
 done
 
 # For each of the other strategies, we can specify some constant tax rates.
