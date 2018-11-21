@@ -1,3 +1,7 @@
+# What this is
+
+This is the code we used to build data and report results before we had the official version of the ENPH. It is now obsolete.
+
 # Pitfalls
 
 If a vat subsample is used to generate statistics (including diagrams), some of those statistics might be NaN or Inf even though they would not be if generated from the full sample.
