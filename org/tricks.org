@@ -1,0 +1,2 @@
+* get pandas to display tables in scientific notation
+pd.set_option('display.float_format', '{:.2g}'.format)
