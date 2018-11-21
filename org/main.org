@@ -1,3 +1,4 @@
+* TODO in overview, include all deciles, all percentiles, and top decile minus top 2%
 * TODO get estimates to María del Rosario Guerra
 ** Effects on revenue and total expenditure of a vat of 0% and 5% on the top 5, 10 and 20 products consumed by the bottom 60% of income earners
 Extract from households a subset including the columns for household and for income decile.
