@@ -50,10 +50,10 @@ if True: # input files
                             } )
 
   # read the VAT bridges based on 2- or 3-digit COICOP prefixes
-  if common.vat_strategy in ["approx", "prop-2018-11-31"]:
-    if common.vat_strategy == "prop-2018-11-31":
-      vat_coicop_2_digit = pd.read_csv( "python/build/vat_prop.2018_11_31/2-digit.csv" )
-      vat_coicop_3_digit = pd.read_csv( "python/build/vat_prop.2018_11_31/3-digit.csv" )
+  if common.vat_strategy in ["approx", "prop_2018_10_31"]:
+    if common.vat_strategy == "prop_2018_10_31":
+      vat_coicop_2_digit = pd.read_csv( "python/build/vat_prop_2018_10_31/2-digit.csv" )
+      vat_coicop_3_digit = pd.read_csv( "python/build/vat_prop_2018_10_31/3-digit.csv" )
     if common.vat_strategy == "approx":
       vat_coicop_2_digit = pd.read_csv( "python/build/vat_approx/2-digit.csv" )
       vat_coicop_3_digit = pd.read_csv( "python/build/vat_approx/3-digit.csv" )
@@ -85,7 +85,7 @@ if True: # left-pad every coicop value (including coicop prefixes) with 0s
     # because we can only extract prefixes from a string.
   vat_coicop        ["coicop"] = util.pad_column_as_int( 8, vat_coicop        ["coicop"] )
 
-  if common.vat_strategy in ["approx", "prop-2018-11-31"]:
+  if common.vat_strategy in ["approx", "prop_2018_10_31"]:
     vat_coicop_2_digit["coicop-2-digit"] = (
       util.pad_column_as_int( 2, vat_coicop_2_digit["coicop-2-digit"] ) )
     vat_coicop_3_digit["coicop-3-digit"] = (
@@ -107,7 +107,7 @@ if True: # add these columns: ["vat", "vat, min", "vat, max"]
     purchases["vat frac, max"] = common.vat_flat_rate / (1 + common.vat_flat_rate)
   else:
     if True: # add vat to coicop-labeled purchases
-      if common.vat_strategy in ["approx","prop-2018-11-31"]:
+      if common.vat_strategy in ["approx","prop_2018_10_31"]:
         purchases_2_digit = purchases.merge( vat_coicop_2_digit, how = "left"
                               , on="coicop-2-digit" )
         purchases_3_digit = purchases.merge( vat_coicop_3_digit, how = "left"

@@ -1,3 +1,4 @@
+find . -name "*.py" -print0 | xargs -0 sed -i "s/prop.2018.11.31/prop_2018_10_31/g"
 
 sed -i "s/python\/vat\/report/python\/report/g" Makefile
 

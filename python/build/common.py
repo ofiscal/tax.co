@@ -6,9 +6,9 @@ import pandas as pd
 
 subsample = int( sys.argv[1] ) # Reciprocal of subsample size. Valid: 1, 10, 100, 1000.
 
-vat_strategy = sys.argv[2] # Valid: const | approx | detail | prop-2018-11-31
+vat_strategy = sys.argv[2] # Valid: const | approx | detail | prop_2018_10_31
 
-if vat_strategy in ["const","approx","prop-2018-11-31"]:
+if vat_strategy in ["const","approx","prop_2018_10_31"]:
   vat_flat_rate = float(sys.argv[3])  # float: 0.19, 0.107, etc.
 else:
   vat_flat_rate = ""
