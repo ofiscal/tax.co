@@ -1,11 +1,7 @@
 import pandas as pd
 import python.build.output_io as oio
 import python.util as util
-#import python.build.common as common
-
-
-class common:
-  subsample=100
+import python.build.common as common
 
 
 ## ## ## ## ## Ingest data ## ## ## ## ##
@@ -21,39 +17,48 @@ ps = oio.readStage( common.subsample, 'purchases_1_5_no_origin'
 )
 ps = ps[ ~ ps["coicop"] . isnull() ] # purchases coded by cap c, not coicop: discard
 ps["coicop"] = util.pad_column_as_int( 8, ps["coicop"] )
-ps["coicop-2-digit"] = purchases["coicop"] . apply( lambda s: s[0:2] )
-ps["coicop-3-digit"] = purchases["coicop"] . apply( lambda s: s[0:3] )
+ps["coicop-2-digit"] = ps["coicop"] . apply( lambda s: s[0:2] )
+ps["coicop-3-digit"] = ps["coicop"] . apply( lambda s: s[0:3] )
 
-proposed_rates_2_digit = pd.read_csv( "python/build/vat_prop.2018_11_31/2-digit.csv"
+tax_proposed_2_digit = pd.read_csv( "python/build/vat_prop.2018_11_31/2-digit.csv"
                                     , usecols = ["coicop-2-digit","vat"] )
-proposed_rates_2_digit = proposed_rates_2_digit[ proposed_rates_2_digit["vat"] > 0 ]
-proposed_rates_2_digit["coicop-2-digit"] = (
-  util.pad_column_as_int( 2, proposed_rates_2_digit["coicop-2-digit"] ) )
+tax_proposed_2_digit = tax_proposed_2_digit[ tax_proposed_2_digit["vat"] > 0 ]
+tax_proposed_2_digit["coicop-2-digit"] = (
+  util.pad_column_as_int( 2, tax_proposed_2_digit["coicop-2-digit"] ) )
 
-proposed_rates_3_digit = pd.read_csv( "python/build/vat_prop.2018_11_31/3-digit.csv"
+tax_proposed_3_digit = pd.read_csv( "python/build/vat_prop.2018_11_31/3-digit.csv"
                                     , usecols = ["coicop-3-digit","vat"] )
-proposed_rates_3_digit = proposed_rates_3_digit[ proposed_rates_3_digit["vat"] > 0 ]
-proposed_rates_3_digit["coicop-3-digit"] = (
-  util.pad_column_as_int( 3, proposed_rates_3_digit["coicop-3-digit"] ) )
+tax_proposed_3_digit = tax_proposed_3_digit[ tax_proposed_3_digit["vat"] > 0 ]
+tax_proposed_3_digit["coicop-3-digit"] = (
+  util.pad_column_as_int( 3, tax_proposed_3_digit["coicop-3-digit"] ) )
 
-current_rates = pd.read_csv( "data/vat/vat-by-coicop.csv"
+currently_untaxed = pd.read_csv( "data/vat/vat-by-coicop.csv"
                            , sep=";"
-                           , usecols = ["description", "coicop", "vat, max"] )
-current_rates = current_rates[ current_rates["vat, max"] <= 0 ]
-current_rates["coicop"] = util.pad_column_as_int( 8, current_rates["coicop"] )
+                           , usecols = ["coicop", "vat, max", "description"] )
+currently_untaxed = currently_untaxed[ currently_untaxed["vat, max"] <= 0 ]
+currently_untaxed["coicop"] = util.pad_column_as_int( 8, currently_untaxed["coicop"] )
 
 
-## ## ## ## ## Find the COICOP codes of interest ## ## ## ## ##
+## ## ## ## ## Isolate to the "vat-marginal" COICOP codes ## ## ## ## ##
+# (that is, codes for which the current regime does not impose VAT while the proposal does)
 
-
+ps = ps.merge( currently_untaxed, how = "right", on = "coicop" )
+ps_2_digit = ps.merge( tax_proposed_2_digit, how = "right"
+                     , on="coicop-2-digit" )
+ps_3_digit = ps.merge( tax_proposed_3_digit, how = "right"
+                     , on="coicop-3-digit" )
+ps = ps_2_digit . combine_first( ps_3_digit
+     )
+ps = ps[["household", "coicop", "value", "description"]]
 
 
 ## ## ## ## ## Group ## ## ## ## ##
 
 ps = ps.merge( hs, on = "household" )
 
-grouped = ps  . groupby( ["income-decile","coicop"]
-  ) . agg( {"value":"sum"}
+grouped = ps . groupby( ["income-decile","coicop"]
+  ) . agg( { "value":"sum"
+           , "description": "first" }
   ) . sort_values( "value"
                  , ascending = False
   ) . reset_index(
@@ -63,6 +68,4 @@ grouped = ps  . groupby( ["income-decile","coicop"]
                  , ascending = [True,False]
 )
 
-out = grouped.merge( current_rates, how="left", on="coicop" )
-
-out.to_csv( "output/vat/tables/recip-" + str(common.subsample) + "/goods_by_income_decile.csv" )
+grouped.to_csv( "output/vat/tables/recip-" + str(common.subsample) + "/goods_by_income_decile.csv" )
