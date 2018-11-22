@@ -4,7 +4,7 @@
 # detail
 # approx
 # finance_ministry
-# prop-2018-11-31
+# prop_2018_11_31
 # const
 
 # Note that a loop below might "loop" over zero items.

@@ -32,7 +32,7 @@ subsample?=1
 ss=$(strip $(subsample))# removes trailing space
 vat_strategy?=approx
   # default value; can be overridden from command line, ala "make raw vat_strategy=detail"
-  # possibilities: approx, detail, const, prop-2018-10-31
+  # possibilities: approx, detail, const, prop_2018_10_31
 s_vat_strategy=$(strip $(vat_strategy))# removes trailing space
 vat_flat_rate?=
   # by default it is the empty string, without even quotation marks
@@ -264,5 +264,4 @@ $(goods_by_income_decile): python/build/goods-by-income-decile.py \
   output/vat/data/recip-$(ss)/households.detail_.csv \
   output/vat/data/recip-$(ss)/purchases_1_5_no_origin.csv
 	date
-	echo $(purchases_1)
 	$(python_from_here) python/build/goods-by-income-decile.py $(subsample) $(vat_strategy) $(vat_flat_rate)

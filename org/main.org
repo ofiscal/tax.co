@@ -18,6 +18,8 @@ For each decile:
     Sum purchases by COICOP.
     Sort.
     Identify the top 5, 10, 20.
+** find "marginal goods"
+Goods that carry 0 VAT currently, but would carry VAT of 18% under the Halloween proposal.
 ** use the Ministry of Finance's COICOP-VAT bridge
 *** TODO They wrote 19 where we have 0.19; harmonize.
 *** TODO make sure there are no more missing values in purchases_2_vat.csv with that key than with the detail key
