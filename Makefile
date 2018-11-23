@@ -124,7 +124,9 @@ pics = $(purchase_pics) $(people_pics) $(household_pics)
 
 overview = output/vat/tables/recip-$(ss)/overview.$(strategy_suffix).csv
 
-goods_by_income_decile = output/vat/tables/recip-$(ss)/goods_by_income_decile.csv
+goods_by_income_decile = \
+  output/vat/tables/recip-$(ss)/goods_by_income_decile.csv \
+  output/vat/tables/recip-$(ss)/goods,first_six_deciles.csv
 
 
 ##=##=##=##=##=##=##=## Recipes

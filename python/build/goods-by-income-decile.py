@@ -4,6 +4,10 @@ import python.util as util
 import python.build.common as common
 
 
+#class common:
+#  subsample = 100
+
+
 ## ## ## ## ## Ingest data ## ## ## ## ##
 
 # PITFALL: Always the detail vat strategy, because irrelevant.
@@ -55,7 +59,7 @@ if False: # PITFALL: skipping; Luis wants to do by hand
   ps = ps[["household", "coicop", "value", "description"]]
 
 
-## ## ## ## ## Group ## ## ## ## ##
+## ## ## ## ## Group by deciles ## ## ## ## ##
 
 ps = ps.merge( hs, on = "household" )
 
@@ -76,3 +80,35 @@ grouped = grouped.merge( currently_untaxed[["coicop","description"]]
              , on = "coicop" )
 
 grouped.to_csv( "output/vat/tables/recip-" + str(common.subsample) + "/goods_by_income_decile.csv" )
+
+
+## ## ## ## ## The bottom 60% ## ## ## ## ##
+
+ps_60 = ps[ ps["income-decile"] <= 5]
+
+ps_60_grouped = ps_60 . groupby( "coicop"
+  ) . agg( { "value":"sum"
+       # , "description": "first" # PITFALL: disabled while Luis does by hand
+  } ) . sort_values( "value"
+                   , ascending = False
+  ) . reset_index(
+  ) . head( 100
+  ) . sort_values( "value"
+                 , ascending = False
+)
+
+ps_60_grouped = ps_60_grouped.merge(
+  currently_untaxed[["coicop","description"]]
+  , how = "left"
+  , on = "coicop" )
+
+grouped.to_csv( "output/vat/tables/recip-" + str(common.subsample) + "/goods,first_six_deciles.csv" )
+
+
+# A test
+
+if False: # TODO: HUnit
+  ( ps[ (ps["income-decile"] <= 5)
+        & (ps["coicop"] == ps_60_grouped.iloc[0]["coicop"])
+      ]["value"].sum()
+  ) == ps_60_grouped.iloc[0]["value"]
