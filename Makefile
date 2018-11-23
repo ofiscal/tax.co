@@ -1,7 +1,6 @@
-# PITFALL: vat_flat_rate should only be specified (when calling make from the command line)
-# if using the const strategy. It is used in the commands below in all cases, which in cases
-# other than the const strategy only works if it is undefined, i.e. equal to the empty string
-# (without even quotation marks).
+# PITFALL: vat_flat_rate must only be specified (when calling make from the command line)
+# if using a strategy wherein it can vary. In other cases it will be undefined by default,
+# i.e. equal to the empty string (without even quotation marks).
 
 SHELL := bash
 .PHONY: input_subsamples \

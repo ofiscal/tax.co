@@ -19,6 +19,10 @@ if True: # Get, prepare the data
                ) . rename( columns = {"income, capital, dividends" : "income, dividends"} )
 
   households["income, labor + cesantia"] = households["income, labor"] + households["income, cesantia"]
+ 
+  households["income-percentile-in[90,97]"] = (
+      (households["income-percentile"] >= 90)
+    & (households["income-percentile"] <= 97) )
 
 
 if True: # create a summary dataframe
@@ -54,8 +58,9 @@ if True: # create a summary dataframe
 
   householdGroupVars = [ "one"
                       , "female head"
-                      # , "income-decile"
+                      , "income-decile"
                       , "income-percentile"
+                      , "income-percentile-in[90,97]"
                       , "region-2" ]
 
   # PITFALL: Earlier, this looped over two data sets, households and people.
