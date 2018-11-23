@@ -1,0 +1,14 @@
+* planning the rest of the year
+** income tax: most important yet-missing tax
+** corporate income
+** predial
+* Pilar esguerra, director de edu econ en banco de la republica
+* DC
+** make dummy data for testing
+** "conventional analysis": elasticity of taxable income with respect to marginal income tax rate
+ There's a big literature on that; it's the first thing CBO etc. did.
+** ? below 3500 UVTs, no VAT
+** impute part of land tax to renters -- 5 to 10 percent, said (I think) Kim of TPC
+** start a group that meets about tax policy, invite people from business, make them care b/c, say, they can use census-like data to estimate relevant elasticities of (customer) demand
+** talk to Joe Rosenberg
+* all hands
