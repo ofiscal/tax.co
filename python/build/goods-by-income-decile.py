@@ -33,23 +33,26 @@ tax_proposed_3_digit["coicop-3-digit"] = (
   util.pad_column_as_int( 3, tax_proposed_3_digit["coicop-3-digit"] ) )
 
 currently_untaxed = pd.read_csv( "data/vat/vat-by-coicop.csv"
-                           , sep=";"
-                           , usecols = ["coicop", "vat, max", "description"] )
-currently_untaxed = currently_untaxed[ currently_untaxed["vat, max"] <= 0 ]
+  , sep=";"
+  , usecols = ["coicop", "vat, min", "description"] )
 currently_untaxed["coicop"] = util.pad_column_as_int( 8, currently_untaxed["coicop"] )
+if False: # PITFALL: skipping, Luis wants to do by hand
+  currently_untaxed = currently_untaxed[
+                        currently_untaxed["vat, min"] <= 0.05 ]
 
 
 ## ## ## ## ## Isolate to the "vat-marginal" COICOP codes ## ## ## ## ##
 # (that is, codes for which the current regime does not impose VAT while the proposal does)
 
-ps = ps.merge( currently_untaxed, how = "right", on = "coicop" )
-ps_2_digit = ps.merge( tax_proposed_2_digit, how = "right"
-                     , on="coicop-2-digit" )
-ps_3_digit = ps.merge( tax_proposed_3_digit, how = "right"
-                     , on="coicop-3-digit" )
-ps = ps_2_digit . combine_first( ps_3_digit
-     )
-ps = ps[["household", "coicop", "value", "description"]]
+if False: # PITFALL: skipping; Luis wants to do by hand
+  ps = ps.merge( currently_untaxed, how = "right", on = "coicop" )
+  ps_2_digit = ps.merge( tax_proposed_2_digit, how = "right"
+                       , on="coicop-2-digit" )
+  ps_3_digit = ps.merge( tax_proposed_3_digit, how = "right"
+                       , on="coicop-3-digit" )
+  ps = ps_2_digit . combine_first( ps_3_digit
+       )
+  ps = ps[["household", "coicop", "value", "description"]]
 
 
 ## ## ## ## ## Group ## ## ## ## ##
@@ -58,14 +61,18 @@ ps = ps.merge( hs, on = "household" )
 
 grouped = ps . groupby( ["income-decile","coicop"]
   ) . agg( { "value":"sum"
-           , "description": "first" }
-  ) . sort_values( "value"
+       # , "description": "first" # PITFALL: disabled while Luis does by hand
+  } ) . sort_values( "value"
                  , ascending = False
   ) . reset_index(
   ) . groupby( ["income-decile"]
-  ) . head( 20
+  ) . head( 100
   ) . sort_values( ["income-decile","value"]
                  , ascending = [True,False]
 )
+
+grouped = grouped.merge( currently_untaxed[["coicop","description"]]
+             , how = "left"
+             , on = "coicop" )
 
 grouped.to_csv( "output/vat/tables/recip-" + str(common.subsample) + "/goods_by_income_decile.csv" )
