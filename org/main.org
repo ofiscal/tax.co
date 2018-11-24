@@ -14,9 +14,7 @@ stakeholders
 average tax rate: easier to understand than marginal
 * TODO get estimates to María del Rosario Guerra
 ** Effects on revenue and total expenditure of a vat of 0% and 5% on the top 5, 10 and 20 products consumed by the bottom 60% of income earners
-*** DONE Don't integrate it into the Makefile
-The logic would be complex and we won't be using it for a long time.
-*** Instead, use a separate Makefile.goods-by-decile and a separate make-goods-by-decile.sh
+*** use a separate Makefile.goods-by-decile and a separate make-goods-by-decile.sh
 **** Makefile.goods-by-decile
 It duplicates relevant parts of the Makefile.
 It uses two arguments:
