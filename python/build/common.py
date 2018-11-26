@@ -15,6 +15,12 @@ else:
 
 vat_strategy_suffix = vat_strategy + "_" + str(vat_flat_rate)
 
+# PITFALL: In purchases_2_1_del_rosario, there are 4 command line arguments rather than 3,
+# and the third is not `vat_flat_rate`.
+if vat_strategy == "del_rosario":
+  del_rosario_exemption_source = sys.argv[3]
+  del_rosario_exemption_count = int( sys.argv[4] )
+
 variables = { "DIRECTORIO" : "household"
             , "ORDEN" : "household-member"
             , "FEX_C" : "weight"
