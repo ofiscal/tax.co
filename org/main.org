@@ -14,9 +14,19 @@ stakeholders
 average tax rate: easier to understand than marginal
 * TODO get estimates to María del Rosario Guerra
 ** Effects on revenue and total expenditure of a vat of 0% and 5% on the top 5, 10 and 20 products consumed by the bottom 60% of income earners
+*** new Python
+Get a list of coicop codes to exempt.
+ auto | manual
+From purchases_2, build purchases_2_1.del_rosario, which uses those exemptions.
+For whatever ingests purchases_2, introduce a conditional:
+  if the strategy is del_rosario, use purchases_2_1.del_rosario instead.
+Build the overview.
+  If we compare total vat_paid in the del_rosario overview to the detail overview, we'll see the effect.
 *** use a separate Makefile.goods-by-decile and a separate make-goods-by-decile.sh
 **** Makefile.goods-by-decile
-It duplicates relevant parts of the Makefile.
+It duplicates relevant parts of the Makefile: everything that's both:
+  upstream of goods-by-decile
+  downstream of ???
 It uses two arguments:
   exemption_strategy = manual | auto
   number_exempted :: Int
