@@ -15,6 +15,7 @@ import python.build.common as common
 #class common:
 #  subsample = 100
 #  vat_strategy = "del_rosario"
+#  vat_strategy_suffix = "del_rosario"
 #  del_rosario_exemption_source = "auto"
 #  del_rosario_exemption_count = 10
 

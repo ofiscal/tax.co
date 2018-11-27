@@ -1,0 +1,61 @@
+SHELL := bash
+.PHONY: households \
+  people_3_purchases \
+  purchases_2_1_del_rosario \
+  purchase_sums \
+  overview \
+  vat_exemptions
+
+
+##=##=##=##=##=##=##=## Variables
+
+python_from_here = PYTHONPATH='.' python3
+
+
+##=##=##=##  Parameters
+
+subsample?=1
+  # default value; can be overridden from the command line, as in "make raw subsample=10"
+  # valid values are 1, 10, 100 and 1000
+ss=$(strip $(subsample))# removes trailing space
+vat_strategy?=approx
+  # default value; can be overridden from command line, ala "make raw vat_strategy=detail"
+  # possibilities: approx, detail, const, prop_2018_10_31
+vat_flat_rate?=
+  # by default it is the empty string, without even quotation marks
+s_vat_flat_rate=$(patsubst "%",%,$(strip $(vat_flat_rate)))
+  # removes trailing space and "s
+strategy_suffix=$(strip $(s_vat_strategy)_$(s_vat_flat_rate))
+
+
+##=##=##=##  Input variables
+
+people_2_buildings = output/vat/data/recip-$(ss)/people_2_buildings.csv
+purchases_2_vat =    output/vat/data/recip-$(ss)/purchases_2_vat.detail_.csv
+vat_exemptions = \
+  data/vat/exemptions/goods,first_six_deciles.csv \
+  output/vat/tables/recip-$(ss)/goods,first_six_deciles.csv
+
+
+##=##=##=##  Target variables
+
+households = \
+  output/vat/data/recip-$(ss)/households.$(strategy_suffix).csv \
+  output/vat/data/recip-$(ss)/households_decile_summary.$(strategy_suffix).csv
+people_3_purchases = output/vat/data/recip-$(ss)/people_3_purchases.$(strategy_suffix).csv
+purchases_2_1_del_rosario =    output/vat/data/recip-$(ss)/purchases_2_1_del_rosario.$(strategy_suffix).csv
+purchase_sums =      output/vat/data/recip-$(ss)/purchase_sums.$(strategy_suffix).csv
+overview = output/vat/tables/recip-$(ss)/overview.$(strategy_suffix).csv
+
+
+##=##=##=##=##=##=##=## Rules
+
+purchases_2_1_del_rosario: $(purchases_2_1_del_rosario)
+$(purchases_2_1_del_rosario): python/build/purchases_2_1_del_rosario.py \
+  python/build/output_io.py \
+  python/build/common.py \
+  $(vat_exemptions) \
+  $(purchases_2_vat)
+	date
+	$(python_from_here) python/build/purchases_2_1_del_rosario.py \
+          $(subsample) $(vat_strategy) $(del_rosario_exemption_source) $(del_rosario_exemption_count)
