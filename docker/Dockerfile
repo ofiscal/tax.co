@@ -28,6 +28,7 @@ RUN apt install -y make && \
 
 RUN apt install -y texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
 RUN apt install -y texlive-publishers
+RUN curl -sSL https://get.haskellstack.org/ | sh
 
 COPY run-jupyter.sh /root/
 

@@ -21,7 +21,7 @@ done
 
 # For each of the other strategies, we can specify some constant tax rates.
 for vat_strategy in const prop_2018_10_31; do
-    for vat_flat_rate in 0.18; do
+    for vat_flat_rate in; do
         echo; echo $vat_strategy $vat_flat_rate; date
         make overview subsample=$1 vat_strategy=$vat_strategy vat_flat_rate=$vat_flat_rate
     done

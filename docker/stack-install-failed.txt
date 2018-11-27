@@ -1,0 +1,131 @@
+## search for "no packages found" or "failed" to find
+## the text that printed red in the console
+
+jeff@jeff-ThinkCentre-M700:~/tax.co/docker$ sudo docker build -f Dockerfile -t                         \
+>   jeffreybbrown/tax.co:new .                                \
+>   | tee logs/"build-log.`date`.txt"
+tee: 'logs/build-log.mar nov 27 17:56:38 -05 2018.txt': No such file or directory
+Sending build context to Docker daemon  6.656kB
+Step 1/14 : FROM debian:latest
+ ---> 2b98c9851a37
+Step 2/14 : ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+ ---> Using cache
+ ---> 5aab7487cb85
+Step 3/14 : ENV PATH /opt/conda/bin:$PATH
+ ---> Using cache
+ ---> d8f39698f717
+Step 4/14 : RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificates     libglib2.0-0 libxext6 libsm6 libxrender1     git mercurial subversion
+ ---> Using cache
+ ---> 77ef7931a72d
+Step 5/14 : RUN wget --quiet https://repo.continuum.io/archive/Anaconda3-5.1.0-Linux-x86_64.sh -O ~/anaconda.sh &&     /bin/bash ~/anaconda.sh -b -p /opt/conda &&     rm ~/anaconda.sh &&     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh &&     echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc &&     echo "conda activate base" >> ~/.bashrc
+ ---> Using cache
+ ---> d9699c213061
+Step 6/14 : RUN apt-get install -y curl grep sed dpkg &&     TINI_VERSION=`curl https://github.com/krallin/tini/releases/latest | grep -o "/v.*\"" | sed 's:^..\(.*\).$:\1:'` &&     curl -L "https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini_${TINI_VERSION}.deb" > tini.deb &&     dpkg -i tini.deb &&     rm tini.deb &&     apt-get clean
+ ---> Using cache
+ ---> f3bdca14afb5
+Step 7/14 : RUN apt install -y make &&     /opt/conda/bin/conda install jupyter -y --quiet
+ ---> Using cache
+ ---> 05a7062f7f1a
+Step 8/14 : RUN apt install -y texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
+ ---> Using cache
+ ---> 848973a68630
+Step 9/14 : RUN apt install -y texlive-publishers
+ ---> Using cache
+ ---> 8bd3c25f071c
+Step 10/14 : RUN curl -sSL https://get.haskellstack.org/ | sh
+ ---> Running in 423af1bf2f28
+Detected Linux distribution: debian
+
+Installing dependencies...
+
+dpkg-query: no packages found matching g++
+dpkg-query: no packages found matching gcc                                                                     
+dpkg-query: no packages found matching libc6-dev                                                               
+dpkg-query: no packages found matching libffi-dev                                                              
+dpkg-query: no packages found matching libgmp-dev                                                              
+dpkg-query: no packages found matching zlib1g-dev                                                              
+Reading package lists...
+Building dependency tree...
+Reading state information...
+git is already the newest version (1:2.11.0-3+deb9u2).
+make is already the newest version (4.1-9.1).
+xz-utils is already the newest version (5.2.2-1.2+b1).
+xz-utils set to manually installed.
+The following additional packages will be installed:
+  binutils dirmngr g++-6 gcc-6 gnupg-agent gnupg-l10n libasan3 libassuan0
+  libatomic1 libc-dev-bin libcc1-0 libcilkrts5 libgcc-6-dev libgmpxx4ldbl
+  libgomp1 libitm1 libksba8 liblsan0 libmpx2 libnpth0 libquadmath0
+  libstdc++-6-dev libtsan0 libubsan0 linux-libc-dev manpages manpages-dev
+  pinentry-curses
+Suggested packages:
+  binutils-doc dbus-user-session libpam-systemd pinentry-gnome3 tor
+  g++-multilib g++-6-multilib gcc-6-doc libstdc++6-6-dbg gcc-multilib autoconf
+  automake libtool flex bison gdb gcc-doc gcc-6-multilib gcc-6-locales
+  libgcc1-dbg libgomp1-dbg libitm1-dbg libatomic1-dbg libasan3-dbg
+  liblsan0-dbg libtsan0-dbg libubsan0-dbg libcilkrts5-dbg libmpx2-dbg
+  libquadmath0-dbg parcimonie xloadimage scdaemon glibc-doc gmp-doc
+  libgmp10-doc libmpfr-dev libstdc++-6-doc man-browser pinentry-doc
+The following NEW packages will be installed:
+  binutils dirmngr g++ g++-6 gcc gcc-6 gnupg gnupg-agent gnupg-l10n libasan3
+  libassuan0 libatomic1 libc-dev-bin libc6-dev libcc1-0 libcilkrts5 libffi-dev
+  libgcc-6-dev libgmp-dev libgmpxx4ldbl libgomp1 libitm1 libksba8 liblsan0
+  libmpx2 libnpth0 libquadmath0 libstdc++-6-dev libtsan0 libubsan0
+  linux-libc-dev manpages manpages-dev pinentry-curses zlib1g-dev
+0 upgraded, 35 newly installed, 0 to remove and 3 not upgraded.
+Need to get 34.3 MB of archives.
+After this operation, 145 MB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian stretch/main amd64 libassuan0 amd64 2.4.3-2 [42.5 kB]
+Get:2 http://deb.debian.org/debian stretch/main amd64 pinentry-curses amd64 1.0.0-2 [50.5 kB]
+Get:3 http://deb.debian.org/debian stretch/main amd64 libnpth0 amd64 1.3-1 [14.6 kB]
+Err:4 http://deb.debian.org/debian stretch/main amd64 gnupg-agent amd64 2.1.18-8~deb9u1
+  404  Not Found
+Get:5 http://deb.debian.org/debian stretch/main amd64 libksba8 amd64 1.3.5-2 [99.7 kB]
+^[[5~Err:6 http://deb.debian.org/debian stretch/main amd64 gnupg amd64 2.1.18-8~deb9u1
+  404  Not Found
+Get:7 http://deb.debian.org/debian stretch/main amd64 manpages all 4.10-2 [1222 kB]
+Get:8 http://deb.debian.org/debian stretch/main amd64 binutils amd64 2.28-5 [3770 kB]
+Err:9 http://deb.debian.org/debian stretch/main amd64 dirmngr amd64 2.1.18-8~deb9u1
+  404  Not Found
+Get:10 http://deb.debian.org/debian stretch/main amd64 libcc1-0 amd64 6.3.0-18+deb9u1 [30.6 kB]
+Get:11 http://deb.debian.org/debian stretch/main amd64 libgomp1 amd64 6.3.0-18+deb9u1 [73.3 kB]
+Get:12 http://deb.debian.org/debian stretch/main amd64 libitm1 amd64 6.3.0-18+deb9u1 [27.3 kB]
+Get:13 http://deb.debian.org/debian stretch/main amd64 libatomic1 amd64 6.3.0-18+deb9u1 [8966 B]
+Get:14 http://deb.debian.org/debian stretch/main amd64 libasan3 amd64 6.3.0-18+deb9u1 [311 kB]
+Get:15 http://deb.debian.org/debian stretch/main amd64 liblsan0 amd64 6.3.0-18+deb9u1 [115 kB]
+Get:16 http://deb.debian.org/debian stretch/main amd64 libtsan0 amd64 6.3.0-18+deb9u1 [257 kB]
+^X@s+Get:17 http://deb.debian.org/debian stretch/main amd64 libubsan0 amd64 6.3.0-18+deb9u1 [107 kB]
+^X@s)Get:18 http://deb.debian.org/debian stretch/main amd64 libcilkrts5 amd64 6.3.0-18+deb9u1 [40.5 kB]
+Get:19 http://deb.debian.org/debian stretch/main amd64 libmpx2 amd64 6.3.0-18+deb9u1 [11.2 kB]
+Get:20 http://deb.debian.org/debian stretch/main amd64 libquadmath0 amd64 6.3.0-18+deb9u1 [131 kB]
+Get:21 http://deb.debian.org/debian stretch/main amd64 libgcc-6-dev amd64 6.3.0-18+deb9u1 [2296 kB]
+Get:22 http://deb.debian.org/debian stretch/main amd64 gcc-6 amd64 6.3.0-18+deb9u1 [6900 kB]
+
+
+
+Get:23 http://deb.debian.org/debian stretch/main amd64 gcc amd64 4:6.3.0-4 [5196 B]
+Get:24 http://deb.debian.org/debian stretch/main amd64 libc-dev-bin amd64 2.24-11+deb9u3 [258 kB]
+Err:25 http://deb.debian.org/debian stretch/main amd64 linux-libc-dev amd64 4.9.82-1+deb9u3
+  404  Not Found
+Get:26 http://deb.debian.org/debian stretch/main amd64 libc6-dev amd64 2.24-11+deb9u3 [2361 kB]
+Err:25 http://security.debian.org stretch/updates/main amd64 linux-libc-dev amd64 4.9.82-1+deb9u3
+  404  Not Found
+Get:27 http://deb.debian.org/debian stretch/main amd64 libstdc++-6-dev amd64 6.3.0-18+deb9u1 [1420 kB]
+Get:28 http://deb.debian.org/debian stretch/main amd64 g++-6 amd64 6.3.0-18+deb9u1 [7094 kB]
+Get:29 http://deb.debian.org/debian stretch/main amd64 g++ amd64 4:6.3.0-4 [1546 B]
+Get:30 http://deb.debian.org/debian stretch/main amd64 libffi-dev amd64 3.2.1-6 [161 kB]
+Get:31 http://deb.debian.org/debian stretch/main amd64 libgmpxx4ldbl amd64 2:6.1.2+dfsg-1 [22.2 kB]
+Get:32 http://deb.debian.org/debian stretch/main amd64 libgmp-dev amd64 2:6.1.2+dfsg-1 [631 kB]
+Get:33 http://deb.debian.org/debian stretch/main amd64 manpages-dev all 4.10-2 [2145 kB]
+Get:34 http://deb.debian.org/debian stretch/main amd64 zlib1g-dev amd64 1:1.2.8.dfsg-5 [205 kB]
+Err:35 http://deb.debian.org/debian stretch/main amd64 gnupg-l10n all 2.1.18-8~deb9u1
+  404  Not Found
+Fetched 29.8 MB in 58s (508 kB/s)
+E: Failed to fetch http://deb.debian.org/debian/pool/main/g/gnupg2/gnupg-agent_2.1.18-8~deb9u1_amd64.deb  404  Not Found
+E: Failed to fetch http://deb.debian.org/debian/pool/main/g/gnupg2/gnupg_2.1.18-8~deb9u1_amd64.deb  404  Not Found
+E: Failed to fetch http://deb.debian.org/debian/pool/main/g/gnupg2/dirmngr_2.1.18-8~deb9u1_amd64.deb  404  Not Found
+E: Failed to fetch http://security.debian.org/pool/updates/main/l/linux/linux-libc-dev_4.9.82-1+deb9u3_amd64.deb  404  Not Found
+E: Failed to fetch http://deb.debian.org/debian/pool/main/g/gnupg2/gnupg-l10n_2.1.18-8~deb9u1_all.deb  404  Not Found
+E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?
+Installing apt packages failed.  Please run 'apt-get update' and try again.
+The command '/bin/sh -c curl -sSL https://get.haskellstack.org/ | sh' returned a non-zero code: 1
+jeff@jeff-ThinkCentre-M700:~/tax.co/docker$ 
