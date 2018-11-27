@@ -1,5 +1,6 @@
 SHELL := bash
-.PHONY: households \
+.PHONY: copies \
+  households \
   people_3_purchases \
   purchases_2_1_del_rosario \
   purchase_sums \
@@ -43,6 +44,7 @@ vat_exemptions = \
 households =                 output/vat/data/recip-$(ss)/households.$(strategy_suffix).csv                \
                              output/vat/data/recip-$(ss)/households_decile_summary.$(strategy_suffix).csv
 people_3_purchases         = output/vat/data/recip-$(ss)/people_3_purchases.$(strategy_suffix).csv
+people_4_ss                = output/vat/data/recip-$(ss)/people_4_ss.$(strategy_suffix).csv
 purchases_2_1_del_rosario  = output/vat/data/recip-$(ss)/purchases_2_1_del_rosario.$(strategy_suffix).csv
 purchase_sums              = output/vat/data/recip-$(ss)/purchase_sums.$(strategy_suffix).csv
 overview                   = output/vat/tables/recip-$(ss)/overview.$(strategy_suffix).csv
@@ -66,4 +68,40 @@ $(purchase_sums): python/build/purchase_sums.py \
   $(purchases_2_1_del_rosario)
 	date
 	$(python_from_here) python/build/purchase_sums.py \
+          $(subsample) $(vat_strategy) $(del_rosario_exemption_source) $(del_rosario_exemption_count)
+
+people_3_purchases: $(people_3_purchases)
+$(people_3_purchases): python/build/people_3_purchases.py \
+  python/build/output_io.py \
+  $(people_2_buildings) $(purchase_sums)
+	date
+	$(python_from_here) python/build/people_3_purchases.py \
+          $(subsample) $(vat_strategy) $(del_rosario_exemption_source) $(del_rosario_exemption_count)
+
+people_4_ss: $(people_4_ss)
+$(people_4_ss): python/build/people_4_ss.py \
+  python/build/ss_contribs.py \
+  python/build/output_io.py \
+  $(people_3_purchases)
+	date
+	$(python_from_here) python/build/people_4_ss.py \
+          $(subsample) $(vat_strategy) $(del_rosario_exemption_source) $(del_rosario_exemption_count)
+
+households: $(households)
+$(households): python/build/households.py \
+  python/util.py \
+  python/build/output_io.py \
+  $(people_4_ss)
+	date
+	$(python_from_here) python/build/households.py \
+          $(subsample) $(vat_strategy) $(del_rosario_exemption_source) $(del_rosario_exemption_count)
+
+overview: $(overview)
+$(overview): python/report/tables/overview.py \
+  python/util.py \
+  python/build/output_io.py \
+  python/build/people/files.py \
+  $(households)
+	date
+	$(python_from_here) python/report/tables/overview.py \
           $(subsample) $(vat_strategy) $(del_rosario_exemption_source) $(del_rosario_exemption_count)
