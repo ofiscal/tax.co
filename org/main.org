@@ -13,6 +13,8 @@ stakeholders
     can be called "improving the functioning of the state"
 average tax rate: easier to understand than marginal
 * TODO get estimates to María del Rosario Guerra
+** TODO Include the number of goods exempted in the filenames.
+To avoid regeneration.
 ** Effects on revenue and total expenditure of a vat of 0% and 5% on the top 5, 10 and 20 products consumed by the bottom 60% of income earners
 *** new Python
 Get a list of coicop codes to exempt.

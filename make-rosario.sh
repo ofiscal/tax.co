@@ -6,4 +6,7 @@
 # $3 = exemption count (she originally imagined 5, 10 or 20)
 
 echo date
+make overview goods_by_income_decile subsample=$1 vat_strategy=detail
+echo date
 make overview -f Makefile.del_rosario subsample=$1 vat_strategy=del_rosario del_rosario_exemption_source=$2 del_rosario_exemption_count=$3
+echo date
