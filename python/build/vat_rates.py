@@ -29,11 +29,17 @@ else: vat_coicop = pd.read_csv( "data/vat/"                          + "vat-by-c
                               , sep = ";" # TODO PITFALL
                               , encoding = "latin1" )
 
-if common.vat_strategy == 'const': # short-circuit the vat-code keys; set everything to 19
-  vat_cap_c[ "vat, min"] = common.vat_flat_rate
-  vat_cap_c[ "vat, max"] = common.vat_flat_rate
-  vat_coicop["vat, min"] = common.vat_flat_rate
-  vat_coicop["vat, max"] = common.vat_flat_rate
+if True: # Replacements, if appropriate
+  vat_columns = ["vat", "vat, min", "vat, max"]
+  if common.vat_strategy == 'detail_224': # one proposal is to replace the 19% with 22.4%
+    for vc in vat_columns:
+      vat_cap_c[vc]  = vat_cap_c[vc]  . replace( 0.19, 0.224 )
+      vat_coicop[vc] = vat_coicop[vc] . replace( 0.19, 0.224 )
+
+  if common.vat_strategy == 'const': # short-circuit the vat-code keys; set everything to 19
+    for vc in vat_columns:
+      vat_cap_c[vc]  = common.vat_flat_rate
+      vat_coicop[vc] = common.vat_flat_rate
 
 for (vat,frac) in [ ("vat"     , "vat frac")
                   , ("vat, min", "vat frac, min")

@@ -3,7 +3,8 @@
 # i.e. equal to the empty string (without even quotation marks).
 
 SHELL := bash
-.PHONY: input_subsamples \
+.PHONY: show_params \
+  input_subsamples \
   buildings \
   households \
   people_1 \
@@ -130,6 +131,12 @@ goods_by_income_decile = \
 
 
 ##=##=##=##=##=##=##=## Recipes
+
+show_params:
+	echo "subsample: " $(subsample)
+	echo "vat strategy: " $(vat_strategy)
+	echo "vat flat rate: " $(vat_flat_rate)
+	echo "strategy suffix: " $(strategy_suffix)
 
 ##=##=##=## subsample, or very slightly tweak, some input data sets
 

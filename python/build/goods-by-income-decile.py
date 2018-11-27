@@ -28,7 +28,7 @@ ps["coicop"] = util.pad_column_as_int( 8, ps["coicop"] )
 ps["coicop-2-digit"] = ps["coicop"] . apply( lambda s: s[0:2] )
 ps["coicop-3-digit"] = ps["coicop"] . apply( lambda s: s[0:3] )
 
-tax_proposed_2_digit = pd.read_csv( "python/build/vat_prop.2018_11_31/2-digit.csv"
+tax_proposed_2_digit = pd.read_csv( "python/build/vat_prop_2018_10_31/2-digit.csv"
                                     , usecols = ["coicop-2-digit","vat"] )
 if vat_aware:
   tax_proposed_2_digit = tax_proposed_2_digit[ tax_proposed_2_digit["vat"] > 0 ]
@@ -36,7 +36,7 @@ if vat_aware:
 tax_proposed_2_digit["coicop-2-digit"] = (
   util.pad_column_as_int( 2, tax_proposed_2_digit["coicop-2-digit"] ) )
 
-tax_proposed_3_digit = pd.read_csv( "python/build/vat_prop.2018_11_31/3-digit.csv"
+tax_proposed_3_digit = pd.read_csv( "python/build/vat_prop_2018_10_31/3-digit.csv"
                                     , usecols = ["coicop-3-digit","vat"] )
 if vat_aware:
   tax_proposed_3_digit = tax_proposed_3_digit[ tax_proposed_3_digit["vat"] > 0 ]
