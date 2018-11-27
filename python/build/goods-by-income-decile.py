@@ -7,6 +7,10 @@ import python.build.common as common
 #class common:
 #  subsample = 100
 
+vat_aware = True # If true, this causes the code below to only find the most popular goods
+  # among goods that are currently charged 0 (or up to 5%) vat but would carry 18% vat under
+  # the proposal from 2018-10-31.
+
 
 ## ## ## ## ## Ingest data ## ## ## ## ##
 
@@ -26,7 +30,7 @@ ps["coicop-3-digit"] = ps["coicop"] . apply( lambda s: s[0:3] )
 
 tax_proposed_2_digit = pd.read_csv( "python/build/vat_prop.2018_11_31/2-digit.csv"
                                     , usecols = ["coicop-2-digit","vat"] )
-if False: # PITFALL: skipping, Luis wants to do by hand
+if vat_aware:
   tax_proposed_2_digit = tax_proposed_2_digit[ tax_proposed_2_digit["vat"] > 0 ]
 
 tax_proposed_2_digit["coicop-2-digit"] = (
@@ -34,7 +38,7 @@ tax_proposed_2_digit["coicop-2-digit"] = (
 
 tax_proposed_3_digit = pd.read_csv( "python/build/vat_prop.2018_11_31/3-digit.csv"
                                     , usecols = ["coicop-3-digit","vat"] )
-if False: # PITFALL: skipping, Luis wants to do by hand
+if vat_aware:
   tax_proposed_3_digit = tax_proposed_3_digit[ tax_proposed_3_digit["vat"] > 0 ]
 
 tax_proposed_3_digit["coicop-3-digit"] = (
@@ -44,7 +48,7 @@ currently_untaxed = pd.read_csv( "data/vat/vat-by-coicop.csv"
   , sep=";"
   , usecols = ["coicop", "vat, min", "description"] )
 currently_untaxed["coicop"] = util.pad_column_as_int( 8, currently_untaxed["coicop"] )
-if False: # PITFALL: skipping, Luis wants to do by hand
+if vat_aware:
   currently_untaxed = currently_untaxed[
                         currently_untaxed["vat, min"] <= 0.05 ]
 
