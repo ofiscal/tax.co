@@ -3,7 +3,10 @@ import python.build.output_io as oio
 import python.build.common as common
 
 
-purchases = oio.readStage( common.subsample, "purchases_2_vat." + common.vat_strategy_suffix )
+if common.vat_strategy == "del_rosario":
+  purchases = oio.readStage( common.subsample, "purchases_2_1_del_rosario." + common.vat_strategy_suffix )
+else:
+  purchases = oio.readStage( common.subsample, "purchases_2_vat." + common.vat_strategy_suffix )
 
 if True: # sum purchases within person
   purchases["transactions"] = 1 # useful later, when it is summed

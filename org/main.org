@@ -43,6 +43,8 @@ It calls Makefile.goods-by-decile with no parameters.
 *** The output
 "vat paid" is already part of the overview table that the makefile produced.
 Changes in expenditures, we assume, are zero.
+*** TODO safety: replace 2_1_del_rosario with 2_1_exemptions
+"del rosario" is already in the file suffix
 ** use the Ministry of Finance's COICOP-VAT bridge
 *** TODO They wrote 19 where we have 0.19; harmonize.
 *** TODO make sure there are no more missing values in purchases_2_vat.csv with that key than with the detail key

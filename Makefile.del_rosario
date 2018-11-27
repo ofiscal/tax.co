@@ -21,6 +21,7 @@ ss=$(strip $(subsample))# removes trailing space
 vat_strategy?=approx
   # default value; can be overridden from command line, ala "make raw vat_strategy=detail"
   # possibilities: approx, detail, const, prop_2018_10_31
+s_vat_strategy=$(strip $(vat_strategy))# removes trailing space
 vat_flat_rate?=
   # by default it is the empty string, without even quotation marks
 s_vat_flat_rate=$(patsubst "%",%,$(strip $(vat_flat_rate)))
@@ -39,13 +40,12 @@ vat_exemptions = \
 
 ##=##=##=##  Target variables
 
-households = \
-  output/vat/data/recip-$(ss)/households.$(strategy_suffix).csv \
-  output/vat/data/recip-$(ss)/households_decile_summary.$(strategy_suffix).csv
-people_3_purchases = output/vat/data/recip-$(ss)/people_3_purchases.$(strategy_suffix).csv
-purchases_2_1_del_rosario =    output/vat/data/recip-$(ss)/purchases_2_1_del_rosario.$(strategy_suffix).csv
-purchase_sums =      output/vat/data/recip-$(ss)/purchase_sums.$(strategy_suffix).csv
-overview = output/vat/tables/recip-$(ss)/overview.$(strategy_suffix).csv
+households =                 output/vat/data/recip-$(ss)/households.$(strategy_suffix).csv                \
+                             output/vat/data/recip-$(ss)/households_decile_summary.$(strategy_suffix).csv
+people_3_purchases         = output/vat/data/recip-$(ss)/people_3_purchases.$(strategy_suffix).csv
+purchases_2_1_del_rosario  = output/vat/data/recip-$(ss)/purchases_2_1_del_rosario.$(strategy_suffix).csv
+purchase_sums              = output/vat/data/recip-$(ss)/purchase_sums.$(strategy_suffix).csv
+overview                   = output/vat/tables/recip-$(ss)/overview.$(strategy_suffix).csv
 
 
 ##=##=##=##=##=##=##=## Rules
@@ -58,4 +58,12 @@ $(purchases_2_1_del_rosario): python/build/purchases_2_1_del_rosario.py \
   $(purchases_2_vat)
 	date
 	$(python_from_here) python/build/purchases_2_1_del_rosario.py \
+          $(subsample) $(vat_strategy) $(del_rosario_exemption_source) $(del_rosario_exemption_count)
+
+purchase_sums: $(purchase_sums)
+$(purchase_sums): python/build/purchase_sums.py \
+  python/build/output_io.py \
+  $(purchases_2_1_del_rosario)
+	date
+	$(python_from_here) python/build/purchase_sums.py \
           $(subsample) $(vat_strategy) $(del_rosario_exemption_source) $(del_rosario_exemption_count)
