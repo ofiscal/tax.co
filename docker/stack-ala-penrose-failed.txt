@@ -1,0 +1,22 @@
+This commit I tried aping the Dockerfile from the penrose project:
+  https://github.com/vsoch/penrose/blob/master/docker/Dockerfile
+
+Now it builds, and stack is installed in the container.
+
+But when I run `stack ghci` this happens:
+
+  jeff@jeff-ThinkCentre-M700:~/tax.co/docker$ docker exec -it anac bash
+  WARNING: Error loading config file: /home/jeff/.docker/config.json: stat /home/jeff/.docker/config.json: permission denied
+  (base) root@127:/# cd mn
+  bash: cd: mn: No such file or directory
+  (base) root@127:/# cd mnt
+  (base) root@127:/mnt# stack ghci
+  Writing implicit global project config file to: /root/.stack/global-project/stack.yaml
+  Note: You can change the snapshot via the resolver field there.
+  Using latest snapshot resolver: lts-12.20
+  Downloaded lts-12.20 build plan.    
+  AesonException "Error in $.packages.cassava.constraints.flags['bytestring--lt-0_10_4']: Invalid flag name: \"bytestring--lt-0_10_4\""
+  (base) root@127:/mnt# exit
+  exit
+  jeff@jeff-ThinkCentre-M700:~/tax.co/docker$ 
+

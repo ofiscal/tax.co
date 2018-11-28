@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM fpco/stack-build:lts-9.10
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH /opt/conda/bin:$PATH
@@ -28,9 +28,15 @@ RUN apt install -y make && \
 
 RUN apt install -y texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
 RUN apt install -y texlive-publishers
-RUN curl -sSL https://get.haskellstack.org/ | sh
 
 COPY run-jupyter.sh /root/
+
+ENV GHCVER 8.2.1 
+ENV PATH $HOME/.local/bin:/opt/ghc/$GHCVER/bin:$HOME/bin:$PATH
+
+# Maybe I need these too, like https://github.com/vsoch/penrose/blob/master/docker/Dockerfile?
+#ENV CACHE_NAME 8.2.1
+#ENV BUILD_BINARY 1
 
 EXPOSE 8888
 
