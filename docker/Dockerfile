@@ -31,6 +31,8 @@ RUN apt install -y texlive-publishers
 
 COPY run-jupyter.sh /root/
 
+RUN apt update && curl -sSL https://get.haskellstack.org/ | sh
+
 EXPOSE 8888
 
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
