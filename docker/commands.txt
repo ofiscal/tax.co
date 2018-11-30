@@ -1,12 +1,23 @@
-sudo docker build -f Dockerfile -t	                        \
-  jeffreybbrown/tax.co:new .	                                \
+A trick to quickly edit a Docker-locked file from the host system:
+  https://stackoverflow.com/a/26915343
+
+sudo docker build -f Dockerfile -t                           \
+  jeffreybbrown/tax.co:new .                                 \
   | tee logs/"build-log.`date`.txt"
 
-sudo docker run --name anac -it -v /home/jeff/tax.co:/mnt       \
-  -p 8888:8888 -d -h 127.0.0.1                                  \
-  jeffreybbrown/tax.co:new
+sudo docker run --name anac -it -v /home/jeff/tax.co:/mnt    \
+  -p 8888:8888 -d -h 127.0.0.1                               \
+  jeffreybbrown/tax.co:2018-11-27.haskell
 
-sudo docker run --entrypoint=/root/run-jupyter.sh               \
-                --name anac -it -v /home/jeff/tax.co:/mnt       \
-  -p 8888:8888 -d -h 127.0.0.1                                  \
+docker tag jeffreybbrown/tax.co:new jeffreybbrown/tax.co:2018-11-30.2.apt-upgrade
+
+# mount to shake-studies folder (PITFALL: different port, 8889)
+docker run --name shake -it -v /home/jeff/shake-studies:/mnt \
+  -p 8889:8888 -d -h 127.0.0.1                               \
+  jeffreybbrown/tax.co:2018-11-30.2.apt-upgrade
+
+
+sudo docker run --entrypoint=/root/run-jupyter.sh            \
+                --name anac -it -v /home/jeff/tax.co:/mnt    \
+  -p 8888:8888 -d -h 127.0.0.1                               \
   jeffreybbrown/tax.co:new

@@ -33,6 +33,11 @@ COPY run-jupyter.sh /root/
 
 RUN apt update && curl -sSL https://get.haskellstack.org/ | sh
 
+RUN stack install shake
+RUN apt update && apt upgrade -y
+
+RUN PATH=/root/.local/bin:$PATH
+
 EXPOSE 8888
 
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
