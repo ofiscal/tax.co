@@ -12,49 +12,13 @@ stakeholders
     lack of corruption is a big attractor
     can be called "improving the functioning of the state"
 average tax rate: easier to understand than marginal
-* TODO get estimates to María del Rosario Guerra
-** TODO Include the number of goods exempted in the filenames.
-To avoid regeneration.
-** Effects on revenue and total expenditure of a vat of 0% and 5% on the top 5, 10 and 20 products consumed by the bottom 60% of income earners
-*** new Python
-Get a list of coicop codes to exempt.
- auto | manual
-From purchases_2, build purchases_2_1.del_rosario, which uses those exemptions.
-For whatever ingests purchases_2, introduce a conditional:
-  if the strategy is del_rosario, use purchases_2_1.del_rosario instead.
-Build the overview.
-  If we compare total vat_paid in the del_rosario overview to the detail overview, we'll see the effect.
-*** use a separate Makefile.goods-by-decile and a separate make-goods-by-decile.sh
-**** Makefile.goods-by-decile
-It duplicates relevant parts of the Makefile: everything that's both:
-  upstream of goods-by-decile
-  downstream of ???
-It uses two arguments:
-  exemption_strategy = manual | auto
-  number_exempted :: Int
-It duplicates the needed inputs from prop_2018_10_31_0.18
-  renaming them del_rosario_2018_11_20
-Its outputs are all labeled del_rosario_2018_11_20
-Any preexisting python programs, it calls using
-  subsample = _
-  vat_strategy = del_rosario_2018_11_20
-  vat_flat_rate=0.18
-**** make-goods-by-decile.sh calls both
-It calls the main Makefile to build whatever the other needs, using prop_2018_10_31 and 0.18
-It calls Makefile.goods-by-decile with no parameters.
-*** The output
-"vat paid" is already part of the overview table that the makefile produced.
-Changes in expenditures, we assume, are zero.
-*** TODO safety: replace 2_1_del_rosario with 2_1_exemptions
-"del rosario" is already in the file suffix
-** use the Ministry of Finance's COICOP-VAT bridge
-*** TODO They wrote 19 where we have 0.19; harmonize.
-*** TODO make sure there are no more missing values in purchases_2_vat.csv with that key than with the detail key
-** Before and after tax reform Gini
-This is not a clearly defined goal.
-Gini = Num / Denom where
-  Num = Sum over all i,j of |xi - xj|
-  Denom = 2 * n * (Sum over all i of xi^2)
+* TODO estimate november reform effects
+** add house purchase data from "medios"
+*** p10305 = says whether a house is new or old
+*** p10305s1 = value of the purchase
+** add a new column, "tax.co purchase code", and a new tax rate key for it
+Some things (e.g. house purchases) are neither in the COICOP nor the capitulo c system.
+** add new VAT key
 * TODO safety (#safe)
 ** TODO collect tests, use HUnit
 ** TODO replace strategy name strings with variables defined in common
@@ -377,3 +341,46 @@ min             1.000000  1.110101e+06
 50%            15.000000  1.220801e+06
 75%            20.000000  8.300305e+06
 max            25.000000  1.270990e+07
+* DONE get estimates to María del Rosario Guerra
+** TODO Include the number of goods exempted in the filenames.
+To avoid regeneration.
+** Effects on revenue and total expenditure of a vat of 0% and 5% on the top 5, 10 and 20 products consumed by the bottom 60% of income earners
+*** new Python
+Get a list of coicop codes to exempt.
+ auto | manual
+From purchases_2, build purchases_2_1.del_rosario, which uses those exemptions.
+For whatever ingests purchases_2, introduce a conditional:
+  if the strategy is del_rosario, use purchases_2_1.del_rosario instead.
+Build the overview.
+  If we compare total vat_paid in the del_rosario overview to the detail overview, we'll see the effect.
+*** use a separate Makefile.goods-by-decile and a separate make-goods-by-decile.sh
+**** Makefile.goods-by-decile
+It duplicates relevant parts of the Makefile: everything that's both:
+  upstream of goods-by-decile
+  downstream of ???
+It uses two arguments:
+  exemption_strategy = manual | auto
+  number_exempted :: Int
+It duplicates the needed inputs from prop_2018_10_31_0.18
+  renaming them del_rosario_2018_11_20
+Its outputs are all labeled del_rosario_2018_11_20
+Any preexisting python programs, it calls using
+  subsample = _
+  vat_strategy = del_rosario_2018_11_20
+  vat_flat_rate=0.18
+**** make-goods-by-decile.sh calls both
+It calls the main Makefile to build whatever the other needs, using prop_2018_10_31 and 0.18
+It calls Makefile.goods-by-decile with no parameters.
+*** The output
+"vat paid" is already part of the overview table that the makefile produced.
+Changes in expenditures, we assume, are zero.
+*** TODO safety: replace 2_1_del_rosario with 2_1_exemptions
+"del rosario" is already in the file suffix
+** use the Ministry of Finance's COICOP-VAT bridge
+*** TODO They wrote 19 where we have 0.19; harmonize.
+*** TODO make sure there are no more missing values in purchases_2_vat.csv with that key than with the detail key
+** Before and after tax reform Gini
+This is not a clearly defined goal.
+Gini = Num / Denom where
+  Num = Sum over all i,j of |xi - xj|
+  Denom = 2 * n * (Sum over all i of xi^2)
