@@ -13,6 +13,18 @@ stakeholders
     can be called "improving the functioning of the state"
 average tax rate: easier to understand than marginal
 * TODO estimate november reform effects
+** add house purchase data from "viviendas"
+Don't add it to other viviendas data; import it afresh.
+Use these two questions, plus "household" and "household-member":
+  P5102: Esta vivienda la compró en los últimos 12 meses?
+  P5103: Cuál fue el valor de la vivienda?
+Delete everyb observation for which P5102 is zero, then delete P5102.
+Inspect data
+  If it is really person-level (as suggested by the fact that the ORDEN variable is 
+  present), there could be duplciates, where different people report the same purchase.
+  If so, worry.
+Compute tax burdens, based on strategy.
+Add to purchase data.
 ** add house purchase data from "medios"
 *** p10305 = says whether a house is new or old
 *** p10305s1 = value of the purchase
