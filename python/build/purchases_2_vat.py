@@ -120,20 +120,20 @@ if True: # add these columns: ["vat", "vat, min", "vat, max"]
                               , on="coicop-3-digit" )
         purchases_coicop = purchases_2_digit . combine_first( purchases_3_digit )
 
-      if common.vat_strategy in ["detail","detail_224","finance_ministry"]:
+      if common.vat_strategy in ["detail","detail_224","finance_ministry","prop_2018_11_29"]:
         purchases_coicop = purchases.merge( vat_coicop, how = "left", on="coicop" )
 
     if True: # add vat to capitulo-c-labeled purchases
       purchases_cap_c = purchases.merge( vat_cap_c, how = "left", on="25-broad-categs" )
       purchases = purchases_coicop . combine_first( purchases_cap_c )
 
-if common.vat_strategy == "prop-2018-11-31": # motorcycles are special
+if common.vat_strategy != "prop_2018_11_29": # motorcycles are special
   # PITFALL: Maybe this should apply to fewer strategies.
   purchases["big-hog"] = (1 * (purchases["coicop"]=="07120101")
                             * (purchases["value"]>(9e6) ) )
-  purchases[ purchases["big-hog"]>0 ]["vat"] = 0.27
-  purchases[ purchases["big-hog"]>0 ]["vat, min"] = 0.27
-  purchases[ purchases["big-hog"]>0 ]["vat, max"] = 0.27
+  purchases.loc[ purchases["big-hog"]>0, "vat"] = 0.27
+  purchases.loc[ purchases["big-hog"]>0, "vat, min"] = 0.27
+  purchases.loc[ purchases["big-hog"]>0, "vat, max"] = 0.27
 
 if False: # drop anything missing min vat (which implies max also missing)
   purchases = purchases[ ~ purchases["vat, min"] . isnull() ]

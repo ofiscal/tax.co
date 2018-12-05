@@ -25,7 +25,11 @@ if common.vat_strategy == "finance_ministry":
       vat_coicop = pd.read_csv( "python/build/vat_finance_ministry/" + "vat-by-coicop.csv"
                               , sep = ","
                               , encoding = "latin1" )
-else: vat_coicop = pd.read_csv( "data/vat/"                          + "vat-by-coicop.csv"
+elif common.vat_strategy == "prop_2018_11_29":
+      vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.prop-2018-11-29.csv"
+                              , sep = ";"
+                              , encoding = "latin1" )
+else: vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
                               , sep = ";" # TODO PITFALL
                               , encoding = "latin1" )
 
