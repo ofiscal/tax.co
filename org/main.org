@@ -13,6 +13,9 @@ stakeholders
     can be called "improving the functioning of the state"
 average tax rate: easier to understand than marginal
 * TODO estimate november reform effects
+** the motorbike tax
+After the reform, would be 27% on all bikes.
+Before, 27% on bikes valued above 9 million.
 ** new tax on house purchases
 2017-18 : 0.05 rate, threshold of (888.5 + 853.8 mil / 2), only new houses
 2019 proposed : 0.02 rate, same threshold (888.5 + 853.8 mil / 2), all houses

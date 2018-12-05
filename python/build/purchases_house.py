@@ -6,10 +6,10 @@ import pandas as pd
 import numpy as np
 
 
-#import python.common
-class common:
-  subsample = 1
-  vat_strategy = "prop_2018_11_29"
+import python.common
+#class common:
+#  subsample = 1
+#  vat_strategy = "prop_2018_11_29"
 
 
 # medios: read, clean

@@ -14,13 +14,13 @@
 # Note that a loop below might "loop" over zero items.
 
 # There is only one variety of the detail, detail_224 and finance_ministry strategies.
-for vat_strategy in detail detail_224; do
+for vat_strategy in detail; do
     echo; echo $vat_strategy; date
     make overview subsample=$1 vat_strategy=$vat_strategy
 done
 
 # For each of the other strategies, we can specify some constant tax rates.
-for vat_strategy in const prop_2018_10_31; do
+for vat_strategy in const; do
     for vat_flat_rate in 0.18; do
         echo; echo $vat_strategy $vat_flat_rate; date
         make overview subsample=$1 vat_strategy=$vat_strategy vat_flat_rate=$vat_flat_rate

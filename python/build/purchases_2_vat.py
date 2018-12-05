@@ -5,7 +5,13 @@ import numpy as np
 import python.build.output_io as oio
 import python.build.legends as legends
 import python.util as util
+
+
 import python.build.common as common
+#class common:
+#  subsample=10
+#  vat_strategy = "detail"
+#  vat_strategy_suffix = "detail_"
 
 
 if True: # input files
@@ -121,6 +127,14 @@ if True: # add these columns: ["vat", "vat, min", "vat, max"]
       purchases_cap_c = purchases.merge( vat_cap_c, how = "left", on="25-broad-categs" )
       purchases = purchases_coicop . combine_first( purchases_cap_c )
 
+if common.vat_strategy == "prop-2018-11-31": # motorcycles are special
+  # PITFALL: Maybe this should apply to fewer strategies.
+  purchases["big-hog"] = (1 * (purchases["coicop"]=="07120101")
+                            * (purchases["value"]>(9e6) ) )
+  purchases[ purchases["big-hog"]>0 ]["vat"] = 0.27
+  purchases[ purchases["big-hog"]>0 ]["vat, min"] = 0.27
+  purchases[ purchases["big-hog"]>0 ]["vat, max"] = 0.27
+
 if False: # drop anything missing min vat (which implies max also missing)
   purchases = purchases[ ~ purchases["vat, min"] . isnull() ]
 
@@ -140,3 +154,4 @@ if True: # handle freq, value, vat paid
   purchases["vat paid, max"] = purchases["value"] * purchases["vat frac, max"]
 
   oio.saveStage(common.subsample, purchases, "purchases_2_vat." + common.vat_strategy_suffix )
+  
