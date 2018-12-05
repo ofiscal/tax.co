@@ -1,11 +1,15 @@
+# ABORTED after discovering that only one house out of the 561
+# in our sample is above the threshold for paying VAT. See the variable
+# "house,above-vat-threshold" (below) for how to reproduce that finding.
+
 import pandas as pd
 import numpy as np
 
+
 #import python.common
-
-
 class common:
   subsample = 1
+  vat_strategy = "prop_2018_11_29"
 
 
 # medios: read, clean
@@ -45,16 +49,18 @@ buildings = buildings[ buildings["house,value"] > 100
                        # avoids error codes 98 and 99
 ] . drop( columns = "house,recent-bought" ) # at this point it's always 1
 
-buildings["house,new"] = 0
+buildings["house,new"] = 1 # PITFALL: Hack. See how it's used below.
 buildings["house,newness-unknown"] = 1
 
 
+# collect medios and buildings, compute VAT
 hps = buildings.append(medios) # house purchases
+hps["house,above-vat-threshold"] = (
+  hps["house,value"] > (((888.5 + 853.8) * 1e6) / 2)).astype('int')
 
-
-# compute VAT on houses
-
-#if True: # TODO: replace with common.vat_strategy=="prop_2018_11_29":
-#  hps["house,above-vat-threshold"] = (
-#    hps["house,above-vat-threshold"] > (888.5 + 853.8 mil / 2) )
-  
+if common.vat_strategy=="prop_2018_11_29": 
+  hps["house,vat-paid"] = (
+    0.02 * hps["house,value"] * hps["house,above-vat-threshold"] )
+else:
+  hps["house,vat-paid"] = (
+    0.02 * hps["house,value"] * hps["house,new"] )
