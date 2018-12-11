@@ -1,0 +1,20 @@
+* desserts
+* Political contributions
+* Bebidas calientes : Tinto, caf� con leche, chocolate, t�, bebida achocolatada caliente, leche, agua de panela, agua arom�tica, avena caliente y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo, para llevar y por servicio a domicilio
+* Arriendo por viviendas para uso del hogar diferentes a la que habita, (no incluye  los servicios de alojamiento ofrecidos por aldeas y centros de vacaciones)
+* Llantas y neum�ticos, rines para veh�culo    
+* Transporte de pasajeros y equipajes por mar, rios, ca�os, lagos, etc. en buque, nav�o, aerodeslizador, veh�culo de colch�n de aire (incluye transporte de veh�culos privados por este medio)
+* Transporte de pasajeros y equipajes por mar, r�os, ca�os, lagos, etc. en ferry, planch�n, canoa y lancha
+   You could make an exception for transport that actually helps someone survive.
+* Animales dom�sticos, mascotas y para pr�cticas deportivas: perros, gatos,  p�jaros, conejos, peces, etc.
+   You could make an exception for animals that actually help someone survive.
+   The same caveat probably applies to other things on this list.
+* Entradas a espect�culos musicales: conciertos, �peras, ballets, zarzuela, etc.
+* It's weird to say this, but a lot of the exemptions are for educational materials, including higher ed, or for written materials of any kind, including magazines (I think -- "Compra diaria de peri�dicos"). Surely not luxury goods, but neither are they essential for survival.
+  A similar distinction could be made about other things on this list.
+* Cursos de educaci�n no formal en academias o instituciones de deportes
+* Servicios financieros por medio de corresponsal
+* Pago de comisi�n por la administraci�n de los fondos de inversi�n colectiva, fondos mutuos de inversi�n, negocios fiduciarios de inversi�n y portafolios de terceros de las sociedades comisionistas de bolsa
+* C�dula de ciudadan�a, pasaporte, visas, tarjetas profesionales, certificados de nacimiento, defunci�n, matrimonio, extrajuicios, certificados de libertad y otros certificados notariales
+* Servicios religiosos y civiles por entierros, matrimonios,  gastos en pompas f�nebres y en otros servicios de funerales, etc
+* "Otros impuestos (de timbre, etc)" (Huh?)
