@@ -1,3 +1,4 @@
+* are the bridges in vat/data/preserving superceded by the ones in vat/data/?
 * news
 * yet to ask
 ** VAT rate(s) for coicop 12620105
