@@ -7,7 +7,7 @@ sudo docker build -f Dockerfile -t                           \
 
 sudo docker run --name anac -it -v /home/jeff/tax.co:/mnt    \
   -p 8888:8888 -d -h 127.0.0.1                               \
-  jeffreybbrown/tax.co:2018-11-27.haskell
+  jeffreybbrown/tax.co:2018-11-30.2.apt-upgrade
 
 docker tag jeffreybbrown/tax.co:new jeffreybbrown/tax.co:2018-11-30.2.apt-upgrade
 
