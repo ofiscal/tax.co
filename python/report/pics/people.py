@@ -44,7 +44,7 @@ if True: # single series
   draw.savefig( vat_pics_dir + "people" , "age" )
 
   plt.close()
-  util.tabulate_series(people["education"]).plot.bar()
+  util.histogram(people["education"]).plot.bar()
   draw.savefig( vat_pics_dir + "people" , "education" )
 
   if True: # income, logx and normal

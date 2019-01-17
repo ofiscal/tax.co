@@ -19,12 +19,12 @@ def noisyQuantile( n_quantiles, noise_min, noise_max, in_col ):
   noise = pd.Series( np.random.uniform( noise_min, noise_max, len(in_col) ) )
   noise.index = in_col.index
   return pd.qcut( in_col + noise
-                  , n_quantiles
-                  , labels = list( map(lambda x: str(x), range(0,n_quantiles) ) )
-                  , duplicates = 'drop' )
+                , n_quantiles
+                , labels = list( map(lambda x: str(x), range(0,n_quantiles) ) )
+                , duplicates = 'drop' )
 
 def printInRed(message):
-    """from https://stackoverflow.com/a/287934/916142"""
+    "from https://stackoverflow.com/a/287934/916142"
     CSI="\x1B["
     print( CSI+"31;40m" + message + CSI + "0m")
 
@@ -111,7 +111,7 @@ def tabulate_stats_by_group(df, group_name, param_name, weight_name=None):
     return pd.concat([counts,nonzeros,mins,maxs
                       ,medians,medians_nonzero,means,means_nonzero],axis=1)
 
-def tabulate_series(series):
+def histogram(series):
     dff = pd.DataFrame(series).copy()
     dff["one"] = 1
     counts = dff.groupby( series.name )[["one"]]               \
@@ -137,6 +137,7 @@ def compare_2_columns_from_different_tables (df1, colname1, df2, colname2):
   return pd.merge(x, y, left_index=True, right_index=True)
 
 def dwmParamByGroup (describeParam, groupParam, df):
+  "Like describeWithMissing, but by group, for a single parameter."
   theGroups = df.groupby( groupParam )
   dfs = [
       describeWithMissing (
@@ -146,16 +147,17 @@ def dwmParamByGroup (describeParam, groupParam, df):
   return pd.concat( dfs,axis=1 )
 
 def dwmByGroup (groupParam, df):
+  "Like describeWithMissing, but by group."
   for c in df.columns:
     print( "\n" + c )
     print( dwmParamByGroup( c, groupParam, df ) )
 
 def compareDescriptives(dfDict):
-  """ builds a table of summary statistics for each data set in the input dictionary """
+  "builds a table of summary statistics for each data set in the input dictionary"
   for dfName in dfDict.keys():
     df = dfDict[ dfName ]
     print(); print()
-    print(dfName)
+    print( dfName )
     print( describeWithMissing( df ).round(2) )
 
 def compareDescriptivesByFourColumns(dfDict):
@@ -169,7 +171,7 @@ def compareDescriptivesByFourColumns(dfDict):
     compareDescriptives( dfDict2 )
 
 def summarizeQuantiles (quantileParam, df):
-  # TODO (p=0|#clean) summarizeQuantiles should not assume a column named "income".
+  # TODO (#clean) summarizeQuantiles should not assume a column named "income".
   dff = df.copy()
   dff["one"] = 1
   dff = dff[ ~ dff["income"].isnull() ]

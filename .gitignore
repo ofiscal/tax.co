@@ -1,8 +1,9 @@
 *~
+temp*
 
-python/temp/
 git-comment.txt
 docker/commands-laptop.txt
+docker/logs
 
 .ipynb_checkpoints/
 __pycache__/
