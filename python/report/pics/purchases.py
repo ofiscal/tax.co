@@ -14,12 +14,12 @@ if True: # more imports
   
   import python.build.output_io as oio
   import python.draw.util as draw
-  import python.build.common as common
+  import python.build.common as c
 
 
-vat_pics_dir = "output/vat/pics/recip-" + str(common.subsample) + "/" + common.vat_strategy_suffix + "/"
+vat_pics_dir = "output/vat/pics/recip-" + str(c.subsample) + "/" + c.vat_strategy_suffix + "/"
 if not os.path.exists(vat_pics_dir): os.makedirs(vat_pics_dir)
-purchases = oio.readStage( common.subsample, 'purchases_2_vat.' + common.vat_strategy_suffix )
+purchases = oio.readStage( c.subsample, 'purchases_2_vat.' + c.vat_strategy_suffix )
 
 
 if True: # purchase quantity, logx and linear

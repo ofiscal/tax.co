@@ -1,12 +1,12 @@
 import sys
 import python.build.output_io as oio
-import python.build.common as common
+import python.build.common as c
 
 
-if common.vat_strategy == "del_rosario":
-  purchases = oio.readStage( common.subsample, "purchases_2_1_del_rosario." + common.vat_strategy_suffix )
+if c.vat_strategy == c.del_rosario:
+  purchases = oio.readStage( c.subsample, "purchases_2_1_del_rosario." + c.vat_strategy_suffix )
 else:
-  purchases = oio.readStage( common.subsample, "purchases_2_vat." + common.vat_strategy_suffix )
+  purchases = oio.readStage( c.subsample, "purchases_2_vat." + c.vat_strategy_suffix )
 
 if True: # sum purchases within person
   purchases["transactions"] = 1 # useful later, when it is summed
@@ -18,4 +18,4 @@ if True: # sum purchases within person
            ] . agg("sum")
   purchase_sums = purchase_sums.reset_index( level = ["household", "household-member"] )
 
-  oio.saveStage( common.subsample, purchase_sums, "purchase_sums." + common.vat_strategy_suffix )
+  oio.saveStage( c.subsample, purchase_sums, "purchase_sums." + c.vat_strategy_suffix )

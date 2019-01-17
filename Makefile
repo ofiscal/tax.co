@@ -165,14 +165,6 @@ $(buildings): python/build/buildings.py \
 	date
 	$(python_from_here) python/build/buildings.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
-households: $(households)
-$(households): python/build/households.py \
-  python/util.py \
-  python/build/output_io.py \
-  $(people_4_ss)
-	date
-	$(python_from_here) python/build/households.py $(subsample) $(vat_strategy) $(vat_flat_rate)
-
 people_1: $(people_1)
 $(people_1): python/build/people/main.py \
   python/build/people/files.py \
@@ -203,6 +195,14 @@ $(people_4_ss): python/build/people_4_ss.py \
   $(people_3_purchases)
 	date
 	$(python_from_here) python/build/people_4_ss.py $(subsample) $(vat_strategy) $(vat_flat_rate)
+
+households: $(households)
+$(households): python/build/households.py \
+  python/util.py \
+  python/build/output_io.py \
+  $(people_4_ss)
+	date
+	$(python_from_here) python/build/households.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
 purchases_1: $(purchases_1)
 $(purchases_1): python/build/purchases/main.py \

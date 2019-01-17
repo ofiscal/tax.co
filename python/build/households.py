@@ -5,10 +5,10 @@ import numpy as np
 import python.util as util
 import python.build.output_io as oio
 from python.build.people.files import edu_key
-import python.build.common as common
+import python.build.common as c
 
 
-people = oio.readStage( common.subsample, "people_4_ss." + common.vat_strategy_suffix )
+people = oio.readStage( c.subsample, "people_4_ss." + c.vat_strategy_suffix )
 
 people["education"] = util.interpretCategorical( people["education"]
                                                , edu_key.values() )
@@ -120,7 +120,7 @@ if True: # aggregate from household members to households
 
 
 if True: # save
-  oio.saveStage( common.subsample, households
-                        , 'households.' + common.vat_strategy_suffix )
-  oio.saveStage( common.subsample, households_decile_summary
-                       , 'households_decile_summary.' + common.vat_strategy_suffix )
+  oio.saveStage( c.subsample, households
+                        , 'households.' + c.vat_strategy_suffix )
+  oio.saveStage( c.subsample, households_decile_summary
+                       , 'households_decile_summary.' + c.vat_strategy_suffix )

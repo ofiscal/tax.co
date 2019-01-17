@@ -162,21 +162,21 @@ beca_sources_private = {
 
 inclusion_pairs = [
      ( "income, month : labor : bonus ?2"
-       , "income, month : labor : bonus ?2, included in 6500"
+     , "income, month : labor : bonus ?2, included in 6500"
   ), ( "income, month : labor : bonus"
-       , "income, month : labor : bonus, included in 6500"
+     , "income, month : labor : bonus, included in 6500"
   ), ( "income, month : labor : familiar"
-       , "income, month : labor : familiar, included in 6500"
+     , "income, month : labor : familiar, included in 6500"
   ), ( "income, month : labor : food"
-       , "income, month : labor : food, included in 6500"
+     , "income, month : labor : food, included in 6500"
   ), ( "income, month : labor : gastos de representacion"
-       , "income, month : labor : gastos de representacion, included in 6500"
+     , "income, month : labor : gastos de representacion, included in 6500"
   ), ( "income, month : labor : overtime"
-       , "income, month : labor : overtime, included in 6500"
+     , "income, month : labor : overtime, included in 6500"
   ), ( "income, month : labor : transport"
-       , "income, month : labor : transport, included in 6500"
+     , "income, month : labor : transport, included in 6500"
   ), ( "income, month : labor : viaticum"
-       , "income, month : labor : viaticum, included in 6500"
+     , "income, month : labor : viaticum, included in 6500"
   ) ]
 
 files = [

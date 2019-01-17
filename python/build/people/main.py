@@ -8,9 +8,11 @@ import python.build.people.files as files
 import python.build.output_io as oio
 
 
-people = common.to_numbers( common.collect_files( files.files
-                                                , subsample = common.subsample )
-                          , skip_columns = ["non-beca sources"] )
+people = common.to_numbers(
+  common.collect_files( files.files
+                        , subsample = common.subsample )
+  , skip_columns = ["non-beca sources"] # PITFALL : a space-separated list of ints
+)
 
 if True: # drop non-members of household
   people = people.drop(
@@ -22,6 +24,7 @@ if True: # make independiente a 0 or a 1
   people["independiente"] = people[ "independiente"
                          ] . apply( lambda x: 1 if x in [4,5] else 0 )
 
+# >>>
 if True: # remap some boolean integers
   for cn in ( [ "female" ] +                           # originally 1=male, 2=female
               [included for (quantity,included) in files.inclusion_pairs]

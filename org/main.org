@@ -1,32 +1,8 @@
-* TODO sort
-** notes from Jerome de Henau
-more kinds of households
-  one person, female, earning
-  gender-income interaction
-stakeholders
-  unions and employer organizations
-  feminist groups, womens' groups, groups for domestic workers
-  anyone intnerested in poverty, homelessness, agric land reform
-  any disadvantaged group has similar interests
-  banks care, if they can attract investment, and look charitable
-    lack of corruption is a big attractor
-    can be called "improving the functioning of the state"
-average tax rate: easier to understand than marginal
-* TODO estimate november reform effects
-** the motorbike tax
-After the reform, would be 27% on all bikes.
-Before, 27% on bikes valued above 9 million.
-** new tax on house purchases
-2017-18 : 0.05 rate, threshold of (888.5 + 853.8 mil / 2), only new houses
-2019 proposed : 0.02 rate, same threshold (888.5 + 853.8 mil / 2), all houses
-** add a new column, "tax.co purchase code", and a new tax rate key for it
-Some things (e.g. house purchases) are neither in the COICOP nor the capitulo c system.
-** add new VAT key
+* code review
+resume at people/main.py/>>>
 * TODO safety (#safe)
 ** TODO collect tests, use HUnit
-** TODO replace strategy name strings with variables defined in common
-e.g. common.detail = "detail"
-Better yet would be an enum type.
+** TODO ? replace column names with variables
 ** TODO the vat-strategy logic needs cleaning
 *** how to change those two strategy-conditioning files
 In the case of the const strategy, don't use any keys -- neither cap_c nor coicop.
@@ -72,6 +48,16 @@ The Makefile pseudo targets, rather than *_pics, should be called *_reports, and
 ** pdflatex: send reports to a file, not stdout
 *** this way it doesn't drown the python error reports
 ** centralize routines for categorical variables
+* TODO estimate november reform effects
+** the motorbike tax
+After the reform, would be 27% on all bikes.
+Before, 27% on bikes valued above 9 million.
+** new tax on house purchases
+2017-18 : 0.05 rate, threshold of (888.5 + 853.8 mil / 2), only new houses
+2019 proposed : 0.02 rate, same threshold (888.5 + 853.8 mil / 2), all houses
+** add a new column, "tax.co purchase code", and a new tax rate key for it
+Some things (e.g. house purchases) are neither in the COICOP nor the capitulo c system.
+** add new VAT key
 * TODO accuracy (#right)
 ** TODO These error codes apply to all income and expense variables
 *** why to use them
@@ -88,7 +74,7 @@ And 98 or 99 pesos is almost no money, so including it in someone's total income
 ** TODO PITFALL ! people["non-beca sources"] sometimes turns numeric
 It is a space-separated list of integers.
 In the 1/100 sample it has no lists greater than 1, so it is converted automatically to numeric.
-** broken (currently unused) columns
+** TODO broken (currently unused) columns
 problems in people_1:
   race is boolean; summarizes to NaN
 problems in households:
@@ -96,16 +82,14 @@ problems in households:
   has-elderly is NaN
   has-(any race) is 0
    this might be because race is boolean in people_1
-
 ** ? a default value for freq
 *** when is-purchase=1, freq is undefined only .015 % of the time
 *** so omitting purchase!=1 observations won't bias our estimate of VAT
 *** it will, however, bias (downward) our estimate of consumption
-
 * TODO development cycle speed (#cycle)
 ** the different vat strategies ought to build separate versions only of what differs
 e.g. in the people data, only rebuild the tax payments when the tax rates change
-* TODO sanity (#sane)
+* TODO sanity checks (#sane)
 ** are these two variables ever both > 0 ?
 *** P5180S1, P5180S2 : daily payment for, value of food at school
 *** P6180S1, P6180S2 : daily payment for, value of food at university
@@ -210,18 +194,15 @@ others are 19%
 *** 24 : % water
 water exempt, others excluded
 
-** add "has under 10|12", ala "has child"
-(Currently we define has-child == min age < 18.)
+** add "has under 10|12" (ala "has child" which <=> min age < 18)
 < 10 is interesting because work becomes legal at age (10 rural, 12 urban).
 ** restaurant|cafeteria tax / todo
 *** if bought in cafeteria or restaurant, gets the 8% tax and no VAT, but otherwise they would pay VAT
-
 ** income tax / todo
 *** ENPH asks about income tax
 *** if no SS payments and (or?) making less than min wage, informal
 *** primary inputs: income, kids, voluntary pension fund contributions.
 *** at most 40% of a person's inncome can be exempt.
-
 * TODO unsorted, low import (#meh)
 ** mild data concerns
 *** some income questions that could overlap
@@ -239,9 +220,8 @@ we assume they don't
 ** "P6500 (asalariado income) > 0" should be perfecty corr'd with pension contrib's
 ** ??? pension contribs = formality.
 * TODO PITFALLs in code
-** some things are already drawn but not included in the report
+** some pics are drawn but not included in the report
 *** people/spending
-
 ** categorical variables require a "map" step only when created, not when read
 It's to convert them from a number to a string.
 For instance, creating the "people" table looks like this:
@@ -344,6 +324,19 @@ min             1.000000  1.110101e+06
 50%            15.000000  1.220801e+06
 75%            20.000000  8.300305e+06
 max            25.000000  1.270990e+07
+* from Jerome de Henau, mostly soft (non-code, non-data)
+more kinds of households
+  one person, female, earning
+  gender-income interaction
+stakeholders
+  unions and employer organizations
+  feminist groups, womens' groups, groups for domestic workers
+  anyone intnerested in poverty, homelessness, agric land reform
+  any disadvantaged group has similar interests
+  banks care, if they can attract investment, and look charitable
+    lack of corruption is a big attractor
+    can be called "improving the functioning of the state"
+average tax rate: easier to understand than marginal
 * DONE get estimates to María del Rosario Guerra
 ** TODO Include the number of goods exempted in the filenames.
 To avoid regeneration.

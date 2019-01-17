@@ -2,11 +2,11 @@ import sys
 import pandas as pd
 import python.build.output_io as oio
 import python.build.ss_contribs as ss
-import python.build.common as common
+import python.build.common as c
 
 
-people = oio.readStage( common.subsample
-                      , "people_3_purchases." + common.vat_strategy_suffix )
+people = oio.readStage( c.subsample
+                      , "people_3_purchases." + c.vat_strategy_suffix )
 
 ss_contrib_schedules = {
     "pension" : {
@@ -40,7 +40,7 @@ ss_df = ss.ss_contribs( ss_contrib_schedules
 
 people = people.merge( ss_df, right_index=True, left_index=True )
 
-oio.saveStage( common.subsample
+oio.saveStage( c.subsample
              , people
-             , 'people_4_ss.' + common.vat_strategy_suffix
+             , 'people_4_ss.' + c.vat_strategy_suffix
 )

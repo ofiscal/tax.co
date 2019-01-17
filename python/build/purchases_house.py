@@ -5,15 +5,14 @@
 import pandas as pd
 import numpy as np
 
-
-import python.common
-#class common:
+import python.common as c
+#class c:
 #  subsample = 1
 #  vat_strategy = "prop_2018_11_29"
 
 
 # medios: read, clean
-medios = pd.read_csv( "data/enph-2017/recip-" + str(common.subsample)
+medios = pd.read_csv( "data/enph-2017/recip-" + str(c.subsample)
                     + "/Gastos_menos_frecuentes_-_Medio_de_pago.csv"
                     , usecols = ["DIRECTORIO", "P10305", "P10305S1", "FEX_C"]
 ) . rename ( columns = { "DIRECTORIO" : "household"
@@ -31,7 +30,7 @@ medios["house,newness-unknown"] = 0
 
 
 # buildings: read, clean
-buildings = pd.read_csv( "data/enph-2017/recip-" + str(common.subsample)
+buildings = pd.read_csv( "data/enph-2017/recip-" + str(c.subsample)
                        + "/Viviendas_y_hogares.csv"
                        , usecols = ["DIRECTORIO", "P5102", "P5103", "FEX_C"]
 ) . rename( columns = { "DIRECTORIO" : "household"
@@ -58,7 +57,7 @@ hps = buildings.append(medios) # house purchases
 hps["house,above-vat-threshold"] = (
   hps["house,value"] > (((888.5 + 853.8) * 1e6) / 2)).astype('int')
 
-if common.vat_strategy=="prop_2018_11_29": 
+if c.vat_strategy==c.prop_2018_11_29: 
   hps["house,vat-paid"] = (
     0.02 * hps["house,value"] * hps["house,above-vat-threshold"] )
 else:

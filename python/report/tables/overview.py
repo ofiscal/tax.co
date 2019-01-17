@@ -7,15 +7,15 @@ import pandas as pd
 import python.util as util
 import python.draw.util as draw
 import python.build.output_io as oio
-import python.build.common as common
+import python.build.common as c
 
 
-output_dir = "output/vat/tables/recip-" + str(common.subsample) + "/"
+output_dir = "output/vat/tables/recip-" + str(c.subsample) + "/"
 if not os.path.exists(output_dir): os.makedirs(output_dir)
 
 
 if True: # Get, prepare the data
-  households = oio.readStage( common.subsample, "households."        + common.vat_strategy_suffix
+  households = oio.readStage( c.subsample, "households."        + c.vat_strategy_suffix
                ) . rename( columns = {"income, capital, dividends" : "income, dividends"} )
 
   households["income, labor + cesantia"] = households["income, labor"] + households["income, cesantia"]
@@ -90,8 +90,8 @@ if True: # create a summary dataframe
 
 
 if True: # save
-  df_tmi.to_csv( output_dir      + "overview, tmi." + common.vat_strategy_suffix + ".csv" )
-  draw.to_latex( df_tmi, output_dir, "overview, tmi." + common.vat_strategy_suffix )
+  df_tmi.to_csv( output_dir      + "overview, tmi." + c.vat_strategy_suffix + ".csv" )
+  draw.to_latex( df_tmi, output_dir, "overview, tmi." + c.vat_strategy_suffix )
 
   df = df_tmi.ix[[
       "income: mean"
@@ -142,5 +142,5 @@ if True: # save
     , "vat/income, max: mean"
   ]]
 
-  df.to_csv(         output_dir + "overview." + common.vat_strategy_suffix + ".csv" )
-  draw.to_latex( df, output_dir, "overview." + common.vat_strategy_suffix )
+  df.to_csv(         output_dir + "overview." + c.vat_strategy_suffix + ".csv" )
+  draw.to_latex( df, output_dir, "overview." + c.vat_strategy_suffix )

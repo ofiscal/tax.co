@@ -16,13 +16,13 @@ if True: # more imports
   import python.util as util
   import python.draw.util as draw
   import python.build.output_io as oio
-  import python.build.common as common
+  import python.build.common as c
 
 
-vat_pics_dir = "output/vat/pics/recip-" + str(common.subsample) + "/" + common.vat_strategy_suffix + "/"
+vat_pics_dir = "output/vat/pics/recip-" + str(c.subsample) + "/" + c.vat_strategy_suffix + "/"
 if not os.path.exists(vat_pics_dir): os.makedirs(vat_pics_dir)
-households = oio.readStage( common.subsample, 'households.' + common.vat_strategy_suffix )
-households_decile_summary = oio.readStage( common.subsample, 'households_decile_summary.' + common.vat_strategy_suffix )
+households = oio.readStage( c.subsample, 'households.' + c.vat_strategy_suffix )
+households_decile_summary = oio.readStage( c.subsample, 'households_decile_summary.' + c.vat_strategy_suffix )
 
 
 if True: # single series
@@ -80,18 +80,18 @@ if True: # VAT expenditures by income decile
 
   draw.to_latex(
     util.tabulate_min_median_max_by_group( households, "income-decile", "income" ),
-    "output/vat/tables/recip-" + str(common.subsample),
+    "output/vat/tables/recip-" + str(c.subsample),
     "income-by-income-decile"
   )
 
   draw.to_latex(
     util.tabulate_min_median_max_by_group( households, "income-decile", "vat/value, min" ),
-    "output/vat/tables/recip-" + str(common.subsample),
+    "output/vat/tables/recip-" + str(c.subsample),
     "vat-over-spending,min,-by-income-decile")
 
   draw.to_latex(
     util.tabulate_min_median_max_by_group( households, "income-decile", "vat/value, max" ),
-    "output/vat/tables/recip-" + str(common.subsample),
+    "output/vat/tables/recip-" + str(c.subsample),
     "vat-over-spending,max,-by-income-decile")
 
 
