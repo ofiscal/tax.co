@@ -8,9 +8,10 @@ def accumulate_across_marginal_rates( sched, income ):
   return _accumulate_across_marginal_rates( sched, income, 0, 0 )
 
 def _accumulate_across_marginal_rates(
+    # PITFALL: in these comments, "already" means " in earlier calls to this function"
     sched # a list of (threshold, marginal rate) pairs, ordered on threshold
           # starting at threshold = 0
-    , income # a number, total income
+    , income # a number, total (taxable, e.g. labor) income
     , taxed # a number, income already taxed at earlier rates
     , acc ): # a number, tax already accumulated at earlier rates
   (thresh, rate) = sched[0]

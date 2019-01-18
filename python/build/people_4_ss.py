@@ -8,6 +8,7 @@ import python.build.common as c
 people = oio.readStage( c.subsample
                       , "people_3_purchases." + c.vat_strategy_suffix )
 
+# The first number in each pair is a number of pesos; the second, a marginal tax rate.
 ss_contrib_schedules = {
     "pension" : {
       "independiente" : [ (0  , 0.0)

@@ -10,10 +10,11 @@ import python.build.common as c
 import python.build.output_io as oio
 
 
-# PITFALL|WART: For many values of c.vat_strategy, this produces the same files,
+# PITFALL: For many values of c.vat_strategy, this produces the same files,
 # but saves them with different names. Moreover often they go unused downstream.
-# That's done so I can avoid using conditional logic in the Makefile.
-# They are small files, so the processing and memory cost is negligible. (It's about 1s of CPU time.)
+# That's done to avoid using conditional logic in the Makefile.
+# They are small files, so the processing and memory cost is negligible.
+# (It's about 1s of CPU time.)
 
 vat_cap_c = pd.read_csv( "data/vat/" + "vat-for-capitulo-c.csv"
                        , encoding = "latin1"
@@ -48,12 +49,11 @@ if True: # Replacements, if appropriate
 for (vat,frac) in [ ("vat"     , "vat frac")
                   , ("vat, min", "vat frac, min")
                   , ("vat, max", "vat frac, max") ]:
-  vat_cap_c[frac]  = vat_cap_c[vat]  / (1 + vat_cap_c[vat])
-  vat_coicop[frac] = vat_coicop[vat] / (1 + vat_coicop[vat])
-
-  # Multiplying vat-fraction by value (payment)
+  # Multiplying vat-fraction by value (payment, price)
     # results in the fraction  of the value attributable to the vat.
     # For instance, if the VAT were 20%, then (0.2 / 1.2) is that fraction.
+  vat_cap_c[frac]  = vat_cap_c[vat]  / (1 + vat_cap_c[vat])
+  vat_coicop[frac] = vat_coicop[vat] / (1 + vat_coicop[vat])
 
 if True: # save
   oio.saveStage( c.subsample

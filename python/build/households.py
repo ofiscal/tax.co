@@ -38,7 +38,7 @@ if True: # compute five columns for top five member incomes
 
 
 if True: # aggregate from household members to households
-  people["members"] = 1
+  people["members"] = 1 # will be summed
   h_first = people.groupby( ['household']
     ) ['region-1','region-2','estrato', 'weight' # these are constant within household
     ] . agg('first')

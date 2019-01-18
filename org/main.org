@@ -1,14 +1,21 @@
+* TODO ? maybe bug
+In households.py, why are the income-rank variables summed across household-members?
+(I think it's that the rank-n value will be 0 for every member except the one with rank n,
+so the sum is equivalent to running "first" after sorting on that variable, and saves the work of sorting.)
 * code review
 ** have read through
 common.py
 classes.py
 buildings.py
-people/main.py
-purchases/main.py
+people*.py
+purchases*.py
+vat_rates.py
 ** skipped: build/people/main.py / income variable creation
 resume at:
    # compute income totals, drop components
+** glossed over: ss_contribs.py
 * TODO safety (#safe)
+** TODO move test in ss_contribs.py to test suite
 ** TODO collect tests, use HUnit
 ** TODO ? replace column names with variables
 ** TODO the vat-strategy logic needs cleaning

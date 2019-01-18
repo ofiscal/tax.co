@@ -14,6 +14,8 @@ import python.build.common as c
 #  vat_strategy_suffix = "detail_"
 
 
+vat_strategies_that_use_coicop_prefixes = [c.approx, c.prop_2018_10_31]
+
 if True: # input files
   # This data set is too big unless I down-cast the numbers.
   purchases = oio.readStage( c.subsample
@@ -56,7 +58,7 @@ if True: # input files
                             } )
 
   # read the VAT bridges based on 2- or 3-digit COICOP prefixes
-  if c.vat_strategy in [c.approx, c.prop_2018_10_31]:
+  if c.vat_strategy in vat_strategies_that_use_coicop_prefixes:
     if c.vat_strategy == c.prop_2018_10_31:
       vat_coicop_2_digit = pd.read_csv( "python/build/vat_prop_2018_10_31/2-digit.csv" )
       vat_coicop_3_digit = pd.read_csv( "python/build/vat_prop_2018_10_31/3-digit.csv" )
@@ -91,7 +93,7 @@ if True: # left-pad every coicop value (including coicop prefixes) with 0s
     # because we can only extract prefixes from a string.
   vat_coicop        ["coicop"] = util.pad_column_as_int( 8, vat_coicop        ["coicop"] )
 
-  if c.vat_strategy in [c.approx, c.prop_2018_10_31]:
+  if c.vat_strategy in vat_strategies_that_use_coicop_prefixes:
     vat_coicop_2_digit["coicop-2-digit"] = (
       util.pad_column_as_int( 2, vat_coicop_2_digit["coicop-2-digit"] ) )
     vat_coicop_3_digit["coicop-3-digit"] = (
@@ -113,12 +115,15 @@ if True: # add these columns: ["vat", "vat, min", "vat, max"]
     purchases["vat frac, max"] = c.vat_flat_rate / (1 + c.vat_flat_rate)
   else:
     if True: # add vat to coicop-labeled purchases
-      if c.vat_strategy in [c.approx, c.prop_2018_10_31]:
+      if c.vat_strategy in vat_strategies_that_use_coicop_prefixes:
         purchases_2_digit = purchases.merge( vat_coicop_2_digit, how = "left"
                               , on="coicop-2-digit" )
         purchases_3_digit = purchases.merge( vat_coicop_3_digit, how = "left"
                               , on="coicop-3-digit" )
-        purchases_coicop = purchases_2_digit . combine_first( purchases_3_digit )
+        purchases_coicop = purchases_3_digit . combine_first( purchases_2_digit )
+          # PITFALL: combine_first prioritizes the first argument; it only uses the
+          # second where the first is missing. So far that does not matter, because the
+          # COICOP prefixes are non-overlapping -- but if they ever overlap, it will.
 
       if c.vat_strategy in [c.detail, c.detail_224, c.finance_ministry, c.prop_2018_11_29]:
         purchases_coicop = purchases.merge( vat_coicop, how = "left", on="coicop" )
@@ -154,4 +159,3 @@ if True: # handle freq, value, vat paid
   purchases["vat paid, max"] = purchases["value"] * purchases["vat frac, max"]
 
   oio.saveStage(c.subsample, purchases, "purchases_2_vat." + c.vat_strategy_suffix )
-

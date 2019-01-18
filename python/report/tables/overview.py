@@ -68,6 +68,7 @@ if True: # create a summary dataframe
   summaryDict = {}
   for (unit, df, vs, gvs) in [
       ( "households", households, householdVars, householdGroupVars ) ]:
+
     groupSummaries = []
     for gv in gvs:
       varSummaries = []
@@ -93,6 +94,8 @@ if True: # save
   df_tmi.to_csv( output_dir      + "overview, tmi." + c.vat_strategy_suffix + ".csv" )
   draw.to_latex( df_tmi, output_dir, "overview, tmi." + c.vat_strategy_suffix )
 
+
+if True: # do the same thing to a subset of that data
   df = df_tmi.ix[[
       "income: mean"
     , "income: min"
