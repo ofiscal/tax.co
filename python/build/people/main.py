@@ -62,12 +62,11 @@ if True: # income
 
   re_in_kind       = regex.compile( "^income.* : .* : .* in.kind$" )
 
-  # >>>
   if True: # compute income totals, drop components
     if True: # divide educational income by source (government or private)
       people["non-beca sources"] = people["non-beca sources"] . apply( str )
-        # if none of the values includes more than one source (true in subsamples),
-        # it is by default interpreted as a number.
+        # because if none of the values included more than one source (true
+        # in subsamples), it was by default interpreted as a number.
 
       people["non-beca sources, govt"] = people["non-beca sources"
                                          ] . apply( files.count_public )

@@ -36,7 +36,7 @@ class Correction:
       self.dct = dct
     def correct(self,df):
       df[self.col_name] = ( df[self.col_name]
-                            .replace( self.dct ) )
+                          . replace( self.dct ) )
       return df
 
   class Replace_Missing_Values:

@@ -1,5 +1,13 @@
 * code review
-resume at people/main.py/>>>
+** have read through
+common.py
+classes.py
+buildings.py
+people/main.py
+purchases/main.py
+** skipped: build/people/main.py / income variable creation
+resume at:
+   # compute income totals, drop components
 * TODO safety (#safe)
 ** TODO collect tests, use HUnit
 ** TODO ? replace column names with variables

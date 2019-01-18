@@ -21,8 +21,12 @@ files = [
     }
 ) ]
 
-buildings = common.collect_files( files, subsample=1 ) # see PITFALL above
+buildings = common.collect_files( files
+                                , subsample=1 ) # see PITFALL above
 buildings["estrato"] = buildings["estrato"].replace(' ', np.nan)
 buildings = buildings.drop( columns = ["file-origin"] )
 
-oio.saveStage(common.subsample, buildings, 'buildings') # see PITFALL above
+oio.saveStage(
+  common.subsample # see PITFALL above
+  , buildings
+  , 'buildings' )
