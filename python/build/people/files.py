@@ -193,8 +193,8 @@ files = [
         ]
 ) ]
 
-# count public sources of funding in the "non-beca sources" variable
 def count_public(list_as_str):
+  """Count public sources of funding in the "non-beca sources" variable."""
   stripped = list_as_str . strip()
   if stripped in [np.nan, ""]: return 0
   else:

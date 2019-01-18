@@ -24,7 +24,6 @@ if True: # make independiente a 0 or a 1
   people["independiente"] = people[ "independiente"
                          ] . apply( lambda x: 1 if x in [4,5] else 0 )
 
-# >>>
 if True: # remap some boolean integers
   for cn in ( [ "female" ] +                           # originally 1=male, 2=female
               [included for (quantity,included) in files.inclusion_pairs]
@@ -47,7 +46,7 @@ if True: # income
                          + list( files.beca_sources_private.values() )
                          + list( files.beca_sources_govt.values() ) )
     people[columns_to_convert] = people[columns_to_convert] . fillna(0)
-    for c in columns_to_convert: # 98 and 99 are error codes -- "don't know" and "won't say"
+    for c in columns_to_convert: # 98 and 99 are error codes -- "doesn't know" and "won't say"
       people[c] = people[c].apply(
         lambda x : 0 if ((x >= 98) & (x <= 99)) else x )
     del(re, income_columns, columns_to_convert)
@@ -63,6 +62,7 @@ if True: # income
 
   re_in_kind       = regex.compile( "^income.* : .* : .* in.kind$" )
 
+  # >>>
   if True: # compute income totals, drop components
     if True: # divide educational income by source (government or private)
       people["non-beca sources"] = people["non-beca sources"] . apply( str )
