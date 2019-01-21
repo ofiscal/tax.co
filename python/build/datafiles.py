@@ -13,7 +13,7 @@ def yearSubsampleSurveyFolder(year,recip):
     else: raise ValueError (r + " is not the reciprocal of any of the subsample sizes.")
   else: raise ValueError (str(year) + " is not one of the survey years.")
 
-files = {
+files = { # files in the ENPH (2017) and the ENIG (2007)
   2017: [ "Caracteristicas_generales_personas"
         , "Gastos_diarios_del_hogar_Urbano_-_Comidas_preparadas_fuera_del_hogar"
         , "Gastos_diarios_personales_Urbano"

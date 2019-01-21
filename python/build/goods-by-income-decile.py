@@ -1,3 +1,7 @@
+# Maria del Rosario Guerra asked us what would happen if we exempted the most
+# common purchases by income decile. This computes the most common purchases
+# per income decile.
+
 import pandas as pd
 import python.build.output_io as oio
 import python.util as util
