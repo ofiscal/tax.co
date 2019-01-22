@@ -47,6 +47,7 @@ if True: # aggregate from household members to households
     ) [  'value'
        ,'vat paid, min','vat paid, max'
        , "predial"
+       , "4 por mil"
        , "income, rank 1"
        , "income, rank 2"
        , "income, rank 3"

@@ -266,7 +266,7 @@ $(overview): python/report/tables/overview.py \
 	date
 	$(python_from_here) python/report/tables/overview.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
-# PITFALL: Always reads households from the detail vat strategy, because irrelevant.
+# PITFALL: Always reads households from the detail vat strategy, because vat irrelevant.
 goods_by_income_decile: $(goods_by_income_decile)
 $(goods_by_income_decile): python/build/goods-by-income-decile.py \
   python/build/common.py \

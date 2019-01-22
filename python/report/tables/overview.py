@@ -55,6 +55,7 @@ if True: # create a summary dataframe
          , "vat/value, min"
          , "vat/value, max"
          , "predial"
+         , "4 por mil"
          ]
 
   householdGroupVars = [ "one"
@@ -146,6 +147,8 @@ if True: # do the same thing to a subset of that data
     , "vat/income, max: mean"
     , "predial: median"
     , "predial: mean"
+    , "4 por mil: median"
+    , "4 por mil: mean"
   ]]
 
   df.to_csv(         output_dir + "overview." + c.vat_strategy_suffix + ".csv" )

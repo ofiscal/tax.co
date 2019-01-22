@@ -15,14 +15,11 @@ resume at:
 ** new taxes
 *** DONE predial: use the coicop
 code 12700601, from Gastos_menos_frecuentes_-_Articulos.csv
-**** plan
-like VAT, create a "predial" column in the purchases
-  as late as possible -- specifically after the VAT merges
 **** how I verified that the predial tax is not double-counted across a household's members
   in purchase_sums.csv, create a 0-or-1 "predial>0" column
   add that tot he variables in households.csv summed across people
   verify that the maximum "predial>0" variable at the household level is 1
-*** financial transactions
+*** DONE financial transactions
 0.4% on all monthly income above 11.6 million COP
 ** TODO Allow approx to vary like prop-2018-11-31
 ** goods that dodge the VAT

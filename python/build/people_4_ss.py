@@ -8,6 +8,8 @@ import python.build.common as c
 people = oio.readStage( c.subsample
                       , "people_3_purchases." + c.vat_strategy_suffix )
 
+people["4 por mil"] = 0.004 * (people["income, cash"] - 11.6e6)
+
 # The first number in each pair is a number of pesos; the second, a marginal tax rate.
 ss_contrib_schedules = {
     "pension" : {
