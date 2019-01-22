@@ -1,4 +1,7 @@
 * pending
+** TODO include cesantias in model?
+Not exactly a tax.
+** TODO isn't it a problem that some COICOP codes are taxes?
 ** P7500S3A1 : alimony. ignoring, to avoid double-counting.
 ** P1651S1 : fulfillment insurance : see enph.org
 ** do you pay VAT at a corabastos?
