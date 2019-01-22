@@ -46,6 +46,7 @@ if True: # aggregate from household members to households
       ['household']
     ) [  'value'
        ,'vat paid, min','vat paid, max'
+       , "predial"
        , "income, rank 1"
        , "income, rank 2"
        , "income, rank 3"

@@ -4,9 +4,14 @@ import python.build.common as c
 
 
 if c.vat_strategy == c.del_rosario:
-  purchases = oio.readStage( c.subsample, "purchases_2_1_del_rosario." + c.vat_strategy_suffix )
+  purchases = oio.readStage(
+    c.subsample, "purchases_2_1_del_rosario." + c.vat_strategy_suffix )
 else:
-  purchases = oio.readStage( c.subsample, "purchases_2_vat." + c.vat_strategy_suffix )
+  purchases = oio.readStage(
+    c.subsample, "purchases_2_vat."           + c.vat_strategy_suffix )
+
+if True: # extract the predial tax
+  purchases["predial"] = (purchases["coicop"] == 12700601) * purchases["value"]
 
 if True: # sum purchases within person
   purchases["transactions"] = 1 # useful later, when it is summed
@@ -15,6 +20,7 @@ if True: # sum purchases within person
              , "transactions"
              , "vat paid, max"
              , "vat paid, min"
+             , "predial"
            ] . agg("sum")
   purchase_sums = purchase_sums.reset_index( level = ["household", "household-member"] )
 
