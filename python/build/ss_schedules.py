@@ -59,7 +59,7 @@ ss_contrib_schedules = {
       , (17*minimum_wage, 0.7*labor_income, 0.014),
       (18*minimum_wage, 0.7*labor_income,0.016),
       (19*minimum_wage, 0.7*labor_income,0.018)
-      (20*minimum_wage, min(0.7*labor_income, 25*minimum_wage),0.02)]
+      (20*minimum_wage, min(0.7*labor_income, 25*minimum_wage),0.02) ]
       }
     }
 
@@ -82,5 +82,6 @@ employer contributions: {
     , (13*minimum_wage, min(0.7*labor_income, 25*minimum_wage), 0.04) ] }
   , "cesantías": {
     (0,0,0.0)
-    , (minimum_wage, labor_income, 2.12/12) # david will interpret
+    , (minimum_wage, labor_income, 2.12 * monthly labor income)
+      # this 2.12 ... is what's put in every *year*x
     , (13*minimum_wage, 0,0.0 ) } }

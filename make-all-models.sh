@@ -1,14 +1,9 @@
 #!/bin/bash
 
-# The implemented strategies for computing a coicop-vat bridge are these:
-# const
-# detail
-# detail_224
-# approx
-# finance_ministry
-# prop_2018_10_31
-# prop_2018_11_29
-# PITFALL: run "del_rosario" from a different make-*.sh script, not this one
+# The implemented strategies for computing a coicop-vat bridge are defined
+# in the "vat_strategy_names" variable in python.build.common.
+# PITFALL: while most of those strategies should be run from this script,
+# "del_rosario" runs from a different one.
 
 # PITFALL: Valid vat_flat_rate values decimals in [0,1] -- not, e.g., 19.
 
