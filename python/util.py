@@ -3,6 +3,16 @@ import numpy as np
 import math as math
 
 
+def tuple_by_threshold( income, schedule ):
+  """If a "schedule" is a list of tuples, where the first element of each tuple gives \
+  the threshold (least income) at which the regime described by the tuple applies, \
+  this returns that triple."""
+  if not( schedule[1:] ):     # [] = False, nonempty list = True
+    return schedule[0]
+  elif (income >= schedule[0][0]) & (income < schedule[1][0]):
+    return schedule[0]
+  else: return tuple_by_threshold( income, schedule[1:] )
+
 def pad_column_as_int( length, column ):
   format_str = '{0:0>' + str(length) + '}'
   return column . apply( str                 # in case it was numeric

@@ -1,11 +1,13 @@
+# see rentas_naturales.xlsx for a model
+
 import python.build.common as c
 
-# The data gives nominal salary, before those contributions.
 
 # How to interpret these triples:
     # First number: threshold at which the regime starts
     # Second: taxable base
     # Third: average tax rate
+    # The data gives nominal salary, before those contributions.
 
 ss_contrib_schedule_for_contractor = {
   "pension" :

@@ -1,4 +1,7 @@
-# see rentas_naturales.xlsx for a model
+# PITFALL: This code for computing total taxation from marginal rates is demonstrated
+# below for the case of social security contributions, under hypothetical
+# conditions in which those are dictated by marginal rates. In fact Colombian
+# social security contributions are dictated by average rates.
 
 import pandas as pd
 import unittest
@@ -70,25 +73,25 @@ class Test_accumulate_across_marginal_rates(unittest.TestCase):
     ss_contrib_schedules = {
       "pension" : {
         "independiente" : [ (0  , 0.0)
-                       , (1e6, 0.1)
-                       , (5e6, 0.2) ]
+                          , (1e6, 0.1)
+                          , (5e6, 0.2) ]
         , "asalariado" : [ (0  , 0.1)
-                       , (1e6, 0.2)
-                       , (5e6, 0.3) ]
+                         , (1e6, 0.2)
+                         , (5e6, 0.3) ]
       } , "salud" :  {
         "independiente" : [ (0  , 0.01)
-                       , (1e6, 0.01)
-                       , (5e6, 0.02) ]
+                          , (1e6, 0.01)
+                          , (5e6, 0.02) ]
         , "asalariado" : [ (0  , 0.01)
-                       , (1e6, 0.02)
-                       , (5e6, 0.03) ]
+                         , (1e6, 0.02)
+                         , (5e6, 0.03) ]
       } , "solidaridad" :  {
         "independiente" : [ (0  , 0.001)
-                       , (1e6, 0.001)
-                       , (5e6, 0.002) ]
+                          , (1e6, 0.001)
+                          , (5e6, 0.002) ]
         , "asalariado" : [ (0  , 0.001)
-                       , (1e6, 0.002)
-                       , (5e6, 0.003) ]
+                         , (1e6, 0.002)
+                         , (5e6, 0.003) ]
       }
     }
     self.assertTrue(

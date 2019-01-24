@@ -160,7 +160,6 @@ $(vat_rates): python/build/vat_rates.py \
 buildings: $(buildings)
 $(buildings): python/build/buildings.py \
   python/build/classes.py \
-  python/build/common.py \
   python/build/output_io.py \
   $(input_subsamples)
 	date
@@ -169,7 +168,6 @@ $(buildings): python/build/buildings.py \
 people_1: $(people_1)
 $(people_1): python/build/people/main.py \
   python/build/people/files.py \
-  python/build/common.py \
   python/build/output_io.py \
   $(input_subsamples)
 	date
@@ -191,8 +189,8 @@ $(people_3_purchases): python/build/people_3_purchases.py \
 
 people_4_ss: $(people_4_ss)
 $(people_4_ss): python/build/people_4_ss.py \
-  python/build/ss_contribs.py \
   python/build/output_io.py \
+  python/build/ss_schedules.py \
   $(people_3_purchases)
 	date
 	$(python_from_here) python/build/people_4_ss.py $(subsample) $(vat_strategy) $(vat_flat_rate)
@@ -208,7 +206,6 @@ $(households): python/build/households.py \
 purchases_1: $(purchases_1)
 $(purchases_1): python/build/purchases/main.py \
   python/build/classes.py \
-  python/build/common.py \
   python/build/output_io.py \
   python/build/purchases/nice_purchases.py \
   python/build/purchases/medios.py \
@@ -269,7 +266,6 @@ $(overview): python/report/tables/overview.py \
 # PITFALL: Always reads households from the detail vat strategy, because vat irrelevant.
 goods_by_income_decile: $(goods_by_income_decile)
 $(goods_by_income_decile): python/build/goods-by-income-decile.py \
-  python/build/common.py \
   output/vat/data/recip-$(ss)/households.detail_.csv \
   output/vat/data/recip-$(ss)/purchases_1_5_no_origin.csv
 	date
