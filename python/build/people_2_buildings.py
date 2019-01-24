@@ -5,11 +5,11 @@ import python.build.output_io as oio
 import python.build.common as c
 
 
-buildings = oio.readStage(c.subsample, '/buildings')
-people = oio.readStage(c.subsample, '/people_1')
+buildings = oio.readStage(c.subsample, 'buildings')
+people = oio.readStage(c.subsample, 'people_1')
 
 people = pd.merge( people, buildings
                  , how = "left"
                  , on="household" )
 
-oio.saveStage(c.subsample, people, '/people_2_buildings')
+oio.saveStage(c.subsample, people, 'people_2_buildings')

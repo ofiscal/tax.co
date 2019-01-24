@@ -5,6 +5,11 @@ the tax code
   https://www.dian.gov.co/atencionciudadano/formulariosinstructivos/Formularios/2018/Formulario_210_2018.pdf
 ** algorithm
 There are three kinds of SS contribs, and two kinds of employee (salaried and contractor). Both pay all three if they make enough money. Salaried employees' employers contribute some also. The rates change at certain thresholds. The tax rate for SS contrib's is tax / income for contractors, and tax / (employer burden = income + employer contrib's) for employees.
+** defs
+parafiscales = only for asalariados, and paid only by the employer
+  and only for employees who earn more than 10 minimum wages
+
+salario integral: where they just give you more money because you're making so much money. specifically 13 min wages. Here the employer expects you to pay your "prestaciones sociales", rather than the employer paying them. Prestaciones sociales = cesantias, "interest" (12% more) on cesantias, and prima de servicios = the biannual half-a-month's salary bonus.
 * labor & pension(receipt) income
 ** there's a table image (.png or something) in the spreadsheet that gives marginal tax rates as a function of income. But subtract exemptions and deductions first, in the order eblow.
 ** in the sheet "trabajo & pensiones"

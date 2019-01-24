@@ -4,6 +4,10 @@ import numpy as np
 import pandas as pd
 
 
+min_wage = 713585.5 # This is an average, because the ENPH spans two years.
+                    # Minimum Wage 2016: COP$ 689,454
+                    # Minimum Wage 2017: COP$ 737,717
+
 vat_strategy_names = [
     "const"
   , "detail"
