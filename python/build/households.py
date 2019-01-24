@@ -47,6 +47,14 @@ if True: # aggregate from household members to households
     ) [  'value'
        ,'vat paid, min','vat paid, max'
        , "predial"
+       , "tax, pension"
+       , "tax, pension, employer"
+       , "tax, salud"
+       , "tax, salud, employer"
+       , "tax, solidaridad"
+       , "tax, parafiscales"
+       , "tax, cajas de compensacion"
+       , "tax, cesantias"
        , "4 por mil"
        , "income, rank 1"
        , "income, rank 2"
@@ -58,9 +66,6 @@ if True: # aggregate from household members to households
        , "income, labor, rank 3"
        , "income, labor, rank 4"
        , "income, labor, rank 5"
-       , "tax, pension"
-       , "tax, salud"
-       , "tax, solidaridad"
        , 'transactions','members'
        , 'income'
        , 'income, pension'
