@@ -58,7 +58,9 @@ if True: # aggregate from household members to households
        , "income, labor, rank 3"
        , "income, labor, rank 4"
        , "income, labor, rank 5"
-       , "pension", "salud", "solidaridad"
+       , "tax, pension"
+       , "tax, salud"
+       , "tax, solidaridad"
        , 'transactions','members'
        , 'income'
        , 'income, pension'

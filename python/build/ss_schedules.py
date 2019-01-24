@@ -82,11 +82,11 @@ ss_contribs_by_employer = {
     [ ( 0,           lambda labor_income: 0                                  , 0.0 )
     , ( 10*min_wage, lambda labor_income: labor_income                       , 0.05 )
     , ( 13*min_wage, lambda labor_income: min(0.7*labor_income, 25*min_wage) , 0.05 ) ]
-  , "cajas de compensación" :
+  , "cajas de compensacion" :
     [ ( 0,           lambda labor_income: 0                                  , 0.0)
     , ( min_wage,    lambda labor_income: labor_income                       , 0.04)
     , ( 13*min_wage, lambda labor_income: min(0.7*labor_income, 25*min_wage) , 0.04) ]
-  , "cesantías":
+  , "cesantias":
     [ ( 0,           lambda labor_income: 0                                  , 0.0)
     , ( min_wage,    lambda labor_income: labor_income, 2.12 / 12 )
       # Every year a worker gets 1 prima de servicio worth 1 month's wages,
