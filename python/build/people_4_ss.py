@@ -22,14 +22,19 @@ def mk_pension( independiente, income ):
         income, ss.ss_contrib_schedule_for_employee["pension"] )
     return compute_base( income ) * rate
 
-def mk_pension_from_employer( independiente, income ):
+def mk_pension_employer( independiente, income ):
   if independiente: return 0
   else:
     (_, compute_base, rate) = util.tuple_by_threshold(
         income, ss.ss_contribs_by_employer["pension"] )
     return compute_base( income ) * rate
 
-# people = people.merge( << ss stuff >> )
+people["pension"] = people.apply(
+    lambda row: mk_pension(          row["independiente"], row["income, labor, cash"] )
+  , axis = "columns" )
+people["pension, employer"] = people.apply(
+    lambda row: mk_pension_employer( row["independiente"], row["income, labor, cash"] )
+  , axis = "columns" )
 
 oio.saveStage( c.subsample
              , people
