@@ -11,6 +11,7 @@ vat_rates.py
 resume at:
    # compute income totals, drop components
 ** glossed over: ss_contribs.py
+* TODO Why are the median columns empty in overview*.csv?
 * TODO features (#feature)
 ** new taxes
 *** DONE predial: use the coicop
