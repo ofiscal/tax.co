@@ -39,13 +39,13 @@ if True: # compute five columns for top five member incomes
 
 if True: # aggregate from household members to households
   people["members"] = 1 # will be summed
-  h_first = people.groupby( ['household']
-    ) ['region-1','region-2','estrato', 'weight' # these are constant within household
-    ] . agg('first')
+  h_first = people.groupby( ["household"]
+    ) ["region-1","region-2","estrato", "weight" # these are constant within household
+    ] . agg("first")
   h_sum = people.groupby(
-      ['household']
-    ) [  'value'
-       ,'vat paid, min','vat paid, max'
+      ["household"]
+    ) [  "value"
+       ,"vat paid, min","vat paid, max"
        , "predial"
        , "tax, pension"
        , "tax, pension, employer"
@@ -66,41 +66,41 @@ if True: # aggregate from household members to households
        , "income, labor, rank 3"
        , "income, labor, rank 4"
        , "income, labor, rank 5"
-       , 'transactions','members'
-       , 'income'
-       , 'income, pension'
-       , 'income, cesantia'
-       , 'income, capital, dividends'
-       , 'income, capital w/o dividends'
-       , 'income, infrequent'
-       , 'income, govt'
-       , 'income, private'
-       , 'income, labor'
-    ] . agg('sum')
+       , "transactions","members"
+       , "income"
+       , "income, pension"
+       , "income, cesantia"
+       , "income, capital, dividends"
+       , "income, capital w/o dividends"
+       , "income, infrequent"
+       , "income, govt"
+       , "income, private"
+       , "income, labor"
+    ] . agg("sum")
   h_min = people.groupby(
-      ['household']
-    ) ['age','female'
-    ] . agg('min'
-    ) . rename( columns = {'age' : 'age-min',
-                           'female' : 'has-male',
+      ["household"]
+    ) ["age","female"
+    ] . agg("min"
+    ) . rename( columns = {"age" : "age-min",
+                           "female" : "has-male",
     } )
   h_min["has-male"] = 1 - h_min["has-male"]
     # if female is ever 0, then its min = 0, i.e. there is a male
   h_max = people.groupby(
-      ['household']
-    ) ['age','literate','student','female','female head','education',
-       'race, indig', 'race, git|rom', 'race, raizal', 'race, palenq', 'race, whi|mest'
-    ] . agg('max'
-    ) . rename( columns = {'age' : 'age-max',
-                           'literate' : 'has-lit',
-                           'student' : 'has-student',
-                           'education' : 'edu-max',
-                           'female' : 'has-female',
-                           'race, indig' : 'has-indig',
-                           'race, git|rom' : 'has-git|rom',
-                           'race, raizal' : 'has-raizal',
-                           'race, palenq' : 'has-palenq',
-                           'race, whi|mest' : 'has-whi|mest'
+      ["household"]
+    ) ["age","literate","student","female","female head","education",
+       "race, indig", "race, git|rom", "race, raizal", "race, palenq", "race, whi|mest"
+    ] . agg("max"
+    ) . rename( columns = {"age" : "age-max",
+                           "literate" : "has-lit",
+                           "student" : "has-student",
+                           "education" : "edu-max",
+                           "female" : "has-female",
+                           "race, indig" : "has-indig",
+                           "race, git|rom" : "has-git|rom",
+                           "race, raizal" : "has-raizal",
+                           "race, palenq" : "has-palenq",
+                           "race, whi|mest" : "has-whi|mest"
     } )
   households = pd.concat( [h_first,h_sum,h_min,h_max]
                         , axis=1 )
@@ -130,6 +130,6 @@ if True: # aggregate from household members to households
 
 if True: # save
   oio.saveStage( c.subsample, households
-                 , 'households.' + c.vat_strategy_suffix )
+                 , "households." + c.vat_strategy_suffix )
   oio.saveStage( c.subsample, households_decile_summary
-                 , 'households_decile_summary.' + c.vat_strategy_suffix )
+                 , "households_decile_summary." + c.vat_strategy_suffix )
