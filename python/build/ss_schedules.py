@@ -84,7 +84,7 @@ ss_contribs_by_employer = {
     , ( 13*min_wage, lambda wage: min(0.7*wage, 25*min_wage) , 0.05 ) ]
   , "cajas de compensacion" :
     [ ( 0,           lambda wage: 0                          , 0.0)
-    , ( 10*min_wage, lambda wage: wage                       , 0.04)
+    , ( min_wage,    lambda wage: wage                       , 0.04)
     , ( 13*min_wage, lambda wage: min(0.7*wage, 25*min_wage) , 0.04) ]
   , "cesantias":
     [ ( 0,           lambda wage: 0                          , 0.0)
