@@ -16,7 +16,7 @@ import python.build.ss_functions as ss
 
 
 xs = pd.Series( np.arange( 0, 30e6, 0.5e6 ) )
-for (title, compute_y) in [ 
+for (title, compute) in [ 
       ("tax, pension"               , ss.mk_pension)
     , ("tax, pension, employer"     , ss.mk_pension_employer)
     , ("tax, salud"                 , ss.mk_salud)
@@ -28,7 +28,7 @@ for (title, compute_y) in [
   fig = plt.figure()
   ax = fig.add_subplot(111)
   ax.set_title(title + ", asalariados")
-  ys = xs.apply( lambda wage: ss.mk_pension( 0, wage ) )
+  ys = xs.apply( lambda wage: compute( 0, wage ) )
   ax = fig.add_subplot(111)
   ax.set_xlabel("wage")
   ax.set_ylabel("contribution")
@@ -37,7 +37,7 @@ for (title, compute_y) in [
   fig = plt.figure()  
   ax = fig.add_subplot(111)
   ax.set_title(title + ", independientes")
-  ys = xs.apply( lambda wage: ss.mk_pension( 1, wage ) )
+  ys = xs.apply( lambda wage: compute( 1, wage ) )
   ax = fig.add_subplot(111)
   ax.set_xlabel("wage")
   ax.set_ylabel("contribution")
