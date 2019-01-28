@@ -11,6 +11,11 @@ vat_rates.py
 resume at:
    # compute income totals, drop components
 ** glossed over: ss_contribs.py
+* TODO cesantias + primas: not taxes
+will be in denominator, and not numerator, of tax rate.
+formality matters
+  if an informal person makes 500K, they don't get primas + cesantias
+* TODO model how salesish- and both income taxes (corp and personal) changed in 2018
 * TODO rename cesantias -> cesantias + primas
 * TODO Why are the median columns empty in overview*.csv?
 * TODO features (#feature)
