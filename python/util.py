@@ -58,6 +58,7 @@ def tabulate_min_median_max_by_group(df, group_name, param_name):
     return pd.concat([counts,mins,maxs,medians],axis=1)
 
 def tabulate_stats_by_group(df, group_name, param_name, weight_name=None):
+  """ Alas, Pandas offers no easy way to compute weighted medians. """
   if weight_name != None:
     dff = df[ ~ df[param_name].isnull() ].copy()
     total_weight = dff[weight_name].sum()
@@ -100,24 +101,24 @@ def tabulate_stats_by_group(df, group_name, param_name, weight_name=None):
     dff = df[ ~ df[param_name].isnull() ].copy()
     dff["one"] = 1
     counts = dff.groupby( group_name )[["one"]]               \
-           .agg('sum').rename(columns = {"one":"count"})
+           .agg('sum').rename(columns = {"one":"count_unweighted"})
     nonzeros = dff[ dff[param_name] != 0
                  ].groupby( group_name )[["one"
-         ]].agg('sum').rename(columns = {"one":"nonzero"})
+         ]].agg('sum').rename(columns = {"one":"nonzero_unweighted"})
     mins = dff.groupby( group_name )[[param_name]]            \
            .agg('min').rename(columns = {param_name:"min"})
     medians = dff.groupby( group_name )[[param_name]]         \
-           .agg('median').rename(columns = {param_name:"median"})
+           .agg('median').rename(columns = {param_name:"median_unweighted"})
     medians_nonzero = dff[ dff[param_name] != 0
                          ].groupby( group_name )[[param_name
-         ]].agg('median').rename(columns = {param_name:"median_nonzero"})
+         ]].agg('median').rename(columns = {param_name:"median_nonzero_unweighted"})
     maxs = dff.groupby( group_name )[[param_name]]     \
            .agg('max').rename(columns = {param_name:"max"})
     means = dff.groupby( group_name )[[param_name]]     \
-           .agg('mean').rename(columns = {param_name:"mean"})
+           .agg('mean').rename(columns = {param_name:"mean_unweighted"})
     means_nonzero = dff[ dff[param_name] != 0
                          ].groupby( group_name )[[param_name
-         ]].agg('mean').rename(columns = {param_name:"mean_nonzero"})
+         ]].agg('mean').rename(columns = {param_name:"mean_nonzero_unweighted"})
     return pd.concat([counts,nonzeros,mins,maxs
                       ,medians,medians_nonzero,means,means_nonzero],axis=1)
 
