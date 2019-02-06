@@ -1,9 +1,9 @@
-* TODO cesantias + primas: not taxes
-will be in denominator, and not numerator, of tax rate.
+* TODO why are the median columns in overview.py's df_tmi called "unweighted"?
+* TODO add cesantias + primas to (which?) income measure
+should be in denominator, and not numerator, of tax rate.
 formality matters
   if an informal person makes 500K, they don't get primas + cesantias
 * TODO model how salesish- and both income taxes (corp and personal) changed in 2018
-* TODO Why are the median columns empty in overview*.csv?
 * TODO features (#feature)
 ** new taxes
 *** DONE predial: use the coicop
