@@ -1,5 +1,6 @@
 *~
 temp*
+.mypy_cache
 
 git-comment.txt
 docker/commands-laptop.txt

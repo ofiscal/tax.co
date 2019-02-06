@@ -20,7 +20,7 @@ for (goal,function) in [
     , ("tax, solidaridad"           , ss.mk_solidaridad)
     , ("tax, parafiscales"          , ss.mk_parafiscales_employer)
     , ("tax, cajas de compensacion" , ss.mk_cajas_de_compensacion_employer)
-    , ("tax, cesantias"             , ss.mk_cesantias_employer) ]:
+    , ("cesantias + primas"         , ss.mk_cesantias_employer) ]:
   people[goal] = people.apply(
       lambda row: function( row["independiente"], row["income, labor, cash"] )
     , axis = "columns" )

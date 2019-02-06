@@ -8,7 +8,7 @@ independientes = pd.DataFrame(
   , "independiente" : [1,1,1,1,1,1,1] } )
 
 for df in [asalariados, independientes]:
-  for (title, compute) in [ 
+  for (title, compute) in [
         ("tax, pension"               , ss.mk_pension)
       , ("tax, pension, employer"     , ss.mk_pension_employer)
       , ("tax, salud"                 , ss.mk_salud)
@@ -16,7 +16,7 @@ for df in [asalariados, independientes]:
       , ("tax, solidaridad"           , ss.mk_solidaridad)
       , ("tax, parafiscales"          , ss.mk_parafiscales_employer)
       , ("tax, cajas de compensacion" , ss.mk_cajas_de_compensacion_employer)
-      , ("tax, cesantias"             , ss.mk_cesantias_employer) ]:  
+      , ("cesantias + primas"         , ss.mk_cesantias_employer) ]:
     df[title] = df.apply( lambda row: compute( row["independiente"], row["wage"] )
                           , axis=1
     )

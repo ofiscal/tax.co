@@ -54,7 +54,7 @@ if True: # aggregate from household members to households
        , "tax, solidaridad"
        , "tax, parafiscales"
        , "tax, cajas de compensacion"
-       , "tax, cesantias"
+       , "cesantias + primas"
        , "4 por mil"
        , "income, rank 1"
        , "income, rank 2"

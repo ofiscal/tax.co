@@ -63,7 +63,7 @@ if True: # create a summary dataframe
     , "tax, solidaridad"
     , "tax, parafiscales"
     , "tax, cajas de compensacion"
-    , "tax, cesantias"
+    , "cesantias + primas"
     , "4 por mil"
     ]
 
@@ -170,8 +170,8 @@ if True: # do the same thing to a subset of that data
     , "tax, parafiscales: mean"
     , "tax, cajas de compensacion: median"
     , "tax, cajas de compensacion: mean"
-    , "tax, cesantias: median"
-    , "tax, cesantias: mean"
+    , "cesantias + primas: median"
+    , "cesantias + primas: mean"
     , "4 por mil: median"
     , "4 por mil: mean"
   ]]

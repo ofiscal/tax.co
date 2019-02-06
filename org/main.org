@@ -1,22 +1,8 @@
-* code review
-** have read through
-buildings.py
-classes.py
-common.py
-households.py
-people*.py
-purchases*.py
-vat_rates.py
-** skipped: build/people/main.py / income variable creation
-resume at:
-   # compute income totals, drop components
-** glossed over: ss_contribs.py
 * TODO cesantias + primas: not taxes
 will be in denominator, and not numerator, of tax rate.
 formality matters
   if an informal person makes 500K, they don't get primas + cesantias
 * TODO model how salesish- and both income taxes (corp and personal) changed in 2018
-* TODO rename cesantias -> cesantias + primas
 * TODO Why are the median columns empty in overview*.csv?
 * TODO features (#feature)
 ** new taxes
@@ -411,3 +397,16 @@ This is not a clearly defined goal.
 Gini = Num / Denom where
   Num = Sum over all i,j of |xi - xj|
   Denom = 2 * n * (Sum over all i of xi^2)
+* code review, 2019 01 15-ish
+** have read through
+buildings.py
+classes.py
+common.py
+households.py
+people*.py
+purchases*.py
+vat_rates.py
+** skipped: build/people/main.py / income variable creation
+resume at:
+   # compute income totals, drop components
+** glossed over: ss_contribs.py
