@@ -1,4 +1,5 @@
 * TODO descriptive stats on pensions
+These are in 'caracteristicas generales'.
 ** contributing to pension = P6920 == 1
 If that's 2, this is 0.
 If that's 3, this is NaN.
