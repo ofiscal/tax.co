@@ -1,6 +1,6 @@
 import pandas as pd
 import python.build.output_io as oio
-# import python.build.common as common
+# import python.build.common as c
 
 
 hs = pd.DataFrame( { "household" :     [10,11, 22,23]

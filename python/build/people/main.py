@@ -3,14 +3,15 @@ import numpy as np
 import pandas as pd
 import re as regex
 
-import python.build.common as common
+import python.common.misc as c
+import python.common.cl_args as cl
 import python.build.people.files as files
 import python.build.output_io as oio
 
 
-people = common.to_numbers(
-  common.collect_files( files.files
-                        , subsample = common.subsample )
+people = c.to_numbers(
+  c.collect_files( files.files
+                        , subsample = cl.subsample )
   , skip_columns = ["non-beca sources"] # PITFALL : a space-separated list of ints
 )
 
@@ -255,4 +256,4 @@ if True: # format some categorical variables
   #  categories = list( time_use_key.values() ),
   #  ordered = True)
 
-oio.saveStage(common.subsample, people, 'people_1')
+oio.saveStage(cl.subsample, people, 'people_1')

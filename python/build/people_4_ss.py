@@ -4,11 +4,12 @@ import pandas                    as pd
 import python.build.ss_functions as ss
 import python.build.output_io    as oio
 import python.util               as util
-import python.build.common       as c
+import python.common.misc as c
+import python.common.cl_args as cl
 
 
-people = oio.readStage( c.subsample
-                      , "people_3_purchases." + c.vat_strategy_suffix )
+people = oio.readStage( cl.subsample
+                      , "people_3_purchases." + cl.vat_strategy_suffix )
 
 people["4 por mil"] = 0.004 * (people["income, cash"] - 11.6e6)
 
@@ -25,7 +26,7 @@ for (goal,function) in [
       lambda row: function( row["independiente"], row["income, labor, cash"] )
     , axis = "columns" )
 
-oio.saveStage( c.subsample
+oio.saveStage( cl.subsample
              , people
-             , 'people_4_ss.' + c.vat_strategy_suffix
+             , 'people_4_ss.' + cl.vat_strategy_suffix
 )

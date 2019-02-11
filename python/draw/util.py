@@ -5,7 +5,8 @@ import os as os
 import matplotlib
 import matplotlib.pyplot as plt
 
-import python.build.common as common
+import python.common.misc as c
+import python.common.cl_args as c
 
 
 def cdf( series, logx = False, with_mean = True, with_pdf = False

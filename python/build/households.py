@@ -5,7 +5,8 @@ import numpy as np
 import python.util as util
 import python.build.output_io as oio
 from python.build.people.files import edu_key
-import python.build.common as c
+import python.common.misc as c
+import python.common.cl_args as c
 
 
 people = oio.readStage( c.subsample, "people_4_ss." + c.vat_strategy_suffix )

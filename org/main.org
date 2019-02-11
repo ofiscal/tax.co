@@ -254,6 +254,10 @@ we assume they don't
 ** "P6500 (asalariado income) > 0" should be perfecty corr'd with pension contrib's
 ** ??? pension contribs = formality.
 * TODO PITFALLs in code
+** TODO some import names clobber others
+When using the syntax "import _ as x", Python will only bind one library to the name "x". When collisions occur, the latest binding wins.
+
+When I split common.py into common.misc and common.cl_args, I imported both as "c". I only fixed the code where a collision occurred.
 ** some pics are drawn but not included in the report
 *** people/spending
 ** categorical variables require a "map" step only when created, not when read

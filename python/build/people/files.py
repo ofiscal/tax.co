@@ -1,7 +1,8 @@
 import numpy as np
 import pandas as pd
 import python.build.classes as classes
-import python.build.common as common
+import python.common.misc as c
+import python.common.cl_args as cl
 
 
 edu_key = { 1 : "Ninguno",
@@ -182,13 +183,13 @@ inclusion_pairs = [
 files = [
   classes.File( "people"
     , "Caracteristicas_generales_personas.csv"
-    , { **common.variables
+    , { **c.variables
       , **demog
       , **income
       , **beca_sources_govt
       , **beca_sources_private
       , "P6236" : "non-beca sources" # PITFALL : a space-separated list of ints
-    } , common.corrections
+    } , c.corrections
       + [classes.Correction.Drop_Column( "file-origin" )
         ]
 ) ]

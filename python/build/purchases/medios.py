@@ -5,19 +5,19 @@
 import pandas as pd
 from numpy import nan
 import python.build.classes as classes
-import python.build.common as common
+import python.common.misc as c
 
 
 files = [
   classes.File( "medios"
     , "Gastos_menos_frecuentes_-_Medio_de_pago.csv"
-    , { **common.variables
+    , { **c.variables
       , "P10305"   : "new-or-old-house"
       , "P10305S1" : "value"
     }, [ classes.Correction.Create_Constant_Column( "quantity", 1 )
        , classes.Correction.Create_Constant_Column( "how-got", 1 )
        , classes.Correction.Create_Constant_Column( "coicop", nan ) ]
-      + common.corrections
+      + c.corrections
         # TODO (#safe) : "where-got"
         # TODO (#safe) : "freq" = in the last year
 ) ]

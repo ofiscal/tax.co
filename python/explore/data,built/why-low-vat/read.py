@@ -6,10 +6,11 @@ import pandas as pd
 
 import python.util as util
 import python.build.legends as legends
-import python.build.common as common
+import python.common.misc as c
+import python.common.cl_args as c
 
 
-enph_subsample = "data/enph-2017/recip-" + str( common.subsample ) + "/"
+enph_subsample = "data/enph-2017/recip-" + str( c.subsample ) + "/"
 
 common_dict = {"DIRECTORIO" : "household", "ORDEN":"member", "FEX_C":"weight"}
 inv_common_dict = {v:k for k,v in common_dict.items()}

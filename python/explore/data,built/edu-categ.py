@@ -4,12 +4,13 @@ import pandas as pd
 import python.util as util
 import python.build.output_io as oio
 from python.build.people.files import edu_key
-import python.build.common as common
+import python.common.misc as c
+import python.common.cl_args as c
 
 
-people = oio.readStage( common.subsample, "people_3_purchases" )
-households = oio.readStage( common.subsample, "households" )
-purchase_sums = oio.readStage( common.subsample, "purchase_sums" )
+people = oio.readStage( c.subsample, "people_3_purchases" )
+households = oio.readStage( c.subsample, "households" )
+purchase_sums = oio.readStage( c.subsample, "purchase_sums" )
 
 if False: people["education"] = pd.Categorical( people["education"]
                 , categories = list( edu_key.values() )

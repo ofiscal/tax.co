@@ -5,7 +5,8 @@
 import pandas as pd
 import python.build.output_io as oio
 import python.util as util
-import python.build.common as common
+import python.common.misc as c
+import python.common.cl_args as c
 
 
 #class common:
@@ -19,12 +20,12 @@ vat_aware = True # If true, this causes the code below to only find the most pop
 ## ## ## ## ## Ingest data ## ## ## ## ##
 
 # PITFALL: Always the detail vat strategy, because irrelevant.
-hs = oio.readStage( common.subsample
+hs = oio.readStage( c.subsample
                   , "households." + "detail_"
                   , usecols = ["household", "income-decile"]
 )
 
-ps = oio.readStage( common.subsample, 'purchases_1_5_no_origin'
+ps = oio.readStage( c.subsample, 'purchases_1_5_no_origin'
                   , usecols = ["household", "value", "coicop"]
 )
 ps = ps[ ~ ps["coicop"] . isnull() ] # purchases coded by cap c, not coicop: discard
@@ -90,7 +91,7 @@ grouped = ps_all . groupby( ["income-decile","coicop"]
                  , ascending = [True,False]
 )
 
-grouped.to_csv( "output/vat/tables/recip-" + str(common.subsample) + "/goods_by_income_decile.csv" )
+grouped.to_csv( "output/vat/tables/recip-" + str(c.subsample) + "/goods_by_income_decile.csv" )
 
 
 ## ## ## ## ## The bottom 60% ## ## ## ## ##
@@ -113,7 +114,7 @@ ps_60_grouped = ps_60_grouped.merge(
   , how = "left"
   , on = "coicop" )
 
-grouped.to_csv( "output/vat/tables/recip-" + str(common.subsample) + "/goods,first_six_deciles.csv" )
+grouped.to_csv( "output/vat/tables/recip-" + str(c.subsample) + "/goods,first_six_deciles.csv" )
 
 
 # A test

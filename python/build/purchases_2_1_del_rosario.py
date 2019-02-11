@@ -9,7 +9,8 @@ import pandas as pd
 import numpy as np
 
 import python.build.output_io as oio
-import python.build.common as common
+import python.common.misc as c
+import python.common.cl_args as c
 
 
 #class common:
@@ -21,24 +22,24 @@ import python.build.common as common
 
 
 ## ## ## ## ## Read, prepare individual data sets ## ## ## ##
-if      common.del_rosario_exemption_source == 'auto':
-  exemptions = pd.read_csv( "output/vat/tables/recip-" + str(common.subsample)
+if      c.del_rosario_exemption_source == 'auto':
+  exemptions = pd.read_csv( "output/vat/tables/recip-" + str(c.subsample)
                             + "/goods,first_six_deciles.csv"
                           , usecols = ["coicop"]
                           , dtype = {"coicop" : "str"}
                           )
-elif common.del_rosario_exemption_source == 'manual':
+elif c.del_rosario_exemption_source == 'manual':
   exemptions = pd.read_csv( "data/vat/exemptions"
                             + "/goods,first_six_deciles.csv"
                           , usecols = ["coicop"]
                           , dtype = {"coicop" : "str"}
                           )
 
-exemptions = exemptions.head( common.del_rosario_exemption_count )
+exemptions = exemptions.head( c.del_rosario_exemption_count )
 exemptions["exempt"] = 1
 
 
-ps = pd.read_csv( "output/vat/data/recip-" + str(common.subsample) + "/purchases_2_vat.detail_.csv"
+ps = pd.read_csv( "output/vat/data/recip-" + str(c.subsample) + "/purchases_2_vat.detail_.csv"
                   , dtype = {"coicop" : "str"}
 )
 
@@ -53,9 +54,9 @@ ps = ps.drop( columns = "exempt" )
 
 
 ## ## ## ## ## Save ## ## ## ##
-oio.saveStage( common.subsample
+oio.saveStage( c.subsample
              , ps
-             , "purchases_2_1_del_rosario." + common.vat_strategy_suffix )
+             , "purchases_2_1_del_rosario." + c.vat_strategy_suffix )
 
 
 ## ## ## ## ## A way to test ## ## ## ##

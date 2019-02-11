@@ -2,7 +2,8 @@ import python.build.main as data
 
 import python.util as util
 import python.build.classes as classes
-import python.build.common as common
+import python.common.misc as c
+import python.common.cl_args as c
 
 import pandas as pd
 import numpy as np
@@ -36,7 +37,7 @@ util.describeWithMissing(
 )
 
 raw = pd.read_csv( "data/enph-2017/recip-100/Caracteristicas_generales_personas.csv" )
-raw = common.to_numbers(
+raw = c.to_numbers(
   raw.rename( columns = {
     "P6040"      : "age"
   , "P1668S1A4"  : "familias en accion"
@@ -107,7 +108,7 @@ dfd = classes.Correction.Drop_Row_If_Column_Equals(
   "NC2_CC_P3_S2", 2 ).correct( df )  
 dfd["NC2_CC_P3_S2"].unique()
 
-x = common.collect_files(
+x = c.collect_files(
     capitulo_c.files
   )
 

@@ -143,7 +143,8 @@ show_params:
 input_subsamples: $(input_subsamples)
 $(input_subsamples): python/subsample.py $(enph_orig)
 	date
-	$(python_from_here) python/build/common.py $(subsample) $(vat_strategy) $(vat_flat_rate) # Validating command-line arguments.
+	# Next: Validating command-line arguments.
+	$(python_from_here) python/common/cl_args.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 	$(python_from_here) python/subsample.py
 
 vat_rates: $(vat_rates)

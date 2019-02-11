@@ -2,7 +2,8 @@ import sys
 import numpy as np
 
 from python.build.classes import Correction
-import python.build.common as common
+import python.common.misc as com
+import python.common.cl_args as cl
 import python.build.output_io as oio
 
 # input files
@@ -12,14 +13,14 @@ import python.build.purchases.articulos as articulos
 import python.build.purchases.capitulo_c as capitulo_c
 
 
-purchases = common.collect_files(
+purchases = com.collect_files(
   articulos.files
   # + medios.files
     # The tax only applies if the purchase is more than 880 million pesos,
     # and the data only records purchases of a second home.
   + capitulo_c.files
   + nice_purchases.files
-  , subsample = common.subsample
+  , subsample = cl.subsample
 )
 
 for c in [
@@ -58,7 +59,7 @@ for c in [
                                     , "nan" : np.nan } )
 ]: purchases = c.correct( purchases )
 
-purchases = common.to_numbers(purchases)
+purchases = com.to_numbers(purchases)
 
 purchases = purchases[ # must have a value and a coicop-like variable
   # Why: For every file but "articulos", observations with no coicop have
@@ -80,8 +81,8 @@ for c in [ # how-got 1 -> is-purchase 1, nan -> nan, otherwise -> 0
   , Correction.Rename_Column( "how-got", "is-purchase" )
 ]: purchases = c.correct( purchases )
 
-oio.saveStage(common.subsample, purchases, 'purchases_1')
+oio.saveStage(cl.subsample, purchases, 'purchases_1')
 
 purchases = purchases.drop( columns = ["file-origin"] )
 
-oio.saveStage(common.subsample, purchases, 'purchases_1_5_no_origin')
+oio.saveStage(cl.subsample, purchases, 'purchases_1_5_no_origin')

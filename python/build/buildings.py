@@ -2,7 +2,8 @@ import sys
 import numpy as np
 
 import python.build.classes as classes
-import python.build.common as common
+import python.common.misc as c
+import python.common.cl_args as cl
 import python.build.output_io as oio
 
 
@@ -21,12 +22,12 @@ files = [
     }
 ) ]
 
-buildings = common.collect_files( files
+buildings = c.collect_files( files
                                 , subsample=1 ) # see PITFALL above
 buildings["estrato"] = buildings["estrato"].replace(' ', np.nan)
 buildings = buildings.drop( columns = ["file-origin"] )
 
 oio.saveStage(
-  common.subsample # see PITFALL above
+  cl.subsample # see PITFALL above
   , buildings
   , 'buildings' )

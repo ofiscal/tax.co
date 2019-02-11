@@ -1,6 +1,6 @@
 # see rentas_naturales.xlsx for a model
 
-from python.build.common import min_wage
+from python.common.misc import min_wage
 
 # How to interpret these triples:
     # First number: threshold at which the regime starts

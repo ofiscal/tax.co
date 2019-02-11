@@ -1,6 +1,7 @@
 import sys
 import python.build.output_io as oio
-import python.build.common as c
+import python.common.misc as c
+import python.common.cl_args as c
 
 
 if c.vat_strategy == c.del_rosario:
