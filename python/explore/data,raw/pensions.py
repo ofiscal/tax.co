@@ -2,6 +2,7 @@ import sys
 import numpy as np
 import pandas as pd
 import re as regex
+import python.common.misc as c
 
 
 ppl = pd.read_csv(
@@ -15,6 +16,11 @@ ppl = pd.read_csv(
                         , "P6920S1"    : "pension, contribution amount"
                         , "P6940"      : "pension, contributors, pre"
                         , "P6990"      : "seguro de riesgos laborales, pre" } )
+
+for corr in c.corrections:
+  ppl = corr.correct( ppl )
+
+ppl = c.to_numbers(ppl)
 
 # This cannot be done until 'Object's are converted to numbers.
 ppl["pension, contributing"] = ppl["pension, contributing, pre"] . apply(
