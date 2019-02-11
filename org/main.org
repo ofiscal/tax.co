@@ -1,3 +1,19 @@
+* TODO descriptive stats on pensions
+** contributing to pension = P6920 == 1
+If that's 2, this is 0.
+If that's 3, this is NaN.
+** pensioned = P6920 == 3
+If that's 1 or 2, this is 0.
+** pension contribution amount = P6920S1
+If pensions == 1, this is NaN.
+** pension contribution participants
+splitting pension contribs with employer = P6940 == 1
+worker paying the whole contrib = P6940 == 2
+employer paying the whole contrib = P6940 == 3
+** P6990 = Aseguradora de Riesgos Laborales
+1 -> 1 = has
+2 -> 0 = does not have
+3 -> NaN = does not know
 * TODO why are the median columns in overview.py's df_tmi called "unweighted"?
 * TODO add cesantias + primas to (which?) income measure
 should be in denominator, and not numerator, of tax rate.
