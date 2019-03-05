@@ -11,7 +11,8 @@ edu_key = { 1 : "Ninguno",
     4 : "Basica\n Secundaria",
     5 : "Media",
     6 : "Superior o\n Universitaria",
-    9 : "No sabe,\n no informa" }
+    9 : "No sabe,\n no informa"
+}
 
 race_key = { 1 : "Indigena"
     , 2 : "Gitano-Roma"
@@ -19,7 +20,7 @@ race_key = { 1 : "Indigena"
     , 4 : "Palenquero" # "de San Basilio o descendiente"
     , 5 : "Negro" # "Negro(a), mulato(a), afrocolombiano(a) o afrodescendiente"
     , 6 : "Ninguno" # "Ninguno de los anteriores (mestizo, blanco, etc.)"
-    }
+}
 
 demog = {
     "P6050"      : "relationship"
@@ -33,6 +34,12 @@ demog = {
   , "P6210"      : "education" # highest level completed
   , "P6430"      : "independiente" # 1-3 = asalariado; 4-5 = independiente
                                 # other = no income
+}
+
+work = { "P6920"      : "pension, contributing, pre"
+       , "P6920S1"    : "pension, contribution amount"
+       , "P6940"      : "pension, contributors, pre"
+       , "P6990"      : "seguro de riesgos laborales, pre"
 }
 
 income_govt = {
@@ -185,6 +192,7 @@ files = [
     , "Caracteristicas_generales_personas.csv"
     , { **c.variables
       , **demog
+      , **work
       , **income
       , **beca_sources_govt
       , **beca_sources_private

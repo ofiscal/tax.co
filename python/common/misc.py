@@ -1,12 +1,14 @@
 from python.build.classes import Correction
 import numpy as np
 import pandas as pd
-import python.common.cl_args as cl
+import python.common.cl_fake as cl
 
 
 min_wage = 713585.5 # This is an average, because the ENPH spans two years.
                     # Minimum Wage 2016: COP$ 689,454
                     # Minimum Wage 2017: COP$ 737,717
+
+uvt = (29753 + 31859) / 2 # This is the average of the UVTs from 2016 and 2017
 
 variables = { "DIRECTORIO" : "household"
             , "ORDEN" : "household-member"

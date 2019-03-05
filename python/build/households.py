@@ -91,6 +91,12 @@ if True: # aggregate from household members to households
       ["household"]
     ) ["age","literate","student","female","female head","education",
        "race, indig", "race, git|rom", "race, raizal", "race, palenq", "race, whi|mest"
+       , "pension, receiving"
+       , "pension, contributing (if not pensioned)"
+       , "pension, contributor(s) (if not pensioned) = split"
+       , "pension, contributor(s) (if not pensioned) = self"
+       , "pension, contributor(s) (if not pensioned) = employer"
+       , "seguro de riesgos laborales (if reported)"
     ] . agg("max"
     ) . rename( columns = {"age" : "age-max",
                            "literate" : "has-lit",

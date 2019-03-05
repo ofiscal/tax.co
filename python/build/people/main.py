@@ -36,6 +36,40 @@ if True: # remap some boolean integers
             , "literate"        # originally 1=yes, 2=no
   ]: people[cn] = 2 - people[cn]
 
+if True: # work
+  people["pension, contributing (if not pensioned)"] = (
+    people["pension, contributing, pre"]
+    . apply( lambda x: 1 if x==1 else ( 0 if x==2 else np.nan ) ) )
+
+  people["pension, receiving"] = (
+      ( people["pension, contributing, pre"] == 3 )
+    | ( people["income, month : pension : age | illness"] > 0 )
+  ) . astype('int')
+
+  people["pension, contributor(s) (if not pensioned) = split"] = (
+    people["pension, contributors, pre"]
+    . apply( lambda x: 1 if x == 1 else
+             ( 0 if (x > 0) & (x < 4) else np.nan ) ) )
+
+  people["pension, contributor(s) (if not pensioned) = self"] = (
+    people["pension, contributors, pre"]
+    . apply( lambda x: 1 if x == 2 else
+             ( 0 if (x > 0) & (x < 4) else np.nan ) ) )
+
+  people["pension, contributor(s) (if not pensioned) = employer"] = (
+    people["pension, contributors, pre"]
+    . apply( lambda x: 1 if x == 3 else
+             ( 0 if (x > 0) & (x < 4) else np.nan ) ) )
+
+  people["seguro de riesgos laborales (if reported)"] = (
+    people["seguro de riesgos laborales, pre"]
+    . apply( lambda x: 1 if x==1 else
+             ( 0 if x==2 else np.nan ) ) )
+
+  people.drop( columns = [ "pension, contributing, pre"
+                         , "pension, contributors, pre"
+                         , "seguro de riesgos laborales, pre" ] )
+
 if True: # income
   if True: # fill NaN values (one column's with 1, the rest's with 0)
     people[   "income, month : labor : independent, months" ] = (

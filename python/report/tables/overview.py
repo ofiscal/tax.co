@@ -28,7 +28,13 @@ if True: # Get, prepare the data
 
 if True: # create a summary dataframe
   householdVars = [
-      "income"
+      "pension, receiving"
+    , "pension, contributing (if not pensioned)"
+    , "pension, contributor(s) (if not pensioned) = split"
+    , "pension, contributor(s) (if not pensioned) = self"
+    , "pension, contributor(s) (if not pensioned) = employer"
+    , "seguro de riesgos laborales (if reported)"
+    , "income"
     , "income, labor + cesantia"
     , "income, capital w/o dividends"
     , "income, dividends"
@@ -109,7 +115,25 @@ if True: # save
 
 if True: # do the same thing to a subset of that data
   df = df_tmi.loc[[
-      "income: mean"
+      "pension, receiving: mean"
+    , "pension, receiving: min"
+    , "pension, receiving: max"
+    , "pension, contributing (if not pensioned): mean"
+    , "pension, contributing (if not pensioned): min"
+    , "pension, contributing (if not pensioned): max"
+    , "pension, contributor(s) (if not pensioned) = split: mean"
+    , "pension, contributor(s) (if not pensioned) = split: min"
+    , "pension, contributor(s) (if not pensioned) = split: max"
+    , "pension, contributor(s) (if not pensioned) = self: mean"
+    , "pension, contributor(s) (if not pensioned) = self: min"
+    , "pension, contributor(s) (if not pensioned) = self: max"
+    , "pension, contributor(s) (if not pensioned) = employer: mean"
+    , "pension, contributor(s) (if not pensioned) = employer: min"
+    , "pension, contributor(s) (if not pensioned) = employer: max"
+    , "seguro de riesgos laborales (if reported): mean"
+    , "seguro de riesgos laborales (if reported): min"
+    , "seguro de riesgos laborales (if reported): max"
+    , "income: mean"
     , "income: min"
     , "income: max"
     , "income, labor + cesantia: mean"
