@@ -32,6 +32,7 @@ demog = {
   , "P6160"      : "literate"
   , "P6170"      : "student"
   , "P6210"      : "education" # highest level completed
+  , "P6310"      : "why did not seek work"
   , "P6430"      : "independiente" # 1-3 = asalariado; 4-5 = independiente
                                 # other = no income
 }

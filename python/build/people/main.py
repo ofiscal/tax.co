@@ -81,7 +81,8 @@ if True: # income
                          + list( files.beca_sources_private.values() )
                          + list( files.beca_sources_govt.values() ) )
     people[columns_to_convert] = people[columns_to_convert] . fillna(0)
-    for c in columns_to_convert: # 98 and 99 are error codes -- "doesn't know" and "won't say"
+    for c in columns_to_convert: # 98 and 99 are error codes for
+                                 # "doesn't know" and "won't say"
       people[c] = people[c].apply(
         lambda x : 0 if ((x >= 98) & (x <= 99)) else x )
     del(re, income_columns, columns_to_convert)
@@ -91,9 +92,10 @@ if True: # income
     for c in [c for c in people.columns if re_year_income.match( c )]:
       people[c] = people[c] / 12
 
-  # PITFALL : Yearly income variables have now been divided by 12, but their names are unchanged.
-    # (Once all the totals have been computed, those components will have all been dropped,
-    # but until then it could be confusing.)
+  # PITFALL : Yearly income variables have now been divided by 12,
+  # but their names are unchanged.
+    # (Once all the totals have been computed, those components will have
+    #  all been dropped, but until then it could be confusing.)
 
   re_in_kind       = regex.compile( "^income.* : .* : .* in.kind$" )
 
@@ -117,13 +119,17 @@ if True: # income
       people["beca sources, total"] = ( people["beca sources, govt"]
                                       + people["beca sources, private"] )
 
-      people["income, month : govt : beca"]        = ( people["income, year : edu : beca"]
+      people["income, month : govt : beca"]        = (
+        people["income, year : edu : beca"]
         * people["beca sources, govt"]    / people["beca sources, total"] )
-      people["income, month : private : beca"]     = ( people["income, year : edu : beca"]
+      people["income, month : private : beca"]     = (
+        people["income, year : edu : beca"]
         * people["beca sources, private"] / people["beca sources, total"] )
-      people["income, month : govt : non-beca"]    = ( people["income, year : edu : non-beca"]
+      people["income, month : govt : non-beca"]    = (
+        people["income, year : edu : non-beca"]
         * people["non-beca sources, govt"]    / people["non-beca sources, total"] )
-      people["income, month : private : non-beca"] = ( people["income, year : edu : non-beca"]
+      people["income, month : private : non-beca"] = (
+        people["income, year : edu : non-beca"]
         * people["non-beca sources, private"] / people["non-beca sources, total"] )
 
       people["income, month : govt : beca, in-kind"]        = (
@@ -144,9 +150,9 @@ if True: # income
       new_income_variables.fillna(0)
 
       del(new_income_variables)
-      people = people.drop( columns =
-                            people.filter( regex = "(^beca)|(edu : .*beca)|(beca source)"
-                            ).columns )
+      people = people.drop(
+        columns = people.filter( regex = "(^beca)|(edu : .*beca)|(beca source)"
+        ).columns )
 
     if True: # govt income (cash + in-kind)
       re_govt  = regex.compile( "^income.* : govt" )
@@ -161,18 +167,22 @@ if True: # income
       people = people.drop( columns = cols_govt_in_kind + cols_govt_cash )
 
     if True: # capital income (cash only)
-      re_capital = regex.compile( "^income.* : (investment|repayment|rental|sale) : .*" )
+      re_capital = regex.compile(
+        "^income.* : (investment|repayment|rental|sale) : .*" )
       cols_capital = [ c for c in people.columns
                        if re_capital.match(c) ]
       people["total income, monthly : capital"] = (
         people[ cols_capital ].sum( axis=1 ) )
 
-      # drop most components, but keep dividend income, and create capital minus dividends
-      people = people.drop( columns = list( set ( cols_capital )
-                                          - set ( ["income, year : investment : dividends"] )
+      # drop most components, but keep dividend income,
+      # and create capital minus dividends
+      people = people.drop(
+        columns = list( set ( cols_capital )
+                        - set ( ["income, year : investment : dividends"] )
       ) )
-      people["income, capital w/o dividends"] = people["total income, monthly : capital"
-                                                ] - people["income, year : investment : dividends"]
+      people["income, capital w/o dividends"] = (
+        people["total income, monthly : capital"
+        ] - people["income, year : investment : dividends"] )
 
     if True: # private income (cash + in-kind)
       re_private  = regex.compile( "^income.* : private : " )
@@ -204,7 +214,8 @@ if True: # income
       if True: # after this, we can simply sum all monthly labor income variables
         for (quantity, forgot) in files.inclusion_pairs:
           people[ quantity ] = people[ quantity ] * people[ forgot ]
-        people = people.drop( columns = [ forgot for (_, forgot) in files.inclusion_pairs ] )
+        people = people.drop(
+          columns = [ forgot for (_, forgot) in files.inclusion_pairs ] )
 
       if True: # compute within-category sums
         re_labor  = regex.compile( "^income.* : labor : " )
@@ -239,10 +250,12 @@ if True: # income
         } )
 
       if True: # compute across-category sums
-        people["income, cash"]    = people[ list( income_short_name_dict_cash   .values() )
-                                    ].sum(axis=1)
-        people["income, in-kind"] = people[ list( income_short_name_dict_in_kind.values() )
-                                    ].sum(axis=1)
+        people["income, cash"]    = (
+          people[ list( income_short_name_dict_cash   .values() )
+          ].sum(axis=1) )
+        people["income, in-kind"] = (
+          people[ list( income_short_name_dict_in_kind.values() )
+          ].sum(axis=1) )
 
         for c in ["income", "income, govt", "income, private", "income, labor"]:
             people[c] = people[c + ", cash"] + people[c + ", in-kind"]
@@ -255,9 +268,11 @@ if True: # compute each household member's income rank
 
   people = people . groupby('household'
                 ) . apply( sort_household_by_labor_income_then_make_index
-                ) . drop( columns = "household" # one level of the index holds the same information
+                ) . drop( columns = "household"
+                          # one level of the index holds the same information
                 ) . reset_index(
-                ) . drop( columns = "level_1" ) # the other part of the index is unneeded
+                ) . drop( columns = "level_1" )
+                          # the other part of the index is unneeded
 
 if True: # format some categorical variables
   people["race"] = pd.Categorical(
@@ -277,6 +292,9 @@ if True: # format some categorical variables
       ) . map( files.edu_key )
     , categories = list( files.edu_key.values() ),
     ordered = True)
+
+  people["disabled"] = people["why did not seek work"] == 11
+  people = people.drop( columns = "why did not seek work" )
 
   #time_use_key = { 1 : "work" # Trabajando
   #           , 2 : "search" # Buscando trabajo
