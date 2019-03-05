@@ -7,7 +7,7 @@ Aunque ... desea trabajar, ¿por qué motivo principal no hizo diligencias para 
 ¿El mes pasado, recibió pagos por: d. Pensiones o jubilaciones por vejez, invalidez o sustitución pensional
 **** P7513S12: no good
 Durante los últimos 12 meses recibió ingresos ocasionales por: l. Devoluciones o reintegros por seguros educativos, incapacidad o invalidez
-*** relationship data
+*** DONE relationship data
 5. ¿Cuál es el parentesco de ... con el ó la jefe del hogar?
 1 » a. Jefe (a) del hogar
 2 » b. Pareja, esposo(a), cónyuge, compañero(a)

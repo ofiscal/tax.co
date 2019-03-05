@@ -15,11 +15,17 @@ people = c.to_numbers(
   , skip_columns = ["non-beca sources"] # PITFALL : a space-separated list of ints
 )
 
-if True: # drop non-members of household
-  people = people.drop(
+if True: # relationship to head of household
+  people = people.drop( # drop non-members of household
     people[
       people["relationship"].isin( [6,7,8] )
     ].index )
+  people[ "child" ] = (
+    ( people["relationship"] == 3 )     # hijo, hijastro
+    | ( people["relationship"] == 4 ) ) # nieto
+  people[ "non-child family" ] = (
+    ( people["relationship"] == 2 )     # Pareja, esposo(a), cónyuge, compañero(a)
+    | ( people["relationship"] == 5 ) ) # Otro pariente
 
 if True: # make independiente a 0 or a 1
   people["independiente"] = people[ "independiente"
