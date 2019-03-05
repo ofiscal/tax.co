@@ -1,10 +1,12 @@
 * TODO personal income tax
 *** TODO next: clean, summarize disability
-*** in persons, create a "(could be claimed as a) dependent" variable
-age < 18 => dependent
-age < 23 && student => dependent
-child & disabled => dependent
-family member or partner && income < 260 UVT => dependent
+*** disability
+**** P6310: will have to do
+Aunque ... desea trabajar, ¿por qué motivo principal no hizo diligencias para buscar un trabajo oinstalar un negocio en las ÚLTIMAS 4 SEMANAS?
+**** P7500S2: no good
+¿El mes pasado, recibió pagos por: d. Pensiones o jubilaciones por vejez, invalidez o sustitución pensional
+**** P7513S12: no good
+Durante los últimos 12 meses recibió ingresos ocasionales por: l. Devoluciones o reintegros por seguros educativos, incapacidad o invalidez
 *** relationship data
 5. ¿Cuál es el parentesco de ... con el ó la jefe del hogar?
 1 » a. Jefe (a) del hogar
@@ -16,17 +18,12 @@ family member or partner && income < 260 UVT => dependent
 7 » g. Pensionista
 8 » h. Trabajador
 9 » i. Otro no pariente
+*** in persons, create a "(could be claimed as a) dependent" variable
+age < 18 => dependent
+age < 23 && student => dependent
+family member or partner && income < 260 UVT => dependent
+child & disabled => dependent
 *** data needed for exemptions: disability, student, dependent
-*** disability: dodged
-**** how we dodged the need to have this
-It's basically a redundant category. Any partner or family member who makes less than 260 UVT can be claimed as a dependent.
-**** the variables
-***** P6310: kind of, not really
- Aunque ... desea trabajar, ¿por qué motivo principal no hizo diligencias para buscar un trabajo oinstalar un negocio en las ÚLTIMAS 4 SEMANAS?
-***** P7500S2: kind of, not really
- ¿El mes pasado, recibió pagos por: d. Pensiones o jubilaciones por vejez, invalidez o sustitución pensional
-***** P7513S12: kind of, not really
- Durante los últimos 12 meses recibió ingresos ocasionales por: l. Devoluciones o reintegros por seguros educativos, incapacidad o invalidez
 *** refs
 UVT = unidad de valor tributario
 schedules are on pp 40-41 of guide
