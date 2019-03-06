@@ -1,29 +1,28 @@
 * TODO personal income tax
-*** TODO next: clean, summarize disability
-*** DONE disabled
-**** the variable used: P6310
-Aunque ... desea trabajar, ¿por qué motivo principal no hizo diligencias para buscar un trabajo oinstalar un negocio en las ÚLTIMAS 4 SEMANAS?
-**** P7500S2: no good
-¿El mes pasado, recibió pagos por: d. Pensiones o jubilaciones por vejez, invalidez o sustitución pensional
-**** P7513S12: no good
-Durante los últimos 12 meses recibió ingresos ocasionales por: l. Devoluciones o reintegros por seguros educativos, incapacidad o invalidez
-*** DONE relationship data
-5. ¿Cuál es el parentesco de ... con el ó la jefe del hogar?
-1 » a. Jefe (a) del hogar
-2 » b. Pareja, esposo(a), cónyuge, compañero(a)
-3 » c. Hijo(a), hijastro(a)
-4 » d. Nieto(a)
-5 » e. Otro pariente
-6 » f. Empleado(a) del servicio doméstico y sus parientes
-7 » g. Pensionista
-8 » h. Trabajador
-9 » i. Otro no pariente
+*** data needed for exemptions: "age","disabled","student","relative, child" and "relative, non-child"
+**** DONE disabled
+***** the variable used: P6310
+ Aunque ... desea trabajar, ¿por qué motivo principal no hizo diligencias para buscar un trabajo oinstalar un negocio en las ÚLTIMAS 4 SEMANAS?
+***** P7500S2: no good
+ ¿El mes pasado, recibió pagos por: d. Pensiones o jubilaciones por vejez, invalidez o sustitución pensional
+***** P7513S12: no good
+ Durante los últimos 12 meses recibió ingresos ocasionales por: l. Devoluciones o reintegros por seguros educativos, incapacidad o invalidez
+**** DONE relationship data
+ 5. ¿Cuál es el parentesco de ... con el ó la jefe del hogar?
+ 1 » a. Jefe (a) del hogar
+ 2 » b. Pareja, esposo(a), cónyuge, compañero(a)
+ 3 » c. Hijo(a), hijastro(a)
+ 4 » d. Nieto(a)
+ 5 » e. Otro pariente
+ 6 » f. Empleado(a) del servicio doméstico y sus parientes
+ 7 » g. Pensionista
+ 8 » h. Trabajador
+ 9 » i. Otro no pariente
 *** in persons, create a "(could be claimed as a) dependent" variable
 age < 18 => dependent
 age < 23 && student => dependent
 family member or partner && income < 260 UVT => dependent
 child & disabled => dependent
-*** data needed for exemptions: disability, student, dependent
 *** refs
 UVT = unidad de valor tributario
 schedules are on pp 40-41 of guide

@@ -20,10 +20,12 @@ if True: # relationship to head of household
     people[
       people["relationship"].isin( [6,7,8] )
     ].index )
-  people[ "child" ] = (
+
+  people[ "relative, child" ] = (
     ( people["relationship"] == 3 )     # hijo, hijastro
     | ( people["relationship"] == 4 ) ) # nieto
-  people[ "non-child family" ] = (
+
+  people[ "relative, non-child" ] = (
     ( people["relationship"] == 2 )     # Pareja, esposo(a), cónyuge, compañero(a)
     | ( people["relationship"] == 5 ) ) # Otro pariente
 
@@ -32,9 +34,9 @@ if True: # make independiente a 0 or a 1
                          ] . apply( lambda x: 1 if x in [4,5] else 0 )
 
 if True: # remap some boolean integers
-  for cn in ( [ "female" ] +                           # originally 1=male, 2=female
+  for cn in ( [ "female" ] + # originally 1=male, 2=female
               [included for (quantity,included) in files.inclusion_pairs]
-                # originally 1=included, 2=forgot
+                             # originally 1=included, 2=forgot
   ): people[cn] = people[cn] - 1
 
   for cn in [ "student"         # originally 1=student, 2=not
