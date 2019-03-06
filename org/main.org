@@ -1,4 +1,5 @@
 * TODO personal income tax
+*** TODO for labor income, for purposes, of determining dependence, use all income except govt transfers
 *** data needed for exemptions: "age","disabled","student","relative, child" and "relative, non-child"
 **** DONE disabled
 ***** the variable used: P6310

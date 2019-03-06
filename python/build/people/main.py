@@ -320,10 +320,12 @@ if True: # dependence
     | ( ppl["relationship"] == 5 ) ) # Otro parient
 
   ppl["dependent"] = (
-      ((ppl["relative, child"]==1)     & (ppl["age"] < 19))
-    | ((ppl["student"]==1)             & (ppl["age"] < 24))
-    | ((ppl["relative, non-child"]==1) & (ppl["income, labor"] < (260*c.uvt) ) )
-      # TODO ? Is this the right kind of income?
-    | ((ppl["relative, child"]==1)     & (ppl["disabled"]==1)) )
+      ( ( ppl["relative, child"]==1 )     & ( ppl["age"] < 19 ) )
+    | ( ( ppl["student"]==1 )             & ( ppl["age"] < 24 ) )
+    | ( ( ppl["relative, non-child"]==1 )
+       & ( ( ppl["income"] - ppl["income, govt"] )
+           # TODO ? Is this the right kind of income?
+           < (260*c.uvt ) ) )
+    | ( ( ppl["relative, child"]==1 )     & ( ppl["disabled"]==1 ) ) )
 
 oio.saveStage(cl.subsample, ppl, 'people_1')
