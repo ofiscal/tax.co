@@ -1,5 +1,6 @@
 * TODO personal income tax
 ** assign dependents to income earners
+*** TODO BUG : How to avoid the possibility that two low earners can both claim the other as dependents?
 *** TODO count the number of dependents in a household. merge that into person data.
 Start a new file, people_5_dependents.py.
 Read in the output from people_4_ss.

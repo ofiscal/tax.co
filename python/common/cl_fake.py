@@ -25,3 +25,20 @@ vat_strategy = detail
 vat_flat_rate = ""
 
 vat_strategy_suffix = vat_strategy + "_" + str(vat_flat_rate)
+
+
+# Wart: This function is duplicated in cl_args.py
+def collect_files( file_structs, subsample=subsample ):
+  acc = pd.DataFrame()
+  for f in file_structs:
+    shuttle = (
+      pd.read_csv(
+        "data/enph-2017/recip-" + str(subsample) + "/" + f.filename
+        , usecols = list( f.col_dict.keys() )
+      ) . rename( columns = f.col_dict      )
+    )
+    shuttle["file-origin"] = f.name
+    for c in f.corrections:
+      shuttle = c.correct( shuttle )
+    acc = acc.append(shuttle)
+  return acc

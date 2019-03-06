@@ -10,8 +10,8 @@ import python.build.output_io as oio
 
 
 ppl = c.to_numbers(
-  c.collect_files( files.files
-                 , subsample = cl.subsample )
+  cl.collect_files( files.files
+                  , subsample = cl.subsample )
   , skip_columns = ["non-beca sources"] # PITFALL : a space-separated list of ints
 )
 
