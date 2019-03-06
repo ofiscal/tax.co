@@ -11,13 +11,12 @@ import python.build.output_io as oio
 
 ppl = c.to_numbers(
   c.collect_files( files.files
-                        , subsample = cl.subsample )
+                 , subsample = cl.subsample )
   , skip_columns = ["non-beca sources"] # PITFALL : a space-separated list of ints
 )
 
 ppl = ppl.drop( # drop non-members of household
-  ppl[
-    ppl["relationship"].isin( [6,7,8] )
+  ppl[ ppl["relationship"].isin( [6,7,8] )
   ].index )
 
 if True: # make independiente a 0 or a 1
@@ -177,7 +176,7 @@ if True: # income
       # and create capital minus dividends
       ppl = ppl.drop(
         columns = list( set ( cols_capital )
-                        - set ( ["income, year : investment : dividends"] )
+                      - set ( ["income, year : investment : dividends"] )
       ) )
       ppl["income, capital w/o dividends"] = (
         ppl["total income, monthly : capital"
@@ -324,7 +323,6 @@ if True: # dependence
     | ( ( ppl["student"]==1 )             & ( ppl["age"] < 24 ) )
     | ( ( ppl["relative, non-child"]==1 )
        & ( ( ppl["income"] - ppl["income, govt"] )
-           # TODO ? Is this the right kind of income?
            < (260*c.uvt ) ) )
     | ( ( ppl["relative, child"]==1 )     & ( ppl["disabled"]==1 ) ) )
 

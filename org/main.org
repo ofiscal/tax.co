@@ -1,6 +1,14 @@
 * TODO personal income tax
-*** TODO for labor income, for purposes, of determining dependence, use all income except govt transfers
-*** data needed for exemptions: "age","disabled","student","relative, child" and "relative, non-child"
+** assign dependents to income earners
+*** TODO count the number of dependents in a household. merge that into person data.
+Start a new file, people_5_dependents.py.
+Read in the output from people_4_ss.
+In a copy of it, keep only the household id and the dependent column.
+Group that file by household, summing the number of dependents.
+Merge that on household id back into the person data.
+*** TODO for each of the top five earners, compare their income rank to the number of dependents
+If their rank (1 means highest earner) is less than or equal to the number of dependents, they can claim a dependent.
+*** DONE data needed for exemptions: "age","disabled","student","relative, child" and "relative, non-child"
 **** DONE disabled
 ***** the variable used: P6310
  Aunque ... desea trabajar, ¿por qué motivo principal no hizo diligencias para buscar un trabajo oinstalar un negocio en las ÚLTIMAS 4 SEMANAS?
@@ -19,31 +27,31 @@
  7 » g. Pensionista
  8 » h. Trabajador
  9 » i. Otro no pariente
-*** in persons, create a "(could be claimed as a) dependent" variable
-age < 18 => dependent
-age < 23 && student => dependent
-family member or partner && income < 260 UVT => dependent
-child & disabled => dependent
-*** refs
+**** DONE create a "(could be claimed as a) dependent" variable
+ age < 18 => dependent
+ age < 23 && student => dependent
+ family member or partner && income < 260 UVT => dependent
+ child & disabled => dependent
+** refs
 UVT = unidad de valor tributario
 schedules are on pp 40-41 of guide
   with a typo; should be monotonic
-*** there are two kinds of deduction. maybe they are these:
+** there are two kinds of deduction. maybe they are these:
 1 - subtract from the taxable base
 2 - subtract from the tax liability
-*** three|five kinds of income
+** three|five kinds of income
 each with a different base (deductions vary across them) and a different schedule
-**** labor income
-***** major deductions
+*** labor income
+**** major deductions
 everything paid as an employee contribution to social security: deduct from base
   includes health, pension, solidarity
 25% of labor income. PITFALL: Order matters.
-**** pension income
+*** pension income
 same schedule as labor, different exemptions
-**** capital income
+*** capital income
 e.g. rental income
-**** dividend income: 2 subtypes
-***** "fiscal profit" of the firm - taxes paid by the firm
+*** dividend income: 2 subtypes
+**** "fiscal profit" of the firm - taxes paid by the firm
 "fiscal profit" is not the normal accounting profit; it's some legal figment.
 * TODO descriptive stats on pensions
 These are in 'caracteristicas generales'.
@@ -324,6 +332,16 @@ whereas reading it would look like this:
                    , xmin = 0, xmax = 8
                  )
 * to explain in paper : institution details | judgment calls
+** to identify dependents, we assume that by "income < 260 UVT" the tax code means ...
+that someone can be claimed as a dependent if their income from anything but government transfers is below 260 UVT. To whit, in build.people.main:
+  ppl["dependent"] = (
+      ( ( ppl["relative, child"]==1 )     & ( ppl["age"] < 19 ) )
+    | ( ( ppl["student"]==1 )             & ( ppl["age"] < 24 ) )
+    | ( ( ppl["relative, non-child"]==1 )
+       & ( ( ppl["income"] - ppl["income, govt"] )
+           # TODO ? Is this the right kind of income?
+           < (260*c.uvt ) ) )
+    | ( ( ppl["relative, child"]==1 )     & ( ppl["disabled"]==1 ) ) )
 ** the proxy for disability is imperfect
 It is that they responded "for health reasons" to the question "although you want to work, why did you not look for work?"
 ** all the COICOP exceptions
