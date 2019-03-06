@@ -15,19 +15,10 @@ ppl = c.to_numbers(
   , skip_columns = ["non-beca sources"] # PITFALL : a space-separated list of ints
 )
 
-if True: # relationship to head of household
-  ppl = ppl.drop( # drop non-members of household
-    ppl[
-      ppl["relationship"].isin( [6,7,8] )
-    ].index )
-
-  ppl[ "relative, child" ] = (
-    ( ppl["relationship"] == 3 )     # hijo, hijastro
-    | ( ppl["relationship"] == 4 ) ) # nieto
-
-  ppl[ "relative, non-child" ] = (
-    ( ppl["relationship"] == 2 )     # Pareja, esposo(a), cónyuge, compañero(a)
-    | ( ppl["relationship"] == 5 ) ) # Otro pariente
+ppl = ppl.drop( # drop non-members of household
+  ppl[
+    ppl["relationship"].isin( [6,7,8] )
+  ].index )
 
 if True: # make independiente a 0 or a 1
   ppl["independiente"] = ppl[ "independiente"
@@ -84,21 +75,21 @@ if True: # income
       ppl[ "income, month : labor : independent, months" ] . fillna(1) )
 
     re = regex.compile( ".*income.*" )
-    income_columns = [c for c in ppl.columns if re.match( c )]
+    income_columns = [col for col in ppl.columns if re.match( col )]
     columns_to_convert = ( income_columns
                          + list( files.beca_sources_private.values() )
                          + list( files.beca_sources_govt.values() ) )
     ppl[columns_to_convert] = ppl[columns_to_convert] . fillna(0)
-    for c in columns_to_convert: # 98 and 99 are error codes for
+    for col in columns_to_convert: # 98 and 99 are error codes for
                                  # "doesn't know" and "won't say"
-      ppl[c] = ppl[c].apply(
+      ppl[col] = ppl[col].apply(
         lambda x : 0 if ((x >= 98) & (x <= 99)) else x )
     del(re, income_columns, columns_to_convert)
 
   if True: # divide yearly income variables by 12
     re_year_income  = regex.compile( "^income, year" )
-    for c in [c for c in ppl.columns if re_year_income.match( c )]:
-      ppl[c] = ppl[c] / 12
+    for col in [col for col in ppl.columns if re_year_income.match( col )]:
+      ppl[col] = ppl[col] / 12
 
   # PITFALL : Yearly income variables have now been divided by 12,
   # but their names are unchanged.
@@ -164,10 +155,10 @@ if True: # income
 
     if True: # govt income (cash + in-kind)
       re_govt  = regex.compile( "^income.* : govt" )
-      cols_govt_cash    = [ c for c in ppl.columns
-                               if re_govt.match(c) and not re_in_kind.match(c) ]
-      cols_govt_in_kind = [ c for c in ppl.columns
-                               if re_govt.match(c) and     re_in_kind.match(c) ]
+      cols_govt_cash    = [ col for col in ppl.columns
+                          if re_govt.match(col) and not re_in_kind.match(col) ]
+      cols_govt_in_kind = [ col for col in ppl.columns
+                          if re_govt.match(col) and     re_in_kind.match(col) ]
       ppl["total income, monthly : govt, cash"] = (
         ppl[ cols_govt_cash ].sum( axis=1 ) )
       ppl["total income, monthly : govt, in-kind"] = (
@@ -177,8 +168,8 @@ if True: # income
     if True: # capital income (cash only)
       re_capital = regex.compile(
         "^income.* : (investment|repayment|rental|sale) : .*" )
-      cols_capital = [ c for c in ppl.columns
-                       if re_capital.match(c) ]
+      cols_capital = [ col for col in ppl.columns
+                     if re_capital.match(col) ]
       ppl["total income, monthly : capital"] = (
         ppl[ cols_capital ].sum( axis=1 ) )
 
@@ -194,10 +185,10 @@ if True: # income
 
     if True: # private income (cash + in-kind)
       re_private  = regex.compile( "^income.* : private : " )
-      cols_private_cash    = [ c for c in ppl.columns
-                               if re_private.match(c) and not re_in_kind.match(c) ]
-      cols_private_in_kind = [ c for c in ppl.columns
-                               if re_private.match(c) and     re_in_kind.match(c) ]
+      cols_private_cash    = [ col for col in ppl.columns
+                             if re_private.match(col) and not re_in_kind.match(col) ]
+      cols_private_in_kind = [ col for col in ppl.columns
+                             if re_private.match(col) and     re_in_kind.match(col) ]
       ppl["total income, monthly : private, cash"] = (
         ppl[ cols_private_cash ].sum( axis=1 ) )
       ppl["total income, monthly : private, in-kind"] = (
@@ -206,8 +197,8 @@ if True: # income
 
     if True: # infrequent income (cash only)
       re_infrequent = regex.compile( "^income, year : infrequent : " )
-      cols_infrequent = [ c for c in ppl.columns
-                        if re_infrequent.match(c) ]
+      cols_infrequent = [ col for col in ppl.columns
+                        if re_infrequent.match(col) ]
       ppl["total income, monthly : infrequent"] = (
         ppl[ cols_infrequent ].sum( axis=1 ) )
       ppl = ppl.drop( columns = cols_infrequent )
@@ -227,10 +218,10 @@ if True: # income
 
       if True: # compute within-category sums
         re_labor  = regex.compile( "^income.* : labor : " )
-        cols_labor_cash    = [ c for c in ppl.columns
-                                 if re_labor.match(c) and not re_in_kind.match(c) ]
-        cols_labor_in_kind = [ c for c in ppl.columns
-                                 if re_labor.match(c) and     re_in_kind.match(c) ]
+        cols_labor_cash    = [ col for col in ppl.columns
+                             if re_labor.match(col) and not re_in_kind.match(col) ]
+        cols_labor_in_kind = [ col for col in ppl.columns
+                             if re_labor.match(col) and     re_in_kind.match(col) ]
         ppl["total income, monthly : labor, cash"] = (
           ppl[ cols_labor_cash ].sum( axis=1 ) )
         ppl["total income, monthly : labor, in-kind"] = (
@@ -265,8 +256,8 @@ if True: # income
           ppl[ list( income_short_name_dict_in_kind.values() )
           ].sum(axis=1) )
 
-        for c in ["income", "income, govt", "income, private", "income, labor"]:
-            ppl[c] = ppl[c + ", cash"] + ppl[c + ", in-kind"]
+        for col in ["income", "income, govt", "income, private", "income, labor"]:
+            ppl[col] = ppl[col + ", cash"] + ppl[col + ", in-kind"]
 
 if True: # compute each household member's income rank
   def sort_household_by_labor_income_then_make_index(df):
@@ -315,5 +306,24 @@ if True: # format some categorical variables
   #  ppl["time use"].map( time_use_key ),
   #  categories = list( time_use_key.values() ),
   #  ordered = True)
+
+if True: # dependence
+  ppl[ "jefe" ] = ( # head of household
+    ppl["relationship"] == 1 )
+
+  ppl[ "relative, child" ] = (
+    ( ppl["relationship"] == 3 )     # hijo, hijastro
+    | ( ppl["relationship"] == 4 ) ) # nieto
+
+  ppl[ "relative, non-child" ] = (
+    ( ppl["relationship"] == 2 )     # Pareja, esposo(a), cónyuge, compañero(a)
+    | ( ppl["relationship"] == 5 ) ) # Otro parient
+
+  ppl["dependent"] = (
+      ((ppl["relative, child"]==1)     & (ppl["age"] < 19))
+    | ((ppl["student"]==1)             & (ppl["age"] < 24))
+    | ((ppl["relative, non-child"]==1) & (ppl["income, labor"] < (260*c.uvt) ) )
+      # TODO ? Is this the right kind of income?
+    | ((ppl["relative, child"]==1)     & (ppl["disabled"]==1)) )
 
 oio.saveStage(cl.subsample, ppl, 'people_1')
