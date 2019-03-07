@@ -9,41 +9,41 @@ import python.common.misc as c
 import python.common.cl_args as c
 
 
-people = oio.readStage( c.subsample, "people_4_ss." + c.vat_strategy_suffix )
+ppl = oio.readStage( c.subsample, "people_4_ss." + c.vat_strategy_suffix )
 
-people["education"] = util.interpretCategorical( people["education"]
-                                               , edu_key.values() )
+ppl["education"] = util.interpretCategorical( ppl["education"]
+                                            , edu_key.values() )
 
 if True: # compute five columns for top five member incomes
-  people["income, rank 1"] = (
-    people["income"] * (people["member-by-income"] == 1) )
-  people["income, rank 2"] = (
-    people["income"] * (people["member-by-income"] == 2) )
-  people["income, rank 3"] = (
-    people["income"] * (people["member-by-income"] == 3) )
-  people["income, rank 4"] = (
-    people["income"] * (people["member-by-income"] == 4) )
-  people["income, rank 5"] = (
-    people["income"] * (people["member-by-income"] == 5) )
+  ppl["income, rank 1"] = (
+    ppl["income"] * (ppl["member-by-income"] == 1) )
+  ppl["income, rank 2"] = (
+    ppl["income"] * (ppl["member-by-income"] == 2) )
+  ppl["income, rank 3"] = (
+    ppl["income"] * (ppl["member-by-income"] == 3) )
+  ppl["income, rank 4"] = (
+    ppl["income"] * (ppl["member-by-income"] == 4) )
+  ppl["income, rank 5"] = (
+    ppl["income"] * (ppl["member-by-income"] == 5) )
 
-  people["income, labor, rank 1"] = (
-    people["income, labor"] * (people["member-by-income"] == 1) )
-  people["income, labor, rank 2"] = (
-    people["income, labor"] * (people["member-by-income"] == 2) )
-  people["income, labor, rank 3"] = (
-    people["income, labor"] * (people["member-by-income"] == 3) )
-  people["income, labor, rank 4"] = (
-    people["income, labor"] * (people["member-by-income"] == 4) )
-  people["income, labor, rank 5"] = (
-    people["income, labor"] * (people["member-by-income"] == 5) )
+  ppl["income, labor, rank 1"] = (
+    ppl["income, labor"] * (ppl["member-by-income"] == 1) )
+  ppl["income, labor, rank 2"] = (
+    ppl["income, labor"] * (ppl["member-by-income"] == 2) )
+  ppl["income, labor, rank 3"] = (
+    ppl["income, labor"] * (ppl["member-by-income"] == 3) )
+  ppl["income, labor, rank 4"] = (
+    ppl["income, labor"] * (ppl["member-by-income"] == 4) )
+  ppl["income, labor, rank 5"] = (
+    ppl["income, labor"] * (ppl["member-by-income"] == 5) )
 
 
 if True: # aggregate from household members to households
-  people["members"] = 1 # will be summed
-  h_first = people.groupby( ["household"]
+  ppl["members"] = 1 # will be summed
+  h_first = ppl.groupby( ["household"]
     ) ["region-1","region-2","estrato", "weight" # these are constant within household
     ] . agg("first")
-  h_sum = people.groupby(
+  h_sum = ppl.groupby(
       ["household"]
     ) [  "value"
        ,"vat paid, min","vat paid, max"
@@ -78,7 +78,7 @@ if True: # aggregate from household members to households
        , "income, private"
        , "income, labor"
     ] . agg("sum")
-  h_min = people.groupby(
+  h_min = ppl.groupby(
       ["household"]
     ) ["age","female"
     ] . agg("min"
@@ -87,7 +87,7 @@ if True: # aggregate from household members to households
     } )
   h_min["has-male"] = 1 - h_min["has-male"]
     # if female is ever 0, then its min = 0, i.e. there is a male
-  h_max = people.groupby(
+  h_max = ppl.groupby(
       ["household"]
     ) ["age","literate","student","female","female head","education",
        "race, indig", "race, git|rom", "race, raizal", "race, palenq", "race, whi|mest"
@@ -137,6 +137,6 @@ if True: # aggregate from household members to households
 
 if True: # save
   oio.saveStage( c.subsample, households
-                 , "households." + c.vat_strategy_suffix )
+               , "households." + c.vat_strategy_suffix )
   oio.saveStage( c.subsample, households_decile_summary
-                 , "households_decile_summary." + c.vat_strategy_suffix )
+               , "households_decile_summary." + c.vat_strategy_suffix )
