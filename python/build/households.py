@@ -9,7 +9,8 @@ import python.common.misc as c
 import python.common.cl_args as c
 
 
-ppl = oio.readStage( c.subsample, "people_4_ss." + c.vat_strategy_suffix )
+ppl = oio.readStage( c.subsample
+                   , "people_4_income_taxish." + c.vat_strategy_suffix )
 
 ppl["education"] = util.interpretCategorical( ppl["education"]
                                             , edu_key.values() )

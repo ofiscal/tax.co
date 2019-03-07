@@ -7,7 +7,7 @@ import python.common.cl_fake     as cl
 
 
 people = oio.readStage( cl.subsample
-                      , 'people_4_ss.' + cl.vat_strategy_suffix )
+                      , 'people_4_income_taxish.' + cl.vat_strategy_suffix )
 
 ppl = people.rename( columns = {
     "relative, child" : "child"

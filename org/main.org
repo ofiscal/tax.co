@@ -1,19 +1,9 @@
 * TODO personal income tax
 ** assign dependents to income earners
-*** TODO remove people_5*.py
-*** TODO rename people_4_ss -> people_4_income_taxes
 *** TODO ? include non-child family with income > 260 UVT if they say they're unemployed b/c illness?
 Otherwise we're treating child family differently from non-child family.
 But if we do this, there are disabled people with total income (not labor income) > 260 UVT / year.
 The kind of income that gets taxed, and the kind that can disqulify someone from being a dependent, matter.
-*** TODO count the number of dependents in a household. merge that into person data.
-Start a new file, people_5_dependents.py.
-Read in the output from people_4_ss.
-In a copy of it, keep only the household id and the dependent column.
-Group that file by household, summing the number of dependents.
-Merge that on household id back into the person data.
-*** TODO for each of the top five earners, compare their income rank to the number of dependents
-If their rank (1 means highest earner) is less than or equal to the number of dependents, they can claim a dependent.
 *** DONE data needed for exemptions: "age","disabled","student","relative, child" and "relative, non-child"
 **** DONE disabled
 ***** the variable used: P6310

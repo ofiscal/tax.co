@@ -77,8 +77,10 @@ households = \
   output/vat/data/recip-$(ss)/households_decile_summary.$(strategy_suffix).csv
 people_1 =           output/vat/data/recip-$(ss)/people_1.csv
 people_2_buildings = output/vat/data/recip-$(ss)/people_2_buildings.csv
-people_3_purchases = output/vat/data/recip-$(ss)/people_3_purchases.$(strategy_suffix).csv
-people_4_ss        = output/vat/data/recip-$(ss)/people_4_ss.$(strategy_suffix).csv
+people_3_purchases = \
+  output/vat/data/recip-$(ss)/people_3_purchases.$(strategy_suffix).csv
+people_4_income_taxish = \
+  output/vat/data/recip-$(ss)/people_4_income_taxish.$(strategy_suffix).csv
 purchases_1 =        output/vat/data/recip-$(ss)/purchases_1.csv \
                      output/vat/data/recip-$(ss)/purchases_1_5_no_origin.csv
 purchases_2_vat =    output/vat/data/recip-$(ss)/purchases_2_vat.$(strategy_suffix).csv
@@ -188,19 +190,19 @@ $(people_3_purchases): python/build/people_3_purchases.py \
 	date
 	$(python_from_here) python/build/people_3_purchases.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
-people_4_ss: $(people_4_ss)
-$(people_4_ss): python/build/people_4_ss.py \
+people_4_income_taxish: $(people_4_income_taxish)
+$(people_4_income_taxish): python/build/people_4_income_taxish.py \
   python/build/output_io.py \
   python/build/ss_schedules.py \
   $(people_3_purchases)
 	date
-	$(python_from_here) python/build/people_4_ss.py $(subsample) $(vat_strategy) $(vat_flat_rate)
+	$(python_from_here) python/build/people_4_income_taxish.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
 households: $(households)
 $(households): python/build/households.py \
   python/util.py \
   python/build/output_io.py \
-  $(people_4_ss)
+  $(people_4_income_taxish)
 	date
 	$(python_from_here) python/build/households.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
@@ -249,7 +251,7 @@ $(household_pics): python/report/pics/households.py \
 
 people_pics: $(people_pics)
 $(people_pics): python/report/pics/people.py \
-  $(people_4_ss)
+  $(people_4_income_taxish)
 	date
 	$(python_from_here) python/report/pics/people.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
