@@ -323,7 +323,7 @@ if True: # dependence
     | ( ( ppl["student"]==1 )             & ( ppl["age"] < 24 ) )
     | ( ( ppl["relative, non-child"]==1 )
        & ( ( ppl["income"] - ppl["income, govt"] )
-           < (260*c.uvt ) ) )
+           < (260 * c.uvt / 12  ) ) )
     | ( ( ppl["relative, child"]==1 )     & ( ppl["disabled"]==1 ) ) )
 
 oio.saveStage(cl.subsample, ppl, 'people_1')

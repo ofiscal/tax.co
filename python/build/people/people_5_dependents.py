@@ -5,7 +5,7 @@ import numpy as np
 import python.util as util
 import python.build.output_io as oio
 import python.common.misc as c
-import python.common.cl_args as cl
+import python.common.cl_fake as cl
 
 
 ppl = oio.readStage( cl.subsample
@@ -13,4 +13,12 @@ ppl = oio.readStage( cl.subsample
 
 hh = ( ppl[["household","dependent"]]
        . groupby( "household" )
-       . agg( 'sum' ) )
+       . agg( 'sum' )
+       . rename( columns = {"dependent":"dependents"} )
+       . reset_index() )
+
+ppl = ( ppl.merge( hh, how='inner', on='household' )
+        . drop( columns = "dependent" ) )
+
+ppl["has dependent"] = (
+  ppl["member-by-income"] <= ppl["dependents"] )
