@@ -1,5 +1,9 @@
 * TODO personal income tax
+** our hack: presume anyone with income > 260 UVTs cannnot be a dependent
+** the deduction applies only to labor or contract income, but the tax is paid on more kinds
+** in David's Excel model, trace the formulas for "inputs to the marginal tax schedule"
 ** assign dependents to income earners
+*** verify with Juan that non-govt income determines dependence
 *** TODO ? include non-child family with income > 260 UVT if they say they're unemployed b/c illness?
 Otherwise we're treating child family differently from non-child family.
 But if we do this, there are disabled people with total income (not labor income) > 260 UVT / year.
