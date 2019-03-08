@@ -1,5 +1,4 @@
 * TODO personal income tax
-** our hack: presume anyone with income > 260 UVTs cannnot be a dependent
 ** the deduction applies only to labor or contract income, but the tax is paid on more kinds
 ** in David's Excel model, trace the formulas for "inputs to the marginal tax schedule"
 ** assign dependents to income earners
@@ -332,16 +331,8 @@ whereas reading it would look like this:
                    , xmin = 0, xmax = 8
                  )
 * to explain in paper : institution details | judgment calls
-** to identify dependents, we assume that by "income < 260 UVT" the tax code means ...
-that someone can be claimed as a dependent if their income from anything but government transfers is below 260 UVT. To whit, in build.people.main:
-  ppl["dependent"] = (
-      ( ( ppl["relative, child"]==1 )     & ( ppl["age"] < 19 ) )
-    | ( ( ppl["student"]==1 )             & ( ppl["age"] < 24 ) )
-    | ( ( ppl["relative, non-child"]==1 )
-       & ( ( ppl["income"] - ppl["income, govt"] )
-           # TODO ? Is this the right kind of income?
-           < (260*c.uvt ) ) )
-    | ( ( ppl["relative, child"]==1 )     & ( ppl["disabled"]==1 ) ) )
+** to identify dependents, we assume ...
+The tax code is ambiguous -- does a high-income disabled person still be claimed as a dependent? Do they pay taxes? Can they in turn claim dependents? We assume no, yes and yes. See build.people.main for details.
 ** the proxy for disability is imperfect
 It is that they responded "for health reasons" to the question "although you want to work, why did you not look for work?"
 ** all the COICOP exceptions

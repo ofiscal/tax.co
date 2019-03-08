@@ -1,3 +1,6 @@
+* open office cell traversal shortcuts
+C-S-F2: go to formula window
+C-S-T: go to cell address window ("(T)raverse", probably)
 * get pandas to display tables in scientific notation
 pd.set_option('display.float_format', '{:.2g}'.format)
 * makefile --trace explains why it wants to rebuild something
