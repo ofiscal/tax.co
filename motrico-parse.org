@@ -1,0 +1,23 @@
+* widely used constants
+** A4 :: uvt = 31,859
+* labor income
+** C75 :: Renta líquida cedular laboral
+C75 = renta liquida laboral
+      - MIN( tax-exempt income (see notes @ C70)
+           , 0.4 * renta liquida laboral
+           , 5040 * uvt )
+** C70 :: tax-exempt income
+  supposedly, "The kind of income tax-exempt labor income that still counts toward the marginal tax rate thresholds."
+** C66 :: renta liquida labora
+C66 = (monthly wage * 12, see notes @ C12)
+      + (contractor income * 12)
+      - Ingresos no constitutivos de renta laboral
+** C59 :: Ingresos no constitutivos de renta laboral
+C59 = 12 * (C99 + C100 + C102 + C103)
+  where C99  :: Contribuciones salud individuo como empleado
+        C100 :: Contribuciones pensiones individuo como empleado
+        C102 :: Contribuciones salud empleador
+        C103 :: Contribuciones pensiones empleador
+** C12 :: monthly wage
+"Salario nominal (se asume que a partir del mínimo es formal con vinculación laboral, e integral a partir de 13 mínimos; la gente tiende a reportar el salario base de cotización, y lo interpretamos de esa manera)"
+** C13 :: contractor income
