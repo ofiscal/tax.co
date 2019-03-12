@@ -20,4 +20,39 @@ C59 = 12 * (C99 + C100 + C102 + C103)
         C103 :: Contribuciones pensiones empleador
 ** C12 :: monthly wage
 "Salario nominal (se asume que a partir del mínimo es formal con vinculación laboral, e integral a partir de 13 mínimos; la gente tiende a reportar el salario base de cotización, y lo interpretamos de esa manera)"
-** C13 :: contractor income
+** DONE uninformative
+*** C13 :: contractor income
+* pension income
+** TODO Renta líquida cedular pensiones
+*** TODO how are these two exempt kinds of income different?
+*** the formula
+E76 = E67-MIN(E71,0.4*E67,5040*$A$4)
+    = Renta Líquida Pensiones
+      - min( also excluded pension income -- WTF?
+           , 0.4 * excluded pension income
+           , 5040 * UVT )
+** E67 :: Renta Líquida Pensiones
+E67 = E14*12-E60
+    = 12 * pension income - excluded pension income
+** DONE uninformative
+*** E71 :: also excluded pension income?
+"Rentas exentas de pensiones"
+*** E60 :: excluded pension income
+"Ingresos no constitutivos de renta pensiones"
+*** E14 :: Pension income
+* capital income
+** TODO C77 :: Renta líquida cedular capital
+C77 = C68 - MIN ( C72
+                , 0.1*C68
+                , 1000*$A$4 )
+    = RLC - min( Rentas exentas y deducciones capital
+               , 0.1 * RLC
+               , 1000 * UVT )
+** C68 :: renta liquida capital
+C68 = C17*12-C61-C63
+    = capital income - exempt capital income - capital costs
+** DONE uninformative
+*** C17 :: Rentas de capital
+*** C61 :: Ingresos no constitutivos de renta Capital
+*** C63 :: Costos y gastos procedentes capital
+*** C72 :: Rentas exentas y deducciones capital
