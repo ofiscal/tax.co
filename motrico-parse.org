@@ -1,58 +1,104 @@
 * widely used constants
 ** A4 :: uvt = 31,859
 * labor income
-** C75 :: Renta líquida cedular laboral
-C75 = renta liquida laboral
-      - MIN( tax-exempt income (see notes @ C70)
-           , 0.4 * renta liquida laboral
-           , 5040 * uvt )
-** C70 :: tax-exempt income
-  supposedly, "The kind of income tax-exempt labor income that still counts toward the marginal tax rate thresholds."
-** C66 :: renta liquida labora
-C66 = (monthly wage * 12, see notes @ C12)
-      + (contractor income * 12)
-      - Ingresos no constitutivos de renta laboral
-** C59 :: Ingresos no constitutivos de renta laboral
-C59 = 12 * (C99 + C100 + C102 + C103)
-  where C99  :: Contribuciones salud individuo como empleado
-        C100 :: Contribuciones pensiones individuo como empleado
-        C102 :: Contribuciones salud empleador
-        C103 :: Contribuciones pensiones empleador
-** C12 :: monthly wage
-"Salario nominal (se asume que a partir del mínimo es formal con vinculación laboral, e integral a partir de 13 mínimos; la gente tiende a reportar el salario base de cotización, y lo interpretamos de esa manera)"
-** DONE uninformative
-*** C13 :: contractor income
+** simpler
+*** formulae
+Renta líquida cedular laboral
+  = renta liquida laboral
+    - min( Rentas exentas de trabajo y deducciones
+         , 0.4 * renta liquida laboral
+         , 5040 * UVT )
+
+renta liquida laboral
+  = wages
+    + contract income
+    - Ingresos no constitutivos de renta laboral
+
+Ingresos no constitutivos de renta laboral
+  = Contribuciones salud individuo como empleado
+    + Contribuciones pensiones individuo como empleado
+    + Contribuciones salud empleador
+    + Contribuciones pensiones empleador
+*** a complication: salario integral
+Regarding wages, David wrote, "se asume que a partir del mínimo es formal con vinculación laboral, e integral a partir de 13 mínimos; la gente tiende a reportar el salario base de cotización, y lo interpretamos de esa manera". I don't know what that means.
+** in terms of the spreadsheet
+*** C75 :: Renta líquida cedular laboral
+ C75 = renta liquida laboral
+       - MIN( tax-exempt income (see notes @ C70)
+            , 0.4 * renta liquida laboral
+            , 5040 * uvt )
+*** C70 :: tax-exempt income
+ Rentas exentas de trabajo y deducciones
+ Supposedly, "The kind of income tax-exempt labor income that still counts toward the marginal tax rate thresholds."
+*** C66 :: renta liquida labora
+ C66 = (monthly wage * 12, see notes @ C12)
+       + (contractor income * 12)
+       - Ingresos no constitutivos de renta laboral
+*** C59 :: Ingresos no constitutivos de renta laboral
+ C59 = 12 * (C99 + C100 + C102 + C103)
+   where C99  :: Contribuciones salud individuo como empleado
+         C100 :: Contribuciones pensiones individuo como empleado
+         C102 :: Contribuciones salud empleador
+         C103 :: Contribuciones pensiones empleador
+*** C12 :: monthly wage
+ "Salario nominal (se asume que a partir del mínimo es formal con vinculación laboral, e integral a partir de 13 mínimos; la gente tiende a reportar el salario base de cotización, y lo interpretamos de esa manera)"
+*** DONE uninformative
+**** C13 :: contractor income
 * pension income
-** TODO Renta líquida cedular pensiones
-*** TODO how are these two exempt kinds of income different?
-*** the formula
-E76 = E67-MIN(E71,0.4*E67,5040*$A$4)
-    = Renta Líquida Pensiones
-      - min( also excluded pension income -- WTF?
-           , 0.4 * excluded pension income
-           , 5040 * UVT )
-** E67 :: Renta Líquida Pensiones
-E67 = E14*12-E60
-    = 12 * pension income - excluded pension income
-** DONE uninformative
-*** E71 :: also excluded pension income?
-"Rentas exentas de pensiones"
-*** E60 :: excluded pension income
-"Ingresos no constitutivos de renta pensiones"
-*** E14 :: Pension income
+** simpler
+Renta líquida cedular pensiones
+  = Renta Líquida Pensiones
+    - min( Rentas exentas de pensiones (undefined)
+         , 0.4 * Renta Líquida Pensiones
+         , 5040 * UVT )
+
+Renta Líquida Pensiones
+  = pension income
+    - Ingresos no constitutivos de renta pensiones (undefined)
+** in terms of the spreadsheet
+*** TODO Renta líquida cedular pensiones
+**** TODO how are these two exempt kinds of income different?
+**** the formula
+ E76 = E67-MIN(E71,0.4*E67,5040*$A$4)
+     = Renta Líquida Pensiones
+       - min( also excluded pension income -- WTF?
+            , 0.4 * excluded pension income
+            , 5040 * UVT )
+*** E67 :: Renta Líquida Pensiones
+ E67 = E14*12-E60
+     = 12 * pension income - excluded pension income
+*** DONE uninformative
+**** E71 :: also excluded pension income?
+ "Rentas exentas de pensiones"
+**** E60 :: excluded pension income
+ "Ingresos no constitutivos de renta pensiones"
+**** E14 :: Pension income
 * capital income
-** TODO C77 :: Renta líquida cedular capital
-C77 = C68 - MIN ( C72
-                , 0.1*C68
-                , 1000*$A$4 )
-    = RLC - min( Rentas exentas y deducciones capital
-               , 0.1 * RLC
-               , 1000 * UVT )
-** C68 :: renta liquida capital
-C68 = C17*12-C61-C63
-    = capital income - exempt capital income - capital costs
-** DONE uninformative
-*** C17 :: Rentas de capital
-*** C61 :: Ingresos no constitutivos de renta Capital
-*** C63 :: Costos y gastos procedentes capital
-*** C72 :: Rentas exentas y deducciones capital
+** simpler
+Renta líquida cedular capital
+  = renta liquida capital
+    - min( Rentas exentas y deducciones capital (undefined)
+         , 0.1 * renta liquida capital
+         , 1000 * unidad de valor tributario (UVT) )
+
+renta liquida capital
+  = Rentas de capital (undefined)
+    - Ingresos no constitutivos de renta Capital (undefined)
+    - Costos y gastos procedentes capital (undefined)
+
+** in terms of the spreadsheet
+*** TODO C77 :: Renta líquida cedular capital
+ C77 = C68 - MIN ( C72
+                 , 0.1*C68
+                 , 1000*$A$4 )
+     = RLC - min( Rentas exentas y deducciones capital
+                , 0.1 * RLC
+                , 1000 * UVT )
+*** C68 :: renta liquida capital
+ C68 = C17*12-C61-C63
+     = capital income - exempt capital income - capital costs
+*** DONE uninformative
+**** C17 :: Rentas de capital
+**** C61 :: Ingresos no constitutivos de renta Capital
+**** C63 :: Costos y gastos procedentes capital
+**** C72 :: Rentas exentas y deducciones capital
