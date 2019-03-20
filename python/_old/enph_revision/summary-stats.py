@@ -1,6 +1,6 @@
 import pandas as pd
 
-import python.util as util
+import python.common.util as util
 import python.enph_compare_official_to_pre_release.files as filetree
 
 

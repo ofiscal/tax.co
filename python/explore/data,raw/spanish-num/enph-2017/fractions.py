@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-import python.util as util
+import python.common.util as util
 import python.build.datafiles as datafiles
 import python.vat.files as vatfiles
 

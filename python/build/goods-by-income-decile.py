@@ -4,7 +4,7 @@
 
 import pandas as pd
 import python.build.output_io as oio
-import python.util as util
+import python.common.util as util
 import python.common.misc as c
 import python.common.cl_args as c
 

@@ -4,7 +4,7 @@ import numpy as np
 
 import python.build.output_io as oio
 import python.build.legends as legends
-import python.util as util
+import python.common.util as util
 
 
 import python.common.misc as c

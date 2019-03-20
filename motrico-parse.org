@@ -1,5 +1,5 @@
 * widely used constants
-** A4 :: uvt = 31,859
+** A4 :: uvt in 2017 = 31,859, in 2016 = 29,753
 * labor income
 ** simpler
 *** formulae
@@ -85,7 +85,6 @@ renta liquida capital
   = Rentas de capital (undefined)
     - Ingresos no constitutivos de renta Capital (undefined)
     - Costos y gastos procedentes capital (undefined)
-
 ** in terms of the spreadsheet
 *** TODO C77 :: Renta líquida cedular capital
  C77 = C68 - MIN ( C72

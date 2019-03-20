@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 from pandas.api.types import CategoricalDtype
 
-import python.util as util
+import python.common.util as util
 import python.build.datafiles as datafiles
 import python.vat.legends as vatfiles
 import python.vat.output_io as oio

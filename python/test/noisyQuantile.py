@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-import python.util as util
+import python.common.util as util
 
 
 def theTest():

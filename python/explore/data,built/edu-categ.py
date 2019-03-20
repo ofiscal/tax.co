@@ -1,7 +1,7 @@
 import sys
 import pandas as pd
 
-import python.util as util
+import python.common.util as util
 import python.build.output_io as oio
 from python.build.people.files import edu_key
 import python.common.misc as c

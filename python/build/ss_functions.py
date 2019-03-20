@@ -1,7 +1,7 @@
 import pandas                    as pd
 
 import python.build.ss_schedules as ss
-import python.util               as util
+import python.common.util               as util
 
 
 def mk_pension( independiente, income ):

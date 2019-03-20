@@ -4,7 +4,7 @@ import os
 import sys
 import pandas as pd
 
-import python.util as util
+import python.common.util as util
 import python.draw.util as draw
 import python.build.output_io as oio
 import python.common.misc as c

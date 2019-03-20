@@ -22,8 +22,8 @@ files = [
     }
 ) ]
 
-buildings = c.collect_files( files
-                                , subsample=1 ) # see PITFALL above
+buildings = cl.collect_files( files
+                            , subsample=1 ) # see PITFALL above
 buildings["estrato"] = buildings["estrato"].replace(' ', np.nan)
 buildings = buildings.drop( columns = ["file-origin"] )
 

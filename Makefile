@@ -200,7 +200,7 @@ $(people_4_income_taxish): python/build/people_4_income_taxish.py \
 
 households: $(households)
 $(households): python/build/households.py \
-  python/util.py \
+  python/common/util.py \
   python/build/output_io.py \
   $(people_4_income_taxish)
 	date
@@ -259,7 +259,7 @@ pics: $(pics)
 
 overview: $(overview)
 $(overview): python/report/tables/overview.py \
-  python/util.py \
+  python/common/util.py \
   python/build/output_io.py \
   python/build/people/files.py \
   $(households)

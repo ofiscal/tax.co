@@ -13,7 +13,7 @@ if True: # more imports
   import numpy as np
   from functools import reduce
 
-  import python.util as util
+  import python.common.util as util
   import python.draw.util as draw
   import python.build.output_io as oio
   import python.build.common as c

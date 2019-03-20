@@ -4,7 +4,7 @@
 
 # Checking all the ORDEN fields
 import pandas as pd
-import python.util as util
+import python.common.util as util
 
 filenames = [
   "Caracteristicas_generales_personas.csv"
