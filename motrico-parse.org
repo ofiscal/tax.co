@@ -13,6 +13,7 @@ renta liquida laboral
   = wages
     + contract income
     - Ingresos no constitutivos de renta laboral
+    - Deducciones
 
 Ingresos no constitutivos de renta laboral
   = Contribuciones salud individuo como empleado

@@ -1,4 +1,73 @@
+* TODO data bug: those "repayment" variables are not
+They are when the loan started, not when it ended.
 * TODO personal income tax
+** how to tax?
+     "P7513S9A1"  : "income, year : infrequent : gambling"
+   , "P7513S10A1" : "income, year : infrequent : inheritance"
+   , "P7513S8A1"  : "income, year : infrequent : jury awards"
+   , "P7513S12A1" : "income, year : infrequent : refund, other"
+   , "P7513S11A1" : "income, year : infrequent : refund, tax
+     "P7500S3A1"  : "income, month : private : alimony"
+   , "P7510S3A1"  : "income, year : private : from private domestic ?firms"
+   , "P7510S4A1"  : "income, year : private : from private foreign ?firms"
+   , "P7510S1A1"  : "income, year : private : remittance, domestic"
+   , "P7510S2A1"  : "income, year : private : remittance, foreign"
+     "P8610S2"    : "income, year : edu : beca, in-kind"
+   , "P8612S2"    : "income, year : edu : non-beca, in-kind"
+   , "P8610S1"    : "income, year : edu : beca"
+   , "P8612S1"    : "income, year : edu : non-beca"
+     "P9460S1"    : "income, month : govt : unemployment"
+   , "P1668S1A1"  : "income, year : govt : familias en accion"
+   , "P1668S3A2"  : "income, year : govt : familias en su tierra"
+   , "P1668S4A2"  : "income, year : govt : jovenes en accion"
+   , "P1668S2A2"  : "income, year : govt : programa de adultos mayores"
+   , "P1668S5A2"  : "income, year : govt : transferencias por victimizacion"
+   , "P1668S1A4"  : "income, year : govt : familias en accion, in-kind"
+   , "P1668S3A4"  : "income, year : govt : familias en su tierra, in-kind"
+   , "P1668S4A4"  : "income, year : govt : jovenes en accion, in-kind"
+   , "P1668S2A4"  : "income, year : govt : programa de adultos mayores, in-kind"
+   , "P1668S5A4"  : "income, year : govt : transferencias por victimizacion, in-kind"
+** notes from Juan
+*** pension + labor
+**** TODO labor
+***** DONE exempt v. deduction: solved
+   exento : no paga impuesto sobre ese valor. ingresos son exentos (o no).
+   deduccion : se puede restar del base gravable. gastos so deudcible (o no) de los ingresos.
+***** cesantias: exempt when firm sends to the "fondo de cesantias", but not when withdrawn
+  and what we have in the ENPH is withdrawals
+***** GMF = 4 por mil. Deduct half.
+***** absent from ENPH
+  pagos por Medicina Prepagada ( deduccion)
+  pagos por donaciones en investigación y educación ( deducción )
+  aportes voluntarios a fndos de cesantias (deduccion hasta 1/12 del ingreso)
+**** pension
+ If response to P6110 is 2, then deduct value in P6120 from pension income before computing taxes.
+**** apply Tarifa 1 to (labor + pension), not to each individually
+*** normal capital + profits from sales
+**** ("normal") capital income
+***** income
+****** do not appear
+   Regalias, Derechos, Wealth (from which we would caluclate Ingresos Presuntos)
+****** all the "capital income" in the code is in fact capital income, except maybe
+   the variables currently called "repayment"
+***** deductions and exemptions
+****** almost none appear
+****** exception: GMF deduction applies either to labor or capital income
+ so apply it where it would reduce someone's taxes the most
+**** other profits (will be summed with normal capital income)
+***** P6750 might count
+ If P6765=7, then P6750 is a profit, rather than a labor income, so it goes here.
+***** P550 does count
+***** TODO all sales are this
+ So far we've been grouping all capital income together, but it has to be split, because sales and honorarios cannot have the GMF deducted, while the "normal" capital income can.
+   , "P7510S9A1"  : "income, year : sale : stock"
+   , "P7513S3A1"  : "income, year : sale : livestock"
+   , "P7513S1A1"  : "income, year : sale : real estate"
+   , "P7513S4A1"  : "income, year : sale : stock ?2"
+   , "P7513S2A1"  : "income, year : sale : vehicle | equipment"
+**** add those two and apply Tarifa 2
+*** TODO dividend income
+dividend income was grouped into capital income; it's not that, it has a separate schedule (Tarifa 3). It carries no deductions, no exemptions.
 ** the deduction applies only to labor or contract income, but the tax is paid on more kinds
 ** in David's Excel model, trace the formulas for "inputs to the marginal tax schedule"
 ** assign dependents to income earners
@@ -52,7 +121,7 @@ e.g. rental income
 *** dividend income: 2 subtypes
 **** "fiscal profit" of the firm - taxes paid by the firm
 "fiscal profit" is not the normal accounting profit; it's some legal figment.
-* TODO descriptive stats on pensions
+* DONE (right?): descriptive stats on pensions
 These are in 'caracteristicas generales'.
 ** DONE contributing to pension = P6920 == 1
 If that's 2, this is 0.
