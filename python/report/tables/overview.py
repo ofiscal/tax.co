@@ -8,15 +8,15 @@ import python.common.util as util
 import python.draw.util as draw
 import python.build.output_io as oio
 import python.common.misc as c
-import python.common.cl_args as c
+import python.common.cl_args as cl
 
 
-output_dir = "output/vat/tables/recip-" + str(c.subsample) + "/"
+output_dir = "output/vat/tables/recip-" + str(cl.subsample) + "/"
 if not os.path.exists(output_dir): os.makedirs(output_dir)
 
 
 if True: # Get, prepare the data
-  households = oio.readStage( c.subsample, "households."        + c.vat_strategy_suffix
+  households = oio.readStage( cl.subsample, "households."        + cl.vat_strategy_suffix
                ) . rename( columns = {"income, capital, dividends" : "income, dividends"} )
 
   households["income, labor + cesantia"] = households["income, labor"] + households["income, cesantia"]
@@ -25,10 +25,13 @@ if True: # Get, prepare the data
       (households["income-percentile"] >= 90)
     & (households["income-percentile"] <= 97) )
 
+  households["income < min wage"] = (
+    households["income"] < c.min_wage )
 
 if True: # create a summary dataframe
   householdVars = [
-      "pension, receiving"
+      "income < min wage"
+    , "pension, receiving"
     , "pension, contributing (if not pensioned)"
     , "pension, contributor(s) (if not pensioned) = split"
     , "pension, contributor(s) (if not pensioned) = self"
@@ -109,13 +112,14 @@ if True: # create a summary dataframe
 
 
 if True: # save
-  df_tmi.to_csv( output_dir      + "overview, tmi." + c.vat_strategy_suffix + ".csv" )
-  draw.to_latex( df_tmi, output_dir, "overview, tmi." + c.vat_strategy_suffix )
+  df_tmi.to_csv( output_dir      + "overview, tmi." + cl.vat_strategy_suffix + ".csv" )
+  draw.to_latex( df_tmi, output_dir, "overview, tmi." + cl.vat_strategy_suffix )
 
 
 if True: # do the same thing to a subset of that data
   df = df_tmi.loc[[
-      "pension, receiving: mean"
+      "income < min wage: mean"
+    , "pension, receiving: mean"
     , "pension, receiving: min"
     , "pension, receiving: max"
     , "pension, contributing (if not pensioned): mean"
@@ -201,5 +205,5 @@ if True: # do the same thing to a subset of that data
     , "4 por mil: mean"
   ]]
 
-  df.to_csv(         output_dir + "overview." + c.vat_strategy_suffix + ".csv" )
-  draw.to_latex( df, output_dir, "overview." + c.vat_strategy_suffix )
+  df.to_csv(         output_dir + "overview." + cl.vat_strategy_suffix + ".csv" )
+  draw.to_latex( df, output_dir, "overview." + cl.vat_strategy_suffix )
