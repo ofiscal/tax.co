@@ -1,7 +1,7 @@
-* TODO data bug: those "repayment" variables are not
-They are when the loan started, not when it ended.
+* TODO ? (juan investigating): The "repayment" income might not be that
+They might be when the loan started, not when it ended.
 * TODO personal income tax
-** how to tax?
+** how to tax? (Juan is investigating)
      "P7513S9A1"  : "income, year : infrequent : gambling"
    , "P7513S10A1" : "income, year : infrequent : inheritance"
    , "P7513S8A1"  : "income, year : infrequent : jury awards"
@@ -28,14 +28,18 @@ They are when the loan started, not when it ended.
    , "P1668S2A4"  : "income, year : govt : programa de adultos mayores, in-kind"
    , "P1668S5A4"  : "income, year : govt : transferencias por victimizacion, in-kind"
 ** notes from Juan
+*** context: the speadsheet "CALCULATIONS.xlsx" in tax.co
 *** pension + labor
 **** TODO labor
 ***** DONE exempt v. deduction: solved
-   exento : no paga impuesto sobre ese valor. ingresos son exentos (o no).
-   deduccion : se puede restar del base gravable. gastos so deudcible (o no) de los ingresos.
+Exento : no paga impuesto sobre ese valor. ingresos son exentos (o no).
+Deduccion : se puede restar del base gravable. gastos son deudcible (o no) de los ingresos.
 ***** cesantias: exempt when firm sends to the "fondo de cesantias", but not when withdrawn
-  and what we have in the ENPH is withdrawals
+and what we have in the ENPH is withdrawals
 ***** GMF = 4 por mil. Deduct half.
+***** deduct from labor income
+  everything paid as an employee contribution to social security: deduct from base
+    includes health, pension, solidarity
 ***** absent from ENPH
   pagos por Medicina Prepagada ( deduccion)
   pagos por donaciones en investigación y educación ( deducción )
@@ -55,8 +59,8 @@ They are when the loan started, not when it ended.
 ****** exception: GMF deduction applies either to labor or capital income
  so apply it where it would reduce someone's taxes the most
 **** other profits (will be summed with normal capital income)
-***** P6750 might count
- If P6765=7, then P6750 is a profit, rather than a labor income, so it goes here.
+***** P6750 counts sometimes
+If P6765=7, then P6750 is a profit, rather than a labor income, so it goes here.
 ***** P550 does count
 ***** TODO all sales are this
  So far we've been grouping all capital income together, but it has to be split, because sales and honorarios cannot have the GMF deducted, while the "normal" capital income can.
@@ -68,10 +72,8 @@ They are when the loan started, not when it ended.
 **** add those two and apply Tarifa 2
 *** TODO dividend income
 dividend income was grouped into capital income; it's not that, it has a separate schedule (Tarifa 3). It carries no deductions, no exemptions.
-** the deduction applies only to labor or contract income, but the tax is paid on more kinds
-** in David's Excel model, trace the formulas for "inputs to the marginal tax schedule"
 ** assign dependents to income earners
-*** verify with Juan that non-govt income determines dependence
+*** TODO verify with Juan that non-govt income determines dependence
 *** TODO ? include non-child family with income > 260 UVT if they say they're unemployed b/c illness?
 Otherwise we're treating child family differently from non-child family.
 But if we do this, there are disabled people with total income (not labor income) > 260 UVT / year.
@@ -104,23 +106,6 @@ The kind of income that gets taxed, and the kind that can disqulify someone from
 UVT = unidad de valor tributario
 schedules are on pp 40-41 of guide
   with a typo; should be monotonic
-** there are two kinds of deduction. maybe they are these:
-1 - subtract from the taxable base
-2 - subtract from the tax liability
-** three|five kinds of income
-each with a different base (deductions vary across them) and a different schedule
-*** labor income
-**** major deductions
-everything paid as an employee contribution to social security: deduct from base
-  includes health, pension, solidarity
-25% of labor income. PITFALL: Order matters.
-*** pension income
-same schedule as labor, different exemptions
-*** capital income
-e.g. rental income
-*** dividend income: 2 subtypes
-**** "fiscal profit" of the firm - taxes paid by the firm
-"fiscal profit" is not the normal accounting profit; it's some legal figment.
 * DONE (right?): descriptive stats on pensions
 These are in 'caracteristicas generales'.
 ** DONE contributing to pension = P6920 == 1
