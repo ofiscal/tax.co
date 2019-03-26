@@ -1,6 +1,7 @@
 * TODO ? (juan investigating): The "repayment" income might not be that
 They might be when the loan started, not when it ended.
 * TODO personal income tax
+** how should we use P6871? (Juan is investigating)
 ** how to tax? (Juan is investigating)
      "P7513S9A1"  : "income, year : infrequent : gambling"
    , "P7513S10A1" : "income, year : infrequent : inheritance"
@@ -27,26 +28,30 @@ They might be when the loan started, not when it ended.
    , "P1668S4A4"  : "income, year : govt : jovenes en accion, in-kind"
    , "P1668S2A4"  : "income, year : govt : programa de adultos mayores, in-kind"
    , "P1668S5A4"  : "income, year : govt : transferencias por victimizacion, in-kind"
-** notes from Juan
-*** context: the speadsheet "CALCULATIONS.xlsx" in tax.co
-*** pension + labor
-**** TODO labor
-***** DONE exempt v. deduction: solved
+** TODO pension + labor
+*** TODO labor
+**** DONE exempt v. deduction: solved
 Exento : no paga impuesto sobre ese valor. ingresos son exentos (o no).
 Deduccion : se puede restar del base gravable. gastos son deudcible (o no) de los ingresos.
-***** cesantias: exempt when firm sends to the "fondo de cesantias", but not when withdrawn
+**** cesantias: exempt when firm sends to the "fondo de cesantias", but not when withdrawn
 and what we have in the ENPH is withdrawals
-***** GMF = 4 por mil. Deduct half.
-***** deduct from labor income
-  everything paid as an employee contribution to social security: deduct from base
-    includes health, pension, solidarity
-***** absent from ENPH
-  pagos por Medicina Prepagada ( deduccion)
-  pagos por donaciones en investigación y educación ( deducción )
-  aportes voluntarios a fndos de cesantias (deduccion hasta 1/12 del ingreso)
-**** pension
- If response to P6110 is 2, then deduct value in P6120 from pension income before computing taxes.
-**** apply Tarifa 1 to (labor + pension), not to each individually
+**** GMF = 4 por mil. Deduct half.
+**** deduct from labor income
+ everything paid as an employee contribution to social security: deduct from base
+   includes health, pension, solidarity
+**** absent from ENPH
+ pagos por Medicina Prepagada ( deduccion)
+ pagos por donaciones en investigación y educación ( deducción )
+ aportes voluntarios a fndos de cesantias (deduccion hasta 1/12 del ingreso)
+*** pension
+If response to P6110 is 2, then deduct value in P6120 from pension income before computing taxes.
+*** apply Tarifa 1 to (labor + pension), not to each individually
+** TODO capital and dividend income
+*** the data
+**** three major vars: capital = (capital - dividends) + dividends
+income, capital =                # first called "total income, monthly : capital"
+    income, capital w/o dividends +
+    income, capital, dividends   # first called "income, year : investment : dividends"
 *** normal capital + profits from sales
 **** ("normal") capital income
 ***** income
@@ -60,20 +65,21 @@ and what we have in the ENPH is withdrawals
  so apply it where it would reduce someone's taxes the most
 **** other profits (will be summed with normal capital income)
 ***** P6750 counts sometimes
-If P6765=7, then P6750 is a profit, rather than a labor income, so it goes here.
+ If P6765=7, then P6750 is a profit, rather than a labor income, so it goes here.
 ***** P550 does count
-***** TODO all sales are this
+***** TODO all sales are "other" (not "normal") capital profits
  So far we've been grouping all capital income together, but it has to be split, because sales and honorarios cannot have the GMF deducted, while the "normal" capital income can.
-   , "P7510S9A1"  : "income, year : sale : stock"
-   , "P7513S3A1"  : "income, year : sale : livestock"
-   , "P7513S1A1"  : "income, year : sale : real estate"
-   , "P7513S4A1"  : "income, year : sale : stock ?2"
-   , "P7513S2A1"  : "income, year : sale : vehicle | equipment"
+    , "P7510S9A1"  : "income, year : sale : stock"
+    , "P7513S3A1"  : "income, year : sale : livestock"
+    , "P7513S1A1"  : "income, year : sale : real estate"
+    , "P7513S4A1"  : "income, year : sale : stock ?2"
+    , "P7513S2A1"  : "income, year : sale : vehicle | equipment"
 **** add those two and apply Tarifa 2
-*** TODO dividend income
-dividend income was grouped into capital income; it's not that, it has a separate schedule (Tarifa 3). It carries no deductions, no exemptions.
-** assign dependents to income earners
-*** TODO verify with Juan that non-govt income determines dependence
+*** dividend income
+**** The tax schedule is marginal, not average.
+**** Dividend income is separate from capital income, with a separate schedule (Tarifa 3). It carries no deductions and no exemptions.
+** TODO assign dependents to income earners
+*** any kind of income -- govt transfers, becas, in-kind -- determines dependence
 *** TODO ? include non-child family with income > 260 UVT if they say they're unemployed b/c illness?
 Otherwise we're treating child family differently from non-child family.
 But if we do this, there are disabled people with total income (not labor income) > 260 UVT / year.
@@ -103,9 +109,11 @@ The kind of income that gets taxed, and the kind that can disqulify someone from
  family member or partner && income < 260 UVT => dependent
  child & disabled => dependent
 ** refs
-UVT = unidad de valor tributario
+tax.co/'incomme tax laws, via juan.xlsx'
 schedules are on pp 40-41 of guide
   with a typo; should be monotonic
+** DONE (internalized): defs
+UVT = unidad de valor tributario
 * DONE (right?): descriptive stats on pensions
 These are in 'caracteristicas generales'.
 ** DONE contributing to pension = P6920 == 1

@@ -75,6 +75,7 @@ if True: # create a summary dataframe
     , "tax, cajas de compensacion"
     , "cesantias + primas"
     , "4 por mil"
+    , "tax on dividends"
     ]
 
   householdGroupVars = [ "one"
@@ -203,6 +204,8 @@ if True: # do the same thing to a subset of that data
     , "cesantias + primas: mean"
     , "4 por mil: median_unweighted"
     , "4 por mil: mean"
+    , "tax on dividends: median_unweighted"
+    , "tax on dividends: mean"
   ]]
 
   df.to_csv(         output_dir + "overview." + cl.vat_strategy_suffix + ".csv" )

@@ -13,6 +13,12 @@ ppl = oio.readStage( cl.subsample
 
 ppl["4 por mil"] = 0.004 * (ppl["income, cash"] - 11.6e6)
 
+ppl["tax on dividends"] = ppl["income, capital, dividends"].apply(
+  lambda x:
+    0                                     if x < (600  * c.uvt)
+    else (      (x - 600  * c.uvt) * 0.05 if x < (1000 * c.uvt)
+           else (x - 1000 * c.uvt) * 0.1 + 20 * c.uvt ) )
+
 for (goal,function) in [
       ("tax, pension"               , ss.mk_pension)
     , ("tax, pension, employer"     , ss.mk_pension_employer)
