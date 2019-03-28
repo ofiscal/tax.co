@@ -37,6 +37,13 @@ P1668S3A4 : "income, year : govt : familias en su tierra, in-kind"
 P1668S4A4 : "income, year : govt : jovenes en accion, in-kind"
 P1668S2A4 : "income, year : govt : programa de adultos mayores, in-kind"
 P1668S5A4 : "income, year : govt : transferencias por victimizacion, in-kind"
+** the two stock variables
+*** they should be redundant.
+The two questions record the same information; one of them should always be zero, or if they’re both nonzero, they should be the same number.
+*** first check them
+Check that no row contains two unequal nonzero values.
+*** to use them after checking
+Compute the maximum and just use that instead of the two of them.
 ** TODO pension + labor
 *** TODO labor
 **** DONE exempt v. deduction: solved
@@ -131,9 +138,9 @@ schedules are on pp 40-41 of guide
   with a typo; should be monotonic
 ** DONE solved
 *** (internalized): defs
- UVT = unidad de valor tributario
+UVT = unidad de valor tributario
 *** ignore P6871
- It describes the frequency with which monthly income is disbursed; it does not bear on the monthly total.
+It describes the frequency with which monthly income is disbursed; it does not bear on the monthly total.
 * DONE (right?): descriptive stats on pensions
 These are in 'caracteristicas generales'.
 ** DONE contributing to pension = P6920 == 1
