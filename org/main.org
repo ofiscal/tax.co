@@ -1,36 +1,42 @@
-* TODO ? (juan investigating): The "repayment" income might not be that
-They might be when the loan started, not when it ended.
-** TODO PITFALL: Double-counting, no matter which interpretation we use.
 * TODO personal income tax
-** TODO ? are there SS deductions to apply from income-tax.org?
-** verify: no deductions, exemptions for ss contribs?
-** how should we use P6871? (Juan is investigating)
-** how to tax? (Juan is investigating)
-     "P7513S9A1"  : "income, year : infrequent : gambling"
-   , "P7513S10A1" : "income, year : infrequent : inheritance"
-   , "P7513S8A1"  : "income, year : infrequent : jury awards"
-   , "P7513S12A1" : "income, year : infrequent : refund, other"
-   , "P7513S11A1" : "income, year : infrequent : refund, tax
-     "P7500S3A1"  : "income, month : private : alimony"
-   , "P7510S3A1"  : "income, year : private : from private domestic ?firms"
-   , "P7510S4A1"  : "income, year : private : from private foreign ?firms"
-   , "P7510S1A1"  : "income, year : private : remittance, domestic"
-   , "P7510S2A1"  : "income, year : private : remittance, foreign"
-     "P8610S2"    : "income, year : edu : beca, in-kind"
-   , "P8612S2"    : "income, year : edu : non-beca, in-kind"
-   , "P8610S1"    : "income, year : edu : beca"
-   , "P8612S1"    : "income, year : edu : non-beca"
-     "P9460S1"    : "income, month : govt : unemployment"
-   , "P1668S1A1"  : "income, year : govt : familias en accion"
-   , "P1668S3A2"  : "income, year : govt : familias en su tierra"
-   , "P1668S4A2"  : "income, year : govt : jovenes en accion"
-   , "P1668S2A2"  : "income, year : govt : programa de adultos mayores"
-   , "P1668S5A2"  : "income, year : govt : transferencias por victimizacion"
-   , "P1668S1A4"  : "income, year : govt : familias en accion, in-kind"
-   , "P1668S3A4"  : "income, year : govt : familias en su tierra, in-kind"
-   , "P1668S4A4"  : "income, year : govt : jovenes en accion, in-kind"
-   , "P1668S2A4"  : "income, year : govt : programa de adultos mayores, in-kind"
-   , "P1668S5A4"  : "income, year : govt : transferencias por victimizacion, in-kind"
+** TODO ? (juan investigating): Borrowed "income"
+*** TODO It is currently called "repayment", but it's the opposite: borrowing.
+*** TODO Is it taxed?
+*** TODO PITFALL: Double-counting.
+** TODO ? (show juan) Are there more applicable SS deductions in income-tax.org?
+** impuesto de ganancia ocasional
+*** 10% flat rate, no deductions, no exemptions.
+*** variables
+P7513S9A1 (gambling)
+P7513S10A1 (inheritance)
+** impuesto de indemnizacion
+P7513S8A1 (jury awards)
+** impuesto sobre donaciones
+tax = (S - min( S / 5, 2290 uvt)) *
+  where S = sum of all gifts (private or public)
+          = P7510S3A1 + P7510S4A1
+** TODO (juan investigating)
+  , "P7510S1A1"  : "income, year : private : remittance, domestic" – Uncertain; Juan will ask lawyer. se debe contabilizar como ingreso (otros ingresos), pagan impuesto tarifa 2 si superan 1.400 UVT, se considera ingreso no laboral.
+  , "P7510S2A1"  : "income, year : private : remittance, foreign" - Uncertain; Juan will ask lawyer. se debe contabilizar como ingreso (otros ingresos), pagan impuesto tarifa 2 si superan 1.400 UVT, se considera ingreso no laboral. (discontinuity?)
+** ignorable
+*** special
+P7513S12A1 -- taxed at 35%, but the amount reported is probably post-tax
+*** untaxed
+P7513S11A1 : "income, year : infrequent : refund, tax
+P7500S3A1 : "income, month : private : alimony"
+P8612S2 : "income, year : edu : non-beca, in-kind" # (nothing called "subsidio" is taxed)
+P8612S1 : "income, year : edu : non-beca"          # (nothing called "subsidio" is taxed)
+P9460S1 : "income, month : govt : unemployment"
+P1668S1A1 : "income, year : govt : familias en accion"
+P1668S3A2 : "income, year : govt : familias en su tierra"
+P1668S4A2 : "income, year : govt : jovenes en accion"
+P1668S2A2 : "income, year : govt : programa de adultos mayores"
+P1668S5A2 : "income, year : govt : transferencias por victimizacion"
+P1668S1A4 : "income, year : govt : familias en accion, in-kind"
+P1668S3A4 : "income, year : govt : familias en su tierra, in-kind"
+P1668S4A4 : "income, year : govt : jovenes en accion, in-kind"
+P1668S2A4 : "income, year : govt : programa de adultos mayores, in-kind"
+P1668S5A4 : "income, year : govt : transferencias por victimizacion, in-kind"
 ** TODO pension + labor
 *** TODO labor
 **** DONE exempt v. deduction: solved
@@ -50,8 +56,13 @@ and what we have in the ENPH is withdrawals
 If response to P6110 is 2, then deduct value in P6120 from pension income before computing taxes.
 *** apply Tarifa 1 to (labor + pension), not to each individually
 ** nonlabor income
+*** general procedure
 Tarifa 2, just like capital income.
 Deduct appropriate things from capital income, and then add nonlabor income (for which the law makes room for subtracting deductions, but for which we know of no actual deductions) before applying Tarifa 2.
+*** becas (both in-kind and cash) count, unless from government
+**** P8610S2 and P8610S1
+The definition of "beca_sources_govt" has been changed to reflect this.
+  "Son ingreso no constitutivo de renta si es otorgado por el Estado (P6207M2 = si; P6207M3 = si; P6207M4 = si; P6207M5 = si. Otherwise, ingreso no laboral, tarifa 2, sumado con los otros."
 ** TODO capital and dividend income
 *** the data
 **** three major vars: capital = (capital - dividends) + dividends
@@ -118,8 +129,11 @@ The kind of income that gets taxed, and the kind that can disqulify someone from
 tax.co/'incomme tax laws, via juan.xlsx'
 schedules are on pp 40-41 of guide
   with a typo; should be monotonic
-** DONE (internalized): defs
-UVT = unidad de valor tributario
+** DONE solved
+*** (internalized): defs
+ UVT = unidad de valor tributario
+*** ignore P6871
+ It describes the frequency with which monthly income is disbursed; it does not bear on the monthly total.
 * DONE (right?): descriptive stats on pensions
 These are in 'caracteristicas generales'.
 ** DONE contributing to pension = P6920 == 1
