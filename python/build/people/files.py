@@ -157,12 +157,12 @@ beca_sources_govt = {
     "P6207M2"  : "beca from ICETEX"
   , "P6207M3"  : "beca from govt, central"
   , "P6207M4"  : "beca from govt, peripheral"
+  , "P6207M5"  : "beca from another public entity"
+  , "P6207M6"  : "beca from empresa publica ~familiar"
 }
 
 beca_sources_private = {
     "P6207M1"  : "beca from same school"
-  , "P6207M5"  : "beca from another public entity"
-  , "P6207M6"  : "beca from empresa publica ~familiar"
   , "P6207M7"  : "beca from empresa privada ~familiar"
   , "P6207M8"  : "beca from other private"
   , "P6207M9"  : "beca from organismo internacional"

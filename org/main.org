@@ -1,6 +1,9 @@
 * TODO ? (juan investigating): The "repayment" income might not be that
 They might be when the loan started, not when it ended.
+** TODO PITFALL: Double-counting, no matter which interpretation we use.
 * TODO personal income tax
+** TODO ? are there SS deductions to apply from income-tax.org?
+** verify: no deductions, exemptions for ss contribs?
 ** how should we use P6871? (Juan is investigating)
 ** how to tax? (Juan is investigating)
      "P7513S9A1"  : "income, year : infrequent : gambling"
@@ -46,6 +49,9 @@ and what we have in the ENPH is withdrawals
 *** pension
 If response to P6110 is 2, then deduct value in P6120 from pension income before computing taxes.
 *** apply Tarifa 1 to (labor + pension), not to each individually
+** nonlabor income
+Tarifa 2, just like capital income.
+Deduct appropriate things from capital income, and then add nonlabor income (for which the law makes room for subtracting deductions, but for which we know of no actual deductions) before applying Tarifa 2.
 ** TODO capital and dividend income
 *** the data
 **** three major vars: capital = (capital - dividends) + dividends
@@ -56,24 +62,24 @@ income, capital =                # first called "total income, monthly : capital
 **** ("normal") capital income
 ***** income
 ****** do not appear
-   Regalias, Derechos, Wealth (from which we would caluclate Ingresos Presuntos)
+Regalias, Derechos, Wealth (from which we would caluclate Ingresos Presuntos)
 ****** all the "capital income" in the code is in fact capital income, except maybe
-   the variables currently called "repayment"
+the variables currently called "repayment"
 ***** deductions and exemptions
 ****** almost none appear
 ****** exception: GMF deduction applies either to labor or capital income
  so apply it where it would reduce someone's taxes the most
 **** other profits (will be summed with normal capital income)
 ***** P6750 counts sometimes
- If P6765=7, then P6750 is a profit, rather than a labor income, so it goes here.
+If P6765=7, then P6750 is a profit, rather than a labor income, so it goes here.
 ***** P550 does count
 ***** TODO all sales are "other" (not "normal") capital profits
- So far we've been grouping all capital income together, but it has to be split, because sales and honorarios cannot have the GMF deducted, while the "normal" capital income can.
-    , "P7510S9A1"  : "income, year : sale : stock"
-    , "P7513S3A1"  : "income, year : sale : livestock"
-    , "P7513S1A1"  : "income, year : sale : real estate"
-    , "P7513S4A1"  : "income, year : sale : stock ?2"
-    , "P7513S2A1"  : "income, year : sale : vehicle | equipment"
+So far we've been grouping all capital income together, but it has to be split, because sales and honorarios cannot have the GMF deducted, while the "normal" capital income can.
+"P7510S9A1" : "income, year : sale : stock"
+"P7513S3A1" : "income, year : sale : livestock"
+"P7513S1A1" : "income, year : sale : real estate"
+"P7513S4A1" : "income, year : sale : stock ?2"
+"P7513S2A1" : "income, year : sale : vehicle | equipment"
 **** add those two and apply Tarifa 2
 *** dividend income
 **** The tax schedule is marginal, not average.

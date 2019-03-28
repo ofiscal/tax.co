@@ -4,7 +4,7 @@ import pandas as pd
 import re as regex
 
 import python.common.misc as c
-import python.common.cl_args as cl
+import python.common.cl_fake as cl
 import python.build.people.files as files
 import python.build.output_io as oio
 
@@ -80,7 +80,7 @@ if True: # income
                          + list( files.beca_sources_govt.values() ) )
     ppl[columns_to_convert] = ppl[columns_to_convert] . fillna(0)
     for col in columns_to_convert: # 98 and 99 are error codes for
-                                 # "doesn't know" and "won't say"
+                                   # "doesn't know" and "won't say"
       ppl[col] = ppl[col].apply(
         lambda x : 0 if ((x >= 98) & (x <= 99)) else x )
     del(re, income_columns, columns_to_convert)

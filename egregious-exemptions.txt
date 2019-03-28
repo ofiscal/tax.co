@@ -1,3 +1,9 @@
+# another unfair (right?) tax rate
+"income, year : infrequent : refund, other" – retención en la fuente 35% (seguramente reportan el valor después de retención). But the reported amount is probably what was received after losing that tax.
+
+"P7510S1A1"  : "income, year : private : remittance, domestic" – se debe contabilizar como ingreso (otros ingresos), pagan impuesto tarifa 2 si superan 1.400 UVT, se considera ingreso no laboral
+
+# VAT exemptions
 * desserts
 * Political contributions
 * Bebidas calientes : Tinto, caf� con leche, chocolate, t�, bebida achocolatada caliente, leche, agua de panela, agua arom�tica, avena caliente y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo, para llevar y por servicio a domicilio
