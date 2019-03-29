@@ -4,7 +4,7 @@ import pandas as pd
 import re as regex
 
 import python.common.misc as c
-import python.common.cl_fake as cl
+import python.common.cl_args as cl
 import python.build.people.files as files
 import python.build.output_io as oio
 
@@ -192,6 +192,11 @@ if True: # income
         ppl[ cols_private_cash ].sum( axis=1 ) )
       ppl["total income, monthly : private, in-kind"] = (
         ppl[ cols_private_in_kind ].sum( axis=1 ) )
+      ppl["income, donacion"] = (
+        # PITFALL: overlaps what will be called "income, private"
+        ppl["income, year : private : from private domestic ?firms"] +
+        ppl["income, year : private : from private foreign ?firms"] )
+
       ppl = ppl.drop( columns = cols_private_in_kind + cols_private_cash )
 
     if True: # infrequent income (cash only)
@@ -200,6 +205,14 @@ if True: # income
                         if re_infrequent.match(col) ]
       ppl["total income, monthly : infrequent"] = (
         ppl[ cols_infrequent ].sum( axis=1 ) )
+      ppl["income, ganancia ocasional"] = (
+        # PITFALL: overlaps what will be called "income, infrequent"
+        ppl["income, year : infrequent : gambling"] +
+        ppl["income, year : infrequent : inheritance"] )
+      ppl["income, indemnizacion"] = (
+        # PITFALL: overlaps what will be called "income, infrequent"
+        ppl["income, year : infrequent : jury awards"] )
+
       ppl = ppl.drop( columns = cols_infrequent )
 
     if True: # labor income

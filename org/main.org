@@ -1,9 +1,9 @@
 * TODO personal income tax
-** TODO ? (juan investigating): Borrowed "income"
+** TODO (juan investigating): Borrowed "income"
 *** TODO It is currently called "repayment", but it's the opposite: borrowing.
 *** TODO Is it taxed?
 *** TODO PITFALL: Double-counting.
-** TODO ? (show juan) Are there more applicable SS deductions in income-tax.org?
+** TODO (show juan) Are there more applicable SS deductions in income-tax.org?
 ** impuesto de ganancia ocasional
 *** 10% flat rate, no deductions, no exemptions.
 *** variables
