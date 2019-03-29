@@ -8,16 +8,24 @@ import python.common.misc as c
 import python.common.cl_args as cl
 
 
+# The frequent division by 12 below is because income is measured monthly,
+# whereas deductions and exemptions are in UVTs per year.
+
 ppl = oio.readStage( cl.subsample
                       , "people_3_purchases." + cl.vat_strategy_suffix )
 
 ppl["4 por mil"] = 0.004 * (ppl["income, cash"] - 11.6e6)
 
+ppl["tax, ganancia ocasional"] = ppl["income, ganancia ocasional"] * 0.1
+ppl["tax, indemnizacion"]      = ppl["income, indemnizacion"]      * 0.2
+ppl["tax, donacion"]           = ppl["income, donacion"].apply(
+  lambda x: (x - min( x*0.2, 2290*c.uvt/12)) * 0.1 )
+
 ppl["tax on dividends"] = ppl["income, capital, dividends"].apply(
   lambda x:
-    0                                     if x < (600  * c.uvt)
-    else (      (x - 600  * c.uvt) * 0.05 if x < (1000 * c.uvt)
-           else (x - 1000 * c.uvt) * 0.1 + 20 * c.uvt ) )
+    0                                                     if x < ( 600 * c.uvt / 12)
+    else (      (x - ( 600*c.uvt / 12)) * 0.05            if x < (1000 * c.uvt / 12)
+           else (x - (1000*c.uvt / 12)) * 0.1 + 2.5*c.uvt ) )
 
 for (goal,function) in [
       ("tax, pension"               , ss.mk_pension)

@@ -1,18 +1,20 @@
 * TODO personal income tax
+** TODO income is monthly, tax formulas are yearly!
 ** TODO (juan investigating): Borrowed "income"
 *** TODO It is currently called "repayment", but it's the opposite: borrowing.
 *** TODO Is it taxed?
 *** TODO PITFALL: Double-counting.
 ** TODO (show juan) Are there more applicable SS deductions in income-tax.org?
-** impuesto de ganancia ocasional
+** DONE impuesto de ganancia ocasional
 *** 10% flat rate, no deductions, no exemptions.
 *** variables
 P7513S9A1 (gambling)
 P7513S10A1 (inheritance)
-** impuesto de indemnizacion
+** DONE impuesto de indemnizacion
 P7513S8A1 (jury awards)
-** impuesto sobre donaciones
-tax = (S - min( S / 5, 2290 uvt)) *
+flat 20%
+** DONE impuesto sobre donaciones
+tax = (S - min( S / 5, 2290 uvt)) * 0.1
   where S = sum of all gifts (private or public)
           = P7510S3A1 + P7510S4A1
 ** TODO (juan investigating)

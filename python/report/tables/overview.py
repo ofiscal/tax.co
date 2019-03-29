@@ -20,7 +20,7 @@ if True: # Get, prepare the data
                ) . rename( columns = {"income, capital, dividends" : "income, dividends"} )
 
   households["income, labor + cesantia"] = households["income, labor"] + households["income, cesantia"]
- 
+
   households["income-percentile-in[90,97]"] = (
       (households["income-percentile"] >= 90)
     & (households["income-percentile"] <= 97) )
@@ -75,6 +75,9 @@ if True: # create a summary dataframe
     , "tax, cajas de compensacion"
     , "cesantias + primas"
     , "4 por mil"
+    , "tax, ganancia ocasional"
+    , "tax, indemnizacion"
+    , "tax, donacion"
     , "tax on dividends"
     ]
 
@@ -204,6 +207,12 @@ if True: # do the same thing to a subset of that data
     , "cesantias + primas: mean"
     , "4 por mil: median_unweighted"
     , "4 por mil: mean"
+    , "tax, ganancia ocasional: median_unweighted"
+    , "tax, ganancia ocasional: mean"
+    , "tax, indemnizacion: median_unweighted"
+    , "tax, indemnizacion: mean"
+    , "tax, donacion: median_unweighted"
+    , "tax, donacion: mean"
     , "tax on dividends: median_unweighted"
     , "tax on dividends: mean"
   ]]
