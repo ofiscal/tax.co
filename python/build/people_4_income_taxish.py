@@ -14,7 +14,8 @@ import python.common.cl_args as cl
 ppl = oio.readStage( cl.subsample
                       , "people_3_purchases." + cl.vat_strategy_suffix )
 
-ppl["tax, gmf"] = 0.004 * (ppl["income, cash"] - 11.6e6)
+ppl["tax, gmf"] = max( 0,
+                       0.004 * ( ppl["income, cash"] - 11.6e6) )
 
 ppl["tax, ganancia ocasional"] = ppl["income, ganancia ocasional"] * 0.1
 ppl["tax, indemnizacion"]      = ppl["income, indemnizacion"]      * 0.2
