@@ -1,3 +1,7 @@
+* TODO refactor for safety
+Use vars rather than strings.
+Use lists of vars rather than regexes for gruops.
+And maybe rename yearly to monthly once they become monthly.
 * TODO personal income tax
 ** TODO ask juan
 *** income is monthly, tax formulas are yearly. do I have the exemptions etc. right?
@@ -40,7 +44,7 @@ P1668S3A4 : "income, year : govt : familias en su tierra, in-kind"
 P1668S4A4 : "income, year : govt : jovenes en accion, in-kind"
 P1668S2A4 : "income, year : govt : programa de adultos mayores, in-kind"
 P1668S5A4 : "income, year : govt : transferencias por victimizacion, in-kind"
-** TODO the two stock variables
+** DONE the two stock variables
 *** DONE (verified): They are redundant.
 The two questions record the same information. One of them is always zero. An individual's income from sale of stock is equal to the maximum of the two columns.
 *** to use them after checking
@@ -78,7 +82,7 @@ income, capital =                # first called "total income, monthly : capital
     income, capital w/o dividends +
     income, capital, dividends   # first called "income, year : investment : dividends"
 *** normal capital + profits from sales
-**** ("normal") capital income
+**** "normal capital income"
 ***** income
 ****** do not appear
 Regalias, Derechos, Wealth (from which we would caluclate Ingresos Presuntos)
@@ -87,20 +91,23 @@ the variables currently called "repayment"
 ***** deductions and exemptions
 ****** almost none appear
 ****** exception: GMF deduction applies either to labor or capital income
- so apply it where it would reduce someone's taxes the most
-**** other profits (will be summed with normal capital income)
-***** P6750 counts sometimes
+so apply it where it would reduce someone's taxes the most
+**** "other profits" (will be summed with normal capital income)
+***** TODO P6750 counts sometimes
 If P6765=7, then P6750 is a profit, rather than a labor income, so it goes here.
-***** P550 does count
+***** TODO P550 does count
+Requires rewriting the categories a little: Currently it's classified as labor income.
+  , "P550"       : "income, year : labor : rural"
 ***** TODO all sales are "other" (not "normal") capital profits
-So far we've been grouping all capital income together, but it has to be split, because sales and honorarios cannot have the GMF deducted, while the "normal" capital income can.
+So far we've been grouping all capital income together, but it has to be split, because the GMF treatment differs across those two groups.
 "P7510S9A1" : "income, year : sale : stock"
 "P7513S3A1" : "income, year : sale : livestock"
 "P7513S1A1" : "income, year : sale : real estate"
 "P7513S4A1" : "income, year : sale : stock ?2"
 "P7513S2A1" : "income, year : sale : vehicle | equipment"
+**** apply the GMF deduction, if that's rational, to "normal capital income".
 **** add those two and apply Tarifa 2
-*** dividend income
+*** DONE dividend income
 **** The tax schedule is marginal, not average.
 **** Dividend income is separate from capital income, with a separate schedule (Tarifa 3). It carries no deductions and no exemptions.
 ** DONE assign dependents to income earners
