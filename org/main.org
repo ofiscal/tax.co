@@ -1,5 +1,6 @@
 * TODO personal income tax
-** TODO income is monthly, tax formulas are yearly!
+** TODO ask juan
+*** income is monthly, tax formulas are yearly. do I have the exemptions etc. right?
 ** TODO (juan investigating): Borrowed "income"
 *** TODO It is currently called "repayment", but it's the opposite: borrowing.
 *** TODO Is it taxed?
@@ -39,11 +40,9 @@ P1668S3A4 : "income, year : govt : familias en su tierra, in-kind"
 P1668S4A4 : "income, year : govt : jovenes en accion, in-kind"
 P1668S2A4 : "income, year : govt : programa de adultos mayores, in-kind"
 P1668S5A4 : "income, year : govt : transferencias por victimizacion, in-kind"
-** the two stock variables
-*** they should be redundant.
-The two questions record the same information; one of them should always be zero, or if they’re both nonzero, they should be the same number.
-*** first check them
-Check that no row contains two unequal nonzero values.
+** TODO the two stock variables
+*** DONE (verified): They are redundant.
+The two questions record the same information. One of them is always zero. An individual's income from sale of stock is equal to the maximum of the two columns.
 *** to use them after checking
 Compute the maximum and just use that instead of the two of them.
 ** TODO pension + labor
@@ -174,7 +173,7 @@ code 12700601, from Gastos_menos_frecuentes_-_Articulos.csv
   add that tot he variables in households.csv summed across people
   verify that the maximum "predial>0" variable at the household level is 1
 *** DONE financial transactions
-0.4% on all monthly income above 11.6 million COP
+    0.4% on all monthly income above 11.6 million COP
 ** TODO Allow approx to vary like prop-2018-11-31
 ** goods that dodge the VAT
 *** summarized with a parameter, "share of final good that escapes the VAT"

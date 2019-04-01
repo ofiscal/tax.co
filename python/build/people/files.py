@@ -136,10 +136,14 @@ income_capital = {
   , "P7500S4A1"  : "income, month : rental : real estate, undeveloped"
   , "P7500S5A1"  : "income, month : rental : vehicle | equipment"
 
+  # These two variables record the same information. At least one is always zero.
+  # (See python/test/stock_var_non_overlap.py for a proof.)
+  # A person's income from sale of stock = their maximum = their sum.
   , "P7510S9A1"  : "income, year : sale : stock"
+  , "P7513S4A1"  : "income, year : sale : stock ?2"
+
   , "P7513S3A1"  : "income, year : sale : livestock"
   , "P7513S1A1"  : "income, year : sale : real estate"
-  , "P7513S4A1"  : "income, year : sale : stock ?2"
   , "P7513S2A1"  : "income, year : sale : vehicle | equipment"
 }
 
