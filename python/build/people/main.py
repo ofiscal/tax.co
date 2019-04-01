@@ -331,15 +331,14 @@ if True: # dependence
     ( ppl["relationship"] == 2 )     # Pareja, esposo(a), cónyuge, compañero(a)
     | ( ppl["relationship"] == 5 ) ) # Otro pariente
 
-  ppl["dependent"] = (
-    ( ( ppl["income"] - ppl["income, govt"] )
-      < (260 * c.uvt / 12  ) )
-    & ( ( ( ppl["relative, child"]==1 )
-          & ( ( ppl["age"] < 19 )
-              | ( ppl["disabled"]==1 )
-              | ( ( ppl["student"]==1 )
-                  & ( ppl["age"] < 24 ) ) ) )
-        | ( ppl["relative, non-child"]==1 )
-    ) )
+  ppl["dependent"] = ( ( ( ppl["relative, child"]==1 )
+                       & ( ( ppl["age"] < 19 )
+                         | ( ( ppl["student"]==1 )
+                           & ( ppl["age"] < 24 ) )
+                         | ( ppl["disabled"]==1 ) ) )
+                     | ( ( ppl["relative, non-child"]==1 )
+                       & ( ppl["income"] < (260 * c.uvt / 12  ) )
+                         | ( ppl["disabled"]==1 ) )
+                     )
 
 oio.saveStage(cl.subsample, ppl, 'people_1')

@@ -44,7 +44,7 @@ P1668S5A4 : "income, year : govt : transferencias por victimizacion, in-kind"
 *** DONE (verified): They are redundant.
 The two questions record the same information. One of them is always zero. An individual's income from sale of stock is equal to the maximum of the two columns.
 *** to use them after checking
-Compute the maximum and just use that instead of the two of them.
+take their max, or their sum (either computation will give the same result)
 ** TODO pension + labor
 *** TODO labor
 **** DONE exempt v. deduction: solved
@@ -103,12 +103,8 @@ So far we've been grouping all capital income together, but it has to be split, 
 *** dividend income
 **** The tax schedule is marginal, not average.
 **** Dividend income is separate from capital income, with a separate schedule (Tarifa 3). It carries no deductions and no exemptions.
-** TODO assign dependents to income earners
-*** any kind of income -- govt transfers, becas, in-kind -- determines dependence
-*** TODO ? include non-child family with income > 260 UVT if they say they're unemployed b/c illness?
-Otherwise we're treating child family differently from non-child family.
-But if we do this, there are disabled people with total income (not labor income) > 260 UVT / year.
-The kind of income that gets taxed, and the kind that can disqulify someone from being a dependent, matter.
+** DONE assign dependents to income earners
+*** DONE any kind of income -- govt transfers, becas, in-kind -- determines dependence
 *** DONE data needed for exemptions: "age","disabled","student","relative, child" and "relative, non-child"
 **** DONE disabled
 ***** the variable used: P6310
