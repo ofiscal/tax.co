@@ -57,7 +57,7 @@ if True: # aggregate from household members to households
        , "tax, parafiscales"
        , "tax, cajas de compensacion"
        , "cesantias + primas"
-       , "4 por mil"
+       , "tax, gmf"
        , "tax, ganancia ocasional"
        , "tax, indemnizacion"
        , "tax, donacion"
