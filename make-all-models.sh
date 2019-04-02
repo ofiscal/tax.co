@@ -5,7 +5,7 @@
 # PITFALL: while most of those strategies should be run from this script,
 # "del_rosario" runs from a different one.
 
-# PITFALL: Valid vat_flat_rate values decimals in [0,1] -- not, e.g., 19.
+# PITFALL: Valid vat_flat_rate values are decimals in [0,1] -- not, e.g., 19.
 
 # Note that a loop below might "loop" over zero items.
 
