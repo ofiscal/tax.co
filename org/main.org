@@ -1,6 +1,6 @@
 * TODO refactor for safety
 ** diff the overview
-*** write a table diff
+*** run that from the makefile
 ** column names
 Use vars rather than strings.
 Use lists of vars rather than regexes for gruops.
