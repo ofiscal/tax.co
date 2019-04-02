@@ -38,6 +38,11 @@ def printInRed(message):
     CSI="\x1B["
     print( CSI+"31;40m" + message + CSI + "0m")
 
+def print_trueBlack_falseRed( aBool, ifTrue, ifFalse ):
+  if aBool: print( ifTrue )
+  else: printInRed( ifFalse )
+
+
 # Keeping this only to avoid breaking vat/report/*.py
 # tabulate_stats_by_group is better, because it:
 #   takes missing values into account
