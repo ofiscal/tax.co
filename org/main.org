@@ -1,18 +1,34 @@
 * TODO refactor for safety
-** diff the overview
-*** run that from the makefile
 ** column names
 Use vars rather than strings.
 Use lists of vars rather than regexes for gruops.
 And maybe rename yearly to monthly once they become monthly.
 * TODO personal income tax
+** TODO "cesantias" in "ss_schedules.py" should be "cesantias y primas"
+** TODO email juan
+*** Can one dependent be used for one kind of income, and another for another?
+*** The GMF exemption per year.
+In some year it was 11.6 million / month.
+What was it in 2016, 2017?
+** The exemptions applicable to labor and capital income
+In the law there are four:  medicina prepagada, mortgage interest payments, and dependents.
+In the data: We can only see dependents and the GMF.
+** An exemption or deduction cannot be double-counted
+e.g. for two different income types.
+** sales need to be split
+*** basic idea
+Real estate probably turns over less frequently than every 2 years on average, so call that "ganancia ocasional".
+Other things probably should be called non-labor income.
+*** TODO tricky: vehicles and equipment
+Do these turn over on average more or less frequently than every 2 years?
+  , "P7513S2A1"  : "income, year : sale : vehicle | equipment"
 ** TODO ask juan
 *** income is monthly, tax formulas are yearly. do I have the exemptions etc. right?
 ** TODO (juan investigating): Borrowed "income"
 *** TODO It is currently called "repayment", but it's the opposite: borrowing.
-*** TODO Is it taxed?
-*** TODO PITFALL: Double-counting.
-** TODO (show juan) Are there more applicable SS deductions in income-tax.org?
+*** It's like remittances: it counts against the tax-paying threshold but is not taxed.
+** (show juan) Are there more applicable SS deductions in income-tax.org?
+that document is stale.
 ** DONE impuesto de ganancia ocasional
 *** 10% flat rate, no deductions, no exemptions.
 *** variables
@@ -25,9 +41,8 @@ flat 20%
 tax = (S - min( S / 5, 2290 uvt)) * 0.1
   where S = sum of all gifts (private or public)
           = P7510S3A1 + P7510S4A1
-** TODO (juan investigating)
-  , "P7510S1A1"  : "income, year : private : remittance, domestic" – Uncertain; Juan will ask lawyer. se debe contabilizar como ingreso (otros ingresos), pagan impuesto tarifa 2 si superan 1.400 UVT, se considera ingreso no laboral.
-  , "P7510S2A1"  : "income, year : private : remittance, foreign" - Uncertain; Juan will ask lawyer. se debe contabilizar como ingreso (otros ingresos), pagan impuesto tarifa 2 si superan 1.400 UVT, se considera ingreso no laboral. (discontinuity?)
+** remittances: not taxable income, but ...
+They can put you over the threshold (1400 uvt / year) that triggers the need to pay taxes. (c.f. the guide, orange text on page 41).
 ** ignorable
 *** special
 P7513S12A1 -- taxed at 35%, but the amount reported is probably post-tax
@@ -61,14 +76,14 @@ Deduccion : se puede restar del base gravable. gastos son deudcible (o no) de lo
 and what we have in the ENPH is withdrawals
 **** GMF = 4 por mil. Deduct half.
 **** deduct from labor income
- everything paid as an employee contribution to social security: deduct from base
+ everything paid (by the employee) as an employee contribution to social security: deduct from base
    includes health, pension, solidarity
 **** absent from ENPH
  pagos por Medicina Prepagada ( deduccion)
  pagos por donaciones en investigación y educación ( deducción )
- aportes voluntarios a fndos de cesantias (deduccion hasta 1/12 del ingreso)
+ aportes voluntarios a fondos de cesantias (deduccion hasta 1/12 del ingreso)
 *** pension
-If response to P6110 is 2, then deduct value in P6120 from pension income before computing taxes.
+If response to P6110 is 2, then deduct value in P6120 from pension income before computing taxes. That's a health insurance contribution.
 *** apply Tarifa 1 to (labor + pension), not to each individually
 ** nonlabor income
 *** general procedure
