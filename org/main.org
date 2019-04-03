@@ -4,11 +4,18 @@ Use vars rather than strings.
 Use lists of vars rather than regexes for gruops.
 And maybe rename yearly to monthly once they become monthly.
 * TODO personal income tax
-** TODO email juan
+** TODO asking juan
 *** Can one dependent be used for one kind of income, and another for another?
 *** The GMF exemption per year.
 In some year it was 11.6 million / month.
 What was it in 2016, 2017?
+*** what are the "beneficios" subtracted from renta gravable?
+The formulas look like this:
+    renta gravable laboral = renta liquida laboral
+      - f beneficios
+      where f x = min( 40% renta gravable laboral
+                     , 5040 uvt)
+Where does a dependent enter into that formula? What else might be considered a "beneficio"?
 ** The exemptions applicable to labor and capital income
 In the law there are four:  medicina prepagada, mortgage interest payments, and dependents.
 In the data: We can only see dependents and the GMF.
@@ -21,25 +28,22 @@ Other things probably should be called non-labor income.
 *** TODO tricky: vehicles and equipment
 Do these turn over on average more or less frequently than every 2 years?
   , "P7513S2A1"  : "income, year : sale : vehicle | equipment"
-** TODO ask juan
-*** income is monthly, tax formulas are yearly. do I have the exemptions etc. right?
 ** TODO (juan investigating): Borrowed "income"
 *** TODO It is currently called "repayment", but it's the opposite: borrowing.
 *** It's like remittances: it counts against the tax-paying threshold but is not taxed.
-** (show juan) Are there more applicable SS deductions in income-tax.org?
-that document is stale.
-** DONE impuesto de ganancia ocasional
-*** 10% flat rate, no deductions, no exemptions.
-*** variables
-P7513S9A1 (gambling)
-P7513S10A1 (inheritance)
-** DONE impuesto de indemnizacion
-P7513S8A1 (jury awards)
-flat 20%
-** DONE impuesto sobre donaciones
-tax = (S - min( S / 5, 2290 uvt)) * 0.1
-  where S = sum of all gifts (private or public)
-          = P7510S3A1 + P7510S4A1
+** redo this according to "income tax.org"
+*** DONE impuesto de ganancia ocasional
+**** 10% flat rate, no deductions, no exemptions.
+**** variables
+ P7513S9A1 (gambling)
+ P7513S10A1 (inheritance)
+*** DONE impuesto de indemnizacion
+ P7513S8A1 (jury awards)
+ flat 20%
+*** DONE impuesto sobre donaciones
+ tax = (S - min( S / 5, 2290 uvt)) * 0.1
+   where S = sum of all gifts (private or public)
+           = P7510S3A1 + P7510S4A1
 ** remittances: not taxable income, but ...
 They can put you over the threshold (1400 uvt / year) that triggers the need to pay taxes. (c.f. the guide, orange text on page 41).
 ** ignorable
