@@ -62,9 +62,9 @@ def mk_cajas_de_compensacion_employer( independiente, income ):
         income, ss.ss_contribs_by_employer["cajas de compensacion"] )
     return compute_base( income ) * rate
 
-def mk_cesantias_employer( independiente, income ):
+def mk_cesantias_y_primas_employer( independiente, income ):
   if independiente: return 0
   else:
     (_, compute_base, rate) = util.tuple_by_threshold(
-        income, ss.ss_contribs_by_employer["cesantias"] )
+        income, ss.ss_contribs_by_employer["cesantias + primas"] )
     return compute_base( income ) * rate

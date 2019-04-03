@@ -14,8 +14,8 @@ import python.common.cl_args as cl
 ppl = oio.readStage( cl.subsample
                       , "people_3_purchases." + cl.vat_strategy_suffix )
 
-ppl["tax, gmf"] = max( 0,
-                       0.004 * ( ppl["income, cash"] - 11.6e6) )
+ppl["tax, gmf"] = (0.004 * ( ppl["income, cash"] - 11.6e6)
+                  ).apply( lambda x: max(0,x) )
 
 ppl["tax, ganancia ocasional"] = ppl["income, ganancia ocasional"] * 0.1
 ppl["tax, indemnizacion"]      = ppl["income, indemnizacion"]      * 0.2
@@ -36,7 +36,7 @@ for (goal,function) in [
     , ("tax, solidaridad"           , ss.mk_solidaridad)
     , ("tax, parafiscales"          , ss.mk_parafiscales_employer)
     , ("tax, cajas de compensacion" , ss.mk_cajas_de_compensacion_employer)
-    , ("cesantias + primas"         , ss.mk_cesantias_employer) ]:
+    , ("cesantias + primas"         , ss.mk_cesantias_y_primas_employer) ]:
   ppl[goal] = ppl.apply(
       lambda row: function( row["independiente"], row["income, labor, cash"] )
     , axis = "columns" )
