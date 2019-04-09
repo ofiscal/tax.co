@@ -9,11 +9,24 @@ And maybe rename yearly to monthly once they become monthly.
 *** The GMF exemption per year.
 In some year it was 11.6 million / month.
 What was it in 2016, 2017?
-*** what are the "beneficios" subtracted from renta gravable?
+*** DONE what are the "beneficios" subtracted from renta gravable?
+**** answer
+There are 5 types of “beneficios”:
+
+(*) Renta exenta: 25% of “renta gravable laboral” (this deduction always operate)
+(*) Mortgage interest: value paid in interest in a year if the person have a mortgage (I think we do not have this information)
+(*) Prepaid medicine: value paid in prepaid medicine if the person have this service (I think we do not have this information)
+(*) GMF paid: value paid in GMF in a year
+(*) Dependents: 10% of “renta gravable laboral” until 32 UVT
+(*) AFC and pensiones voluntarias: value saved in “Cuentas de Ahorro para el Fomento de la Construcción” and in “Fondos voluntarios de pensión” with some conditions (I think we do not have this information)
+
+All these benefits added can’t be more tan 40% of “renta gravable laboral” or 5040 UVT
+**** question detail
 The formulas look like this:
     renta gravable laboral = renta liquida laboral
       - f beneficios
-      where f x = min( 40% renta gravable laboral
+      where f x = min( x
+                     , 40% renta gravable laboral
                      , 5040 uvt)
 Where does a dependent enter into that formula? What else might be considered a "beneficio"?
 ** The exemptions applicable to labor and capital income
@@ -25,9 +38,8 @@ e.g. for two different income types.
 *** basic idea
 Real estate probably turns over less frequently than every 2 years on average, so call that "ganancia ocasional".
 Other things probably should be called non-labor income.
-*** TODO tricky: vehicles and equipment
-Do these turn over on average more or less frequently than every 2 years?
-  , "P7513S2A1"  : "income, year : sale : vehicle | equipment"
+*** TODO problem: this handles second-hand vehicle and equipment sales poorly
+Second-hand sales of those things are probably less frequent than every 2 years. We are basically assuming the retail market is bigger than the second-hand market.
 ** TODO (juan investigating): Borrowed "income"
 *** TODO It is currently called "repayment", but it's the opposite: borrowing.
 *** It's like remittances: it counts against the tax-paying threshold but is not taxed.
@@ -35,8 +47,8 @@ Do these turn over on average more or less frequently than every 2 years?
 *** DONE impuesto de ganancia ocasional
 **** 10% flat rate, no deductions, no exemptions.
 **** variables
- P7513S9A1 (gambling)
- P7513S10A1 (inheritance)
+P7513S9A1 (gambling)
+P7513S10A1 (inheritance)
 *** DONE impuesto de indemnizacion
  P7513S8A1 (jury awards)
  flat 20%
@@ -75,16 +87,16 @@ take their max, or their sum (either computation will give the same result)
 **** DONE exempt v. deduction: solved
 Exento : no paga impuesto sobre ese valor. ingresos son exentos (o no).
 Deduccion : se puede restar del base gravable. gastos son deudcible (o no) de los ingresos.
-**** cesantias: exempt when firm sends to the "fondo de cesantias", but not when withdrawn
+**** DONE cesantias: exempt when firm sends to the "fondo de cesantias", but not when withdrawn
 and what we have in the ENPH is withdrawals
 **** GMF = 4 por mil. Deduct half.
 **** deduct from labor income
- everything paid (by the employee) as an employee contribution to social security: deduct from base
+everything paid (by the employee) as an employee contribution to social security: deduct from base
    includes health, pension, solidarity
-**** absent from ENPH
- pagos por Medicina Prepagada ( deduccion)
- pagos por donaciones en investigación y educación ( deducción )
- aportes voluntarios a fondos de cesantias (deduccion hasta 1/12 del ingreso)
+**** DONE absent from ENPH
+pagos por Medicina Prepagada ( deduccion)
+pagos por donaciones en investigación y educación ( deducción )
+aportes voluntarios a fondos de cesantias (deduccion hasta 1/12 del ingreso)
 *** pension
 If response to P6110 is 2, then deduct value in P6120 from pension income before computing taxes. That's a health insurance contribution.
 *** apply Tarifa 1 to (labor + pension), not to each individually

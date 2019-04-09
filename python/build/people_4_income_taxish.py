@@ -41,6 +41,14 @@ for (goal,function) in [
       lambda row: function( row["independiente"], row["income, labor, cash"] )
     , axis = "columns" )
 
+if True: # tax on pension & labor income
+  ppl["tax, income, labor + pension"] = (
+    (ppl["income, pension"] + ppl["income, labor"])
+    - min( 0.3 * (ppl["income, pension"] + ppl["income, labor"])
+         , (5040 * c.uvt) / 12 )
+    )
+
+
 if True: # determine dependents, for income tax
   hh = ( ppl[["household","dependent"]]
          . groupby( "household" )

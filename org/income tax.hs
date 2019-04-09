@@ -12,9 +12,9 @@ ingresos no constitutivo de renta =
 renta liquida laboral = ingreso laboral
   - ingresos laborales no constitutivos de renta
 renta gravable laboral = renta liquida laboral
-  - f beneficios
-  where f x = min( 40% renta gravable laboral
-                 , 5040 uvt)
+  - min( beneficios
+       , 40% renta gravable laboral
+       , 5040 uvt)
 
 renta gravable pension = ingreso pension
   - ingreso pension no constitutivo de renta
@@ -32,9 +32,9 @@ renta liquida capital = ingreso capital
         ing k no constitutivo de renta = unknowable
 
 renta gravable de capital = renta liquida capital
-                            - f beneficios
-  where f x = min ( 10 pct of renta gravable de capital
-                  , 1000 uvt )
+  - min ( beneficios
+        , 10 pct of renta gravable de capital
+        , 1000 uvt )
 
 renta liquida no laboral = ingreso no laboral
   - ingreso no laboral no constiotutivo de renta
@@ -42,9 +42,9 @@ renta liquida no laboral = ingreso no laboral
         ingreso no laboral no constiotutivo de renta = unknowable
 
 renta gravable no laboral = renta liquida no laboral
-  - f beneficios
-  where f x = min ( 10 pct of renta gravable de capital
-                  , 1000 uvt )
+  - min( beneficios
+       , 10 pct of renta gravable de capital
+       , 1000 uvt )
 
 tarifa 2 applies to:
   renta gravable (capital + no laboral)
