@@ -7,8 +7,9 @@ And maybe rename yearly to monthly once they become monthly.
 ** TODO asking juan
 *** Can one dependent be used for one kind of income, and another for another?
 *** The GMF exemption per year.
-In some year it was 11.6 million / month.
-What was it in 2016, 2017?
+2018 = $11.604.600
+2017 = $11.150.650
+2016 = $10.413.550
 *** DONE what are the "beneficios" subtracted from renta gravable?
 **** answer
 There are 5 types of “beneficios”:

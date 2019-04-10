@@ -78,7 +78,9 @@ if True: # create a summary dataframe
     , "tax, ganancia ocasional"
     , "tax, indemnizacion"
     , "tax, donacion"
-    , "tax on dividends"
+    , "tax, income, labor + pension"
+    , "tax, income, capital w/o dividends"
+    , "tax, dividends"
     ]
 
   householdGroupVars = [ "one"
@@ -213,8 +215,12 @@ if True: # do the same thing to a subset of that data
     , "tax, indemnizacion: mean"
     , "tax, donacion: median_unweighted"
     , "tax, donacion: mean"
-    , "tax on dividends: median_unweighted"
-    , "tax on dividends: mean"
+    , "tax, income, labor + pension: median_unweighted"
+    , "tax, income, labor + pension: mean"
+    , "tax, income, capital w/o dividends: median_unweighted"
+    , "tax, income, capital w/o dividends: mean"
+    , "tax, dividends: median_unweighted"
+    , "tax, dividends: mean"
   ]]
 
   df.to_csv(         output_dir + "overview." + cl.vat_strategy_suffix + ".csv" )
