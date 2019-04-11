@@ -1,60 +1,62 @@
-import numpy as np
-import pandas as pd
-import python.build.classes as classes
-import python.common.misc as c
-import python.common.cl_args as cl
+import numpy                        as np
+import pandas                       as pd
+import python.build.classes         as classes
+import python.build.names_in_tables as n
+import python.common.misc           as c
+import python.common.cl_args        as cl
 
 
-edu_key = { 1 : "Ninguno",
-    2 : "Preescolar",
-    3 : "Basica\n Primaria",
-    4 : "Basica\n Secundaria",
-    5 : "Media",
-    6 : "Superior o\n Universitaria",
-    9 : "No sabe,\n no informa"
+edu_key = {
+    1 : n.edu_vals.nada
+  , 2 : n.edu_vals.pre
+  , 3 : n.edu_vals.pri
+  , 4 : n.edu_vals.sec
+  , 5 : n.edu_vals.med
+  , 6 : n.edu_vals.sup
+  , 9 : n.edu_vals.no_sabe
 }
 
-race_key = { 1 : "Indigena"
-    , 2 : "Gitano-Roma"
-    , 3 : "Raizal" # "del archipiélago de San Andrés y Providencia"
-    , 4 : "Palenquero" # "de San Basilio o descendiente"
-    , 5 : "Negro" # "Negro(a), mulato(a), afrocolombiano(a) o afrodescendiente"
-    , 6 : "Ninguno" # "Ninguno de los anteriores (mestizo, blanco, etc.)"
+race_key = {
+    1 : n.race_vals.ind
+  , 2 : n.race_vals.git
+  , 3 : n.race_vals.raiz
+  , 4 : n.race_vals.pal
+  , 5 : n.race_vals.neg
+  , 6 : n.race_vals.nada
 }
 
 demog = {
-    "P6050"      : "relationship"
-  , "P6020"      : "female"
-  , "P6040"      : "age"
-  , "P6080"      : "race"
-  , "P5170"      : "pre-k|daycare"
-  , "P6060"      : "skipped 3 meals"
-  , "P6160"      : "literate"
-  , "P6170"      : "student"
-  , "P6210"      : "education" # highest level completed
-  , "P6310"      : "why did not seek work"
-  , "P6430"      : "independiente" # 1-3 = asalariado; 4-5 = independiente
-                                # other = no income
+    "P6050" : n.relationship
+  , "P6020" : n.female
+  , "P6040" : n.age
+  , "P6080" : n.race
+  , "P5170" : n.pre_k_or_daycare
+  , "P6060" : n.skipped_3_meals
+  , "P6160" : n.literate
+  , "P6170" : n.student
+  , "P6210" : n.edu
+  , "P6310" : n.why_not_seek_work
+  , "P6430" : n.independiente
 }
 
-work = { "P6920"      : "pension, contributing, pre"
-       , "P6920S1"    : "pension, contribution amount"
-       , "P6940"      : "pension, contributors, pre"
-       , "P6990"      : "seguro de riesgos laborales, pre"
+work = { "P6920"   : n.pension_contributing_pre
+       , "P6920S1" : n.pension_contribution_amount
+       , "P6940"   : n.pension_contributors_pre
+       , "P6990"   : n.seguro_laborales
 }
 
 income_govt = {
-    "P9460S1"    : "income, month : govt : unemployment"
-  , "P1668S1A1"  : "income, year : govt : familias en accion"
-  , "P1668S3A2"  : "income, year : govt : familias en su tierra"
-  , "P1668S4A2"  : "income, year : govt : jovenes en accion"
-  , "P1668S2A2"  : "income, year : govt : programa de adultos mayores"
-  , "P1668S5A2"  : "income, year : govt : transferencias por victimizacion"
-  , "P1668S1A4"  : "income, year : govt : familias en accion, in-kind"
-  , "P1668S3A4"  : "income, year : govt : familias en su tierra, in-kind"
-  , "P1668S4A4"  : "income, year : govt : jovenes en accion, in-kind"
-  , "P1668S2A4"  : "income, year : govt : programa de adultos mayores, in-kind"
-  , "P1668S5A4"  : "income, year : govt : transferencias por victimizacion, in-kind"
+    "P9460S1"   : n.income_month_govt_unemployment
+  , "P1668S1A1" : n.income_year_govt_familias_en_accion
+  , "P1668S3A2" : n.income_year_govt_familias_en_su_tierra
+  , "P1668S4A2" : n.income_year_govt_jovenes_en_accion
+  , "P1668S2A2" : n.income_year_govt_programa_de_adultos_mayores
+  , "P1668S5A2" : n.income_year_govt_transferencias_por_victimizacion
+  , "P1668S1A4" : n.income_year_govt_familias_en_accion_in_kind
+  , "P1668S3A4" : n.income_year_govt_familias_en_su_tierra_in_kind
+  , "P1668S4A4" : n.income_year_govt_jovenes_en_accion_in_kind
+  , "P1668S2A4" : n.income_year_govt_programa_de_adultos_mayores_in_kind
+  , "P1668S5A4" : n.income_year_govt_transferencias_por_victimizacion_in_kind
 }
 
 income_labor = {
