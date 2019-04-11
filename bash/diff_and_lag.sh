@@ -9,13 +9,14 @@
 #
 # (0) Decide which arguments will be used in make-all-models.sh.
 # Modify this file to consider the same arguments.
-# (That may involve introducing loops.)
+# (That modification may involve introducing loops here,
+# to match the ones there.)
 #
-# (1) Run the "make lag" line here to copy the current overview file
-# to the corresponding "prev" folder.
+# (1) Run the "make lag" line below,
+# to copy the current overview file to the corresponding "prev" folder.
 #
-# (2) Modify the code. Execute it as much as needed until it seems
-# to work -- including having generated a new "overview" file.
+# (2) Modify the code. Execute it as much as needed until it seems to work
+# -- including having generated a new "overview" file.
 #
 # (4) Run the "make overview" line. Check for red text.
 

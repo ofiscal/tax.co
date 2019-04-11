@@ -137,7 +137,7 @@ goods_by_income_decile = \
 ##=##=##=## testing
 
 lag:
-	bash overview_lag.sh $(ss) $(vat_strategy) $(vat_flat_rate)
+	bash bash/overview_lag.sh $(ss) $(vat_strategy) $(vat_flat_rate)
 
 diff:
 	$(python_from_here) python/test/overview_diff.py \
