@@ -18,8 +18,8 @@
 # (2) Modify the code. Execute it as much as needed until it seems to work
 # -- including having generated a new "overview" file.
 #
-# (4) Run the "make overview" line. Check for red text.
+# (4) Run the "make diff" line below. Check for red text.
 
 
-make lag      subsample=100 vat_strategy=detail
-make overview subsample=100 vat_strategy=detail
+make lag  subsample=100 vat_strategy=detail
+make diff subsample=100 vat_strategy=detail
