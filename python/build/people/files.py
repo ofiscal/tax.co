@@ -42,7 +42,7 @@ demog = {
 work = { "P6920"   : n.pension_contributing_pre
        , "P6920S1" : n.pension_contribution_amount
        , "P6940"   : n.pension_contributors_pre
-       , "P6990"   : n.seguro_laborales
+       , "P6990"   : n.seguro_laboral
 }
 
 income_govt = {

@@ -5,6 +5,7 @@ import re as regex
 
 import python.common.misc as c
 import python.common.cl_args as cl
+import python.build.names_in_tables as n
 import python.build.people.files as files
 import python.build.output_io as oio
 
@@ -12,66 +13,66 @@ import python.build.output_io as oio
 ppl = c.to_numbers(
   cl.collect_files( files.files
                   , subsample = cl.subsample )
-  , skip_columns = ["non-beca sources"] # PITFALL : a space-separated list of ints
+  , skip_columns = [n.non_beca_sources] # PITFALL : a space-separated list of ints
 )
 
 ppl = ppl.drop( # drop non-members of household
-  ppl[ ppl["relationship"].isin( [6,7,8] )
+  ppl[ ppl[n.relationship].isin( [6,7,8] )
   ].index )
 
 if True: # make independiente a 0 or a 1
-  ppl["independiente"] = ppl[ "independiente"
+  ppl[n.independiente] = ppl[ n.independiente
                          ] . apply( lambda x: 1 if x in [4,5] else 0 )
 
 if True: # remap some boolean integers
-  for cn in ( [ "female" ] + # originally 1=male, 2=female
+  for cn in ( [ n.female ] + # originally 1=male, 2=female
               [included for (quantity,included) in files.inclusion_pairs]
                              # originally 1=included, 2=forgot
   ): ppl[cn] = ppl[cn] - 1
 
-  for cn in [ "student"         # originally 1=student, 2=not
-            , "skipped 3 meals" # originally 1=yes, 2=no
-            , "literate"        # originally 1=yes, 2=no
+  for cn in [ n.student         # originally 1=student, 2=not
+            , n.skipped_3_meals # originally 1=yes, 2=no
+            , n.literate        # originally 1=yes, 2=no
   ]: ppl[cn] = 2 - ppl[cn]
 
 if True: # work
   ppl["pension, contributing (if not pensioned)"] = (
-    ppl["pension, contributing, pre"]
+    ppl[n.pension_contributing_pre]
     . apply( lambda x: 1 if x==1 else ( 0 if x==2 else np.nan ) ) )
 
   ppl["pension, receiving"] = (
-      ( ppl["pension, contributing, pre"] == 3 )
-    | ( ppl["income, month : pension : age | illness"] > 0 )
+      ( ppl[n.pension_contributing_pre] == 3 )
+    | ( ppl[n.income_month_pension_age_or_illness] > 0 )
   ) . astype('int')
 
   ppl["pension, contributor(s) (if not pensioned) = split"] = (
-    ppl["pension, contributors, pre"]
+    ppl[n.pension_contributors_pre]
     . apply( lambda x: 1 if x == 1 else
              ( 0 if (x > 0) & (x < 4) else np.nan ) ) )
 
   ppl["pension, contributor(s) (if not pensioned) = self"] = (
-    ppl["pension, contributors, pre"]
+    ppl[n.pension_contributors_pre]
     . apply( lambda x: 1 if x == 2 else
              ( 0 if (x > 0) & (x < 4) else np.nan ) ) )
 
   ppl["pension, contributor(s) (if not pensioned) = employer"] = (
-    ppl["pension, contributors, pre"]
+    ppl[n.pension_contributors_pre]
     . apply( lambda x: 1 if x == 3 else
              ( 0 if (x > 0) & (x < 4) else np.nan ) ) )
 
   ppl["seguro de riesgos laborales (if reported)"] = (
-    ppl["seguro de riesgos laborales, pre"]
+    ppl[n.seguro_laboral]
     . apply( lambda x: 1 if x==1 else
              ( 0 if x==2 else np.nan ) ) )
 
-  ppl.drop( columns = [ "pension, contributing, pre"
-                      , "pension, contributors, pre"
-                      , "seguro de riesgos laborales, pre" ] )
+  ppl.drop( columns = [ n.pension_contributing_pre
+                      , n.pension_contributors_pre
+                      , n.seguro_laboral ] )
 
 if True: # income
   if True: # fill NaN values (one column's with 1, the rest's with 0)
-    ppl[   "income, month : labor : independent, months" ] = (
-      ppl[ "income, month : labor : independent, months" ] . fillna(1) )
+    ppl[   n.income_month_labor_independent_months ] = (
+      ppl[ n.income_month_labor_independent_months ] . fillna(1) )
 
     re = regex.compile( ".*income.*" )
     income_columns = [col for col in ppl.columns if re.match( col )]
@@ -103,12 +104,15 @@ if True: # income
         # because if none of the values included more than one source (true
         # in subsamples), it was by default interpreted as a number.
 
-      ppl["non-beca sources, govt"] = ppl["non-beca sources"
-                                      ] . apply( files.count_public )
-      ppl["non-beca sources, private"] = ppl["non-beca sources"
-                                         ] . apply( files.count_private )
-      ppl["non-beca sources, total"] = ( ppl["non-beca sources, govt"]
-                                       + ppl["non-beca sources, private"] )
+      ppl["non-beca sources, govt"] = (
+        ppl[n.non_beca_sources]
+        . apply( files.count_public ) )
+      ppl["non-beca sources, private"] = (
+        ppl[n.non_beca_sources]
+        . apply( files.count_private ) )
+      ppl["non-beca sources, total"] = (
+        ppl["non-beca sources, govt"]
+        + ppl["non-beca sources, private"] )
 
       ppl["beca sources, govt"]    = ppl[ list( files.beca_sources_govt   .values()
                                      ) ] . sum( axis=1 )
@@ -118,29 +122,29 @@ if True: # income
                                    + ppl["beca sources, private"] )
 
       ppl["income, month : govt : beca"]        = (
-        ppl["income, year : edu : beca"]
+        ppl[n.income_year_edu_beca]
         * ppl["beca sources, govt"]    / ppl["beca sources, total"] )
       ppl["income, month : private : beca"]     = (
-        ppl["income, year : edu : beca"]
+        ppl[n.income_year_edu_beca]
         * ppl["beca sources, private"] / ppl["beca sources, total"] )
       ppl["income, month : govt : non-beca"]    = (
-        ppl["income, year : edu : non-beca"]
+        ppl[n.income_year_edu_non_beca]
         * ppl["non-beca sources, govt"]    / ppl["non-beca sources, total"] )
       ppl["income, month : private : non-beca"] = (
-        ppl["income, year : edu : non-beca"]
+        ppl[n.income_year_edu_non_beca]
         * ppl["non-beca sources, private"] / ppl["non-beca sources, total"] )
 
       ppl["income, month : govt : beca, in-kind"]        = (
-        ppl["income, year : edu : beca, in-kind"]
+        ppl[n.income_year_edu_beca_in_kind]
         * ppl["beca sources, govt"]    / ppl["beca sources, total"] )
       ppl["income, month : private : beca, in-kind"]     = (
-        ppl["income, year : edu : beca, in-kind"]
+        ppl[n.income_year_edu_beca_in_kind]
         * ppl["beca sources, private"]    / ppl["beca sources, total"] )
       ppl["income, month : govt : non-beca, in-kind"]    = (
-        ppl["income, year : edu : non-beca, in-kind"]
+        ppl[n.income_year_edu_non_beca_in_kind]
         * ppl["non-beca sources, govt"]    / ppl["non-beca sources, total"] )
       ppl["income, month : private : non-beca, in-kind"] = (
-        ppl["income, year : edu : non-beca, in-kind"]
+        ppl[n.income_year_edu_non_beca_in_kind]
         * ppl["non-beca sources, private"]    / ppl["non-beca sources, total"] )
 
       new_income_variables = ppl.filter(
@@ -180,7 +184,7 @@ if True: # income
       ) )
       ppl["income, capital w/o dividends"] = (
         ppl["total income, monthly : capital"
-        ] - ppl["income, year : investment : dividends"] )
+        ] - ppl[n.income_year_investment_dividends] )
 
     if True: # private income (cash + in-kind)
       re_private  = regex.compile( "^income.* : private : " )
@@ -194,8 +198,8 @@ if True: # income
         ppl[ cols_private_in_kind ].sum( axis=1 ) )
       ppl["income, donacion"] = (
         # PITFALL: overlaps what will be called "income, private"
-        ppl["income, year : private : from private domestic ?firms"] +
-        ppl["income, year : private : from private foreign ?firms"] )
+        ppl[n.income_year_private_from_private_domestic_firms] +
+        ppl[n.income_year_private_from_private_foreign_firms] )
 
       ppl = ppl.drop( columns = cols_private_in_kind + cols_private_cash )
 
@@ -207,11 +211,11 @@ if True: # income
         ppl[ cols_infrequent ].sum( axis=1 ) )
       ppl["income, ganancia ocasional"] = (
         # PITFALL: overlaps what will be called "income, infrequent"
-        ppl["income, year : infrequent : gambling"] +
-        ppl["income, year : infrequent : inheritance"] )
+        ppl[n.income_year_infrequent_gambling] +
+        ppl[n.income_year_infrequent_inheritance] )
       ppl["income, indemnizacion"] = (
         # PITFALL: overlaps what will be called "income, infrequent"
-        ppl["income, year : infrequent : jury awards"] )
+        ppl[n.income_year_infrequent_jury_awards] )
 
       ppl = ppl.drop( columns = cols_infrequent )
 
@@ -257,7 +261,7 @@ if True: # income
           , 'total income, monthly : labor, in-kind'   : "income, labor, in-kind"
           }
         ppl = ppl.rename( columns = { **income_short_name_dict_cash
-                                          , **income_short_name_dict_in_kind
+                                    , **income_short_name_dict_in_kind
         } )
 
       if True: # compute across-category sums
@@ -321,20 +325,20 @@ if True: # format some categorical variables
 
 if True: # dependence
   ppl[ "jefe" ] = ( # head of household
-    ppl["relationship"] == 1 )
+    ppl[n.relationship] == 1 )
 
   ppl[ "relative, child" ] = (
-    ( ppl["relationship"] == 3 )     # hijo, hijastro
-    | ( ppl["relationship"] == 4 ) ) # nieto
+    ( ppl[n.relationship] == 3 )     # hijo, hijastro
+    | ( ppl[n.relationship] == 4 ) ) # nieto
 
   ppl[ "relative, non-child" ] = (
-    ( ppl["relationship"] == 2 )     # Pareja, esposo(a), cónyuge, compañero(a)
-    | ( ppl["relationship"] == 5 ) ) # Otro pariente
+    ( ppl[n.relationship] == 2 )     # Pareja, esposo(a), cónyuge, compañero(a)
+    | ( ppl[n.relationship] == 5 ) ) # Otro pariente
 
   ppl["dependent"] = ( ( ( ppl["relative, child"]==1 )
-                       & ( ( ppl["age"] < 19 )
-                         | ( ( ppl["student"]==1 )
-                           & ( ppl["age"] < 24 ) )
+                       & ( ( ppl[n.age] < 19 )
+                         | ( ( ppl[n.student]==1 )
+                           & ( ppl[n.age] < 24 ) )
                          | ( ppl["disabled"]==1 ) ) )
                      | ( ( ppl["relative, non-child"]==1 )
                        & ( ppl["income"] < (260 * c.uvt / 12  ) )

@@ -1,4 +1,8 @@
+-- This script was used to create the boilerplate in
+-- python/build/names_in_tables.py
+
 import Text.Regex
+
 
 safeSubRegex :: String -> String -> String -> String
 safeSubRegex pat replacement s =

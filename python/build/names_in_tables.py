@@ -31,7 +31,7 @@ independiente = "independiente" # 1-3 = asalariado; 4-5 = independiente
 pension_contributing_pre = "pension, contributing, pre"
 pension_contribution_amount = "pension, contribution amount"
 pension_contributors_pre = "pension, contributors, pre"
-seguro_laborales = "seguro de riesgos laborales, pre"
+seguro_laboral = "seguro de riesgos laborales, pre"
 
 income_month_govt_unemployment = \
   "income, month : govt : unemployment"
