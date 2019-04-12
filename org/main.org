@@ -2,6 +2,12 @@
 ** thoughts
 *** GMF deduction: across-person worries are inapplicable.
 Whereas dependents can be strategically split between parents, the GMF deduction can only be strategically used to cover one form of income or another within the same earner; they cannot be shared across earners.
+** TODO ponder with Juan
+Are there a lot of people with renta presuntiva > actual renta?
+(If so, must model.)
+** TODO delay the file-taxes-if threshold
+** dependent exemption is only for labor income, and only 32 uvt / month
+c.f. form 210, p. 3, section "deducciones imputables"
 ** TODO asking juan
 *** Can one dependent be used for one kind of income, and another for another?
 *** DONE The GMF exemption per year.
@@ -179,6 +185,7 @@ schedules are on pp 40-41 of guide
 UVT = unidad de valor tributario
 *** ignore P6871
 It describes the frequency with which monthly income is disbursed; it does not bear on the monthly total.
+* TODO rename single-digit percentiles to "09" instead of 9, etc
 * TODO why are the median columns in overview.py's df_tmi called "unweighted"?
 * TODO add cesantias + primas to (which?) income measure
 should be in denominator, and not numerator, of tax rate.
