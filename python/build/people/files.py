@@ -3,7 +3,6 @@ import pandas                       as pd
 import python.build.classes         as classes
 import python.build.names_in_tables as n
 import python.common.misc           as c
-import python.common.cl_args        as cl
 
 
 edu_key = {
@@ -147,6 +146,20 @@ income_capital = {
   , "P7513S3A1"  : n.income_year_sale_livestock
   , "P7513S1A1"  : n.income_year_sale_real_estate
   , "P7513S2A1"  : n.income_year_sale_vehicle_or_equipment
+}
+
+income_in_kind = {
+    n.income_year_govt_familias_en_accion_in_kind
+  , n.income_year_govt_familias_en_su_tierra_in_kind
+  , n.income_year_govt_jovenes_en_accion_in_kind
+  , n.income_year_govt_programa_de_adultos_mayores_in_kind
+  , n.income_year_govt_transferencias_por_victimizacion_in_kind
+  , n.income_month_labor_food_in_kind
+  , n.income_month_labor_lodging_in_kind
+  , n.income_month_labor_other_in_kind
+  , n.income_month_labor_transport_in_kind
+  , n.income_year_edu_beca_in_kind
+  , n.income_year_edu_non_beca_in_kind
 }
 
 income = { **income_govt
