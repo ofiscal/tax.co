@@ -18,7 +18,7 @@ m = 1/12 # to convert from yearly to monthly income
          # (multiplication is faster than division)
 muvt = c.uvt / 12
 
-ppl["tax, gmf"] = (0.004 * ( ppl["income, cash"] - 11.6e6)
+ppl["tax, gmf"] = (0.004 * ( ppl["income, cash"] - c.gmf_threshold)
                   ).apply( lambda x: max(0,x) )
 
 ppl["tax, ganancia ocasional"] = ppl["income, ganancia ocasional"] * 0.1

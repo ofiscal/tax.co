@@ -1,12 +1,10 @@
-* TODO refactor for safety
-** column names
-Use vars rather than strings.
-Use lists of vars rather than regexes for gruops.
-And maybe rename yearly to monthly once they become monthly.
 * TODO personal income tax
+** thoughts
+*** GMF deduction: across-person worries are inapplicable.
+Whereas dependents can be strategically split between parents, the GMF deduction can only be strategically used to cover one form of income or another within the same earner; they cannot be shared across earners.
 ** TODO asking juan
 *** Can one dependent be used for one kind of income, and another for another?
-*** The GMF exemption per year.
+*** DONE The GMF exemption per year.
 2018 = $11.604.600
 2017 = $11.150.650
 2016 = $10.413.550
@@ -15,10 +13,12 @@ And maybe rename yearly to monthly once they become monthly.
 There are 5 types of “beneficios”:
 
 (*) Renta exenta: 25% of “renta gravable laboral” (this deduction always operate)
-(*) Mortgage interest: value paid in interest in a year if the person have a mortgage (I think we do not have this information)
-(*) Prepaid medicine: value paid in prepaid medicine if the person have this service (I think we do not have this information)
 (*) GMF paid: value paid in GMF in a year
 (*) Dependents: 10% of “renta gravable laboral” until 32 UVT
+
+The rest we don't have:
+(*) Mortgage interest: value paid in interest in a year if the person have a mortgage (I think we do not have this information)
+(*) Prepaid medicine: value paid in prepaid medicine if the person have this service (I think we do not have this information)
 (*) AFC and pensiones voluntarias: value saved in “Cuentas de Ahorro para el Fomento de la Construcción” and in “Fondos voluntarios de pensión” with some conditions (I think we do not have this information)
 
 All these benefits added can’t be more tan 40% of “renta gravable laboral” or 5040 UVT
@@ -31,7 +31,8 @@ The formulas look like this:
                      , 5040 uvt)
 Where does a dependent enter into that formula? What else might be considered a "beneficio"?
 ** The exemptions applicable to labor and capital income
-In the law there are four:  medicina prepagada, mortgage interest payments, and dependents.
+In the law there are four:
+  medicina prepagada, mortgage interest payments, and dependents.
 In the data: We can only see dependents and the GMF.
 ** An exemption or deduction cannot be double-counted
 e.g. for two different income types.
@@ -44,7 +45,7 @@ Second-hand sales of those things are probably less frequent than every 2 years.
 ** TODO (juan investigating): Borrowed "income"
 *** TODO It is currently called "repayment", but it's the opposite: borrowing.
 *** It's like remittances: it counts against the tax-paying threshold but is not taxed.
-** redo this according to "income tax.org"
+** DONE redo this according to "income tax.hs"
 *** DONE impuesto de ganancia ocasional
 **** 10% flat rate, no deductions, no exemptions.
 **** variables
@@ -59,7 +60,7 @@ P7513S10A1 (inheritance)
            = P7510S3A1 + P7510S4A1
 ** remittances: not taxable income, but ...
 They can put you over the threshold (1400 uvt / year) that triggers the need to pay taxes. (c.f. the guide, orange text on page 41).
-** ignorable
+** DONE ignorable income variables
 *** special
 P7513S12A1 -- taxed at 35%, but the amount reported is probably post-tax
 *** untaxed
@@ -92,10 +93,10 @@ Deduccion : se puede restar del base gravable. gastos son deudcible (o no) de lo
 and what we have in the ENPH is withdrawals
 **** GMF = 4 por mil. Deduct half.
 **** deduct from labor income
-everything paid (by the employee) as an employee contribution to social security: deduct from base
+Everything paid (by the employee) as an employee contribution to social security: deduct from base
    includes health, pension, solidarity
 **** DONE absent from ENPH
-pagos por Medicina Prepagada ( deduccion)
+pagos por Medicina Prepagada (deduccion)
 pagos por donaciones en investigación y educación ( deducción )
 aportes voluntarios a fondos de cesantias (deduccion hasta 1/12 del ingreso)
 *** pension
@@ -120,8 +121,7 @@ income, capital =                # first called "total income, monthly : capital
 ***** income
 ****** do not appear
 Regalias, Derechos, Wealth (from which we would caluclate Ingresos Presuntos)
-****** all the "capital income" in the code is in fact capital income, except maybe
-the variables currently called "repayment"
+****** all the "capital income" in the code is in fact capital income
 ***** deductions and exemptions
 ****** almost none appear
 ****** exception: GMF deduction applies either to labor or capital income
@@ -179,22 +179,6 @@ schedules are on pp 40-41 of guide
 UVT = unidad de valor tributario
 *** ignore P6871
 It describes the frequency with which monthly income is disbursed; it does not bear on the monthly total.
-* DONE (right?): descriptive stats on pensions
-These are in 'caracteristicas generales'.
-** DONE contributing to pension = P6920 == 1
-If that's 2, this is 0.
-If that's 3, this is NaN.
-** pensioned = P6920 == 3
-If that's 1 or 2, this is 0.
-** pension contribution amount = P6920S1
-** pension contribution participants
-splitting pension contribs with employer = P6940 == 1
-worker paying the whole contrib = P6940 == 2
-employer paying the whole contrib = P6940 == 3
-** P6990 = Aseguradora de Riesgos Laborales
-1 -> 1 = has
-2 -> 0 = does not have
-3 -> NaN = does not know
 * TODO why are the median columns in overview.py's df_tmi called "unweighted"?
 * TODO add cesantias + primas to (which?) income measure
 should be in denominator, and not numerator, of tax rate.
@@ -367,6 +351,14 @@ It inputs these 5 files:
 ** TODO use the UVT rather than fixed peso amounts
 ** TODO ? drop the Correction class
 ** TODO update coicop-vat bridge on OneDrive
+** (didn't work) refactor for safety
+*** fizzled: safer strings
+**** I tried this; see branch "safe-strings"
+It turned out not to seem any safer.
+**** the idea
+Use vars rather than strings.
+Use lists of vars rather than regexes for gruops.
+And maybe rename yearly to monthly once they become monthly.
 ** report/pics send some output to output/vat/tables rather than /pics
 The Makefile pseudo targets, rather than *_pics, should be called *_reports, and should include those tables.
 ** pdflatex: send reports to a file, not stdout

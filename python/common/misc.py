@@ -9,6 +9,12 @@ min_wage = 713585.5 # This is an average, because the ENPH spans two years.
 
 uvt = (29753 + 31859) / 2 # This is the average of the UVTs from 2016 and 2017
 
+gmf_threshold = (11150650 + 10413550) / 2
+  # 2018 = $11.604.600
+  # 2017 = $11.150.650
+  # 2016 = $10.413.550
+
+
 variables = { "DIRECTORIO" : "household"
             , "ORDEN" : "household-member"
             , "FEX_C" : "weight"
