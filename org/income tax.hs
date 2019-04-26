@@ -47,7 +47,7 @@ renta liquida no laboral =
     ingreso no laboral
   - ingreso no laboral no constiotutivo de renta
   where ingreso no laboral =
-          short-term sales
+          short-term sales + non-government becas
         ingreso no laboral no constiotutivo de renta =
           unknowable
 

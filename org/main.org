@@ -8,19 +8,7 @@ In the law there are four:
 In the data: We can only see dependents and the GMF.
 *** An exemption or deduction cannot be double-counted
 e.g. for two different income types.
-** TODO yet to ask juan
-*** what's "renta exenta" in pension income?
-renta gravable pension =
-    ingreso pension
-  - ingreso pension no constitutivo de renta
-  - renta exenta hasta mil uvt
-** TODO asking juan
-*** Can one dependent be used for one kind of income, and another for another?
-*** DONE The GMF exemption per year.
-2018 = $11.604.600
-2017 = $11.150.650
-2016 = $10.413.550
-*** DONE what are the "beneficios" subtracted from renta gravable?
+*** TODO the "beneficios" subtracted from renta gravable
 **** answer
 There are 5 types of “beneficios”:
 
@@ -42,6 +30,14 @@ The formulas look like this:
                      , 40% renta gravable laboral
                      , 5040 uvt)
 Where does a dependent enter into that formula? What else might be considered a "beneficio"?
+** TODO yet to ask juan
+*** what's "renta exenta" in pension income?
+renta gravable pension =
+    ingreso pension
+  - ingreso pension no constitutivo de renta
+  - renta exenta hasta mil uvt
+** TODO asking juan
+*** Can one dependent be used for one kind of income, and another for another?
 ** TODO pension + labor
 *** TODO labor
 **** DONE exempt v. deduction: solved
@@ -63,9 +59,14 @@ c.f. form 210, p. 3, section "deducciones imputables"
 If response to P6110 is 2, then deduct value in P6120 from pension income before computing taxes. That's a health insurance contribution.
 *** apply Tarifa 1 to (labor + pension), not to each individually
 ** TODO nonlabor income
+= short-term sales + non-government becas
 *** general procedure
-Tarifa 2, just like capital income.
-Deduct appropriate things from capital income, and then add nonlabor income (for which the law makes room for subtracting deductions, but for which we know of no actual deductions) before applying Tarifa 2.
+Uses Tarifa 2, after being pooled with capital income.
+Deduct appropriate things from capital income,
+and then add nonlabor income
+(for which the law makes room for subtracting deductions,
+but for which we know of no actual deductions)
+before applying Tarifa 2.
 *** becas (both in-kind and cash) count, unless from government
 **** P8610S2 and P8610S1
 The definition of "beca_sources_govt" has been changed to reflect this.
@@ -76,7 +77,7 @@ The definition of "beca_sources_govt" has been changed to reflect this.
 income, capital =                # first called "total income, monthly : capital"
     income, capital w/o dividends +
     income, capital, dividends   # first called "income, year : investment : dividends"
-*** sales need to be split
+*** Sales need to be split. No sale is capital income.
 **** basic idea
 Real estate probably turns over less frequently than every 2 years on average, so call that "ganancia ocasional".
 Other things probably should be called non-labor income.
@@ -166,6 +167,10 @@ flat 20%
   tax = (S - min( S / 5, 2290 uvt)) * 0.1
     where S = sum of all gifts (private or public)
             = P7510S3A1 + P7510S4A1
+*** The value of the GMF exemption per year.
+2018 = $11.604.600
+2017 = $11.150.650
+2016 = $10.413.550
 *** the two not-exactly-redundant stock variables
 **** DONE (verified): They are redundant.
 The two questions record the same information. One of them is always zero. An individual's income from sale of stock is equal to the maximum of the two columns.
