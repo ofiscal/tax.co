@@ -60,7 +60,7 @@ renta gravable no laboral =
 tarifa 2 applies to:
   renta gravable (capital + no laboral)
 
--- dividends: done
+-- dividends: done (tarifa 3)
 
 -- ingresos ocasionales
 

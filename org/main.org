@@ -1,14 +1,13 @@
 * TODO personal income tax
-** TODO file
+** TODO exemptions, across >1 kind of income
 *** GMF deduction: across-person worries are inapplicable.
 Whereas dependents can be strategically split between parents, the GMF deduction can only be strategically used to cover one form of income or another within the same earner; it cannot be shared across income streams.
-*** retna presuntiva: matters?
-Are there a lot of people with renta presuntiva > actual renta?
-(If so, must model.)
-*** the file-taxes-if thresholds
-see our tax guide, orange text, p. 41
-*** dependent exemption is only for labor income, and only 32 uvt / month
-c.f. form 210, p. 3, section "deducciones imputables"
+*** The exemptions applicable to labor and capital income
+In the law there are four:
+  medicina prepagada, mortgage interest payments, and dependents.
+In the data: We can only see dependents and the GMF.
+*** An exemption or deduction cannot be double-counted
+e.g. for two different income types.
 ** TODO yet to ask juan
 *** what's "renta exenta" in pension income?
 renta gravable pension =
@@ -43,60 +42,6 @@ The formulas look like this:
                      , 40% renta gravable laboral
                      , 5040 uvt)
 Where does a dependent enter into that formula? What else might be considered a "beneficio"?
-** The exemptions applicable to labor and capital income
-In the law there are four:
-  medicina prepagada, mortgage interest payments, and dependents.
-In the data: We can only see dependents and the GMF.
-** An exemption or deduction cannot be double-counted
-e.g. for two different income types.
-** sales need to be split
-*** basic idea
-Real estate probably turns over less frequently than every 2 years on average, so call that "ganancia ocasional".
-Other things probably should be called non-labor income.
-*** TODO problem: this handles second-hand vehicle and equipment sales poorly
-Second-hand sales of those things are probably less frequent than every 2 years. We are basically assuming the retail market is bigger than the second-hand market.
-** TODO (juan investigating): Borrowed "income"
-*** TODO It is currently called "repayment", but it's the opposite: borrowing.
-*** It's like remittances: it counts against the tax-paying threshold but is not taxed.
-** DONE redo this according to "income tax.hs"
-*** DONE impuesto de ganancia ocasional
-**** 10% flat rate, no deductions, no exemptions.
-**** variables
-P7513S9A1 (gambling)
-P7513S10A1 (inheritance)
-*** DONE impuesto de indemnizacion
- P7513S8A1 (jury awards)
- flat 20%
-*** DONE impuesto sobre donaciones
- tax = (S - min( S / 5, 2290 uvt)) * 0.1
-   where S = sum of all gifts (private or public)
-           = P7510S3A1 + P7510S4A1
-** remittances: not taxable income, but ...
-They can put you over the threshold (1400 uvt / year) that triggers the need to pay taxes. (c.f. the guide, orange text on page 41).
-** DONE ignorable income variables
-*** special
-P7513S12A1 -- taxed at 35%, but the amount reported is probably post-tax
-*** untaxed
-P7513S11A1 : "income, year : infrequent : refund, tax
-P7500S3A1 : "income, month : private : alimony"
-P8612S2 : "income, year : edu : non-beca, in-kind" # (nothing called "subsidio" is taxed)
-P8612S1 : "income, year : edu : non-beca"          # (nothing called "subsidio" is taxed)
-P9460S1 : "income, month : govt : unemployment"
-P1668S1A1 : "income, year : govt : familias en accion"
-P1668S3A2 : "income, year : govt : familias en su tierra"
-P1668S4A2 : "income, year : govt : jovenes en accion"
-P1668S2A2 : "income, year : govt : programa de adultos mayores"
-P1668S5A2 : "income, year : govt : transferencias por victimizacion"
-P1668S1A4 : "income, year : govt : familias en accion, in-kind"
-P1668S3A4 : "income, year : govt : familias en su tierra, in-kind"
-P1668S4A4 : "income, year : govt : jovenes en accion, in-kind"
-P1668S2A4 : "income, year : govt : programa de adultos mayores, in-kind"
-P1668S5A4 : "income, year : govt : transferencias por victimizacion, in-kind"
-** DONE the two stock variables
-*** DONE (verified): They are redundant.
-The two questions record the same information. One of them is always zero. An individual's income from sale of stock is equal to the maximum of the two columns.
-*** to use them after checking
-take their max, or their sum (either computation will give the same result)
 ** TODO pension + labor
 *** TODO labor
 **** DONE exempt v. deduction: solved
@@ -112,10 +57,12 @@ Everything paid (by the employee) as an employee contribution to social security
 pagos por Medicina Prepagada (deduccion)
 pagos por donaciones en investigación y educación ( deducción )
 aportes voluntarios a fondos de cesantias (deduccion hasta 1/12 del ingreso)
+**** TODO dependent exemption is only for labor income, and only 32 uvt / month
+c.f. form 210, p. 3, section "deducciones imputables"
 *** pension
 If response to P6110 is 2, then deduct value in P6120 from pension income before computing taxes. That's a health insurance contribution.
 *** apply Tarifa 1 to (labor + pension), not to each individually
-** nonlabor income
+** TODO nonlabor income
 *** general procedure
 Tarifa 2, just like capital income.
 Deduct appropriate things from capital income, and then add nonlabor income (for which the law makes room for subtracting deductions, but for which we know of no actual deductions) before applying Tarifa 2.
@@ -129,6 +76,12 @@ The definition of "beca_sources_govt" has been changed to reflect this.
 income, capital =                # first called "total income, monthly : capital"
     income, capital w/o dividends +
     income, capital, dividends   # first called "income, year : investment : dividends"
+*** sales need to be split
+**** basic idea
+Real estate probably turns over less frequently than every 2 years on average, so call that "ganancia ocasional".
+Other things probably should be called non-labor income.
+**** TODO problem: this handles second-hand vehicle and equipment sales poorly
+Second-hand sales of those things are probably less frequent than every 2 years. We are basically assuming the retail market is bigger than the second-hand market.
 *** normal capital + profits from sales
 **** "normal capital income"
 ***** income
@@ -157,41 +110,90 @@ So far we've been grouping all capital income together, but it has to be split, 
 *** DONE dividend income
 **** The tax schedule is marginal, not average.
 **** Dividend income is separate from capital income, with a separate schedule (Tarifa 3). It carries no deductions and no exemptions.
-** DONE assign dependents to income earners
+** TODO ? assign dependents to income earners
+This was marked "done" but I don't think that's right.
 *** DONE any kind of income -- govt transfers, becas, in-kind -- determines dependence
 *** DONE data needed for exemptions: "age","disabled","student","relative, child" and "relative, non-child"
 **** DONE disabled
 ***** the variable used: P6310
- Aunque ... desea trabajar, ¿por qué motivo principal no hizo diligencias para buscar un trabajo oinstalar un negocio en las ÚLTIMAS 4 SEMANAS?
+Aunque ... desea trabajar, ¿por qué motivo principal no hizo diligencias para buscar un trabajo oinstalar un negocio en las ÚLTIMAS 4 SEMANAS?
 ***** P7500S2: no good
- ¿El mes pasado, recibió pagos por: d. Pensiones o jubilaciones por vejez, invalidez o sustitución pensional
+¿El mes pasado, recibió pagos por: d. Pensiones o jubilaciones por vejez, invalidez o sustitución pensional
 ***** P7513S12: no good
- Durante los últimos 12 meses recibió ingresos ocasionales por: l. Devoluciones o reintegros por seguros educativos, incapacidad o invalidez
+Durante los últimos 12 meses recibió ingresos ocasionales por: l. Devoluciones o reintegros por seguros educativos, incapacidad o invalidez
 **** DONE relationship data
- 5. ¿Cuál es el parentesco de ... con el ó la jefe del hogar?
- 1 » a. Jefe (a) del hogar
- 2 » b. Pareja, esposo(a), cónyuge, compañero(a)
- 3 » c. Hijo(a), hijastro(a)
- 4 » d. Nieto(a)
- 5 » e. Otro pariente
- 6 » f. Empleado(a) del servicio doméstico y sus parientes
- 7 » g. Pensionista
- 8 » h. Trabajador
- 9 » i. Otro no pariente
+5. ¿Cuál es el parentesco de ... con el ó la jefe del hogar?
+1 » a. Jefe (a) del hogar
+2 » b. Pareja, esposo(a), cónyuge, compañero(a)
+3 » c. Hijo(a), hijastro(a)
+4 » d. Nieto(a)
+5 » e. Otro pariente
+6 » f. Empleado(a) del servicio doméstico y sus parientes
+7 » g. Pensionista
+8 » h. Trabajador
+9 » i. Otro no pariente
 **** DONE create a "(could be claimed as a) dependent" variable
- age < 18 => dependent
- age < 23 && student => dependent
- family member or partner && income < 260 UVT => dependent
- child & disabled => dependent
+age < 18 => dependent
+age < 23 && student => dependent
+family member or partner && income < 260 UVT => dependent
+child & disabled => dependent
+** TODO renta presuntiva: matters?
+Are there a lot of people with renta presuntiva > actual renta?
+(If so, must model.)
+** TODO ? the file-taxes-if thresholds
+see our tax guide, orange text, p. 41
+*** TODO (juan investigating): Borrowed "income"
+**** TODO It is currently called "repayment", but it's the opposite: borrowing.
+**** It's like remittances: it counts against the tax-paying threshold but is not taxed.
+*** remittances: not taxable income, but
+They can put you over the threshold (1400 uvt / year) that triggers the need to pay taxes. (c.f. the guide, orange text on page 41).
 ** refs
 tax.co/'incomme tax laws, via juan.xlsx'
 schedules are on pp 40-41 of guide
   with a typo; should be monotonic
 ** DONE solved
+*** simpler taxes
+implemented per "income tax.hs"
+**** DONE impuesto de ganancia ocasional
+***** 10% flat rate, no deductions, no exemptions.
+***** variables
+P7513S9A1 (gambling)
+P7513S10A1 (inheritance)
+**** DONE impuesto de indemnizacion
+P7513S8A1 (jury awards)
+flat 20%
+**** DONE impuesto sobre donaciones
+  tax = (S - min( S / 5, 2290 uvt)) * 0.1
+    where S = sum of all gifts (private or public)
+            = P7510S3A1 + P7510S4A1
+*** the two not-exactly-redundant stock variables
+**** DONE (verified): They are redundant.
+The two questions record the same information. One of them is always zero. An individual's income from sale of stock is equal to the maximum of the two columns.
+**** to use them after checking
+take their max, or their sum (either computation will give the same result)
 *** (internalized): defs
 UVT = unidad de valor tributario
-*** ignore P6871
-It describes the frequency with which monthly income is disbursed; it does not bear on the monthly total.
+*** ignorable income variables
+**** special
+P7513S12A1 -- taxed at 35%, but the amount reported is probably post-tax
+**** untaxed
+P7513S11A1 : "income, year : infrequent : refund, tax
+P7500S3A1 : "income, month : private : alimony"
+P8612S2 : "income, year : edu : non-beca, in-kind" # (nothing called "subsidio" is taxed)
+P8612S1 : "income, year : edu : non-beca"          # (nothing called "subsidio" is taxed)
+P9460S1 : "income, month : govt : unemployment"
+P1668S1A1 : "income, year : govt : familias en accion"
+P1668S3A2 : "income, year : govt : familias en su tierra"
+P1668S4A2 : "income, year : govt : jovenes en accion"
+P1668S2A2 : "income, year : govt : programa de adultos mayores"
+P1668S5A2 : "income, year : govt : transferencias por victimizacion"
+P1668S1A4 : "income, year : govt : familias en accion, in-kind"
+P1668S3A4 : "income, year : govt : familias en su tierra, in-kind"
+P1668S4A4 : "income, year : govt : jovenes en accion, in-kind"
+P1668S2A4 : "income, year : govt : programa de adultos mayores, in-kind"
+P1668S5A4 : "income, year : govt : transferencias por victimizacion, in-kind"
+**** Not income
+P6871: It describes the frequency with which monthly income is disbursed; it does not bear on the monthly total.
 * TODO rename single-digit percentiles to "09" instead of 9, etc
 * TODO why are the median columns in overview.py's df_tmi called "unweighted"?
 * TODO add cesantias + primas to (which?) income measure
@@ -204,9 +206,9 @@ formality matters
 *** DONE predial: use the coicop
 code 12700601, from Gastos_menos_frecuentes_-_Articulos.csv
 **** how I verified that the predial tax is not double-counted across a household's members
-  in purchase_sums.csv, create a 0-or-1 "predial>0" column
-  add that tot he variables in households.csv summed across people
-  verify that the maximum "predial>0" variable at the household level is 1
+in purchase_sums.csv, create a 0-or-1 "predial>0" column
+add that tot he variables in households.csv summed across people
+verify that the maximum "predial>0" variable at the household level is 1
 *** DONE financial transactions
     0.4% on all monthly income above 11.6 million COP
 ** TODO Allow approx to vary like prop-2018-11-31
