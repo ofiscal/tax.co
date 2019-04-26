@@ -14,9 +14,7 @@ import python.common.cl_args as cl
 ppl = oio.readStage( cl.subsample
                       , "people_3_purchases." + cl.vat_strategy_suffix )
 
-m = 1/12 # to convert from yearly to monthly income
-         # (multiplication is faster than division)
-muvt = c.uvt / 12
+muvt = c.uvt / 12 # monthly UVT, to harmonize with montly income
 
 ppl["tax, gmf"] = (0.004 * ( ppl["income, cash"] - c.gmf_threshold)
                   ).apply( lambda x: max(0,x) )

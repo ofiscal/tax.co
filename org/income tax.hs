@@ -1,7 +1,7 @@
 A dependent counts for 10% of the applicable renta liquida.
 
 -- common
-One only pays income tax if one's various types of incomes exceed various thresholds. See p. 41 of our Citizen's Guide for details.
+One only pays income tax if one's various types of incomes exceed various thresholds. See p. 41, orange text, of our Citizen's Guide for details.
 
 ingresos no constitutivo de renta =
     ss contributions

@@ -34,7 +34,7 @@ if True: # remap some boolean integers
             , "literate"        # originally 1=yes, 2=no
   ]: ppl[cn] = 2 - ppl[cn]
 
-if True: # work
+if True: # non-income work characteristics
   ppl["pension, contributing (if not pensioned)"] = (
     ppl["pension, contributing, pre"]
     . apply( lambda x: 1 if x==1 else ( 0 if x==2 else np.nan ) ) )

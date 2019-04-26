@@ -1,13 +1,20 @@
 * TODO personal income tax
-** thoughts
+** TODO file
 *** GMF deduction: across-person worries are inapplicable.
-Whereas dependents can be strategically split between parents, the GMF deduction can only be strategically used to cover one form of income or another within the same earner; they cannot be shared across earners.
-** TODO ponder with Juan
+Whereas dependents can be strategically split between parents, the GMF deduction can only be strategically used to cover one form of income or another within the same earner; it cannot be shared across income streams.
+*** retna presuntiva: matters?
 Are there a lot of people with renta presuntiva > actual renta?
 (If so, must model.)
-** TODO delay the file-taxes-if threshold
-** dependent exemption is only for labor income, and only 32 uvt / month
+*** the file-taxes-if thresholds
+see our tax guide, orange text, p. 41
+*** dependent exemption is only for labor income, and only 32 uvt / month
 c.f. form 210, p. 3, section "deducciones imputables"
+** TODO yet to ask juan
+*** what's "renta exenta" in pension income?
+renta gravable pension =
+    ingreso pension
+  - ingreso pension no constitutivo de renta
+  - renta exenta hasta mil uvt
 ** TODO asking juan
 *** Can one dependent be used for one kind of income, and another for another?
 *** DONE The GMF exemption per year.
