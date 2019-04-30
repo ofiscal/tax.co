@@ -55,9 +55,9 @@ pagos por donaciones en investigación y educación ( deducción )
 aportes voluntarios a fondos de cesantias (deduccion hasta 1/12 del ingreso)
 **** TODO dependent exemption is only for labor income, and only 32 uvt / month
 c.f. form 210, p. 3, section "deducciones imputables"
-*** pension
+*** TODO pension deduction
 If response to P6110 is 2, then deduct value in P6120 from pension income before computing taxes. That's a health insurance contribution.
-*** apply Tarifa 1 to (labor + pension), not to each individually
+*** DONE apply Tarifa 1 to (labor + pension), not to each individually
 ** TODO nonlabor income
 = short-term sales + non-government becas
 *** general procedure
@@ -143,11 +143,8 @@ Are there a lot of people with renta presuntiva > actual renta?
 (If so, must model.)
 ** TODO ? the file-taxes-if thresholds
 see our tax guide, orange text, p. 41
-*** TODO (juan investigating): Borrowed "income"
-**** TODO It is currently called "repayment", but it's the opposite: borrowing.
-**** It's like remittances: it counts against the tax-paying threshold but is not taxed.
-*** remittances: not taxable income, but
-They can put you over the threshold (1400 uvt / year) that triggers the need to pay taxes. (c.f. the guide, orange text on page 41).
+*** Borrowed income and remittances
+They count against the tax-paying threshold but is not taxed.
 ** refs
 tax.co/'incomme tax laws, via juan.xlsx'
 schedules are on pp 40-41 of guide

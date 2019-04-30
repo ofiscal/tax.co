@@ -166,7 +166,7 @@ if True: # income
 
     if True: # capital income (cash only)
       re_capital = regex.compile(
-        "^income.* : (investment|repayment|rental|sale) : .*" )
+        "^income.* : (investment|rental|sale) : .*" )
       cols_capital = [ col for col in ppl.columns
                      if re_capital.match(col) ]
       ppl["total income, monthly : capital"] = (
@@ -214,6 +214,13 @@ if True: # income
         ppl["income, year : infrequent : jury awards"] )
 
       ppl = ppl.drop( columns = cols_infrequent )
+
+    if True: # "income" from borrowing
+      re_borrowing = regex.compile( "^income.* : borrowing : .*" )
+      cols_borrowing = [ col for col in ppl.columns
+                      if re_borrowing.match(col) ]
+      ppl["total income, monthly : borrowing"] = (
+        ppl[ cols_borrowing ].sum( axis=1 ) )
 
     if True: # labor income
       if True: # normalize independent labor income to one months' worth

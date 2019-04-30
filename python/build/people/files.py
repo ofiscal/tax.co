@@ -124,13 +124,15 @@ income_infrequent = {
   , "P7513S11A1" : "income, year : infrequent : refund, tax"
 }
 
+income_borrowing = {
+    "P7513S6A1"  : "income, year : borrowing : from bank"
+  , "P7513S7A1"  : "income, year : borrowing : from other"
+  , "P7513S5A1"  : "income, year : borrowing : from person"
+}
+
 income_capital = {
     "P7510S10A1" : "income, year : investment : dividends"
   , "P7510S5A1"  : "income, year : investment : interest"
-
-  , "P7513S6A1"  : "income, year : repayment : by bank"
-  , "P7513S7A1"  : "income, year : repayment : by other"
-  , "P7513S5A1"  : "income, year : repayment : by person"
 
   , "P7500S1A1"  : "income, month : rental : real estate, developed"
   , "P7500S4A1"  : "income, month : rental : real estate, undeveloped"
@@ -152,6 +154,7 @@ income = { **income_govt
          , **income_edu
          , **income_private
          , **income_infrequent
+         , **income_borrowing
          , **income_capital
          , "P7500S2A1"  : "income, month : pension : age | illness"
          , "P7510S6A1"  : "income, year : cesantia"
