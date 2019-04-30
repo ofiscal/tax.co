@@ -155,14 +155,18 @@ if True: # income
     if True: # govt income (cash + in-kind)
       re_govt  = regex.compile( "^income.* : govt" )
       cols_govt_cash    = [ col for col in ppl.columns
-                          if re_govt.match(col) and not re_in_kind.match(col) ]
+                        if re_govt.match(col) and not re_in_kind.match(col) ]
       cols_govt_in_kind = [ col for col in ppl.columns
-                          if re_govt.match(col) and     re_in_kind.match(col) ]
+                        if re_govt.match(col) and     re_in_kind.match(col) ]
       ppl["total income, monthly : govt, cash"] = (
         ppl[ cols_govt_cash ].sum( axis=1 ) )
       ppl["total income, monthly : govt, in-kind"] = (
         ppl[ cols_govt_in_kind ].sum( axis=1 ) )
       ppl = ppl.drop( columns = cols_govt_in_kind + cols_govt_cash )
+
+    if True: # income, non-labor ("ingreso no laboral", for tax purposes)
+      ppl["income, non-labor"] = (
+        
 
     if True: # capital income (cash only)
       re_capital = regex.compile(
