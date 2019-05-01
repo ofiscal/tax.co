@@ -77,7 +77,7 @@ The definition of "beca_sources_govt" has been changed to reflect this.
 income, capital =                # first called "total income, monthly : capital"
     income, capital w/o dividends +
     income, capital, dividends   # first called "income, year : investment : dividends"
-*** Sales need to be split. No sale is capital income.
+*** DONE Sales need to be split. No sale is capital income.
 **** basic idea
 Real estate probably turns over less frequently than every 2 years on average, so call that "ganancia ocasional".
 Other things probably should be called non-labor income.

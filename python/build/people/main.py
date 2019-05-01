@@ -166,11 +166,15 @@ if True: # income
 
     if True: # income, non-labor ("ingreso no laboral", for tax purposes)
       ppl["income, non-labor"] = (
-        
+          ppl["income, year : sale : stock"]
+        + ppl["income, year : sale : stock ?2"]
+        + ppl["income, year : sale : livestock"]
+        + ppl["income, year : sale : vehicle | equipment"]
+        + ppl["income, month : private : beca"] )
 
     if True: # capital income (cash only)
       re_capital = regex.compile(
-        "^income.* : (investment|rental|sale) : .*" )
+        "^income.* : (investment|rental) : .*" )
       cols_capital = [ col for col in ppl.columns
                      if re_capital.match(col) ]
       ppl["total income, monthly : capital"] = (
@@ -211,6 +215,7 @@ if True: # income
         ppl[ cols_infrequent ].sum( axis=1 ) )
       ppl["income, ganancia ocasional"] = (
         # PITFALL: overlaps what will be called "income, infrequent"
+        ppl["income, year : sale : real estate"] +
         ppl["income, year : infrequent : gambling"] +
         ppl["income, year : infrequent : inheritance"] )
       ppl["income, indemnizacion"] = (
