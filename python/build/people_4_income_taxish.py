@@ -49,21 +49,27 @@ if True: # income taxes
         else ( (x - 1700*muvt)*0.28 + 116*muvt if x < (4100*muvt)
           else (x - 4100*muvt)*0.33 + 788*muvt ) ) ) )
 
-  ppl["taxable income, capital w/o dividends"] = (
-    ppl["income, capital w/o dividends"].apply(
+  ppl["taxable income, capital"] = (
+    ppl["income, capital (tax def)"].apply(
       lambda x: x - min( 0.1 * x, 1000*muvt)
     ) )
-  ppl["tax, income, capital w/o dividends"] = (
-    ppl["taxable income, capital w/o dividends"].apply( lambda x:
-                   0                               if x < ( 600*muvt)
-      else (       (x - 600*muvt) *0.1             if x < (1000*muvt)
-        else (     (x - 1000*muvt)*0.2  + 40*muvt  if x < (2000*muvt)
-          else (   (x - 2000*muvt)*0.3  + 240*muvt if x < (3000*muvt)
-            else ( (x - 3000*muvt)*0.35 + 540*muvt if x < (4000*muvt)
-              else (x - 4000*muvt)*0.4  + 870*muvt ) ) ) ) ) )
+  ppl["taxable income, non-labor"] = (
+    ppl["income, non-labor"].apply(
+      lambda x: x - min( 0.1 * x, 1000*muvt)
+    ) )
+  ppl["tax, income, capital"] = (
+    ( ppl["taxable income, capital"]
+    + ppl["taxable income, non-labor"]
+    ).apply( lambda x:
+                     0                               if x < ( 600*muvt)
+        else (       (x - 600*muvt) *0.1             if x < (1000*muvt)
+          else (     (x - 1000*muvt)*0.2  + 40*muvt  if x < (2000*muvt)
+            else (   (x - 2000*muvt)*0.3  + 240*muvt if x < (3000*muvt)
+              else ( (x - 3000*muvt)*0.35 + 540*muvt if x < (4000*muvt)
+                else (x - 4000*muvt)*0.4  + 870*muvt ) ) ) ) ) )
 
   ppl["tax, dividends"] = (
-    ppl["income, capital, dividends"].apply( lambda x:
+    ppl["income, dividend"].apply( lambda x:
              0                      if x < ( 600*muvt)
       else ( (x -  600*muvt) * 0.05 if x < (1000*muvt)
         else (x - 1000*muvt) * 0.1 + 20*muvt ) ) )

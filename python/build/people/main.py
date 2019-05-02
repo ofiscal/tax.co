@@ -117,17 +117,17 @@ if True: # income
       ppl["beca sources, total"] = ( ppl["beca sources, govt"]
                                    + ppl["beca sources, private"] )
 
-      ppl["income, month : govt : beca"]        = (
-        ppl["income, year : edu : beca"]
+      ppl["income, month : govt : beca, cash"]        = (
+        ppl["income, year : edu : beca, cash"]
         * ppl["beca sources, govt"]    / ppl["beca sources, total"] )
-      ppl["income, month : private : beca"]     = (
-        ppl["income, year : edu : beca"]
+      ppl["income, month : private : beca, cash"]     = (
+        ppl["income, year : edu : beca, cash"]
         * ppl["beca sources, private"] / ppl["beca sources, total"] )
-      ppl["income, month : govt : non-beca"]    = (
-        ppl["income, year : edu : non-beca"]
+      ppl["income, month : govt : non-beca, cash"]    = (
+        ppl["income, year : edu : non-beca, cash"]
         * ppl["non-beca sources, govt"]    / ppl["non-beca sources, total"] )
-      ppl["income, month : private : non-beca"] = (
-        ppl["income, year : edu : non-beca"]
+      ppl["income, month : private : non-beca, cash"] = (
+        ppl["income, year : edu : non-beca, cash"]
         * ppl["non-beca sources, private"] / ppl["non-beca sources, total"] )
 
       ppl["income, month : govt : beca, in-kind"]        = (
@@ -170,9 +170,16 @@ if True: # income
         + ppl["income, year : sale : stock ?2"]
         + ppl["income, year : sale : livestock"]
         + ppl["income, year : sale : vehicle | equipment"]
-        + ppl["income, month : private : beca"] )
+        + ppl["income, month : private : beca, cash"]
+        + ppl["income, month : private : beca, in-kind"] )
 
-    if True: # capital income (cash only)
+    if True: # capital income (which is never in-kind)
+      ppl["income, capital (tax def)"] = (
+          ppl["income, year : investment : interest"]
+        + ppl["income, month : rental : real estate, developed"]
+        + ppl["income, month : rental : real estate, undeveloped"]
+        + ppl["income, month : rental : vehicle | equipment"] )
+
       re_capital = regex.compile(
         "^income.* : (investment|rental) : .*" )
       cols_capital = [ col for col in ppl.columns
@@ -261,7 +268,7 @@ if True: # income
             'income, month : pension : age | illness'  : "income, pension"
           , 'income, year : cesantia'                  : "income, cesantia"
           , 'total income, monthly : capital'          : "income, capital"
-          , "income, year : investment : dividends"    : "income, capital, dividends"
+          , "income, year : investment : dividends"    : "income, dividend"
           , 'total income, monthly : infrequent'       : "income, infrequent"
           , 'total income, monthly : govt, cash'       : "income, govt, cash"
           , 'total income, monthly : private, cash'    : "income, private, cash"

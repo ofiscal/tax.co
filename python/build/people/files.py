@@ -104,8 +104,8 @@ income_labor = {
 income_edu = {
     "P8610S2"    : "income, year : edu : beca, in-kind"
   , "P8612S2"    : "income, year : edu : non-beca, in-kind"
-  , "P8610S1"    : "income, year : edu : beca"
-  , "P8612S1"    : "income, year : edu : non-beca"
+  , "P8610S1"    : "income, year : edu : beca, cash"
+  , "P8612S1"    : "income, year : edu : non-beca, cash"
 }
 
 income_private = {

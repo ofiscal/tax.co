@@ -25,5 +25,5 @@ ppl["tax"] = ppl["dividends"].apply(
 ppl = oio.readStage( cl.subsample
   , 'people_4_income_taxish.' + cl.vat_strategy_suffix)
 
-pHigh = ppl[ ppl["income, capital, dividends"] > 0 ]
-pHigh[["tax on dividends","income, capital, dividends"]]
+pHigh = ppl[ ppl["income, dividend"] > 0 ]
+pHigh[["tax on dividends","income, dividend"]]

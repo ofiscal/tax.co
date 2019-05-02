@@ -33,7 +33,7 @@ renta liquida capital =
   where ingreso capital =
           interest
           + arriendos (literal rent, not profit)
-          + regalias
+          + regalias (unknowable=
         ing k no constitutivo de renta =
           unknowable
 

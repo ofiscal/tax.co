@@ -16,8 +16,7 @@ if not os.path.exists(output_dir): os.makedirs(output_dir)
 
 
 if True: # Get, prepare the data
-  households = oio.readStage( cl.subsample, "households."        + cl.vat_strategy_suffix
-               ) . rename( columns = {"income, capital, dividends" : "income, dividends"} )
+  households = oio.readStage( cl.subsample, "households."        + cl.vat_strategy_suffix )
 
   households["income, labor + cesantia"] = households["income, labor"] + households["income, cesantia"]
 
@@ -39,8 +38,8 @@ if True: # create a summary dataframe
     , "seguro de riesgos laborales (if reported)"
     , "income"
     , "income, labor + cesantia"
-    , "income, capital w/o dividends"
-    , "income, dividends"
+    , "income, capital"
+    , "income, dividend"
     , "income, pension"
     , "income, govt"
     , "income, private"
@@ -79,7 +78,7 @@ if True: # create a summary dataframe
     , "tax, indemnizacion"
     , "tax, donacion"
     , "tax, income, labor + pension"
-    , "tax, income, capital w/o dividends"
+    , "tax, income, capital"
     , "tax, dividends"
     ]
 
@@ -147,8 +146,8 @@ if True: # do the same thing to a subset of that data
     , "income: min"
     , "income: max"
     , "income, labor + cesantia: mean"
-    , "income, capital w/o dividends: mean"
-    , "income, dividends: mean"
+    , "income, capital: mean"
+    , "income, dividend: mean"
     , "income, pension: mean"
     , "income, govt: mean"
     , "income, private: mean"
@@ -217,8 +216,8 @@ if True: # do the same thing to a subset of that data
     , "tax, donacion: mean"
     , "tax, income, labor + pension: median_unweighted"
     , "tax, income, labor + pension: mean"
-    , "tax, income, capital w/o dividends: median_unweighted"
-    , "tax, income, capital w/o dividends: mean"
+    , "tax, income, capital: median_unweighted"
+    , "tax, income, capital: mean"
     , "tax, dividends: median_unweighted"
     , "tax, dividends: mean"
   ]]
