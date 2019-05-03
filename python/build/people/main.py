@@ -95,7 +95,7 @@ if True: # income
     # (Once all the totals have been computed, those components will have
     #  all been dropped, but until then it could be confusing.)
 
-  re_in_kind = regex.compile( "^income.* : .* : .* in.kind$" )
+  re_in_kind = regex.compile( "^income.*in.kind$" )
 
   if True: # compute income totals, drop components
     if True: # divide educational income by source (government or private)
@@ -144,7 +144,7 @@ if True: # income
         * ppl["non-beca sources, private"]    / ppl["non-beca sources, total"] )
 
       new_income_variables = ppl.filter(
-        regex = "^income, month : (govt|private) : (beca|non-\beca)" )
+        regex = "^income, month : (govt|private) : (beca|non-beca)" )
       new_income_variables.fillna(0)
 
       del(new_income_variables)
@@ -215,9 +215,7 @@ if True: # income
       ppl = ppl.drop( columns = cols_private_in_kind + cols_private_cash )
 
     if True: # infrequent income (cash only)
-      re_infrequent = regex.compile( "^income, year : infrequent : " )
-      cols_infrequent = [ col for col in ppl.columns
-                        if re_infrequent.match(col) ]
+      cols_infrequent = list( files.income_infrequent.values() )
       ppl["total income, monthly : infrequent"] = (
         ppl[ cols_infrequent ].sum( axis=1 ) )
       ppl["income, ganancia ocasional"] = (
@@ -232,9 +230,7 @@ if True: # income
       ppl = ppl.drop( columns = cols_infrequent )
 
     if True: # "income" from borrowing
-      re_borrowing = regex.compile( "^income.* : borrowing : .*" )
-      cols_borrowing = [ col for col in ppl.columns
-                      if re_borrowing.match(col) ]
+      cols_borrowing = list( files.income_borrowing.values() )
       ppl["total income, monthly : borrowing"] = (
         ppl[ cols_borrowing ].sum( axis=1 ) )
 
