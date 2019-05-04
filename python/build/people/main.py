@@ -64,17 +64,16 @@ if True: # non-income work characteristics
     . apply( lambda x: 1 if x==1 else
              ( 0 if x==2 else np.nan ) ) )
 
-  ppl.drop( columns = [ "pension, contributing, pre"
-                      , "pension, contributors, pre"
-                      , "seguro de riesgos laborales, pre" ] )
+  ppl = ppl.drop( columns = [ "pension, contributing, pre"
+                            , "pension, contributors, pre"
+                            , "seguro de riesgos laborales, pre" ] )
 
 if True: # income
   if True: # fill NaN values (one column's with 1, the rest's with 0)
     ppl[   "income, month : labor : independent, months" ] = (
       ppl[ "income, month : labor : independent, months" ] . fillna(1) )
 
-    re = regex.compile( ".*income.*" )
-    income_columns = [col for col in ppl.columns if re.match( col )]
+    income_columns = list( files.income.values() )
     columns_to_convert = ( income_columns
                          + list( files.beca_sources_private.values() )
                          + list( files.beca_sources_govt.values() ) )
@@ -83,7 +82,7 @@ if True: # income
                                    # "doesn't know" and "won't say"
       ppl[col] = ppl[col].apply(
         lambda x : 0 if ((x >= 98) & (x <= 99)) else x )
-    del(re, income_columns, columns_to_convert)
+    del(income_columns, columns_to_convert)
 
   if True: # divide yearly income variables by 12
     re_year_income  = regex.compile( "^income, year" )
@@ -143,21 +142,28 @@ if True: # income
         ppl["income, year : edu : non-beca, in-kind"]
         * ppl["non-beca sources, private"]    / ppl["non-beca sources, total"] )
 
-      new_income_variables = ppl.filter(
+      new_edu_income_variables = ppl.filter(
         regex = "^income, month : (govt|private) : (beca|non-beca)" )
-      new_income_variables.fillna(0)
+      new_edu_income_variables = new_edu_income_variables.fillna(0)
 
-      del(new_income_variables)
-      ppl = ppl.drop(
-        columns = ppl.filter( regex = "(^beca)|(edu : .*beca)|(beca source)"
-        ).columns )
+      del(new_edu_income_variables)
+      ppl = (ppl
+        ).drop( columns = ppl.filter( regex = "(beca source|beca from)"
+                          ).columns
+        ).rename( columns = {
+            "income, year : edu : beca, in-kind"
+              : "income : edu : beca, in-kind"
+          , "income, year : edu : non-beca, in-kind"
+              : "income : edu : non-beca, in-kind"
+          , "income, year : edu : beca, cash"
+              : "income : edu : beca, cash"
+          , "income, year : edu : non-beca, cash"
+              : "income : edu : non-beca, cash" } )
 
     if True: # govt income (cash + in-kind)
-      re_govt  = regex.compile( "^income.* : govt" )
-      cols_govt_cash    = [ col for col in ppl.columns
-                        if re_govt.match(col) and not re_in_kind.match(col) ]
-      cols_govt_in_kind = [ col for col in ppl.columns
-                        if re_govt.match(col) and     re_in_kind.match(col) ]
+      cols_govt = list( files.income_govt.values() )
+      cols_govt_cash    = [ col for col in cols_govt if not re_in_kind.match(col) ]
+      cols_govt_in_kind = [ col for col in cols_govt if     re_in_kind.match(col) ]
       ppl["total income, monthly : govt, cash"] = (
         ppl[ cols_govt_cash ].sum( axis=1 ) )
       ppl["total income, monthly : govt, in-kind"] = (
@@ -175,15 +181,17 @@ if True: # income
 
     if True: # capital income (which is never in-kind)
       ppl["income, capital (tax def)"] = (
-          ppl["income, year : investment : interest"]
-        + ppl["income, month : rental : real estate, developed"]
-        + ppl["income, month : rental : real estate, undeveloped"]
-        + ppl["income, month : rental : vehicle | equipment"] )
+                   ppl["income, year : investment : interest"]
+                 + ppl["income, month : rental : real estate, developed"]
+                 + ppl["income, month : rental : real estate, undeveloped"]
+                 + ppl["income, month : rental : vehicle | equipment"] )
 
-      re_capital = regex.compile(
-        "^income.* : (investment|rental) : .*" )
-      cols_capital = [ col for col in ppl.columns
-                     if re_capital.match(col) ]
+      cols_capital = [ "income, year : investment : dividends"
+                     , "income, year : investment : interest"
+                     , "income, month : rental : real estate, developed"
+                     , "income, month : rental : real estate, undeveloped"
+                     , "income, month : rental : vehicle | equipment" ]
+
       ppl["total income, monthly : capital"] = (
         ppl[ cols_capital ].sum( axis=1 ) )
 
@@ -193,16 +201,11 @@ if True: # income
         columns = list( set ( cols_capital )
                       - set ( ["income, year : investment : dividends"] )
       ) )
-      ppl["income, capital w/o dividends"] = (
-        ppl["total income, monthly : capital"
-        ] - ppl["income, year : investment : dividends"] )
 
     if True: # private income (cash + in-kind)
-      re_private  = regex.compile( "^income.* : private : " )
-      cols_private_cash    = [ col for col in ppl.columns
-                             if re_private.match(col) and not re_in_kind.match(col) ]
-      cols_private_in_kind = [ col for col in ppl.columns
-                             if re_private.match(col) and     re_in_kind.match(col) ]
+      cols_private = list( files.income_private.values() )
+      cols_private_cash    = [ col for col in cols_private if not re_in_kind.match(col) ]
+      cols_private_in_kind = [ col for col in cols_private if     re_in_kind.match(col) ]
       ppl["total income, monthly : private, cash"] = (
         ppl[ cols_private_cash ].sum( axis=1 ) )
       ppl["total income, monthly : private, in-kind"] = (
@@ -248,11 +251,9 @@ if True: # income
           columns = [ forgot for (_, forgot) in files.inclusion_pairs ] )
 
       if True: # compute within-category sums
-        re_labor  = regex.compile( "^income.* : labor : " )
-        cols_labor_cash    = [ col for col in ppl.columns
-                             if re_labor.match(col) and not re_in_kind.match(col) ]
-        cols_labor_in_kind = [ col for col in ppl.columns
-                             if re_labor.match(col) and     re_in_kind.match(col) ]
+        cols_labor  = list( files.income_labor.values() )
+        cols_labor_cash    = [ col for col in cols_labor if not re_in_kind.match(col) ]
+        cols_labor_in_kind = [ col for col in cols_labor if     re_in_kind.match(col) ]
         ppl["total income, monthly : labor, cash"] = (
           ppl[ cols_labor_cash ].sum( axis=1 ) )
         ppl["total income, monthly : labor, in-kind"] = (
@@ -276,7 +277,7 @@ if True: # income
           , 'total income, monthly : labor, in-kind'   : "income, labor, in-kind"
           }
         ppl = ppl.rename( columns = { **income_short_name_dict_cash
-                                          , **income_short_name_dict_in_kind
+                                    , **income_short_name_dict_in_kind
         } )
 
       if True: # compute across-category sums
