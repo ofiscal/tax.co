@@ -42,12 +42,12 @@ if True: # compute five columns for top five member incomes
 if True: # aggregate from household members to households
   ppl["members"] = 1 # will be summed
   h_first = ppl.groupby( ["household"]
-    ) ["region-1","region-2","estrato", "weight" # these are constant within household
+    ) ["region-1", "region-2", "estrato", "weight" # these are constant within household
     ] . agg("first")
   h_sum = ppl.groupby(
-      ["household"]
+      [ "household" ]
     ) [  "value"
-       ,"vat paid, min","vat paid, max"
+       , "vat paid, min", "vat paid, max"
        , "predial"
        , "tax, pension"
        , "tax, pension, employer"
@@ -74,7 +74,7 @@ if True: # aggregate from household members to households
        , "income, labor, rank 3"
        , "income, labor, rank 4"
        , "income, labor, rank 5"
-       , "transactions","members"
+       , "transactions", "members"
        , "income"
        , "income, pension"
        , "income, cesantia"
@@ -87,7 +87,7 @@ if True: # aggregate from household members to households
     ] . agg("sum")
   h_min = ppl.groupby(
       ["household"]
-    ) ["age","female"
+    ) ["age", "female"
     ] . agg("min"
     ) . rename( columns = {"age" : "age-min",
                            "female" : "has-male",
@@ -96,8 +96,8 @@ if True: # aggregate from household members to households
     # if female is ever 0, then its min = 0, i.e. there is a male
   h_max = ppl.groupby(
       ["household"]
-    ) ["age","literate","student","female","female head","education",
-       "race, indig", "race, git|rom", "race, raizal", "race, palenq", "race, whi|mest"
+    ) [ "age", "literate", "student", "female", "female head", "education"
+       , "race, indig", "race, git|rom", "race, raizal", "race, palenq", "race, whi|mest"
        , "pension, receiving"
        , "pension, contributing (if not pensioned)"
        , "pension, contributor(s) (if not pensioned) = split"
@@ -116,7 +116,7 @@ if True: # aggregate from household members to households
                            "race, palenq" : "has-palenq",
                            "race, whi|mest" : "has-whi|mest"
     } )
-  households = pd.concat( [h_first,h_sum,h_min,h_max]
+  households = pd.concat( [h_first, h_sum, h_min, h_max]
                         , axis=1 )
 
   households["vat/value, min"] = households["vat paid, min"]/households["value"]
@@ -137,7 +137,7 @@ if True: # aggregate from household members to households
   households["income-percentile"] = ( # PITFALL: there's a different such variable at the person level
     util.noisyQuantile( 100, 0, 1, households["income"] ) )
 
-  households["one"] = 1
+  households["one"] = 1 # used to create the trivial partition
 
   households_decile_summary = util.summarizeQuantiles("income-decile", households)
 
