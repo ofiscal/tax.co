@@ -8,9 +8,6 @@ import python.common.misc as c
 import python.common.cl_args as cl
 
 
-# The frequent division by 12 below is because income is measured monthly,
-# whereas deductions and exemptions are in UVTs per year.
-
 ppl = oio.readStage( cl.subsample
                       , "people_3_purchases." + cl.vat_strategy_suffix )
 
@@ -39,9 +36,10 @@ for (goal,function) in [
 
 if True: # income taxes
   ppl["taxable income, labor + pension"] = (
-    (ppl["income, pension"] + ppl["income, labor"]).apply(
-      lambda x: x - min( 0.325 * x, 5040 * muvt) )
-    )
+    ( ppl["income, pension"]
+    + ppl["income, labor"]
+    ).apply( lambda x: x - min( 0.325 * x, 5040 * muvt) )
+  )
   ppl["tax, income, labor + pension"] = (
     ppl["taxable income, labor + pension"].apply( lambda x:
                     0                          if x < (1090*muvt)
@@ -57,18 +55,18 @@ if True: # income taxes
     ppl["income, non-labor"].apply(
       lambda x: x - min( 0.1 * x, 1000*muvt)
     ) )
-  ppl["tax, income, capital"] = (
+  ppl["tax, income, capital + non-labor"] = (
     ( ppl["taxable income, capital"]
     + ppl["taxable income, non-labor"]
     ).apply( lambda x:
                      0                               if x < ( 600*muvt)
-        else (       (x - 600*muvt) *0.1             if x < (1000*muvt)
-          else (     (x - 1000*muvt)*0.2  + 40*muvt  if x < (2000*muvt)
+        else (       (x - 600 *muvt)*0.1             if x < (1000*muvt)
+          else (     (x - 1000*muvt)*0.2  + 40 *muvt if x < (2000*muvt)
             else (   (x - 2000*muvt)*0.3  + 240*muvt if x < (3000*muvt)
               else ( (x - 3000*muvt)*0.35 + 540*muvt if x < (4000*muvt)
                 else (x - 4000*muvt)*0.4  + 870*muvt ) ) ) ) ) )
 
-  ppl["tax, dividends"] = (
+  ppl["tax, dividend"] = (
     ppl["income, dividend"].apply( lambda x:
              0                      if x < ( 600*muvt)
       else ( (x -  600*muvt) * 0.05 if x < (1000*muvt)
@@ -76,12 +74,12 @@ if True: # income taxes
 
 if True: # determine dependents, for income tax
   hh = ( ppl[["household","dependent"]]
-         . groupby( "household" )
-         . agg( 'sum' )
-         . rename( columns = {"dependent":"dependents"} )
-         . reset_index() )
+       . groupby( "household" )
+       . agg( 'sum' )
+       . rename( columns = {"dependent":"dependents"} )
+       . reset_index() )
   ppl = ( ppl.merge( hh, how='inner', on='household' )
-          . drop( columns = "dependent" ) )
+        . drop( columns = "dependent" ) )
   ppl["has dependent"] = (
     ppl["member-by-income"] <= ppl["dependents"] )
   del(hh)

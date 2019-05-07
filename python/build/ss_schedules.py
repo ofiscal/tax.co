@@ -7,10 +7,9 @@ from python.common.misc import min_wage
     # Second: taxable base
     # Third: average tax rate
     # The data gives nominal salary, before those contributions.
-
 ss_contrib_schedule_for_contractor = {
   "pension" :
-    [ ( 0, lambda wage: 0, 0.0 )
+    [ ( 0, lambda _: 0, 0.0 )
     , ( min_wage
       , lambda wage: min( max( 0.4*wage, min_wage )
                         , 25*min_wage)

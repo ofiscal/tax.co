@@ -15,9 +15,9 @@ if True: # input files
 if True: # merge purchase sums into people
   people = pd.merge( people, purchase_sums
                    , how = "left"
-                   , on=["household","household-member"] )
+                   , on=["household", "household-member"] )
 
-  for s in ["min","max"]:
+  for s in ["min", "max"]:
     people.loc[ people["region-1"] == "SAN ANDRÉS", "vat paid, " + s ] = 0
 
 
