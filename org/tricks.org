@@ -7,8 +7,8 @@ make <target> -Bnd | make2graph | dot -Tpng -o dependencies.png
 First comment out most of the definition of enph_files.
 Then run this:
 
-make overview -Bnd | make2graph \
-  | sed -r "s/([a-zA-Z0-9_\-\.]+)\.(csv|py)/\n\1.\2/g" \
+make overview -Bnd vat_strategy="()" | make2graph \
+  | sed -r "s/([a-zA-Z0-9_\-\.\(\)]+)\.(csv|py)/\n\1.\2/g" \
   | dot -Tpng -o dependencies.png
 * open office cell traversal shortcuts
 C-S-F2: go to formula window

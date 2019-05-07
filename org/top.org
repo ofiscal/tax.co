@@ -618,9 +618,8 @@ Gini = Num / Denom where
   Num = Sum over all i,j of |xi - xj|
   Denom = 2 * n * (Sum over all i of xi^2)
 * code reviews
-** 2019 05 06
-resume at overview.py
-*** TODO ? the "duplicated" problem in python/build/purchases/capitulo_c.py
+** TODO ? 2019 05 06
+*** the "duplicated" problem in python/build/purchases/capitulo_c.py
 ** 2019 01 15-ish
 *** have read through
 buildings.py
