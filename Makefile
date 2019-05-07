@@ -268,13 +268,13 @@ $(people_pics): python/report/pics/people.py \
 pics: $(pics)
 
 overview: $(overview)
-$(overview): python/report/tables/overview.py \
+$(overview): python/report/overview.py \
   python/common/util.py \
   python/build/output_io.py \
   python/build/people/files.py \
   $(households)
 	date
-	$(python_from_here) python/report/tables/overview.py $(subsample) $(vat_strategy) $(vat_flat_rate)
+	$(python_from_here) python/report/overview.py $(subsample) $(vat_strategy) $(vat_flat_rate)
 
 # PITFALL: Always reads households from the detail vat strategy, because vat irrelevant.
 goods_by_income_decile: $(goods_by_income_decile)

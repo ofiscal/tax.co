@@ -119,22 +119,22 @@ if True: # aggregate from household members to households
   households = pd.concat( [h_first, h_sum, h_min, h_max]
                         , axis=1 )
 
-  households["vat/value, min"] = households["vat paid, min"]/households["value"]
-  households["vat/value, max"] = households["vat paid, max"]/households["value"]
+  households["vat/value, min"]  = households["vat paid, min"]/households["value"]
+  households["vat/value, max"]  = households["vat paid, max"]/households["value"]
   households["vat/income, min"] = households["vat paid, min"]/households["income"]
   households["vat/income, max"] = households["vat paid, max"]/households["income"]
-  households["value/income"] = households["value"]/households["income"]
+  households["value/income"]    = households["value"]/households["income"]
 
-  households["household"] = households.index
+  households["household"]   = households.index
     # when there are multiple indices, reset_index is the way to do that
 
-  households["has-child"] = households["age-min"] < 18
+  households["has-child"]   = households["age-min"] < 18
   households["has-elderly"] = households["age-max"] > 65
 
-  households["income-decile"] = ( # PITFALL: there's a different such variable at the person level
+  # PITFALL: Income decile and percentile for persons exist too. They are different.
+  households["income-decile"] = (
     util.noisyQuantile( 10, 0, 1, households["income"] ) )
-
-  households["income-percentile"] = ( # PITFALL: there's a different such variable at the person level
+  households["income-percentile"] = (
     util.noisyQuantile( 100, 0, 1, households["income"] ) )
 
   households["one"] = 1 # used to create the trivial partition

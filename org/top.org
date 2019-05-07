@@ -619,7 +619,7 @@ Gini = Num / Denom where
   Denom = 2 * n * (Sum over all i of xi^2)
 * code reviews
 ** 2019 05 06
-resume at households.py
+resume at overview.py
 *** TODO ? the "duplicated" problem in python/build/purchases/capitulo_c.py
 ** 2019 01 15-ish
 *** have read through
