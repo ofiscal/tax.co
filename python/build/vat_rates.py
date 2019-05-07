@@ -24,7 +24,8 @@ vat_cap_c = pd.read_csv( "data/vat/" + "vat-for-capitulo-c.csv"
             } )
 
 if c.vat_strategy == c.finance_ministry:
-      vat_coicop = pd.read_csv( "python/build/vat_finance_ministry/" + "vat-by-coicop.csv"
+      vat_coicop = pd.read_csv( "python/build/vat_finance_ministry/"
+                                + "vat-by-coicop.csv"
                               , sep = ","
                               , encoding = "latin1" )
 elif c.vat_strategy == c.prop_2018_11_29:
@@ -53,6 +54,7 @@ for (vat,frac) in [ ("vat"     , "vat frac")
   # Multiplying vat-fraction by value (payment, price)
     # results in the fraction  of the value attributable to the vat.
     # For instance, if the VAT were 20%, then (0.2 / 1.2) is that fraction.
+    # This is because reported expenditures are post-tax.
   vat_cap_c[frac]  = vat_cap_c[vat]  / (1 + vat_cap_c[vat])
   vat_coicop[frac] = vat_coicop[vat] / (1 + vat_coicop[vat])
 
@@ -66,6 +68,7 @@ if True: # save
 
   vat_coicop = vat_coicop.drop( columns = ["description"] )
   if c.vat_strategy != 'finance_ministry':
+    # The bridge for the finance ministry proposal includes no "Notes" column.
     vat_coicop = vat_coicop.drop( columns = ["Notes"] )
   vat_cap_c = vat_cap_c.drop( columns = ["description"] )
 

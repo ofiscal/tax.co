@@ -1,6 +1,6 @@
 # This file would be relevant, because it records house purchases,
-# except that the VAT is charged only on sales of new homes, which
-# quality is not reported in the ENPH.
+# but the VAT is charged only on sales of new homes,
+# and newness is not reported in the ENPH.
 
 import pandas as pd
 from numpy import nan

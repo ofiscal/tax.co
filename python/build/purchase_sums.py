@@ -15,7 +15,7 @@ if True: # extract the predial tax
   purchases["predial"] = (purchases["coicop"] == 12700601) * purchases["value"]
 
 if True: # sum purchases within person
-  purchases["transactions"] = 1 # useful later, when it is summed
+  purchases["transactions"] = 1 # useful when summed
   purchase_sums = purchases.groupby( ["household", "household-member"]
            ) [ "value"
              , "transactions"

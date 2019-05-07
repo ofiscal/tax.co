@@ -191,7 +191,6 @@ if True: # income
                      , "income, month : rental : real estate, developed"
                      , "income, month : rental : real estate, undeveloped"
                      , "income, month : rental : vehicle | equipment" ]
-
       ppl["total income, monthly : capital"] = (
         ppl[ cols_capital ].sum( axis=1 ) )
 
@@ -245,10 +244,10 @@ if True: # income
         del(s)
 
       if True: # after this, we can simply sum all monthly labor income variables
-        for (quantity, forgot) in files.inclusion_pairs:
-          ppl[ quantity ] = ppl[ quantity ] * ppl[ forgot ]
+        for (quantity, wasOmitted) in files.inclusion_pairs:
+          ppl[ quantity ] = ppl[ quantity ] * ppl[ wasOmitted ]
         ppl = ppl.drop(
-          columns = [ forgot for (_, forgot) in files.inclusion_pairs ] )
+          columns = [ wasOmitted for (_, wasOmitted) in files.inclusion_pairs ] )
 
       if True: # compute within-category sums
         cols_labor  = list( files.income_labor.values() )

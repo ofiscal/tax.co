@@ -1,3 +1,7 @@
+* draw Makefile dependencies
+https://github.com/lindenb/makefile2graph
+Substitute something (e.g. "overview") for "target" below:
+make <target> -Bnd | make2graph | dot -Tpng -o out.png
 * open office cell traversal shortcuts
 C-S-F2: go to formula window
 C-S-T: go to cell address window ("(T)raverse", probably)

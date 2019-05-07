@@ -14,12 +14,12 @@ import python.build.purchases.capitulo_c as capitulo_c
 
 
 purchases = cl.collect_files(
-  articulos.files
-  # + medios.files
-    # The tax only applies if the purchase is more than 880 million pesos,
-    # and the data only records purchases of a second home.
-  + capitulo_c.files
-  + nice_purchases.files
+  ( articulos.files
+    # + medios.files
+      # The tax only applies if the purchase is more than 880 million pesos,
+      # and the data only records purchases of a second home.
+    + capitulo_c.files
+    + nice_purchases.files )
   , subsample = cl.subsample
 )
 
@@ -61,7 +61,7 @@ for c in [
 
 purchases = com.to_numbers(purchases)
 
-purchases = purchases[ # must have a value and a coicop-like variable
+purchases = purchases[ # must have a coicop-like variable and a value
   # Why: For every file but "articulos", observations with no coicop have
   # no value, quantity, is-purchase or frequency. And only 63 / 211,000
   # observations in "articulos" have a missing COICOP. A way to see that:

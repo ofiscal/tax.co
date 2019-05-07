@@ -196,7 +196,10 @@ P1668S2A4 : "income, year : govt : programa de adultos mayores, in-kind"
 P1668S5A4 : "income, year : govt : transferencias por victimizacion, in-kind"
 **** Not income
 P6871: It describes the frequency with which monthly income is disbursed; it does not bear on the monthly total.
+* TODO speed: don't generate purchases_1 with file-origin column
+at the end of the file, comment out one line (and manage myriad downstream effects)
 * TODO rename single-digit percentiles to "09" instead of 9, etc
+because they get alphabetized
 * TODO why are the median columns in overview.py's df_tmi called "unweighted"?
 * TODO add cesantias + primas to (which?) income measure
 should be in denominator, and not numerator, of tax rate.
@@ -612,8 +615,12 @@ This is not a clearly defined goal.
 Gini = Num / Denom where
   Num = Sum over all i,j of |xi - xj|
   Denom = 2 * n * (Sum over all i of xi^2)
-* code review, 2019 01 15-ish
-** have read through
+* code reviews
+** 2019 05 06
+resume at people_3_purchases
+*** TODO ? the "duplicated" problem in python/build/purchases/capitulo_c.py
+** 2019 01 15-ish
+*** have read through
 buildings.py
 classes.py
 common.py
@@ -621,7 +628,7 @@ households.py
 people*.py
 purchases*.py
 vat_rates.py
-** skipped: build/people/main.py / income variable creation
-resume at:
-   # compute income totals, drop components
-** glossed over: ss_contribs.py
+*** skipped: build/people/main.py / income variable creation
+ resume at:
+    # compute income totals, drop components
+*** glossed over: ss_contribs.py

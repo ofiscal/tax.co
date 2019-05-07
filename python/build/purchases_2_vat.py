@@ -9,10 +9,6 @@ import python.common.util as util
 
 import python.common.misc as c
 import python.common.cl_args as c
-#class c:
-#  subsample=10
-#  vat_strategy = "detail"
-#  vat_strategy_suffix = "detail_"
 
 
 vat_strategies_that_use_coicop_prefixes = [c.approx, c.prop_2018_10_31]
@@ -68,7 +64,8 @@ if True: # input files
       vat_coicop_3_digit = pd.read_csv( "python/build/vat_approx/3-digit.csv" )
 
     if True: # Replace 1 with VAT
-      # PITFALL: We want to replace values in the VAT rate columns, but not the coicop-prefix columns.
+      # PITFALL: We want to replace values in the VAT rate columns,
+      # but not the coicop-prefix columns.
       # This replaces both, then restores the original prefixes.
       orig_key_2_digit = vat_coicop_2_digit["coicop-2-digit"]
       orig_key_3_digit = vat_coicop_3_digit["coicop-3-digit"]
@@ -124,7 +121,7 @@ if True: # add these columns: ["vat", "vat, min", "vat, max"]
         purchases_coicop = purchases_3_digit . combine_first( purchases_2_digit )
           # PITFALL: combine_first prioritizes the first argument; it only uses the
           # second where the first is missing. So far that does not matter, because the
-          # COICOP prefixes are non-overlapping -- but if they ever overlap, it will.
+          # coicop prefixes are non-overlapping -- BUT if they ever overlap, it will.
 
       if c.vat_strategy in [c.detail, c.detail_224, c.finance_ministry, c.prop_2018_11_29]:
         purchases_coicop = purchases.merge( vat_coicop, how = "left", on="coicop" )
@@ -134,7 +131,7 @@ if True: # add these columns: ["vat", "vat, min", "vat, max"]
       purchases = purchases_coicop . combine_first( purchases_cap_c )
 
 if c.vat_strategy != c.prop_2018_11_29: # motorcycles are special
-  # PITFALL: Maybe this should apply to fewer strategies.
+  # TODO ? Maybe this should apply to fewer strategies.
   purchases["big-hog"] = (1 * (purchases["coicop"]=="07120101")
                             * (purchases["value"]>(9e6) ) )
   purchases.loc[ purchases["big-hog"]>0, "vat"] = 0.27
