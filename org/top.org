@@ -1,3 +1,6 @@
+* TODO ask/send juan
+** 2016 taxes.hs: correct?
+** 2018 taxes.hs: correct?
 * TODO renta gravable ocasional: aggregate things
 compare that section of "income tax.org" to "people_4_income_taxish.py"
 * TODO personal income tax

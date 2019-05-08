@@ -15,13 +15,13 @@ renta liquida laboral =
 renta gravable laboral =
     renta liquida laboral
   - min( beneficios
-       , 40% renta gravable laboral
+       , from 25% to 40% renta gravable laboral
        , 5040 uvt)
 
 renta gravable pension =
     ingreso pension
   - ingreso pension no constitutivo de renta
-  - renta exenta hasta mil uvt
+  - renta exenta hasta mil uvt #ne
 
 impuesto tarifa uno aplica a:
   renta gravable (pension + laboral)
@@ -73,3 +73,6 @@ renta gravable ocasional, 10%-taxable =
 renta gravable ocasional, 20%-taxable =
     gambling
   + jury awards
+
+#ne = not implemented
+
