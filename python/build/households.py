@@ -79,7 +79,7 @@ if True: # aggregate from household members to households
        , "income, pension"
        , "income, cesantia"
        , "income, dividend"
-       , "income, capital"
+       , "income, capital (tax def)"
        , "income, infrequent"
        , "income, govt"
        , "income, private"

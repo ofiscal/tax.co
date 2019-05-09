@@ -191,8 +191,6 @@ if True: # income
                      , "income, month : rental : real estate, developed"
                      , "income, month : rental : real estate, undeveloped"
                      , "income, month : rental : vehicle | equipment" ]
-      ppl["total income, monthly : capital"] = (
-        ppl[ cols_capital ].sum( axis=1 ) )
 
       # drop most components, but keep dividend income,
       # and create capital minus dividends
@@ -259,36 +257,35 @@ if True: # income
           ppl[ cols_labor_in_kind ].sum( axis=1 ) )
         ppl = ppl.drop( columns = cols_labor_in_kind + cols_labor_cash )
 
-      if True: # homogenize, shorten income variable names
-        income_short_name_dict_cash = {
-            'income, month : pension : age | illness'  : "income, pension"
-          , 'income, year : cesantia'                  : "income, cesantia"
-          , 'total income, monthly : capital'          : "income, capital"
-          , "income, year : investment : dividends"    : "income, dividend"
-          , 'total income, monthly : infrequent'       : "income, infrequent"
-          , 'total income, monthly : govt, cash'       : "income, govt, cash"
-          , 'total income, monthly : private, cash'    : "income, private, cash"
-          , 'total income, monthly : labor, cash'      : "income, labor, cash"
-          }
-        income_short_name_dict_in_kind = {
-            'total income, monthly : govt, in-kind'    : "income, govt, in-kind"
-          , 'total income, monthly : private, in-kind' : "income, private, in-kind"
-          , 'total income, monthly : labor, in-kind'   : "income, labor, in-kind"
-          }
-        ppl = ppl.rename( columns = { **income_short_name_dict_cash
-                                    , **income_short_name_dict_in_kind
-        } )
+    if True: # homogenize, shorten income variable names
+      income_short_name_dict_cash = {
+          'income, month : pension : age | illness'  : "income, pension"
+        , 'income, year : cesantia'                  : "income, cesantia"
+        , "income, year : investment : dividends"    : "income, dividend"
+        , 'total income, monthly : infrequent'       : "income, infrequent"
+        , 'total income, monthly : govt, cash'       : "income, govt, cash"
+        , 'total income, monthly : private, cash'    : "income, private, cash"
+        , 'total income, monthly : labor, cash'      : "income, labor, cash"
+        }
+      income_short_name_dict_in_kind = {
+          'total income, monthly : govt, in-kind'    : "income, govt, in-kind"
+        , 'total income, monthly : private, in-kind' : "income, private, in-kind"
+        , 'total income, monthly : labor, in-kind'   : "income, labor, in-kind"
+        }
+      ppl = ppl.rename( columns = { **income_short_name_dict_cash
+                                  , **income_short_name_dict_in_kind
+      } )
 
-      if True: # compute across-category sums
-        ppl["income, cash"]    = (
-          ppl[ list( income_short_name_dict_cash   .values() )
-          ].sum(axis=1) )
-        ppl["income, in-kind"] = (
-          ppl[ list( income_short_name_dict_in_kind.values() )
-          ].sum(axis=1) )
+    if True: # compute across-category sums
+      ppl["income, cash"]    = (
+        ppl[ list( income_short_name_dict_cash   .values() )
+        ].sum(axis=1) )
+      ppl["income, in-kind"] = (
+        ppl[ list( income_short_name_dict_in_kind.values() )
+        ].sum(axis=1) )
 
-        for col in ["income", "income, govt", "income, private", "income, labor"]:
-            ppl[col] = ppl[col + ", cash"] + ppl[col + ", in-kind"]
+      for col in ["income", "income, govt", "income, private", "income, labor"]:
+          ppl[col] = ppl[col + ", cash"] + ppl[col + ", in-kind"]
 
 if True: # compute each household member's income rank
   def sort_household_by_labor_income_then_make_index(df):
