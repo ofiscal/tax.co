@@ -9,7 +9,7 @@ import python.common.cl_args as cl
 
 
 ppl = oio.readStage( cl.subsample
-                      , "people_3_purchases." + cl.vat_strategy_suffix )
+                   , "people_3_purchases." + cl.vat_strategy_suffix )
 
 muvt = c.uvt / 12 # monthly UVT, to harmonize with montly income
 
