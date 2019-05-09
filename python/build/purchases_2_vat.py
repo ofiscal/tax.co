@@ -15,20 +15,20 @@ vat_strategies_that_use_coicop_prefixes = [c.approx, c.prop_2018_10_31]
 
 if True: # input files
   # This data set is too big unless I down-cast the numbers.
-  purchases = oio.readStage( c.subsample
-                           , "purchases_1_5_no_origin"
-                           , dtype = {
-                               "25-broad-categs" : "float32"
-                             , "coicop" : "float32"
-                             , "freq" : "float32"
-                             , "household" : "int32"
-                             , "household-member" : "int32"
-                             , "is-purchase" : "float32"
-                             , "quantity" : "float32"
-                             , "value" : "float32"
-                             , "weight" : "float32"
-                             , "where-got" : "float32"
-                           } )
+  purchases = oio.readStage (
+      c.subsample
+    , "purchases_1_5_no_origin"
+    , dtype = { "25-broad-categs" : "float32"
+              , "coicop" : "float32"
+              , "freq" : "float32"
+              , "household" : "int32"
+              , "household-member" : "int32"
+              , "is-purchase" : "float32"
+              , "quantity" : "float32"
+              , "value" : "float32"
+              , "weight" : "float32"
+              , "where-got" : "float32"
+    } )
 
   vat_cap_c = oio.readStage( c.subsample
                            , "vat_cap_c_brief." + c.vat_strategy_suffix

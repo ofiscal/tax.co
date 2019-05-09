@@ -1,1 +1,0 @@
-These tables assign tax rates to goods based on the first two or three digits of each good's COICOP, per the proposal that Congress was considering circa 2018 10 31.
