@@ -1,13 +1,8 @@
 * TODO retire hypotheticals
 ** keep the "detail" strategy, but make it implicit
 ** regexes to seek and purge
-detail, approx, prop_, strategy
-** files to edit
-build/purchases_house.py
-build/purchases_2_vat.py
-build/purchase_sums.py
-common/cl_args.py
-common/cl_fake.py
+detail, approx, prop_, strategy, ministry
+vat_flat_rate
 * TODO renta gravable ocasional: aggregate things
 Compare that section of "income tax.org" to "people_4_income_taxish.py".
 This will require changing at least "people_4_income_taxish" and "people/main.py".

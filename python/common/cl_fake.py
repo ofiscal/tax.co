@@ -5,19 +5,11 @@ import pandas as pd
 import sys
 
 
-vat_strategy_names = [
-    "const"
-  , "detail"
-  , "detail_224"
-  , "approx"
-  , "finance_ministry"
-  , "prop_2018_10_31"
-  , "prop_2018_11_29"
-  , "del_rosario"
+vat_strategy_names = [ # There used to be a lot of these.
+  "detail"             # They disappeared in the branch "retire-hypotheticals".
 ]
 
-[const,detail,detail_224,approx,finance_ministry,prop_2018_10_31,prop_2018_11_29,del_rosario] = \
-  vat_strategy_names
+[detail] = vat_strategy_names
 
 subsample = 100
 

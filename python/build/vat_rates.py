@@ -11,42 +11,15 @@ import python.common.cl_args as c
 import python.build.output_io as oio
 
 
-# PITFALL: For many values of c.vat_strategy, this produces the same files,
-# but saves them with different names. Moreover often they go unused downstream.
-# That's done to avoid using conditional logic in the Makefile.
-# They are small files, so the processing and memory cost is negligible.
-# (It's about 1s of CPU time.)
-
 vat_cap_c = pd.read_csv( "data/vat/" + "vat-for-capitulo-c.csv"
                        , encoding = "latin1"
             ) . rename( columns = { "CODE" : "25-broad-categs"
                                   , "DESCRIPTION" : "description"
             } )
 
-if c.vat_strategy == c.finance_ministry:
-      vat_coicop = pd.read_csv( "python/build/vat_finance_ministry/"
-                                + "vat-by-coicop.csv"
-                              , sep = ","
-                              , encoding = "latin1" )
-elif c.vat_strategy == c.prop_2018_11_29:
-      vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.prop-2018-11-29.csv"
-                              , sep = ";"
-                              , encoding = "latin1" )
-else: vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
-                              , sep = ";" # TODO PITFALL
-                              , encoding = "latin1" )
-
-if True: # Replacements, if appropriate
-  vat_columns = ["vat", "vat, min", "vat, max"]
-  if c.vat_strategy == c.detail_224: # one proposal is to replace the 19% with 22.4%
-    for vc in vat_columns:
-      vat_cap_c[vc]  = vat_cap_c[vc]  . replace( 0.19, 0.224 )
-      vat_coicop[vc] = vat_coicop[vc] . replace( 0.19, 0.224 )
-
-  if c.vat_strategy == c.const: # short-circuit the vat-code keys; set everything to 19
-    for vc in vat_columns:
-      vat_cap_c[vc]  = c.vat_flat_rate
-      vat_coicop[vc] = c.vat_flat_rate
+vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
+                        , sep = ";" # TODO PITFALL
+                        , encoding = "latin1" )
 
 for (vat,frac) in [ ("vat"     , "vat frac")
                   , ("vat, min", "vat frac, min")
@@ -67,9 +40,6 @@ if True: # save
                , 'vat_cap_c.'  + c.vat_strategy_suffix )
 
   vat_coicop = vat_coicop.drop( columns = ["description"] )
-  if c.vat_strategy != 'finance_ministry':
-    # The bridge for the finance ministry proposal includes no "Notes" column.
-    vat_coicop = vat_coicop.drop( columns = ["Notes"] )
   vat_cap_c = vat_cap_c.drop( columns = ["description"] )
 
   oio.saveStage( c.subsample

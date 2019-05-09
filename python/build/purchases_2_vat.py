@@ -11,10 +11,8 @@ import python.common.misc as c
 import python.common.cl_args as c
 
 
-vat_strategies_that_use_coicop_prefixes = [c.approx, c.prop_2018_10_31]
-
 if True: # input files
-  # This data set is too big unless I down-cast the numbers.
+  # This data set is too big unless we down-cast the numbers.
   purchases = oio.readStage (
       c.subsample
     , "purchases_1_5_no_origin"
@@ -54,84 +52,25 @@ if True: # input files
                               , "vat frac, max" : "float32"
                             } )
 
-  # read the VAT bridges based on 2- or 3-digit COICOP prefixes
-  if c.vat_strategy in vat_strategies_that_use_coicop_prefixes:
-    if c.vat_strategy == c.prop_2018_10_31:
-      vat_coicop_2_digit = pd.read_csv( "python/build/vat_prop_2018_10_31/2-digit.csv" )
-      vat_coicop_3_digit = pd.read_csv( "python/build/vat_prop_2018_10_31/3-digit.csv" )
-    if c.vat_strategy == c.approx:
-      vat_coicop_2_digit = pd.read_csv( "python/build/vat_approx/2-digit.csv" )
-      vat_coicop_3_digit = pd.read_csv( "python/build/vat_approx/3-digit.csv" )
-
-    if True: # Replace 1 with VAT
-      # PITFALL: We want to replace values in the VAT rate columns,
-      # but not the coicop-prefix columns.
-      # This replaces both, then restores the original prefixes.
-      orig_key_2_digit = vat_coicop_2_digit["coicop-2-digit"]
-      orig_key_3_digit = vat_coicop_3_digit["coicop-3-digit"]
-      vat_coicop_2_digit = vat_coicop_2_digit.replace(1, float(c.vat_flat_rate))
-      vat_coicop_3_digit = vat_coicop_3_digit.replace(1, float(c.vat_flat_rate))
-      vat_coicop_2_digit["coicop-2-digit"] = vat_coicop_2_digit
-      vat_coicop_3_digit["coicop-3-digit"] = vat_coicop_3_digit
-
-    if True: # add "vat frac" columns
-      vat_coicop_2_digit["vat frac, min"] = vat_coicop_2_digit[ "vat, min"
-                                          ] . apply( lambda x: x / (1+x) )
-      vat_coicop_2_digit["vat frac, max"] = vat_coicop_2_digit[ "vat, max"
-                                          ] . apply( lambda x: x / (1+x) )
-      vat_coicop_3_digit["vat frac, min"] = vat_coicop_3_digit[ "vat, min"
-                                          ] . apply( lambda x: x / (1+x) )
-      vat_coicop_3_digit["vat frac, max"] = vat_coicop_3_digit[ "vat, max"
-                                          ] . apply( lambda x: x / (1+x) )
-
-if True: # left-pad every coicop value (including coicop prefixes) with 0s
-  purchases         ["coicop"] = util.pad_column_as_int( 8, purchases         ["coicop"] )
-    # PITFALL: This creates some "00000nan" values. After (in the next section) we (maybe) create
-    # 2- and 3-digit prefixes, we can turn those back into NaN. We can't do it earlier
-    # because we can only extract prefixes from a string.
-  vat_coicop        ["coicop"] = util.pad_column_as_int( 8, vat_coicop        ["coicop"] )
-
-  if c.vat_strategy in vat_strategies_that_use_coicop_prefixes:
-    vat_coicop_2_digit["coicop-2-digit"] = (
-      util.pad_column_as_int( 2, vat_coicop_2_digit["coicop-2-digit"] ) )
-    vat_coicop_3_digit["coicop-3-digit"] = (
-      util.pad_column_as_int( 3, vat_coicop_3_digit["coicop-3-digit"] ) )
-    purchases["coicop-2-digit"] = purchases["coicop"] . apply( lambda s: s[0:2] )
-    purchases["coicop-3-digit"] = purchases["coicop"] . apply( lambda s: s[0:3] )
-
+if True: # left-pad every coicop value with 0s
+  purchases  ["coicop"] = util.pad_column_as_int( 8, purchases  ["coicop"] )
+    # PITFALL: This creates some "00000nan" values.
+    # Those are soon replaced with np.nan.
+  vat_coicop ["coicop"] = util.pad_column_as_int( 8, vat_coicop ["coicop"] )
   purchases.loc[ purchases["coicop"] . str.contains( "[^0-9]" )
                , "coicop"
                ] = np.nan
 
 if True: # add these columns: ["vat", "vat, min", "vat, max"]
-  if c.vat_strategy == c.const:
-    purchases["vat"]           = c.vat_flat_rate
-    purchases["vat, min"]      = c.vat_flat_rate
-    purchases["vat, max"]      = c.vat_flat_rate
-    purchases["vat frac"]      = c.vat_flat_rate / (1 + c.vat_flat_rate)
-    purchases["vat frac, min"] = c.vat_flat_rate / (1 + c.vat_flat_rate)
-    purchases["vat frac, max"] = c.vat_flat_rate / (1 + c.vat_flat_rate)
-  else:
-    if True: # add vat to coicop-labeled purchases
-      if c.vat_strategy in vat_strategies_that_use_coicop_prefixes:
-        purchases_2_digit = purchases.merge( vat_coicop_2_digit, how = "left"
-                              , on="coicop-2-digit" )
-        purchases_3_digit = purchases.merge( vat_coicop_3_digit, how = "left"
-                              , on="coicop-3-digit" )
-        purchases_coicop = purchases_3_digit . combine_first( purchases_2_digit )
-          # PITFALL: combine_first prioritizes the first argument; it only uses the
-          # second where the first is missing. So far that does not matter, because the
-          # coicop prefixes are non-overlapping -- BUT if they ever overlap, it will.
+  purchases_coicop = purchases.merge( vat_coicop
+                                    , how = "left"
+                                    , on="coicop" )
+  purchases_cap_c = purchases.merge( vat_cap_c
+                                   , how = "left"
+                                   , on="25-broad-categs" )
+  purchases = purchases_coicop . combine_first( purchases_cap_c )
 
-      if c.vat_strategy in [c.detail, c.detail_224, c.finance_ministry, c.prop_2018_11_29]:
-        purchases_coicop = purchases.merge( vat_coicop, how = "left", on="coicop" )
-
-    if True: # add vat to capitulo-c-labeled purchases
-      purchases_cap_c = purchases.merge( vat_cap_c, how = "left", on="25-broad-categs" )
-      purchases = purchases_coicop . combine_first( purchases_cap_c )
-
-if c.vat_strategy != c.prop_2018_11_29: # motorcycles are special
-  # TODO ? Maybe this should apply to fewer strategies.
+if True: # motorcycles are special
   purchases["big-hog"] = (1 * (purchases["coicop"]=="07120101")
                             * (purchases["value"]>(9e6) ) )
   purchases.loc[ purchases["big-hog"]>0, "vat"] = 0.27

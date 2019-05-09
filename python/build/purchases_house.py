@@ -53,10 +53,5 @@ buildings["house,newness-unknown"] = 1
 hps = buildings.append(medios) # house purchases
 hps["house,above-vat-threshold"] = (
   hps["house,value"] > (((888.5 + 853.8) * 1e6) / 2)).astype('int')
-
-if c.vat_strategy==c.prop_2018_11_29: 
-  hps["house,vat-paid"] = (
-    0.02 * hps["house,value"] * hps["house,above-vat-threshold"] )
-else:
-  hps["house,vat-paid"] = (
-    0.02 * hps["house,value"] * hps["house,new"] )
+hps["house,vat-paid"] = (
+  0.02 * hps["house,value"] * hps["house,new"] )
