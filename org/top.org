@@ -1,6 +1,15 @@
-* TODO ask/send juan
-** 2016 taxes.hs: correct?
-** 2018 taxes.hs: correct?
+* TODO before CB meeting
+** aggregate "rentas ocasionales" per "income tax 2016.hs"
+** bifurcate model by dian and dane
+** estimate tax burdens from dian data
+At least in aggregate; probably disaggregated too.
+
+social security contribs
+  = sum of a bunch of things
+    including employer contributions (must impute)
+income tax = "impuesto de renta de personas naturales"
+  = sum of a bunch of income taxes
+wealth tax
 * TODO renta gravable ocasional: aggregate things
 compare that section of "income tax.org" to "people_4_income_taxish.py"
 * TODO personal income tax

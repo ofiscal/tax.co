@@ -1,17 +1,14 @@
-A dependent counts for 10% of the applicable renta liquida.
+-- Anything marked "#ne" is not implemented.
+-- Everything else is implemented.
+-- Some things are marked "unknowable". However,
+-- something might be unknowable even though it bears no such mark.
 
--- common
-One only pays income tax if one's various types of incomes exceed various thresholds. See p. 41, orange text, of our Citizen's Guide for details.
 
-ingresos no constitutivo de renta =
-    ss contributions
-  + gmf / 2
-  + things we don't have information about
+-- | labor + pension income | --
 
--- labor + pension income
 renta liquida laboral =
     ingreso laboral
-  - ingresos laborales no constitutivos de renta
+  - ingresos laborales no constitutivos de renta -- #ne
 renta gravable laboral =
     renta liquida laboral
   - min( beneficios
@@ -20,22 +17,22 @@ renta gravable laboral =
 
 renta gravable pension =
     ingreso pension
-  - ingreso pension no constitutivo de renta
-  - renta exenta hasta mil uvt #ne
+  - ingreso pension no constitutivo de renta -- #ne
+  - renta exenta hasta mil uvt -- #ne
 
 impuesto tarifa uno aplica a:
   renta gravable (pension + laboral)
 
--- capital + nonlabor income
+
+-- | capital + nonlabor income | --
+
 renta liquida capital =
     ingreso capital
-  - ingreso capital no constitutivo de renta
+  - ingreso capital no constitutivo de renta -- #ne, unknowable
   where ingreso capital =
           interest
           + arriendos (literal rent, not profit)
-          + regalias (unknowable=
-        ing k no constitutivo de renta =
-          unknowable
+          + regalias (unknowable)
 
 renta gravable de capital =
     renta liquida capital
@@ -45,11 +42,9 @@ renta gravable de capital =
 
 renta liquida no laboral =
     ingreso no laboral
-  - ingreso no laboral no constiotutivo de renta
+  - ingreso no laboral no constiotutivo de renta -- #ne, unknowable
   where ingreso no laboral =
           short-term sales + non-government becas
-        ingreso no laboral no constiotutivo de renta =
-          unknowable
 
 renta gravable no laboral =
     renta liquida no laboral
@@ -60,19 +55,27 @@ renta gravable no laboral =
 tarifa 2 applies to:
   renta gravable (capital + no laboral)
 
--- dividends: done (tarifa 3)
 
--- ingresos ocasionales
+-- | dividends: done (tarifa 3) | --
 
-renta gravable ocasional, 10%-taxable =
-    long-term asset sales
-  + inheritance
-  + f (donations from private firms)
+-- | ingresos ocasionales | --
+
+renta gravable ocasional, 10%-taxable = long-term asset sales +
+                                        inheritance +
+                                        f (donations from private firms)
   where f x = x - min (20% x, 2290 uvt)
 
-renta gravable ocasional, 20%-taxable =
-    gambling
-  + jury awards
+renta gravable ocasional, 20%-taxable = gambling +
+                                        jury awards
 
-#ne = not implemented
 
+-- | Other thresholds, deductions, exemptions -- #ne
+
+A dependent counts for 10% of the applicable renta liquida.
+
+One only pays income tax if one's various types of incomes exceed various thresholds. See p. 41, orange text, of our Citizen's Guide for details.
+
+ingresos no constitutivo de renta =
+    ss contributions
+  + gmf / 2
+  + things we don't have information about
