@@ -14,9 +14,7 @@ vat_strategy_names = [ # There used to be a lot of these.
 subsample = 100
 
 vat_strategy = detail
-vat_flat_rate = ""
-
-vat_strategy_suffix = vat_strategy + "_" + str(vat_flat_rate)
+vat_strategy_suffix = vat_strategy
 
 
 # Wart: This function is duplicated in cl_args.py

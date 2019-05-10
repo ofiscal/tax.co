@@ -16,8 +16,7 @@ vat_strategy = sys.argv[2]
 if not vat_strategy in vat_strategy_names:
   raise ValueError( "invalid vat_strategy: " + vat_strategy )
 
-vat_flat_rate = ""
-vat_strategy_suffix = vat_strategy + "_" + str(vat_flat_rate)
+vat_strategy_suffix = vat_strategy
 
 # Wart: This function is duplicated in cl_fake.py
 def collect_files( file_structs, subsample=subsample ):
