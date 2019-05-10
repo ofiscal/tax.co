@@ -4,7 +4,7 @@
 detail, approx, prop_, strategy, ministry
 vat_flat_rate
 * TODO before CB meeting
-** aggregate "rentas ocasionales" per "income tax 2016.hs"
+** bifurcate model by 2016 and 2018
 ** bifurcate model by dian and dane
 ** estimate tax burdens from dian data
 At least in aggregate; probably disaggregated too.

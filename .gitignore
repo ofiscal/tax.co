@@ -1,6 +1,8 @@
 *~
 temp*
+dependencies.png
 .mypy_cache
+TAGS
 
 git-comment.txt
 docker/commands-laptop.txt
