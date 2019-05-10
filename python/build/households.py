@@ -59,8 +59,6 @@ if True: # aggregate from household members to households
        , "cesantias + primas"
        , "tax, gmf"
        , "tax, ganancia ocasional"
-       , "tax, indemnizacion"
-       , "tax, donacion"
        , "tax, income, labor + pension"
        , "tax, income, capital + non-labor"
        , "tax, dividend"

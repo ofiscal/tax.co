@@ -54,6 +54,6 @@ dividend tax = like 2016,
                but the first 300 UVT are exempt,
                and the rest pay a 15% rate
 
-All other income taxes -- specifically, on
-  ganancia ocasional, gmf, payroll taxes --
+All other income taxes (specifically:
+  ganancia ocasional, gmf, payroll taxes)
   are unchanged.

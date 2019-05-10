@@ -16,10 +16,9 @@ muvt = c.uvt / 12 # monthly UVT, to harmonize with montly income
 ppl["tax, gmf"] = (0.004 * ( ppl["income, cash"] - c.gmf_threshold)
                   ).apply( lambda x: max(0,x) )
 
-ppl["tax, ganancia ocasional"] = ppl["income, ganancia ocasional"] * 0.1
-ppl["tax, indemnizacion"]      = ppl["income, indemnizacion"]      * 0.2
-ppl["tax, donacion"]           = ppl["income, donacion"].apply(
-  lambda x: (x - min( x*0.2, 2290*muvt)) * 0.1 )
+ppl["tax, ganancia ocasional"] = (
+  ppl["income, ganancia ocasional, 10%-taxable"] * 0.1 +
+  ppl["income, ganancia ocasional, 20%-taxable"] * 0.2 )
 
 for (goal,function) in [
       ("tax, pension"               , ss.mk_pension)

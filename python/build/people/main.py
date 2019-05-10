@@ -218,13 +218,17 @@ if True: # income
       cols_infrequent = list( files.income_infrequent.values() )
       ppl["total income, monthly : infrequent"] = (
         ppl[ cols_infrequent ].sum( axis=1 ) )
-      ppl["income, ganancia ocasional"] = (
+
+      ppl["income, ganancia ocasional, 10%-taxable"] = (
         # PITFALL: overlaps what will be called "income, infrequent"
         ppl["income, year : sale : real estate"] +
+        ppl["income, year : infrequent : inheritance"] +
+        ppl["income, donacion"].apply(
+          lambda x: x - min ( x * 0.2
+                            , c.uvt * (2290 / 12)  ) ) )
+
+      ppl["income, ganancia ocasional, 20%-taxable"] = (
         ppl["income, year : infrequent : gambling"] +
-        ppl["income, year : infrequent : inheritance"] )
-      ppl["income, indemnizacion"] = (
-        # PITFALL: overlaps what will be called "income, infrequent"
         ppl["income, year : infrequent : jury awards"] )
 
       ppl = ppl.drop( columns = cols_infrequent )

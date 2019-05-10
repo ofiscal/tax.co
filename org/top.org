@@ -3,9 +3,6 @@
 ** regexes to seek and purge
 detail, approx, prop_, strategy, ministry
 vat_flat_rate
-* TODO renta gravable ocasional: aggregate things
-Compare that section of "income tax.org" to "people_4_income_taxish.py".
-This will require changing at least "people_4_income_taxish" and "people/main.py".
 * TODO before CB meeting
 ** aggregate "rentas ocasionales" per "income tax 2016.hs"
 ** bifurcate model by dian and dane
