@@ -16,9 +16,11 @@ if not os.path.exists(output_dir): os.makedirs(output_dir)
 
 
 if True: # Get, prepare the data
-  households = oio.readStage( cl.subsample, "households."        + cl.strategy_suffix )
+  households = oio.readStage( cl.subsample, "households."
+                              + cl.strategy_year_suffix )
 
-  households["income, labor + cesantia"] = households["income, labor"] + households["income, cesantia"]
+  households["income, labor + cesantia"] = ( households["income, labor"]
+                                           + households["income, cesantia"] )
 
   households["income-percentile-in[90,97]"] = (
       (households["income-percentile"] >= 90)
@@ -115,8 +117,11 @@ if True: # create a summary dataframe
 
 
 if True: # save
-  df_tmi.to_csv( output_dir      + "overview, tmi." + cl.strategy_year_suffix + ".csv" )
-  draw.to_latex( df_tmi, output_dir, "overview, tmi." + cl.strategy_year_suffix )
+  df_tmi.to_csv( output_dir +
+                 "overview, tmi." + cl.strategy_year_suffix + ".csv" )
+  draw.to_latex( df_tmi
+               , output_dir
+               , "overview, tmi." + cl.strategy_year_suffix )
 
 
 if True: # do the same thing to a subset of that data
@@ -216,5 +221,8 @@ if True: # do the same thing to a subset of that data
     , "tax, dividend: mean"
   ]]
 
-  df.to_csv(         output_dir + "overview." + cl.strategy_year_suffix + ".csv" )
-  draw.to_latex( df, output_dir, "overview." + cl.strategy_year_suffix )
+  df.to_csv(     output_dir +
+                 "overview." + cl.strategy_year_suffix + ".csv" )
+  draw.to_latex( df
+               , output_dir
+               , "overview." + cl.strategy_year_suffix )

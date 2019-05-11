@@ -10,7 +10,7 @@ import python.common.cl_args as c
 
 
 ppl = oio.readStage( c.subsample
-                   , "people_4_income_taxish." + c.strategy_suffix )
+                   , "people_4_income_taxish." + c.strategy_year_suffix )
 
 ppl["education"] = util.interpretCategorical( ppl["education"]
                                             , edu_key.values() )
@@ -142,6 +142,6 @@ if True: # aggregate from household members to households
 
 if True: # save
   oio.saveStage( c.subsample, households
-               , "households." + c.strategy_suffix )
+               , "households." + c.strategy_year_suffix )
   oio.saveStage( c.subsample, households_decile_summary
-               , "households_decile_summary." + c.strategy_suffix )
+               , "households_decile_summary." + c.strategy_year_suffix )

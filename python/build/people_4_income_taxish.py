@@ -85,5 +85,5 @@ if True: # determine dependents, for income tax
 
 oio.saveStage( cl.subsample
              , ppl
-             , 'people_4_income_taxish.' + cl.strategy_suffix
+             , 'people_4_income_taxish.' + cl.strategy_year_suffix
 )

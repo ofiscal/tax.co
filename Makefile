@@ -69,14 +69,14 @@ input_subsamples =                                                           \
 
 buildings =          output/vat/data/recip-$(ss)/buildings.csv
 households = \
-  output/vat/data/recip-$(ss)/households.$(strategy_suffix).csv \
-  output/vat/data/recip-$(ss)/households_decile_summary.$(strategy_suffix).csv
+  output/vat/data/recip-$(ss)/households.$(strategy_year_suffix).csv \
+  output/vat/data/recip-$(ss)/households_decile_summary.$(strategy_year_suffix).csv
 people_1 =           output/vat/data/recip-$(ss)/people_1.csv
 people_2_buildings = output/vat/data/recip-$(ss)/people_2_buildings.csv
 people_3_purchases = \
   output/vat/data/recip-$(ss)/people_3_purchases.$(strategy_suffix).csv
 people_4_income_taxish = \
-  output/vat/data/recip-$(ss)/people_4_income_taxish.$(strategy_suffix).csv
+  output/vat/data/recip-$(ss)/people_4_income_taxish.$(strategy_year_suffix).csv
 purchases_1 =        output/vat/data/recip-$(ss)/purchases_1.csv \
                      output/vat/data/recip-$(ss)/purchases_1_5_no_origin.csv
 purchases_2_vat =    output/vat/data/recip-$(ss)/purchases_2_vat.$(strategy_suffix).csv
