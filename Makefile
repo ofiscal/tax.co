@@ -23,14 +23,17 @@ SHELL := bash
 ##=##=##=##  Non-file variables
 
 subsample?=1
-  # default value; can be overridden from the command line, as in "make raw subsample=10"
-  # valid values are 1, 10, 100 and 1000
-ss=$(strip $(subsample))# removes trailing space
-vat_strategy?=approx
-  # default value; can be overridden from command line, ala "make raw vat_strategy=detail"
-  # possibilities: approx, detail, const, prop_2018_10_31
+  # default value; can be overridden from the command line,
+  # as in "make raw subsample=10"
+  # possibilities: 1, 10, 100 and 1000
+ss=$(strip $(subsample))
+  # removes trailing space
+vat_strategy?=detail
 s_vat_strategy=$(strip $(vat_strategy))
 strategy_suffix=$(strip $(s_vat_strategy))
+regime_year?=2016
+  # possibilities: 2016, 2018
+yr=$(strip $(regime_year))
 
 python_from_here = PYTHONPATH='.' python3
 
@@ -129,16 +132,17 @@ goods_by_income_decile = \
 ##=##=##=## testing
 
 lag:
-	bash bash/overview_lag.sh $(ss) $(vat_strategy)
+	bash bash/overview_lag.sh $(ss) $(vat_strategy) $(yr)
 
 diff:
 	$(python_from_here) python/test/overview_diff.py \
-          $(subsample) $(vat_strategy)
+          $(subsample) $(vat_strategy) $(yr)
 
 show_params:
-	echo "subsample: " $(subsample)
-	echo "vat strategy: " $(vat_strategy)
-	echo "strategy suffix: " $(strategy_suffix)
+	echo "subsample: " -$(subsample)-
+	echo "tax regime year: " -$(yr)-
+	echo "vat strategy: " -$(vat_strategy)-
+	echo "strategy suffix: " -$(strategy_suffix)-
 
 
 ##=##=##=## subsample, or very slightly tweak, some input data sets
@@ -147,7 +151,7 @@ input_subsamples: $(input_subsamples)
 $(input_subsamples): python/subsample.py $(enph_orig)
 	date
 	# Next: Validating command-line arguments.
-	$(python_from_here) python/common/cl_args.py $(subsample) $(vat_strategy)
+	$(python_from_here) python/common/cl_args.py $(subsample) $(vat_strategy) $(yr)
 	$(python_from_here) python/subsample.py
 
 vat_rates: $(vat_rates)
@@ -156,7 +160,7 @@ $(vat_rates): python/build/vat_rates.py \
   data/vat/vat-by-coicop.csv \
   data/vat/vat-for-capitulo-c.csv
 	date
-	$(python_from_here) python/build/vat_rates.py $(subsample) $(vat_strategy)
+	$(python_from_here) python/build/vat_rates.py $(subsample) $(vat_strategy) $(yr)
 
 
 ##=##=##=## Build data from the ENPH
@@ -167,7 +171,7 @@ $(buildings): python/build/buildings.py \
   python/build/output_io.py \
   $(input_subsamples)
 	date
-	$(python_from_here) python/build/buildings.py $(subsample) $(vat_strategy)
+	$(python_from_here) python/build/buildings.py $(subsample) $(vat_strategy) $(yr)
 
 people_1: $(people_1)
 $(people_1): python/build/people/main.py \
@@ -175,21 +179,21 @@ $(people_1): python/build/people/main.py \
   python/build/output_io.py \
   $(input_subsamples)
 	date
-	$(python_from_here) python/build/people/main.py $(subsample) $(vat_strategy)
+	$(python_from_here) python/build/people/main.py $(subsample) $(vat_strategy) $(yr)
 
 people_2_buildings: $(people_2_buildings)
 $(people_2_buildings): python/build/people_2_buildings.py \
   python/build/output_io.py \
   $(buildings) $(people_1)
 	date
-	$(python_from_here) python/build/people_2_buildings.py $(subsample) $(vat_strategy)
+	$(python_from_here) python/build/people_2_buildings.py $(subsample) $(vat_strategy) $(yr)
 
 people_3_purchases: $(people_3_purchases)
 $(people_3_purchases): python/build/people_3_purchases.py \
   python/build/output_io.py \
   $(people_2_buildings) $(purchase_sums)
 	date
-	$(python_from_here) python/build/people_3_purchases.py $(subsample) $(vat_strategy)
+	$(python_from_here) python/build/people_3_purchases.py $(subsample) $(vat_strategy) $(yr)
 
 people_4_income_taxish: $(people_4_income_taxish)
 $(people_4_income_taxish): python/build/people_4_income_taxish.py \
@@ -197,7 +201,7 @@ $(people_4_income_taxish): python/build/people_4_income_taxish.py \
   python/build/ss_schedules.py \
   $(people_3_purchases)
 	date
-	$(python_from_here) python/build/people_4_income_taxish.py $(subsample) $(vat_strategy)
+	$(python_from_here) python/build/people_4_income_taxish.py $(subsample) $(vat_strategy) $(yr)
 
 households: $(households)
 $(households): python/build/households.py \
@@ -205,7 +209,7 @@ $(households): python/build/households.py \
   python/build/output_io.py \
   $(people_4_income_taxish)
 	date
-	$(python_from_here) python/build/households.py $(subsample) $(vat_strategy)
+	$(python_from_here) python/build/households.py $(subsample) $(vat_strategy) $(yr)
 
 purchases_1: $(purchases_1)
 $(purchases_1): python/build/purchases/main.py \
@@ -217,7 +221,7 @@ $(purchases_1): python/build/purchases/main.py \
   python/build/purchases/capitulo_c.py \
   $(input_subsamples)
 	date
-	$(python_from_here) python/build/purchases/main.py $(subsample) $(vat_strategy)
+	$(python_from_here) python/build/purchases/main.py $(subsample) $(vat_strategy) $(yr)
 
 purchases_2_vat: $(purchases_2_vat)
 $(purchases_2_vat): python/build/purchases_2_vat.py \
@@ -226,14 +230,14 @@ $(purchases_2_vat): python/build/purchases_2_vat.py \
   $(vat_rates) \
   output/vat/data/recip-$(ss)/purchases_1.csv
 	date
-	$(python_from_here) python/build/purchases_2_vat.py $(subsample) $(vat_strategy)
+	$(python_from_here) python/build/purchases_2_vat.py $(subsample) $(vat_strategy) $(yr)
 
 purchase_sums: $(purchase_sums)
 $(purchase_sums): python/build/purchase_sums.py \
   python/build/output_io.py \
   $(purchases_2_vat)
 	date
-	$(python_from_here) python/build/purchase_sums.py $(subsample) $(vat_strategy)
+	$(python_from_here) python/build/purchase_sums.py $(subsample) $(vat_strategy) $(yr)
 
 
 ##=##=##=## Make charts, diagrams, tiny latex tables
@@ -242,19 +246,19 @@ purchase_pics: $(purchase_pics)
 $(purchase_pics): python/report/pics/purchases.py \
   $(purchases_2_vat)
 	date
-	$(python_from_here) python/report/pics/purchases.py $(subsample) $(vat_strategy)
+	$(python_from_here) python/report/pics/purchases.py $(subsample) $(vat_strategy) $(yr)
 
 household_pics: $(household_pics)
 $(household_pics): python/report/pics/households.py \
   $(households)
 	date
-	$(python_from_here) python/report/pics/households.py $(subsample) $(vat_strategy)
+	$(python_from_here) python/report/pics/households.py $(subsample) $(vat_strategy) $(yr)
 
 people_pics: $(people_pics)
 $(people_pics): python/report/pics/people.py \
   $(people_4_income_taxish)
 	date
-	$(python_from_here) python/report/pics/people.py $(subsample) $(vat_strategy)
+	$(python_from_here) python/report/pics/people.py $(subsample) $(vat_strategy) $(yr)
 
 pics: $(pics)
 
@@ -265,7 +269,7 @@ $(overview): python/report/overview.py \
   python/build/people/files.py \
   $(households)
 	date
-	$(python_from_here) python/report/overview.py $(subsample) $(vat_strategy)
+	$(python_from_here) python/report/overview.py $(subsample) $(vat_strategy) $(yr)
 
 # PITFALL: Always reads households from the detail vat strategy, because vat irrelevant.
 goods_by_income_decile: $(goods_by_income_decile)
@@ -273,4 +277,4 @@ $(goods_by_income_decile): python/build/goods-by-income-decile.py \
   output/vat/data/recip-$(ss)/households.detail_.csv \
   output/vat/data/recip-$(ss)/purchases_1_5_no_origin.csv
 	date
-	$(python_from_here) python/build/goods-by-income-decile.py $(subsample) $(vat_strategy)
+	$(python_from_here) python/build/goods-by-income-decile.py $(subsample) $(vat_strategy) $(yr)

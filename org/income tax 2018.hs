@@ -27,7 +27,7 @@ cedula general = renta liquida laboral +
                  rental liquida no laboral
 cedula general gravable = cedula general -
                           min( beneficios
-                             , 40% cedula general
+                             , from 25 to 40% of cedula general
                              , 5040 uvt )
 
 renta gravable pension = ingreso pension
@@ -37,15 +37,15 @@ renta gravable pension = ingreso pension
 income tax = tarifa 2 ( renta gravable pension +
                         cedula general gravable )
 
-Tarifa 2:
-| min, max income, UVT | rate | total tax paid
-| 0     | 1090         | 0%   | 0
-| 1090  | 1700         | 19%  | (Base Gravable - 1090  UVT) x 19%
-| 1700  | 4100         | 28%  | (Base Gravable - 1700  UVT) x 28% + 116 UVT
-| 4100  | 8670         | 33%  | (Base Gravable - 4100  UVT) x 33% + 788 UVT
-| 8670  | 18970        | 35%  | (Base Gravable - 8670  UVT) x 35% + 2296 UVT
-| 18970 | 31000        | 37%  | (Base Gravable - 18970 UVT) x 37% + 5901 UVT
-| 31000 | En Adelante  | 39%  | (Base Gravable - 31000 UVT) x 39% + 10352 UVT
+Tarifa 2 =
+  min, max income, UVT | rate | total tax paid
+  0     | 1090         | 0%   | 0
+  1090  | 1700         | 19%  | (Base Gravable - 1090  UVT) x 19%
+  1700  | 4100         | 28%  | (Base Gravable - 1700  UVT) x 28% + 116 UVT
+  4100  | 8670         | 33%  | (Base Gravable - 4100  UVT) x 33% + 788 UVT
+  8670  | 18970        | 35%  | (Base Gravable - 8670  UVT) x 35% + 2296 UVT
+  18970 | 31000        | 37%  | (Base Gravable - 18970 UVT) x 37% + 5901 UVT
+  31000 | En Adelante  | 39%  | (Base Gravable - 31000 UVT) x 39% + 10352 UVT
 
 
 -- | other income | --

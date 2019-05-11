@@ -18,6 +18,10 @@ if not vat_strategy in vat_strategy_names:
 
 vat_strategy_suffix = vat_strategy
 
+regime_year = int( sys.argv[3] )
+if not regime_year in [2016, 2018]:
+  raise ValueError( "invalid tax regime year: " + str(regime_year) )
+
 # Wart: This function is duplicated in cl_fake.py
 def collect_files( file_structs, subsample=subsample ):
   acc = pd.DataFrame()

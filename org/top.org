@@ -1,11 +1,7 @@
-* TODO retire hypotheticals
-** keep the "detail" strategy, but make it implicit
-** regexes to seek and purge
-detail, approx, prop_, strategy, ministry
-vat_flat_rate
 * TODO before CB meeting
 ** bifurcate model by 2016 and 2018
 Add a regime_year parameter.
+Remove "strategy" parameter?
 Use regime_year in the names of inputs and outputs that depend on it.
   people_4, households, overview
 Make build/ subfolders 2018 and 2016.
@@ -22,6 +18,11 @@ social security contribs
 income tax = "impuesto de renta de personas naturales"
   = sum of a bunch of income taxes
 wealth tax
+* TODO retire hypotheticals from Makefiles, scripts, filenames
+** keep the "detail" strategy, but make it implicit
+** regexes to seek and purge
+detail, approx, prop_, strategy, ministry
+vat_flat_rate
 * TODO personal income tax
 ** TODO exemptions, across >1 kind of income
 *** GMF deduction: across-person worries are inapplicable.
