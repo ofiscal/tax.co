@@ -1,6 +1,8 @@
 * TODO before CB meeting
 ** bifurcate model by 2016 and 2018
-Add a regime_year parameter.
+DONE Add a regime_year parameter.
+overview: bifurcate output by year
+
 Remove "strategy" parameter?
 Use regime_year in the names of inputs and outputs that depend on it.
   people_4, households, overview

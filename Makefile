@@ -34,6 +34,7 @@ strategy_suffix=$(strip $(s_strategy))
 regime_year?=2016
   # possibilities: 2016, 2018
 yr=$(strip $(regime_year))
+strategy_year_suffix=$(strategy_suffix).$(yr)
 
 python_from_here = PYTHONPATH='.' python3
 
@@ -120,7 +121,8 @@ household_pics = \
 
 pics = $(purchase_pics) $(people_pics) $(household_pics)
 
-overview = output/vat/tables/recip-$(ss)/overview.$(strategy_suffix).csv
+overview = \
+  output/vat/tables/recip-$(ss)/overview.$(strategy_year_suffix).csv
 
 goods_by_income_decile = \
   output/vat/tables/recip-$(ss)/goods_by_income_decile.csv \
@@ -143,6 +145,7 @@ show_params:
 	echo "tax regime year: " -$(yr)-
 	echo "vat strategy: " -$(strategy)-
 	echo "strategy suffix: " -$(strategy_suffix)-
+	echo "strategy_year_suffix: " -$(strategy_year_suffix)
 
 
 ##=##=##=## subsample, or very slightly tweak, some input data sets

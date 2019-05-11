@@ -14,7 +14,10 @@ strategy_names = [ # There used to be a lot of these.
 subsample = 100
 
 strategy = detail
+regime_year = 2016
+
 strategy_suffix = strategy
+strategy_year_suffix = strategy + "." + str(regime_year)
 
 
 # Wart: This function is duplicated in cl_args.py

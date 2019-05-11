@@ -16,11 +16,13 @@ strategy = sys.argv[2]
 if not strategy in strategy_names:
   raise ValueError( "invalid strategy: " + strategy )
 
-strategy_suffix = strategy
-
 regime_year = int( sys.argv[3] )
 if not regime_year in [2016, 2018]:
   raise ValueError( "invalid tax regime year: " + str(regime_year) )
+
+strategy_suffix = strategy
+strategy_year_suffix = strategy + "." + str(regime_year)
+
 
 # Wart: This function is duplicated in cl_fake.py
 def collect_files( file_structs, subsample=subsample ):
