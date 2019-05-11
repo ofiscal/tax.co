@@ -7,6 +7,7 @@ import python.build.output_io as oio
 from python.build.people.files import edu_key
 import python.common.misc as c
 import python.common.cl_args as c
+import python.regime.r2016 as regime
 
 
 ppl = oio.readStage( c.subsample
@@ -44,45 +45,46 @@ if True: # aggregate from household members to households
   h_first = ppl.groupby( ["household"]
     ) ["region-1", "region-2", "estrato", "weight" # these are constant within household
     ] . agg("first")
-  h_sum = ppl.groupby(
-      [ "household" ]
-    ) [  "value"
-       , "vat paid, min", "vat paid, max"
-       , "predial"
-       , "tax, pension"
-       , "tax, pension, employer"
-       , "tax, salud"
-       , "tax, salud, employer"
-       , "tax, solidaridad"
-       , "tax, parafiscales"
-       , "tax, cajas de compensacion"
-       , "cesantias + primas"
-       , "tax, gmf"
-       , "tax, ganancia ocasional"
-       , "tax, income, labor + pension"
-       , "tax, income, capital + non-labor"
-       , "tax, income, dividend"
-       , "income, rank 1"
-       , "income, rank 2"
-       , "income, rank 3"
-       , "income, rank 4"
-       , "income, rank 5"
-       , "income, labor, rank 1"
-       , "income, labor, rank 2"
-       , "income, labor, rank 3"
-       , "income, labor, rank 4"
-       , "income, labor, rank 5"
-       , "transactions", "members"
-       , "income"
-       , "income, pension"
-       , "income, cesantia"
-       , "income, dividend"
-       , "income, capital (tax def)"
-       , "income, infrequent"
-       , "income, govt"
-       , "income, private"
-       , "income, labor"
-    ] . agg("sum")
+  many_vars = ( [ "value"
+                , "vat paid, min", "vat paid, max"
+                , "predial"
+                , "tax, pension"
+                , "tax, pension, employer"
+                , "tax, salud"
+                , "tax, salud, employer"
+                , "tax, solidaridad"
+                , "tax, parafiscales"
+                , "tax, cajas de compensacion"
+                , "cesantias + primas"
+                , "tax, gmf"
+                , "tax, ganancia ocasional" ]
+
+                + regime.income_tax_columns +
+
+                [ "income, rank 1"
+                , "income, rank 2"
+                , "income, rank 3"
+                , "income, rank 4"
+                , "income, rank 5"
+                , "income, labor, rank 1"
+                , "income, labor, rank 2"
+                , "income, labor, rank 3"
+                , "income, labor, rank 4"
+                , "income, labor, rank 5"
+                , "transactions", "members"
+                , "income"
+                , "income, pension"
+                , "income, cesantia"
+                , "income, dividend"
+                , "income, capital (tax def)"
+                , "income, infrequent"
+                , "income, govt"
+                , "income, private"
+                , "income, labor"
+                ] )
+  h_sum = ( ppl.loc[:, ["household"] + many_vars]
+            . groupby( "household" )
+            . agg("sum") )
   h_min = ppl.groupby(
       ["household"]
     ) ["age", "female"

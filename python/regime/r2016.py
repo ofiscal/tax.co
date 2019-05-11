@@ -1,15 +1,11 @@
 import pandas as pd
 from python.common.misc import muvt
 
-income_taxes = [ "tax, income, labor + pension"
-               , "tax, income, capital + non-labor"
-               , "tax, income, dividend" ]
-
-def f(df):
-  new_columns = pd.DataFrame()
-  new_columns["a1"] = df["a"] * 2
-  new_columns["b1"] = df["b"] * 3
-  return pd.concat( [df, new_columns], axis = 1 )
+income_tax_columns = [ "tax, income, labor + pension"
+                     , "tax, income, capital + non-labor"
+                     , "tax, income, dividend"
+                     , "tax, income"
+                     ]
 
 def income_taxes( ppl ):
   new_columns = pd.DataFrame()
@@ -51,7 +47,7 @@ def income_taxes( ppl ):
              0                      if x < ( 600*muvt)
       else ( (x -  600*muvt) * 0.05 if x < (1000*muvt)
         else (x - 1000*muvt) * 0.1 + 20*muvt ) ) )
-#  new_columns["tax, income"] = (
-#    new_columns.sum( axis = 1 ) )
+  new_columns["tax, income"] = (
+    new_columns.sum( axis = 1 ) )
 
   return pd.concat( [ppl, new_columns], axis = 1 )

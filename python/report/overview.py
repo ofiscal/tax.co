@@ -3,12 +3,14 @@
 import os
 import sys
 import pandas as pd
+from itertools import chain
 
 import python.common.util as util
 import python.draw.util as draw
 import python.build.output_io as oio
 import python.common.misc as c
 import python.common.cl_args as cl
+import python.regime.r2016 as regime
 
 
 output_dir = "output/vat/tables/recip-" + str(cl.subsample) + "/"
@@ -30,7 +32,7 @@ if True: # Get, prepare the data
     households["income"] < c.min_wage )
 
 if True: # create a summary dataframe
-  householdVars = [
+  householdVars = ( [
       "income < min wage"
     , "pension, receiving"
     , "pension, contributing (if not pensioned)"
@@ -66,8 +68,11 @@ if True: # create a summary dataframe
     , "vat/income, max"
     , "vat/value, min"
     , "vat/value, max"
-    , "predial"
-    , "tax, pension"
+    , "predial" ]
+
+    + regime.income_tax_columns +
+
+    [ "tax, pension"
     , "tax, pension, employer"
     , "tax, salud"
     , "tax, salud, employer"
@@ -80,7 +85,7 @@ if True: # create a summary dataframe
     , "tax, income, labor + pension"
     , "tax, income, capital + non-labor"
     , "tax, income, dividend"
-    ]
+    ] )
 
   householdGroupVars = [ "one"
                        , "female head"
@@ -125,8 +130,8 @@ if True: # save
 
 
 if True: # do the same thing to a subset of that data
-  df = df_tmi.loc[[
-      "income < min wage: mean"
+  df = df_tmi.loc[
+    [ "income < min wage: mean"
     , "pension, receiving: mean"
     , "pension, receiving: min"
     , "pension, receiving: max"
@@ -192,8 +197,15 @@ if True: # do the same thing to a subset of that data
     , "vat/income, max: median_unweighted"
     , "vat/income, max: mean"
     , "predial: median_unweighted"
-    , "predial: mean"
-    , "tax, pension: median_unweighted"
+    , "predial: mean" ]
+
+    # "chain.from_iterable" concatenates lists
+    + list( chain.from_iterable( [ [ c + ": median_unweighted"
+                                   , c + ": mean" ]
+                                   for c in regime.income_tax_columns ] ) )
+    +
+
+    [ "tax, pension: median_unweighted"
     , "tax, pension: mean"
     , "tax, pension, employer: median_unweighted"
     , "tax, pension, employer: mean"
@@ -218,8 +230,8 @@ if True: # do the same thing to a subset of that data
     , "tax, income, capital + non-labor: median_unweighted"
     , "tax, income, capital + non-labor: mean"
     , "tax, income, dividend: median_unweighted"
-    , "tax, income, dividend: mean"
-  ]]
+    , "tax, income, dividend: mean" ]
+  ]
 
   df.to_csv(     output_dir +
                  "overview." + cl.strategy_year_suffix + ".csv" )
