@@ -5,16 +5,16 @@ import pandas as pd
 import sys
 
 
-vat_strategy_names = [ # There used to be a lot of these.
+strategy_names = [ # There used to be a lot of these.
   "detail"             # They disappeared in the branch "retire-hypotheticals".
 ]
 
-[detail] = vat_strategy_names
+[detail] = strategy_names
 
 subsample = 100
 
-vat_strategy = detail
-vat_strategy_suffix = vat_strategy
+strategy = detail
+strategy_suffix = strategy
 
 
 # Wart: This function is duplicated in cl_args.py

@@ -2,21 +2,21 @@ import pandas as pd
 import sys
 
 
-vat_strategy_names = [ # There used to be a lot of these.
+strategy_names = [ # There used to be a lot of these.
   "detail"             # They disappeared in the branch "retire-hypotheticals".
 ]
 
-[detail] = vat_strategy_names
+[detail] = strategy_names
 
 subsample = int( sys.argv[1] )
 if not subsample in [1,10,100,1000]:
   raise ValueError( "invalid subsample reciprocal: " + str(subsample) )
 
-vat_strategy = sys.argv[2]
-if not vat_strategy in vat_strategy_names:
-  raise ValueError( "invalid vat_strategy: " + vat_strategy )
+strategy = sys.argv[2]
+if not strategy in strategy_names:
+  raise ValueError( "invalid strategy: " + strategy )
 
-vat_strategy_suffix = vat_strategy
+strategy_suffix = strategy
 
 regime_year = int( sys.argv[3] )
 if not regime_year in [2016, 2018]:

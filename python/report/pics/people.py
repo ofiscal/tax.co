@@ -21,9 +21,9 @@ if True: # more imports
   import python.build.common as c
 
 
-vat_pics_dir = "output/vat/pics/recip-" + str(c.subsample) + "/" + c.vat_strategy_suffix + "/"
+vat_pics_dir = "output/vat/pics/recip-" + str(c.subsample) + "/" + c.strategy_suffix + "/"
 if not os.path.exists(vat_pics_dir): os.makedirs(vat_pics_dir)
-people = oio.readStage( c.subsample, 'people_3_purchases.' + c.vat_strategy_suffix )
+people = oio.readStage( c.subsample, 'people_3_purchases.' + c.strategy_suffix )
 
 edu_key = { 1 : "Ninguno",
     2 : "Preescolar",

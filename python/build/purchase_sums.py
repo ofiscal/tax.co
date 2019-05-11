@@ -6,7 +6,7 @@ import python.common.cl_args as c
 
 
 purchases = oio.readStage(
-  c.subsample, "purchases_2_vat."           + c.vat_strategy_suffix )
+  c.subsample, "purchases_2_vat."           + c.strategy_suffix )
 
 # extract the predial tax
 purchases["predial"] = (purchases["coicop"] == 12700601) * purchases["value"]
@@ -24,4 +24,4 @@ purchase_sums = purchase_sums.reset_index(
 
 oio.saveStage( c.subsample
              , purchase_sums
-             , "purchase_sums." + c.vat_strategy_suffix )
+             , "purchase_sums." + c.strategy_suffix )

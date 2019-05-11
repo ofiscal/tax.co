@@ -21,5 +21,5 @@
 # (4) Run the "make diff" line below. Check for red text.
 
 
-make lag  subsample=100 vat_strategy=detail
-make diff subsample=100 vat_strategy=detail
+make lag  subsample=100 strategy=detail
+make diff subsample=100 strategy=detail

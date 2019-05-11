@@ -9,7 +9,7 @@ import python.common.cl_args as c
 
 if True: # input files
   people = oio.readStage( c.subsample, "people_2_buildings" )
-  purchase_sums = oio.readStage( c.subsample, "purchase_sums." + c.vat_strategy_suffix )
+  purchase_sums = oio.readStage( c.subsample, "purchase_sums." + c.strategy_suffix )
 
 
 if True: # merge purchase sums into people
@@ -36,4 +36,4 @@ if True: # create a few more variables
   people["female head"] = people["female"] * (people["household-member"]==1)
 
 
-oio.saveStage( c.subsample, people, 'people_3_purchases.' + c.vat_strategy_suffix )
+oio.saveStage( c.subsample, people, 'people_3_purchases.' + c.strategy_suffix )

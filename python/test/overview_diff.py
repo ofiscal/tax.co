@@ -7,9 +7,9 @@ import python.common.cl_fake as cl
 latest_dir = "output/vat/tables/recip-"      + str(cl.subsample) + "/"
 prev_dir   = "output/vat/tables/prev/recip-" + str(cl.subsample) + "/"
 
-latest =  pd.read_csv( latest_dir + "overview, tmi." + cl.vat_strategy_suffix + ".csv"
+latest =  pd.read_csv( latest_dir + "overview, tmi." + cl.strategy_suffix + ".csv"
                      , index_col=0 )
-prev = pd.read_csv( prev_dir + "overview, tmi." + cl.vat_strategy_suffix + ".csv"
+prev = pd.read_csv( prev_dir + "overview, tmi." + cl.strategy_suffix + ".csv"
                   , index_col=0 )
 
 prev   = prev   . replace( np.nan, 0 )

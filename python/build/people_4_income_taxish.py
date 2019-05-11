@@ -9,7 +9,7 @@ import python.common.cl_args as cl
 
 
 ppl = oio.readStage( cl.subsample
-                   , "people_3_purchases." + cl.vat_strategy_suffix )
+                   , "people_3_purchases." + cl.strategy_suffix )
 
 muvt = c.uvt / 12 # monthly UVT, to harmonize with montly income
 
@@ -85,5 +85,5 @@ if True: # determine dependents, for income tax
 
 oio.saveStage( cl.subsample
              , ppl
-             , 'people_4_income_taxish.' + cl.vat_strategy_suffix
+             , 'people_4_income_taxish.' + cl.strategy_suffix
 )

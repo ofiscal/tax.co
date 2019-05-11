@@ -19,10 +19,10 @@ if True: # more imports
   import python.build.common as c
 
 
-vat_pics_dir = "output/vat/pics/recip-" + str(c.subsample) + "/" + c.vat_strategy_suffix + "/"
+vat_pics_dir = "output/vat/pics/recip-" + str(c.subsample) + "/" + c.strategy_suffix + "/"
 if not os.path.exists(vat_pics_dir): os.makedirs(vat_pics_dir)
-households = oio.readStage( c.subsample, 'households.' + c.vat_strategy_suffix )
-households_decile_summary = oio.readStage( c.subsample, 'households_decile_summary.' + c.vat_strategy_suffix )
+households = oio.readStage( c.subsample, 'households.' + c.strategy_suffix )
+households_decile_summary = oio.readStage( c.subsample, 'households_decile_summary.' + c.strategy_suffix )
 
 
 if True: # single series
