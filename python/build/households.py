@@ -61,7 +61,7 @@ if True: # aggregate from household members to households
        , "tax, ganancia ocasional"
        , "tax, income, labor + pension"
        , "tax, income, capital + non-labor"
-       , "tax, dividend"
+       , "tax, income, dividend"
        , "income, rank 1"
        , "income, rank 2"
        , "income, rank 3"

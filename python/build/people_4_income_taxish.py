@@ -65,7 +65,7 @@ if True: # income taxes
               else ( (x - 3000*muvt)*0.35 + 540*muvt if x < (4000*muvt)
                 else (x - 4000*muvt)*0.4  + 870*muvt ) ) ) ) ) )
 
-  ppl["tax, dividend"] = (
+  ppl["tax, income, dividend"] = (
     ppl["income, dividend"].apply( lambda x:
              0                      if x < ( 600*muvt)
       else ( (x -  600*muvt) * 0.05 if x < (1000*muvt)

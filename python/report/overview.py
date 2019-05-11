@@ -79,7 +79,7 @@ if True: # create a summary dataframe
     , "tax, ganancia ocasional"
     , "tax, income, labor + pension"
     , "tax, income, capital + non-labor"
-    , "tax, dividend"
+    , "tax, income, dividend"
     ]
 
   householdGroupVars = [ "one"
@@ -217,8 +217,8 @@ if True: # do the same thing to a subset of that data
     , "tax, income, labor + pension: mean"
     , "tax, income, capital + non-labor: median_unweighted"
     , "tax, income, capital + non-labor: mean"
-    , "tax, dividend: median_unweighted"
-    , "tax, dividend: mean"
+    , "tax, income, dividend: median_unweighted"
+    , "tax, income, dividend: mean"
   ]]
 
   df.to_csv(     output_dir +
