@@ -6,12 +6,11 @@ import python.build.output_io    as oio
 import python.common.util               as util
 import python.common.misc as c
 import python.common.cl_args as cl
+import python.regime.r2016 as regime
 
 
 ppl = oio.readStage( cl.subsample
                    , "people_3_purchases." + cl.strategy_suffix )
-
-muvt = c.uvt / 12 # monthly UVT, to harmonize with montly income
 
 ppl["tax, gmf"] = (0.004 * ( ppl["income, cash"] - c.gmf_threshold)
                   ).apply( lambda x: max(0,x) )
@@ -33,43 +32,7 @@ for (goal,function) in [
       lambda row: function( row["independiente"], row["income, labor, cash"] )
     , axis = "columns" )
 
-if True: # income taxes
-  ppl["taxable income, labor + pension"] = (
-    ( ppl["income, pension"]
-    + ppl["income, labor"]
-    ).apply( lambda x: x - min( 0.325 * x, 5040 * muvt) )
-  )
-  ppl["tax, income, labor + pension"] = (
-    ppl["taxable income, labor + pension"].apply( lambda x:
-                    0                          if x < (1090*muvt)
-      else (   (x - 1090*muvt)*0.19            if x < (1700*muvt)
-        else ( (x - 1700*muvt)*0.28 + 116*muvt if x < (4100*muvt)
-          else (x - 4100*muvt)*0.33 + 788*muvt ) ) ) )
-
-  ppl["taxable income, capital"] = (
-    ppl["income, capital (tax def)"].apply(
-      lambda x: x - min( 0.1 * x, 1000*muvt)
-    ) )
-  ppl["taxable income, non-labor"] = (
-    ppl["income, non-labor"].apply(
-      lambda x: x - min( 0.1 * x, 1000*muvt)
-    ) )
-  ppl["tax, income, capital + non-labor"] = (
-    ( ppl["taxable income, capital"]
-    + ppl["taxable income, non-labor"]
-    ).apply( lambda x:
-                     0                               if x < ( 600*muvt)
-        else (       (x - 600 *muvt)*0.1             if x < (1000*muvt)
-          else (     (x - 1000*muvt)*0.2  + 40 *muvt if x < (2000*muvt)
-            else (   (x - 2000*muvt)*0.3  + 240*muvt if x < (3000*muvt)
-              else ( (x - 3000*muvt)*0.35 + 540*muvt if x < (4000*muvt)
-                else (x - 4000*muvt)*0.4  + 870*muvt ) ) ) ) ) )
-
-  ppl["tax, income, dividend"] = (
-    ppl["income, dividend"].apply( lambda x:
-             0                      if x < ( 600*muvt)
-      else ( (x -  600*muvt) * 0.05 if x < (1000*muvt)
-        else (x - 1000*muvt) * 0.1 + 20*muvt ) ) )
+ppl = regime.income_taxes( ppl )
 
 if True: # determine dependents, for income tax
   hh = ( ppl[["household","dependent"]]

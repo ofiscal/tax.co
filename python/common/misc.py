@@ -8,6 +8,8 @@ min_wage = 713585.5 # This is an average, because the ENPH spans two years.
                     # Minimum Wage 2017: COP$ 737,717
 
 uvt = (29753 + 31859) / 2 # This is the average of the UVTs from 2016 and 2017
+muvt = uvt / 12 # monthly UVT, to harmonize with montly income
+
 
 gmf_threshold = (11150650 + 10413550) / 2
   # 2018 = $11.604.600
