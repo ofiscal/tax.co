@@ -202,6 +202,7 @@ people_4_income_taxish: $(people_4_income_taxish)
 $(people_4_income_taxish): python/build/people_4_income_taxish.py \
   python/build/output_io.py \
   python/build/ss_schedules.py \
+  python/regime/r$(yr).py \
   $(people_3_purchases)
 	date
 	$(python_from_here) python/build/people_4_income_taxish.py $(subsample) $(strategy) $(yr)
@@ -210,6 +211,7 @@ households: $(households)
 $(households): python/build/households.py \
   python/common/util.py \
   python/build/output_io.py \
+  python/regime/r$(yr).py \
   $(people_4_income_taxish)
 	date
 	$(python_from_here) python/build/households.py $(subsample) $(strategy) $(yr)
@@ -270,6 +272,7 @@ $(overview): python/report/overview.py \
   python/common/util.py \
   python/build/output_io.py \
   python/build/people/files.py \
+  python/regime/r$(yr).py \
   $(households)
 	date
 	$(python_from_here) python/report/overview.py $(subsample) $(strategy) $(yr)

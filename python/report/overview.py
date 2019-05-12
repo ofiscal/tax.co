@@ -10,7 +10,10 @@ import python.draw.util as draw
 import python.build.output_io as oio
 import python.common.misc as c
 import python.common.cl_args as cl
-import python.regime.r2016 as regime
+
+if cl.regime_year == 2016:
+      import python.regime.r2016 as regime
+else: import python.regime.r2018 as regime
 
 
 output_dir = "output/vat/tables/recip-" + str(cl.subsample) + "/"
@@ -82,9 +85,6 @@ if True: # create a summary dataframe
     , "cesantias + primas"
     , "tax, gmf"
     , "tax, ganancia ocasional"
-    , "tax, income, labor + pension"
-    , "tax, income, capital + non-labor"
-    , "tax, income, dividend"
     ] )
 
   householdGroupVars = [ "one"
@@ -225,13 +225,7 @@ if True: # do the same thing to a subset of that data
     , "tax, gmf: mean"
     , "tax, ganancia ocasional: median_unweighted"
     , "tax, ganancia ocasional: mean"
-    , "tax, income, labor + pension: median_unweighted"
-    , "tax, income, labor + pension: mean"
-    , "tax, income, capital + non-labor: median_unweighted"
-    , "tax, income, capital + non-labor: mean"
-    , "tax, income, dividend: median_unweighted"
-    , "tax, income, dividend: mean" ]
-  ]
+    ] ]
 
   df.to_csv(     output_dir +
                  "overview." + cl.strategy_year_suffix + ".csv" )

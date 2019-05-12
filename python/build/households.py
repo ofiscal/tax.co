@@ -7,7 +7,10 @@ import python.build.output_io as oio
 from python.build.people.files import edu_key
 import python.common.misc as c
 import python.common.cl_args as c
-import python.regime.r2016 as regime
+
+if c.regime_year == 2016:
+      import python.regime.r2016 as regime
+else: import python.regime.r2018 as regime
 
 
 ppl = oio.readStage( c.subsample

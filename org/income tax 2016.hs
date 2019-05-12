@@ -27,12 +27,12 @@ impuesto tarifa uno aplica a:
 -- | capital + nonlabor income | --
 
 renta liquida capital =
-    ingreso capital
-  - ingreso capital no constitutivo de renta -- #ne, unknowable
+  ingreso capital -
+  ingreso capital no constitutivo de renta -- #ne, unknowable
   where ingreso capital =
-          interest
-          + arriendos (literal rent, not profit)
-          + regalias (unknowable)
+          interest +
+          arriendos (literal rent, not profit) +
+          regalias (unknowable)
 
 renta gravable de capital =
     renta liquida capital
@@ -44,7 +44,8 @@ renta liquida no laboral =
     ingreso no laboral
   - ingreso no laboral no constiotutivo de renta -- #ne, unknowable
   where ingreso no laboral =
-          short-term sales + non-government becas
+          short-term sales +
+          non-government becas
 
 renta gravable no laboral =
     renta liquida no laboral

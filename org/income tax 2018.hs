@@ -6,21 +6,24 @@
 
 -- | most income | --
 
-renta liquida laboral = ingreso laboral -
-                        ingresos laborales no constitutivos de renta
+renta liquida laboral =
+  ingreso laboral -
+  ingresos laborales no constitutivos de renta
 
 renta liquida capital =
   ingreso capital -
   ingreso capital no constitutivo de renta -- #ne, unknowable
-  where ingreso capital = interest +
-                          arriendos (literal rent, not profit) +
-                          regalias -- #ne, unknowable
+  where ingreso capital =
+          interest +
+          arriendos (literal rent, not profit) +
+          regalias -- #ne, unknowable
 
 renta liquida no laboral =
     ingreso no laboral
   - ingreso no laboral no constiotutivo de renta -- #ne, unknowable
-  where ingreso no laboral = short-term sales +
-                             non-government becas
+  where ingreso no laboral =
+          short-term sales +
+          non-government becas
 
 cedula general = renta liquida laboral +
                  renta liquida capital +
@@ -46,6 +49,8 @@ Tarifa 2 =
   8670  | 18970        | 35%  | (Base Gravable - 8670  UVT) x 35% + 2296 UVT
   18970 | 31000        | 37%  | (Base Gravable - 18970 UVT) x 37% + 5901 UVT
   31000 | En Adelante  | 39%  | (Base Gravable - 31000 UVT) x 39% + 10352 UVT
+
+
 
 
 -- | other income | --
