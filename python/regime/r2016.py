@@ -1,10 +1,10 @@
 import pandas as pd
 from python.common.misc import muvt
 
-income_tax_columns = [ "tax, income, labor + pension"
+income_tax_columns = [ "tax, income"
+                     , "tax, income, labor + pension"
                      , "tax, income, capital + non-labor"
                      , "tax, income, dividend"
-                     , "tax, income"
                      ]
 
 def income_taxes( ppl ):

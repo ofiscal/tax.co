@@ -18,13 +18,13 @@ import python.build.ss_functions as ss
 
 xs = pd.Series( np.arange( 0, 30e6, 0.5e6 ) )
 for (title, compute) in [ 
-      ("tax, pension"               , ss.mk_pension)
-    , ("tax, pension, employer"     , ss.mk_pension_employer)
-    , ("tax, salud"                 , ss.mk_salud)
-    , ("tax, salud, employer"       , ss.mk_salud_employer)
-    , ("tax, solidaridad"           , ss.mk_solidaridad)
-    , ("tax, parafiscales"          , ss.mk_parafiscales_employer)
-    , ("tax, cajas de compensacion" , ss.mk_cajas_de_compensacion_employer)
+      ("tax, ss, pension"               , ss.mk_pension)
+    , ("tax, ss, pension, employer"     , ss.mk_pension_employer)
+    , ("tax, ss, salud"                 , ss.mk_salud)
+    , ("tax, ss, salud, employer"       , ss.mk_salud_employer)
+    , ("tax, ss, solidaridad"           , ss.mk_solidaridad)
+    , ("tax, ss, parafiscales"          , ss.mk_parafiscales_employer)
+    , ("tax, ss, cajas de compensacion" , ss.mk_cajas_de_compensacion_employer)
     , ("cesantias + primas"         , ss.mk_cesantias_employer) ]:
   fig = plt.figure()
   ax = fig.add_subplot(111)

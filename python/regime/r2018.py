@@ -1,15 +1,15 @@
 import pandas as pd
 from python.common.misc import muvt
 
-income_tax_columns = [ "tax, income, all but dividend"
+income_tax_columns = [ "tax, income"
+                     , "tax, income, all but dividend"
                      , "tax, income, dividend"
-                     , "tax, income"
                      ]
 
 def income_taxes( ppl ):
   new_columns = pd.DataFrame()
-  # temp_columns = pd.DataFrame()
-  new_columns["cedula general gravable"] = (
+  temp_columns = pd.DataFrame()
+  temp_columns["cedula general gravable"] = (
     ( ppl["income, labor"] +
       ppl["income, capital (tax def)"] +
       ppl["income, non-labor"]
@@ -17,7 +17,7 @@ def income_taxes( ppl ):
                                 , 5040 * muvt ) ) )
 
   new_columns["tax, income, all but dividend"] = (
-    new_columns["cedula general gravable"] +
+    temp_columns["cedula general gravable"] +
     ppl["income, pension"]
   ) . apply( lambda x:
     # see test/income_tax_2018.hs for code that generates these formulas
