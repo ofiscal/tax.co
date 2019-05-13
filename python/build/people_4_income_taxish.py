@@ -11,6 +11,7 @@ if cl.regime_year == 2016:
       import python.regime.r2016 as regime
 else: import python.regime.r2018 as regime
 
+
 ppl = oio.readStage( cl.subsample
                    , "people_3_purchases." + cl.strategy_suffix )
 
@@ -29,7 +30,7 @@ for (goal,function) in [
     , ("tax, ss, solidaridad"           , ss.mk_solidaridad)
     , ("tax, ss, parafiscales"          , ss.mk_parafiscales_employer)
     , ("tax, ss, cajas de compensacion" , ss.mk_cajas_de_compensacion_employer)
-    , ("cesantias + primas"         , ss.mk_cesantias_y_primas_employer) ]:
+    , ("cesantias + primas"             , ss.mk_cesantias_y_primas_employer) ]:
   ppl[goal] = ppl.apply(
       lambda row: function( row["independiente"], row["income, labor, cash"] )
     , axis = "columns" )

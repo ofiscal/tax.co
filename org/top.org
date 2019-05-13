@@ -1,10 +1,4 @@
 * TODO before CB meeting
-** bifurcate model by 2016 and 2018
-Make build/ subfolders 2018 and 2016.
-  Add the following files to each:
-    income tax logic.py
-    income tax columns.py
-** bifurcate model by dian and dane
 ** estimate tax burdens from dian data
 At least in aggregate; probably disaggregated too.
 

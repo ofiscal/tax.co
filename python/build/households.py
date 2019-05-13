@@ -48,7 +48,8 @@ if True: # aggregate from household members to households
   h_first = ppl.groupby( ["household"]
     ) ["region-1", "region-2", "estrato", "weight" # these are constant within household
     ] . agg("first")
-  many_vars = ( [ "value"
+  many_vars = ( [ "members"
+                , "transactions", "value"
                 , "vat paid, min", "vat paid, max"
                 , "predial"
                 , "tax, ss, pension"
@@ -64,7 +65,16 @@ if True: # aggregate from household members to households
 
                 + regime.income_tax_columns +
 
-                [ "income, rank 1"
+                [ "income"
+                , "income, pension"
+                , "income, cesantia"
+                , "income, dividend"
+                , "income, capital (tax def)"
+                , "income, infrequent"
+                , "income, govt"
+                , "income, private"
+                , "income, labor"
+                , "income, rank 1"
                 , "income, rank 2"
                 , "income, rank 3"
                 , "income, rank 4"
@@ -74,20 +84,10 @@ if True: # aggregate from household members to households
                 , "income, labor, rank 3"
                 , "income, labor, rank 4"
                 , "income, labor, rank 5"
-                , "transactions", "members"
-                , "income"
-                , "income, pension"
-                , "income, cesantia"
-                , "income, dividend"
-                , "income, capital (tax def)"
-                , "income, infrequent"
-                , "income, govt"
-                , "income, private"
-                , "income, labor"
                 ] )
   h_sum = ( ppl.loc[:, ["household"] + many_vars]
-            . groupby( "household" )
-            . agg("sum") )
+          . groupby( "household" )
+          . agg("sum") )
   h_min = ppl.groupby(
       ["household"]
     ) ["age", "female"
