@@ -22,6 +22,6 @@ util.tabulate_stats_by_group( df, ["group","group-2"], "examining", "weight" ) .
 df
 
 summarizeQuantiles( "group"
-                       , df.rename( columns = {"examining":"income"} ) )
+                  , df.rename( columns = {"examining":"income"} ) )
 
 df

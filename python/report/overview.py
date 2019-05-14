@@ -122,8 +122,10 @@ if True: # create a summary dataframe
 
 
 if True: # save
-  df_tmi.to_csv( output_dir +
-                 "overview, tmi." + cl.strategy_year_suffix + ".csv" )
+  df_tmi.to_csv(   output_dir +
+                   "overview, tmi." + cl.strategy_year_suffix + ".csv" )
+  df_tmi.to_excel( output_dir +
+                   "overview, tmi." + cl.strategy_year_suffix + ".xlsx" )
   draw.to_latex( df_tmi
                , output_dir
                , "overview, tmi." + cl.strategy_year_suffix )
@@ -156,6 +158,7 @@ if True: # do the same thing to a subset of that data
     , "income, labor + cesantia: mean"
     , "income, capital (tax def): mean"
     , "income, dividend: mean"
+    , "income, dividend: share"
     , "income, pension: mean"
     , "income, govt: mean"
     , "income, private: mean"
@@ -227,8 +230,10 @@ if True: # do the same thing to a subset of that data
     , "tax, ganancia ocasional: mean"
     ] ]
 
-  df.to_csv(     output_dir +
-                 "overview." + cl.strategy_year_suffix + ".csv" )
+  df.to_csv(   output_dir +
+               "overview." + cl.strategy_year_suffix + ".csv" )
+  df.to_excel( output_dir +
+               "overview." + cl.strategy_year_suffix + ".xlsx" )
   draw.to_latex( df
                , output_dir
                , "overview." + cl.strategy_year_suffix )
