@@ -12,7 +12,7 @@ def income_taxes( ppl ):
   temp_columns["cedula general gravable"] = (
     ( ( ppl["income, labor"]
       - ppl["tax, ss, total employee contribs"] )
-    + ppl["income, capital (tax def)"] +
+    + ppl["income, capital (tax def)"]
     + ppl["income, non-labor"]
     ) . apply( lambda x: x - min( 0.325 * x
                                 , 5040 * muvt ) ) )
