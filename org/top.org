@@ -1,4 +1,12 @@
 * TODO before CB meeting
+** for tomorrow
+2016 DANE
+2018 DANE
+2016 DIAN: replicate all income taxes, + ss contribs for employee + simulate employer ss contribs
+  and include original income taxes
+2018 DIAN: simulate  all income taxes, + ss contribs for employee + simulate employer ss contribs
+  and include original 2016 income taxes
+Use 2017 value of UVT for all DIAN stuff.
 ** estimate tax burdens from dian data
 *** goal
 At least in aggregate; probably disaggregated too.
@@ -19,8 +27,13 @@ ss contributions
   could impute from exempt labor income, but not disaggregated
   could impute from labor icnome, but no contractor variable
 *** DIAN variables to use
+**** for 2016
+income taxes: 81 through 85
+also try to duplciate those figures by applying schedules to rentas cedulares
+**** for 2018
 C32INGS BRUTOS RENTAS TRABAJO
-  to get ss contribs
+  to get ss contribs.
+  ---- ASK JUAN ----
 
 C34RENTA LÍQUIDA TRABAJO
 C42RENTA LÍQUIDA CEDULAR PENSIONES
@@ -29,10 +42,12 @@ C46RENTA LÍQUIDA CAPITAL
 C58RENTA LÍQUIDA NO LABORALES
   # not C66RENTA LÍQUIDA CEDULAR NO LABORAL
 
-C80GANANCIAS OCASIONALES GRAVABLES
-  # ambiguous -- what rate to use?
 C74RENTAS LÍQUIDAS GRAVABLES DIVIDENDOS Y PARTICIP
-  # ambiguous -- what rate to use?
+  # not obvious, but use this
+
+C80GANANCIAS OCASIONALES GRAVABLES
+  # ambiguous. skip before CB.
+
 ** postpone: changing IVA for 2018
 beer and soda: 19%
 * TODO retire hypotheticals from Makefiles, scripts, filenames

@@ -27,7 +27,7 @@ renta liquida no laboral =
 
 cedula general = renta liquida laboral +
                  renta liquida capital +
-                 rental liquida no laboral
+                 renta liquida no laboral
 cedula general gravable = cedula general -
                           min( beneficios
                              , from 25 to 40% of cedula general
