@@ -18,6 +18,21 @@ Contractor
 ss contributions
   could impute from exempt labor income, but not disaggregated
   could impute from labor icnome, but no contractor variable
+*** DIAN variables to use
+C32INGS BRUTOS RENTAS TRABAJO
+  to get ss contribs
+
+C34RENTA LÍQUIDA TRABAJO
+C42RENTA LÍQUIDA CEDULAR PENSIONES
+C46RENTA LÍQUIDA CAPITAL
+  # not C53RENTA LÍQUIDA CEDULAR CAPITAL
+C58RENTA LÍQUIDA NO LABORALES
+  # not C66RENTA LÍQUIDA CEDULAR NO LABORAL
+
+C80GANANCIAS OCASIONALES GRAVABLES
+  # ambiguous -- what rate to use?
+C74RENTAS LÍQUIDAS GRAVABLES DIVIDENDOS Y PARTICIP
+  # ambiguous -- what rate to use?
 ** postpone: changing IVA for 2018
 beer and soda: 19%
 * TODO retire hypotheticals from Makefiles, scripts, filenames
@@ -223,7 +238,9 @@ P1668S2A4 : "income, year : govt : programa de adultos mayores, in-kind"
 P1668S5A4 : "income, year : govt : transferencias por victimizacion, in-kind"
 **** Not income
 P6871: It describes the frequency with which monthly income is disbursed; it does not bear on the monthly total.
-* TODO speed: don't generate purchases_1 with file-origin column
+* TODO speed
+** don't repeat most income tax code for the two tax regime years
+** don't generate purchases_1 with file-origin column
 at the end of the file, comment out one line (and manage myriad downstream effects)
 * TODO rename single-digit percentiles to "09" instead of 9, etc
 because they get alphabetized

@@ -52,8 +52,6 @@ Tarifa 2 =
   31000 | En Adelante  | 39%  | (Base Gravable - 31000 UVT) x 39% + 10352 UVT
 
 
-
-
 -- | other income | --
 
 dividend tax = like 2016,

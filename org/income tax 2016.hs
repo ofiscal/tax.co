@@ -61,13 +61,15 @@ tarifa 2 applies to:
 
 -- | ingresos ocasionales | --
 
-renta gravable ocasional, 10%-taxable = long-term asset sales +
-                                        inheritance +
-                                        f (donations from private firms)
+renta gravable ocasional, 10%-taxable =
+  long-term asset sales +
+  inheritance +
+  f (donations from private firms)
   where f x = x - min (20% x, 2290 uvt)
 
-renta gravable ocasional, 20%-taxable = gambling +
-                                        jury awards
+renta gravable ocasional, 20%-taxable =
+  gambling +
+  jury awards
 
 
 -- | Other thresholds, deductions, exemptions -- #ne
