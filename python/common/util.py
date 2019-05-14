@@ -28,9 +28,12 @@ def noisyQuantile( n_quantiles, noise_min, noise_max, in_col ):
   "Noise guarantees the desired number of quantiles, of sizes as equal as possible."
   noise = pd.Series( np.random.uniform( noise_min, noise_max, len(in_col) ) )
   noise.index = in_col.index
+  quantile_length = len( str( n_quantiles - 1 ) )
   return pd.qcut( in_col + noise
                 , n_quantiles
-                , labels = list( map(lambda x: str(x), range(0,n_quantiles) ) )
+                , labels = list( map(
+                    lambda x: str(x).zfill(quantile_length)
+                  , range(0,n_quantiles) ) )
                 , duplicates = 'drop' )
 
 def printInRed(message):

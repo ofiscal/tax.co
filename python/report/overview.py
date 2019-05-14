@@ -94,6 +94,11 @@ if True: # create a summary dataframe
                        , "income-percentile-in[90,97]"
                        , "region-2" ]
 
+  def maybeFill(groupVar, val):
+        if groupVar == "income-percentile":
+              return val.zfill(2)
+        else: return val
+
   # PITFALL: Earlier, this looped over two data sets, households and people.
   # Now its outermost loop is unnecessary.
   summaryDict = {}
@@ -106,13 +111,16 @@ if True: # create a summary dataframe
       for v in vs:
         t = util.tabulate_stats_by_group( df, gv, v, "weight" )
         t = t.rename(
-          columns = dict( zip( t.columns
-                              , map( lambda x: v + ": " + x
-                                   , t.columns ) ) )
-          , index = dict( zip( t.index
-                             , map( lambda x: str(gv) + ": " + str(x)
-                                  , t.index ) ) )
-        )
+          columns = dict(
+                zip( t.columns
+                   , map( lambda x: v + ": " + x
+                        , t.columns ) ) )
+          , index = dict(
+                zip( t.index
+                   , map( lambda x: str(gv) + ": "
+                          + maybeFill( gv, str(x) )
+                        , t.index ) ) )
+          )
         varSummaries . append( t )
       groupSummaries . append( pd.concat( varSummaries, axis = 1 ) )
     summaryDict[unit] = pd.concat( groupSummaries, axis = 0 )

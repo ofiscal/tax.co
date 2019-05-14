@@ -5,7 +5,6 @@ import numpy as np
 import python.common.util as util
 import python.build.output_io as oio
 from python.build.people.files import edu_key
-import python.common.misc as c
 import python.common.cl_args as c
 
 if c.regime_year == 2016:
