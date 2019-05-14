@@ -12,7 +12,8 @@ def income_taxes( ppl ):
   temp_columns = pd.DataFrame()
   temp_columns["taxable income, labor + pension"] = (
     ( ppl["income, pension"]
-    + ppl["income, labor"]
+    + ( ppl["income, labor"]
+      - ppl["tax, ss, total employee contribs"] )
     ).apply( lambda x: x - min( 0.325 * x, 5040 * muvt) )
   )
   new_columns["tax, income, labor + pension"] = (

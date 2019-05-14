@@ -35,6 +35,11 @@ for (goal,function) in [
       lambda row: function( row["independiente"], row["income, labor, cash"] )
     , axis = "columns" )
 
+ppl["tax, ss, total employee contribs"] = (
+  ppl["tax, ss, pension"] +
+  ppl["tax, ss, salud"] +
+  ppl["tax, ss, solidaridad"] )
+
 ppl = regime.income_taxes( ppl )
 
 if True: # determine dependents, for income tax

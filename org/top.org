@@ -1,15 +1,25 @@
 * TODO before CB meeting
-** add dividend share per group
-
 ** estimate tax burdens from dian data
+*** goal
 At least in aggregate; probably disaggregated too.
-
-social security contribs
+**** social security contribs
   = sum of a bunch of things
     including employer contributions (must impute)
-income tax = "impuesto de renta de personas naturales"
+**** income tax = "impuesto de renta de personas naturales"
   = sum of a bunch of income taxes
-wealth tax
+**** wealth tax
+  https://www.gerencie.com/impuesto-a-la-riqueza.html
+  it's a nonlinear function:
+    simple in 2018, complex in 2016, complex (and different) in 2017
+  it won't commute across the average wealth.
+*** missing from DIAn data
+GMF
+Contractor
+ss contributions
+  could impute from exempt labor income, but not disaggregated
+  could impute from labor icnome, but no contractor variable
+** postpone: changing IVA for 2018
+beer and soda: 19%
 * TODO retire hypotheticals from Makefiles, scripts, filenames
 ** keep the "detail" strategy, but make it implicit
 ** regexes to seek and purge

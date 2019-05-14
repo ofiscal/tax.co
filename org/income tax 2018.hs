@@ -33,9 +33,10 @@ cedula general gravable = cedula general -
                              , from 25 to 40% of cedula general
                              , 5040 uvt )
 
-renta gravable pension = ingreso pension
-                         - ingreso pension no constitutivo de renta -- #ne
-                         - renta exenta hasta mil uvt -- #ne
+renta gravable pension =
+    ingreso pension
+  - ingreso pension no constitutivo de renta -- #ne
+  - renta exenta hasta mil uvt -- #ne
 
 income tax = tarifa 2 ( renta gravable pension +
                         cedula general gravable )
