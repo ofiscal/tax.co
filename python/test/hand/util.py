@@ -16,6 +16,8 @@ util.tabulate_stats_by_group( df, "group",             "examining"           ) .
 util.tabulate_stats_by_group( df, "group",             "examining", "weight" ) . transpose()
 util.tabulate_stats_by_group( df, ["group","group-2"], "examining"           ) . transpose()
 util.tabulate_stats_by_group( df, ["group","group-2"], "examining", "weight" ) . transpose()
+  # If we call this table t, note that t.loc["count",:].sum() == 5,
+  # which is the number of rows in t.
 
 df
 

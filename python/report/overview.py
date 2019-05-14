@@ -109,10 +109,10 @@ if True: # create a summary dataframe
           columns = dict( zip( t.columns
                               , map( lambda x: v + ": " + x
                                    , t.columns ) ) )
-          , index    = dict( zip( t.index
-                                , map( lambda x: str(gv) + ": " + str(x)
-                                     , t.index ) ) )
-                    )
+          , index = dict( zip( t.index
+                             , map( lambda x: str(gv) + ": " + str(x)
+                                  , t.index ) ) )
+        )
         varSummaries . append( t )
       groupSummaries . append( pd.concat( varSummaries, axis = 1 ) )
     summaryDict[unit] = pd.concat( groupSummaries, axis = 0 )

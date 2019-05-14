@@ -1,4 +1,6 @@
 * TODO before CB meeting
+** add dividend share per group
+
 ** estimate tax burdens from dian data
 At least in aggregate; probably disaggregated too.
 
