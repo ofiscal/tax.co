@@ -18,6 +18,11 @@ ppl = oio.readStage( c.subsample
 ppl["education"] = util.interpretCategorical( ppl["education"]
                                             , edu_key.values() )
 
+ppl["income, borrowing"] = (
+    ppl["income, year : borrowing : from person"]
+  + ppl["income, year : borrowing : from bank"]
+  + ppl["income, year : borrowing : from other"] )
+
 if True: # compute five columns for top five member incomes
   ppl["income, rank 1"] = (
     ppl["income"] * (ppl["member-by-income"] == 1) )
@@ -73,6 +78,7 @@ if True: # aggregate from household members to households
                 , "income, govt"
                 , "income, private"
                 , "income, labor"
+                , "income, borrowing"
                 , "income, rank 1"
                 , "income, rank 2"
                 , "income, rank 3"
