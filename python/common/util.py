@@ -65,51 +65,51 @@ def tabulate_min_median_max_by_group(df, group_name, param_name):
            .agg('max').rename(columns = {param_name:"max"})
     return pd.concat([counts,mins,maxs,medians],axis=1)
 
-def tabulate_stats_by_group(df, group_name, param_name, weight_name=None):
+def tabulate_stats_by_group(df0, group_name, param_name, weight_name=None):
   """ Alas, Pandas offers no easy way to compute weighted medians. """
   if weight_name != None:
-    dff = df[ ~ df[param_name].isnull() ].copy()
-    total_weight = dff[weight_name].sum()
-    dff["val*weight"] = dff[param_name] * dff[weight_name]
-    total_weighted_value = dff["val*weight"].sum()
-    num_obs = len( dff )
-    dff_no_0 = dff[ dff[param_name] != 0 ]
+    df = df0[ ~ df0[param_name].isnull() ].copy()
+    total_weight = df[weight_name].sum()
+    df["val*weight"] = df[param_name] * df[weight_name]
+    total_weighted_value = df["val*weight"].sum()
+    num_obs = len( df )
+    df_no_0 = df[ df[param_name] != 0 ]
 
     # This is a weighted count. See the comment in the test code
     # for an example of what that means.
-    counts = dff        . groupby( group_name ) [[weight_name
+    counts = df         . groupby( group_name ) [[weight_name
              ]]         . agg( 'sum'
              )          . rename( columns = {"weight":"count"}
              )          * (num_obs / total_weight)
-    nonzeros = dff_no_0 . groupby( group_name ) [[weight_name
+    nonzeros = df_no_0  . groupby( group_name ) [[weight_name
              ]]         . agg('sum'
              )          . rename(columns = {"weight":"nonzero"}
              )          * (num_obs / total_weight)
-    mins =     dff      . groupby( group_name ) [[ param_name
+    mins =     df       . groupby( group_name ) [[ param_name
              ]]         . agg('min'
              )          . rename(columns = {param_name:"min"})
-    maxs =     dff      . groupby( group_name ) [[ param_name
+    maxs =     df       . groupby( group_name ) [[ param_name
              ]]         . agg('max'
              )          . rename(columns = {param_name:"max"})
 
-    shares =    dff     . groupby( group_name ) [[ "val*weight"
+    shares =   df       . groupby( group_name ) [[ "val*weight"
              ]]         . agg('sum'
              )          . rename(columns = {"val*weight":"share"})
     shares["share"] = shares [ "share" ] / total_weighted_value
 
-    means = dff         . groupby( group_name ) [[ "val*weight", weight_name
+    means = df          . groupby( group_name ) [[ "val*weight", weight_name
              ]]         . agg('mean')
     means["mean"] = means [ "val*weight" ] / means[weight_name]
     means         = means . drop( columns = ["val*weight",weight_name] )
 
-    means_nonzero = dff_no_0 . groupby( group_name ) [[ "val*weight", weight_name
-             ]]              . agg('mean')
+    means_nonzero = df_no_0 . groupby( group_name ) [[ "val*weight", weight_name
+             ]]             . agg('mean')
     means_nonzero["mean_nonzero"] = means_nonzero[ "val*weight"
                                   ] / means_nonzero[weight_name]
     means_nonzero = means_nonzero.drop( columns = ["val*weight", weight_name] )
-    medians = dff.groupby( group_name ) [[param_name]]         \
+    medians = df.groupby( group_name ) [[param_name]]         \
            .agg('median').rename(columns = {param_name:"median_unweighted"})
-    medians_nonzero = dff[ dff[param_name] != 0
+    medians_nonzero = df[ df[param_name] != 0
                          ].groupby( group_name ) [[param_name
          ]].agg('median').rename(columns = {param_name:"median_nonzero_unweighted"})
     return pd.concat( [ counts, shares, mins, means, maxs, nonzeros, means_nonzero
@@ -117,31 +117,31 @@ def tabulate_stats_by_group(df, group_name, param_name, weight_name=None):
                     , axis = 1 )
 
   else:
-    dff = df[ ~ df[param_name].isnull() ].copy()
-    dff["one"] = 1
-    counts = dff.groupby( group_name )[["one"]]               \
+    df = df0[ ~ df0[param_name].isnull() ].copy()
+    df["one"] = 1
+    counts = df.groupby( group_name )[["one"]]               \
            .agg('sum').rename(columns = {"one":"count_unweighted"})
-    nonzeros = dff[ dff[param_name] != 0
+    nonzeros = df[ df[param_name] != 0
                  ].groupby( group_name )[["one"
          ]].agg('sum').rename(columns = {"one":"nonzero_unweighted"})
-    mins = dff.groupby( group_name )[[param_name]]            \
+    mins = df.groupby( group_name )[[param_name]]            \
            .agg('min').rename(columns = {param_name:"min"})
-    medians = dff.groupby( group_name )[[param_name]]         \
+    medians = df.groupby( group_name )[[param_name]]         \
            .agg('median').rename(columns = {param_name:"median_unweighted"})
-    medians_nonzero = dff[ dff[param_name] != 0
+    medians_nonzero = df[ df[param_name] != 0
                          ].groupby( group_name )[[param_name
          ]].agg('median').rename(columns = {param_name:"median_nonzero_unweighted"})
-    maxs = dff.groupby( group_name )[[param_name]]     \
+    maxs = df.groupby( group_name )[[param_name]]     \
            .agg('max').rename(columns = {param_name:"max"})
 
-    shares = dff. groupby( group_name ) [[ param_name
+    shares = df. groupby( group_name ) [[ param_name
              ]] . agg('sum'
              )  . rename(columns = {param_name:"share"})
     shares["share"] = shares [ "share" ] / shares["share"].sum()
 
-    means = dff.groupby( group_name )[[param_name]]     \
+    means = df.groupby( group_name )[[param_name]]     \
            .agg('mean').rename(columns = {param_name:"mean_unweighted"})
-    means_nonzero = dff[ dff[param_name] != 0
+    means_nonzero = df[ df[param_name] != 0
                          ].groupby( group_name )[[param_name
          ]].agg('mean').rename(columns = {param_name:"mean_nonzero_unweighted"})
     return pd.concat([counts, shares, nonzeros, mins, maxs
