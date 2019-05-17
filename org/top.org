@@ -1,4 +1,23 @@
-* TODO before CB meeting
+* TODO test suite
+** TODO make single functions out of (nearly) whole files
+The test for each file will be long.
+It will begin by making a dummy dataset,
+full of zeroes, one row long, with all needed columns.
+Then, for each part of the file, there will be a sub-test.
+For each such sub-test, include a name or comment in the file being tested,
+so that it's clear which test corresponds to which part of the function.
+** TODO make functions that test the nature of a column int he raw data
+Create an enum, "value-kind", that represents a value format:
+The empty string, a string with commas, a string with only one period, 
+a space-separated list of integers, etc.
+For each column, specify what value formats it should contain.
+Test that each column is as we believe it is.
+
+Then, for each transformation, specify a map from input formats to output formats,
+and test that it holds.
+** TODO move test in ss_contribs.py to test suite
+** TODO collect tests, use HUnit
+* DONE before CB meeting
 ** for tomorrow
 2016 DANE
 2018 DANE
@@ -52,9 +71,9 @@ C74RENTAS LÍQUIDAS GRAVABLES DIVIDENDOS Y PARTICIP
 C80GANANCIAS OCASIONALES GRAVABLES
   # ambiguous. skip before CB.
 
-** postpone: changing IVA for 2018
+** change IVA for 2018
 beer and soda: 19%
-* TODO retire hypotheticals from Makefiles, scripts, filenames
+* DONE retire hypotheticals from Makefiles, scripts, filenames
 ** keep the "detail" strategy, but make it implicit
 ** regexes to seek and purge
 detail, approx, prop_, strategy, ministry
@@ -392,8 +411,6 @@ water exempt, others excluded
 ** TODO the make recipe for goods-by-income-decile.py is confusing
 It is only used by the del-rosario strategy, which has its own makefile.
 But it is created in the primary Makefile.
-** TODO move test in ss_contribs.py to test suite
-** TODO collect tests, use HUnit
 ** TODO ? replace column names with variables
 ** TODO the vat-strategy logic needs cleaning
 *** how to change those two strategy-conditioning files

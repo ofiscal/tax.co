@@ -12,9 +12,9 @@ muvt = uvt / 12 # monthly UVT, to harmonize with montly income
 
 
 gmf_threshold = (11150650 + 10413550) / 2
-  # 2018 = $11.604.600
-  # 2017 = $11.150.650
-  # 2016 = $10.413.550
+  # 2018 = $11,604,600
+  # 2017 = $11,150,650
+  # 2016 = $10,413,550
 
 
 variables = { "DIRECTORIO" : "household"
@@ -27,8 +27,9 @@ def to_numbers(df, skip_columns=[]):
     if df[c].dtype == 'O' and not c in skip_columns:
       df[c] = df[c].str.strip()
       df[c] = df[c].replace("", np.nan)
-      df[c] = pd.to_numeric( df[c]
-                           , errors='ignore' ) # leave entire column unchanged if any row in it won't convert
+      df[c] = pd.to_numeric(
+          df[c]
+        , errors='ignore' ) # leave entire column unchanged if any cell won't convert
   return df
 
 # These apply to every file, be it purchases or people

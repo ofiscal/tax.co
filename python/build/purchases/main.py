@@ -2,6 +2,7 @@ import sys
 import numpy as np
 
 from python.build.classes import Correction
+from itertools import chain
 import python.common.misc as com
 import python.common.cl_args as cl
 import python.build.output_io as oio
@@ -23,45 +24,25 @@ purchases = cl.collect_files(
   , subsample = cl.subsample
 )
 
-for c in [
-  Correction.Replace_Substring_In_Column( "quantity", ",", "." )
+for c in (
+  [ Correction.Replace_Substring_In_Column( "quantity", ",", "." )
   , Correction.Replace_Missing_Values( "quantity", 1 )
 
   , Correction.Change_Column_Type( "coicop", str )
   , Correction.Replace_Entirely_If_Substring_Is_In_Column( "coicop", "inv", np.nan )
-
-  # The rest of these variables need the same number-string-cleaning process:
-    , Correction.Change_Column_Type( "where-got", str )
-      # same as this: purchases["where-got"] = purchases["where-got"] . astype( str )
-    , Correction.Replace_In_Column( "where-got"
+  ] + list( chain.from_iterable( [
+    [ Correction.Change_Column_Type( colname, str )
+    , Correction.Replace_In_Column( colname
                                   , { ' ' : np.nan
-                                    , "nan" : np.nan } ) # 'nan's are created from the cast to type str
-      # same as this: purchases["where-got"] = purchases["where-got"] . replace( <that same dictionary> )
-
-    , Correction.Change_Column_Type( "coicop", str )
-    , Correction.Replace_In_Column( "coicop"
-                                  , { ' ' : np.nan
-                                    , "nan" : np.nan } )
-
-    , Correction.Change_Column_Type( "freq", str )
-    , Correction.Replace_In_Column( "freq"
-                                  , { ' ' : np.nan
-                                    , "nan" : np.nan } )
-
-    , Correction.Change_Column_Type( "how-got", str )
-    , Correction.Replace_In_Column( "how-got"
-                                  , { ' ' : np.nan
-                                    , "nan" : np.nan } )
-
-    , Correction.Change_Column_Type( "value", str )
-    , Correction.Replace_In_Column( "value"
-                                  , { ' ' : np.nan
-                                    , "nan" : np.nan } )
-]: purchases = c.correct( purchases )
+                                      # 'nan's are created from the cast to type str
+                                    , "nan" : np.nan } ) ]
+    for colname in ["where-got", "coicop", "freq", "how-got", "value"] ] ) )
+  ): purchases = c.correct( purchases )
 
 purchases = com.to_numbers(purchases)
 
-purchases = purchases[ # must have a coicop-like variable and a value
+# Include only rows with a coicop-like variable and a value.
+purchases = purchases[
   # Why: For every file but "articulos", observations with no coicop have
   # no value, quantity, is-purchase or frequency. And only 63 / 211,000
   # observations in "articulos" have a missing COICOP. A way to see that:
