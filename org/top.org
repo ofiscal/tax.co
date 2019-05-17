@@ -1,22 +1,48 @@
 * TODO test suite
-** TODO make single functions out of (nearly) whole files
-The test for each file will be long.
-It will begin by making a dummy dataset,
-full of zeroes, one row long, with all needed columns.
-Then, for each part of the file, there will be a sub-test.
-For each such sub-test, include a name or comment in the file being tested,
-so that it's clear which test corresponds to which part of the function.
-** TODO make functions that test the nature of a column int he raw data
-Create an enum, "value-kind", that represents a value format:
-The empty string, a string with commas, a string with only one period, 
-a space-separated list of integers, etc.
-For each column, specify what value formats it should contain.
-Test that each column is as we believe it is.
+** pitfalls
+*** integration tests: robust to chnages?
+And if they're not, maybe that's good?
+** tasks
+*** restructure programs for testing
+ Most of the program consists of one big function definition.
+   Maybe it calls sub-functions.
+   If so, they should be defined outside it
+   , so that they can be tested separately.
+ The big function's inputs and outputs are data frames.
+ After those definitions, there's is a read-data step,
+   which is not tested (because how could it be).
+ Then the function is applied to the data, and the results saved somewhere.
+*** each file's unit test
+ The test for each program file will be long.
+ It will begin by making a dummy dataset,
+ full of zeroes, one row long, with all needed columns.
+ Then, for each part of the file, there will be a sub-test.
+ For each such sub-test, include a name or comment in the file being tested,
+ so that it's clear which test corresponds to which part of the function.
+*** the integration tests
+ These test the entire data pipeline.
+ They require making some mock input data that looks like the ENPH.
+ There is no separate "build" code for these data;
+ they use the same code that builds from the real ENPH.
+ However, there will be a test program for every output data product,
+ which tests that the product resulting from the mock ENPH
+ exhibit the statistics (means, min, max) they should have.
 
-Then, for each transformation, specify a map from input formats to output formats,
-and test that it holds.
-** TODO move test in ss_contribs.py to test suite
-** TODO collect tests, use HUnit
+ We can apply similar integration tests to a subsample of the real ENPH.
+ Those integration tests should test ranges, if not statistics.
+*** input tests
+ Create an enum, "value-kind", that represents a value format:
+ The empty string, a string with commas, a string with only one period,
+ a space-separated list of integers, etc.
+ For each column, specify what value formats it should contain.
+ Test that each column is as we believe it is.
+
+ Then, for each transformation, specify a map from input formats to output formats,
+ and test that it holds.
+*** collect tests, use HUnit
+**** most tests are in python/test/
+**** but some are elsewhere
+e.g. in python/build/ss_contribs.py
 * DONE before CB meeting
 ** for tomorrow
 2016 DANE
