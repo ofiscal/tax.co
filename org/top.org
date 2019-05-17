@@ -29,6 +29,10 @@ ss contributions
 *** DIAN variables to use
 **** for 2016
 income taxes: 81 through 85
+C81DE TRABAJO Y PENSIONES
+C82DE CAPITAL Y NO LABORALES
+C83POR DIVIDENDOS Y PARTICIP AÑO 2016 CASILLA 69
+
 also try to duplciate those figures by applying schedules to rentas cedulares
 **** for 2018
 C32INGS BRUTOS RENTAS TRABAJO
