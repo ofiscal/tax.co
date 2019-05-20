@@ -3,11 +3,13 @@
 
 import os
 import pandas as pd
+import numpy as np
 
 import python.build.datafiles as datafiles
 
 
 folder = datafiles.yearSurveyFolder(2017)
+
 
 def find_input(name):
   return folder + "orig/csv/" + name + '.csv'
@@ -35,7 +37,12 @@ if True: ## Subsample each file (including Viviendas) based on that
 
   for name in names:
     print("Processing " + name + ".")
-    data = pd.read_csv(folder + "orig/csv/" + name + '.csv', sep=";")
+    data = pd.read_csv( folder + "orig/csv/" + name + '.csv', sep=";" )
+    for c in data.columns:
+      if data[c].dtype == object:
+        data[c] = ( data[c].astype(str)
+                  . str.strip()
+                  . replace( {'nan':np.nan} ) )
 
     for subsample in [1,10,100,1000]:
       if subsample == 1: # skip a pointless merge

@@ -32,12 +32,7 @@ files = [
       , "NC2_CC_P2"    : "freq"
       , "NC2_CC_P3_S1" : "value"
       , "NC2_CC_P3_S2" : "duplicated"
-    }, [ classes.Correction.Replace_In_Column( "duplicated"
-                                              , { ' ' : nan
-                                                , "nan" : nan
-                                                , '1' : 1
-                                                , '2' : 2} )
-      ] + capitulo_c_corrections
+    },    capitulo_c_corrections
         + c.corrections
         # TODO (#right) : "where-got"
 ) ]
