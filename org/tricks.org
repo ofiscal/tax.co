@@ -1,3 +1,9 @@
+* using pytest for programs that import other local programs
+Put a line like this before any local import statements:
+
+import sys
+sys.path.insert(0, '.') # assuming pytest is run from the top of the project, this
+                        # allows local ("python.something.something") imports to work
 * draw Makefile dependencies
 ** https://github.com/lindenb/makefile2graph
 ** the basic syntax

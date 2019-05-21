@@ -5,11 +5,9 @@ import pytest
 import re
 import sys
 
-sys.path.insert(0, '.') # assuming pytest is run from the top of the project,
-                        # this allows the next imports to work
-
 
 class VarContent(enum.Flag):
+  NotAString    = enum.auto()
   Digits        = enum.auto()
   InteriorSpace = enum.auto()
   NonNumeric    = enum.auto()
@@ -31,7 +29,7 @@ def varContentFormats( column ):
   # let c = column.apply( str.strip )
     # omitted because this is done to every column when subsampling
   if column.dtype not in [object]:
-    raise(ValueError("varContent called on a non-string variable."))
+    return {VarContent.NotAString}
 
   acc = set()
   for i in column.index:
@@ -51,7 +49,7 @@ def varContentFormats( column ):
   if VarContent.ManyCommas in acc:
     acc.discard( VarContent.Comma )
 
-  return reduce( lambda x, y: x & y, acc )
+  return acc
 
 
 def test_re_nonNumeric():
@@ -72,9 +70,18 @@ def test_re_gt2c():
   assert( re_gt1c.match( "1,213,421.5" ) )
 
 def test_varContentFormats():
+  assert( varContentFormats( pd.Series( [0,1] ) ) ==
+          { VarContent.NotAString } )
   assert( varContentFormats( pd.Series( ["a a", " b "] ) ) ==
-          VarContent.NonNumeric & VarContent.InteriorSpace )
+          { VarContent.NonNumeric
+          , VarContent.InteriorSpace} )
   assert( varContentFormats( pd.Series( ["0.1.2", "0.1"] ) ) ==
-          VarContent.Digits & VarContent.ManyPeriods )
+          { VarContent.Digits
+          , VarContent.ManyPeriods} )
   assert( varContentFormats( pd.Series( ["0,2", "0.1"] ) ) ==
-          VarContent.Digits & VarContent.Period & VarContent.Comma )
+          { VarContent.Digits
+          , VarContent.Period
+          , VarContent.Comma } )
+  assert( varContentFormats( pd.Series( ["12709901", "inv02"] ) ) ==
+          { VarContent.Digits
+          , VarContent.NonNumeric } )
