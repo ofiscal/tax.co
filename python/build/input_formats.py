@@ -1,6 +1,7 @@
 import enum
 from   functools import reduce
 import pandas as pd
+import numpy as np
 import pytest
 import re
 import sys
@@ -8,6 +9,7 @@ import sys
 
 class VarContent(enum.Flag):
   NotAString    = enum.auto()
+  HasNull        = enum.auto()
   Digits        = enum.auto()
   InteriorSpace = enum.auto()
   NonNumeric    = enum.auto()
@@ -33,16 +35,19 @@ def varContentFormats( column ):
 
   acc = set()
   for i in column.index:
-    for ( regex, flag ) in [
-        ( re_digits, VarContent.Digits )
-        , ( re_white, VarContent.InteriorSpace )
-        , ( re_nonNumeric, VarContent.NonNumeric )
-        , ( re_p, VarContent.Period )
-        , ( re_c, VarContent.Comma )
-        , ( re_gt1p, VarContent.ManyPeriods )
-        , ( re_gt1c, VarContent.ManyCommas ) ]:
-      if regex.match( column[i] ):
-        acc.add( flag )
+    if pd.isnull( column[i] ):
+      acc.add( VarContent.HasNull )
+    else:
+      for ( regex, flag ) in [
+          ( re_digits, VarContent.Digits )
+          , ( re_white, VarContent.InteriorSpace )
+          , ( re_nonNumeric, VarContent.NonNumeric )
+          , ( re_p, VarContent.Period )
+          , ( re_c, VarContent.Comma )
+          , ( re_gt1p, VarContent.ManyPeriods )
+          , ( re_gt1c, VarContent.ManyCommas ) ]:
+        if regex.match( column[i] ):
+          acc.add( flag )
 
   if VarContent.ManyPeriods in acc:
     acc.discard( VarContent.Period )

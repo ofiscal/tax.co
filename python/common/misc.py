@@ -18,10 +18,17 @@ gmf_threshold = (11150650 + 10413550) / 2
   # 2016 = $10,413,550
 
 
-variables = [ ( "DIRECTORIO", {ifo.VarContent.NotAString}, "household", 0 )
-            , ( "ORDEN", {ifo.VarContent.NotAString}, "household-member", 0 )
-            , ( "FEX_C", {ifo.VarContent.NotAString}, "weight", 0 )
-]
+variables = [ # in some purchase files, all three common variables are numbers
+    ( "DIRECTORIO", {ifo.VarContent.NotAString}, "household", 0 )
+  , ( "ORDEN", {ifo.VarContent.NotAString}, "household-member", 0 )
+  , ( "FEX_C", {ifo.VarContent.NotAString}, "weight", 0 )
+  ]
+variables_with_comma_weight = [
+    # in others they are strings with commas instead of periods
+    ( "DIRECTORIO", {ifo.VarContent.NotAString}, "household", 0 )
+  , ( "ORDEN", {ifo.VarContent.NotAString}, "household-member", 0 )
+  , ( "FEX_C", {ifo.VarContent.Comma, ifo.VarContent.Digits}, "weight", 0 )
+  ]
 
 
 def to_numbers(df, skip_columns=[]):

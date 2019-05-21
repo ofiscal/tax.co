@@ -1,4 +1,3 @@
-# input files
 import sys
 sys.path.insert(0, '.') # assuming pytest is run from the top of the project, this
                         # allows local ("python.something.something") imports to work
@@ -13,7 +12,11 @@ import python.build.input_formats as ifo
 
 
 def test_purchase_inputs():
-  for f in articulos.files:
+  for f in ( articulos.files
+         # + medios.files
+           + capitulo_c.files
+           + nice_purchases.files
+           ): 
     df = cl.retrieve_file( f )
     acc = {}
     for c in df.columns:
