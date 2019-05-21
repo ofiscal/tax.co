@@ -23,12 +23,12 @@ files = [
   , File( "rural_personal_fuera"
     , "Gastos_personales_Rural_-_Comidas_preparadas_fuera_del_Hogar.csv"
     , c.variables_with_comma_weight +
-      [ ( "NC2R_CA_P3", 0, "coicop", 0 )
-      , ( "NC2R_CA_P4_S1", 0, "quantity", 0 )
-      , ( "NC2R_CA_P5_S1", 0, "how-got", 0 )
-      , ( "NC2R_CA_P6_S1", 0, "where-got", 0 )
-      , ( "NC2R_CA_P7_S1", 0, "value", 0 )
-      , ( "NC2R_CA_P8_S1", 0, "freq", 0 ) ]
+      [ ( "NC2R_CA_P3",    {VarContent.NotAString}, "coicop", 0 )
+      , ( "NC2R_CA_P4_S1", {VarContent.NotAString}, "quantity", 0 )
+      , ( "NC2R_CA_P5_S1", {VarContent.NotAString}, "how-got", 0 )
+      , ( "NC2R_CA_P6_S1", {VarContent.NotAString}, "where-got", 0 )
+      , ( "NC2R_CA_P7_S1", {VarContent.NotAString}, "value", 0 )
+      , ( "NC2R_CA_P8_S1", {VarContent.NotAString}, "freq", 0 ) ]
     , c.corrections
   )
 
