@@ -15,24 +15,24 @@ capitulo_c_corrections = [
 files = [
   classes.File( "urban capitulo c"
     , "Gastos_diarios_Urbano_-_Capitulo_C.csv"
-    , { **c.variables
-      , "NC2_CC_P1"    : "25-broad-categs"
-      , "NC2_CC_P2"    : "freq"
-      , "NC2_CC_P3_S1" : "value"
-      , "NC2_CC_P3_S2" : "duplicated"
-    },  capitulo_c_corrections
-      + c.corrections
-        # TODO (#right) "where-got": assume purchase
+    , c.variables +
+      [ ( "NC2_CC_P1"   , 0, "25-broad-categs", 0 )
+      , ( "NC2_CC_P2"   , 0, "freq", 0 )
+      , ( "NC2_CC_P3_S1", 0, "value", 0 )
+      , ( "NC2_CC_P3_S2", 0, "duplicated", 0 ) ]
+    , capitulo_c_corrections +
+      c.corrections
+       # TODO (#right) "where-got": assume purchase
   )
 
   , classes.File( "rural capitulo c"
     , "Gastos_semanales_Rural_-_Capitulo_C.csv"
-    , { **c.variables
-      , "NC2_CC_P1"    : "25-broad-categs"
-      , "NC2_CC_P2"    : "freq"
-      , "NC2_CC_P3_S1" : "value"
-      , "NC2_CC_P3_S2" : "duplicated"
-    },    capitulo_c_corrections
-        + c.corrections
-        # TODO (#right) : "where-got"
+    , c.variables +
+      [ ( "NC2_CC_P1"   , 0, "25-broad-categs", 0 )
+      , ( "NC2_CC_P2"   , 0, "freq", 0 )
+      , ( "NC2_CC_P3_S1", 0, "value", 0 )
+      , ( "NC2_CC_P3_S2", 0, "duplicated", 0 ) ]
+    , capitulo_c_corrections +
+      c.corrections
+      # TODO (#right) : "where-got"
 ) ]

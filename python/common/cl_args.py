@@ -1,6 +1,8 @@
 import pandas as pd
 import sys
 
+import python.build.classes as cla
+
 
 strategy_names = [ # There used to be a lot of these.
   "detail"             # They disappeared in the branch "retire-hypotheticals".
@@ -28,8 +30,9 @@ strategy_year_suffix = strategy + "." + str(regime_year)
 def retrieve_file( file_struct, subsample=subsample ):
   return pd.read_csv(
       "data/enph-2017/recip-" + str(subsample) + "/" + file_struct.filename
-      , usecols = list( file_struct.col_dict.keys() )
-    ) . rename( columns = file_struct.col_dict      )
+      , usecols = list( cla.name_map( file_struct.col_specs )
+                      . keys() )
+    ) . rename( columns = cla.name_map( file_struct.col_specs ) )
 
 # Wart: This function is duplicated in cl_fake.py
 def collect_files( file_structs, subsample=subsample ):

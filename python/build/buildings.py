@@ -15,11 +15,10 @@ import python.build.output_io as oio
 files = [
   classes.File( "buildings"
     , "Viviendas_y_hogares.csv"
-    , { "DIRECTORIO" : "household"
-      , "REGION" : "region-1"
-      , "DOMINIO" : "region-2"
-      , "P8520S1A1" : "estrato"
-    }
+    , [ ("DIRECTORIO", 0, "household", 0)
+      , ("REGION", 0, "region-1", 0)
+      , ("DOMINIO", 0, "region-2", 0)
+      , ("P8520S1A1", 0, "estrato", 0) ]
 ) ]
 
 buildings = cl.collect_files( files

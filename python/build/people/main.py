@@ -5,6 +5,7 @@ import re as regex
 
 import python.common.misc as c
 import python.common.cl_args as cl
+import python.build.classes as cla
 import python.build.people.files as files
 import python.build.output_io as oio
 
@@ -73,10 +74,13 @@ if True: # income
     ppl[   "income, month : labor : independent, months" ] = (
       ppl[ "income, month : labor : independent, months" ] . fillna(1) )
 
-    income_columns = list( files.income.values() )
+    income_columns = list( cla.name_map( files.income )
+                         . values() )
     columns_to_convert = ( income_columns
-                         + list( files.beca_sources_private.values() )
-                         + list( files.beca_sources_govt.values() ) )
+                         + list( cla.name_map( files.beca_sources_private )
+                               . values() )
+                         + list( cla.name_map( files.beca_sources_govt )
+                               . values() ) )
     ppl[columns_to_convert] = ppl[columns_to_convert] . fillna(0)
     for col in columns_to_convert: # 98 and 99 are error codes for
                                    # "doesn't know" and "won't say"
@@ -109,10 +113,14 @@ if True: # income
       ppl["non-beca sources, total"] = ( ppl["non-beca sources, govt"]
                                        + ppl["non-beca sources, private"] )
 
-      ppl["beca sources, govt"]    = ppl[ list( files.beca_sources_govt   .values()
-                                     ) ] . sum( axis=1 )
-      ppl["beca sources, private"] = ppl[ list( files.beca_sources_private.values()
-                                     ) ] . sum( axis=1 )
+      ppl["beca sources, govt"]    = (
+        ppl[ list( cla.name_map( files.beca_sources_govt )
+                 . values() )
+           ] . sum( axis=1 ) )
+      ppl["beca sources, private"] = (
+        ppl[ list( cla.name_map( files.beca_sources_private )
+                 . values() )
+           ] . sum( axis=1 ) )
       ppl["beca sources, total"] = ( ppl["beca sources, govt"]
                                    + ppl["beca sources, private"] )
 
@@ -183,7 +191,8 @@ if True: # income
               : "income : edu : non-beca, cash" } )
 
     if True: # govt income (cash + in-kind)
-      cols_govt = list( files.income_govt.values() )
+      cols_govt = list( cla.name_map( files.income_govt )
+                      . values() )
       cols_govt_cash    = [ col for col in cols_govt if not re_in_kind.match(col) ]
       cols_govt_in_kind = [ col for col in cols_govt if     re_in_kind.match(col) ]
       ppl["total income, monthly : govt, cash"] = (
@@ -222,7 +231,8 @@ if True: # income
       ) )
 
     if True: # private income (cash + in-kind)
-      cols_private = list( files.income_private.values() )
+      cols_private = list( cla.name_map( files.income_private )
+                         . values() )
       cols_private_cash    = [ col for col in cols_private if not re_in_kind.match(col) ]
       cols_private_in_kind = [ col for col in cols_private if     re_in_kind.match(col) ]
       ppl["total income, monthly : private, cash"] = (
@@ -237,7 +247,8 @@ if True: # income
       ppl = ppl.drop( columns = cols_private_in_kind + cols_private_cash )
 
     if True: # infrequent income (cash only)
-      cols_infrequent = list( files.income_infrequent.values() )
+      cols_infrequent = list( cla.name_map( files.income_infrequent )
+                            . values() )
       ppl["total income, monthly : infrequent"] = (
         ppl[ cols_infrequent ].sum( axis=1 ) )
 
@@ -256,7 +267,8 @@ if True: # income
       ppl = ppl.drop( columns = cols_infrequent )
 
     if True: # "income" from borrowing
-      cols_borrowing = list( files.income_borrowing.values() )
+      cols_borrowing = list( cla.name_map( files.income_borrowing )
+                           . values() )
       ppl["total income, monthly : borrowing"] = (
         ppl[ cols_borrowing ].sum( axis=1 ) )
 
@@ -274,7 +286,8 @@ if True: # income
           columns = [ wasOmitted for (_, wasOmitted) in files.inclusion_pairs ] )
 
       if True: # compute within-category sums
-        cols_labor  = list( files.income_labor.values() )
+        cols_labor  = list( cla.name_map( files.income_labor )
+                          . values() )
         cols_labor_cash    = [ col for col in cols_labor if not re_in_kind.match(col) ]
         cols_labor_in_kind = [ col for col in cols_labor if     re_in_kind.match(col) ]
         ppl["total income, monthly : labor, cash"] = (
@@ -304,7 +317,8 @@ if True: # income
 
     if True: # compute across-category sums
       ppl["income, cash"]    = (
-        ppl[ list( income_short_name_dict_cash   .values() )
+        ppl[ list( income_short_name_dict_cash
+                 . values() )
         ].sum(axis=1) )
       ppl["income, in-kind"] = (
         ppl[ list( income_short_name_dict_in_kind.values() )

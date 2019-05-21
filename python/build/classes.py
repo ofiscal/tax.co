@@ -1,7 +1,11 @@
+# TODO ? Ideally, the column-specifying "quads" used below
+# would be their own separate type,
+# but that would mean rewriting all the code that appends them.
+
 import numpy as np
 import math
 
-class File:
+class File2:
   def __init__(self,name,filename,col_dict,corrections=[]):
     self.name = name
     self.filename = filename
@@ -114,28 +118,35 @@ class Correction:
       df[self.col_name] = df[self.col_name] . astype(self.new_type)
       return df
 
-class File2:
+class File:
   def __init__(self,name,filename,col_specs,corrections=[]):
     self.name = name
     self.filename = filename
-    self.col_specs = col_specs # a set of
+    self.col_specs = col_specs # a list (or set) of
       # (old name, input format, new name, output format) tuples,
       # where each format is a list (or set) of VarContent enum values.
     self.corrections = corrections
-  def name_map(self):
-    """ map old names to new names """
-    return { t[0]:t[2] for t in self.col_specs }
-  def input_map(self):
-    """ map old names to the format they are believed to be in """
-    return { t[0]:t[1] for t in self.col_specs }
-  def output_map(self):
-    """ map new names to the format they should (eventually) be in """
-    return { t[2]:t[3] for t in self.col_specs }
 
-def test_File2():
-  f = File2( "sassafrass"
-            , "sassafrass.csv"
-            , [("ugly input.csv","dirt","beautiful output.csv","gold")] )
-  assert ( f.name_map() == { "ugly input.csv" : "beautiful output.csv" } )
-  assert ( f.input_map() == { "ugly input.csv" : "dirt" } )
-  assert ( f.output_map() == { "beautiful output.csv" : "gold" } )
+def name_map(quads):
+  """ input: a collection of col_spec 4-tuples
+      output: a map from old names to new names """
+  return { t[0]:t[2] for t in quads }
+def input_map(quads):
+  """ input: a collection of col_spec 4-tuples
+      output: a map from old names to the formats they are believed to be in """
+  return { t[0]:t[1] for t in quads }
+def output_map(quads):
+  """ input: a collection of col_spec 4-tuples
+      output: a map from new names to the format they should (eventually) be in """
+  return { t[2]:t[3] for t in quads }
+
+def test_File():
+  f = File( "sassafrass"
+          , "sassafrass.csv"
+          , [("ugly input.csv","dirt","beautiful output.csv","gold")] )
+  assert ( name_map( f.col_specs )
+           == { "ugly input.csv" : "beautiful output.csv" } )
+  assert ( input_map( f.col_specs )
+           == { "ugly input.csv" : "dirt" } )
+  assert ( output_map( f.col_specs )
+           == { "beautiful output.csv" : "gold" } )
