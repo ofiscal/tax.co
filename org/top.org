@@ -1,4 +1,6 @@
 * TODO test suite
+** next
+encode in each Files object in purchases/ the format of its input
 ** pitfalls
 *** integration tests: robust to chnages?
 And if they're not, maybe that's good?

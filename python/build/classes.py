@@ -113,3 +113,29 @@ class Correction:
     def correct(self,df):
       df[self.col_name] = df[self.col_name] . astype(self.new_type)
       return df
+
+class File2:
+  def __init__(self,name,filename,col_specs,corrections=[]):
+    self.name = name
+    self.filename = filename
+    self.col_specs = col_specs # a set of
+      # (old name, input format, new name, output format) tuples,
+      # where each format is a list (or set) of VarContent enum values.
+    self.corrections = corrections
+  def name_map(self):
+    """ map old names to new names """
+    return { t[0]:t[2] for t in self.col_specs }
+  def input_map(self):
+    """ map old names to the format they are believed to be in """
+    return { t[0]:t[1] for t in self.col_specs }
+  def output_map(self):
+    """ map new names to the format they should (eventually) be in """
+    return { t[2]:t[3] for t in self.col_specs }
+
+def test_File2():
+  f = File2( "sassafrass"
+            , "sassafrass.csv"
+            , [("ugly input.csv","dirt","beautiful output.csv","gold")] )
+  assert ( f.name_map() == { "ugly input.csv" : "beautiful output.csv" } )
+  assert ( f.input_map() == { "ugly input.csv" : "dirt" } )
+  assert ( f.output_map() == { "beautiful output.csv" : "gold" } )
