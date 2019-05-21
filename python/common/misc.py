@@ -1,6 +1,7 @@
 from python.build.classes import Correction
 import numpy as np
 import pandas as pd
+import python.build.input_formats as ifo
 
 
 min_wage = 713585.5 # This is an average, because the ENPH spans two years.
@@ -17,10 +18,11 @@ gmf_threshold = (11150650 + 10413550) / 2
   # 2016 = $10,413,550
 
 
-variables = [ ( "DIRECTORIO", 0, "household", 0 )
-            , ( "ORDEN", 0, "household-member", 0 )
-            , ( "FEX_C", 0, "weight", 0 )
+variables = [ ( "DIRECTORIO", {ifo.VarContent.NotAString}, "household", 0 )
+            , ( "ORDEN", {ifo.VarContent.NotAString}, "household-member", 0 )
+            , ( "FEX_C", {ifo.VarContent.NotAString}, "weight", 0 )
 ]
+
 
 def to_numbers(df, skip_columns=[]):
   for c in df.columns:

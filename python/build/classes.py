@@ -5,6 +5,7 @@
 import numpy as np
 import math
 
+
 class File2:
   def __init__(self,name,filename,col_dict,corrections=[]):
     self.name = name
@@ -128,15 +129,15 @@ class File:
     self.corrections = corrections
 
 def name_map(quads):
-  """ input: a collection of col_spec 4-tuples
+  """ input: a collection of col_specs 4-tuples
       output: a map from old names to new names """
   return { t[0]:t[2] for t in quads }
 def input_map(quads):
-  """ input: a collection of col_spec 4-tuples
+  """ input: a collection of col_specs 4-tuples
       output: a map from old names to the formats they are believed to be in """
   return { t[0]:t[1] for t in quads }
 def output_map(quads):
-  """ input: a collection of col_spec 4-tuples
+  """ input: a collection of col_specs 4-tuples
       output: a map from new names to the format they should (eventually) be in """
   return { t[2]:t[3] for t in quads }
 
