@@ -2,9 +2,64 @@
 # would be their own separate type,
 # but that would mean rewriting all the code that appends them.
 
-import numpy as np
+import enum
+from   functools import reduce
 import math
+import numpy as np
+import pandas as pd
+import pytest
+import re
+import sys
 
+
+class VarContent(enum.Flag):
+  NotAString    = enum.auto()
+  HasNull        = enum.auto()
+  Digits        = enum.auto()
+  InteriorSpace = enum.auto()
+  NonNumeric    = enum.auto()
+  Period        = enum.auto()
+  Comma         = enum.auto()
+  ManyPeriods   = enum.auto()
+  ManyCommas    = enum.auto()
+
+if True:
+  re_nonNumeric = re.compile( ".*[^0-9\s\.,]" )
+  re_white      = re.compile( ".*[^\s].*\s.*[^\s]" )
+  re_digits     = re.compile( ".*[0-9]" )
+  re_p          = re.compile( ".*\." )
+  re_c          = re.compile( ".*," )
+  re_gt1p       = re.compile( ".*\..*\." )
+  re_gt1c       = re.compile( ".*,.*," )
+
+def varContentFormats( column ):
+  # let c = column.apply( str.strip )
+    # omitted because this is done to every column when subsampling
+  if column.dtype not in [object]:
+    return {VarContent.NotAString}
+
+  acc = set()
+  for i in column.index:
+    if pd.isnull( column[i] ):
+      acc.add( VarContent.HasNull )
+    else:
+      for ( regex, flag ) in [
+          ( re_digits, VarContent.Digits )
+          , ( re_white, VarContent.InteriorSpace )
+          , ( re_nonNumeric, VarContent.NonNumeric )
+          , ( re_p, VarContent.Period )
+          , ( re_c, VarContent.Comma )
+          , ( re_gt1p, VarContent.ManyPeriods )
+          , ( re_gt1c, VarContent.ManyCommas ) ]:
+        if regex.match( column[i] ):
+          acc.add( flag )
+
+  if VarContent.ManyPeriods in acc:
+    acc.discard( VarContent.Period )
+  if VarContent.ManyCommas in acc:
+    acc.discard( VarContent.Comma )
+
+  return acc
 
 class File2:
   def __init__(self,name,filename,col_dict,corrections=[]):
@@ -112,7 +167,8 @@ class Correction:
       return df.drop( self.col_name, axis = 'columns' )
 
   class Change_Column_Type:
-    def __init__(self,col_name,new_type): # PITFALL: new_type should be, e.g., str, not "str"
+    def __init__(self,col_name,new_type):
+        # PITFALL: new_type should be, e.g., str, not "str"
       self.col_name = col_name
       self.new_type = new_type
     def correct(self,df):
@@ -140,14 +196,3 @@ def output_map(quads):
   """ input: a collection of col_specs 4-tuples
       output: a map from new names to the format they should (eventually) be in """
   return { t[2]:t[3] for t in quads }
-
-def test_File():
-  f = File( "sassafrass"
-          , "sassafrass.csv"
-          , [("ugly input.csv","dirt","beautiful output.csv","gold")] )
-  assert ( name_map( f.col_specs )
-           == { "ugly input.csv" : "beautiful output.csv" } )
-  assert ( input_map( f.col_specs )
-           == { "ugly input.csv" : "dirt" } )
-  assert ( output_map( f.col_specs )
-           == { "beautiful output.csv" : "gold" } )

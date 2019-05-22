@@ -15,7 +15,8 @@ SHELL := bash
   people_pics \
   household_pics \
   overview \
-  goods_by_income_decile
+  goods_by_income_decile \
+  tests
 
 
 ##=##=##=##=##=##=##=## Variables
@@ -149,6 +150,13 @@ show_params:
 
 
 ##=##=##=## subsample, or very slightly tweak, some input data sets
+
+tests:
+	date
+#	$(python_from_here) python/build/classes_tests.py \
+#          $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/build/purchases/input_formats.py \
+          $(subsample) $(strategy) $(yr)
 
 input_subsamples: $(input_subsamples)
 $(input_subsamples): python/subsample.py $(enph_orig)

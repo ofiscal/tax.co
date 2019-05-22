@@ -1,7 +1,6 @@
 import pandas as pd
-from python.build.classes import File, Correction
+from python.build.classes import File, Correction, VarContent
 import python.common.misc as c
-from python.build.input_formats import VarContent
 
 
 files = [

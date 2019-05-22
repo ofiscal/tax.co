@@ -8,7 +8,6 @@ import python.build.purchases.nice_purchases as nice_purchases
 import python.build.purchases.medios as medios
 import python.build.purchases.articulos as articulos
 import python.build.purchases.capitulo_c as capitulo_c
-import python.build.input_formats as ifo
 
 
 def test_purchase_inputs():
@@ -20,5 +19,8 @@ def test_purchase_inputs():
     df = cl.retrieve_file( f )
     acc = {}
     for c in df.columns:
-      acc.update( [ (c, ifo.varContentFormats( df[c] ) ) ] )
+      print( f.name, c )
+      acc.update( [ (c, cla.varContentFormats( df[c] ) ) ] )
       assert acc[c] == cla.input_map( f.col_specs )[c]
+
+test_purchase_inputs()

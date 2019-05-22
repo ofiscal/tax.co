@@ -1,7 +1,7 @@
 from python.build.classes import Correction
 import numpy as np
 import pandas as pd
-import python.build.input_formats as ifo
+import python.build.classes as cla
 
 
 min_wage = 713585.5 # This is an average, because the ENPH spans two years.
@@ -19,15 +19,15 @@ gmf_threshold = (11150650 + 10413550) / 2
 
 
 variables = [ # in some purchase files, all three common variables are numbers
-    ( "DIRECTORIO", {ifo.VarContent.NotAString}, "household", 0 )
-  , ( "ORDEN", {ifo.VarContent.NotAString}, "household-member", 0 )
-  , ( "FEX_C", {ifo.VarContent.NotAString}, "weight", 0 )
+    ( "DIRECTORIO", {cla.VarContent.NotAString}, "household", 0 )
+  , ( "ORDEN", {cla.VarContent.NotAString}, "household-member", 0 )
+  , ( "FEX_C", {cla.VarContent.NotAString}, "weight", 0 )
   ]
 variables_with_comma_weight = [
     # in others they are strings with commas instead of periods
-    ( "DIRECTORIO", {ifo.VarContent.NotAString}, "household", 0 )
-  , ( "ORDEN", {ifo.VarContent.NotAString}, "household-member", 0 )
-  , ( "FEX_C", {ifo.VarContent.Comma, ifo.VarContent.Digits}, "weight", 0 )
+    ( "DIRECTORIO", {cla.VarContent.NotAString}, "household", 0 )
+  , ( "ORDEN", {cla.VarContent.NotAString}, "household-member", 0 )
+  , ( "FEX_C", {cla.VarContent.Comma, cla.VarContent.Digits}, "weight", 0 )
   ]
 
 
