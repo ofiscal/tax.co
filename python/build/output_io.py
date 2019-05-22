@@ -7,8 +7,9 @@ def test_clear( filename ):
   if os.path.exists( f ): os.remove( f )
 
 def test_write( filename, content ):
-  with open("output/test/" + filename + ".txt" ,'w') as f:
-        f.write( " ".join( map( str, content ) ) )
+  with open("output/test/" + filename + ".txt" ,'a+') as f:
+        f.write( " ".join( map( str, content ) )
+               + "\n" )
 
 def saveStage(subsample,data,name,index=False):
   folder = 'output/vat/data/recip-' + str( subsample )

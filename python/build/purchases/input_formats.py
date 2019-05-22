@@ -18,11 +18,10 @@ def echo( content ):
                 , content )
 
 def test_purchase_inputs():
-  for f in (
-      articulos.files
-#         # + medios.files
-#           + capitulo_c.files
-#           + nice_purchases.files
+  for f in ( articulos.files
+         # + medios.files
+           + capitulo_c.files
+           + nice_purchases.files
            ): 
     df = cl.retrieve_file( f )
     acc = {}

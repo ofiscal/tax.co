@@ -163,6 +163,7 @@ tests: output/test/purchase_input_formats.txt
 
 output/test/purchase_input_formats.txt: \
   python/build/classes.py \
+  python/build/output_io.py \
   python/build/purchases/input_formats.py \
   python/build/purchases/nice_purchases.py \
   python/build/purchases/articulos.py \

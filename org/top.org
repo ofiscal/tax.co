@@ -39,10 +39,9 @@ Test that each column is as we believe it is.
 
 Then, for each transformation, specify a map from input formats to output formats,
 and test that it holds.
-*** collect tests, use HUnit
-**** most tests are in python/test/
-**** but some are elsewhere
-e.g. in python/build/ss_contribs.py
+*** collect preexisting tests
+Most tests are in python/test/,
+but some are elsewhere, e.g. in python/build/ss_contribs.py
 * DONE before CB meeting
 ** for tomorrow
 2016 DANE
