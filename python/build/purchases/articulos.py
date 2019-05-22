@@ -1,5 +1,5 @@
 import pandas as pd
-from python.build.classes import File, Correction, VarContent
+from python.build.classes import File, Correction, StringProperty
 import python.common.misc as c
 
 
@@ -7,15 +7,15 @@ files = [
   File( "articulos"
     , "Gastos_menos_frecuentes_-_Articulos.csv"
     , c.variables +
-      [ ( "P10270", {VarContent.NonNumeric, VarContent.Digits}
+      [ ( "P10270", {StringProperty.NonNumeric, StringProperty.Digits}
           , "coicop", 0 )
-      , ( "FORMA", {VarContent.NotAString}
+      , ( "FORMA", {StringProperty.NotAString}
           , "how-got", 0 )
-      , ( "VALOR", {VarContent.NotAString}
+      , ( "VALOR", {StringProperty.NotAString}
           , "value", 0 )
-      , ( "P10270S2", {VarContent.NotAString}
+      , ( "P10270S2", {StringProperty.NotAString}
           , "where-got", 0 )
-      , ( "P10270S3", {VarContent.NotAString}
+      , ( "P10270S3", {StringProperty.NotAString}
           , "freq", 0 ) ]
     , [ Correction.Create_Constant_Column( "quantity", 1 ) ]
       + c.corrections

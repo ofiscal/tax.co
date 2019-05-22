@@ -21,22 +21,22 @@ def test_re_gt2p():
 def test_re_gt2c():
   assert( cla.re_gt1c.match( "1,213,421.5" ) )
 
-def test_varContentFormats():
-  assert( cla.varContentFormats( pd.Series( [0,1] ) ) ==
-          { cla.VarContent.NotAString } )
-  assert( cla.varContentFormats( pd.Series( ["a a", " b "] ) ) ==
-          { cla.VarContent.NonNumeric
-          , cla.VarContent.InteriorSpace} )
-  assert( cla.varContentFormats( pd.Series( ["0.1.2", "0.1"] ) ) ==
-          { cla.VarContent.Digits
-          , cla.VarContent.ManyPeriods} )
-  assert( cla.varContentFormats( pd.Series( ["0,2", "0.1"] ) ) ==
-          { cla.VarContent.Digits
-          , cla.VarContent.Period
-          , cla.VarContent.Comma } )
-  assert( cla.varContentFormats( pd.Series( ["12709901", "inv02"] ) ) ==
-          { cla.VarContent.Digits
-          , cla.VarContent.NonNumeric } )
+def test_stringProperties():
+  assert( cla.stringProperties( pd.Series( [0,1] ) ) ==
+          { cla.StringProperty.NotAString } )
+  assert( cla.stringProperties( pd.Series( ["a a", " b "] ) ) ==
+          { cla.StringProperty.NonNumeric
+          , cla.StringProperty.InteriorSpace} )
+  assert( cla.stringProperties( pd.Series( ["0.1.2", "0.1"] ) ) ==
+          { cla.StringProperty.Digits
+          , cla.StringProperty.ManyPeriods} )
+  assert( cla.stringProperties( pd.Series( ["0,2", "0.1"] ) ) ==
+          { cla.StringProperty.Digits
+          , cla.StringProperty.Period
+          , cla.StringProperty.Comma } )
+  assert( cla.stringProperties( pd.Series( ["12709901", "inv02"] ) ) ==
+          { cla.StringProperty.Digits
+          , cla.StringProperty.NonNumeric } )
 
 def test_File():
   f = cla.File( "sassafrass"
@@ -55,6 +55,6 @@ if True: # run the tests
   test_re_digits()
   test_re_gt2p()
   test_re_gt2c()
-  test_varContentFormats()
+  test_stringProperties()
   test_File()
   print("Success!")

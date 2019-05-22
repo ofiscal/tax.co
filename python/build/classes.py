@@ -12,7 +12,7 @@ import re
 import sys
 
 
-class VarContent(enum.Flag):
+class StringProperty(enum.Flag):
   NotAString    = enum.auto()
   HasNull        = enum.auto()
   Digits        = enum.auto()
@@ -34,32 +34,32 @@ if True:
   re_gt1p       = re.compile( ".*\..*\." )
   re_gt1c       = re.compile( ".*,.*," )
 
-def varContentFormats( column ):
+def stringProperties( column ):
   # let c = column.apply( str.strip )
     # omitted because this is done to every column when subsampling
   if column.dtype not in [object]:
-    return {VarContent.NotAString}
+    return {StringProperty.NotAString}
 
   acc = set()
   for (_,val) in column.iteritems():
     if pd.isnull( val ):
-      acc.add( VarContent.HasNull )
+      acc.add( StringProperty.HasNull )
     else:
       for ( regex, flag ) in [
-          ( re_digits, VarContent.Digits )
-          , ( re_white, VarContent.InteriorSpace )
-          , ( re_nonNumeric, VarContent.NonNumeric )
-          , ( re_p, VarContent.Period )
-          , ( re_c, VarContent.Comma )
-          , ( re_gt1p, VarContent.ManyPeriods )
-          , ( re_gt1c, VarContent.ManyCommas ) ]:
+          ( re_digits, StringProperty.Digits )
+          , ( re_white, StringProperty.InteriorSpace )
+          , ( re_nonNumeric, StringProperty.NonNumeric )
+          , ( re_p, StringProperty.Period )
+          , ( re_c, StringProperty.Comma )
+          , ( re_gt1p, StringProperty.ManyPeriods )
+          , ( re_gt1c, StringProperty.ManyCommas ) ]:
         if regex.match( val ):
           acc.add( flag )
 
-  if VarContent.ManyPeriods in acc:
-    acc.discard( VarContent.Period )
-  if VarContent.ManyCommas in acc:
-    acc.discard( VarContent.Comma )
+  if StringProperty.ManyPeriods in acc:
+    acc.discard( StringProperty.Period )
+  if StringProperty.ManyCommas in acc:
+    acc.discard( StringProperty.Comma )
 
   return acc
 
@@ -183,7 +183,7 @@ class File:
     self.filename = filename
     self.col_specs = col_specs # a list (or set) of
       # (old name, input format, new name, output format) tuples,
-      # where each format is a list (or set) of VarContent enum values.
+      # where each format is a list (or set) of StringProperty enum values.
     self.corrections = corrections
 
 def name_map(quads):

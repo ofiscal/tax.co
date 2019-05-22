@@ -28,7 +28,7 @@ def test_purchase_inputs():
     acc = {}
     for c in df.columns:
       echo( [f.name, c] )
-      acc.update( [ (c, cla.varContentFormats( df[c] ) ) ] )
+      acc.update( [ (c, cla.stringProperties( df[c] ) ) ] )
       assert acc[c] == cla.input_map( f.col_specs )[c]
 
 test_purchase_inputs()

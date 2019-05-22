@@ -30,7 +30,7 @@ exhibit the statistics (means, min, max) they should have.
 
 We can apply similar integration tests to a subsample of the real ENPH.
 Those integration tests should test ranges, if not statistics.
-*** input tests
+*** input data tests
 Create an enum, "value-kind", that represents a value format:
 The empty string, a string with commas, a string with only one period,
 a space-separated list of integers, etc.
