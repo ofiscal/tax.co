@@ -134,6 +134,8 @@ goods_by_income_decile = \
 
 ##=##=##=## testing
 
+##=## minor tests
+
 lag:
 	bash bash/overview_lag.sh $(ss) $(strategy) $(yr)
 
@@ -149,8 +151,11 @@ show_params:
 	echo "strategy_year_suffix: " -$(strategy_year_suffix)
 
 
-##=##=##=## subsample, or very slightly tweak, some input data sets
+##=## the run-after-every-change test suite
 
+# Sufficiently simple and fast tests can stay in the master "tests" recipe here.
+# But for any test complex enough to require an output file,
+# make that output file a dependency.
 tests: output/test/purchase_input_formats.txt
 	date
 	$(python_from_here) python/build/classes_tests.py \
@@ -166,6 +171,9 @@ output/test/purchase_input_formats.txt: \
 	$(python_from_here) python/build/purchases/input_formats.py \
           1 detail 2016 # aside from subsample, these arguments are unused
                         # (but still needed, or cl_args.py will err)
+
+
+##=##=##=## subsample, or very slightly tweak, some input data sets
 
 input_subsamples: $(input_subsamples)
 $(input_subsamples): python/subsample.py $(enph_orig)
