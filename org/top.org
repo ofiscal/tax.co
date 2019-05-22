@@ -1,5 +1,4 @@
 * TODO test suite
-** TODO Makefile does not yet understand how tests depend on input data
 ** pitfalls
 *** integration tests: robust to chnages?
 And if they're not, maybe that's good?

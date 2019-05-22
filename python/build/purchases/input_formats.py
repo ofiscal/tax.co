@@ -10,16 +10,24 @@ import python.build.purchases.articulos as articulos
 import python.build.purchases.capitulo_c as capitulo_c
 
 
+test_output_filename = "purchase_input_formats"
+
+oio.test_clear( test_output_filename )
+def echo( content ):
+  oio.test_write( test_output_filename
+                , content )
+
 def test_purchase_inputs():
-  for f in ( articulos.files
-         # + medios.files
-           + capitulo_c.files
-           + nice_purchases.files
+  for f in (
+      articulos.files
+#         # + medios.files
+#           + capitulo_c.files
+#           + nice_purchases.files
            ): 
     df = cl.retrieve_file( f )
     acc = {}
     for c in df.columns:
-      print( f.name, c )
+      echo( [f.name, c] )
       acc.update( [ (c, cla.varContentFormats( df[c] ) ) ] )
       assert acc[c] == cla.input_map( f.col_specs )[c]
 

@@ -151,12 +151,21 @@ show_params:
 
 ##=##=##=## subsample, or very slightly tweak, some input data sets
 
-tests:
+tests: output/test/purchase_input_formats.txt
 	date
-	$(python_from_here) python/build/purchases/input_formats.py \
-          $(subsample) $(strategy) $(yr)
 	$(python_from_here) python/build/classes_tests.py \
           $(subsample) $(strategy) $(yr)
+
+output/test/purchase_input_formats.txt: \
+  python/build/classes.py \
+  python/build/purchases/input_formats.py \
+  python/build/purchases/nice_purchases.py \
+  python/build/purchases/articulos.py \
+  python/build/purchases/capitulo_c.py
+	date
+	$(python_from_here) python/build/purchases/input_formats.py \
+          1 detail 2016 # aside from subsample, these arguments are unused
+                        # (but still needed, or cl_args.py will err)
 
 input_subsamples: $(input_subsamples)
 $(input_subsamples): python/subsample.py $(enph_orig)
