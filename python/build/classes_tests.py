@@ -3,6 +3,8 @@ import python.build.classes as cla
 
 
 def test_re_nonNumeric():
+  assert(      cla.re_nonNumeric.match( "1-" ) )
+  assert( not( cla.re_nonNumeric.match( "-1" ) ) )
   assert(      cla.re_nonNumeric.match( " 1.#!,0 " ) )
   assert( not( cla.re_nonNumeric.match( " 1.34 0 " ) ) )
 

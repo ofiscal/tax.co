@@ -24,7 +24,9 @@ class VarContent(enum.Flag):
   ManyCommas    = enum.auto()
 
 if True:
-  re_nonNumeric = re.compile( ".*[^0-9\s\.,]" )
+  re_nonNumeric = re.compile( "(.+\-|.*[^0-9\s\.,\-])" )
+    # A (-) is nonnumeric if anything precedes it.
+    # Any [^0-9\s\.,\-] is nonnumeric.
   re_white      = re.compile( ".*[^\s].*\s.*[^\s]" )
   re_digits     = re.compile( ".*[0-9]" )
   re_p          = re.compile( ".*\." )
@@ -39,8 +41,8 @@ def varContentFormats( column ):
     return {VarContent.NotAString}
 
   acc = set()
-  for i in column.index:
-    if pd.isnull( column[i] ):
+  for (_,val) in column.iteritems():
+    if pd.isnull( val ):
       acc.add( VarContent.HasNull )
     else:
       for ( regex, flag ) in [
@@ -51,7 +53,7 @@ def varContentFormats( column ):
           , ( re_c, VarContent.Comma )
           , ( re_gt1p, VarContent.ManyPeriods )
           , ( re_gt1c, VarContent.ManyCommas ) ]:
-        if regex.match( column[i] ):
+        if regex.match( val ):
           acc.add( flag )
 
   if VarContent.ManyPeriods in acc:

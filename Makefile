@@ -153,9 +153,9 @@ show_params:
 
 tests:
 	date
-#	$(python_from_here) python/build/classes_tests.py \
-#          $(subsample) $(strategy) $(yr)
 	$(python_from_here) python/build/purchases/input_formats.py \
+          $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/build/classes_tests.py \
           $(subsample) $(strategy) $(yr)
 
 input_subsamples: $(input_subsamples)
