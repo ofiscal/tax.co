@@ -40,7 +40,7 @@ def collect_files( file_structs, subsample=subsample ):
   for f in file_structs:
     shuttle = ( retrieve_file(f)
               . rename( columns = cla.name_map( f.col_specs ) ) )
-    shuttle["file-origin"] = f.name
+    # shuttle["file-origin"] = f.name
     for c in f.corrections:
       shuttle = c.correct( shuttle )
     acc = acc.append(shuttle)

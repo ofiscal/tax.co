@@ -212,8 +212,7 @@ files = [
       + beca_sources_private
       + [ ("P6236", 0, "non-beca sources", 0) ]
           # PITFALL: a space-separated list of ints
-    ,   c.corrections
-      + [ classes.Correction.Drop_Column( "file-origin" ) ]
+    , c.corrections
 ) ]
 
 def count_public(list_as_str):

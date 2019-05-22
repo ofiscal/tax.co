@@ -24,7 +24,6 @@ files = [
 buildings = cl.collect_files( files
                             , subsample=1 ) # see PITFALL above
 buildings["estrato"] = buildings["estrato"].replace(' ', np.nan)
-buildings = buildings.drop( columns = ["file-origin"] )
 
 oio.saveStage(
   cl.subsample # see PITFALL above

@@ -15,7 +15,7 @@ if True: # input files
   # This data set is too big unless we down-cast the numbers.
   purchases = oio.readStage (
       c.subsample
-    , "purchases_1_5_no_origin"
+    , "purchases_1"
     , dtype = { "25-broad-categs" : "float32"
               , "coicop" : "float32"
               , "freq" : "float32"

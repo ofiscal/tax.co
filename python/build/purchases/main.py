@@ -25,17 +25,21 @@ purchases = cl.collect_files(
 )
 
 for c in (
-  [ Correction.Replace_Substring_In_Column( "quantity", ",", "." )
-  , Correction.Replace_Missing_Values( "quantity", 1 )
-
-  , Correction.Change_Column_Type( "coicop", str )
-  , Correction.Replace_Entirely_If_Substring_Is_In_Column( "coicop", "inv", np.nan )
+  [ Correction.Replace_Substring_In_Column(
+      "quantity", ",", "." )
+  , Correction.Replace_Missing_Values(
+      "quantity", 1 )
+  , Correction.Change_Column_Type(
+      "coicop", str )
+  , Correction.Replace_Entirely_If_Substring_Is_In_Column(
+      "coicop", "inv", np.nan )
   ] + list( chain.from_iterable( [
     [ Correction.Change_Column_Type( colname, str )
-    , Correction.Replace_In_Column( colname
-                                  , { ' ' : np.nan
-                                      # 'nan's are created from the cast to type str
-                                    , "nan" : np.nan } ) ]
+    , Correction.Replace_In_Column(
+        colname
+        , { ' ' : np.nan
+            # 'nan's are created from the cast to type str
+            , "nan" : np.nan } ) ]
     for colname in ["where-got", "coicop", "freq", "how-got", "value"] ] ) )
   ): purchases = c.correct( purchases )
 
@@ -45,7 +49,8 @@ purchases = com.to_numbers(purchases)
 purchases = purchases[
   # Why: For every file but "articulos", observations with no coicop have
   # no value, quantity, is-purchase or frequency. And only 63 / 211,000
-  # observations in "articulos" have a missing COICOP. A way to see that:
+  # observations in "articulos" have a missing COICOP. A way to see that
+    # (which works if the file-origin variable is reenabled):
     # df0 = data.purchases[ data.purchases[ "coicop" ] . isnull() ]
     # util.dwmByGroup( "file-origin", df0 )
   ( (  ~ purchases[ "coicop"          ] . isnull())
@@ -53,17 +58,13 @@ purchases = purchases[
   & (  ~ purchases[ "value"           ] . isnull())
 ]
 
-for c in [ # how-got 1 -> is-purchase 1, nan -> nan, otherwise -> 0
+for c in [ # how-got=1 -> is-purchase=1, nan -> nan, otherwise -> 0
   Correction.Apply_Function_To_Column(
     "how-got"
     , lambda x: 1 if x==1 else
-      # HACK: x >= 0 yields true for numbers, false for NaN
+      # HACK: x >= 0 yields True for numbers, False for NaN
       (0 if x >= 0 else np.nan) )
   , Correction.Rename_Column( "how-got", "is-purchase" )
 ]: purchases = c.correct( purchases )
 
 oio.saveStage(cl.subsample, purchases, 'purchases_1')
-
-purchases = purchases.drop( columns = ["file-origin"] )
-
-oio.saveStage(cl.subsample, purchases, 'purchases_1_5_no_origin')

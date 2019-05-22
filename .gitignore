@@ -1,4 +1,5 @@
 *~
+output/test/
 temp*
 dependencies.png
 .mypy_cache

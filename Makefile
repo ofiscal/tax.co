@@ -78,8 +78,7 @@ people_3_purchases = \
   output/vat/data/recip-$(ss)/people_3_purchases.$(strategy_suffix).csv
 people_4_income_taxish = \
   output/vat/data/recip-$(ss)/people_4_income_taxish.$(strategy_year_suffix).csv
-purchases_1 =        output/vat/data/recip-$(ss)/purchases_1.csv \
-                     output/vat/data/recip-$(ss)/purchases_1_5_no_origin.csv
+purchases_1 =        output/vat/data/recip-$(ss)/purchases_1.csv
 purchases_2_vat =    output/vat/data/recip-$(ss)/purchases_2_vat.$(strategy_suffix).csv
 purchase_sums =      output/vat/data/recip-$(ss)/purchase_sums.$(strategy_suffix).csv
 vat_rates = \
@@ -170,8 +169,10 @@ output/test/purchase_input_formats.txt: \
   python/build/purchases/capitulo_c.py
 	date
 	$(python_from_here) python/build/purchases/input_formats.py \
-          1 detail 2016 # aside from subsample, these arguments are unused
-                        # (but still needed, or cl_args.py will err)
+          1 detail 2016 # Aside from subsample, these arguments are unused.
+                        # (They are still needed, or cl_args.py will err.)
+                        # Sample size is hardcoded to 1 because otherwise
+                        # certain kinds of rare values are never encountered.
 
 
 ##=##=##=## subsample, or very slightly tweak, some input data sets
@@ -307,6 +308,6 @@ $(overview): python/report/overview.py \
 goods_by_income_decile: $(goods_by_income_decile)
 $(goods_by_income_decile): python/build/goods-by-income-decile.py \
   output/vat/data/recip-$(ss)/households.detail_.csv \
-  output/vat/data/recip-$(ss)/purchases_1_5_no_origin.csv
+  output/vat/data/recip-$(ss)/purchases_1.csv
 	date
 	$(python_from_here) python/build/goods-by-income-decile.py $(subsample) $(strategy) $(yr)

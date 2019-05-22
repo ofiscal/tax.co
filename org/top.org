@@ -551,6 +551,10 @@ but zero people in the sample received any of it:
    , "P6207M7"  : "beca from empresa privada ~familiar"
 ** "P6500 (asalariado income) > 0" should be perfecty corr'd with pension contrib's
 ** ??? pension contribs = formality.
+* mabe handy in code
+** "file-origin" is commented out
+If we ever again need a purchase data set that tracks the file each purchase is from,
+that's already implemented.
 * TODO PITFALLs in code
 ** TODO some import names clobber others
 When using the syntax "import _ as x", Python will only bind one library to the name "x". When collisions occur, the latest binding wins.
