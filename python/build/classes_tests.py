@@ -57,4 +57,4 @@ if True: # run the tests
   test_re_gt2c()
   test_stringProperties()
   test_File()
-  print("Success!")
+

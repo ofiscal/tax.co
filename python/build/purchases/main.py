@@ -1,11 +1,12 @@
 import sys
 import numpy as np
-
-from python.build.classes import Correction
 from itertools import chain
+
+from   python.build.classes import Correction
 import python.common.misc as com
 import python.common.cl_args as cl
 import python.build.output_io as oio
+import python.build.purchases.main_defs as defs
 
 # input files
 import python.build.purchases.nice_purchases as nice_purchases
@@ -43,20 +44,8 @@ for c in (
     for colname in ["where-got", "coicop", "freq", "how-got", "value"] ] ) )
   ): purchases = c.correct( purchases )
 
-purchases = com.to_numbers(purchases)
-
-# Include only rows with a coicop-like variable and a value.
-purchases = purchases[
-  # Why: For every file but "articulos", observations with no coicop have
-  # no value, quantity, is-purchase or frequency. And only 63 / 211,000
-  # observations in "articulos" have a missing COICOP. A way to see that
-    # (which works if the file-origin variable is reenabled):
-    # df0 = data.purchases[ data.purchases[ "coicop" ] . isnull() ]
-    # util.dwmByGroup( "file-origin", df0 )
-  ( (  ~ purchases[ "coicop"          ] . isnull())
-    | (~ purchases[ "25-broad-categs" ] . isnull()) )
-  & (  ~ purchases[ "value"           ] . isnull())
-]
+purchases = com.to_numbers( purchases )
+purchases = defs.drop_if_coicop_or_value_invalid( purchases )
 
 for c in [ # how-got=1 -> is-purchase=1, nan -> nan, otherwise -> 0
   Correction.Apply_Function_To_Column(
