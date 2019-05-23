@@ -1,7 +1,7 @@
-from python.build.classes import Correction
 import numpy as np
 import pandas as pd
-from   python.build.classes import StringProperty
+
+from   python.build.classes import Correction, StringProperty
 
 
 min_wage = 713585.5 # This is an average, because the ENPH spans two years.
@@ -37,8 +37,9 @@ corrections = [
 def all_columns_to_numbers(df, skip_columns=[]):
   for c in df.columns:
     if df[c].dtype == 'O' and not c in skip_columns:
-      df[c] = df[c].str.strip()
-      df[c] = df[c].replace("", np.nan)
+      df[c] = df[c].astype(str).str.strip()
+      df[c] = df[c].replace( { "":np.nan
+                             , "nan":np.nan} )
       df[c] = pd.to_numeric(
           df[c]
         , errors='ignore' ) # leave entire column unchanged if any cell won't convert
