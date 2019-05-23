@@ -44,7 +44,7 @@ ppl = pd.read_csv(
 for corr in c.corrections:
   ppl = corr.correct( ppl )
 
-ppl = c.to_numbers(ppl)
+ppl = c.all_columns_to_numbers(ppl)
 
 ppl["pension, contributing (if not pensioned)"] = (
   ppl["pension, contributing, pre"]

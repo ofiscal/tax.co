@@ -37,7 +37,7 @@ util.describeWithMissing(
 )
 
 raw = pd.read_csv( "data/enph-2017/recip-100/Caracteristicas_generales_personas.csv" )
-raw = c.to_numbers(
+raw = c.all_columns_to_numbers(
   raw.rename( columns = {
     "P6040"      : "age"
   , "P1668S1A4"  : "familias en accion"

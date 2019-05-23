@@ -44,7 +44,7 @@ for c in (
     for colname in ["where-got", "coicop", "freq", "how-got", "value"] ] ) )
   ): purchases = c.correct( purchases )
 
-purchases = com.to_numbers( purchases )
+purchases = com.all_columns_to_numbers( purchases )
 purchases = defs.drop_if_coicop_or_value_invalid( purchases )
 
 for c in [ # how-got=1 -> is-purchase=1, nan -> nan, otherwise -> 0
