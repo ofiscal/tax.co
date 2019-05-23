@@ -10,7 +10,6 @@ import python.build.purchases.main_defs as defs
 
 # input files
 import python.build.purchases.nice_purchases as nice_purchases
-import python.build.purchases.medios as medios
 import python.build.purchases.articulos as articulos
 import python.build.purchases.capitulo_c as capitulo_c
 

@@ -169,7 +169,8 @@ output/test/purchase_input_formats.txt: \
   python/build/purchases/input_formats.py \
   python/build/purchases/nice_purchases.py \
   python/build/purchases/articulos.py \
-  python/build/purchases/capitulo_c.py
+  python/build/purchases/capitulo_c.py \
+  python/common/misc.py
 	date
 	$(python_from_here) python/build/purchases/input_formats.py \
           1 detail 2016 # Aside from subsample, these arguments are unused.
@@ -191,6 +192,8 @@ vat_rates: $(vat_rates)
 $(vat_rates): python/build/vat_rates.py \
   python/build/output_io.py \
   data/vat/vat-by-coicop.csv \
+  python/common/misc.py \
+  python/build/classes.py \
   data/vat/vat-for-capitulo-c.csv
 	date
 	$(python_from_here) python/build/vat_rates.py $(subsample) $(strategy) $(yr)
@@ -202,6 +205,7 @@ buildings: $(buildings)
 $(buildings): python/build/buildings.py \
   python/build/classes.py \
   python/build/output_io.py \
+  python/common/misc.py \
   $(input_subsamples)
 	date
 	$(python_from_here) python/build/buildings.py $(subsample) $(strategy) $(yr)
@@ -210,6 +214,8 @@ people_1: $(people_1)
 $(people_1): python/build/people/main.py \
   python/build/people/files.py \
   python/build/output_io.py \
+  python/common/misc.py \
+  python/build/classes.py \
   $(input_subsamples)
 	date
 	$(python_from_here) python/build/people/main.py $(subsample) $(strategy) $(yr)
@@ -217,6 +223,8 @@ $(people_1): python/build/people/main.py \
 people_2_buildings: $(people_2_buildings)
 $(people_2_buildings): python/build/people_2_buildings.py \
   python/build/output_io.py \
+  python/common/misc.py \
+  python/build/classes.py \
   $(buildings) $(people_1)
 	date
 	$(python_from_here) python/build/people_2_buildings.py $(subsample) $(strategy) $(yr)
@@ -224,6 +232,8 @@ $(people_2_buildings): python/build/people_2_buildings.py \
 people_3_purchases: $(people_3_purchases)
 $(people_3_purchases): python/build/people_3_purchases.py \
   python/build/output_io.py \
+  python/common/misc.py \
+  python/build/classes.py \
   $(people_2_buildings) $(purchase_sums)
 	date
 	$(python_from_here) python/build/people_3_purchases.py $(subsample) $(strategy) $(yr)
@@ -233,6 +243,8 @@ $(people_4_income_taxish): python/build/people_4_income_taxish.py \
   python/build/output_io.py \
   python/build/ss_schedules.py \
   python/regime/r$(yr).py \
+  python/common/misc.py \
+  python/build/classes.py \
   $(people_3_purchases)
 	date
 	$(python_from_here) python/build/people_4_income_taxish.py $(subsample) $(strategy) $(yr)
@@ -251,9 +263,10 @@ $(purchases_1): python/build/purchases/main.py \
   python/build/classes.py \
   python/build/output_io.py \
   python/build/purchases/nice_purchases.py \
-  python/build/purchases/medios.py \
   python/build/purchases/articulos.py \
   python/build/purchases/capitulo_c.py \
+  python/common/misc.py \
+  python/build/classes.py \
   $(input_subsamples)
 	date
 	$(python_from_here) python/build/purchases/main.py $(subsample) $(strategy) $(yr)
@@ -263,6 +276,8 @@ $(purchases_2_vat): python/build/purchases_2_vat.py \
   python/build/output_io.py \
   python/build/legends.py \
   $(vat_rates) \
+  python/common/misc.py \
+  python/build/classes.py \
   output/vat/data/recip-$(ss)/purchases_1.csv
 	date
 	$(python_from_here) python/build/purchases_2_vat.py $(subsample) $(strategy) $(yr)
@@ -270,6 +285,8 @@ $(purchases_2_vat): python/build/purchases_2_vat.py \
 purchase_sums: $(purchase_sums)
 $(purchase_sums): python/build/purchase_sums.py \
   python/build/output_io.py \
+  python/common/misc.py \
+  python/build/classes.py \
   $(purchases_2_vat)
 	date
 	$(python_from_here) python/build/purchase_sums.py $(subsample) $(strategy) $(yr)
@@ -279,18 +296,27 @@ $(purchase_sums): python/build/purchase_sums.py \
 
 purchase_pics: $(purchase_pics)
 $(purchase_pics): python/report/pics/purchases.py \
+  python/draw/util.py \
+  python/common/misc.py \
+  python/common/cl_args.py \
   $(purchases_2_vat)
 	date
 	$(python_from_here) python/report/pics/purchases.py $(subsample) $(strategy) $(yr)
 
 household_pics: $(household_pics)
 $(household_pics): python/report/pics/households.py \
+  python/draw/util.py \
+  python/common/misc.py \
+  python/common/cl_args.py \
   $(households)
 	date
 	$(python_from_here) python/report/pics/households.py $(subsample) $(strategy) $(yr)
 
 people_pics: $(people_pics)
 $(people_pics): python/report/pics/people.py \
+  python/draw/util.py \
+  python/common/misc.py \
+  python/common/cl_args.py \
   $(people_4_income_taxish)
 	date
 	$(python_from_here) python/report/pics/people.py $(subsample) $(strategy) $(yr)
@@ -303,6 +329,10 @@ $(overview): python/report/overview.py \
   python/build/output_io.py \
   python/build/people/files.py \
   python/regime/r$(yr).py \
+  python/draw/util.py \
+  python/common/misc.py \
+  python/common/cl_args.py \
+  python/build/classes.py \
   $(households)
 	date
 	$(python_from_here) python/report/overview.py $(subsample) $(strategy) $(yr)
