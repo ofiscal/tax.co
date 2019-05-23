@@ -12,9 +12,37 @@ import re
 import sys
 
 
+### properties of numbers ###
+
+class NumProperty:
+  pass
+
+class IsNull(NumProperty):
+  def test(self,cell):
+    return pd.isnull( cell )
+
+class InRange(NumProperty):
+  def __init__(self,floor,ceiling):
+    self.floor = floor
+    self.ceiling = ceiling
+  def test(self,cell):
+    return ( (cell <= self.ceiling)
+           & (cell >= self.floor) )
+
+def properties_cover_num_column( properties, column ):
+  def properties_cover_num_cell( cell ):
+    for p in properties:
+      if p.test( cell ): return True
+    return False
+  return ( column.apply( properties_cover_num_cell )
+         . all() )
+
+
+### properties of strings ###
+
 class StringProperty(enum.Flag):
   NotAString    = enum.auto()
-  HasNull        = enum.auto()
+  HasNull       = enum.auto()
   Digits        = enum.auto()
   InteriorSpace = enum.auto()
   NonNumeric    = enum.auto()
@@ -63,12 +91,8 @@ def stringProperties( column ):
 
   return acc
 
-class File2:
-  def __init__(self,name,filename,col_dict,corrections=[]):
-    self.name = name
-    self.filename = filename
-    self.col_dict = col_dict
-    self.corrections = corrections
+
+### files ###
 
 class Correction:
   # PITFALL: Some of the return statements in the implementations of "correct" below are unnecessary,

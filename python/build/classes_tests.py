@@ -1,6 +1,22 @@
+import numpy as np
 import pandas as pd
+
 import python.build.classes as cla
 
+
+def test_NumProperty_subclasses():
+  assert True == cla.properties_cover_num_column(
+    [ cla.InRange(0,1) ]
+    , pd.Series( [0,0.5,1] ) )
+
+  assert False == cla.properties_cover_num_column(
+    [ cla.InRange(0,1) ]
+    , pd.Series( [np.nan, 0,0.5,1] ) )
+
+  assert True == cla.properties_cover_num_column(
+    [   cla.InRange(0,1)
+      , cla.IsNull() ]
+    , pd.Series( [np.nan, 0,0.5,1] ) )
 
 def test_re_nonNumeric():
   assert(      cla.re_nonNumeric.match( "1-" ) )
@@ -50,6 +66,7 @@ def test_File():
            == { "beautiful output.csv" : "gold" } )
 
 if True: # run the tests
+  test_NumProperty_subclasses()
   test_re_nonNumeric()
   test_re_white()
   test_re_digits()
@@ -57,4 +74,3 @@ if True: # run the tests
   test_re_gt2c()
   test_stringProperties()
   test_File()
-

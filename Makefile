@@ -159,10 +159,10 @@ tests: output/test/purchase_input_formats.txt
 	date
 	$(python_from_here) python/build/classes_tests.py \
           $(subsample) $(strategy) $(yr)
-	$(python_from_here) python/build/purchases/main_test.py \
-          $(subsample) $(strategy) $(yr)
-	$(python_from_here) python/common/misc_test.py \
-          $(subsample) $(strategy) $(yr)
+#	$(python_from_here) python/build/purchases/main_test.py \
+#          $(subsample) $(strategy) $(yr)
+#	$(python_from_here) python/common/misc_test.py \
+#          $(subsample) $(strategy) $(yr)
 	printf '\nAll tests passed.\n\n'
 
 output/test/purchase_input_formats.txt: \
