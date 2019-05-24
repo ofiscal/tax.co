@@ -45,8 +45,23 @@ def test_output():
     echo( [k] )
     assert cla.properties_cover_num_column( spec[k], df[k] )
 
-  echo( ["Testing that specs cover all column names."] )
+  echo( ["Specs cover all column names."] )
   assert set( df.columns ) == set( spec.keys() )
+  echo( ["Very few missing quantity values."] )
+  assert ( (1e-5)
+           > ( len( df[ pd.isnull( df["quantity"] ) ] ) / len(df) ) )
+  echo( ["Very few negative quantity values."] )
+  assert ( (1e-6)
+           > ( len( df[ df["quantity"] < 0 ] ) / len(df) ) )
+  echo( ["Negative quantity purchases are for very little money."] )
+  assert ( df[ df["quantity"] < 0 ]["value"]
+           < 1e4 ).all()
+  echo( ["Very few purchases with a frequency of \"never\"."] )
+  assert ( (1e-5)
+           > ( len( df[ df["freq"] > 10 ] ) / len(df) ) )
+  echo( ["Those few frequency=\"never\" purchases are for very little money."] )
+  assert ( df[ df["freq"] > 10 ]["value"]
+           < 1e4 ).all()
 
 if True: # run the tests
   test_output()
