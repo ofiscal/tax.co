@@ -26,6 +26,15 @@ def test_drop_if_coicop_or_value_invalid():
                             , "value"           : [1] } )  )
          . all() . all() )
 
+def test_drop_absurdly_big_expenditures():
+  thresh = defs.absurdly_big_expenditure_threshold
+  df = pd.DataFrame( { "value"    : [1, thresh+1, thresh+1, 1       ]
+                     , "quantity" : [1, 1e-3    , 1       , thresh+1]
+                     , "x"        : [1, 2       , 3       , 4       ] } )
+  assert ( defs.drop_absurdly_big_expenditures( df )["x"]
+           == pd.Series( [1,2] )
+         ).all()
+
 def test_output():
   echo( ["\ntest_output() "] )
   df = oio.readStage( cl.subsample, 'purchases_1' )
@@ -66,3 +75,4 @@ def test_output():
 if True: # run the tests
   test_output()
   test_drop_if_coicop_or_value_invalid()
+  test_drop_absurdly_big_expenditures()

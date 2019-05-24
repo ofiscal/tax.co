@@ -45,6 +45,7 @@ for c in (
 
 purchases = com.all_columns_to_numbers( purchases )
 purchases = defs.drop_if_coicop_or_value_invalid( purchases )
+purchases = defs.drop_absurdly_big_expenditures( purchases )
 
 for c in [ # how-got=1 -> is-purchase=1, nan -> nan, otherwise -> 0
   Correction.Apply_Function_To_Column(

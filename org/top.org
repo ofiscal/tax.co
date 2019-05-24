@@ -1,6 +1,13 @@
 * TODO test suite
-** TODO ? discard freq=11 values
+** TODO filter purchases with pq > 1e9, 1e8, 1e7; compare
+** TODO test means, variances
+** TODO purchases.main
+*** TODO ? discard freq=11 values
 That code means "never".
+*** TODO what to do|is done about missing freq, where-got, is-purchase
+is-purchase we probably assume to be 1, but the others ...?
+(they are often missing)
+*** TODO verify that coicop and 25-broad-categs are never both missing
 ** pitfalls
 *** integration tests: robust to chnages?
 And if they're not, maybe that's good?

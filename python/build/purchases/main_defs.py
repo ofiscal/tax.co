@@ -9,3 +9,9 @@ def drop_if_coicop_or_value_invalid( df ):
   return df[ ( (  ~ df[ "coicop"          ] . isnull())
                | (~ df[ "25-broad-categs" ] . isnull()) )
              & (  ~ df[ "value"           ] . isnull()) ]
+
+absurdly_big_expenditure_threshold = 1e9
+
+def drop_absurdly_big_expenditures( df ):
+  pq = df["value"] * df["quantity"]
+  return df[ ~(pq > absurdly_big_expenditure_threshold) ]
