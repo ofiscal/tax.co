@@ -155,15 +155,24 @@ show_params:
 # Sufficiently simple and fast tests can stay in the master "tests" recipe here.
 # But for any test complex enough to require an output file,
 # make that output file a dependency.
-tests: output/test/purchase_input_formats.txt
+tests: \
+  output/test/purchase_input_formats.txt \
+  output/test/purchases_main.txt
 	date
 	$(python_from_here) python/build/classes_tests.py \
           $(subsample) $(strategy) $(yr)
-#	$(python_from_here) python/build/purchases/main_test.py \
-#          $(subsample) $(strategy) $(yr)
-#	$(python_from_here) python/common/misc_test.py \
-#          $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/common/misc_test.py \
+          $(subsample) $(strategy) $(yr)
 	printf '\nAll tests passed.\n\n'
+
+output/test/purchases_main.txt: \
+  python/build/purchases/main_test.py \
+  python/build/purchases/main_defs.py \
+  python/common/cl_args.py \
+  python/build/classes.py \
+  python/build/output_io.py
+	$(python_from_here) python/build/purchases/main_test.py \
+          $(subsample) $(strategy) $(yr)
 
 output/test/purchase_input_formats.txt: \
   python/build/classes.py \

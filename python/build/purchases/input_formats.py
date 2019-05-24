@@ -10,12 +10,13 @@ import python.build.purchases.articulos as articulos
 import python.build.purchases.capitulo_c as capitulo_c
 
 
-test_output_filename = "purchase_input_formats"
-
-oio.test_clear( test_output_filename )
-def echo( content ):
-  oio.test_write( test_output_filename
-                , content )
+if True: # initialize log
+  test_output_filename = "purchase_input_formats"
+  oio.test_clear( test_output_filename )
+  def echo( content ):
+    oio.test_write( test_output_filename
+                  , content )
+  echo( ["starting"] )
 
 def test_purchase_inputs():
   for f in ( articulos.files
