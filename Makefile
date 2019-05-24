@@ -156,10 +156,10 @@ show_params:
 # But for any test complex enough to require an output file,
 # make that output file a dependency.
 tests: \
-  output/test/purchase_input_formats.txt \
+  output/test/purchase_inputs.txt \
   output/test/purchases_main.txt
 	date
-	$(python_from_here) python/build/classes_tests.py \
+	$(python_from_here) python/build/classes_test.py \
           $(subsample) $(strategy) $(yr)
 	$(python_from_here) python/common/misc_test.py \
           $(subsample) $(strategy) $(yr)
@@ -170,20 +170,21 @@ output/test/purchases_main.txt: \
   python/build/purchases/main_defs.py \
   python/common/cl_args.py \
   python/build/classes.py \
-  python/build/output_io.py
+  python/build/output_io.py \
+  $(purchases_1)
 	$(python_from_here) python/build/purchases/main_test.py \
           $(subsample) $(strategy) $(yr)
 
-output/test/purchase_input_formats.txt: \
+output/test/purchase_inputs.txt: \
   python/build/classes.py \
   python/build/output_io.py \
-  python/build/purchases/input_formats.py \
+  python/build/purchases/input_test.py \
   python/build/purchases/nice_purchases.py \
   python/build/purchases/articulos.py \
   python/build/purchases/capitulo_c.py \
   python/common/misc.py
 	date
-	$(python_from_here) python/build/purchases/input_formats.py \
+	$(python_from_here) python/build/purchases/input_test.py \
           1 detail 2016 # Aside from subsample, these arguments are unused.
                         # (They are still needed, or cl_args.py will err.)
                         # Sample size is hardcoded to 1 because otherwise
