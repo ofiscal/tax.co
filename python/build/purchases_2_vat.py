@@ -55,18 +55,16 @@ if True: # left-pad every coicop value with 0s
   vat_coicop ["coicop"] = util.pad_column_as_int( 8, vat_coicop ["coicop"] )
 
 if True: # add these columns: ["vat", "vat, min", "vat, max"]
-  purchases_coicop = purchases.merge( vat_coicop
-                                    , how = "left"
-                                    , on="coicop" )
-  purchases_cap_c = purchases.merge( vat_cap_c
-                                   , how = "left"
-                                   , on="25-broad-categs" )
+  purchases_coicop = purchases.merge(
+    vat_coicop, how = "left", on="coicop" )
+  purchases_cap_c = purchases.merge(
+    vat_cap_c,  how = "left", on="25-broad-categs" )
   purchases = purchases_coicop . combine_first( purchases_cap_c )
 
 if True: # motorcycles are special
   purchases["big-hog"] = (1 * (purchases["coicop"]=="07120101")
                             * (purchases["value"]>(9e6) ) )
-  purchases.loc[ purchases["big-hog"]>0, "vat"] = 0.27
+  purchases.loc[ purchases["big-hog"]>0, "vat"]      = 0.27
   purchases.loc[ purchases["big-hog"]>0, "vat, min"] = 0.27
   purchases.loc[ purchases["big-hog"]>0, "vat, max"] = 0.27
 
@@ -84,8 +82,8 @@ if True: # handle freq, value, vat paid
     .index
   )
 
-  purchases["value"] = purchases["freq"] * purchases["value"]
+  purchases["value"]         = purchases["freq"] *  purchases["value"]
   purchases["vat paid, min"] = purchases["value"] * purchases["vat frac, min"]
   purchases["vat paid, max"] = purchases["value"] * purchases["vat frac, max"]
 
-  oio.saveStage(c.subsample, purchases, "purchases_2_vat." + c.strategy_suffix )
+  oio.saveStage( c.subsample, purchases, "purchases_2_vat." + c.strategy_suffix )

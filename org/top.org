@@ -1,5 +1,4 @@
 * TODO test suite
-** TODO filter purchases with pq > 1e9, 1e8, 1e7; compare
 ** TODO test means, variances
 ** TODO purchases.main
 *** TODO ? discard freq=11 values

@@ -158,6 +158,7 @@ show_params:
 tests: \
   output/test/purchase_inputs.txt \
   output/test/purchases_main.txt \
+  output/test/vat_rates.txt \
   output/test/common_util.txt
 	date
 	$(python_from_here) python/build/classes_test.py \
@@ -166,10 +167,16 @@ tests: \
           $(subsample) $(strategy) $(yr)
 	printf '\nAll tests passed.\n\n'
 
+output/test/vat_rates.txt: \
+  python/build/vat_rates_test.py \
+  python/common/cl_args.py \
+  python/build/vat_rates.py \
+  python/build/output_io.py
+	$(python_from_here) python/build/vat_rates_test.py \
+          $(subsample) $(strategy) $(yr)
+
 output/test/common_util.txt: \
   python/common/util_test.py \
-  python/common/test.py \
-  python/common/test.py \
   python/build/output_io.py
 	$(python_from_here) python/common/util_test.py \
           $(subsample) $(strategy) $(yr)
@@ -280,7 +287,9 @@ $(households): python/build/households.py \
 	$(python_from_here) python/build/households.py $(subsample) $(strategy) $(yr)
 
 purchases_1: $(purchases_1)
-$(purchases_1): python/build/purchases/main.py \
+$(purchases_1): \
+  python/build/purchases/main.py \
+  python/build/purchases/main_defs.py \
   python/build/classes.py \
   python/build/output_io.py \
   python/build/purchases/nice_purchases.py \
