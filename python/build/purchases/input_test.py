@@ -1,6 +1,4 @@
 import sys
-sys.path.insert(0, '.') # assuming pytest is run from the top of the project, this
-                        # allows local ("python.something.something") imports to work
 import python.build.classes as cla
 import python.common.cl_args as cl
 import python.build.output_io as oio

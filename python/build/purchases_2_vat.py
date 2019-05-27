@@ -5,8 +5,6 @@ import numpy as np
 import python.build.output_io as oio
 import python.build.legends as legends
 import python.common.util as util
-
-
 import python.common.misc as c
 import python.common.cl_args as c
 
@@ -54,12 +52,7 @@ if True: # input files
 
 if True: # left-pad every coicop value with 0s
   purchases  ["coicop"] = util.pad_column_as_int( 8, purchases  ["coicop"] )
-    # PITFALL: This creates some "00000nan" values.
-    # Those are soon replaced with np.nan.
   vat_coicop ["coicop"] = util.pad_column_as_int( 8, vat_coicop ["coicop"] )
-  purchases.loc[ purchases["coicop"] . str.contains( "[^0-9]" )
-               , "coicop"
-               ] = np.nan
 
 if True: # add these columns: ["vat", "vat, min", "vat, max"]
   purchases_coicop = purchases.merge( vat_coicop

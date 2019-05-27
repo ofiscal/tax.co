@@ -14,10 +14,18 @@ def tuple_by_threshold( income, schedule ):
   else: return tuple_by_threshold( income, schedule[1:] )
 
 def pad_column_as_int( length, column ):
+  """ Left-pads a column's numbers with zeroes, to have the desired length.
+  Delete any trailing ".0". Leave NaN unchanged."""
   format_str = '{0:0>' + str(length) + '}'
-  return column . apply( str                 # in case it was numeric
-              ) . str.replace("\.0",""       # remove trailing ".0"
-              ) . apply( format_str.format ) # add extra characters
+  c = column.copy()
+  c[ ~ pd.isnull( c ) ] = (
+    c[ ~ pd.isnull( c ) ]
+    . apply( lambda s:
+             format_str.format(
+               str(s)
+               . replace( ".0", "" ) )
+    ) )
+  return c
 
 def interpretCategorical( column, categories ):
   return pd.Categorical( column

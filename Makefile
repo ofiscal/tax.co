@@ -157,13 +157,22 @@ show_params:
 # make that output file a dependency.
 tests: \
   output/test/purchase_inputs.txt \
-  output/test/purchases_main.txt
+  output/test/purchases_main.txt \
+  output/test/common_util.txt
 	date
 	$(python_from_here) python/build/classes_test.py \
           $(subsample) $(strategy) $(yr)
 	$(python_from_here) python/common/misc_test.py \
           $(subsample) $(strategy) $(yr)
 	printf '\nAll tests passed.\n\n'
+
+output/test/common_util.txt: \
+  python/common/util_test.py \
+  python/common/test.py \
+  python/common/test.py \
+  python/build/output_io.py
+	$(python_from_here) python/common/util_test.py \
+          $(subsample) $(strategy) $(yr)
 
 output/test/purchases_main.txt: \
   python/build/purchases/main_test.py \
