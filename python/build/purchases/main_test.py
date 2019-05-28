@@ -15,6 +15,7 @@ if True: # initialize log
                   , content )
   echo( ["starting"] )
 
+
 def test_drop_if_coicop_or_value_invalid():
   echo( ["\ntest_drop_if_coicop_or_value_invalid()"] )
   df = pd.DataFrame( { "coicop"          : [1, 1,      np.nan]
@@ -35,9 +36,8 @@ def test_drop_absurdly_big_expenditures():
            == pd.Series( [1,2] )
          ).all()
 
-def test_output():
+def test_output( df ):
   echo( ["\ntest_output() "] )
-  df = oio.readStage( cl.subsample, 'purchases_1' )
   spec = {
       "where-got" :        { cla.IsNull(), cla.InRange(1,26) }
     , "weight" :           {               cla.InRange( 0, 1e4 ) }
@@ -72,7 +72,12 @@ def test_output():
   assert ( df[ df["freq"] > 10 ]["value"]
            < 1e4 ).all()
 
+
 if True: # run the tests
-  test_output()
+  # unit tests
   test_drop_if_coicop_or_value_invalid()
   test_drop_absurdly_big_expenditures()
+
+  # integration test
+  df = oio.readStage( cl.subsample, 'purchases_1' )
+  test_output( df )

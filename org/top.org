@@ -1,4 +1,5 @@
 * TODO test suite
+** TODO purchases_2_vat.py: where-got: 15% missing
 ** TODO test that all column names are unique
 ** TODO test means, variances
 ** TODO purchases.main

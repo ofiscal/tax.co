@@ -160,7 +160,8 @@ tests: \
   output/test/purchases_main.txt \
   output/test/vat_rates.txt \
   output/test/common_util.txt \
-  output/test/build_buildings.txt
+  output/test/build_buildings.txt \
+  output/test/build_purchases_2_vat.txt
 	date
 	$(python_from_here) python/build/classes_test.py \
           $(subsample) $(strategy) $(yr)
@@ -168,7 +169,17 @@ tests: \
           $(subsample) $(strategy) $(yr)
 	printf '\nAll tests passed.\n\n'
 
+output/test/build_purchases_2_vat.txt: \
+  $(purchases_2_vat) \
+  python/build/purchases_2_vat_test.py \
+  python/build/purchases_2_vat.py \
+  python/common/cl_args.py \
+  python/build/output_io.py
+	$(python_from_here) python/build/purchases_2_vat_test.py \
+          $(subsample) $(strategy) $(yr)
+
 output/test/build_buildings.txt: \
+  $(buildings) \
   python/build/buildings_test.py \
   python/build/buildings.py \
   python/build/classes.py \
@@ -179,33 +190,36 @@ output/test/build_buildings.txt: \
           $(subsample) $(strategy) $(yr)
 
 output/test/vat_rates.txt: \
+  $(vat_rates.py) \
   python/build/vat_rates_test.py \
-  python/common/cl_args.py \
   python/build/vat_rates.py \
+  python/common/cl_args.py \
   python/build/output_io.py
 	$(python_from_here) python/build/vat_rates_test.py \
           $(subsample) $(strategy) $(yr)
 
 output/test/common_util.txt: \
   python/common/util_test.py \
+  python/common/util.py \
   python/build/output_io.py
 	$(python_from_here) python/common/util_test.py \
           $(subsample) $(strategy) $(yr)
 
 output/test/purchases_main.txt: \
+  $(purchases_1) \
   python/build/purchases/main_test.py \
   python/build/purchases/main_defs.py \
   python/common/cl_args.py \
   python/build/classes.py \
   python/build/output_io.py \
-  $(purchases_1)
 	$(python_from_here) python/build/purchases/main_test.py \
           $(subsample) $(strategy) $(yr)
 
 output/test/purchase_inputs.txt: \
+  $(input_subsamples) \
+  python/build/purchases/input_test.py \
   python/build/classes.py \
   python/build/output_io.py \
-  python/build/purchases/input_test.py \
   python/build/purchases/nice_purchases.py \
   python/build/purchases/articulos.py \
   python/build/purchases/capitulo_c.py \

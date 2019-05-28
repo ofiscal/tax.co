@@ -1,7 +1,7 @@
-import python.common.util as util
 import pandas as pd
 import numpy as np
 
+import python.common.util as util
 import python.build.output_io as oio
 
 

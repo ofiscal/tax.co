@@ -16,6 +16,7 @@ if True: # initialize log
                   , content )
   echo( ["starting"] )
 
+
 def test_purchase_inputs():
   for f in ( articulos.files
          # + medios.files
@@ -29,4 +30,6 @@ def test_purchase_inputs():
       acc.update( [ (c, cla.stringProperties( df[c] ) ) ] )
       assert acc[c] == cla.input_map( f.col_specs )[c]
 
-test_purchase_inputs()
+
+if True: # run tests
+  test_purchase_inputs()
