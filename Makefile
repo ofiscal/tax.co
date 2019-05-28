@@ -159,13 +159,24 @@ tests: \
   output/test/purchase_inputs.txt \
   output/test/purchases_main.txt \
   output/test/vat_rates.txt \
-  output/test/common_util.txt
+  output/test/common_util.txt \
+  output/test/build_buildings.txt
 	date
 	$(python_from_here) python/build/classes_test.py \
           $(subsample) $(strategy) $(yr)
 	$(python_from_here) python/common/misc_test.py \
           $(subsample) $(strategy) $(yr)
 	printf '\nAll tests passed.\n\n'
+
+output/test/build_buildings.txt: \
+  python/build/buildings_test.py \
+  python/build/buildings.py \
+  python/build/classes.py \
+  python/common/misc.py \
+  python/common/cl_args.py \
+  python/build/output_io.py
+	$(python_from_here) python/build/vat_rates_test.py \
+          $(subsample) $(strategy) $(yr)
 
 output/test/vat_rates.txt: \
   python/build/vat_rates_test.py \
