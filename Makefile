@@ -175,7 +175,7 @@ output/test/build_buildings.txt: \
   python/common/misc.py \
   python/common/cl_args.py \
   python/build/output_io.py
-	$(python_from_here) python/build/vat_rates_test.py \
+	$(python_from_here) python/build/buildings_test.py \
           $(subsample) $(strategy) $(yr)
 
 output/test/vat_rates.txt: \
@@ -221,7 +221,9 @@ output/test/purchase_inputs.txt: \
 ##=##=##=## subsample, or very slightly tweak, some input data sets
 
 input_subsamples: $(input_subsamples)
-$(input_subsamples): python/subsample.py $(enph_orig)
+$(input_subsamples): \
+  python/subsample.py $(enph_orig) \
+  python/build/datafiles.py
 	date
 	# Next: Validating command-line arguments.
 	$(python_from_here) python/common/cl_args.py $(subsample) $(strategy) $(yr)

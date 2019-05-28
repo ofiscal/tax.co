@@ -4,15 +4,6 @@ def yearSurveyFolder(year):
     elif year == 2017: return "data/enph-2017/"
   else: raise ValueError (str(year) + " is not one of the survey years.")
 
-def yearSubsampleSurveyFolder(year,recip):
-  r = str(recip)
-  if year in (2007,2017):
-    if recip in (1,10,100,1000):
-      if year == 2007: return "data/enig-2007/recip-" + r + '/'
-      elif year == 2017: return "data/enph-2017/recip-" + r + '/'
-    else: raise ValueError (r + " is not the reciprocal of any of the subsample sizes.")
-  else: raise ValueError (str(year) + " is not one of the survey years.")
-
 files = { # files in the ENPH (2017) and the ENIG (2007)
   2017: [ "Caracteristicas_generales_personas"
         , "Gastos_diarios_del_hogar_Urbano_-_Comidas_preparadas_fuera_del_hogar"

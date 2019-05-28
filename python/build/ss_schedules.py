@@ -57,13 +57,13 @@ ss_contrib_schedule_for_employee = {
     , ( min_wage,    lambda wage: wage                         , 0.04 )
     , ( 13*min_wage, lambda wage: min( 0.7*wage, 25*min_wage ) , 0.04 ) ]
   , "solidaridad" :
-    [ (0,            lambda wage: 0                            , 0.0)
-    , (4*min_wage,   lambda wage:     wage                     , 0.01)
-    , (13*min_wage,  lambda wage: 0.7*wage                     , 0.01)
-    , (16*min_wage,  lambda wage: 0.7*wage                     , 0.012)
-    , (17*min_wage,  lambda wage: 0.7*wage                     , 0.014)
-    , (18*min_wage,  lambda wage: 0.7*wage                     , 0.016)
-    , (19*min_wage,  lambda wage: 0.7*wage                     , 0.018)
+    [ (0,            lambda wage:            0                 , 0.0)
+    , (4*min_wage,   lambda wage:         wage                 , 0.01)
+    , (13*min_wage,  lambda wage:     0.7*wage                 , 0.01)
+    , (16*min_wage,  lambda wage:     0.7*wage                 , 0.012)
+    , (17*min_wage,  lambda wage:     0.7*wage                 , 0.014)
+    , (18*min_wage,  lambda wage:     0.7*wage                 , 0.016)
+    , (19*min_wage,  lambda wage:     0.7*wage                 , 0.018)
     , (20*min_wage,  lambda wage: min(0.7*wage, 25*min_wage)   , 0.02) ]
   }
 
