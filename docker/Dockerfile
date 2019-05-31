@@ -3,9 +3,11 @@ FROM debian:latest
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH /opt/conda/bin:$PATH
 
+RUN echo "Tuesday, May 28, 2019. New version of Pandas available."
+
 RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificates \
     libglib2.0-0 libxext6 libsm6 libxrender1 \
-    git mercurial subversion
+    apt-utils git mercurial subversion
 
 RUN wget --quiet https://repo.continuum.io/archive/Anaconda3-5.1.0-Linux-x86_64.sh -O ~/anaconda.sh && \
     /bin/bash ~/anaconda.sh -b -p /opt/conda && \
@@ -24,21 +26,21 @@ RUN apt-get install -y curl grep sed dpkg && \
 
 # here the Dockerfile starts deviating from continuum/anaconda3
 RUN apt install -y make && \
+    conda update -n base conda && \
     /opt/conda/bin/conda install jupyter -y --quiet
 
 RUN apt install -y texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
 RUN apt install -y texlive-publishers
 
-COPY run-jupyter.sh /root/
-
 RUN apt update && curl -sSL https://get.haskellstack.org/ | sh
-
 RUN stack install shake
 RUN apt update && apt upgrade -y
+RUN conda update --prefix /opt/conda anaconda --yes
+RUN apt install python3-pip -y && \
+    pip3 install --upgrade pip
 
+COPY run-jupyter.sh /root/
 RUN PATH=/root/.local/bin:$PATH
-
 EXPOSE 8888
-
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD ["/bin/bash"]
