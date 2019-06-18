@@ -134,14 +134,15 @@ class Correction:
       return df
 
   class Replace_Substring_In_Column:
+    # PITFALL: This converts np.nan into "nan".
     def __init__(self,col_name,before,after):
       self.col_name = col_name
       self.before = before
       self.after = after
     def correct(self,df):
       df[self.col_name] = ( df[self.col_name]
-                            .astype(str)
-                            .str.replace( self.before, self.after ) )
+                          . astype(str)
+                          . str.replace( self.before, self.after ) )
       return df
 
   class Apply_Function_To_Column:
