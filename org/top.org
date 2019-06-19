@@ -1,5 +1,22 @@
 * TODO test suite
-** TODO purchases_2_vat.py: where-got: 15% missing
+** TODO new Pandas
+it's already built
+*** Correction.Replace_Missing_Values: converts to float
+Upgrade pandas so that np.nan can be int also.
+Once this is solved, update classes_test.py too.
+** coverage
+*** complete
+build/buildings.py
+** TODO : Replace_Missing_Values is string-unaware
+*** example, from build.purchases.main
+  [ Correction.Replace_Substring_In_Column(
+      "quantity", ",", "." )
+  # INSERT HERE a command to change quantity from string to number
+  # (ideally int, but until I have the new version of Pandas built,
+  # it will have to be float.)
+  , Correction.Replace_Missing_Values(
+      "quantity", 1 )
+*** there might be others
 ** TODO test that all column names are unique
 ** TODO test means, variances
 ** TODO purchases.main
@@ -511,6 +528,8 @@ Before, 27% on bikes valued above 9 million.
 Some things (e.g. house purchases) are neither in the COICOP nor the capitulo c system.
 ** add new VAT key
 * TODO accuracy (#right)
+** TODO ? use "where-got
+It's 15% missing (in purchases_2_vat.csv). Assume those are fully taxed.
 ** TODO These error codes apply to all income and expense variables
 *** why to use them
 The summary measures are otherwise hard to buy -- I see, for instance, a lot of values of 8.17 (that's 98 / 12) for monthly income measures.

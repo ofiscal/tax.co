@@ -211,7 +211,7 @@ output/test/purchases_main.txt: \
   python/build/purchases/main_defs.py \
   python/common/cl_args.py \
   python/build/classes.py \
-  python/build/output_io.py \
+  python/build/output_io.py
 	$(python_from_here) python/build/purchases/main_test.py \
           $(subsample) $(strategy) $(yr)
 
@@ -322,6 +322,7 @@ $(purchases_1): \
   python/build/purchases/nice_purchases.py \
   python/build/purchases/articulos.py \
   python/build/purchases/capitulo_c.py \
+  python/common/cl_args.py \
   python/common/misc.py \
   python/build/classes.py \
   $(input_subsamples)
