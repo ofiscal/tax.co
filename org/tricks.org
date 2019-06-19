@@ -1,3 +1,5 @@
+* git add -p
+to cherry-pick the changes in a file to commit
 * find: exclude a type of file
 use the ! symbol to negate the next option
 for example, this:

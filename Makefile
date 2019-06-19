@@ -156,6 +156,8 @@ show_params:
 # But for any test complex enough to require an output file,
 # make that output file a dependency.
 tests: \
+  python/build/classes_test.py \
+  python/common/misc_test.py \
   output/test/purchase_inputs.txt \
   output/test/purchases_main.txt \
   output/test/vat_rates.txt \
