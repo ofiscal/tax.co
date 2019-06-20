@@ -130,19 +130,25 @@ class Correction:
       self.col_name = col_name
       self.value = value
     def correct(self,df):
-      df[self.col_name] = df[self.col_name].fillna( self.value )
+      df[self.col_name] = ( df[self.col_name]
+                          . fillna( self.value
+                          # , inplace = True
+                          ) )
       return df
 
   class Replace_Substring_In_Column:
-    # PITFALL: This converts np.nan into "nan".
     def __init__(self,col_name,before,after):
       self.col_name = col_name
       self.before = before
       self.after = after
     def correct(self,df):
-      df[self.col_name] = ( df[self.col_name]
-                          . astype(str)
-                          . str.replace( self.before, self.after ) )
+      c = self.col_name
+      df[c] = ( df[c]
+              . astype(str)
+              . str.replace( self.before, self.after ) )
+      # The previous line converts np.nan to "nan" (the string); the next fixes that.
+      # PITFALL: If a cell actually should be "nan", this needs complication.
+      df.loc[ df[c] == "nan", c] = np.nan
       return df
 
   class Apply_Function_To_Column:
@@ -184,7 +190,7 @@ class Correction:
       df.loc[ (~ df[self.col_name].isna() )
               & df[self.col_name].str.contains( self.substring )
             , self.col_name
-      ] = self.replacement
+            ] = self.replacement
       return df
 
   class Drop_Column:

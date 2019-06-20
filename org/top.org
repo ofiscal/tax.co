@@ -1,31 +1,13 @@
 * TODO test suite
-** TODO new Pandas
-it's already built
-*** Correction.Replace_Missing_Values: converts to float
-Upgrade pandas so that np.nan can be int also.
-Once this is solved, update classes_test.py too.
 ** coverage
 *** complete
 build/buildings.py
-** TODO : Replace_Missing_Values is string-unaware
-*** example, from build.purchases.main
-  [ Correction.Replace_Substring_In_Column(
-      "quantity", ",", "." )
-  # INSERT HERE a command to change quantity from string to number
-  # (ideally int, but until I have the new version of Pandas built,
-  # it will have to be float.)
-  , Correction.Replace_Missing_Values(
-      "quantity", 1 )
-*** there might be others
 ** TODO test that all column names are unique
 ** TODO test means, variances
 ** TODO purchases.main
-*** TODO ? discard freq=11 values
-That code means "never".
 *** TODO what to do|is done about missing freq, where-got, is-purchase
 is-purchase we probably assume to be 1, but the others ...?
 (they are often missing)
-*** TODO verify that coicop and 25-broad-categs are never both missing
 ** pitfalls
 *** integration tests: robust to chnages?
 And if they're not, maybe that's good?

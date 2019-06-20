@@ -7,17 +7,11 @@ import sys
 import python.build.classes as cla
 
 
-strategy_names = [ # There used to be a lot of these.
-  "detail"             # They disappeared in the branch "retire-hypotheticals".
-]
-
-[detail] = strategy_names
+detail = "detail" # A strategy name.
 
 subsample = 100
-
 strategy = detail
 regime_year = 2018
-
 strategy_suffix = strategy
 strategy_year_suffix = strategy + "." + str(regime_year)
 
@@ -39,5 +33,8 @@ def collect_files( file_structs, subsample=subsample ):
     # shuttle["file-origin"] = f.name
     for c in f.corrections:
       shuttle = c.correct( shuttle )
-    acc = acc.append(shuttle)
+    acc = acc.append( shuttle
+                    , ignore_index = True # avoids duplicating index values
+                    , sort=True ) # the two capitulo_c files include a column,
+    # "25-broad-categs", that the others don't. `sort=true` deals with that.
   return acc

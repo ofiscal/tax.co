@@ -48,7 +48,7 @@ def all_columns():
 def test_output( df ):
   assert ( set( df.columns ) ==
            set( all_columns() ) )
-  
+
   # coicop and 25-broad-categs are each individually missing substantially,
   # but exactly one of them is always present
   assert len( df[ ( ~ pd.isnull( df["coicop"]          ) ) &
@@ -57,16 +57,16 @@ def test_output( df ):
   assert len( df[ (   pd.isnull( df["coicop"]          ) ) |
                   (   pd.isnull( df["25-broad-categs"] ) )
             ] ) == len(df)
-  
+
   for c in Purchase_2_Columns.never_missing:
     assert ( len( df[ pd.isnull( df[c] ) ] )
              == 0 )
-  
+
   for c in Purchase_2_Columns.slightly_missing:
     assert ( ( len( df[ pd.isnull( df[c] ) ] ) /
                len( df ) )
              < 0.02 )
-  
+
   for c in Purchase_2_Columns.very_missing:
     assert ( ( len( df[ pd.isnull( df[c] ) ] ) /
                len( df ) )

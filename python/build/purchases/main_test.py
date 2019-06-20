@@ -61,7 +61,7 @@ def test_output( df ):
            > ( len( df[ pd.isnull( df["quantity"] ) ] ) / len(df) ) )
   echo( ["Very few negative quantity values."] )
   assert ( (1e-6)
-           > ( len( df[ df["quantity"] < 0 ] ) / len(df) ) )
+           > ( len( df[ df["quantity"] <= 0 ] ) / len(df) ) )
   echo( ["Negative quantity purchases are for very little money."] )
   assert ( df[ df["quantity"] < 0 ]["value"]
            < 1e4 ).all()

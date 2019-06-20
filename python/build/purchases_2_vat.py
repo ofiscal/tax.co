@@ -1,11 +1,11 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
 
-import python.build.output_io as oio
+import python.build.classes as cla
 import python.build.legends as legends
-import python.common.util as util
-import python.common.misc as c
+import python.build.output_io as oio
 import python.common.cl_args as c
+import python.common.util as util
 
 
 if True: # input files
@@ -24,6 +24,14 @@ if True: # input files
               , "weight" : "float32"
               , "where-got" : "float32"
     } )
+  ( cla . Correction # no "never" frequencies
+    . Drop_Row_If_Column_Satisfies_Predicate(
+      "freq", lambda x: x==11 )
+    . correct( purchases ) )
+  ( cla . Correction # no negative quantities
+    . Drop_Row_If_Column_Satisfies_Predicate(
+      "quantity", lambda x: x<=0 )
+    . correct( purchases ) )
 
   vat_cap_c = oio.readStage( c.subsample
                            , "vat_cap_c_brief." + c.strategy_suffix

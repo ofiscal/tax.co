@@ -1,3 +1,7 @@
+* emacs: number lines in a rectangle
+http://emacsworld.blogspot.com/2012/06/numbering-lines-and-lists-in-emacs.html
+"C-x r N" starts the line at 1.
+"C-u C-x r N" prompts for a starting value and format.
 * git add -p
 to cherry-pick the changes in a file to commit
 * find: exclude a type of file

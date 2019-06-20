@@ -44,6 +44,7 @@ def collect_files( file_structs, subsample=subsample ):
     for c in f.corrections:
       shuttle = c.correct( shuttle )
     acc = acc.append( shuttle
+                    , ignore_index = True # avoids duplicating index values
                     , sort=True ) # the two capitulo_c files include a column,
     # "25-broad-categs", that the others don't. `sort=true` deals with that.
   return acc
