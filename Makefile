@@ -155,15 +155,15 @@ show_params:
 # Sufficiently simple and fast tests can stay in the master "tests" recipe here.
 # But for any test complex enough to require an output file,
 # make that output file a dependency.
-#  output/test/purchase_inputs.txt
-#  output/test/purchases_main.txt \
-#  output/test/vat_rates.txt \
-#  output/test/common_util.txt \
-#  output/test/build_buildings.txt \
-#  output/test/build_purchases_2_vat.txt
 tests: \
   python/build/classes_test.py \
-  python/common/misc_test.py
+  python/common/misc_test.py \
+  output/test/purchase_inputs.txt \
+  output/test/purchases_main.txt \
+  output/test/vat_rates.txt \
+  output/test/common_util.txt \
+  output/test/build_buildings.txt \
+  output/test/build_purchases_2_vat.txt
 	date
 	$(python_from_here) python/build/classes_test.py \
           $(subsample) $(strategy) $(yr)
