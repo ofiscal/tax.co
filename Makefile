@@ -158,12 +158,13 @@ show_params:
 tests: \
   python/build/classes_test.py \
   python/common/misc_test.py \
+  output/test/build_buildings.txt \
+  output/test/build_purchases_2_vat.txt \
+  output/test/common_util.txt \
+  output/test/people_main.txt \
   output/test/purchase_inputs.txt \
   output/test/purchases_main.txt \
-  output/test/vat_rates.txt \
-  output/test/common_util.txt \
-  output/test/build_buildings.txt \
-  output/test/build_purchases_2_vat.txt
+  output/test/vat_rates.txt
 	date
 	$(python_from_here) python/build/classes_test.py \
           $(subsample) $(strategy) $(yr)
@@ -215,6 +216,18 @@ output/test/purchases_main.txt: \
   python/build/classes.py \
   python/build/output_io.py
 	$(python_from_here) python/build/purchases/main_test.py \
+          $(subsample) $(strategy) $(yr)
+
+output/test/people_main.txt: \
+  $(people_1) \
+  python/build/people/main_test.py \
+  python/build/classes.py \
+  python/build/output_io.py \
+  python/build/people/files.py \
+  python/common/cl_args.py \
+  python/common/misc.py \
+  python/common/util.py
+	$(python_from_here) python/build/people/main_test.py \
           $(subsample) $(strategy) $(yr)
 
 output/test/purchase_inputs.txt: \
