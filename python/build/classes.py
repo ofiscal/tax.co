@@ -14,20 +14,29 @@ import sys
 
 ### properties of numbers ###
 
-class NumProperty:
+class Property:
+  pass
+
+class NumProperty(Property):
   pass
 
 class IsNull(NumProperty):
   def test( self, series : pd.Series ):
-    return pd.isnull( cell )
+    return pd.isnull( series )
 
 class InRange(NumProperty):
   def __init__( self, floor, ceiling ):
     self.floor = floor
     self.ceiling = ceiling
-  def test(self,cell):
-    return ( (cell <= self.ceiling)
-           & (cell >= self.floor) )
+  def test( self, series : pd.Series ):
+    return ( (series <= self.ceiling)
+           & (series >= self.floor) )
+
+class InSet(Property):
+  def __init__( self, values : set ):
+    self.values = values
+  def test( self, series : pd.Series ):
+    return ( series.isin( self.values ) )
 
 def properties_cover_num_column( properties, column ):
   def properties_cover_num_cell( cell ):

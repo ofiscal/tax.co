@@ -4,7 +4,7 @@ import pandas as pd
 import python.build.classes as cla
 
 
-def test_NumProperty_subclasses():
+def test_Property_subclasses():
   assert True == cla.properties_cover_num_column(
     [ cla.InRange(0,1) ]
     , pd.Series( [0,0.5,1] ) )
@@ -14,9 +14,13 @@ def test_NumProperty_subclasses():
     , pd.Series( [np.nan, 0,0.5,1] ) )
 
   assert True == cla.properties_cover_num_column(
-    [   cla.InRange(0,1)
+    [ cla.InRange(0,1)
       , cla.IsNull() ]
     , pd.Series( [np.nan, 0,0.5,1] ) )
+
+  assert ( pd.Series(               [True, True, False, False] )
+         . equals( cla.InSet( {1,2} )
+                 . test( pd.Series( [   1,    2,     3,np.nan] ) ) ) )
 
 def test_re_nonNumeric():
   assert(      cla.re_nonNumeric.match( "1-" ) )
@@ -127,7 +131,7 @@ def test_File():
            == { "beautiful output.csv" : "gold" } )
 
 if True: # run the tests
-  test_NumProperty_subclasses()
+  test_Property_subclasses()
   test_re_nonNumeric()
   test_re_white()
   test_re_digits()
