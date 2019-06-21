@@ -36,15 +36,13 @@ class InSet(Property):
   def __init__( self, values : set ):
     self.values = values
   def test( self, series : pd.Series ):
-    return ( series.isin( self.values ) )
+    return series.isin( self.values )
 
-def properties_cover_num_column( properties, column ):
-  def properties_cover_num_cell( cell ):
-    for p in properties:
-      if p.test( cell ): return True
-    return False
-  return ( column.apply( properties_cover_num_cell )
-         . all() )
+def properties_cover_num_column( properties, column : pd.Series ):
+  tests = map( lambda p: p.test( column )
+             , properties )
+  df = pd.concat( tests, axis=1 )
+  return df . any(axis=1) . all(axis=0)
 
 
 ### properties of strings ###

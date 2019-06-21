@@ -751,3 +751,6 @@ vat_rates.py
 resume at:
     # compute income totals, drop components
 *** glossed over: ss_contribs.py
+* someday mypy might work
+So far pandas does not provide stubs,
+so types like pd.Series cannot be used.

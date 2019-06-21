@@ -5,6 +5,18 @@ import python.build.classes as cla
 
 
 def test_Property_subclasses():
+  assert ( pd.Series(               [False,    False, False, False,   True] )
+         . equals( cla.IsNull()
+                 . test( pd.Series( [    0, "banana",     1,   [2], np.nan] ) ) ) )
+
+  assert ( pd.Series(               [True, True, True, False, False] )
+         . equals( cla.InRange( 0, 1 )
+                 . test( pd.Series( [   0,  0.5,     1,    2, np.nan] ) ) ) )
+
+  assert ( pd.Series(               [True, True, False, False] )
+         . equals( cla.InSet( {1,2} )
+                 . test( pd.Series( [   1,    2,     3,np.nan] ) ) ) )
+
   assert True == cla.properties_cover_num_column(
     [ cla.InRange(0,1) ]
     , pd.Series( [0,0.5,1] ) )
@@ -18,9 +30,10 @@ def test_Property_subclasses():
       , cla.IsNull() ]
     , pd.Series( [np.nan, 0,0.5,1] ) )
 
-  assert ( pd.Series(               [True, True, False, False] )
-         . equals( cla.InSet( {1,2} )
-                 . test( pd.Series( [   1,    2,     3,np.nan] ) ) ) )
+  assert True == cla.properties_cover_num_column(
+    [ cla.InSet( {0,1} )
+      , cla.IsNull() ]
+    , pd.Series( [np.nan, 0,1] ) )
 
 def test_re_nonNumeric():
   assert(      cla.re_nonNumeric.match( "1-" ) )

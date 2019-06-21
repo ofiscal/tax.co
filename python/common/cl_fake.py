@@ -9,7 +9,7 @@ import python.build.classes as cla
 
 detail = "detail" # A strategy name.
 
-subsample = 100
+subsample = 1
 strategy = detail
 regime_year = 2018
 strategy_suffix = strategy

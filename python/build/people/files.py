@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import python.build.classes as classes
 import python.common.misc as c
-import python.common.cl_args as cl
+import python.common.cl_fake as cl
 
 
 edu_key = { 1 : "Ninguno",
