@@ -18,11 +18,6 @@ ppl = oio.readStage( c.subsample
 ppl["education"] = util.interpretCategorical( ppl["education"]
                                             , edu_key.values() )
 
-ppl["income, borrowing"] = (
-    ppl["income, year : borrowing : from person"]
-  + ppl["income, year : borrowing : from bank"]
-  + ppl["income, year : borrowing : from other"] )
-
 if True: # compute five columns for top five member incomes
   ppl["income, rank 1"] = (
     ppl["income"] * (ppl["member-by-income"] == 1) )

@@ -1,4 +1,3 @@
-import sys
 import numpy as np
 import pandas as pd
 import re as regex
@@ -396,5 +395,42 @@ if True: # dependence
                        & ( ppl["income"] < (260 * c.uvt / 12  ) )
                          | ( ppl["disabled"]==1 ) )
                      )
+
+ppl["income, borrowing"] = (
+    ppl["income, year : borrowing : from person"]
+  + ppl["income, year : borrowing : from bank"]
+  + ppl["income, year : borrowing : from other"] )
+
+if True: # drop (so far) unused vars
+  ppl = ppl.drop( columns =
+    [ "income, year : borrowing : from person"
+    , "income, year : borrowing : from bank"
+    , "income, year : borrowing : from other"
+    , "income : edu : beca, cash"
+    , "income : edu : beca, in-kind"
+    , "income : edu : non-beca, cash"
+    , "income : edu : non-beca, in-kind"
+    , "income, year : sale : livestock"
+    , "income, year : sale : real estate"
+    , "income, year : sale : stock"
+    , "income, year : sale : stock ?2"
+    , "income, year : sale : vehicle | equipment"
+    , "pension, contribution amount"
+    , "pre-k|daycare"
+    , "race"
+    , "relationship"
+    , "skipped 3 meals"
+    , "income, month : govt : beca, cash"
+    , "income, month : private : beca, cash"
+    , "income, month : govt : non-beca, cash"
+    , "income, month : private : non-beca, cash"
+    , "income, month : govt : beca, in-kind"
+    , "income, month : private : beca, in-kind"
+    , "income, month : govt : non-beca, in-kind"
+    , "income, month : private : non-beca, in-kind"
+    , "total income, monthly : borrowing"
+    , "jefe"
+    , "relative, child"
+    , "relative, non-child" ] )
 
 oio.saveStage(cl.subsample, ppl, 'people_1')
