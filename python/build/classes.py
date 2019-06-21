@@ -18,11 +18,11 @@ class NumProperty:
   pass
 
 class IsNull(NumProperty):
-  def test(self,cell):
+  def test( self, series : pd.Series ):
     return pd.isnull( cell )
 
 class InRange(NumProperty):
-  def __init__(self,floor,ceiling):
+  def __init__( self, floor, ceiling ):
     self.floor = floor
     self.ceiling = ceiling
   def test(self,cell):
@@ -101,35 +101,35 @@ class Correction:
     # must return the data frame it operates on.
 
   class Create_Constant_Column:
-    def __init__(self,col_name,value):
+    def __init__( self, col_name, value ):
       self.col_name = col_name
       self.value = value
-    def correct(self,df):
+    def correct( self, df ):
       df[self.col_name] = self.value
       return df
 
   class Rename_Column:
-    def __init__(self,old,new):
+    def __init__( self, old, new ):
       self.old = old
       self.new = new
-    def correct(self,df):
+    def correct( self, df ):
       return df.rename( columns = {self.old : self.new} )
 
   class Replace_In_Column:
     # Anything not mentioned in the dictionary is left unchanged.
-    def __init__(self,col_name,dct):
+    def __init__( self, col_name, dct ):
       self.col_name = col_name
       self.dct = dct
-    def correct(self,df):
+    def correct( self, df ):
       df[self.col_name] = ( df[self.col_name]
                           . replace( self.dct ) )
       return df
 
   class Replace_Missing_Values:
-    def __init__(self,col_name,value):
+    def __init__( self, col_name, value ):
       self.col_name = col_name
       self.value = value
-    def correct(self,df):
+    def correct( self, df ):
       df[self.col_name] = ( df[self.col_name]
                           . fillna( self.value
                           # , inplace = True
@@ -137,11 +137,11 @@ class Correction:
       return df
 
   class Replace_Substring_In_Column:
-    def __init__(self,col_name,before,after):
+    def __init__( self, col_name, before, after ):
       self.col_name = col_name
       self.before = before
       self.after = after
-    def correct(self,df):
+    def correct( self, df ):
       c = self.col_name
       df[c] = ( df[c]
               . astype(str)
@@ -152,29 +152,29 @@ class Correction:
       return df
 
   class Apply_Function_To_Column:
-    def __init__(self,col_name,func):
+    def __init__( self, col_name, func ):
       self.col_name = col_name
       self.func = func
-    def correct(self,df):
+    def correct( self, df ):
       df[self.col_name] = ( df[self.col_name]
                             .apply(self.func) )
       return df
 
   class Drop_Row_If_Column_Satisfies_Predicate:
-    def __init__(self,col_name,pred):
+    def __init__( self, col_name, pred ):
       self.col_name = col_name
       self.pred = pred
-    def correct(self,df):
+    def correct( self, df ):
       return df.drop(
         df[ self.pred( df[self.col_name] )
         ].index
       )
 
   class Drop_Row_If_Column_Equals:
-    def __init__(self,col_name,value):
+    def __init__( self, col_name, value ):
       self.col_name = col_name
       self.value = value
-    def correct(self,df):
+    def correct( self, df ):
       return df.drop(
         df[
           df[self.col_name] == self.value
@@ -182,11 +182,11 @@ class Correction:
       )
 
   class Replace_Entirely_If_Substring_Is_In_Column:
-    def __init__(self,col_name,substring,replacement):
+    def __init__( self, col_name, substring, replacement ):
       self.col_name = col_name
       self.substring = substring
       self.replacement = replacement
-    def correct(self,df):
+    def correct( self, df ):
       df.loc[ (~ df[self.col_name].isna() )
               & df[self.col_name].str.contains( self.substring )
             , self.col_name
@@ -194,22 +194,22 @@ class Correction:
       return df
 
   class Drop_Column:
-    def __init__(self,col_name):
+    def __init__( self, col_name ):
       self.col_name = col_name
-    def correct(self,df):
+    def correct( self, df ):
       return df.drop( self.col_name, axis = 'columns' )
 
   class Change_Column_Type:
-    def __init__(self,col_name,new_type):
+    def __init__( self, col_name, new_type ):
         # PITFALL: new_type should be, e.g., str, not "str"
       self.col_name = col_name
       self.new_type = new_type
-    def correct(self,df):
+    def correct( self, df ):
       df[self.col_name] = df[self.col_name] . astype(self.new_type)
       return df
 
 class File:
-  def __init__(self,name,filename,col_specs,corrections=[]):
+  def __init__( self, name, filename, col_specs, corrections=[] ):
     self.name = name
     self.filename = filename
     self.col_specs = col_specs # a list (or set) of
