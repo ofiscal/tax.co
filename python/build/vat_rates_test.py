@@ -4,6 +4,17 @@ import python.common.cl_args as cl
 import python.build.output_io as oio
 
 
+if True: # initialize log
+  test_output_filename = "vat_rates"
+  oio.test_clear( cl.subsample
+                , test_output_filename )
+  def echo( content ):
+    oio.test_write( cl.subsample
+                  , test_output_filename
+                  , content )
+  echo( ["starting"] )
+
+
 tolerance = 0.01
 
 def non_null_part( column ):
@@ -35,15 +46,6 @@ def test_vat_file( filename
   df = df.drop( columns = ["vat", "vat frac"] )
   for c in df.columns:
     assert len( df[ ~ pd.isnull( df[c] ) ] ) == len( df )
-
-
-if True: # initialize log
-  test_output_filename = "vat_rates"
-  oio.test_clear( test_output_filename )
-  def echo( content ):
-    oio.test_write( test_output_filename
-                  , content )
-  echo( ["starting"] )
 
 
 if True: # run tests

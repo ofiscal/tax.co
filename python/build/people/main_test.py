@@ -14,9 +14,11 @@ import python.common.util as util
 
 if True: # initialize log
   test_output_filename = "people_main"
-  oio.test_clear( test_output_filename )
+  oio.test_clear( cl.subsample
+                , test_output_filename )
   def echo( content ):
-    oio.test_write( test_output_filename
+    oio.test_write( cl.subsample
+                  , test_output_filename
                   , content )
   echo( ["starting"] )
 
@@ -26,13 +28,14 @@ def test_people(ppl: pd.DataFrame):
     "household"   : { cla.InRange( 0, 1e7 ) }
     , "age"       : { cla.InRange( 0, 120 ) }
     , "education" : { cla.InSet( set( files.edu_key.values() ) ) }
+    , "female"    : { cla.InRange( 0, 1 ) }
+    , "household-member" : { cla.InRange( 1, 50 ) }
     }
   for k in specs.keys():
     assert cla.properties_cover_num_column( specs[k], ppl[k] )
 
 
 ###### remaining columns to test ######
-# female
 # household-member
 # income, pension
 # income, cesantia

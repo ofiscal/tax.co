@@ -10,9 +10,11 @@ import python.build.purchases.capitulo_c as capitulo_c
 
 if True: # initialize log
   test_output_filename = "purchase_inputs"
-  oio.test_clear( test_output_filename )
+  oio.test_clear( cl.subsample
+                , test_output_filename )
   def echo( content ):
-    oio.test_write( test_output_filename
+    oio.test_write( cl.subsample
+                  , test_output_filename
                   , content )
   echo( ["starting"] )
 

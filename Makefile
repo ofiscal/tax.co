@@ -158,13 +158,13 @@ show_params:
 tests: \
   python/build/classes_test.py \
   python/common/misc_test.py \
-  output/test/build_buildings.txt \
-  output/test/build_purchases_2_vat.txt \
-  output/test/common_util.txt \
-  output/test/people_main.txt \
-  output/test/purchase_inputs.txt \
-  output/test/purchases_main.txt \
-  output/test/vat_rates.txt
+  output/test/recip-$(ss)/build_buildings.txt \
+  output/test/recip-$(ss)/build_purchases_2_vat.txt \
+  output/test/recip-$(ss)/common_util.txt \
+  output/test/recip-$(ss)/people_main.txt \
+  output/test/recip-$(ss)/purchase_inputs.txt \
+  output/test/recip-$(ss)/purchases_main.txt \
+  output/test/recip-$(ss)/vat_rates.txt
 	date
 	$(python_from_here) python/build/classes_test.py \
           $(subsample) $(strategy) $(yr)
@@ -172,7 +172,7 @@ tests: \
           $(subsample) $(strategy) $(yr)
 	printf '\nAll tests passed.\n\n'
 
-output/test/build_purchases_2_vat.txt: \
+output/test/recip-$(ss)/build_purchases_2_vat.txt: \
   $(purchases_2_vat) \
   python/build/purchases_2_vat_test.py \
   python/build/purchases_2_vat.py \
@@ -181,7 +181,7 @@ output/test/build_purchases_2_vat.txt: \
 	$(python_from_here) python/build/purchases_2_vat_test.py \
           $(subsample) $(strategy) $(yr)
 
-output/test/build_buildings.txt: \
+output/test/recip-$(ss)/build_buildings.txt: \
   $(buildings) \
   python/build/buildings_test.py \
   python/build/buildings.py \
@@ -192,7 +192,7 @@ output/test/build_buildings.txt: \
 	$(python_from_here) python/build/buildings_test.py \
           $(subsample) $(strategy) $(yr)
 
-output/test/vat_rates.txt: \
+output/test/recip-$(ss)/vat_rates.txt: \
   $(vat_rates.py) \
   python/build/vat_rates_test.py \
   python/build/vat_rates.py \
@@ -201,14 +201,14 @@ output/test/vat_rates.txt: \
 	$(python_from_here) python/build/vat_rates_test.py \
           $(subsample) $(strategy) $(yr)
 
-output/test/common_util.txt: \
+output/test/recip-$(ss)/common_util.txt: \
   python/common/util_test.py \
   python/common/util.py \
   python/build/output_io.py
 	$(python_from_here) python/common/util_test.py \
           $(subsample) $(strategy) $(yr)
 
-output/test/purchases_main.txt: \
+output/test/recip-$(ss)/purchases_main.txt: \
   $(purchases_1) \
   python/build/purchases/main_test.py \
   python/build/purchases/main_defs.py \
@@ -218,7 +218,7 @@ output/test/purchases_main.txt: \
 	$(python_from_here) python/build/purchases/main_test.py \
           $(subsample) $(strategy) $(yr)
 
-output/test/people_main.txt: \
+output/test/recip-$(ss)/people_main.txt: \
   $(people_1) \
   python/build/people/main_test.py \
   python/build/classes.py \
@@ -230,7 +230,7 @@ output/test/people_main.txt: \
 	$(python_from_here) python/build/people/main_test.py \
           $(subsample) $(strategy) $(yr)
 
-output/test/purchase_inputs.txt: \
+output/test/recip-$(ss)/purchase_inputs.txt: \
   $(input_subsamples) \
   python/build/purchases/input_test.py \
   python/build/classes.py \

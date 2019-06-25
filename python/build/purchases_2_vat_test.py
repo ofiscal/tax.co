@@ -7,9 +7,11 @@ import python.build.output_io as oio
 
 if True: # initialize log
   test_output_filename = "build_purchases_2_vat"
-  oio.test_clear( test_output_filename )
+  oio.test_clear( cl.subsample
+                , test_output_filename )
   def echo( content ):
-    oio.test_write( test_output_filename
+    oio.test_write( cl.subsample
+                  , test_output_filename
                   , content )
   echo( ["starting"] )
 
