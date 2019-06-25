@@ -46,7 +46,7 @@ def test_people(ppl: pd.DataFrame):
                            : { cla.InRange(0,1),    cla.IsNull() }
     , "pension, contributor(s) (if not pensioned) = employer"
                            : { cla.InRange(0,1),    cla.IsNull() }
-    , "seguro de riesgos laborales (if reported)"
+    , "seguro de riesgos laborales"
                            : { cla.InRange(0,1),    cla.IsNull() }
     }
   for k in specs.keys():

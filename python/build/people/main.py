@@ -59,7 +59,7 @@ if True: # non-income work characteristics
     . apply( lambda x: 1 if x == 3 else
              ( 0 if (x > 0) & (x < 4) else np.nan ) ) )
 
-  ppl["seguro de riesgos laborales (if reported)"] = (
+  ppl["seguro de riesgos laborales"] = (
     ppl["seguro de riesgos laborales, pre"]
     . apply( lambda x: 1 if x==1 else
              ( 0 if x==2 else np.nan ) ) )

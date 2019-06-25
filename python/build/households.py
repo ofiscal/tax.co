@@ -106,7 +106,7 @@ if True: # aggregate from household members to households
        , "pension, contributor(s) (if not pensioned) = split"
        , "pension, contributor(s) (if not pensioned) = self"
        , "pension, contributor(s) (if not pensioned) = employer"
-       , "seguro de riesgos laborales (if reported)"
+       , "seguro de riesgos laborales"
     ] . agg("max"
     ) . rename( columns = {"age" : "age-max",
                            "literate" : "has-lit",
