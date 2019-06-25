@@ -25,31 +25,35 @@ if True: # initialize log
 
 def test_people(ppl: pd.DataFrame):
   specs = {
-    "household"   : { cla.InRange( 0, 1e7 ) }
-    , "age"       : { cla.InRange( 0, 120 ) }
-    , "education" : { cla.InSet( set( files.edu_key.values() ) ) }
-    , "female"    : { cla.InRange( 0, 1 ) }
-    , "household-member" : { cla.InRange( 1, 50 ) }
+    "household"            : { cla.InRange( 0, 1e7 ) }
+    , "age"                : { cla.InRange( 0, 120 ) }
+    , "education"          : { cla.InSet( set( files.edu_key.values() ) ) }
+    , "female"             : { cla.InRange( 0, 1 ) }
+    , "household-member"   : { cla.InRange( 1, 50 ) }
+    , "income, pension"    : { cla.InRange( 0, 1e8 ) }
+    , "income, cesantia"   : { cla.InRange( 0, 1e8 ) }
+    , "income, dividend"   : { cla.InRange( 0, 1e8 ) }
+    , "independiente"      : { cla.InRange( 0, 1 ) }
+    , "literate"           : { cla.InRange( 0, 1 ), cla.IsNull() }
+    , "student"            : { cla.InRange( 0, 1 ), cla.IsNull() }
+    , "weight"             :  { cla.InRange( 0.001, 1e4 ) }
+    , "pension, contributing (if not pensioned)"
+                           : { cla.InRange(0,1),    cla.IsNull() }
+    , "pension, receiving" : { cla.InRange(0,1) }
+    , "pension, contributor(s) (if not pensioned) = split"
+                           : { cla.InRange(0,1),    cla.IsNull() }
+    , "pension, contributor(s) (if not pensioned) = self"
+                           : { cla.InRange(0,1),    cla.IsNull() }
+    , "pension, contributor(s) (if not pensioned) = employer"
+                           : { cla.InRange(0,1),    cla.IsNull() }
+    , "seguro de riesgos laborales (if reported)"
+                           : { cla.InRange(0,1),    cla.IsNull() }
     }
   for k in specs.keys():
     assert cla.properties_cover_num_column( specs[k], ppl[k] )
 
 
 ###### remaining columns to test ######
-# household-member
-# income, pension
-# income, cesantia
-# income, dividend
-# independiente
-# literate
-# student
-# weight
-# pension, contributing (if not pensioned)
-# pension, receiving
-# pension, contributor(s) (if not pensioned) = split
-# pension, contributor(s) (if not pensioned) = self
-# pension, contributor(s) (if not pensioned) = employer
-# seguro de riesgos laborales (if reported)
 # income, govt, cash
 # income, govt, in-kind
 # income, non-labor
