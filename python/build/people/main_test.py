@@ -30,13 +30,13 @@ def test_people(ppl: pd.DataFrame):
     , "education"          : { cla.InSet( set( files.edu_key.values() ) ) }
     , "female"             : { cla.InRange( 0, 1 ) }
     , "household-member"   : { cla.InRange( 1, 50 ) }
-    , "income, pension"    : { cla.InRange( 0, 1e8 ) }
+    , "income, pension"    : { cla.InRange( 0, 3e8 ) }
     , "income, cesantia"   : { cla.InRange( 0, 1e8 ) }
     , "income, dividend"   : { cla.InRange( 0, 1e8 ) }
     , "independiente"      : { cla.InRange( 0, 1 ) }
     , "literate"           : { cla.InRange( 0, 1 ), cla.IsNull() }
     , "student"            : { cla.InRange( 0, 1 ), cla.IsNull() }
-    , "weight"             :  { cla.InRange( 0.001, 1e4 ) }
+    , "weight"             : { cla.InRange( 0.001, 1e4 ) }
     , "pension, contributing (if not pensioned)"
                            : { cla.InRange(0,1),    cla.IsNull() }
     , "pension, receiving" : { cla.InRange(0,1) }
@@ -47,41 +47,42 @@ def test_people(ppl: pd.DataFrame):
     , "pension, contributor(s) (if not pensioned) = employer"
                            : { cla.InRange(0,1),    cla.IsNull() }
     , "seguro de riesgos laborales"
-                           : { cla.InRange(0,1),    cla.IsNull() }
-    }
+                           : { cla.InRange(0, 1),   cla.IsNull() }
+    , "income, govt, cash"                      : { cla.InRange(0, 2e7) }
+    , "income, govt, in-kind"                   : { cla.InRange(0, 1e7) }
+    , "income, non-labor"                       : { cla.InRange(0, 1e8) }
+    , "income, capital (tax def)"               : { cla.InRange(0, 1e9) }
+    , "income, private, cash"                   : { cla.InRange(0, 1e8) }
+    , "income, donacion"                        : { cla.InRange(0, 2e7) }
+    , "income, infrequent"                      : { cla.InRange(0, 1e8) }
+    , "income, ganancia ocasional, 10%-taxable" : { cla.InRange(0, 1e8) }
+    , "income, ganancia ocasional, 20%-taxable" : { cla.InRange(0, 3e7) }
+    , "income, labor, cash"                     : { cla.InRange(0, 3e9) }
+    , "income, labor, in-kind"                  : { cla.InRange(0, 3e7) }
+    , "income, cash"                            : { cla.InRange(0, 3e9) }
+    , "income, in-kind"                         : { cla.InRange(0, 3e7) }
+    , "income"                                  : { cla.InRange(0, 3e9) }
+    , "income, govt"                            : { cla.InRange(0, 3e7) }
+    , "income, private"                         : { cla.InRange(0, 2e8) }
+    , "income, labor"                           : { cla.InRange(0, 3e9) }
+    , "income, borrowing"                       : { cla.InRange(0, 1e8) }
+    , "member-by-income"                        : { cla.InRange(1, 50) }
+    , "disabled"       : { cla.InSet( {True,False} ) }
+    , "dependent"      : { cla.InSet( {True,False} ) }
+    , "race, indig"    : { cla.InSet( {True,False} ) }
+    , "race, git|rom"  : { cla.InSet( {True,False} ) }
+    , "race, raizal"   : { cla.InSet( {True,False} ) }
+    , "race, palenq"   : { cla.InSet( {True,False} ) }
+    , "race, neg|mul"  : { cla.InSet( {True,False} ) }
+    , "race, whi|mest" : { cla.InSet( {True,False} ) }
+  }
+
+# really, are these all zero|false?
+# ppl["income, private, in-kind"].describe()
+#    , "income, private, in-kind" : { cla.InRange(0, ) }
+
   for k in specs.keys():
     assert cla.properties_cover_num_column( specs[k], ppl[k] )
-
-
-###### remaining columns to test ######
-# income, govt, cash
-# income, govt, in-kind
-# income, non-labor
-# income, capital (tax def)
-# income, private, cash
-# income, private, in-kind
-# income, donacion
-# income, infrequent
-# income, ganancia ocasional, 10%-taxable
-# income, ganancia ocasional, 20%-taxable
-# income, labor, cash
-# income, labor, in-kind
-# income, cash
-# income, in-kind
-# income
-# income, govt
-# income, private
-# income, labor
-# member-by-income
-# race, indig
-# race, git|rom
-# race, raizal
-# race, palenq
-# race, neg|mul
-# race, whi|mest
-# disabled
-# dependent
-# income, borrowing
 
 
 if True: # run tests

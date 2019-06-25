@@ -340,11 +340,7 @@ if True: # compute each household member's income rank
       ) . drop( columns = "level_1" )
                 # the other part of the index is unneeded
 
-if True: # format some categorical variables
-  ppl["race"] = pd.Categorical(
-    ppl["race"].map( files.race_key )
-    , categories = list( files.race_key.values() )
-    , ordered = True)
+if True: # make|format some categorical variables
   ppl["race, indig"]    = ppl["race"] == 1
   ppl["race, git|rom"]  = ppl["race"] == 2
   ppl["race, raizal"]   = ppl["race"] == 3
