@@ -155,6 +155,7 @@ show_params:
 # Sufficiently simple and fast tests can stay in the master "tests" recipe here.
 # But for any test complex enough to require an output file,
 # make that output file a dependency.
+# PITFALL: purchase_input.txt always uses the full sample
 tests: \
   python/build/classes_test.py \
   python/common/misc_test.py \
@@ -162,7 +163,7 @@ tests: \
   output/test/recip-$(ss)/build_purchases_2_vat.txt \
   output/test/recip-$(ss)/common_util.txt \
   output/test/recip-$(ss)/people_main.txt \
-  output/test/recip-$(ss)/purchase_inputs.txt \
+  output/test/recip-1/purchase_inputs.txt \
   output/test/recip-$(ss)/purchases_main.txt \
   output/test/recip-$(ss)/vat_rates.txt
 	date
@@ -230,7 +231,9 @@ output/test/recip-$(ss)/people_main.txt: \
 	$(python_from_here) python/build/people/main_test.py \
           $(subsample) $(strategy) $(yr)
 
-output/test/recip-$(ss)/purchase_inputs.txt: \
+# PITFALL: Sample size is hardcoded to 1 because otherwise
+# certain kinds of rare values are never encountered.always
+output/test/recip-1/purchase_inputs.txt: \
   $(input_subsamples) \
   python/build/purchases/input_test.py \
   python/build/classes.py \
@@ -241,10 +244,7 @@ output/test/recip-$(ss)/purchase_inputs.txt: \
   python/common/misc.py
 	date
 	$(python_from_here) python/build/purchases/input_test.py \
-          1 detail 2016 # Aside from subsample, these arguments are unused.
-                        # (They are still needed, or cl_args.py will err.)
-                        # Sample size is hardcoded to 1 because otherwise
-                        # certain kinds of rare values are never encountered.
+          1 detail 2016
 
 
 ##=##=##=## subsample, or very slightly tweak, some input data sets

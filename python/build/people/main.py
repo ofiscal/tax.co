@@ -232,18 +232,14 @@ if True: # income
     if True: # private income (cash + in-kind)
       cols_private = list( cla.name_map( files.income_private )
                          . values() )
-      cols_private_cash    = [ col for col in cols_private if not re_in_kind.match(col) ]
-      cols_private_in_kind = [ col for col in cols_private if     re_in_kind.match(col) ]
-      ppl["total income, monthly : private, cash"] = (
-        ppl[ cols_private_cash ].sum( axis=1 ) )
-      ppl["total income, monthly : private, in-kind"] = (
-        ppl[ cols_private_in_kind ].sum( axis=1 ) )
+      ppl["total income, monthly : private"] = (
+        ppl[ cols_private ].sum( axis=1 ) )
       ppl["income, donacion"] = (
         # PITFALL: overlaps what will be called "income, private"
         ppl["income, year : private : from private domestic ?firms"] +
         ppl["income, year : private : from private foreign ?firms"] )
 
-      ppl = ppl.drop( columns = cols_private_in_kind + cols_private_cash )
+      ppl = ppl.drop( columns = cols_private )
 
     if True: # infrequent income (cash only)
       cols_infrequent = list( cla.name_map( files.income_infrequent )
@@ -302,12 +298,11 @@ if True: # income
         , "income, year : investment : dividends"    : "income, dividend"
         , 'total income, monthly : infrequent'       : "income, infrequent"
         , 'total income, monthly : govt, cash'       : "income, govt, cash"
-        , 'total income, monthly : private, cash'    : "income, private, cash"
         , 'total income, monthly : labor, cash'      : "income, labor, cash"
+        , "total income, monthly : private"          : "income, private"
         }
       income_short_name_dict_in_kind = {
           'total income, monthly : govt, in-kind'    : "income, govt, in-kind"
-        , 'total income, monthly : private, in-kind' : "income, private, in-kind"
         , 'total income, monthly : labor, in-kind'   : "income, labor, in-kind"
         }
       ppl = ppl.rename( columns = { **income_short_name_dict_cash
@@ -323,7 +318,7 @@ if True: # income
         ppl[ list( income_short_name_dict_in_kind.values() )
         ].sum(axis=1) )
 
-      for col in ["income", "income, govt", "income, private", "income, labor"]:
+      for col in ["income", "income, govt", "income, labor"]:
           ppl[col] = ppl[col + ", cash"] + ppl[col + ", in-kind"]
 
 if True: # compute each household member's income rank

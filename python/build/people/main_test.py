@@ -25,7 +25,7 @@ if True: # initialize log
 
 def test_people(ppl: pd.DataFrame):
   specs = {
-    "household"            : { cla.InRange( 0, 1e7 ) }
+      "household"          : { cla.InRange( 0, 1e7 ) }
     , "age"                : { cla.InRange( 0, 120 ) }
     , "education"          : { cla.InSet( set( files.edu_key.values() ) ) }
     , "female"             : { cla.InRange( 0, 1 ) }
@@ -52,7 +52,6 @@ def test_people(ppl: pd.DataFrame):
     , "income, govt, in-kind"                   : { cla.InRange(0, 1e7) }
     , "income, non-labor"                       : { cla.InRange(0, 1e8) }
     , "income, capital (tax def)"               : { cla.InRange(0, 1e9) }
-    , "income, private, cash"                   : { cla.InRange(0, 1e8) }
     , "income, donacion"                        : { cla.InRange(0, 2e7) }
     , "income, infrequent"                      : { cla.InRange(0, 1e8) }
     , "income, ganancia ocasional, 10%-taxable" : { cla.InRange(0, 1e8) }
@@ -74,13 +73,7 @@ def test_people(ppl: pd.DataFrame):
     , "race, raizal"   : { cla.InSet( {True,False} ) }
     , "race, palenq"   : { cla.InSet( {True,False} ) }
     , "race, neg|mul"  : { cla.InSet( {True,False} ) }
-    , "race, whi|mest" : { cla.InSet( {True,False} ) }
-  }
-
-# really, are these all zero|false?
-# ppl["income, private, in-kind"].describe()
-#    , "income, private, in-kind" : { cla.InRange(0, ) }
-
+    , "race, whi|mest" : { cla.InSet( {True,False} ) } }
   for k in specs.keys():
     assert cla.properties_cover_num_column( specs[k], ppl[k] )
 

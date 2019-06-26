@@ -1,4 +1,5 @@
 * TODO test suite
+** make automatic: the tests in test/hand/dependents.py
 ** test that no people column has too many missing values
 Using something like cla.InRange.
 ** coverage
