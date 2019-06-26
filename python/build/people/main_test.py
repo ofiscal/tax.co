@@ -23,7 +23,7 @@ if True: # initialize log
   echo( ["starting"] )
 
 
-def test_people(ppl: pd.DataFrame):
+def test_ranges(ppl: pd.DataFrame):
   specs = {
       "household"          : { cla.InRange( 0, 1e7 ) }
     , "age"                : { cla.InRange( 0, 120 ) }
@@ -77,6 +77,19 @@ def test_people(ppl: pd.DataFrame):
   for k in specs.keys():
     assert cla.properties_cover_num_column( specs[k], ppl[k] )
 
+def test_upper_bound_on_fraction_missing(ppl: pd.DataFrame):
+  specs = { # test_ranges guarantees that these are
+            # the only columns with missing values
+      "literate"                                              : 0.1
+    , "student"                                               : 0.1
+    , "pension, contributing (if not pensioned)"              : 0.7
+    , "pension, contributor(s) (if not pensioned) = split"    : 0.9
+    , "pension, contributor(s) (if not pensioned) = self"     : 0.9
+    , "pension, contributor(s) (if not pensioned) = employer" : 0.9
+    , "seguro de riesgos laborales"                           : 0.7
+    }
+  for k in specs.keys():
+    assert (pd.isnull(ppl[k]).sum() / len(ppl)) < specs[k]
 
 if True: # run tests
   # build data
@@ -85,4 +98,5 @@ if True: # run tests
                                               , files.edu_key.values() )
 
   # integration test
-  test_people( ppl )
+  test_ranges( ppl )
+  test_upper_bound_on_fraction_missing( ppl )
