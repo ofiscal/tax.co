@@ -264,7 +264,7 @@ if True: # income
     if True: # "income" from borrowing
       cols_borrowing = list( cla.name_map( files.income_borrowing )
                            . values() )
-      ppl["total income, monthly : borrowing"] = (
+      ppl["income, borrowing"] = (
         ppl[ cols_borrowing ].sum( axis=1 ) )
 
     if True: # labor income
@@ -387,11 +387,6 @@ if True: # dependence
                          | ( ppl["disabled"]==1 ) )
                      )
 
-ppl["income, borrowing"] = (
-    ppl["income, year : borrowing : from person"]
-  + ppl["income, year : borrowing : from bank"]
-  + ppl["income, year : borrowing : from other"] )
-
 if True: # drop (so far) unused vars
   ppl = ppl.drop( columns =
     [ "income, year : borrowing : from person"
@@ -419,7 +414,6 @@ if True: # drop (so far) unused vars
     , "income, month : private : beca, in-kind"
     , "income, month : govt : non-beca, in-kind"
     , "income, month : private : non-beca, in-kind"
-    , "total income, monthly : borrowing"
     , "jefe"
     , "relative, child"
     , "relative, non-child" ] )
