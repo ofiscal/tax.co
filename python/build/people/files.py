@@ -121,9 +121,9 @@ income_private = [
 ]
 
 income_infrequent = [
-    ("P7513S9A1", 0, "income, year : infrequent : gambling", 0)
+    ("P7513S9A1",  0, "income, year : infrequent : gambling", 0)
   , ("P7513S10A1", 0, "income, year : infrequent : inheritance", 0)
-  , ("P7513S8A1", 0, "income, year : infrequent : jury awards", 0)
+  , ("P7513S8A1",  0, "income, year : infrequent : jury awards", 0)
   , ("P7513S12A1", 0, "income, year : infrequent : refund, other", 0)
   , ("P7513S11A1", 0, "income, year : infrequent : refund, tax", 0)
 ]
@@ -136,11 +136,11 @@ income_borrowing = [
 
 income_capital = [
     ("P7510S10A1", 0, "income, year : investment : dividends", 0)
-  , ("P7510S5A1", 0, "income, year : investment : interest", 0)
+  , ("P7510S5A1",  0, "income, year : investment : interest", 0)
 
-  , ("P7500S1A1", 0, "income, month : rental : real estate, developed", 0)
-  , ("P7500S4A1", 0, "income, month : rental : real estate, undeveloped", 0)
-  , ("P7500S5A1", 0, "income, month : rental : vehicle | equipment", 0)
+  , ("P7500S1A1",  0, "income, month : rental : real estate, developed", 0)
+  , ("P7500S4A1",  0, "income, month : rental : real estate, undeveloped", 0)
+  , ("P7500S5A1",  0, "income, month : rental : vehicle | equipment", 0)
 
   # The two "sale : stock"  variables record the same information.
   # At least one is always zero.
@@ -182,6 +182,8 @@ beca_sources_private = [
 ]
 
 inclusion_pairs = [
+  # PITFALL: The second of each pair is named for its meaning in the original data.
+  # In main.py it is then remapped so that 0=included, 1=omitted.
      ( "income, month : labor : bonus ?2"
      , "income, month : labor : bonus ?2, included in 6500"
   ), ( "income, month : labor : bonus"

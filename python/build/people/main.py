@@ -25,8 +25,8 @@ if True: # make independiente a 0 or a 1
 
 if True: # remap some boolean integers
   for cn in ( [ "female" ] + # originally 1=male, 2=female
-              [included for (quantity,included) in files.inclusion_pairs]
-                             # originally 1=included, 2=forgot
+              [included for (_,included) in files.inclusion_pairs]
+                 # originally, 1=included, 2=forgot
   ): ppl[cn] = ppl[cn] - 1
 
   for cn in [ "student"         # originally 1=student, 2=not
@@ -37,7 +37,10 @@ if True: # remap some boolean integers
 if True: # non-income work characteristics
   ppl["pension, contributing (if not pensioned)"] = (
     ppl["pension, contributing, pre"]
-    . apply( lambda x: 1 if x==1 else ( 0 if x==2 else np.nan ) ) )
+    . apply( lambda x:
+             ( 1 if x==1
+               else ( 0 if x==2
+                      else np.nan ) ) ) )
 
   ppl["pension, receiving"] = (
       ( ppl["pension, contributing, pre"] == 3 )
@@ -69,13 +72,14 @@ if True: # non-income work characteristics
                             , "seguro de riesgos laborales, pre" ] )
 
 if True: # income
-  if True: # fill NaN values (one column's with 1, the rest's with 0)
+  if True: # fill NaN values
+    # Here we interpret NaN as "one" (month)
     ppl[   "income, month : labor : independent, months" ] = (
       ppl[ "income, month : labor : independent, months" ] . fillna(1) )
 
-    income_columns = list( cla.name_map( files.income )
-                         . values() )
-    columns_to_convert = ( income_columns
+    # Everywhere else, we interpret NaN as "zero" (pesos)
+    columns_to_convert = ( list( cla.name_map( files.income )
+                                 . values() )
                          + list( cla.name_map( files.beca_sources_private )
                                . values() )
                          + list( cla.name_map( files.beca_sources_govt )
@@ -85,7 +89,7 @@ if True: # income
                                    # "doesn't know" and "won't say"
       ppl[col] = ppl[col].apply(
         lambda x : 0 if ((x >= 98) & (x <= 99)) else x )
-    del(income_columns, columns_to_convert)
+    del(columns_to_convert)
 
   if True: # divide yearly income variables by 12
     re_year_income  = regex.compile( "^income, year" )

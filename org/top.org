@@ -1,5 +1,16 @@
 * TODO test suite
-** TODO test that all column names are unique
+** TODO people.main:
+*** Divide initial construction of input file into its own file.
+  ppl = c.all_columns_to_numbers(
+    cl.collect_files( files.files
+                    , subsample = cl.subsample )
+    , skip_columns = ["non-beca sources"] # PITFALL : a space-separated list of ints
+  )
+*** Test the range and missing-ness of the input file.
+*** unit tests for people/main.py
+? What if a variable is built up in steps in main.py?
+Should I divide main.py into a separate file for each step?
+** TODO ? test that all column names are unique
 ** TODO test means, variances
 ** TODO purchases.main
 *** TODO what to do|is done about missing freq, where-got, is-purchase
