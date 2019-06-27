@@ -2,18 +2,14 @@ import numpy as np
 import pandas as pd
 import re as regex
 
-import python.common.misc as c
-import python.common.cl_args as cl
 import python.build.classes as cla
-import python.build.people.files as files
 import python.build.output_io as oio
+import python.build.people.files as files
+import python.common.cl_args as cl
+import python.common.misc as c
 
 
-ppl = c.all_columns_to_numbers(
-  cl.collect_files( files.files
-                  , subsample = cl.subsample )
-  , skip_columns = ["non-beca sources"] # PITFALL : a space-separated list of ints
-)
+ppl = oio.readStage(cl.subsample, 'people_0')
 
 ppl = ppl.drop( # drop non-members of household
   ppl[ ppl["relationship"].isin( [6,7,8] )

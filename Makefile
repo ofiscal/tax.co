@@ -3,6 +3,7 @@ SHELL := bash
   input_subsamples \
   buildings \
   households \
+  people_0 \
   people_1 \
   people_2_buildings \
   people_3_purchases \
@@ -72,6 +73,7 @@ buildings =          output/vat/data/recip-$(ss)/buildings.csv
 households = \
   output/vat/data/recip-$(ss)/households.$(strategy_year_suffix).csv \
   output/vat/data/recip-$(ss)/households_decile_summary.$(strategy_year_suffix).csv
+people_0 =           output/vat/data/recip-$(ss)/people_0.csv
 people_1 =           output/vat/data/recip-$(ss)/people_1.csv
 people_2_buildings = output/vat/data/recip-$(ss)/people_2_buildings.csv
 people_3_purchases = \
@@ -259,7 +261,8 @@ $(input_subsamples): \
 	$(python_from_here) python/subsample.py
 
 vat_rates: $(vat_rates)
-$(vat_rates): python/build/vat_rates.py \
+$(vat_rates): \
+  python/build/vat_rates.py \
   python/build/output_io.py \
   data/vat/vat-by-coicop.csv \
   python/common/misc.py \
@@ -272,7 +275,8 @@ $(vat_rates): python/build/vat_rates.py \
 ##=##=##=## Build data from the ENPH
 
 buildings: $(buildings)
-$(buildings): python/build/buildings.py \
+$(buildings): \
+  python/build/buildings.py \
   python/build/classes.py \
   python/build/output_io.py \
   python/common/misc.py \
@@ -280,18 +284,32 @@ $(buildings): python/build/buildings.py \
 	date
 	$(python_from_here) python/build/buildings.py $(subsample) $(strategy) $(yr)
 
-people_1: $(people_1)
-$(people_1): python/build/people/main.py \
-  python/build/people/files.py \
+people_0: $(people_0)
+$(people_0): \
   python/build/output_io.py \
+  python/build/people/collect.py \
+  python/build/people/files.py \
+  python/common/cl_args.py \
   python/common/misc.py \
-  python/build/classes.py \
   $(input_subsamples)
+	date
+	$(python_from_here) python/build/people/collect.py $(subsample) $(strategy) $(yr)
+
+people_1: $(people_1)
+$(people_1): \
+  python/build/classes.py \
+  python/build/output_io.py \
+  python/build/people/files.py \
+  python/build/people/main.py \
+  python/common/cl_args.py \
+  python/common/misc.py \
+  $(people_0)
 	date
 	$(python_from_here) python/build/people/main.py $(subsample) $(strategy) $(yr)
 
 people_2_buildings: $(people_2_buildings)
-$(people_2_buildings): python/build/people_2_buildings.py \
+$(people_2_buildings): \
+  python/build/people_2_buildings.py \
   python/build/output_io.py \
   python/common/misc.py \
   python/build/classes.py \
@@ -300,7 +318,8 @@ $(people_2_buildings): python/build/people_2_buildings.py \
 	$(python_from_here) python/build/people_2_buildings.py $(subsample) $(strategy) $(yr)
 
 people_3_purchases: $(people_3_purchases)
-$(people_3_purchases): python/build/people_3_purchases.py \
+$(people_3_purchases): \
+  python/build/people_3_purchases.py \
   python/build/output_io.py \
   python/common/misc.py \
   python/build/classes.py \
@@ -309,7 +328,8 @@ $(people_3_purchases): python/build/people_3_purchases.py \
 	$(python_from_here) python/build/people_3_purchases.py $(subsample) $(strategy) $(yr)
 
 people_4_income_taxish: $(people_4_income_taxish)
-$(people_4_income_taxish): python/build/people_4_income_taxish.py \
+$(people_4_income_taxish): \
+  python/build/people_4_income_taxish.py \
   python/build/output_io.py \
   python/build/ss_schedules.py \
   python/regime/r$(yr).py \
@@ -320,7 +340,8 @@ $(people_4_income_taxish): python/build/people_4_income_taxish.py \
 	$(python_from_here) python/build/people_4_income_taxish.py $(subsample) $(strategy) $(yr)
 
 households: $(households)
-$(households): python/build/households.py \
+$(households): \
+  python/build/households.py \
   python/common/util.py \
   python/build/output_io.py \
   python/regime/r$(yr).py \
@@ -345,7 +366,8 @@ $(purchases_1): \
 	$(python_from_here) python/build/purchases/main.py $(subsample) $(strategy) $(yr)
 
 purchases_2_vat: $(purchases_2_vat)
-$(purchases_2_vat): python/build/purchases_2_vat.py \
+$(purchases_2_vat): \
+  python/build/purchases_2_vat.py \
   python/build/output_io.py \
   python/build/legends.py \
   $(vat_rates) \
@@ -356,7 +378,8 @@ $(purchases_2_vat): python/build/purchases_2_vat.py \
 	$(python_from_here) python/build/purchases_2_vat.py $(subsample) $(strategy) $(yr)
 
 purchase_sums: $(purchase_sums)
-$(purchase_sums): python/build/purchase_sums.py \
+$(purchase_sums): \
+  python/build/purchase_sums.py \
   python/build/output_io.py \
   python/common/misc.py \
   python/build/classes.py \
@@ -368,7 +391,8 @@ $(purchase_sums): python/build/purchase_sums.py \
 ##=##=##=## Make charts, diagrams, tiny latex tables
 
 purchase_pics: $(purchase_pics)
-$(purchase_pics): python/report/pics/purchases.py \
+$(purchase_pics): \
+  python/report/pics/purchases.py \
   python/draw/util.py \
   python/common/misc.py \
   python/common/cl_args.py \
@@ -377,7 +401,8 @@ $(purchase_pics): python/report/pics/purchases.py \
 	$(python_from_here) python/report/pics/purchases.py $(subsample) $(strategy) $(yr)
 
 household_pics: $(household_pics)
-$(household_pics): python/report/pics/households.py \
+$(household_pics): \
+  python/report/pics/households.py \
   python/draw/util.py \
   python/common/misc.py \
   python/common/cl_args.py \
@@ -386,7 +411,8 @@ $(household_pics): python/report/pics/households.py \
 	$(python_from_here) python/report/pics/households.py $(subsample) $(strategy) $(yr)
 
 people_pics: $(people_pics)
-$(people_pics): python/report/pics/people.py \
+$(people_pics): \
+  python/report/pics/people.py \
   python/draw/util.py \
   python/common/misc.py \
   python/common/cl_args.py \
@@ -397,7 +423,8 @@ $(people_pics): python/report/pics/people.py \
 pics: $(pics)
 
 overview: $(overview)
-$(overview): python/report/overview.py \
+$(overview): \
+  python/report/overview.py \
   python/common/util.py \
   python/build/output_io.py \
   python/build/people/files.py \
@@ -412,7 +439,8 @@ $(overview): python/report/overview.py \
 
 # PITFALL: Always reads households from the detail vat strategy, because vat irrelevant.
 goods_by_income_decile: $(goods_by_income_decile)
-$(goods_by_income_decile): python/build/goods-by-income-decile.py \
+$(goods_by_income_decile): \
+  python/build/goods-by-income-decile.py \
   output/vat/data/recip-$(ss)/households.detail_.csv \
   output/vat/data/recip-$(ss)/purchases_1.csv
 	date
