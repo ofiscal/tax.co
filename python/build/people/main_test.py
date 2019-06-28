@@ -7,6 +7,7 @@ import re as regex
 import python.build.classes as cla
 import python.build.output_io as oio
 import python.build.people.files as files
+import python.build.people.main_defs as defs
 import python.common.cl_args as cl
 import python.common.misc as c
 import python.common.util as util
@@ -22,6 +23,20 @@ if True: # initialize log
                   , content )
   echo( ["starting"] )
 
+
+## unit tests
+
+def test_count_num_matches_in_space_separated_list():
+  assert 4 == ( defs.count_num_matches_in_space_separated_list
+                ( " 1 2 3 1 2 3 ", {1,2} ) )
+  assert 2 == ( defs.count_num_matches_in_space_separated_list
+                ( " 11 2 3 11 2 3 ", {1,2} ) )
+  assert 0 == ( defs.count_num_matches_in_space_separated_list
+                ( "", {1,2} ) )
+
+
+
+## integration tests
 
 def test_ranges(ppl: pd.DataFrame):
   specs = {
@@ -91,12 +106,16 @@ def test_upper_bound_on_fraction_missing(ppl: pd.DataFrame):
   for k in specs.keys():
     assert (pd.isnull(ppl[k]).sum() / len(ppl)) < specs[k]
 
+
 if True: # run tests
+  # unit tests
+  test_count_num_matches_in_space_separated_list()
+
   # build data
   ppl = oio.readStage(cl.subsample, 'people_1')
   ppl["education"] = util.interpretCategorical( ppl["education"]
                                               , files.edu_key.values() )
 
-  # integration test
+  # integration tests
   test_ranges( ppl )
   test_upper_bound_on_fraction_missing( ppl )

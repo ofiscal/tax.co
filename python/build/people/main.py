@@ -106,9 +106,9 @@ if True: # income
         # in subsamples), it was by default interpreted as a number.
 
       ppl["non-beca sources, govt"] = ppl["non-beca sources"
-                                      ] . apply( files.count_public )
+                                      ] . apply( defs.count_public )
       ppl["non-beca sources, private"] = ppl["non-beca sources"
-                                         ] . apply( files.count_private )
+                                         ] . apply( defs.count_private )
       ppl["non-beca sources, total"] = ( ppl["non-beca sources, govt"]
                                        + ppl["non-beca sources, private"] )
 
