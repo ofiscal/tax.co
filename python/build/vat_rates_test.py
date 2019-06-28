@@ -17,12 +17,12 @@ if True: # initialize log
 
 tolerance = 0.01
 
-def non_null_part( column ):
-  return column[ ~ pd.isnull( column ) ]
-
 def test_vat_file( filename
                  , code_column_name
                  , fraction_that_should_be_non_null ):
+
+  def non_null_part( column ):
+    return column[ ~ pd.isnull( column ) ]
 
   df = oio.readStage( cl.subsample
                     , filename + "." + cl.strategy_suffix )

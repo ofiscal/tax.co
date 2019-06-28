@@ -41,15 +41,15 @@ class Purchase_2_Columns:
 
   very_missing = [ "where-got" ]
 
-def all_columns():
-  return ( Purchase_2_Columns.very_missing +
-           Purchase_2_Columns.slightly_missing +
-           Purchase_2_Columns.never_missing +
-           Purchase_2_Columns.purchase_codes )
+  def all_columns():
+    return ( Purchase_2_Columns.very_missing +
+             Purchase_2_Columns.slightly_missing +
+             Purchase_2_Columns.never_missing +
+             Purchase_2_Columns.purchase_codes )
 
 def test_output( df ):
   assert ( set( df.columns ) ==
-           set( all_columns() ) )
+           set( Purchase_2_Columns.all_columns() ) )
 
   # coicop and 25-broad-categs are each individually missing substantially,
   # but exactly one of them is always present
