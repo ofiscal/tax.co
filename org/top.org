@@ -1,18 +1,16 @@
 * TODO test suite
-** TODO people.main:
-*** Test the range and missing-ness of the input file.
-*** unit tests for people/main.py
-? What if a variable is built up in steps in main.py?
-Should I divide main.py into a separate file for each step?
-** TODO ? test that all column names are unique
-** TODO test means, variances
 ** TODO purchases.main
 *** TODO what to do|is done about missing freq, where-got, is-purchase
 is-purchase we probably assume to be 1, but the others ...?
 (they are often missing)
-** pitfalls
-*** integration tests: robust to chnages?
-And if they're not, maybe that's good?
+** TODO maybe
+*** TODO ? people.main:
+**** Test the range and missing-ness of the input file.
+**** unit tests for people/main.py
+? What if a variable is built up in steps in main.py?
+Should I divide main.py into a separate file for each step?
+*** TODO ? test that all column names are unique
+*** TODO test means, variances
 ** tasks
 *** restructure programs for testing
 Most of the program consists of one big function definition.
@@ -41,18 +39,14 @@ exhibit the statistics (means, min, max) they should have.
 
 We can apply similar integration tests to a subsample of the real ENPH.
 Those integration tests should test ranges, if not statistics.
-*** input data tests
-Create an enum, "value-kind", that represents a value format:
-The empty string, a string with commas, a string with only one period,
-a space-separated list of integers, etc.
-For each column, specify what value formats it should contain.
-Test that each column is as we believe it is.
-
-Then, for each transformation, specify a map from input formats to output formats,
-and test that it holds.
 *** collect preexisting tests
 Most tests are in python/test/,
 but some are elsewhere, e.g. in python/build/ss_contribs.py
+* TODO refactor
+** TODO classes.py: Things like this should be defined within each enum type.
+  re_nonNumeric = re.compile( "(.+\-|.*[^0-9\s\.,\-])" )
+  re_white      = re.compile( ".*[^\s].*\s.*[^\s]" )
+  ...
 * DONE before CB meeting
 ** for tomorrow
 2016 DANE

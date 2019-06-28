@@ -49,7 +49,8 @@ def properties_cover_num_column( properties, column : pd.Series ):
 
 class StringProperty(enum.Flag):
   NotAString    = enum.auto()
-  HasNull       = enum.auto()
+  HasNull       = enum.auto() # PITFALL: A non-string column will generate
+    # nothing but "NotAString", even if it does have null values.
   Digits        = enum.auto()
   InteriorSpace = enum.auto()
   NonNumeric    = enum.auto()
@@ -58,7 +59,7 @@ class StringProperty(enum.Flag):
   ManyPeriods   = enum.auto()
   ManyCommas    = enum.auto()
 
-if True:
+if True: # TODO ? WART: These should be defined within each enum type.
   re_nonNumeric = re.compile( "(.+\-|.*[^0-9\s\.,\-])" )
     # A (-) is nonnumeric if anything precedes it.
     # Any [^0-9\s\.,\-] is nonnumeric.

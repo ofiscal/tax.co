@@ -74,7 +74,7 @@ if True: # income
     ppl[   "income, month : labor : independent, months" ] = (
       ppl[ "income, month : labor : independent, months" ] . fillna(1) )
 
-    # Everywhere else, we interpret NaN as "zero" (pesos)
+    # For the rest of these, we interpret NaN as "zero" (pesos)
     columns_to_convert = ( list( cla.name_map( files.income )
                                  . values() )
                          + list( cla.name_map( files.beca_sources_private )
@@ -224,8 +224,7 @@ if True: # income
                      , "income, month : rental : real estate, undeveloped"
                      , "income, month : rental : vehicle | equipment" ]
 
-      # drop most components, but keep dividend income,
-      # and create capital minus dividends
+      # drop most components, but keep dividend income
       ppl = ppl.drop(
         columns = list( set ( cols_capital )
                       - set ( ["income, month : investment : dividends"] )

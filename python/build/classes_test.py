@@ -68,6 +68,10 @@ def test_stringProperties():
   assert( cla.stringProperties( pd.Series( ["a a", " b "] ) ) ==
           { cla.StringProperty.NonNumeric
           , cla.StringProperty.InteriorSpace} )
+  assert( cla.stringProperties( pd.Series( ["a a", " b ", np.nan] ) ) ==
+          { cla.StringProperty.NonNumeric
+          , cla.StringProperty.HasNull
+         , cla.StringProperty.InteriorSpace} )
   assert( cla.stringProperties( pd.Series( ["0.1.2", "0.1"] ) ) ==
           { cla.StringProperty.Digits
           , cla.StringProperty.ManyPeriods} )
@@ -77,6 +81,10 @@ def test_stringProperties():
           , cla.StringProperty.Comma } )
   assert( cla.stringProperties( pd.Series( ["12709901", "inv02"] ) ) ==
           { cla.StringProperty.Digits
+          , cla.StringProperty.NonNumeric } )
+  assert( cla.stringProperties( pd.Series( ["1,2,3", "12709901", "inv02"] ) ) ==
+          { cla.StringProperty.Digits
+          , cla.StringProperty.ManyCommas
           , cla.StringProperty.NonNumeric } )
 
 def test_Correction():
@@ -144,13 +152,14 @@ def test_File():
            == { "beautiful output.csv" : "gold" } )
 
 if True: # run the tests
-  test_Property_subclasses()
-  test_re_nonNumeric()
-  test_re_white()
-  test_re_digits()
-  test_re_p()
-  test_re_c()
-  test_re_gt1p()
-  test_re_gt1c()
-  test_stringProperties()
+  test_Correction()
   test_File()
+  test_Property_subclasses()
+  test_re_c()
+  test_re_digits()
+  test_re_gt1c()
+  test_re_gt1p()
+  test_re_nonNumeric()
+  test_re_p()
+  test_re_white()
+  test_stringProperties()
