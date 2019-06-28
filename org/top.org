@@ -569,6 +569,11 @@ but zero people in the sample received any of it:
 If we ever again need a purchase data set that tracks the file each purchase is from,
 that's already implemented.
 * TODO PITFALLs in code
+** PITFALLS in pandas
+*** two columns can have the same name, silently
+This can result in errors like "cannot add str to int".
+Because f you add a number to a column, and another shares its name,
+it will try to add the number to both.
 ** TODO some import names clobber others
 When using the syntax "import _ as x", Python will only bind one library to the name "x". When collisions occur, the latest binding wins.
 

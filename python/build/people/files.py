@@ -92,7 +92,10 @@ income_labor = [
   , ("P6779S1", 0, "income, month : labor : viaticum ?2", 0)
 
   , ("P550", 0, "income, year : labor : rural", 0)
-  , ("P6630S5A1", 0, "income, year : labor : bonus", 0)
+  , ("P6630S5A1", 0, "income, year : labor : annual bonus", 0)
+    # PITFALL: This needs the apparently-redundant word annual
+    # in order not to clobber another variable once yearly variables
+    # are converted to monthly ones and accordingly renamed.
   , ("P6630S2A1", 0, "income, year : labor : christmas bonus", 0)
   , ("P6630S1A1", 0, "income, year : labor : prima de servicios", 0)
   , ("P6630S3A1", 0, "income, year : labor : vacation bonus", 0)

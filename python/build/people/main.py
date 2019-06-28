@@ -4,6 +4,7 @@ import re as regex
 
 import python.build.classes as cla
 import python.build.output_io as oio
+import python.build.people.main_defs as defs
 import python.build.people.files as files
 import python.common.cl_args as cl
 import python.common.misc as c
@@ -87,15 +88,14 @@ if True: # income
         lambda x : 0 if ((x >= 98) & (x <= 99)) else x )
     del(columns_to_convert)
 
-  if True: # divide yearly income variables by 12
+  if True: # divide yearly income variables by 12, and rename
     re_year_income  = regex.compile( "^income, year" )
-    for col in [col for col in ppl.columns if re_year_income.match( col )]:
+    year_columns = [col for col in ppl.columns if re_year_income.match( col )]
+    for col in year_columns:
       ppl[col] = ppl[col] / 12
-
-  # PITFALL : Yearly income variables have now been divided by 12,
-  # but their names are unchanged.
-    # (Once all the totals have been computed, those components will have
-    #  all been dropped, but until then it could be confusing.)
+    ppl = ppl.rename(
+      columns = dict( zip( year_columns
+                         , defs.rename_monthly( year_columns ) ) ) )
 
   re_in_kind = regex.compile( "^income.*in.kind$" )
 
@@ -126,49 +126,49 @@ if True: # income
       ppl["income, month : govt : beca, cash"] = 0
       ppl.loc[ ppl["beca sources, total"] > 0
              , "income, month : govt : beca, cash" ] = (
-        ppl["income, year : edu : beca, cash"]
+        ppl["income, month : edu : beca, cash"]
         * ppl["beca sources, govt"]     / ppl["beca sources, total"] )
 
       ppl["income, month : private : beca, cash"] = 0
       ppl.loc[ ppl["beca sources, total"] > 0
              , "income, month : private : beca, cash" ] = (
-        ppl["income, year : edu : beca, cash"]
+        ppl["income, month : edu : beca, cash"]
         * ppl["beca sources, private"]  / ppl["beca sources, total"] )
 
       ppl["income, month : govt : non-beca, cash"] = 0
       ppl.loc[ ppl["non-beca sources, total"]
              , "income, month : govt : non-beca, cash"] = (
-        ppl["income, year : edu : non-beca, cash"]
+        ppl["income, month : edu : non-beca, cash"]
         * ppl["non-beca sources, govt"] / ppl["non-beca sources, total"] )
 
       ppl["income, month : private : non-beca, cash"] = 0
       ppl.loc[ ppl["non-beca sources, total"]
              , "income, month : private : non-beca, cash"] = (
-        ppl["income, year : edu : non-beca, cash"]
+        ppl["income, month : edu : non-beca, cash"]
         * ppl["non-beca sources, private"] / ppl["non-beca sources, total"] )
 
       ppl["income, month : govt : beca, in-kind"] = 0
       ppl.loc[ ppl["beca sources, total"] > 0
              , "income, month : govt : beca, in-kind" ] = (
-        ppl["income, year : edu : beca, in-kind"]
+        ppl["income, month : edu : beca, in-kind"]
         * ppl["beca sources, govt"]     / ppl["beca sources, total"] )
 
       ppl["income, month : private : beca, in-kind"] = 0
       ppl.loc[ ppl["beca sources, total"] > 0
              , "income, month : private : beca, in-kind" ] = (
-        ppl["income, year : edu : beca, in-kind"]
+        ppl["income, month : edu : beca, in-kind"]
         * ppl["beca sources, private"]  / ppl["beca sources, total"] )
 
       ppl["income, month : govt : non-beca, in-kind"] = 0
       ppl.loc[ ppl["non-beca sources, total"]
              , "income, month : govt : non-beca, in-kind"] = (
-        ppl["income, year : edu : non-beca, in-kind"]
+        ppl["income, month : edu : non-beca, in-kind"]
         * ppl["non-beca sources, govt"] / ppl["non-beca sources, total"] )
 
       ppl["income, month : private : non-beca, in-kind"] = 0
       ppl.loc[ ppl["non-beca sources, total"]
              , "income, month : private : non-beca, in-kind"] = (
-        ppl["income, year : edu : non-beca, in-kind"]
+        ppl["income, month : edu : non-beca, in-kind"]
         * ppl["non-beca sources, private"] / ppl["non-beca sources, total"] )
 
       new_edu_income_variables = ppl.filter(
@@ -180,20 +180,22 @@ if True: # income
         ).drop( columns = ppl.filter( regex = "(beca source|beca from)"
                           ).columns
         ).rename( columns = {
-            "income, year : edu : beca, in-kind"
+            "income, month : edu : beca, in-kind"
               : "income : edu : beca, in-kind"
-          , "income, year : edu : non-beca, in-kind"
+          , "income, month : edu : non-beca, in-kind"
               : "income : edu : non-beca, in-kind"
-          , "income, year : edu : beca, cash"
+          , "income, month : edu : beca, cash"
               : "income : edu : beca, cash"
-          , "income, year : edu : non-beca, cash"
+          , "income, month : edu : non-beca, cash"
               : "income : edu : non-beca, cash" } )
 
     if True: # govt income (cash + in-kind)
       cols_govt = list( cla.name_map( files.income_govt )
                       . values() )
-      cols_govt_cash    = [ col for col in cols_govt if not re_in_kind.match(col) ]
-      cols_govt_in_kind = [ col for col in cols_govt if     re_in_kind.match(col) ]
+      cols_govt_cash    = [ col for col in defs.rename_monthly( cols_govt )
+                            if not re_in_kind.match(col) ]
+      cols_govt_in_kind = [ col for col in defs.rename_monthly( cols_govt )
+                            if     re_in_kind.match(col) ]
       ppl["total income, monthly : govt, cash"] = (
         ppl[ cols_govt_cash ].sum( axis=1 ) )
       ppl["total income, monthly : govt, in-kind"] = (
@@ -202,22 +204,22 @@ if True: # income
 
     if True: # income, non-labor ("ingreso no laboral", for tax purposes)
       ppl["income, non-labor"] = (
-          ppl["income, year : sale : stock"]
-        + ppl["income, year : sale : stock ?2"]
-        + ppl["income, year : sale : livestock"]
-        + ppl["income, year : sale : vehicle | equipment"]
+          ppl["income, month : sale : stock"]
+        + ppl["income, month : sale : stock ?2"]
+        + ppl["income, month : sale : livestock"]
+        + ppl["income, month : sale : vehicle | equipment"]
         + ppl["income, month : private : beca, cash"]
         + ppl["income, month : private : beca, in-kind"] )
 
     if True: # capital income (which is never in-kind)
       ppl["income, capital (tax def)"] = (
-                   ppl["income, year : investment : interest"]
+                   ppl["income, month : investment : interest"]
                  + ppl["income, month : rental : real estate, developed"]
                  + ppl["income, month : rental : real estate, undeveloped"]
                  + ppl["income, month : rental : vehicle | equipment"] )
 
-      cols_capital = [ "income, year : investment : dividends"
-                     , "income, year : investment : interest"
+      cols_capital = [ "income, month : investment : dividends"
+                     , "income, month : investment : interest"
                      , "income, month : rental : real estate, developed"
                      , "income, month : rental : real estate, undeveloped"
                      , "income, month : rental : vehicle | equipment" ]
@@ -226,44 +228,47 @@ if True: # income
       # and create capital minus dividends
       ppl = ppl.drop(
         columns = list( set ( cols_capital )
-                      - set ( ["income, year : investment : dividends"] )
+                      - set ( ["income, month : investment : dividends"] )
       ) )
 
     if True: # private income (cash + in-kind)
-      cols_private = list( cla.name_map( files.income_private )
-                         . values() )
+      cols_private = defs.rename_monthly(
+                       list( cla.name_map( files.income_private )
+                           . values() ) )
       ppl["total income, monthly : private"] = (
         ppl[ cols_private ].sum( axis=1 ) )
       ppl["income, donacion"] = (
         # PITFALL: overlaps what will be called "income, private"
-        ppl["income, year : private : from private domestic ?firms"] +
-        ppl["income, year : private : from private foreign ?firms"] )
+        ppl["income, month : private : from private domestic ?firms"] +
+        ppl["income, month : private : from private foreign ?firms"] )
 
       ppl = ppl.drop( columns = cols_private )
 
     if True: # infrequent income (cash only)
-      cols_infrequent = list( cla.name_map( files.income_infrequent )
-                            . values() )
+      cols_infrequent = defs.rename_monthly(
+                          list( cla.name_map( files.income_infrequent )
+                              . values() ) )
       ppl["total income, monthly : infrequent"] = (
         ppl[ cols_infrequent ].sum( axis=1 ) )
 
       ppl["income, ganancia ocasional, 10%-taxable"] = (
         # PITFALL: overlaps what will be called "income, infrequent"
-        ppl["income, year : sale : real estate"] +
-        ppl["income, year : infrequent : inheritance"] +
+        ppl["income, month : sale : real estate"] +
+        ppl["income, month : infrequent : inheritance"] +
         ppl["income, donacion"].apply(
           lambda x: x - min ( x * 0.2
                             , c.uvt * (2290 / 12)  ) ) )
 
       ppl["income, ganancia ocasional, 20%-taxable"] = (
-        ppl["income, year : infrequent : gambling"] +
-        ppl["income, year : infrequent : jury awards"] )
+        ppl["income, month : infrequent : gambling"] +
+        ppl["income, month : infrequent : jury awards"] )
 
       ppl = ppl.drop( columns = cols_infrequent )
 
     if True: # "income" from borrowing
-      cols_borrowing = list( cla.name_map( files.income_borrowing )
-                           . values() )
+      cols_borrowing = defs.rename_monthly(
+                         list( cla.name_map( files.income_borrowing )
+                             . values() ) )
       ppl["income, borrowing"] = (
         ppl[ cols_borrowing ].sum( axis=1 ) )
 
@@ -286,16 +291,20 @@ if True: # income
         cols_labor_cash    = [ col for col in cols_labor if not re_in_kind.match(col) ]
         cols_labor_in_kind = [ col for col in cols_labor if     re_in_kind.match(col) ]
         ppl["total income, monthly : labor, cash"] = (
-          ppl[ cols_labor_cash ].sum( axis=1 ) )
+          ppl[ defs.rename_monthly( cols_labor_cash ) ]
+          . sum( axis=1 ) )
         ppl["total income, monthly : labor, in-kind"] = (
-          ppl[ cols_labor_in_kind ].sum( axis=1 ) )
-        ppl = ppl.drop( columns = cols_labor_in_kind + cols_labor_cash )
+          ppl[ defs.rename_monthly( cols_labor_in_kind ) ]
+          . sum( axis=1 ) )
+        ppl = ppl.drop(
+          columns = defs.rename_monthly(
+            cols_labor_in_kind + cols_labor_cash ) )
 
     if True: # homogenize, shorten income variable names
       income_short_name_dict_cash = {
           'income, month : pension : age | illness'  : "income, pension"
-        , 'income, year : cesantia'                  : "income, cesantia"
-        , "income, year : investment : dividends"    : "income, dividend"
+        , 'income, month : cesantia'                  : "income, cesantia"
+        , "income, month : investment : dividends"    : "income, dividend"
         , 'total income, monthly : infrequent'       : "income, infrequent"
         , 'total income, monthly : govt, cash'       : "income, govt, cash"
         , 'total income, monthly : labor, cash'      : "income, labor, cash"
@@ -389,18 +398,18 @@ if True: # dependence
 
 if True: # drop (so far) unused vars
   ppl = ppl.drop( columns =
-    [ "income, year : borrowing : from person"
-    , "income, year : borrowing : from bank"
-    , "income, year : borrowing : from other"
+    [ "income, month : borrowing : from person"
+    , "income, month : borrowing : from bank"
+    , "income, month : borrowing : from other"
     , "income : edu : beca, cash"
     , "income : edu : beca, in-kind"
     , "income : edu : non-beca, cash"
     , "income : edu : non-beca, in-kind"
-    , "income, year : sale : livestock"
-    , "income, year : sale : real estate"
-    , "income, year : sale : stock"
-    , "income, year : sale : stock ?2"
-    , "income, year : sale : vehicle | equipment"
+    , "income, month : sale : livestock"
+    , "income, month : sale : real estate"
+    , "income, month : sale : stock"
+    , "income, month : sale : stock ?2"
+    , "income, month : sale : vehicle | equipment"
     , "pension, contribution amount"
     , "pre-k|daycare"
     , "race"
