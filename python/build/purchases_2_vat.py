@@ -9,8 +9,8 @@ import python.common.util as util
 
 
 if True: # input files
-  # This data set is too big unless we down-cast the numbers.
   purchases = oio.readStage (
+    # This data set is too big unless we down-cast the numbers.
       c.subsample
     , "purchases_1"
     , dtype = { "25-broad-categs" : "float32"
@@ -28,34 +28,36 @@ if True: # input files
     . Drop_Row_If_Column_Satisfies_Predicate(
       "freq", lambda x: x==11 )
     . correct( purchases ) )
-  ( cla . Correction # no negative quantities
+  ( cla . Correction # no non-positive quantities
     . Drop_Row_If_Column_Satisfies_Predicate(
       "quantity", lambda x: x<=0 )
     . correct( purchases ) )
 
-  vat_cap_c = oio.readStage( c.subsample
-                           , "vat_cap_c_brief." + c.strategy_suffix
-                           , dtype = {
-                             "25-broad-categs" : "int32"
-                             , "vat" : "float32"
-                             , "vat, min" : "float32"
-                             , "vat, max" : "float32"
-                             , "vat frac" : "float32"
-                             , "vat frac, min" : "float32"
-                             , "vat frac, max" : "float32"
-                           } )
+  vat_cap_c = oio.readStage(
+      c.subsample
+    , "vat_cap_c_brief." + c.strategy_suffix
+    , dtype = {
+      "25-broad-categs" : "int32"
+      , "vat" : "float32"
+      , "vat, min" : "float32"
+      , "vat, max" : "float32"
+      , "vat frac" : "float32"
+      , "vat frac, min" : "float32"
+      , "vat frac, max" : "float32"
+    } )
 
-  vat_coicop = oio.readStage( c.subsample
-                            , "vat_coicop_brief." + c.strategy_suffix
-                            , dtype = {
-                                "coicop" : "int32"
-                              , "vat" : "float32"
-                              , "vat, min" : "float32"
-                              , "vat, max" : "float32"
-                              , "vat frac" : "float32"
-                              , "vat frac, min" : "float32"
-                              , "vat frac, max" : "float32"
-                            } )
+  vat_coicop = oio.readStage(
+      c.subsample
+    , "vat_coicop_brief." + c.strategy_suffix
+    , dtype = {
+      "coicop" : "int32"
+      , "vat" : "float32"
+      , "vat, min" : "float32"
+      , "vat, max" : "float32"
+      , "vat frac" : "float32"
+      , "vat frac, min" : "float32"
+      , "vat frac, max" : "float32"
+    } )
 
 if True: # left-pad every coicop value with 0s
   purchases  ["coicop"] = util.pad_column_as_int( 8, purchases  ["coicop"] )
@@ -82,8 +84,10 @@ if True: # handle freq, value, vat paid
   purchases["freq-code"] = purchases["freq"]
     # Kept for the sake of drawing a table of purchase frequency,
     # with frequencies spread evenly across the x-axis.
-  purchases["freq"].replace( legends.freq
-                           , inplace=True )
+  ( purchases["freq"] # PITFALL: not functional; the "inplace" option
+                      # causes replace() to have no return value.
+  . replace( legends.freq
+           , inplace=True ) )
   purchases = purchases.drop(
     purchases[ purchases["freq"].isnull() ]
     .index

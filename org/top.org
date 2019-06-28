@@ -1,4 +1,8 @@
 * TODO test suite
+** TODO "household member" max mismatch
+In people (full sample) its max is 22
+In purchases (full sample) its max is 195
+** TODO rename "freq" -> "per month"
 ** TODO purchases.main
 *** TODO what to do|is done about missing freq, where-got, is-purchase
 is-purchase we probably assume to be 1, but the others ...?
