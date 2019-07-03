@@ -1,4 +1,7 @@
+* TODO solve: Makefile for raw data produced inconsistent results
+Inconsistent, that is, with what was on my laptop already.
 * TODO test suite
+** It would be particularly helpful if shadowing was reported when the two variables are of the same type.
 ** TODO "household member" max mismatch
 In people (full sample) its max is 22
 In purchases (full sample) its max is 195
