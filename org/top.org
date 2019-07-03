@@ -1,5 +1,20 @@
 * TODO solve: Makefile for raw data produced inconsistent results
 Inconsistent, that is, with what was on my laptop already.
+** rewrite raw-data Makefile to proceed from literally raw DANE data
+*** this assumes a folder full of ENPH .zip files downloaded from DANE
+as in data/enph-2017/fresh-zipfiles/
+*** Makefile steps
+**** rename, uncompress all, rename
+   find -name "*.zip" | rename 's/ /_/g'
+     # without this, `unzip` believes each file is multiple files
+   for a in `ls -1 *.zip`; do unzip $a; done
+   rm *.zip
+   find -regex ".*\.\(sav\|csv\|dta\|txt\)" | rename 's/ /_/g'
+     # without this, `make` believes each file is multiple files
+**** in the .txt files, replace tab with semicolon
+  sed -i -r "s/\t/\;/g" *.txt
+**** then rename each .txt file to .csv
+   find -regex ".*\.txt" | rename 's/\.txt/\.csv/g'
 * TODO test suite
 ** It would be particularly helpful if shadowing was reported when the two variables are of the same type.
 ** TODO "household member" max mismatch
