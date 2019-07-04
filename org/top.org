@@ -1,5 +1,9 @@
 * TODO solve: Makefile for raw data produced inconsistent results
 Inconsistent, that is, with what was on my laptop already.
+** TODO test folder contents
+write ls to a temp file, after testing that the temp file doesn't already exist
+test that it's equal to a git-stored file
+delete the temp file
 ** rewrite raw-data Makefile to proceed from literally raw DANE data
 *** this assumes a folder full of ENPH .zip files downloaded from DANE
 as in data/enph-2017/fresh-zipfiles/
@@ -11,7 +15,15 @@ as in data/enph-2017/fresh-zipfiles/
    rm *.zip
    find -regex ".*\.\(sav\|csv\|dta\|txt\)" | rename 's/ /_/g'
      # without this, `make` believes each file is multiple files
-**** in the .txt files, replace tab with semicolon
+**** in the .txt files
+***** TODO test that there are no " or ' characters
+  if-else for grep finding something
+    https://stackoverflow.com/questions/27392410/how-to-check-if-grep-has-no-output/27392497
+  search for quotation marks
+    egrep "'|\"" *.txt
+  if any are found, evaluate this:
+    $(error There are single or double quotation marks in one of the .txt files; replacing tabs with semicolons might therefore be unsafe.)
+***** replace tab with semicolon
   sed -i -r "s/\t/\;/g" *.txt
 **** then rename each .txt file to .csv
    find -regex ".*\.txt" | rename 's/\.txt/\.csv/g'
