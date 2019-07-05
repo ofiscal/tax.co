@@ -5,17 +5,6 @@ import python.common.cl_args as cl
 import python.build.output_io as oio
 
 
-if True: # initialize log
-  test_output_filename = "build_purchases_2_vat"
-  oio.test_clear( cl.subsample
-                , test_output_filename )
-  def echo( content ):
-    oio.test_write( cl.subsample
-                  , test_output_filename
-                  , content )
-  echo( ["starting"] )
-
-
 def test_ranges( df ):
   spec = {
       "25-broad-categs" : { cla.IsNull(), cla.InRange( 1, 25 ) }
@@ -25,7 +14,6 @@ def test_ranges( df ):
     ## >>> RESUME here
   }
   for k in spec:
-    echo( [k] )
     assert cla.properties_cover_num_column( spec[k], df[k] )
 
 
@@ -60,6 +48,7 @@ class Purchase_2_Columns_missing:
              Purchase_2_Columns_missing.never +
              Purchase_2_Columns_missing.purchase_codes )
 
+
 def test_output( df ):
   assert ( set( df.columns ) ==
            set( Purchase_2_Columns_missing.all_columns() ) )
@@ -88,7 +77,11 @@ def test_output( df ):
              < 0.2 )
 
 
-if True: # run tests
+if True: # IO
+  log = "starting\n"
   ps = oio.readStage( cl.subsample
                     , "purchases_2_vat." + cl.strategy_suffix )
   test_output( ps )
+  oio.test_write( cl.subsample
+                , "build_purchases_2_vat"
+                , log )

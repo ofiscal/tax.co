@@ -1,14 +1,17 @@
 * TODO test suite
-** TODO rewrite test output file idiom, for Makefile soundness
+** TODO Rewrite so that all IO comes at the end, for Makefile soundness.
 *** motivation:: build/purchases_2_vat_test.py does not re-run after failing
 **** to see this
   set some assertion to always fail
   e.g. set the number on line 83 to 0
-*** how to change it
- During each test file, build a log as a string.
- Write it to disk only once all that file's tests have succeeded.
-*** non-test programs might have a similar problem
+*** how to change it: Mirror the changes to build/purchases_2_vat_test.py
+Explicitly:
+  During each test file, build a log as a string.
+  Write it to disk only once all that file's tests have succeeded.
+*** TODO non-test programs might have a similar problem
+*** TODO once that's done, delete oiio.test_clear()
 ** It would be particularly helpful if shadowing was reported when the two variables are of the same type.
+** TODO resume at purchases_2_vat_test.test_ranges()
 ** TODO "household member" max mismatch
 In people (full sample) its max is 22
 In purchases (full sample) its max is 195
