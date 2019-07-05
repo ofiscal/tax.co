@@ -80,7 +80,7 @@ def test_output( df ):
   for c in Purchase_2_Columns_missing.slightly:
     assert ( ( len( df[ pd.isnull( df[c] ) ] ) /
                len( df ) )
-             < 0.02 )
+             < 0.03 )
 
   for c in Purchase_2_Columns_missing.very:
     assert ( ( len( df[ pd.isnull( df[c] ) ] ) /

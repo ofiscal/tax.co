@@ -1,3 +1,7 @@
+* bug: build/purchases_2_vat_test.py does not re-run after failing
+** to see this
+set some assertion to always fail
+e.g. set the number on line 83 to 0
 * TODO test suite
 ** It would be particularly helpful if shadowing was reported when the two variables are of the same type.
 ** TODO "household member" max mismatch

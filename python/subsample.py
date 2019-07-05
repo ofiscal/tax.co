@@ -12,7 +12,7 @@ folder = datafiles.yearSurveyFolder(2017)
 
 
 def find_input(name):
-  return folder + "orig/csv/" + name + '.csv'
+  return folder + "2_unzipped/csv/" + name + '.csv'
 
 if True: # read, subsample household indices
   print("Subsampling household indices (from Viviendas_y_hogares).")
@@ -37,7 +37,7 @@ if True: ## Subsample each file (including Viviendas) based on that
 
   for name in names:
     print("Processing " + name + ".")
-    data = pd.read_csv( folder + "orig/csv/" + name + '.csv', sep=";" )
+    data = pd.read_csv( folder + "2_unzipped/csv/" + name + '.csv', sep=";" )
     for c in data.columns:
       if data[c].dtype == object:
         data[c] = ( data[c].astype(str)
