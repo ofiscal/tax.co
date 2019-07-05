@@ -5,7 +5,7 @@ import python.build.classes as cla
 
 
 strategy_names = [ # There used to be a lot of these.
-  "detail"             # They disappeared in the branch "retire-hypotheticals".
+  "detail"         # They disappeared in the branch "retire-hypotheticals".
 ]
 
 [detail] = strategy_names
