@@ -1,40 +1,43 @@
-enph_folders = Caracteristicas_generales_personas                         \
-  Gastos_diarios_del_hogar_Urbano_-_Comidas_preparadas_fuera_del_hogar	  \
-  Gastos_diarios_personales_Urbano					  \
-  Gastos_diarios_Urbanos						  \
-  Gastos_diarios_Urbanos_-_Mercados					  \
-  Gastos_diarios_Urbano_-_Capitulo_C                                      \
-  Gastos_menos_frecuentes_-_Articulos					  \
-  Gastos_menos_frecuentes_-_Medio_de_pago				  \
-  Gastos_personales_Rural						  \
-  Gastos_personales_Rural_-_Comidas_preparadas_fuera_del_Hogar		  \
-  Gastos_personales_Urbano_-_Comidas_preparadas_fuera_del_hogar		  \
-  Gastos_semanales_Rural_-_Capitulo_C					  \
-  Gastos_semanales_Rural_-_Comidas_preparadas_fuera_del_hogar		  \
-  Gastos_semanales_Rurales						  \
-  Gastos_semanales_Rurales_-_Mercados					  \
-  Viviendas_y_hogares
+SHELL := bash
+.PHONY = verify unpack_and_rename
 
-all = $(addprefix csv/, $(addsuffix .csv, $(enph_folders))) \
-      $(addprefix dta/, $(addsuffix .dta, $(enph_folders))) \
-      $(addprefix sav/, $(addsuffix .sav, $(enph_folders)))
+data: \
+  verify \
+  unpack_and_rename \
+  handle_txt_files
 
-$(all): ENPH-2016-official.tar.gz
-	mkdir csv dta sav
-	mkdir temp-for-unpacking
-	cd temp-for-unpacking                      ; \
-	  mv ../ENPH-2016-official.tar.gz .	   ; \
-	  tar -xvzf ENPH-2016-official.tar.gz	   ; \
-	  mv */*.csv ../csv			   ; \
-	  mv */*.dta ../dta			   ; \
-	  mv */*.sav ../sav			   ; \
-	  mv README* ENPH-2016-official.tar.gz ..  ; \
-	  rmdir $(enph_folders)
-	rmdir temp-for-unpacking
-	mkdir orig
-	mv csv dta sav orig
+verify: # verify the content of the raw zipfiles
+	echo "If this fails, checksum does not match value expected as of 2019 07 03."
+	sha1sum 1_raw/* | sha1sum | grep "bd8c4db51854716c860c2cac797a677d41f7b83d"
 
-        # replace tab with semicolon, to make these like the others
-	sed -i -r "s/\t/\;/g" orig/csv/Gastos_menos_frecuentes_-_Articulos.csv \
-                              orig/csv/Gastos_diarios_Urbano_-_Capitulo_C.csv  \
-                              orig/csv/Gastos_diarios_Urbanos.csv
+unpack_and_rename:
+	cd 1_raw						; \
+	  find . -name "*.zip" | rename 's/ /_/g' # without this the unzip line fails
+	mkdir -p 2_unzipped
+	# PITFALL: If this were bash rather than make, below would use $, not $$.
+	cd 2_unzipped						; \
+	  for a in `ls -1 ../1_raw/*.zip`; do unzip "$$a"; done ; \
+	  mkdir -p csv dta sav					; \
+	  mv *.csv csv						; \
+	  mv *.dta dta						; \
+	  mv *.sav sav						; \
+	  find -regex ".*\.\(sav\|csv\|dta\|txt\)" | rename 's/ /_/g'
+	cd 1_raw						; \
+	  find . -name "*.zip" | rename 's/_/ /g' # undo changes to raw data
+
+# If there are no quotation marks in .txt files,
+# replace tab with semicolon, change .txt to .csv,
+# and move to where the other .csv files are.
+handle_txt_files:
+	cd 2_unzipped								  ; \
+	  touch definitely_empty						  ; \
+	  grep "'|\"" *.txt > hopefully_empty					  ; \
+	  cmp -s hopefully_empty definitely_empty				  ; \
+	  if cmp -s hopefully_empty definitely_empty				  ; \
+	    then echo "Good: No single or double quotation marks found in *.txt." ; \
+	    else echo "Trouble: Single or double quotation marks found in *.txt." ; \
+	  fi									  ; \
+	  sed -i -r "s/\t/\;/g" *.txt						  ; \
+          find -regex ".*\.txt" | rename 's/\.txt/\.csv/g'			  ; \
+	  mv *.csv csv								  ; \
+	  rm hopefully_empty definitely_empty
