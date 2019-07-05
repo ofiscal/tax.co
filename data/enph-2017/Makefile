@@ -1,5 +1,5 @@
 SHELL := bash
-.PHONY = verify unpack_and_rename
+.PHONY = verify unpack_and_rename handle_txt_files
 
 data: \
   verify \
@@ -36,6 +36,7 @@ handle_txt_files:
 	  if cmp -s hopefully_empty definitely_empty				  ; \
 	    then echo "Good: No single or double quotation marks found in *.txt." ; \
 	    else echo "Trouble: Single or double quotation marks found in *.txt." ; \
+	         exit 1                                                           ; \
 	  fi									  ; \
 	  sed -i -r "s/\t/\;/g" *.txt						  ; \
           find -regex ".*\.txt" | rename 's/\.txt/\.csv/g'			  ; \

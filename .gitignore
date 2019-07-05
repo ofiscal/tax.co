@@ -20,10 +20,10 @@ output/enph_revision/
 
 all-but-data/
 
-data/enig-2007/*.tgz
+data/enig-2007/1_raw
+data/enig-2007/2_unzipped
 data/enig-2007/recip-1*
-data/enig-2007/orig-txt
-data/enph-2017/pre-release/
+data/enph-2017/older*
 
 data/enph-2017/*.tar.gz
 data/enph-2017/orig
