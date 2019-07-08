@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 
+import python.build.classes as cla
 import python.common.cl_args as cl
 import python.build.output_io as oio
 
@@ -81,6 +82,7 @@ if True: # IO
   log = "starting\n"
   ps = oio.readStage( cl.subsample
                     , "purchases_2_vat." + cl.strategy_suffix )
+  test_ranges( ps )
   test_output( ps )
   oio.test_write( cl.subsample
                 , "build_purchases_2_vat"

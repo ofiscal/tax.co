@@ -159,74 +159,66 @@ show_params:
 # make that output file a dependency.
 # PITFALL: purchase_input.txt always uses the full sample
 tests: \
-  python/build/classes_test.py \
-  python/common/misc_test.py \
   output/test/recip-$(ss)/build_buildings.txt \
+  output/test/recip-$(ss)/build_classes.txt \
   output/test/recip-$(ss)/build_purchases_2_vat.txt \
+  output/test/recip-$(ss)/common_misc.txt \
   output/test/recip-$(ss)/common_util.txt \
   output/test/recip-$(ss)/people_main.txt \
   output/test/recip-1/purchase_inputs.txt \
   output/test/recip-$(ss)/purchases_main.txt \
   output/test/recip-$(ss)/vat_rates.txt
-	date
-	$(python_from_here) python/build/classes_test.py \
-          $(subsample) $(strategy) $(yr)
-	$(python_from_here) python/common/misc_test.py \
-          $(subsample) $(strategy) $(yr)
 	printf '\nAll tests passed.\n\n'
-
-output/test/recip-$(ss)/build_purchases_2_vat.txt: \
-  $(purchases_2_vat) \
-  python/build/purchases_2_vat_test.py \
-  python/build/purchases_2_vat.py \
-  python/common/cl_args.py \
-  python/build/output_io.py
-	$(python_from_here) python/build/purchases_2_vat_test.py \
-          $(subsample) $(strategy) $(yr)
 
 output/test/recip-$(ss)/build_buildings.txt: \
   $(buildings) \
-  python/build/buildings_test.py \
   python/build/buildings.py \
+  python/build/buildings_test.py \
   python/build/classes.py \
-  python/common/misc.py \
+  python/build/output_io.py \
   python/common/cl_args.py \
-  python/build/output_io.py
+  python/common/misc.py
 	$(python_from_here) python/build/buildings_test.py \
           $(subsample) $(strategy) $(yr)
 
-output/test/recip-$(ss)/vat_rates.txt: \
-  $(vat_rates.py) \
-  python/build/vat_rates_test.py \
-  python/build/vat_rates.py \
+output/test/recip-$(ss)/build_classes.txt: \
+  python/build/classes.py \
+  python/build/classes_test.py
+	date
+	$(python_from_here) python/build/classes_test.py \
+          $(subsample) $(strategy) $(yr)
+
+output/test/recip-$(ss)/build_purchases_2_vat.txt: \
+  $(purchases_2_vat) \
+  python/build/output_io.py \
+  python/build/purchases_2_vat.py \
+  python/build/purchases_2_vat_test.py \
+  python/common/cl_args.py
+	$(python_from_here) python/build/purchases_2_vat_test.py \
+          $(subsample) $(strategy) $(yr)
+
+output/test/recip-$(ss)/common_misc.txt: \
+  python/build/output_io.py \
   python/common/cl_args.py \
-  python/build/output_io.py
-	$(python_from_here) python/build/vat_rates_test.py \
+  python/common/misc.py \
+  python/common/misc_test.py
+	date
+	$(python_from_here) python/common/misc_test.py \
           $(subsample) $(strategy) $(yr)
 
 output/test/recip-$(ss)/common_util.txt: \
-  python/common/util_test.py \
+  python/build/output_io.py \
   python/common/util.py \
-  python/build/output_io.py
+  python/common/util_test.py
 	$(python_from_here) python/common/util_test.py \
-          $(subsample) $(strategy) $(yr)
-
-output/test/recip-$(ss)/purchases_main.txt: \
-  $(purchases_1) \
-  python/build/purchases/main_test.py \
-  python/build/purchases/main_defs.py \
-  python/common/cl_args.py \
-  python/build/classes.py \
-  python/build/output_io.py
-	$(python_from_here) python/build/purchases/main_test.py \
           $(subsample) $(strategy) $(yr)
 
 output/test/recip-$(ss)/people_main.txt: \
   $(people_1) \
-  python/build/people/main_test.py \
   python/build/classes.py \
   python/build/output_io.py \
   python/build/people/files.py \
+  python/build/people/main_test.py \
   python/common/cl_args.py \
   python/common/misc.py \
   python/common/util.py
@@ -237,16 +229,35 @@ output/test/recip-$(ss)/people_main.txt: \
 # certain kinds of rare values are never encountered.always
 output/test/recip-1/purchase_inputs.txt: \
   $(input_subsamples) \
-  python/build/purchases/input_test.py \
   python/build/classes.py \
   python/build/output_io.py \
-  python/build/purchases/nice_purchases.py \
   python/build/purchases/articulos.py \
   python/build/purchases/capitulo_c.py \
+  python/build/purchases/input_test.py \
+  python/build/purchases/nice_purchases.py \
   python/common/misc.py
 	date
 	$(python_from_here) python/build/purchases/input_test.py \
           1 detail 2016
+
+output/test/recip-$(ss)/purchases_main.txt: \
+  $(purchases_1) \
+  python/build/classes.py \
+  python/build/output_io.py \
+  python/build/purchases/main_defs.py \
+  python/build/purchases/main_test.py \
+  python/common/cl_args.py
+	$(python_from_here) python/build/purchases/main_test.py \
+          $(subsample) $(strategy) $(yr)
+
+output/test/recip-$(ss)/vat_rates.txt: \
+  $(vat_rates.py) \
+  python/build/output_io.py \
+  python/build/vat_rates.py \
+  python/build/vat_rates_test.py \
+  python/common/cl_args.py
+	$(python_from_here) python/build/vat_rates_test.py \
+          $(subsample) $(strategy) $(yr)
 
 
 ##=##=##=## subsample, or very slightly tweak, some input data sets

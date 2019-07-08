@@ -2,6 +2,8 @@ import numpy as np
 import pandas as pd
 
 import python.build.classes as cla
+import python.build.output_io as oio
+import python.common.cl_args as cl
 
 
 def test_Property_subclasses():
@@ -152,6 +154,8 @@ def test_File():
            == { "beautiful output.csv" : "gold" } )
 
 if True: # run the tests
+  log = "starting\n"
+
   test_Correction()
   test_File()
   test_Property_subclasses()
@@ -163,3 +167,7 @@ if True: # run the tests
   test_re_p()
   test_re_white()
   test_stringProperties()
+
+  oio.test_write( cl.subsample
+                , "build_classes"
+                , log )

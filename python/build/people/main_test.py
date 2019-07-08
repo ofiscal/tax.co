@@ -13,17 +13,6 @@ import python.common.misc as c
 import python.common.util as util
 
 
-if True: # initialize log
-  test_output_filename = "people_main"
-  oio.test_clear( cl.subsample
-                , test_output_filename )
-  def echo( content ):
-    oio.test_write( cl.subsample
-                  , test_output_filename
-                  , content )
-  echo( ["starting"] )
-
-
 ## unit tests
 
 def test_count_num_matches_in_space_separated_list():
@@ -108,14 +97,18 @@ def test_upper_bound_on_fraction_missing(ppl: pd.DataFrame):
 
 
 if True: # run tests
+  log = "starting\n"
+
   # unit tests
   test_count_num_matches_in_space_separated_list()
 
-  # build data
+  # integration tests
   ppl = oio.readStage(cl.subsample, 'people_1')
   ppl["education"] = util.interpretCategorical( ppl["education"]
                                               , files.edu_key.values() )
-
-  # integration tests
   test_ranges( ppl )
   test_upper_bound_on_fraction_missing( ppl )
+
+  oio.test_write( cl.subsample
+                , "people_main"
+                , log )

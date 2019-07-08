@@ -6,17 +6,6 @@ import python.common.misc as defs
 import python.build.output_io as oio
 
 
-if True: # initialize log
-  test_output_filename = "common_misc"
-  oio.test_clear( cl.subsample
-                , test_output_filename )
-  def echo( content ):
-    oio.test_write( cl.subsample
-                  , test_output_filename
-                  , content )
-  echo( ["starting"] )
-
-
 def test_all_columns_to_numbers():
   assert pd.DataFrame.equals(
     defs.all_columns_to_numbers(
@@ -33,4 +22,8 @@ def test_all_columns_to_numbers():
 
 
 if True: # run tests
+  log = "starting\n"
   test_all_columns_to_numbers()
+  oio.test_write( cl.subsample
+                , "common_misc"
+                , log )

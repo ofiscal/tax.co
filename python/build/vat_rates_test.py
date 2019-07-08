@@ -4,17 +4,6 @@ import python.common.cl_args as cl
 import python.build.output_io as oio
 
 
-if True: # initialize log
-  test_output_filename = "vat_rates"
-  oio.test_clear( cl.subsample
-                , test_output_filename )
-  def echo( content ):
-    oio.test_write( cl.subsample
-                  , test_output_filename
-                  , content )
-  echo( ["starting"] )
-
-
 tolerance = 0.01
 
 def test_vat_file( filename
@@ -49,5 +38,11 @@ def test_vat_file( filename
 
 
 if True: # run tests
+  log = "starting\n"
+
   test_vat_file( "vat_coicop_brief", "coicop", 1031 / 1051 )
   test_vat_file( "vat_cap_c_brief", "25-broad-categs", 20 / 25 )
+
+  oio.test_write( cl.subsample
+                , "vat_rates"
+                , log )

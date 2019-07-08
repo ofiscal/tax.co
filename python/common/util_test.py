@@ -6,17 +6,6 @@ import python.common.util as util
 import python.build.output_io as oio
 
 
-if True: # initialize log
-  test_output_filename = "common_util"
-  oio.test_clear( cl.subsample
-                , test_output_filename )
-  def echo( content ):
-    oio.test_write( cl.subsample
-                  , test_output_filename
-                  , content )
-  echo( ["starting"] )
-
-
 def test_util_pad_column_as_int():
   c = pd.Series( [2, "2","2.0",np.nan] )
   assert pd.Series.equals(
@@ -25,4 +14,8 @@ def test_util_pad_column_as_int():
 
 
 if True: # run tests
+  log = "starting\n"
   test_util_pad_column_as_int()
+  oio.test_write( cl.subsample
+                , "common_util"
+                , log )
