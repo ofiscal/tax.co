@@ -41,7 +41,7 @@ for c in (
         , { ' ' : np.nan
             # 'nan's are created from the cast to type str
             , "nan" : np.nan } ) ]
-    for colname in ["where-got", "coicop", "freq", "how-got", "value"] ] ) )
+    for colname in ["where-got", "coicop", "per month", "how-got", "value"] ] ) )
   ): purchases = c.correct( purchases )
 
 purchases = com.all_columns_to_numbers( purchases )

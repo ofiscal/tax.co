@@ -40,7 +40,7 @@ def test_output( df ):
     , "is-purchase" :      { cla.IsNull(), cla.InRange( 0,1 ) }
     , "household-member" : {               cla.InRange( 1, 1e3 ) }
     , "household" :        {               cla.InRange( 1, 1e7 ) }
-    , "freq" :             { cla.IsNull(), cla.InRange( 1, 11 ) }
+    , "per month" :        { cla.IsNull(), cla.InRange( 1, 11 ) }
     , "coicop" :           { cla.IsNull(), cla.InRange( 1, 1e8 ) }
     , "25-broad-categs" :  { cla.IsNull(), cla.InRange( 1, 25 ) }
   }
@@ -65,10 +65,10 @@ def test_output( df ):
 
   log += "Very few purchases with a frequency of \"never\"."
   assert ( (1e-5)
-           > ( len( df[ df["freq"] > 10 ] ) / len(df) ) )
+           > ( len( df[ df["per month"] > 10 ] ) / len(df) ) )
 
   log += "Those few frequency=\"never\" purchases are for very little money."
-  assert ( df[ df["freq"] > 10 ]["value"]
+  assert ( df[ df["per month"] > 10 ]["value"]
            < 1e4 ).all()
 
   return log

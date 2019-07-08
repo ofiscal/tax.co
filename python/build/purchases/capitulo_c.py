@@ -17,7 +17,7 @@ files = [
     , "Gastos_diarios_Urbano_-_Capitulo_C.csv"
     , c.variables +
       [ ( "NC2_CC_P1"   , {StringProperty.NotAString}, "25-broad-categs", 0 )
-      , ( "NC2_CC_P2"   , {StringProperty.NotAString}, "freq", 0 )
+      , ( "NC2_CC_P2"   , {StringProperty.NotAString}, "per month", 0 )
       , ( "NC2_CC_P3_S1", {StringProperty.NotAString}, "value", 0 )
       , ( "NC2_CC_P3_S2", {StringProperty.NotAString}, "duplicated", 0 ) ]
     , capitulo_c_corrections +
@@ -38,7 +38,7 @@ files = [
       [ ( "NC2_CC_P1"   , {StringProperty.NotAString}
           , "25-broad-categs", 0 )
       , ( "NC2_CC_P2"   , {StringProperty.NotAString}
-          , "freq", 0 )
+          , "per month", 0 )
       , ( "NC2_CC_P3_S1", {StringProperty.NotAString}
           , "value", 0 )
       , ( "NC2_CC_P3_S2", {StringProperty.NotAString}

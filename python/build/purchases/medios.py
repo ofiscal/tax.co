@@ -19,5 +19,5 @@ files = [
       , classes.Correction.Create_Constant_Column( "coicop", nan ) ]
       + c.corrections
         # TODO (#safe) : "where-got"
-        # TODO (#safe) : "freq" = in the last year
+        # TODO (#safe) : "per month" = in the last year
 ) ]

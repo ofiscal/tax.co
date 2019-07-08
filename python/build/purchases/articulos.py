@@ -16,7 +16,7 @@ files = [
       , ( "P10270S2", {StringProperty.NotAString}
           , "where-got", 0 )
       , ( "P10270S3", {StringProperty.NotAString}
-          , "freq", 0 ) ]
+          , "per month", 0 ) ]
     , [ Correction.Create_Constant_Column( "quantity", 1 ) ]
       + c.corrections
 ) ]

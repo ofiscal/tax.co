@@ -13,20 +13,20 @@ if True: # input files
     # This data set is too big unless we down-cast the numbers.
       c.subsample
     , "purchases_1"
-    , dtype = { "25-broad-categs" : "float32"
-              , "coicop" : "float32"
-              , "freq" : "float32"
-              , "household" : "int32"
+    , dtype = { "25-broad-categs"  : "float32"
+              , "coicop"           : "float32"
+              , "per month"        : "float32"
+              , "household"        : "int32"
               , "household-member" : "int32"
-              , "is-purchase" : "float32"
-              , "quantity" : "float32"
-              , "value" : "float32"
-              , "weight" : "float32"
-              , "where-got" : "float32"
+              , "is-purchase"      : "float32"
+              , "quantity"         : "float32"
+              , "value"            : "float32"
+              , "weight"           : "float32"
+              , "where-got"        : "float32"
     } )
   ( cla . Correction # no "never" frequencies
     . Drop_Row_If_Column_Satisfies_Predicate(
-      "freq", lambda x: x==11 )
+      "per month", lambda x: x==11 )
     . correct( purchases ) )
   ( cla . Correction # no non-positive quantities
     . Drop_Row_If_Column_Satisfies_Predicate(
@@ -38,10 +38,10 @@ if True: # input files
     , "vat_cap_c_brief." + c.strategy_suffix
     , dtype = {
       "25-broad-categs" : "int32"
-      , "vat" : "float32"
-      , "vat, min" : "float32"
-      , "vat, max" : "float32"
-      , "vat frac" : "float32"
+      , "vat"           : "float32"
+      , "vat, min"      : "float32"
+      , "vat, max"      : "float32"
+      , "vat frac"      : "float32"
       , "vat frac, min" : "float32"
       , "vat frac, max" : "float32"
     } )
@@ -50,11 +50,11 @@ if True: # input files
       c.subsample
     , "vat_coicop_brief." + c.strategy_suffix
     , dtype = {
-      "coicop" : "int32"
-      , "vat" : "float32"
-      , "vat, min" : "float32"
-      , "vat, max" : "float32"
-      , "vat frac" : "float32"
+      "coicop"          : "int32"
+      , "vat"           : "float32"
+      , "vat, min"      : "float32"
+      , "vat, max"      : "float32"
+      , "vat frac"      : "float32"
       , "vat frac, min" : "float32"
       , "vat frac, max" : "float32"
     } )
@@ -81,20 +81,20 @@ if False: # drop anything missing min vat (which implies max also missing)
   purchases = purchases[ ~ purchases["vat, min"] . isnull() ]
 
 if True: # handle freq, value, vat paid
-  purchases["freq-code"] = purchases["freq"]
+  purchases["freq-code"] = purchases["per month"]
     # Kept for the sake of drawing a table of purchase frequency,
     # with frequencies spread evenly across the x-axis.
-  ( purchases["freq"] # PITFALL: not functional; the "inplace" option
+  ( purchases["per month"] # PITFALL: not functional; the "inplace" option
                       # causes replace() to have no return value.
   . replace( legends.freq
            , inplace=True ) )
   purchases = purchases.drop(
-    purchases[ purchases["freq"].isnull() ]
+    purchases[ purchases["per month"].isnull() ]
     .index
   )
 
-  purchases["value"]         = purchases["freq"] *  purchases["value"]
-  purchases["vat paid, min"] = purchases["value"] * purchases["vat frac, min"]
-  purchases["vat paid, max"] = purchases["value"] * purchases["vat frac, max"]
+  purchases["value"]         = purchases["per month"] * purchases["value"]
+  purchases["vat paid, min"] = purchases["value"]     * purchases["vat frac, min"]
+  purchases["vat paid, max"] = purchases["value"]     * purchases["vat frac, max"]
 
   oio.saveStage( c.subsample, purchases, "purchases_2_vat." + c.strategy_suffix )

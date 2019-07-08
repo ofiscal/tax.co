@@ -120,7 +120,7 @@ data.purchases[ data.purchases["duplicated"]==2 ]["file-origin"].unique()
 # of observations where where-got is missing.
 util.dwmByGroup( "file-origin",
                  data.purchases[ data.purchases["is-purchase"]==1 ]
-                 [["file-origin","freq"]] )
+                 [["file-origin","per month"]] )
 
 for c in data.people.filter(regex="income").columns:
   util.describeWithMissing( data.people[[c]] )
@@ -184,4 +184,4 @@ def check(file_name,col_name):
 
 for fn in file_names:
   print("\n\n" + fn)
-  check(fn,"freq")
+  check(fn,"per month")

@@ -10,7 +10,7 @@ def test_ranges( df ):
   spec = {
       "25-broad-categs" : { cla.IsNull(), cla.InRange( 1, 25 ) }
     , "coicop"          : { cla.IsNull(), cla.InRange( 1e6, 2e7 ) }
-    , "freq"            : { cla.IsNull(), cla.InRange( 1/36 - 0.001, 31 ) }
+    , "per month"       : { cla.IsNull(), cla.InRange( 1/36 - 0.001, 31 ) }
     , "household"       : { cla.IsNull(), cla.InRange( 0, 1e6 ) }
     ## >>> RESUME here
   }
@@ -23,7 +23,7 @@ class Purchase_2_Columns_missing:
                    , "coicop"]
 
   never = [ "big-hog"
-          , "freq"
+          , "per month"
           , "freq-code"
           , "household"
           , "household-member"

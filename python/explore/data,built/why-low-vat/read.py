@@ -29,30 +29,30 @@ if True: # read files
   rur_pers = myReadCsv( "Gastos_personales_Rural"
                       , { "NC2R_CE_P2" : "coicop"
                         , "NC2R_CE_P7" : "value"
-                        , "NC2R_CE_P8" : "freq" } )
+                        , "NC2R_CE_P8" : "per month" } )
 
   rur_pers_fue = myReadCsv(
     "Gastos_personales_Rural_-_Comidas_preparadas_fuera_del_Hogar"
     ,  { "NC2R_CA_P3" : "coicop"
         , "NC2R_CA_P7_S1" : "value"
-        , "NC2R_CA_P8_S1" : "freq" } )
+        , "NC2R_CA_P8_S1" : "per month" } )
 
   rur_sem = myReadCsv( "Gastos_semanales_Rurales"
                       , { "NC2R_CA_P3" : "coicop"
                         , "NC2R_CA_P7_S1" : "value"
-                        , "NC2R_CA_P8_S1" : "freq" } )
+                        , "NC2R_CA_P8_S1" : "per month" } )
 
   rur_sem_fue = myReadCsv(
     "Gastos_semanales_Rural_-_Comidas_preparadas_fuera_del_hogar"
     , { "NH_CGPRCFH_P1S1" : "coicop"
       , "NH_CGPRCFH_P5" : "value"
-      , "NH_CGPRCFH_P6" : "freq" } )
+      , "NH_CGPRCFH_P6" : "per month" } )
 
   urb_dia = myReadCsv( "Gastos_diarios_Urbanos"
                     , { "P10250S1A1" : "within-household transfer"
                       , "NH_CGDU_P1" : "coicop"
                       , "NH_CGDU_P8" : "value"
-                      , "NH_CGDU_P9" : "freq" }
+                      , "NH_CGDU_P9" : "per month" }
             )
   urb_dia = urb_dia[ urb_dia["within-household transfer"].isnull()
             ] . drop( columns = ["within-household transfer"] )
@@ -60,18 +60,18 @@ if True: # read files
   urb_dia_pers = myReadCsv( "Gastos_diarios_personales_Urbano"
                           , { "NC4_CC_P1_1" : "coicop"
                             , "NC4_CC_P5" : "value"
-                            , "NC4_CC_P6" : "freq" } )
+                            , "NC4_CC_P6" : "per month" } )
 
   urb_pers_fue = myReadCsv(
     "Gastos_personales_Urbano_-_Comidas_preparadas_fuera_del_hogar"
     , { "NH_CGPUCFH_P1_S1" : "coicop"
       , "NH_CGPUCFH_P5" : "value"
-      , "NH_CGPUCFH_P6" : "freq" } )
+      , "NH_CGPUCFH_P6" : "per month" } )
 
   art = myReadCsv( "Gastos_menos_frecuentes_-_Articulos"
                   , { "P10270" : "coicop"
                     , "VALOR" : "value"
-                    , "P10270S3" : "freq" } )
+                    , "P10270S3" : "per month" } )
 
   files_and_names = [ ("rur_pers"     , rur_pers)
                     , ("rur_pers_fue" , rur_pers_fue)
@@ -102,12 +102,12 @@ if True: # clean
               , "value" ] = np.nan
   purchases["value"] = pd.to_numeric( purchases["value"] )
 
-  purchases["freq"] = purchases["freq"] . map( str )
-  purchases.loc[ purchases["freq"].str.contains( "[^0-9\.]")
-              , "freq" ] = np.nan
-  purchases["freq"] = pd.to_numeric( purchases["freq"] )
+  purchases["per month"] = purchases["per month"] . map( str )
+  purchases.loc[ purchases["per month"].str.contains( "[^0-9\.]")
+              , "per month" ] = np.nan
+  purchases["per month"] = pd.to_numeric( purchases["per month"] )
 
 
 if True: # replace value with montly spending on that item
-  purchases["freq"] = purchases["freq"] . replace( legends.freq )
-  purchases["value"] = purchases["value"] * purchases["freq"]
+  purchases["per month"] = purchases["per month"] . replace( legends.freq )
+  purchases["value"] = purchases["value"] * purchases["per month"]

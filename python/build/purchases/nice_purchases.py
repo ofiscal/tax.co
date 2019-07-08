@@ -15,7 +15,7 @@ files = [
       , ( "NC2R_CE_P5S2", { StringProperty.NotAString }, "how-got", 0 )
       , ( "NC2R_CE_P6",   { StringProperty.NotAString }, "where-got", 0 )
       , ( "NC2R_CE_P7",   { StringProperty.NotAString }, "value", 0 )
-      , ( "NC2R_CE_P8",   { StringProperty.NotAString }, "freq", 0 ) ]
+      , ( "NC2R_CE_P8",   { StringProperty.NotAString }, "per month", 0 ) ]
     , c.corrections
   )
 
@@ -29,7 +29,7 @@ files = [
       , ( "NC2R_CA_P5_S1", { StringProperty.NotAString }, "how-got", 0 )
       , ( "NC2R_CA_P6_S1", { StringProperty.NotAString }, "where-got", 0 )
       , ( "NC2R_CA_P7_S1", { StringProperty.NotAString }, "value", 0 )
-      , ( "NC2R_CA_P8_S1", { StringProperty.NotAString }, "freq", 0 ) ]
+      , ( "NC2R_CA_P8_S1", { StringProperty.NotAString }, "per month", 0 ) ]
     , c.corrections
   )
 
@@ -43,7 +43,7 @@ files = [
       , ( "NC2R_CA_P5_S1", { StringProperty.NotAString }, "how-got", 0 )
       , ( "NC2R_CA_P6_S1", { StringProperty.NotAString }, "where-got", 0 )
       , ( "NC2R_CA_P7_S1", { StringProperty.NotAString }, "value", 0 )
-      , ( "NC2R_CA_P8_S1", { StringProperty.NotAString }, "freq", 0 ) ]
+      , ( "NC2R_CA_P8_S1", { StringProperty.NotAString }, "per month", 0 ) ]
     , c.corrections
   )
 
@@ -57,7 +57,7 @@ files = [
       , ( "NH_CGPRCFH_P3"  , { StringProperty.NotAString }, "how-got", 0 )
       , ( "NH_CGPRCFH_P4"  , { StringProperty.NotAString }, "where-got", 0 )
       , ( "NH_CGPRCFH_P5"  , { StringProperty.NotAString }, "value", 0 )
-      , ( "NH_CGPRCFH_P6"  , { StringProperty.NotAString }, "freq", 0 ) ]
+      , ( "NH_CGPRCFH_P6"  , { StringProperty.NotAString }, "per month", 0 ) ]
     , c.corrections
   )
 
@@ -70,7 +70,7 @@ files = [
       , ( "NH_CGDU_P5",      { StringProperty.NotAString }, "how-got", 0 )
       , ( "NH_CGDU_P7B1379", { StringProperty.NotAString }, "where-got", 0 )
       , ( "NH_CGDU_P8",      { StringProperty.NotAString }, "value", 0 )
-      , ( "NH_CGDU_P9",      { StringProperty.NotAString }, "freq", 0 ) ]
+      , ( "NH_CGDU_P9",      { StringProperty.NotAString }, "per month", 0 ) ]
     , c.corrections
       + [ # The "within-household transfer" variable is almost always null. If it's not,
         # drop the observation. Then drop that column.
@@ -90,7 +90,7 @@ files = [
       , ( "NH_CGDUCFH_P3",   { StringProperty.NotAString }, "how-got", 0 )
       , ( "NH_CGDUCFH_P4",   { StringProperty.NotAString }, "where-got", 0 )
       , ( "NH_CGDUCFH_P5",   { StringProperty.NotAString }, "value", 0 )
-      , ( "NH_CGDUCFH_P6",   { StringProperty.NotAString }, "freq", 0 ) ]
+      , ( "NH_CGDUCFH_P6",   { StringProperty.NotAString }, "per month", 0 ) ]
     , c.corrections
   )
 
@@ -103,7 +103,7 @@ files = [
       , ( "NC4_CC_P3",   { StringProperty.NotAString }, "how-got", 0 )
       , ( "NC4_CC_P4",   { StringProperty.NotAString }, "where-got", 0 )
       , ( "NC4_CC_P5",   { StringProperty.NotAString }, "value", 0 )
-      , ( "NC4_CC_P6",   { StringProperty.NotAString }, "freq", 0 ) ]
+      , ( "NC4_CC_P6",   { StringProperty.NotAString }, "per month", 0 ) ]
     , c.corrections
   )
 
@@ -116,7 +116,7 @@ files = [
       , ( "NH_CGPUCFH_P3",    { StringProperty.NotAString }, "how-got", 0 )
       , ( "NH_CGPUCFH_P4",    { StringProperty.NotAString }, "where-got", 0 )
       , ( "NH_CGPUCFH_P5",    { StringProperty.NotAString }, "value", 0 )
-      , ( "NH_CGPUCFH_P6",    { StringProperty.NotAString }, "freq", 0 ) ]
+      , ( "NH_CGPUCFH_P6",    { StringProperty.NotAString }, "per month", 0 ) ]
     , c.corrections
   )
 ]
