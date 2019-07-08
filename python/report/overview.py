@@ -131,12 +131,12 @@ if True: # create a summary dataframe
 
 if True: # save
   df_tmi.to_csv(   output_dir +
-                   "overview, tmi." + cl.strategy_year_suffix + ".csv" )
+                   "overview_tmi." + cl.strategy_year_suffix + ".csv" )
   df_tmi.to_excel( output_dir +
-                   "overview, tmi." + cl.strategy_year_suffix + ".xlsx" )
+                   "overview_tmi." + cl.strategy_year_suffix + ".xlsx" )
   draw.to_latex( df_tmi
                , output_dir
-               , "overview, tmi." + cl.strategy_year_suffix )
+               , "overview_tmi." + cl.strategy_year_suffix )
 
 
 if True: # do the same thing to a subset of that data

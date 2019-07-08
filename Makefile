@@ -124,7 +124,13 @@ household_pics = \
 pics = $(purchase_pics) $(people_pics) $(household_pics)
 
 overview = \
-  output/vat/tables/recip-$(ss)/overview.$(strategy_year_suffix).csv
+  output/vat/tables/recip-$(ss)/overview_tmi.$(strategy_year_suffix).csv \
+  output/vat/tables/recip-$(ss)/overview_tmi.$(strategy_year_suffix).tex \
+  output/vat/tables/recip-$(ss)/overview_tmi.$(strategy_year_suffix).xlsx \
+  output/vat/tables/recip-$(ss)/overview.$(strategy_year_suffix).csv \
+  output/vat/tables/recip-$(ss)/overview.$(strategy_year_suffix).tex \
+  output/vat/tables/recip-$(ss)/overview.$(strategy_year_suffix).xlsx
+
 
 goods_by_income_decile = \
   output/vat/tables/recip-$(ss)/goods_by_income_decile.csv \
@@ -380,7 +386,7 @@ purchases_2_vat: $(purchases_2_vat)
 $(purchases_2_vat): \
   python/build/purchases_2_vat.py \
   python/build/output_io.py \
-  python/build/legends.py \
+  python/build/purchases/legends.py \
   $(vat_rates) \
   python/common/misc.py \
   python/build/classes.py \

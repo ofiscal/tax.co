@@ -47,13 +47,21 @@ exhibit the statistics (means, min, max) they should have.
 We can apply similar integration tests to a subsample of the real ENPH.
 Those integration tests should test ranges, if not statistics.
 *** collect preexisting tests
-Most tests are in python/test/,
-but some are elsewhere, e.g. in python/build/ss_contribs.py
+Most tests are in python/test/, but ...
+**** some are elsewhere
+python/build/ss_contribs.py
+python/build/accumulate_marginal.py
 * TODO refactor
 ** TODO classes.py: Things like this should be defined within each enum type.
   re_nonNumeric = re.compile( "(.+\-|.*[^0-9\s\.,\-])" )
   re_white      = re.compile( ".*[^\s].*\s.*[^\s]" )
   ...
+** overview/pics.py: Makefile targets are incomplete, maybe inaccurate too
+It's important that the last thing a file makes is one of the dependencies in the Makefile; otherwise, the program could fail and `make` would still think its targets are up to date.
+
+Some output has spaces in the name; that will need to change before that output can be listed as a target.
+
+At least one filename is duplicated. That will matter once we are again using those pictures.
 * DONE before CB meeting
 ** for tomorrow
 2016 DANE
