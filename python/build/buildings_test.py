@@ -5,17 +5,6 @@ import python.common.util as util
 import python.build.output_io as oio
 
 
-if True: # initialize log
-  test_output_filename = "build_buildings"
-  oio.test_clear( cl.subsample
-                , test_output_filename )
-  def echo( content ):
-    oio.test_write( cl.subsample
-                  , test_output_filename
-                  , content )
-  echo( ["starting"] )
-
-
 def check_types( df ):
   for (c,t) in [ ("household","int64")
                , ("region-1","O")
@@ -37,8 +26,11 @@ def check_nullity( df ):
               ] ) <
            ( len(df) / 50 ) )
 
-
 if True: # run tests
+  log = "starting\n"
   bs = oio.readStage( 1, 'buildings' )
   check_types( bs )
   check_nullity( bs )
+  oio.test_write( cl.subsample
+                , "build_buildings"
+                , log )

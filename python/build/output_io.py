@@ -2,11 +2,6 @@ import pandas as pd
 import os
 
 
-def test_clear( subsample, filename ):
-  f = ( "output/test/recip-" + str(subsample)
-      + "/" + filename + ".txt" )
-  if os.path.exists( f ): os.remove( f )
-
 def test_write( subsample, filename, content ):
   """ The idiom for recording logs is mostly unused.
   For some good example code that uses it,
