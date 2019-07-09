@@ -7,15 +7,35 @@ import python.build.output_io as oio
 
 
 def test_ranges( df ):
+  log = "test_ranges()\n"
   spec = {
-      "25-broad-categs" : { cla.IsNull(), cla.InRange( 1, 25 ) }
-    , "coicop"          : { cla.IsNull(), cla.InRange( 1e6, 2e7 ) }
-    , "per month"       : { cla.IsNull(), cla.InRange( 1/36 - 0.001, 31 ) }
-    , "household"       : { cla.IsNull(), cla.InRange( 0, 1e6 ) }
-    ## >>> RESUME here
+      "25-broad-categs"  : { cla.IsNull(), cla.InRange( 1, 25 ) }
+    , "big-hog"          : {               cla.InRange( 0, 1 ) }
+    , "coicop"           : { cla.IsNull(), cla.InRange( 1e6, 2e7 ) }
+    , "freq-code"        : {               cla.InRange( 0, 10 ) }
+    , "household"        : { cla.IsNull(), cla.InRange( 0, 1e6 ) }
+    , "household-member" : {               cla.InRange( 1, 160 ) }
+    , "is-purchase"      : { cla.IsNull(), cla.InRange( 0, 1 ) }
+    , "per month"        : {               cla.InRange( 1/36 - 0.001, 31 ) }
+    , "quantity"         : {               cla.InRange( 0, 2e5 ) }
+    , "value"            : {               cla.InRange( 0, 1e8 ) }
+    , "vat"              : { cla.IsNull(), cla.InRange( 0, 0.271 ) }
+    , "vat frac"         : { cla.IsNull(), cla.InRange( 0, 0.271 / 1.271 + 0.01 ) }
+    , "vat frac, max"    : { cla.IsNull(), cla.InRange( 0, 0.271 / 1.271 + 0.01 ) }
+    ## >>> RESUME here. Remaining columns:
+    # vat frac, min
+    # vat paid, max
+    # vat paid, min
+    # vat, max
+    # vat, min
+    # weight
+    # where-got
   }
+
   for k in spec:
     assert cla.properties_cover_num_column( spec[k], df[k] )
+
+  return log
 
 
 class Purchase_2_Columns_missing:
@@ -51,6 +71,7 @@ class Purchase_2_Columns_missing:
 
 
 def test_output( df ):
+  log = "test_output()\n"
   assert ( set( df.columns ) ==
            set( Purchase_2_Columns_missing.all_columns() ) )
 
@@ -77,13 +98,15 @@ def test_output( df ):
                len( df ) )
              < 0.2 )
 
+  return log
+
 
 if True: # IO
   log = "starting\n"
   ps = oio.readStage( cl.subsample
                     , "purchases_2_vat." + cl.strategy_suffix )
-  test_ranges( ps )
-  test_output( ps )
+  log += test_ranges( ps )
+  log += test_output( ps )
   oio.test_write( cl.subsample
                 , "build_purchases_2_vat"
                 , log )

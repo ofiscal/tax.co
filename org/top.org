@@ -1,19 +1,19 @@
 * TODO test suite
-** TODO mystery: Why is estrato sometimes an int?
-*** that problem
-If subsample=1000, it's int64.
-Otherwise it's float64.
-See build.buildings_test.
-*** TODO solution ? never use a subsample for the buildings output file
-Currently, the full sample is always used as the input to build/buildings.py.
-Maybe the same should be true of its output.
-**** TODO If that's true, must change all these files
-buildings.py (output)
-buildings_test.py (input)
-Makefile
-maybe whatever is downstream of buildings.py -- probably households.py
 ** It would be particularly helpful if shadowing was reported when the two variables are of the same type.
 ** TODO resume at purchases_2_vat_test.test_ranges()
+** TODO ? why are there quantity=0 values in purchases_2_vat_test
+Didn't I discard those upstream?
+** TODO "vat" conflates some taxes
+That's why, for instance, its max in purchases_2_vat_test is 0.27, not 19
+** TODO If max vat is 0.27, max vat frac should be 0.213
+but instead it's 0.160, which is what would derive from a max vat of 0.19.
+This problem arises in purchases_2_vat_test.py
+** TODO A way to express tight upper or lower bounds would be nice
+Some variant of the InRange() object.
+This bears especially on purchases_2_vat_test.py
+** TODO need a way to delete output if python program fails
+** TODO the logging idiom does not capture most recent test state
+A function does not record to the log unless it completes.
 ** TODO "household member" max mismatch
 In people (full sample) its max is 22
 In purchases (full sample) its max is 195
