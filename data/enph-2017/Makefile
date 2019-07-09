@@ -11,10 +11,11 @@ verify: # verify the content of the raw zipfiles
 	sha1sum 1_raw/* | sha1sum | grep "bd8c4db51854716c860c2cac797a677d41f7b83d"
 
 unpack_and_rename:
+	# Without the next line, the unzip fails later.
 	cd 1_raw						; \
-	  find . -name "*.zip" | rename 's/ /_/g' # without this the unzip line fails
+	  find . -name "*.zip" | rename 's/ /_/g'
 	mkdir -p 2_unzipped
-	# PITFALL: If this were bash rather than make, below would use $, not $$.
+	# PITFALL: In bash rather than make, one would use $ (not $$) below.
 	cd 2_unzipped						; \
 	  for a in `ls -1 ../1_raw/*.zip`; do unzip "$$a"; done ; \
 	  mkdir -p csv dta sav					; \

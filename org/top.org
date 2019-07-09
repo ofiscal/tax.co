@@ -1,4 +1,17 @@
 * TODO test suite
+** TODO mystery: Why is estrato sometimes an int?
+*** that problem
+If subsample=1000, it's int64.
+Otherwise it's float64.
+See build.buildings_test.
+*** TODO solution ? never use a subsample for the buildings output file
+Currently, the full sample is always used as the input to build/buildings.py.
+Maybe the same should be true of its output.
+**** TODO If that's true, must change all these files
+buildings.py (output)
+buildings_test.py (input)
+Makefile
+maybe whatever is downstream of buildings.py -- probably households.py
 ** It would be particularly helpful if shadowing was reported when the two variables are of the same type.
 ** TODO resume at purchases_2_vat_test.test_ranges()
 ** TODO "household member" max mismatch
