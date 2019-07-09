@@ -1,4 +1,4 @@
-# PITFALL: Except for the save at the end, subsample is ignored;
+# PITFALL: For the buildings file,subsample is ignored;
 # the program uses the full sample always,
 # because it's a small file, and merged with others.
 # If it was subsampled at 1/n, and the other one was as well,
@@ -27,6 +27,6 @@ buildings = cl.collect_files( files
 buildings["estrato"] = buildings["estrato"].replace(' ', np.nan)
 
 oio.saveStage(
-  cl.subsample # see PITFALL above
+  1 # see PITFALL above
   , buildings
   , 'buildings' )

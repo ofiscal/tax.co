@@ -69,7 +69,7 @@ enph_orig = $(addsuffix .csv, $(addprefix data/enph-2017/2_unzipped/csv/, $(enph
 input_subsamples =                                                           \
   $(addsuffix .csv, $(addprefix data/enph-2017/recip-$(ss)/, $(enph_files)))
 
-buildings =          output/vat/data/recip-$(ss)/buildings.csv
+buildings =          output/vat/data/recip-1/buildings.csv
 households = \
   output/vat/data/recip-$(ss)/households.$(strategy_year_suffix).csv \
   output/vat/data/recip-$(ss)/households_decile_summary.$(strategy_year_suffix).csv
@@ -165,18 +165,18 @@ show_params:
 # make that output file a dependency.
 # PITFALL: purchase_input.txt always uses the full sample
 tests: \
-  output/test/recip-$(ss)/build_buildings.txt \
   output/test/recip-$(ss)/build_classes.txt \
   output/test/recip-$(ss)/build_purchases_2_vat.txt \
   output/test/recip-$(ss)/common_misc.txt \
   output/test/recip-$(ss)/common_util.txt \
   output/test/recip-$(ss)/people_main.txt \
-  output/test/recip-1/purchase_inputs.txt \
   output/test/recip-$(ss)/purchases_main.txt \
-  output/test/recip-$(ss)/vat_rates.txt
+  output/test/recip-$(ss)/vat_rates.txt \
+  output/test/recip-1/build_buildings.txt \
+  output/test/recip-1/purchase_inputs.txt
 	printf '\nAll tests passed.\n\n'
 
-output/test/recip-$(ss)/build_buildings.txt: \
+output/test/recip-1/build_buildings.txt: \
   $(buildings) \
   python/build/buildings.py \
   python/build/buildings_test.py \

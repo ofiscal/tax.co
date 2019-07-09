@@ -28,9 +28,10 @@ def check_nullity( df ):
 
 if True: # run tests
   log = "starting\n"
-  bs = oio.readStage( cl.subsample, 'buildings' )
+  bs = oio.readStage( 1 # PITFALL: For buildings, we always use the full sample.
+                    , 'buildings' )
   check_types( bs )
   check_nullity( bs )
-  oio.test_write( cl.subsample
+  oio.test_write( 1 # PITFALL: For buildings, we always use the full sample.
                 , "build_buildings"
                 , log )
