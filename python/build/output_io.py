@@ -6,8 +6,12 @@ def test_write( subsample, filename, content ):
   """ The idiom for recording logs is mostly unused.
   For some good example code that uses it,
   see python/build/purchases/main_test.py. """
-  with open( "output/test/recip-" + str(subsample)
-           + "/" + filename + ".txt" ,'a+') as f:
+  folder = "output/test/recip-" + str(subsample)
+  if not os.path.exists( folder ):
+    os.makedirs( folder )
+  with open( folder + "/" + filename + ".txt"
+           ,'a+'
+           ) as f:
     f.write( " ".join( map( str, content ) )
            + "\n" )
 
