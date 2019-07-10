@@ -84,8 +84,8 @@ def test_ranges(ppl: pd.DataFrame):
 def test_upper_bound_on_fraction_missing(ppl: pd.DataFrame):
   specs = { # test_ranges guarantees that these are
             # the only columns with missing values
-      "literate"                                              : 0.1
-    , "student"                                               : 0.1
+      "literate"                                              : 0.15
+    , "student"                                               : 0.15
     , "pension, contributing (if not pensioned)"              : 0.7
     , "pension, contributor(s) (if not pensioned) = split"    : 0.9
     , "pension, contributor(s) (if not pensioned) = self"     : 0.9
@@ -93,6 +93,7 @@ def test_upper_bound_on_fraction_missing(ppl: pd.DataFrame):
     , "seguro de riesgos laborales"                           : 0.7
     }
   for k in specs.keys():
+    print(k)
     assert (pd.isnull(ppl[k]).sum() / len(ppl)) < specs[k]
 
 

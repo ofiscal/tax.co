@@ -16,15 +16,18 @@ def find_input(name):
 
 if True: # read, subsample household indices
   print("Subsampling household indices (from Viviendas_y_hogares).")
-  household_indices = pd.read_csv( find_input( "Viviendas_y_hogares" )
-                                 , usecols = ["DIRECTORIO"] # DIRECTORIO = household
-                                 , sep = ";" )
+  household_indices = pd.read_csv(
+      find_input( "Viviendas_y_hogares" )
+    , usecols = ["DIRECTORIO"] # DIRECTORIO = household
+    , sep = ";" )
   household_index_samples = {}
   for subsample in [1,10,100,1000]:
     if subsample==1: household_index_samples[ subsample
                        ] = household_indices
     else:            household_index_samples[ subsample
-                       ] = household_indices.sample( frac = 1/subsample )
+                       ] = household_indices.sample(
+                               frac         = 1/subsample
+                             , random_state = 0 ) # seed
 
 
 if True: ## Subsample each file (including Viviendas) based on that
@@ -37,7 +40,8 @@ if True: ## Subsample each file (including Viviendas) based on that
 
   for name in names:
     print("Processing " + name + ".")
-    data = pd.read_csv( folder + "2_unzipped/csv/" + name + '.csv', sep=";" )
+    data = pd.read_csv( folder + "2_unzipped/csv/" + name + '.csv'
+                      , sep=";" )
     for c in data.columns:
       if data[c].dtype == object:
         data[c] = ( data[c].astype(str)
