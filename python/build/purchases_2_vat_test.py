@@ -14,10 +14,10 @@ def test_ranges( df ):
     , "coicop"           : { cla.IsNull(), cla.InRange( 1e6, 2e7 ) }
     , "freq-code"        : {               cla.InRange( 0, 10 ) }
     , "household"        : { cla.IsNull(), cla.InRange( 0, 1e6 ) }
-    , "household-member" : {               cla.InRange( 1, 160 ) }
+    , "household-member" : {               cla.InRange( 1, 230 ) }
     , "is-purchase"      : { cla.IsNull(), cla.InRange( 0, 1 ) }
     , "per month"        : {               cla.InRange( 1/36 - 0.001, 31 ) }
-    , "quantity"         : {               cla.InRange( 0, 2e5 ) }
+    , "quantity"         : {               cla.InRange( 0, 3e5 ) }
     , "value"            : {               cla.InRange( 0, 1e8 ) }
     , "vat"              : { cla.IsNull(), cla.InRange( 0, 0.271 ) }
     , "vat frac"         : { cla.IsNull(), cla.InRange( 0, 0.271 / 1.271 + 0.01 ) }

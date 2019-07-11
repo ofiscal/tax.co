@@ -36,7 +36,7 @@ def test_output( df ):
       "where-got" :        { cla.IsNull(), cla.InRange(1,26) }
     , "weight" :           {               cla.InRange( 0, 1e4 ) }
     , "value" :            {               cla.InRange( 0, 1e9 ) }
-    , "quantity" :         { cla.IsNull(), cla.InRange( -2, 1e8 ) }
+    , "quantity" :         { cla.IsNull(), cla.InRange( 0, 1e8 ) }
     , "is-purchase" :      { cla.IsNull(), cla.InRange( 0,1 ) }
     , "household-member" : {               cla.InRange( 1, 1e3 ) }
     , "household" :        {               cla.InRange( 1, 1e7 ) }
