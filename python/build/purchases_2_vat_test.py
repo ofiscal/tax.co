@@ -18,7 +18,7 @@ def test_ranges( df ):
     , "is-purchase"      : { cla.IsNull(), cla.InRange( 0, 1 ) }
     , "per month"        : {               cla.InRange( 1/36 - 0.001, 31 ) }
     , "quantity"         : {               cla.InRange( 0, 3e5 ) }
-    , "value"            : {               cla.InRange( 0, 1e8 ) }
+    , "value"            : {               cla.InRange( 0, 2e9 ) }
     , "vat"              : { cla.IsNull(), cla.InRange( 0, 0.271 ) }
     , "vat frac"         : { cla.IsNull(), cla.InRange( 0, 0.271 / 1.271 + 0.01 ) }
     , "vat frac, max"    : { cla.IsNull(), cla.InRange( 0, 0.271 / 1.271 + 0.01 ) }
