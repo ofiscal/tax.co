@@ -4,17 +4,15 @@
 # If it was subsampled at 1/n, and the other one was as well,
 # then their merge would be subsampled at roughly 1/n^2.
 
-import sys
 import numpy as np
 
-import python.build.classes as classes
-import python.common.misc as c
+import python.build.classes as cla
 import python.common.cl_args as cl
 import python.build.output_io as oio
 
 
 files = [
-  classes.File( "buildings"
+  cla.File( "buildings"
     , "Viviendas_y_hogares.csv"
     , [ ("DIRECTORIO", 0, "household", 0)
       , ("REGION", 0, "region-1", 0)

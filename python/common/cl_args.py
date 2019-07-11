@@ -27,9 +27,10 @@ strategy_year_suffix = strategy + "." + str(regime_year)
 
 
 # Wart: This function is duplicated in cl_fake.py
-def retrieve_file( file_struct, subsample=subsample ):
+def retrieve_file( file_struct, subsample ):
   return pd.read_csv(
-      "data/enph-2017/recip-" + str(subsample) + "/" + file_struct.filename
+      ( "data/enph-2017/recip-" + str(subsample)
+        + "/" + file_struct.filename )
       , usecols = list( cla.name_map( file_struct.col_specs )
                       . keys() )
     )
@@ -38,7 +39,7 @@ def retrieve_file( file_struct, subsample=subsample ):
 def collect_files( file_structs, subsample=subsample ):
   acc = pd.DataFrame()
   for f in file_structs:
-    shuttle = ( retrieve_file(f)
+    shuttle = ( retrieve_file( f, subsample )
               . rename( columns = cla.name_map( f.col_specs ) ) )
     # shuttle["file-origin"] = f.name
     for c in f.corrections:

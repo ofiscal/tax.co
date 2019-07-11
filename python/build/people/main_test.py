@@ -93,7 +93,6 @@ def test_upper_bound_on_fraction_missing(ppl: pd.DataFrame):
     , "seguro de riesgos laborales"                           : 0.7
     }
   for k in specs.keys():
-    print(k)
     assert (pd.isnull(ppl[k]).sum() / len(ppl)) < specs[k]
 
 

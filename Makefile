@@ -176,6 +176,7 @@ tests: \
   output/test/recip-1/purchase_inputs.txt
 	printf '\nAll tests passed.\n\n'
 
+# PITFALL: for buildings.csv we always use subsample=1.
 output/test/recip-1/build_buildings.txt: \
   $(buildings) \
   python/build/buildings.py \
@@ -185,7 +186,7 @@ output/test/recip-1/build_buildings.txt: \
   python/common/cl_args.py \
   python/common/misc.py
 	$(python_from_here) python/build/buildings_test.py \
-          $(subsample) $(strategy) $(yr)
+          1 $(strategy) $(yr)
 
 output/test/recip-$(ss)/build_classes.txt: \
   python/build/classes.py \
@@ -296,6 +297,7 @@ $(buildings): \
   python/build/buildings.py \
   python/build/classes.py \
   python/build/output_io.py \
+  python/common/cl_args.py \
   python/common/misc.py \
   $(input_subsamples)
 	date

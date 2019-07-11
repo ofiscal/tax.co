@@ -9,7 +9,7 @@ def check_types( df ):
   for (c,t) in [ ("household","int64")
                , ("region-1","O")
                , ("region-2","O")
-               , ("estrato","float64") ]:
+               , ("estrato","int64") ]:
     assert df[c].dtype == t
 
 def check_nullity( df ):
