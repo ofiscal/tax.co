@@ -1,5 +1,6 @@
 * TODO test suite
-** TODO recip-1/buildings.csv is not big enough
+** TODO dtype argument for pd.read_csv should be stored for each file
+rather than coded anew every time it is read
 ** It would be particularly helpful if shadowing was reported when the two variables are of the same type.
 ** TODO resume at purchases_2_vat_test.test_ranges()
 ** TODO ? why are there quantity=0 values in purchases_2_vat_test

@@ -8,7 +8,9 @@ import python.common.cl_args as c
 
 buildings = oio.readStage(
     1 # PITFALL: For buildings, we always use the full sample.
-  , 'buildings')
+  , 'buildings'
+  , dtype = {"estrato":'float64'}
+)
 people = oio.readStage(c.subsample, 'people_1')
 
 people = pd.merge( people, buildings

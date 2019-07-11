@@ -9,7 +9,7 @@ def check_types( df ):
   for (c,t) in [ ("household","int64")
                , ("region-1","O")
                , ("region-2","O")
-               , ("estrato","int64") ]:
+               , ("estrato","float64") ]:
     assert df[c].dtype == t
 
 def check_nullity( df ):
@@ -28,8 +28,13 @@ def check_nullity( df ):
 
 if True: # run tests
   log = "starting\n"
-  bs = oio.readStage( 1 # PITFALL: For buildings, we always use the full sample.
-                    , 'buildings' )
+  bs = oio.readStage(
+      1 # PITFALL: For buildings, we always use the full sample.
+    , 'buildings'
+    , dtype = {"estrato":'float64'}
+      # If subsample is so small that there are no missing values,
+      # "estrato" will by default be read as "int64".
+  )
   check_types( bs )
   check_nullity( bs )
   oio.test_write( 1 # PITFALL: For buildings, we always use the full sample.

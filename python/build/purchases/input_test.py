@@ -13,7 +13,8 @@ def test_purchase_inputs():
            + capitulo_c.files
            + nice_purchases.files
            ): 
-    df = cl.retrieve_file( f )
+    df = cl.retrieve_file( f
+                         , cl.subsample )
     acc = {}
     for c in df.columns:
       acc.update( [ (c, cla.stringProperties( df[c] ) ) ] )
