@@ -1,22 +1,6 @@
 * TODO test suite
 ** TODO "household member" max mismatch
-*** max 22 in raw people
->>> pp0 = oio.readStage( 1, 'people_0')
->>> pp0["household-member"].max()
-22
-*** max 120 in raw purchases
->>> ps0 = cl.collect_files(
-...   ( articulos.files
-...     + capitulo_c.files
-...     + nice_purchases.files )
-...   , subsample = 1
-... )
->>> ps0["household-member"].max()
-120
-*** max 195 in purchases_1
->>> ps1 = oio.readStage( 1, 'purchases_1')
->>> ps1["household-member"].max()
-195
+see python/explore/what-is-household-member/
 ** TODO dtype argument for pd.read_csv should be stored for each file
 rather than coded anew every time it is read
 ** TODO resume at purchases_2_vat_test.test_ranges()
