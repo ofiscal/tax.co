@@ -25,7 +25,6 @@ purchases = cl.collect_files(
 )
 
 
-
 for c in (
   [ Correction.Replace_Substring_In_Column(
       "quantity", ",", "." )
