@@ -7,15 +7,15 @@ sudo docker build -f Dockerfile -t                           \
 
 sudo docker run --name anac -it -v /home/jeff/tax.co:/mnt    \
   -p 8888:8888 -d -h 127.0.0.1                               \
-  jeffreybbrown/tax.co:2018-11-30.2.apt-upgrade
+  jeffreybbrown/tax.co:2019-07-22.xlsx2csv
 
-docker tag jeffreybbrown/tax.co:new jeffreybbrown/tax.co:2018-11-30.2.apt-upgrade
+docker tag jeffreybbrown/tax.co:new \
+  jeffreybbrown/tax.co:2019-07-24.updates
 
 # mount to shake-studies folder (PITFALL: different port, 8889)
 docker run --name shake -it -v /home/jeff/shake-studies:/mnt \
   -p 8889:8888 -d -h 127.0.0.1                               \
-  jeffreybbrown/tax.co:2018-11-30.2.apt-upgrade
-
+  jeffreybbrown/tax.co:2019-07-22.xlsx2csv
 
 sudo docker run --entrypoint=/root/run-jupyter.sh            \
                 --name anac -it -v /home/jeff/tax.co:/mnt    \

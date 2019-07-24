@@ -3,42 +3,35 @@ FROM debian:latest
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH /opt/conda/bin:$PATH
 
-RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificates \
-    libglib2.0-0 libxext6 libsm6 libxrender1 \
-    git mercurial subversion
+RUN echo "2019 07 23" && \
+  apt update --fix-missing -y && \
+  apt upgrade -y
+RUN apt install -y wget bzip2 ca-certificates \
+  libglib2.0-0 libxext6 libsm6 libxrender1 \
+  make curl grep sed dpkg git mercurial subversion \
+  texlive-latex-base texlive-fonts-recommended \
+  texlive-fonts-extra texlive-latex-extra texlive-publishers
 
-RUN wget --quiet https://repo.continuum.io/archive/Anaconda3-5.1.0-Linux-x86_64.sh -O ~/anaconda.sh && \
+RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh -O ~/anaconda.sh && \
     /bin/bash ~/anaconda.sh -b -p /opt/conda && \
     rm ~/anaconda.sh && \
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
     echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "conda activate base" >> ~/.bashrc
-
-RUN apt-get install -y curl grep sed dpkg && \
-    TINI_VERSION=`curl https://github.com/krallin/tini/releases/latest | grep -o "/v.*\"" | sed 's:^..\(.*\).$:\1:'` && \
-    curl -L "https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini_${TINI_VERSION}.deb" > tini.deb && \
-    dpkg -i tini.deb && \
-    rm tini.deb && \
-    apt-get clean
-
-
-# here the Dockerfile starts deviating from continuum/anaconda3
-RUN apt install -y make && \
-    /opt/conda/bin/conda install jupyter -y --quiet
-
-RUN apt install -y texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
-RUN apt install -y texlive-publishers
-
+    echo "conda activate base" >> ~/.bashrc && \
+    find /opt/conda/ -follow -type f -name '*.a' -delete && \
+    find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
+    /opt/conda/bin/conda clean -afy
+RUN /opt/conda/bin/conda install jupyter -y --quiet
 COPY run-jupyter.sh /root/
 
-RUN apt update && curl -sSL https://get.haskellstack.org/ | sh
-
+RUN curl -sSL https://get.haskellstack.org/ | sh
 RUN stack install shake
-RUN apt update && apt upgrade -y
+
+RUN easy_install xlsx2csv
+
+# RUN conda update --all --yes
+# RUN conda update -n base conda
 
 RUN PATH=/root/.local/bin:$PATH
-
 EXPOSE 8888
-
-ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD ["/bin/bash"]
