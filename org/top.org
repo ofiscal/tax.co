@@ -1,4 +1,6 @@
 * TODO test suite
+** TODO count rows
+So far all the tests are about columns.
 ** TODO "household member" max mismatch
 see python/explore/what-is-household-member/
 ** TODO dtype argument for pd.read_csv should be stored for each file
