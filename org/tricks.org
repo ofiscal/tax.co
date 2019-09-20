@@ -34,11 +34,29 @@ make overview -Bnd vat_strategy="()" | make2graph \
   | dot -Tpng -o dependencies.png
 * announce the separator used in a .csv file
 put something like "sep=;" at the top of the file
-* open office cell traversal shortcuts
+* open office 
+** cell traversal shortcuts
 C-S-F2: go to formula window
 C-S-T: go to cell address window ("(T)raverse", probably)
+** the apostrophes-turn-numbers-into-strings problem
+*** recipe
+1. Highlight all of the cells and use Format -> Cells to change the cell format to an appropriate number format.
+2. With all of the cells still selected, go to the menu Edit -> Find & Replace
+3. In the Search For box enter .* (period asterisk)
+4. In the Replace with box enter &
+5. Select More Options and check Current Selection Only and Regular Expressions
+6. Click Replace All
+*** source
+https://forum.openoffice.org/en/forum/viewtopic.php?f=9&t=49046
 * get pandas to display tables in scientific notation
 pd.set_option('display.float_format', '{:.2g}'.format)
 * makefile --trace explains why it wants to rebuild something
 Kind of useless, though -- it only restates the dependency section of the target it wants to rebuild.
 A natural companion to --dry-run.
+* bughunting tricks
+** problem: incomplete generalization from example to function.
+Two heuristics that can catch this kind of bug:
+  (1) Make sure every variable in the type signature is used.
+  (2) When designing test data,
+      use column names that are similar but *not* identical
+      to those int he real data.

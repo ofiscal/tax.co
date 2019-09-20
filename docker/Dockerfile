@@ -12,7 +12,7 @@ RUN apt install -y wget bzip2 ca-certificates \
   texlive-latex-base texlive-fonts-recommended \
   texlive-fonts-extra texlive-latex-extra texlive-publishers
 
-RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh -O ~/anaconda.sh && \
+RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh -O ~/anaconda.sh && \
     /bin/bash ~/anaconda.sh -b -p /opt/conda && \
     rm ~/anaconda.sh && \
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
@@ -22,10 +22,12 @@ RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_6
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
     /opt/conda/bin/conda clean -afy
 RUN /opt/conda/bin/conda install jupyter -y --quiet
+RUN conda update --all -y
+  # This brings pandas to version 0.25.1.
 COPY run-jupyter.sh /root/
 
-RUN curl -sSL https://get.haskellstack.org/ | sh
-RUN stack install shake
+# RUN curl -sSL https://get.haskellstack.org/ | sh
+# RUN stack install shake
 
 RUN easy_install xlsx2csv
 

@@ -10,7 +10,7 @@ sudo docker run --name anac -it -v /home/jeff/tax.co:/mnt    \
   jeffreybbrown/tax.co:2019-07-24.updates
 
 docker tag jeffreybbrown/tax.co:new \
-  jeffreybbrown/tax.co:2019-07-24.updates
+  jeffreybbrown/tax.co:2019-09-20.pandas-0-25-1
 
 # mount to shake-studies folder (PITFALL: different port, 8889)
 docker run --name shake -it -v /home/jeff/shake-studies:/mnt \

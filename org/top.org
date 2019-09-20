@@ -589,11 +589,14 @@ but zero people in the sample received any of it:
 ** "file-origin" is commented out
 If we ever again need a purchase data set that tracks the file each purchase is from,
 that's already implemented.
-* TODO PITFALLs incode
+* TODO PITFALLs in code
 ** make sure all program output comes at the end
 And that (at least) the last thing it creates is a Makefile target.
 Otherwise `make` might believe a target is up to date when the program responsible for it did not complete.
-** PITFALLS in pandas
+** TODO PITFALLS in pandas
+*** concat v. append 
+Neither forces you to specify the axis.
+Concat is more general.
 *** two columns can have the same name, silently
 This can result in errors like "cannot add str to int".
 Because f you add a number to a column, and another shares its name,
