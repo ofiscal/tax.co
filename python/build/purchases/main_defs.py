@@ -13,5 +13,5 @@ def drop_if_coicop_or_value_invalid( df ):
 absurdly_big_expenditure_threshold = 1e9
 
 def drop_absurdly_big_expenditures( df ):
-  pq = df["value"] * df["quantity"]
-  return df[ ~(pq > absurdly_big_expenditure_threshold) ]
+  return df[ ~(df["value"] > absurdly_big_expenditure_threshold) ]
+

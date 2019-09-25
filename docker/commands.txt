@@ -5,7 +5,7 @@ sudo docker build -f Dockerfile -t                           \
   jeffreybbrown/tax.co:new .                                 \
   | tee logs/"build-log.`date`.txt"
 
-sudo docker run --name anac -it -v /home/jeff/tax.co:/mnt    \
+sudo docker run --name tax -it -v /home/jeff/tax.co:/mnt    \
   -p 8888:8888 -d -h 127.0.0.1                               \
   jeffreybbrown/tax.co:2019-07-24.updates
 
@@ -18,6 +18,6 @@ docker run --name shake -it -v /home/jeff/shake-studies:/mnt \
   jeffreybbrown/tax.co:2019-07-24.updates
 
 sudo docker run --entrypoint=/root/run-jupyter.sh            \
-                --name anac -it -v /home/jeff/tax.co:/mnt    \
+                --name tax -it -v /home/jeff/tax.co:/mnt    \
   -p 8888:8888 -d -h 127.0.0.1                               \
   jeffreybbrown/tax.co:2019-07-24.updates
