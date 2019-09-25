@@ -22,12 +22,14 @@ def test_drop_if_coicop_or_value_invalid():
 def test_drop_absurdly_big_expenditures():
   log = "test_drop_absurdly_big_expenditures\n"
   thresh = defs.absurdly_big_expenditure_threshold
-  df = pd.DataFrame( { "value"    : [1, thresh+1, thresh+1, 1       ]
-                     , "quantity" : [1, 1e-3    , 1       , thresh+1]
-                     , "x"        : [1, 2       , 3       , 4       ] } )
-  assert ( defs.drop_absurdly_big_expenditures( df )["x"]
-           == pd.Series( [1,2] )
-         ).all()
+  df = pd.DataFrame( { "value"    : [1, thresh+1, thresh+1, 1       ],
+                       "quantity" : [1, 1e-3    , 1e3     , thresh+1],
+                       "x"        : [1, 2       , 3       , 4       ] } )
+
+  assert ( defs.drop_absurdly_big_expenditures( df )
+           ["x"] .
+           reset_index( drop = True ) .
+           equals( pd.Series( [1,4] ) ) )
   return log
 
 def test_output( df ):
