@@ -1,23 +1,18 @@
 A trick to quickly edit a Docker-locked file from the host system:
   https://stackoverflow.com/a/26915343
 
-sudo docker build -f Dockerfile -t                           \
-  jeffreybbrown/tax.co:new .                                 \
+sudo docker build -f Dockerfile -t                       \
+  jeffreybbrown/tax.co:new .                             \
   | tee logs/"build-log.`date`.txt"
 
-sudo docker run --name tax -it -v /home/jeff/tax.co:/mnt    \
-  -p 8888:8888 -d -h 127.0.0.1                               \
-  jeffreybbrown/tax.co:2019-07-24.updates
+docker tag jeffreybbrown/tax.co:new                      \
+  jeffreybbrown/tax.co:<PUT A BETTER NAME HERE>
 
-docker tag jeffreybbrown/tax.co:new \
+sudo docker run --name tax -it -v /home/jeff/tax.co/master:/mnt \
+  -p 8888:8888 -d -h 127.0.0.1                                  \
   jeffreybbrown/tax.co:2019-09-20.pandas-0-25-1
 
-# mount to shake-studies folder (PITFALL: different port, 8889)
-docker run --name shake -it -v /home/jeff/shake-studies:/mnt \
-  -p 8889:8888 -d -h 127.0.0.1                               \
-  jeffreybbrown/tax.co:2019-07-24.updates
-
-sudo docker run --entrypoint=/root/run-jupyter.sh            \
-                --name tax -it -v /home/jeff/tax.co:/mnt    \
-  -p 8888:8888 -d -h 127.0.0.1                               \
+sudo docker run --entrypoint=/root/run-jupyter.sh        \
+                --name tax -it -v /home/jeff/tax.co:/mnt \
+  -p 8888:8888 -d -h 127.0.0.1                           \
   jeffreybbrown/tax.co:2019-07-24.updates

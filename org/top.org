@@ -1,5 +1,5 @@
 * TODO estimate tax holiday effect
-** branch the Makefile
+* TODO rename freq -> per month
 * TODO test suite
 ** TODO count rows
 So far all the tests are about columns.

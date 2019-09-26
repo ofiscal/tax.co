@@ -232,8 +232,8 @@ output/test/recip-$(ss)/people_main.txt: \
 	$(python_from_here) python/build/people/main_test.py \
           $(subsample) $(strategy) $(yr)
 
-# PITFALL: Sample size is hardcoded to 1 because otherwise
-# certain kinds of rare values are never encountered.always
+# PITFALL: Sample size is hardcoded to 1, because otherwise
+# certain rare values would never be encountered.
 output/test/recip-1/purchase_inputs.txt: \
   $(input_subsamples) \
   python/build/classes.py \
