@@ -22,23 +22,37 @@ if True: # input
     vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
                             , sep = ";" # TODO PITFALL
                             , encoding = "latin1" )
-  elif c.strategy in [t.vat_holiday_1,t.vat_holiday_2]:
-    vat_coicop = (
-      pd.read_csv( "data/vat/holiday/" + "vat-by-coicop.csv" ) .
-      drop( columns = ["Unnamed: 0"] ) )
-    vat_cols = ["vat","vat, min","vat, max"]
-    vat_coicop.loc[:, vat_cols] = (
-      vat_coicop.loc[:, vat_cols] .
-      apply( ( lambda col:
-               col.str.replace( ",", "." ) .
-               astype( float ) ),
-             axis = "rows" ) )
-    if c.strategy == t.vat_holiday_1:
-      vat_coicop.loc[ vat_coicop["VAT Holiday"] == 1,
-                      vat_cols ] = 0
-    elif c.strategy == t.vat_holiday_2:
-      vat_coicop.loc[ vat_coicop["VAT Holiday"] > 0,
-                      vat_cols ] = 0
+  elif c.strategy in [t.vat_holiday_1,
+                      t.vat_holiday_2,
+                      t.vat_holiday_3]:
+    if True: # read the data
+      if c.strategy in [t.vat_holiday_1,
+                        t.vat_holiday_2]:
+        vat_coicop = (
+          pd.read_csv(
+            "data/vat/holiday/" + "vat-by-coicop.csv" ) .
+          drop( columns = ["Unnamed: 0"] ) )
+      elif c.strategy in [t.vat_holiday_3]:
+        vat_coicop = (
+          pd.read_csv(
+            "data/vat/holiday/" + "vat-by-coicop.ask_3.csv" ) .
+          drop( columns = ["Unnamed: 0"] ) )
+    if True: # un-Latinize the numbers
+      vat_cols = ["vat","vat, min","vat, max"]
+      vat_coicop.loc[:, vat_cols] = (
+        vat_coicop.loc[:, vat_cols] .
+        apply( ( lambda col:
+                 col.str.replace( ",", "." ) .
+                 astype( float ) ),
+               axis = "rows" ) )
+    if True: # set appropriate VAT rates to zero
+      if c.strategy in [t.vat_holiday_1,
+                        t.vat_holiday_3]:
+        vat_coicop.loc[ vat_coicop["VAT Holiday"] == 1,
+                        vat_cols ] = 0
+      elif c.strategy == t.vat_holiday_2:
+        vat_coicop.loc[ vat_coicop["VAT Holiday"] > 0,
+                        vat_cols ] = 0
     vat_coicop = vat_coicop.drop(
       columns = ["VAT Holiday"] )
 
