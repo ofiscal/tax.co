@@ -7,7 +7,7 @@ if True:
   import sys
   import pandas as pd
   #
-  import python.common.misc as c
+  import python.common.terms as t
   import python.common.common as c
   import python.build.output_io as oio
 
@@ -17,9 +17,30 @@ vat_cap_c = pd.read_csv( "data/vat/" + "vat-for-capitulo-c.csv"
                                   , "DESCRIPTION" : "description"
             } )
 
-vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
-                        , sep = ";" # TODO PITFALL
-                        , encoding = "latin1" )
+if True: # input
+  if c.strategy == t.detail:
+    vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
+                            , sep = ";" # TODO PITFALL
+                            , encoding = "latin1" )
+  elif c.strategy in [t.vat_holiday_1,t.vat_holiday_2]:
+    vat_coicop = (
+      pd.read_csv( "data/vat/holiday/" + "vat-by-coicop.csv" ) .
+      drop( columns = ["Unnamed: 0"] ) )
+    vat_cols = ["vat","vat, min","vat, max"]
+    vat_coicop.loc[:, vat_cols] = (
+      vat_coicop.loc[:, vat_cols] .
+      apply( ( lambda col:
+               col.str.replace( ",", "." ) .
+               astype( float ) ),
+             axis = "rows" ) )
+    if c.strategy == t.vat_holiday_1:
+      vat_coicop.loc[ vat_coicop["VAT Holiday"] == 1,
+                      vat_cols ] = 0
+    elif c.strategy == t.vat_holiday_2:
+      vat_coicop.loc[ vat_coicop["VAT Holiday"] > 0,
+                      vat_cols ] = 0
+    vat_coicop = vat_coicop.drop(
+      columns = ["VAT Holiday"] )
 
 for (vat,frac) in [ ("vat"     , "vat frac")
                   , ("vat, min", "vat frac, min")
@@ -48,3 +69,4 @@ if True: # save
   oio.saveStage( c.subsample
                , vat_cap_c
                , 'vat_cap_c_brief.'   + c.strategy_suffix )
+

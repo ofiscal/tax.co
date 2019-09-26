@@ -1,12 +1,12 @@
 import sys
+import python.common.terms as t
 
 
 strategy_names = [ # There used to be a lot of these.
-  "detail",        # They disappeared in the branch "retire-hypotheticals".
-  "vat_holiday"
+  t.detail,        # They disappeared in the branch "retire-hypotheticals".
+  t.vat_holiday_1,
+  t.vat_holiday_2
 ]
-
-[detail,vat_holiday] = strategy_names
 
 subsample = int( sys.argv[1] )
 if not subsample in [1,10,100,1000]:

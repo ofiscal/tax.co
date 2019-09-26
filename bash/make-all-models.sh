@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for strategy in vat_holiday; do
+for strategy in vat_holiday_1; do
   for year in 2018; do # 2016, 2018
     echo; echo "strategy:" $strategy $year; date
     make tests overview subsample=$1 \
