@@ -7,7 +7,7 @@ import pandas as pd
 import python.common.util as util
 import python.build.legends as legends
 import python.common.misc as c
-import python.common.cl_args as c
+import python.common.common as c
 
 
 enph_subsample = "data/enph-2017/recip-" + str( c.subsample ) + "/"

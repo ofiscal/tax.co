@@ -5,7 +5,7 @@ import python.build.ss_functions as ss
 import python.build.output_io    as oio
 import python.common.util               as util
 import python.common.misc as c
-import python.common.cl_fake as cl
+import python.common.common as cl
 
 
 ### TODO : This duplicates a bit of code in python/build/people_4_income_taxish.py.

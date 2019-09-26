@@ -4,7 +4,7 @@ import python.build.purchases.articulos as articulos
 import python.build.purchases.capitulo_c as capitulo_c
 # import python.build.purchases.medios as medios
 import python.build.purchases.nice_purchases as nice_purchases
-import python.common.cl_args as cl
+import python.common.common as cl
 
 
 def test_purchase_inputs():

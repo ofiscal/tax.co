@@ -4,7 +4,7 @@ from itertools import chain
 
 from   python.build.classes import Correction
 import python.common.misc as com
-import python.common.cl_args as cl
+import python.common.common as cl
 import python.build.output_io as oio
 import python.build.purchases.main_defs as defs
 

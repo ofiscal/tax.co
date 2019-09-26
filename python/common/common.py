@@ -1,32 +1,25 @@
-import pandas as pd
-import sys
-
-import python.build.classes as cla
-
-
-strategy_names = [ # There used to be a lot of these.
-  "detail"         # They disappeared in the branch "retire-hypotheticals".
-]
-
-[detail] = strategy_names
-
-subsample = int( sys.argv[1] )
-if not subsample in [1,10,100,1000]:
-  raise ValueError( "invalid subsample reciprocal: " + str(subsample) )
-
-strategy = sys.argv[2]
-if not strategy in strategy_names:
-  raise ValueError( "invalid strategy: " + strategy )
-
-regime_year = int( sys.argv[3] )
-if not regime_year in [2016, 2018]:
-  raise ValueError( "invalid tax regime year: " + str(regime_year) )
-
-strategy_suffix = strategy
-strategy_year_suffix = strategy + "." + str(regime_year)
+if True:
+  from sys import argv
+  import pandas as pd
+  #
+  import python.build.classes as cla
 
 
-# Wart: This function is duplicated in cl_fake.py
+# If argv > 1, we are using the command line.
+# Otherwise, we are in the interpreter.
+
+if len( argv) > 1:
+  import python.common.params.command_line as imp
+else:
+  import python.common.params.repl         as imp
+
+if True:
+  subsample = imp.subsample
+  strategy = imp.strategy
+  regime_year = imp.regime_year
+  strategy_suffix = imp.strategy_suffix
+  strategy_year_suffix = imp.strategy_year_suffix
+
 def retrieve_file( file_struct, subsample ):
   return pd.read_csv(
       ( "data/enph-2017/recip-" + str(subsample)
@@ -35,7 +28,6 @@ def retrieve_file( file_struct, subsample ):
                       . keys() )
     )
 
-# Wart: This function is duplicated in cl_fake.py
 def collect_files( file_structs, subsample=subsample ):
   acc = pd.DataFrame()
   for f in file_structs:
@@ -49,3 +41,4 @@ def collect_files( file_structs, subsample=subsample ):
                     , sort=True ) # the two capitulo_c files include a column,
     # "25-broad-categs", that the others don't. `sort=true` deals with that.
   return acc
+

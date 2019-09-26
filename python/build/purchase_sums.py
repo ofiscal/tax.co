@@ -1,7 +1,7 @@
 # Aggregate purchases within person.
 
 import python.build.output_io as oio
-import python.common.cl_args as c
+import python.common.common as c
 
 
 purchases = oio.readStage( c.subsample

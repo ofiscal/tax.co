@@ -20,7 +20,7 @@ import sys
 import numpy as np
 import pandas as pd
 import python.common.misc as c
-import python.common.cl_fake as cl
+import python.common.common as cl
 import python.common.util as util
 
 

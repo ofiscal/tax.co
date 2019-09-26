@@ -4,7 +4,7 @@ import pandas as pd
 import python.build.classes as cla
 import python.build.purchases.legends as legends
 import python.build.output_io as oio
-import python.common.cl_args as c
+import python.common.common as c
 import python.common.util as util
 
 

@@ -3,7 +3,7 @@ import pandas as pd
 
 import python.build.classes as cla
 import python.build.output_io as oio
-import python.common.cl_args as cl
+import python.common.common as cl
 
 
 def test_Property_subclasses():

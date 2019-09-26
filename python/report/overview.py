@@ -9,7 +9,7 @@ import python.common.util as util
 import python.draw.util as draw
 import python.build.output_io as oio
 import python.common.misc as c
-import python.common.cl_args as cl
+import python.common.common as cl
 
 if cl.regime_year == 2016:
       import python.regime.r2016 as regime

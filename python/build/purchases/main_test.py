@@ -1,11 +1,11 @@
-import numpy as np
-import pandas as pd
-
-import python.build.purchases.main_defs as defs
-import python.common.cl_args as cl
-import python.build.classes as cla
-import python.build.output_io as oio
-
+if True:
+  import numpy as np
+  import pandas as pd
+  #
+  import python.build.purchases.main_defs as defs
+  import python.common.common as cl
+  import python.build.classes as cla
+  import python.build.output_io as oio
 
 def test_drop_if_coicop_or_value_invalid():
   log = "test_drop_if_coicop_or_value_invalid()"
@@ -89,3 +89,4 @@ if True: # run the tests
   oio.test_write( cl.subsample
                 , "purchases_main"
                 , log )
+

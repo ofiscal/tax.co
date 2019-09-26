@@ -3,7 +3,7 @@ import pandas as pd
 
 import python.build.output_io as oio
 import python.common.misc as c
-import python.common.cl_args as c
+import python.common.common as c
 
 
 buildings = oio.readStage(

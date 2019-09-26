@@ -183,7 +183,7 @@ output/test/recip-1/build_buildings.txt: \
   python/build/buildings_test.py \
   python/build/classes.py \
   python/build/output_io.py \
-  python/common/cl_args.py \
+  python/common/common.py \
   python/common/misc.py
 	$(python_from_here) python/build/buildings_test.py \
           1 $(strategy) $(yr)
@@ -200,13 +200,13 @@ output/test/recip-$(ss)/build_purchases_2_vat.txt: \
   python/build/output_io.py \
   python/build/purchases_2_vat.py \
   python/build/purchases_2_vat_test.py \
-  python/common/cl_args.py
+  python/common/common.py
 	$(python_from_here) python/build/purchases_2_vat_test.py \
           $(subsample) $(strategy) $(yr)
 
 output/test/recip-$(ss)/common_misc.txt: \
   python/build/output_io.py \
-  python/common/cl_args.py \
+  python/common/common.py \
   python/common/misc.py \
   python/common/misc_test.py
 	date
@@ -226,7 +226,7 @@ output/test/recip-$(ss)/people_main.txt: \
   python/build/output_io.py \
   python/build/people/files.py \
   python/build/people/main_test.py \
-  python/common/cl_args.py \
+  python/common/common.py \
   python/common/misc.py \
   python/common/util.py
 	$(python_from_here) python/build/people/main_test.py \
@@ -253,7 +253,7 @@ output/test/recip-$(ss)/purchases_main.txt: \
   python/build/output_io.py \
   python/build/purchases/main_defs.py \
   python/build/purchases/main_test.py \
-  python/common/cl_args.py
+  python/common/common.py
 	$(python_from_here) python/build/purchases/main_test.py \
           $(subsample) $(strategy) $(yr)
 
@@ -262,7 +262,7 @@ output/test/recip-$(ss)/vat_rates.txt: \
   python/build/output_io.py \
   python/build/vat_rates.py \
   python/build/vat_rates_test.py \
-  python/common/cl_args.py
+  python/common/common.py
 	$(python_from_here) python/build/vat_rates_test.py \
           $(subsample) $(strategy) $(yr)
 
@@ -275,7 +275,7 @@ $(input_subsamples): \
   python/build/datafiles.py
 	date
 	# Next: Validating command-line arguments.
-	$(python_from_here) python/common/cl_args.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/common/common.py $(subsample) $(strategy) $(yr)
 	$(python_from_here) python/subsample.py
 
 vat_rates: $(vat_rates)
@@ -297,7 +297,7 @@ $(buildings): \
   python/build/buildings.py \
   python/build/classes.py \
   python/build/output_io.py \
-  python/common/cl_args.py \
+  python/common/common.py \
   python/common/misc.py \
   $(input_subsamples)
 	date
@@ -308,7 +308,7 @@ $(people_0): \
   python/build/output_io.py \
   python/build/people/collect.py \
   python/build/people/files.py \
-  python/common/cl_args.py \
+  python/common/common.py \
   python/common/misc.py \
   $(input_subsamples)
 	date
@@ -320,7 +320,7 @@ $(people_1): \
   python/build/output_io.py \
   python/build/people/files.py \
   python/build/people/main.py \
-  python/common/cl_args.py \
+  python/common/common.py \
   python/common/misc.py \
   $(people_0)
 	date
@@ -377,7 +377,7 @@ $(purchases_1): \
   python/build/purchases/nice_purchases.py \
   python/build/purchases/articulos.py \
   python/build/purchases/capitulo_c.py \
-  python/common/cl_args.py \
+  python/common/common.py \
   python/common/misc.py \
   python/build/classes.py \
   $(input_subsamples)
@@ -414,7 +414,7 @@ $(purchase_pics): \
   python/report/pics/purchases.py \
   python/draw/util.py \
   python/common/misc.py \
-  python/common/cl_args.py \
+  python/common/common.py \
   $(purchases_2_vat)
 	date
 	$(python_from_here) python/report/pics/purchases.py $(subsample) $(strategy) $(yr)
@@ -424,7 +424,7 @@ $(household_pics): \
   python/report/pics/households.py \
   python/draw/util.py \
   python/common/misc.py \
-  python/common/cl_args.py \
+  python/common/common.py \
   $(households)
 	date
 	$(python_from_here) python/report/pics/households.py $(subsample) $(strategy) $(yr)
@@ -434,7 +434,7 @@ $(people_pics): \
   python/report/pics/people.py \
   python/draw/util.py \
   python/common/misc.py \
-  python/common/cl_args.py \
+  python/common/common.py \
   $(people_4_income_taxish)
 	date
 	$(python_from_here) python/report/pics/people.py $(subsample) $(strategy) $(yr)
@@ -450,7 +450,7 @@ $(overview): \
   python/regime/r$(yr).py \
   python/draw/util.py \
   python/common/misc.py \
-  python/common/cl_args.py \
+  python/common/common.py \
   python/build/classes.py \
   $(households)
 	date

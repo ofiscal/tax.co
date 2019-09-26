@@ -3,13 +3,13 @@
   # a bridge from the 25 "capitulo c" codes to a VAT rate
   # two more, briefer versions of those two keys
 
-import sys
-import pandas as pd
-
-import python.common.misc as c
-import python.common.cl_args as c
-import python.build.output_io as oio
-
+if True:
+  import sys
+  import pandas as pd
+  #
+  import python.common.misc as c
+  import python.common.common as c
+  import python.build.output_io as oio
 
 vat_cap_c = pd.read_csv( "data/vat/" + "vat-for-capitulo-c.csv"
                        , encoding = "latin1"

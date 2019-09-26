@@ -6,7 +6,7 @@ import python.build.classes as cla
 import python.build.output_io as oio
 import python.build.people.main_defs as defs
 import python.build.people.files as files
-import python.common.cl_args as cl
+import python.common.common as cl
 import python.common.misc as c
 
 

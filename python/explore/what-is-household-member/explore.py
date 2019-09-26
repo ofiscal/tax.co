@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-import python.common.cl_fake as cl
+import python.common.common as cl
 import python.common.util as util
 import python.build.output_io as oio
 import python.build.purchases.nice_purchases as nice_purchases

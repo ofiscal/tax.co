@@ -1,6 +1,5 @@
 * TODO estimate tax holiday effect
-** Determine which branch can do it.
-`tests` is most recent but might not produce all products yet.
+** branch the Makefile
 * TODO test suite
 ** TODO count rows
 So far all the tests are about columns.
