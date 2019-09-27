@@ -43,6 +43,12 @@ diff[ vat paid ] = (1/2) ( diff[ vat paid, min ]
 diff = diff[ demogs of interest ]
 ** total reduction in government revenue
 Just read it off the chart, column "one", from the previous step.
+** for report
+*** why there are three columns
+We have a choice of tax rates. We compute a min and a max.
+For each income group,
+the difference in vat paid assuming the highest and lowest possible rates is always below 10%,
+and sometimes they are very equal (for the highest income group, they are equal to 7 decimal places).
 * TODO rename freq -> per month
 * TODO test suite
 ** TODO count rows
