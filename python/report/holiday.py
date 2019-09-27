@@ -41,7 +41,8 @@ if True:
              rename(columns=who) .
              loc[stats] .
              transpose() *
-             inflator )
+             inflator * # inflate from 2017-12 to 2020-06
+             12 ) # switch from months to years
   normal = select_from( "/overview.detail.2018.csv" )
   holiday = select_from( "/overview.vat_holiday_3.2018.csv" )
   dfs["normal"] = normal
@@ -85,4 +86,5 @@ if True: # build federal VAT income report
   federal["saved, %"] = ( # Unlike peso values,
                             # percentages should not be scaled
     by_income.loc[ "all", "saved, %"] )
+  federal
 
