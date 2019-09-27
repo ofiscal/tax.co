@@ -1,4 +1,45 @@
 * TODO estimate tax holiday effect
+** PITFALL: monthly v. yearly
+overview.csv gives monthly figures.
+** figures to use
+IVA was 54.7B (54.7e12) in 2017
+3.17% was the inflation from Dec 2017 to Dec 2018
+  143.26677 / 138.85399
+Suppose at least a week of time-shifting, a max of six months.
+** subspaces of "overview.csv" to use
+*** columns
+one (everybody)
+"income-decile: n" for n in [0,8]
+income-percentile-in[90,97]: True
+income-percentile: 98
+income-percentile: 99
+*** rows
+income: mean
+value (spending): mean
+value/income: mean
+vat paid, min: mean
+vat paid, max: mean
+vat/income, min: mean
+vat/income, max: mean
+vat/value, min: mean
+vat/value, max: mean
+** total reduction in taxes spent per income group
+baseline = overview.detail.2018.csv
+holiday = overview.tax_holiday_3.2018.csv
+N = is the number of days of those purchases
+    across which people can shift to the holiday.
+    Assuming in (7,180).
+diff[ vat paid, min ] =
+  N           * holiday [ vat paid, min ]
+  + (365 - N) * baseline[ vat paid, min ]
+diff[ vat paid, max ] =
+  N           * holiday [ vat paid, max ]
+  + (365 - N) * baseline[ vat paid, max ]
+diff[ vat paid ] = (1/2) ( diff[ vat paid, min ]
+                         + diff[ vat paid, max ] )
+diff = holiday[ demogs of interest ]
+** total reduction in government revenue
+Just read it off the chart, column "one", from the previous step.
 * TODO rename freq -> per month
 * TODO test suite
 ** TODO count rows
@@ -596,7 +637,7 @@ that's already implemented.
 And that (at least) the last thing it creates is a Makefile target.
 Otherwise `make` might believe a target is up to date when the program responsible for it did not complete.
 ** TODO PITFALLS in pandas
-*** concat v. append 
+*** concat v. append
 Neither forces you to specify the axis.
 Concat is more general.
 *** two columns can have the same name, silently
