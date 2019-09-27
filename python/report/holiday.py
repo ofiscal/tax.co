@@ -45,21 +45,31 @@ for k in ["normal","holiday"]:
   dfs[k] = dfs[k].drop( columns = [ "vat paid, min: mean",
                                     "vat paid, max: mean" ] )
 
-shift_window = 60
+shift_window = 180
   # If people can shift their purchase times by a month,
   # then effectively the VAT holiday is two months,
   # regardless of how long it is by law.
-report = (
-  pd.concat(
-    [ ( dfs["normal"] .
-        rename( columns = {"vat paid: mean":"normal"} ) ),
-      ( dfs["holiday"] .
-        rename( columns = {"vat paid: mean":"holiday"} ) ) ],
-    axis = "columns" ) )
 
-report["mix"] = (1/365) * (
-  (365 - shift_window) * dfs["normal"] +
-         shift_window  * dfs["holiday"]  )
-report["saved"]    = report["normal"] - report["mix"]
-report["saved, %"] = report["mix"] / report["normal"]
-report
+if True: # build report on income groups
+  by_income = (
+    pd.concat(
+      [ ( dfs["normal"] .
+          rename( columns = {"vat paid: mean":"normal"} ) ),
+        ( dfs["holiday"] .
+          rename( columns = {"vat paid: mean":"holiday"} ) ) ],
+      axis = "columns" ) )
+  by_income["mix"] = (1/365) * (
+    (365 - shift_window) * dfs["normal"] +
+           shift_window  * dfs["holiday"]  )
+  by_income["saved"] = (
+    by_income["normal"] - by_income["mix"] )
+  by_income["saved, %"] = 100 * (
+    by_income["saved"] /  by_income["normal"] )
+  by_income
+
+if True: # build federal VAT income report
+  vat_revenue_2017 = 59917589707522 # about 6e13
+  by_person_normal = by_income.loc["all","normal"]
+  federal = by_income.loc["all"] * vat_revenue_2017 / by_person_normal
+  federal
+

@@ -25,24 +25,9 @@ vat/income, min: mean
 vat/income, max: mean
 vat/value, min: mean
 vat/value, max: mean
-** total reduction in taxes spent per income group
-baseline = overview.detail.2018.csv
-holiday = overview.tax_holiday_3.2018.csv
-N = is the number of days of those purchases
-    across which people can shift to the holiday.
-    Assuming in (7,180).
-diff = pd.DataFrame()
-diff[ vat paid, min ] =
-  N           * holiday [ vat paid, min ]
-  + (365 - N) * baseline[ vat paid, min ]
-diff[ vat paid, max ] =
-  N           * holiday [ vat paid, max ]
-  + (365 - N) * baseline[ vat paid, max ]
-diff[ vat paid ] = (1/2) ( diff[ vat paid, min ]
-                         + diff[ vat paid, max ] )
-diff = diff[ demogs of interest ]
-** total reduction in government revenue
-Just read it off the chart, column "one", from the previous step.
+** TODO inflation
+** TODO switch to years
+** TODO total reduction in government revenue
 ** for report
 *** why there are three columns
 We have a choice of tax rates. We compute a min and a max.
