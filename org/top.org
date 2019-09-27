@@ -2,10 +2,12 @@
 ** PITFALL: monthly v. yearly
 overview.csv gives monthly figures.
 ** figures to use
-IVA was 54.7B (54.7e12) in 2017
+IVA was 59.917.589.707.522
+        28% of federal revenue in 2018
 3.17% was the inflation from Dec 2017 to Dec 2018
   143.26677 / 138.85399
 Suppose at least a week of time-shifting, a max of six months.
+The holiday would be in 2020, or later.
 ** subspaces of "overview.csv" to use
 *** columns
 one (everybody)
@@ -29,6 +31,7 @@ holiday = overview.tax_holiday_3.2018.csv
 N = is the number of days of those purchases
     across which people can shift to the holiday.
     Assuming in (7,180).
+diff = pd.DataFrame()
 diff[ vat paid, min ] =
   N           * holiday [ vat paid, min ]
   + (365 - N) * baseline[ vat paid, min ]
@@ -37,7 +40,7 @@ diff[ vat paid, max ] =
   + (365 - N) * baseline[ vat paid, max ]
 diff[ vat paid ] = (1/2) ( diff[ vat paid, min ]
                          + diff[ vat paid, max ] )
-diff = holiday[ demogs of interest ]
+diff = diff[ demogs of interest ]
 ** total reduction in government revenue
 Just read it off the chart, column "one", from the previous step.
 * TODO rename freq -> per month
