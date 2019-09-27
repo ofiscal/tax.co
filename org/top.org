@@ -2,32 +2,8 @@
 ** PITFALL: monthly v. yearly
 overview.csv gives monthly figures.
 ** figures to use
-IVA was 59.917.589.707.522
-        28% of federal revenue in 2018
-3.17% was the inflation from Dec 2017 to Dec 2018
-  143.26677 / 138.85399
-Suppose at least a week of time-shifting, a max of six months.
-The holiday would be in 2020, or later.
-** subspaces of "overview.csv" to use
-*** columns
-one (everybody)
-"income-decile: n" for n in [0,8]
-income-percentile-in[90,97]: True
-income-percentile: 98
-income-percentile: 99
-*** rows
-income: mean
-value (spending): mean
-value/income: mean
-vat paid, min: mean
-vat paid, max: mean
-vat/income, min: mean
-vat/income, max: mean
-vat/value, min: mean
-vat/value, max: mean
-** TODO inflation
+VAT was 28% of federal revenue in 2018
 ** TODO switch to years
-** TODO total reduction in government revenue
 ** for report
 *** why there are three columns
 We have a choice of tax rates. We compute a min and a max.

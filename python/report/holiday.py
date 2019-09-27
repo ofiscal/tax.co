@@ -23,6 +23,14 @@ if True: # bearings
     "income-percentile-in[90,97]: True" : "income %ile 90-97",
     "income-percentile: 98"             : "income %ile 98",
     "income-percentile: 99"             : "income %ile 99" }
+  inflator = 1.0968321419999998
+    # inflation index:
+    #   2017-12: 138.853985
+    #   2019-06: 147.1492953586
+    #   => 5.97412 %
+    # expected inflation in the next year: 3.5 %
+    # => total inflation from 2017-12 to 2020-06:
+    #   (1.0597412 * 1.035) = 1.0968321419999998
 
 if True:
   dfs = {}
@@ -32,7 +40,8 @@ if True:
              [list(who.keys())] .
              rename(columns=who) .
              loc[stats] .
-             transpose() )
+             transpose() *
+             inflator )
   normal = select_from( "/overview.detail.2018.csv" )
   holiday = select_from( "/overview.vat_holiday_3.2018.csv" )
   dfs["normal"] = normal
@@ -68,8 +77,12 @@ if True: # build report on income groups
   by_income
 
 if True: # build federal VAT income report
-  vat_revenue_2017 = 59917589707522 # about 6e13
-  by_person_normal = by_income.loc["all","normal"]
-  federal = by_income.loc["all"] * vat_revenue_2017 / by_person_normal
-  federal
+  vat_revenue = inflator * 59917589707522
+    # Before inflation, this figure is VAT revenue in 2017,
+    # which was about 6e13 before inflation.
+  federal = ( by_income.loc["all"] *
+              vat_revenue / by_income.loc["all","normal"] )
+  federal["saved, %"] = ( # Unlike peso values,
+                            # percentages should not be scaled
+    by_income.loc[ "all", "saved, %"] )
 
