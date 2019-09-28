@@ -80,7 +80,7 @@ if True: # build report on income groups
     ( 15, "15 days" ),
     ( 30, "30 days" ),
     ( 90, "90 days" ),
-    ( 182.5, "permanent" ) ]
+    ( 182.5, "total freedom" ) ]
   for (r,n) in shift_windows: add_estimate(r,n)
   by_income
 
@@ -95,3 +95,6 @@ if True: # build federal VAT income report
                             # percentages should not be scaled
       by_income.loc[ "all", "saved % " + n] )
   federal
+
+by_income.to_excel("by income.xlsx")
+federal.to_excel("federal.xlsx")

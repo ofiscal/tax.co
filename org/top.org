@@ -1,4 +1,5 @@
 * TODO estimate tax holiday effect
+** TODO use full sample
 ** figures to use
 VAT was 28% of federal revenue in 2018
 ** for report
