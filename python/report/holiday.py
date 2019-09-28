@@ -55,11 +55,6 @@ for k in ["normal","holiday"]:
   dfs[k] = dfs[k].drop( columns = [ "vat paid, min: mean",
                                     "vat paid, max: mean" ] )
 
-shift_window = 180
-  # If people can shift their purchase times by a month,
-  # then effectively the VAT holiday is two months,
-  # regardless of how long it is by law.
-
 if True: # build report on income groups
   by_income = (
     pd.concat(
@@ -68,13 +63,25 @@ if True: # build report on income groups
         ( dfs["holiday"] .
           rename( columns = {"vat paid: mean":"holiday"} ) ) ],
       axis = "columns" ) )
-  by_income["mix"] = (1/365) * (
-    (365 - shift_window) * dfs["normal"] +
-           shift_window  * dfs["holiday"]  )
-  by_income["saved"] = (
-    by_income["normal"] - by_income["mix"] )
-  by_income["saved, %"] = 100 * (
-    by_income["saved"] /  by_income["normal"] )
+  def add_estimate( can_shift_by : int,
+                    name : str ):
+    """ Assuming rationality, if people can shift their purchase times
+    by a month, then effectively the VAT holiday is two months,
+    regardless of how long it is by law. """
+    by_income["spent " + name] = (1/365) * (
+      (365 - 2 * can_shift_by) * dfs["normal"] +
+             2 * can_shift_by  * dfs["holiday"]  )
+    by_income["saved " + name] = (
+      by_income["normal"] - by_income["spent " + name] )
+    by_income["saved % " + name] = 100 * (
+      by_income["saved " + name] /  by_income["normal"] )
+  shift_windows = [
+    ( 1.5, "no shift" ),
+    ( 15, "15 days" ),
+    ( 30, "30 days" ),
+    ( 90, "90 days" ),
+    ( 182.5, "permanent" ) ]
+  for (r,n) in shift_windows: add_estimate(r,n)
   by_income
 
 if True: # build federal VAT income report
@@ -83,8 +90,8 @@ if True: # build federal VAT income report
     # which was about 6e13 before inflation.
   federal = ( by_income.loc["all"] *
               vat_revenue / by_income.loc["all","normal"] )
-  federal["saved, %"] = ( # Unlike peso values,
+  for (_,n) in shift_windows:
+    federal["saved % " + n] = ( # Unlike peso values,
                             # percentages should not be scaled
-    by_income.loc[ "all", "saved, %"] )
+      by_income.loc[ "all", "saved % " + n] )
   federal
-

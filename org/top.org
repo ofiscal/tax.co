@@ -1,9 +1,6 @@
 * TODO estimate tax holiday effect
-** PITFALL: monthly v. yearly
-overview.csv gives monthly figures.
 ** figures to use
 VAT was 28% of federal revenue in 2018
-** TODO switch to years
 ** for report
 *** why there are three columns
 We have a choice of tax rates. We compute a min and a max.
