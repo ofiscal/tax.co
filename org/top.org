@@ -1,27 +1,36 @@
-* TODO rename freq -> per month
-* TODO test suite
-** TODO count rows
-So far all the tests are about columns.
+* TODO possibly wrong
 ** TODO "household member" max mismatch
 see python/explore/what-is-household-member/
-** TODO dtype argument for pd.read_csv should be stored for each file
-rather than coded anew every time it is read
-** TODO resume at purchases_2_vat_test.test_ranges()
 ** TODO If max vat is 0.27, max vat frac should be 0.213
 but instead it's 0.160, which is what would derive from a max vat of 0.19.
 This problem arises in purchases_2_vat_test.py
-** TODO A way to express tight upper or lower bounds
-Some variant of the InRange() object.
-This bears especially on purchases_2_vat_test.py
-** TODO the logging idiom does not capture most recent test state
-A function does not record to the log unless it completes.
-*** TODO solution ? need a way to delete output if python program fails
+** TODO why are the median columns in overview.py's df_tmi called "unweighted"?
+** TODO add cesantias + primas to (which?) income measure
+ should be in denominator, and not numerator, of tax rate.
+ formality matters
+   if an informal person makes 500K, they don't get primas + cesantias
+** TODO sanity checks (#sane)
+*** are these two variables ever both > 0 ?
+**** P5180S1, P5180S2 : daily payment for, value of food at school
+**** P6180S1, P6180S2 : daily payment for, value of food at university
 ** TODO purchases.main
 *** TODO what to do|is done about missing freq, where-got, is-purchase
 is-purchase we probably assume to be 1, but the others ...?
 (they are often missing)
 ** TODO "vat" conflates some taxes
 That's why, for instance, its max in purchases_2_vat_test is 0.27, not 19
+* TODO test suite
+** TODO resume at purchases_2_vat_test.test_ranges()
+** TODO count rows
+So far all the tests are about columns.
+** TODO dtype argument for pd.read_csv should be stored for each file
+rather than coded anew every time it is read
+** TODO A way to express tight upper or lower bounds
+Some variant of the InRange() object.
+This bears especially on purchases_2_vat_test.py
+** TODO the logging idiom does not capture most recent test state
+A function does not record to the log unless it completes.
+*** TODO solution ? need a way to delete output if python program fails
 ** TODO maybe
 *** TODO ? people.main:
 **** Test the range and missing-ness of the input file.
@@ -75,67 +84,6 @@ It's important that the last thing a file makes is one of the dependencies in th
 Some output has spaces in the name; that will need to change before that output can be listed as a target.
 
 At least one filename is duplicated. That will matter once we are again using those pictures.
-* DONE before CB meeting
-** for tomorrow
-2016 DANE
-2018 DANE
-2016 DIAN: replicate all income taxes, + ss contribs for employee + simulate employer ss contribs
-  and include original income taxes
-2018 DIAN: simulate  all income taxes, + ss contribs for employee + simulate employer ss contribs
-  and include original 2016 income taxes
-Use 2017 value of UVT for all DIAN stuff.
-** estimate tax burdens from dian data
-*** goal
-At least in aggregate; probably disaggregated too.
-**** social security contribs
-= sum of a bunch of things
-including employer contributions (must impute)
-**** income tax = "impuesto de renta de personas naturales"
-= sum of a bunch of income taxes
-**** wealth tax
-https://www.gerencie.com/impuesto-a-la-riqueza.html
-it's a nonlinear function:
-    simple in 2018, complex in 2016, complex (and different) in 2017
-it won't commute across the average wealth.
-*** missing from DIAn data
-GMF
-Contractor
-ss contributions
-  could impute from exempt labor income, but not disaggregated
-  could impute from labor icnome, but no contractor variable
-*** DIAN variables to use
-**** for 2016
-income taxes: 81 through 85
-C81DE TRABAJO Y PENSIONES
-C82DE CAPITAL Y NO LABORALES
-C83POR DIVIDENDOS Y PARTICIP AÑO 2016 CASILLA 69
-
-also try to duplciate those figures by applying schedules to rentas cedulares
-**** for 2018
-C32INGS BRUTOS RENTAS TRABAJO
-to get ss contribs.
----- ASK JUAN ----
-
-C34RENTA LÍQUIDA TRABAJO
-C42RENTA LÍQUIDA CEDULAR PENSIONES
-C46RENTA LÍQUIDA CAPITAL
-  # not C53RENTA LÍQUIDA CEDULAR CAPITAL
-C58RENTA LÍQUIDA NO LABORALES
-  # not C66RENTA LÍQUIDA CEDULAR NO LABORAL
-
-C74RENTAS LÍQUIDAS GRAVABLES DIVIDENDOS Y PARTICIP
-  # not obvious, but use this
-
-C80GANANCIAS OCASIONALES GRAVABLES
-  # ambiguous. skip before CB.
-
-** change IVA for 2018
-beer and soda: 19%
-* DONE retire hypotheticals from Makefiles, scripts, filenames
-** keep the "detail" strategy, but make it implicit
-** regexes to seek and purge
-detail, approx, prop_, strategy, ministry
-vat_flat_rate
 * TODO personal income tax
 ** TODO exemptions, across >1 kind of income
 *** GMF deduction: across-person worries are inapplicable.
@@ -338,13 +286,6 @@ P6871: It describes the frequency with which monthly income is disbursed; it doe
 ** don't repeat most income tax code for the two tax regime years
 ** don't generate purchases_1 with file-origin column
 at the end of the file, comment out one line (and manage myriad downstream effects)
-* TODO rename single-digit percentiles to "09" instead of 9, etc
-because they get alphabetized
-* TODO why are the median columns in overview.py's df_tmi called "unweighted"?
-* TODO add cesantias + primas to (which?) income measure
-should be in denominator, and not numerator, of tax rate.
-formality matters
-  if an informal person makes 500K, they don't get primas + cesantias
 * TODO model how salesish- and both income taxes (corp and personal) changed in 2018
 * TODO features (#feature)
 ** new taxes
@@ -556,10 +497,6 @@ problems in households:
 * TODO development cycle speed (#cycle)
 ** the different vat strategies ought to build separate versions only of what differs
 e.g. in the people data, only rebuild the tax payments when the tax rates change
-* TODO sanity checks (#sane)
-** are these two variables ever both > 0 ?
-*** P5180S1, P5180S2 : daily payment for, value of food at school
-*** P6180S1, P6180S2 : daily payment for, value of food at university
 * TODO unsorted, low import (#meh)
 ** mild data concerns
 *** some income questions that could overlap
@@ -576,7 +513,8 @@ but zero people in the sample received any of it:
    , "P6207M7"  : "beca from empresa privada ~familiar"
 ** "P6500 (asalariado income) > 0" should be perfecty corr'd with pension contrib's
 ** ??? pension contribs = formality.
-** STALE estimate november-2018 reform effects
+* DONE | hopefully stale
+** estimate november-2018 reform effects
 *** the motorbike tax
  After the reform, would be 27% on all bikes.
  Before, 27% on bikes valued above 9 million.
@@ -629,6 +567,98 @@ but zero people in the sample received any of it:
  Gini = Num / Denom where
    Num = Sum over all i,j of |xi - xj|
    Denom = 2 * n * (Sum over all i of xi^2)
+** DONE before CB meeting
+*** for tomorrow
+2016 DANE
+2018 DANE
+2016 DIAN: replicate all income taxes, + ss contribs for employee + simulate employer ss contribs
+  and include original income taxes
+2018 DIAN: simulate  all income taxes, + ss contribs for employee + simulate employer ss contribs
+  and include original 2016 income taxes
+Use 2017 value of UVT for all DIAN stuff.
+*** estimate tax burdens from dian data
+**** goal
+At least in aggregate; probably disaggregated too.
+***** social security contribs
+= sum of a bunch of things
+including employer contributions (must impute)
+***** income tax = "impuesto de renta de personas naturales"
+= sum of a bunch of income taxes
+***** wealth tax
+https://www.gerencie.com/impuesto-a-la-riqueza.html
+it's a nonlinear function:
+    simple in 2018, complex in 2016, complex (and different) in 2017
+it won't commute across the average wealth.
+**** missing from DIAn data
+GMF
+Contractor
+ss contributions
+  could impute from exempt labor income, but not disaggregated
+  could impute from labor icnome, but no contractor variable
+**** DIAN variables to use
+***** for 2016
+income taxes: 81 through 85
+C81DE TRABAJO Y PENSIONES
+C82DE CAPITAL Y NO LABORALES
+C83POR DIVIDENDOS Y PARTICIP AÑO 2016 CASILLA 69
+
+also try to duplciate those figures by applying schedules to rentas cedulares
+***** for 2018
+C32INGS BRUTOS RENTAS TRABAJO
+to get ss contribs.
+---- ASK JUAN ----
+
+C34RENTA LÍQUIDA TRABAJO
+C42RENTA LÍQUIDA CEDULAR PENSIONES
+C46RENTA LÍQUIDA CAPITAL
+  # not C53RENTA LÍQUIDA CEDULAR CAPITAL
+C58RENTA LÍQUIDA NO LABORALES
+  # not C66RENTA LÍQUIDA CEDULAR NO LABORAL
+
+C74RENTAS LÍQUIDAS GRAVABLES DIVIDENDOS Y PARTICIP
+  # not obvious, but use this
+
+C80GANANCIAS OCASIONALES GRAVABLES
+  # ambiguous. skip before CB.
+*** change IVA for 2018
+beer and soda: 19%
+** DONE retire hypotheticals from Makefiles, scripts, filenames
+*** keep the "detail" strategy, but make it implicit
+*** regexes to seek and purge
+detail, approx, prop_, strategy, ministry
+vat_flat_rate
+** from Jerome de Henau, mostly soft (non-code, non-data)
+ more kinds of households
+   one person, female, earning
+   gender-income interaction
+ stakeholders
+ unions and employer organizations
+ feminist groups, womens' groups, groups for domestic workers
+ anyone intnerested in poverty, homelessness, agric land reform
+ any disadvantaged group has similar interests
+ banks care, if they can attract investment, and look charitable
+     lack of corruption is a big attractor
+     can be called "improving the functioning of the state"
+ average tax rate: easier to understand than marginal
+** code reviews
+*** TODO ? 2019 05 06
+**** the "duplicated" problem in python/build/purchases/capitulo_c.py
+*** 2019 01 15-ish
+**** have read through
+ buildings.py
+ classes.py
+ common.py
+ households.py
+ people*.py
+ purchases*.py
+ vat_rates.py
+**** skipped: build/people/main.py / income variable creation
+ resume at:
+     # compute income totals, drop components
+**** glossed over: ss_contribs.py
+** someday mypy might work
+ So far pandas does not provide stubs,
+ so types like pd.Series cannot be used.
 * TODO not to duplicate
 ** "file-origin" is commented out
 If we ever again need a purchase data set that tracks the file each purchase is from,
@@ -787,35 +817,3 @@ min             1.000000  1.110101e+06
 50%            15.000000  1.220801e+06
 75%            20.000000  8.300305e+06
 max            25.000000  1.270990e+07
-* from Jerome de Henau, mostly soft (non-code, non-data)
-more kinds of households
-  one person, female, earning
-  gender-income interaction
-stakeholders
-unions and employer organizations
-feminist groups, womens' groups, groups for domestic workers
-anyone intnerested in poverty, homelessness, agric land reform
-any disadvantaged group has similar interests
-banks care, if they can attract investment, and look charitable
-    lack of corruption is a big attractor
-    can be called "improving the functioning of the state"
-average tax rate: easier to understand than marginal
-* code reviews
-** TODO ? 2019 05 06
-*** the "duplicated" problem in python/build/purchases/capitulo_c.py
-** 2019 01 15-ish
-*** have read through
-buildings.py
-classes.py
-common.py
-households.py
-people*.py
-purchases*.py
-vat_rates.py
-*** skipped: build/people/main.py / income variable creation
-resume at:
-    # compute income totals, drop components
-*** glossed over: ss_contribs.py
-* someday mypy might work
-So far pandas does not provide stubs,
-so types like pd.Series cannot be used.
