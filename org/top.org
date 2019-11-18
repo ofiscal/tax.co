@@ -523,16 +523,6 @@ The Makefile pseudo targets, rather than *_pics, should be called *_reports, and
 ** pdflatex: send reports to a file, not stdout
 *** this way it doesn't drown the python error reports
 ** centralize routines for categorical variables
-* TODO estimate november reform effects
-** the motorbike tax
-After the reform, would be 27% on all bikes.
-Before, 27% on bikes valued above 9 million.
-** new tax on house purchases
-2017-18 : 0.05 rate, threshold of (888.5 + 853.8 mil / 2), only new houses
-2019 proposed : 0.02 rate, same threshold (888.5 + 853.8 mil / 2), all houses
-** add a new column, "tax.co purchase code", and a new tax rate key for it
-Some things (e.g. house purchases) are neither in the COICOP nor the capitulo c system.
-** add new VAT key
 * TODO accuracy (#right)
 ** TODO ? use "where-got
 It's 15% missing (in purchases_2_vat.csv). Assume those are fully taxed.
@@ -586,15 +576,86 @@ but zero people in the sample received any of it:
    , "P6207M7"  : "beca from empresa privada ~familiar"
 ** "P6500 (asalariado income) > 0" should be perfecty corr'd with pension contrib's
 ** ??? pension contribs = formality.
-* mabe handy in code
+** STALE estimate november-2018 reform effects
+*** the motorbike tax
+ After the reform, would be 27% on all bikes.
+ Before, 27% on bikes valued above 9 million.
+*** new tax on house purchases
+ 2017-18 : 0.05 rate, threshold of (888.5 + 853.8 mil / 2), only new houses
+ 2019 proposed : 0.02 rate, same threshold (888.5 + 853.8 mil / 2), all houses
+*** add a new column, "tax.co purchase code", and a new tax rate key for it
+ Some things (e.g. house purchases) are neither in the COICOP nor the capitulo c system.
+*** add new VAT key
+** DONE get estimates to María del Rosario Guerra
+*** TODO Include the number of goods exempted in the filenames.
+ To avoid regeneration.
+*** Effects on revenue and total expenditure of a vat of 0% and 5% on the top 5, 10 and 20 products consumed by the bottom 60% of income earners
+**** new Python
+ Get a list of coicop codes to exempt.
+  auto | manual
+ From purchases_2, build purchases_2_1.del_rosario, which uses those exemptions.
+ For whatever ingests purchases_2, introduce a conditional:
+   if the strategy is del_rosario, use purchases_2_1.del_rosario instead.
+ Build the overview.
+   If we compare total vat_paid in the del_rosario overview to the detail overview, we'll see the effect.
+**** use a separate Makefile.goods-by-decile and a separate make-goods-by-decile.sh
+***** Makefile.goods-by-decile
+ It duplicates relevant parts of the Makefile: everything that's both:
+   upstream of goods-by-decile
+   downstream of ???
+ It uses two arguments:
+   exemption_strategy = manual | auto
+   number_exempted :: Int
+ It duplicates the needed inputs from prop_2018_10_31_0.18
+   renaming them del_rosario_2018_11_20
+ Its outputs are all labeled del_rosario_2018_11_20
+ Any preexisting python programs, it calls using
+   subsample = _
+   vat_strategy = del_rosario_2018_11_20
+   vat_flat_rate=0.18
+***** make-goods-by-decile.sh calls both
+ It calls the main Makefile to build whatever the other needs, using prop_2018_10_31 and 0.18
+ It calls Makefile.goods-by-decile with no parameters.
+**** The output
+ "vat paid" is already part of the overview table that the makefile produced.
+ Changes in expenditures, we assume, are zero.
+**** TODO safety: replace 2_1_del_rosario with 2_1_exemptions
+ "del rosario" is already in the file suffix
+*** use the Ministry of Finance's COICOP-VAT bridge
+**** TODO They wrote 19 where we have 0.19; harmonize.
+**** TODO make sure there are no more missing values in purchases_2_vat.csv with that key than with the detail key
+*** Before and after tax reform Gini
+ This is not a clearly defined goal.
+ Gini = Num / Denom where
+   Num = Sum over all i,j of |xi - xj|
+   Denom = 2 * n * (Sum over all i of xi^2)
+* TODO not to duplicate
 ** "file-origin" is commented out
 If we ever again need a purchase data set that tracks the file each purchase is from,
 that's already implemented.
+** some pics are drawn but not included in the report
+*** people/spending
 * TODO PITFALLs in code
-** make sure all program output comes at the end
+** Makefile: be sure all program output comes at the end
 And that (at least) the last thing it creates is a Makefile target.
 Otherwise `make` might believe a target is up to date when the program responsible for it did not complete.
-** TODO PITFALLS in pandas
+** in Python
+*** underscores in filenames seem to confuse Matplotlib's font_manager
+ https://github.com/matplotlib/matplotlib/issues/14536
+*** every code folder needs a __init__.py file
+as of some recent version of Python
+*** some import names clobber others
+When using the syntax "import _ as x", Python will only bind one library to the name "x". When collisions occur, the latest binding wins.
+
+When I split common.py into common.misc and common.cl_args, I imported both as "c". I only fixed the code where a collision occurred.
+** in Jupyter: local modules must begin with a capital letter to be imported in Jupyter
+Keeping all code in a top-level folder that starts with a capital letter solves this problem.
+Subfolders and files suffer no naming restriction.
+
+** in Pandas
+*** cannot convert to int when some values are NaN
+ Hence muni code is float.
+*** the boolean value of np.nan is True
 *** concat v. append
 Neither forces you to specify the axis.
 Concat is more general.
@@ -602,25 +663,37 @@ Concat is more general.
 This can result in errors like "cannot add str to int".
 Because f you add a number to a column, and another shares its name,
 it will try to add the number to both.
-** TODO some import names clobber others
-When using the syntax "import _ as x", Python will only bind one library to the name "x". When collisions occur, the latest binding wins.
+*** categorical variables require a "map" step only when created, not when read
+ It's to convert them from a number to a string.
+ For instance, creating the "people" table looks like this:
+   people["race"] = pd.Categorical(
+     people["race"].map( race_key )
+     , categories = list( race_key.values() )
+     , ordered = True)
+ whereas reading it would look like this:
+   people["race"] = pd.Categorical(
+     people["race"]
+     , categories = list( race_key.values() )
+     , ordered = True)
+** in Matplotlib
+*** change every background color: methods that didn't work
+**** plt.rcParams['axes.facecolor] = 'b'
+Changes the legend background, nothing else
+**** ax.set_facecolor('b')
+no discernible effect
+**** ax.patch.set_facecolor('b')
+no discernible effect
+**** fig.add_subplot(2, 1, 1, facecolor = "red")
+causes the second figure not to be drawn,
+no other discernible effect
+***** code example
+    fig = Figure()
 
-When I split common.py into common.misc and common.cl_args, I imported both as "c". I only fixed the code where a collision occurred.
-** some pics are drawn but not included in the report
-*** people/spending
-** categorical variables require a "map" step only when created, not when read
-It's to convert them from a number to a string.
-For instance, creating the "people" table looks like this:
-  people["race"] = pd.Categorical(
-    people["race"].map( race_key )
-    , categories = list( race_key.values() )
-    , ordered = True)
-whereas reading it would look like this:
-  people["race"] = pd.Categorical(
-    people["race"]
-    , categories = list( race_key.values() )
-    , ordered = True)
-** range errors in cdfs sometimes disappear when the xrange is restricted
+    ax = fig.add_subplot(2, 1, 1, facecolor = "red")
+    drawText( ax, lines )
+**** pdf.savefig() overrides background color in figures
+https://stackoverflow.com/questions/56606122/matplotlib-use-the-same-custom-font-in-every-kind-of-text-axes-title-text
+*** range errors in cdfs sometimes disappear when the xrange is restricted
   draw.single_cdf( x[ x<10 ], # PITFALL : not restricting x here => a range error
                    "cdf of (spending / income) across income-earning households"
                    , xmin = 0, xmax = 8
@@ -727,49 +800,6 @@ banks care, if they can attract investment, and look charitable
     lack of corruption is a big attractor
     can be called "improving the functioning of the state"
 average tax rate: easier to understand than marginal
-* DONE get estimates to María del Rosario Guerra
-** TODO Include the number of goods exempted in the filenames.
-To avoid regeneration.
-** Effects on revenue and total expenditure of a vat of 0% and 5% on the top 5, 10 and 20 products consumed by the bottom 60% of income earners
-*** new Python
-Get a list of coicop codes to exempt.
- auto | manual
-From purchases_2, build purchases_2_1.del_rosario, which uses those exemptions.
-For whatever ingests purchases_2, introduce a conditional:
-  if the strategy is del_rosario, use purchases_2_1.del_rosario instead.
-Build the overview.
-  If we compare total vat_paid in the del_rosario overview to the detail overview, we'll see the effect.
-*** use a separate Makefile.goods-by-decile and a separate make-goods-by-decile.sh
-**** Makefile.goods-by-decile
-It duplicates relevant parts of the Makefile: everything that's both:
-  upstream of goods-by-decile
-  downstream of ???
-It uses two arguments:
-  exemption_strategy = manual | auto
-  number_exempted :: Int
-It duplicates the needed inputs from prop_2018_10_31_0.18
-  renaming them del_rosario_2018_11_20
-Its outputs are all labeled del_rosario_2018_11_20
-Any preexisting python programs, it calls using
-  subsample = _
-  vat_strategy = del_rosario_2018_11_20
-  vat_flat_rate=0.18
-**** make-goods-by-decile.sh calls both
-It calls the main Makefile to build whatever the other needs, using prop_2018_10_31 and 0.18
-It calls Makefile.goods-by-decile with no parameters.
-*** The output
-"vat paid" is already part of the overview table that the makefile produced.
-Changes in expenditures, we assume, are zero.
-*** TODO safety: replace 2_1_del_rosario with 2_1_exemptions
-"del rosario" is already in the file suffix
-** use the Ministry of Finance's COICOP-VAT bridge
-*** TODO They wrote 19 where we have 0.19; harmonize.
-*** TODO make sure there are no more missing values in purchases_2_vat.csv with that key than with the detail key
-** Before and after tax reform Gini
-This is not a clearly defined goal.
-Gini = Num / Denom where
-  Num = Sum over all i,j of |xi - xj|
-  Denom = 2 * n * (Sum over all i of xi^2)
 * code reviews
 ** TODO ? 2019 05 06
 *** the "duplicated" problem in python/build/purchases/capitulo_c.py
