@@ -43,22 +43,22 @@ python_from_here = PYTHONPATH='.' python3
 
 ##=##=##=##  Input data variables
 
-enph_files = \
-  Caracteristicas_generales_personas \
-  Gastos_diarios_del_hogar_Urbano_-_Comidas_preparadas_fuera_del_hogar \
-  Gastos_diarios_personales_Urbano \
-  Gastos_diarios_Urbano_-_Capitulo_C \
-  Gastos_diarios_Urbanos \
-  Gastos_diarios_Urbanos_-_Mercados \
-  Gastos_menos_frecuentes_-_Articulos \
-  Gastos_menos_frecuentes_-_Medio_de_pago \
-  Gastos_personales_Rural_-_Comidas_preparadas_fuera_del_Hogar \
-  Gastos_personales_Rural \
-  Gastos_personales_Urbano_-_Comidas_preparadas_fuera_del_hogar \
-  Gastos_semanales_Rural_-_Capitulo_C \
-  Gastos_semanales_Rural_-_Comidas_preparadas_fuera_del_hogar \
-  Gastos_semanales_Rurales \
-  Gastos_semanales_Rurales_-_Mercados \
+enph_files =								\
+  Caracteristicas_generales_personas					\
+  Gastos_diarios_del_hogar_Urbano_-_Comidas_preparadas_fuera_del_hogar	\
+  Gastos_diarios_personales_Urbano					\
+  Gastos_diarios_Urbano_-_Capitulo_C					\
+  Gastos_diarios_Urbanos						\
+  Gastos_diarios_Urbanos_-_Mercados					\
+  Gastos_menos_frecuentes_-_Articulos					\
+  Gastos_menos_frecuentes_-_Medio_de_pago				\
+  Gastos_personales_Rural_-_Comidas_preparadas_fuera_del_Hogar		\
+  Gastos_personales_Rural						\
+  Gastos_personales_Urbano_-_Comidas_preparadas_fuera_del_hogar		\
+  Gastos_semanales_Rural_-_Capitulo_C					\
+  Gastos_semanales_Rural_-_Comidas_preparadas_fuera_del_hogar		\
+  Gastos_semanales_Rurales						\
+  Gastos_semanales_Rurales_-_Mercados					\
   Viviendas_y_hogares
 
 enph_orig = $(addsuffix .csv, $(addprefix data/enph-2017/2_unzipped/csv/, $(enph_files)))
@@ -66,7 +66,7 @@ enph_orig = $(addsuffix .csv, $(addprefix data/enph-2017/2_unzipped/csv/, $(enph
 
 ##=##=##=##  Target variables
 
-input_subsamples =                                                           \
+input_subsamples = \
   $(addsuffix .csv, $(addprefix data/enph-2017/recip-$(ss)/, $(enph_files)))
 
 buildings =          output/vat/data/recip-1/buildings.csv

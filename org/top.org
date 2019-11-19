@@ -1,5 +1,6 @@
 * TODO possibly wrong
-** TODO "household member" max mismatch
+** TODO BLOCKED : "household member" max mismatch
+No variable in the data has the properties that a household-member variable would need.
 see python/explore/what-is-household-member/
 ** TODO If max vat is 0.27, max vat frac should be 0.213
 but instead it's 0.160, which is what would derive from a max vat of 0.19.
