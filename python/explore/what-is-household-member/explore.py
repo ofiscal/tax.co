@@ -14,7 +14,7 @@ ordering_columns = [ "DIRECTORIO"
                    , "SECUENCIA_P"
                    , "ORDEN"]
 
-files = [
+filenames = [
     "Caracteristicas_generales_personas.csv"
   , "Gastos_diarios_del_hogar_Urbano_-_Comidas_preparadas_fuera_del_hogar.csv"
   , "Gastos_diarios_personales_Urbano.csv"
@@ -34,7 +34,7 @@ files = [
 ]
 
 dfs = {}
-for fn in files:
+for fn in filenames:
   dfs[fn] = pd.read_csv(
     "data/enph-2017/recip-1/" + fn
     , usecols = ordering_columns )
@@ -42,7 +42,7 @@ for fn in files:
 ppl = dfs["Caracteristicas_generales_personas.csv"]
 len( ppl["DIRECTORIO"].unique() )
 
-for fn in files:
+for fn in filenames:
   print( "\nstarting summary of", fn )
   df = dfs[fn]
   # dfs[fn].describe()
@@ -54,7 +54,7 @@ for fn in files:
   print( "finishing", fn )
 
 summary = pd.DataFrame()
-for fn in files:
+for fn in filenames:
   df = dfs[fn]
   for c in set(ordering_columns) - {"DIRECTORIO"}:
 #    summary.loc[fn, c + " min"]     = df[c].min() # it's always 1
@@ -64,4 +64,5 @@ for fn in files:
 #  summary.loc[fn, "SECUENCIA_ENCUESTA = ORDEN"] = ( # sometimes true
 #    (df["SECUENCIA_ENCUESTA"] != df["ORDEN"]).sum() == 0 )
 
-summary.to_csv( "does-household-member-exist.csv" )
+summary.to_excel( "does-household-member-exist.xlsx" )
+
