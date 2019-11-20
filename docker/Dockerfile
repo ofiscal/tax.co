@@ -31,6 +31,11 @@ COPY run-jupyter.sh /root/
 
 RUN easy_install xlsx2csv
 
+# make.py, a build tool that's better and easier than make
+RUN cd /root                                     && \
+    git clone https://github.com/zwegner/make.py && \
+    ln -s /root/make.py/make.py /usr/bin/make.py
+
 # RUN conda update --all --yes
 # RUN conda update -n base conda
 
