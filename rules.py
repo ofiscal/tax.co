@@ -28,7 +28,7 @@ enph_files = [
 enph_orig = [ "data/enph-2017/2_unzipped/csv/" + fn + ".csv"
               for fn in enph_files ]
 
-python = "PYTHONPATH='.' python3"
+python = "python-from-here"
 
 strategies = ["detail"]
 subsamples_i = [1,10,100,1000]
@@ -40,14 +40,21 @@ def rules(ctx):
   # for strat in strategies:
   # for yr in regime_years:
   # for ss in subsamples:
-  target = "output/phony/tests"
-  ctx.add_rule(
-    target,
-    ["output/test/recip/build_classes.txt"],
-    ["touch", target] )
-  ctx.add_rule(
-    "output/test/build_classes.txt",
-    [ "python/build/classes.py",
-      "python/build/classes_test.py" ],
-    [ python, "python/build/classes_test.py",
-      1, "irrelevant", "irrelevant" ] )
+  if True: # tests
+    test_deps = []
+
+    if True: # individual tests
+      target = "output/test/recip-1/build_classes.txt"
+      test_deps.append( target )
+      ctx.add_rule(
+        target,
+        [ "python/build/classes.py",
+          "python/build/classes_test.py" ],
+        [ python, "python/build/classes_test.py",
+          "1", "detail", "2018" ] )
+
+    target = "output/phony/tests"
+    ctx.add_rule(
+      target,
+      test_deps,
+      ["touch", target] )

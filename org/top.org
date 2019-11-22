@@ -1,4 +1,9 @@
 * TODO use make.py
+** add python-from-here to Dockerfile
+in /usr/bin, make a file called "python-from-here", containing:
+
+#!/bin/bash
+PYTHONPATH='.' python3 $@
 ** divide recipes better, and actually target them
 Currently the only recipe expects something to be built in a parent folder of where it is built.
 ** some recipes don't need to depend on all three variables
