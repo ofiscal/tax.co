@@ -1,9 +1,8 @@
 * TODO use make.py
-** add python-from-here to Dockerfile
-in /usr/bin, make a file called "python-from-here", containing:
-
-#!/bin/bash
-PYTHONPATH='.' python3 $@
+** build latest Dockerfile, with python-from-here
+It's already written, but it won't build from the Nix system.
+(It starts from scratch rather than using cached layers,
+and runs into an apt problem.)
 ** divide recipes better, and actually target them
 Currently the only recipe expects something to be built in a parent folder of where it is built.
 ** some recipes don't need to depend on all three variables

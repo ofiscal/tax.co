@@ -36,6 +36,8 @@ RUN cd /root                                     && \
     git clone https://github.com/zwegner/make.py && \
     ln -s /root/make.py/make.py /usr/bin/make.py
 
+COPY python-from-here /usr/bin
+
 # RUN conda update --all --yes
 # RUN conda update -n base conda
 

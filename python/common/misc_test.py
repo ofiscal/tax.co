@@ -20,7 +20,6 @@ def test_all_columns_to_numbers():
     defs.all_columns_to_numbers( will_not_convert )
     , will_not_convert )
 
-
 if True: # run tests
   log = "starting\n"
   test_all_columns_to_numbers()

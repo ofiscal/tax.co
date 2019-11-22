@@ -176,32 +176,11 @@ tests: \
   output/test/recip-1/purchase_inputs.txt
 	printf '\nAll tests passed.\n\n'
 
-# PITFALL: for buildings.csv we always use subsample=1.
-output/test/recip-1/build_buildings.txt: \
-  $(buildings) \
-  python/build/buildings.py \
-  python/build/buildings_test.py \
-  python/build/classes.py \
-  python/build/output_io.py \
-  python/common/common.py \
-  python/common/misc.py
-	$(python_from_here) python/build/buildings_test.py \
-          1 $(strategy) $(yr)
-
 output/test/recip-$(ss)/build_classes.txt: \
   python/build/classes.py \
   python/build/classes_test.py
 	date
 	$(python_from_here) python/build/classes_test.py \
-          $(subsample) $(strategy) $(yr)
-
-output/test/recip-$(ss)/build_purchases_2_vat.txt: \
-  $(purchases_2_vat) \
-  python/build/output_io.py \
-  python/build/purchases_2_vat.py \
-  python/build/purchases_2_vat_test.py \
-  python/common/common.py
-	$(python_from_here) python/build/purchases_2_vat_test.py \
           $(subsample) $(strategy) $(yr)
 
 output/test/recip-$(ss)/common_misc.txt: \
@@ -218,6 +197,27 @@ output/test/recip-$(ss)/common_util.txt: \
   python/common/util.py \
   python/common/util_test.py
 	$(python_from_here) python/common/util_test.py \
+          $(subsample) $(strategy) $(yr)
+
+# PITFALL: for buildings.csv we always use subsample=1.
+output/test/recip-1/build_buildings.txt: \
+  $(buildings) \
+  python/build/buildings.py \
+  python/build/buildings_test.py \
+  python/build/classes.py \
+  python/build/output_io.py \
+  python/common/common.py \
+  python/common/misc.py
+	$(python_from_here) python/build/buildings_test.py \
+          1 $(strategy) $(yr)
+
+output/test/recip-$(ss)/build_purchases_2_vat.txt: \
+  $(purchases_2_vat) \
+  python/build/output_io.py \
+  python/build/purchases_2_vat.py \
+  python/build/purchases_2_vat_test.py \
+  python/common/common.py
+	$(python_from_here) python/build/purchases_2_vat_test.py \
           $(subsample) $(strategy) $(yr)
 
 output/test/recip-$(ss)/people_main.txt: \

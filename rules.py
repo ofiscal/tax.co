@@ -40,21 +40,34 @@ def rules(ctx):
   # for strat in strategies:
   # for yr in regime_years:
   # for ss in subsamples:
-  if True: # tests
-    test_deps = []
+  rules_for_tests(ctx)
 
-    if True: # individual tests
-      target = "output/test/recip-1/build_classes.txt"
-      test_deps.append( target )
-      ctx.add_rule(
-        target,
-        [ "python/build/classes.py",
-          "python/build/classes_test.py" ],
-        [ python, "python/build/classes_test.py",
-          "1", "detail", "2018" ] )
+def rules_for_tests(ctx):
+  deps = []
 
-    target = "output/phony/tests"
+  if True: # individual tests
+    target = "output/test/recip-1/build_classes.txt"
+    deps.append( target )
     ctx.add_rule(
       target,
-      test_deps,
-      ["touch", target] )
+      [ "python/build/classes.py",
+        "python/build/classes_test.py" ],
+      [ python, "python/build/classes_test.py",
+        "1", "detail", "2018" ] )
+
+    target = "output/test/recip-1/common_misc.txt"
+    deps.append( target )
+    ctx.add_rule(
+      target,
+      [ "python/build/output_io.py",
+        "python/common/common.py",
+        "python/common/misc.py",
+        "python/common/misc_test.py" ],
+      [ python, "python/common/misc_test.py",
+        "1", "detail", "2018" ] )
+
+  target = "output/phony/tests"
+  ctx.add_rule(
+    target,
+    deps,
+    ["touch", target] )
