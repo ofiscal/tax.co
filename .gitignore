@@ -2,8 +2,10 @@
   # instead, move them to a separate Git repo hosted by Javeriana, not Github
 
 *~
-.ipynb_checkpoints/
+.emacs*
+ipynb_checkpoints/
 TAGS
+_out/
 __pycache__/
 data-doc/Listado completo IVA Canasta Familiar.pdf
 data-doc/Nacional, Calidad de Vida, 2014/

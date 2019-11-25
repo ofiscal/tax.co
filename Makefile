@@ -270,8 +270,9 @@ output/test/recip-$(ss)/vat_rates.txt: \
 ##=##=##=## subsample, or very slightly tweak, some input data sets
 
 input_subsamples: $(input_subsamples)
-$(input_subsamples): \
-  python/subsample.py $(enph_orig) \
+$(input_subsamples):	\
+  $(enph_orig)		\
+  python/subsample.py	\
   python/build/datafiles.py
 	date
 	# Next: Validating command-line arguments.

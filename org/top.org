@@ -7,6 +7,7 @@ and runs into an apt problem.)
 Currently the only recipe expects something to be built in a parent folder of where it is built.
 ** some recipes don't need to depend on all three variables
 the three variables being subsample, strategy, year
+* TODO do we really need those person identifiers?
 * TODO possibly wrong
 ** TODO BLOCKED : "household member" max mismatch
 No variable in the data has the properties that a household-member variable would need.
