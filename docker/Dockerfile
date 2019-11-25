@@ -37,6 +37,7 @@ RUN cd /root                                     && \
     ln -s /root/make.py/make.py /usr/bin/make.py
 
 COPY python-from-here /usr/bin
+RUN chmod +777 /usr/bin/python-from-here
 
 # RUN conda update --all --yes
 # RUN conda update -n base conda

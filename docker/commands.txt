@@ -9,14 +9,16 @@ docker tag jeffreybbrown/tax.co:new                      \
   jeffreybbrown/tax.co:<PUT A BETTER NAME HERE>
 
 docker tag jeffreybbrown/tax.co:new                      \
-  jeffreybbrown/tax.co:2019-11-20.make.py
+  jeffreybbrown/tax.co:2019-11-25.python-from-here
+# docker rmi jeffreybbrown/tax.co:new
 
 sudo docker run --name tax -it     \
   -v /home/jeff/tax.co/master:/mnt \
   -p 8888:8888 -d -h 127.0.0.1     \
-  jeffreybbrown/tax.co:2019-11-20.make.py
+  jeffreybbrown/tax.co:2019-11-25.python-from-here
 
-sudo docker run --entrypoint=/root/run-jupyter.sh        \
-                --name tax -it -v /home/jeff/tax.co:/mnt \
-  -p 8888:8888 -d -h 127.0.0.1                           \
-  jeffreybbrown/tax.co:2019-07-24.updates
+sudo docker run --name tax -it      \
+  --entrypoint=/root/run-jupyter.sh \
+  -v /home/jeff/tax.co:/mnt         \
+  -p 8888:8888 -d -h 127.0.0.1      \
+  jeffreybbrown/tax.co:2019-11-25.python-from-here
