@@ -27,7 +27,7 @@ files = [
 
   , File( "rural capitulo c"
     , "Gastos_semanales_Rural_-_Capitulo_C.csv"
-    , # This first lis is unlike c.variables in that FEX_C is not a number
+    , # This first list is unlike c.variables in that FEX_C is not a number
       [ ( "DIRECTORIO", {StringProperty.NotAString}
           , "household", 0 )
       , ( "ORDEN", {StringProperty.NotAString}

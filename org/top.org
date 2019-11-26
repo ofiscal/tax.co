@@ -10,6 +10,7 @@ Currently the only recipe expects something to be built in a parent folder of wh
 ** some recipes don't need to depend on all three variables
 the three variables being subsample, strategy, year
 * TODO do we really need those person identifiers?
+Is Orden unique within households in the person data?
 * TODO possibly wrong
 ** TODO BLOCKED : "household member" max mismatch
 No variable in the data has the properties that a household-member variable would need.
