@@ -73,6 +73,13 @@ if True: # add these columns: ["vat", "vat, min", "vat, max"]
     vat_cap_c,  how = "left", on="25-broad-categs" )
   purchases = purchases_coicop . combine_first( purchases_cap_c )
 
+if True: # make columns "spent @ vat x" for x in [0,5,19]
+  for rate in [0,5,19]:
+    purchases["value, vat " + str(rate)] ==
+      ( ( ( purchases["vat, max"] >= rate / 100 - 0.001 ) &
+          ( purchases["vat, max"] <= rate / 100 + 0.001 ) )
+        * purchases["value"] )
+
 if True: # motorcycles are special
   purchases["big-hog"] = (1 * (purchases["coicop"]=="07120101")
                             * (purchases["value"]>(9e6) ) )
@@ -100,5 +107,8 @@ if True: # handle freq, value, vat paid
   purchases["vat paid, min"] = purchases["value"]     * purchases["vat frac, min"]
   purchases["vat paid, max"] = purchases["value"]     * purchases["vat frac, max"]
 
-  oio.saveStage( c.subsample, purchases, "purchases_2_vat." + c.strategy_suffix )
+oio.saveStage(
+  c.subsample,
+  purchases,
+  "purchases_2_vat." + c.strategy_suffix )
 
