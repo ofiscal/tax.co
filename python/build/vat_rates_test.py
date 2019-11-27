@@ -16,6 +16,10 @@ def test_vat_file( filename
   df = oio.readStage( cl.subsample
                     , filename + "." + cl.strategy_suffix )
 
+  for c in [ 'vat', 'vat, min', 'vat, max' ]:
+    assert df[c].min() == 0
+    assert df[c].max() == 0.19
+
   assert set( df.columns ) == set(
     [code_column_name, 'vat'     , 'vat, min'     , 'vat, max'
                      , 'vat frac', 'vat frac, min', 'vat frac, max'] )
