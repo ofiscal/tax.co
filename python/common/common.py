@@ -3,15 +3,10 @@ if True:
   import pandas as pd
   #
   import python.build.classes as cla
-
-
-# If argv > 1, we are using the command line.
-# Otherwise, we are in the interpreter.
-
-if len( argv) > 1:
-  import python.common.params.command_line as imp
-else:
-  import python.common.params.repl         as imp
+  if len( argv) > 1: # we are using the command line
+    import python.common.params.command_line as imp
+  else: # we are in the interpreter
+    import python.common.params.repl         as imp
 
 if True:
   subsample = imp.subsample

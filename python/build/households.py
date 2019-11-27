@@ -1,22 +1,25 @@
-import sys
-import pandas as pd
-import numpy as np
+if True:
+  import sys
+  import pandas as pd
+  import numpy as np
+  #
+  import python.common.util as util
+  import python.build.output_io as oio
+  from python.build.people.files import edu_key
+  import python.common.common as c
+  #
+  if c.regime_year == 2016:
+    import python.regime.r2016 as regime
+  else: import python.regime.r2018 as regime
 
-import python.common.util as util
-import python.build.output_io as oio
-from python.build.people.files import edu_key
-import python.common.common as c
 
-if c.regime_year == 2016:
-      import python.regime.r2016 as regime
-else: import python.regime.r2018 as regime
+ppl = oio.readStage(
+  c.subsample,
+  "people_4_income_taxish." + c.strategy_year_suffix )
 
-
-ppl = oio.readStage( c.subsample
-                   , "people_4_income_taxish." + c.strategy_year_suffix )
-
-ppl["education"] = util.interpretCategorical( ppl["education"]
-                                            , edu_key.values() )
+ppl["education"] = util.interpretCategorical(
+  ppl["education"],
+  edu_key.values() )
 
 if True: # compute five columns for top five member incomes
   ppl["income, rank 1"] = (
