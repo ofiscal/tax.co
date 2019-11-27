@@ -100,5 +100,8 @@ if True: # handle freq, value, vat paid
   purchases["vat paid, min"] = purchases["value"]     * purchases["vat frac, min"]
   purchases["vat paid, max"] = purchases["value"]     * purchases["vat frac, max"]
 
-  oio.saveStage( c.subsample, purchases, "purchases_2_vat." + c.strategy_suffix )
+oio.saveStage(
+  c.subsample,
+  purchases,
+  "purchases_2_vat." + c.strategy_suffix )
 

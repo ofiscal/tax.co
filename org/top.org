@@ -1,4 +1,5 @@
 * TODO for reporter
+** TODO document branch: average-vat-spending-per-rate
 ** goal
 Average (across households) fraction of spending at each tax rate.
 Use the max vat rate.
