@@ -16,6 +16,9 @@ purchases["predial"] = (purchases["coicop"] == 12700601) * purchases["value"]
 purchases["transactions"] = 1 # useful when summed
 purchase_sums = purchases.groupby( ["household", "household-member"]
          ) [ "value"
+           , "value, vat 0"
+           , "value, vat 5"
+           , "value, vat 19"
            , "transactions"
            , "vat paid, max"
            , "vat paid, min"

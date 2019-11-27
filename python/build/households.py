@@ -51,7 +51,11 @@ if True: # aggregate from household members to households
     ) ["region-1", "region-2", "estrato", "weight" # these are constant within household
     ] . agg("first")
   many_vars = ( [ "members"
-                , "transactions", "value"
+                , "transactions"
+                , "value"
+                , "value, vat 0"
+                , "value, vat 5"
+                , "value, vat 19"
                 , "vat paid, min", "vat paid, max"
                 , "predial"
                 , "tax, ss, pension"
