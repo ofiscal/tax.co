@@ -10,7 +10,8 @@ import python.common.util as util
 
 if True: # input files
   purchases = oio.readStage (
-    # This data set is too big unless we down-cast the numbers.
+    # Data is too big unless we down-cast the numbers
+    # from 64-bit to 32-bit.
       c.subsample
     , "purchases_1"
     , dtype = { "25-broad-categs"  : "float32"
@@ -60,8 +61,10 @@ if True: # input files
     } )
 
 if True: # left-pad every coicop value with 0s
-  purchases  ["coicop"] = util.pad_column_as_int( 8, purchases  ["coicop"] )
-  vat_coicop ["coicop"] = util.pad_column_as_int( 8, vat_coicop ["coicop"] )
+  purchases  ["coicop"] = util.pad_column_as_int(
+    8, purchases  ["coicop"] )
+  vat_coicop ["coicop"] = util.pad_column_as_int(
+    8, vat_coicop ["coicop"] )
 
 if True: # add these columns: ["vat", "vat, min", "vat, max"]
   purchases_coicop = purchases.merge(
@@ -98,3 +101,4 @@ if True: # handle freq, value, vat paid
   purchases["vat paid, max"] = purchases["value"]     * purchases["vat frac, max"]
 
   oio.saveStage( c.subsample, purchases, "purchases_2_vat." + c.strategy_suffix )
+

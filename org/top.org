@@ -1,9 +1,14 @@
-* TODO 128 in vat-by-coicop
-should be 12.8
 * TODO for reporter
+** goal
 Average (across households) fraction of spending at each tax rate.
 Use the max vat rate.
 Ignore goods for which the VAT rate is not one of 0, 5 or 19%.
+** plan
+Make columns "spent @ vat x" for x in [0,5,19].
+Carry those until total household spending exists.
+Compute columns "fraction spent @ vat x" for x in [0,5,19].
+Take their averages.
+Verify that the sum of those averages is close to unity.
 * TODO use make.py
 ** divide recipes better, and actually target them
 Currently the only recipe expects something to be built in a parent folder of where it is built.
@@ -680,6 +685,11 @@ that's already implemented.
 ** some pics are drawn but not included in the report
 *** people/spending
 * TODO PITFALLs in code
+** in my own
+*** the special motorcycle tax
+It is represented in code, not data.
+  at purhcases_2_vat.py
+It is treated as VAT.
 ** Makefile: be sure all program output comes at the end
 And that (at least) the last thing it creates is a Makefile target.
 Otherwise `make` might believe a target is up to date when the program responsible for it did not complete.
@@ -695,7 +705,6 @@ When I split common.py into common.misc and common.cl_args, I imported both as "
 ** in Jupyter: local modules must begin with a capital letter to be imported in Jupyter
 Keeping all code in a top-level folder that starts with a capital letter solves this problem.
 Subfolders and files suffer no naming restriction.
-
 ** in Pandas
 *** cannot convert to int when some values are NaN
  Hence muni code is float.
