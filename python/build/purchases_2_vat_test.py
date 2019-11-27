@@ -49,6 +49,9 @@ class Purchase_2_Columns_missing:
           , "household-member"
           , "quantity"
           , "value"
+          , "value, vat 0"
+          , "value, vat 5"
+          , "value, vat 19"
           , "weight" ]
 
   slightly = [ "is-purchase"
@@ -72,6 +75,12 @@ class Purchase_2_Columns_missing:
 
 def test_output( df ):
   log = "test_output()\n"
+
+  for rate in [0,5,19]: # df[c] should be between 0 and df["value"]
+    c = "value, vat " + str(rate)
+    assert df[c].min() == 0
+    assert (df[c] - df["value"]).max() == 0
+
   assert ( set( df.columns ) ==
            set( Purchase_2_Columns_missing.all_columns() ) )
 
