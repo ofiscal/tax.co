@@ -1,3 +1,14 @@
+* TODO handle csv format outside of pandas
+** TODO document how this is done, or add it to the preliminary Makefile
+apt install csvtool
+mv data/enph_2017/2_unzipped/csv -> /ssv
+mkdir 3_csv
+cd 2_unzipped/ssv
+for i in *; do csvtool -t ';' -u ',' cat $i -o ../../3_csv/$i; done
+** TODO csvtools deletes whitespace between separators
+For those values, the ssv files read as strings,
+while the csv files read as NaN.
+** TODO csvtool converts numbers containing commas to strings
 * TODO for reporter
 ** TODO document branch: average-vat-spending-per-rate
 ** goal
@@ -752,6 +763,9 @@ https://stackoverflow.com/questions/56606122/matplotlib-use-the-same-custom-font
                    "cdf of (spending / income) across income-earning households"
                    , xmin = 0, xmax = 8
                  )
+* HANDY snippets
+pd.set_option('display.max_rows', 200)
+pd.set_option('display.min_rows', 200)
 * to explain in paper : institution details | judgment calls
 ** to identify dependents, we assume ...
 The tax code is ambiguous -- does a high-income disabled person still be claimed as a dependent? Do they pay taxes? Can they in turn claim dependents? We assume no, yes and yes. See build.people.main for details.

@@ -61,7 +61,7 @@ enph_files =								\
   Gastos_semanales_Rurales_-_Mercados					\
   Viviendas_y_hogares
 
-enph_orig = $(addsuffix .csv, $(addprefix data/enph-2017/2_unzipped/csv/, $(enph_files)))
+enph_orig = $(addsuffix .csv, $(addprefix data/enph-2017/3_csv/, $(enph_files)))
 
 
 ##=##=##=##  Target variables
