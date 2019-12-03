@@ -1,5 +1,6 @@
 * TODO handle csv format outside of pandas
-** TODO document how this is done, or add it to the preliminary Makefile
+document everything below, then merge the branch into `tests`
+** TODO document or add to the preliminary Makefile
 apt install csvtool
 mv data/enph_2017/2_unzipped/csv -> /ssv
 mkdir 3_csv
