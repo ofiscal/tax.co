@@ -3,7 +3,7 @@ FROM debian:latest
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH /opt/conda/bin:$PATH
 
-RUN echo "2019 07 23" && \
+RUN echo "2020 01 05" && \
   apt update --fix-missing -y && \
   apt upgrade -y
 RUN apt install -y wget bzip2 ca-certificates \
@@ -12,7 +12,7 @@ RUN apt install -y wget bzip2 ca-certificates \
   texlive-latex-base texlive-fonts-recommended \
   texlive-fonts-extra texlive-latex-extra texlive-publishers
 
-RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh -O ~/anaconda.sh && \
+RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh -O ~/anaconda.sh && \
     /bin/bash ~/anaconda.sh -b -p /opt/conda && \
     rm ~/anaconda.sh && \
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
@@ -25,6 +25,8 @@ RUN /opt/conda/bin/conda install jupyter -y --quiet
 RUN conda update --all -y
   # This brings pandas to version 0.25.1.
 COPY run-jupyter.sh /root/
+
+RUN pip install django==3.0.2
 
 # RUN curl -sSL https://get.haskellstack.org/ | sh
 # RUN stack install shake

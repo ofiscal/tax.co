@@ -1,5 +1,5 @@
-* TODO drop sudo from "docker run" command
-This way, things created from docker will not create permissions snarls.
+* TODO update tax.co docker image
+Github's dependencybot says Pillow 6.1.0 has security vulnerabilities.
 * TODO handle csv format outside of pandas
 document everything below, then merge the branch into `tests`
 ** TODO document or add to the preliminary Makefile
