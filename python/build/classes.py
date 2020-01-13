@@ -59,7 +59,10 @@ class StringProperty(enum.Flag):
   ManyPeriods   = enum.auto()
   ManyCommas    = enum.auto()
 
-if True: # TODO ? WART: These should be defined within each enum type.
+if True: # TODO ? WART: These should be defined within each enum type,
+  # or if that's awkward,
+  # group them into one function that takes an enum as an argument,
+  # to simplify the namespace.
   re_nonNumeric = re.compile( "(.+\-|.*[^0-9\s\.,\-])" )
     # A (-) is nonnumeric if anything precedes it.
     # Any [^0-9\s\.,\-] is nonnumeric.

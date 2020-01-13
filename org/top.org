@@ -1,18 +1,18 @@
-* TODO update tax.co docker image
-Github's dependencybot says Pillow 6.1.0 has security vulnerabilities.
-* TODO handle csv format outside of pandas
-document everything below, then merge the branch into `tests`
-** TODO document or add to the preliminary Makefile
-apt install csvtool
-mv data/enph_2017/2_unzipped/csv -> /ssv
-mkdir 3_csv
-cd 2_unzipped/ssv
-for i in *; do csvtool -t ';' -u ',' cat $i -o ../../3_csv/$i; done
-** TODO csvtools deletes whitespace between separators
-For those values, the ssv files read as strings,
-while the csv files read as NaN.
-** TODO csvtool converts numbers containing commas to strings
-* TODO for reporter
+* TODO DUE thursday: long-term goals
+** document the model
+** review the model with team
+** test, bugfix the model
+** serve the model
+** extend the model
+* TODO docker
+** TODO upload new docker image from laptop
+ then download to desktop
+** TODO update tax.co docker image
+ Github's dependencybot says Pillow 6.1.0 has security vulnerabilities.
+* TODO Vaex for subsampling
+Because without it I can't run the model (even subsamples)
+on my laptop.
+* TODO retire branch that was for reporter
 ** TODO document branch: average-vat-spending-per-rate
 ** goal
 Average (across households) fraction of spending at each tax rate.
@@ -29,12 +29,14 @@ Verify that the sum of those averages is close to unity.
 Currently the only recipe expects something to be built in a parent folder of where it is built.
 ** some recipes don't need to depend on all three variables
 the three variables being subsample, strategy, year
-* TODO do we really need those person identifiers?
-Is Orden unique within households in the person data?
 * TODO possibly wrong
 ** TODO BLOCKED : "household member" max mismatch
+*** awaiting response from Juan, who awaits from DANE
+*** the problem
 No variable in the data has the properties that a household-member variable would need.
 see python/explore/what-is-household-member/
+*** TODO do we really need those person identifiers?
+Is Orden unique within households in the person data?
 ** TODO If max vat is 0.27, max vat frac should be 0.213
 but instead it's 0.160, which is what would derive from a max vat of 0.19.
 This problem arises in purchases_2_vat_test.py
@@ -53,6 +55,55 @@ is-purchase we probably assume to be 1, but the others ...?
 (they are often missing)
 ** TODO "vat" conflates some taxes
 That's why, for instance, its max in purchases_2_vat_test is 0.27, not 19
+** TODO how bad is capitulo c?
+The following bullet items were written at two different times.
+They contradict each other.
+*** more than 2/3 of the "capitulo c" observations have no associated value
+**** and they are only divided into 25 broad categories, with no associated quantity variable, so imputation is infeasible
+**** Those value-missing observations are 19.2% of our data.
+ Hopefully that will be close to 0 after discarding:
+   frequency = nunca
+   ~ bought it in the last week
+   value = 99
+*** most purchases use coicop, not capitulo c codes
+ capitulo c is a very small fraction of total purchases
+ >>> subsample = 10
+ >>> purchases = oio.readStage( subsample, "purchases_2_vat" )
+ >>> util.describeWithMissing( purchases[[[[ "25-broad-categs", "coicop"]] ]] )
+          25-broad-categs        coicop
+ 0               0.000000  0.000000e+00
+ length     689761.000000  6.897610e+05
+ missing    657576.000000  3.218500e+04
+ count       32185.000000  6.575760e+05
+ mean           13.866801  4.833412e+06
+ std             7.151346  4.292508e+06
+ min             1.000000  1.110101e+06
+ 25%             7.000000  1.160111e+06
+ 50%            15.000000  1.220801e+06
+ 75%            20.000000  8.300305e+06
+ max            25.000000  1.270990e+07
+** TODO set "where got" to "purchase"
+in build/purchases/capitulo_c.py
+(it's currently unset)
+* TODO definitely unsafe
+** TODO use the UVT rather than fixed peso amounts
+** TODO handle csv format outside of pandas
+document everything below, then merge the branch into `tests`
+*** motivating example
+in ./build/vat_rates.py:
+  vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
+                          , sep = ";" # TODO PITFALL
+                          , encoding = "latin1" )
+*** TODO document or add to the preliminary Makefile
+ apt install csvtool
+ mv data/enph_2017/2_unzipped/csv -> /ssv
+ mkdir 3_csv
+ cd 2_unzipped/ssv
+ for i in *; do csvtool -t ';' -u ',' cat $i -o ../../3_csv/$i; done
+*** TODO csvtools deletes whitespace between separators
+ For those values, the ssv files read as strings,
+ while the csv files read as NaN.
+*** TODO csvtool converts numbers containing commas to strings
 * TODO test suite
 ** TODO resume at purchases_2_vat_test.test_ranges()
 ** TODO count rows
@@ -73,7 +124,6 @@ A function does not record to the log unless it completes.
 Should I divide main.py into a separate file for each step?
 *** TODO ? test that all column names are unique
 *** TODO test means, variances
-** It would be particularly helpful if shadowing was reported when the two variables are of the same type.
 ** tasks
 *** restructure programs for testing
 Most of the program consists of one big function definition.
@@ -107,6 +157,7 @@ Most tests are in python/test/, but ...
 **** some are elsewhere
 python/build/ss_contribs.py
 python/build/accumulate_marginal.py
+** wish : shadowing was reported, but only for vars of the same type.
 * TODO refactor
 ** TODO classes.py: Things like this should be defined within each enum type.
   re_nonNumeric = re.compile( "(.+\-|.*[^0-9\s\.,\-])" )
@@ -481,8 +532,6 @@ It inputs these 5 files:
   purchases_1_5_no_origin
   vat_(cap_c|coicop)_brief
   vat_coicop_(2|3)_digit -- version imported depends whether strategy == prop*
-
-** TODO use the UVT rather than fixed peso amounts
 ** TODO ? drop the Correction class
 ** TODO update coicop-vat bridge on OneDrive
 ** (didn't work) refactor for safety
@@ -729,7 +778,7 @@ Neither forces you to specify the axis.
 Concat is more general.
 *** two columns can have the same name, silently
 This can result in errors like "cannot add str to int".
-Because f you add a number to a column, and another shares its name,
+Because if you add a number to a column, and another shares its name,
 it will try to add the number to both.
 *** categorical variables require a "map" step only when created, not when read
  It's to convert them from a number to a string.
@@ -776,22 +825,20 @@ The tax code is ambiguous -- does a high-income disabled person still be claimed
 It is that they responded "for health reasons" to the question "although you want to work, why did you not look for work?"
 ** all the COICOP exceptions
 ** benefits/expenses that we ignored
-*** P1651S1 : fulfillment insurance : ignonred
+*** P1651S1 : fulfillment insurance
 ambiguous whether it's an expense or part of salary, and the frequency is roughly unavailable -- we know the freq only for the most recent contract.
 
 "¿Por este trabajo, le descontarono pagó póliza de cumplimiento? ¿cuánto?"
-*** more
-ambiguous definition, missing values, impossible values
-
+*** ambiguous definition |  missing values | impossible values
 P6920* : pension fund contributions
 P6990* : work injury insurance
 P9450* : caja de compensacion
 ** no vat 6 » 6.Supermercado y tiendas de barrio
-Supermarkets charge VAT, but there are more tiendas de barrio, so we're saying none.
+Supermarkets charge VAT, but there are more tiendas de barrio, so we're saying this corresponds to no VAT.
 
 Could go into more detail, about each category.
 ** we include infrequent income in monthly income
-sales, loan repayment, jury awards, gambling winnings, inheritance ...
+sales, loan repayment, jury awards, gambling winnings, inheritance, etc.
 ** We don't count borrowing as income, because you don't pay for your income with later income.
 ** P7500S3A1 : alimony. ignoring, to avoid double-counting.
 ** terms in the ENPH
@@ -823,13 +870,6 @@ util.dwmByGroup( "file-origin",
 *** there is 5% VAT for purchases of *new* homes in excess of 880 M pesos
 **** but the data only reports newness in the case of second homes
 **** that's a very small fraction of the economy
-** more than 2/3 of the "capitulo c" observations have no associated value
-*** and they are only divided into 25 broad categories, with no associated quantity variable, so imputation is infeasible
-*** Those value-missing observations are 19.2% of our data.
-Hopefully that will be close to 0 after discarding:
-  frequency = nunca
-  ~ bought it in the last week
-  value = 99
 * discovered from the data
 ** the 200 / 1400 missing COICOP codes appear not to matter much
 *** the 80% of purchases that carry 0 VAT are due to a literally 0 VAT, not a NaN VAT
@@ -841,20 +881,3 @@ x = purchases["vat-rate"]
 28986
 >>> 28986 / 7458243
 0.0038864381329490067
-** most purchases use coicop, not capitulo c codes
-capitulo c is a very small fraction of total purchases
->>> subsample = 10
->>> purchases = oio.readStage( subsample, "purchases_2_vat" )
->>> util.describeWithMissing( purchases[[[[ "25-broad-categs", "coicop"]] ]] )
-         25-broad-categs        coicop
-0               0.000000  0.000000e+00
-length     689761.000000  6.897610e+05
-missing    657576.000000  3.218500e+04
-count       32185.000000  6.575760e+05
-mean           13.866801  4.833412e+06
-std             7.151346  4.292508e+06
-min             1.000000  1.110101e+06
-25%             7.000000  1.160111e+06
-50%            15.000000  1.220801e+06
-75%            20.000000  8.300305e+06
-max            25.000000  1.270990e+07

@@ -18,6 +18,7 @@ files = [
       , classes.Correction.Create_Constant_Column( "how-got", 1 )
       , classes.Correction.Create_Constant_Column( "coicop", nan ) ]
       + c.corrections
-        # TODO (#safe) : "where-got"
-        # TODO (#safe) : "per month" = in the last year
+      # PITFALL: Do not act on these TODO items until this file is in use.
+      # TODO (#safe) : "where-got"
+      # TODO (#safe) : "per month" = in the last year
 ) ]
