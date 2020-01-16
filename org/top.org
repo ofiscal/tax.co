@@ -1,9 +1,3 @@
-* TODO DUE thursday: long-term goals
-** document the model
-** review the model with team
-** test, bugfix the model
-** serve the model
-** extend the model
 * TODO docker
 ** TODO upload new docker image from laptop
  then download to desktop
@@ -82,7 +76,7 @@ They contradict each other.
  50%            15.000000  1.220801e+06
  75%            20.000000  8.300305e+06
  max            25.000000  1.270990e+07
-** TODO set "where got" to "purchase"
+** TODO assumption: set "where got" to "purchase"
 in build/purchases/capitulo_c.py
 (it's currently unset)
 * TODO definitely unsafe
