@@ -5,6 +5,7 @@
 .emacs*
 ipynb_checkpoints/
 TAGS
+markdown/*.pdf
 _out/
 __pycache__/
 data-doc/Listado completo IVA Canasta Familiar.pdf
