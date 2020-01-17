@@ -1,3 +1,6 @@
+# This was originally based on
+# https://hub.docker.com/r/continuumio/anaconda3/
+
 FROM debian:latest
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
