@@ -1,6 +1,5 @@
 * TODO docker
-** TODO upload new docker image from laptop
- then download to desktop
+** TODO download new docker image to desktop
 ** TODO update tax.co docker image
  Github's dependencybot says Pillow 6.1.0 has security vulnerabilities.
 * TODO Vaex for subsampling
@@ -153,6 +152,7 @@ python/build/ss_contribs.py
 python/build/accumulate_marginal.py
 ** wish : shadowing was reported, but only for vars of the same type.
 * TODO refactor
+** TODO do we use the SS schedule?
 ** TODO classes.py: Things like this should be defined within each enum type.
   re_nonNumeric = re.compile( "(.+\-|.*[^0-9\s\.,\-])" )
   re_white      = re.compile( ".*[^\s].*\s.*[^\s]" )

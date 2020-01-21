@@ -16,26 +16,26 @@ docker tag jeffreybbrown/tax.co:new     \
   jeffreybbrown/tax.co:<PUT A BETTER NAME HERE>
 
 # The rest of this script assumes the latest version of the image is
-# 2019-11-25.python-from-here
+# 2020-01-05.django
 
 docker tag jeffreybbrown/tax.co:new     \
-  jeffreybbrown/tax.co:2019-11-25.python-from-here
+  jeffreybbrown/tax.co:2020-01-05.django
 
 # Upload the new image to DockerHub.
-docker push jeffreybbrown/tax.co:2019-11-25.python-from-here
+docker push jeffreybbrown/tax.co:2020-01-05.django
 
 # Start a docker container based on the latest image.
 docker run --name tax -it		\
   -v /home/jeff/tax.co/master:/mnt	\
   -p 8888:8888 -d -h 127.0.0.1		\
-  jeffreybbrown/tax.co:2019-11-25.python-from-here
+  jeffreybbrown/tax.co:2020-01-05.django
 
 # Start a docker container and run jupyter from within it.
 docker run --name tax -it		\
   --entrypoint=/root/run-jupyter.sh	\
   -v /home/jeff/tax.co:/mnt		\
   -p 8888:8888 -d -h 127.0.0.1		\
-  jeffreybbrown/tax.co:2019-11-25.python-from-here
+  jeffreybbrown/tax.co:2020-01-05.django
 
 # Start a shell within a running container.
 # (Once inside, go to the `/mnt` folder to do useful stuff,
