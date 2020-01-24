@@ -1,3 +1,7 @@
+* TODO documentation
+** refactor .gitignore file(s)
+Ignore most .xls etc. files, but provide some exceptions.
+https://stackoverflow.com/questions/2415873/exceptions-in-gitignore
 * TODO docker
 ** TODO download new docker image to desktop
 ** TODO update tax.co docker image

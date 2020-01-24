@@ -26,14 +26,14 @@ docker push jeffreybbrown/tax.co:2020-01-05.django
 
 # Start a docker container based on the latest image.
 docker run --name tax -it		\
-  -v /home/jeff/tax.co/master:/mnt	\
+  -v /home/jeff/of/tax.co/master:/mnt	\
   -p 8888:8888 -d -h 127.0.0.1		\
   jeffreybbrown/tax.co:2020-01-05.django
 
 # Start a docker container and run jupyter from within it.
 docker run --name tax -it		\
   --entrypoint=/root/run-jupyter.sh	\
-  -v /home/jeff/tax.co:/mnt		\
+  -v /home/jeff/of/tax.co:/mnt		\
   -p 8888:8888 -d -h 127.0.0.1		\
   jeffreybbrown/tax.co:2020-01-05.django
 
