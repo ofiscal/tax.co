@@ -1,0 +1,420 @@
+This data is kind of stale, but might include some insights into the data due to David Suarez not recorded elsewhere.
+* to know
+** enig 2007
+*** expenditure files
+**** # Ig_ml_hogar:
+***** This table contains info regarding characteristics of dwellings and livelihoods.
+***** variables relevant to the VAT on renta
+****** * P5090
+whether the households owns or rents the place
+****** * P5100
+the value paid.
+**** # Ig_gsdp_gas_dia
+***** Contains information regarding daily expenditures for income earners in the household. Both urban and rural.
+***** single purchase variables
+****** * GDP_ARTCLO
+a complete COICOP code for the article
+****** * GDP_CNTDAD_ADQRDA
+the quantity purchased
+****** * GDP_FORMA_ADQSCION
+whether they purchased the good (01 is the code for purchases)
+****** * GDP_LUGAR_COMPRA
+place of acquisition
+****** * GDP_VALOR_PGDO_ESTMDO
+total estimated value
+***** aggregate purchase variables
+****** * GDP_CNTDAD_ADQRDA_MES_AJST
+adjusted consumption
+****** * GDP_VALOR_PGDO_ESTMDO_MES_AJST
+total payments by month
+**** # Ig_gsdu_gas_dia
+***** Contains information regarding daily expenditures for urban households. Includes income earners.
+***** single purchase variables
+****** * GDU_ARTCLO
+a complete COICOP code for the article
+****** * GDU_CNTDAD_ADQRDA
+the quantity purchased
+****** * GDU_FORMA_ADQSCION
+whether they purchased the good (01 is the code for purchases)
+****** * GDU_LUGAR_COMPRA
+place of acquisition
+****** * GDU_VALOR_PGDO_ESTMDO
+total estimated value
+***** aggregate purchase variables
+****** * GDU_CNTDAD_ADQRDA_MES_AJST
+adjusted consumption
+****** * GDU_VALOR_PGDO_ESTMDO_MES_AJST.
+total payments by month
+**** # Ig_gssr_gas_sem
+***** Contains information regarding weekly expenditures for rural households.
+***** * GSR_ARTCLO
+a complete COICOP code for the article
+***** * GSR_CNTDAD_UDM_ESTANDAR
+the quantity purchased
+***** * GSR_FORMA_ADQSCION
+whether they purchased the good (01 is the code for purchases)
+***** * GSR_LUGAR_CMPRA
+place of acquisition (store, restaurant)
+***** * GSR_UDM_ESTANDAR
+measurement units for quantities
+***** * GSR_VALOR_PGDO_ESTMDO_MES
+total estimated value per month
+**** # Ig_gsmf_compra
+***** This table contains info regarding purchases less-frequent expenditures.
+***** Includes everyone -- rural, urban, heads of household.
+***** * GMF_CMPRA_ARTCLO
+represent a complete COICOP code for the good/service
+***** * GMF_CMPRA_VLR_PAGO_MES
+total amount paid per month
+***** * GMF_CMPRA_LUGAR
+the place of the purchase
+***** * GMF_CMPRA_FRCNCIA
+purchase frequency
+**** # Ig_gssu_gasto_alimentos_cap_c,  Ig_gssr_gasto_alimentos_cap_c
+These tables contain food expenditures that were imputed for households that did not complete the booklets used to compile tables Ig_gsdu_gas_dia and Ig_gssr_gas_sem but reported to have made purchases in the reference period of the survey.  We can only recover prices for the former, using the questions ARTICULO (COICOP code), VALOR_MENSUAL_ALIMENTO, and CANTIDAD; for the latter only total monetary values are reported.
+*** persons files
+**** data sets
+***** Ig_ml_persona
+***** Ig_ml_ocupado
+**** variables
+identical to those in the enph-2017
+** enph 2017
+*** date|duration: june 2016 to july 2017
+*** Provides information for the 32 principal cities, 6 intermediate cities and 140 municipalities. Covers information for 90000 households.
+*** PITFALLS
+**** how to interpret frequencies
+It's inconsistent across files.
+***** this legend seems to work for all but one of the ENPH-17 expenditure data sets described in this file
+1 » 2. Diario
+2 » 2.1 Varias veces por semana
+3 » 3.Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+8 » 8. Anual
+9 » 9.Esporádico
+10 » 10. Semestral
+**** when babies appear to buy things, it's that someone else (in the same household) bought it for them
+**** All expenses are daily.
+Rereading this, I'm skeptical.
+Maybe they're daily if a frequency is absent?
+*** expenditure files
+**** sea_enc_per_csv
+The table contains lots of information about the people answering the surveys. Apparently, it has variables that could be used to calibrate the “holy grail” (questions P800 to P8007…need to explore further).
+**** sea_enc_hog_csv
+The table contains information regarding housing characteristics and ownership. Questions P5090, P5100S1- P5100S4, P5110, and P5140 represent if people own or rent among others), monthly payments for mortgages and insurances, and total values for imputed and actual rents respectively.
+**** sea_enc_hogc3_csv
+The table contains additional information regarding less-frequent expenses at the household level. Several questions ask values paid for different services that are relevant for the calculation of indirect taxes, such as internet and cable. Need to explore further.
+**** sea_enc_gcfhr_ce_csv
+***** anything but $ (food ? food consumed outside the home)
+***** The table contains information of personal expenses for rural households.
+***** nc2r_ce_p2
+a complete COICOP code for the article
+***** nc2r_ce_p4s1
+the quantity
+***** nc2r_ce_p4s2
+measurement units
+***** nc2r_ce_p5
+if they purchased the good (01 is the code for purchases)
+***** nc2r_ce_p6
+place of acquisition
+***** nc2r_ce_p7
+total estimated value
+***** nc2r_ce_p8
+****** frequency of acquisition
+****** codes
+1 » 2. Diario
+2 » 2.1 Varias veces por semana
+3 » 3.Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+9 » 9.Esporádico"
+**** sea_enc_gcfhr_csv
+***** The table contains information regarding food consumed for rural households that was not prepared at home.
+***** nh_cgprcfh_p1
+a description in words for the article
+***** nh_cgprcfh_p1s1
+a complete COICOP code
+***** nh_cgprcfh_p2
+the quantity
+***** nh_cgprcfh_p3
+if they purchased the good (01 is the code for purchases)
+***** nh_cgprcfh_p4
+place of acquisition
+***** nh_cgprcfh_p5
+total estimated value
+***** nh_cgprcfh_p6
+****** frequency of acquisition
+****** codes
+1 » 2. Diario
+2 » 2.1. Varias veces por semana
+3 » 3. Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+9 » 9. Esporádica"
+***** nh_cgprcfh_p7
+whether the expenditure is personal or corresponds to the household (1 if household is true).
+**** sea_enc_gcfhu_diarios_csv
+***** food consumed outside the home only
+***** The table contains information regarding food consumed for urban households that was not prepared at home.
+***** nh_cgducfh_p1
+a description in words for the article
+***** nh_cgducfh_p1_1
+a complete COICOP code
+***** nh_cgducfh_p2
+the quantity
+***** nh_cgducfh_p3
+if they purchased the good (01 is the code for purchases)
+***** nh_cgducfh_p4
+place of acquisition
+***** nh_cgducfh_p5
+total estimated value
+***** nh_cgducfh_p6
+****** frequency of acquisition
+****** codes
+1 » 2. Diario
+2 » 2.1. Varias veces por semana
+3 » 3. Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+9 » 9. Esporádica"
+***** nh_cgducfh_p7
+whether the expenditure is personal or corresponds to the household (1 if household is true)
+**** sea_enc_gcfhup_diarios_csv
+***** food consumed outside the home only
+***** The table contains information regarding food consumed for income earners in urban households that was not prepared at home.
+***** nh_cgpucfh_p1
+a description in words for the article
+***** nh_cgpucfh_p1_s1
+a complete COICOP code
+***** nh_cgpucfh_p2
+the quantity
+***** nh_cgpucfh_p3
+if they purchased the good (01 is the code for purchases)
+***** nh_cgpucfh_p4
+place of acquisition
+***** nh_cgpucfh_p5
+total estimated value
+***** nh_cgpucfh_p6
+****** frequency of acquisition
+****** codes
+1 » 2. Diario
+2 » 2.1. Varias veces por semana
+3 » 3. Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+9 » 9. Esporádica"
+**** TODO sea_enc_gdr_csv
+***** includes everything -- food at home, restaurants, clothing, etc.
+***** The table contains information of weekly expenses for rural households.
+***** nc2r_ca_p3
+a complete COICOP code for the article
+***** nc2r_ca_p4_s1
+the quantity
+***** nc2r_ca_p4_s2
+measurement units
+***** nc2r_ca_p5_s1
+if they purchased the good (01 is the code for purchases)
+***** nc2r_ca_p6_s1
+place of acquisition
+***** nc2r_ca_p7_s1
+total estimated value
+***** nc2r_ca_p8_s1
+****** frequency of acquisition
+****** codes
+1 » 2. Diario
+2 » 2.1. Varias veces por semana
+3 » 3. Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+9 » 9. Esporádica"
+**** sea_enc_gmf_csv
+***** The table contains information regarding less-frequent expenditures.
+***** p10270
+a complete COICOP code
+***** p10270_fc_s1
+if the article was purchased (01 if purchased)
+***** p10270s1
+estimated value paid (total/cash)
+***** p10270s2
+place of acquisition
+***** p10270s3
+****** frequency
+****** codes
+3 » 3. Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+8 » 8. Anual
+9 » 9. Esporádica
+10 » 10. Semestral"
+***** p10270s4
+value paid with credit
+**** sea_enc_gsdp_diarios_csv
+***** The table contains information of daily expenses that come from income earners.
+***** nc4_cc_p1_1
+a complete COICOP code for the article
+***** nc4_cc_p2
+the quantity
+***** nc4_cc_p3
+if they purchased the good (01 is the code for purchases)
+***** nc4_cc_p4
+place of acquisition
+***** nc4_cc_p5
+total estimated value
+***** nc4_cc_p6
+****** frequency of acquisition
+****** codes
+1 » 1. Diario
+2 » 2.1. Varias veces
+3 » 3. Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+9 » 9. Esporádica por semana"
+**** sea_enc_gsdu_diarios_csv
+***** The table contains information of daily expenses from urban households.
+***** nh_cgdu_p1
+a complete COICOP code for the article
+***** nh_cgdu_p2
+the quantity
+***** nh_cgdu _p3
+measurement units
+***** nh_cgdu_p5
+whether they purchased the good (01 is the code for purchases)
+***** nh_cgdu_p7b1379
+place of acquisition
+***** nh_cgdu _p8
+total estimated value
+***** nh_cgdu _p9
+****** frequency of acquisition
+****** "9. Frecuencia de Compra
+1 » 2. Diario
+2 » 2.1. Varias veces por semana
+3 » 3. Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+9 » 9. Esporádica"
+***** nh_cgdu_p10
+whether the expenditure is personal or corresponds to the household (1 if household is true)
+*** the persons file: st2_sea_enc_per_csv
+**** p6040
+age
+**** p6080
+***** race
+***** "6. De acuerdo con su cultura, pueblo, o rasgos físicos, ${posicion1} es o se reconoce como:
+1 » a. Indígena
+2 » b. Gitano-Rrom
+3 » c. Raizal del archipiélago de San Andrés y Providencia?
+4 » d. Palenquero de San Basilio o descendiente
+5 » e. Negro(a), mulato(a), afrocolombiano(a) o afrodescendiente?
+6 » f. Ninguno de los anteriores (mestizo, blanco, etc.)"
+**** p6020
+sex
+**** p6210
+***** education
+***** ¿Cuál es el nivel educativo más alto alcanzado?
+1 » Ninguno
+2 » Preescolar
+3 » Basica Primaria
+4 » Basica Secundaria
+5 » Media
+6 » Superior o Universitaria
+9 » ""No sabe, no informa
+**** p6370
+job name (text)
+**** p6370s1
+job code
+**** p6160
+literate
+**** p6170
+student
+**** p6430
+employer type (inc. family)
+**** p6500
+income
+**** p6430
+"corresponds to a numeric variable useful to identify employers, employees (government or not), and independent workers, among others. (same for the ENIG)"
+** PITFALL: person-level location data
+"The location variables are a little bit more difficult to get, since they are not directly available in the tables: the sample of households used in these surveys is a subsample taken from a more general survey (the GEIH) that contains the key variables to present our results by region (as well as other variables that we could use). You can find the GEIH for 2007,2016 and 2017  in the following links (they are presented by month, so we have to append the files to get the complete survey):
+
+http://microdatos.dane.gov.co/index.php/catalog/317/get_microdata (GEIH 2007)
+
+http://microdatos.dane.gov.co/index.php/catalog/427/get_microdata (GEIH 2016)
+
+http://microdatos.dane.gov.co/index.php/catalog/458/get_microdata (GEIH 2017)
+
+I will send the citizen´s guide on monday, and after that I could send you all that is missing. We could also discuss additional exercises and graphs that could be doable before our deadline."
+** references
+tax.co/hopefully-obsolete/enig-enph,email,david-suarez,2018-02-23.md
+* to do
+** interpreting frequencies
+*** problem: 2.1 or 2?
+*** problem: 9 = how infrequent?
+**** As a frequency code, 9 usually means "sporadically". I thought that meant "less frequently than every year", assuming that the terms are ordered. But over here it interprets 9 as "Esporádica por semana".
+**** links
+** Match the covering vocabularies to the COICOP items.
+This can be done for all of 2017, and for 2007 goods, but for 2007 services the COICOP data uses an obsolete coding.
+** are these more expenditure data sets?
+*** sea_enc_gcar_csv
+**** NC2_CC_P2
+1 » 2. Diario
+2 » 2.1. Varias veces por semana
+3 » 3. Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+9 » 9. Esporádica"
+*** sea_enc_gcau_csv
+**** NC2_CC_P2
+1 » 1. Nunca
+2 » 2. Diario
+3 » 2.1 varias veces por semana
+4 » 3. Semanal
+5 » 4. Quincenal
+6 » 5. Mensual
+7 » 6. Bimestral
+8 » 7. Trimestral
+9 » 9. Esporádica"
+ss frequently than every year", assuming that the terms are ordered. But over here it interprets 9 as "Esporádica por semana".
+**** links
+** Match the covering vocabularies to the COICOP items.
+*** This can be done for all of 2017, and for 2007 goods, but for 2007 services the COICOP data uses an obsolete coding.
+** are these more expenditure data sets?
+*** sea_enc_gcar_csv
+**** NC2_CC_P2
+1 » 2. Diario
+2 » 2.1. Varias veces por semana
+3 » 3. Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+9 » 9. Esporádica"
+*** sea_enc_gcau_csv
+**** NC2_CC_P2
+1 » 1. Nunca
+2 » 2. Diario
+3 » 2.1 varias veces por semana
+4 » 3. Semanal
+5 » 4. Quincenal
+6 » 5. Mensual
+7 » 6. Bimestral
+8 » 7. Trimestral
+9 » 9. Esporádica"

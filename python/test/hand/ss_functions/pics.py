@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import python.build.output_io    as oio
 import python.common.util               as util
 import python.common.misc as c
-import python.common.cl_args as c
+import python.common.common as c
 import python.build.ss_functions as ss
 
 

@@ -4,7 +4,6 @@
 # It's for determining whether changes to the code have resulted
 # in changes to the overview.py file.
 
-
 ##### Workflow (how to use it) #####
 #
 # (0) Decide which arguments will be used in make-all-models.sh.

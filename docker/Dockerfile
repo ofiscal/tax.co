@@ -1,9 +1,12 @@
+# This was originally based on
+# https://hub.docker.com/r/continuumio/anaconda3/
+
 FROM debian:latest
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH /opt/conda/bin:$PATH
 
-RUN echo "2019 07 23" && \
+RUN echo "2020 01 05" && \
   apt update --fix-missing -y && \
   apt upgrade -y
 RUN apt install -y wget bzip2 ca-certificates \
@@ -12,7 +15,7 @@ RUN apt install -y wget bzip2 ca-certificates \
   texlive-latex-base texlive-fonts-recommended \
   texlive-fonts-extra texlive-latex-extra texlive-publishers
 
-RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh -O ~/anaconda.sh && \
+RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh -O ~/anaconda.sh && \
     /bin/bash ~/anaconda.sh -b -p /opt/conda && \
     rm ~/anaconda.sh && \
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
@@ -22,12 +25,24 @@ RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_6
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
     /opt/conda/bin/conda clean -afy
 RUN /opt/conda/bin/conda install jupyter -y --quiet
+RUN conda update --all -y
+  # This brings pandas to version 0.25.1.
 COPY run-jupyter.sh /root/
 
-RUN curl -sSL https://get.haskellstack.org/ | sh
-RUN stack install shake
+RUN pip install django==3.0.2
+
+# RUN curl -sSL https://get.haskellstack.org/ | sh
+# RUN stack install shake
 
 RUN easy_install xlsx2csv
+
+# make.py, a build tool that's better and easier than make
+RUN cd /root                                     && \
+    git clone https://github.com/zwegner/make.py && \
+    ln -s /root/make.py/make.py /usr/bin/make.py
+
+COPY python-from-here /usr/bin
+RUN chmod +777 /usr/bin/python-from-here
 
 # RUN conda update --all --yes
 # RUN conda update -n base conda

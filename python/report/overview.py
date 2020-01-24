@@ -1,15 +1,16 @@
 # exec( open( "python/report/overview.py" ) . read() )
 
-import os
-import sys
-import pandas as pd
-from itertools import chain
-
-import python.common.util as util
-import python.draw.util as draw
-import python.build.output_io as oio
-import python.common.misc as c
-import python.common.cl_args as cl
+if True:
+  import os
+  import sys
+  import pandas as pd
+  from itertools import chain
+  
+  import python.common.util as util
+  import python.draw.util as draw
+  import python.build.output_io as oio
+  import python.common.misc as c
+  import python.common.common as cl
 
 if cl.regime_year == 2016:
       import python.regime.r2016 as regime
@@ -42,7 +43,7 @@ if True: # create a summary dataframe
     , "pension, contributor(s) (if not pensioned) = split"
     , "pension, contributor(s) (if not pensioned) = self"
     , "pension, contributor(s) (if not pensioned) = employer"
-    , "seguro de riesgos laborales (if reported)"
+    , "seguro de riesgos laborales"
     , "income"
     , "income, labor + cesantia"
     , "income, capital (tax def)"
@@ -131,12 +132,12 @@ if True: # create a summary dataframe
 
 if True: # save
   df_tmi.to_csv(   output_dir +
-                   "overview, tmi." + cl.strategy_year_suffix + ".csv" )
+                   "overview_tmi." + cl.strategy_year_suffix + ".csv" )
   df_tmi.to_excel( output_dir +
-                   "overview, tmi." + cl.strategy_year_suffix + ".xlsx" )
+                   "overview_tmi." + cl.strategy_year_suffix + ".xlsx" )
   draw.to_latex( df_tmi
                , output_dir
-               , "overview, tmi." + cl.strategy_year_suffix )
+               , "overview_tmi." + cl.strategy_year_suffix )
 
 
 if True: # do the same thing to a subset of that data
@@ -157,9 +158,9 @@ if True: # do the same thing to a subset of that data
     , "pension, contributor(s) (if not pensioned) = employer: mean"
     , "pension, contributor(s) (if not pensioned) = employer: min"
     , "pension, contributor(s) (if not pensioned) = employer: max"
-    , "seguro de riesgos laborales (if reported): mean"
-    , "seguro de riesgos laborales (if reported): min"
-    , "seguro de riesgos laborales (if reported): max"
+    , "seguro de riesgos laborales: mean"
+    , "seguro de riesgos laborales: min"
+    , "seguro de riesgos laborales: max"
     , "income: mean"
     , "income: min"
     , "income: max"

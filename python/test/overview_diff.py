@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 import python.common.util as util
-import python.common.cl_fake as cl
+import python.common.common as cl
 
 latest_dir = "output/vat/tables/recip-"      + str(cl.subsample) + "/"
 prev_dir   = "output/vat/tables/prev/recip-" + str(cl.subsample) + "/"

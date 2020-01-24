@@ -1,43 +1,49 @@
 import pandas as pd
 from numpy import nan
-import python.build.classes as classes
+from python.build.classes import File, Correction, StringProperty
 import python.common.misc as c
 
 
 capitulo_c_corrections = [
-    classes.Correction.Create_Constant_Column( "quantity", 1 )
-  , classes.Correction.Create_Constant_Column( "how-got", 1 )
-  , classes.Correction.Create_Constant_Column( "coicop", nan )
-  , classes.Correction.Drop_Row_If_Column_Equals( "duplicated", 1 )
-  , classes.Correction.Drop_Column( "duplicated" )
+    Correction.Create_Constant_Column( "quantity", 1 )
+  , Correction.Create_Constant_Column( "how-got", 1 )
+  , Correction.Create_Constant_Column( "coicop", nan )
+  , Correction.Drop_Row_If_Column_Equals( "duplicated", 1 )
+  , Correction.Drop_Column( "duplicated" )
 ]
 
 files = [
-  classes.File( "urban capitulo c"
+  File( "urban capitulo c"
     , "Gastos_diarios_Urbano_-_Capitulo_C.csv"
-    , { **c.variables
-      , "NC2_CC_P1"    : "25-broad-categs"
-      , "NC2_CC_P2"    : "freq"
-      , "NC2_CC_P3_S1" : "value"
-      , "NC2_CC_P3_S2" : "duplicated"
-    },  capitulo_c_corrections
-      + c.corrections
-        # TODO (#right) "where-got": assume purchase
+    , c.variables +
+      [ ( "NC2_CC_P1"   , {StringProperty.NotAString}, "25-broad-categs", 0 )
+      , ( "NC2_CC_P2"   , {StringProperty.NotAString}, "per month", 0 )
+      , ( "NC2_CC_P3_S1", {StringProperty.NotAString}, "value", 0 )
+      , ( "NC2_CC_P3_S2", {StringProperty.NotAString}, "duplicated", 0 ) ]
+    , capitulo_c_corrections +
+      c.corrections
+       # TODO (#right) "where-got": assume purchase
   )
 
-  , classes.File( "rural capitulo c"
+  , File( "rural capitulo c"
     , "Gastos_semanales_Rural_-_Capitulo_C.csv"
-    , { **c.variables
-      , "NC2_CC_P1"    : "25-broad-categs"
-      , "NC2_CC_P2"    : "freq"
-      , "NC2_CC_P3_S1" : "value"
-      , "NC2_CC_P3_S2" : "duplicated"
-    }, [ classes.Correction.Replace_In_Column( "duplicated"
-                                              , { ' ' : nan
-                                                , "nan" : nan
-                                                , '1' : 1
-                                                , '2' : 2} )
-      ] + capitulo_c_corrections
-        + c.corrections
-        # TODO (#right) : "where-got"
+    , # This first list is unlike c.variables in that FEX_C is not a number
+      [ ( "DIRECTORIO", {StringProperty.NotAString}
+          , "household", 0 )
+      , ( "ORDEN", {StringProperty.NotAString}
+          , "household-member", 0 )
+      , ( "FEX_C", {StringProperty.Comma, StringProperty.Digits}
+          , "weight", 0 )
+      ] +
+      [ ( "NC2_CC_P1"   , {StringProperty.NotAString}
+          , "25-broad-categs", 0 )
+      , ( "NC2_CC_P2"   , {StringProperty.NotAString}
+          , "per month", 0 )
+      , ( "NC2_CC_P3_S1", {StringProperty.NotAString}
+          , "value", 0 )
+      , ( "NC2_CC_P3_S2", {StringProperty.NotAString}
+          , "duplicated", 0 ) ]
+    , capitulo_c_corrections +
+      c.corrections
+      # TODO (#right) : "where-got"
 ) ]

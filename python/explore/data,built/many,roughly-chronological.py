@@ -3,7 +3,7 @@ import python.build.main as data
 import python.common.util as util
 import python.build.classes as classes
 import python.common.misc as c
-import python.common.cl_args as c
+import python.common.common as c
 
 import pandas as pd
 import numpy as np
@@ -37,7 +37,7 @@ util.describeWithMissing(
 )
 
 raw = pd.read_csv( "data/enph-2017/recip-100/Caracteristicas_generales_personas.csv" )
-raw = c.to_numbers(
+raw = c.all_columns_to_numbers(
   raw.rename( columns = {
     "P6040"      : "age"
   , "P1668S1A4"  : "familias en accion"
@@ -120,7 +120,7 @@ data.purchases[ data.purchases["duplicated"]==2 ]["file-origin"].unique()
 # of observations where where-got is missing.
 util.dwmByGroup( "file-origin",
                  data.purchases[ data.purchases["is-purchase"]==1 ]
-                 [["file-origin","freq"]] )
+                 [["file-origin","per month"]] )
 
 for c in data.people.filter(regex="income").columns:
   util.describeWithMissing( data.people[[c]] )
@@ -184,4 +184,4 @@ def check(file_name,col_name):
 
 for fn in file_names:
   print("\n\n" + fn)
-  check(fn,"freq")
+  check(fn,"per month")
