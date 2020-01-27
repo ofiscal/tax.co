@@ -24,6 +24,8 @@ def retrieve_file( file_struct, subsample ):
     )
 
 def collect_files( file_structs, subsample=subsample ):
+  """Collect all files in `file_structs` into a single dataset,
+with slight changes for homogeneity, readability."""
   acc = pd.DataFrame()
   for f in file_structs:
     shuttle = ( retrieve_file( f, subsample )
@@ -36,4 +38,3 @@ def collect_files( file_structs, subsample=subsample ):
                     , sort=True ) # the two capitulo_c files include a column,
     # "25-broad-categs", that the others don't. `sort=true` deals with that.
   return acc
-

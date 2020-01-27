@@ -4,6 +4,8 @@ import re as regex
 
 
 def rename_monthly( cols: List[str] ):
+  """This will be called on certain year-level variables,
+after they have been divided by 12."""
   return [ regex.sub( "year", "month", col )
            for col in cols ]
 
@@ -13,7 +15,7 @@ def rename_monthly( cols: List[str] ):
 def count_num_matches_in_space_separated_list(
       list_as_str : str # a space-separated list of integers
     , targets : Set[int]  ):
-  """ Counts how many times anything from the list argument appears in the string. """
+  """A few variables in the ENPH look like numbers but are actually space-separated lists of numbers. This function counts how many times anything from the list argument appears in the string argument."""
   stripped = list_as_str . strip()
   if stripped in [np.nan, ""]: return 0
   else:

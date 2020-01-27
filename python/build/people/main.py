@@ -1,3 +1,13 @@
+# This processes individual columns from the person-level ENPH data.
+# It's a long process, but not as complex as it looks,
+# because the processing is very "flat" --
+# most variables can be considered in isolation,
+# as there are very few interconnections between them to worry about here.
+# Most of the variables processed here are forms of income,
+# of which the ENPH has around 75.
+#
+# TODO: divide into sub-modules
+
 import numpy as np
 import pandas as pd
 import re as regex
@@ -70,7 +80,7 @@ if True: # non-income work characteristics
 
 if True: # income
   if True: # fill NaN values
-    # Here we interpret NaN as "one" (month)
+    # Here we interpret NaN as "one month"
     ppl[   "income, month : labor : independent, months" ] = (
       ppl[ "income, month : labor : independent, months" ] . fillna(1) )
 
@@ -395,7 +405,7 @@ if True: # dependence
                          | ( ppl["disabled"]==1 ) )
                      )
 
-if True: # drop (so far) unused vars
+if True: # drop vars that are (so far) unused downstream of here
   ppl = ppl.drop( columns =
     [ "income, month : borrowing : from person"
     , "income, month : borrowing : from bank"

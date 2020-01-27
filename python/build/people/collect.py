@@ -1,3 +1,6 @@
+# From the raw ENPH person-level data,
+# creates a data set that's a little friendlier.
+
 import python.build.output_io as oio
 import python.build.people.files as files
 import python.common.common as cl

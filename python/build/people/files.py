@@ -1,3 +1,6 @@
+# The primary purpose of this file is to define the `files` object,
+# which describes what and how to retrieve from the raw ENPH data.
+
 import python.build.classes as classes
 import python.common.misc as c
 
