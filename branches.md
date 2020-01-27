@@ -1,10 +1,12 @@
-This describes the branches the code has gone through, in the [git sense of the word](https://git-scm.com/docs/git-branch).
+This describes the branches (in the
+[git sense of the word](https://git-scm.com/docs/git-branch))
+which the code has gone through.
 
-Not all branches are documented here. For those that aren't:
+Not all branches are documented here. For those that aren't:x
 Most branches begin with a commit message explaining its intended purpose.
 
-Note that some branches diverge,
-including work that falls outside their original scope.
+Note that some branches diverge from their original scope,
+including work that falls outside it.
 
 # average-vat-spending-per-rate (complete)
 
