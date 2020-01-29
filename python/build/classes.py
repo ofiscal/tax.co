@@ -2,6 +2,8 @@
 # would be their own separate type,
 # but that would mean rewriting all the code that appends them.
 
+# TODO ? divide into submodules
+
 import enum
 from   functools import reduce
 import math
@@ -18,6 +20,7 @@ class Property:
   pass
 
 class NumProperty(Property):
+  """Properties numbers can have, such as being in a certain range."""
   pass
 
 class IsNull(NumProperty):
@@ -39,6 +42,7 @@ class InSet(Property):
     return series.isin( self.values )
 
 def properties_cover_num_column( properties, column : pd.Series ):
+  """Returns true if at least one of the properties holds for every value in the series."""
   tests = map( lambda p: p.test( column )
              , properties )
   df = pd.concat( tests, axis=1 )
@@ -74,6 +78,7 @@ if True: # TODO ? WART: These should be defined within each enum type,
   re_gt1c       = re.compile( ".*,.*," )
 
 def stringProperties( column ):
+  """Seems to (?) determine all properties that apply to a string column. See classes_test.py."""
   # let c = column.apply( str.strip )
     # omitted because this is done to every column when subsampling
   if column.dtype not in [object]:
@@ -106,6 +111,7 @@ def stringProperties( column ):
 ### files ###
 
 class Correction:
+  """Ways to modify a dataset. Convenience functions for pandas routines."""
   # PITFALL: Some of the return statements in the implementations of "correct" below are unnecessary,
     # because the operations before them are destructive. However, "drop" is not destructive.
     # For compatibility with Drop_Row_If_Column_Satisfies_Predicate, therefore, every "correct" function
@@ -220,6 +226,8 @@ class Correction:
       return df
 
 class File:
+  # TODO: Rename this EnphFile.
+  """Describes a file from the ENPH. See, e.g., ./build/purchases/nice_purchases.py."""
   def __init__( self, name, filename, col_specs, corrections=[] ):
     self.name = name
     self.filename = filename
@@ -229,14 +237,14 @@ class File:
     self.corrections = corrections
 
 def name_map(quads):
-  """ input: a collection of col_specs 4-tuples
-      output: a map from old names to new names """
+  """input: a collection of col_specs 4-tuples.
+output: a map from old names to new names. """
   return { t[0]:t[2] for t in quads }
 def input_map(quads):
-  """ input: a collection of col_specs 4-tuples
-      output: a map from old names to the formats they are believed to be in """
+  """input: a collection of col_specs 4-tuples.
+output: a map from old names to the formats they are believed to be in. """
   return { t[0]:t[1] for t in quads }
 def output_map(quads):
-  """ input: a collection of col_specs 4-tuples
-      output: a map from new names to the format they should (eventually) be in """
+  """input: a collection of col_specs 4-tuples.
+output: a map from new names to the format they should (eventually) be in. """
   return { t[2]:t[3] for t in quads }

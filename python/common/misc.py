@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from   python.build.classes import Correction, StringProperty
+from python.build.classes import Correction, StringProperty
 
+
+######
+###### About Colombia's laws
+######
 
 min_wage = 713585.5 # This is an average, because the ENPH spans two years.
                     # Minimum Wage 2016: COP$ 689,454
@@ -15,6 +19,11 @@ gmf_threshold = (11150650 + 10413550) / 2
   # 2018 = $11,604,600
   # 2017 = $11,150,650
   # 2016 = $10,413,550
+
+
+######
+###### About the data
+######
 
 variables = [ # in some purchase files, all three common variables are numbers
     ( "DIRECTORIO", {StringProperty.NotAString}, "household", 0 )
@@ -33,6 +42,11 @@ variables_with_comma_weight = [
 corrections = [
   Correction.Replace_Substring_In_Column( "weight", ",", "." )
 ]
+
+
+######
+###### Functions
+######
 
 def all_columns_to_numbers(df, skip_columns=[]):
   for c in df.columns:

@@ -1,7 +1,13 @@
 * TODO documentation
+** see wiki
+** commented
+build/classes.py
+python/build/people/*
+python/build/common/*
 ** refactor .gitignore file(s)
 Ignore most .xls etc. files, but provide some exceptions.
 https://stackoverflow.com/questions/2415873/exceptions-in-gitignore
+* TODO verify Makefile runs each test file
 * TODO docker
 ** TODO download new docker image to desktop
 ** TODO update tax.co docker image

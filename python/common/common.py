@@ -1,19 +1,21 @@
+# Some simple definitions needed throughout much of the codebase.
+
 if True:
   from sys import argv
   import pandas as pd
   #
   import python.build.classes as cla
   if len( argv) > 1: # we are using the command line
-    import python.common.params.command_line as imp
+    import python.common.params.command_line as par
   else: # we are in the interpreter
-    import python.common.params.repl         as imp
+    import python.common.params.repl         as par
 
 if True:
-  subsample = imp.subsample
-  strategy = imp.strategy
-  regime_year = imp.regime_year
-  strategy_suffix = imp.strategy_suffix
-  strategy_year_suffix = imp.strategy_year_suffix
+  subsample = par.subsample
+  strategy = par.strategy
+  regime_year = par.regime_year
+  strategy_suffix = par.strategy_suffix
+  strategy_year_suffix = par.strategy_year_suffix
 
 def retrieve_file( file_struct, subsample ):
   return pd.read_csv(

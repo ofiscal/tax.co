@@ -24,7 +24,6 @@ def test_count_num_matches_in_space_separated_list():
                 ( "", {1,2} ) )
 
 
-
 ## integration tests
 
 def test_ranges(ppl: pd.DataFrame):

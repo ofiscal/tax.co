@@ -1,3 +1,7 @@
+# What to import if working from the command line.
+# In this case there are command-line arguments to interpret,
+# hence the calls to `sys.argv`.
+
 import sys
 import python.common.terms as t
 

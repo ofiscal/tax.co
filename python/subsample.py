@@ -1,5 +1,29 @@
-# At times this is memory intensive. My OS kept killing it, until I ran it with nothing else going on
-# -- closed my browsers and all other docker containers. (I left Emacs, Dolphin and a few Konsoles open.)
+# PURPOSE
+#########
+# The code takes a long time to proceses the full data set.
+# These subsamples speed up the development cycle,
+# by allowing you to run the process on less data.
+# There are 1/1, 1/10, 1/100 and 1/1000 subsamples.
+
+# PITFALL
+#########
+# This is memory intensive. Depending on your hardware,
+# it might not run without first killing other big apps.
+
+# HOW TO USE IT
+###############
+# From the command line:
+#   If calling Python directly,
+#     select a subsample by setting
+#     the first command-line argument to the denominator of one
+#     of the above fractions. The Makefile contains a number of examples.
+#   If calling Python via make,
+#     see bash/make-all-models.sh for appropriate syntax.
+#   If calling make via bash/make-all-models.sh,
+#     see the header comment in that file.
+# From the Python reepl:
+#   Change the subsample value imported by common.py,
+#   by changing common/params/repl.py.
 
 import os
 import pandas as pd
