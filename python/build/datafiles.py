@@ -1,3 +1,8 @@
+# In retrospect this code looks prematurely optimized.
+# Its intent is to make it more convenient to retrieve the raw data.
+# But so far we don't even use the ENIG (the 2007 version of the ENPH),
+# so this is more flexible than we need.
+
 def yearSurveyFolder(year):
   if year in (2007,2017):
     if year == 2007: return "data/enig-2007/"

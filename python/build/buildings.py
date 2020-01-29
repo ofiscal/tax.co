@@ -1,8 +1,6 @@
-# PITFALL: For the buildings file,subsample is ignored;
-# the program uses the full sample always,
-# because it's a small file, and merged with others.
-# If it was subsampled at 1/n, and the other one was as well,
-# then their merge would be subsampled at roughly 1/n^2.
+# PITFALL: For the buildings file, subsample is ignored;
+# the program uses the full sample always.
+# It's a small file, so that doesn't hurt.
 
 import numpy as np
 

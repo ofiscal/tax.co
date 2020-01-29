@@ -1,3 +1,6 @@
+# Compute how much a person paid for various income taxes,
+# and for things resembling income tax, e.g. social security contributions.
+
 import sys
 import pandas                    as pd
 
@@ -15,6 +18,8 @@ else: import python.regime.r2018 as regime
 ppl = oio.readStage( cl.subsample
                    , "people_3_purchases." + cl.strategy_suffix )
 
+# This tax is also known as the "4 por mil" --
+# the 0.4% tax levided on transactions involving someone's bank account.
 ppl["tax, gmf"] = (0.004 * ( ppl["income, cash"] - c.gmf_threshold)
                   ).apply( lambda x: max(0,x) )
 
@@ -42,7 +47,10 @@ ppl["tax, ss, total employee contribs"] = (
 
 ppl = regime.income_taxes( ppl )
 
-if True: # determine dependents, for income tax
+# Determine dependents, for income tax, assuming rationality -- that is,
+# the highest earner should claim the first available dependent,
+# the next-highest earner should claim the next available dependent, etc.
+if True:
   hh = ( ppl[["household","dependent"]]
        . groupby( "household" )
        . agg( 'sum' )

@@ -14,7 +14,9 @@ import re
 import sys
 
 
+#############################
 ### properties of numbers ###
+#############################
 
 class Property:
   pass
@@ -49,7 +51,9 @@ def properties_cover_num_column( properties, column : pd.Series ):
   return df . any(axis=1) . all(axis=0)
 
 
+#############################
 ### properties of strings ###
+#############################
 
 class StringProperty(enum.Flag):
   NotAString    = enum.auto()
@@ -108,7 +112,9 @@ def stringProperties( column ):
   return acc
 
 
-### files ###
+#############################################################
+### Files, and the Correction class for manipulating them ###
+#############################################################
 
 # TODO : rename Correction -> ModifyDataset
 class Correction:

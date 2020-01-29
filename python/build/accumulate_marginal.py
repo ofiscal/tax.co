@@ -1,7 +1,18 @@
-# PITFALL: This code for computing total taxation from marginal rates is demonstrated
+# PURPOSE
+#########
+# compute total taxation from marginal ratesx
+
+# PITFALL: Unused
+#################
+# It's an elegant idiom, and we might need it someday,
+# so I'm keeping it around.
+
+# PITFALL
+#########
+# This code is demonstrated
 # below for the case of social security contributions, under hypothetical
-# conditions in which those are dictated by marginal rates. In fact Colombian
-# social security contributions are dictated by average rates.
+# conditions in which those are defined by marginal rates. In fact Colombian
+# social security contributions are defined by average rates, not marginal ones.
 
 import pandas as pd
 import unittest

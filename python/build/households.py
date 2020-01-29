@@ -1,3 +1,8 @@
+# PURPOSE
+#########
+# Aggregate from persons to households.
+# Compute more variables.
+
 if True:
   import pandas as pd
   import numpy as np
@@ -98,7 +103,8 @@ if True: # aggregate from household members to households
                            "female" : "has-male",
     } )
   h_min["has-male"] = 1 - h_min["has-male"]
-    # if female is ever 0, then its min = 0, i.e. there is a male
+    # If female is 0 for anyone in a household, then min(female) = 0,
+    # i.e. the household includes a male.
   h_max = ppl.groupby(
       ["household"]
     ) [ "age", "literate", "student", "female", "female head", "education"

@@ -1,3 +1,5 @@
+# Merge the building data innto the person-level data.
+
 import sys
 import pandas as pd
 

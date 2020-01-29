@@ -9,11 +9,14 @@ purchases = oio.readStage( c.subsample
 
 # extract the predial tax
 purchases["predial"] = (purchases["coicop"] == 12700601) * purchases["value"]
-  # This encodes not the value of the property, just the predial tax paid on the house.
+  # PITFALL: This variable, which is already part of the ENPH,
+  # encodes not the value of the property, just the predial tax paid on the house.
+  # It's confusing, because it comes from the purchase-level data, 
+  # so you might reasonably expecet it to encode a purchase, not a tax.
   # "Impuesto predial y de valorización de la(s) vivienda(s) ocupada(s) por el hogar"
-  # The coicop-vat bridge assigns it a vat of zero.
+  # The coicop-vat bridge assigns that coicop code a vat of zero.
 
-purchases["transactions"] = 1 # useful when summed
+purchases["transactions"] = 1 # next this is summed within persons
 purchase_sums = purchases.groupby( ["household", "household-member"]
          ) [ "value"
            , "transactions"

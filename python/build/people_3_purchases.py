@@ -1,3 +1,6 @@
+# Merge the purchase data into the person-level data.
+# Compute some new variables.
+
 import sys
 import pandas as pd
 

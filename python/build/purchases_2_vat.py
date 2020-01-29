@@ -1,3 +1,7 @@
+# PURPOSE
+#########
+# Compute VAT per purchase in the purchase data.
+
 import numpy as np
 import pandas as pd
 
@@ -67,6 +71,14 @@ if True: # left-pad every coicop value with 0s
     8, vat_coicop ["coicop"] )
 
 if True: # add these columns: ["vat", "vat, min", "vat, max"]
+  # The tax laws do not precisely conform to the COICOP labeling of goods.
+  # We (especially our tax policy expert, David Suarez)
+  # had to exercise our judgment,
+  # determining what VAT rate applied to which COICOP category.
+  # In some cases the VAT was clear. In other cases,
+  # we recorded minimum and maximum possible VAT values.
+  # The columns "vat, min", "vat max", "vat frac, min" and "vat frac, max"
+  # correspond to those minima and maxima.
   purchases_coicop = purchases.merge(
     vat_coicop, how = "left", on="coicop" )
   purchases_cap_c = purchases.merge(
