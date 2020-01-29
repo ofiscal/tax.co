@@ -1,3 +1,5 @@
+# TODO automate these tests.
+
 import sys
 import pandas                    as pd
 
@@ -20,7 +22,7 @@ ppl["tax"] = ppl["dividends"].apply(
            else (x - 1000 * c.uvt) * 0.1 + 20 * c.uvt ) )
 
 
-### This isn't very informative because almost nobody makes dividend income.
+### This isn't very informative, because almost nobody makes dividend income.
 
 ppl = oio.readStage( cl.subsample
   , 'people_4_income_taxish.' + cl.strategy_suffix)

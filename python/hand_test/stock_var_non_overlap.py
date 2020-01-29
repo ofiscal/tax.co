@@ -1,3 +1,5 @@
+# TODO : automate these tests
+
 # What this is for
 ##################
 # This demosntrates that indeed the two stock variables are non-overlapping,

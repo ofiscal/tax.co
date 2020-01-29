@@ -5,6 +5,7 @@ import python.common.util as util
 
 
 def theTest():
+  # TODO : automate this test. (Move it to common/util_test.py.)
   s = pd.Series( [1,1,2,2], index = [101,102,103,104] )
   nq = util.noisyQuantile( 4, 0, 0.001, s )
   return (  (nq[102] < nq[103]) # This is a partial order. We can say nothing,

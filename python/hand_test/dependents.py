@@ -1,3 +1,5 @@
+# TODO : automate these tests.
+
 import numpy                     as np
 import pandas                    as pd
 

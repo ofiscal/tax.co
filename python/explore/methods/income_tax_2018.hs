@@ -1,3 +1,6 @@
+-- This is Haskell, not Python.
+-- Developing the income tax code was easier in this language.
+
 data IncomeBracket = IncomeBracket
   { top :: Float
   , rate :: Float } deriving (Show)
