@@ -1,3 +1,9 @@
+# This describes how to reformat some of the raw ENPH files.
+# These files are "nice" in the sense that they require no corrections
+# beyond those defined by python.common.misc.corrections.
+# (UPDATE: that's not quite true --
+# Gastos_diarios_Urbanos.csv requires an idiosyncratic correctionn.)
+
 import pandas as pd
 from python.build.classes import File, Correction, StringProperty
 import python.common.misc as c

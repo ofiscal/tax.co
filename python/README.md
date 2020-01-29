@@ -1,3 +1,9 @@
+# Some folders have a "main.py" program
+
+If so, and if there is no README.md file for that folder,
+the header comment in "main.py"
+probably describes what the entire folder is for.
+
 # Pay attention to PITFALL comments
 
 They document likely points of confusion.

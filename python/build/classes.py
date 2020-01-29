@@ -110,8 +110,10 @@ def stringProperties( column ):
 
 ### files ###
 
+# TODO : rename Correction -> ModifyDataset
 class Correction:
-  """Ways to modify a dataset. Convenience functions for pandas routines."""
+  """Ways to modify a dataset. Convenience functions for pandas routines.
+Mostly of these functions affect a single column, but there are exceptions."""
   # PITFALL: Some of the return statements in the implementations of "correct" below are unnecessary,
     # because the operations before them are destructive. However, "drop" is not destructive.
     # For compatibility with Drop_Row_If_Column_Satisfies_Predicate, therefore, every "correct" function

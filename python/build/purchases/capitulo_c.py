@@ -1,3 +1,5 @@
+# This describes how to reformat some of the raw ENPH files.
+
 import pandas as pd
 from numpy import nan
 from python.build.classes import File, Correction, StringProperty

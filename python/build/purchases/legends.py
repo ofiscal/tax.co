@@ -1,5 +1,7 @@
 import numpy as np
 
+# Describes how to translate from ENPH frequency codes
+# to a literal monthly frequency.
 freq = {
     1  : (365.25/12) / 1   # 1  » Diario
   , 2  : (365.25/12) / 3.5 # 2  » Varias veces por semana

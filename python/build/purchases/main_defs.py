@@ -14,4 +14,3 @@ absurdly_big_expenditure_threshold = 1e9
 
 def drop_absurdly_big_expenditures( df ):
   return df[ ~(df["value"] > absurdly_big_expenditure_threshold) ]
-

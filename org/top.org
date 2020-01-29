@@ -6,8 +6,10 @@ build/people/*
 common/*
 draw/*
 explore/*
+hand_test/*
 regime/*
 report/*
+subsample.py
 ** refactor .gitignore file(s)
 Ignore most .xls etc. files, but provide some exceptions.
 https://stackoverflow.com/questions/2415873/exceptions-in-gitignore

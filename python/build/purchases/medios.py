@@ -1,6 +1,13 @@
+# OBSOLETE
+##########
 # This file would be relevant, because it records house purchases,
-# but the VAT is charged only on sales of new homes,
-# and newness is not reported in the ENPH.
+# but the VAT is levied only on sales of new homes,
+# and newness is not reported in the ENPH,
+# so we can't use the data to compute VAT for these purchases.
+
+# PURPOSE
+#########
+# This describes how to reformat some of the raw ENPH files.
 
 import pandas as pd
 from numpy import nan

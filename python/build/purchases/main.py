@@ -1,3 +1,8 @@
+# PURPOSE
+#########
+# Collect all the ENPH purchase files into a single dataset,
+# with various reformattings, homogenizations, and corrections.
+
 import sys
 import numpy as np
 from itertools import chain
