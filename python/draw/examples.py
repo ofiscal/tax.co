@@ -1,3 +1,7 @@
+# Illustrates four ways to draw figures:
+# interactively and to disk,
+# from Jupyter and from the shell.
+
 import python.draw.util as draw
 import pandas as pd
 

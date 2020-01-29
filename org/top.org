@@ -2,8 +2,10 @@
 ** see wiki
 ** commented
 build/classes.py
-python/build/people/*
-python/build/common/*
+build/people/*
+common/*
+explore/*
+draw/*
 ** refactor .gitignore file(s)
 Ignore most .xls etc. files, but provide some exceptions.
 https://stackoverflow.com/questions/2415873/exceptions-in-gitignore
