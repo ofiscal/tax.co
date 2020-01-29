@@ -1,6 +1,7 @@
 import pandas as pd
 from python.common.misc import muvt
 
+
 income_tax_columns = [ "tax, income"
                      , "tax, income, all but dividend"
                      , "tax, income, dividend"

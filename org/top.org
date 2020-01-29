@@ -6,6 +6,8 @@ build/people/*
 common/*
 explore/*
 draw/*
+regime/*
+report/*
 ** refactor .gitignore file(s)
 Ignore most .xls etc. files, but provide some exceptions.
 https://stackoverflow.com/questions/2415873/exceptions-in-gitignore
