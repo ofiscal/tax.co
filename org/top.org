@@ -4,8 +4,8 @@
 build/classes.py
 build/people/*
 common/*
-explore/*
 draw/*
+explore/*
 regime/*
 report/*
 ** refactor .gitignore file(s)
