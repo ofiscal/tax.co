@@ -50,3 +50,4 @@ if True: # run tests
   oio.test_write( cl.subsample
                 , "vat_rates"
                 , log )
+

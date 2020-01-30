@@ -1,7 +1,9 @@
-# PURPOSE : This creates:
-  # a bridge from 8-digit COICOP to VAT rate
-  # a bridge from the 25 "capitulo c" codes to a VAT rate
-  # two more, briefer versions of those two keys
+# PURPOSE
+#########
+# This program creates:
+#   a bridge from 8-digit COICOP to VAT rate
+#   a bridge from the 25 "capitulo c" codes to a VAT rate
+#   two more, briefer versions of those two keys
 
 if True:
   import sys
@@ -18,6 +20,8 @@ vat_cap_c = pd.read_csv( "data/vat/" + "vat-for-capitulo-c.csv"
             } )
 
 if True: # input
+  # TODO : The conditional branch here is stale.
+  # The vat_holiday_* options should be retired.
   if c.strategy == t.detail:
     vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
                             , sep = ";" # TODO PITFALL
@@ -38,6 +42,8 @@ if True: # input
             "data/vat/holiday/" + "vat-by-coicop.ask_3.csv" ) .
           drop( columns = ["Unnamed: 0"] ) )
     if True: # un-Latinize the numbers
+      # TODO ? Shouldn't this evaluate regardless of strategy?
+      # It's current indentation restricts it to vat_holiday* strategies.
       vat_cols = ["vat","vat, min","vat, max"]
       vat_coicop.loc[:, vat_cols] = (
         vat_coicop.loc[:, vat_cols] .
@@ -83,4 +89,3 @@ if True: # save
   oio.saveStage( c.subsample
                , vat_cap_c
                , 'vat_cap_c_brief.'   + c.strategy_suffix )
-

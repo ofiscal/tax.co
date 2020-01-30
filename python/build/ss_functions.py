@@ -1,3 +1,9 @@
+# These functions use the schedules encoded at
+# `python/build/ss_schedules.py` to compute someone's
+# "generalized income taxes" (a term I am inventing,
+# which include things like social security contributions,
+# which is not technically a tax).
+
 import pandas                    as pd
 
 import python.build.ss_schedules as ss

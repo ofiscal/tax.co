@@ -1,12 +1,31 @@
-# see rentas_naturales.xlsx for a model
+# PURPOSE
+#########
+# These functions return triples that encode how to
+# determine someone's income tax as a function of their wage.
+# Interpret those triples as follows:
+    # First number: threshold at which a new income tax rate takes effect.
+    # Second: taxable base. This is a function; you input someone's wage,
+    #   and it outputs the amount of their money subject to the tax.
+    # Third: average tax rate.
+
+# PITFALL
+#########
+# The ENPH data gives nominal salary, before those contributions.
+
+# PITFALL
+#########
+# Contractors pay all income taxes themselves. Employees do not --
+# they pay some part of those taxes themselves,
+# and their employer pays the rest.
+# (In an economic sense, it all comes out of the employee's wages,
+# but in a legal sense, it is shared with the employer.)
+
+# CONTEXT
+#########
+# The model `rentas_naturales.xlsx` might amke this easier to understand.
 
 from python.common.misc import min_wage
 
-# How to interpret these triples:
-    # First number: threshold at which the regime starts
-    # Second: taxable base
-    # Third: average tax rate
-    # The data gives nominal salary, before those contributions.
 ss_contrib_schedule_for_contractor = {
   "pension" :
     [ ( 0, lambda _: 0, 0.0 )

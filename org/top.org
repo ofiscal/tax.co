@@ -1,15 +1,5 @@
 * TODO documentation
 ** see wiki
-** commented
-build/classes.py
-build/people/*
-common/*
-draw/*
-explore/*
-hand_test/*
-regime/*
-report/*
-subsample.py
 ** refactor .gitignore file(s)
 Ignore most .xls etc. files, but provide some exceptions.
 https://stackoverflow.com/questions/2415873/exceptions-in-gitignore
@@ -39,6 +29,11 @@ Currently the only recipe expects something to be built in a parent folder of wh
 ** some recipes don't need to depend on all three variables
 the three variables being subsample, strategy, year
 * TODO possibly wrong
+** TODO vat_rates: maybe bad indentation
+Search the TODO items for this:
+    if True: # un-Latinize the numbers
+      # TODO ? Shouldn't this evaluate regardless of strategy?
+      # It's current indentation restricts it to vat_holiday* strategies.
 ** TODO BLOCKED : "household member" max mismatch
 *** awaiting response from Juan, who awaits from DANE
 *** the problem
