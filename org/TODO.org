@@ -1,6 +1,4 @@
-* TODO documentation
-** see wiki
-** refactor .gitignore file(s)
+* TODO refactor .gitignore file(s)
 Ignore most .xls etc. files, but provide some exceptions.
 https://stackoverflow.com/questions/2415873/exceptions-in-gitignore
 * TODO verify Makefile runs each test file
@@ -756,73 +754,6 @@ If we ever again need a purchase data set that tracks the file each purchase is 
 that's already implemented.
 ** some pics are drawn but not included in the report
 *** people/spending
-* TODO PITFALLs in code
-** in my own
-*** the special motorcycle tax
-It is represented in code, not data.
-  at purhcases_2_vat.py
-It is treated as VAT.
-** Makefile: be sure all program output comes at the end
-And that (at least) the last thing it creates is a Makefile target.
-Otherwise `make` might believe a target is up to date when the program responsible for it did not complete.
-** in Python
-*** underscores in filenames seem to confuse Matplotlib's font_manager
- https://github.com/matplotlib/matplotlib/issues/14536
-*** every code folder needs a __init__.py file
-as of some recent version of Python
-*** some import names clobber others
-When using the syntax "import _ as x", Python will only bind one library to the name "x". When collisions occur, the latest binding wins.
-
-When I split common.py into common.misc and common.cl_args, I imported both as "c". I only fixed the code where a collision occurred.
-** in Jupyter: local modules must begin with a capital letter to be imported in Jupyter
-Keeping all code in a top-level folder that starts with a capital letter solves this problem.
-Subfolders and files suffer no naming restriction.
-** in Pandas
-*** cannot convert to int when some values are NaN
- Hence muni code is float.
-*** the boolean value of np.nan is True
-*** concat v. append
-Neither forces you to specify the axis.
-Concat is more general.
-*** two columns can have the same name, silently
-This can result in errors like "cannot add str to int".
-Because if you add a number to a column, and another shares its name,
-it will try to add the number to both.
-*** categorical variables require a "map" step only when created, not when read
- It's to convert them from a number to a string.
- For instance, creating the "people" table looks like this:
-   people["race"] = pd.Categorical(
-     people["race"].map( race_key )
-     , categories = list( race_key.values() )
-     , ordered = True)
- whereas reading it would look like this:
-   people["race"] = pd.Categorical(
-     people["race"]
-     , categories = list( race_key.values() )
-     , ordered = True)
-** in Matplotlib
-*** change every background color: methods that didn't work
-**** plt.rcParams['axes.facecolor] = 'b'
-Changes the legend background, nothing else
-**** ax.set_facecolor('b')
-no discernible effect
-**** ax.patch.set_facecolor('b')
-no discernible effect
-**** fig.add_subplot(2, 1, 1, facecolor = "red")
-causes the second figure not to be drawn,
-no other discernible effect
-***** code example
-    fig = Figure()
-
-    ax = fig.add_subplot(2, 1, 1, facecolor = "red")
-    drawText( ax, lines )
-**** pdf.savefig() overrides background color in figures
-https://stackoverflow.com/questions/56606122/matplotlib-use-the-same-custom-font-in-every-kind-of-text-axes-title-text
-*** range errors in cdfs sometimes disappear when the xrange is restricted
-  draw.single_cdf( x[ x<10 ], # PITFALL : not restricting x here => a range error
-                   "cdf of (spending / income) across income-earning households"
-                   , xmin = 0, xmax = 8
-                 )
 * HANDY snippets
 pd.set_option('display.max_rows', 200)
 pd.set_option('display.min_rows', 200)
