@@ -3,7 +3,7 @@
 tax.co is a model of the Colombian tax system.
 
 There are README documents scattered throughout this filetree.
-For instance, the `[README file in the python/ folder](python/README.md)` 
+For instance, the [README file in the python/ folder](python/README.md)
 is helpful for understanding the Python code.
 
 To get started using the code, please see
