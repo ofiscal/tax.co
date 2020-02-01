@@ -3,7 +3,8 @@
 tax.co is a model of the Colombian tax system.
 
 There are README documents scattered throughout this filetree.
-For instance, `python/README.md` is helpful for understanding the Python code.
+For instance, the `[README file in the python/ folder](python/README.md)` 
+is helpful for understanding the Python code.
 
 To get started using the code, please see
 [how to run tax.co](markdown/How-to-run-tax.co.md).
@@ -24,5 +25,5 @@ of things I would like to do with the codebase.
 There are [two](org/enig,enph.org) org-formatted
 [documents](org/enph-for-vat.org) describing the ENIG and ENPH data sets from DANE.
 
-[tricks.org](org/tricks.org) describes some methods that can be handy,
+[tricks.org](org/tricks.org) describes methods I sometimes need to use,
 like getting pandas to display tables in scientific notation.
