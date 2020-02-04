@@ -44,6 +44,8 @@ RUN cd /root                                     && \
 COPY python-from-here /usr/bin
 RUN chmod +777 /usr/bin/python-from-here
 
+RUN apt install -y csvtool
+
 # RUN conda update --all --yes
 # RUN conda update -n base conda
 
