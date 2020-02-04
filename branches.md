@@ -48,3 +48,21 @@ and requires a lot of tedious definitions that can be more easily handled with r
 (e.g. in build.people.main).
 
 # qc-for-cb (???)
+
+Stands for "quality control for the central bank".
+We were about to do a presentation at the central bank,
+and I wanted to be sure the model was accurate.
+I don't remember what I did or what the result was --
+would have to look through the history of diffs to find out.
+
+# vaex
+
+Using Pandas, tax.co can throw memory errors on an 8GB system.
+(In Ubuntu it doesn't, but in NixOS it does --
+at least if I install the OS with its default memory configuration.)
+This branch is an incomplete attempt at using Vaex instead,
+which processes on disk rather than in memory.
+
+The memory errors are common in the early stages, through subsampling.
+After that I haven't run into them. So if I were to introduce Vaex,
+I might not need to propogate it any farther than the subsampling stage.
