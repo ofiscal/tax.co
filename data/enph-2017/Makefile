@@ -1,45 +1,60 @@
+# PITFALL: Where you find `$$` written below, it's Makefile-specific syntax.
+# In bash, you would write it with a single $.
+# In a Makefile, though, where you write a single $,
+# the variable substitution is performed by make before reaching bash.
+# If you want to wait until the expression reaches bash before substituting,
+# you need to use $$.
+
 SHELL := bash
 .PHONY = verify unpack_and_rename handle_txt_files
 
-data: \
-  verify \
-  unpack_and_rename \
-  handle_txt_files
+data:			\
+  verify		\
+  unpack_and_rename	\
+  verify_txt_files      \
+  move_txt_files
 
 verify: # verify the content of the raw zipfiles
 	echo "If this fails, checksum does not match value expected as of 2019 07 03."
-	sha1sum 1_raw/* | sha1sum | grep "bd8c4db51854716c860c2cac797a677d41f7b83d"
+	sha1sum 1_raw/* | sort | sha1sum | grep "89f4fbad99d66a4ebfd130694e9052536cec55ea"
 
-unpack_and_rename:
+# PITFALL: The files ending inn .csv here are not in fact comma-separated. Instead,
+#          they are semicolon-separated, so I rename them from *.csv to *.ssv.
+unpack_and_rename: verify
 	# Without the next line, the unzip fails later.
-	cd 1_raw						; \
-	  find . -name "*.zip" | rename 's/ /_/g'
+	cd 1_raw							; \
+	  for x in *.zip; do mv -- "$$x" "$${x// /_}"; done
 	mkdir -p 2_unzipped
-	# PITFALL: In bash rather than make, one would use $ (not $$) below.
-	cd 2_unzipped						; \
-	  for a in `ls -1 ../1_raw/*.zip`; do unzip "$$a"; done ; \
-	  mkdir -p csv dta sav					; \
-	  mv *.csv csv						; \
-	  mv *.dta dta						; \
-	  mv *.sav sav						; \
-	  find -regex ".*\.\(sav\|csv\|dta\|txt\)" | rename 's/ /_/g'
-	cd 1_raw						; \
-	  find . -name "*.zip" | rename 's/_/ /g' # undo changes to raw data
+	cd 2_unzipped							; \
+	  for a in `ls -1 ../1_raw/*.zip`; do unzip "$$a"; done		; \
+	  for x in *.*; do mv -- "$$x" "$${x// /_}"; done		; \
+	  for x in *.csv; do mv -- "$$x" "$${x//\.csv/.ssv}"; done	; \
+	  mkdir -p ssv dta sav						; \
+	  mv *.ssv ssv							; \
+	  mv *.dta dta							; \
+	  mv *.sav sav
+	cd 1_raw							; \
+	  for x in *.zip; do mv -- "$$x" "$${x//_/ }"; done # undo changes to raw data
+          # PITFALL: This last step, the undoing, depends on the fact that the filenames
+	  # in the raw DANE data contain no underscores.
 
-# If there are no quotation marks in .txt files,
+# If there are no quotation marks in the .txt files,
 # replace tab with semicolon, change .txt to .csv,
-# and move to where the other .csv files are.
-handle_txt_files:
-	cd 2_unzipped								  ; \
-	  touch definitely_empty						  ; \
-	  grep "'|\"" *.txt > hopefully_empty					  ; \
-	  cmp -s hopefully_empty definitely_empty				  ; \
-	  if cmp -s hopefully_empty definitely_empty				  ; \
-	    then echo "Good: No single or double quotation marks found in *.txt." ; \
-	    else echo "Trouble: Single or double quotation marks found in *.txt." ; \
-	         exit 1                                                           ; \
-	  fi									  ; \
-	  sed -i -r "s/\t/\;/g" *.txt						  ; \
-          find -regex ".*\.txt" | rename 's/\.txt/\.csv/g'			  ; \
-	  mv *.csv csv								  ; \
+# and move to where the other .ssv files are.
+verify_txt_files:
+	cd 2_unzipped									; \
+	  touch definitely_empty							; \
+	  grep "'|\"" *.txt > hopefully_empty						; \
+	  cmp -s hopefully_empty definitely_empty					; \
+	  if cmp -s hopefully_empty definitely_empty					; \
+	    then echo "Good: No single or double quotation marks found in *.txt."	; \
+	    else echo "Trouble: Single or double quotation marks found in *.txt."	; \
+	         exit 1									; \
+	  fi										; \
 	  rm hopefully_empty definitely_empty
+
+move_txt_files:
+	cd 2_unzipped							; \
+	  sed -i -r "s/\t/\;/g" *.txt					; \
+	  for x in *.txt; do mv -- "$$x" "$${x//\.txt/.ssv}"; done	; \
+	  mv *.ssv ssv							; \

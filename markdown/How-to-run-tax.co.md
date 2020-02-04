@@ -36,27 +36,35 @@ Open a Bash view into that Docker container:
 `sudo docker exec -it tax-co bash`.
 
 
-# Get the data
+# Get the raw data
 
-(These instructions are old, and potentially obsolete.
-If they don't work, you'll have to fetch the data yourself form DANE.)
+## Download the raw data
 
-The project uses the [data found here](https://livejaverianaedu-my.sharepoint.com/:f:/g/personal/brown-j_javeriana_edu_co/Ev-W6b6TILRCk8oApROTz1YBvUQNX_HcsaAacj2xpwAIXQ?e=bbyI9j).
-Copy the two `.tgz` files in the `surveys/` folder,
-and the file `coicop-vat.csv` from the `vat/` folder,
-into `tax.co/data/` on your computer. (To my knowledge,
-this has to be done manually;
-the OneDrive repository for Universidad Javeriana disallows the use of tools like wget and curl.)
+The raw microdata used in tax.co is the ENPH. It comes from DANE.
+You can find it
+[here](http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata).
+Downloading that is an annoying process, as they have imposed speedbumps:
+You must download each of the 16 files individually,
+and after you download about six of them,
+DANE starts asking you to prove you are a human by doing tests.
 
+In this project, the folder `data/enph-2017/`
+initially contains only a `Makefile`.
+Once you have downloaded the raw data (16 .zip files) from DANE,
+put it in a new folder called `data/enph-2017/1_raw`,
+right next to the `Makefile`.
+
+## Clean the raw data
+
+From `tax.co/data/enph-2017/`, run `make data`.
+This will extract the contents of the two archives you downloaded,
+rename them as needed,
+fix some separator inconsistencies,
+and move them into some appropriately-structured folders.
 
 # Run the code
 
-First, from `tax.co/data/`, run `make raw_data`.
-This will extract the contents of the two archives you downloaded,
-rename them as needed,
-and move them into some appropriately-structured folders.
-
-Then, from the project's root folder (`tax.co/`), run `make vat_pdf_1`.
+From the project's root folder (`tax.co/`), run `make vat_pdf_1`.
 This will build a lot of data sets, and some images,
 and some tables, and finally a pretty PDF report.
 
