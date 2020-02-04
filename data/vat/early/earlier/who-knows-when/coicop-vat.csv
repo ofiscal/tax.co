@@ -1,0 +1,1421 @@
+coicop;nombre-articulo,from-coicop-match;vat-rate
+1110100;Arroz;0
+1110101;Arroz para seco;0
+1110102;Arroz para sopa;0
+1110103;Arroz integral;0
+1110200;Pastas alimenticias;0.05
+1110201;Pastas o fideos para sopa: letras, conchitas, etc.;0.05
+1110202;Pastas para seco: espaguetis, raviolis, macarrones, tallarines, etc.;0.05
+1110300;Avena y sus derivados;0.05
+1110301;Avena molida;0.05
+1110302;Avena en hojuelas;0.05
+1110400;Cebada y sus derivados;0
+1110401;Cebada perlada;0
+1110402;Cuchuco de cebada;0
+1110500;Trigo y sus derivados;0.05
+1110501;Cuchuco de trigo;0.05
+1110502;Harina de trigo (incluye tempura);0.05
+1110503;Salvado de trigo;0
+1110600;Ma�z y sus derivados;0
+1110601;Ma�z blanco, amarillo, trillado, peto, porva, pira, millo;0
+1110602;Cuchuco de ma�z;0
+1110603;Harina de ma�z;0.05
+1110604;Harina precocida de ma�z;0.05
+1110605;F�cula de ma�z (Maizena);0
+1110700;Otras harinas, cereales y almidones;0.05
+1110701;Harina para preparar tortas, natilla, bu�uelos, etc.;0.05
+1110702;Harina para coladas;0.05
+1110703;Almidones de papa o yuca;0
+1110704;Cereales: cornflakes, rice krispis, zucaritas, zucosos, fruit loops, trix, grano;0.19
+1110705;Cereales para la alimentaci�n infantil (papilla);0.19
+1110706;Ajonjol�, soya, quinua, sorgo;0
+1110707;Masas para la preparaci�n de productos de panader�a o pasteler�a  (trigo, ma�z,;0
+1110708;Arepas crudas o precocidas;0
+1110709;Bollos y envueltos precocidos, quiches, tamales;0
+1110710;G�rmen de trigo, lecitina, levadura, linaza;0
+1110711;Comidas preparadas precocidas a base de cereales (lasagna, pizza, empanadas);0
+1110712;Carne, embutidos y otras alimentos vegetarianos (a base de soya, gl�ten, lenteja;0
+1110800;Pan;0
+1110801;Pan corriente, con queso,  ali�ado, mogolla, relleno, pan de coco, calado, tajad;0
+1110802;Pan franc�s;0
+1110803;Pan integral;0
+1110900;Otros productos de panader�a;0
+1110901;Galletas de sal;0
+1110902;Galletas de dulce (de panader�a y de paquete);0
+1110903;Galletas integrales (de panader�a y de paquete);0
+1110904;Otros productos de panader�a no mencionados previamente: brownies, obleas, ponqu;0
+112;Carnes;
+1120100;Carne de res y derivados;0
+1120101;Carne de res sin hueso o pulpa;0
+1120102;Carne de res con hueso;0
+1120103;Hueso de res;0
+1120104;Carne molida de res;0
+1120105;Lengua de res;0
+1120106;H�gado, ri�ones, coraz�n, sesos, mondongo,  tripa y otras v�sceras de res;0
+1120107;Patas, manos, cola  y cabeza de res;0
+1120200;Carne de Cerdo y Derivados;0
+1120201;Carne de cerdo sin hueso o pulpa;0
+1120202;Carne de cerdo con hueso;0
+1120203;Carne molida de cerdo;0
+1120204;Hueso de cerdo (espinazo y otros huesos);0
+1120205;Tocino y garra;0
+1120206;H�gado, ri�ones, coraz�n, tripa y otras v�sceras de cerdo;0
+1120207;Patas, manos, cola  y cabeza de cerdo;0
+1120300;Carne de Aves;0
+1120301;Gallina o pollo vivo;0
+1120302;Carne de gallina o de pollo (entero o en presas);0
+1120303;Carne de Pavo, Pich�n, Zuro, Palomo, Pato  Ganso, codorniz;0
+1120304;Menudencias de gallina o pollo;0
+1120400;Carne de otros animales;0
+1120401;Conejo, liebre, Cur� o cuy;0
+1120402;Cordero, chivo, cabro;0
+1120403;Chig�iro;0
+1120404;Caballo;0
+1120500;Carnes preparadas , charcuter�a y otros productos conteniendo carne;0
+1120501;Carne preparada de pavo, pollo,cerdo, lomo ahumado;0
+1120502;Mortadela;0.05
+1120503;Salchichas;0
+1120504;Jam�n y jamoneta;0
+1120505;Chorizo;0
+1120506;Tocineta;0
+1120507;Hamburguesa;0
+1120508;Otros embutidos de proteina animal (longaniza, butifarra, g�novas, salchich�n, s;0.05
+1120509;Carnes fr�as enlatadas;0
+1120600;Otros alimentos no especificados: Hormigas culonas, etc.;0
+113;Pescado;
+1130100;Pescado de r�o fresco o congelado;0
+1130200;Pescado y otros productos de mar;0
+1130201;Pescado de mar fresco o congelado;0
+1130202;Camarones frescos o congelados;0
+1130203;Pescado y crust�ceos enlatados (sardinas, at�n, salm�n, mejillones, etc.);0.19
+1130204;Otros mariscos, crust�ceos y moluscos frescos o congelados;0
+1130205;Otros productos de pescado y derivados;0
+114;Leche, queso y huevos;
+1140100;Leche;0
+1140101;Leche natural;0
+1140102;Leche pasteurizada (entera, descremada, semidescremada, deslactosada, maternizad;0
+1140103;Leche larga vida (entera, descremada, semidescremada, deslactosada, maternizada;0
+1140104;Leche en polvo para lactantes;0
+1140105;Leche en polvo (entera, descremada, semidescremada, maternizada);0
+1140200;Quesos y productos afines;0
+1140201;Queso campesino;0
+1140202;Queso doble crema;0
+1140203;Otros quesos: pera, mozarella, paipa, parmesano, etc.;0
+1140204;Cuajada, Quesillo;0
+1140300;Otros derivados de la leche;0
+1140301;Leche condensada, leche condesada y evaporada y crema chantilly;0
+1140302;Crema de leche;0
+1140303;Yogurt;0
+1140304;Kumis;0
+1140305;Suero coste�o, queso crema, crema agria;0
+1140306;Natas;0
+1140307;Postres l�cteos;0
+1140308;Bebidas l�cteas saborizadas no achocolatadas (avena);0.19
+1140500;Huevos;0
+1140501;Huevos de gallina y otras aves;0
+1140502;Huevos de iguana y de tortuga;0.19
+115;Aceites y grasas;
+1150100;Aceites comestibles;0.19
+1150101;Aceite de girasol, ma�z, soya y palma;0.05
+1150102;Aceite de oliva;0.19
+1150103;Otros aceites comestibles: canola, cacahuete, coco, almendras, diet�ticos, etc.;0.19
+1150200;Mantequilla de vaca;0.19
+1150300;Margarinas;0.19
+1150400;Otras grasas animales y vegetales;0.19
+1150401;Manteca vegetal;0.19
+1150402;Manteca de cerdo;0.19
+1150403;Otras grasas y aceites (aceite de pescado y otros animales marinos, mantequilla;0.19
+116;Frutas;
+1160100;Frutas frescas;0
+1160101;Naranjas;0
+1160102;Limones;0
+1160103;Mandarinas;0
+1160104;Toronjas;0
+1160105;Limas;0
+1160106;Cidras;0
+1160107;Bananos;0
+1160108;Manzanas;0
+1160109;Peras;0
+1160110;Melones;0
+1160111;Mango;0
+1160112;Guayabas;0
+1160113;Guan�banas;0
+1160114;Zapotes;0
+1160115;Tamarindo;0
+1160116;Tomate de �rbol;0
+1160117;Moras;0
+1160118;Curubas;0
+1160119;Maracuy�;0
+1160120;Lulos;0
+1160121;Patilla o sand�a;0
+1160122;Granadillas;0
+1160123;Pi�a;0
+1160124;Papaya;0
+1160125;Papayuela;0
+1160126;Uvas (verdes y rojas);0
+1160127;Fresas;0
+1160128;Cocos;0
+1160129;Albaricoques;0
+1160130;Brevas;0
+1160131;Duraznos;0
+1160132;Chontaduros;0
+1160133;Ciruelas;0
+1160134;Aguacate;0
+1160135;Mangostino;0
+1160136;Kiwi;0
+1160137;Feijoa;0
+1160138;Higo;0
+1160139;Chirimoya;0
+1160140;Otras frutas frescas;0
+1160200;Frutas congeladas o en pulpa;0
+1160300;Frutos secos y nueces, c�scaras de frutas y semillas comestibles;0.19
+1160301;Almendras y otras nueces (man�, cacahuete, pistacho, etc);0.19
+1160302;Frutas deshidratadas y cristalizadas: peras, uvas y ciruelas pasas, etc;0.19
+117;Legumbres;
+1170100;Hortalizas y legumbres frescas;0
+1170101;Tomate;0
+1170102;Cebolla cabezona;0
+1170103;Cebolla larga o en rama (bermuda, junca);0
+1170104;Cebollin;0
+1170105;Zanahoria;0
+1170106;Remolacha;0
+1170107;Pepino Cohombro;0
+1170108;Piment�n;0
+1170109;Pepino para guisar o rellenar;0
+1170110;Nabos;0
+1170111;R�banos;0
+1170112;Ajos;0
+1170113;Aj�;0
+1170114;Lechuga;0
+1170115;Espinaca;0
+1170116;Acelga;0
+1170117;Repollo, Repollitas;0
+1170119;Coliflor;0
+1170120;Br�coli;0
+1170121;Coles (tallos);0
+1170122;Apio en rama;0
+1170123;Alcachofas;0
+1170124;Esp�rragos;0
+1170125;Ahuyama;0
+1170126;Calabaza;0
+1170127;Calabac�n;0
+1170128;Fr�jol verde en vaina;0
+1170129;Fr�jol verde desgranado;0
+1170130;Arveja verde en vaina;0
+1170131;Arveja verde desgranada;0
+1170132;Habas verdes en vaina;0
+1170133;Habas verdes desgranadas;0
+1170134;Habichuelas;0
+1170135;Mazorcas y ma�z dulce;0
+1170136;Berenjenas;0
+1170137;Champi�ones y otros hongos comestibles;0
+1170138;Otras verduras y leguminosas frescas: berros, chachafruto, algas comestibles, et;0
+1170139;verduras frescas amarradas (macitos de la costa atl�ntica);0
+1170140;Ensalada o Verduras picadas en bandeja, en bolsa o tarro (revuelto verde);0
+1170200;Legumbres secas;0
+1170201;Fr�jol seco: bolaroja, cargamanto, guarzo, guandul, zaragoza, blanquillo, etc.;0
+1170202;Arveja seca;0
+1170203;Habas secas;0
+1170204;Lentejas;0
+1170205;Garbanzos;0
+1170300;Legumbres y hortalizas en conserva y deshidratadas;0
+1170301;Verduras, hortalizas y legumbres enlatadas: arveja, fr�joles, ma�z, esp�rrago, z;0
+1170302;Aceitunas, alcaparras, pepinillos y otros encurtidos en tarro;0
+1170303;Legumbres y hortalizas deshidratadas;0
+1170400;Pl�tanos;0
+1170401;Pl�tano verde;0
+1170402;Pl�tano maduro;0
+1170403;Colicero, guineo, mataburro;0
+1170500;Papas;0
+1170501;Papa com�n: pastusa, tocarre�a, R12;0
+1170502;Papa criolla o amarilla;0
+1170600;Yuca;0
+1170700;Arracacha;0
+1170800;�ame;0
+1170900;Ullucos, cubios, hibias, chuguas, rubas;0
+1171000;Otras ra�ces y tub�rculos: mafafa, achira, batata, etc;0
+1171100;Productos derivados de los tub�rculos, ra�ces y pl�tanos;0
+1171101;Papa, yuca y pl�tano precocidos;0
+1171102;Harina de pl�tano, de yuca, de achiras, pur� de papas;0.05
+118;Az�car, mermelada, miel, chocolate y dulces de az�car;
+1180100;Az�car y otros endulzantes;0.05
+1180101;Az�car refinada;0.05
+1180102;Az�car natural o morena;0.05
+1180103;Endulzantes diet�ticos: aspartame, fructosa, sucralosa, otras;0.05
+1180200;Panela;0
+1180300;Jaleas, mermeladas, miel y similares;0.19
+1180301;Jaleas y mermeladas;0.19
+1180302;Compotas;0.19
+1180303;Bocadillos;0
+1180304;Arequipe;0
+1180305;Herpos, tumes y otros dulces de arequipe y bocadillo;0.19
+1180306;Gelatina de pata negra o blanca;0.19
+1180307;Gelatinas, flanes y pudines,en vaso listos para el consumo;0.19
+1180308;Miel de abejas, maple o arce, melazas y alm�bares;0
+1180400;Pasta de chocolate para ponqu�, cobertura de chocolate y crema de avellana y cac;0.19
+1180500;Dulces, confites, caramelos, bombones, chocolatinas, chicles, masmelos, cocadas;0.19
+1180600;Helados, conos, paletas, vasitos, refrescos congelados y tortas heladas;0.19
+1180700;Gelatinas, flanes y pudines en polvo para preparar;0.19
+1180800;Polvo para preparar helados;0.19
+1180900;Frutas en conserva: melocot�n, pi�a, brevas, lychees, etc.;0.19
+119;Productos alimenticios no incluidos anteriormente;
+1190100;Salsas, pastas y aderezos;0.19
+1190101;Salsa de tomate;0.19
+1190102;Mayonesa;0.19
+1190103;Mostaza, salsa rosada;0.19
+1190104;Pasta de tomate;0.19
+1190105;Otras salsas: salsa de soya, salsa china, salsa t�rtara, salsa de aj�, aj� pican;0.19
+1190106;Vinagre;0.19
+1190200;Sal;0
+1190300;Condimentos;0.19
+1190301;Cominos;0.19
+1190302;Pimienta;0.19
+1190303;Laurel;0.19
+1190304;Tomillo;0.19
+1190305;Color;0.19
+1190306;Ajo en polvo o en pasta, canela, clavos, nuez moscada;0.19
+1190400;Hierbas culinarias: perejil, cilantro, romero, or�gano, etc.;0
+1190500;Sopas, cremas, caldos y consom�s;0.19
+1190501;Sopas: de vegetales, de carne, de pollo, de pescado, cremas de sobre, sopas para;0.19
+1190502;Caldos y consom�s concentrados (cubos y polvo);0.19
+1190503;Bases para preparar carnes y otros alimentos;0.19
+1190600;Frituras: papas fritas, chitos, maizitos, patacones, besitos, etc;0.19
+1190700;Levaduras y esencias (polvo para hornear);0.19
+1190800;Otros alimentos precocidos y preparados: ajiaco, lenteja, frijol, lechona enlata;0.19
+1190900;Mercados sin especificar productos;
+1191000;Anchetas;
+12;BEBIDAS NO ALCOHOLICAS;
+121;Caf�, t� y cacao;0.05
+1210100;Caf� y productos a base de caf�;0.05
+1210101;Caf� molido;0.05
+1210102;Caf� o crema instant�neo en polvo o granulado;0.05
+1210103;Caf� en grano;0.05
+1210104;Otras bebidas preparadas a base de caf�: capuchino, mocachino, caf� con leche, c;0.05
+1210105;Extractos y esencias de caf�;0.05
+1210200;Chocolate y productos a base de chocolate;0.19
+1210201;Chocolate en pastillas (con y sin az�car);0.05
+1210202;Chocolate instant�neo en polvo o granulado;0.19
+1210203;Cocoa y chucula;0
+1210204;Polvo para preparar bebidas achocolatadas;0.19
+1210205;Bebidas achocolatadas listas para consumir;0.19
+1210300;T� e infusiones (para bebidas calientes);0.19
+1210301;T� en polvo (para preparar);0.19
+1210302;Hierbas arom�ticas (secas y frescas), mate;0
+122;Aguas minerales, refrescos, jugos de frutas y de legumbres (ND);
+1220100;Agua mineral (con y sin gas);0
+1220200;Agua en lata o de carrotanque;0
+1220300;Hielo;0
+1220400;Gaseosas;0.19
+1220500;Maltas;0.19
+1220600;Refrescos l�quidos empacados (jugos, t� fr�os y bebidas hidratantes);0.19
+1220700;Concentrados para preparar refrescos;0.19
+1220800;Bebidas energizantes (a base de glucosa, guaran�, cafe�na, entre otros);0.19
+1220900;Bebidas a base de arroz, soya, coco, quinua, almendra, etc (horchata, yogurt veg;0.19
+2;BEBIDAS ALCOH�LICAS, TABACO Y ESTUPEFACIENTES;
+21;BEBIDAS ALCOH�LICAS;
+211;Bebidas destiladas;
+2110100;Aguardiente;0.05
+2110200;Ron;0.05
+2110300;Whisky, brandy, vodka, ginebra, cognac, tequila y similares;0.05
+2110400;Cremas de licor (de amareto, de whisky, etc.), sabaj�n y ponche crema;0.05
+2110500;Otras bebidas alcoh�licas: aperitivos que no sean a base de vino, mezclas de coc;0.05
+212;Vino;0.05
+2120100;Vino, champa�a, jerez y aperitivos a base de vino;0.05
+213;Cerveza;0.19
+2130100;Cerveza y refajo;0.19
+2130101;Cerveza nacional e importada;0.19
+2130102;Refajo preparado (embotellado o enlatado);0.19
+22;TABACO;
+220;Tabaco;
+2200100;Cigarrillos, tabaco y derivados;0.19
+2200101;Cigarrillos con filtro;0.19
+2200102;Cigarrillos sin filtro;0.19
+2200103;Tabacos y picadura para pipa o para armar cigarrillos;0.19
+23;ESTUPEFACIENTES;
+230;Estupefacientes;
+2300100;Estupefacientes: coca�na, �xtasis, hero�na, marihuana, bazuco, crack, etc.;
+3;PRENDAS DE VESTIR Y CALZADO;
+31;PRENDAS DE VESTIR;
+311;Materiales para prendas de vestir;
+3110100;Telas para la confecci�n de ropa de hombre, mujer, ni�o, ni�a y beb�;0.19
+312;Prendas de vestir;
+3120100;Prendas de vestir para hombre;0.19
+3120101;Camisas para hombre;0.19
+3120102;Camisetas, franelas, esqueletos, polos para hombre;0.19
+3120103;Calzoncillos, pantaloncillos, boxer para hombre;0.19
+3120104;Medias y calcetines para hombre;0.19
+3120105;Pantalones para hombre;0.19
+3120106;Jeans para hombre;0.19
+3120107;Bermudas, pantalonetas y pantal�n corto para hombre;0.19
+3120108;Vestido completo (s�lo pantal�n, chaqueta y/o chaleco) para hombre;0.19
+3120109;Blazers, chaquetas, chaquetones, chompas y sacos de sport en pa�o, cuero, gamuza;0.19
+3120110;Buzos, chalecos, sacos de lana y similares para hombre;0.19
+3120111;Gabardinas, gabanes, abrigos y sobretodos para hombre;0.19
+3120112;Capas e impermeables para hombre;0.19
+3120113;Sudaderas, trusas y bicicleteros para hombre;0.19
+3120114;Pantalonetas de ba�o para hombre;0.19
+3120115;Pijamas y batas para hombre;0.19
+3120116;Otros art�culos de vestir para hombre (depotivos y formales);0.19
+3120200;Prendas de vestir para mujer;0.19
+3120201;Blusas y camisas para mujer;0.19
+3120202;Camisetas, franelas y bodies para mujer;0.19
+3120203;Pantalones, slacks y leggins;0.19
+3120204;Shorts, bermudas y pantalonetas para mujer;0.19
+3120205;Jeans para mujer;0.19
+3120206;Faldas para mujer;0.19
+3120207;Brassieres, tops y sostenes para mujer;0.19
+3120208;Pantys (interiores) para mujer;0.19
+3120209;Media de lana y otros materiales diferente a velada para mujer;0.19
+3120210;Medias veladas para mujer;0.19
+3120211;Enaguas, fondos y combinaciones para mujer;0.19
+3120212;Vestidos confeccionados para mujer;0.19
+3120213;Buzos, chalecos, sacos de lana y similares, sacos de sport en cuero, pa�o, gamuz;0.19
+3120214;Blazers, chaquetas, chaquetones y sacos de sport en pa�o, cuero, gamuza y otros;0.19
+3120215;Gabardinas, gabanes, abrigos y sobretodos para mujer;0.19
+3120216;Capas e impermeables para mujer;0.19
+3120217;Sudaderas, trusas y bicicleteros para mujer;0.19
+3120218;Traje de ba�o para mujer;0.19
+3120219;Pijamas y batas para mujer;0.19
+3120220;Otros art�culos de vestir para mujer (deportivos y formales);0.19
+3120300;Prendas de vestir para ni�o;0.19
+3120301;Camisas para ni�o;0.19
+3120302;Camisetas, franelas, esqueletos, polos para ni�o;0.19
+3120303;Calzoncillos, pantaloncillos, boxer para ni�o;0.19
+3120304;Medias y calcetines para ni�o;0.19
+3120305;Pantalones para ni�o;0.19
+3120306;Jeans para ni�o;0.19
+3120307;Bermudas, pantalonetas y pantal�n corto para ni�o;0.19
+3120308;Vestido completo (s�lo pantal�n, chaqueta y/o chaleco) para ni�o;0.19
+3120309;Blazers, chaquetas, chompas y sacos de sport en pa�o, cuero, gamuza y otros mate;0.19
+3120310;Buzos, chalecos, sacos de lana y similares para ni�o;0.19
+3120311;Gabardinas, gabanes, abrigos y sobretodo para ni�o;0.19
+3120312;Capas e impermeables para ni�o;0.19
+3120313;Sudaderas, trusas y bicicleteros para ni�o;0.19
+3120314;Pantalonetas de ba�o para ni�o;0.19
+3120315;Pijamas y batas para ni�o;0.19
+3120316;Otros art�culos de vestir para ni�o (deportivos y formales);0.19
+3120400;Prendas de vestir para ni�a;0.19
+3120401;Blusas y camisas para ni�a;0.19
+3120402;Camisetas, franelas y bodies para ni�a;0.19
+3120403;Pantalones, slacks y leggins para ni�a;0.19
+3120404;Shorts, bermudas y pantalonetas para ni�a;0.19
+3120405;Jeans para ni�a;0.19
+3120406;Faldas para ni�a;0.19
+3120407;Vestidos confeccionados para ni�a;0.19
+3120408;Enaguas, fondos, combinaciones para ni�a;0.19
+3120409;Pantys (interiores) para ni�a;0.19
+3120410;Brassieres, sostenes, tops  y acostumbradores para ni�a;0.19
+3120411;Media tobillera, media pantal�n, media media (velada, de lana y otros materiales;0.19
+3120412;Buzos, chalecos, sacos de lana y similares para ni�a;0.19
+3120413;Blazers, chaquetas, chaquetones y sacos de sport en pa�o, cuero, gamuza y otros;0.19
+3120414;Gabardinas, gabanes, abrigos y sobretodos para ni�a;0.19
+3120415;Capas e impermeables para ni�a;0.19
+3120416;Sudaderas, trusas y bicicleteros para ni�a;0.19
+3120417;Traje de ba�o para ni�a;0.19
+3120418;Pijamas y batas para ni�a;0.19
+3120419;Otros art�culos de vestir para ni�a (deportivos y formales);0.19
+3120500;Prendas de vestir para beb�s;0.19
+3120501;Camisas, franelas para beb�;0.19
+3120502;Vestidos confeccionados, mamelucos, etc. para beb�;0.19
+3120503;Escarpines, patines, mitones, zapatos de tela, medias, gorritos y bufandas para;0.19
+3120504;Pijamas y talegos para dormir;0.19
+3120505;Buzos, ruanas, sacos de lana y similares para beb�;0.19
+3120506;Pa�ales de tela para beb�;0.19
+3120507;Pantalones de tela, pl�stico, caucho y similares para beb�;0.19
+3120508;Fajeros y cambiadores;0.19
+3120509;Otros art�culos de vestir para beb�;0.19
+313;Otros art�culos y accesorios de vestir;
+3130100;Otros art�culos y accesorios de vestir para hombre;0.19
+3130101;Corbatas y corbatines para hombre;0.19
+3130102;Correas, tirantas y calzonarias para hombre;0.19
+3130103;Pa�uelos y pa�oletas para hombre;0.19
+3130104;Ruanas y ponchos para hombre;0.19
+3130105;Bufandas, pashiminas y guantes para hombre;0.19
+3130106;Sombreros, gorros, cachuchas, boinas, viseras para hombre;0.19
+3130200;Otros art�culos y accesorios de vestir para mujer;0.19
+3130201;Pa�uelos y pa�oletas para mujer;0.19
+3130202;Cinturones y tirantas para mujer;0.19
+3130203;Ruanas, chales, pa�olones y ponchos para mujer;0.19
+3130204;Bufandas, pashminas y guantes para mujer;0.19
+3130205;Sombreros, gorros, cachuchas, boinas, viseras para mujer;0.19
+3130300;Otros art�culos de vestir para adulto y para beb� y materiales para hacer prenda;0.19
+3130301;Guantes de jardiner�a o de trabajo en material diferente a caucho (nylon, lycra,;0.19
+3130302;Cascos protectores para ciclista y motociclista;0.19
+3130303;Hilos, cremalleras, botones, metro de costura, hombreras, encajes, broches, ganc;0.19
+3130304;Baberos, broches y ganchos para beb�;0.19
+3130305;Madejas de lana y otros materiales para coser, tejer y bordar;0.19
+314;Limpieza, reparaciones y alquiler de prendas de vestir;
+3140100;Confecci�n y reparaci�n de prendas de vestir;0.19
+3140101;Confecci�n y reparaci�n de prendas de vestir en general (hombre, mujer, ni�os, n;0.19
+3140102;Te�ido de prendas de vestir;0.19
+3140200;Lavado y planchado de ropa fuera del hogar (en lavander�a, otro hogar u establec;0.19
+3140300;Alquiler de prendas de vestir en general (hombre mujer, ni�os, ni�as y beb�s);0.19
+32;CALZADO;
+321;Zapatos y otros calzados;
+3210100;Calzado para hombre;0.19
+3210101;Zapatos en cuero, caucho, goma y similares para hombre;0.19
+3210102;Botas en cuero, caucho, goma y similares para hombre;0.19
+3210103;Tenis, zapatillas y otros zapatos deportivos para hombre (excluyendo zapatos par;0.19
+3210104;Pantuflas, sandalias, abuelitas, chanclas, cotizas y alpargatas para hombre;0.19
+3210200;Calzado para mujer;0.19
+3210201;Calzado plano en cuero, caucho, goma y similares para mujer;0.19
+3210202;Calzado de tac�n en cuero, caucho, goma y similares para mujer;0.19
+3210203;Botas en cuero, caucho, goma y similares para mujer;0.19
+3210204;Tenis, zapatillas y otros zapatos deportivos para mujer (excluyendo zapatos para;0.19
+3210205;Pantuflas, sandalias, abuelitas, chanclas, cotizas y alpargatas para mujer;0.19
+3210300;Calzado para ni�o;0.19
+3210301;Zapatos en cuero, caucho, goma y similares para ni�o;0.19
+3210302;Botas en cuero, caucho, goma y similares para ni�o;0.19
+3210303;Tenis, zapatillas y otros zapatos deportivos para ni�o (excluyendo zapatos para;0.19
+3210304;Pantuflas, sandalias, abuelitas, chanclas, cotizas y alpargatas para ni�o;0.19
+3210400;Calzado para ni�a;0.19
+3210401;Calzado plano en cuero, caucho, goma y similares para ni�a;0.19
+3210402;Calzado de tac�n en cuero, caucho, goma y similares para ni�a;0.19
+3210403;Botas en cuero, caucho, goma y similares para ni�a;0.19
+3210404;Tenis, zapatillas y otros zapatos deportivos para ni�a (excluyendo zapatos para;0.19
+3210405;Pantuflas, sandalias, abuelitas, chanclas, cotizas y alpargatas para ni�a;0.19
+3210500;Calzado para beb�: zapatos, botas y tenis;0.19
+3210600;Accesorios para calzado: Plantillas, hormas, adaptadores para calzado y calzador;0.19
+322;Reparaci�n y alquiler de calzado;
+3220100;Lustrado y limpieza de zapatos;0.19
+3220200;Reparaci�n de calzado: remonta, tapas, costuras, etc;0.19
+3220300;Alquiler de calzado diferente al calzado para deporte y recreaci�n;0.19
+4;ALOJAMIENTO, AGUA, ELECTRICIDAD, GAS Y OTROS COMBUSTIBLES;
+41;ALQUILERES EFECTIVOS DE ALOJAMIENTO;
+411;Alquileres efectivos pagados por los inquilinos;0
+4110100;Arriendo de la vivienda donde reside;0
+412;Otros alquileres efectivos;0
+4120100;Arriendo por viviendas para uso del hogar diferentes a la que habita;0
+42;ALQUILERES IMPUTADOS DEL ALOJAMIENTO;
+421;Alquileres imputados de los propietarios ocupantes;0
+4210100;Estimaci�n del arriendo imputado de la vivienda propia;
+422;Otros alquileres imputados;0
+4220100;Otros arriendos imputados;0
+4220102;Arriendos imputados por alquiler reducido o alojamiento gratuito o en usufructo;0
+4220103;Arriendos imputados por vivienda dada como salario en especie;0
+43;CONSERVACI�N Y REPARACI�N DE LA VIVIENDA;
+431;Materiales para la conservaci�n y la reparaci�n de la vivienda;
+4310100;Materiales para la conservaci�n y la reparaci�n de la vivienda;0.19
+4310101;Pinturas y barnices para vivienda;0.19
+4310102;Recubrimientos para paredes (papel de colgadura, textiles, fibra de vidrio, pied;0.19
+4310103;Baldosas, porcelanato,celos�as, m�rmoles, cer�micas, vinilos, cenefas de enchape;0.19
+4310104;Vidrier�a para puertas y ventanas;0.19
+4310105;Yeso, cemento, masilla, pegantes, siliconas;0.19
+4310106;Tubos para el agua, grifos, codos, sifones, etc.;0.19
+4310107;Maderas pulidas y lacadas, parqu�, maderas burdas, tablas, tablones;0.19
+4310108;Puertas y ventanas (incluye corredizas y tipo cancel);0.19
+4310109;Otros materiales para la conservaci�n y la reparaci�n de la vivienda: tejas, cie;0.19
+432;Servicios para la conservaci�n y reparaci�n de la vivienda;
+4320100;Mantenimiento y reparaci�n de aire acondicionado y calefacci�n;0.19
+4320200;Mantenimiento y reparaci�n de ca�er�as de agua y ductos e instalaciones de gas;0.19
+4320300;Mantenimiento y reparaci�n de ductos de ascensor;0.19
+4320400;Mantenimiento y reparaci�n de redes el�ctricas y telef�nicas;0.19
+4320500;Mantenimiento y reparaci�n de techos, paredes y pisos;0.19
+4320600;Limpieza de exteriores de la de la vivienda;0.19
+4320700;Pavimentaci�n y revestimiento de suelos;0.19
+4320800;Ampliaci�n o subdivisi�n de la vivienda;0.19
+4320900;Otros servicios para el mantenimiento y reparaci�n de la vivienda: cerrajer�a, p;0.19
+44;SUMINISTRO DE AGUA Y SERVICIOS DIVERSOS RELACIONADOS CON  LA VIVIENDA;
+441;Suministro de agua;
+4410100;Suministro de agua;0.19
+4410101;Instalaci�n, conexi�n, contador de agua;0.19
+4410102;Servicio de acueducto;0
+4410103;Reconexi�n del servicio de acueducto;0.19
+442;Recogida de basura;
+4420100;Recogida de basuras;0
+4420101;Servicio p�blico de recolecci�n de basuras y aseo;0
+4420102;Pagos a recogedor de basuras y desechos;0
+443;Alcantarillado;
+4430100;Alcantarillado;0
+4430101;Instalaci�n o conexi�n al servicio de alcantarillado;0.19
+4430102;Servicio de alcantarillado;0
+444;Otros servicios relacionados con la vivienda;
+4440100;Servicios relacionados con la copropiedad;0
+4440101;Cuotas de administraci�n de la vivienda para uso del hogar;0
+4440102;Cuotas extraordinarias de administraci�n;0
+4440103;Celadur�a comunal;0.05
+4440200;Gastos de conservaci�n en jardiner�a;0.05
+45;ELECTRICIDAD, GAS Y OTROS COMBUSTIBLES;
+451;Electricidad;
+4510100;Electricidad;0
+4510101;Instalaci�n, conexi�n y contador del servicio de energ�a el�ctrica;0.19
+4510102;Servicio de energ�a el�ctrica;0
+4510103;Reconexi�n del servicio de energ�a el�ctrica;0.19
+4510104;Servicio de alumbrado p�blico;0.19
+452;Gas;
+4520100;Compra de gas propano en pipeta o cilindro;0
+4520200;Gas natural;0
+4520201;Instalaci�n, conexi�n y contador del servicio de gas natural;0.19
+4520202;Servicio de gas natural por tuber�a;0
+4520203;Reconexi�n del servicio de gas natural;0.19
+453;Combustibles l�quidos;
+4530100;Combustibles l�quidos para cocinar: gasolina, kerosene, petr�leo, alcohol, etc.;0.19
+454;Combustibles s�lidos;
+4540100;Combustibles s�lidos para cocinar: le�a, carb�n vegetal, carb�n mineral, etc.;0.19
+5;MUEBLES, ARTICULOS PARA EL HOGAR Y PARA LA CONSERVACI�N ORDINARIA DEL HOGAR;
+51;MUEBLES Y ACCESORIOS, ALFOMBRAS Y OTROS MATERIALES PARA PISOS;
+511;Muebles y accesorios;
+5110100;Muebles;0.19
+5110101;Cama sencilla;0.19
+5110102;Cama semidoble, doble, king size;0.19
+5110103;Cunas y corral para beb�;0.19
+5110104;Juego completo de muebles de alcoba;0.19
+5110105;Juego completo de muebles de sala;0.19
+5110106;Juego completo de muebles de comedor;0.19
+5110107;Gabinetes de ba�o;0.19
+5110108;Cocina integral;0.19
+5110109;Muebles y gabinetes para cocina;0.19
+5110110;Escritorios y mesas de dibujo;0.19
+5110111;Muebles para computador o centros de entretenimiento;0.19
+5110112;Colchones, somiers y colchonetas;0.19
+5110113;Bases para colch�n, catres, camarotes, literas;0.19
+5110114;Sillas, sillones, sof�s, sofacamas;0.19
+5110115;Otros asientos (mecedoras, butacos, bancas, asientos inflables y puff);0.19
+5110116;Armarios, cl�sets, c�modas, chifoniers, escaparates, organizadores, roperos, bau;0.19
+5110117;Bibliotecas y muebles modulares;0.19
+5110120;Otros accesorios para el hogar: accesorios para ba�o, cocina, etc.;0.19
+5110118;Otros muebles para el hogar: biff�, tocadores, vitrinas, archivadores, biombos,;0.19
+5110119;Mesas de noche, mesas de centro, mesas auxiliares, mesa de bar y cava;0.19
+5110200;Equipo de iluminaci�n;0.19
+5110201;L�mparas de techo o de pie, reflectores, poste solar led, l�mpara solar exterior;0.19
+5110202;L�mparas o pantallas de mesa;0.19
+5110203;Velas, veladoras, velones;0.19
+5110204;Candeleros y candelabros;0.19
+5110300;Art�culos de arte;0.19
+5110301;Cuadros y pinturas de arte;0.19
+5110302;Reproducciones de cuadros y pinturas;0.19
+5110303;Dibujos, grabados, tapices;0.19
+5110304;Estatuillas, esculturas, porcelanas y objetos de decoraci�n en cualquier materia;0.19
+5110305;Otros objetos art�sticos;0.19
+5110400;Otros art�culos de decoraci�n;0.19
+5110401;Espejos, porta retratos y percheros;0.19
+5110402;Persianas de materiales diferentes a tela, blackout;0.19
+512;Alfombras y otros materiales para pisos;
+5120100;Alfombras y tapetes fijos y sueltos;0.19
+513;Reparaciones de muebles, accesorios y materiales para pisos;
+5130100;Reparaci�n de muebles, accesorios y materiales para pisos;0.19
+5130200;Restauraci�n de obras de arte y de muebles antiguos;0.19
+52;PRODUCTOS TEXTILES PARA EL HOGAR;
+520;Productos textiles para hogar;
+5200100;Telas para confeccionar ropa de cama, manteles, cortinas y forros para muebles;0.19
+5200200;Ropa confeccionada para cama;0.19
+5200201;Juego completo de s�banas, sobres�banas y fundas;0.19
+5200202;S�banas, sobresabanas, protectores de colch�n y fundas sueltas;0.19
+5200203;Cubrelechos, cubrecamas, colchas para cama, etc.;0.19
+5200204;Cobijas y mantas para adulto;0.19
+5200205;Cobijas, mantas y cobertores para beb�;0.19
+5200206;Almohadas, cojines, almohadones;0.19
+5200207;Hamacas, chinchorros, toldillos, mosquiteros;0.19
+5200300;Ropa de mesa: manteles, caminos de mesa, individuales y servilletas de tela para;0.19
+5200400;Ropa de tocador;0.19
+5200401;Toallas de tela para ba�o;0.19
+5200402;Juego de lencer�a para ba�o;0.19
+5200403;Cortinas para ba�o;0.19
+5200500;Otros productos textiles para el hogar;0.19
+5200501;Cortinas confeccionadas y cenefas para cortinas;0.19
+5200502;Lanas y telas para tejidos y decoraci�n del hogar;0.19
+5200503;Talegos, sacos o lonas para ropa en tela;0.19
+5200504;Banderas y escudos en general;0.19
+5200505;Piedecamas, esteras y esterillas;0.19
+5200506;Forros para muebles y electrodom�sticos;0.19
+5200600;Gastos por confecci�n y reparaci�n de productos textiles para el hogar;0.19
+53;ARTEFACTOS PARA EL HOGAR;
+531;Artefactos grandes para el hogar el�ctricos o no;
+5310100;Neveras, refrigeradores y congeladores;0.05
+5310200;Lavadoras, secadoras y lava-vajillas;0.19
+5310201;Lavadora y secadora de ropa;0.19
+5310202;Lavadora de platos;0.19
+5310300;Estufas, hornos y pipetas de gas;0.19
+5310301;Estufa a gas;0.19
+5310302;Estufa el�ctrica;0.19
+5310303;Estufa mixta (el�ctrica y a gas);0.19
+5310304;Campana extractora para la estufa;0.19
+5310305;Estufa de carb�n o le�a, a gasolina o petr�leo;0.19
+5310306;Hornos el�ctricos y hornos de gas;0.19
+5310307;Hornos microondas;0.19
+5310308;Pipetas o cilindros de gas (envase sin incluir el gas);0.19
+5310309;Asadores no el�ctricos (para BBQ, carb�n, le�a, a gas, etc.);0.19
+5310500;Aparatos de calefacci�n;0.19
+5310501;Calentadores el�ctricos;0.19
+5310502;Calentador de gas;0.19
+5310600;Aparatos de aire acondicionado;0.19
+5310601;Aire acondicionado, purificadores de agua o aire;0.19
+5310602;Ventiladores o abanicos fijos;0.19
+5310700;Aspiradora, brilladora, lavatapetes e hidrolavadora;0.19
+5310800;M�quinas de coser, tejer, fileteadoras y telares;0.19
+5310900;Otros aparatos grandes del hogar: trituradoras de desperdicios, cajas fuertes, t;0.19
+532;Artefactos o aparatos peque�os el�ctricos, para el hogar;
+5320100;Aparatos el�ctricos  peque�os para el hogar;0.19
+5320101;Plancha el�ctrica para ropa;0.19
+5320102;Licuadora, picadora y ayudante de cocina el�ctrico y procesador de alimentos;0.19
+5320103;Batidora, mezcladora el�ctrica;0.19
+5320104;Sanducheras, wafleras, tostadoras el�ctricas;0.19
+5320105;Extractor de zumos y exprimidor el�ctricos;0.19
+5320106;Cafeteras el�ctricas, teteras el�ctricas;0.19
+5320107;Ollas arroceras, freidoras el�ctricas y fondue;0.19
+5320108;Cuchillos, afila cuchillos y abrelatas (incluye el�ctricos);0.19
+5320109;Encendedores el�ctricos y no el�ctricos para estufa;0.19
+5320110;Ventiladores o abanicos movibles;0.19
+5320111;Duchas el�ctricas;0.19
+5320112;Asadores el�ctricos para carne (raclette);0.19
+5320114;Extractor el�ctrico de olores;0.19
+5320115;Otros aparatos el�ctricos para el hogar: crispetera, m�quina para helados, horno;0.19
+5320116;Portacomidas el�ctrico;0.19
+533;Reparaci�n de artefactos para el hogar;
+5330100;Repuestos, reparaci�n y alquiler de artefactos para el hogar;0.19
+5330101;Repuestos para aparatos dom�sticos;0.19
+5330102;Reparaci�n de aparatos y utensilios dom�sticos;0.19
+5330103;Alquiler de artefactos o aparatos dom�sticos (lavadoras, computadores, etc);0.19
+54;ARTICULOS DE VIDRIO Y CRISTAL, VAJILLA Y UTENSILIOS PARA EL HOGAR;
+540;Art�culos y utensilios de vidrio, y cristal, porcelana, cer�mica, vajilla y uten;
+5400100;Cristaler�a y vajilla Art�culos, vajillas y utensilios de vidrio, cristal, porce;0.19
+5400101;Vajilla completa, juego de t� o caf� y otros juegos completos (vaso, jarra, copa;0.19
+5400102;Platos, pocillos, tazas, mugs;0.19
+5400103;Vasos, copas, jarras;0.19
+5400104;Bandejas, ensaladeras, soperas, dulceras, queseras, salseras, paneras.;0.19
+5400105;Refractarias, jarras especiales (a fuego directo, filtro purificador);0.19
+5400106;Otros art�culos de vidrio, cristal, porcelana, cer�mica;0.19
+5400200;Cubiertos;0.19
+5400201;Juego completo de cubiertos de mesa y cocina;0.19
+5400202;Cucharas, cucharitas, tenedores, cuchillos, cucharones, tijeras de cocina;0.19
+5400300;Utensilios de cocina y menaje  no el�ctricos;0.19
+5400301;Ollas, cacerolas, cazuelas y sartenes de aluminio, esmaltadas, tefl�n, etc.;0.19
+5400302;Ollas a presi�n;0.19
+5400303;Planchas para asar y parrillas;0.19
+5400304;Molinillos, coladeras, coladores, pinzas para hielo, abrelatas y sacacorchos man;0.19
+5400305;Cafeteras y teteras no el�ctricas, dispensadores (agua y licor);0.19
+5400306;Molinos, ralladores, trituradores de ajo, picadoras y exprimidores de jugo de ti;0.19
+5400307;Corta huevos, pela papas, rebanador de quesos, cortador de pizza;0.19
+5400308;Tablas para picar, mortero y mazo, escurridor de aceite;0.19
+5400309;Set de mesa para vinagre y aceite, servilletero, especiero;0.19
+5400310;Termo, botella de aluminio, coctelera, hielera, vaso mezclador;0.19
+5400311;Reverberos, cocinas de alcohol y cocinetas;0.19
+5400313;Esterilizadores o calentadores  de teteros;0.19
+5400314;Biberones o teteros;0.19
+5400315;Accesorios para utensilios de cocina y menaje no el�ctrico (cauchos, pitos, iden;0.19
+5400316;Otros utensilios de cocina y menaje no el�ctricos del hogar (centrifugador de ve;0.19
+5400400;Otros utensilios y menaje no el�ctricos del hogar;0.19
+5400401;Mesa de planchar;0.19
+5400403;Ceniceros, floreros;0.19
+5400404;Platones, baldes, embudos y poncheras;0.19
+5400405;Canecas y papeleras para la basura;0.19
+5400406;Cestas y recipientes para la ropa de materiales diferentes a tela;0.19
+5400407;Vasenilla, micas o patos m�dicos;0.19
+5400500;Reparaci�n de cristaler�a, vajilla y utensilios del hogar;0.19
+55;HERRAMIENTAS Y EQUIPOS PARA EL HOGAR Y EL JARDIN;
+551;Herramientas y equipos grandes;
+5510100;Herramientas y equipos grandes el�ctricos o motorizados;0.19
+5510101;Taladros, soldadoras, sierras, pulidoras y cizallas el�ctricas;0.19
+5510102;Podadoras, cortadoras de c�sped y guada�adoras el�ctricas o motorizadas y tracto;0.19
+5510103;Compra e instalaci�n de bombas el�ctricas de agua, generador de energ�a o planta;0.19
+5510104;Otras herramientas y equipos el�ctricos grandes;0.19
+5510200;Reparaci�n de herramientas y equipos grandes;0.19
+5510300;Alquiler de maquinaria y equipo grande;0.19
+552;Herramientas peque�as y accesorios diversos;
+5520100;Herramientas del hogar;0.19
+5520101;Hombresolos, alicates, tenazas, martillos, destornilladores, punzones, serruchos;0.19
+5520102;Llaves de tuercas, llaves inglesas, llaves bristol.;0.19
+5520103;Cintas m�tricas: metro, dec�metro, niveles, etc.;0.19
+5520105;Otras herramientas del hogar: escaleras, bombas de agua no el�ctricas, etc.;0.19
+5520200;Herramientas de jard�n: Carretillas, mangueras, lanzachorro, palas, azadones, pi;0.19
+5520300;Accesorios el�ctricos peque�os;0.19
+5520301;Bombillos incandescentes, tubos fluorescentes, larga vida, hal�genos, de ne�n, L;0.19
+5520302;Enchufes, interruptores, dimmers, cables el�ctricos, rosetas, cinta aislante y d;0.19
+5520303;Pilas y bater�as recargables y no recargables para uso general;0.19
+5520304;Linternas y l�mparas de mano;0.19
+5520305;Otros accesorios el�ctricos peque�os (timers);0.19
+5520400;Accesorios para puertas, ventanas y sillas: Bisagras, manijas, cerraduras, canda;0.19
+5520500;Otros art�culos de metal, madera, pl�stico para el hogar: rieles, varillas, tubo;0.19
+5520600;Reparaci�n de herramientas peque�as y accesorios diversos del hogar y del jard�n;0.19
+56;BIENES Y SERVICIOS PARA CONSERVACI�N ORDINARIA DEL HOGAR;
+561;Bienes para el hogar no duraderos;
+5610100;Productos de limpieza y mantenimiento;0.19
+5610101;Jab�n en barra para lavar ropa;0.19
+5610102;Jab�n de cocina;0.19
+5610104;Detergente en polvo;0.19
+5610105;Detergente l�quido;0.19
+5610106;Blanqueadores;0.19
+5610107;Suavizantes;0.19
+5610108;Quitamanchas, polvo limpiador y champ� para alfombras;0.19
+5610109;L�quidos y desinfectantes para limpiar muebles, vidrios, hornos, estufas, parede;0.19
+5610110;Ambientadores y desodorantes ambientales (velas aromatizadas, pastillas, aceites;0.19
+5610111;Cera para pisos y selladores;0.19
+5610112;Insecticidas, fungicidas (enchufe, spray, etc), trampa y venenos para roedores;0.19
+5610113;Otros productos de limpieza y mantenimiento: almidones para camisas, alcanfor, n;0.19
+5610200;Elementos de aseo;0.19
+5610201;Escobas, recogedores de basura, escobillas, plumeros limpiapolvos, trapeadores,;0.19
+5610202;Guantes de caucho;0.19
+5610203;Esponjas, esponjillas y estropajos;0.19
+5610204;Limpiones, cogeollas, pa�os de tela para limpiar (bayetilla, de microfibra) y de;0.19
+5610205;Otros elementos de aseo (antihumedad, antiacaros, antiolores);0.19
+5610300;Otros art�culos no duraderos para el hogar;0.19
+5610301;Cuerdas, cordeles, mechas para l�mpara, tendederos y pinzas para ropa, perchas d;0.19
+5610302;Agujas (para coser, tejer), alfileres;0.19
+5610303;Tijeras para costura, abreojales, desbaratadores, dedales;0.19
+5610305;F�sforos y encendedores desechables;0.19
+5610306;Bet�n, pomadas, tintes, cremas y espumas siliconadas para calzado;0.19
+5610307;Barnices, lacas y tintes para accesorios del hogar;0.19
+5610308;Anilinas y tintes para prendas de vestir;0.19
+5610400;Art�culos de ferreter�a: puntillas, clavos, tornillos, tuercas, brocas, brochas,;0.19
+5610500;Productos desechables;0.19
+5610501;Papel de aluminio, parafinado, vinilpel, moldes de aluminio, filtros de papel pa;0.19
+5610502;Rollos o pa�os de papel (absordente, h�medos) para cocina;0.19
+5610503;Productos desechables: servilletas,  manteles, platos, vasos, cubiertos, palillo;0.19
+5610504;Otros productos desechables:  pitillos, palos de pincho, etc;0.19
+5610505;Bolsas pl�sticas para basura y para aspiradora;0.19
+562;Servicios dom�sticos y para el hogar;
+5620100;Servicio dom�stico;
+5620101;Empleado(a) dom�stico interno;
+5620102;Empleado(a) dom�stico por d�as (permanente o temporal);
+5620103;Otros empleados dom�sticos: amas de llaves, institutrices, tutores, mayordomos,;
+5620200;Servicios de conservaci�n para el hogar;0.19
+5620201;Servicio de limpieza de ventanas;0.19
+5620202;Servicio de desinfecci�n y fumigaci�n del hogar;0.19
+5620300;Tintorer�a y lavander�a de ropa del hogar diferente a prendas de vestir;0.19
+5620301;Servicio de lavado de ropa y limpieza del hogar: cubrelechos, cortinas, tejidos;0.19
+5620302;Servicio de lavado de alfombras;0.19
+5620303;Servicio de tintorer�a y te�ido de ropa del hogar;0.19
+6;SALUD;
+61;PRODUCTOS, ARTEFACTOS Y EQUIPOS M�DICOS;
+611;Productos farmac�uticos;
+6110100;Productos farmac�uticos;0
+6110101;Analg�sicos y Antiinflamatorios: Mejoral, Aspirina, Focus, D�lex, Asaw�n, Advil,;0
+6110102;Anti�cidos y Gastritis: Alkaseltser, Sal de frutas, Mylanta,  Pepsamar, Orazole,;0
+6110103;Antibi�ticos topicos y sist�micos: Terramicina, Cipro, Keflox, Avelox, Vancocyn,;0
+6110104;Medicamentos antial�rgicos (antihistam�nicos): Loratadina, Desalex, Aerius, Hide;0
+6110105;Antigripales y Antitusivos no homeop�ticos: Desenfriol, Drist�n, Dolex gripa, Fl;0
+6110106;Antiparasitarios, antimibianos, purgantes y laxantes: Pantelmin, Veroxin, Benzan;0
+6110107;Antiartr�ticos y Antirreum�ticos: Humira, Embrel, Etanar, Remicade, Orencia, Act;0
+6110108;Antidiab�ticos e Insulinas: Lantus, Humalog, Detemir, NovoRapid, NovoMix, Deglud;0
+6110109;Antiespasm�dicos y Antidiarr�icos: Buscapina, Dulcolax, Imodium, Smecta, Erplus,;0
+6110111;Medicamentos para la tensi�n arterial y cardiovasculares: Artensol, Aldomet, Cap;0
+6110112;Desinfectantes: alcohol, menticol, yodo, agua oxigenada, �rnica, isodine, etc.;0
+6110113;Suero oral y sales de rehidrataci�n: Pedialyte, Hydraplus, Electrolit.;0
+6110114;Vacunas;0
+6110115;Suplementos dietarios, vitaminas, reconstituyentes, calcio, otros minerales y ac;0
+6110117;Medicamentos para el colesterol: Noveril, Heimdall, Lipitor, Crestor, Zocor, Les;0
+6110118;Medicamentos para cancer: Mabthera, Avastin, Herceptin, Intron, Peg-Intron, Velc;0
+6110119;Medicamentos para la disfuncion erectil: Viagra, lasfil, elebra, Caverject.;0
+6110120;Medicamentos para la tiroides: Levotiroxina, Synthroid, Eutirox, Tiroxin, Levoxi;0
+6110121;Medicamentos para el tratamiento de enfermedades psiqui�tricas y antidepresivas:;0
+6110122;Medicamentos para el tratamiento del VIH (SIDA): Atazanavir, Ritonavir, Lopinavi;0
+6110200;Productos dermatol�gicos con formula m�dica: lociones, cremas, pomadas, unguento;0
+6110300;Otros productos farmac�uticos;0
+6110301;Gotas para oidos, ojos, nar�z y suero fisiol�gico: Afrin, Panotil, Fixamicin, Ot;0
+6110302;Anticonceptivos orales (p�ldoras), �vulos, inyecciones, cremas anticonceptivas,;0
+6110303;Medicamentos homeop�ticos, medicamentos de origen natural y bioenerg�ticos: Osci;0
+6110404;F�rmula m�dica completa (hace referencia a todos los medicamentos que el informa;0
+612;Otros productos m�dicos;0
+6120100;Elementos Implementos m�dicos;0.19
+6120101;Term�metros cl�nicos;0.19
+6120102;Jeringas, agujas hipod�rmicas;0.19
+6120103;Esparadrapo, vendas, gasas, curitas.;0
+6120104;Botiquines de primeros auxilios;
+6120105;Dispositivo de prueba r�pida de embarazo;0
+6120106;Otros implementos m�dicos: bolsas de agua caliente, bolsas de hielo, paquetes de;0
+6120107;Inhaladores: salbutamol, beclometasona, budesonida, ventilan;0
+6120200;Anticonceptivos de bloqueo;0
+6120201;Dispositivos de planificacion familiar: intrauterinos e implante intrad�rmico.;0
+6120202;Preservativos (condones);0
+613;Artefactos y equipos terap�uticos;
+6130100;Artefactos y equipo terap�utico y su reparaci�n;0.19
+6130101;Anteojos, gafas o lentes de contacto formulados;0
+6130102;Sillas de ruedas, camas y colchones especiales (de hospital para uso en el hogar;0
+6130103;Muletas y bastones ortop�dicos;0
+6130104;Zapatos ortop�dicos;0
+6130105;Compra de equipo terap�utico: plantillas ortop�dicas, soportes de cuello, ferula;0
+6130106;Equipo para masajes m�dicos;0
+6130107;Pr�tesis (miembros artificiales), dentaduras postizas;0
+6130108;Aparatos ortop�dicos y de salud visual y ocular: ojo de cristal;0
+6130109;Tensi�metros (el�ctricos, manuales y de otro tipo), estetoscopios, gluc�metros;0
+6130110;Reparaci�n de artefactos y equipos terap�uticos;0.19
+6130111;Aparatos de salud auditiva: aud�fonos ortop�dicos y cl�nicos;0
+62;SERVICIOS PARA PACIENTES EXTERNOS;
+621;Servicios m�dicos;
+6210100;Consulta m�dica general con m�dico particular;0
+6210200;Consulta m�dica con m�dico especialista particular: pediatr�a, oftalmolog�a, gin;0
+6210300;Servicios de especialistas en ortodoncia (incluye compra de brackets y retenedor;0
+6210400;Consulta particular con m�dicos home�patas, bioenerg�ticos y otros no tradiciona;0
+622;Servicios dentales;
+6220100;Servicios odontol�gicos con odont�logos particulares: consultas, profilaxis, exo;0
+623;Servicios param�dicos;
+6230100;Servicios para particulares en centros de rayos X: radiograf�as (incluyendo las;0
+6230200;Ex�menes de laboratorio para particulares: de sangre, bacteriol�gicos, etc.;0
+6230300;Servicios m�dicos auxiliares no hospitalarios;0
+6230301;Servicios independientes de: fonoaudi�logos, fisioterapeutas;0
+6230302;Terapia de gimnasia correctiva recetada por m�dicos;0
+6230303;Servicios de medicina alternativa y complementaria (acupuntura, homeopat�a, quir;
+6230304;Servicios de enfermer�a para maternidad  en el hogar (enfermera(o) privada(o)) p;0
+6230305;Consulta con teguas, empiricos, curanderos, yerbateros, etc.;
+6230400;Alquiler de equipo terap�utico: muletas y bastones ortop�dicos, zapatos y planti;0
+624;Pagos complementarios a la seguridad social;
+6240100;Cuotas moderadoras EPS (medicina, odontolog�a, especialistas, medicamentos, ex�m;0.05
+6240200;Bonos de medicina prepagada o pago en efectivo por consultas, odontolog�a, medic;0.05
+63;SERVICIOS DE HOSPITAL;
+630;Servicios de hospital;
+6300100;Servicios b�sicos hospitalarios para pacientes particulares internos: alojamient;0
+6300200;Servicios m�dicos hospitalarios para particulares: atenci�n de m�dicos (generale;0
+6300300;Servicios m�dicos menores (peque�a cirug�a, cirug�a ambulatoria, urgencias, etc.;0
+6300400;Pagos complementarios de servicios hospitalarios;0.05
+6300401;Copagos (Pago adicional por hospitalizaciones o cirug�as de beneficiarios de EPS;0.05
+7;TRANSPORTE;
+71;ADQUISICI�N DE VEHICULOS;
+711;Veh�culos a motor;
+7110100;Veh�culo particular nuevo o usado;
+7110101;Compra de veh�culos nuevos para uso particular (incluye pagos por nacionalizaci�;
+7110102;Compra de veh�culos usados para uso particular (incluye pagos por nacionalizaci�;
+7110103;Gastos de matr�culas para veh�culos nuevos y de traspaso para veh�culos usados;0.19
+712;Motocicletas;
+7120100;Motos y bicicletas con motor nuevas o usadas;
+7120101;Compra de motocicletas y bicicletas con motor o el�ctricas nuevas o usadas;
+7120102;Gastos de matr�culas o traspaso de motocicletas o bicicletas con motor;0.19
+713;Bicicletas;
+7130100;Compra de bicicletas nuevas o usadas (excepto para ni�os);
+714;Veh�culos de tracci�n animal;
+7140100;Animales y veh�culos de tracci�n animal para transporte de personas del hogar;
+72;FUNCIONAMIENTO DE EQUIPO DE TRANSPORTE PERSONAL;
+721;Piezas de repuesto y accesorios para equipo de transporte personal;
+7210100;Llantas y neum�ticos, rines para veh�culo;0
+7210200;Otras piezas de repuesto para veh�culo;0.19
+7210201;Motores para veh�culo;
+7210202;Buj�as, inyectores, filtros, amortiguadores, bater�as, carburadores, distribuido;
+7210300;Productos para la limpieza y conservaci�n del  veh�culo: pintura, limpiadores, s;0.19
+7210400;Productos y accesorios para carrocer�a: pijamas, tapetes, barras de seguridad, c;0.19
+7210500;Herramientas para veh�culos de transporte personal (equipo de carretera, cruceta;0.19
+7210600;Piezas para bicicleta: llantas, neum�ticos, rines, manzanas, cadenas, cambios, p;
+722;Combustibles y lubricantes para equipo de transporte personal;
+7220100;Gasolina corriente y extra;0.19
+7220200;Gas vehicular;0.19
+7220300;Combustible diesel;0.19
+7220400;Aditivos, valvulinas, l�quido para frenos, refrigerantes, agua para bater�a, etc;0.19
+723;Conservaci�n y reparaci�n de equipo de transporte personal;
+7230100;Mantenimiento y reparaciones efectuadas en el taller: engrase, sincronizaci�n, r;0.19
+7230200;Compra y cambio de aceite;0.19
+7230300;Servicios de latoner�a y pintura;0.19
+7230400;Cuotas a clubes o compa�ias de servicios especiales para el veh�culo;0.19
+724;Otro servicios relativos al equipo de transporte personal;
+7240100;Parqueaderos;0.19
+7240101;Pago mensual de parqueadero;0.19
+7240102;Pago de parqueadero o parqu�metro por horas o d�as;0.19
+7240200;Peajes;0.19
+7240300;Gastos reglamentarios relacionados con la propiedad, manejo y alquiler de veh�cu;0.19
+7240301;Gastos en licencias y clases de conducci�n;0.19
+7240302;Comparendos y multas por infracciones;0.19
+7240303;Revision tecnomec�nica y otras revisiones ordenadas por ley;0.19
+7240304;Alquiler de veh�culos sin conductor;0.19
+73;SERVICIOS DE TRANSPORTE;
+731;Transporte de pasajeros por ferrocarril;
+7310100;Transporte en tren y metro;0
+7310101;Pasaje en tren;0
+7310102;Pasaje en metro;0
+732;Transporte de pasajeros por carretera;
+7320100;Transporte urbano;0
+7320101;Pasaje urbano en bus, buseta y colectivo;0
+7320102;Pasaje en sistema integrado de transporte masivo (Transmilenio, SITP, MIO, Megab;0
+7320103;Taxi urbano;0
+7320105;Otros transporte urbano: servicio pirata, bicitaxi,, mototaxi, funicular, telesf;0
+7320200;Transporte intermunicipal, interveredal e internacional;0
+7320201;Pasaje intermunicipal en bus, buseta, colectivo, taxi, aero vans, chiva, campero;0
+7320202;Pasaje en transporte internacional terrestre;0.19
+7320203;Transporte de equipajes por v�a terrestre;0
+7320204;Alquiler de veh�culo con conductor;0.19
+7320205;Transporte proveniente de salario en especie;
+7320206;Otro tipo de transporte intermunicipal;0
+7320207;Pasaje en transporte interveredal y a ciudades dormitorio;0
+7320300;Transporte escolar;
+7320301;Transporte escolar prestado por el colegio (con buses propios o con empresa cont;0
+7320302;Transporte escolar particular contratado por los padres;0.19
+733;Transporte de pasajeros por aire;
+7330100;Transporte de pasajeros y equipaje en avi�n (incluye pagos por exceso de equipaj;0.19
+7330200;Transporte de pasajeros y equipaje en helic�ptero;0.19
+734;Transporte de pasajeros por mar y cursos de agua interiores;
+7340100;Transporte de pasajeros y equipajes por mar, rios, ca�os, lagos, etc. en buque,;0
+7340200;Transporte de pasajeros y equipajes por mar, r�os, ca�os, lagos, etc. en ferry,;0
+735;Transporte combinado de pasajeros;
+7350100;Servicio en dos o m�s medios de transporte cuando el gasto no se puede discrimin;0
+736;Otros servicios de transporte adquiridos;0.19
+7360100;Servicios de remoci�n de escombros;0.19
+7360200;Servicios de almacenamiento y dep�sito de equipaje;0.19
+7360300;Servicio de trasteos y mudanzas;0.19
+8;COMUNICACIONES;
+81;SERVICIOS POSTALES;
+810;Servicios postales;
+8100100;Servicios postales;0.19
+8100101;Env�o de cartas, correspondencia, paquetes o encomiendas por correo (incluye com;0.19
+8100102;Servicio por env�o de giros postales;0.19
+8100103;Apartado a�reo y casillero internacional.;0.19
+82;EQUIPO TELEF�NICO Y DE FACS�MILE;
+820;Equipo telef�nico y de facs�mile;
+8200100;Equipos fijos de tel�fono y fax y su reparaci�n;0.19
+8200101;Compra de tel�fonos fijos y accesorios;0.19
+8200102;Compra de fax;0.19
+8200103;Reparaci�n de tel�fonos fijos, de fax y de accesorios;0.19
+8200200;Equipos de telefon�a m�vil, similares y reparaci�n;0.19
+8200201;Compra de celular convencional (no inteligente) y accesorios;0
+8200202;Compra de radiotel�fono y accesorios;0.19
+8200203;Compra de celular inteligente y accesorios;0.19
+8200204;Reparaci�n de celulares y de accesorios;0.19
+83;SERVICIOS TELEF�NICOS Y DE FACS�MILE;
+830;Servicios telef�nicos y de facs�mile;
+8300100;Servicios telegr�ficos: telegramas, telex y fax;0.19
+8300200;Tel�fonos p�blicos, llamadas locales, de larga distancia y desde celulares en la;0
+8300201;Llamadas locales desde tel�fonos p�blicos, cabinas telef�nicas y monederos;0
+8300202;Llamadas de larga distancia nacional o internacional desde tel�fonos p�blicos, c;0
+8300203;Llamadas por minuto desde celular en la calle a cualquier destino;0.19
+8300300;Servicios de tel�fonos fijos;0.19
+8300301;Servicio telef�nico residencial (local y larga distancia);0.19
+8300302;Instalaci�n y reconexi�n de l�nea telef�nica residencial;0.19
+8300400;Servicio de tel�fonos m�viles;0.19
+8300401;Pago de servicio de tel�fono celular postpago;0.19
+8300500;Servicios de Internet y recargas;0.19
+8300501;Servicio de suscripci�n a internet (banda ancha, acceso inal�mbrico, etc.);0.19
+8300502;Servicio de paquete de datos para celulares, tabletas, m�dem USB o LTE;0.19
+8300504;Servicios de internet en centros de acceso p�blico con costo (caf� internet);0.19
+8300505;Pago por suscripci�n a p�ginas web, inclu�do el almacenamiento en la nube y publ;0.19
+8300506;Recargas para telefon�a celular (prepago para minutos o datos, diferente al plan;0.19
+8300508;Pago por descargas de libros de internet;0.19
+8300509;Pago por descargas de pel�culas y videos de internet;0.19
+8300510;Pago por descargas de m�sica de internet;0.19
+8300511;Pago por descargas de juegos de internet;0.19
+8300512;Pago por descargas de aplicaciones de internet;0.19
+9;RECREACI�N Y CULTURA;
+91;EQUIPO AUDIOVISUAL, FOTOGR�FICO Y DE PROCESAMIENTO DE INFORMACI�N;
+911;Equipo para la recepci�n, grabaci�n y reproducci�n de sonido e im�genes;
+9110100;Equipo para la recepci�n, grabaci�n y reproducci�n de sonido �nicamente;0.19
+9110101;Equipos de sonido,  mini-componentes.;0.19
+9110103;Radio, radioreloj, grabadoras, radiograbadora;0.19
+9110105;Radio, equipo de sonido o video para veh�culos (CD, MP3 o MP4);0.19
+9110106;Amplificadores de sonido, altavoces, equalizadores, bafles, parlantes, torres de;0.19
+9110107;Otros equipos para la recepci�n, grabaci�n y reproducci�n de sonido;0.19
+9110200;Equipo para la grabaci�n, recepci�n y reproducci�n  de imagen y sonido;0.19
+9110202;Televisor a color convencional;0.19
+9110203;Televisor de pantalla plana (plasma, LCD o LED);0.19
+9110204;Antenas de televisi�n, decodificadores, etc.;0.19
+9110206;Reproductores de video (DVD o BLU RAY);0.19
+9110207;Teatro en casa;0.19
+9110209;Reproductores digitales de m�sica, video e imagen (MP3, MP4, Ipod, etc.);0.19
+9110210;Televisor inteligente (smart TV);0.19
+912;Equipo fotogr�fico y cinematogr�fico e instrumentos �pticos;
+9120100;Equipo fotogr�fico y de diapositivas;0.19
+9120101;C�maras fotogr�ficas;0.19
+9120103;Accesorios de fotograf�a: flash, lentes, medidores de luz, filtros, tr�podes, eq;0.19
+9120200;Equipo cinematogr�fico;0.19
+9120201;C�maras de video;0.19
+9120202;Proyectores de pel�culas, video beams, etc;0.19
+9120203;Accesorios de cinematograf�a: pantallas, visores, lentes, filtros, medidores de;0.19
+9120300;Instrumentos �pticos: microscopios, telescopios, lupas, bin�culos, br�julas, etc;0.19
+913;Equipo de procesamiento de informaci�n;
+9130100;Aparatos de procesamiento de informaci�n y hardware;
+9130101;Computadores personales de escritorio (PC, all in one);0.19
+9130102;Monitores;0.19
+9130103;Impresora o esc�ner;0.19
+9130108;Calculadoras;0.19
+9130109;Otros aparatos de tratamiento de informaci�n: servidores, etc;0.19
+9130110;Computadores port�tiles;0.19
+9130111;Tabletas (ipads);0.19
+9130112;Lectores de libros electr�nicos (Kindle);0.19
+9130200;Software;0.19
+9130201;Software tipo Office: procesadores de palabra, hojas de c�lculo, software para h;0.19
+9130202;Software especializado: de medicina, financiero, de dise�o y dibujo, paquetes es;0.19
+9130204;Antivirus y software para filtrado y control de navegaci�n;0.19
+9130300;Hardware no especificado anteriormente;0.19
+9130301;Webcam, dispositivos de joystick y similares, mouse, teclados, parlantes, cables;0.19
+9130302;M�dem, router, tarjetas de video y de sonido, unidades de CD-ROM y de DVD-ROM;0.19
+9130303;Memoria RAM, procesador, board, switch de red, disco duro interno;0.19
+9130304;Memoria USB, disco duro externo, tarjetas de memoria SD, mini-SD, micro-SD y lec;0.19
+9130400;Otros accesorios para computadores y tabletas: forros, pad mouse, etc.;0.19
+914;Medios para grabaci�n;
+9140100;CDs y DVDs pregrabados (con contenido);0.19
+9140104;CDs, DVDs o USB con contenido (de m�sica, videos, libros, etc);0.19
+9140200;CDs y DVDs sin grabar (v�rgenes);0.19
+9140300;Material para uso fotogr�fico: rollos, cartuchos, discos v�rgenes para uso fotog;0.19
+915;Reparaci�n de equipo audiovisual, fotogr�fico y de procesamiento de informaci�n;
+9150100;Reparaci�n de equipos y accesorios audiovisuales;0.19
+9150200;Reparaci�n de equipos, accesorios fotogr�ficos y de procesamiento de informaci�n;0.19
+92;OTROS PRODUCTOS DURADEROS IMPORTANTES PARA RECREACI�N Y CULTURA;
+921;Artefactos duraderos importantes para recreaci�n en exteriores;
+9210100;Equipo y accesorios para deportes: pesas, balones, mallas, bicicletas est�ticas,;0.19
+9210200;Mesas de billar, carros de golf, botes, alas deltas (cometas humanas), rodaderos;0.19
+922;Instrumentos musicales y equipos duraderos importantes para recreaci�n en interi;
+9220100;Instrumentos musicales: arm�nicas,  flautas, maracas, tambores, bater�as, guitar;0.19
+9220200;Accesorios para instrumentos musicales;0.19
+923;Conservaci�n y reparaci�n de otros bienes duraderos importantes para recreaci�n;
+9230100;Mantenimiento y reparaci�n de instrumentos musicales y de equipos relacionados c;0.19
+93;0TROS ART�CULOS Y EQUIPO PARA RECREACI�N, JARDINES Y ANIMALES DOM�STICOS;
+931;Juegos, juguetes y aficiones;
+9310100;Juegos de mesa: cartas, naipes, domin�, ajedrez, parqu�s, damas chinas, rumi-q,;0.19
+9310200;Juegos y juguetes infantiles;0.19
+9310201;Juguetes: carros, trenes, mu�ecas, loterias, peluches, rompecabezas, sonajeros,;0.19
+9310202;Bicicletas para ni�o(a), triciclos, columpios;0.19
+9310203;Consolas y accesorios para juegos electr�nicos: play station, nintendos, x-box,;0.19
+9310204;Software para videojuegos (en CD, DVD, credenciales, tarjetas o cassetes);0.19
+9310300;Art�culos, adornos y prendas de vestir para fiestas;0.19
+9310301;Disfraces (vestidos, m�scaras, accesorios);0.19
+9310302;Adornos navide�os (�rboles de navidad, guirnaldas, y otros accesorios decorativo;0.19
+9310303;Art�culos para fiestas: pi�atas, serpentinas, confetis, bombas pl�sticas, record;0.19
+9310400;Art�culos de colecci�n: monedas, estampillas, �lbumes para estampillas, billetes;0.19
+932;Equipos para el deporte, campamento y recreaci�n al aire libre;
+9320100;Equipo y accesorios para camping: carpas, colchonetas aislantes o t�rmicas, saco;0.19
+9320200;Calzado para deportes: patines, guayos, zapatos para golf, zapatillas para atlet;0.19
+9320300;Equipos para pesca y caza: ca�as y otros equipos para pescar, armas de fuego y m;0.19
+933;Jardines, plantas y flores;
+9330100;Flores sueltas o por docena;0.19
+9330200;Plantas naturales: ramos de flores, matas, arbustos;0.19
+9330300;Coronas, flores para funerales, hojas verdes;0.19
+9330400;Plantas artificiales: flores (sueltas o en ramo) y matas;0.19
+9330500;Semillas, bulbos de plantas, c�sped, fertilizantes, fungicidas, abonos, materas,;0.19
+934;Animales dom�sticos y productos conexos;
+9340100;Animales dom�sticos, mascotas y para pr�cticas deportivas: perros, gatos,  p�jar;0
+9340200;Alimentos para animales dom�sticos y mascotas;0.05
+9340300;Productos  para animales dom�sticos y mascotas, productos de veterinaria, art�cu;0.19
+935;Servicios de veterinaria y de otros tipos para animales dom�sticos;
+9350100;Servicios de veterinaria y de otro tipo para animales dom�sticos: cuidado, sal�n;0.19
+94;SERVICIOS  DE RECREACION Y CULTURALES;
+941;Servicios de recreaci�n y deportivos;
+9410100;Servicios recreativos;
+9410101;Entrada a Ferias (del libro, artesanal, etc);0
+9410102;Gastos en parques, parques de diversiones, juegos mec�nicos (no incluir pago de;0.19
+9410103;Gastos en bazares y fiestas populares;0.19
+9410104;Servicio de profesores o instructores particulares en clases recreativas y depor;0.19
+9410105;Servicio de profesores o instructores particulares en clases de formaci�n art�st;0.19
+9410106;Gastos en  fiestas del hogar (matrimonios, cumplea�os, bautizos, navidad) a exce;0.19
+9410107;Gastos en juegos electr�nicos y maquinitas (daytona y otros) en establecimientos;0.19
+9410200;Servicios prestados por escenarios deportivos;0.19
+9410201;Entrada a  espect�culos deportivos;0
+9410202;Alquiler de instalaciones o canchas deportivas para la pr�ctica de deportes (bol;0.19
+9410203;Pago por servicios de gimnasio;0.19
+9410204;Cuotas a clubes sociales y deportivos;0.19
+9410205;Servicio de billar, tejo, rana y ping-pong;0.19
+9410300;Alquiler de equipo, accesorios y calzado para deporte y recreaci�n;0.19
+942;Servicios culturales;
+9420100;Cines y teatros;0
+9420101;Entradas a cine;0
+9420102;Entradas a teatro;0
+9420200;Entradas a espect�culos musicales: conciertos, �peras, ballets, zarzuela, etc.;0
+9420300;Otros espect�culos;0
+9420301;Entradas a circos y otros espect�culos afines;0
+9420302;Entradas a plazas de toros;0
+9420400;Entradas a museos, bibliotecas y hemerotecas;0
+9420401;Entradas a museos, galer�as de arte y exhibiciones;0
+9420402;Entradas a bibliotecas, hemerotecas y archivos;0
+9420500;Entradas a parques, monumentos hist�ricos y similares;0
+9420501;Entradas a parques nacionales y reservas naturales;0
+9420502;Entradas a jardines bot�nicos, zool�gicos y acuarios;0
+9420503;Entradas a monumentos nacionales (sitios hist�ricos, etc) y zonas arqueol�gicas;0
+9420600;Suscripci�n y servicio de televisi�n por redes y cable;0.19
+9420601;Suscripci�n, instalaci�n, conexi�n o reconexi�n a televisi�n por cable, satelita;0.19
+9420602;Servicio de televisi�n por cable, satelital, digitalizada, IPTV o antena parab�l;0.19
+9420700;Alquiler de TV, equipos de sonido y de video: televisores, reproductoras de vide;0.19
+9420800;Alquiler tradicional de pel�culas, videos musicales y videojuegos;0.19
+9420900;Servicios fotogr�ficos y de video: procesamiento video, revelado de fotograf�as,;0.19
+9421000;Otros servicios culturales: m�sicos, payasos,  recreacionistas y otros;0.19
+943;Juegos de azar;
+9430100;Juegos de azar;0.19
+9430101;Loter�as, chance, baloto y similares;0.19
+9430102;Rifas y sorteos (diferentes a loter�as);0.19
+9430103;Casinos, m�quinas tragamonedas y bingos;0.19
+95;PERI�DICOS, LIBROS Y PAPELES Y �TILES DE OFICINA;
+951;Libros;
+9510100;Libros y lista de �tiles escolares completa;0
+9510101;Libros sueltos de lectura;0
+9510102;Atlas y diccionarios;0
+9510103;Enciclopedias, obras y colecciones completas;0
+9510104;Fasc�culos y tomos sueltos de colecciones;0
+9510105;Encuadernaci�n de libros;0
+9510106;Libros t�cnicos y especializados;0
+9510107;Lista de �tiles escolares completa;0
+9510200;Libros de texto: textos gu�as para clase (incluye libros de literatura, poes�a,;0
+952;Diarios, peri�dicos y revistas;
+9520100;Compra diaria de peri�dicos;0.19
+9520200;Suscripci�n a peri�dicos, revistas u otras publicaciones peri�dicas impresas.;0.19
+9520300;Compra de revistas;
+9520301;Revistas sueltas, comics, novelas gr�ficas, historietas, cuentos y cuadernillos;0.19
+953;Material impreso diverso;
+9530100;Material impreso diverso;0.19
+9530101;Cat�logos, material publicitario, tarjetas de invitaci�n o felicitaci�n, cartele;0.19
+9530102;Mapas y globos terr�queos;0.19
+954;Papel y �tiles de oficina y materiales de dibujo;
+9540100;Art�culos de papeler�a: cuadernos, agendas, papel suelto y en resmas;0.19
+9540101;Cuadernos (cosidos, grapados, argollados, plastificados, etc.)  y blocks;0.19
+9540102;Libretas, agendas, diarios personales;0.19
+9540103;Hojas sueltas de papel (oficio, carta, cuadriculado, mantequilla, carb�n), cartu;0.19
+9540104;Resmas de papel (carta u oficio);0.19
+9540105;Otros art�culos de papeleria: f�lderes, sobres (carta o manila), forros, r�tulos;0.19
+9540200;Art�culos para escribir;0.19
+9540201;L�pices, portaminas, minas, tajal�pices y borradores;
+9540202;Bol�grafos, estil�grafos, plumas, marcadores, plumones y resaltadores;0.19
+9540203;Tintas (para estil�grafo, china y otras), plantillas de dibujo, almohadillas, l�;0.19
+9540300;Art�culos para pintura y dibujo;0.19
+9540301;Lienzos, telas para dibujo y pintura;0.19
+9540302;P�nceles para dibujo;0.19
+9540303;Vinilos, t�mperas, acuarelas, �leos, carboncillos, cajas de colores, crayolas, p;0.19
+9540304;Otros art�culos para manualidades (repujadores, troqueladores, enrolladores, pal;0.19
+9540400;Art�culos de escritorio y pegantes;0.19
+9540401;Perforadoras, cortadoras de papel, tijeras, grapadoras;0.19
+9540402;Pegamentos, cintas, colbones, gomas, adhesivos, bistur�s, grapas, clips, broches;0.19
+9540500;Otros materiales educativos;0.19
+9540501;Reglas, escuadras, compaces, transportadores y otros instrumentos de geometr�a.;0.19
+9540502;Estuches para l�pices, pizarras, tiza, yeso para actividades educativas, madera;0.19
+96;PAQUETES TURISTICOS;
+960;Paquetes tur�sticos;
+9600100;Paquetes tur�sticos completos: Gira tur�stica completa (incluye pasajes, alojami;0.19
+9600200;Pago de paquete por viajes de excursi�n, peregrinaje o convivencia de menos de u;0.19
+10;EDUCACI�N;
+101;ENSE�ANZA PREESCOLAR Y ENSE�ANZA PRIMARIA;
+1010;Ense�anza preescolar y ense�anza primaria;
+10100100;Preescolar (Pre-kinder, Kinder y transici�n);0
+10100101;Matr�cula e inscripci�n en preescolar;0
+10100102;Pensiones en preescolar;0
+10100103;Bonos escolares en preescolar;0
+10100104;Asociaci�n de padres de familia en preescolar;0.19
+10100105;Uniformes (diario, gala, deportes) en preescolar;0.19
+10100106;Otros gastos en preescolar no especificados anteriormente (aportes para rifas, e;0.19
+10100200;Primaria;0
+10100201;Matr�cula e inscripci�n en primaria;0
+10100202;Pensiones en primaria;0
+10100203;Bonos escolares en primaria;0
+10100204;Asociaci�n de padres de familia en primaria;0.19
+10100205;Uniformes (diario, gala, deportes) en primaria;0.19
+10100206;Otros gastos en primaria no especificados anteriormente (aportes para rifas, eve;0.19
+10100300;Educaci�n de ni�os con necesidades especiales;0
+10100301;Matr�cula e inscripci�n en educaci�n para ni�os con necesidades educativas espec;0
+10100302;Pensiones en educaci�n de ni�os con necesidades educativas especiales;0
+10100303;Otros gastos en educaci�n de ni�os con necesidades educativas especiales (aporte;0.19
+102;ENSE�ANZA SECUNDARIA;
+1020;Ense�anza secundaria;
+10200100;Ense�anza Secundaria;0
+10200101;Matriculas e inscripci�n en secundaria;0
+10200102;Pensiones en secundaria;0
+10200103;Bonos escolares en secundaria;0
+10200104;Asociaci�n de padres de familia en secundaria;0.19
+10200105;Uniformes (diario, gala, deportes) en secundaria;0.19
+10200106;Otros gastos en secundaria no especificados anteriormente (aportes para rifas, e;0.19
+104;ENSE�ANZA TERCIARIA;
+1040;Ense�anza terciaria;
+10400100;Inscripciones y matr�culas en carreras t�cnicas, tecnol�gicas y universitarias;0
+10400101;Inscripciones y matr�culas en carreras universitarias (no incluye postgrado);0
+10400102;Inscripciones y matr�culas en carreras t�cnicas y tecnol�gicas;0
+10400200;Inscripciones y matr�culas en postgrados (especializaci�n, maestr�a, doctorado);0
+10400300;Otros gastos en educaci�n superior (pregrados y postgrados);0.19
+105;ENSE�ANZA NO ATRIBUIBLE A NINGUN NIVEL;
+1050;Ense�anza no atribuible a ning�n nivel;
+10500100;Cursos de educaci�n no formal en academias o instituciones de idiomas, inform�ti;0
+10500200;Cursos de educaci�n no formal en academias o instituciones de deportes;0
+10500300;Cursos de educaci�n no formal en academias o instituciones de formaci�n art�stic;0
+10500400;Diplomados, educaci�n continuada, preicfes, preuniversitarios;0
+10500500;Educaci�n para adultos y validaciones;0
+10500600;Pago a instituciones por asesor�a de tareas;0
+10500700;Clases acad�micas dictadas por particulares;0
+11;RESTAURANTES Y HOTELES;
+111;SERVICIOS DE SUMINISTRO DE COMIDAS POR CONTRATO;
+1111;Restaurantes, caf�s y establecimientos similares;
+11110100;Comidas en restaurantes;0
+11110101;Desayunos completos;0
+11110102;Almuerzos completos;0
+11110103;Comidas completas;0
+11110104;Tiquetera para alimentos preparados, excepto en establecimientos educativos;0
+11110105;Platos diversos: Pollo asado, carne asada, arroz chino, lechona y similares;0
+11110200;Bebidas calientes en cafeter�as y similares: Tinto, caf� con leche, chocolate, t;0
+11110300;Bebidas fr�as en cafeter�as y similares;0
+11110301;Gaseosa y otros refrescos;0
+11110302;Jugos naturales;0
+11110303;leche tomada fuera del hogar;0
+11110304;Yogurt, kumis;0
+11110305;Masato, mazamorra, chicha, avena helada, malteada, agua de panela fria y similar;0
+11110400;Comidas preparadas fuera del hogar;0
+11110401;Helados, paletas, conos y similares;0
+11110402;Ensaladas de frutas, frutas sueltas, fresas con crema;0
+11110403;Galletas de sal y de dulce;0
+11110404;Pan, almoj�banas, bu�uelos,  pandeyucas, arepas y similares;0
+11110405;Emparedados, empanadas, bollos, envueltos, tamales, pastel de pollo, perros cali;0
+11110406;Brownies, obleas, ponqu�s, bozcochos, milhojas y similares;0
+11110407;Productos de salsamentaria y fritanga: chorizos, jamones, rellenas y similares;0
+11110408;Quesos, cuajadas y quesillos;0
+11110409;Huevos preparados;0
+11110410;Arequipes, bocadillos, gelatinas y similares;0
+11110411;Frituras: papas fritas, chitos, patacones y similares;0
+11110412;Dulces, confites, chocolatinas, bombones;0
+11110413;C�cteles de camarones, ostras y similares;0
+11110414;Onces, medias nueves, media ma�ana, algo, entred�a, recreo;0
+11110415;Alimentos provenientes de salario en especie;0
+11110500;Gastos en discotecas, bares, griles, tabernas y similares (comida, bebidas, cove;0
+11110600;Gastos en bebidas alcoh�licas (cerveza, aguardiente, ron, etc) en tiendas, fonda;0
+1112;Comedores;
+11120100;Pago por alimentaci�n en comedores;0
+11120101;Pago mensual por alimentaci�n de estudiantes en establecimiento educativo (resta;0
+11120102;Pago en comedores comunitarios;0
+11120103;Valor imputado por alimentaci�n en comedores comunitarios;0
+112;SERVICIOS DE ALOJAMIENTO;
+1120;Servicios de alojamiento;
+11200100;Servicios de alojamiento en hoteles, pensiones, posadas y hostales;0.19
+11200200;Servicios de alojamiento en moteles y residencias;0.19
+11200300;Servicios de alojamiento en centros de vacaciones, caba�as, apartamentos, servic;0.19
+11200400;"Servicios de alojamiento por motivo de ense�anza: internados de colegios; reside";0.19
+12;BIENES Y SERVICIOS DIVERSOS;
+121;CUIDADO PERSONAL;
+1211;Salones de peluquer�a y establecimientos de cuidados personales;
+12110100;Servicios prestados en salones de peluquer�a y establecimientos de cuidado perso;0.19
+12110101;Corte de pelo para hombres y ni�os;0.19
+12110102;Afeitado en barber�as;0.19
+12110103;Corte de pelo, peinado y alisado para mujeres y ni�as;0.19
+12110104;Tratamientos capilares y faciales;0.19
+12110105;Manicure y pedicure;0.19
+12110106;Te�ido de cabello, permanentes y desrizados en sal�n de belleza;0.19
+12110107;Saunas, turcos y masajes no terap�uticos;0.19
+12110108;Depilaciones;0.19
+12110109;Otros tratamientos de belleza: bronceado en c�mara, etc;0.19
+1212;Aparatos el�ctricos para el cuidado personal;
+12120100;Aparatos el�ctricos para el cuidado personal y su reparaci�n;0.19
+12120101;M�quinas el�ctricas de afeitar, para cortar el pelo y depiladoras;0.19
+12120102;Pinzas el�ctricas, planchas para cabello y secadores;0.19
+12120103;Otros aparatos el�ctricos para el cuidado personal: cepillos de dientes, vaporiz;0.19
+12120104;Reparaci�n de aparatos el�ctricos para el cuidado personal;0.19
+1213;Otros aparatos, art�culos y productos para la atenci�n personal;0.19
+12130100;Art�culos para el cuidado y la atenci�n personal;0.19
+12130101;M�quina de afeitar no desechables, cuchillas y repuestos para m�quinas de afeita;0.19
+12130102;B�sculas personales o pesas;0.19
+12130200;Art�culos para higiene corporal;0.19
+12130201;Jabones de tocador l�quidos y en barra;0.19
+12130202;Champ�s, acondicionadores, b�lsamos, enjuagues, cremas y tratamientos para el ca;0.19
+12130203;Cremas para afeitar y depilar (tubo, aerosol, gel) y lociones para despu�s de la;0.19
+12130204;Desodorantes y antitranspitantes (crema, barra, roll-on, aerosol);0.19
+12130205;Perfumes, colonias y lociones;0.19
+12130206;Art�culos para la higiene corporal del beb�: aceites, cremas, champ�s, b�lsamos,;0.19
+12130300;Art�culos para la higiene oral;0.19
+12130301;Cepillos de dientes, hilo y seda dental;0.19
+12130302;Crema dental y  enjuague bucal;0.19
+12130303;Blanqueadores y ceras dentales.;0.19
+12130400;Productos de belleza;0.19
+12130401;Bases para la cara, polvos faciales, pesta�inas, labiales, l�pices de ceja, deli;0.19
+12130402;Esmaltes, quitaesmaltes, diluyentes, limas y tijeras para u�as, cortacut�culas,;0.19
+12130403;Cremas (nutritivas, limpiadoras, hidratantes, etc.), talcos y polvos para el cue;0.19
+12130404;Tinturas para el cabello;0.19
+12130405;Otros productos de belleza (pelucas, peluquines, extensiones de cabello, etc.);0.19
+12130500;Otros productos para el aseo personal;0.19
+12130501;Papel higi�nico;0.19
+12130502;Algod�n,  esponjas para el cuerpo y copitos;0.19
+12130503;Pa�uelos y pa�itos h�medos desechables de uso personal;0.19
+12130504;Toallas sanitarias, protectores, tampones, pa�itos y jabones intimos.;0.05
+12130505;Protectores para brassier, mamadores, succionadores y pezoneras;0.19
+12130506;Pa�ales desechables;0.05
+12130507;Pa�ales y ropa interior para incontinencia;0.19
+12130508;Otros productos para el aseo personal;0.19
+122;PROSTITUCI�N;
+1220;Prostituci�n;
+12200100;Servicios prestados por personas para entretenimiento privado de adultos (stripp;
+123;EFECTOS PERSONALES;
+1231;Joyer�a, relojes de pared y relojes de pulsera;0.19
+12310100;Art�culos en oro,  plata y piedras preciosas y su reparaci�n;0.19
+12310101;Anillos, argollas, sortijas, aretes, pendientes, prendedores y alfileres para co;0.19
+12310102;Collares, cadenas, gargantillas, pulseras y manillas en oro y plata.;0.19
+12310103;Piedras preciosas;0.19
+12310104;Reparaci�n de art�culos de oro, plata y piedras preciosas.;0.19
+12310200;Relojes, cron�metros, term�metros, bar�metros y su reparaci�n;0.19
+12310201;Relojes de mesa o pared y despertadores, term�metros y bar�metros de pared;0.19
+12310202;Relojes de pulso mec�nicos o digitales, de bolsillo y cron�metros;0.19
+12310203;Reparaci�n de relojes, cron�metros, term�metros y bar�metros de pared;0.19
+12310300;Art�culos de fantas�a y su reparaci�n;0.19
+12310301;Anillos, argollas, sortijas, aretes, pendientes, prendedores, mancornas de fanta;0.19
+12310302;Collares, cadenas, gargantillas, pulseras y manillas de fantas�a e hilo;0.19
+12310303;Reparaci�n de art�culos de fantas�a e hilo;0.19
+1232;Otros efectos personales;0.19
+12320100;Art�culos de viaje y otros art�culos para el transporte de efectos personales;0.19
+12320101;Maletines, portafolios y bolsos de viaje;0.19
+12320102;Carteras, mochilas y bolsos de mano;0.19
+12320103;Billeteras, monederos, tarjeteros de bolsillo y portabilletes;0.19
+12320104;Bolsos y maletas tipo estudiante;0.19
+12320105;Reparaci�n de maletines, cartera, billeteras y bolsos mencionados anteriormente;0.19
+12320200;Art�culos para beb�s y su reparaci�n;0.19
+12320201;Coches, caminadores, sillas, sillas para veh�culo, cestos y hamacas para beb�;0.19
+12320202;Portabeb�s delanteros y de espalda;0.19
+12320203;Monitores e intercomunicadores para beb�;0.19
+12320204;Chupos, mamilas, entretenedores;0.19
+12320205;Pa�aleras;0.19
+12320206;Otros art�culos para beb� (ba�eras, correas para beb�, etc);0.19
+12320207;Reparaci�n de art�culos para beb�;0.19
+12320300;Art�culos para fumador: Pipas, encendedores no desechables, pitilleras, cortapur;0.19
+12320400;Art�culos personales varios: gafas de sol, lentes de contacto cosmeticos, baston;0.19
+12320500;Art�culos de funeraria: ata�des, l�pidas y urnas;0.19
+124;PROTECCION SOCIAL;
+1240;Protecci�n social;
+12400100;Servicios de protecci�n social dentro y fuera del hogar;0.19
+12400101;Residencias para ancianos, hogares geri�tricos, hogares para personas con limita;0.19
+12400102;Asistencia para el cuidado y mantenimiento de personas con limitaciones-discapac;0.19
+12400200;Guarder�as, salacunas, cuidado de ni�os fuera del hogar y servicios de adopci�n;0.19
+12400201;Pagos mensuales en guarder�a o salacunas: pensi�n, alimentaci�n, etc;0.19
+12400202;Pagos anuales en guarder�as o salacunas: matr�cula, materiales, etc;0.19
+12400203;Cuidado de ni�os fuera del hogar (ni�eras fuera del hogar);0.19
+12400204;Pagos en agencias por servicios de adopci�n;0.19
+12400300;Pagos a EPS;0
+12400301;Descuentos por aporte de asalariados a EPS;0
+12400302;Aportes obligatorios de trabajadores independientes a EPS;0
+12400303;Pagos adicionales en salud (PILA) por persona diferente al nucleo familiar: abue;0
+12400400;Pagos de pensiones y cesant�as;0
+12400401;Descuentos por aportes obligatorios de asalariados a fondos de pensiones y cesan;0
+12400402;Aportes obligatorios de trabajadores independientes a fondos de pensiones y cesa;0
+12400403;Aportes voluntarios a fondos de pensiones y cesant�as;0
+125;SEGURO;
+1251;Seguro de vida;
+12510100;Seguro de vida y de educaci�n (ahorro programado);0.19
+1252;Seguro relacionado con la vivienda;
+12520100;Seguro relacionado con la vivienda (robo, incendio, terremoto, terrorismo, etc);0.19
+1253;Seguro relacionado con la salud;
+12530100;Seguros m�dicos, de accidentes y medicina pregada;0.05
+12530101;Pago anual de medicina prepagada o plan complementario de salud;0.05
+12530102;Seguro estudiantil;0.19
+12530103;Seguros relacionados con  la salud: m�dico, maternidad, neonatal, ambulancia, de;0.19
+1254;Seguro relacionado con el transporte;
+12540100;Seguros de veh�culos y otros relacionados con el transporte;0.19
+12540101;Pago de Seguro Obligatorio SOAT;0.19
+12540102;Pago de seguro de veh�culos contra todo riesgo;0.19
+12540103;Seguros relacionados con el transporte: seguro de vuelo, seguro de viaje y equip;0.19
+1255;Otros seguros;
+12550100;Otros seguros: seguros de responsabilidad civil por lesiones o da�os a terceros;0.19
+126;SERVICIOS FINANCIEROS;
+1261;Servicios de Intermediaci�n Financiera Medidos Indirectamente (SIFMI);
+12610100;Servicios de Intermediaci�n Financiera Medidos Indirectamente (SIFMI);0.19
+12610101;Comisiones bancarias por transferencias, pagos a terceros, por consignaci�n naci;0.19
+12610102;Compra de t�tulos financieros (acciones, bonos, CDTs, CDAT, derivados financiero;0
+12610103;Cuota de manejo de tarjeta d�bito o cr�dito;0
+12610104;Cuotas por cr�dito para adquisici�n de veh�culos;0
+12610105;Cuotas o pagos por pr�stamos de consumo realizados a bancos, cooperativas y fond;0
+12610106;Pago del ultimo recibo por tarjetas de cr�dito, excluyendo cuota de manejo;0.19
+12610107;Cuotas de amortizaci�n de vivienda para uso del hogar diferentes a la que habita;0
+12610108;Cuotas mensuales por adquisici�n de bienes ra�ces diferentes a vivienda;0
+12610109;Cuotas o pagos por pr�stamos adquiridos con particulares y organizaciones del se;0
+12610110;Compra de vivienda;0
+12610111;Pago de contado o cuota inicial por compra de terrenos, lotes, locales, fincas,;0
+12610112;Otros dineros ahorrados en el �ltimo mes;0
+12610113;Dineros dados en pr�stamo a otras personas;0
+12610115;Ahorro en un fondo de inversi�n colectiva, en fondos mutuos de inversi�n, negoci;0.19
+12610116;Pago de comisi�n por la administraci�n de los fondos de inversi�n colectiva, fon;0
+1262;Otros servicios financieros;
+12620100;Otros servicios financieros;0.19
+12620101;Pago por chequeras, servicios de cajero autom�tico (retiros, consultas de saldos;0.19
+12620102;Cuotas o pagos directos a almacenes y distribuidores por compras a cr�dito (excl;0.19
+12620103;Honorarios y cargos por servicio de agentes, asesores de inversi�n, consultores;0.19
+127;OTROS SERVICIOS;
+1270;Otros servicios;
+12700100;Pagos de honorarios por: asesor�a jur�dicas, contrataci�n de personal para el ho;0.19
+12700200;Certificados y documentos administrativos: c�dula de ciudadan�a, pasaporte, visa;0.19
+12700201;Libreta militar;0.19
+12700300;Cuotas a organizaciones;0
+12700301;Cuotas a asociaciones profesionales, partidos pol�ticos,  juntas de acci�n comun;0
+12700302;Cuotas a  instituciones religiosas y diezmo;0
+12700400;Servicios religiosos y civiles por entierros, matrimonios,  gastos en pompas f�n;0
+12700500;Otros pagos por servicios;0.19
+12700501;Pago por noticias y anuncios en la prensa y en p�ginas web;0.19
+12700502;Pago por servicio de ba�os p�blicos;0.19
+12700503;Servicio de fotocopias, reducciones, ampliaciones, laminaciones, argollados, imp;0.19
+12700504;Servicio de coteros o cargadores;0.19
+12700600;Impuestos;0
+12700601;Impuesto predial y de valorizaci�n de la(s) vivienda(s) ocupada(s) por el hogar;0
+12700602;Impuestos del vehiculo;0
+12700603;Impuesto de renta;0
+12700604;Otros impuestos (de timbre, etc);0
+12700700;Mesadas a estudiantes y personas del mismo hogar como de otros hogares para gast;0
+12700800;Remesas de dinero a otros hogares para sostenimiento de personas a cargo del hog;0
+12700900;Planes de protecci�n social a personas ajenas al hogar (Plan Canitas, Gotas de a;0.19
+1;ALIMENTOS Y BEBIDAS NO ALCOHOLICAS;
+11;ALIMENTOS;
+111;Pan y Cereales;

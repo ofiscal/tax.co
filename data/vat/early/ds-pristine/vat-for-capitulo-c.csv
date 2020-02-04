@@ -1,0 +1,26 @@
+CODE,DESCRIPTION,VAT rate
+1,"Pan, arepas, bollos y almojábanas",0
+2,Galletas de sal y de dulce,0.19
+3,"Arroz, pastas alimenticias, avena, maíz, harinas",
+4,"Carne de res, cerdo, hueso y vísceras",0
+5,"Pollo, otras aves y menudencias",0
+6,"Salchichas, jamón, mortadela, salchichón",0.05
+7,"Pescado de río, mar y otros productos",0
+8,Leche (animal y vegetal),0
+9,Queso (animal y vegetal),
+10,"Otros derivados de la leche: yogur,",0.19
+11,Huevos,0
+12,"Aceites y grasas: aceite, manteca, mantequilla,",0.19
+13,Frutas,0
+14,"Verduras y hortalizas: tomate, cebolla,",0
+15,"Granos secos: fríjol, lenteja, garbanzo,",0
+16,"Enlatados y encurtidos: arveja, fríjol,",0.19
+17,"Plátano, yuca, arracacha, ñame, papa y",0
+18,"Azúcar, panela y otros endulzantes",
+19,"Mermeladas, arequipe, bocadillos, compotas,",
+20,"Salsas, mayonesa, mostaza, vinagre, etc.",0.19
+21,Sal y condimentos,
+22,"Café, chocolate, otras bebidas con cacao",0.05
+23,"Papas fritas, chitos, maicitos, patacones,",0.19
+24,"Agua, gaseosas, refrescos, jugos, té frío y",
+25,Alimentos y bebidas preparados fuera,0

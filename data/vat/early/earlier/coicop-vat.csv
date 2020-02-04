@@ -1,0 +1,357 @@
+coicop;vat-rate;one-verbal-description;one-file-it-appears-in;instances-in-that-file
+0;;#N/A;gastos_personales_rural;15547
+1119801;0.05;Harina para preparar tortas, natilla, bu�uelos, etc.;gastos_diarios_urbanos;1164
+1119802;0.05;Harina para coladas ;gastos_diarios_urbanos;999
+1119803;0;Almidones de papa o yuca;gastos_diarios_urbanos;2886
+1119804;0.19;Cereales para el desayuno;gastos_diarios_personales_urbano;526
+1119805;0.19;Cereales para la alimentaci�n infantil (papilla);gastos_diarios_urbanos;1225
+1119806;0;Ajonjol�, soya, quinua, sorgo (para preparar);gastos_diarios_urbanos;283
+1119807;0;Masas para la preparaci�n de productos de panader�a o pasteler�a  (trigo, ma�z, soya);gastos_diarios_urbanos;897
+1119808;0;Arepas crudas o precocidas  ;gastos_diarios_urbanos;41098
+1119809;0;Bollos y envueltos precocidos, quiches, tamales;gastos_diarios_urbanos;4923
+1119810;0;G�rmen de trigo, lecitina, levadura, linaza ;gastos_diarios_urbanos;104
+1119811;0;Comidas preparadas precocidas a base de cereales (lasagna, pizza, empanadas) ;gastos_diarios_urbanos;629
+1119812;0;Carne vegetal, embutidos y otros alimentos vegetarianos (a base de soya, gl�ten, lenteja, quinua, etc.) sin cocinar;gastos_diarios_urbanos;659
+1119901;0;Galletas de sal para consumo en el hogar;gastos_diarios_personales_urbano;2725
+1119902;0;"Galletas de dulce (de panader�a y de paquete) para consumo en el hogar
+";gastos_diarios_personales_urbano;12791
+1119903;0;Galletas integrales (de panader�a y de paquete) para consumo en el hogar;gastos_diarios_personales_urbano;649
+1119999;0;Otros productos de panader�a no mencionados previamente: brownies, obleas, ponques, bizcochos (pudines en Costa Atl�ntica) para consumo en el hogar;gastos_diarios_personales_urbano;5125
+1120599;0.05;"Otros embutidos de proteina animal (longaniza, butifarra, g�novas, salchich�n, salami, c�banos, pat�s, etc) para consumo en el hogar
+";gastos_diarios_urbanos;13361
+1129901;0;Otros alimentos no especificados: Hormigas culonas, etc. ;gastos_diarios_urbanos;87
+1130101;0;Pescado de r�o fresco o congelado;gastos_diarios_urbanos;22728
+1130298;0;Otros mariscos, crust�ceos y moluscos frescos o congelados;gastos_diarios_urbanos;433
+1130299;0;Otros productos de pescado y derivados para consumo en el hogar;gastos_diarios_urbanos;564
+1140299;0;Otros quesos: pera, mozarella, paipa, parmesano, etc. para consumo en el hogar;gastos_diarios_urbanos;5216
+1149901;0;Leche condensada, leche condensada y evaporada y crema chantilly para consumo en el hogar;gastos_diarios_urbanos;963
+1149902;0;Crema de leche;gastos_diarios_urbanos;2257
+1149903;0;Yogurt para consumo en el hogar;gastos_diarios_personales_urbano;6794
+1149904;0;Kumis para consumo en el hogar;gastos_diarios_urbanos;760
+1149905;0;Suero coste�o, queso crema, crema agria;gastos_diarios_urbanos;4469
+1149906;0;Natas para consumo en el hogar;gastos_diarios_urbanos;2
+1149907;0;Postres l�cteos para consumo en el hogar;gastos_diarios_personales_urbano;164
+1149908;0.19;"Bebidas l�cteas saborizadas no achocolatadas (avena) para consumo en el hogar
+";gastos_diarios_personales_urbano;1724
+1150199;0.19;Otros aceites comestibles: canola, cacahuete, coco, almendras, diet�ticos, etc.;gastos_diarios_urbanos;1045
+1150201;0.19;Mantequilla de vaca ;gastos_diarios_urbanos;7889
+1150301;0.19;Margarinas ;gastos_diarios_urbanos;3061
+1159901;0.19;Manteca vegetal;gastos_diarios_urbanos;813
+1159902;0.19;Manteca de cerdo;gastos_diarios_urbanos;51
+1159999;0.19;Otras grasas y aceites (aceite de pescado y otros animales marinos, mantequilla de man�);gastos_diarios_urbanos;201
+1160199;0;Otras frutas frescas ;gastos_diarios_urbanos;4134
+1160201;0;Frutas congeladas o en pulpa;gastos_diarios_urbanos;4897
+1160401;0.19;Frutas en conserva: melocot�n, pi�a, brevas, lychees, etc. para consumo en el hogar;gastos_diarios_urbanos;304
+1170199;0;Otras verduras y leguminosas frescas: berros, chachafruto, algas comestibles, etc;gastos_diarios_urbanos;1086
+1170601;0;Yuca para consumo en el hogar;gastos_diarios_urbanos;41768
+1170701;0;Arracacha;gastos_diarios_urbanos;3669
+1170801;0;�ame;gastos_diarios_urbanos;7577
+1170901;0;Ullucos, cubios, hibias, chuguas, rubas;gastos_diarios_urbanos;979
+1179901;0;Otras ra�ces y tub�rculos: mafafa, achira, batata, etc;gastos_diarios_urbanos;826
+1180201;0;Panela cruda para consumo en el hogar;gastos_diarios_urbanos;38142
+1180401;0.19;Pasta de chocolate para ponqu�, cobertura de chocolate y crema de avellana y cacao (Nutella);gastos_diarios_urbanos;609
+1180501;0.19;Dulces, confites, caramelos, bombones, chocolatinas, chicles, masmelos, cocadas para consumo en el hogar;gastos_diarios_personales_urbano;22294
+1180601;0.19;Helados, conos, paletas, vasitos, refrescos congelados y tortas heladas para consumo en el hogar;gastos_diarios_personales_urbano;9621
+1180701;0.19;Gelatinas, flanes y pudines en polvo para preparar;gastos_diarios_urbanos;1761
+1180801;0.19;Polvo para preparar helados;gastos_diarios_urbanos;70
+1190199;0.19;Otras salsas: salsa de soya, salsa china, salsa t�rtara, salsa de aj�, aj� picante, etc;gastos_diarios_urbanos;5219
+1190201;0;Sal  ;gastos_diarios_urbanos;12871
+1190401;0;Hierbas culinarias: perejil, cilantro, romero, or�gano, etc.;gastos_diarios_urbanos;29205
+1190601;0.19;Frituras: papas fritas, chitos, maizitos, patacones, besitos, etc;gastos_diarios_urbanos;33101
+1190701;0.19;Levaduras y esencias (polvo para hornear);gastos_diarios_urbanos;177
+1190901;0;Mercados sin especificar productos;gastos_diarios_urbanos;4707
+1191001;0;Anchetas;gastos_menos_frecuentes__articulos;6003
+1191101;0;Leche en polvo para lactantes;gastos_diarios_urbanos;1225
+1199901;0.19;Otros alimentos precocidos y preparados: ajiaco, lenteja, frijol, lechona enlatada y similares;gastos_diarios_urbanos;1877
+1210199;0.05;Otras bebidas preparadas a base de caf�: capuchino, mocachino, caf� con leche, caf� en lata para consumo en el hogar;gastos_diarios_personales_urbano;377
+1220101;0;Agua mineral (con y sin gas) para consumo en el hogar;gastos_diarios_personales_urbano;25829
+1220201;0;Agua en lata o de carrotanque;gastos_diarios_urbanos;298
+1220301;0;Hielo ;gastos_diarios_urbanos;2866
+1220401;0.19;Gaseosas para consumo en el hogar;gastos_diarios_personales_urbano;47595
+1220501;0.19;Maltas para consumo en el hogar;gastos_diarios_personales_urbano;3944
+1220601;0.19;Refrescos l�quidos empacados (jugos, t� fr�os y bebidas hidratantes) para consumo en el hogar;gastos_diarios_personales_urbano;19529
+1220701;0.19;Concentrados para preparar refrescos;gastos_diarios_urbanos;24930
+1220801;0.19;Bebidas energizantes (a base de glucosa, guaran�, cafe�na, entre otros) para consumo en el hogar;gastos_diarios_personales_urbano;1647
+1220901;0.19;Bebidas a base de arroz, soya, coco, quinua, almendra, etc (horchata, yogurt vegetariano) para consumo en el hogar;gastos_diarios_personales_urbano;49
+2110101;0.05;Aguardiente para consumo en el hogar;gastos_menos_frecuentes__articulos;4517
+2110201;0.05;Ron para consumo en el hogar;gastos_menos_frecuentes__articulos;2426
+2110301;0.05;Whisky, brandy, vodka, ginebra, cognac, tequila y similares para consumo en el hogar;gastos_menos_frecuentes__articulos;2299
+2110401;0.05;Cremas de licor (de amareto, de whisky, etc.), sabaj�n y ponche crema para consumo en el hogar;gastos_menos_frecuentes__articulos;509
+2119901;0.05;Otras bebidas alcoh�licas: aperitivos que no sean a base de vino, mezclas de cocteles para consumo en el hogar;gastos_menos_frecuentes__articulos;1792
+2120101;0.05;"Vino, champa�a, jerez y aperitivos a base de vino para consumo en el hogar
+";gastos_menos_frecuentes__articulos;1700
+2300101;;Estupefacientes: coca�na, �xtasis, hero�na, marihuana, bazuco, crack, etc.;gastos_diarios_personales_urbano;376
+3110101;0.19;Telas y materiales (fibras naturales o sinteticas) para la confecci�n de ropa de hombre, mujer, ni�o, ni�a y beb� ;gastos_menos_frecuentes__articulos;603
+3120199;0.19;Otros art�culos de vestir para hombre (depotivos y formales);gastos_menos_frecuentes__articulos;167
+3120299;0.19;Otros art�culos de vestir para mujer (deportivos y formales) ;gastos_menos_frecuentes__articulos;318
+3120399;0.19;Otros art�culos de vestir para ni�o (deportivos y formales);gastos_menos_frecuentes__articulos;205
+3120499;0.19;Otros art�culos de vestir para ni�a (deportivos y formales);gastos_menos_frecuentes__articulos;331
+3120599;0.19;Otros art�culos de vestir para beb�;gastos_menos_frecuentes__articulos;611
+3120601;0.19;Uniformes (diario, gala, deportes);gastos_menos_frecuentes__articulos;28380
+3139701;0.19;Corbatas y corbatines para hombre;gastos_menos_frecuentes__articulos;166
+3139702;0.19;Correas, tirantas y calzonarias para hombre;gastos_menos_frecuentes__articulos;614
+3139703;0.19;Pa�uelos y pa�oletas para hombre;gastos_menos_frecuentes__articulos;234
+3139704;0.19;Ruanas y ponchos para hombre;gastos_menos_frecuentes__articulos;38
+3139705;0.19;Bufandas, pashiminas y guantes para hombre;gastos_menos_frecuentes__articulos;42
+3139706;0.19;Sombreros, gorros, cachuchas, boinas, viseras para hombre;gastos_menos_frecuentes__articulos;267
+3139801;0.19;Pa�uelos y pa�oletas para mujer;gastos_menos_frecuentes__articulos;72
+3139802;0.19;Cinturones y tirantas para mujer;gastos_menos_frecuentes__articulos;233
+3139803;0.19;Ruanas, chales, pa�olones y ponchos para mujer;gastos_menos_frecuentes__articulos;94
+3139804;0.19;Bufandas, pashminas y guantes para mujer;gastos_menos_frecuentes__articulos;187
+3139805;0.19;Sombreros, gorros, cachuchas, boinas, viseras para mujer;gastos_menos_frecuentes__articulos;153
+3139901;0.19;"Guantes de jardiner�a o de trabajo en material diferente a caucho (nylon, lycra, hilo, mitrillo, etc.); careta, tapones de oidos, lentes de seguridad.";gastos_menos_frecuentes__articulos;48
+3139902;0.19;Cascos protectores para ciclista y motociclista;gastos_menos_frecuentes__articulos;579
+3139903;0.19;Hilos, cremalleras, botones, metro de costura, hombreras, encajes, broches, ganchos para ropa, hebillas, cordones y caucho para ropa  cintas, ribetes;gastos_menos_frecuentes__articulos;888
+3139904;0.19;Baberos, broches y ganchos para beb�;gastos_menos_frecuentes__articulos;545
+3139905;0.19;Madejas de lana y otros materiales para coser, tejer y bordar;gastos_menos_frecuentes__articulos;290
+3140201;0.19;Lavado y planchado de ropa fuera del hogar (en lavander�a, otro hogar u establecimiento);gastos_menos_frecuentes__articulos;1728
+3140301;0.19;Alquiler de prendas de vestir en general (hombre mujer, ni�os, ni�as y beb�s);gastos_menos_frecuentes__articulos;111
+3210501;0.19;Calzado para beb�: zapatos, botas y tenis  ;gastos_menos_frecuentes__articulos;1447
+3210601;0.19;Accesorios para calzado: Plantillas, hormas, adaptadores para calzado y calzadores;gastos_menos_frecuentes__articulos;110
+3220101;0.19;Lustrado y limpieza de zapatos ;gastos_diarios_personales_urbano;282
+3220201;0.19;Reparaci�n de calzado: remonta, tapas, costuras, etc;gastos_menos_frecuentes__articulos;1354
+3220301;0.19;Alquiler de calzado diferente al calzado para deporte y recreaci�n;gastos_menos_frecuentes__articulos;12
+4120101;0;"Arriendo por viviendas para uso del hogar diferentes a la que habita, (no incluye  los servicios de alojamiento ofrecidos por aldeas y centros de vacaciones)
+";gastos_menos_frecuentes__articulos;528
+4310199;0.19;Otros materiales para la conservaci�n y la reparaci�n de la vivienda: tejas, cielo raso, drywall, canaletas, tanque de agua, etc;gastos_menos_frecuentes__articulos;1230
+4320101;0.19;Mantenimiento y reparaci�n de aire acondicionado y calefacci�n;gastos_menos_frecuentes__articulos;441
+4320201;0.19;Mantenimiento y reparaci�n de ca�er�as de agua y ductos e instalaciones de gas;gastos_menos_frecuentes__articulos;823
+4320401;0.19;Mantenimiento y reparaci�n de redes el�ctricas y telef�nicas;gastos_menos_frecuentes__articulos;286
+4320501;0.19;Mantenimiento y reparaci�n de techos, paredes y pisos;gastos_menos_frecuentes__articulos;1650
+4320601;0.19;Limpieza de exteriores  de la vivienda;gastos_menos_frecuentes__articulos;191
+4320701;0.19;Adoquinado y revestimiento menores de suelos de la vivienda;gastos_menos_frecuentes__articulos;166
+4329901;0.19;Otros servicios para el mantenimiento y reparaci�n de la vivienda: cerrajer�a, pintura, enchape, carpinter�a, ebanister�a, decoraci�n, etc.;gastos_menos_frecuentes__articulos;735
+4440104;0.19;Mantenimiento y reparaci�n de ductos de ascensor;gastos_menos_frecuentes__articulos;8
+4440201;0.05;Gastos de conservaci�n en jardiner�a;gastos_menos_frecuentes__articulos;475
+4520101;0;Compra de gas propano en pipeta o cilindro;gastos_menos_frecuentes__articulos;11943
+4530101;0.19;Combustibles l�quidos para cocinar: gasolina, kerosene, petr�leo, alcohol, etc.  ;gastos_menos_frecuentes__articulos;306
+4540101;0.19;Combustibles s�lidos para cocinar: le�a, carb�n vegetal, carb�n mineral, etc.;gastos_menos_frecuentes__articulos;711
+5110198;0.19;"Otros muebles para el hogar como: biff�, tocadores, vitrinas, archivadores, biombos, parasol, tabique plegable etc.
+";gastos_menos_frecuentes__articulos;122
+5110199;0.19;Otros accesorios para el hogar: accesorios para ba�o, cocina, etc.;gastos_menos_frecuentes__articulos;85
+5110399;0.19;Otros objetos art�sticos;gastos_menos_frecuentes__articulos;8
+5119901;0.19;Espejos, porta retratos y percheros;gastos_menos_frecuentes__articulos;450
+5119902;0.19;Persianas de materiales diferentes a tela, blackout;gastos_menos_frecuentes__articulos;35
+5120101;0.19;Alfombras y tapetes fijos y sueltos;gastos_menos_frecuentes__articulos;255
+5130101;0.19;Reparaci�n de muebles, accesorios y materiales para pisos;gastos_menos_frecuentes__articulos;136
+5130201;0.19;"Restauraci�n de obras de arte y de muebles antiguos del hogar
+";gastos_menos_frecuentes__articulos;24
+5200101;0.19;Telas para confeccionar ropa de cama, manteles, cortinas y forros para muebles;gastos_menos_frecuentes__articulos;770
+5200301;0.19;Ropa de mesa: manteles, caminos de mesa, individuales y servilletas de tela para comedor;gastos_menos_frecuentes__articulos;435
+5200601;0.19;Gastos por confecci�n y reparaci�n de productos textiles para el hogar;gastos_menos_frecuentes__articulos;35
+5209901;0.19;Cortinas confeccionadas y cenefas para cortinas ;gastos_menos_frecuentes__articulos;1602
+5209902;0.19;Lanas y telas para tejidos y decoraci�n del hogar;gastos_menos_frecuentes__articulos;49
+5209903;0.19;Talegos, sacos o lonas para ropa en tela;gastos_menos_frecuentes__articulos;10
+5209904;0.19;Banderas y escudos en general;gastos_menos_frecuentes__articulos;36
+5209905;0.19;Piedecamas, esteras y esterillas;gastos_menos_frecuentes__articulos;49
+5209906;0.19;Forros para muebles y electrodom�sticos ;gastos_menos_frecuentes__articulos;112
+5310101;0.05;Neveras, refrigeradores y congeladores;gastos_menos_frecuentes__articulos;2210
+5310701;0.19;Aspiradora, brilladora, lavatapetes e hidrolavadora;gastos_menos_frecuentes__articulos;26
+5310801;0.19;M�quinas de coser, tejer, fileteadoras y telares;gastos_menos_frecuentes__articulos;28
+5319901;0.19;Otros aparatos grandes del hogar: trituradoras de desperdicios, cajas fuertes, tinas, hidromasajes y piscinas spa.;gastos_menos_frecuentes__articulos;3
+5320117;0.19;Esterilizadores o calentadores  de teteros;gastos_menos_frecuentes__articulos;80
+5320199;0.19;Otros aparatos el�ctricos para el hogar: crispetera, m�quina para helados, hornos tostadores;gastos_menos_frecuentes__articulos;61
+5400199;0.19;Otros art�culos de vidrio, cristal, porcelana, cer�mica;gastos_menos_frecuentes__articulos;229
+5400399;0.19;Otros utensilios de cocina y menaje no el�ctricos del hogar (centrifugador de verduras, escurridor de loza, recipientes y loncheras para guardar comida, set para reposteria, etc.);gastos_menos_frecuentes__articulos;197
+5400501;0.19;Reparaci�n de cristaler�a, vajilla y utensilios del hogar;gastos_menos_frecuentes__articulos;81
+5409901;0.19;Mesa de planchar;gastos_menos_frecuentes__articulos;114
+5409903;0.19;Ceniceros, floreros;gastos_menos_frecuentes__articulos;57
+5409904;0.19;Platones, baldes, embudos y poncheras;gastos_menos_frecuentes__articulos;536
+5409905;0.19;Canecas y papeleras para la basura;gastos_menos_frecuentes__articulos;433
+5409906;0.19;Cestas y recipientes para la ropa de materiales diferentes a tela;gastos_menos_frecuentes__articulos;179
+5409907;0.19;Vasenilla, micas o patos m�dicos;gastos_menos_frecuentes__articulos;115
+5510199;0.19;Otras herramientas y equipos el�ctricos grandes para uso del hogar ;gastos_menos_frecuentes__articulos;9
+5510201;0.19;"Reparaci�n de herramientas y equipos grandes para uso del hogar  ( Herramientas y equipo motorizados, como taladros, sierras, pulidoras y cortadoras el�ctricos, tractores para jard�n, cortadoras de c�sped, cultivadores, sierras de cadena y bombas de agua.)
+";gastos_menos_frecuentes__articulos;28
+5520199;0.19;Otras herramientas del hogar: escaleras, bombas de agua no el�ctricas, etc.;gastos_menos_frecuentes__articulos;38
+5520201;0.19;Herramientas de jard�n: Carretillas, mangueras, lanzachorro, palas, azadones, pica,  estacas;gastos_menos_frecuentes__articulos;31
+5520399;0.19;Otros accesorios el�ctricos peque�os (timers);gastos_menos_frecuentes__articulos;46
+5520401;0.19;Accesorios para puertas, ventanas y sillas: Bisagras, manijas, cerraduras, candados, conteras, topes, burletes, etc.;gastos_menos_frecuentes__articulos;108
+5520601;0.19;Reparaci�n de herramientas peque�as y accesorios diversos del hogar y del jard�n;gastos_menos_frecuentes__articulos;29
+5529901;0.19;Otros art�culos de metal, madera, pl�stico para el hogar: rieles, varillas, tubos para cortina, ganchos para cortina, guardaescobas, perfiles y esquineros etc.;gastos_menos_frecuentes__articulos;12
+5610199;0.19;Otros productos de limpieza y mantenimiento: almidones para camisas, alcanfor, naftalina, disolventes, destapaca�er�as.;gastos_menos_frecuentes__articulos;355
+5610299;0.19;Otros elementos de aseo (antihumedad, antiacaros, antiolores);gastos_menos_frecuentes__articulos;513
+5610401;0.19;Otros elementos de aseo (antihumedad, antiacaros, antiolores);gastos_menos_frecuentes__articulos;2557
+5610599;0.19;Otros productos desechables:  pitillos, palos de pincho, etc;gastos_menos_frecuentes__articulos;606
+5619901;0.19;Otros productos desechables:  pitillos, palos de pincho, etc;gastos_menos_frecuentes__articulos;329
+5619902;0.19;Otros productos desechables:  pitillos, palos de pincho, etc;gastos_menos_frecuentes__articulos;941
+5619903;0.19;Otros productos desechables:  pitillos, palos de pincho, etc;gastos_menos_frecuentes__articulos;313
+5619905;0.19;Otros productos desechables:  pitillos, palos de pincho, etc;gastos_menos_frecuentes__articulos;26787
+5619906;0.19;Otros productos desechables:  pitillos, palos de pincho, etc;gastos_menos_frecuentes__articulos;6330
+5619907;0.19;Otros productos desechables:  pitillos, palos de pincho, etc;gastos_menos_frecuentes__articulos;33
+5619908;0.19;Otros productos desechables:  pitillos, palos de pincho, etc;gastos_menos_frecuentes__articulos;45
+5620199;;"Otros empleados dom�sticos: amas de llaves, institutrices, tutores, mayordomos, choferes, jardineros, celadores, ni�eras dentro del hogar
+";gastos_menos_frecuentes__articulos;143
+6110201;0;Productos dermatol�gicos con formula m�dica (incluso los protectores solares medicados);gastos_menos_frecuentes__articulos;959
+6119901;0;Gotas para tratamiento de afecciones de oidos, ojos, nar�z y suero fisiol�gico;gastos_menos_frecuentes__articulos;1380
+6119902;0;Anticonceptivos orales (p�ldoras), �vulos, inyecciones, cremas anticonceptivas, parches;gastos_menos_frecuentes__articulos;1111
+6119903;0;"Medicamentos homeop�ticos, medicamentos de origen natural y bioenerg�ticos;esencias naturales o florales medicinales. ";gastos_menos_frecuentes__articulos;956
+6120199;0;Otros implementos m�dicos: bolsas de agua caliente, bolsas de hielo, paquetes de gel, etc.;gastos_menos_frecuentes__articulos;46
+6210101;0;Consulta m�dica general con m�dico particular  ;gastos_menos_frecuentes__articulos;3876
+6210201;0;Consulta m�dica con m�dico especialista particular: pediatr�a, oftalmolog�a, ginecolog�a, siquiatr�a, traumatolog�a, cardiolog�a y otros especialistas ;gastos_menos_frecuentes__articulos;2850
+6210301;0;Servicios de especialistas en ortodoncia (incluye compra de brackets y retenedores);gastos_menos_frecuentes__articulos;1290
+6210401;0;Consulta particular con m�dicos home�patas, bioenerg�ticos y otros no tradicionales;gastos_menos_frecuentes__articulos;292
+6220101;0;Servicios odontol�gicos con odont�logos particulares: consultas, profilaxis, exodoncias (extracci�n), amalgamas, sellantes, fluorizaci�n. ;gastos_menos_frecuentes__articulos;1220
+6230101;0;Servicios para particulares en centros de rayos X: radiograf�as (incluyendo las dentales), urograf�as, mamograf�as, electrocardiogramas y otras im�genes diagn�sticas    ;gastos_menos_frecuentes__articulos;790
+6230201;0;Ex�menes de laboratorio para particulares: de sangre, bacteriol�gicos, etc.   ;gastos_menos_frecuentes__articulos;1195
+6230401;0;"Alquiler de equipo terap�utico: muletas y bastones ortop�dicos, zapatos y plantillas ortop�dicas, soportes de cuello, ferula, bragueros, fajas quir�rgicas; soportes para rodilla, pie, brazo; caminadoras, etc";gastos_menos_frecuentes__articulos;123
+6240101;0.05;Cuotas moderadoras EPS (medicina, odontolog�a, especialistas, medicamentos, ex�menes, etc);gastos_menos_frecuentes__articulos;4138
+6240201;0.05;Bonos de medicina prepagada o pagos en efectivo por consultas, odontolog�a, medicamentos, ex�menes, etc;gastos_menos_frecuentes__articulos;355
+6300101;0;"Servicios b�sicos hospitalarios atenci�n a pacientes internos bajo la supervisi�n directa de m�dicos calificados; los centros m�dicos, centros de maternidad, hospicios para ancianos y hogares para convalecientes tambi�n prestan atenci�n a pacientes internos.";gastos_menos_frecuentes__articulos;319
+6300201;0;Servicios m�dicos hospitalarios para particulares: atenci�n de m�dicos (generales y especialistas), odont�logos, param�dicos, ex�menes, radiograf�as y terapias ;gastos_menos_frecuentes__articulos;318
+6300301;0;Servicios m�dicos menores (peque�a cirug�a, cirug�a ambulatoria, urgencias, etc.);gastos_menos_frecuentes__articulos;499
+7130101;;Compra de bicicletas nuevas o usadas (excepto para ni�os);gastos_menos_frecuentes__articulos;1293
+7140101;;Animales y veh�culos de tracci�n animal para transporte de personas del hogar ;gastos_menos_frecuentes__articulos;43
+7210101;0;Llantas y neum�ticos, rines para veh�culo    ;gastos_menos_frecuentes__articulos;2588
+7210301;0.19;Productos para la limpieza y conservaci�n del  veh�culo: pintura, limpiadores, selladores, shampoo, ceras, ambientadores, eliminador de olores, pa�itos h�medos para veh�culos, etc.;gastos_menos_frecuentes__articulos;1397
+7210401;0.19;Productos y accesorios para carrocer�a: pijamas, tapetes, barras de seguridad, ceniceros, organizador para carro, cubre asiento, bombillos (papa farolas, stops, laterales), etc.;gastos_menos_frecuentes__articulos;180
+7210501;0.19;Herramientas para veh�culos de transporte personal (equipo de carretera, cruceta y gato, infladores, etc);gastos_menos_frecuentes__articulos;112
+7210601;;Piezas para bicicleta: llantas, neum�ticos, rines, manzanas, cadenas, cambios, pi�ones, guallas, sillines, candados y cable candado, luces, etc.;gastos_menos_frecuentes__articulos;227
+7219901;;Motores para veh�culo;gastos_menos_frecuentes__articulos;49
+7219902;;Buj�as, inyectores, filtros, amortiguadores, bater�as, carburadores, distribuidores de corriente, vidrios, condensadores, correas de ventilador, etc.;gastos_menos_frecuentes__articulos;2605
+7220101;0.19;Gasolina corriente y extra;gastos_diarios_personales_urbano;43912
+7220201;0.19;Gas vehicular;gastos_diarios_personales_urbano;654
+7220301;0.19;Combustible diesel;gastos_diarios_personales_urbano;212
+7220401;0.19;Aditivos, valvulinas, l�quido para frenos, refrigerantes, agua para bater�a, etc.    ;gastos_menos_frecuentes__articulos;1066
+7230101;0.19;Mantenimiento y reparaciones efectuadas en el taller: engrase, sincronizaci�n, revisiones t�cnicas, instalaciones de partes y accesorios, balanceo de ruedas, despinchada, lavado y polichado, servicios de gr�a, etc.         ;gastos_menos_frecuentes__articulos;8518
+7230201;0.19;Compra y cambio de aceite;gastos_menos_frecuentes__articulos;18184
+7230301;0.19;Servicios de latoner�a y pintura;gastos_menos_frecuentes__articulos;334
+7230401;0.19;Cuotas a clubes o compa�ias de servicios especiales para el veh�culo  como los centros de reparacion y mantenimiento de cosesionarios de marcas especificas ;gastos_menos_frecuentes__articulos;16
+7240201;0.19;Peajes   ;gastos_menos_frecuentes__articulos;1979
+7320199;0;Otros transportes urbanos: servicio pirata, bicitaxi, mototaxi, funicular, telesf�rico, etc;gastos_diarios_personales_urbano;54787
+7320299;0;Otro tipo de transporte intermunicipal;gastos_menos_frecuentes__articulos;220
+7330101;0.19;Transporte de pasajeros y equipaje en avi�n (incluye pagos por exceso de equipaje);gastos_menos_frecuentes__articulos;280
+7330201;0.19;Transporte de pasajeros y equipaje en helic�ptero   ;gastos_menos_frecuentes__articulos;5
+7340101;0;Transporte de pasajeros y equipajes por mar, rios, ca�os, lagos, etc. en buque, nav�o, aerodeslizador, veh�culo de colch�n de aire (incluye transporte de veh�culos privados por este medio);gastos_menos_frecuentes__articulos;149
+7340201;0;Transporte de pasajeros y equipajes por mar, r�os, ca�os, lagos, etc. en ferry, planch�n, canoa y lancha;gastos_diarios_personales_urbano;323
+7350101;0;Servicio en dos o m�s medios de transporte cuando el gasto no se puede discriminar ;gastos_menos_frecuentes__articulos;61
+7360101;0.19;Servicios de remoci�n de escombros;gastos_menos_frecuentes__articulos;177
+7360201;0.19;Servicios de almacenamiento y dep�sito de equipaje;gastos_menos_frecuentes__articulos;5
+7360301;0.19;Servicio de trasteos y mudanzas;gastos_menos_frecuentes__articulos;1149
+8300101;0.19;Servicios de telegraf�a, t�lex y telefax;gastos_menos_frecuentes__articulos;7
+8300205;0.19;Instalaci�n y reconexi�n de l�nea telef�nica residencial;gastos_menos_frecuentes__articulos;140
+8300206;0.19;Planes de telefon�a celular de voz y mensajer�a ;gastos_menos_frecuentes__articulos;18663
+8300303;0.19;Servicios de internet en centros de acceso p�blico con costo (caf� internet);gastos_diarios_personales_urbano;2703
+8300304;0.19;Pago por suscripci�n a p�ginas web, inclu�do el almacenamiento en la nube y publicaciones peri�dicas (inclu�das p�ginas de medios de comunicaci�n);gastos_menos_frecuentes__articulos;56
+8300305;0.19;Recargas para telefon�a celular (prepago para minutos o datos, diferente al plan postpago);gastos_diarios_personales_urbano;14953
+9110199;0.19;Otros equipos para la recepci�n, grabaci�n y reproducci�n de sonido;gastos_menos_frecuentes__articulos;25
+9120301;0.19;Instrumentos �pticos: microscopios, telescopios, lupas, bin�culos, br�julas, etc.;gastos_menos_frecuentes__articulos;1
+9130199;0.19;Otros aparatos de tratamiento de informaci�n: servidores, etc;gastos_menos_frecuentes__articulos;10
+9130205;0.19;"Paquetes de software de computadora, tales como sistemas operativos, aplicaciones, lenguajes de programaci�n, etc
+";gastos_menos_frecuentes__articulos;57
+9139901;0.19;Otros accesorios para computadores y tabletas: forros, pad mouse, etc.;gastos_menos_frecuentes__articulos;90
+9140201;0.19;CDs y DVDs sin grabar (v�rgenes) ;gastos_menos_frecuentes__articulos;58
+9140301;0.19;Material para uso fotogr�fico: rollos, cartuchos, discos v�rgenes para uso fotogr�fico y cinematogr�fico, papel de fotograf�a, qu�micos para revelado, l�mparas de destello, etc.;gastos_menos_frecuentes__articulos;11
+9140401;0.19;Memoria USB, disco duro externo, tarjetas de memoria SD, mini-SD, micro-SD y lectores de tarjetas;gastos_menos_frecuentes__articulos;193
+9150101;0.19;Reparaci�n de equipos y accesorios audiovisuales;gastos_menos_frecuentes__articulos;28
+9150201;0.19;Reparaci�n de equipos, accesorios fotogr�ficos y de procesamiento de informaci�n   ;gastos_menos_frecuentes__articulos;194
+9210101;0.19;"Equipo y accesorios para deportes: pesas, balones, mallas, bicicletas est�ticas, mesas de ping pong, raquetas, chanchas de tejo, equipo de buceo, flotadores, cascos, guantes rodilleras y otros
+";gastos_menos_frecuentes__articulos;318
+9210201;0.19;Mesas de billar, carros de golf, botes, alas deltas (cometas humanas), rodaderos, piscinas, etc.;gastos_menos_frecuentes__articulos;8
+9220101;0.19;Instrumentos musicales: arm�nicas,  flautas, maracas, tambores, bater�as, guitarras, �rganos, pianos, sintetizadores, trompetas, violines, etc;gastos_menos_frecuentes__articulos;221
+9220201;0.19;Accesorios y piezas de repuestos de instrumentos musicales;gastos_menos_frecuentes__articulos;31
+9230101;0.19;Mantenimiento y reparaci�n de instrumentos musicales y de equipos relacionados con deportes y ocio terrestre, a�reo, acu�tico y en interiores;gastos_menos_frecuentes__articulos;57
+9310101;0.19;Juegos de mesa: cartas, naipes, domin�, ajedrez, parqu�s, damas chinas, rumi-q, etc.;gastos_menos_frecuentes__articulos;253
+9310401;0.19;Art�culos de colecci�n: monedas, estampillas, �lbumes para estampillas, billetes, etc. ;gastos_menos_frecuentes__articulos;16
+9320101;0.19;Equipo y accesorios para camping: carpas, colchonetas aislantes o t�rmicas, sacos de dormir, colchones de aire e infladores, neveras portables, maletines t�rmicos, navaja, etc. ;gastos_menos_frecuentes__articulos;55
+9320201;0.19;Calzado para deportes: patines, guayos, zapatos para golf, zapatillas para atletismo, crampones y otros aditamientos de calzado para deportes.;gastos_menos_frecuentes__articulos;166
+9320301;0.19;Equipos para pesca y caza: ca�as y otros equipos para pescar, armas de fuego y municiones  ;gastos_menos_frecuentes__articulos;39
+9330101;0.19;Flores sueltas o por docena;gastos_diarios_personales_urbano;86
+9330201;0.19;Plantas naturales: ramos de flores, matas, arbustos ;gastos_menos_frecuentes__articulos;455
+9330301;0.19;Coronas, flores para funerales, hojas verdes;gastos_menos_frecuentes__articulos;823
+9330401;0.19;Plantas artificiales: flores (sueltas o en ramo) y matas ;gastos_menos_frecuentes__articulos;106
+9330501;0.19;"Semillas, bulbos de plantas, c�sped, fertilizantes, fungicidas, abonos, materas, macetas y tiestos para flores y plantas
+";gastos_menos_frecuentes__articulos;125
+9340101;0;Animales dom�sticos, mascotas y para pr�cticas deportivas: perros, gatos,  p�jaros, conejos, peces, etc.;gastos_menos_frecuentes__articulos;301
+9340201;0.05;Alimentos para animales dom�sticos y mascotas;gastos_menos_frecuentes__articulos;8809
+9340301;0.19;Productos  para animales dom�sticos y mascotas, productos de veterinaria, art�culos para el cuidado e higiene (shampoo, jab�n, desodorantes) y accesorios para mascotas (collares, perrera, jaula, acuarios y otros);gastos_menos_frecuentes__articulos;1897
+9350101;0.19;Servicios de veterinaria y de otro tipo para animales dom�sticos: cuidado, sal�n de belleza, alojamiento, entrenamiento, paseadores de perros y colegios para mascotas etc.   ;gastos_menos_frecuentes__articulos;1494
+9410301;0.19;Alquiler de equipo, accesorios y calzado para deporte y recreaci�n ;gastos_menos_frecuentes__articulos;15
+9420201;0;Entradas a espect�culos musicales: conciertos, �peras, ballets, zarzuela, etc.;gastos_menos_frecuentes__articulos;219
+9420701;0.19;Alquiler de TV, equipos de sonido y de video: televisores, reproductoras de video y de sonido, radios, etc.;gastos_menos_frecuentes__articulos;34
+9420801;0.19;Alquiler tradicional de pel�culas, videos musicales y videojuegos;gastos_menos_frecuentes__articulos;39
+9420901;0.19;Servicios fotogr�ficos y de video: procesamiento video, revelado de fotograf�as, ampliaciones, impresi�n de fotograf�as digitales, servicio de fot�grafos, etc.;gastos_menos_frecuentes__articulos;65
+9421101;0.19;Pago por descargas de pel�culas y videos de internet.;gastos_menos_frecuentes__articulos;103
+9421201;0.19;Pago por descargas de m�sica de internet;gastos_menos_frecuentes__articulos;41
+9429901;0.19;Otros servicios culturales: m�sicos, payasos,  recreacionistas y otros;gastos_menos_frecuentes__articulos;71
+9510201;0;"Libros de texto: textos gu�as para clase (incluye libros de literatura, poes�a, etc, requeridos en clase)
+";gastos_menos_frecuentes__articulos;5197
+9510301;0.19;Pago por descargas de libros de internet ;gastos_menos_frecuentes__articulos;45
+9520100;0;;;
+9520101;0;Compra diaria de peri�dicos ;gastos_diarios_personales_urbano;6749
+9520200;0;;;
+9520201;0;Suscripci�n a peri�dicos, revistas u otras publicaciones peri�dicas impresas.;gastos_menos_frecuentes__articulos;257
+9520301;0;;;
+9540101;0;;;
+9540102;0;;;
+9540103;0;;;
+9540199;0.19;Otros art�culos de papeleria: f�lderes, sobres (carta o manila), forros, r�tulos, carpetas, etc.;gastos_menos_frecuentes__articulos;764
+9540399;0.19;Otros art�culos para manualidades (repujadores, troqueladores, enrolladores, palos de balso, escarcha, foamy, etc);gastos_menos_frecuentes__articulos;272
+9549901;0.19;Reglas, escuadras, compaces, transportadores y otros instrumentos de geometr�a.   ;gastos_menos_frecuentes__articulos;675
+9549902;0.19;Estuches para l�pices, pizarras, tiza, yeso para actividades educativas, madera balso, etc;gastos_menos_frecuentes__articulos;376
+9600201;0.19;Pago de paquete por viajes de excursi�n, peregrinaje o convivencia de menos de un d�a (sin pernoctar);gastos_menos_frecuentes__articulos;117
+10100199;0.19;Otros gastos en preescolar no especificados anteriormente (aportes para rifas, eventos especiales y cobros para actividades espor�dicas del colegio);gastos_menos_frecuentes__articulos;174
+10100299;0.19;Otros gastos en b�sica primaria no especificados anteriormente (aportes para rifas, eventos especiales y cobros para actividades espor�dicas del colegio);gastos_menos_frecuentes__articulos;313
+10100399;0.19;Otros gastos en educaci�n de ni�os con necesidades educativas especiales (aportes para rifas, eventos especiales y cobros para actividades espor�dicas del colegio);gastos_menos_frecuentes__articulos;51
+10200199;0.19;Otros gastos en secundaria no especificados anteriormente (aportes para rifas, eventos especiales y cobros para actividades espor�dicas del colegio);gastos_menos_frecuentes__articulos;408
+10400201;0;Inscripciones y matr�culas en postgrados (especializaci�n, maestr�a, doctorado);gastos_menos_frecuentes__articulos;497
+10409901;0.19;Otros gastos en educaci�n superior (pregrados y postgrados);gastos_menos_frecuentes__articulos;599
+10500101;0;Cursos de educaci�n no formal en academias o instituciones de idiomas, inform�tica, moda y confecci�n, belleza, primeros auxilios, etc;gastos_menos_frecuentes__articulos;486
+10500102;0;Cursos de educaci�n no formal en academias o instituciones de deportes;gastos_menos_frecuentes__articulos;446
+10500103;0;Cursos de educaci�n no formal en academias o instituciones de formaci�n art�stica;gastos_menos_frecuentes__articulos;212
+10500401;0;Diplomados, educaci�n continuada, preicfes, preuniversitarios ;gastos_menos_frecuentes__articulos;155
+10500501;0;Educaci�n para adultos y validaciones;gastos_menos_frecuentes__articulos;106
+10500601;0;Pago a instituciones por asesor�a de tareas;gastos_menos_frecuentes__articulos;94
+10500701;0;Clases acad�micas dictadas por particulares;gastos_menos_frecuentes__articulos;258
+11110201;0;"Bebidas calientes : Tinto, caf� con leche, chocolate, t�, bebida achocolatada caliente, leche, agua de panela, agua arom�tica, avena caliente y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo, para llevar y por servicio a domicilio
+";gastos_diarios_urbano__comidas_preparadas_fuera;1
+11110501;0;Gastos en discotecas, bares, griles, tabernas y similares (comida, bebidas, cover)  ;gastos_menos_frecuentes__articulos;2466
+11110601;0;Gastos en bebidas alcoh�licas (cerveza, aguardiente, ron, etc) en tiendas, fondas rurales y al aire libre;gastos_diarios_urbano__comidas_preparadas_fuera;46
+11200101;0.19;Servicios de alojamiento en hoteles, pensiones, posadas y hostales ;gastos_menos_frecuentes__articulos;243
+11200201;0.19;Servicios de alojamiento en moteles y residencias  ;gastos_menos_frecuentes__articulos;190
+11200301;0.19;Servicios de alojamiento en centros de vacaciones, caba�as, apartamentos, servicios de alquiler en terrenos para camping y servicios de gu�as tur�sticos;gastos_menos_frecuentes__articulos;203
+11200401;0;"Servicios de alojamiento por motivo de ense�anza: internados de colegios; residencias estudiantiles; albergues para menores; albergues para j�venes trabajadores e inmigrantes";gastos_menos_frecuentes__articulos;53
+12110199;0.19;Otros tratamientos de belleza: bronceado en c�mara,  maquillaje permanente, tatuajes, perforaciones, expansiones,etc;gastos_menos_frecuentes__articulos;85
+12120199;0.19;Otros aparatos el�ctricos para el cuidado personal: cepillos de dientes, vaporizadores, art�culos el�ctricos para masaje, etc.;gastos_menos_frecuentes__articulos;205
+12130499;0.19;Otros productos de belleza (pelucas, peluquines, extensiones de cabello, etc.);gastos_menos_frecuentes__articulos;137
+12139901;0.19;Papel higi�nico;gastos_menos_frecuentes__articulos;74752
+12139902;0.19;Algod�n,  esponjas para el cuerpo y copitos;gastos_menos_frecuentes__articulos;9601
+12139903;0.19;Pa�uelos y pa�itos h�medos desechables de uso personal;gastos_menos_frecuentes__articulos;13485
+12139904;0.05;Toallas sanitarias, protectores, tampones, pa�itos y jabones intimos.;gastos_menos_frecuentes__articulos;46082
+12139905;0.19;Protectores para brassier, mamadores, succionadores y pezoneras;gastos_menos_frecuentes__articulos;482
+12139906;0.05;Pa�ales desechables;gastos_menos_frecuentes__articulos;8458
+12139907;0.19;Pa�ales y ropa interior para incontinencia;gastos_menos_frecuentes__articulos;546
+12139999;0.19;Otros productos para el aseo personal;gastos_menos_frecuentes__articulos;260
+12200101;;Servicios prestados por personas para entretenimiento privado de adultos (strippers y otros);gastos_menos_frecuentes__articulos;9
+12320299;0.19;Otros art�culos para beb� (ba�eras, correas para beb�, etc) ;gastos_menos_frecuentes__articulos;323
+12320301;0.19;Art�culos para fumador: Pipas, encendedores no desechables, pitilleras, cortapuros, cigarrillos electr�nicos y narguile;gastos_menos_frecuentes__articulos;28
+12320401;0.19;Art�culos personales varios como: gafas de sol, lentes de contacto, cosmeticos, bastones, paraguas y sombrillas, abanicos, llaveros, etc;gastos_menos_frecuentes__articulos;1013
+12320501;0.19;Art�culos de funeraria: ata�des, l�pidas y urnas;gastos_menos_frecuentes__articulos;423
+12400501;0;Pago en comedores comunitarios;gastos_menos_frecuentes__articulos;60
+12510101;0.19;Seguro de vida y de educaci�n (ahorro programado), seguro de prestaci�n en caso de fallecimiento.;gastos_menos_frecuentes__articulos;885
+12520101;0.19;Seguro relacionado con la vivienda (robo, incendio, terremoto, terrorismo, etc);gastos_menos_frecuentes__articulos;341
+12559901;0.19;Otros seguros: seguros de responsabilidad civil por lesiones o da�os a terceros o a su propiedad, seguro funerario y similares;gastos_menos_frecuentes__articulos;5574
+12620104;0.19;Pago del ultimo recibo por tarjetas de cr�dito, excluyendo cuota de manejo ;gastos_menos_frecuentes__articulos;1840
+12620105;0;Cuotas o pagos directos a almacenes y distribuidores por compras a cr�dito (excluye tarjetas de cr�dito expedidas por almacenes y distribuidores);gastos_menos_frecuentes__articulos;539
+12620106;0;Servicios financieros por medio de corresponsal;gastos_menos_frecuentes__articulos;539
+12620202;0;Pago de comisi�n por la administraci�n de los fondos de inversi�n colectiva, fondos mutuos de inversi�n, negocios fiduciarios de inversi�n y portafolios de terceros de las sociedades comisionistas de bolsa;gastos_menos_frecuentes__articulos;8
+12620301;0.19;Honorarios y cargos por servicio de agentes, asesores de inversi�n, consultores fiscales y financieros y servicios similares;gastos_menos_frecuentes__articulos;9
+12620302;0;Remesas de dinero a otros hogares para sostenimiento de personas a cargo del hogar en el exterior;gastos_menos_frecuentes__articulos;3062
+12700101;0.19;"Pagos de honorarios por: asesor�a jur�dicas, contrataci�n de personal para el hogar, guardaespaldas, detectives privados, agencias matrimoniales, agentes inmobiliarios, etc
+";gastos_menos_frecuentes__articulos;179
+12700202;0;C�dula de ciudadan�a, pasaporte, visas, tarjetas profesionales, certificados de nacimiento, defunci�n, matrimonio, extrajuicios, certificados de libertad y otros certificados notariales;gastos_menos_frecuentes__articulos;1674
+12700401;0;Servicios religiosos y civiles por entierros, matrimonios,  gastos en pompas f�nebres y en otros servicios de funerales, etc;gastos_menos_frecuentes__articulos;1059
+12700699;0;Otros impuestos (de timbre, etc);gastos_menos_frecuentes__articulos;52
+12700701;0;Mesadas a estudiantes y personas no perceptoras de ingresos para gastos diarios;gastos_diarios_personales_urbano;7
+12700901;0.19;Planes de protecci�n social a personas ajenas al hogar (Plan Canitas, Gotas de agua);gastos_menos_frecuentes__articulos;113
+12709901;0.19;Pago por noticias y anuncios en la prensa y en p�ginas web;gastos_menos_frecuentes__articulos;55
+12709902;0;Pago por servicio de ba�os p�blicos;gastos_diarios_personales_urbano;124
+12709903;0;Servicio de fotocopias, reducciones, ampliaciones, laminaciones, argollados, impresi�n de hojas y documentos, servicio de scanner, servicio de quemado de CD o DVD y trabajos en computador;gastos_menos_frecuentes__articulos;5334
+12709904;0.19;Servicio de coteros o cargadores;gastos_diarios_urbanos;26
+000inv02;;#N/A;gastos_menos_frecuentes__articulos;139
+000inv03;;#N/A;gastos_menos_frecuentes__articulos;49
+000inv04;;#N/A;gastos_menos_frecuentes__articulos;57
+000inv05;;#N/A;gastos_menos_frecuentes__articulos;38
+000inv06;;#N/A;gastos_menos_frecuentes__articulos;117
+000inv07;;#N/A;gastos_menos_frecuentes__articulos;5
+000inv09;;#N/A;gastos_menos_frecuentes__articulos;120

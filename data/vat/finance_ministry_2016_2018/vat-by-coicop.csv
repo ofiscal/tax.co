@@ -1,0 +1,1123 @@
+description,coicop,vat,"vat, min","vat, max"
+Arroz para seco,01110101,0,0,0
+Arroz para sopa,01110102,0,0,0
+Arroz integral,01110103,0,0,0
+"Pastas o fideos para sopa: letras, conchitas, etc.",01110201,5,5,5
+"Pastas para seco: espaguetis, raviolis, macarrones, tallarines, etc.",01110202,5,5,5
+Avena molida,01110301,5,5,5
+Avena en hojuelas,01110302,5,5,5
+Cebada perlada,01110401,19,19,19
+Cuchuco de cebada para preparar,01110402,19,19,19
+Cuchuco de trigo para preparar,01110501,19,19,19
+Harina de trigo (incluye tempura),01110502,5,5,5
+Salvado de trigo,01110503,19,19,19
+"Maíz blanco, amarillo, trillado, peto, porva, pira, millo para preparar",01110601,0,0,0
+Cuchuco de maíz para preparar,01110602,19,19,19
+Harina de maíz,01110603,5,5,5
+Harina precocida de maíz,01110604,5,5,5
+Fécula de maíz para preparar,01110605,19,19,19
+"Pan corriente, con queso,  aliñado, mogolla, relleno, pan de coco, calado, tajado, árabe., para consumo en el hogar
+",01110801,0,0,0
+Pan francés para consumo en el hogar,01110802,0,0,0
+Pan integral para consumo en el hogar,01110803,0,0,0
+"Harina para preparar tortas, natilla, buñuelos, etc.",01119801,5,5,5
+Harina para coladas ,01119802,5,5,5
+Almidones de papa o yuca,01119803,19,19,19
+Cereales para el desayuno,01119804,19,19,19
+Cereales para la alimentación infantil (papilla),01119805,19,19,19
+"Ajonjolí, soya, quinua, sorgo (para preparar)",01119806,5,5,5
+"Masas para la preparación de productos de panadería o pastelería  (trigo, maíz, soya)",01119807,5,5,5
+Arepas crudas o precocidas  ,01119808,0,0,0
+"Bollos y envueltos precocidos, quiches, tamales",01119809,19,19,19
+"Gérmen de trigo, lecitina, levadura, linaza ",01119810,19,19,19
+"Comidas preparadas precocidas a base de cereales (lasagna, pizza, empanadas) ",01119811,19,19,19
+"Carne vegetal, embutidos y otros alimentos vegetarianos (a base de soya, glúten, lenteja, quinua, etc.) sin cocinar",01119812,19,19,19
+Galletas de sal para consumo en el hogar,01119901,19,19,19
+"Galletas de dulce (de panadería y de paquete) para consumo en el hogar
+",01119902,19,19,19
+Galletas integrales (de panadería y de paquete) para consumo en el hogar,01119903,19,19,19
+"Otros productos de panadería no mencionados previamente: brownies, obleas, ponques, bizcochos (pudines en Costa Atlántica) para consumo en el hogar",01119999,19,19,19
+Carne de res sin hueso o pulpa,01120101,0,0,0
+Carne de res con hueso,01120102,0,0,0
+Hueso de res,01120103,0,0,0
+Carne molida de res,01120104,0,0,0
+Lengua de res,01120105,0,0,0
+"Hígado, riñones, corazón, sesos, mondongo,  tripa y otras vísceras de res",01120106,0,0,0
+"Patas, manos, cola  y cabeza de res",01120107,0,0,0
+Carne de cerdo sin hueso o pulpa,01120201,0,0,0
+Carne de cerdo con hueso,01120202,0,0,0
+Carne molida de cerdo,01120203,0,0,0
+Hueso de cerdo (espinazo y otros huesos),01120204,0,0,0
+Tocino y garra,01120205,0,0,0
+"Hígado, riñones, corazón, tripa y otras vísceras de cerdo",01120206,0,0,0
+"Patas, manos, cola  y cabeza de cerdo",01120207,0,0,0
+Gallina o pollo vivo,01120301,0,0,0
+Carne de gallina o de pollo (entero o en presas),01120302,0,0,0
+"Carne de Pavo, Pichón, Zuro, Palomo, Pato  Ganso, codorniz",01120303,0,0,0
+Menudencias de gallina o pollo,01120304,0,0,0
+"Conejo, liebre, Curí o cuy para consumo en el hogar",01120401,0,0,0
+"Cordero, chivo, cabro para consumo en el hogar",01120402,0,0,0
+Chigüiro para consumo en el hogar,01120403,0,0,0
+Caballo para consumo en el hogar,01120404,0,0,0
+"Carne preparada de pavo, pollo,cerdo, lomo ahumado para consumo en el hogar
+",01120501,19,19,19
+Mortadela,01120502,5,5,5
+Salchichas para consumo en el hogar,01120503,19,19,19
+Jamón y jamoneta para consumo en el hogar,01120504,19,19,19
+Chorizo para consumo en el hogar,01120505,19,19,19
+Tocineta,01120506,19,19,19
+Hamburguesa para consumo en el hogar,01120507,19,19,19
+Carnes frías enlatadas,01120509,19,19,19
+"Otros embutidos de proteina animal (longaniza, butifarra, génovas, salchichón, salami, cábanos, patés, etc) para consumo en el hogar
+",01120599,5,5,5
+"Otros alimentos no especificados: Hormigas culonas, etc. ",01129901,0,0,0
+Pescado de río fresco o congelado,01130101,0,0,0
+Pescado de mar fresco o congelado,01130201,0,0,0
+Camarones frescos o congelados,01130202,0,0,0
+"Pescado y crustáceos enlatados (sardinas, atún, salmón, mejillones, etc.)",01130203,0,0,0
+"Otros mariscos, crustáceos y moluscos frescos o congelados",01130298,19,19,19
+Otros productos de pescado y derivados para consumo en el hogar,01130299,0,0,0
+Leche cruda para consumo en el hogar,01140101,0,0,0
+"Leche pasteurizada (entera, descremada, semidescremada, deslactosada y enriquecida) para consumo en el hogar",01140102,0,0,0
+"Leche larga vida (entera, descremada, semidescremada, deslactosada y enriquecida) para consumo en el hogar
+",01140103,0,0,0
+"Leche en polvo (entera, descremada, semidescremada) para consumo en el hogar
+",01140105,0,0,0
+Queso campesino para consumo en el hogar,01140201,0,0,0
+Queso doble crema para consumo en el hogar,01140202,0,0,0
+"Cuajada, quesillo para consumo en el hogar",01140204,0,0,0
+"Otros quesos: pera, mozarella, paipa, parmesano, etc. para consumo en el hogar",01140299,0,0,0
+Huevos crudos de gallina y otras aves para consumo en el hogar,01140501,0,0,0
+Huevos crudos de iguana y de tortuga para consumo en el hogar,01140502,0,0,0
+"Leche condensada, leche condensada y evaporada y crema chantilly para consumo en el hogar",01149901,0,0,0
+Crema de leche,01149902,19,19,19
+Yogurt para consumo en el hogar,01149903,19,19,19
+Kumis para consumo en el hogar,01149904,19,19,19
+"Suero costeño, queso crema, crema agria",01149905,19,19,19
+Natas para consumo en el hogar,01149906,0,0,0
+Postres lácteos para consumo en el hogar,01149907,19,19,19
+"Bebidas lácteas saborizadas no achocolatadas (avena) para consumo en el hogar
+",01149908,19,19,19
+"Aceite de girasol, maíz, soya y palma",01150101,19,19,19
+Aceite de oliva ,01150102,19,19,19
+"Otros aceites comestibles: canola, cacahuete, coco, almendras, dietéticos, etc.",01150199,19,19,19
+Mantequilla de vaca ,01150201,19,19,19
+Margarinas ,01150301,19,19,19
+Manteca vegetal,01159901,19,19,19
+Manteca de cerdo,01159902,19,19,19
+"Otras grasas y aceites (aceite de pescado y otros animales marinos, mantequilla de maní)",01159999,19,19,19
+Naranjas,01160101,0,0,0
+Limones,01160102,0,0,0
+Mandarinas,01160103,0,0,0
+Toronjas,01160104,0,0,0
+Limas,01160105,0,0,0
+Cidras,01160106,0,0,0
+Bananos,01160107,0,0,0
+Manzanas,01160108,0,0,0
+Peras,01160109,0,0,0
+Melones,01160110,0,0,0
+Mango,01160111,0,0,0
+Guayabas,01160112,0,0,0
+Guanábanas,01160113,0,0,0
+Zapotes,01160114,0,0,0
+Tamarindo,01160115,0,0,0
+Tomate de árbol,01160116,0,0,0
+Moras,01160117,0,0,0
+Curubas,01160118,0,0,0
+Maracuyá,01160119,0,0,0
+Lulos,01160120,0,0,0
+Patilla o sandía,01160121,0,0,0
+Granadillas,01160122,0,0,0
+Piña,01160123,0,0,0
+Papaya,01160124,0,0,0
+Papayuela,01160125,0,0,0
+Uvas (verdes y rojas),01160126,0,0,0
+Fresas,01160127,0,0,0
+Cocos,01160128,0,0,0
+Albaricoques,01160129,0,0,0
+Brevas,01160130,0,0,0
+Duraznos,01160131,0,0,0
+Chontaduros,01160132,0,0,0
+Ciruelas,01160133,0,0,0
+Aguacate,01160134,0,0,0
+Mangostino,01160135,0,0,0
+Kiwi,01160136,0,0,0
+Feijoa,01160137,0,0,0
+Higo,01160138,0,0,0
+Chirimoya,01160139,0,0,0
+Otras frutas frescas ,01160199,0,0,0
+Frutas congeladas o en pulpa,01160201,19,19,19
+"Almendras y otras nueces (maní, cacahuete, pistacho, etc) para consumo en el hogar",01160301,19,19,19
+"Frutas deshidratadas y cristalizadas: peras, uvas y ciruelas pasas, etc para consumo en el hogar",01160302,0,0,0
+"Frutas en conserva: melocotón, piña, brevas, lychees, etc. para consumo en el hogar",01160401,19,19,19
+Tomate,01170101,0,0,0
+Cebolla cabezona,01170102,0,0,0
+"Cebolla larga o en rama (bermuda, junca)",01170103,0,0,0
+Cebollin  ,01170104,0,0,0
+Zanahoria,01170105,0,0,0
+Remolacha,01170106,0,0,0
+Pepino Cohombro,01170107,0,0,0
+Pimentón,01170108,0,0,0
+Pepino para guisar o rellenar,01170109,0,0,0
+Nabos,01170110,0,0,0
+Rábanos,01170111,0,0,0
+Ajos,01170112,0,0,0
+Ají,01170113,0,0,0
+Lechuga,01170114,0,0,0
+Espinaca,01170115,0,0,0
+Acelga,01170116,0,0,0
+"Repollo, Repollitas",01170117,0,0,0
+Coliflor,01170119,0,0,0
+Brócoli  ,01170120,0,0,0
+Coles (tallos),01170121,0,0,0
+Apio en rama,01170122,0,0,0
+Alcachofas ,01170123,0,0,0
+Espárragos ,01170124,0,0,0
+Ahuyama,01170125,0,0,0
+Calabaza,01170126,0,0,0
+Calabacín,01170127,0,0,0
+Fríjol verde en vaina ,01170128,0,0,0
+Fríjol verde desgranado,01170129,0,0,0
+Arveja verde en vaina,01170130,0,0,0
+Arveja verde desgranada,01170131,0,0,0
+Habas verdes en vaina ,01170132,0,0,0
+Habas verdes desgranadas,01170133,0,0,0
+Habichuelas,01170134,0,0,0
+Mazorcas y maíz dulce para consumo en el hogar,01170135,0,0,0
+Berenjenas,01170136,0,0,0
+Champiñones y otros hongos comestibles para consumo en el hogar,01170137,0,0,0
+Verduras frescas amarradas (macitos de la costa atlántica),01170139,0,0,0
+"Ensalada o Verduras picadas en bandeja, en bolsa o tarro (revuelto verde) para consumo en el hogar",01170140,0,0,0
+"Otras verduras y leguminosas frescas: berros, chachafruto, algas comestibles, etc",01170199,0,0,0
+"Fríjol seco: bolaroja, cargamanto, guarzo, guandul, zaragoza, blanquillo, etc.",01170201,0,0,0
+Arveja seca,01170202,0,0,0
+Habas secas para consumo en el hogar,01170203,0,0,0
+Lentejas,01170204,0,0,0
+Garbanzos,01170205,0,0,0
+"Verduras, hortalizas y legumbres enlatadas: arveja, fríjoles, maíz, espárrago, zanahoria, habichuelas, ensalada",01170301,19,19,19
+"Aceitunas, alcaparras, pepinillos y otros encurtidos en tarro",01170302,19,19,19
+Legumbres y hortalizas deshidratadas,01170303,19,19,19
+Plátano verde para consumo en el hogar,01170401,0,0,0
+Plátano maduro  para consumo en el hogar,01170402,0,0,0
+"Colicero, guineo, mataburro",01170403,0,0,0
+"Papa común: pastusa, tocarreña, R12",01170501,0,0,0
+Papa criolla o amarilla,01170502,0,0,0
+Yuca para consumo en el hogar,01170601,0,0,0
+Arracacha,01170701,0,0,0
+Ñame,01170801,0,0,0
+"Ullucos, cubios, hibias, chuguas, rubas",01170901,0,0,0
+"Papa, yuca y plátano precocidos ",01171101,0,0,0
+"Harina de plátano, de yuca, de achiras, puré de papas",01171102,5,5,5
+"Otras raíces y tubérculos: mafafa, achira, batata, etc",01179901,0,0,0
+Azúcar refinada,01180101,5,5,5
+Azúcar natural o morena,01180102,5,5,5
+"Endulzantes dietéticos: aspartame, fructosa, sucralosa, otras",01180103,5,5,5
+Panela cruda para consumo en el hogar,01180201,0,0,0
+Jaleas y mermeladas,01180301,19,19,19
+Compotas para consumo en el hogar,01180302,19,19,19
+Bocadillos para consumo en el hogar,01180303,0,0,0
+Arequipe para consumo en el hogar,01180304,0,0,0
+"Herpos, tumes y otros dulces de arequipe y bocadillo para consumo en el hogar",01180305,0,0,0
+Gelatina de pata negra o blanca para consumo en el hogar,01180306,19,19,19
+"Gelatinas, flanes y pudines,en vaso listos para el consumo en el hogar",01180307,19,19,19
+"Miel de abejas, maple o arce, melazas y almíbares",01180308,5,5,5
+"Pasta de chocolate para ponqué, cobertura de chocolate y crema de avellana y cacao (Nutella)",01180401,19,19,19
+"Dulces, confites, caramelos, bombones, chocolatinas, chicles, masmelos, cocadas para consumo en el hogar",01180501,19,19,19
+"Helados, conos, paletas, vasitos, refrescos congelados y tortas heladas para consumo en el hogar",01180601,19,19,19
+"Gelatinas, flanes y pudines en polvo para preparar",01180701,19,19,19
+Polvo para preparar helados,01180801,19,19,19
+Salsa de tomate,01190101,19,19,19
+Mayonesa,01190102,19,19,19
+"Mostaza, salsa rosada",01190103,19,19,19
+Pasta de tomate,01190104,19,19,19
+Vinagre,01190106,19,19,19
+"Otras salsas: salsa de soya, salsa china, salsa tártara, salsa de ají, ají picante, etc",01190199,19,19,19
+Sal  ,01190201,0,0,0
+Cominos,01190301,19,19,19
+Pimienta,01190302,19,19,19
+Laurel ,01190303,19,19,19
+Tomillo,01190304,19,19,19
+Color,01190305,19,19,19
+"Ajo en polvo o en pasta, canela, clavos, nuez moscada",01190306,19,19,19
+"Hierbas culinarias: perejil, cilantro, romero, orégano, etc.",01190401,19,19,19
+"Sopas: de vegetales, de carne, de pollo, de pescado, cremas de sobre, sopas para bebé para consumo en el hogar
+",01190501,19,19,19
+Caldos y consomés concentrados (cubos y polvo) ,01190502,19,19,19
+Bases para preparar carnes y otros alimentos,01190503,19,19,19
+"Frituras: papas fritas, chitos, maizitos, patacones, besitos, etc",01190601,19,19,19
+Levaduras y esencias (polvo para hornear),01190701,19,19,19
+Mercados sin especificar productos,01190901,0,0,0
+Anchetas,01191001,0,0,0
+Leche en polvo para lactantes,01191101,0,0,0
+"Otros alimentos precocidos y preparados: ajiaco, lenteja, frijol, lechona enlatada y similares",01199901,19,19,19
+Café molido,01210101,5,5,5
+Café o crema instantáneo en polvo o granulado,01210102,5,5,5
+Café en grano,01210103,5,5,5
+Extractos y esencias de café,01210105,5,5,5
+"Otras bebidas preparadas a base de café: capuchino, mocachino, café con leche, café en lata para consumo en el hogar",01210199,5,5,5
+Chocolate en pastillas (con y sin azúcar),01210201,5,5,5
+Chocolate instantáneo en polvo o granulado,01210202,5,5,5
+Cocoa y chucula  ,01210203,19,19,19
+Polvo para preparar bebidas achocolatadas,01210204,19,19,19
+Bebidas achocolatadas listas para consumir,01210205,19,19,19
+Té en polvo (para preparar),01210301,19,19,19
+"Hierbas aromáticas (secas y frescas), mate para consumo en el hogar
+",01210302,0,0,0
+Agua mineral (con y sin gas) para consumo en el hogar,01220101,0,0,0
+Agua en lata o de carrotanque,01220201,0,0,0
+Hielo ,01220301,0,0,0
+Gaseosas para consumo en el hogar,01220401,19,19,19
+Maltas para consumo en el hogar,01220501,19,19,19
+"Refrescos líquidos empacados (jugos, té fríos y bebidas hidratantes) para consumo en el hogar",01220601,19,19,19
+Concentrados para preparar refrescos,01220701,19,19,19
+"Bebidas energizantes (a base de glucosa, guaraná, cafeína, entre otros) para consumo en el hogar",01220801,19,19,19
+"Bebidas a base de arroz, soya, coco, quinua, almendra, etc (horchata, yogurt vegetariano) para consumo en el hogar",01220901,19,19,19
+Aguardiente para consumo en el hogar,02110101,5,5,5
+Ron para consumo en el hogar,02110201,5,5,5
+"Whisky, brandy, vodka, ginebra, cognac, tequila y similares para consumo en el hogar",02110301,5,5,5
+"Cremas de licor (de amareto, de whisky, etc.), sabajón y ponche crema para consumo en el hogar",02110401,5,5,5
+"Otras bebidas alcohólicas: aperitivos que no sean a base de vino, mezclas de cocteles para consumo en el hogar",02119901,5,5,5
+"Vino, champaña, jerez y aperitivos a base de vino para consumo en el hogar
+",02120101,5,5,5
+Cerveza nacional e importada para consumo en el hogar,02130101,19,19,19
+"Refajo preparado (embotellado o enlatado) para consumo en el hogar
+",02130102,19,19,19
+Cigarrillos con filtro,02200101,19,19,19
+Cigarrillos sin filtro,02200102,19,19,19
+Tabacos y picadura para pipa o para armar cigarrillos,02200103,19,19,19
+"Estupefacientes: cocaína, éxtasis, heroína, marihuana, bazuco, crack, etc.",02300101,0,0,0
+"Telas y materiales (fibras naturales o sinteticas) para la confección de ropa de hombre, mujer, niño, niña y bebé ",03110101,19,19,19
+Camisas para hombre,03120101,19,19,19
+"Camisetas, franelas, esqueletos, polos para hombre",03120102,19,19,19
+"Calzoncillos, pantaloncillos, boxer para hombre",03120103,19,19,19
+Medias y calcetines para hombre,03120104,19,19,19
+Pantalones para hombre,03120105,19,19,19
+Jeans para hombre,03120106,19,19,19
+"Bermudas, pantalonetas y pantalón corto para hombre",03120107,19,19,19
+"Vestido completo (sólo pantalón, chaqueta y/o chaleco) para hombre",03120108,19,19,19
+"Blazers, chaquetas, chaquetones, chompas y sacos de sport en paño, cuero, gamuza y otros materiales para hombre",03120109,19,19,19
+"Buzos, chalecos, sacos de lana y similares para hombre",03120110,19,19,19
+"Gabardinas, gabanes, abrigos y sobretodos para hombre",03120111,19,19,19
+Capas e impermeables para hombre,03120112,19,19,19
+"Sudaderas, trusas y bicicleteros para hombre",03120113,19,19,19
+Pantalonetas de baño para hombre,03120114,19,19,19
+Pijamas y batas para hombre,03120115,19,19,19
+Otros artículos de vestir para hombre (depotivos y formales),03120199,19,19,19
+Blusas y camisas para mujer,03120201,19,19,19
+"Camisetas, franelas y bodies para mujer",03120202,19,19,19
+"Pantalones, slacks y leggins ",03120203,19,19,19
+"Shorts, bermudas y pantalonetas para mujer",03120204,19,19,19
+Jeans para mujer,03120205,19,19,19
+Faldas para mujer,03120206,19,19,19
+"Brassieres, tops y sostenes para mujer",03120207,19,19,19
+Pantys (interiores) para mujer,03120208,19,19,19
+Media de lana y otros materiales diferente a velada para mujer,03120209,19,19,19
+Medias veladas para mujer,03120210,19,19,19
+"Enaguas, fondos y combinaciones para mujer",03120211,19,19,19
+Vestidos confeccionados para mujer,03120212,19,19,19
+"Buzos, chalecos, sacos de lana y similares, sacos de sport en cuero, paño, gamuza y otros materiales",03120213,19,19,19
+"Blazers, chaquetas, chaquetones y sacos de sport en paño, cuero, gamuza y otros materiales para mujer",03120214,19,19,19
+"Gabardinas, gabanes, abrigos y sobretodos para mujer",03120215,19,19,19
+Capas e impermeables para mujer,03120216,19,19,19
+"Sudaderas, trusas y bicicleteros para mujer",03120217,19,19,19
+Trajes de baño para mujer,03120218,19,19,19
+Pijamas y batas para mujer,03120219,19,19,19
+Otros artículos de vestir para mujer (deportivos y formales) ,03120299,19,19,19
+Camisas para niño,03120301,19,19,19
+"Camisetas, franelas, esqueletos, polos para niño",03120302,19,19,19
+"Calzoncillos, pantaloncillos, boxer para niño",03120303,19,19,19
+Medias y calcetines para niño,03120304,19,19,19
+Pantalones para niño,03120305,19,19,19
+Jeans para niño,03120306,19,19,19
+"Bermudas, pantalonetas y pantalón corto para niño",03120307,19,19,19
+"Vestido completo (sólo pantalón, chaqueta y/o chaleco) para niño",03120308,19,19,19
+"Blazers, chaquetas, chompas y sacos de sport en paño, cuero, gamuza y otros materiales para niño",03120309,19,19,19
+"Buzos, chalecos, sacos de lana y similares para niño",03120310,19,19,19
+"Gabardinas, gabanes, abrigos y sobretodo para niño",03120311,19,19,19
+Capas e impermeables para niño,03120312,19,19,19
+"Sudaderas, trusas y bicicleteros para niño",03120313,19,19,19
+Pantalonetas de baño para niño,03120314,19,19,19
+Pijamas y batas para niño,03120315,19,19,19
+Otros artículos de vestir para niño (deportivos y formales),03120399,19,19,19
+Blusas y camisas para niña,03120401,19,19,19
+"Camisetas, franelas y bodies para niña",03120402,19,19,19
+"Pantalones, slacks y leggins para niña",03120403,19,19,19
+"Shorts, bermudas y pantalonetas para niña",03120404,19,19,19
+Jeans para niña,03120405,19,19,19
+Faldas para niña,03120406,19,19,19
+Vestidos confeccionados para niña,03120407,19,19,19
+"Enaguas, fondos, combinaciones para niña",03120408,19,19,19
+Pantys (interiores) para niña,03120409,19,19,19
+"Brassieres, sostenes, tops  y acostumbradores para niña",03120410,19,19,19
+"Media tobillera, media pantalón, media media (velada, de lana y otros materiales) para niña",03120411,19,19,19
+"Buzos, chalecos, sacos de lana y similares para niña",03120412,19,19,19
+"Blazers, chaquetas, chaquetones y sacos de sport en paño, cuero, gamuza y otros materiales para niña",03120413,19,19,19
+"Gabardinas, gabanes, abrigos y sobretodos para niña",03120414,19,19,19
+Capas e impermeables para niña,03120415,19,19,19
+"Sudaderas, trusas y bicicleteros para niña",03120416,19,19,19
+Traje de baño para niña,03120417,19,19,19
+Pijamas y batas para niña,03120418,19,19,19
+Otros artículos de vestir para niña (deportivos y formales),03120499,19,19,19
+"Camisas, franelas para bebé",03120501,19,19,19
+"Vestidos confeccionados, mamelucos, etc. para bebé",03120502,19,19,19
+"Escarpines, patines, mitones, zapatos de tela, medias, gorritos y bufandas para bebé",03120503,19,19,19
+Pijamas y talegos de dormir para bebé,03120504,19,19,19
+"Buzos, ruanas, sacos de lana y similares para bebé",03120505,19,19,19
+Pañales de tela para bebé,03120506,19,19,19
+"Pantalones de tela, plástico, caucho y similares para bebé",03120507,19,19,19
+Fajeros y cambiadores ,03120508,19,19,19
+Otros artículos de vestir para bebé,03120599,19,19,19
+"Uniformes (diario, gala, deportes)",03120601,19,19,19
+Corbatas y corbatines para hombre,03139701,19,19,19
+"Correas, tirantas y calzonarias para hombre",03139702,19,19,19
+Pañuelos y pañoletas para hombre,03139703,19,19,19
+Ruanas y ponchos para hombre,03139704,19,19,19
+"Bufandas, pashiminas y guantes para hombre",03139705,19,19,19
+"Sombreros, gorros, cachuchas, boinas, viseras para hombre",03139706,19,19,19
+Pañuelos y pañoletas para mujer,03139801,19,19,19
+Cinturones y tirantas para mujer,03139802,19,19,19
+"Ruanas, chales, pañolones y ponchos para mujer",03139803,19,19,19
+"Bufandas, pashminas y guantes para mujer",03139804,19,19,19
+"Sombreros, gorros, cachuchas, boinas, viseras para mujer",03139805,19,19,19
+"Guantes de jardinería o de trabajo en material diferente a caucho (nylon, lycra, hilo, mitrillo, etc.); careta, tapones de oidos, lentes de seguridad.",03139901,19,19,19
+Cascos protectores para ciclista y motociclista,03139902,19,19,19
+"Hilos, cremalleras, botones, metro de costura, hombreras, encajes, broches, ganchos para ropa, hebillas, cordones y caucho para ropa  cintas, ribetes",03139903,19,19,19
+"Baberos, broches y ganchos para bebé",03139904,19,19,19
+"Madejas de lana y otros materiales para coser, tejer y bordar",03139905,19,19,19
+"Confección y reparación de prendas de vestir en general (hombre, mujer, niños, niñas, bebés) ",03140101,19,19,19
+Teñido de prendas de vestir  ,03140102,19,19,19
+"Lavado y planchado de ropa fuera del hogar (en lavandería, otro hogar u establecimiento)",03140201,19,19,19
+"Alquiler de prendas de vestir en general (hombre mujer, niños, niñas y bebés)",03140301,19,19,19
+"Zapatos en cuero, caucho, goma y similares para hombre",03210101,19,19,19
+"Botas en cuero, caucho, goma y similares para hombre",03210102,19,19,19
+"Tenis, zapatillas y otros zapatos deportivos para hombre (excluyendo zapatos para deportes específicos equipados con cuchillas, ruedas, clavos, tacos, taches)",03210103,19,19,19
+"Pantuflas, sandalias, abuelitas, chanclas, cotizas y alpargatas para hombre",03210104,19,19,19
+"Calzado plano en cuero, caucho, goma y similares para mujer",03210201,19,19,19
+"Calzado de tacón en cuero, caucho, goma y similares para mujer",03210202,19,19,19
+"Botas en cuero, caucho, goma y similares para mujer",03210203,19,19,19
+"Tenis, zapatillas y otros zapatos deportivos para mujer (excluyendo zapatos para deportes específicos equipados con cuchillas, ruedas, clavos, tacos, taches)",03210204,19,19,19
+"Pantuflas, sandalias, abuelitas, chanclas, cotizas y alpargatas para mujer",03210205,19,19,19
+"Zapatos en cuero, caucho, goma y similares para niño",03210301,19,19,19
+"Botas en cuero, caucho, goma y similares para niño",03210302,19,19,19
+"Tenis, zapatillas y otros zapatos deportivos para niño (excluyendo zapatos para deportes específicos equipados con cuchillas, ruedas, clavos, tacos, taches)",03210303,19,19,19
+"Pantuflas, sandalias, abuelitas, chanclas, cotizas y alpargatas para niño",03210304,19,19,19
+"Calzado plano en cuero, caucho, goma y similares para niña",03210401,19,19,19
+"Calzado de tacón en cuero, caucho, goma y similares para niña",03210402,19,19,19
+"Botas en cuero, caucho, goma y similares para niña",03210403,19,19,19
+"Tenis, zapatillas y otros zapatos deportivos para niña (excluyendo zapatos para deportes específicos equipados con cuchillas, ruedas, clavos, tacos, taches)",03210404,19,19,19
+"Pantuflas, sandalias, abuelitas, chanclas, cotizas y alpargatas para niña",03210405,19,19,19
+"Calzado para bebé: zapatos, botas y tenis  ",03210501,19,19,19
+"Accesorios para calzado: Plantillas, hormas, adaptadores para calzado y calzadores",03210601,19,19,19
+Lustrado y limpieza de zapatos ,03220101,19,19,19
+"Reparación de calzado: remonta, tapas, costuras, etc",03220201,19,19,19
+Alquiler de calzado diferente al calzado para deporte y recreación,03220301,19,19,19
+Arriendo de la vivienda donde reside ,04110101,0,0,0
+"Arriendo por viviendas para uso del hogar diferentes a la que habita, (no incluye  los servicios de alojamiento ofrecidos por aldeas y centros de vacaciones)
+",04120101,19,19,19
+Estimación del arriendo imputado de la vivienda propia ,04210101,0,0,0
+Arriendos imputados por alquiler reducido o alojamiento gratuito o en usufructo,04229902,0,0,0
+Arriendos imputados por vivienda dada como salario en especie,04229903,0,0,0
+Pinturas y barnices para vivienda      ,04310101,19,19,19
+"Recubrimientos para paredes (papel de colgadura, textiles, fibra de vidrio, piedra decorativa, etc.)",04310102,19,19,19
+"Baldosas, porcelanato,celosías, mármoles, cerámicas, vinilos, cenefas de enchape (para interiores y para baño y cocina)",04310103,19,19,19
+Vidriería para puertas y ventanas,04310104,19,19,19
+"Yeso, cemento, masilla, pegantes, siliconas",04310105,19,19,19
+"Tubos para el agua, grifos, codos, sifones, etc.",04310106,19,19,19
+"Maderas pulidas y lacadas, parqué, maderas burdas, tablas, tablones ",04310107,19,19,19
+Puertas y ventanas (incluye corredizas y tipo cancel),04310108,19,19,19
+"Otros materiales para la conservación y la reparación de la vivienda: tejas, cielo raso, drywall, canaletas, tanque de agua, etc",04310199,19,19,19
+Mantenimiento y reparación de aire acondicionado y calefacción,04320101,19,19,19
+Mantenimiento y reparación de cañerías de agua y ductos e instalaciones de gas,04320201,19,19,19
+Mantenimiento y reparación de redes eléctricas y telefónicas,04320401,19,19,19
+"Mantenimiento y reparación de techos, paredes y pisos",04320501,19,19,19
+Limpieza de exteriores  de la vivienda,04320601,0,0,0
+Adoquinado y revestimiento menores de suelos de la vivienda,04320701,0,0,0
+"Otros servicios para el mantenimiento y reparación de la vivienda: cerrajería, pintura, enchape, carpintería, ebanistería, decoración, etc.",04329901,19,19,19
+"Instalación, conexión, contador de agua",04410101,0,0,0
+Servicio de acueducto,04410102,0,0,0
+Reconexión del servicio de acueducto,04410103,0,0,0
+Servicio público de recolección de basuras y aseo,04420101,0,0,0
+Pagos a recogedor de basuras y desechos,04420102,0,0,0
+Instalación o conexión al servicio de alcantarillado  ,04430101,0,0,0
+Servicio de alcantarillado,04430102,0,0,0
+Cuotas de administración de la vivienda para uso del hogar,04440101,0,0,0
+Cuotas extraordinarias de administración,04440102,0,0,0
+Celaduría comunal,04440103,0,0,0
+Mantenimiento y reparación de ductos de ascensor,04440104,19,19,19
+Gastos de conservación en jardinería,04440201,19,19,19
+"Instalación, conexión y contador del servicio de energía eléctrica",04510101,0,0,0
+Servicio de energía eléctrica,04510102,0,0,0
+Reconexión del servicio de energía eléctrica,04510103,0,0,0
+Servicio de alumbrado público,04510104,0,0,0
+Compra de gas propano en pipeta o cilindro,04520101,0,0,0
+"Instalación, conexión y contador del servicio de gas natural  ",04520201,0,0,0
+Servicio de gas natural por tubería,04520202,0,0,0
+Reconexión del servicio de gas natural,04520203,0,0,0
+"Combustibles líquidos para cocinar: gasolina, kerosene, petróleo, alcohol, etc.  ",04530101,19,19,19
+"Combustibles sólidos para cocinar: leña, carbón vegetal, carbón mineral, etc.",04540101,19,19,19
+Cama sencilla ,05110101,19,19,19
+"Cama semidoble, doble, king size, base cama y cama nido
+",05110102,19,19,19
+Cunas y corral para bebé,05110103,19,19,19
+Juego completo de muebles de alcoba,05110104,19,19,19
+Juego completo de muebles de sala,05110105,19,19,19
+Juego completo de muebles de comedor,05110106,19,19,19
+Gabinetes de baño,05110107,19,19,19
+Cocina integral,05110108,19,19,19
+Muebles y gabinetes para cocina,05110109,19,19,19
+Escritorios y mesas de dibujo,05110110,19,19,19
+Muebles para computador o centros de entretenimiento,05110111,19,19,19
+"Colchones, somiers y colchonetas ",05110112,19,19,19
+"Bases para colchón, catres, camarotes, literas",05110113,19,19,19
+"Sillas, sillones, sofás, sofacamas",05110114,19,19,19
+"Asientos como: mecedoras, butacos, bancas, asientos inflables y puff, etc",05110115,19,19,19
+"Armarios, clósets, cómodas, chifoniers, escaparates, organizadores, roperos, baules, entrepaños, repisas, etc.
+",05110116,19,19,19
+Bibliotecas y muebles modulares,05110117,19,19,19
+"Mesas de noche, mesas de centro, mesas auxiliares, mesa de bar y cava",05110119,19,19,19
+"Otros muebles para el hogar como: biffé, tocadores, vitrinas, archivadores, biombos, parasol, tabique plegable etc.
+",05110198,19,19,19
+"Otros accesorios para el hogar: accesorios para baño, cocina, etc.",05110199,19,19,19
+"Lámparas de techo o de pie, reflectores, poste solar led, lámpara solar exterior y farol colgante o de pie.",05110201,19,19,19
+Lámparas o pantallas de mesa,05110202,19,19,19
+"Velas, veladoras, velones ",05110203,19,19,19
+Candeleros y candelabros,05110204,19,19,19
+Cuadros y pinturas de arte,05110301,19,19,19
+Reproducciones de cuadros y pinturas,05110302,19,19,19
+"Dibujos, grabados, tapices",05110303,19,19,19
+"Estatuillas, esculturas, porcelanas y objetos de decoración en cualquier material",05110304,19,19,19
+Otros objetos artísticos,05110399,19,19,19
+"Espejos, porta retratos y percheros",05119901,19,19,19
+"Persianas de materiales diferentes a tela, blackout",05119902,19,19,19
+Alfombras y tapetes fijos y sueltos,05120101,19,19,19
+"Reparación de muebles, accesorios y materiales para pisos",05130101,19,19,19
+"Restauración de obras de arte y de muebles antiguos del hogar
+",05130201,19,19,19
+"Telas para confeccionar ropa de cama, manteles, cortinas y forros para muebles",05200101,19,19,19
+"Juego completo de sábanas, sobresábanas y fundas ",05200201,19,19,19
+"Sábanas, sobresabanas, protectores de colchón y fundas sueltas",05200202,19,19,19
+"Cubrelechos, cubrecamas, colchas para cama, etc.",05200203,19,19,19
+Cobijas y mantas para adulto,05200204,19,19,19
+"Cobijas, mantas y cobertores para bebé",05200205,19,19,19
+"Almohadas, cojines, almohadones",05200206,19,19,19
+"Hamacas, chinchorros, toldillos, mosquiteros",05200207,19,19,19
+"Ropa de mesa: manteles, caminos de mesa, individuales y servilletas de tela para comedor",05200301,19,19,19
+Toallas de tela para baño,05200401,19,19,19
+Juego de lencería para baño,05200402,19,19,19
+Cortinas para baño,05200403,19,19,19
+Gastos por confección y reparación de productos textiles para el hogar,05200601,19,19,19
+Cortinas confeccionadas y cenefas para cortinas ,05209901,19,19,19
+Lanas y telas para tejidos y decoración del hogar,05209902,19,19,19
+"Talegos, sacos o lonas para ropa en tela",05209903,19,19,19
+Banderas y escudos en general,05209904,19,19,19
+"Piedecamas, esteras y esterillas",05209905,19,19,19
+Forros para muebles y electrodomésticos ,05209906,19,19,19
+"Neveras, refrigeradores y congeladores",05310101,19,19,19
+Lavadora y secadora de ropa,05310201,19,19,19
+Lavadora de platos,05310202,19,19,19
+Estufa a gas,05310301,19,19,19
+Estufa eléctrica,05310302,19,19,19
+Estufa mixta (eléctrica y a gas),05310303,19,19,19
+Campana extractora para la estufa,05310304,19,19,19
+"Estufa de carbón o leña, a gasolina o petróleo ",05310305,19,19,19
+Hornos eléctricos y hornos de gas ,05310306,19,19,19
+Hornos microondas,05310307,19,19,19
+Pipetas o cilindros de gas (envase sin incluir el gas),05310308,5,5,5
+"Asadores no eléctricos (para BBQ, carbón, leña, a gas, etc.)",05310309,19,19,19
+Calentadores eléctricos,05310501,19,19,19
+Calentador de gas,05310502,19,19,19
+"Aire acondicionado, purificadores de agua o aire",05310601,19,19,19
+Ventiladores o abanicos fijos,05310602,19,19,19
+"Aspiradora, brilladora, lavatapetes e hidrolavadora",05310701,19,19,19
+"Máquinas de coser, tejer, fileteadoras y telares",05310801,19,19,19
+"Otros aparatos grandes del hogar: trituradoras de desperdicios, cajas fuertes, tinas, hidromasajes y piscinas spa.",05319901,19,19,19
+Plancha eléctrica para ropa,05320101,19,19,19
+"Licuadora, picadora y ayudante de cocina eléctrico y procesador de alimentos",05320102,19,19,19
+"Batidora, mezcladora eléctrica ",05320103,19,19,19
+"Sanducheras, wafleras, tostadoras eléctricas",05320104,19,19,19
+Extractor de zumos y exprimidor eléctricos,05320105,19,19,19
+"Cafeteras eléctricas, teteras eléctricas",05320106,19,19,19
+"Ollas arroceras, freidoras eléctricas y fondue",05320107,19,19,19
+"Cuchillos, afila cuchillos y abrelatas (incluye eléctricos)",05320108,19,19,19
+Encendedores eléctricos y no eléctricos para estufa,05320109,19,19,19
+Ventiladores o abanicos movibles,05320110,19,19,19
+Duchas eléctricas,05320111,19,19,19
+Asadores eléctricos para carne (raclette),05320112,19,19,19
+Extractor eléctrico de olores,05320114,19,19,19
+Portacomidas eléctrico,05320116,19,19,19
+Esterilizadores o calentadores  de teteros,05320117,19,19,19
+"Otros aparatos eléctricos para el hogar: crispetera, máquina para helados, hornos tostadores",05320199,19,19,19
+Repuestos para aparatos domésticos,05330101,19,19,19
+Reparación de aparatos y utensilios domésticos,05330102,19,19,19
+"Alquiler de artefactos o aparatos domésticos (lavadoras, computadores, etc)",05330103,19,19,19
+"Vajilla completa, juego de té o café y otros juegos completos (vaso, jarra, copas)",05400101,19,19,19
+"Platos, pocillos, tazas, mugs",05400102,19,19,19
+"Vasos, copas, jarras",05400103,19,19,19
+"Bandejas, ensaladeras, soperas, dulceras, queseras, salseras, paneras.",05400104,19,19,19
+"Refractarias, jarras especiales (a fuego directo, filtro purificador)",05400105,19,19,19
+"Otros artículos de vidrio, cristal, porcelana, cerámica",05400199,19,19,19
+Juego completo de cubiertos de mesa y cocina,05400201,19,19,19
+"Cucharas, cucharitas, tenedores, cuchillos, cucharones, tijeras de cocina  ",05400202,19,19,19
+"Ollas, cacerolas, cazuelas y sartenes de aluminio, esmaltadas, teflón, etc.",05400301,19,19,19
+Ollas a presión,05400302,19,19,19
+Planchas para asar y parrillas,05400303,19,19,19
+"Molinillos, coladeras, coladores, pinzas para hielo, abrelatas y sacacorchos manuales, piedras de afilar, moldes metálicos",05400304,19,19,19
+"Cafeteras y teteras no eléctricas, dispensadores (agua y licor)",05400305,19,19,19
+"Molinos, ralladores, trituradores de ajo, picadoras y exprimidores de jugo de tipo manual",05400306,19,19,19
+"Corta huevos, pela papas, rebanador de quesos, cortador de pizza",05400307,19,19,19
+"Tablas para picar, mortero y mazo, escurridor de aceite",05400308,19,19,19
+"Set de mesa para vinagre y aceite, servilletero, especiero",05400309,19,19,19
+"Termo, botella de aluminio, coctelera, hielera, vaso mezclador",05400310,19,19,19
+"Reverberos, cocinas de alcohol y cocinetas",05400311,19,19,19
+Biberones o teteros,05400314,19,19,19
+"Accesorios para utensilios de cocina y menaje no eléctrico (cauchos, pitos, identificadores de cubiertos o de bebida, porta ollas, etc.)",05400315,19,19,19
+"Otros utensilios de cocina y menaje no eléctricos del hogar (centrifugador de verduras, escurridor de loza, recipientes y loncheras para guardar comida, set para reposteria, etc.)",05400399,19,19,19
+"Reparación de cristalería, vajilla y utensilios del hogar",05400501,19,19,19
+Mesa de planchar,05409901,19,19,19
+"Ceniceros, floreros",05409903,19,19,19
+"Platones, baldes, embudos y poncheras",05409904,19,19,19
+Canecas y papeleras para la basura,05409905,19,19,19
+Cestas y recipientes para la ropa de materiales diferentes a tela,05409906,19,19,19
+"Vasenilla, micas o patos médicos",05409907,19,19,19
+"Taladros, soldadoras, sierras, pulidoras y cizallas eléctricas para uso del hogar
+",05510101,19,19,19
+"Podadoras, cortadoras de césped y guadañadoras eléctricas o motorizadas y tractores eléctricos para jardín para uso del hogar
+",05510102,0,0,0
+"Compra e instalación de bombas eléctricas de agua, generador de energía o planta eléctrica de mediana potencia para uso del hogar",05510103,19,19,19
+Otras herramientas y equipos eléctricos grandes para uso del hogar ,05510199,19,19,19
+"Reparación de herramientas y equipos grandes para uso del hogar  ( Herramientas y equipo motorizados, como taladros, sierras, pulidoras y cortadoras eléctricos, tractores para jardín, cortadoras de césped, cultivadores, sierras de cadena y bombas de agua.)
+",05510201,19,19,19
+"Alquiler de maquinaria y equipo grande ( Herramientas y equipo motorizados, como taladros, sierras, pulidoras y cortadoras eléctricos, tractores para jardín, cortadoras de césped, cultivadores, sierras de cadena y bombas de agua.)
+
+",05510301,19,19,19
+"Hombresolos, alicates, tenazas, martillos, destornilladores, punzones, serruchos, limas para herramientas, escofinas, cizallas manuales, punteros, cinceles, palustres, etc.",05520101,19,19,19
+"Llaves de tuercas, llaves inglesas, llaves bristol.",05520102,19,19,19
+"Cintas métricas: metro, decámetro, niveles, etc.",05520103,19,19,19
+"Otras herramientas del hogar: escaleras, bombas de agua no eléctricas, etc.",05520199,19,19,19
+"Herramientas de jardín: Carretillas, mangueras, lanzachorro, palas, azadones, pica,  estacas",05520201,5,5,5
+"Bombillos incandescentes, tubos fluorescentes, larga vida, halógenos, de neón, LED y de tungsteno.",05520301,19,19,19
+"Enchufes, interruptores, dimmers, cables eléctricos, rosetas, cinta aislante y de teflón,  timbres, alarmas, estabilizadores",05520302,19,19,19
+Pilas y baterías recargables y no recargables para uso general,05520303,19,19,19
+Linternas y lámparas de mano,05520304,19,19,19
+Otros accesorios eléctricos pequeños (timers),05520399,19,19,19
+"Accesorios para puertas, ventanas y sillas: Bisagras, manijas, cerraduras, candados, conteras, topes, burletes, etc.",05520401,19,19,19
+Reparación de herramientas pequeñas y accesorios diversos del hogar y del jardín,05520601,19,19,19
+"Otros artículos de metal, madera, plástico para el hogar: rieles, varillas, tubos para cortina, ganchos para cortina, guardaescobas, perfiles y esquineros etc.",05529901,19,19,19
+Jabón en barra para lavar ropa,05610101,19,19,19
+Jabón de cocina,05610102,19,19,19
+Detergente en polvo,05610104,19,19,19
+Detergente líquido,05610105,19,19,19
+Blanqueadores,05610106,19,19,19
+Suavizantes,05610107,19,19,19
+"Quitamanchas, polvo limpiador y champú para alfombras",05610108,19,19,19
+"Líquidos y desinfectantes para limpiar muebles, vidrios, hornos, estufas, paredes, baños, pisos
+",05610109,19,19,19
+"Ambientadores y desodorantes ambientales (velas aromatizadas, pastillas, aceites, geles, incienso, esencias naturales o florales para aromatizar ambientes)
+",05610110,19,19,19
+Cera para pisos y selladores,05610111,19,19,19
+"Insecticidas, fungicidas (enchufe, spray, etc), trampa y venenos para roedores",05610112,0,0,0
+"Otros productos de limpieza y mantenimiento: almidones para camisas, alcanfor, naftalina, disolventes, destapacañerías.",05610199,19,19,19
+"Escobas, recogedores de basura, escobillas, plumeros limpiapolvos, trapeadores, chupa, destapacañerías mecánico y cepillos (para paredes, baños, ropa, vehículo y calzado)",05610201,19,19,19
+Guantes de caucho  ,05610202,19,19,19
+"Esponjas, esponjillas y estropajos",05610203,19,19,19
+"Limpiones, cogeollas, paños de tela para limpiar (bayetilla, de microfibra) y delantales para cocina
+",05610204,19,19,19
+"Otros elementos de aseo (antihumedad, antiacaros, antiolores)",05610299,19,19,19
+"Cuerdas, cordeles, mechas para lámpara, tendederos y pinzas para ropa, perchas de tornillo y ganchos adhesivos",05619901,19,19,19
+"Agujas (para coser, tejer), alfileres",05619902,19,19,19
+"Tijeras para costura, abreojales, desbaratadores, dedales",05619903,19,19,19
+Fósforos y encendedores desechables,05619905,19,19,19
+"Betún, pomadas, tintes, cremas y espumas siliconadas para calzado",05619906,19,19,19
+"Barnices, lacas y tintes para accesorios del hogar ",05619907,19,19,19
+Anilinas y tintes para prendas de vestir,05619908,19,19,19
+"Artículos de ferretería: puntillas, clavos, tornillos, tuercas, brocas, brochas, pinceles, lijas y otros.",05610401,19,19,19
+"Papel de aluminio, parafinado, vinilpel, moldes de aluminio, filtros de papel para cafetera",05610501,19,19,19
+"Rollos o paños de papel (absordente, húmedos) para cocina",05610502,19,19,19
+"Productos desechables: servilletas,  manteles, platos, vasos, cubiertos, palillos",05610503,19,19,19
+Bolsas plásticas para basura y para aspiradora   ,05610505,19,19,19
+"Otros productos desechables:  pitillos, palos de pincho, etc",05610599,19,19,19
+Empleado(a) doméstico interno ,05620101,0,0,0
+Empleado(a) doméstico por días (permanente o temporal),05620102,0,0,0
+"Otros empleados domésticos: amas de llaves, institutrices, tutores, mayordomos, choferes, jardineros, celadores, niñeras dentro del hogar
+",05620199,0,0,0
+Servicio de limpieza de ventanas,05620201,0,0,0
+Servicio de desinfección y fumigación del hogar,05620202,0,0,0
+"Servicio de lavado de ropa y limpieza del hogar: cubrelechos, cortinas, tejidos del hogar, tapetes, muebles y ventanas.",05620301,19,19,19
+Servicio de lavado de alfombras,05620302,19,19,19
+Servicio de tintorería y teñido de ropa del hogar,05620303,19,19,19
+Analgésicos y Antiinflamatorios,06110101,0,0,0
+Antiácidos y medicamentos para la Gastritis,06110102,0,0,0
+Antibióticos topicos y sistémicos,06110103,0,0,0
+Medicamentos antialérgicos (antihistamínicos),06110104,0,0,0
+Antigripales y Antitusivos no homeopáticos,06110105,0,0,0
+"Antiparasitarios, antimibianos, purgantes y laxantes",06110106,0,0,0
+Antiartríticos y Antirreumáticos ,06110107,0,0,0
+Antidiabéticos e Insulinas ,06110108,0,0,0
+Antiespasmódicos y Antidiarréicos,06110109,0,0,0
+Medicamentos para la tensión arterial y cardiovasculares,06110111,0,0,0
+Desinfectantes,06110112,0,0,0
+Suero oral y sales de rehidratación,06110113,0,0,0
+Vacunas,06110114,0,0,0
+"Suplementos dietarios, vitaminas, reconstituyentes, calcio, otros minerales y aceite de higado de bacalao",06110115,0,0,0
+Medicamentos para nivelar los niveles de colesterol,06110117,0,0,0
+Medicamentos para tratamientos contra el cancer,06110118,0,0,0
+Medicamentos para tratar la disfuncion erectil,06110119,0,0,0
+Medicamentos para tratar afecciones de la tiroides,06110120,0,0,0
+Medicamentos para el tratamiento de enfermedades psiquiátricas y antidepresivas,06110121,0,0,0
+Medicamentos para el tratamiento del VIH (SIDA),06110122,0,0,0
+Productos dermatológicos con formula médica (incluso los protectores solares medicados),06110201,0,0,0
+"Gotas para tratamiento de afecciones de oidos, ojos, naríz y suero fisiológico",06119901,0,0,0
+"Anticonceptivos orales (píldoras), óvulos, inyecciones, cremas anticonceptivas, parches",06119902,0,0,0
+"Medicamentos homeopáticos, medicamentos de origen natural y bioenergéticos;esencias naturales o florales medicinales. ",06119903,0,0,0
+Fórmula médica completa (hace referencia a todos los medicamentos que el informante NO puede desargregar y no fueron registrados  en los anteriores artículos) ,06110404,0,0,0
+Termómetros clínicos,06120101,19,19,19
+"Jeringas, agujas hipodérmicas",06120102,0,0,0
+"Esparadrapo, vendas, gasas, curitas.",06120103,0,0,0
+Botiquines de primeros auxilios ,06120104,0,0,0
+Dispositivo de prueba rápida de embarazo ,06120105,0,0,0
+Inhaladores,06120107,0,0,0
+"Otros implementos médicos: bolsas de agua caliente, bolsas de hielo, paquetes de gel, etc.",06120199,19,19,19
+Dispositivos de planificacion familiar: intrauterinos e implante intradérmico.,06120201,0,0,0
+Preservativos (condones),06120202,0,0,0
+"Anteojos, gafas o lentes de contacto formulados ",06130101,0,0,0
+"Sillas de ruedas, camas y colchones especiales (de hospital para uso en el hogar)",06130102,0,0,0
+Muletas y bastones ortopédicos,06130103,0,0,0
+Zapatos ortopédicos,06130104,0,0,0
+"Compra de equipo terapéutico: plantillas ortopédicas, soportes de cuello, ferula, bragueros, fajas quirúrgicas, medias elásticas para traumatología, soportes para rodilla, pie, brazo, caminadoras, etc. ",06130105,0,0,0
+Equipo para masajes médicos ,06130106,0,0,0
+"Prótesis (miembros artificiales), dentaduras postizas",06130107,0,0,0
+Aparatos ortopédicos y de salud visual y ocular: ojo de cristal,06130108,0,0,0
+"Tensiómetros (eléctricos, manuales y de otro tipo), estetoscopios, glucómetros ",06130109,19,19,19
+Reparación de artefactos y equipos terapéuticos,06130110,19,19,19
+Aparatos de salud auditiva: audífonos ortopédicos y clínicos,06130111,0,0,0
+Consulta médica general con médico particular  ,06210101,0,0,0
+"Consulta médica con médico especialista particular: pediatría, oftalmología, ginecología, siquiatría, traumatología, cardiología y otros especialistas ",06210201,0,0,0
+Servicios de especialistas en ortodoncia (incluye compra de brackets y retenedores),06210301,0,0,0
+"Consulta particular con médicos homeópatas, bioenergéticos y otros no tradicionales",06210401,0,0,0
+"Servicios odontológicos con odontólogos particulares: consultas, profilaxis, exodoncias (extracción), amalgamas, sellantes, fluorización. ",06220101,0,0,0
+"Servicios para particulares en centros de rayos X: radiografías (incluyendo las dentales), urografías, mamografías, electrocardiogramas y otras imágenes diagnósticas    ",06230101,0,0,0
+"Exámenes de laboratorio para particulares: de sangre, bacteriológicos, etc.   ",06230201,0,0,0
+"Servicios independientes de: fonoaudiólogos, fisioterapeutas",06230301,0,0,0
+Terapia de gimnasia correctiva recetada por médicos,06230302,0,0,0
+"Servicios de medicina alternativa y complementaria (acupuntura, homeopatía, quiropráctica, osteopatía, hidroterapia, etc.)",06230303,0,0,0
+"Servicios de enfermería para maternidad  en el hogar (enfermera(o) privada(o)) partera, comadrona)",06230304,0,0,0
+"Consulta con teguas, empiricos, curanderos, yerbateros, etc.",06230305,0,0,0
+"Alquiler de equipo terapéutico: muletas y bastones ortopédicos, zapatos y plantillas ortopédicas, soportes de cuello, ferula, bragueros, fajas quirúrgicas; soportes para rodilla, pie, brazo; caminadoras, etc",06230401,0,0,0
+"Cuotas moderadoras EPS (medicina, odontología, especialistas, medicamentos, exámenes, etc)",06240101,0,0,0
+"Bonos de medicina prepagada o pagos en efectivo por consultas, odontología, medicamentos, exámenes, etc",06240201,0,0,0
+"Servicios básicos hospitalarios atención a pacientes internos bajo la supervisión directa de médicos calificados; los centros médicos, centros de maternidad, hospicios para ancianos y hogares para convalecientes también prestan atención a pacientes internos.",06300101,0,0,0
+"Servicios médicos hospitalarios para particulares: atención de médicos (generales y especialistas), odontólogos, paramédicos, exámenes, radiografías y terapias ",06300201,0,0,0
+"Servicios médicos menores (pequeña cirugía, cirugía ambulatoria, urgencias, etc.)",06300301,0,0,0
+Pagos complementarios (POS y  medicina prepagada) de servicios hospitalarios,06300401,0,0,0
+Compra de vehículos nuevos para uso particular (incluye pagos por nacionalización y otros pagos)     ,07110101,19,19,19
+Compra de vehículos usados para uso particular (incluye pagos por nacionalización y otros pagos)     ,07110102,0,0,0
+Gastos de matrículas para vehículos nuevos y de traspaso para vehículos usados,07110103,0,0,0
+Compra de motocicletas y bicicletas con motor o eléctricas nuevas o usadas,07120101,19,19,19
+Gastos de matrículas o traspaso de motocicletas o bicicletas con motor,07120102,0,0,0
+Compra de bicicletas nuevas o usadas (excepto para niños),07130101,5,5,5
+Animales y vehículos de tracción animal para transporte de personas del hogar ,07140101,19,19,19
+"Llantas y neumáticos, rines para vehículo    ",07210101,19,19,19
+"Productos para la limpieza y conservación del  vehículo: pintura, limpiadores, selladores, shampoo, ceras, ambientadores, eliminador de olores, pañitos húmedos para vehículos, etc.",07210301,19,19,19
+"Productos y accesorios para carrocería: pijamas, tapetes, barras de seguridad, ceniceros, organizador para carro, cubre asiento, bombillos (papa farolas, stops, laterales), etc.",07210401,19,19,19
+"Herramientas para vehículos de transporte personal (equipo de carretera, cruceta y gato, infladores, etc)",07210501,19,19,19
+"Piezas para bicicleta: llantas, neumáticos, rines, manzanas, cadenas, cambios, piñones, guallas, sillines, candados y cable candado, luces, etc.",07210601,19,19,19
+Motores para vehículo,07219901,19,19,19
+"Bujías, inyectores, filtros, amortiguadores, baterías, carburadores, distribuidores de corriente, vidrios, condensadores, correas de ventilador, etc.",07219902,19,19,19
+Gasolina corriente y extra,07220101,19,19,19
+Gas vehicular,07220201,19,19,19
+Combustible diesel,07220301,19,19,19
+"Aditivos, valvulinas, líquido para frenos, refrigerantes, agua para batería, etc.    ",07220401,19,19,19
+"Mantenimiento y reparaciones efectuadas en el taller: engrase, sincronización, revisiones técnicas, instalaciones de partes y accesorios, balanceo de ruedas, despinchada, lavado y polichado, servicios de grúa, etc.         ",07230101,19,19,19
+Compra y cambio de aceite,07230201,19,19,19
+Servicios de latonería y pintura,07230301,19,19,19
+Cuotas a clubes o compañias de servicios especiales para el vehículo  como los centros de reparacion y mantenimiento de cosesionarios de marcas especificas ,07230401,19,19,19
+Pago mensual de parqueadero,07240101,19,19,19
+Pago de parqueadero o parquímetro por horas o días,07240102,19,19,19
+Peajes   ,07240201,0,0,0
+Gastos en licencias y clases de conducción,07240301,19,19,19
+Comparendos y multas por infracciones,07240302,0,0,0
+Revision tecnomecánica y otras revisiones ordenadas por ley,07240303,19,19,19
+Alquiler de vehículos sin conductor,07240304,19,19,19
+Pasaje en tren,07310101,0,0,0
+Pasaje en metro,07310102,0,0,0
+"Pasaje urbano en bus, buseta y colectivo  ",07320101,0,0,0
+"Pasaje en sistema integrado de transporte masivo (Transmilenio, SITP, MIO, Megabus, Metrolinea, Transmetro, Metroplus, etc)",07320102,0,0,0
+Taxi urbano,07320103,0,0,0
+"Otros transportes urbanos: servicio pirata, bicitaxi, mototaxi, funicular, telesférico, etc",07320199,0,0,0
+"Pasaje intermunicipal en bus, buseta, colectivo, taxi, aero vans, chiva, campero, etc.  ",07320201,0,0,0
+Pasaje en transporte internacional terrestre,07320202,19,19,19
+Transporte de equipajes por vía terrestre  ,07320203,19,19,19
+Alquiler de vehículo con conductor,07320204,19,19,19
+Transporte proveniente de salario en especie,07320205,0,0,0
+Pasaje en transporte interveredal y a ciudades dormitorio,07320207,0,0,0
+Otro tipo de transporte intermunicipal,07320299,0,0,0
+Transporte escolar prestado por el colegio (con buses propios o con empresa contratada),07320301,0,0,0
+Transporte escolar particular contratado por los padres,07320302,0,0,0
+Transporte de pasajeros y equipaje en avión (incluye pagos por exceso de equipaje),07330101,19,19,19
+Transporte de pasajeros y equipaje en helicóptero   ,07330201,19,19,19
+"Transporte de pasajeros y equipajes por mar, rios, caños, lagos, etc. en buque, navío, aerodeslizador, vehículo de colchón de aire (incluye transporte de vehículos privados por este medio)",07340101,0,0,0
+"Transporte de pasajeros y equipajes por mar, ríos, caños, lagos, etc. en ferry, planchón, canoa y lancha",07340201,0,0,0
+Servicio en dos o más medios de transporte cuando el gasto no se puede discriminar ,07350101,0,0,0
+Servicios de remoción de escombros,07360101,0,0,0
+Servicios de almacenamiento y depósito de equipaje,07360201,0,0,0
+Servicio de trasteos y mudanzas,07360301,0,0,0
+"Envío de cartas, correspondencia, paquetes o encomiendas por correo (incluye compra de postales con franqueo pagado) 
+",08100101,0,0,0
+Apartado aéreo y casillero internacional.,08100103,0,0,0
+Compra de teléfonos fijos y accesorios,08200101,19,19,19
+Compra de fax,08200102,19,19,19
+"Reparación de teléfonos fijos, de fax y de accesorios",08200103,19,19,19
+Compra de celular convencional (no inteligente) y accesorios,08200201,19,19,19
+Compra de radioteléfono y accesorios,08200202,19,19,19
+Compra de celular inteligente y accesorios,08200203,0,0,0
+Reparación de celulares y de accesorios,08200204,19,19,19
+"Servicios de telegrafía, télex y telefax",08300101,19,19,19
+"Llamadas telefónicas desde una línea privada o desde una línea pública (Telefonos publicos y modenederos, etc.)
+",08300201,0,0,0
+"Llamadas de larga distancia nacional o internacional desde teléfonos públicos, cabinas telefónicas, monederos y desde hoteles
+",08300202,0,0,0
+"Llamadas por minuto desde celular en la calle a cualquier destino
+",08300203,0,0,0
+Servicio telefónico residencial (local y larga distancia)  ,08300204,0,0,0
+Instalación y reconexión de línea telefónica residencial,08300205,19,19,19
+Planes de telefonía celular de voz y mensajería ,08300206,19,19,19
+"Servicios de acceso a Internet proporcionados por operadores de infraestructura cableada, inalámbrica o satelital",08300301,0,0,0
+"Servicio de paquete de datos para celulares, tabletas, módem USB o LTE",08300302,19,19,19
+Servicios de internet en centros de acceso público con costo (café internet),08300303,19,19,19
+"Pago por suscripción a páginas web, incluído el almacenamiento en la nube y publicaciones periódicas (incluídas páginas de medios de comunicación)",08300304,19,19,19
+"Recargas para telefonía celular (prepago para minutos o datos, diferente al plan postpago)",08300305,19,19,19
+"Equipos de sonido,  mini-componentes.",09110101,19,19,19
+"Radio, radioreloj, grabadoras, radiograbadora",09110103,19,19,19
+"Radio, equipo de sonido o video para vehículos (CD, MP3 o MP4)",09110105,19,19,19
+"Amplificadores de sonido, altavoces, equalizadores, bafles, parlantes, torres de sonido, micrófonos, audífonos, sintonizadores, altoparlantes, etc. ",09110106,19,19,19
+"Otros equipos para la recepción, grabación y reproducción de sonido",09110199,19,19,19
+Televisor a color convencional,09110202,19,19,19
+"Televisor de pantalla plana (plasma, LCD o LED)",09110203,19,19,19
+"Antenas de televisión, decodificadores, etc.",09110204,19,19,19
+Reproductores de video (DVD o BLU RAY),09110206,19,19,19
+Teatro en casa,09110207,19,19,19
+"Reproductores digitales de música, video e imagen (MP3, MP4, Ipod, etc.)",09110209,19,19,19
+Televisor inteligente (smart TV),09110210,19,19,19
+Lectores de libros electrónicos,09110211,19,19,19
+Cámaras fotográficas ,09120101,19,19,19
+"Accesorios de fotografía: flash, lentes, medidores de luz, filtros, trípodes, equipo para revelado, etc.",09120103,19,19,19
+Cámaras de video,09120201,19,19,19
+"Proyectores de películas, video beams, etc",09120202,19,19,19
+"Accesorios de cinematografía: pantallas, visores, lentes, filtros, medidores de luz, lámparas de destello, trípodes, fotómetros, etc.",09120203,19,19,19
+"Instrumentos ópticos: microscopios, telescopios, lupas, binóculos, brújulas, etc.",09120301,19,19,19
+"Computadores personales de escritorio (PC, all in one)",09130101,0,0,0
+Monitores,09130102,19,19,19
+Impresora o escáner,09130103,19,19,19
+Calculadoras,09130108,19,19,19
+Computadores portátiles,09130110,0,0,0
+Tabletas (ipads),09130111,0,0,0
+"Otros aparatos de tratamiento de información: servidores, etc",09130199,19,19,19
+"Software tipo Office: procesadores de palabra, hojas de cálculo, software para hacer presentaciones y para el manejo de bases de datos
+",09130201,19,19,19
+"Software especializado: de medicina, financiero, de diseño y dibujo, paquetes estadísticos y similares
+",09130202,19,19,19
+Antivirus y software para filtrado y control de navegación,09130204,19,19,19
+"Paquetes de software de computadora, tales como sistemas operativos, aplicaciones, lenguajes de programación, etc
+",09130205,19,19,19
+"Webcam, dispositivos de joystick y similares, mouse, teclados, parlantes, cables, lápiz óptico para computador",09130301,19,19,19
+"Módem, router, tarjetas de video y de sonido, unidades de CD-ROM y de DVD-ROM",09130302,19,19,19
+"Memoria RAM, procesador, board, switch de red, disco duro interno",09130303,19,19,19
+"Otros accesorios para computadores y tabletas: forros, pad mouse, etc.",09139901,19,19,19
+"CDs, DVDs o USB con contenido (de música, videos, libros, etc)",09140104,19,19,19
+CDs y DVDs sin grabar (vírgenes) ,09140201,19,19,19
+"Material para uso fotográfico: rollos, cartuchos, discos vírgenes para uso fotográfico y cinematográfico, papel de fotografía, químicos para revelado, lámparas de destello, etc.",09140301,19,19,19
+"Memoria USB, disco duro externo, tarjetas de memoria SD, mini-SD, micro-SD y lectores de tarjetas",09140401,19,19,19
+Reparación de equipos y accesorios audiovisuales,09150101,19,19,19
+"Reparación de equipos, accesorios fotográficos y de procesamiento de información   ",09150201,19,19,19
+"Equipo y accesorios para deportes: pesas, balones, mallas, bicicletas estáticas, mesas de ping pong, raquetas, chanchas de tejo, equipo de buceo, flotadores, cascos, guantes rodilleras y otros
+",09210101,19,19,19
+"Mesas de billar, carros de golf, botes, alas deltas (cometas humanas), rodaderos, piscinas, etc.",09210201,19,19,19
+"Instrumentos musicales: armónicas,  flautas, maracas, tambores, baterías, guitarras, órganos, pianos, sintetizadores, trompetas, violines, etc",09220101,19,19,19
+Accesorios y piezas de repuestos de instrumentos musicales,09220201,19,19,19
+"Mantenimiento y reparación de instrumentos musicales y de equipos relacionados con deportes y ocio terrestre, aéreo, acuático y en interiores",09230101,19,19,19
+"Juegos de mesa: cartas, naipes, dominó, ajedrez, parqués, damas chinas, rumi-q, etc.",09310101,19,19,19
+"Juguetes: carros, trenes, muñecas, loterias, peluches, rompecabezas, sonajeros, armatodos, bromas, etc.",09310201,19,19,19
+"Bicicletas para niño(a), triciclos, columpios",09310202,5,5,5
+"Consolas y accesorios para juegos electrónicos: play station, nintendos, x-box, gameboy, etc.
+",09310203,19,19,19
+Pago por descargas de juegos de internet ,09310204,19,19,19
+"Disfraces (vestidos, máscaras, accesorios)",09310301,19,19,19
+"Adornos navideños (árboles de navidad artificiales, guirnaldas, y otros accesorios decorativos) pólvora y fuegos artificiales.
+",09310302,19,19,19
+"Artículos para fiestas: piñatas, serpentinas, confetis, bombas plásticas, recordatorios, etc",09310303,19,19,19
+"Artículos de colección: monedas, estampillas, álbumes para estampillas, billetes, etc. ",09310401,0,0,0
+"Equipo y accesorios para camping: carpas, colchonetas aislantes o térmicas, sacos de dormir, colchones de aire e infladores, neveras portables, maletines térmicos, navaja, etc. ",09320101,19,19,19
+"Calzado para deportes: patines, guayos, zapatos para golf, zapatillas para atletismo, crampones y otros aditamientos de calzado para deportes.",09320201,19,19,19
+"Equipos para pesca y caza: cañas y otros equipos para pescar, armas de fuego y municiones  ",09320301,19,19,19
+Flores sueltas o por docena,09330101,19,19,19
+"Plantas naturales: ramos de flores, matas, arbustos ",09330201,0,0,0
+"Coronas, flores para funerales, hojas verdes",09330301,19,19,19
+Plantas artificiales: flores (sueltas o en ramo) y matas ,09330401,19,19,19
+"Semillas, bulbos de plantas, césped, fertilizantes, fungicidas, abonos, materas, macetas y tiestos para flores y plantas
+",09330501,0,0,0
+"Animales domésticos, mascotas y para prácticas deportivas: perros, gatos,  pájaros, conejos, peces, etc.",09340101,0,0,0
+Alimentos para animales domésticos y mascotas,09340201,5,5,5
+"Productos  para animales domésticos y mascotas, productos de veterinaria, artículos para el cuidado e higiene (shampoo, jabón, desodorantes) y accesorios para mascotas (collares, perrera, jaula, acuarios y otros)",09340301,19,19,19
+"Servicios de veterinaria y de otro tipo para animales domésticos: cuidado, salón de belleza, alojamiento, entrenamiento, paseadores de perros y colegios para mascotas etc.   ",09350101,0,0,0
+"Entrada a Ferias (del libro, artesanal, etc)",09410101,0,0,0
+"Gastos en parques, parques de diversiones, juegos mecánicos (no incluir pago de paquetes de paseos de menos de un día por excursiones, peregrinaje o convivencia)",09410102,0,0,0
+Gastos en bazares y fiestas populares,09410103,0,0,0
+"Servicio de profesores o instructores particulares en clases recreativas y deportivas (fútbol, ajedrez, gimnasia, patinaje, natación, yoga y otros)
+       ",09410104,0,0,0
+"Servicio de profesores o instructores particulares en clases de formación artística (música, baile, instrumentos musicales, canto, producción artística-creativa)     
+  ",09410105,0,0,0
+"Gastos en  fiestas del hogar (matrimonios, cumpleaños, bautizos, navidad) a excepción de piñatas.
+",09410106,0,0,0
+"Gastos en juegos electrónicos y maquinitas (daytona y otros) en establecimientos públicos
+",09410107,0,0,0
+Entrada a  espectáculos deportivos,09410201,0,0,0
+"Alquiler de instalaciones o canchas deportivas para la práctica de deportes (bolos, tenis, golfito, microfútbol, etc.)
+",09410202,19,19,19
+Pago por servicios de gimnasio,09410203,19,19,19
+Cuotas a clubes sociales y deportivos,09410204,19,19,19
+"Servicio de billar, tejo, rana y ping-pong",09410205,0,0,0
+"Alquiler de equipo, accesorios y calzado para deporte y recreación ",09410301,19,19,19
+Entradas a cine,09420101,0,0,0
+Entradas a teatro,09420102,0,0,0
+"Entradas a espectáculos musicales: conciertos, óperas, ballets, zarzuela, etc.",09420201,0,0,0
+Entradas a circos y otros espectáculos afines,09420301,0,0,0
+Entradas a plazas de toros  ,09420302,0,0,0
+"Entradas a museos, galerías de arte y exhibiciones  ",09420401,0,0,0
+"Entradas a bibliotecas, hemerotecas y archivos",09420402,0,0,0
+Entradas a parques nacionales y reservas naturales,09420501,0,0,0
+"Entradas a jardines botánicos, zoológicos y acuarios",09420502,0,0,0
+"Entradas a monumentos nacionales (sitios históricos, etc) y zonas arqueológicas",09420503,0,0,0
+"Suscripción, instalación, conexión o reconexión a televisión por cable, satelital, IPTV, digitalizada o antena parabólica
+",09420601,19,19,19
+"Servicio de televisión por cable, satelital, digitalizada, IPTV o antena parabólica
+",09420602,19,19,19
+"Alquiler de TV, equipos de sonido y de video: televisores, reproductoras de video y de sonido, radios, etc.",09420701,19,19,19
+"Alquiler tradicional de películas, videos musicales y videojuegos",09420801,0,0,0
+"Servicios fotográficos y de video: procesamiento video, revelado de fotografías, ampliaciones, impresión de fotografías digitales, servicio de fotógrafos, etc.",09420901,19,19,19
+Pago por descargas de películas y videos de internet.,09421101,19,19,19
+Pago por descargas de música de internet,09421201,19,19,19
+"Otros servicios culturales: músicos, payasos,  recreacionistas y otros",09429901,0,0,0
+"Loterías, chance, baloto y similares",09430101,19,19,19
+Rifas y sorteos (diferentes a loterías),09430102,19,19,19
+"Casinos, máquinas tragamonedas y bingos",09430103,19,19,19
+Libros sueltos de lectura,09510101,0,0,0
+Atlas y diccionarios ,09510102,0,0,0
+"Enciclopedias, obras y colecciones completas",09510103,0,0,0
+Fascículos y tomos sueltos de colecciones,09510104,19,19,19
+Encuadernación de libros,09510105,19,19,19
+Libros técnicos y especializados,09510106,0,0,0
+Lista de útiles escolares completa  ,09510107,0,0,0
+"Libros de texto: textos guías para clase (incluye libros de literatura, poesía, etc, requeridos en clase)
+",09510201,0,0,0
+Pago por descargas de libros de internet ,09510301,19,19,19
+Compra diaria de periódicos ,09520101,0,0,0
+"Suscripción a periódicos, revistas u otras publicaciones periódicas impresas.",09520201,0,0,0
+"Revistas sueltas, comics, novelas gráficas, historietas, cuentos y cuadernillos para colorear",09520301,19,19,19
+"Catálogos, material publicitario, tarjetas de invitación o felicitación, carteles, postales, calendarios, tarjetas personales, álbumes de láminas, láminas, monas y caramelos, afiches, separadores de libros, sufragios",09530101,19,19,19
+Mapas y globos terráqueos,09530102,19,19,19
+"Cuadernos (cosidos, grapados, argollados, plastificados, etc.)  y blocks",09540101,0,0,0
+"Libretas, agendas, diarios personales",09540102,19,19,19
+"Hojas sueltas de papel (oficio, carta, cuadriculado, mantequilla, carbón), cartulina y otro tipo de papeles y cartones",09540103,19,19,19
+Resmas de papel (carta u oficio),09540104,19,19,19
+"Otros artículos de papeleria: fólderes, sobres (carta o manila), forros, rótulos, carpetas, etc.",09540199,19,19,19
+"Lápices, portaminas, minas, tajalápices y borradores ",09540201,0,0,0
+"Bolígrafos, estilógrafos, plumas, marcadores, plumones y resaltadores",09540202,19,19,19
+"Tintas (para estilógrafo, china y otras), plantillas de dibujo, almohadillas, líquidos correctores, etc.",09540203,19,19,19
+"Lienzos, telas para dibujo y pintura",09540301,19,19,19
+Pínceles para dibujo,09540302,19,19,19
+"Vinilos, témperas, acuarelas, óleos, carboncillos, cajas de colores, crayolas, plastilina, otras pinturas, etc   ",09540303,19,19,19
+"Otros artículos para manualidades (repujadores, troqueladores, enrolladores, palos de balso, escarcha, foamy, etc)",09540399,19,19,19
+"Perforadoras, cortadoras de papel, tijeras, grapadoras",09540401,19,19,19
+"Pegamentos, cintas, colbones, gomas, adhesivos, bisturís, grapas, clips, broches para papel, etc.   ",09540402,19,19,19
+"Reglas, escuadras, compaces, transportadores y otros instrumentos de geometría.   ",09549901,19,19,19
+"Estuches para lápices, pizarras, tiza, yeso para actividades educativas, madera balso, etc",09549902,19,19,19
+"Paquetes turísticos completos: Gira turística completa (incluye pasajes, alojamiento, alimentación, etc.) ",09600101,19,19,19
+"Pago de paquete por viajes de excursión, peregrinaje o convivencia de menos de un día (sin pernoctar)",09600201,19,19,19
+Matrícula e inscripción en preescolar ,10100101,0,0,0
+Pensiones en preescolar,10100102,0,0,0
+Bonos escolares en preescolar,10100103,0,0,0
+Asociación de padres de familia en preescolar,10100104,0,0,0
+"Otros gastos en preescolar no especificados anteriormente (aportes para rifas, eventos especiales y cobros para actividades esporádicas del colegio)",10100199,0,0,0
+Matrícula e inscripción en básica primaria  ,10100201,0,0,0
+Pensiones en básica primaria,10100202,0,0,0
+Bonos escolares en básica primaria,10100203,0,0,0
+Asociación de padres de familia en básica primaria,10100204,0,0,0
+"Otros gastos en básica primaria no especificados anteriormente (aportes para rifas, eventos especiales y cobros para actividades esporádicas del colegio)",10100299,0,0,0
+Matrícula e inscripción en educación para niños con necesidades educativas especiales,10100301,0,0,0
+Pensiones en educación de niños con necesidades educativas especiales,10100302,0,0,0
+"Otros gastos en educación de niños con necesidades educativas especiales (aportes para rifas, eventos especiales y cobros para actividades esporádicas del colegio)",10100399,0,0,0
+Matriculas e inscripción en secundaria,10200101,0,0,0
+Pensiones en secundaria,10200102,0,0,0
+Bonos escolares en secundaria,10200103,0,0,0
+Asociación de padres de familia en secundaria,10200104,0,0,0
+"Otros gastos en secundaria no especificados anteriormente (aportes para rifas, eventos especiales y cobros para actividades esporádicas del colegio)",10200199,0,0,0
+Inscripciones y matrículas en carreras universitarias (no incluye postgrado),10400101,0,0,0
+Inscripciones y matrículas en carreras técnicas y tecnológicas ,10400102,0,0,0
+"Inscripciones y matrículas en postgrados (especialización, maestría, doctorado)",10400201,0,0,0
+Otros gastos en educación superior (pregrados y postgrados),10409901,0,0,0
+"Cursos de educación no formal en academias o instituciones de idiomas, informática, moda y confección, belleza, primeros auxilios, etc",10500101,0,0,0
+Cursos de educación no formal en academias o instituciones de deportes,10500102,0,0,0
+Cursos de educación no formal en academias o instituciones de formación artística,10500103,0,0,0
+"Diplomados, educación continuada, preicfes, preuniversitarios ",10500401,0,0,0
+Educación para adultos y validaciones,10500501,0,0,0
+Pago a instituciones por asesoría de tareas,10500601,0,0,0
+Clases académicas dictadas por particulares,10500701,0,0,0
+Desayunos completos,11110101,0,0,0
+Almuerzos completos,11110102,0,0,0
+Comidas completas,11110103,0,0,0
+"Tiquetera para alimentos preparados, excepto en establecimientos educativos",11110104,0,0,0
+"Platos diversos: Pollo asado, carne asada, arroz chino, lechona y similares para consumo inmediato  en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo, para llevar y por servicio a domicilio
+",11110105,0,0,0
+"Bebidas calientes : Tinto, café con leche, chocolate, té, bebida achocolatada caliente, leche, agua de panela, agua aromática, avena caliente y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo, para llevar y por servicio a domicilio
+",11110201,0,0,0
+"Gaseosa y otros refrescos  en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las adquiridas para llevar y servicio a domicilio",11110301,0,0,0
+"Jugos naturales  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  puestos moviles, y lugares de esparcimiento; se incluyen tambien los  contratados por encargo ,para llevar y servicio a domicilio",11110302,0,0,0
+"Leche tomada fuera del hogar suministrada para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento.",11110303,0,0,0
+"Yogurt, kumis para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento.",11110304,0,0,0
+"Masato, mazamorra, chicha, avena helada, malteada, agua de panela fria y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo y para llevar",11110305,0,0,0
+"Helados, paletas, conos y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  puestos moviles,  lugares de esparcimiento y para llevar.",11110401,0,0,0
+"Ensaladas de frutas, frutas sueltas, fresas con crema  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las contratadas por encargo, para llevar y por servicio a domicilio",11110402,0,0,0
+"Galletas de sal y de dulce  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las contratadas por encargo y para llevar",11110403,0,0,0
+"Pan, almojábanas, buñuelos,  pandeyucas, arepas y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo, para llevar y por servicio a domicilio",11110404,0,0,0
+"Emparedados, empanadas, bollos, envueltos, tamales, pastel de pollo, perros calientes, hamburguesas, pizzas y similares para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo, para llevar y por servicio a domicilio",11110405,0,0,0
+"Brownies, obleas, ponqués, bizcochos, milhojas y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo y para llevar",11110406,0,0,0
+"Productos de salsamentaria y fritanga: chorizos, jamones, rellenas y similares para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio, puestos moviles, y lugares de esparcimiento; se incluyen tambien las contratadas por encargo y para llevar",11110407,0,0,0
+"Quesos, cuajadas y quesillos para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las contratadas por encargo y para llevar",11110408,0,0,0
+"Huevos preparados para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  puestos moviles, y lugares de esparcimiento y  para llevar",11110409,0,0,0
+"Arequipes, bocadillos, gelatinas y similares para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento y para llevar",11110410,0,0,0
+"Frituras: papas fritas, chitos, patacones y similares  para consumo inmediato, en medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento y para llevar",11110411,0,0,0
+"Dulces, confites, chocolatinas, bombones  para consumo inmediato, en medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento y para llevar",11110412,0,0,0
+"Cócteles de camarones, ostras y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  puestos moviles, y lugares de esparcimiento; se incluyen tambien las contratadas por encargo y para llevar",11110413,0,0,0
+"Onces, medias nueves, media mañana, algo, entredía, recreo para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las contratadas por encargo y para llevar",11110414,0,0,0
+Alimentos provenientes de salario en especie,11110415,0,0,0
+"Gastos en discotecas, bares, griles, tabernas y similares (comida, bebidas, cover)  ",11110501,0,0,0
+"Gastos en bebidas alcohólicas (cerveza, aguardiente, ron, etc) en tiendas, fondas rurales y al aire libre",11110601,0,0,0
+"Pago mensual por alimentación de estudiantes en establecimiento educativo (restaurantes escolares, universitarios),  los comedores universitarios, los de tropa y de oficiales del ejército.
+",11120101,0,0,0
+"Servicios de alojamiento en hoteles, pensiones, posadas y hostales ",11200101,19,19,19
+Servicios de alojamiento en moteles y residencias  ,11200201,19,19,19
+"Servicios de alojamiento en centros de vacaciones, cabañas, apartamentos, servicios de alquiler en terrenos para camping y servicios de guías turísticos",11200301,19,19,19
+Servicios de alojamiento por motivo de enseñanza: internados de colegios; residencias estudiantiles; albergues para menores; albergues para jóvenes trabajadores e inmigrantes,11200401,0,0,0
+Corte de pelo para hombres y niños,12110101,19,19,19
+Afeitado en barberías,12110102,19,19,19
+"Corte de pelo, peinado y alisado para mujeres y niñas",12110103,19,19,19
+Tratamientos capilares y faciales,12110104,19,19,19
+Manicure y pedicure,12110105,19,19,19
+"Teñido de cabello, permanentes y desrizados en salón de belleza",12110106,19,19,19
+" Tratatamientos y cuidados corporales: Saunas, turcos y masajes no terapéuticos",12110107,19,19,19
+Depilaciones ,12110108,19,19,19
+"Otros tratamientos de belleza: bronceado en cámara,  maquillaje permanente, tatuajes, perforaciones, expansiones,etc",12110199,19,19,19
+"Máquinas eléctricas de afeitar, para cortar el pelo y depiladoras ",12120101,19,19,19
+"Pinzas eléctricas, planchas para cabello y secadores ",12120102,19,19,19
+Reparación de aparatos eléctricos para el cuidado personal ,12120104,19,19,19
+"Otros aparatos eléctricos para el cuidado personal: cepillos de dientes, vaporizadores, artículos eléctricos para masaje, etc.",12120199,19,19,19
+"Máquina de afeitar no desechables, cuchillas y repuestos para máquinas de afeitar, máquinas de afeitar desechables, depiladores, encrespadores, cepillos para el cabello, peines y peinillas, rulos, ganchos y moños, pinzas y hebillas para el cabello, diademas, balacas y gorros para baño.",12130101,19,19,19
+Básculas personales o pesas,12130102,19,19,19
+Jabones de tocador líquidos y en barra,12130201,19,19,19
+"Champús, acondicionadores, bálsamos, enjuagues, cremas y tratamientos para el cabello (excluir los productos de bebé), gel, fijadores y lacas para el cabello",12130202,19,19,19
+"Cremas para afeitar y depilar (tubo, aerosol, gel) y lociones para después de la afeitada",12130203,19,19,19
+"Desodorantes y antitranspitantes (crema, barra, roll-on, aerosol)",12130204,19,19,19
+"Perfumes, colonias y lociones",12130205,19,19,19
+"Artículos para la higiene corporal del bebé: aceites, cremas, champús, bálsamos, jabones, colonias, etc. (excluye paños húmedos)",12130206,19,19,19
+"Cepillos de dientes, hilo y seda dental",12130301,19,19,19
+Crema dental y  enjuague bucal,12130302,19,19,19
+Blanqueadores y ceras dentales.,12130303,19,19,19
+"Bases para la cara, polvos faciales, pestañinas, labiales, lápices de ceja, delineadores, sombras,  ruborizadores y desmaquilladores.",12130401,19,19,19
+"Esmaltes, quitaesmaltes, diluyentes, limas y tijeras para uñas, cortacutículas,  cortauñas y artículos decorativos para uñas.",12130402,19,19,19
+"Cremas (nutritivas, limpiadoras, hidratantes, etc.), talcos y polvos para el cuerpo y los pies, bronceadores y protectores solares no formulados",12130403,19,19,19
+Tinturas para el cabello,12130404,19,19,19
+"Otros productos de belleza (pelucas, peluquines, extensiones de cabello, etc.)",12130499,19,19,19
+Papel higiénico,12139901,19,19,19
+"Algodón,  esponjas para el cuerpo y copitos",12139902,19,19,19
+Pañuelos y pañitos húmedos desechables de uso personal,12139903,19,19,19
+"Toallas sanitarias, protectores, tampones, pañitos y jabones intimos.",12139904,5,5,5
+"Protectores para brassier, mamadores, succionadores y pezoneras",12139905,19,19,19
+Pañales desechables,12139906,19,19,19
+Pañales y ropa interior para incontinencia,12139907,19,19,19
+Otros productos para el aseo personal,12139999,19,19,19
+Servicios prestados por personas para entretenimiento privado de adultos (strippers y otros),12200101,0,0,0
+"Anillos, argollas, sortijas, aretes, pendientes, prendedores y alfileres para corbata, mancornas en oro y plata
+",12310101,19,19,19
+"Collares, cadenas, gargantillas, pulseras y manillas en oro y plata.
+",12310102,19,19,19
+Piedras preciosas,12310103,19,19,19
+"Reparación de artículos de oro, plata y piedras preciosas.",12310104,19,19,19
+"Relojes de mesa o pared y despertadores, termómetros y barómetros de pared",12310201,19,19,19
+"Relojes de pulso mecánicos o digitales, de bolsillo y cronómetros",12310202,19,19,19
+"Reparación de relojes, cronómetros, termómetros y barómetros de pared",12310203,19,19,19
+"Anillos, argollas, sortijas, aretes, pendientes, prendedores, mancornas de fantasia e hilo.",12310301,19,19,19
+"Collares, cadenas, gargantillas, pulseras y manillas de fantasía e hilo",12310302,19,19,19
+Reparación de artículos de fantasía e hilo,12310303,19,19,19
+"Maletines, portafolios y bolsos de viaje",12320101,19,19,19
+"Carteras, mochilas y bolsos de mano",12320102,19,19,19
+"Billeteras, monederos, tarjeteros de bolsillo y portabilletes   ",12320103,19,19,19
+Bolsos y maletas tipo estudiante ,12320104,19,19,19
+"Reparación de maletines, cartera, billeteras y bolsos mencionados anteriormente",12320105,19,19,19
+"Coches, caminadores, sillas, sillas para vehículo, cestos y hamacas para bebé",12320201,19,19,19
+Portabebés delanteros y de espalda,12320202,19,19,19
+Monitores e intercomunicadores para bebé,12320203,19,19,19
+"Chupos, mamilas, entretenedores",12320204,19,19,19
+Pañaleras,12320205,19,19,19
+Reparación de artículos para bebé,12320207,19,19,19
+"Otros artículos para bebé (bañeras, correas para bebé, etc) ",12320299,19,19,19
+"Artículos para fumador: Pipas, encendedores no desechables, pitilleras, cortapuros, cigarrillos electrónicos y narguile",12320301,19,19,19
+"Artículos personales varios como: gafas de sol, lentes de contacto, cosmeticos, bastones, paraguas y sombrillas, abanicos, llaveros, etc",12320401,19,19,19
+"Artículos de funeraria: ataúdes, lápidas y urnas",12320501,19,19,19
+"Residencias para ancianos, hogares geriátricos, hogares para personas con limitaciones físicas o cognitivas y centros de rehabilitación",12400101,0,0,0
+Asistencia para el cuidado y mantenimiento de personas con limitaciones-discapacidad en el hogar,12400102,0,0,0
+"Pagos mensuales en guardería o salacunas: pensión, alimentación, etc",12400201,0,0,0
+"Pagos anuales en guarderías o salacunas: matrícula, materiales, etc",12400202,0,0,0
+Cuidado de niños fuera del hogar (niñeras fuera del hogar),12400203,0,0,0
+Pagos en agencias por servicios de adopción,12400204,0,0,0
+Descuentos por aporte de asalariados a EPS,12400301,0,0,0
+Aportes obligatorios de trabajadores independientes a EPS ,12400302,0,0,0
+"Pagos adicionales en salud (PILA) por persona diferente al nucleo familiar: abuelos, personas mayores de 25 años, nietos, etc.",12400303,0,0,0
+Descuentos por aportes obligatorios de asalariados a fondos de pensiones y cesantías,12400401,0,0,0
+Aportes obligatorios de trabajadores independientes a fondos de pensiones y cesantías ,12400402,0,0,0
+Pago en comedores comunitarios,12400501,0,0,0
+Valor imputado por alimentación en comedores comunitarios,12400502,0,0,0
+"Seguro de vida y de educación (ahorro programado), seguro de prestación en caso de fallecimiento.",12510101,0,0,0
+"Seguro relacionado con la vivienda (robo, incendio, terremoto, terrorismo, etc)",12520101,19,19,19
+Pago anual de medicina prepagada o plan complementario de salud,12530101,5,5,5
+Seguro estudiantil,12530102,19,19,19
+"Seguros relacionados con  la salud: médico, maternidad, neonatal, ambulancia, de accidentes,etc. (emermédica, emi, cem)",12530103,19,19,19
+Pago de Seguro Obligatorio SOAT,12540101,19,19,19
+Pago de seguro de vehículos contra todo riesgo,12540102,19,19,19
+"Seguros relacionados con el transporte: seguro de vuelo, seguro de viaje y equipaje.",12540103,19,19,19
+"Otros seguros: seguros de responsabilidad civil por lesiones o daños a terceros o a su propiedad, seguro funerario y similares",12559901,19,19,19
+Cuotas por crédito para adquisición de vehículos ,12610101,0,0,0
+"Cuotas o pagos por préstamos de consumo realizados a bancos, cooperativas y fondos (incluye cuotas de creditos para vivienda)
+
+",12610102,0,0,0
+Cuotas o pagos por préstamos adquiridos con particulares y organizaciones del sector no financiero,12610103,0,0,0
+Compra de vivienda,12610104,0,0,0
+"Pago por chequeras, servicios de cajero automático (retiros, consultas de saldos), audirespuesta, servicios en línea o banca virtual, avances en efectivo, costos del taloanario, reposición del plástico, certificaciones y referencias bancarias y cheques de gerencia.
+",12620101,0,0,0
+"Comisiones bancarias por transferencias, pagos a terceros, por consignación nacional en oficina diferente a la de radicación, giros, remesas, portes (cheques)",12620102,0,0,0
+Cuota de manejo de tarjeta débito o crédito,12620103,0,0,0
+"Pago del ultimo recibo por tarjetas de crédito, excluyendo cuota de manejo ",12620104,0,0,0
+Cuotas o pagos directos a almacenes y distribuidores por compras a crédito (excluye tarjetas de crédito expedidas por almacenes y distribuidores),12620105,0,0,0
+Servicios financieros por medio de corresponsal,12620106,0,0,0
+"Pago de comisión por la administración de los fondos de inversión colectiva, fondos mutuos de inversión, negocios fiduciarios de inversión y portafolios de terceros de las sociedades comisionistas de bolsa",12620202,0,0,0
+"Honorarios y cargos por servicio de agentes, asesores de inversión, consultores fiscales y financieros y servicios similares",12620301,0,0,0
+Remesas de dinero a otros hogares para sostenimiento de personas a cargo del hogar en el exterior,12620302,0,0,0
+"Pagos de honorarios por: asesoría jurídicas, contratación de personal para el hogar, guardaespaldas, detectives privados, agencias matrimoniales, agentes inmobiliarios, etc
+",12700101,0,0,0
+Libreta militar,12700201,0,0,0
+"Cédula de ciudadanía, pasaporte, visas, tarjetas profesionales, certificados de nacimiento, defunción, matrimonio, extrajuicios, certificados de libertad y otros certificados notariales",12700202,0,0,0
+"Cuotas a asociaciones profesionales, partidos políticos,  juntas de acción comunal, aportes y donaciones a ONGs y donaciones en dinero a otras instituciones u hogares
+",12700301,0,0,0
+"Cuotas a  instituciones religiosas y diezmo
+",12700302,0,0,0
+"Servicios religiosos y civiles por entierros, matrimonios,  gastos en pompas fúnebres y en otros servicios de funerales, etc",12700401,0,0,0
+"Impuesto predial y de valorización de la(s) vivienda(s) ocupada(s) por el hogar
+",12700601,0,0,0
+Impuestos del vehiculo,12700602,0,0,0
+Impuesto de renta,12700603,0,0,0
+"Otros impuestos (de timbre, etc)",12700699,0,0,0
+Mesadas a estudiantes y personas no perceptoras de ingresos para gastos diarios,12700701,0,0,0
+"Planes de protección social a personas ajenas al hogar (Plan Canitas, Gotas de agua)",12700901,0,0,0
+Pago por noticias y anuncios en la prensa y en páginas web,12709901,0,0,0
+Pago por servicio de baños públicos,12709902,0,0,0
+"Servicio de fotocopias, reducciones, ampliaciones, laminaciones, argollados, impresión de hojas y documentos, servicio de scanner, servicio de quemado de CD o DVD y trabajos en computador",12709903,0,0,0
+Servicio de coteros o cargadores,12709904,0,0,0

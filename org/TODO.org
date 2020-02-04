@@ -6,9 +6,6 @@ https://stackoverflow.com/questions/2415873/exceptions-in-gitignore
 ** TODO download new docker image to desktop
 ** TODO update tax.co docker image
  Github's dependencybot says Pillow 6.1.0 has security vulnerabilities.
-* TODO Vaex for subsampling
-Because without it I can't run the model (even subsamples)
-on my laptop.
 * TODO retire branch that was for reporter
 ** TODO document branch: average-vat-spending-per-rate
 ** goal
