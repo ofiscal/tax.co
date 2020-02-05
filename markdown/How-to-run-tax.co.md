@@ -35,32 +35,9 @@ This starts a Docker container named `tax-co`.
 Open a Bash view into that Docker container:
 `sudo docker exec -it tax-co bash`.
 
+# Download and build the raw ENPH data
 
-# Get the raw data
-
-## Download the raw data
-
-The raw microdata used in tax.co is the ENPH. It comes from DANE.
-You can find it
-[here](http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata).
-Downloading that is an annoying process, as they have imposed speedbumps:
-You must download each of the 16 files individually,
-and after you download about six of them,
-DANE starts asking you to prove you are a human by doing tests.
-
-In this project, the folder `data/enph-2017/`
-initially contains only a `Makefile`.
-Once you have downloaded the raw data (16 .zip files) from DANE,
-put it in a new folder called `data/enph-2017/1_raw`,
-right next to the `Makefile`.
-
-## Clean the raw data
-
-From `tax.co/data/enph-2017/`, run `make data`.
-This will extract the contents of the two archives you downloaded,
-rename them as needed,
-fix some separator inconsistencies,
-and move them into some appropriately-structured folders.
+See [data/enph-2017/README.md](data/enph-2017/README.md) for how.
 
 # Run the code
 
