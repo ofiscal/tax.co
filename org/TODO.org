@@ -95,13 +95,6 @@ in build/purchases/capitulo_c.py
 ** TODO use the UVT rather than fixed peso amounts
 ** TODO handle csv format outside of pandas
 document everything below, then merge the branch into `tests`
-*** TODO are therefobsolete (sep = ";") instructions now?
-For example, in ./build/vat_rates.py, there's:
-  vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
-                          , sep = ";" # TODO PITFALL
-                          , encoding = "latin1" )
-But that's not reading the ENPH; it's reading the VAT-COICOP bridge.
-Is there anything that reads the ENPH using sep=;?
 *** TODO document
 **** csvtool deletes whitespace between separators
  For those values, the ssv files read as strings,
