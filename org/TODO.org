@@ -95,21 +95,18 @@ in build/purchases/capitulo_c.py
 ** TODO use the UVT rather than fixed peso amounts
 ** TODO handle csv format outside of pandas
 document everything below, then merge the branch into `tests`
-*** motivating example
-in ./build/vat_rates.py:
+*** TODO are therefobsolete (sep = ";") instructions now?
+For example, in ./build/vat_rates.py, there's:
   vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
                           , sep = ";" # TODO PITFALL
                           , encoding = "latin1" )
-*** TODO document or add to the preliminary Makefile
- apt install csvtool
- mv data/enph_2017/2_unzipped/csv -> /ssv
- mkdir 3_csv
- cd 2_unzipped/ssv
- for i in *; do csvtool -t ';' -u ',' cat $i -o ../../3_csv/$i; done
-*** TODO csvtools deletes whitespace between separators
+But that's not reading the ENPH; it's reading the VAT-COICOP bridge.
+Is there anything that reads the ENPH using sep=;?
+*** TODO document
+**** csvtool deletes whitespace between separators
  For those values, the ssv files read as strings,
  while the csv files read as NaN.
-*** TODO csvtool converts numbers containing commas to strings
+**** csvtool converts numbers containing commas to strings
 * TODO test suite
 ** TODO incorporate tests in hand_test/ into automatic tests
 Note that not all of them can be automated --

@@ -11,8 +11,9 @@ SHELL := bash
 data:			\
   verify		\
   unpack_and_rename	\
-  verify_txt_files      \
-  move_txt_files
+  verify_txt		\
+  move_txt		\
+  format_csv
 
 verify: # verify the content of the raw zipfiles
 	echo "If this fails, checksum does not match value expected as of 2019 07 03."
@@ -41,7 +42,7 @@ unpack_and_rename: verify
 # If there are no quotation marks in the .txt files,
 # replace tab with semicolon, change .txt to .csv,
 # and move to where the other .ssv files are.
-verify_txt_files:
+verify_txt:
 	cd 2_unzipped									; \
 	  touch definitely_empty							; \
 	  grep "'|\"" *.txt > hopefully_empty						; \
@@ -53,8 +54,19 @@ verify_txt_files:
 	  fi										; \
 	  rm hopefully_empty definitely_empty
 
-move_txt_files:
+move_txt:
 	cd 2_unzipped							; \
 	  sed -i -r "s/\t/\;/g" *.txt					; \
 	  for x in *.txt; do mv -- "$$x" "$${x//\.txt/.ssv}"; done	; \
 	  mv *.ssv ssv							; \
+
+format_csv:
+	mkdir 3_csv
+	cd 2_unzipped/ssv					; \
+	  for i in *; do					  \
+	    csvtool -t ';' -u ',' cat $$i -o ../../3_csv/$$i	; \
+	  done
+	cd 3_csv						; \
+	  for x in *.ssv; do					  \
+	    mv -- "$$x" "$${x//\.ssv/.csv}"			; \
+	  done
