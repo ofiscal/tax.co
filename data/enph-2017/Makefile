@@ -60,6 +60,11 @@ move_txt:
 	  for x in *.txt; do mv -- "$$x" "$${x//\.txt/.ssv}"; done	; \
 	  mv *.ssv ssv							; \
 
+# PITFALL: `csvtool` deletes whitespace between separators.
+# This is potentially confusing, but good,
+# as it causes the missing value to be read as NaN rather than " ".
+# PITFALL: `csvtool` converts numbers containing commas to strings.
+# Those value are handled downstream, in the Python code.
 format_csv:
 	mkdir 3_csv
 	cd 2_unzipped/ssv					; \
