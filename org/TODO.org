@@ -73,11 +73,6 @@ They contradict each other.
  50%            15.000000  1.220801e+06
  75%            20.000000  8.300305e+06
  max            25.000000  1.270990e+07
-** TODO assumption: set "where got" to "purchase"
-in build/purchases/capitulo_c.py
-(it's currently unset)
-* TODO definitely unsafe
-** TODO use the UVT rather than fixed peso amounts
 * TODO test suite
 ** TODO incorporate tests in hand_test/ into automatic tests
 Note that not all of them can be automated --
@@ -702,8 +697,6 @@ vat_flat_rate
      can be called "improving the functioning of the state"
  average tax rate: easier to understand than marginal
 ** code reviews
-*** TODO ? 2019 05 06
-**** the "duplicated" problem in python/build/purchases/capitulo_c.py
 *** 2019 01 15-ish
 **** have read through
  buildings.py

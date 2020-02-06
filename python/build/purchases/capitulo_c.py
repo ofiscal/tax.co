@@ -9,9 +9,12 @@ import python.common.misc as c
 capitulo_c_corrections = [
     Correction.Create_Constant_Column( "quantity", 1 )
   , Correction.Create_Constant_Column( "how-got", 1 )
+  , Correction.Create_Constant_Column( "where-got", 1 )
   , Correction.Create_Constant_Column( "coicop", nan )
-  , Correction.Drop_Row_If_Column_Equals( "duplicated", 1 )
-  , Correction.Drop_Column( "duplicated" )
+
+  # TODO ? Recover and document the logic behind the following corrections.
+    , Correction.Drop_Row_If_Column_Equals( "duplicated", 1 )
+    , Correction.Drop_Column( "duplicated" )
 ]
 
 files = [
@@ -24,7 +27,6 @@ files = [
       , ( "NC2_CC_P3_S2", {StringProperty.NotAString}, "duplicated", 0 ) ]
     , capitulo_c_corrections +
       c.corrections
-       # TODO (#right) "where-got": assume purchase
   )
 
   , File( "rural capitulo c"
@@ -47,5 +49,4 @@ files = [
           , "duplicated", 0 ) ]
     , capitulo_c_corrections +
       c.corrections
-      # TODO (#right) : "where-got"
 ) ]
