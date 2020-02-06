@@ -266,7 +266,7 @@ if True: # income
         ppl["income, month : infrequent : inheritance"] +
         ppl["income, donacion"].apply(
           lambda x: x - min ( x * 0.2
-                            , c.uvt * (2290 / 12)  ) ) )
+                            , c.muvt * 2290  ) ) )
 
       ppl["income, ganancia ocasional, 20%-taxable"] = (
         ppl["income, month : infrequent : gambling"] +
@@ -401,7 +401,7 @@ if True: # dependence
                            & ( ppl["age"] < 24 ) )
                          | ( ppl["disabled"]==1 ) ) )
                      | ( ( ppl["relative, non-child"]==1 )
-                       & ( ppl["income"] < (260 * c.uvt / 12  ) )
+                       & ( ppl["income"] < (260 * c.muvt  ) )
                          | ( ppl["disabled"]==1 ) )
                      )
 
