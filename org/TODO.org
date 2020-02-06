@@ -1,10 +1,3 @@
-* TODO update the javeriana download of the ENPH
-Currently it contains some slightly processed data.
-That's confusing and unnecessary, given the Makefile.
-Change it to the raw data instead.
-* TODO refactor .gitignore file(s)
-Ignore most .xls etc. files, but provide some exceptions.
-https://stackoverflow.com/questions/2415873/exceptions-in-gitignore
 * TODO verify Makefile runs each test file
 * TODO docker
 ** TODO download new docker image to desktop

@@ -13,12 +13,11 @@ data-doc/Nacional, Calidad de Vida, 2014/
 data-doc/enig-2007/
 data-doc/enph-2017/
 data/*.zip
-data/enph-2017/1_raw
+data/enph-2017/1_ra
 data/enph-2017/2_unzipped
 data/enph-2017/3_csv
 data/enph-2017/older*
 data/enph-2017/recip-1*
-data/vat/holiday/*.xlsx
 dependencies.png
 docker/commands-laptop.txt
 docker/logs
