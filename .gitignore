@@ -3,31 +3,10 @@
 
 *~
 .emacs*
-ipynb_checkpoints/
 TAGS
-markdown/*.pdf
 _out/
+  # for make.py
 __pycache__/
-data-doc/Listado completo IVA Canasta Familiar.pdf
-data-doc/Nacional, Calidad de Vida, 2014/
-data-doc/enig-2007/
-data-doc/enph-2017/
-data/*.zip
-data/enph-2017/1_ra
-data/enph-2017/2_unzipped
-data/enph-2017/3_csv
-data/enph-2017/older*
-data/enph-2017/recip-1*
-dependencies.png
-docker/commands-laptop.txt
-docker/logs
 git-comment.txt
-output/enph_revision/
-output/phony/
-output/summaries.txt
-output/test/
-output/vat-prelim/
-output/vat.*/
-output/vat/
 temp*
-tex/recip-1*/
+
