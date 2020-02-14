@@ -5,12 +5,12 @@
 # Interpret those triples as follows:
     # First number: threshold at which a new income tax rate takes effect.
     # Second: taxable base. This is a function; you input someone's wage,
-    #   and it outputs the amount of their money subject to the tax.
+    #   and it outputs the amount of that money subject to the tax.
     # Third: average tax rate.
 
 # PITFALL
 #########
-# The ENPH data gives nominal salary, before those contributions.
+# The ENPH data gives nominal salary, before any of these contributions.
 
 # PITFALL
 #########
@@ -18,11 +18,11 @@
 # they pay some part of those taxes themselves,
 # and their employer pays the rest.
 # (In an economic sense, it all comes out of the employee's wages,
-# but in a legal sense, it is shared with the employer.)
+# but in a legal sense, the burden is shared with the employer.)
 
 # CONTEXT
 #########
-# The model `rentas_naturales.xlsx` might amke this easier to understand.
+# The model `rentas_naturales.xlsx` might make this easier to understand.
 
 from python.common.misc import min_wage
 

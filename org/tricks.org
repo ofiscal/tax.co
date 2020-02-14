@@ -1,7 +1,8 @@
 * create tar.gz archive
 tar -czvf tarball-of-zipfiles.tar.gz individual-zipfiles/
 * create pdf from markdown
-pandoc -t beamer -o bugs.pdf bugs.md
+pandoc -o bugs.pdf bugs.md
+To render beamer-style, add the option `-t beamer`.
 PITFALL: New sections must be preceded by a blank line.
 * emacs: number lines in a rectangle
 http://emacsworld.blogspot.com/2012/06/numbering-lines-and-lists-in-emacs.html

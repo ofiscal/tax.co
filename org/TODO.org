@@ -468,7 +468,6 @@ water exempt, others excluded
 ** TODO the make recipe for goods-by-income-decile.py is confusing
 It is only used by the del-rosario strategy, which has its own makefile.
 But it is created in the primary Makefile.
-** TODO ? replace column names with variables
 ** TODO the vat-strategy logic needs cleaning
 *** how to change those two strategy-conditioning files
 In the case of the const strategy, don't use any keys -- neither cap_c nor coicop.
@@ -505,7 +504,6 @@ It inputs these 5 files:
   purchases_1_5_no_origin
   vat_(cap_c|coicop)_brief
   vat_coicop_(2|3)_digit -- version imported depends whether strategy == prop*
-** TODO ? drop the Correction class
 ** TODO update coicop-vat bridge on OneDrive
 ** (didn't work) refactor for safety
 *** fizzled: safer strings
@@ -521,7 +519,7 @@ The Makefile pseudo targets, rather than *_pics, should be called *_reports, and
 *** this way it doesn't drown the python error reports
 ** centralize routines for categorical variables
 * TODO accuracy (#right)
-** TODO ? use "where-got
+** TODO ? use "where-got"
 It's 15% missing (in purchases_2_vat.csv). Assume those are fully taxed.
 ** TODO These error codes apply to all income and expense variables
 *** why to use them

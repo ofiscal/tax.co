@@ -9,6 +9,7 @@ income_tax_columns = [ "tax, income"
                      ]
 
 def income_taxes( ppl ):
+  """Add income tax columns to ppl."""
   new_columns = pd.DataFrame()
   temp_columns = pd.DataFrame()
   temp_columns["taxable income, labor + pension"] = (
