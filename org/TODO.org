@@ -33,10 +33,6 @@ This problem arises in purchases_2_vat_test.py
  should be in denominator, and not numerator, of tax rate.
  formality matters
    if an informal person makes 500K, they don't get primas + cesantias
-** TODO sanity checks (#sane)
-*** are these two variables ever both > 0 ?
-**** P5180S1, P5180S2 : daily payment for, value of food at school
-**** P6180S1, P6180S2 : daily payment for, value of food at university
 ** TODO purchases.main
 *** TODO what to do|is done about missing freq, where-got, is-purchase
 is-purchase we probably assume to be 1, but the others ...?
@@ -70,9 +66,6 @@ They contradict each other.
  50%            15.000000  1.220801e+06
  75%            20.000000  8.300305e+06
  max            25.000000  1.270990e+07
-** TODO assumption: set "where got" to "purchase"
-in build/purchases/capitulo_c.py
-(it's currently unset)
 * TODO definitely unsafe
 ** TODO use the UVT rather than fixed peso amounts
 ** TODO handle csv format outside of pandas
