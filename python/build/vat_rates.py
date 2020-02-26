@@ -20,47 +20,9 @@ vat_cap_c = pd.read_csv( "data/vat/" + "vat-for-capitulo-c.csv"
             } )
 
 if True: # input
-  # TODO : The conditional branch here is stale.
-  # The vat_holiday_* options should be retired.
-  if c.strategy == t.detail:
-    vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
-                            , sep = ";" # TODO PITFALL
-                            , encoding = "latin1" )
-  elif c.strategy in [t.vat_holiday_1,
-                      t.vat_holiday_2,
-                      t.vat_holiday_3]:
-    if True: # read the data
-      if c.strategy in [t.vat_holiday_1,
-                        t.vat_holiday_2]:
-        vat_coicop = (
-          pd.read_csv(
-            "data/vat/holiday/" + "vat-by-coicop.csv" ) .
-          drop( columns = ["Unnamed: 0"] ) )
-      elif c.strategy in [t.vat_holiday_3]:
-        vat_coicop = (
-          pd.read_csv(
-            "data/vat/holiday/" + "vat-by-coicop.ask_3.csv" ) .
-          drop( columns = ["Unnamed: 0"] ) )
-    if True: # un-Latinize the numbers
-      # TODO ? Shouldn't this evaluate regardless of strategy?
-      # It's current indentation restricts it to vat_holiday* strategies.
-      vat_cols = ["vat","vat, min","vat, max"]
-      vat_coicop.loc[:, vat_cols] = (
-        vat_coicop.loc[:, vat_cols] .
-        apply( ( lambda col:
-                 col.str.replace( ",", "." ) .
-                 astype( float ) ),
-               axis = "rows" ) )
-    if True: # set appropriate VAT rates to zero
-      if c.strategy in [t.vat_holiday_1,
-                        t.vat_holiday_3]:
-        vat_coicop.loc[ vat_coicop["VAT Holiday"] == 1,
-                        vat_cols ] = 0
-      elif c.strategy == t.vat_holiday_2:
-        vat_coicop.loc[ vat_coicop["VAT Holiday"] > 0,
-                        vat_cols ] = 0
-    vat_coicop = vat_coicop.drop(
-      columns = ["VAT Holiday"] )
+  vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
+                          , sep = ";" # TODO PITFALL
+                          , encoding = "latin1" )
 
 for (vat,frac) in [ ("vat"     , "vat frac")
                   , ("vat, min", "vat frac, min")
