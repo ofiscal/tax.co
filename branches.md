@@ -14,6 +14,18 @@ In November 2019,
 a reporter asked us if we could determine how much tax is collected per VAT rate.
 This computes a number of variations on that.
 
+## How it works
+
+Compute average (across households) fraction of spending at each tax rate.
+Use the max vat rate.
+Ignore goods for which the VAT rate is not one of 0, 5 or 19%.
+
+Make columns "spent @ vat x" for x in [0,5,19].
+Carry those until total household spending exists.
+Compute columns "fraction spent @ vat x" for x in [0,5,19].
+Take their averages.
+Verify that the sum of those averages is close to unity.
+
 # csv_convert_without_python (dormant)
 
 The initial processing of the data is all done in Python using Pandas.
