@@ -53,22 +53,6 @@ They contradict each other.
  75%            20.000000  8.300305e+06
  max            25.000000  1.270990e+07
 * TODO definitely unsafe
-** TODO magic numbers
-I found them all. Only one is in production. What remains is just to document them.
-*** how to find them
-In tmux, run
-  egrep "[0-9]+" -r build -r common -r draw -r regime *.py -C 5 --exclude="*test*"
-and then read that screen. (Dumping it to a file would mean losing the colors,
-which makes the reading process much slower.)
-*** them
-The categorical variables like where-got.
-  These are magic in the ENPH data. They should remain.
-build/purchases/main_defs.py: absurdly_big_expenditure_threshold = 1e9
-build/accumulate_marginal.py
-  This is unused.
-** TODO move unused files to an exemplars/ folder
-accumulate_marginal.py
-house stuff
 ** TODO handle csv format outside of pandas
 document everything below, then merge the branch into `tests`
 *** motivating example

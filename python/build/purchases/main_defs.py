@@ -10,7 +10,10 @@ def drop_if_coicop_or_value_invalid( df ):
                | (~ df[ "25-broad-categs" ] . isnull()) )
              & (  ~ df[ "value"           ] . isnull()) ]
 
-absurdly_big_expenditure_threshold = 1e9
+absurdly_big_expenditure_threshold = 1e9 # MAGIC
+  # It seems reasonable to us to discard purchases
+  # bigger than this as probably errors. In future, after inflation,
+  # this number could well change.
 
 def drop_absurdly_big_expenditures( df ):
   return df[ ~(df["value"] > absurdly_big_expenditure_threshold) ]
