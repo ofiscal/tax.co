@@ -190,14 +190,14 @@ if True: # income
         ).drop( columns = ppl.filter( regex = "(beca source|beca from)"
                           ).columns
         ).rename( columns = {
-            "income, month : edu : beca, in-kind"
-              : "income : edu : beca, in-kind"
-          , "income, month : edu : non-beca, in-kind"
-              : "income : edu : non-beca, in-kind"
-          , "income, month : edu : beca, cash"
-              : "income : edu : beca, cash"
-          , "income, month : edu : non-beca, cash"
-              : "income : edu : non-beca, cash" } )
+              "income, month : edu : beca, in-kind"
+            : "income : edu : beca, in-kind"
+          ,   "income, month : edu : non-beca, in-kind"
+            : "income : edu : non-beca, in-kind"
+          ,   "income, month : edu : beca, cash"
+            : "income : edu : beca, cash"
+          ,   "income, month : edu : non-beca, cash"
+            : "income : edu : non-beca, cash" } )
 
     if True: # govt income (cash + in-kind)
       cols_govt = list( cla.name_map( files.income_govt )
@@ -247,6 +247,7 @@ if True: # income
       ppl["total income, monthly : private"] = (
         ppl[ cols_private ].sum( axis=1 ) )
       ppl["income, donacion"] = (
+        # todo ? this is unused
         # PITFALL: overlaps what will be called "income, private"
         ppl["income, month : private : from private domestic ?firms"] +
         ppl["income, month : private : from private foreign ?firms"] )
@@ -312,8 +313,8 @@ if True: # income
     if True: # homogenize, shorten income variable names
       income_short_name_dict_cash = {
           'income, month : pension : age | illness'  : "income, pension"
-        , 'income, month : cesantia'                  : "income, cesantia"
-        , "income, month : investment : dividends"    : "income, dividend"
+        , 'income, month : cesantia'                 : "income, cesantia"
+        , "income, month : investment : dividends"   : "income, dividend"
         , 'total income, monthly : infrequent'       : "income, infrequent"
         , 'total income, monthly : govt, cash'       : "income, govt, cash"
         , 'total income, monthly : labor, cash'      : "income, labor, cash"
