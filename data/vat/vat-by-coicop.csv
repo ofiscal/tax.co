@@ -16,8 +16,7 @@ Cuchuco de ma�z para preparar;1110602;0.19;0.19;0.19;
 Harina de ma�z;1110603;0.05;0.05;0.05;
 Harina precocida de ma�z;1110604;0.05;0.05;0.05;
 F�cula de ma�z para preparar;1110605;0.19;0.19;0.19;
-"Pan corriente, con queso,  ali�ado, mogolla, relleno, pan de coco, calado, tajado, �rabe., para consumo en el hogar
-";1110801;0;0;0;
+"Pan corriente, con queso,  ali�ado, mogolla, relleno, pan de coco, calado, tajado, �rabe., para consumo en el hogar";1110801;0;0;0;
 Pan franc�s para consumo en el hogar;1110802;0;0;0;
 Pan integral para consumo en el hogar;1110803;0;0;0;
 Harina para preparar tortas, natilla, bu�uelos, etc.;1119801;0.19;0.19;0.19;
@@ -33,8 +32,7 @@ G�rmen de trigo, lecitina, levadura, linaza ;1119810;0.19;0.19;0.19;
 Comidas preparadas precocidas a base de cereales (lasagna, pizza, empanadas) ;1119811;0.19;0.19;0.19;
 Carne vegetal, embutidos y otros alimentos vegetarianos (a base de soya, gl�ten, lenteja, quinua, etc.) sin cocinar;1119812;0.19;0.19;0.19;
 Galletas de sal para consumo en el hogar;1119901;0.19;0.19;0.19;
-"Galletas de dulce (de panader�a y de paquete) para consumo en el hogar
-";1119902;0.19;0.19;0.19;goods with different tax rates. Tentative VAT presented.
+"Galletas de dulce (de panader�a y de paquete) para consumo en el hogar";1119902;0.19;0.19;0.19;goods with different tax rates. Tentative VAT presented.
 Galletas integrales (de panader�a y de paquete) para consumo en el hogar;1119903;0.19;0.19;0.19;goods with different tax rates. Tentative VAT presented.
 Otros productos de panader�a no mencionados previamente: brownies, obleas, ponques, bizcochos (pudines en Costa Atl�ntica) para consumo en el hogar;1119999;0;0;0;
 Carne de res sin hueso o pulpa;1120101;0;0;0;
@@ -59,8 +57,7 @@ Conejo, liebre, Cur� o cuy para consumo en el hogar;1120401;0;0;0;
 Cordero, chivo, cabro para consumo en el hogar;1120402;0;0;0;
 Chig�iro para consumo en el hogar;1120403;0;0;0;
 Caballo para consumo en el hogar;1120404;0;0;0;
-"Carne preparada de pavo, pollo,cerdo, lomo ahumado para consumo en el hogar
-";1120501;0;0;0;
+"Carne preparada de pavo, pollo,cerdo, lomo ahumado para consumo en el hogar";1120501;0;0;0;
 Mortadela;1120502;0.05;0.05;0.05;
 Salchichas para consumo en el hogar;1120503;0;0;0;
 Jam�n y jamoneta para consumo en el hogar;1120504;0;0;0;
@@ -68,8 +65,7 @@ Chorizo para consumo en el hogar;1120505;0;0;0;
 Tocineta;1120506;0;0;0;
 Hamburguesa para consumo en el hogar;1120507;0;0;0;
 Carnes fr�as enlatadas;1120509;0;0;0;
-"Otros embutidos de proteina animal (longaniza, butifarra, g�novas, salchich�n, salami, c�banos, pat�s, etc) para consumo en el hogar
-";1120599;0.05;0.05;0.05;goods with different tax rates. Tentative VAT presented.
+"Otros embutidos de proteina animal (longaniza, butifarra, g�novas, salchich�n, salami, c�banos, pat�s, etc) para consumo en el hogar";1120599;0.05;0.05;0.05;goods with different tax rates. Tentative VAT presented.
 Otros alimentos no especificados: Hormigas culonas, etc. ;1129901;0.19;0.19;0.19;
 Pescado de r�o fresco o congelado;1130101;0;0;0;
 Pescado de mar fresco o congelado;1130201;0;0;0;
@@ -79,10 +75,8 @@ Otros mariscos, crust�ceos y moluscos frescos o congelados;1130298;0.19;0.19;0
 Otros productos de pescado y derivados para consumo en el hogar;1130299;0.19;0.19;0.19;
 Leche cruda para consumo en el hogar;1140101;0;0;0;
 Leche pasteurizada (entera, descremada, semidescremada, deslactosada y enriquecida) para consumo en el hogar;1140102;0;0;0;
-"Leche larga vida (entera, descremada, semidescremada, deslactosada y enriquecida) para consumo en el hogar
-";1140103;0;0;0;
-"Leche en polvo (entera, descremada, semidescremada) para consumo en el hogar
-";1140105;0;0;0;
+"Leche larga vida (entera, descremada, semidescremada, deslactosada y enriquecida) para consumo en el hogar";1140103;0;0;0;
+"Leche en polvo (entera, descremada, semidescremada) para consumo en el hogar";1140105;0;0;0;
 Queso campesino para consumo en el hogar;1140201;0;0;0;
 Queso doble crema para consumo en el hogar;1140202;0.19;0.19;0.19;
 Cuajada, quesillo para consumo en el hogar;1140204;0;0;0;
@@ -96,8 +90,7 @@ Kumis para consumo en el hogar;1149904;0.19;0.19;0.19;
 Suero coste�o, queso crema, crema agria;1149905;0.19;0.19;0.19;
 Natas para consumo en el hogar;1149906;0;0;0;
 Postres l�cteos para consumo en el hogar;1149907;0.19;0.19;0.19;
-"Bebidas l�cteas saborizadas no achocolatadas (avena) para consumo en el hogar
-";1149908;0.19;0.19;0.19;
+"Bebidas l�cteas saborizadas no achocolatadas (avena) para consumo en el hogar";1149908;0.19;0.19;0.19;
 Aceite de girasol, ma�z, soya y palma;1150101;0.05;0.05;0.05;
 Aceite de oliva ;1150102;0.19;0.19;0.19;
 Otros aceites comestibles: canola, cacahuete, coco, almendras, diet�ticos, etc.;1150199;0.19;0.19;0.19;
@@ -240,8 +233,7 @@ Tomillo;1190304;0.19;0.19;0.19;
 Color;1190305;0.19;0.19;0.19;
 Ajo en polvo o en pasta, canela, clavos, nuez moscada;1190306;0.19;0.19;0.19;
 Hierbas culinarias: perejil, cilantro, romero, or�gano, etc.;1190401;0.19;0.19;0.19;
-"Sopas: de vegetales, de carne, de pollo, de pescado, cremas de sobre, sopas para beb� para consumo en el hogar
-";1190501;0.19;0.19;0.19;
+"Sopas: de vegetales, de carne, de pollo, de pescado, cremas de sobre, sopas para beb� para consumo en el hogar";1190501;0.19;0.19;0.19;
 Caldos y consom�s concentrados (cubos y polvo) ;1190502;0.19;0.19;0.19;
 Bases para preparar carnes y otros alimentos;1190503;0.19;0.19;0.19;
 Frituras: papas fritas, chitos, maizitos, patacones, besitos, etc;1190601;0.19;0.19;0.19;
@@ -261,8 +253,7 @@ Cocoa y chucula  ;1210203;0.19;0.19;0.19;
 Polvo para preparar bebidas achocolatadas;1210204;0.19;0.19;0.19;
 Bebidas achocolatadas listas para consumir;1210205;0.19;0.19;0.19;
 T� en polvo (para preparar);1210301;0.19;0.19;0.19;
-"Hierbas arom�ticas (secas y frescas), mate para consumo en el hogar
-";1210302;0.19;0.19;0.19;
+"Hierbas arom�ticas (secas y frescas), mate para consumo en el hogar";1210302;0.19;0.19;0.19;
 Agua mineral (con y sin gas) para consumo en el hogar;1220101;0;0;0;
 Agua en lata o de carrotanque;1220201;0;0;0;
 Hielo ;1220301;0;0;0;
@@ -277,11 +268,9 @@ Ron para consumo en el hogar;2110201;0.05;0.05;0.05;
 Whisky, brandy, vodka, ginebra, cognac, tequila y similares para consumo en el hogar;2110301;0.05;0.05;0.05;
 Cremas de licor (de amareto, de whisky, etc.), sabaj�n y ponche crema para consumo en el hogar;2110401;0.05;0.05;0.05;
 Otras bebidas alcoh�licas: aperitivos que no sean a base de vino, mezclas de cocteles para consumo en el hogar;2119901;0.05;0.05;0.05;
-"Vino, champa�a, jerez y aperitivos a base de vino para consumo en el hogar
-";2120101;0.05;0.05;0.05;
+"Vino, champa�a, jerez y aperitivos a base de vino para consumo en el hogar";2120101;0.05;0.05;0.05;
 Cerveza nacional e importada para consumo en el hogar;2130101;0.128;0.128;0.128;
-"Refajo preparado (embotellado o enlatado) para consumo en el hogar
-";2130102;0.128;0.128;0.128;
+"Refajo preparado (embotellado o enlatado) para consumo en el hogar";2130102;0.128;0.128;0.128;
 Cigarrillos con filtro;2200101;0.19;0.19;0.19;
 Cigarrillos sin filtro;2200102;0.19;0.19;0.19;
 Tabacos y picadura para pipa o para armar cigarrillos;2200103;0.19;0.19;0.19;
@@ -412,8 +401,7 @@ Lustrado y limpieza de zapatos ;3220101;0.19;0.19;0.19;
 Reparaci�n de calzado: remonta, tapas, costuras, etc;3220201;0.19;0.19;0.19;
 Alquiler de calzado diferente al calzado para deporte y recreaci�n;3220301;0.19;0.19;0.19;
 Arriendo de la vivienda donde reside ;4110101;0;0;0;
-"Arriendo por viviendas para uso del hogar diferentes a la que habita, (no incluye  los servicios de alojamiento ofrecidos por aldeas y centros de vacaciones)
-";4120101;0;0;0;
+"Arriendo por viviendas para uso del hogar diferentes a la que habita, (no incluye  los servicios de alojamiento ofrecidos por aldeas y centros de vacaciones)";4120101;0;0;0;
 Estimaci�n del arriendo imputado de la vivienda propia ;4210101;0;0;0;
 Arriendos imputados por alquiler reducido o alojamiento gratuito o en usufructo;4229902;0;0;0;
 Arriendos imputados por vivienda dada como salario en especie;4229903;0;0;0;
@@ -456,8 +444,7 @@ Reconexi�n del servicio de gas natural;4520203;0.19;0.19;0.19;
 Combustibles l�quidos para cocinar: gasolina, kerosene, petr�leo, alcohol, etc.  ;4530101;0.19;0.19;0.19;
 Combustibles s�lidos para cocinar: le�a, carb�n vegetal, carb�n mineral, etc.;4540101;0;0;0;goods with different tax rates. Tentative VAT presented.
 Cama sencilla ;5110101;0.19;0.19;0.19;
-"Cama semidoble, doble, king size, base cama y cama nido
-";5110102;0.19;0.19;0.19;
+"Cama semidoble, doble, king size, base cama y cama nido";5110102;0.19;0.19;0.19;
 Cunas y corral para beb�;5110103;0.19;0.19;0.19;
 Juego completo de muebles de alcoba;5110104;0.19;0.19;0.19;
 Juego completo de muebles de sala;5110105;0.19;0.19;0.19;
@@ -471,12 +458,10 @@ Colchones, somiers y colchonetas ;5110112;0.19;0.19;0.19;
 Bases para colch�n, catres, camarotes, literas;5110113;0.19;0.19;0.19;
 Sillas, sillones, sof�s, sofacamas;5110114;0.19;0.19;0.19;
 Asientos como: mecedoras, butacos, bancas, asientos inflables y puff, etc;5110115;0.19;0.19;0.19;
-"Armarios, cl�sets, c�modas, chifoniers, escaparates, organizadores, roperos, baules, entrepa�os, repisas, etc.
-";5110116;0.19;0.19;0.19;
+"Armarios, cl�sets, c�modas, chifoniers, escaparates, organizadores, roperos, baules, entrepa�os, repisas, etc.";5110116;0.19;0.19;0.19;
 Bibliotecas y muebles modulares;5110117;0.19;0.19;0.19;
 Mesas de noche, mesas de centro, mesas auxiliares, mesa de bar y cava;5110119;0.19;0.19;0.19;
-"Otros muebles para el hogar como: biff�, tocadores, vitrinas, archivadores, biombos, parasol, tabique plegable etc.
-";5110198;0.19;0.19;0.19;
+"Otros muebles para el hogar como: biff�, tocadores, vitrinas, archivadores, biombos, parasol, tabique plegable etc.";5110198;0.19;0.19;0.19;
 Otros accesorios para el hogar: accesorios para ba�o, cocina, etc.;5110199;0.19;0.19;0.19;
 L�mparas de techo o de pie, reflectores, poste solar led, l�mpara solar exterior y farol colgante o de pie.;5110201;0.19;0.19;0.19;
 L�mparas o pantallas de mesa;5110202;0.19;0.19;0.19;
@@ -491,8 +476,7 @@ Espejos, porta retratos y percheros;5119901;0.19;0.19;0.19;
 Persianas de materiales diferentes a tela, blackout;5119902;0.19;0.19;0.19;
 Alfombras y tapetes fijos y sueltos;5120101;0.19;0.19;0.19;
 Reparaci�n de muebles, accesorios y materiales para pisos;5130101;0.19;0.19;0.19;
-"Restauraci�n de obras de arte y de muebles antiguos del hogar
-";5130201;0.19;0.19;0.19;
+"Restauraci�n de obras de arte y de muebles antiguos del hogar";5130201;0.19;0.19;0.19;
 Telas para confeccionar ropa de cama, manteles, cortinas y forros para muebles;5200101;0.19;0.19;0.19;
 Juego completo de s�banas, sobres�banas y fundas ;5200201;0.19;0.19;0.19;
 S�banas, sobresabanas, protectores de colch�n y fundas sueltas;5200202;0.19;0.19;0.19;
@@ -579,17 +563,12 @@ Platones, baldes, embudos y poncheras;5409904;0.19;0.19;0.19;
 Canecas y papeleras para la basura;5409905;0.19;0.19;0.19;
 Cestas y recipientes para la ropa de materiales diferentes a tela;5409906;0.19;0.19;0.19;
 Vasenilla, micas o patos m�dicos;5409907;0.19;0.19;0.19;
-"Taladros, soldadoras, sierras, pulidoras y cizallas el�ctricas para uso del hogar
-";5510101;0.19;0.19;0.19;
-"Podadoras, cortadoras de c�sped y guada�adoras el�ctricas o motorizadas y tractores el�ctricos para jard�n para uso del hogar
-";5510102;0;0;0;
+"Taladros, soldadoras, sierras, pulidoras y cizallas el�ctricas para uso del hogar";5510101;0.19;0.19;0.19;
+"Podadoras, cortadoras de c�sped y guada�adoras el�ctricas o motorizadas y tractores el�ctricos para jard�n para uso del hogar";5510102;0;0;0;
 Compra e instalaci�n de bombas el�ctricas de agua, generador de energ�a o planta el�ctrica de mediana potencia para uso del hogar;5510103;0.19;0.19;0.19;
 Otras herramientas y equipos el�ctricos grandes para uso del hogar ;5510199;0.19;0.19;0.19;
-"Reparaci�n de herramientas y equipos grandes para uso del hogar  ( Herramientas y equipo motorizados, como taladros, sierras, pulidoras y cortadoras el�ctricos, tractores para jard�n, cortadoras de c�sped, cultivadores, sierras de cadena y bombas de agua.)
-";5510201;0.19;0.19;0.19;
-"Alquiler de maquinaria y equipo grande ( Herramientas y equipo motorizados, como taladros, sierras, pulidoras y cortadoras el�ctricos, tractores para jard�n, cortadoras de c�sped, cultivadores, sierras de cadena y bombas de agua.)
-
-";5510301;0.19;0.19;0.19;
+"Reparaci�n de herramientas y equipos grandes para uso del hogar  ( Herramientas y equipo motorizados, como taladros, sierras, pulidoras y cortadoras el�ctricos, tractores para jard�n, cortadoras de c�sped, cultivadores, sierras de cadena y bombas de agua.)";5510201;0.19;0.19;0.19;
+"Alquiler de maquinaria y equipo grande ( Herramientas y equipo motorizados, como taladros, sierras, pulidoras y cortadoras el�ctricos, tractores para jard�n, cortadoras de c�sped, cultivadores, sierras de cadena y bombas de agua.)";5510301;0.19;0.19;0.19;
 Hombresolos, alicates, tenazas, martillos, destornilladores, punzones, serruchos, limas para herramientas, escofinas, cizallas manuales, punteros, cinceles, palustres, etc.;5520101;0.19;0.19;0.19;
 Llaves de tuercas, llaves inglesas, llaves bristol.;5520102;0.19;0.19;0.19;
 Cintas m�tricas: metro, dec�metro, niveles, etc.;5520103;0.19;0.19;0.19;
@@ -610,18 +589,15 @@ Detergente l�quido;5610105;0.19;0.19;0.19;
 Blanqueadores;5610106;0.19;0.19;0.19;
 Suavizantes;5610107;0.19;0.19;0.19;
 Quitamanchas, polvo limpiador y champ� para alfombras;5610108;0.19;0.19;0.19;
-"L�quidos y desinfectantes para limpiar muebles, vidrios, hornos, estufas, paredes, ba�os, pisos
-";5610109;0.19;0.19;0.19;
-"Ambientadores y desodorantes ambientales (velas aromatizadas, pastillas, aceites, geles, incienso, esencias naturales o florales para aromatizar ambientes)
-";5610110;0.19;0.19;0.19;
+"L�quidos y desinfectantes para limpiar muebles, vidrios, hornos, estufas, paredes, ba�os, pisos";5610109;0.19;0.19;0.19;
+"Ambientadores y desodorantes ambientales (velas aromatizadas, pastillas, aceites, geles, incienso, esencias naturales o florales para aromatizar ambientes)";5610110;0.19;0.19;0.19;
 Cera para pisos y selladores;5610111;0.19;0.19;0.19;
 Insecticidas, fungicidas (enchufe, spray, etc), trampa y venenos para roedores;5610112;0;0;0;
 Otros productos de limpieza y mantenimiento: almidones para camisas, alcanfor, naftalina, disolventes, destapaca�er�as.;5610199;0.19;0.19;0.19;
 Escobas, recogedores de basura, escobillas, plumeros limpiapolvos, trapeadores, chupa, destapaca�er�as mec�nico y cepillos (para paredes, ba�os, ropa, veh�culo y calzado);5610201;0.19;0.19;0.19;
 Guantes de caucho  ;5610202;0.19;0.19;0.19;
 Esponjas, esponjillas y estropajos;5610203;0.19;0.19;0.19;
-"Limpiones, cogeollas, pa�os de tela para limpiar (bayetilla, de microfibra) y delantales para cocina
-";5610204;0.19;0.19;0.19;
+"Limpiones, cogeollas, pa�os de tela para limpiar (bayetilla, de microfibra) y delantales para cocina";5610204;0.19;0.19;0.19;
 Otros elementos de aseo (antihumedad, antiacaros, antiolores);5610299;0.19;0.19;0.19;
 Cuerdas, cordeles, mechas para l�mpara, tendederos y pinzas para ropa, perchas de tornillo y ganchos adhesivos;5619901;0.19;0.19;0.19;
 Agujas (para coser, tejer), alfileres;5619902;0.19;0.19;0.19;
@@ -638,8 +614,7 @@ Bolsas pl�sticas para basura y para aspiradora   ;5610505;0.19;0.19;0.19;
 Otros productos desechables:  pitillos, palos de pincho, etc;5610599;0.19;0.19;0.19;
 Empleado(a) dom�stico interno ;5620101;0;0;0;
 Empleado(a) dom�stico por d�as (permanente o temporal);5620102;0;0;0;
-"Otros empleados dom�sticos: amas de llaves, institutrices, tutores, mayordomos, choferes, jardineros, celadores, ni�eras dentro del hogar
-";5620199;0.19;0.19;0.19;
+"Otros empleados dom�sticos: amas de llaves, institutrices, tutores, mayordomos, choferes, jardineros, celadores, ni�eras dentro del hogar";5620199;0.19;0.19;0.19;
 Servicio de limpieza de ventanas;5620201;0.19;0.19;0.19;
 Servicio de desinfecci�n y fumigaci�n del hogar;5620202;0.19;0.19;0.19;
 Servicio de lavado de ropa y limpieza del hogar: cubrelechos, cortinas, tejidos del hogar, tapetes, muebles y ventanas.;5620301;0.19;0.19;0.19;
@@ -769,12 +744,9 @@ Compra de radiotel�fono y accesorios;8200202;0.19;0.19;0.19;
 Compra de celular inteligente y accesorios;8200203;;0;0.19;vat depending on value (cellphones above 22UVT, aprox. $700800 COP)
 Reparaci�n de celulares y de accesorios;8200204;0.19;0.19;0.19;
 Servicios de telegraf�a, t�lex y telefax;8300101;0.19;0.19;0.19;
-"Llamadas telef�nicas desde una l�nea privada o desde una l�nea p�blica (Telefonos publicos y modenederos, etc.)
-";8300201;0;0;0;
-"Llamadas de larga distancia nacional o internacional desde tel�fonos p�blicos, cabinas telef�nicas, monederos y desde hoteles
-";8300202;0;0;0;
-"Llamadas por minuto desde celular en la calle a cualquier destino
-";8300203;0;0;0;
+"Llamadas telef�nicas desde una l�nea privada o desde una l�nea p�blica (Telefonos publicos y modenederos, etc.)";8300201;0;0;0;
+"Llamadas de larga distancia nacional o internacional desde tel�fonos p�blicos, cabinas telef�nicas, monederos y desde hoteles";8300202;0;0;0;
+"Llamadas por minuto desde celular en la calle a cualquier destino";8300203;0;0;0;
 Servicio telef�nico residencial (local y larga distancia)  ;8300204;;0;0.02;exemption for the first 325 minutes month
 Instalaci�n y reconexi�n de l�nea telef�nica residencial;8300205;0.19;0.19;0.19;
 Planes de telefon�a celular de voz y mensajer�a ;8300206;0.19;0.19;0.19;EXTRA TAX: Impuesto nacional al consumo (4% charge on amount above $47800)
@@ -809,13 +781,10 @@ Calculadoras;9130108;0.19;0.19;0.19;
 Computadores port�tiles;9130110;;0;0.19;vat depending on value (cellphones above 50UVT, aprox. $1593000 COP)
 Tabletas (ipads);9130111;;0;0.19;vat depending on value (tablets above 22UVT, aprox. $700800 COP)
 Otros aparatos de tratamiento de informaci�n: servidores, etc;9130199;0.19;0.19;0.19;
-"Software tipo Office: procesadores de palabra, hojas de c�lculo, software para hacer presentaciones y para el manejo de bases de datos
-";9130201;0.19;0.19;0.19;
-"Software especializado: de medicina, financiero, de dise�o y dibujo, paquetes estad�sticos y similares
-";9130202;0.19;0.19;0.19;
+"Software tipo Office: procesadores de palabra, hojas de c�lculo, software para hacer presentaciones y para el manejo de bases de datos";9130201;0.19;0.19;0.19;
+"Software especializado: de medicina, financiero, de dise�o y dibujo, paquetes estad�sticos y similares";9130202;0.19;0.19;0.19;
 Antivirus y software para filtrado y control de navegaci�n;9130204;0.19;0.19;0.19;
-"Paquetes de software de computadora, tales como sistemas operativos, aplicaciones, lenguajes de programaci�n, etc
-";9130205;0.19;0.19;0.19;
+"Paquetes de software de computadora, tales como sistemas operativos, aplicaciones, lenguajes de programaci�n, etc";9130205;0.19;0.19;0.19;
 Webcam, dispositivos de joystick y similares, mouse, teclados, parlantes, cables, l�piz �ptico para computador;9130301;0.19;0.19;0.19;
 M�dem, router, tarjetas de video y de sonido, unidades de CD-ROM y de DVD-ROM;9130302;0.19;0.19;0.19;
 Memoria RAM, procesador, board, switch de red, disco duro interno;9130303;0.19;0.19;0.19;
@@ -826,8 +795,7 @@ Material para uso fotogr�fico: rollos, cartuchos, discos v�rgenes para uso f
 Memoria USB, disco duro externo, tarjetas de memoria SD, mini-SD, micro-SD y lectores de tarjetas;9140401;0.19;0.19;0.19;
 Reparaci�n de equipos y accesorios audiovisuales;9150101;0.19;0.19;0.19;
 Reparaci�n de equipos, accesorios fotogr�ficos y de procesamiento de informaci�n   ;9150201;0.19;0.19;0.19;
-"Equipo y accesorios para deportes: pesas, balones, mallas, bicicletas est�ticas, mesas de ping pong, raquetas, chanchas de tejo, equipo de buceo, flotadores, cascos, guantes rodilleras y otros
-";9210101;0.19;0.19;0.19;
+"Equipo y accesorios para deportes: pesas, balones, mallas, bicicletas est�ticas, mesas de ping pong, raquetas, chanchas de tejo, equipo de buceo, flotadores, cascos, guantes rodilleras y otros";9210101;0.19;0.19;0.19;
 Mesas de billar, carros de golf, botes, alas deltas (cometas humanas), rodaderos, piscinas, etc.;9210201;0.19;0.19;0.19;
 Instrumentos musicales: arm�nicas,  flautas, maracas, tambores, bater�as, guitarras, �rganos, pianos, sintetizadores, trompetas, violines, etc;9220101;0.19;0.19;0.19;
 Accesorios y piezas de repuestos de instrumentos musicales;9220201;0.19;0.19;0.19;
@@ -835,12 +803,10 @@ Mantenimiento y reparaci�n de instrumentos musicales y de equipos relacionados
 Juegos de mesa: cartas, naipes, domin�, ajedrez, parqu�s, damas chinas, rumi-q, etc.;9310101;0.19;0.19;0.19;
 Juguetes: carros, trenes, mu�ecas, loterias, peluches, rompecabezas, sonajeros, armatodos, bromas, etc.;9310201;0.19;0.19;0.19;
 Bicicletas para ni�o(a), triciclos, columpios;9310202;;0.05;0.19;Depending on value an nature. If electric OR below 50 UVT (aprox $1593000 COP) the VAT rate is 5%
-"Consolas y accesorios para juegos electr�nicos: play station, nintendos, x-box, gameboy, etc.
-";9310203;0.19;0.19;0.19;
+"Consolas y accesorios para juegos electr�nicos: play station, nintendos, x-box, gameboy, etc.";9310203;0.19;0.19;0.19;
 Pago por descargas de juegos de internet ;9310204;0.19;0.19;0.19;
 Disfraces (vestidos, m�scaras, accesorios);9310301;0.19;0.19;0.19;
-"Adornos navide�os (�rboles de navidad artificiales, guirnaldas, y otros accesorios decorativos) p�lvora y fuegos artificiales.
-";9310302;0.19;0.19;0.19;
+"Adornos navide�os (�rboles de navidad artificiales, guirnaldas, y otros accesorios decorativos) p�lvora y fuegos artificiales.";9310302;0.19;0.19;0.19;
 Art�culos para fiestas: pi�atas, serpentinas, confetis, bombas pl�sticas, recordatorios, etc;9310303;0.19;0.19;0.19;
 Art�culos de colecci�n: monedas, estampillas, �lbumes para estampillas, billetes, etc. ;9310401;0.19;0.19;0.19;
 Equipo y accesorios para camping: carpas, colchonetas aislantes o t�rmicas, sacos de dormir, colchones de aire e infladores, neveras portables, maletines t�rmicos, navaja, etc. ;9320101;0.19;0.19;0.19;
@@ -850,8 +816,7 @@ Flores sueltas o por docena;9330101;0;0;0;
 Plantas naturales: ramos de flores, matas, arbustos ;9330201;0;0;0;
 Coronas, flores para funerales, hojas verdes;9330301;0.19;0.19;0.19;
 Plantas artificiales: flores (sueltas o en ramo) y matas ;9330401;0.19;0.19;0.19;
-"Semillas, bulbos de plantas, c�sped, fertilizantes, fungicidas, abonos, materas, macetas y tiestos para flores y plantas
-";9330501;;0;0.19;goods with different tax rates
+"Semillas, bulbos de plantas, c�sped, fertilizantes, fungicidas, abonos, materas, macetas y tiestos para flores y plantas";9330501;;0;0.19;goods with different tax rates
 Animales dom�sticos, mascotas y para pr�cticas deportivas: perros, gatos,  p�jaros, conejos, peces, etc.;9340101;0.19;0.19;0.19;
 Alimentos para animales dom�sticos y mascotas;9340201;0.19;0.19;0.19;
 Productos  para animales dom�sticos y mascotas, productos de veterinaria, art�culos para el cuidado e higiene (shampoo, jab�n, desodorantes) y accesorios para mascotas (collares, perrera, jaula, acuarios y otros);9340301;0.19;0.19;0.19;
@@ -863,13 +828,10 @@ Gastos en bazares y fiestas populares;9410103;0.19;0.19;0.19;
        ";9410104;0.19;0.19;0.19;
 "Servicio de profesores o instructores particulares en clases de formaci�n art�stica (m�sica, baile, instrumentos musicales, canto, producci�n art�stica-creativa)     
   ";9410105;0.19;0.19;0.19;
-"Gastos en  fiestas del hogar (matrimonios, cumplea�os, bautizos, navidad) a excepci�n de pi�atas.
-";9410106;0.19;0.19;0.19;
-"Gastos en juegos electr�nicos y maquinitas (daytona y otros) en establecimientos p�blicos
-";9410107;0.19;0.19;0.19;
+"Gastos en  fiestas del hogar (matrimonios, cumplea�os, bautizos, navidad) a excepci�n de pi�atas.";9410106;0.19;0.19;0.19;
+"Gastos en juegos electr�nicos y maquinitas (daytona y otros) en establecimientos p�blicos";9410107;0.19;0.19;0.19;
 Entrada a  espect�culos deportivos;9410201;0;0;0;
-"Alquiler de instalaciones o canchas deportivas para la pr�ctica de deportes (bolos, tenis, golfito, microf�tbol, etc.)
-";9410202;0.19;0.19;0.19;
+"Alquiler de instalaciones o canchas deportivas para la pr�ctica de deportes (bolos, tenis, golfito, microf�tbol, etc.)";9410202;0.19;0.19;0.19;
 Pago por servicios de gimnasio;9410203;0.19;0.19;0.19;
 Cuotas a clubes sociales y deportivos;9410204;0.19;0.19;0.19;
 Servicio de billar, tejo, rana y ping-pong;9410205;0.19;0.19;0.19;
@@ -884,10 +846,8 @@ Entradas a bibliotecas, hemerotecas y archivos;9420402;0;0;0;
 Entradas a parques nacionales y reservas naturales;9420501;0;0;0;
 Entradas a jardines bot�nicos, zool�gicos y acuarios;9420502;0;0;0;
 Entradas a monumentos nacionales (sitios hist�ricos, etc) y zonas arqueol�gicas;9420503;0;0;0;
-"Suscripci�n, instalaci�n, conexi�n o reconexi�n a televisi�n por cable, satelital, IPTV, digitalizada o antena parab�lica
-";9420601;0.19;0.19;0.19;
-"Servicio de televisi�n por cable, satelital, digitalizada, IPTV o antena parab�lica
-";9420602;0.19;0.19;0.19;
+"Suscripci�n, instalaci�n, conexi�n o reconexi�n a televisi�n por cable, satelital, IPTV, digitalizada o antena parab�lica";9420601;0.19;0.19;0.19;
+"Servicio de televisi�n por cable, satelital, digitalizada, IPTV o antena parab�lica";9420602;0.19;0.19;0.19;
 Alquiler de TV, equipos de sonido y de video: televisores, reproductoras de video y de sonido, radios, etc.;9420701;0.19;0.19;0.19;
 Alquiler tradicional de pel�culas, videos musicales y videojuegos;9420801;0.19;0.19;0.19;
 Servicios fotogr�ficos y de video: procesamiento video, revelado de fotograf�as, ampliaciones, impresi�n de fotograf�as digitales, servicio de fot�grafos, etc.;9420901;0.19;0.19;0.19;
@@ -904,8 +864,7 @@ Fasc�culos y tomos sueltos de colecciones;9510104;0;0;0;
 Encuadernaci�n de libros;9510105;0;0;0;
 Libros t�cnicos y especializados;9510106;0;0;0;
 Lista de �tiles escolares completa  ;9510107;0;0;0;
-"Libros de texto: textos gu�as para clase (incluye libros de literatura, poes�a, etc, requeridos en clase)
-";9510201;0;0;0;
+"Libros de texto: textos gu�as para clase (incluye libros de literatura, poes�a, etc, requeridos en clase)";9510201;0;0;0;
 Pago por descargas de libros de internet ;9510301;0.19;0.19;0.19;
 Compra diaria de peri�dicos ;9520101;0;0;0;
 Suscripci�n a peri�dicos, revistas u otras publicaciones peri�dicas impresas.;9520201;0;0;0;
@@ -950,10 +909,8 @@ Desayunos completos;11110101;0;0;0;No VAT but Impuesto nacional al consumo of 8%
 Almuerzos completos;11110102;0;0;0;No VAT but Impuesto nacional al consumo of 8% depending on place of purchase
 Comidas completas;11110103;0;0;0;No VAT but Impuesto nacional al consumo of 8% depending on place of purchase
 Tiquetera para alimentos preparados, excepto en establecimientos educativos;11110104;0.19;0.19;0.19;Ambiguity in the tax code
-"Platos diversos: Pollo asado, carne asada, arroz chino, lechona y similares para consumo inmediato  en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo, para llevar y por servicio a domicilio
-";11110105;0;0;0;No VAT but Impuesto nacional al consumo of 8% depending on place of purchase
-"Bebidas calientes : Tinto, caf� con leche, chocolate, t�, bebida achocolatada caliente, leche, agua de panela, agua arom�tica, avena caliente y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo, para llevar y por servicio a domicilio
-";11110201;0;0;0;No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?
+"Platos diversos: Pollo asado, carne asada, arroz chino, lechona y similares para consumo inmediato  en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo, para llevar y por servicio a domicilio";11110105;0;0;0;No VAT but Impuesto nacional al consumo of 8% depending on place of purchase
+"Bebidas calientes : Tinto, caf� con leche, chocolate, t�, bebida achocolatada caliente, leche, agua de panela, agua arom�tica, avena caliente y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo, para llevar y por servicio a domicilio";11110201;0;0;0;No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?
 "Gaseosa y otros refrescos  en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las adquiridas para llevar y servicio a domicilio";11110301;0;0;0;No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?
 "Jugos naturales  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  puestos moviles, y lugares de esparcimiento; se incluyen tambien los  contratados por encargo ,para llevar y servicio a domicilio";11110302;0;0;0;No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?
 Leche tomada fuera del hogar suministrada para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento.;11110303;0;0;0;No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?
@@ -976,8 +933,7 @@ Dulces, confites, chocolatinas, bombones  para consumo inmediato, en medios de t
 Alimentos provenientes de salario en especie;11110415;0;0;0;
 Gastos en discotecas, bares, griles, tabernas y similares (comida, bebidas, cover)  ;11110501;0;0;0;
 Gastos en bebidas alcoh�licas (cerveza, aguardiente, ron, etc) en tiendas, fondas rurales y al aire libre;11110601;0;0;0;No VAT but Impuesto nacional al consumo of 8% depending on place of purchase.
-"Pago mensual por alimentaci�n de estudiantes en establecimiento educativo (restaurantes escolares, universitarios),  los comedores universitarios, los de tropa y de oficiales del ej�rcito.
-";11120101;0;0;0;
+"Pago mensual por alimentaci�n de estudiantes en establecimiento educativo (restaurantes escolares, universitarios),  los comedores universitarios, los de tropa y de oficiales del ej�rcito.";11120101;0;0;0;
 Servicios de alojamiento en hoteles, pensiones, posadas y hostales ;11200101;0.19;0.19;0.19;
 Servicios de alojamiento en moteles y residencias  ;11200201;0.19;0.19;0.19;
 Servicios de alojamiento en centros de vacaciones, caba�as, apartamentos, servicios de alquiler en terrenos para camping y servicios de gu�as tur�sticos;11200301;0.19;0.19;0.19;
@@ -1020,10 +976,8 @@ Pa�ales desechables;12139906;0.19;0.19;0.19;
 Pa�ales y ropa interior para incontinencia;12139907;0.19;0.19;0.19;
 Otros productos para el aseo personal;12139999;0.19;0.19;0.19;
 Servicios prestados por personas para entretenimiento privado de adultos (strippers y otros);12200101;0;0;0;Not in tax code
-"Anillos, argollas, sortijas, aretes, pendientes, prendedores y alfileres para corbata, mancornas en oro y plata
-";12310101;0.19;0.19;0.19;
-"Collares, cadenas, gargantillas, pulseras y manillas en oro y plata.
-";12310102;0.19;0.19;0.19;
+"Anillos, argollas, sortijas, aretes, pendientes, prendedores y alfileres para corbata, mancornas en oro y plata";12310101;0.19;0.19;0.19;
+"Collares, cadenas, gargantillas, pulseras y manillas en oro y plata.";12310102;0.19;0.19;0.19;
 Piedras preciosas;12310103;0.19;0.19;0.19;
 Reparaci�n de art�culos de oro, plata y piedras preciosas.;12310104;0.19;0.19;0.19;
 Relojes de mesa o pared y despertadores, term�metros y bar�metros de pared;12310201;0.19;0.19;0.19;
@@ -1070,13 +1024,10 @@ Pago de seguro de veh�culos contra todo riesgo;12540102;0.19;0.19;0.19;In one 
 Seguros relacionados con el transporte: seguro de vuelo, seguro de viaje y equipaje.;12540103;0.19;0.19;0.19;
 Otros seguros: seguros de responsabilidad civil por lesiones o da�os a terceros o a su propiedad, seguro funerario y similares;12559901;0.19;0.19;0.19;
 Cuotas por cr�dito para adquisici�n de veh�culos ;12610101;0.19;0.19;0.19;
-"Cuotas o pagos por pr�stamos de consumo realizados a bancos, cooperativas y fondos (incluye cuotas de creditos para vivienda)
-
-";12610102;0;0;0;
+"Cuotas o pagos por pr�stamos de consumo realizados a bancos, cooperativas y fondos (incluye cuotas de creditos para vivienda)";12610102;0;0;0;
 Cuotas o pagos por pr�stamos adquiridos con particulares y organizaciones del sector no financiero;12610103;0;0;0;
 Compra de vivienda;12610104;0;0;0;
-"Pago por chequeras, servicios de cajero autom�tico (retiros, consultas de saldos), audirespuesta, servicios en l�nea o banca virtual, avances en efectivo, costos del taloanario, reposici�n del pl�stico, certificaciones y referencias bancarias y cheques de gerencia.
-";12620101;0.19;0.19;0.19;
+"Pago por chequeras, servicios de cajero autom�tico (retiros, consultas de saldos), audirespuesta, servicios en l�nea o banca virtual, avances en efectivo, costos del taloanario, reposici�n del pl�stico, certificaciones y referencias bancarias y cheques de gerencia.";12620101;0.19;0.19;0.19;
 Comisiones bancarias por transferencias, pagos a terceros, por consignaci�n nacional en oficina diferente a la de radicaci�n, giros, remesas, portes (cheques);12620102;0.19;0.19;0.19;
 Cuota de manejo de tarjeta d�bito o cr�dito;12620103;0;0;0;
 Pago del ultimo recibo por tarjetas de cr�dito, excluyendo cuota de manejo ;12620104;0;0;0;
@@ -1085,17 +1036,13 @@ Servicios financieros por medio de corresponsal;12620106;0;0;0;
 Pago de comisi�n por la administraci�n de los fondos de inversi�n colectiva, fondos mutuos de inversi�n, negocios fiduciarios de inversi�n y portafolios de terceros de las sociedades comisionistas de bolsa;12620202;0;0;0;
 Honorarios y cargos por servicio de agentes, asesores de inversi�n, consultores fiscales y financieros y servicios similares;12620301;0.19;0.19;0.19;
 Remesas de dinero a otros hogares para sostenimiento de personas a cargo del hogar en el exterior;12620302;0;0;0;
-"Pagos de honorarios por: asesor�a jur�dicas, contrataci�n de personal para el hogar, guardaespaldas, detectives privados, agencias matrimoniales, agentes inmobiliarios, etc
-";12700101;0.19;0.19;0.19;
+"Pagos de honorarios por: asesor�a jur�dicas, contrataci�n de personal para el hogar, guardaespaldas, detectives privados, agencias matrimoniales, agentes inmobiliarios, etc";12700101;0.19;0.19;0.19;
 Libreta militar;12700201;0;0;0;
 C�dula de ciudadan�a, pasaporte, visas, tarjetas profesionales, certificados de nacimiento, defunci�n, matrimonio, extrajuicios, certificados de libertad y otros certificados notariales;12700202;0;0;0;No VAT, but impuesto de timbre. In particular, it mixes goods taxed and not taxed
-"Cuotas a asociaciones profesionales, partidos pol�ticos,  juntas de acci�n comunal, aportes y donaciones a ONGs y donaciones en dinero a otras instituciones u hogares
-";12700301;0;0;0;
-"Cuotas a  instituciones religiosas y diezmo
-";12700302;0;0;0;
+"Cuotas a asociaciones profesionales, partidos pol�ticos,  juntas de acci�n comunal, aportes y donaciones a ONGs y donaciones en dinero a otras instituciones u hogares";12700301;0;0;0;
+"Cuotas a  instituciones religiosas y diezmo";12700302;0;0;0;
 Servicios religiosos y civiles por entierros, matrimonios,  gastos en pompas f�nebres y en otros servicios de funerales, etc;12700401;0.19;0.19;0.19;
-"Impuesto predial y de valorizaci�n de la(s) vivienda(s) ocupada(s) por el hogar
-";12700601;0;0;0;
+"Impuesto predial y de valorizaci�n de la(s) vivienda(s) ocupada(s) por el hogar";12700601;0;0;0;
 Impuestos del vehiculo;12700602;0;0;0;
 Impuesto de renta;12700603;0;0;0;
 Otros impuestos (de timbre, etc);12700699;0;0;0;
