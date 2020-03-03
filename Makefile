@@ -286,7 +286,7 @@ $(vat_rates): \
   data/vat/vat-by-coicop.csv \
   python/common/misc.py \
   python/build/classes.py \
-  data/vat/vat-for-capitulo-c.csv
+  data/vat/vat-by-capitulo-c.csv
 	date
 	$(python_from_here) python/build/vat_rates.py $(subsample) $(strategy) $(yr)
 

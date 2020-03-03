@@ -13,16 +13,15 @@ if True:
   import python.common.common as c
   import python.build.output_io as oio
 
-vat_cap_c = pd.read_csv( "data/vat/" + "vat-for-capitulo-c.csv"
+vat_cap_c = pd.read_csv( "data/vat/" + "vat-by-capitulo-c.csv"
                        , encoding = "latin1"
             ) . rename( columns = { "CODE" : "25-broad-categs"
                                   , "DESCRIPTION" : "description"
             } )
 
-if True: # input
-  vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
-                          , sep = ";" # TODO PITFALL
-                          , encoding = "latin1" )
+vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
+                        , sep = ";" # TODO PITFALL
+                        , encoding = "latin1" )
 
 for (vat,frac) in [ ("vat"     , "vat frac")
                   , ("vat, min", "vat frac, min")

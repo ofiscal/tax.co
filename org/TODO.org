@@ -24,6 +24,7 @@ is-purchase we probably assume to be 1, but the others ...?
 ** TODO "vat" conflates some taxes
 That's why, for instance, its max in purchases_2_vat_test is 0.27, not 19
 * TODO possibly wrong
+** TODO use "has dependent"
 ** TODO why are the median columns in overview.py's df_tmi called "unweighted"?
 ** TODO how bad is capitulo c?
 The following bullet items were written at two different times.
