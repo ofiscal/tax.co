@@ -46,6 +46,11 @@ RUN chmod +777 /usr/bin/python-from-here
 
 RUN apt install -y csvtool
 
+# for make2graph. (bild-essential includes cc, the clang compiler.)
+RUN apt install -y build-essential graphviz               && \
+  git clone https://github.com/lindenb/makefile2graph.git && \
+  cd makefile2graph && make && make install
+
 # RUN conda update --all --yes
 # RUN conda update -n base conda
 

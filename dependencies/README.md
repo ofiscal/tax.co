@@ -4,14 +4,15 @@ This README describes how to generate an image called `dependencies.png`
 that graphically illustrates the dependencies encoded in the Makefile --
 that is, which files (both code and data) depend on which.
 
-It uses [makefile2graph](https://github.com/lindenb/makefile2graph).
+It uses [makefile2graph](https://github.com/lindenb/makefile2graph)
+(which is included in the tax.co Docker image).
 
 ## the basic syntax
 Substitute something (e.g. "overview") for "target" below:
 make <target> -Bnd | make2graph | dot -Tpng -o dependencies.png
 
 ## to make it easier to read
-First comment out most of the definition of enph_files.
+First comment out most of the files in the definitions of enph_files and overview.
 Then run this:
 
 make overview -Bnd vat_strategy="()" | make2graph \
