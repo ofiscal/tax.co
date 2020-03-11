@@ -1,7 +1,3 @@
-* TODO overleaf thing
-** Should be able to rebuild our code without seeing the code,
-just the overleaf thing.
-** make ids
 * TODO shared decision
 ** TODO BLOCKED : "household member" max mismatch
 *** awaiting response from Juan, who awaits from DANE
@@ -25,6 +21,7 @@ is-purchase we probably assume to be 1, but the others ...?
 That's why, for instance, its max in purchases_2_vat_test is 0.27, not 19
 * TODO possibly wrong
 ** TODO use "has dependent"
+Dependents: 10% of “renta gravable laboral” until 32 UVT
 ** TODO why are the median columns in overview.py's df_tmi called "unweighted"?
 ** TODO how bad is capitulo c?
 The following bullet items were written at two different times.
