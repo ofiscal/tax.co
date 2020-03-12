@@ -51,6 +51,8 @@ RUN apt install -y build-essential graphviz               && \
   git clone https://github.com/lindenb/makefile2graph.git && \
   cd makefile2graph && make && make install
 
+RUN pip install csv-diff
+
 # RUN conda update --all --yes
 # RUN conda update -n base conda
 
