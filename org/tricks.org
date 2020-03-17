@@ -1,3 +1,6 @@
+* view a readable diff of two csv files
+csv-diff file file2 --key="field-name"
+(This is installed in the Docker image.)
 * create tar.gz archive
 tar -czvf tarball-of-zipfiles.tar.gz individual-zipfiles/
 * create pdf from markdown

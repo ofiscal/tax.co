@@ -4,9 +4,9 @@
 *~
 .emacs*
 TAGS
+__pycache__/
 _out/
   # for make.py
-__pycache__/
+_probably_obsolete/
 git-comment.txt
 temp*
-
