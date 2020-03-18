@@ -56,6 +56,11 @@ RUN pip install csv-diff
 # RUN conda update --all --yes
 # RUN conda update -n base conda
 
+# So that the container runs without root privileges on the host.
+RUN groupadd -g 999 appuser && \
+    useradd -r -u 999 -g appuser appuser
+USER appuser
+
 RUN PATH=/root/.local/bin:$PATH
 EXPOSE 8888
 CMD ["/bin/bash"]
