@@ -7,16 +7,39 @@ income_tax_columns = [ "tax, income"
                      , "tax, income, dividend"
                      ]
 
+def taxable( row: pd.Series ) -> float:
+  """
+  The first stage of "renta gravable laboral" is someone's income,
+  minus either 32.5% or 5040 UVTs, whichever is smaller.
+  If someone can claim no dependents, then their second stage renta gravable
+  is the same as the first.
+  If they can, and S1 is the value of the first stage,
+  then the second stage is equal to S1 minus 10% or 32 UVT,
+  whichever is smaller.
+  """
+  s1 = (
+    row["cedula general gravable, sums before exemptions"]
+    - min( 0.325 * row["cedula general gravable, sums before exemptions"],
+           5040 * muvt ) )
+  s2 = ( s1 if not row["has dependent"]
+         else  s1 - min( 0.1 * s1,
+                         32 * muvt ) )
+  if (s2 != s1) & (s2 > 1090 *muvt): print("SOMEONE HAS IT")
+  return s2
+
 def income_taxes( ppl ):
   new_columns = pd.DataFrame()
   temp_columns = pd.DataFrame()
-  temp_columns["cedula general gravable"] = (
+  temp_columns["has dependent"] = ppl["has dependent"]
+  temp_columns["cedula general gravable, sums before exemptions"] = (
     ( ( ppl["income, labor"]
       - ppl["tax, ss, total employee contribs"] )
     + ppl["income, capital (tax def)"]
     + ppl["income, non-labor"]
-    ) . apply( lambda x: x - min( 0.325 * x
-                                , 5040 * muvt ) ) )
+    ) )
+  temp_columns["cedula general gravable"] = (
+    temp_columns .
+    apply(taxable, axis=1) )
 
   new_columns["tax, income, all but dividend"] = (
     temp_columns["cedula general gravable"] +

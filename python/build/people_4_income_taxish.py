@@ -1,18 +1,19 @@
 # Compute how much a person paid for various income taxes,
 # and for things resembling income tax, e.g. social security contributions.
 
-import sys
-import pandas                    as pd
-
-import python.build.ss_functions as ss
-import python.build.output_io    as oio
-import python.common.util        as util
-import python.common.misc        as c
-import python.common.common      as cl
-
-if cl.regime_year == 2016:
-      import python.regime.r2016 as regime
-else: import python.regime.r2018 as regime
+if True:
+  import sys
+  import pandas                    as pd
+  #
+  import python.build.ss_functions as ss
+  import python.build.output_io    as oio
+  import python.common.util        as util
+  import python.common.misc        as c
+  import python.common.common      as cl
+  #
+  if cl.regime_year == 2016:
+        import python.regime.r2016 as regime
+  else: import python.regime.r2018 as regime
 
 
 ppl = oio.readStage( cl.subsample
@@ -45,8 +46,6 @@ ppl["tax, ss, total employee contribs"] = (
   ppl["tax, ss, salud"] +
   ppl["tax, ss, solidaridad"] )
 
-ppl = regime.income_taxes( ppl )
-
 # Determine dependents, for income tax, assuming rationality -- that is,
 # the highest earner should claim the first available dependent,
 # the next-highest earner should claim the next available dependent, etc.
@@ -61,6 +60,8 @@ if True:
   ppl["has dependent"] = (
     ppl["member-by-income"] <= ppl["dependents"] )
   del(hh)
+
+ppl = regime.income_taxes( ppl )
 
 oio.saveStage( cl.subsample
              , ppl
