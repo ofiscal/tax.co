@@ -27,7 +27,7 @@ Put a line like this before any local import statements:
 import sys
 sys.path.insert(0, '.') # assuming pytest is run from the top of the project, this
                         # allows local ("python.something.something") imports to work
-* draw Makefile dependencies
+* draw graph of Makefile dependencies
 See README here:
 https://github.com/ofiscal/tax.co/tree/master/dependencies/README.md
 * announce the separator used in a .csv file

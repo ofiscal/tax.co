@@ -52,6 +52,7 @@ RUN apt install -y build-essential graphviz               && \
   cd makefile2graph && make && make install
 
 RUN pip install csv-diff
+RUN pip install pydotplus graphviz
 
 # RUN conda update --all --yes
 # RUN conda update -n base conda
