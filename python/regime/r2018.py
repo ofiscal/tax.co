@@ -24,7 +24,6 @@ def taxable( row: pd.Series ) -> float:
   s2 = ( s1 if not row["has dependent"]
          else  s1 - min( 0.1 * s1,
                          32 * muvt ) )
-  if (s2 != s1) & (s2 > 1090 *muvt): print("SOMEONE HAS IT")
   return s2
 
 def income_taxes( ppl ):
