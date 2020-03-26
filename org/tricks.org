@@ -1,6 +1,17 @@
 * view a readable diff of two csv files
 csv-diff file file2 --key="field-name"
 (This is installed in the Docker image.)
+** or, within python
+ This is buggy, because it uses multiple keys.
+ Instead must create a single composite key.
+   in tax.co, see python/hand_test/composite_index.py
+
+ from csv_diff import load_csv, compare
+ diff = compare(
+   load_csv("data/recip-10/people_4_income_taxish.detail.2018.csv",
+            key=["household","household-member"] ),
+   load_csv("no-dep-exempt/people_4_income_taxish.detail.2018.csv",
+            key=["household","household-member"] ) )
 * create tar.gz archive
 tar -czvf tarball-of-zipfiles.tar.gz individual-zipfiles/
 * create pdf from markdown

@@ -9,7 +9,8 @@ income_tax_columns = [ "tax, income"
                      ]
 
 def income_taxes( ppl ):
-  """Add income tax columns to ppl."""
+  """Add income tax columns to ppl.
+PITFALL: The exemption for earners claiming dependents is not implemented."""
   new_columns = pd.DataFrame()
   temp_columns = pd.DataFrame()
   temp_columns["taxable income, labor + pension"] = (

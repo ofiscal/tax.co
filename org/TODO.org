@@ -20,28 +20,6 @@ is-purchase we probably assume to be 1, but the others ...?
 ** TODO "vat" conflates some taxes
 That's why, for instance, its max in purchases_2_vat_test is 0.27, not 19
 * TODO possibly wrong
-** TODO use "has dependent"
-Dependents: 10% of “renta gravable laboral” until 32 UVT
-*** TODO diff people_4_income_taxish.detail.2018.csv appropriately
-This requires creating a composite key from household and household-member,
-so that I can pass that as the key to csv-diff.
-**** code to create diff from bash
-csv-diff   data/recip-10/people_4_income_taxish.detail.2018.csv \
-           no-dep-exempt/people_4_income_taxish.detail.2018.csv \
-    --key="household"
-**** BUGGY code to create diff within python
-I suspect it doesn't want multiple keys.
-
-from csv_diff import load_csv, compare
-diff = compare(
-  load_csv("data/recip-10/people_4_income_taxish.detail.2018.csv",
-           key=["household","household-member"] ),
-  load_csv("no-dep-exempt/people_4_income_taxish.detail.2018.csv",
-           key=["household","household-member"] ) )
-*** TODO ongoing: implementing for 2018, not 2016
-I need someone to figure out the rules for 2016,
-since for that year there are many kinds of labor income;
-surely the same exemption shouldn't apply to each one.
 ** TODO why are the median columns in overview.py's df_tmi called "unweighted"?
 ** TODO how bad is capitulo c?
 The following bullet items were written at two different times.
@@ -118,6 +96,8 @@ Should I divide main.py into a separate file for each step?
 *** TODO test means, variances
 ** tasks
 *** restructure programs for testing
+so that it's like this:
+
 Most of the program consists of one big function definition.
   Maybe it calls sub-functions.
   If so, they should be defined outside it,
@@ -363,7 +343,6 @@ P6871: It describes the frequency with which monthly income is disbursed; it doe
 ** don't repeat most income tax code for the two tax regime years
 ** don't generate purchases_1 with file-origin column
 at the end of the file, comment out one line (and manage myriad downstream effects)
-* TODO model how salesish- and both income taxes (corp and personal) changed in 2018
 * TODO features (#feature)
 ** new taxes
 *** DONE predial: use the coicop
@@ -374,7 +353,6 @@ add that tot he variables in households.csv summed across people
 verify that the maximum "predial>0" variable at the household level is 1
 *** DONE financial transactions
 0.4% on all monthly income above 11.6 million COP
-** TODO Allow approx to vary like prop-2018-11-31
 ** goods that dodge the VAT
 *** summarized with a parameter, "share of final good that escapes the VAT"
 *** the rules : exemptions, exclusions and refunds
@@ -846,7 +824,7 @@ Any of the following qualify. The first is the bulk of them.
 - Not employed at least 2 weeks over the last 12 months, has actively searched after last job and was available last week to start in case of success.
 *** Inactive
 Permanent disability; or During the past four weeks, actively searching for a job and not available last week to start in case of success; or not willing to work; or full-time students; or employed at least 2 weeks over the last 12 months but has not actively searched after last job; or full time domestic work; or has not searched for a job during the past 12 months; or has searched a job over the last 12 months but was not available to start last week in case of success.
-** they are asked on the 15th about consumption on days 1-14
+** ENPH asked on the 15th about consumption on days 1-14
 ** where-got: if missing, assume taxed
 # Even when purhcase=1, in some files there are a substantial number
 # of observations where where-got is missing. A way to see that:
