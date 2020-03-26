@@ -66,28 +66,28 @@ def test_re_gt1c():
 
 def test_stringProperties():
   assert( cla.stringProperties( pd.Series( [0,1] ) ) ==
-          { cla.StringProperty.NotAString } )
+          { cla.StringCellProperty.NotAString } )
   assert( cla.stringProperties( pd.Series( ["a a", " b "] ) ) ==
-          { cla.StringProperty.NonNumeric
-          , cla.StringProperty.InteriorSpace} )
+          { cla.StringCellProperty.NonNumeric
+          , cla.StringCellProperty.InteriorSpace} )
   assert( cla.stringProperties( pd.Series( ["a a", " b ", np.nan] ) ) ==
-          { cla.StringProperty.NonNumeric
-          , cla.StringProperty.HasNull
-         , cla.StringProperty.InteriorSpace} )
+          { cla.StringCellProperty.NonNumeric
+          , cla.StringCellProperty.HasNull
+         , cla.StringCellProperty.InteriorSpace} )
   assert( cla.stringProperties( pd.Series( ["0.1.2", "0.1"] ) ) ==
-          { cla.StringProperty.Digits
-          , cla.StringProperty.ManyPeriods} )
+          { cla.StringCellProperty.Digits
+          , cla.StringCellProperty.ManyPeriods} )
   assert( cla.stringProperties( pd.Series( ["0,2", "0.1"] ) ) ==
-          { cla.StringProperty.Digits
-          , cla.StringProperty.Period
-          , cla.StringProperty.Comma } )
+          { cla.StringCellProperty.Digits
+          , cla.StringCellProperty.Period
+          , cla.StringCellProperty.Comma } )
   assert( cla.stringProperties( pd.Series( ["12709901", "inv02"] ) ) ==
-          { cla.StringProperty.Digits
-          , cla.StringProperty.NonNumeric } )
+          { cla.StringCellProperty.Digits
+          , cla.StringCellProperty.NonNumeric } )
   assert( cla.stringProperties( pd.Series( ["1,2,3", "12709901", "inv02"] ) ) ==
-          { cla.StringProperty.Digits
-          , cla.StringProperty.ManyCommas
-          , cla.StringProperty.NonNumeric } )
+          { cla.StringCellProperty.Digits
+          , cla.StringCellProperty.ManyCommas
+          , cla.StringCellProperty.NonNumeric } )
 
 def test_Correction():
   assert ( cla.Correction.Create_Constant_Column("b",1)

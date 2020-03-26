@@ -18,29 +18,32 @@ import sys
 ### properties of numbers ###
 #############################
 
-class Property:
-  pass
+class CellProperty:
+  """When test() is run on a series, it returns a column of the same dimensions, of booleans.
+"""
+  def test( self, series : pd.Series ) -> pd.Series:
+    raise NotImplementedError("CellProperty is an abstract class.")
 
-class NumProperty(Property):
+class NumCellProperty(CellProperty):
   """Properties numbers can have, such as being in a certain range."""
   pass
 
-class IsNull(NumProperty):
-  def test( self, series : pd.Series ):
+class IsNull(NumCellProperty):
+  def test( self, series : pd.Series ) -> pd.Series:
     return pd.isnull( series )
 
-class InRange(NumProperty):
+class InRange(NumCellProperty):
   def __init__( self, floor, ceiling ):
     self.floor = floor
     self.ceiling = ceiling
-  def test( self, series : pd.Series ):
+  def test( self, series : pd.Series ) -> pd.Series:
     return ( (series <= self.ceiling)
            & (series >= self.floor) )
 
-class InSet(Property):
+class InSet(CellProperty):
   def __init__( self, values : set ):
     self.values = values
-  def test( self, series : pd.Series ):
+  def test( self, series : pd.Series ) -> pd.Series:
     return series.isin( self.values )
 
 def properties_cover_num_column( properties, column : pd.Series ):
@@ -55,7 +58,7 @@ def properties_cover_num_column( properties, column : pd.Series ):
 ### properties of strings ###
 #############################
 
-class StringProperty(enum.Flag):
+class StringCellProperty(enum.Flag):
   NotAString    = enum.auto()
   HasNull       = enum.auto() # PITFALL: A non-string column will generate
     # nothing but "NotAString", even if it does have null values.
@@ -86,28 +89,28 @@ def stringProperties( column ):
   # let c = column.apply( str.strip )
     # omitted because this is done to every column when subsampling
   if column.dtype not in [object]:
-    return {StringProperty.NotAString}
+    return {StringCellProperty.NotAString}
 
   acc = set()
   for (_,val) in column.iteritems():
     if pd.isnull( val ):
-      acc.add( StringProperty.HasNull )
+      acc.add( StringCellProperty.HasNull )
     else:
       for ( regex, flag ) in [
-          ( re_digits, StringProperty.Digits )
-          , ( re_white, StringProperty.InteriorSpace )
-          , ( re_nonNumeric, StringProperty.NonNumeric )
-          , ( re_p, StringProperty.Period )
-          , ( re_c, StringProperty.Comma )
-          , ( re_gt1p, StringProperty.ManyPeriods )
-          , ( re_gt1c, StringProperty.ManyCommas ) ]:
+          ( re_digits, StringCellProperty.Digits )
+          , ( re_white, StringCellProperty.InteriorSpace )
+          , ( re_nonNumeric, StringCellProperty.NonNumeric )
+          , ( re_p, StringCellProperty.Period )
+          , ( re_c, StringCellProperty.Comma )
+          , ( re_gt1p, StringCellProperty.ManyPeriods )
+          , ( re_gt1c, StringCellProperty.ManyCommas ) ]:
         if regex.match( val ):
           acc.add( flag )
 
-  if StringProperty.ManyPeriods in acc:
-    acc.discard( StringProperty.Period )
-  if StringProperty.ManyCommas in acc:
-    acc.discard( StringProperty.Comma )
+  if StringCellProperty.ManyPeriods in acc:
+    acc.discard( StringCellProperty.Period )
+  if StringCellProperty.ManyCommas in acc:
+    acc.discard( StringCellProperty.Comma )
 
   return acc
 
@@ -241,7 +244,7 @@ class File:
     self.filename = filename
     self.col_specs = col_specs # a list (or set) of
       # (old name, input format, new name, output format) tuples,
-      # where each format is a list (or set) of StringProperty enum values.
+      # where each format is a list (or set) of StringCellProperty enum values.
     self.corrections = corrections
 
 def name_map(quads):

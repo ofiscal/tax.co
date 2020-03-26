@@ -2,7 +2,7 @@
 
 import pandas as pd
 from numpy import nan
-from python.build.classes import File, Correction, StringProperty
+from python.build.classes import File, Correction, StringCellProperty
 import python.common.misc as c
 
 
@@ -21,10 +21,10 @@ files = [
   File( "urban capitulo c"
     , "Gastos_diarios_Urbano_-_Capitulo_C.csv"
     , c.variables +
-      [ ( "NC2_CC_P1"   , {StringProperty.NotAString}, "25-broad-categs", 0 )
-      , ( "NC2_CC_P2"   , {StringProperty.NotAString}, "per month", 0 )
-      , ( "NC2_CC_P3_S1", {StringProperty.NotAString}, "value", 0 )
-      , ( "NC2_CC_P3_S2", {StringProperty.NotAString}, "duplicated", 0 ) ]
+      [ ( "NC2_CC_P1"   , {StringCellProperty.NotAString}, "25-broad-categs", 0 )
+      , ( "NC2_CC_P2"   , {StringCellProperty.NotAString}, "per month", 0 )
+      , ( "NC2_CC_P3_S1", {StringCellProperty.NotAString}, "value", 0 )
+      , ( "NC2_CC_P3_S2", {StringCellProperty.NotAString}, "duplicated", 0 ) ]
     , capitulo_c_corrections +
       c.corrections
   )
@@ -32,20 +32,20 @@ files = [
   , File( "rural capitulo c"
     , "Gastos_semanales_Rural_-_Capitulo_C.csv"
     , # This first list is unlike c.variables in that FEX_C is not a number
-      [ ( "DIRECTORIO", {StringProperty.NotAString}
+      [ ( "DIRECTORIO", {StringCellProperty.NotAString}
           , "household", 0 )
-      , ( "ORDEN", {StringProperty.NotAString}
+      , ( "ORDEN", {StringCellProperty.NotAString}
           , "household-member", 0 )
-      , ( "FEX_C", {StringProperty.Comma, StringProperty.Digits}
+      , ( "FEX_C", {StringCellProperty.Comma, StringCellProperty.Digits}
           , "weight", 0 )
       ] +
-      [ ( "NC2_CC_P1"   , {StringProperty.NotAString}
+      [ ( "NC2_CC_P1"   , {StringCellProperty.NotAString}
           , "25-broad-categs", 0 )
-      , ( "NC2_CC_P2"   , {StringProperty.NotAString}
+      , ( "NC2_CC_P2"   , {StringCellProperty.NotAString}
           , "per month", 0 )
-      , ( "NC2_CC_P3_S1", {StringProperty.NotAString}
+      , ( "NC2_CC_P3_S1", {StringCellProperty.NotAString}
           , "value", 0 )
-      , ( "NC2_CC_P3_S2", {StringProperty.NotAString}
+      , ( "NC2_CC_P3_S2", {StringCellProperty.NotAString}
           , "duplicated", 0 ) ]
     , capitulo_c_corrections +
       c.corrections

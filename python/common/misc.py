@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from python.build.classes import Correction, StringProperty
+from python.build.classes import Correction, StringCellProperty
 
 
 ######
@@ -26,16 +26,16 @@ gmf_threshold = (11150650 + 10413550) / 2
 ######
 
 variables = [ # in some purchase files, all three common variables are numbers
-    ( "DIRECTORIO", {StringProperty.NotAString}, "household", 0 )
-  , ( "ORDEN",      {StringProperty.NotAString}, "household-member", 0 )
-  , ( "FEX_C",      {StringProperty.NotAString}, "weight", 0 )
+    ( "DIRECTORIO", {StringCellProperty.NotAString}, "household", 0 )
+  , ( "ORDEN",      {StringCellProperty.NotAString}, "household-member", 0 )
+  , ( "FEX_C",      {StringCellProperty.NotAString}, "weight", 0 )
   ]
 variables_with_comma_weight = [
     # in others they are strings with commas instead of periods
-    ( "DIRECTORIO", {StringProperty.NotAString}, "household", 0 )
-  , ( "ORDEN",      {StringProperty.NotAString}, "household-member", 0 )
-  , ( "FEX_C",      {StringProperty.Comma
-                    ,StringProperty.Digits}, "weight", 0 )
+    ( "DIRECTORIO", {StringCellProperty.NotAString}, "household", 0 )
+  , ( "ORDEN",      {StringCellProperty.NotAString}, "household-member", 0 )
+  , ( "FEX_C",      {StringCellProperty.Comma
+                    ,StringCellProperty.Digits}, "weight", 0 )
   ]
 
 # These apply to every file, be it purchases or people

@@ -72,6 +72,10 @@ in ./build/vat_rates.py:
  while the csv files read as NaN.
 *** TODO csvtool converts numbers containing commas to strings
 * TODO test suite
+** TODO augment InRange with CoversRange
+InRange is a loose bound; CoversRange is a loose minimum range.
+They could be equal.
+This bears especially on purchases_2_vat_test.py
 ** TODO incorporate tests in hand_test/ into automatic tests
 Note that not all of them can be automated --
 for instance, the ones that draw pictures.
@@ -80,9 +84,6 @@ for instance, the ones that draw pictures.
 So far all the tests are about columns.
 ** TODO dtype argument for pd.read_csv should be stored for each file
 rather than coded anew every time it is read
-** TODO A way to express tight upper or lower bounds
-Some variant of the InRange() object.
-This bears especially on purchases_2_vat_test.py
 ** TODO the logging idiom does not capture most recent test state
 A function does not record to the log unless it completes.
 *** TODO solution ? need a way to delete output if python program fails
