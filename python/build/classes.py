@@ -18,6 +18,20 @@ import sys
 ### properties of numbers ###
 #############################
 
+class SeriesProperty:
+  """When test() is run on a series, it returns a single boolean."""
+  def test( self, series : pd.Series ) -> bool:
+    raise NotImplementedError("SeriesProperty is an abstract class.")
+
+class CoversRange(SeriesProperty):
+  """Similar to InRange."""
+  def __init__( self, floor, ceiling ):
+    self.floor = floor
+    self.ceiling = ceiling
+  def test( self, series : pd.Series ) -> bool:
+    return ( (series >= self.ceiling).any() &
+             (series <= self.floor).any() )
+
 class CellProperty:
   """When test() is run on a series, it returns a column of the same dimensions, of booleans.
 """
@@ -33,6 +47,7 @@ class IsNull(NumCellProperty):
     return pd.isnull( series )
 
 class InRange(NumCellProperty):
+  """Similar to CoversRange. Defines loose bounds on the series."""
   def __init__( self, floor, ceiling ):
     self.floor = floor
     self.ceiling = ceiling

@@ -15,6 +15,13 @@ def test_Property_subclasses():
          . equals( cla.InRange( 0, 1 )
                  . test( pd.Series( [   0,  0.5,     1,    2, np.nan] ) ) ) )
 
+  assert ( ( cla.CoversRange( 0, 10 ) .
+             test( pd.Series( [0,10] ) ) ) &
+           ( cla.CoversRange( 0, 10 ) .
+             test( pd.Series( [0,10] ) ) ) &
+           ( not cla.CoversRange( 0, 10 ) .
+             test( pd.Series( [1,9] ) ) ) )
+
   assert ( pd.Series(               [True, True, False, False] )
          . equals( cla.InSet( {1,2} )
                  . test( pd.Series( [   1,    2,     3,np.nan] ) ) ) )
