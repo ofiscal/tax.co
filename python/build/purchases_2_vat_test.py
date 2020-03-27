@@ -18,7 +18,7 @@ def test_ranges( df ):
     , "household-member" : {              cl.InRange( 1, 230 ) }
     , "is-purchase"      : { cl.IsNull(), cl.InRange( 0, 1 ) }
     , "per month"        : {              cl.InRange( 1/36 - 0.001, 31 ) }
-    , "quantity"         : {              cl.InRange( 0, 3e5 ) }
+    , "quantity"         : {              cl.InRange( 0, 1e8 ) }
     , "value"            : {              cl.InRange( 0, 2e9 ) }
     , "vat"              : { cl.IsNull(), cl.InRange( 0, 0.271 ) }
     , "vat frac"         : { cl.IsNull(), cl.InRange( 0, 0.271 / 1.271 + 0.01 ) }

@@ -48,6 +48,8 @@ They contradict each other.
  50%            15.000000  1.220801e+06
  75%            20.000000  8.300305e+06
  max            25.000000  1.270990e+07
+** TODO ? throw out purchasees with absurd quantities?
+Something in the full sample has a quantity value of 9e7.
 * TODO definitely unsafe
 ** TODO use make.py instead of make
 *** divide recipes better, and actually target them
