@@ -30,3 +30,4 @@ purchase_sums = purchase_sums.reset_index(
 oio.saveStage( c.subsample
              , purchase_sums
              , "purchase_sums." + c.strategy_suffix )
+

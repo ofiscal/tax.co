@@ -167,6 +167,7 @@ show_params:
 tests: \
   output/test/recip-$(ss)/build_classes.txt \
   output/test/recip-$(ss)/build_purchases_2_vat.txt \
+  output/test/recip-$(ss)/build_purchase_sums.txt \
   output/test/recip-$(ss)/common_misc.txt \
   output/test/recip-$(ss)/common_util.txt \
   output/test/recip-$(ss)/people_main.txt \
@@ -218,6 +219,13 @@ output/test/recip-$(ss)/build_purchases_2_vat.txt: \
   python/build/purchases_2_vat_test.py \
   python/common/common.py
 	$(python_from_here) python/build/purchases_2_vat_test.py \
+          $(subsample) $(strategy) $(yr)
+
+output/test/recip-$(ss)/build_purchase_sums.txt: \
+  $(purchase_sums) \
+  python/build/output_io.py \
+  python/common/common.py
+	$(python_from_here) python/build/purchase_sums_test.py \
           $(subsample) $(strategy) $(yr)
 
 output/test/recip-$(ss)/people_main.txt: \
