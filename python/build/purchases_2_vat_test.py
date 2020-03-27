@@ -25,26 +25,29 @@ def test_ranges( df ):
     , "vat frac, max"    : { cl.IsNull(), cl.InRange( 0, 0.271 / 1.271 + 0.01 ) }
   }
 
-  ## >>> RESUME here. Remaining columns:
-  # per_column_spec = {
-    # "household" :
-    # "household-member"
-    #"per month"
-    # "quantity"
-    # "value"
-    # "vat"
-    # "vat frac"
-    # "vat frac, max"
-    # vat frac, min
-    # vat paid, max
-    # vat paid, min
-    # vat, max
-    # vat, min
-    # weight
-    # where-got }
+  per_column_spec = {
+    "household"        : cl.CoversRange( 2e5,6e5 ),
+    "household-member" : cl.CoversRange( 1,4 ),
+    "per month"        : cl.CoversRange( 1,30 ),
+    "quantity"         : cl.CoversRange( 1,100 ),
+    "value"            : cl.CoversRange( 1,100 ),
+    "vat"              : cl.CoversRange( 0,0.19 ),
+    "vat frac"         : cl.CoversRange( 0, 0.159 ),
+    "vat frac, max"    : cl.CoversRange( 0, 0.159 ),
+    "vat frac, min"    : cl.CoversRange( 0, 0.159 ),
+    "vat paid, max"    : cl.CoversRange( 0, 1e5 ),
+    "vat paid, min"    : cl.CoversRange( 0, 1e5 ),
+    "vat, max"         : cl.CoversRange( 0, 0.19 ),
+    "vat, min"         : cl.CoversRange( 0, 0.19 ),
+    "weight"           : cl.CoversRange( 10, 1000 ),
+    "where-got"        : cl.CoversRange( 1,25 )
+    }
 
-  for k in per_cell_spec:
-    assert cl.properties_cover_num_column( per_cell_spec[k], df[k] )
+  for k,v in per_cell_spec.items():
+    assert cl.properties_cover_num_column( v, df[k] )
+
+  for k,v in per_column_spec.items():
+    assert v.test( df[k] )
 
   return log
 

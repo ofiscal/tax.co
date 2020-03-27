@@ -74,3 +74,5 @@ In tmux, run
   egrep "[0-9]+" -r build -r common -r draw -r regime *.py -C 5 --exclude="*test*"
 and then read that screen. (Dumping it to a file would mean losing the colors,
 which makes the reading process much slower.)
+* to tag(build a tags file) python code for use in emacs
+find . -type f -name '*.py' | xargs etags
