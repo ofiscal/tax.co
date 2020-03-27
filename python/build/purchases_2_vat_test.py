@@ -1,39 +1,50 @@
-import pandas as pd
-import numpy as np
-
-import python.build.classes as cla
-import python.common.common as cl
-import python.build.output_io as oio
+if True:
+  import pandas as pd
+  import numpy as np
+  #
+  import python.build.classes as cl
+  import python.common.common as cm
+  import python.build.output_io as oio
 
 
 def test_ranges( df ):
   log = "test_ranges()\n"
-  spec = {
-      "25-broad-categs"  : { cla.IsNull(), cla.InRange( 1, 25 ) }
-    , "big-hog"          : {               cla.InRange( 0, 1 ) }
-    , "coicop"           : { cla.IsNull(), cla.InRange( 1e6, 2e7 ) }
-    , "freq-code"        : {               cla.InRange( 0, 10 ) }
-    , "household"        : { cla.IsNull(), cla.InRange( 0, 1e6 ) }
-    , "household-member" : {               cla.InRange( 1, 230 ) }
-    , "is-purchase"      : { cla.IsNull(), cla.InRange( 0, 1 ) }
-    , "per month"        : {               cla.InRange( 1/36 - 0.001, 31 ) }
-    , "quantity"         : {               cla.InRange( 0, 3e5 ) }
-    , "value"            : {               cla.InRange( 0, 2e9 ) }
-    , "vat"              : { cla.IsNull(), cla.InRange( 0, 0.271 ) }
-    , "vat frac"         : { cla.IsNull(), cla.InRange( 0, 0.271 / 1.271 + 0.01 ) }
-    , "vat frac, max"    : { cla.IsNull(), cla.InRange( 0, 0.271 / 1.271 + 0.01 ) }
-    ## >>> RESUME here. Remaining columns:
+  per_cell_spec = {
+      "25-broad-categs"  : { cl.IsNull(), cl.InRange( 1, 25 ) }
+    , "big-hog"          : {              cl.InRange( 0, 1 ) }
+    , "coicop"           : { cl.IsNull(), cl.InRange( 1e6, 2e7 ) }
+    , "freq-code"        : {              cl.InRange( 0, 10 ) }
+    , "household"        : { cl.IsNull(), cl.InRange( 0, 1e6 ) }
+    , "household-member" : {              cl.InRange( 1, 230 ) }
+    , "is-purchase"      : { cl.IsNull(), cl.InRange( 0, 1 ) }
+    , "per month"        : {              cl.InRange( 1/36 - 0.001, 31 ) }
+    , "quantity"         : {              cl.InRange( 0, 3e5 ) }
+    , "value"            : {              cl.InRange( 0, 2e9 ) }
+    , "vat"              : { cl.IsNull(), cl.InRange( 0, 0.271 ) }
+    , "vat frac"         : { cl.IsNull(), cl.InRange( 0, 0.271 / 1.271 + 0.01 ) }
+    , "vat frac, max"    : { cl.IsNull(), cl.InRange( 0, 0.271 / 1.271 + 0.01 ) }
+  }
+
+  ## >>> RESUME here. Remaining columns:
+  # per_column_spec = {
+    # "household" :
+    # "household-member"
+    #"per month"
+    # "quantity"
+    # "value"
+    # "vat"
+    # "vat frac"
+    # "vat frac, max"
     # vat frac, min
     # vat paid, max
     # vat paid, min
     # vat, max
     # vat, min
     # weight
-    # where-got
-  }
+    # where-got }
 
-#  for k in spec:
-#    assert cla.properties_cover_num_column( spec[k], df[k] )
+  for k in per_cell_spec:
+    assert cl.properties_cover_num_column( per_cell_spec[k], df[k] )
 
   return log
 
@@ -103,10 +114,10 @@ def test_output( df ):
 
 if True: # IO
   log = "starting\n"
-  ps = oio.readStage( cl.subsample
-                    , "purchases_2_vat." + cl.strategy_suffix )
+  ps = oio.readStage( cm.subsample
+                    , "purchases_2_vat." + cm.strategy_suffix )
   log += test_ranges( ps )
   log += test_output( ps )
-  oio.test_write( cl.subsample
+  oio.test_write( cm.subsample
                 , "build_purchases_2_vat"
                 , log )
