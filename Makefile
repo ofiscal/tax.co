@@ -228,6 +228,14 @@ output/test/recip-$(ss)/build_purchase_sums.txt: \
 	$(python_from_here) python/build/purchase_sums_test.py \
           $(subsample) $(strategy) $(yr)
 
+output/test/recip-$(ss)/people_2_buildings.txt:	\
+  $(people_1)					\
+  $(people_2_buildings)				\
+  python/build/output_io.py			\
+  python/common/common.py
+	$(python_from_here) python/build/people_2_buildings_test.py \
+          $(subsample) $(strategy) $(yr)
+
 output/test/recip-$(ss)/people_main.txt: \
   $(people_1) \
   python/build/classes.py \
