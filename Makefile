@@ -164,38 +164,39 @@ show_params:
 # But for any test complex enough to require an output file,
 # make that output file a dependency.
 # PITFALL: purchase_input.txt always uses the full sample
-tests: \
-  output/test/recip-$(ss)/build_classes.txt \
-  output/test/recip-$(ss)/build_purchases_2_vat.txt \
-  output/test/recip-$(ss)/build_purchase_sums.txt \
-  output/test/recip-$(ss)/common_misc.txt \
-  output/test/recip-$(ss)/common_util.txt \
-  output/test/recip-$(ss)/people_main.txt \
-  output/test/recip-$(ss)/purchases_main.txt \
-  output/test/recip-$(ss)/vat_rates.txt \
-  output/test/recip-1/build_buildings.txt \
+tests:							\
+  output/test/recip-$(ss)/build_classes.txt		\
+  output/test/recip-$(ss)/build_purchases_2_vat.txt	\
+  output/test/recip-$(ss)/build_purchase_sums.txt	\
+  output/test/recip-$(ss)/common_misc.txt		\
+  output/test/recip-$(ss)/common_util.txt		\
+  output/test/recip-$(ss)/people_main.txt		\
+  output/test/recip-$(ss)/people_2_buildings.txt	\
+  output/test/recip-$(ss)/purchases_main.txt		\
+  output/test/recip-$(ss)/vat_rates.txt			\
+  output/test/recip-1/build_buildings.txt		\
   output/test/recip-1/purchase_inputs.txt
 	printf '\nAll tests passed.\n\n'
 
-output/test/recip-$(ss)/build_classes.txt: \
-  python/build/classes.py \
+output/test/recip-$(ss)/build_classes.txt:	\
+  python/build/classes.py			\
   python/build/classes_test.py
 	date
 	$(python_from_here) python/build/classes_test.py \
           $(subsample) $(strategy) $(yr)
 
-output/test/recip-$(ss)/common_misc.txt: \
-  python/build/output_io.py \
-  python/common/common.py \
-  python/common/misc.py \
+output/test/recip-$(ss)/common_misc.txt:	\
+  python/build/output_io.py			\
+  python/common/common.py			\
+  python/common/misc.py				\
   python/common/misc_test.py
 	date
 	$(python_from_here) python/common/misc_test.py \
           $(subsample) $(strategy) $(yr)
 
-output/test/recip-$(ss)/common_util.txt: \
-  python/build/output_io.py \
-  python/common/util.py \
+output/test/recip-$(ss)/common_util.txt:	\
+  python/build/output_io.py			\
+  python/common/util.py				\
   python/common/util_test.py
 	$(python_from_here) python/common/util_test.py \
           $(subsample) $(strategy) $(yr)
