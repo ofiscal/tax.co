@@ -14,7 +14,7 @@ see python/build/purchases/main_test.py. """
   with open( folder + "/" + filename + ".txt"
            ,'a+'
            ) as f:
-    f.write( " ".join( map( str, content ) )
+    f.write( "".join( map( str, content ) )
            + "\n" )
 
 def saveStage(subsample,data,name,index=False):

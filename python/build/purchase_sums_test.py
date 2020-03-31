@@ -26,5 +26,5 @@ sums["id"] = ( sums["household"].astype(str) +
 assert sums["id"].is_unique
 
 oio.test_write( cm.subsample,
-                "build_purchases_sums",
+                "build_purchase_sums",
                 "It worked." )
