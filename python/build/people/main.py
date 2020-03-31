@@ -86,7 +86,7 @@ if True: # income
 
     # For the rest of these, we interpret NaN as "zero" (pesos)
     columns_to_convert = ( list( cla.name_map( files.income )
-                                 . values() )
+                               . values() )
                          + list( cla.name_map( files.beca_sources_private )
                                . values() )
                          + list( cla.name_map( files.beca_sources_govt )
