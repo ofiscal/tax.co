@@ -15,17 +15,25 @@ ppl = oio.readStage(
   'people_4_income_taxish.' + cl.strategy_year_suffix
 )
 
-ppl["cash labor + cesantias"] = (
-    ppl["income, labor, cash"] +
-    ppl["income, cesantia"] )
+if True:
+  ppl["cash labor"] = ppl["income, labor, cash"]
+  ppl["cash labor + cesantias"] = (
+      ppl["cash labor"] + ppl["income, cesantia"] )
 
-for c in ["income, labor, cash", "cash labor + cesantias"]:
-  total = ppl[c].sum()
-  formal   = ( ppl[ ppl[c] >= min_wage ][c].sum() ) / total
-  informal = ( ppl[ ppl[c] <  min_wage ][c].sum() ) / total
+for c in ["cash labor", "cash labor + cesantias"]:
+  cw = c + ", weighted"
+  ppl[cw] = ppl[c] * ppl["weight"]
+  total = ppl[cw].sum()
+  if True: # PITFALL: check unweighted income against min wage,
+           # but use weighted income for sums.
+    formal   = ppl[ ppl[c] >= min_wage ][cw].sum()
+    informal = ppl[ ppl[c] <  min_wage ][cw].sum()
   print(c + ":")
-  print("  formal: "   + str(formal) )
-  print("  informal: " + str(informal) )
+  print("  total            :" + "%.2E" % total)
+  print("  formal           :" + "%.2E" % formal)
+  print("  informal         :" + "%.2E" % informal)
+  print("  formal / total   :" + str(formal / total) )
+  print("  informal / total :" + str(informal / total) )
 
 # I tested that with the following data.
 # (It requires replacing min_wage with mw, and ppl with df, in the for loop.)
