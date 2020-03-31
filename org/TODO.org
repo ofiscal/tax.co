@@ -73,14 +73,10 @@ in ./build/vat_rates.py:
  while the csv files read as NaN.
 *** TODO csvtool converts numbers containing commas to strings
 * TODO test suite
-** TODO augment InRange with CoversRange
-InRange is a loose bound; CoversRange is a loose minimum range.
-They could be equal.
-This bears especially on purchases_2_vat_test.py
+** TODO RESUME at people_3_purchases
 ** TODO incorporate tests in hand_test/ into automatic tests
 Note that not all of them can be automated --
 for instance, the ones that draw pictures.
-** TODO resume at purchases_2_vat_test.test_ranges()
 ** TODO count rows
 So far all the tests are about columns.
 ** TODO dtype argument for pd.read_csv should be stored for each file
@@ -504,7 +500,6 @@ It inputs these 5 files:
   purchases_1_5_no_origin
   vat_(cap_c|coicop)_brief
   vat_coicop_(2|3)_digit -- version imported depends whether strategy == prop*
-** TODO ? drop the Correction class
 ** TODO update coicop-vat bridge on OneDrive
 ** (didn't work) refactor for safety
 *** fizzled: safer strings
@@ -549,9 +544,6 @@ problems in households:
 *** when is-purchase=1, freq is undefined only .015 % of the time
 *** so omitting purchase!=1 observations won't bias our estimate of VAT
 *** it will, however, bias (downward) our estimate of consumption
-* TODO development cycle speed (#cycle)
-** the different vat strategies ought to build separate versions only of what differs
-e.g. in the people data, only rebuild the tax payments when the tax rates change
 * TODO unsorted, low import (#meh)
 ** mild data concerns
 *** some income questions that could overlap
