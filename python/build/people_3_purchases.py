@@ -1,13 +1,14 @@
 # Merge the purchase data into the person-level data.
 # Compute some new variables.
 
-import sys
-import pandas as pd
-
-import python.common.util as util
-import python.build.output_io as oio
-import python.common.misc as c
-import python.common.common as c
+if True:
+  import sys
+  import pandas as pd
+  #
+  import python.common.util as util
+  import python.build.output_io as oio
+  import python.common.misc as c
+  import python.common.common as c
 
 
 if True: # input files
@@ -33,10 +34,12 @@ if True: # create a few more variables
 
   people["age-decile"] = pd.qcut(
     people["age"], 10, labels = False, duplicates='drop')
-  people["income-decile"] = ( # PITFALL: there's a different such variable at the household level
+  people["income-decile"] = (
+    # PITFALL: there's a different such variable at the household level
     util.noisyQuantile( 10, 0, 1, people["income"] ) )
 
   people["female head"] = people["female"] * (people["household-member"]==1)
 
 
-oio.saveStage( c.subsample, people, 'people_3_purchases.' + c.strategy_suffix )
+oio.saveStage( c.subsample, people,
+               'people_3_purchases.' + c.strategy_suffix )
