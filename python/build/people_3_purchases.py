@@ -7,7 +7,6 @@ if True:
   #
   import python.common.util as util
   import python.build.output_io as oio
-  import python.common.misc as c
   import python.common.common as c
 
 

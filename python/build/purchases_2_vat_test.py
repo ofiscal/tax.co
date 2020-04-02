@@ -5,10 +5,12 @@ if True:
   import python.build.classes as cl
   import python.common.common as cm
   import python.build.output_io as oio
+  import python.test_utils as t
 
 
 def test_ranges( df ):
   log = "test_ranges()\n"
+
   per_cell_spec = {
       "25-broad-categs"  : { cl.IsNull(), cl.InRange( 1, 25 ) }
     , "big-hog"          : {              cl.InRange( 0, 1 ) }
@@ -20,10 +22,10 @@ def test_ranges( df ):
     , "per month"        : {              cl.InRange( 1/36 - 0.001, 31 ) }
     , "quantity"         : {              cl.InRange( 0, 1e8 ) }
     , "value"            : {              cl.InRange( 0, 2e9 ) }
-    , "vat"              : { cl.IsNull(), cl.InRange( 0, 0.271 ) }
     , "vat frac"         : { cl.IsNull(), cl.InRange( 0, 0.271 / 1.271 + 0.01 ) }
     , "vat frac, max"    : { cl.IsNull(), cl.InRange( 0, 0.271 / 1.271 + 0.01 ) }
-  }
+    , "vat"              : { cl.IsNull(), cl.InRange( 0, 0.271 ) }
+    }
 
   per_column_spec = {
     "household"        : cl.CoversRange( 2e5,6e5 ),
@@ -31,12 +33,12 @@ def test_ranges( df ):
     "per month"        : cl.CoversRange( 1,30 ),
     "quantity"         : cl.CoversRange( 1,100 ),
     "value"            : cl.CoversRange( 1,100 ),
-    "vat"              : cl.CoversRange( 0,0.19 ),
     "vat frac"         : cl.CoversRange( 0, 0.159 ),
     "vat frac, max"    : cl.CoversRange( 0, 0.159 ),
     "vat frac, min"    : cl.CoversRange( 0, 0.159 ),
     "vat paid, max"    : cl.CoversRange( 0, 1e5 ),
     "vat paid, min"    : cl.CoversRange( 0, 1e5 ),
+    "vat"              : cl.CoversRange( 0,0.19 ),
     "vat, max"         : cl.CoversRange( 0, 0.19 ),
     "vat, min"         : cl.CoversRange( 0, 0.19 ),
     "weight"           : cl.CoversRange( 10, 1000 ),
@@ -86,6 +88,8 @@ class Purchase_2_Columns_missing:
 
 def test_output( df ):
   log = "test_output()\n"
+
+  assert t.unique( df.columns )
   assert ( set( df.columns ) ==
            set( Purchase_2_Columns_missing.all_columns() ) )
 

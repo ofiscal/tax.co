@@ -1,7 +1,9 @@
-import pandas as pd
-
-import python.common.common as cl
-import python.build.output_io as oio
+if True:
+  import pandas as pd
+  #
+  import python.common.common as cl
+  import python.build.output_io as oio
+  import python.test_utils as t
 
 
 tolerance = 0.01
@@ -15,6 +17,8 @@ def test_vat_file( filename
 
   df = oio.readStage( cl.subsample
                     , filename + "." + cl.strategy_suffix )
+
+  assert( t.unique( df.columns ) )
 
   for c in [ 'vat', 'vat, min', 'vat, max' ]:
     assert df[c].min() == 0

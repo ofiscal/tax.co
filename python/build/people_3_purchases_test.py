@@ -1,20 +1,68 @@
-twice, load people = oio.readStage( c.subsample, "people_2_buildings" )
-  first, load one row, and call it "columns"
-  then, load all rows but only one column, and call it "rows"
-load one row of purchase_sums, and call it "columns" also
-load people_3_purchases (entirely)
+if True:
+  import sys
+  import pandas as pd
+  #
+  import python.build.output_io as oio
+  import python.common.common as c
+  import python.test_utils as t
 
-check that people_3 has the same number of rows as people_2
-check that the columns are expanded per below
 
-check VAT min, max in San Andrés (accent is important) is 0.
-check that location is San Andrés sometimes (to ensure no misspelling).
-check that these new variables have reasonable distributions
-  people["vat/value, min" ] = people["vat paid, min"] / people["value" ]
-  people["vat/value, max" ] = people["vat paid, max"] / people["value" ]
-  people["vat/income, min"] = people["vat paid, min"] / people["income"]
-  people["vat/income, max"] = people["vat paid, max"] / people["income"]
-  people["value/income"   ] = people["value"]         / people["income"]
-  people["income-decile"] =
-  people["female head"] = people["female"] * (people["household-member"]==1)
+if True: # read
+  p2rows = oio.readStage( c.subsample,
+                          "people_2_buildings",
+                          usecols = ["household"] )
+  p2cols = oio.readStage( c.subsample,
+                          "people_2_buildings",
+                          nrows = 1 )
+  prCols = oio.readStage( c.subsample,
+                          "purchase_sums." + c.strategy_suffix,
+                          nrows = 1 )
+  p3 = oio.readStage( c.subsample,
+                      'people_3_purchases.' + c.strategy_suffix )
 
+assert len(p2rows) == len(p3)
+
+new_cols = [ "vat/value, min",
+             "vat/value, max",
+             "vat/income, min",
+             "vat/income, max",
+             "value/income",
+             "age-decile",
+             "income-decile",
+             "female head"]
+
+if True: # Assert uniqueness of anything new.
+         # (Earlier tests do the same for preexisting files.)
+  assert( t.unique( p3.columns ) )
+  assert( t.unique( new_cols )
+
+if True: # p3's columns are the union of the other things.
+  assert ( set( p3.columns ) ==
+           set.union( set( p2cols.columns ),
+                      set( prCols.columns ),
+                      set( new_cols ) ) )
+  # PITFALL: The next assertion looks weaker than the last. It's not.
+  # It guards against the possibility that any two sets
+  # in the union overlap.
+  assert ( len( p3    .columns ) ==
+           len( p2cols.columns ) +
+           len( prCols.columns ) - 1 + # omit the one we merged on
+           len( new_cols ) )
+
+if True: # some places should be San Andrés, and they should have no IVA.
+  assert (p3["region-1"] == "SAN ANDRÉS").any()
+  assert p3[ p3["region-1"] == "SAN ANDRÉS" ]["vat paid, min"].max() == 0
+  assert p3[ p3["region-1"] == "SAN ANDRÉS" ]["vat paid, max"].max() == 0
+
+
+# ============== ============== ==============
+# ============== REMAINING TODO ==============
+# ============== ============== ==============
+
+# check that these new variables have reasonable distributions
+#   p3[new_cols].describe()
+#   pd.options.display.width = 0
+#   pd.set_option('display.float_format', '{:.2g}'.format)
+
+# Output.
+# Edit the Makefile.

@@ -1,16 +1,18 @@
 ###### see "remaining columns to test", below ######
 
-import numpy as np
-import pandas as pd
-import re as regex
-
-import python.build.classes as cla
-import python.build.output_io as oio
-import python.build.people.files as files
-import python.build.people.main_defs as defs
-import python.common.common as cl
-import python.common.misc as c
-import python.common.util as util
+if True:
+  import numpy as np
+  import pandas as pd
+  import re as regex
+  #
+  import python.build.classes as cla
+  import python.build.output_io as oio
+  import python.build.people.files as files
+  import python.build.people.main_defs as defs
+  import python.common.common as cl
+  import python.common.misc as c
+  import python.common.util as util
+  import python.test_utils as t
 
 
 ## unit tests
@@ -27,6 +29,7 @@ def test_count_num_matches_in_space_separated_list():
 ## integration tests
 
 def test_ranges(ppl: pd.DataFrame):
+  assert( t.unique( ppl.columns ) )
   specs = {
       "household"          : { cla.InRange( 0, 1e7 ) }
     , "age"                : { cla.InRange( 0, 120 ) }
