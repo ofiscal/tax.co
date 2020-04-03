@@ -1,7 +1,12 @@
-import pandas as pd
-import numpy as np
-import math as math
+if True:
+  from typing import List, Dict
+  import pandas as pd
+  import numpy as np
+  import math as math
 
+
+def unique( coll: List ) -> bool:
+  return len( coll ) == len( set( coll ) )
 
 def tuple_by_threshold( income, schedule ):
   """If a "schedule" is a list of tuples, where the first element of each tuple gives \

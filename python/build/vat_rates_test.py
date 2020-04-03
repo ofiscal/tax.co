@@ -3,7 +3,7 @@ if True:
   #
   import python.common.common as cl
   import python.build.output_io as oio
-  import python.test_utils as t
+  from   python.common.util import unique
 
 
 tolerance = 0.01
@@ -18,7 +18,7 @@ def test_vat_file( filename
   df = oio.readStage( cl.subsample
                     , filename + "." + cl.strategy_suffix )
 
-  assert( t.unique( df.columns ) )
+  assert( unique( df.columns ) )
 
   for c in [ 'vat', 'vat, min', 'vat, max' ]:
     assert df[c].min() == 0

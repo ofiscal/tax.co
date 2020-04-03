@@ -4,7 +4,7 @@ if True:
   import python.common.common as cl
   import python.common.util as util
   import python.build.output_io as oio
-  import python.test_utils as t
+  from   python.common.util import unique
 
 
 def check_types( df ):
@@ -39,7 +39,7 @@ if True: # run tests
   )
   check_types( bs )
   check_nullity( bs )
-  assert( t.unique( bs.columns ) )
+  assert( unique( bs.columns ) )
   oio.test_write( 1 # PITFALL: For buildings, we always use the full sample.
                 , "build_buildings"
                 , log )

@@ -5,7 +5,7 @@ if True:
   import python.build.classes as cl
   import python.common.common as cm
   import python.build.output_io as oio
-  import python.test_utils as t
+  from   python.common.util import unique
 
 
 def test_ranges( df ):
@@ -89,7 +89,7 @@ class Purchase_2_Columns_missing:
 def test_output( df ):
   log = "test_output()\n"
 
-  assert t.unique( df.columns )
+  assert unique( df.columns )
   assert ( set( df.columns ) ==
            set( Purchase_2_Columns_missing.all_columns() ) )
 

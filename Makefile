@@ -172,6 +172,7 @@ tests:							\
   output/test/recip-$(ss)/common_util.txt		\
   output/test/recip-$(ss)/people_main.txt		\
   output/test/recip-$(ss)/people_2_buildings.txt	\
+  output/test/recip-$(ss)/people_3_purchases.txt	\
   output/test/recip-$(ss)/purchases_main.txt		\
   output/test/recip-$(ss)/vat_rates.txt			\
   output/test/recip-1/build_buildings.txt		\
@@ -202,23 +203,24 @@ output/test/recip-$(ss)/common_util.txt:	\
           $(subsample) $(strategy) $(yr)
 
 # PITFALL: for buildings.csv we always use subsample=1.
-output/test/recip-1/build_buildings.txt: \
-  $(buildings) \
-  python/build/buildings.py \
-  python/build/buildings_test.py \
-  python/build/classes.py \
-  python/build/output_io.py \
-  python/common/common.py \
+output/test/recip-1/build_buildings.txt:	\
+  $(buildings)					\
+  python/build/buildings.py			\
+  python/build/buildings_test.py		\
+  python/build/classes.py			\
+  python/build/output_io.py			\
+  python/common/common.py			\
   python/common/misc.py
 	$(python_from_here) python/build/buildings_test.py \
           1 $(strategy) $(yr)
 
-output/test/recip-$(ss)/build_purchases_2_vat.txt: \
-  $(purchases_2_vat) \
-  python/build/output_io.py \
-  python/build/purchases_2_vat.py \
-  python/build/purchases_2_vat_test.py \
-  python/common/common.py
+output/test/recip-$(ss)/build_purchases_2_vat.txt:	\
+  $(purchases_2_vat)					\
+  python/build/output_io.py				\
+  python/build/purchases_2_vat.py			\
+  python/build/purchases_2_vat_test.py			\
+  python/common/common.py				\
+  python/common/misc.py
 	$(python_from_here) python/build/purchases_2_vat_test.py \
           $(subsample) $(strategy) $(yr)
 
@@ -233,8 +235,20 @@ output/test/recip-$(ss)/people_2_buildings.txt:	\
   $(people_1)					\
   $(people_2_buildings)				\
   python/build/output_io.py			\
-  python/common/common.py
+  python/common/common.py			\
+  python/common/misc.py
 	$(python_from_here) python/build/people_2_buildings_test.py \
+          $(subsample) $(strategy) $(yr)
+
+output/test/recip-$(ss)/people_3_purchases.txt:	\
+  $(people_2_buildings)				\
+  $(people_3_purchases)				\
+  $(purchase_sums)				\
+  python/build/classes.py			\
+  python/build/output_io.py			\
+  python/common/common.py			\
+  python/common/misc.py
+	$(python_from_here) python/build/people_3_purchases_test.py \
           $(subsample) $(strategy) $(yr)
 
 output/test/recip-$(ss)/people_main.txt: \
@@ -264,22 +278,24 @@ output/test/recip-1/purchase_inputs.txt: \
 	$(python_from_here) python/build/purchases/input_test.py \
           1 detail 2016
 
-output/test/recip-$(ss)/purchases_main.txt: \
-  $(purchases_1) \
-  python/build/classes.py \
-  python/build/output_io.py \
-  python/build/purchases/main_defs.py \
-  python/build/purchases/main_test.py \
-  python/common/common.py
+output/test/recip-$(ss)/purchases_main.txt:	\
+  $(purchases_1)				\
+  python/build/classes.py			\
+  python/build/output_io.py			\
+  python/build/purchases/main_defs.py		\
+  python/build/purchases/main_test.py		\
+  python/common/common.py			\
+  python/common/misc.py
 	$(python_from_here) python/build/purchases/main_test.py \
           $(subsample) $(strategy) $(yr)
 
-output/test/recip-$(ss)/vat_rates.txt: \
-  $(vat_rates.py) \
-  python/build/output_io.py \
-  python/build/vat_rates.py \
-  python/build/vat_rates_test.py \
-  python/common/common.py
+output/test/recip-$(ss)/vat_rates.txt:	\
+  $(vat_rates.py)			\
+  python/build/output_io.py		\
+  python/build/vat_rates.py		\
+  python/build/vat_rates_test.py	\
+  python/common/common.py		\
+  python/common/misc.py
 	$(python_from_here) python/build/vat_rates_test.py \
           $(subsample) $(strategy) $(yr)
 

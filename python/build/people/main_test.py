@@ -12,7 +12,6 @@ if True:
   import python.common.common as cl
   import python.common.misc as c
   import python.common.util as util
-  import python.test_utils as t
 
 
 ## unit tests
@@ -29,7 +28,7 @@ def test_count_num_matches_in_space_separated_list():
 ## integration tests
 
 def test_ranges(ppl: pd.DataFrame):
-  assert( t.unique( ppl.columns ) )
+  assert( util.unique( ppl.columns ) )
   specs = {
       "household"          : { cla.InRange( 0, 1e7 ) }
     , "age"                : { cla.InRange( 0, 120 ) }

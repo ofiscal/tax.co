@@ -1,10 +1,13 @@
 if True:
+  import datetime
   import sys
+  import numpy as np
   import pandas as pd
   #
   import python.build.output_io as oio
   import python.common.common as c
-  import python.test_utils as t
+  import python.build.classes as cl
+  from   python.common.util import unique
 
 
 if True: # read
@@ -33,8 +36,8 @@ new_cols = [ "vat/value, min",
 
 if True: # Assert uniqueness of anything new.
          # (Earlier tests do the same for preexisting files.)
-  assert( t.unique( p3.columns ) )
-  assert( t.unique( new_cols )
+  assert( unique( p3.columns ) )
+  assert( unique( new_cols ) )
 
 if True: # p3's columns are the union of the other things.
   assert ( set( p3.columns ) ==
@@ -46,7 +49,7 @@ if True: # p3's columns are the union of the other things.
   # in the union overlap.
   assert ( len( p3    .columns ) ==
            len( p2cols.columns ) +
-           len( prCols.columns ) - 1 + # omit the one we merged on
+           len( prCols.columns ) - 2 + # omit the 2 keys we merged on
            len( new_cols ) )
 
 if True: # some places should be San Andrés, and they should have no IVA.
@@ -54,15 +57,35 @@ if True: # some places should be San Andrés, and they should have no IVA.
   assert p3[ p3["region-1"] == "SAN ANDRÉS" ]["vat paid, min"].max() == 0
   assert p3[ p3["region-1"] == "SAN ANDRÉS" ]["vat paid, max"].max() == 0
 
+per_cell_spec = {
+    "vat/value, min"  : { cl.IsNull(), cl.InRange( 0, 0.3 ) },
+    "vat/value, max"  : { cl.IsNull(), cl.InRange( 0, 0.3 ) },
+    "vat/income, min" : { cl.IsNull(), cl.InRange( 0, np.inf ) },
+    "vat/income, max" : { cl.IsNull(), cl.InRange( 0, np.inf ) },
+    "value/income"    : { cl.IsNull(), cl.InRange( 0, np.inf ) },
+    "age-decile"      : {              cl.InRange( 0, 9 ) },
+    "income-decile"   : {              cl.InRange( 0, 9 ) },
+    "female head"     : {              cl.InRange( 0, 1 ) } }
 
-# ============== ============== ==============
-# ============== REMAINING TODO ==============
-# ============== ============== ==============
+per_column_spec = {
+    "vat/value, min"  : cl.CoversRange( 0,      0.15   ),
+    "vat/value, max"  : cl.CoversRange( 0,      0.15   ),
+    "vat/income, min" : cl.CoversRange( 0,      np.inf ),
+    "vat/income, max" : cl.CoversRange( 0,      np.inf ),
+    "value/income"    : cl.CoversRange( 0.0001, np.inf ),
+    "age-decile"      : cl.CoversRange( 0,      9      ),
+    "income-decile"   : cl.CoversRange( 0,      9      ),
+    "female head"     : cl.CoversRange( 0,      1      ) }
 
-# check that these new variables have reasonable distributions
-#   p3[new_cols].describe()
-#   pd.options.display.width = 0
-#   pd.set_option('display.float_format', '{:.2g}'.format)
+for k,v in per_cell_spec.items():
+  assert cl.properties_cover_num_column( v, p3[k] )
 
-# Output.
-# Edit the Makefile.
+for k,v in per_column_spec.items():
+  assert v.test( p3[k] )
+
+if True: # IO
+  log = str( datetime.datetime.now() )
+  oio.test_write( c.subsample
+                , "people_3_purchases"
+                , log )
+

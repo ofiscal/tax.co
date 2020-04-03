@@ -6,7 +6,7 @@ if True:
   import python.common.common as cl
   import python.build.classes as cla
   import python.build.output_io as oio
-  import python.test_utils as t
+  from   python.common.util import unique
 
 
 def test_drop_if_coicop_or_value_invalid():
@@ -36,7 +36,7 @@ def test_drop_absurdly_big_expenditures():
 
 def test_output( df ):
   log = "test_output\n"
-  assert( t.unique( df.columns ) )
+  assert( unique( df.columns ) )
   spec = {
       "where-got" :        { cla.IsNull(), cla.InRange(1,26) }
     , "weight" :           {               cla.InRange( 0, 1e4 ) }

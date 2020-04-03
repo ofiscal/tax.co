@@ -7,7 +7,8 @@ if True:
   #
   import python.build.output_io as oio
   import python.common.common as c
-  import python.test_utils as t
+  from   python.common.util import unique
+
 
 df1 = oio.readStage(c.subsample, 'people_1')
 df2 = oio.readStage(c.subsample, 'people_2_buildings')
@@ -16,8 +17,8 @@ cs1 = set(df1.columns)
 new_cols = {'estrato', 'region-1', 'region-2'}
 cs2 = set(df2.columns)
 
-assert t.unique( df2.columns )
-assert t.unique( new_cols )
+assert unique( df2.columns )
+assert unique( new_cols )
 
 assert set.union(cs1,new_cols) == cs2
 assert set.difference(cs2,cs1) == new_cols
