@@ -27,29 +27,39 @@ you can read and write to the file from either system.
 you might need to use `sudo` to modify it from outside of Docker.)
 
 Run the Docker image, mounting your native tax.co folder to the
-`/mnt` folder in the Docker image:
-`sudo docker run --name tax-co -p 8888:8888 -itd -v /home/username/tax.co:/mnt ofiscal/tax.co`.
+`/mnt` folder in the Docker image.
+For instance, if earlier you cloned the `tax.co` repository to a folder called `/home/username/tax.co/`, you would run this:
+```
+docker run --name tax-co -p 8888:8888 -itd -v /home/username/tax.co:/mnt ofiscal/tax.co
+```
 This starts a Docker container named `tax-co`.
 (A Docker "container" is an environment running the code in a Docker "image".)
 
 Open a Bash view into that Docker container:
-`sudo docker exec -it tax-co bash`.
+`docker exec -it tax-co bash`.
 
 # Download and build the raw ENPH data
 
-See [data/enph-2017/README.md](data/enph-2017/README.md) for how.
+See this repo's [ENPH README](../data/enph-2017/README.md) for how.
 
 # Run the code
 
-From the project's root folder (`tax.co/`), run `make vat_pdf_1`.
-This will build a lot of data sets, and some images,
-and some tables, and finally a pretty PDF report.
+From the project's root folder (`tax.co/`),
+run `bash/make-all-models 100`.
+Doing so runs `bash/make-all-models.sh`
+for the 1/100 subsample.
+It will build a lot of data products,
+writing them to the `output/` folder.
+If you'd like to run the project the full sample,
+provide the argument `1` instead of `100`.
+(`10` and `1000` also work.)
 
-If your computer's resources are lke mine,
+If your computer's resources are like mine,
 you might have to kill your web browser when building the subsamples.
 (`make` echoes each command it's about to run to the screen,
-so you what it's doing; when it says
-`PYTHONPATH='.' python3 python/subsample.py`, it's building the subsamples.)
+so you know what it's doing; for instance, when it says
+`PYTHONPATH='.' python3 python/subsample.py`,
+it's building the subsamples.)
 
 
 # Hack the code
@@ -85,15 +95,11 @@ You don't really need both (2) and (3).
 
 ## (1) Running the Makefile
 
-For most purposes it's easiest to use `bash/make-all-models.sh`.
-That requires a single argument, the reciprocal of the sample size.
-For instance, to run the model on the 1/100 sample, you would call
-`bash/make-all-models.sh 100`.
+The easiest way to use the Makefile is through the `make-all-models.sh` script described above.
+To change other parameters besides the sample size,
+edit `make-all-models.sh`.
 
-If you want to change other parameters besides the sample size,
-you can edit `make-all-models.sh`.
-
-You could call the Makefile yourself.
+You can also call the Makefile yourself.
 Read `make-all-models.sh` for an example of how to do that.
 
 
@@ -135,13 +141,13 @@ Now you're back in your native OS shell.
 The Docker container you were in, `tax-co`, is still running,
 but you're no longer looking around inside it.
 You can open up a new Bash view into `tax-co`
-with `sudo docker exec -it anac bash`.
+with `docker exec -it anac bash`.
 
 Stop `tax-co` with `docker stop anac`. Now it's stopped,
 but it's still on your system;
 you can restart it whenever you want with `docker start -ai anac`.
 
 When the container is stopped,
-you can remove it with `sudo docker rm anac`.
+you can remove it with `docker rm anac`.
 You will rarely need to do that -- maybe only when upgrading the image.
 It will persist even when you reboot your computer.

@@ -1,3 +1,5 @@
+* TODO BUG in latest Docker iamge
+permission error -- can't create files
 * TODO shared decision
 ** TODO BLOCKED : "household member" max mismatch
 *** awaiting response from Juan, who awaits from DANE
