@@ -4,6 +4,16 @@ if True:
   import numpy as np
   import math as math
 
+def near( a : float,
+          b : float,
+          tol_abs  : float = 1,
+          tol_frac : float = 0.001 ):
+    if ( ( abs( a - b )
+           < tol_abs ) |
+         ( abs( a - b )
+           <= (tol_frac * max( abs(a), abs(b) ) ) ) ):
+        return True
+    else: return False
 
 def unique( coll: List ) -> bool:
   return len( coll ) == len( set( coll ) )
