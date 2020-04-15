@@ -8,20 +8,20 @@ if True:
   import python.build.ss_functions as ss
   import python.build.output_io    as oio
   import python.common.util        as util
-  import python.common.misc        as c
-  import python.common.common      as cl
+  import python.common.misc        as m
+  import python.common.common      as com
   #
-  if cl.regime_year == 2016:
+  if com.regime_year == 2016:
         import python.regime.r2016 as regime
   else: import python.regime.r2018 as regime
 
 
-ppl = oio.readStage( cl.subsample
-                   , "people_3_purchases." + cl.strategy_suffix )
+ppl = oio.readStage( com.subsample
+                   , "people_3_purchases." + com.strategy_suffix )
 
 # This tax is also known as the "4 por mil" --
 # the 0.4% tax levided on transactions involving someone's bank account.
-ppl["tax, gmf"] = (0.004 * ( ppl["income, cash"] - c.gmf_threshold)
+ppl["tax, gmf"] = (0.004 * ( ppl["income, cash"] - m.gmf_threshold)
                   ).apply( lambda x: max(0,x) )
 
 ppl["tax, ganancia ocasional"] = (
@@ -63,7 +63,7 @@ if True:
 
 ppl = regime.income_taxes( ppl )
 
-oio.saveStage( cl.subsample
+oio.saveStage( com.subsample
              , ppl
-             , 'people_4_income_taxish.' + cl.strategy_year_suffix
+             , 'people_4_income_taxish.' + com.strategy_year_suffix
 )
