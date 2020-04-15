@@ -4,8 +4,6 @@
 # which include things like social security contributions,
 # which is not technically a tax).
 
-import pandas                    as pd
-
 import python.build.ss_schedules as ss
 import python.common.util        as util
 

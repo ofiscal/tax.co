@@ -38,7 +38,9 @@ for (goal,function) in [
     , ("tax, ss, cajas de compensacion" , ss.mk_cajas_de_compensacion_employer)
     , ("cesantias + primas"             , ss.mk_cesantias_y_primas_employer) ]:
   ppl[goal] = ppl.apply(
-      lambda row: function( row["independiente"], row["income, labor, cash"] )
+      lambda row: function(
+          row["independiente"],
+          row["income, labor, cash"] )
     , axis = "columns" )
 
 ppl["tax, ss, total employee contribs"] = (

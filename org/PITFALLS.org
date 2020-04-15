@@ -10,6 +10,7 @@ Use "_" instead; otherwise `make` will fail, silently.
 And that (at least) the last thing it creates is a Makefile target.
 Otherwise `make` might believe a target is up to date when the program responsible for it did not complete.
 * in Python
+** not binds after everything, even | and &
 ** underscores in filenames seem to confuse Matplotlib's font_manager
 https://github.com/matplotlib/matplotlib/issues/14536
 ** every code folder needs a __init__.py file
