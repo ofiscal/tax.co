@@ -9,6 +9,29 @@ income_tax_columns = [ "tax, income"
 
 gravable_pre = "cedula general gravable, sums before exemptions"
 
+def non_dividend_income_tax( income : float ) -> float:
+  # see test/income_tax_2018.hs for code that generates these formulas.
+  # Run this to test the accumulated totals
+  # (the numbers just after the + signs):
+  #   ns = [ 0.19 * (1700 - 1090),
+  #        0.28 * (4100 - 1700),
+  #        0.33 * (8670 - 4100),
+  #        0.35 * (18970 - 8670),
+  #        0.37 * (31000 - 18970) ]
+  #   for i in range(0,5):
+  #     print( sum( ns[0:i+1] ) )
+
+  x = income
+  return (
+                        0                               if x < (1090 *muvt)
+    else (         (x - 1090 *muvt)*0.19                if x < (1700 *muvt)
+      else (       (x - 1700 *muvt)*0.28 + 115.9  *muvt if x < (4100 *muvt)
+        else (     (x - 4100 *muvt)*0.33 + 787.9  *muvt if x < (8670 *muvt)
+          else (   (x - 8670 *muvt)*0.35 + 2296   *muvt if x < (18970*muvt)
+            else ( (x - 18970*muvt)*0.37 + 5901   *muvt if x < (31000*muvt)
+              else (x - 31000*muvt)*0.39 + 10352.1*muvt
+                  ) ) ) ) ) )
+
 def taxable( row: pd.Series ) -> float:
   """
   The first stage of "renta gravable laboral" is someone's income,
@@ -45,16 +68,7 @@ def income_taxes( ppl ):
   new_columns["tax, income, all but dividend"] = (
     temp_columns["cedula general gravable"] +
     ppl["income, pension"]
-  ) . apply( lambda x:
-    # see test/income_tax_2018.hs for code that generates these formulas
-                        0                               if x < (1090 *muvt)
-    else (         (x - 1090 *muvt)*0.19                if x < (1700 *muvt)
-      else (       (x - 1700 *muvt)*0.28 + 115.9  *muvt if x < (4100 *muvt)
-        else (     (x - 4100 *muvt)*0.33 + 787.9  *muvt if x < (8670 *muvt)
-          else (   (x - 8670 *muvt)*0.35 + 2296   *muvt if x < (18970*muvt)
-            else ( (x - 18970*muvt)*0.37 + 5901   *muvt if x < (31000*muvt)
-              else (x - 31000*muvt)*0.39 + 10352.1*muvt
-                  ) ) ) ) ) )
+  ) . apply( non_dividend_income_tax )
 
   new_columns["tax, income, dividend"] = (
     ppl["income, dividend"].apply( lambda x:

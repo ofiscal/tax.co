@@ -6,7 +6,7 @@ if True:
 
 def near( a : float,
           b : float,
-          tol_abs  : float = 1,
+          tol_abs  : float = 0.001,
           tol_frac : float = 0.001 ):
     if ( ( abs( a - b )
            < tol_abs ) |
