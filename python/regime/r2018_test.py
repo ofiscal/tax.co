@@ -46,7 +46,8 @@ if True:
   test_non_dividend_income_tax()
   test_taxable()
   log = str( datetime.datetime.now() )
-  oio.test_write( c.subsample
+  oio.test_write( 1 # PITFALL: Doesn't use any subsample,
+                    # so it's as if it's only tested on the full sample.
                 , "regime_r2018"
                 , log )
 

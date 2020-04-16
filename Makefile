@@ -168,13 +168,14 @@ tests:							\
   output/test/recip-$(ss)/build_classes.txt		\
   output/test/recip-$(ss)/build_purchases_2_vat.txt	\
   output/test/recip-$(ss)/build_purchase_sums.txt	\
+  output/test/recip-1/build_ss_functions.txt		\
   output/test/recip-$(ss)/common_misc.txt		\
   output/test/recip-$(ss)/common_util.txt		\
   output/test/recip-$(ss)/people_main.txt		\
   output/test/recip-$(ss)/people_2_buildings.txt	\
   output/test/recip-$(ss)/people_3_purchases.txt	\
   output/test/recip-$(ss)/purchases_main.txt		\
-  output/test/recip-$(ss)/regime_r2018.txt              \
+  output/test/recip-1/regime_r2018.txt              	\
   output/test/recip-$(ss)/vat_rates.txt			\
   output/test/recip-1/build_buildings.txt		\
   output/test/recip-1/purchase_inputs.txt
@@ -252,13 +253,23 @@ output/test/recip-$(ss)/people_3_purchases.txt:	\
 	$(python_from_here) python/build/people_3_purchases_test.py \
           $(subsample) $(strategy) $(yr)
 
-output/test/recip-$(ss)/regime_r2018.txt:		\
+output/test/recip-1/regime_r2018.txt:				\
   python/regime/r2018.py				\
   python/build/output_io.py				\
   python/common/common.py				\
   python/common/misc.py					\
   python/common/util.py
 	$(python_from_here) python/regime/r2018_test.py \
+          $(subsample) $(strategy) $(yr)
+
+output/test/recip-1/build_ss_functions.txt:				\
+  python/build/ss_functions_test.py				\
+  python/build/ss_functions.py					\
+  python/build/ss_schedules.py					\
+  python/build/output_io.py					\
+  python/common/misc.py						\
+  python/common/util.py
+	$(python_from_here) python/build/ss_functions_test.py	\
           $(subsample) $(strategy) $(yr)
 
 output/test/recip-$(ss)/people_main.txt: \
