@@ -169,6 +169,7 @@ tests:							\
   output/test/recip-$(ss)/build_purchases_2_vat.txt	\
   output/test/recip-$(ss)/build_purchase_sums.txt	\
   output/test/recip-1/build_ss_functions.txt		\
+  output/test/recip-$(ss)/people_4_income_taxish.txt	\
   output/test/recip-$(ss)/common_misc.txt		\
   output/test/recip-$(ss)/common_util.txt		\
   output/test/recip-$(ss)/people_main.txt		\
@@ -201,20 +202,20 @@ output/test/recip-$(ss)/common_util.txt:	\
   python/build/output_io.py			\
   python/common/util.py				\
   python/common/util_test.py
+	date
 	$(python_from_here) python/common/util_test.py \
           $(subsample) $(strategy) $(yr)
 
-# PITFALL: for buildings.csv we always use subsample=1.
-output/test/recip-1/build_buildings.txt:	\
-  $(buildings)					\
-  python/build/buildings.py			\
-  python/build/buildings_test.py		\
+output/test/recip-$(ss)/purchases_main.txt:	\
+  $(purchases_1)				\
   python/build/classes.py			\
   python/build/output_io.py			\
+  python/build/purchases/main_defs.py		\
+  python/build/purchases/main_test.py		\
   python/common/common.py			\
   python/common/misc.py
-	$(python_from_here) python/build/buildings_test.py \
-          1 $(strategy) $(yr)
+	$(python_from_here) python/build/purchases/main_test.py \
+          $(subsample) $(strategy) $(yr)
 
 output/test/recip-$(ss)/build_purchases_2_vat.txt:	\
   $(purchases_2_vat)					\
@@ -223,6 +224,7 @@ output/test/recip-$(ss)/build_purchases_2_vat.txt:	\
   python/build/purchases_2_vat_test.py			\
   python/common/common.py				\
   python/common/misc.py
+	date
 	$(python_from_here) python/build/purchases_2_vat_test.py \
           $(subsample) $(strategy) $(yr)
 
@@ -230,46 +232,8 @@ output/test/recip-$(ss)/build_purchase_sums.txt: \
   $(purchase_sums) \
   python/build/output_io.py \
   python/common/common.py
+	date
 	$(python_from_here) python/build/purchase_sums_test.py \
-          $(subsample) $(strategy) $(yr)
-
-output/test/recip-$(ss)/people_2_buildings.txt:	\
-  $(people_1)					\
-  $(people_2_buildings)				\
-  python/build/output_io.py			\
-  python/common/common.py			\
-  python/common/misc.py
-	$(python_from_here) python/build/people_2_buildings_test.py \
-          $(subsample) $(strategy) $(yr)
-
-output/test/recip-$(ss)/people_3_purchases.txt:	\
-  $(people_2_buildings)				\
-  $(people_3_purchases)				\
-  $(purchase_sums)				\
-  python/build/classes.py			\
-  python/build/output_io.py			\
-  python/common/common.py			\
-  python/common/misc.py
-	$(python_from_here) python/build/people_3_purchases_test.py \
-          $(subsample) $(strategy) $(yr)
-
-output/test/recip-1/regime_r2018.txt:				\
-  python/regime/r2018.py				\
-  python/build/output_io.py				\
-  python/common/common.py				\
-  python/common/misc.py					\
-  python/common/util.py
-	$(python_from_here) python/regime/r2018_test.py \
-          $(subsample) $(strategy) $(yr)
-
-output/test/recip-1/build_ss_functions.txt:				\
-  python/build/ss_functions_test.py				\
-  python/build/ss_functions.py					\
-  python/build/ss_schedules.py					\
-  python/build/output_io.py					\
-  python/common/misc.py						\
-  python/common/util.py
-	$(python_from_here) python/build/ss_functions_test.py	\
           $(subsample) $(strategy) $(yr)
 
 output/test/recip-$(ss)/people_main.txt: \
@@ -281,7 +245,75 @@ output/test/recip-$(ss)/people_main.txt: \
   python/common/common.py \
   python/common/misc.py \
   python/common/util.py
+	date
 	$(python_from_here) python/build/people/main_test.py \
+          $(subsample) $(strategy) $(yr)
+
+# PITFALL: for buildings.csv we always use subsample=1.
+output/test/recip-1/build_buildings.txt:	\
+  $(buildings)					\
+  python/build/buildings.py			\
+  python/build/buildings_test.py		\
+  python/build/classes.py			\
+  python/build/output_io.py			\
+  python/common/common.py			\
+  python/common/misc.py
+	date
+	$(python_from_here) python/build/buildings_test.py \
+          1 $(strategy) $(yr)
+
+output/test/recip-$(ss)/people_2_buildings.txt:	\
+  $(people_1)					\
+  $(people_2_buildings)				\
+  python/build/output_io.py			\
+  python/common/common.py			\
+  python/common/misc.py
+	date
+	$(python_from_here) python/build/people_2_buildings_test.py \
+          $(subsample) $(strategy) $(yr)
+
+output/test/recip-$(ss)/people_3_purchases.txt:	\
+  $(people_2_buildings)				\
+  $(people_3_purchases)				\
+  $(purchase_sums)				\
+  python/build/classes.py			\
+  python/build/output_io.py			\
+  python/common/common.py			\
+  python/common/misc.py
+	date
+	$(python_from_here) python/build/people_3_purchases_test.py \
+          $(subsample) $(strategy) $(yr)
+
+output/test/recip-1/regime_r2018.txt:				\
+  python/regime/r2018.py				\
+  python/build/output_io.py				\
+  python/common/common.py				\
+  python/common/misc.py					\
+  python/common/util.py
+	date
+	$(python_from_here) python/regime/r2018_test.py \
+          1 $(strategy) $(yr)
+
+output/test/recip-1/build_ss_functions.txt:			\
+  python/build/ss_functions_test.py				\
+  python/build/ss_functions.py					\
+  python/build/ss_schedules.py					\
+  python/build/output_io.py					\
+  python/common/misc.py						\
+  python/common/util.py
+	date
+	$(python_from_here) python/build/ss_functions_test.py	\
+          1 $(strategy) $(yr)
+
+output/test/recip-$(ss)/people_4_income_taxish.txt:	\
+  python/build/people_4_income_taxish_test.py		\
+  python/build/people_4_income_taxish_functions.py	\
+  python/build/output_io.py				\
+  python/common/util.py					\
+  python/common/util.py
+	date
+	$(python_from_here)				\
+          python/build/people_4_income_taxish_test.py	\
           $(subsample) $(strategy) $(yr)
 
 # PITFALL: Sample size is hardcoded to 1, because otherwise
@@ -298,17 +330,6 @@ output/test/recip-1/purchase_inputs.txt: \
 	date
 	$(python_from_here) python/build/purchases/input_test.py \
           1 detail 2016
-
-output/test/recip-$(ss)/purchases_main.txt:	\
-  $(purchases_1)				\
-  python/build/classes.py			\
-  python/build/output_io.py			\
-  python/build/purchases/main_defs.py		\
-  python/build/purchases/main_test.py		\
-  python/common/common.py			\
-  python/common/misc.py
-	$(python_from_here) python/build/purchases/main_test.py \
-          $(subsample) $(strategy) $(yr)
 
 output/test/recip-$(ss)/vat_rates.txt:	\
   $(vat_rates.py)			\
