@@ -29,14 +29,22 @@ ppl["tax, ganancia ocasional"] = (
   ppl["income, ganancia ocasional, 20%-taxable"] * 0.2 )
 
 for (goal,function) in [
-      ("tax, ss, pension"               , ss.mk_pension)
-    , ("tax, ss, pension, employer"     , ss.mk_pension_employer)
-    , ("tax, ss, salud"                 , ss.mk_salud)
-    , ("tax, ss, salud, employer"       , ss.mk_salud_employer)
-    , ("tax, ss, solidaridad"           , ss.mk_solidaridad)
-    , ("tax, ss, parafiscales"          , ss.mk_parafiscales_employer)
-    , ("tax, ss, cajas de compensacion" , ss.mk_cajas_de_compensacion_employer)
-    , ("cesantias + primas"             , ss.mk_cesantias_y_primas_employer) ]:
+      ( "tax, ss, pension",
+        ss.mk_pension)
+    , ( "tax, ss, pension, employer",
+        ss.mk_pension_employer)
+    , ( "tax, ss, salud",
+        ss.mk_salud)
+    , ( "tax, ss, salud, employer",
+        ss.mk_salud_employer)
+    , ( "tax, ss, solidaridad",
+        ss.mk_solidaridad)
+    , ( "tax, ss, parafiscales",
+        ss.mk_parafiscales_employer)
+    , ( "tax, ss, cajas de compensacion",
+        ss.mk_cajas_de_compensacion_employer)
+    , ( "cesantias + primas",
+        ss.mk_cesantias_y_primas_employer) ]:
   ppl[goal] = ppl.apply(
       lambda row: function(
           row["independiente"],
