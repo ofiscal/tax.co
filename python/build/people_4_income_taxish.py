@@ -11,6 +11,7 @@ if True:
   import python.common.misc        as m
   import python.common.common      as com
   #
+  import python.build.people_4_income_taxish_functions as f4
   if com.regime_year == 2016:
         import python.regime.r2016 as regime
   else: import python.regime.r2018 as regime
@@ -56,20 +57,7 @@ ppl["tax, ss, total employee contribs"] = (
   ppl["tax, ss, salud"] +
   ppl["tax, ss, solidaridad"] )
 
-# Determine dependents, for income tax, assuming rationality -- that is,
-# the highest earner should claim the first available dependent,
-# the next-highest earner should claim the next available dependent, etc.
-if True:
-  hh = ( ppl[["household","dependent"]]
-       . groupby( "household" )
-       . agg( 'sum' )
-       . rename( columns = {"dependent":"dependents"} )
-       . reset_index() )
-  ppl = ( ppl.merge( hh, how='inner', on='household' )
-        . drop( columns = "dependent" ) )
-  ppl["has dependent"] = (
-    ppl["member-by-income"] <= ppl["dependents"] )
-  del(hh)
+ppl = f4.insert_has_dependent_column(ppl)
 
 ppl = regime.income_taxes( ppl )
 
