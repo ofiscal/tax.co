@@ -51,7 +51,8 @@ def taxable( row: pd.Series ) -> float:
                          32 * muvt ) )
   return s2
 
-def income_taxes( ppl ):
+def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
+  """PITFALL: Destructive."""
   new_columns = pd.DataFrame()
   temp_columns = pd.DataFrame()
   temp_columns["has dependent"] = ppl["has dependent"]
