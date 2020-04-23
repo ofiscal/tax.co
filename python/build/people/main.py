@@ -321,8 +321,8 @@ if True: # income
         , "total income, monthly : private"          : "income, private"
         }
       income_short_name_dict_in_kind = {
-          'total income, monthly : govt, in-kind'    : "income, govt, in-kind"
-        , 'total income, monthly : labor, in-kind'   : "income, labor, in-kind"
+          'total income, monthly : govt, in-kind'  : "income, govt, in-kind"
+        , 'total income, monthly : labor, in-kind' : "income, labor, in-kind"
         }
       ppl = ppl.rename( columns = { **income_short_name_dict_cash
                                   , **income_short_name_dict_in_kind
@@ -396,15 +396,26 @@ if True: # dependence
     ( ppl["relationship"] == 2 )     # Pareja, esposo(a), cónyuge, compañero(a)
     | ( ppl["relationship"] == 5 ) ) # Otro pariente
 
-  ppl["dependent"] = ( ( ( ppl["relative, child"]==1 )
-                       & ( ( ppl["age"] < 19 )
-                         | ( ( ppl["student"]==1 )
-                           & ( ppl["age"] < 24 ) )
-                         | ( ppl["disabled"]==1 ) ) )
-                     | ( ( ppl["relative, non-child"]==1 )
-                       & ( ppl["income"] < (260 * c.muvt  ) )
-                         | ( ppl["disabled"]==1 ) )
-                     )
+  ppl["dependent"] = (
+      # ASSUMPTION: The labor income < min wage clause is not in the law.
+      # However, an accountant has advised us that in practice,
+      # children with substantial income are not classified as dependents.
+      # The minimum wage threshold is just a guess.
+      # Persons making less than it are surely able to hide their income,
+      # as they are by definition in the informal sector.
+      # Persons making more than it might be able to hide their incomes too;
+      # the model will not capture such hiding.
+
+        ( ( ppl["income, labor, cash"] >= c.min_wage )
+        & ( ppl["relative, child"]==1 )
+        & ( ( ppl["age"] < 19 )
+          | ( ( ppl["student"]==1 )
+            & ( ppl["age"] < 24 ) )
+          | ( ppl["disabled"]==1 ) ) )
+      | ( ( ppl["relative, non-child"]==1 )
+        & ( ppl["income"] < (260 * c.muvt  ) )
+          | ( ppl["disabled"]==1 ) )
+      )
 
 if True: # drop vars that are (so far) unused downstream of here
   ppl = ppl.drop( columns =
