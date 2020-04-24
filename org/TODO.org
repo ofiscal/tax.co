@@ -1,3 +1,19 @@
+* TODO estimate duration to save a month of expenses
+** discard everyone who used savings, or not
+This is a new variable, P7516:
+  "6. Utilizó ... durante los ÚLTIMOS
+  12 MESES, ahorros de años
+  anteriores en los gastos del
+  hogar? 1 » Sí 2 » No 3 » No tiene
+  ahorros
+** discard anybody who bought a house
+*** coicop code 12610104
+*** viviendas variable P5102
+12. ¿Esta vivienda la compró en
+los últimos 12 meses? 1 » Si 2 »
+No
+** then compute duration
+how long it would take to save up the amount of money they use in a month.
 * TODO BUG in latest Docker iamge
 permission error -- can't create files
 * TODO shared decision
@@ -18,6 +34,8 @@ is-purchase we probably assume to be 1, but the others ...?
 ** TODO "vat" conflates some taxes
 That's why, for instance, its max in purchases_2_vat_test is 0.27, not 19
 * TODO possibly wrong
+** TODO why do we drop so many people?
+people_0 is twice as big as people_1
 ** TODO If max "vat" is 0.27, max vat frac should be 0.213
  but instead it's 0.160, which is what would derive from a max vat of 0.19.
  This problem arises in purchases_2_vat_test.py
@@ -75,7 +93,9 @@ in ./build/vat_rates.py:
  while the csv files read as NaN.
 *** TODO csvtool converts numbers containing commas to strings
 * TODO test suite
-** TODO RESUME after build/ss_functions.py
+** TODO RESUME here
+verify that the fix to dependent earners worked --
+that now, nobody claimed as a dependent pays taxes
 ** TODO double-check mk_solidaridad for contractors
 Is the tax code really that absurd? There are clauses that never hold.
 ** TODO use python.test_utils.uniqueColumnNames() everywhere
