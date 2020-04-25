@@ -1,19 +1,12 @@
 * TODO estimate duration to save a month of expenses
-** discard everyone who used savings, or not
-Pull in a new person-level variable, P7516:
-  "6. Utilizó ... durante los ÚLTIMOS
-  12 MESES, ahorros de años
-  anteriores en los gastos del
-  hogar? 1 » Sí 2 » No 3 » No tiene
-  ahorros
-** discard anybody who bought a house
-*** coicop code 12610104
-*** viviendas variable P5102
-12. ¿Esta vivienda la compró en
-los últimos 12 meses? a1 » Si 2 »
-No
-** then compute duration
-how long it would take to save up the amount of money they use in a month.
+** propogate new variables to household-level data
+** add a "months to save for a month" variable
+How long it would take to save the amount of money they use in a month.
+** make quantiles for that variable, for a few data frames
+*** hh[ hh["recently bought this house"] == 1 ]
+*** hh[ hh["used savings"] == 1 ]
+*** hh[
+* TODO drop income rank variables from household data
 * TODO BUG in latest Docker iamge
 permission error -- can't create files
 * TODO shared decision

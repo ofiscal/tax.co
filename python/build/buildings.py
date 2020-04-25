@@ -23,6 +23,8 @@ files = [
 buildings = cl.collect_files( files
                             , subsample=1 ) # see PITFALL above
 buildings["estrato"] = buildings["estrato"].replace(' ', np.nan)
+buildings["recently bought this house"] = (
+    buildings["recently bought this house"] == 1 )
 
 oio.saveStage(
   1 # see PITFALL above

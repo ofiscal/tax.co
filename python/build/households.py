@@ -67,9 +67,12 @@ if True: # aggregate from household members to households
                 , "tax, ss, cajas de compensacion"
                 , "cesantias + primas"
                 , "tax, gmf"
-                , "tax, ganancia ocasional" ]
+                , "tax, ganancia ocasional" ] +
 
-                + regime.income_tax_columns +
+                regime.income_tax_columns +
+
+                [ "used savings"
+                , "recently bought this house" ] +
 
                 [ "income"
                 , "income, pension"
@@ -151,7 +154,6 @@ if True: # aggregate from household members to households
   households["one"] = 1 # used to create the trivial partition
 
   households_decile_summary = util.summarizeQuantiles("income-decile", households)
-
 
 if True: # save
   oio.saveStage( c.subsample, households
