@@ -15,7 +15,9 @@ files = [
     , [ ("DIRECTORIO", 0, "household", 0)
       , ("REGION", 0, "region-1", 0)
       , ("DOMINIO", 0, "region-2", 0)
-      , ("P8520S1A1", 0, "estrato", 0) ]
+      , ("P8520S1A1", 0, "estrato", 0)
+      , ("P5102", 0, "recently bought this house", 0) ]
+         # 1 » Si 2 » No
 ) ]
 
 buildings = cl.collect_files( files

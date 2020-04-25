@@ -12,7 +12,8 @@ sums = oio.readStage(
     "purchase_sums." + cm.strategy_suffix )
 
 assert ( list( sorted( sums.columns ) ) ==
-         [ "household",
+         [ "home purchase value",
+           "household",
            "household-member",
            "predial",
            "transactions",

@@ -1,6 +1,6 @@
 * TODO estimate duration to save a month of expenses
 ** discard everyone who used savings, or not
-This is a new variable, P7516:
+Pull in a new person-level variable, P7516:
   "6. Utilizó ... durante los ÚLTIMOS
   12 MESES, ahorros de años
   anteriores en los gastos del
@@ -10,7 +10,7 @@ This is a new variable, P7516:
 *** coicop code 12610104
 *** viviendas variable P5102
 12. ¿Esta vivienda la compró en
-los últimos 12 meses? 1 » Si 2 »
+los últimos 12 meses? a1 » Si 2 »
 No
 ** then compute duration
 how long it would take to save up the amount of money they use in a month.

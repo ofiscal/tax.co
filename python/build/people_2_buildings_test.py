@@ -14,7 +14,8 @@ df1 = oio.readStage(c.subsample, 'people_1')
 df2 = oio.readStage(c.subsample, 'people_2_buildings')
 
 cs1 = set(df1.columns)
-new_cols = {'estrato', 'region-1', 'region-2'}
+new_cols = { 'estrato', 'recently bought this house'
+           , 'region-1', 'region-2' }
 cs2 = set(df2.columns)
 
 assert unique( df2.columns )

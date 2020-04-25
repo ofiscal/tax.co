@@ -7,6 +7,10 @@ import python.common.common as c
 purchases = oio.readStage( c.subsample
                          , "purchases_2_vat." + c.strategy_suffix )
 
+purchases["home purchase value"] = (
+    purchases[ purchases["coicop"] == "12610104" ]
+             [ "value" ] )
+
 # extract the predial tax
 purchases["predial"] = (purchases["coicop"] == 12700601) * purchases["value"]
   # PITFALL: This variable, which is already part of the ENPH,
@@ -23,6 +27,7 @@ purchase_sums = purchases.groupby( ["household", "household-member"]
            , "vat paid, max"
            , "vat paid, min"
            , "predial"
+           , "home purchase value"
          ] . agg("sum")
 purchase_sums = purchase_sums.reset_index(
   level = ["household", "household-member"] )
