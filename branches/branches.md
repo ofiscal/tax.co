@@ -67,6 +67,12 @@ and I wanted to be sure the model was accurate.
 I don't remember what I did or what the result was --
 would have to look through the history of diffs to find out.
 
+# time-to-save-for-a-month
+
+Finds how long it would take a household to save for a month, if in that month they had to spend what they spent during the time of the survey.
+
+Most salient result: No matter how I sliced it, around half of households spend more than they earn, but around a fifth save more than 2/3 of their income.
+
 # vaex
 
 Using Pandas, tax.co can throw memory errors on an 8GB system.
