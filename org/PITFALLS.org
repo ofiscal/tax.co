@@ -1,3 +1,6 @@
+* in Bash
+** wc does not accurately count lines in .csv files
+because lines can contain newlines between parentheses
 * in my own
 ** the special motorcycle tax
 It is represented in code, not data.
