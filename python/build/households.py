@@ -75,6 +75,7 @@ if True: # aggregate from household members to households
                 , "recently bought this house" ] +
 
                 [ "income"
+                , "income, cash"
                 , "income, pension"
                 , "income, cesantia"
                 , "income, dividend"

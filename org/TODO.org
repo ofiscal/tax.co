@@ -1,11 +1,3 @@
-* TODO estimate duration to save a month of expenses
-** propogate new variables to household-level data
-** add a "months to save for a month" variable
-How long it would take to save the amount of money they use in a month.
-** make quantiles for that variable, for a few data frames
-*** hh[ hh["recently bought this house"] == 1 ]
-*** hh[ hh["used savings"] == 1 ]
-*** hh[
 * TODO drop income rank variables from household data
 * TODO BUG in latest Docker iamge
 permission error -- can't create files
