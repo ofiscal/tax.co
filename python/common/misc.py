@@ -25,6 +25,13 @@ gmf_threshold = (11150650 + 10413550) / 2
 ###### About the data
 ######
 
+num_households          = 291590  # number of households in full sample
+  # (see explore/data,raw/count-households.py)
+num_people              = 291590  # number of people    (full sample)
+num_purchases           = 9309621 # number of purchases (full sample)
+num_purchases_surviving = 7357003 # number of purchases (full sample) with
+  # both a value (in pesos) and a code indicating the kind of expense
+
 variables = [ # in some purchase files, all three common variables are numbers
     ( "DIRECTORIO", {StringCellProperty.NotAString}, "household", 0 )
   , ( "ORDEN",      {StringCellProperty.NotAString}, "household-member", 0 )

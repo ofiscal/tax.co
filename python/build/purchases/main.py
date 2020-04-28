@@ -3,20 +3,21 @@
 # Collect all the ENPH purchase files into a single dataset,
 # with various reformattings, homogenizations, and corrections.
 
-import sys
-import numpy as np
-from itertools import chain
-
-from   python.build.classes import Correction
-import python.common.misc as com
-import python.common.common as cl
-import python.build.output_io as oio
-import python.build.purchases.main_defs as defs
-
-# input files
-import python.build.purchases.nice_purchases as nice_purchases
-import python.build.purchases.articulos as articulos
-import python.build.purchases.capitulo_c as capitulo_c
+if True:
+  import sys
+  import numpy as np
+  from itertools import chain
+  #
+  from   python.build.classes import Correction
+  import python.common.misc as com
+  import python.common.common as cl
+  import python.build.output_io as oio
+  import python.build.purchases.main_defs as defs
+  #
+  # input files
+  import python.build.purchases.nice_purchases as nice_purchases
+  import python.build.purchases.articulos as articulos
+  import python.build.purchases.capitulo_c as capitulo_c
 
 
 purchases = cl.collect_files(
@@ -28,7 +29,6 @@ purchases = cl.collect_files(
     + nice_purchases.files )
   , subsample = cl.subsample
 )
-
 
 for c in (
   [ Correction.Replace_Substring_In_Column(
