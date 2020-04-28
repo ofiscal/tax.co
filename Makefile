@@ -7,6 +7,7 @@ SHELL := bash
   people_1 \
   people_2_buildings \
   people_3_purchases \
+  purchases_0 \
   purchases_1 \
   purchases_2_vat \
   purchase_sums \
@@ -80,6 +81,7 @@ people_3_purchases = \
   output/vat/data/recip-$(ss)/people_3_purchases.$(strategy_suffix).csv
 people_4_income_taxish = \
   output/vat/data/recip-$(ss)/people_4_income_taxish.$(strategy_year_suffix).csv
+purchases_0 =        output/vat/data/recip-$(ss)/purchases_0.csv
 purchases_1 =        output/vat/data/recip-$(ss)/purchases_1.csv
 purchases_2_vat =    output/vat/data/recip-$(ss)/purchases_2_vat.$(strategy_suffix).csv
 purchase_sums =      output/vat/data/recip-$(ss)/purchase_sums.$(strategy_suffix).csv
@@ -175,7 +177,7 @@ tests:							\
   output/test/recip-$(ss)/people_main.txt		\
   output/test/recip-$(ss)/people_2_buildings.txt	\
   output/test/recip-$(ss)/people_3_purchases.txt	\
-  output/test/recip-$(ss)/purchases_main.txt		\
+  output/test/recip-$(ss)/purchases_correct.txt		\
   output/test/recip-1/regime_r2018.txt              	\
   output/test/recip-$(ss)/vat_rates.txt			\
   output/test/recip-1/build_buildings.txt		\
@@ -206,15 +208,15 @@ output/test/recip-$(ss)/common_util.txt:	\
 	$(python_from_here) python/common/util_test.py \
           $(subsample) $(strategy) $(yr)
 
-output/test/recip-$(ss)/purchases_main.txt:	\
+output/test/recip-$(ss)/purchases_correct.txt:	\
   $(purchases_1)				\
   python/build/classes.py			\
   python/build/output_io.py			\
-  python/build/purchases/main_defs.py		\
-  python/build/purchases/main_test.py		\
+  python/build/purchases/correct_defs.py	\
+  python/build/purchases/correct_test.py	\
   python/common/common.py			\
   python/common/misc.py
-	$(python_from_here) python/build/purchases/main_test.py \
+	$(python_from_here) python/build/purchases/correct_test.py \
           $(subsample) $(strategy) $(yr)
 
 output/test/recip-$(ss)/build_purchases_2_vat.txt:	\
@@ -444,21 +446,34 @@ $(households): \
 	date
 	$(python_from_here) python/build/households.py $(subsample) $(strategy) $(yr)
 
-purchases_1: $(purchases_1)
-$(purchases_1): \
-  python/build/purchases/main.py \
-  python/build/purchases/main_defs.py \
-  python/build/classes.py \
-  python/build/output_io.py \
-  python/build/purchases/nice_purchases.py \
-  python/build/purchases/articulos.py \
-  python/build/purchases/capitulo_c.py \
-  python/common/common.py \
-  python/common/misc.py \
-  python/build/classes.py \
+purchases_0: $(purchases_0)
+$(purchases_0):					\
+  python/build/purchases/collect.py		\
+  python/build/output_io.py			\
+  python/build/purchases/nice_purchases.py	\
+  python/build/purchases/articulos.py		\
+  python/build/purchases/capitulo_c.py		\
+  python/common/common.py			\
   $(input_subsamples)
 	date
-	$(python_from_here) python/build/purchases/main.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/build/purchases/collect.py $(subsample) $(strategy) $(yr)
+
+purchases_1: $(purchases_1)
+$(purchases_1):					\
+  $(purchases_0)				\
+  python/build/purchases/correct.py		\
+  python/build/purchases/correct_defs.py	\
+  python/build/classes.py			\
+  python/build/output_io.py			\
+  python/build/purchases/nice_purchases.py	\
+  python/build/purchases/articulos.py		\
+  python/build/purchases/capitulo_c.py		\
+  python/common/common.py			\
+  python/common/misc.py				\
+  python/build/classes.py			\
+  $(input_subsamples)
+	date
+	$(python_from_here) python/build/purchases/correct.py $(subsample) $(strategy) $(yr)
 
 purchases_2_vat: $(purchases_2_vat)
 $(purchases_2_vat): \

@@ -2,7 +2,7 @@ if True:
   import numpy as np
   import pandas as pd
   #
-  import python.build.purchases.main_defs as defs
+  import python.build.purchases.correct_defs as defs
   import python.common.common as cl
   import python.build.classes as cla
   import python.build.output_io as oio
@@ -90,6 +90,6 @@ if True: # run the tests
   log += test_output( df )
 
   oio.test_write( cl.subsample
-                , "purchases_main"
+                , "purchases_correct"
                 , log )
 
