@@ -1,11 +1,12 @@
 if True:
   import pandas as pd
-  import numpy as np
+  import numpy  as np
   #
-  import python.build.classes as cl
-  import python.common.common as cm
+  import python.build.classes   as cl
   import python.build.output_io as oio
-  from   python.common.util import unique
+  import python.common.common   as com
+  from   python.common.misc import num_purchases_surviving
+  from   python.common.util import unique, near
 
 
 def test_ranges( df ):
@@ -90,6 +91,12 @@ def test_output( df ):
   log = "test_output()\n"
 
   assert unique( df.columns )
+
+  assert near(
+    len(df),
+    num_purchases_surviving / com.subsample,
+    tol_frac = 1/20 )
+
   assert ( set( df.columns ) ==
            set( Purchase_2_Columns_missing.all_columns() ) )
 
@@ -121,10 +128,10 @@ def test_output( df ):
 
 if True: # IO
   log = "starting\n"
-  ps = oio.readStage( cm.subsample
-                    , "purchases_2_vat." + cm.strategy_suffix )
+  ps = oio.readStage( com.subsample
+                    , "purchases_2_vat." + com.strategy_suffix )
   log += test_ranges( ps )
   log += test_output( ps )
-  oio.test_write( cm.subsample
+  oio.test_write( com.subsample
                 , "build_purchases_2_vat"
                 , log )

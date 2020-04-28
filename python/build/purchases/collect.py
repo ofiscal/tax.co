@@ -1,6 +1,8 @@
 if True:
-  import python.common.common as cl
+  import python.common.common as com
   import python.build.output_io as oio
+  import python.common.misc as misc
+  import python.common.util as util
   #
   # input files
   import python.build.purchases.nice_purchases as nice_purchases
@@ -8,15 +10,24 @@ if True:
   import python.build.purchases.capitulo_c     as capitulo_c
 
 
-purchases = cl.collect_files(
+purchases = com.collect_files(
   ( articulos.files
     # + medios.files
       # The tax only applies if the purchase is more than 880 million pesos,
       # and the data only records purchases of a second home.
     + capitulo_c.files
     + nice_purchases.files )
-  , subsample = cl.subsample
+  , subsample = com.subsample
 )
 
-oio.saveStage(cl.subsample, purchases, 'purchases_0')
+assert util.near(
+    # PITFALL: This differs from the usual idiom which separates testing
+    # from production. That's because the only thing tested here is
+    # the number of rows; reading the entire data set into memory again
+    # for such a simple test seems unworth the added execution time.
+    len(purchases),
+    misc.num_purchases / com.subsample,
+    tol_frac = 1/20 )
+
+oio.saveStage( com.subsample, purchases, 'purchases_0' )
 
