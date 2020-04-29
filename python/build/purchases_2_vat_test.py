@@ -95,7 +95,7 @@ def test_output( df ):
   assert near(
     len(df),
     num_purchases_surviving / com.subsample,
-    tol_frac = 1/20 )
+    tol_frac = 1/10 )
 
   assert ( set( df.columns ) ==
            set( Purchase_2_Columns_missing.all_columns() ) )

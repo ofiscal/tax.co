@@ -1,3 +1,8 @@
+* TODO change all - to _ in Makefile
+and corresponding elsewhere
+* TODO BUG : purchases/correct_test.py does not rerun when changed
+except in the 1/100 sample!
+** TODO plan: rewind to a version where it worked, compare
 * TODO BUG in latest Docker iamge
 permission error -- can't create files
 * TODO shared decision
@@ -76,13 +81,9 @@ in ./build/vat_rates.py:
 *** TODO csvtool converts numbers containing commas to strings
 * TODO test suite
 ** TODO RESUME here
-*** test number of purchases
-Divide purchases/main into files `collect` and `correct`.
-For `collect`, test only the number of rows.
-For `correct`, migrate the other tests, and add one of the number of rows.
-Add the same test to later purchase-level files.
 *** test number of people
 *** test number of households
+*** some tests fail on the 1/1000 sample
 ** TODO double-check mk_solidaridad for contractors
 Is the tax code really that absurd? There are clauses that never hold.
 ** TODO use python.test_utils.uniqueColumnNames() everywhere

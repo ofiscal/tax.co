@@ -3,14 +3,13 @@
 if True:
   import numpy as np
   import pandas as pd
-  import re as regex
   #
   import python.build.classes as cla
   import python.build.output_io as oio
   import python.build.people.files as files
   import python.build.people.main_defs as defs
-  import python.common.common as cl
-  import python.common.misc as c
+  import python.common.common as com
+  from   python.common.misc import num_people
   import python.common.util as util
 
 
@@ -104,12 +103,17 @@ if True: # run tests
   test_count_num_matches_in_space_separated_list()
 
   # integration tests
-  ppl = oio.readStage(cl.subsample, 'people_1')
+  ppl = oio.readStage(com.subsample, 'people_1')
   ppl["education"] = util.interpretCategorical( ppl["education"]
                                               , files.edu_key.values() )
   test_ranges( ppl )
   test_upper_bound_on_fraction_missing( ppl )
 
-  oio.test_write( cl.subsample
+  assert util.near( len(ppl),
+                    num_people / com.subsample,
+                    tol_frac = 1/5 )
+
+  oio.test_write( com.subsample
                 , "people_main"
                 , log )
+

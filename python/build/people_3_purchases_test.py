@@ -5,23 +5,28 @@ if True:
   import pandas as pd
   #
   import python.build.output_io as oio
-  import python.common.common as c
+  import python.common.common as com
   import python.build.classes as cl
-  from   python.common.util import unique
+  from   python.common.misc import num_people
+  from   python.common.util import near, unique
 
 
 if True: # read
-  p2rows = oio.readStage( c.subsample,
+  p2rows = oio.readStage( com.subsample,
                           "people_2_buildings",
                           usecols = ["household"] )
-  p2cols = oio.readStage( c.subsample,
+  p2cols = oio.readStage( com.subsample,
                           "people_2_buildings",
                           nrows = 1 )
-  prCols = oio.readStage( c.subsample,
-                          "purchase_sums." + c.strategy_suffix,
+  prCols = oio.readStage( com.subsample,
+                          "purchase_sums." + com.strategy_suffix,
                           nrows = 1 )
-  p3 = oio.readStage( c.subsample,
-                      'people_3_purchases.' + c.strategy_suffix )
+  p3 = oio.readStage( com.subsample,
+                      'people_3_purchases.' + com.strategy_suffix )
+
+assert near( len(p3),
+             num_people / com.subsample,
+             tol_frac = 1/5 )
 
 assert len(p2rows) == len(p3)
 
@@ -81,11 +86,12 @@ for k,v in per_cell_spec.items():
   assert cl.properties_cover_num_column( v, p3[k] )
 
 for k,v in per_column_spec.items():
+  print(k)
   assert v.test( p3[k] )
 
 if True: # IO
   log = str( datetime.datetime.now() )
-  oio.test_write( c.subsample
+  oio.test_write( com.subsample
                 , "people_3_purchases"
                 , log )
 

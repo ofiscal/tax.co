@@ -153,11 +153,12 @@ diff:
           $(subsample) $(strategy) $(yr)
 
 show_params:
-	echo "subsample: " -$(subsample)-
-	echo "tax regime year: " -$(yr)-
-	echo "vat strategy: " -$(strategy)-
-	echo "strategy suffix: " -$(strategy_suffix)-
-	echo "strategy_year_suffix: " -$(strategy_year_suffix)
+	echo "subsample: "		-$(subsample)-
+	echo "ss: "			-$(ss)-
+	echo "tax regime year: "	-$(yr)-
+	echo "strategy: "		-$(strategy)-
+	echo "strategy suffix: "	-$(strategy_suffix)-
+	echo "strategy_year_suffix: "	-$(strategy_year_suffix)
 
 
 ##=## the run-after-every-change test suite
@@ -216,6 +217,7 @@ output/test/recip-$(ss)/purchases_correct.txt:	\
   python/build/purchases/correct_test.py	\
   python/common/common.py			\
   python/common/misc.py
+	date
 	$(python_from_here) python/build/purchases/correct_test.py \
           $(subsample) $(strategy) $(yr)
 
@@ -267,9 +269,10 @@ output/test/recip-1/build_buildings.txt:	\
 output/test/recip-$(ss)/people_2_buildings.txt:	\
   $(people_1)					\
   $(people_2_buildings)				\
+  python/build/people_2_buildings_test.py       \
   python/build/output_io.py			\
   python/common/common.py			\
-  python/common/misc.py
+  python/common/util.py
 	date
 	$(python_from_here) python/build/people_2_buildings_test.py \
           $(subsample) $(strategy) $(yr)
@@ -278,10 +281,11 @@ output/test/recip-$(ss)/people_3_purchases.txt:	\
   $(people_2_buildings)				\
   $(people_3_purchases)				\
   $(purchase_sums)				\
-  python/build/classes.py			\
+  python/build/people_3_purchases_test.py	\
   python/build/output_io.py			\
   python/common/common.py			\
-  python/common/misc.py
+  python/common/misc.py                         \
+  python/common/util.py
 	date
 	$(python_from_here) python/build/people_3_purchases_test.py \
           $(subsample) $(strategy) $(yr)

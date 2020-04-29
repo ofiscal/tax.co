@@ -3,6 +3,7 @@ if True:
   import pandas as pd
   #
   import python.build.people_4_income_taxish_functions as f4
+  from   python.common.misc import num_people
   from   python.common.util import near
   import python.build.output_io as oio
   import python.common.common   as com
@@ -28,7 +29,18 @@ def test_insert_has_dependent_column():
 
 if True:
   log = str( datetime.datetime.now() )
+
+  # unit tests
   test_insert_has_dependent_column()
+
+  # integration tests
+  p4 = oio.readStage(
+      com.subsample,
+      'people_4_income_taxish.' + com.strategy_year_suffix )
+  assert near( len(p4),
+               num_people / com.subsample,
+               tol_frac = 1/5 )
+
   oio.test_write( com.subsample
                 , "people_4_income_taxish"
                 , log )
