@@ -28,6 +28,13 @@ gmf_threshold = (11150650 + 10413550) / 2
 num_households          = 291590  # number of households in full sample
   # (see explore/data,raw/count-households.py)
 num_people              = 291590  # number of people    (full sample)
+  # PITFALL: This suggests the 1/1000 sample should have 292 people.
+  # The subsampling is based on households, though, not individuals,
+  # and the true figure is substantially off from that,
+  # requiring a high (20%) tolerance in some tests that count rows, like:
+  #   assert near( len(p3),
+  #                num_people / com.subsample,
+  #                tol_frac = 1/5 )
 num_purchases           = 9309621 # number of purchases (full sample)
 num_purchases_surviving = 7357003 # number of purchases (full sample) with
   # both a value (in pesos) and a code indicating the kind of expense
