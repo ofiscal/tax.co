@@ -24,7 +24,7 @@ class SeriesProperty:
     raise NotImplementedError("SeriesProperty is an abstract class.")
 
 class CoversRange(SeriesProperty):
-  """Similar to InRange."""
+  """Similar to InRange. If c = CoversRange(x,y), and s is a series, then s passes c.test() if and only if c includes a value less than x and a value greater than y."""
   def __init__( self, floor, ceiling ):
     self.floor = floor
     self.ceiling = ceiling
@@ -47,7 +47,7 @@ class IsNull(NumCellProperty):
     return pd.isnull( series )
 
 class InRange(NumCellProperty):
-  """Similar to CoversRange. Defines loose bounds on the series."""
+  """If c = InRange(x,y), and s is a series, then s passes c.test() if and only if c includes no value less than x and no value greater than y."""
   def __init__( self, floor, ceiling ):
     self.floor = floor
     self.ceiling = ceiling

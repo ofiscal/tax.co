@@ -77,7 +77,7 @@ per_column_spec = {
     "vat/value, max"  : cl.CoversRange( 0,      0.15   ),
     "vat/income, min" : cl.CoversRange( 0,      np.inf ),
     "vat/income, max" : cl.CoversRange( 0,      np.inf ),
-    "value/income"    : cl.CoversRange( 0.0001, np.inf ),
+    "value/income"    : cl.CoversRange( 0.01,   np.inf ),
     "age-decile"      : cl.CoversRange( 0,      9      ),
     "income-decile"   : cl.CoversRange( 0,      9      ),
     "female head"     : cl.CoversRange( 0,      1      ) }
@@ -86,7 +86,6 @@ for k,v in per_cell_spec.items():
   assert cl.properties_cover_num_column( v, p3[k] )
 
 for k,v in per_column_spec.items():
-  print(k)
   assert v.test( p3[k] )
 
 if True: # IO

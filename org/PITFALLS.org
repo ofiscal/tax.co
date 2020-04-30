@@ -7,6 +7,10 @@ It is represented in code, not data.
   at purhcases_2_vat.py
 It is treated as VAT.
 * Makefile
+** if it's not rerunning after editing a requirement
+I checked out some earlier commits to see if they had the same problem. (They didn't.)
+Then I checked out the latest commit, and the problem vanished.
+(That was the master branch, on 2020 April 29-30.)
 ** filenames should not include "-"
 Use "_" instead; otherwise `make` will fail, silently.
 ** be sure all program output comes at the end
