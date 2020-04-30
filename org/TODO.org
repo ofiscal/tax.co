@@ -1,8 +1,3 @@
-* TODO change all - to _ in Makefile
-and corresponding elsewhere
-* TODO BUG : purchases/correct_test.py does not rerun when changed
-except in the 1/100 sample!
-** TODO plan: rewind to a version where it worked, compare
 * TODO BUG in latest Docker iamge
 permission error -- can't create files
 * TODO shared decision
