@@ -1,3 +1,4 @@
+* TODO drop income rank variables from household data
 * TODO BUG in latest Docker iamge
 permission error -- can't create files
 * TODO shared decision
