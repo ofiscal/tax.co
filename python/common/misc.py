@@ -25,7 +25,7 @@ gmf_threshold = (11150650 + 10413550) / 2
 ###### About the data
 ######
 
-num_households          = 291590  # number of households in full sample
+num_households          = 87201  # number of households in full sample
   # (see explore/data,raw/count-households.py)
 num_people              = 291590  # number of people    (full sample)
   # PITFALL: This suggests the 1/1000 sample should have 292 people.
