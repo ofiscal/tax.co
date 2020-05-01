@@ -7,6 +7,9 @@ import python.common.common as c
 purchases = oio.readStage( c.subsample
                          , "purchases_2_vat." + c.strategy_suffix )
 
+purchases = purchases[
+    purchases["is-purchase"] > 0 ]
+
 purchases["home purchase value"] = (
     purchases[ purchases["coicop"] == "12610104" ]
              [ "value" ] )
