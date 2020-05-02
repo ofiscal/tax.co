@@ -58,6 +58,7 @@ def mk_samples( df : pd.DataFrame
            ("has elderly", df[ df["has-elderly"] > 0 ] ) ]
 
 def quantiles_report( samples : List[ Tuple[ str, pd.DataFrame ] ],
+                      colname : str,
                       quantiles : List[float]
                     ) -> pd.DataFrame:
     sample_names = list( map( lambda pair: pair[0],
@@ -67,10 +68,9 @@ def quantiles_report( samples : List[ Tuple[ str, pd.DataFrame ] ],
         index = quantiles + [1] )
     for q in quantiles:
         for (name,sample) in samples:
-            qd[name][q] = wc.quantile(
-                sample,
-                "months to save for a month",
-                q )
+            qd[name][q] = wc.quantile( sample,
+                                       colname,
+                                       q )
     return ( qd.applymap(
                # PITFALL: This handles the case of NaN correctly
                # because NaN < x is false for all x.
@@ -83,17 +83,20 @@ deciles = [ 0.1, 0.2, 0.3, 0.4, # quantiles (deciles)
 decile_6 = [ 0.57, 0.58, 0.59,
              0.60, 0.61, 0.62, 0.63 ]
 
-( quantiles_report(
+every = quantiles_report(
     mk_samples(
         # full sample gives just about identical results
         hh[ hh["recently bought this house"] <= 0 ] ),
-    deciles ) )
+    "months to save for a month, cash",
+    deciles )
 
-( quantiles_report(
+zoom = quantiles_report(
     mk_samples(
         # full sample gives just about identical results
         hh[ hh["recently bought this house"] <= 0 ] ),
-    decile_6 ) )
+    "months to save for a month, cash",
+    decile_6 )
+
 
 
 ############## EXPERIMENTAL ##############
