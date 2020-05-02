@@ -1,6 +1,7 @@
 if True:
   import pandas as pd
   import numpy as np
+  from typing import List, Tuple
   #
   import python.build.classes as cl
   import python.common.common as cm
@@ -8,16 +9,21 @@ if True:
   from python.common.util import describeWithMissing, noisyQuantile
   import matplotlib
   import matplotlib.pyplot as plt
+  import weightedcalcs as weightLib
 
 
+wc = weightLib.Calculator('weight')
+
+#if True:
 hh = oio.readStage(
     cm.subsample
   , "households." + cm.strategy_year_suffix )
 
-def months_to_save_for_a_month( income : float, spending : float ) -> float:
-    if spending >= income:
-        return 1e4
-    else: return spending / (income - spending)
+def months_to_save_for_a_month(
+    income : float, spending : float ) -> float:
+  if spending >= income:
+      return 1e4
+  else: return spending / (income - spending)
 
 hh["months to save for a month"] = hh.apply(
     lambda row: months_to_save_for_a_month(
@@ -31,29 +37,66 @@ hh["months to save for a month, cash"] = hh.apply(
         row["value"] ),
     axis = "columns" )
 
-hh["months to save for a month"].describe()
-hh["used savings"].describe()
-hh["recently bought this house"].describe()
+if False: # explore
+  hh["months to save for a month"].describe()
+  hh["used savings"].describe()
+  hh["recently bought this house"].describe()
+  #
+  len(hh)
+  len( hh[ hh["used savings"] > 0 ] )
+  len( hh[ hh["recently bought this house"] > 0 ] )
 
-len(hh)
-len( hh[ hh["used savings"] > 0 ] )
-len( hh[ hh["recently bought this house"] > 0 ] )
+hh = hh[ hh["used savings"] <= 0 ]
+hh = hh.drop( columns = ["used savings"] )
 
-for (title, df) in [ ( "full sample", hh )
-                   , ( "nobody who bought a house or used savings"
-                     , hh[ (hh["used savings"] <= 0)
-                         & (hh["recently bought this house"] <= 0) ] )
-                   , ( "3 or more members", hh[ hh["members"] >= 3] ) ]:
-  print( "\n", title, ", all income" )
-  for t in range(0,11):
-      print( t/10,
-             ( df["months to save for a month"] .
-               quantile( t / 10 ) ) )
-  print( "\n", title, ", cash income" )
-  for t in range(0,11):
-      print( t/10,
-             ( df["months to save for a month, cash"] .
-               quantile( t / 10 ) ) )
+def mk_samples( df : pd.DataFrame
+              ) -> List[ Tuple[ str, pd.DataFrame ] ]:
+  return [ ("full sample", df ),
+           ("3 or more", df[ df["members"] >= 3] ),
+           ("female head", df[ df["female head"] > 0 ] ),
+           ("has child", df[ df["has-child"] > 0 ] ),
+           ("has elderly", df[ df["has-elderly"] > 0 ] ) ]
+
+def quantiles_report( samples : List[ Tuple[ str, pd.DataFrame ] ],
+                      quantiles : List[float]
+                    ) -> pd.DataFrame:
+    sample_names = list( map( lambda pair: pair[0],
+                              samples ) )
+    qd = pd.DataFrame( # quantile data
+        columns = sample_names,
+        index = quantiles + [1] )
+    for q in quantiles:
+        for (name,sample) in samples:
+            qd[name][q] = wc.quantile(
+                sample,
+                "months to save for a month",
+                q )
+    return ( qd.applymap(
+               # PITFALL: This handles the case of NaN correctly
+               # because NaN < x is false for all x.
+               lambda x: x if x < 9999 else np.inf )
+            . transpose() . round(2) )
+
+deciles = [ 0.1, 0.2, 0.3, 0.4, # quantiles (deciles)
+           0.5, 0.6, 0.7, 0.8, 0.9]
+
+decile_6 = [ 0.57, 0.58, 0.59,
+             0.60, 0.61, 0.62, 0.63 ]
+
+( quantiles_report(
+    mk_samples(
+        # full sample gives just about identical results
+        hh[ hh["recently bought this house"] <= 0 ] ),
+    deciles ) )
+
+( quantiles_report(
+    mk_samples(
+        # full sample gives just about identical results
+        hh[ hh["recently bought this house"] <= 0 ] ),
+    decile_6 ) )
+
+
+############## EXPERIMENTAL ##############
 
 # hh["to plot"] = noisyQuantile(
 #     10, 0, 0.01,
@@ -69,9 +112,6 @@ for (title, df) in [ ( "full sample", hh )
 # ax.set_ylabel("ylabel")
 # 
 # plt.savefig("temp.png")
-
-
- ############## TESTING ##############
 
 import matplotlib
 import matplotlib.pyplot as plt
