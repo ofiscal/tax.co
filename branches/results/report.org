@@ -1,0 +1,42 @@
+* TODO use full sample
+* DONE discard house-buyers
+* DONE discard non-purchases
+* DONE discard users of savings
+* the data
+** how often they do it
+*** (good time to mention its importance)
+** sample size
+** duration
+** kinds of questions
+* how I analyzed it*
+* build a data set
+household level
+** compute months to save for a month
+if spending > income
+  then forever
+  else spending / (income - spending)
+** difficulties
+*** DONE assume income for that month is representative
+problematic
+*** people receive gifts
+*** DONE weighted quantiles
+There's a library! The "weightedcalcs" package:
+https://stackoverflow.com/a/59297394/916142
+
+"Good modern surveys attempt to give a balanced picture of the entire population while also providing sufficiently detailed information on minorities. The ENPH does this. Therefore ..."
+** variations
+*** use all income
+*** discarding anyone who used savings or bought a house
+*** use only cash income
+*** use households with more than 2 members
+*** female head
+*** has-child 
+anybody under 18
+*** has-elderly
+anybody over 65
+* results
+** DONE make a table
+** (obvious) : points to make
+*** 20% save a ton
+*** 50% can't save
+*** the story for big households is similar to that of small ones
