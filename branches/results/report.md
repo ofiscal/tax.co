@@ -46,7 +46,8 @@ Similarly, we need to assume that the expenses the household reports for that mo
 
 Both of those assumptions are unlikely to hold perfectly, so these numbers are not the final story. That said, it's unclear whether the truth is better or worse. What's clear, though, is that a huge fraction of Colombians find it difficult or impossible to save money. Without assistance or a return to work they are in serious danger.
 
-The code that generated this report will soon be public.[3]
+The code that generated this report is public, available at
+https://github.com/ofiscal/tax.co/blob/time-to-save-for-a-month/python/months_to_save_for_a_month.py
 
 
 # Footnotes
@@ -54,7 +55,3 @@ The code that generated this report will soon be public.[3]
 [1] The ENPH also says whether a household recently moved. Suspecting that moving might temporarily increase a house's expenses, I tried excluding those households from the analysis. It turns out to make no meaningful difference -- mostly because very few households (fewer than 5%) moved.
 
 [2] This table indicates that somewhere between 37% and 38% of the population is spending more than they earn. Just as we zoomed into the decile from 60% to 70%, we would have to zoom in on the percentile from 62% to 63% to be more precise.
-
-[3] Early versions of the code are already public, available here:
-https://github.com/ofiscal/tax.co/blob/time-to-save-for-a-month/python/months_to_save_for_a_month.py
-Github is temporarily not allowing me to upload changes, but once it does, the latest version will be there.
