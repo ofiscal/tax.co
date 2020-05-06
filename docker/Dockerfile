@@ -58,8 +58,10 @@ RUN pip install pydotplus graphviz
 # RUN conda update -n base conda
 
 # So that the container runs without root privileges on the host.
+# PITFALL: This might only work when run by a user whose id is 1000.
+# If so, the 1000 below should probably be changed to match the user's id.
 RUN groupadd -g 999 appuser && \
-    useradd -r -u 999 -g appuser appuser
+    useradd -r -u 1000 -g appuser appuser
 USER appuser
 
 RUN PATH=/root/.local/bin:$PATH
