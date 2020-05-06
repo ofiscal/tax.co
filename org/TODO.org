@@ -6,8 +6,6 @@ qs = [0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1] # quantiles (deciles)
 qd = pd.DataFrame( columns = sample_names,
                    index = qs )
 ** but without the list(), it doesn't
-* TODO incorporate the weightedcalcs package
-https://stackoverflow.com/a/59297394/916142
 * TODO drop income rank variables from household data
 They are only meaningful for individuals within a household,
 not a household itself.

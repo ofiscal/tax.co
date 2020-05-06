@@ -53,12 +53,14 @@ RUN apt install -y build-essential graphviz               && \
 
 RUN pip install csv-diff
 RUN pip install pydotplus graphviz
+RUN pip install weightedcalcs
+
 
 # RUN conda update --all --yes
 # RUN conda update -n base conda
 
 # So that the container runs without root privileges on the host.
-# PITFALL: This might only work when run by a user whose id is 1000.
+# PITFALL: This might only work when run by a user whose uid is 1000.
 # If so, the 1000 below should probably be changed to match the user's id.
 RUN groupadd -g 999 appuser && \
     useradd -r -u 1000 -g appuser appuser
