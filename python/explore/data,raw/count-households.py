@@ -5,7 +5,9 @@ if True:
   import python.common.common as cl
   import python.common.util as util
 
-colDict = { "DIRECTORIO" : "household"
+colDict = {
+  "DIRECTORIO": "household",
+  "ORDEN":      "household-member"
 }
 
 ppl = pd.read_csv(
