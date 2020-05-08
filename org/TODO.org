@@ -1,6 +1,3 @@
-* TODO drop income rank variables from household data
-They are only meaningful for individuals within a household,
-not a household itself.
 * TODO shared decision
 ** TODO BLOCKED : "household member" max mismatch
 *** awaiting response from Juan, who awaits from DANE
@@ -726,6 +723,9 @@ that's already implemented.
 It is represented in code, not data.
   at purhcases_2_vat.py
 It is treated as VAT.
+*** "income, rank n" is meaningful at the household level
+It is the income in pesos of the nth highest earener,
+not a boolean variable.
 ** Makefile: be sure all program output comes at the end
 And that (at least) the last thing it creates is a Makefile target.
 Otherwise `make` might believe a target is up to date when the program responsible for it did not complete.
