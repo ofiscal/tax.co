@@ -19,7 +19,6 @@ if True: # merge purchase sums into people
   people = pd.merge( people, purchase_sums
                    , how = "left"
                    , on=["household", "household-member"] )
-
   for s in ["min", "max"]:
     people.loc[ people["region-1"] == "SAN ANDRÉS", "vat paid, " + s ] = 0
 
@@ -31,13 +30,13 @@ if True: # create a few more variables
   people["vat/income, max"] = people["vat paid, max"] / people["income"]
   people["value/income"   ] = people["value"]         / people["income"]
 
-  people["age-decile"] = pd.qcut(
-    people["age"], 10, labels = False, duplicates='drop')
-  people["income-decile"] = (
-    # PITFALL: there's a different such variable at the household level
-    util.noisyQuantile( 10, 0, 1, people["income"] ) )
-
-  people["female head"] = people["female"] * (people["household-member"]==1)
+  if True: # these don't use the purchase data; they could be elsewhere
+    people["age-decile"] = pd.qcut(
+      people["age"], 10, labels = False, duplicates='drop')
+    people["income-decile"] = (
+      # PITFALL: there's a different such variable at the household level
+      util.noisyQuantile( 10, 0, 1, people["income"] ) )
+    people["female head"] = people["female"] * (people["household-member"]==1)
 
 
 oio.saveStage( c.subsample, people,

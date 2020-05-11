@@ -1,3 +1,5 @@
+* in data science
+** upon running a merge, test that nothing was left behind
 * in Bash
 ** wc does not accurately count lines in .csv files
 because lines can contain newlines between parentheses
