@@ -1,7 +1,7 @@
 # PURPOSE
 #########
 # Aggregate from persons to households.
-# Compute more variables.
+# Compute some more variables.
 
 if True:
   import pandas as pd

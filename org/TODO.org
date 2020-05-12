@@ -1,40 +1,13 @@
 * TODO merge purchases into households, not people
-** current situation
-*** build/purchase_sums
-**** currently injects these variables into the people data
- value
- transactions
- vat paid, max
- vat paid, min
- predial
-*** build/people_3_purchases
-**** modifies "vat paid" for San Andres
-**** creates more vat variables
-   people["vat/value, min" ] = people["vat paid, min"] / people["value" ]
-   people["vat/value, max" ] = people["vat paid, max"] / people["value" ]
-   people["vat/income, min"] = people["vat paid, min"] / people["income"]
-   people["vat/income, max"] = people["vat paid, max"] / people["income"]
-   people["value/income"   ] = people["value"]         / people["income"]
-*** build/people_4_income_taxish doesn't use any of it
-*** build/households
-**** groups some of those variables
-**** creates new variables that use the purchase info
-   households["vat/value, min"]  = households["vat paid, min"]/households["value"]
-   households["vat/value, max"]  = households["vat paid, max"]/households["value"]
-   households["vat/income, min"] = households["vat paid, min"]/households["income"]
-   households["vat/income, max"] = households["vat paid, max"]/households["income"]
-   households["value/income"]    = households["value"]/households["income"]
-** TODO how to change
-*** DONE purchase_sums: Sum to household level.
-*** DONE people_3_purchases: ditch the merge
-And save in moving.py the code that therefore can't be used here.
-*** TODO households: make a second stage
-Recreate everything in moving.py.
-Result should plug into overview.py without generating complaints.
-*** TODO to test that the aggregated purchases lose nothing
-Compare the sum of a column in the original with same in the aggregated.
-** TODO after that, delete people_3_purchases
+** TODO delete people_3_purchases
 Move its code to an adjacent program.
+** TODO test households_2_purchases
+*** TODO edit, use tests stored in moving.py
+They stopped working in branch `sum-purchases-to-households`
+due to changes in the available targets,
+but they should will work again with little change.
+*** TODO test that the aggregated purchases lose nothing
+Compare the sum of a column in the original with same in the aggregated.
 * TODO shared decision
 ** TODO BLOCKED : "household member" max mismatch
 *** awaiting response from Juan, who awaits from DANE

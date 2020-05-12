@@ -5,12 +5,12 @@ if True:
   import sys
   import pandas as pd
   from itertools import chain
-  
+  #
+  import python.build.output_io as oio
+  import python.common.common as cl
+  import python.common.misc as c
   import python.common.util as util
   import python.draw.util as draw
-  import python.build.output_io as oio
-  import python.common.misc as c
-  import python.common.common as cl
 
 if cl.regime_year == 2016:
       import python.regime.r2016 as regime
@@ -22,11 +22,13 @@ if not os.path.exists(output_dir): os.makedirs(output_dir)
 
 
 if True: # Get, prepare the data
-  households = oio.readStage( cl.subsample, "households."
-                              + cl.strategy_year_suffix )
+  households = oio.readStage(
+      cl.subsample,
+      "households_2_purchases." + cl.strategy_year_suffix )
 
-  households["income, labor + cesantia"] = ( households["income, labor"]
-                                           + households["income, cesantia"] )
+  households["income, labor + cesantia"] = (
+      households["income, labor"]
+      + households["income, cesantia"] )
 
   households["income-percentile-in[90,97]"] = (
       (households["income-percentile"] >= 90)

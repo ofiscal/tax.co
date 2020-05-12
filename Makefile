@@ -3,6 +3,7 @@ SHELL := bash
   input_subsamples \
   buildings \
   households_1_agg_plus \
+  households_2_purchases \
   people_0 \
   people_1 \
   people_2_buildings \
@@ -74,6 +75,8 @@ buildings =          output/vat/data/recip-1/buildings.csv
 households_1_agg_plus = \
   output/vat/data/recip-$(ss)/households_1_agg_plus.$(strategy_year_suffix).csv \
   output/vat/data/recip-$(ss)/households_decile_summary.$(strategy_year_suffix).csv
+households_2_purchases = \
+  output/vat/data/recip-$(ss)/households_2_purchases.$(strategy_year_suffix).csv
 people_0 =           output/vat/data/recip-$(ss)/people_0.csv
 people_1 =           output/vat/data/recip-$(ss)/people_1.csv
 people_2_buildings = output/vat/data/recip-$(ss)/people_2_buildings.csv
@@ -453,6 +456,17 @@ $(households_1_agg_plus): \
 	date
 	$(python_from_here) python/build/households_1_agg_plus.py $(subsample) $(strategy) $(yr)
 
+households_2_purchases: $(households_2_purchases)
+$(households_2_purchases):			\
+  $(households_1_agg_plus)			\
+  $(purchase_sums)				\
+  python/build/households_2_purchases.py	\
+  python/build/output_io.py			\
+  python/common/common.py			\
+  python/common/util.py
+	date
+	$(python_from_here) python/build/households_2_purchases.py $(subsample) $(strategy) $(yr)
+
 purchases_0: $(purchases_0)
 $(purchases_0):					\
   python/build/purchases/collect.py		\
@@ -550,7 +564,7 @@ $(overview): \
   python/common/misc.py \
   python/common/common.py \
   python/build/classes.py \
-  $(households_1_agg_plus)
+  $(households_2_purchases)
 	date
 	$(python_from_here) python/report/overview.py $(subsample) $(strategy) $(yr)
 
