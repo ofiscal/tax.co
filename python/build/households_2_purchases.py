@@ -12,29 +12,31 @@ if True:
   import python.common.common as c
 
 
-hh = oio.readStage(
-  c.subsample,
-  "households." + c.strategy_year_suffix )
-
-pur = oio.readStage(
-  c.subsample,
-  "purchase_sums." + c.strategy_suffix )
-
 if True: # merge purchase sums into people
-  hh = pd.merge( hh, pur
-                   , how = "left"
-                   , on=["household"] )
+  hh = oio.readStage(
+    c.subsample,
+    "households_1_agg_plus." + c.strategy_year_suffix )
+  pur = oio.readStage(
+    c.subsample,
+    "purchase_sums." + c.strategy_suffix )
+  merge = pd.merge( hh, pur,
+                    how = "left",
+                    on=["household"] )
+
+if True: # In San Andrés there is no VAT.
   for s in ["min", "max"]:
-    hh.loc[ hh["region-1"] == "SAN ANDRÉS", "vat paid, " + s ] = 0
+    merge.loc[ merge["region-1"] == "SAN ANDRÉS", "vat paid, " + s ] = 0
 
 if True: # create a few more variables
-  hh["vat/value, min" ] = hh["vat paid, min"] / hh["value" ]
-  hh["vat/value, max" ] = hh["vat paid, max"] / hh["value" ]
-  hh["vat/income, min"] = hh["vat paid, min"] / hh["income"]
-  hh["vat/income, max"] = hh["vat paid, max"] / hh["income"]
-  hh["value/income"   ] = hh["value"]         / hh["income"]
+  merge["vat/value, min" ] = merge["vat paid, min"] / merge["value" ]
+  merge["vat/value, max" ] = merge["vat paid, max"] / merge["value" ]
+  merge["vat/income, min"] = merge["vat paid, min"] / merge["income"]
+  merge["vat/income, max"] = merge["vat paid, max"] / merge["income"]
+  merge["value/income"   ] = merge["value"]         / merge["income"]
 
 if True: # save
-  oio.saveStage( c.subsample, hh
-               , "households_2_purchases." + c.strategy_year_suffix )
+  oio.saveStage(
+      c.subsample,
+      merge,
+      "households_2_purchases." + c.strategy_year_suffix )
 
