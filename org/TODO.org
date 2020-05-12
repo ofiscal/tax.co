@@ -1,4 +1,5 @@
 * TODO merge purchases into households, not people
+** TODO purchase_sums_test not rerunning upon edit
 ** current situation
 *** build/purchase_sums
 **** currently injects these variables into the people data
@@ -24,8 +25,8 @@
    households["vat/income, min"] = households["vat paid, min"]/households["income"]
    households["vat/income, max"] = households["vat paid, max"]/households["income"]
    households["value/income"]    = households["value"]/households["income"]
-** how to change
-*** purchase_sums: Sum to household level.
+** TODO how to change
+*** DONE purchase_sums: Sum to household level.
 *** people_3_purchases: ditch the merge
 And therefore save somewhere the code that therefore can't be used here.
 *** TODO households: what next?

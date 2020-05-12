@@ -1,5 +1,7 @@
-# Merge the purchase data into the person-level data.
-# Compute some new variables.
+# This used to merge the purchase data into the person-level data,
+# and compute some new variables.
+# Now it only does the latter.
+# TODO : absorb this code into an adjacent program.
 
 if True:
   import sys
@@ -12,25 +14,8 @@ if True:
 
 if True: # input files
   people = oio.readStage( c.subsample, "people_2_buildings" )
-  purchase_sums = oio.readStage( c.subsample, "purchase_sums." + c.strategy_suffix )
 
-
-if True: # merge purchase sums into people
-  people = pd.merge( people, purchase_sums
-                   , how = "left"
-                   , on=["household", "household-member"] )
-  for s in ["min", "max"]:
-    people.loc[ people["region-1"] == "SAN ANDRÉS", "vat paid, " + s ] = 0
-
-
-if True: # create a few more variables
-  people["vat/value, min" ] = people["vat paid, min"] / people["value" ]
-  people["vat/value, max" ] = people["vat paid, max"] / people["value" ]
-  people["vat/income, min"] = people["vat paid, min"] / people["income"]
-  people["vat/income, max"] = people["vat paid, max"] / people["income"]
-  people["value/income"   ] = people["value"]         / people["income"]
-
-  if True: # these don't use the purchase data; they could be elsewhere
+if True: # these don't use the purchase data; they could be elsewhere
     people["age-decile"] = pd.qcut(
       people["age"], 10, labels = False, duplicates='drop')
     people["income-decile"] = (
