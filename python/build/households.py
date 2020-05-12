@@ -55,9 +55,6 @@ if True: # aggregate from household members to households
     ) ["region-1", "region-2", "estrato", "weight" # these are constant within household
     ] . agg("first")
   many_vars = ( [ "members"
-                , "transactions", "value"
-                , "vat paid, min", "vat paid, max"
-                , "predial"
                 , "tax, ss, pension"
                 , "tax, ss, pension, employer"
                 , "tax, ss, salud"
@@ -129,12 +126,6 @@ if True: # aggregate from household members to households
     } )
   households = pd.concat( [h_first, h_sum, h_min, h_max]
                         , axis=1 )
-
-  households["vat/value, min"]  = households["vat paid, min"]/households["value"]
-  households["vat/value, max"]  = households["vat paid, max"]/households["value"]
-  households["vat/income, min"] = households["vat paid, min"]/households["income"]
-  households["vat/income, max"] = households["vat paid, max"]/households["income"]
-  households["value/income"]    = households["value"]/households["income"]
 
   households["household"]   = households.index
     # when there are multiple indices, reset_index is the way to do that

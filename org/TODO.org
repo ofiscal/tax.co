@@ -27,9 +27,13 @@
    households["value/income"]    = households["value"]/households["income"]
 ** TODO how to change
 *** DONE purchase_sums: Sum to household level.
-*** people_3_purchases: ditch the merge
-And therefore save somewhere the code that therefore can't be used here.
-*** TODO households: what next?
+*** DONE people_3_purchases: ditch the merge
+And save in moving.py the code that therefore can't be used here.
+*** TODO households: make a second stage
+Recreate everything in moving.py.
+Result should plug into overview.py without generating complaints.
+*** TODO to test that the aggregated purchases lose nothing
+Compare the sum of a column in the original with same in the aggregated.
 ** TODO after that, delete people_3_purchases
 Move its code to an adjacent program.
 * TODO shared decision

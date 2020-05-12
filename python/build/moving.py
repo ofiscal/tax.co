@@ -25,6 +25,13 @@ if True: # old: merging purchase sums into people
     people["vat/income, max"] = people["vat paid, max"] / people["income"]
     people["value/income"   ] = people["value"]         / people["income"]
 
+if True: # old in households.py
+  households["vat/value, min"]  = households["vat paid, min"]/households["value"]
+  households["vat/value, max"]  = households["vat paid, max"]/households["value"]
+  households["vat/income, min"] = households["vat paid, min"]/households["income"]
+  households["vat/income, max"] = households["vat paid, max"]/households["income"]
+  households["value/income"]    = households["value"]/households["income"]
+
 if True: # old test for people_3
   # see people_3_purchases_test for how to use new_cols
   new_cols = [ "vat/value, min",
