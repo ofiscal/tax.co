@@ -232,12 +232,15 @@ output/test/recip-$(ss)/build_purchases_2_vat.txt:	\
 	$(python_from_here) python/build/purchases_2_vat_test.py \
           $(subsample) $(strategy) $(yr)
 
-output/test/recip-$(ss)/build_purchase_sums.txt: \
-  $(purchase_sums) \
-  python/build/output_io.py \
-  python/common/common.py
+output/test/recip-$(ss)/build_purchase_sums.txt:	\
+  $(purchase_sums)					\
+  python/build/purchase_sums_test.py			\
+  python/build/output_io.py				\
+  python/common/common.py				\
+  python/common/misc.py					\
+  python/common/util.py
 	date
-	$(python_from_here) python/build/purchase_sums_test.py \
+	$(python_from_here) python/build/purchase_sums_test.py	\
           $(subsample) $(strategy) $(yr)
 
 output/test/recip-$(ss)/people_main.txt: \
