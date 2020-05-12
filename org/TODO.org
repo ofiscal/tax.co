@@ -1,5 +1,4 @@
 * TODO merge purchases into households, not people
-** TODO purchase_sums_test not rerunning upon edit
 ** current situation
 *** build/purchase_sums
 **** currently injects these variables into the people data
