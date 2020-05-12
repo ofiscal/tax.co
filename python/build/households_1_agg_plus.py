@@ -146,7 +146,7 @@ if True: # aggregate from household members to households
 
 if True: # save
   oio.saveStage( c.subsample, households
-               , "households." + c.strategy_year_suffix )
+               , "households_1_agg_plus." + c.strategy_year_suffix )
   oio.saveStage( c.subsample, households_decile_summary
                , "households_decile_summary." + c.strategy_year_suffix )
 

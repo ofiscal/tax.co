@@ -2,7 +2,7 @@ SHELL := bash
 .PHONY: show_params \
   input_subsamples \
   buildings \
-  households \
+  households_1_agg_plus \
   people_0 \
   people_1 \
   people_2_buildings \
@@ -71,8 +71,8 @@ input_subsamples = \
   $(addsuffix .csv, $(addprefix data/enph-2017/recip-$(ss)/, $(enph_files)))
 
 buildings =          output/vat/data/recip-1/buildings.csv
-households = \
-  output/vat/data/recip-$(ss)/households.$(strategy_year_suffix).csv \
+households_1_agg_plus = \
+  output/vat/data/recip-$(ss)/households_1_agg_plus.$(strategy_year_suffix).csv \
   output/vat/data/recip-$(ss)/households_decile_summary.$(strategy_year_suffix).csv
 people_0 =           output/vat/data/recip-$(ss)/people_0.csv
 people_1 =           output/vat/data/recip-$(ss)/people_1.csv
@@ -443,8 +443,8 @@ $(people_4_income_taxish): \
 	date
 	$(python_from_here) python/build/people_4_income_taxish.py $(subsample) $(strategy) $(yr)
 
-households: $(households)
-$(households): \
+households_1_agg_plus: $(households_1_agg_plus)
+$(households_1_agg_plus): \
   python/build/households_1_agg_plus.py \
   python/common/util.py \
   python/build/output_io.py \
@@ -523,7 +523,7 @@ $(household_pics): \
   python/draw/util.py \
   python/common/misc.py \
   python/common/common.py \
-  $(households)
+  $(households_1_agg_plus)
 	date
 	$(python_from_here) python/report/pics/households.py $(subsample) $(strategy) $(yr)
 
@@ -550,15 +550,15 @@ $(overview): \
   python/common/misc.py \
   python/common/common.py \
   python/build/classes.py \
-  $(households)
+  $(households_1_agg_plus)
 	date
 	$(python_from_here) python/report/overview.py $(subsample) $(strategy) $(yr)
 
-# PITFALL: Always reads households from the detail vat strategy, because vat irrelevant.
+# PITFALL: Always reads households_1_agg_plus from the detail vat strategy, because vat irrelevant.
 goods_by_income_decile: $(goods_by_income_decile)
 $(goods_by_income_decile): \
   python/build/goods-by-income-decile.py \
-  output/vat/data/recip-$(ss)/households.detail_.csv \
+  output/vat/data/recip-$(ss)/households_1_agg_plus.detail_.csv \
   output/vat/data/recip-$(ss)/purchases_1.csv
 	date
 	$(python_from_here) python/build/goods-by-income-decile.py $(subsample) $(strategy) $(yr)

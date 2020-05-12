@@ -22,3 +22,4 @@ people = pd.merge( people, buildings
 oio.saveStage( c.subsample
              , people
              , 'people_2_buildings')
+
