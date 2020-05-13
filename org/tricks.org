@@ -8,9 +8,9 @@ csv-diff file file2 --key="field-name"
 
  from csv_diff import load_csv, compare
  diff = compare(
-   load_csv("data/recip-10/people_4_income_taxish.detail.2018.csv",
+   load_csv("data/recip-10/people_3_income_taxish.detail.2018.csv",
             key=["household","household-member"] ),
-   load_csv("no-dep-exempt/people_4_income_taxish.detail.2018.csv",
+   load_csv("no-dep-exempt/people_3_income_taxish.detail.2018.csv",
             key=["household","household-member"] ) )
 * create tar.gz archive
 tar -czvf tarball-of-zipfiles.tar.gz individual-zipfiles/

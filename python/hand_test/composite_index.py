@@ -10,7 +10,7 @@ if True:
   import python.common.common      as cl
 
 p4 = oio.readStage( cl.subsample
-                   , "people_4_income_taxish." + cl.strategy_year_suffix )
+                   , "people_3_income_taxish." + cl.strategy_year_suffix )
 
 p4["id"] = ( p4["household"]       .astype(str) + ":" +
              p4["household-member"].astype(str) )

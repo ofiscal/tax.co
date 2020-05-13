@@ -7,6 +7,7 @@ SHELL := bash
   people_0 \
   people_1 \
   people_2_buildings \
+  people_3_income_taxish \
   purchases_0 \
   purchases_1 \
   purchases_2_vat \
@@ -79,8 +80,8 @@ households_2_purchases = \
 people_0 =           output/vat/data/recip-$(ss)/people_0.csv
 people_1 =           output/vat/data/recip-$(ss)/people_1.csv
 people_2_buildings = output/vat/data/recip-$(ss)/people_2_buildings.csv
-people_4_income_taxish = \
-  output/vat/data/recip-$(ss)/people_4_income_taxish.$(strategy_year_suffix).csv
+people_3_income_taxish = \
+  output/vat/data/recip-$(ss)/people_3_income_taxish.$(strategy_year_suffix).csv
 purchases_0 =        output/vat/data/recip-$(ss)/purchases_0.csv
 purchases_1 =        output/vat/data/recip-$(ss)/purchases_1.csv
 purchases_2_vat =    output/vat/data/recip-$(ss)/purchases_2_vat.$(strategy_suffix).csv
@@ -172,7 +173,7 @@ tests:							\
   output/test/recip-$(ss)/build_purchases_2_vat.txt	\
   output/test/recip-$(ss)/build_purchase_sums.txt	\
   output/test/recip-1/build_ss_functions.txt		\
-  output/test/recip-$(ss)/people_4_income_taxish.txt	\
+  output/test/recip-$(ss)/people_3_income_taxish.txt	\
   output/test/recip-$(ss)/common_misc.txt		\
   output/test/recip-$(ss)/common_util.txt		\
   output/test/recip-$(ss)/people_main.txt		\
@@ -300,15 +301,16 @@ output/test/recip-1/build_ss_functions.txt:			\
 	$(python_from_here) python/build/ss_functions_test.py	\
           1 $(strategy) $(yr)
 
-output/test/recip-$(ss)/people_4_income_taxish.txt:	\
-  python/build/people_4_income_taxish_test.py		\
-  python/build/people_4_income_taxish_functions.py	\
+output/test/recip-$(ss)/people_3_income_taxish.txt:	\
+  $(people_3_income_taxish)                             \
+  python/build/people_3_income_taxish_test.py		\
+  python/build/people_3_income_taxish_functions.py	\
   python/build/output_io.py				\
   python/common/util.py					\
   python/common/util.py
 	date
 	$(python_from_here)				\
-          python/build/people_4_income_taxish_test.py	\
+          python/build/people_3_income_taxish_test.py	\
           $(subsample) $(strategy) $(yr)
 
 # PITFALL: Sample size is hardcoded to 1, because otherwise
@@ -407,9 +409,9 @@ $(people_2_buildings): \
 	date
 	$(python_from_here) python/build/people_2_buildings.py $(subsample) $(strategy) $(yr)
 
-people_4_income_taxish: $(people_4_income_taxish)
-$(people_4_income_taxish):			\
-  python/build/people_4_income_taxish.py	\
+people_3_income_taxish: $(people_3_income_taxish)
+$(people_3_income_taxish):			\
+  python/build/people_3_income_taxish.py	\
   python/build/output_io.py			\
   python/build/ss_schedules.py			\
   python/regime/r$(yr).py			\
@@ -417,7 +419,7 @@ $(people_4_income_taxish):			\
   python/build/classes.py			\
   $(people_2_buildings)
 	date
-	$(python_from_here) python/build/people_4_income_taxish.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/build/people_3_income_taxish.py $(subsample) $(strategy) $(yr)
 
 households_1_agg_plus: $(households_1_agg_plus)
 $(households_1_agg_plus): \
@@ -425,7 +427,7 @@ $(households_1_agg_plus): \
   python/common/util.py \
   python/build/output_io.py \
   python/regime/r$(yr).py \
-  $(people_4_income_taxish)
+  $(people_3_income_taxish)
 	date
 	$(python_from_here) python/build/households_1_agg_plus.py $(subsample) $(strategy) $(yr)
 
@@ -520,7 +522,7 @@ $(people_pics): \
   python/draw/util.py \
   python/common/misc.py \
   python/common/common.py \
-  $(people_4_income_taxish)
+  $(people_3_income_taxish)
 	date
 	$(python_from_here) python/report/pics/people.py $(subsample) $(strategy) $(yr)
 

@@ -12,7 +12,7 @@
 # ### things to use
 # ppl = oio.readStage( com.subsample
 #                    , "people_3_purchases." + com.strategy_suffix )
-# people_4_income_taxish_functions . insert_has_dependent_column
+# people_3_income_taxish_functions . insert_has_dependent_column
 #   pd.DataFrame -> pd.DataFrame
 # people["dependent"]
 # r2018 . income_taxes( ppl )

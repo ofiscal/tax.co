@@ -7,9 +7,7 @@ if True:
   import python.common.common as c
 
 
-if True: # These tests used to run in people_3_purchases.
-         # They must be used instead to test households_2_purchases.
-         # See people_3_purchases_test for how to use these definitions.
+if True: # See people_2_buildings_test for how to use these definitions.
   new_cols = [ "vat/value, min",
                "vat/value, max",
                "vat/income, min",
