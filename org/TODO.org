@@ -1,12 +1,3 @@
-* TODO merge purchases into households, not people
-** TODO rename people_3 to people_3
-** TODO test households_2_purchases
-*** TODO edit, use tests stored in moving.py
-They stopped working in branch `sum-purchases-to-households`
-due to changes in the available targets,
-but they should will work again with little change.
-*** TODO test that the aggregated purchases lose nothing
-Compare the sum of a column in the original with same in the aggregated.
 * TODO shared decision
 ** TODO BLOCKED : "household member" max mismatch
 *** awaiting response from Juan, who awaits from DANE
@@ -83,8 +74,13 @@ in ./build/vat_rates.py:
 *** TODO csvtool converts numbers containing commas to strings
 * TODO test suite
 ** TODO RESUME here
-*** BUG : exposed by python/build/purchase_sums_test.py
-suspicion: it's because there are more household members in the purchase data than in the person data
+*** TODO test households_2_purchases
+**** TODO edit, use tests stored in moving.py
+ They stopped working in branch `sum-purchases-to-households`
+ due to changes in the available targets,
+ but they should will work again with little change.
+**** TODO test that the aggregated purchases lose nothing
+ Compare the sum of a column in the original with same in the aggregated.
 *** test number of households
 *** some tests fail on the 1/1000 sample
 ** TODO double-check mk_solidaridad for contractors
