@@ -82,7 +82,7 @@ def quantiles_report( samples : List[ Tuple[ str, pd.DataFrame ] ],
             . transpose() . round(2) )
 
 deciles = list( np.round(
-    np.arange( 0, 1, 0.1 ),
+    np.arange( 0.1, 1, 0.1 ),
     1 ) )
 
 zoom_quantiles = list( np.round(
@@ -104,21 +104,23 @@ zoom = quantiles_report(
     "months to save for a month, cash",
     zoom_quantiles )
 
-
-every_ = quantiles_report(
-    mk_samples(
-        # full sample gives just about identical results
-        hh[ hh["recently bought this house"] <= 0 ] ),
-    "months to save for a month",
-    deciles,
-    add_unity = True )
-
-zoom_ = quantiles_report(
-    mk_samples(
-        # full sample gives just about identical results
-        hh[ hh["recently bought this house"] <= 0 ] ),
-    "months to save for a month",
-    zoom_quantiles )
+# Including non-cash income would seem to compare apples and oranges,
+# although the results are largely the same.
+#
+# every_ = quantiles_report(
+#     mk_samples(
+#         # full sample gives just about identical results
+#         hh[ hh["recently bought this house"] <= 0 ] ),
+#     "months to save for a month",
+#     deciles,
+#     add_unity = True )
+# 
+# zoom_ = quantiles_report(
+#     mk_samples(
+#         # full sample gives just about identical results
+#         hh[ hh["recently bought this house"] <= 0 ] ),
+#     "months to save for a month",
+#     zoom_quantiles )
 
 
 ############## EXPERIMENTAL ##############
