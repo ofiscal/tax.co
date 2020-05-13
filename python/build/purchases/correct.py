@@ -1,34 +1,21 @@
-# PURPOSE
-#########
-# Collect all the ENPH purchase files into a single dataset,
-# with various reformattings, homogenizations, and corrections.
-
-import sys
-import numpy as np
-from itertools import chain
-
-from   python.build.classes import Correction
-import python.common.misc as com
-import python.common.common as cl
-import python.build.output_io as oio
-import python.build.purchases.main_defs as defs
-
-# input files
-import python.build.purchases.nice_purchases as nice_purchases
-import python.build.purchases.articulos as articulos
-import python.build.purchases.capitulo_c as capitulo_c
+if True:
+  import numpy as np
+  from itertools import chain
+  #
+  from   python.build.classes import Correction
+  import python.build.output_io as oio
+  import python.build.purchases.correct_defs as defs
+  import python.common.common as cl
+  import python.common.misc as com
+  #
+  # input files
+  import python.build.purchases.nice_purchases as nice_purchases
+  import python.build.purchases.articulos as articulos
+  import python.build.purchases.capitulo_c as capitulo_c
 
 
-purchases = cl.collect_files(
-  ( articulos.files
-    # + medios.files
-      # The tax only applies if the purchase is more than 880 million pesos,
-      # and the data only records purchases of a second home.
-    + capitulo_c.files
-    + nice_purchases.files )
-  , subsample = cl.subsample
-)
-
+purchases = oio.readStage( cl.subsample,
+                           'purchases_0' )
 
 for c in (
   [ Correction.Replace_Substring_In_Column(

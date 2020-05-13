@@ -10,7 +10,7 @@ import python.common.misc as c
 import python.common.common as cl
 
 
-### TODO : This duplicates a bit of code in python/build/people_4_income_taxish.py.
+### TODO : This duplicates a bit of code in python/build/people_3_income_taxish.py.
 ### Factor that out when automating tests.
 
 ppl = pd.DataFrame( {"dividends": [i * c.uvt for i in [0,600,1000,1001]] } )
@@ -25,7 +25,7 @@ ppl["tax"] = ppl["dividends"].apply(
 ### This isn't very informative, because almost nobody makes dividend income.
 
 ppl = oio.readStage( cl.subsample
-  , 'people_4_income_taxish.' + cl.strategy_suffix)
+  , 'people_3_income_taxish.' + cl.strategy_suffix)
 
 pHigh = ppl[ ppl["income, dividend"] > 0 ]
 pHigh[["tax on dividends","income, dividend"]]

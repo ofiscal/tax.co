@@ -2,11 +2,12 @@ if True:
   import numpy as np
   import pandas as pd
   #
-  import python.build.purchases.main_defs as defs
-  import python.common.common as cl
+  import python.build.purchases.correct_defs as defs
+  import python.common.common as com
   import python.build.classes as cla
   import python.build.output_io as oio
-  from   python.common.util import unique
+  from   python.common.misc import num_purchases_surviving
+  from   python.common.util import unique, near
 
 
 def test_drop_if_coicop_or_value_invalid():
@@ -37,6 +38,12 @@ def test_drop_absurdly_big_expenditures():
 def test_output( df ):
   log = "test_output\n"
   assert( unique( df.columns ) )
+
+  assert near(
+    len(df),
+    num_purchases_surviving / com.subsample,
+    tol_frac = 1/20 )
+
   spec = {
       "where-got" :        { cla.IsNull(), cla.InRange(1,26) }
     , "weight" :           {               cla.InRange( 0, 1e4 ) }
@@ -86,10 +93,10 @@ if True: # run the tests
   log += test_drop_absurdly_big_expenditures()
 
   # integration test
-  df = oio.readStage( cl.subsample, 'purchases_1' )
+  df = oio.readStage( com.subsample, 'purchases_1' )
   log += test_output( df )
 
-  oio.test_write( cl.subsample
-                , "purchases_main"
+  oio.test_write( com.subsample
+                , "purchases_correct"
                 , log )
 

@@ -11,14 +11,14 @@ if True:
   import python.common.misc        as m
   import python.common.common      as com
   #
-  import python.build.people_4_income_taxish_functions as f4
+  import python.build.people_3_income_taxish_functions as f4
   if com.regime_year == 2016:
         import python.regime.r2016 as regime
   else: import python.regime.r2018 as regime
 
 
 ppl = oio.readStage( com.subsample
-                   , "people_3_purchases." + com.strategy_suffix )
+                   , "people_2_buildings" )
 
 # This tax is also known as the "4 por mil" --
 # the 0.4% tax levided on transactions involving someone's bank account.
@@ -37,6 +37,6 @@ ppl = regime.income_taxes( ppl )
 
 oio.saveStage( com.subsample
              , ppl
-             , 'people_4_income_taxish.' + com.strategy_year_suffix
+             , 'people_3_income_taxish.' + com.strategy_year_suffix
 )
 

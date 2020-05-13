@@ -1,7 +1,13 @@
-# How to identify people within a household in the ENPH?
+# Overview
+
+My sense is that there's no way to know who made a particular purchase -- it is identified down to the household, but not to the individual. But if you find out I'm wrong, it'd be really great -- that way we could look at, for instance, how male and female spending habits differ within households.
 
 
-Hi Juan,
+# A letter I wrote once, that might explain in more detail
+
+## How to identify people within a household in the ENPH?
+
+Hi Juan [Manrique],
 
 Every file in the ENPH starts with these four variables:
     "DIRECTORIO"

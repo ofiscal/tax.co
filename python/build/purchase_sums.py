@@ -24,7 +24,7 @@ purchases["predial"] = (purchases["coicop"] == 12700601) * purchases["value"]
   # The coicop-vat bridge assigns that coicop code a vat of zero.
 
 purchases["transactions"] = 1 # next this is summed within persons
-purchase_sums = purchases.groupby( ["household", "household-member"]
+purchase_sums = purchases.groupby( ["household"]
          ) [ "value"
            , "transactions"
            , "vat paid, max"
@@ -33,7 +33,7 @@ purchase_sums = purchases.groupby( ["household", "household-member"]
            , "home purchase value"
          ] . agg("sum")
 purchase_sums = purchase_sums.reset_index(
-  level = ["household", "household-member"] )
+  level = ["household"] )
 
 oio.saveStage( c.subsample
              , purchase_sums

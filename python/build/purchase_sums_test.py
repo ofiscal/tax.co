@@ -3,29 +3,31 @@
 if True:
   import pandas as pd
   #
-  import python.common.common as cm
   import python.build.output_io as oio
+  import python.common.common as com
+  from   python.common.misc import num_households
+  from   python.common.util import near
 
 
 sums = oio.readStage(
-    cm.subsample,
-    "purchase_sums." + cm.strategy_suffix )
+    com.subsample,
+    "purchase_sums." + com.strategy_suffix )
 
 assert ( list( sorted( sums.columns ) ) ==
          [ "home purchase value",
            "household",
-           "household-member",
            "predial",
            "transactions",
            "value",
            "vat paid, max",
            "vat paid, min" ] )
 
-sums["id"] = ( sums["household"].astype(str) +
-               "-" +
-               sums["household-member"].astype(str) )
-assert sums["id"].is_unique
+assert sums["household"].is_unique
 
-oio.test_write( cm.subsample,
+assert near( len(sums),
+             num_households / com.subsample,
+             tol_frac = 1/5 )
+
+oio.test_write( com.subsample,
                 "build_purchase_sums",
                 "It worked." )

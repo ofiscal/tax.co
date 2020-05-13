@@ -9,7 +9,7 @@ import python.common.common     as cl
 
 
 people = oio.readStage( cl.subsample
-                      , 'people_4_income_taxish.' + cl.strategy_suffix )
+                      , 'people_3_income_taxish.' + cl.strategy_suffix )
 
 ppl = people.rename( columns = {
     "relative, child" : "child"

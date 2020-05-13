@@ -1,6 +1,3 @@
-* TODO drop income rank variables from household data
-* TODO BUG in latest Docker iamge
-permission error -- can't create files
 * TODO shared decision
 ** TODO BLOCKED : "household member" max mismatch
 *** awaiting response from Juan, who awaits from DANE
@@ -19,8 +16,6 @@ is-purchase we probably assume to be 1, but the others ...?
 ** TODO "vat" conflates some taxes
 That's why, for instance, its max in purchases_2_vat_test is 0.27, not 19
 * TODO possibly wrong
-** TODO why do we drop so many people?
-people_0 is twice as big as people_1
 ** TODO If max "vat" is 0.27, max vat frac should be 0.213
  but instead it's 0.160, which is what would derive from a max vat of 0.19.
  This problem arises in purchases_2_vat_test.py
@@ -79,16 +74,21 @@ in ./build/vat_rates.py:
 *** TODO csvtool converts numbers containing commas to strings
 * TODO test suite
 ** TODO RESUME here
-verify that the fix to dependent earners worked --
-that now, nobody claimed as a dependent pays taxes
+*** TODO test households_2_purchases
+**** TODO edit, use tests stored in moving.py
+ They stopped working in branch `sum-purchases-to-households`
+ due to changes in the available targets,
+ but they should will work again with little change.
+**** TODO test that the aggregated purchases lose nothing
+ Compare the sum of a column in the original with same in the aggregated.
+*** test number of households
+*** some tests fail on the 1/1000 sample
 ** TODO double-check mk_solidaridad for contractors
 Is the tax code really that absurd? There are clauses that never hold.
 ** TODO use python.test_utils.uniqueColumnNames() everywhere
 ** TODO incorporate tests in hand_test/ into automatic tests
 Note that not all of them can be automated --
 for instance, the ones that draw pictures.
-** TODO count rows
-So far all the tests are about columns.
 ** TODO dtype argument for pd.read_csv should be stored for each file
 rather than coded anew every time it is read
 ** TODO the logging idiom does not capture most recent test state
@@ -728,6 +728,9 @@ that's already implemented.
 It is represented in code, not data.
   at purhcases_2_vat.py
 It is treated as VAT.
+*** "income, rank n" is meaningful at the household level
+It is the income in pesos of the nth highest earener,
+not a boolean variable.
 ** Makefile: be sure all program output comes at the end
 And that (at least) the last thing it creates is a Makefile target.
 Otherwise `make` might believe a target is up to date when the program responsible for it did not complete.

@@ -12,7 +12,7 @@ if True:
 
 ppl = oio.readStage(
   cl.subsample,
-  'people_4_income_taxish.' + cl.strategy_year_suffix
+  'people_3_income_taxish.' + cl.strategy_year_suffix
 )
 
 if True:
