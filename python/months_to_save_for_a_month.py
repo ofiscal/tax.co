@@ -14,27 +14,30 @@ if True:
 
 wc = weightLib.Calculator('weight')
 
-#if True:
 hh = oio.readStage(
     cm.subsample
-  , "households." + cm.strategy_year_suffix )
+  , "households_2_purchases." + cm.strategy_year_suffix )
 
-def months_to_save_for_a_month(
-    income : float, spending : float ) -> float:
-  if spending >= income:
-      return 1e4
-  else: return spending / (income - spending)
+hh = hh[ ~ ( hh["income"].isnull()
+           | hh["value"].isnull() ) ]
+
+def months_to_save_for_a_month( income : float,
+                                spending : float
+                              ) -> float:
+    return ( spending / (income - spending)
+             if spending <= income
+             else 1e4 )
 
 hh["months to save for a month"] = hh.apply(
     lambda row: months_to_save_for_a_month(
-        row["income"],
-        row["value"] ),
+        income = row["income"],
+        spending = row["value"] ),
     axis = "columns" )
 
 hh["months to save for a month, cash"] = hh.apply(
     lambda row: months_to_save_for_a_month(
-        row["income, cash"],
-        row["value"] ),
+        income = row["income, cash"],
+        spending = row["value"] ),
     axis = "columns" )
 
 if False: # explore
@@ -52,20 +55,21 @@ hh = hh.drop( columns = ["used savings"] )
 def mk_samples( df : pd.DataFrame
               ) -> List[ Tuple[ str, pd.DataFrame ] ]:
   return [ ("full sample", df ),
-           ("3 or more", df[ df["members"] >= 3] ),
+           ("3 or more",   df[ df["members"] >= 3    ] ),
            ("female head", df[ df["female head"] > 0 ] ),
-           ("has child", df[ df["has-child"] > 0 ] ),
+           ("has child",   df[ df["has-child"] > 0   ] ),
            ("has elderly", df[ df["has-elderly"] > 0 ] ) ]
 
 def quantiles_report( samples : List[ Tuple[ str, pd.DataFrame ] ],
                       colname : str,
-                      quantiles : List[float]
+                      quantiles : List[float],
+                      add_unity : bool = False
                     ) -> pd.DataFrame:
     sample_names = list( map( lambda pair: pair[0],
                               samples ) )
     qd = pd.DataFrame( # quantile data
         columns = sample_names,
-        index = quantiles + [1] )
+        index = quantiles + ( [1] if add_unity else [] ) )
     for q in quantiles:
         for (name,sample) in samples:
             qd[name][q] = wc.quantile( sample,
@@ -77,26 +81,44 @@ def quantiles_report( samples : List[ Tuple[ str, pd.DataFrame ] ],
                lambda x: x if x < 9999 else np.inf )
             . transpose() . round(2) )
 
-deciles = [ 0.1, 0.2, 0.3, 0.4, # quantiles (deciles)
-           0.5, 0.6, 0.7, 0.8, 0.9]
+deciles = list( np.round(
+    np.arange( 0, 1, 0.1 ),
+    1 ) )
 
-decile_6 = [ 0.57, 0.58, 0.59,
-             0.60, 0.61, 0.62, 0.63 ]
+zoom_quantiles = list( np.round(
+    np.arange( 0.32, 0.45001, 0.01 ),
+    2 ) )
 
 every = quantiles_report(
     mk_samples(
         # full sample gives just about identical results
         hh[ hh["recently bought this house"] <= 0 ] ),
     "months to save for a month, cash",
-    deciles )
+    deciles,
+    add_unity = True )
 
 zoom = quantiles_report(
     mk_samples(
         # full sample gives just about identical results
         hh[ hh["recently bought this house"] <= 0 ] ),
     "months to save for a month, cash",
-    decile_6 )
+    zoom_quantiles )
 
+
+every_ = quantiles_report(
+    mk_samples(
+        # full sample gives just about identical results
+        hh[ hh["recently bought this house"] <= 0 ] ),
+    "months to save for a month",
+    deciles,
+    add_unity = True )
+
+zoom_ = quantiles_report(
+    mk_samples(
+        # full sample gives just about identical results
+        hh[ hh["recently bought this house"] <= 0 ] ),
+    "months to save for a month",
+    zoom_quantiles )
 
 
 ############## EXPERIMENTAL ##############
