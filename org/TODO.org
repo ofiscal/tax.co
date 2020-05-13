@@ -1,6 +1,5 @@
 * TODO merge purchases into households, not people
-** TODO delete people_3_purchases
-Move its code to an adjacent program.
+** TODO rename people_4 to people_3
 ** TODO test households_2_purchases
 *** TODO edit, use tests stored in moving.py
 They stopped working in branch `sum-purchases-to-households`

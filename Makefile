@@ -7,7 +7,6 @@ SHELL := bash
   people_0 \
   people_1 \
   people_2_buildings \
-  people_3_purchases \
   purchases_0 \
   purchases_1 \
   purchases_2_vat \
@@ -80,8 +79,6 @@ households_2_purchases = \
 people_0 =           output/vat/data/recip-$(ss)/people_0.csv
 people_1 =           output/vat/data/recip-$(ss)/people_1.csv
 people_2_buildings = output/vat/data/recip-$(ss)/people_2_buildings.csv
-people_3_purchases = \
-  output/vat/data/recip-$(ss)/people_3_purchases.$(strategy_suffix).csv
 people_4_income_taxish = \
   output/vat/data/recip-$(ss)/people_4_income_taxish.$(strategy_year_suffix).csv
 purchases_0 =        output/vat/data/recip-$(ss)/purchases_0.csv
@@ -180,7 +177,6 @@ tests:							\
   output/test/recip-$(ss)/common_util.txt		\
   output/test/recip-$(ss)/people_main.txt		\
   output/test/recip-$(ss)/people_2_buildings.txt	\
-  output/test/recip-$(ss)/people_3_purchases.txt	\
   output/test/recip-$(ss)/purchases_correct.txt		\
   output/test/recip-1/regime_r2018.txt              	\
   output/test/recip-$(ss)/vat_rates.txt			\
@@ -281,19 +277,6 @@ output/test/recip-$(ss)/people_2_buildings.txt:	\
   python/common/util.py
 	date
 	$(python_from_here) python/build/people_2_buildings_test.py \
-          $(subsample) $(strategy) $(yr)
-
-output/test/recip-$(ss)/people_3_purchases.txt:	\
-  $(people_2_buildings)				\
-  $(people_3_purchases)				\
-  $(purchase_sums)				\
-  python/build/people_3_purchases_test.py	\
-  python/build/output_io.py			\
-  python/common/common.py			\
-  python/common/misc.py                         \
-  python/common/util.py
-	date
-	$(python_from_here) python/build/people_3_purchases_test.py \
           $(subsample) $(strategy) $(yr)
 
 output/test/recip-1/regime_r2018.txt:				\
@@ -424,25 +407,15 @@ $(people_2_buildings): \
 	date
 	$(python_from_here) python/build/people_2_buildings.py $(subsample) $(strategy) $(yr)
 
-people_3_purchases: $(people_3_purchases)
-$(people_3_purchases): \
-  python/build/people_3_purchases.py \
-  python/build/output_io.py \
-  python/common/misc.py \
-  python/build/classes.py \
-  $(people_2_buildings) $(purchase_sums)
-	date
-	$(python_from_here) python/build/people_3_purchases.py $(subsample) $(strategy) $(yr)
-
 people_4_income_taxish: $(people_4_income_taxish)
-$(people_4_income_taxish): \
-  python/build/people_4_income_taxish.py \
-  python/build/output_io.py \
-  python/build/ss_schedules.py \
-  python/regime/r$(yr).py \
-  python/common/misc.py \
-  python/build/classes.py \
-  $(people_3_purchases)
+$(people_4_income_taxish):			\
+  python/build/people_4_income_taxish.py	\
+  python/build/output_io.py			\
+  python/build/ss_schedules.py			\
+  python/regime/r$(yr).py			\
+  python/common/misc.py				\
+  python/build/classes.py			\
+  $(people_2_buildings)
 	date
 	$(python_from_here) python/build/people_4_income_taxish.py $(subsample) $(strategy) $(yr)
 

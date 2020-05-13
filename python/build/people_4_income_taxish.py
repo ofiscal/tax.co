@@ -18,7 +18,7 @@ if True:
 
 
 ppl = oio.readStage( com.subsample
-                   , "people_3_purchases." + com.strategy_suffix )
+                   , "people_2_buildings" )
 
 # This tax is also known as the "4 por mil" --
 # the 0.4% tax levided on transactions involving someone's bank account.
