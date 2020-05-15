@@ -1,6 +1,5 @@
-* TODO some branches should be merged into master
-for instance time-to-save-for-a-month
-so that when I change filenames, etc. it stays up to date.
+* TODO QC
+** compare first |household members| to all purchases
 * TODO shared decision
 ** TODO BLOCKED : "household member" max mismatch
 *** awaiting response from Juan, who awaits from DANE
@@ -78,14 +77,20 @@ in ./build/vat_rates.py:
 * TODO test suite
 ** TODO RESUME here
 *** TODO test households_2_purchases
+**** TODO test columns
+There should be a single source file for lists of columns.
+  That way its use could be shared across tests and primary code.
+There should be a similar source file for column characteristics (like InRange).
 **** TODO edit, use tests stored in moving.py
  They stopped working in branch `sum-purchases-to-households`
  due to changes in the available targets,
  but they should will work again with little change.
-**** TODO test that the aggregated purchases lose nothing
- Compare the sum of a column in the original with same in the aggregated.
-*** test number of households
-*** some tests fail on the 1/1000 sample
+*** TODO test that aggregations lose nothing
+Compare the sum of a column in the original with same in the aggregated.
+*** TODO test number of households
+Should have a much smaller fractional error buffer for the 1/1 sample.
+*** TODO use CoversRange
+like InRange
 ** TODO double-check mk_solidaridad for contractors
 Is the tax code really that absurd? There are clauses that never hold.
 ** TODO use python.test_utils.uniqueColumnNames() everywhere
