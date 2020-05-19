@@ -1,5 +1,6 @@
 * TODO QC
-** compare first |household members| to all purchases
+** TODO rename household-member in purchase data
+to "orden"
 * TODO shared decision
 ** TODO BLOCKED : "household member" max mismatch
 *** awaiting response from Juan, who awaits from DANE

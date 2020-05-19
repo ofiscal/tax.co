@@ -2,6 +2,9 @@
 # This is NOT a script, but rather a collection of handy one-liners,
 # for various common tasks like renaming variables.
 
+# Always using: Find multiple files, replace in them
+find . \( -name "*.py" -o -name "*.md" -o -name "*.org" \) -print0 | xargs -0 sed -i "s/prop.2018.11.31/prop_2018_10_31/g"
+
 # Find and replace without touching unmodified files.
 # (Otherwise `make` acts as if everything needs to be rerun.)
 # https://stackoverflow.com/questions/27071019/sed-i-touching-files-that-it-doesnt-change
@@ -27,3 +30,7 @@ find . -regex ".*\.\(py\|txt\|sh\|org\|mm\|md\|hs\)" -print0 | xargs -0 grep -i 
 
 # Delete all files ending in "~" (the suffix on backups).
 find . -name "*~" -print0 | xargs -0 rm
+
+# Find multiple patterns
+find . \( -name "*.py" -o -name "*.md" -o -name "*.org" \)
+
