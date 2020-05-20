@@ -26,6 +26,8 @@ ppl["education"] = util.interpretCategorical(
   edu_key.values() )
 
 if True: # compute five columns for top five member incomes
+  # PITFALL: member-by-income is computed based only on labor income,
+  # because that's what's relevant for income tax exclusions.
   ppl["income, rank 1"] = (
     ppl["income"] * (ppl["member-by-income"] == 1) )
   ppl["income, rank 2"] = (
@@ -96,7 +98,7 @@ if True: # aggregate from household members to households
       ["household"]
     ) ["age", "female"
     ] . agg("min"
-    ) . rename( columns = {"age" : "age-min",
+    ) . rename( columns = {"age"    : "age-min",
                            "female" : "has-male",
     } )
   h_min["has-male"] = 1 - h_min["has-male"]
@@ -113,15 +115,15 @@ if True: # aggregate from household members to households
        , "pension, contributor(s) (if not pensioned) = employer"
        , "seguro de riesgos laborales"
     ] . agg("max"
-    ) . rename( columns = {"age" : "age-max",
-                           "literate" : "has-lit",
-                           "student" : "has-student",
-                           "education" : "edu-max",
-                           "female" : "has-female",
-                           "race, indig" : "has-indig",
-                           "race, git|rom" : "has-git|rom",
-                           "race, raizal" : "has-raizal",
-                           "race, palenq" : "has-palenq",
+    ) . rename( columns = {"age"            : "age-max",
+                           "literate"       : "has-lit",
+                           "student"        : "has-student",
+                           "education"      : "edu-max",
+                           "female"         : "has-female",
+                           "race, indig"    : "has-indig",
+                           "race, git|rom"  : "has-git|rom",
+                           "race, raizal"   : "has-raizal",
+                           "race, palenq"   : "has-palenq",
                            "race, whi|mest" : "has-whi|mest"
     } )
   households = pd.concat( [h_first, h_sum, h_min, h_max]
@@ -139,7 +141,8 @@ if True: # aggregate from household members to households
   households["income-percentile"] = (
     util.noisyQuantile( 100, 0, 1, households["income"] ) )
 
-  households["one"] = 1 # used to create the trivial partition
+  households["one"] = 1 # used in overview.py to create the trivial partition.
+    # TODO ? move to overview.py
 
   households_decile_summary = util.summarizeQuantiles("income-decile", households)
 

@@ -20,6 +20,7 @@ df1_rows = oio.readStage( com.subsample,
                           usecols = ["household"] )
 df2 = oio.readStage(com.subsample, 'people_2_buildings')
 
+
 cols1 = set( df1_cols.columns )
 cols2 = set( df2.columns      )
 new_cols = {
