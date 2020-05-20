@@ -34,8 +34,6 @@ files = [
     , # This first list is unlike c.variables in that FEX_C is not a number
       [ ( "DIRECTORIO", {StringCellProperty.NotAString}
           , "household", 0 )
-      , ( "ORDEN", {StringCellProperty.NotAString}
-          , "household-member", 0 )
       , ( "FEX_C", {StringCellProperty.Comma, StringCellProperty.Digits}
           , "weight", 0 )
       ] +

@@ -50,7 +50,6 @@ def test_output( df ):
     , "value" :            {               cla.InRange( 0, 1e9 ) }
     , "quantity" :         { cla.IsNull(), cla.InRange( 0, 1e8 ) }
     , "is-purchase" :      { cla.IsNull(), cla.InRange( 0,1 ) }
-    , "household-member" : {               cla.InRange( 1, 1e3 ) }
     , "household" :        {               cla.InRange( 1, 1e7 ) }
     , "per month" :        { cla.IsNull(), cla.InRange( 1, 11 ) }
     , "coicop" :           { cla.IsNull(), cla.InRange( 1, 1e8 ) }

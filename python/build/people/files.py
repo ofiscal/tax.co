@@ -1,8 +1,10 @@
 # The primary purpose of this file is to define the `files` object,
 # which describes what and how to retrieve from the raw ENPH data.
 
-import python.build.classes as classes
-import python.common.misc as c
+if True:
+  import python.build.classes as classes
+  import python.common.misc as c
+  import python.build.classes as cl
 
 
 edu_key = { 1 : "Ninguno",
@@ -209,6 +211,8 @@ files = [
   classes.File( "people"
     , "Caracteristicas_generales_personas.csv"
     ,   c.variables
+      + [ ( "ORDEN", {cl.StringCellProperty.NotAString},
+             "household-member", 0 ) ]
       + demog
       + work
       + income

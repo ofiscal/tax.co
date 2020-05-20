@@ -18,7 +18,6 @@ def test_ranges( df ):
     , "coicop"           : { cl.IsNull(), cl.InRange( 1e6, 2e7 ) }
     , "freq-code"        : {              cl.InRange( 0, 10 ) }
     , "household"        : { cl.IsNull(), cl.InRange( 0, 1e6 ) }
-    , "household-member" : {              cl.InRange( 1, 230 ) }
     , "is-purchase"      : { cl.IsNull(), cl.InRange( 0, 1 ) }
     , "per month"        : {              cl.InRange( 1/36 - 0.001, 31 ) }
     , "quantity"         : {              cl.InRange( 0, 1e8 ) }
@@ -30,7 +29,6 @@ def test_ranges( df ):
 
   per_column_spec = {
     "household"        : cl.CoversRange( 2e5,6e5 ),
-    "household-member" : cl.CoversRange( 1,4 ),
     "per month"        : cl.CoversRange( 1,30 ),
     "quantity"         : cl.CoversRange( 1,100 ),
     "value"            : cl.CoversRange( 1,100 ),
@@ -63,7 +61,6 @@ class Purchase_2_Columns_missing:
           , "per month"
           , "freq-code"
           , "household"
-          , "household-member"
           , "quantity"
           , "value"
           , "weight" ]
