@@ -33,21 +33,20 @@ if True: # IO
       hh )
   assert len(hh) == ppl["household"].nunique()
 
-old columns:
-  ? test that the summed vars' sums are very close to their means in the prev data
-    because this should not change upon aggregating from people to households
-
-new columns:
-income, rank 1-5
-income, labor, rank 1-5
-
-how to test the min, max columns?
-  age-min in the household data should have a mean that is substantially less than the mean for age in the person data, and stricly less than its max
-  generalize that
-  
-how to test has-elderly, etc?
-  has-child should have a mean that is substantially more than the fraction of people under 18
-
-income-decile, income-percentile
-  test their ranges, min, max, mean
-
+# old columns:
+#   ? test that the summed vars' sums are very close to their means in the prev data
+#     because this should not change upon aggregating from people to households
+#
+# new columns:
+# income, rank 1-5
+# income, labor, rank 1-5
+#
+# how to test the min, max columns?
+#   age-min in the household data should have a mean that is substantially less than the mean for age in the person data, and stricly less than its max
+#   generalize that
+#
+# how to test has-elderly, etc?
+#   has-child should have a mean that is substantially more than the fraction of people under 18
+#
+# income-decile, income-percentile
+#   test their ranges, min, max, mean
