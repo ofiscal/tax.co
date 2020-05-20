@@ -9,6 +9,8 @@ if True:
   import python.common.util     as util
 
 
+
+
 move some column set definitions to a _defs data set
   so that it can be used in tests, too
 

@@ -7,14 +7,11 @@ if True:
   import pandas as pd
   import numpy as np
   #
+  import python.common.common as c
   import python.common.util as util
   import python.build.output_io as oio
-  from python.build.people.files import edu_key
-  import python.common.common as c
-  #
-  if c.regime_year == 2016:
-    import python.regime.r2016 as regime
-  else: import python.regime.r2018 as regime
+  from   python.build.people.files import edu_key
+  import python.build.households_1_agg_plus_defs as defs
 
 
 ppl = oio.readStage(
@@ -54,44 +51,9 @@ if True: # compute five columns for top five member incomes
 if True: # aggregate from household members to households
   ppl["members"] = 1 # will be summed
   h_first = ppl.groupby( ["household"]
-    ) ["region-1", "region-2", "estrato", "weight" # these are constant within household
+    ) [ defs.cols_const_within_hh
     ] . agg("first")
-  many_vars = ( [ "members"
-                , "tax, ss, pension"
-                , "tax, ss, pension, employer"
-                , "tax, ss, salud"
-                , "tax, ss, salud, employer"
-                , "tax, ss, solidaridad"
-                , "tax, ss, parafiscales"
-                , "tax, ss, cajas de compensacion"
-                , "cesantias + primas"
-                , "tax, gmf"
-                , "tax, ganancia ocasional" ]
-
-                + regime.income_tax_columns +
-
-                [ "income"
-                , "income, pension"
-                , "income, cesantia"
-                , "income, dividend"
-                , "income, capital (tax def)"
-                , "income, infrequent"
-                , "income, govt"
-                , "income, private"
-                , "income, labor"
-                , "income, borrowing"
-                , "income, rank 1"
-                , "income, rank 2"
-                , "income, rank 3"
-                , "income, rank 4"
-                , "income, rank 5"
-                , "income, labor, rank 1"
-                , "income, labor, rank 2"
-                , "income, labor, rank 3"
-                , "income, labor, rank 4"
-                , "income, labor, rank 5"
-                ] )
-  h_sum = ( ppl.loc[:, ["household"] + many_vars]
+  h_sum = ( ppl.loc[:, ["household"] + defs.cols_most]
           . groupby( "household" )
           . agg("sum") )
   h_min = ppl.groupby(
@@ -106,14 +68,7 @@ if True: # aggregate from household members to households
     # i.e. the household includes a male.
   h_max = ppl.groupby(
       ["household"]
-    ) [ "age", "literate", "student", "female", "female head", "education"
-       , "race, indig", "race, git|rom", "race, raizal", "race, palenq", "race, whi|mest"
-       , "pension, receiving"
-       , "pension, contributing (if not pensioned)"
-       , "pension, contributor(s) (if not pensioned) = split"
-       , "pension, contributor(s) (if not pensioned) = self"
-       , "pension, contributor(s) (if not pensioned) = employer"
-       , "seguro de riesgos laborales"
+    ) [ defs.cols_to_min_or_max
     ] . agg("max"
     ) . rename( columns = {"age"            : "age-max",
                            "literate"       : "has-lit",

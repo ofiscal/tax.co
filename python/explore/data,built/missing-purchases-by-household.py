@@ -16,6 +16,7 @@ if True:
   import python.common.common as com
   import python.common.util as util
 
+
 pur = oio.readStage ( # the last purchases-level data set
     com.subsample,
     "purchases_2_vat." + com.strategy_suffix )
