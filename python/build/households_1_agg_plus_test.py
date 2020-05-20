@@ -1,29 +1,37 @@
 if True:
+  from typing import List
   import sys
   import pandas as pd
   #
-  import python.build.classes   as cl
-  import python.build.output_io as oio
-  import python.common.common   as com
-  import python.common.misc     as misc
-  import python.common.util     as util
+  import python.build.classes                    as cl
+  import python.build.households_1_agg_plus_defs as defs
+  import python.build.output_io                  as oio
+  import python.common.common                    as com
+  import python.common.misc                      as misc
+  import python.common.util                      as util
 
 
+def test_const_within_group( gs : List[str],
+                             cs : List[str],
+                             d  : pd.DataFrame ) -> bool:
+    """Tests that the columns `cs` are constant within each of the groups defined by `gs`."""
+    h = d.groupby( gs )
+    for c in cs:
+        assert h[c].nunique().max() == 1
 
-
-move some column set definitions to a _defs data set
-  so that it can be used in tests, too
-
-ppl = oio.readStage(
-  c.subsample,
-  "people_3_income_taxish." + com.strategy_year_suffix )
-hh = oio.saveStage(
-  c.subsample,
-  households,
-  "households_1_agg_plus." + com.strategy_year_suffix )
-
-test that "region-1", "region-2", "estrato", "weight" are constant within household
-  TODO ? move this test to the person data
+if True: # IO
+  ppl = oio.readStage(
+    com.subsample,
+    "people_3_income_taxish." + com.strategy_year_suffix )
+  hh = oio.readStage(
+    com.subsample,
+    "households_1_agg_plus." + com.strategy_year_suffix )
+  test_const_within_group(
+      # TODO ? move this test to the tests of person data
+      ["household"],
+      defs.cols_const_within_hh,
+      hh )
+  assert len(hh) == ppl["household"].nunique()
 
 old columns:
   ? test that the summed vars' sums are very close to their means in the prev data
