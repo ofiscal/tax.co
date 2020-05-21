@@ -30,6 +30,29 @@ def test_indices( hh  : pd.DataFrame,
       +  len( defs.cols_new ) )
   assert set( defs.cols_all ) == set( hh.columns )
 
+def test_income_ranks( hh : pd.DataFrame,
+                       ppl : pd.DataFrame ) -> ():
+    ppl_cols = ["income", "income, labor"]
+    for c in ppl_cols:
+        def cr(n): return c + ", rank " + str(n)
+
+        # The maximum earner earns what the maximum top earner earns.
+        assert ppl[c].max() == hh[cr(1)].max()
+
+        # Store these once to avoid repeatedly calculating them.
+        hh_means = {}
+        for n in range(1,6):
+            hh_means[n] = hh[cr(n)] . mean()
+
+        for n in range(1,6):
+            # Even the average 5th-ranked earner makes more than this.
+            assert hh_means[n] > 1e3
+            # Even among top-earners, some earn nothing.
+            assert hh[cr(n)] . min() == 0
+
+        for n in range(1,5):
+            # Income ranks are ordered correctly.
+            assert hh_means[n] > hh_means[n+1]
 
 if True: # IO
   log = "starting\n"
@@ -42,11 +65,11 @@ if True: # IO
 
   test_const_within_group(
       # TODO ? move this test to the tests of person data
-      ["household"],
-      defs.cols_const_within_hh,
-      hh )
-  test_indices( hh=hh, ppl=ppl )
-  test_income_ranks(hh)
+      gs = ["household"],
+      cs = defs.cols_const_within_hh,
+      d = hh )
+  test_indices(      hh=hh, ppl=ppl )
+  test_income_ranks( hh=hh, ppl=ppl )
 
   oio.test_write(
       com.subsample,
