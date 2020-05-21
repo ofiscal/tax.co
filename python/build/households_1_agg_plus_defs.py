@@ -9,6 +9,7 @@ if True:
 cols_const_within_hh = ["region-1", "region-2", "estrato", "weight"]
 
 # These are most of the columns that will be in the household data.
+# They are aggregated through summation.
 cols_most = ( [ "members"
               , "tax, ss, pension"
               , "tax, ss, pension, employer"
@@ -44,12 +45,63 @@ cols_most = ( [ "members"
               , "income, labor, rank 5"
               ] )
 
-cols_to_min_or_max = [
-     "age", "literate", "student", "female", "female head", "education"
-    , "race, indig", "race, git|rom", "race, raizal", "race, palenq", "race, whi|mest"
+# These columns are aggregated through min or max (or both, in some cases),
+# and renamed.
+cols_to_min_or_max__pre_rename = [
+     "age", "literate", "student", "female", "education"
+    , "race, indig", "race, git|rom", "race, raizal", "race, palenq", "race, whi|mest" ]
+
+# These columns are aggregated through min or max (or both, in some cases),
+# but they retain the same name.
+cols_to_min_or_max__no_name_change = [
+      "female head"
     , "pension, receiving"
     , "pension, contributing (if not pensioned)"
     , "pension, contributor(s) (if not pensioned) = split"
     , "pension, contributor(s) (if not pensioned) = self"
     , "pension, contributor(s) (if not pensioned) = employer"
     , "seguro de riesgos laborales" ]
+
+cols_to_min_or_max = ( cols_to_min_or_max__pre_rename
+                     + cols_to_min_or_max__no_name_change )
+
+# The variables in cols_to_min_or_max__pre_rename, after aggregation,
+# are renamed as these variables. Note that `cols_to_min_or_max__pre_rename`
+# is smaller than `cols_to_min_or_max__post_rename`,
+# because some things in the former (e.g. "female") become multiple things
+# in the latter (e.g. "has-female" and "has-male").
+cols_to_min_or_max__post_rename = (
+    [ "age-min", # computed via agg(min)
+      "has-male" ] +
+
+    [ "age-max", # computed via agg(max)
+      "has-lit",
+      "has-student",
+      "edu-max",
+      "has-female",
+      "has-indig",
+      "has-git|rom",
+      "has-raizal",
+      "has-palenq",
+      "has-whi|mest" ]
+)
+
+cols_new = (
+    [ "income, rank "        + str(n) for n in range(1,6) ] +
+    [ "income, labor, rank " + str(n) for n in range(1,6) ] +
+
+    [ "has-child", # computed ad-hoc
+      "has-elderly",
+      "income-decile",
+      "income-percentile",
+      "one" ]
+)
+
+cols_all = ( ["household"]
+           + cols_const_within_hh
+           + cols_most
+           + cols_to_min_or_max__no_name_change
+           + cols_to_min_or_max__post_rename
+           + cols_new
+)
+

@@ -19,6 +19,7 @@ def test_const_within_group( gs : List[str],
     for c in cs:
         assert h[c].nunique().max() == 1
 
+
 if True: # IO
   ppl = oio.readStage(
     com.subsample,
@@ -32,6 +33,16 @@ if True: # IO
       defs.cols_const_within_hh,
       hh )
   assert len(hh) == ppl["household"].nunique()
+  assert ( # verify that cols_all's components do not overlap
+      len( defs.cols_all )
+      == len( ["household"] )
+      +  len( defs.cols_const_within_hh )
+      +  len( defs.cols_most )
+      +  len( defs.cols_to_min_or_max__no_name_change )
+      +  len( defs.cols_to_min_or_max__post_rename )
+      +  len( defs.cols_new ) )
+  assert set( defs.cols_all ) == set( hh.columns )
+
 
 # old columns:
 #   ? test that the summed vars' sums are very close to their means in the prev data
