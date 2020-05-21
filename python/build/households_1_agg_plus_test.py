@@ -10,26 +10,15 @@ if True:
 
 def test_const_within_group( gs : List[str],
                              cs : List[str],
-                             d  : pd.DataFrame ) -> bool:
+                             d  : pd.DataFrame ) -> ():
     """Tests that the columns `cs` are constant within each of the groups defined by `gs`."""
     h = d.groupby( gs )
     for c in cs:
         assert h[c].nunique().max() == 1
 
-
-if True: # IO
-  log = "starting\n"
-  ppl = oio.readStage(
-    com.subsample,
-    "people_3_income_taxish." + com.strategy_year_suffix )
-  hh = oio.readStage(
-    com.subsample,
-    "households_1_agg_plus." + com.strategy_year_suffix )
-  test_const_within_group(
-      # TODO ? move this test to the tests of person data
-      ["household"],
-      defs.cols_const_within_hh,
-      hh )
+def test_indices( hh  : pd.DataFrame,
+                  ppl : pd.DataFrame
+                ) ->    ():
   assert len(hh) == ppl["household"].nunique()
   assert ( # verify that cols_all's components do not overlap
       len( defs.cols_all )
@@ -40,6 +29,25 @@ if True: # IO
       +  len( defs.cols_to_min_or_max__post_rename )
       +  len( defs.cols_new ) )
   assert set( defs.cols_all ) == set( hh.columns )
+
+
+if True: # IO
+  log = "starting\n"
+  ppl = oio.readStage(
+    com.subsample,
+    "people_3_income_taxish." + com.strategy_year_suffix )
+  hh = oio.readStage(
+    com.subsample,
+    "households_1_agg_plus." + com.strategy_year_suffix )
+
+  test_const_within_group(
+      # TODO ? move this test to the tests of person data
+      ["household"],
+      defs.cols_const_within_hh,
+      hh )
+  test_indices( hh=hh, ppl=ppl )
+  test_income_ranks(hh)
+
   oio.test_write(
       com.subsample,
       "households_1_agg_plus",
