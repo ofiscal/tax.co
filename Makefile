@@ -169,6 +169,7 @@ show_params:
 # make that output file a dependency.
 # PITFALL: purchase_input.txt always uses the full sample
 tests:							\
+  output/test/recip-$(ss)/households_1_agg_plus.txt	\
   output/test/recip-$(ss)/build_classes.txt		\
   output/test/recip-$(ss)/build_purchases_2_vat.txt	\
   output/test/recip-$(ss)/build_purchase_sums.txt	\
@@ -185,7 +186,17 @@ tests:							\
   output/test/recip-1/purchase_inputs.txt
 	printf '\nAll tests passed.\n\n'
 
-output/test/recip-$(ss)/build_classes.txt:	\
+output/test/recip-$(ss)/households_1_agg_plus.txt:	\
+  $(households_1_agg_plus)				\
+  python/build/households_1_agg_plus_test.py		\
+  python/build/households_1_agg_plus_defs.py		\
+  python/build/output_io.py				\
+  python/common/common.py
+	date
+	$(python_from_here) python/build/households_1_agg_plus_test.py	\
+          $(subsample) $(strategy) $(yr)
+
+Output/test/recip-$(ss)/build_classes.txt:	\
   python/build/classes.py			\
   python/build/classes_test.py
 	date

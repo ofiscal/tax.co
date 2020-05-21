@@ -3,12 +3,9 @@ if True:
   import sys
   import pandas as pd
   #
-  import python.build.classes                    as cl
   import python.build.households_1_agg_plus_defs as defs
   import python.build.output_io                  as oio
   import python.common.common                    as com
-  import python.common.misc                      as misc
-  import python.common.util                      as util
 
 
 def test_const_within_group( gs : List[str],
@@ -21,6 +18,7 @@ def test_const_within_group( gs : List[str],
 
 
 if True: # IO
+  log = "starting\n"
   ppl = oio.readStage(
     com.subsample,
     "people_3_income_taxish." + com.strategy_year_suffix )
@@ -42,6 +40,10 @@ if True: # IO
       +  len( defs.cols_to_min_or_max__post_rename )
       +  len( defs.cols_new ) )
   assert set( defs.cols_all ) == set( hh.columns )
+  oio.test_write(
+      com.subsample,
+      "households_1_agg_plus",
+      log )
 
 
 # old columns:

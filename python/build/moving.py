@@ -37,3 +37,4 @@ if True: # See people_2_buildings_test for how to use these definitions.
            len( p2cols.columns ) +
            len( prCols.columns ) - 2 + # omit the 2 keys we merged on
            len( new_cols ) )
+

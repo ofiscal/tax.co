@@ -68,10 +68,6 @@ in ./build/vat_rates.py:
 * TODO test suite
 ** TODO RESUME here
 *** TODO test households_2_purchases
-**** TODO test columns
-There should be a single source file for lists of columns.
-  That way its use could be shared across tests and primary code.
-There should be a similar source file for column characteristics (like InRange).
 **** TODO edit, use tests stored in moving.py
  They stopped working in branch `sum-purchases-to-households`
  due to changes in the available targets,
