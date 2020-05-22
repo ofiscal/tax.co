@@ -46,13 +46,17 @@ def test_income_ranks( hh : pd.DataFrame,
 
         for n in range(1,6):
             # Even the average 5th-ranked earner makes more than this.
-            assert hh_means[n] > 1e3
+            assert ( hh_means[n] >=
+                     ( # In the 1/1000 sample, no rank-5 earner makes money.
+                       0 if ( (com.subsample == 1000) &
+                              (n == 5) )
+                       else 1000 ) )
             # Even among top-earners, some earn nothing.
             assert hh[cr(n)] . min() == 0
 
         for n in range(1,5):
             # Income ranks are ordered correctly.
-            assert hh_means[n] > hh_means[n+1]
+            assert hh_means[n] > 2 * hh_means[n+1]
 
 if True: # IO
   log = "starting\n"
