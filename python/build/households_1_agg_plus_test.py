@@ -21,13 +21,8 @@ def test_indices( hh  : pd.DataFrame,
                 ) ->    ():
   assert len(hh) == ppl["household"].nunique()
   assert ( # verify that cols_all's components do not overlap
-      len( defs.cols_all )
-      == len( ["household"] )
-      +  len( defs.cols_const_within_hh )
-      +  len( defs.cols_most )
-      +  len( defs.cols_to_min_or_max__no_name_change )
-      +  len( defs.cols_to_min_or_max__post_rename )
-      +  len( defs.cols_new ) )
+           len(            defs.cols_all ) ==
+           len( pd.Series( defs.cols_all ) . unique() ) )
   assert set( defs.cols_all ) == set( hh.columns )
 
 def test_income_ranks( hh : pd.DataFrame,
@@ -58,6 +53,20 @@ def test_income_ranks( hh : pd.DataFrame,
             # Income ranks are ordered correctly.
             assert hh_means[n] > 2 * hh_means[n+1]
 
+def test_sums( hh : pd.DataFrame,
+               ppl : pd.DataFrame ) -> ():
+    # test hh["members"]
+    assert   hh["members"] . min() == 1
+    assert ( hh["members"]           . max() ==
+             ppl["household-member"] . max() )
+    hh_members_mean = hh["members"].mean()
+    assert ( (hh_members_mean > 2) &
+             (hh_members_mean < 4) )
+
+    assert ( ( hh [defs.income_and_tax] . sum() -
+               ppl[defs.income_and_tax] . sum() )
+             . abs() . max() ) < 1e-4
+
 if True: # IO
   log = "starting\n"
   ppl = oio.readStage(
@@ -72,8 +81,10 @@ if True: # IO
       gs = ["household"],
       cs = defs.cols_const_within_hh,
       d = hh )
-  test_indices(      hh=hh, ppl=ppl )
-  test_income_ranks( hh=hh, ppl=ppl )
+
+  test_indices      ( hh=hh, ppl=ppl )
+  test_income_ranks ( hh=hh, ppl=ppl )
+  test_sums         ( hh=hh, ppl=ppl )
 
   oio.test_write(
       com.subsample,
@@ -81,14 +92,6 @@ if True: # IO
       log )
 
 
-# old columns:
-#   ? test that the summed vars' sums are very close to their means in the prev data
-#     because this should not change upon aggregating from people to households
-#
-# new columns:
-# income, rank 1-5
-# income, labor, rank 1-5
-#
 # how to test the min, max columns?
 #   age-min in the household data should have a mean that is substantially less than the mean for age in the person data, and stricly less than its max
 #   generalize that

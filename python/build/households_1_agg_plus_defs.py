@@ -10,8 +10,7 @@ cols_const_within_hh = ["region-1", "region-2", "estrato", "weight"]
 
 # These are most of the columns that will be in the household data.
 # They are aggregated through summation.
-cols_most = ( [ "members"
-              , "tax, ss, pension"
+income_and_tax = ( [ "tax, ss, pension"
               , "tax, ss, pension, employer"
               , "tax, ss, salud"
               , "tax, ss, salud, employer"
@@ -33,17 +32,19 @@ cols_most = ( [ "members"
               , "income, private"
               , "income, labor"
               , "income, borrowing"
-              , "income, rank 1"
-              , "income, rank 2"
-              , "income, rank 3"
-              , "income, rank 4"
-              , "income, rank 5"
-              , "income, labor, rank 1"
-              , "income, labor, rank 2"
-              , "income, labor, rank 3"
-              , "income, labor, rank 4"
-              , "income, labor, rank 5"
               ] )
+
+cols_income_rank = [ "income, rank 1"
+                   , "income, rank 2"
+                   , "income, rank 3"
+                   , "income, rank 4"
+                   , "income, rank 5"
+                   , "income, labor, rank 1"
+                   , "income, labor, rank 2"
+                   , "income, labor, rank 3"
+                   , "income, labor, rank 4"
+                   , "income, labor, rank 5" ]
+
 
 # These columns are aggregated through min or max (or both, in some cases),
 # and renamed.
@@ -90,7 +91,8 @@ cols_new = (
     [ "income, rank "        + str(n) for n in range(1,6) ] +
     [ "income, labor, rank " + str(n) for n in range(1,6) ] +
 
-    [ "has-child", # computed ad-hoc
+    [ "members", # computed ad-hoc
+      "has-child",
       "has-elderly",
       "income-decile",
       "income-percentile",
@@ -99,7 +101,7 @@ cols_new = (
 
 cols_all = ( ["household"]
            + cols_const_within_hh
-           + cols_most
+           + income_and_tax
            + cols_to_min_or_max__no_name_change
            + cols_to_min_or_max__post_rename
            + cols_new

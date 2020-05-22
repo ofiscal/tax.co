@@ -53,7 +53,9 @@ if True: # aggregate from household members to households
   h_first = ppl.groupby( ["household"]
     ) [ defs.cols_const_within_hh
     ] . agg("first")
-  h_sum = ( ppl.loc[:, ["household"] + defs.cols_most]
+  h_sum = ( ppl.loc[:, ["household","members"]
+                       + defs.income_and_tax
+                       + defs.cols_income_rank ]
           . groupby( "household" )
           . agg("sum") )
   h_min = ppl.groupby(
