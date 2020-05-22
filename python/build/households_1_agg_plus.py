@@ -7,7 +7,7 @@ if True:
   import pandas as pd
   import numpy as np
   #
-  import python.common.common as c
+  import python.common.common as com
   import python.common.util as util
   import python.build.output_io as oio
   from   python.build.people.files import edu_key
@@ -15,8 +15,8 @@ if True:
 
 
 ppl = oio.readStage(
-  c.subsample,
-  "people_3_income_taxish." + c.strategy_year_suffix )
+  com.subsample,
+  "people_3_income_taxish." + com.strategy_year_suffix )
 
 ppl["education"] = util.interpretCategorical(
   ppl["education"],
@@ -105,8 +105,8 @@ if True: # aggregate from household members to households
 
 
 if True: # save
-  oio.saveStage( c.subsample, households
-               , "households_1_agg_plus." + c.strategy_year_suffix )
-  oio.saveStage( c.subsample, households_decile_summary
-               , "households_decile_summary." + c.strategy_year_suffix )
+  oio.saveStage( com.subsample, households
+               , "households_1_agg_plus." + com.strategy_year_suffix )
+  oio.saveStage( com.subsample, households_decile_summary
+               , "households_decile_summary." + com.strategy_year_suffix )
 
