@@ -32,8 +32,8 @@ edu_key = { 1 : "Ninguno",
     5 : "Media",
     6 : "Superior o\n Universitaria",
     9 : "No sabe,\n no informa" }
-people["education"] = pd.Categorical(
-  people["education"],
+people["edu"] = pd.Categorical(
+  people["edu"],
   categories = list( edu_key.values() ),
   ordered = True)
 
@@ -44,8 +44,8 @@ if True: # single series
   draw.savefig( vat_pics_dir + "people" , "age" )
 
   plt.close()
-  util.histogram(people["education"]).plot.bar()
-  draw.savefig( vat_pics_dir + "people" , "education" )
+  util.histogram(people["edu"]).plot.bar()
+  draw.savefig( vat_pics_dir + "people" , "edu" )
 
   if True: # income, logx and normal
     plt.close()

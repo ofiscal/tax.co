@@ -100,6 +100,8 @@ rather than coded anew every time it is read
 ** TODO the logging idiom does not capture most recent test state
 A function does not record to the log unless it completes.
 *** TODO solution ? need a way to delete output if python program fails
+** TODO test means
+Test that the mean of each variable is in some range.
 ** TODO maybe
 *** TODO ? people.main:
 **** Test the range and missing-ness of the input file.

@@ -363,9 +363,9 @@ if True: # make|format some categorical variables
   ppl["race, neg|mul"]  = ppl["race"] == 5
   ppl["race, whi|mest"] = ppl["race"] == 6
 
-  ppl["education"] = pd.Categorical(
-    ppl["education"
-      ] . fillna( 9
+  ppl["edu"] = pd.Categorical(
+    ppl["edu"
+      ] . replace( 9, np.nan
       ) . map( files.edu_key )
     , categories = list( files.edu_key.values() ),
     ordered = True)

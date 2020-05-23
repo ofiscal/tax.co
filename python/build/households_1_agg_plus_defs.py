@@ -49,7 +49,7 @@ cols_income_rank = [ "income, rank 1"
 # These columns are aggregated through min or max (or both, in some cases),
 # and renamed.
 cols_to_min_or_max__pre_rename = [
-     "age", "literate", "student", "female", "education"
+     "age", "literate", "student", "female", "edu"
     , "race, indig", "race, git|rom", "race, raizal", "race, palenq", "race, whi|mest" ]
 
 # These columns are aggregated through min or max (or both, in some cases),

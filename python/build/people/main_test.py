@@ -31,7 +31,8 @@ def test_ranges(ppl: pd.DataFrame):
   specs = {
       "household"          : { cla.InRange( 0, 1e7 ) }
     , "age"                : { cla.InRange( 0, 120 ) }
-    , "education"          : { cla.InSet( set( files.edu_key.values() ) ) }
+    , "edu"                : { cla.InSet( set( files.edu_key.values() ) ),
+                               cla.IsNull() }
     , "female"             : { cla.InRange( 0, 1 ) }
     , "household-member"   : { cla.InRange( 1, 50 ) }
     , "income, pension"    : { cla.InRange( 0, 3e8 ) }
@@ -104,7 +105,7 @@ if True: # run tests
 
   # integration tests
   ppl = oio.readStage(com.subsample, 'people_1')
-  ppl["education"] = util.interpretCategorical( ppl["education"]
+  ppl["edu"] = util.interpretCategorical( ppl["edu"]
                                               , files.edu_key.values() )
   test_ranges( ppl )
   test_upper_bound_on_fraction_missing( ppl )

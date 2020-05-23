@@ -7,7 +7,11 @@ if True:
   import python.build.classes as cl
 
 
-edu_key = { 1 : "Ninguno",
+edu_key = {
+    # PITFALL: Value 9 is not really a value,
+    # so in build/people/main.py, it is replaced with np.nan.
+    # Otherwise pandas would consider the maximum to be 9 rather than 6.
+    1 : "Ninguno",
     2 : "Preescolar",
     3 : "Basica\n Primaria",
     4 : "Basica\n Secundaria",
@@ -33,7 +37,7 @@ demog = [
   , ("P6060", 0, "skipped 3 meals", 0)
   , ("P6160", 0, "literate", 0)
   , ("P6170", 0, "student", 0)
-  , ("P6210", 0, "education", 0) # highest level completed
+  , ("P6210", 0, "edu", 0) # highest level completed
   , ("P6310", 0, "why did not seek work", 0)
   , ("P6430", 0, "independiente", 0) # 1-3 = asalariado; 4-5 = independiente
                                      # other = no income
