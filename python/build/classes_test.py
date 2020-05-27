@@ -7,6 +7,18 @@ import python.common.common as cl
 
 
 def test_Property_subclasses():
+  assert     ( cla.MeanBounds( 4,6 ) . test(
+               pd.Series( [1,10] ) ) )
+  assert not ( cla.MeanBounds( 4,6 ) . test(
+               pd.Series( [20,10] ) ) )
+  assert not ( cla.MeanBounds( 4,6 ) . test(
+               pd.Series( [1,2] ) ) )
+
+  assert     ( cla.MissingAtMost( 0.5 ) . test(
+               pd.Series([1,np.nan,3]) ) )
+  assert not ( cla.MissingAtMost( 0.5 ) . test(
+               pd.Series([1,np.nan,np.nan]) ) )
+
   assert ( pd.Series(               [False,    False, False, False,   True] )
          . equals( cla.IsNull()
                  . test( pd.Series( [    0, "banana",     1,   [2], np.nan] ) ) ) )

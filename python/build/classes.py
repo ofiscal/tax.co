@@ -32,6 +32,23 @@ class CoversRange(SeriesProperty):
     return ( (series >= self.ceiling).any() &
              (series <= self.floor).any() )
 
+class MeanBounds(SeriesProperty):
+  """MeanBounds(a,b) will test that the mean of a series is between a and b."""
+  def __init__( self, floor, ceiling ):
+    self.floor = floor
+    self.ceiling = ceiling
+  def test( self, series : pd.Series ) -> bool:
+    m = series.mean()
+    return ( (m >= self.floor) &
+             (m <= self.ceiling) )
+
+class MissingAtMost(SeriesProperty):
+  """MissingAtMost(f) tests that at most f of the values in a series are missing. f should be in [0,1]."""
+  def __init__( self, fracMissing ):
+    self.fracMissing = fracMissing
+  def test( self, series : pd.Series ) -> bool:
+    return series.isnull().mean() <= self.fracMissing
+
 class CellProperty:
   """When test() is run on a series, it returns a column of the same dimensions, of booleans.
 """
