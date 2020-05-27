@@ -196,7 +196,7 @@ output/test/recip-$(ss)/households_1_agg_plus.txt:	\
 	$(python_from_here) python/build/households_1_agg_plus_test.py	\
           $(subsample) $(strategy) $(yr)
 
-Output/test/recip-$(ss)/build_classes.txt:	\
+output/test/recip-$(ss)/build_classes.txt:	\
   python/build/classes.py			\
   python/build/classes_test.py
 	date
