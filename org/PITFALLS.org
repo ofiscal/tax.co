@@ -9,6 +9,10 @@ It is represented in code, not data.
   at purhcases_2_vat.py
 It is treated as VAT.
 * Makefile
+** targets misspelled will fail silently
+  If a target is misspelled in the recipe to make it,
+  then it will never be rebuilt, but the old version will be found,
+  so things depending on it will not run again when it is modified.
 ** if it's not rerunning after editing a requirement
 I checked out some earlier commits to see if they had the same problem. (They didn't.)
 Then I checked out the latest commit, and the problem vanished.

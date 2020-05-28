@@ -9,6 +9,9 @@ is-purchase we probably assume to be 1, but the others ...?
 ** TODO "vat" conflates some taxes
 That's why, for instance, its max in purchases_2_vat_test is 0.27, not 19
 * TODO possibly wrong
+** TODO pension variables are bad
+They're missing a lot, so their averages aren't right.
+But we don't use them.
 ** TODO If max "vat" is 0.27, max vat frac should be 0.213
  but instead it's 0.160, which is what would derive from a max vat of 0.19.
  This problem arises in purchases_2_vat_test.py
@@ -76,8 +79,11 @@ in ./build/vat_rates.py:
 Compare the sum of a column in the original with same in the aggregated.
 *** TODO test number of households
 Should have a much smaller fractional error buffer for the 1/1 sample.
-*** TODO use CoversRange
-like InRange
+** TODO homogenize tests
+For each program, use InRange, CoversRange, and MeanBounds for all vars,
+and test number of obs and column names.
+*** TODO ? household_1_agg_plus: include such tests for means of incomes
+Seems kind of overkill, since they are already tested by ensuring that they sum to what they sum to in the people data.
 ** TODO add this test for income rank in people data
 def test_income_ranks( ppl : pd.DataFrame ) -> ():
   prefixes = ["income, rank ", "income, labor, rank "]

@@ -8,6 +8,7 @@ if True:
   from   python.build.people.files import edu_key
   import python.common.common                    as com
   import python.common.util                      as util
+  import python.build.classes                    as cla
 
 
 def test_const_within_group( gs : List[str],
@@ -22,7 +23,7 @@ def test_indices( hh  : pd.DataFrame,
                   ppl : pd.DataFrame
                 ) ->    ():
   assert len(hh) == ppl["household"].nunique()
-  assert ( # verify that cols_all's components do not overlap
+  assert ( # verify the components of `cols_all` do not overlap
            len(            defs.cols_all ) ==
            len( pd.Series( defs.cols_all ) . unique() ) )
   assert set( defs.cols_all ) == set( hh.columns )
@@ -69,8 +70,9 @@ def test_sums( hh : pd.DataFrame,
                ppl[defs.income_and_tax] . sum() )
              . abs() . max() ) < 1e-4
 
-def test_extrema( hh : pd.DataFrame,
+def test_bools( hh : pd.DataFrame,
                   ppl : pd.DataFrame ) -> ():
+
     bool_cols = ( defs.cols_to_min_or_max__no_name_change +
                   [ "has-male",
                     "has-lit",
@@ -81,6 +83,7 @@ def test_extrema( hh : pd.DataFrame,
                     "has-raizal",
                     "has-palenq",
                     "has-whi|mest",
+
                     "has-child",
                     "has-elderly" ] )
     if com.subsample != 1000:
@@ -89,6 +92,29 @@ def test_extrema( hh : pd.DataFrame,
             assert hh[c].max() == 1
         for c in ["age","edu"]:
             assert hh[c + "-max"].max() == ppl[c].max()
+    assert hh["age-min"].mean() < (ppl["age"].mean() * 0.8)
+    assert hh["age-max"].mean() > (ppl["age"].mean() * 1.2)
+
+    assert hh["has-child"].mean()   > ( 1.2 * ( (ppl["age"] < 18).mean() ) )
+    assert hh["has-elderly"].mean() > ( 1.2 * ( (ppl["age"] > 65).mean() ) )
+
+    for (c,test) in [
+        ("age-min", cla.MeanBounds(10,30)),
+        ("has-male", cla.MeanBounds(0.75,0.95)),
+        ("age-max", cla.MeanBounds(40,60)),
+        ("has-lit", cla.MeanBounds(0.95,1)),
+        ("has-student", cla.MeanBounds(0.4,0.7)),
+        ("has-female", cla.MeanBounds(0.75,0.95)),
+        ("has-indig", cla.MeanBounds(0.0,0.1)),
+        ("has-git|rom", cla.MeanBounds(0,0.01)),
+        ("has-raizal", cla.MeanBounds(0,0.05)),
+        ("has-palenq", cla.MeanBounds(0,0.05)),
+        ("has-whi|mest", cla.MeanBounds(0.8,1)),
+        ("has-child", cla.MeanBounds(0.4,0.8)),
+        ("has-elderly", cla.MeanBounds(0.1,0.3)),
+        ("female head", cla.MeanBounds(0.25,0.55)),
+        ("seguro de riesgos laborales", cla.MeanBounds(0.3,0.6)) ]:
+      assert test.test( hh[c] )
 
 def test_quantiles( hh : pd.DataFrame ) -> ():
     for (col,top) in [ ("income-decile",10),
@@ -120,21 +146,11 @@ if True: # IO
   test_indices      ( hh=hh, ppl=ppl )
   test_income_ranks ( hh=hh, ppl=ppl )
   test_sums         ( hh=hh, ppl=ppl )
-  test_extrema      ( hh=hh, ppl=ppl )
-  test_quantiles( hh )
+  test_bools        ( hh=hh, ppl=ppl )
+  test_quantiles    ( hh=hh )
 
   oio.test_write(
       com.subsample,
       "households_1_agg_plus",
       log )
 
-
-# how to test the min, max columns?
-#   age-min in the household data should have a mean that is substantially less than the mean for age in the person data, and stricly less than its max
-#   generalize that
-#
-# how to test has-elderly, etc?
-#   has-child should have a mean that is substantially more than the fraction of people under 18
-#
-# income-decile, income-percentile
-#   test their ranges, min, max, mean

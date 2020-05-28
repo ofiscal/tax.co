@@ -106,4 +106,3 @@ cols_all = ( ["household"]
            + cols_to_min_or_max__post_rename
            + cols_new
 )
-
