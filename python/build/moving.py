@@ -8,17 +8,6 @@ if True:
 
 
 if True: # See people_2_buildings_test for how to use these definitions.
-  new_cols = [ "vat/value, min",
-               "vat/value, max",
-               "vat/income, min",
-               "vat/income, max",
-               "value/income" ]
-
-  if True:
-    assert (p3["region-1"] == "SAN ANDRÉS").any()
-    assert p3[ p3["region-1"] == "SAN ANDRÉS" ]["vat paid, min"].max() == 0
-    assert p3[ p3["region-1"] == "SAN ANDRÉS" ]["vat paid, max"].max() == 0
-
   per_cell_spec = {
       "vat/value, min"  : { cl.IsNull(), cl.InRange( 0, 0.3 ) },
       "vat/value, max"  : { cl.IsNull(), cl.InRange( 0, 0.3 ) },
@@ -32,9 +21,4 @@ if True: # See people_2_buildings_test for how to use these definitions.
       "vat/income, min" : cl.CoversRange( 0,      np.inf ),
       "vat/income, max" : cl.CoversRange( 0,      np.inf ),
       "value/income"    : cl.CoversRange( 0.01,   np.inf ),
-
-  assert ( len( p3    .columns ) ==
-           len( p2cols.columns ) +
-           len( prCols.columns ) - 2 + # omit the 2 keys we merged on
-           len( new_cols ) )
 
