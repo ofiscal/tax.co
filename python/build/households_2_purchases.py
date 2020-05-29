@@ -9,17 +9,17 @@ if True:
   #
   import python.common.util as util
   import python.build.output_io as oio
-  import python.common.common as c
+  import python.common.common as com
 
 
 if True: # merge purchase data into person data
   # PITFALL: The unit of observation in all these data sets is a household.
   hh = oio.readStage(
-    c.subsample,
-    "households_1_agg_plus." + c.strategy_year_suffix )
+    com.subsample,
+    "households_1_agg_plus." + com.strategy_year_suffix )
   pur = oio.readStage(
-    c.subsample,
-    "purchase_sums." + c.strategy_suffix )
+    com.subsample,
+    "purchase_sums." + com.strategy_suffix )
   merge = pd.merge( hh, pur,
                     how = "left",
                     on=["household"] )
@@ -37,7 +37,7 @@ if True: # create a few more variables
 
 if True: # save
   oio.saveStage(
-      c.subsample,
+      com.subsample,
       merge,
-      "households_2_purchases." + c.strategy_year_suffix )
+      "households_2_purchases." + com.strategy_year_suffix )
 
