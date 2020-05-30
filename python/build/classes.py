@@ -41,7 +41,6 @@ class MeanBounds(SeriesProperty):
     """Bounds equal to infinity are a little annoying."""
     m = series.mean()
     if np.isnan(m): return False
-    print("mean: ", m, "floor: ", self.floor, "ceil: ", self.ceiling)
     floorTest = ( True if self.floor == -np.inf else (
         m == np.inf if self.floor == np.inf else (
             m >= self.floor ) ) )
