@@ -170,6 +170,7 @@ show_params:
 # PITFALL: purchase_input.txt always uses the full sample
 tests:							\
   output/test/recip-$(ss)/households_1_agg_plus.txt	\
+  output/test/recip-$(ss)/households_2_purchases.txt    \
   output/test/recip-$(ss)/build_classes.txt		\
   output/test/recip-$(ss)/build_purchases_2_vat.txt	\
   output/test/recip-$(ss)/build_purchase_sums.txt	\
@@ -194,6 +195,16 @@ output/test/recip-$(ss)/households_1_agg_plus.txt:	\
   python/common/common.py
 	date
 	$(python_from_here) python/build/households_1_agg_plus_test.py	\
+          $(subsample) $(strategy) $(yr)
+
+output/test/recip-$(ss)/households_2_purchases.txt:	\
+  $(households_2_purchases)				\
+  python/build/output_io.py				\
+  python/build/classes.py				\
+  python/common/common.py				\
+  python/common/util.py
+	date
+	$(python_from_here) python/build/households_2_purchases_test.py \
           $(subsample) $(strategy) $(yr)
 
 output/test/recip-$(ss)/build_classes.txt:	\
