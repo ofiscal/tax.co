@@ -52,11 +52,13 @@ if True:
       }.items():
     assert cl.properties_cover_num_column( v, merge[k] )
   for k,v in {
-      "vat/value, min"  : cl.CoversRange( 0,      0.15   ),
-      "vat/value, max"  : cl.CoversRange( 0,      0.15   ),
+      # These bounds could be tighter,
+      # but the 1/1000 subsample has a small range.
+      "vat/value, min"  : cl.CoversRange( 0,      0.1    ),
+      "vat/value, max"  : cl.CoversRange( 0,      0.1    ),
       "vat/income, min" : cl.CoversRange( 0,      np.inf ),
       "vat/income, max" : cl.CoversRange( 0,      np.inf ),
-      "value/income"    : cl.CoversRange( 0.01,   np.inf )
+      "value/income"    : cl.CoversRange( 0.2,    np.inf )
       }.items():
     assert v.test( merge[k] )
   for k,v in {
