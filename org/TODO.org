@@ -79,8 +79,13 @@ in ./build/vat_rates.py:
 Compare the sum of a column in the original with same in the aggregated.
 *** TODO test number of households
 Should have a much smaller fractional error buffer for the 1/1 sample.
+** TODO IsNull should be excised, replaced with MissingAtMost
+and InRange changed to accept null values.
+But this requires adding MissingAtMost tests everywhere IsNull was used.
 ** TODO homogenize tests
-For each program, use InRange, CoversRange, and MeanBounds for all vars,
+For each program, use
+  InRange, CoversRange, MeanBounds, MissingAtMost
+for all vars,
 and test number of obs and column names.
 *** TODO ? household_1_agg_plus: include such tests for means of incomes
 Seems kind of overkill, since they are already tested by ensuring that they sum to what they sum to in the people data.
