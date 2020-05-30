@@ -38,9 +38,17 @@ class MeanBounds(SeriesProperty):
     self.floor = floor
     self.ceiling = ceiling
   def test( self, series : pd.Series ) -> bool:
+    """Bounds equal to infinity are a little annoying."""
     m = series.mean()
-    return ( (m >= self.floor) &
-             (m <= self.ceiling) )
+    if np.isnan(m): return False
+    print("mean: ", m, "floor: ", self.floor, "ceil: ", self.ceiling)
+    floorTest = ( True if self.floor == -np.inf else (
+        m == np.inf if self.floor == np.inf else (
+            m >= self.floor ) ) )
+    ceilingTest = ( True if self.ceiling == np.inf else (
+        m == -np.inf if self.ceiling == -np.inf else (
+            m <= self.ceiling ) ) )
+    return floorTest & ceilingTest
 
 class MissingAtMost(SeriesProperty):
   """MissingAtMost(f) tests that at most f of the values in a series are missing. f should be in [0,1]."""

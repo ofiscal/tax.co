@@ -7,12 +7,29 @@ import python.common.common as cl
 
 
 def test_Property_subclasses():
-  assert     ( cla.MeanBounds( 4,6 ) . test(
-               pd.Series( [1,10] ) ) )
-  assert not ( cla.MeanBounds( 4,6 ) . test(
-               pd.Series( [20,10] ) ) )
-  assert not ( cla.MeanBounds( 4,6 ) . test(
-               pd.Series( [1,2] ) ) )
+  if True: # MeanBounds
+    assert     ( cla.MeanBounds( 4,6 ) . test(
+                 pd.Series( [1,10] ) ) )
+    assert not ( cla.MeanBounds( 4,6 ) . test(
+                 pd.Series( [20,10] ) ) )
+    assert not ( cla.MeanBounds( 4,6 ) . test(
+                 pd.Series( [1,2] ) ) )
+    if True: # infinities
+      assert     ( cla.MeanBounds( -np.inf, 0 ) . test(
+                   # The mean of this series is -infinity.
+                   pd.Series( [-np.inf,0] ) ) )
+      assert not ( cla.MeanBounds( -np.inf, 0 ) . test(
+                   # The mean of this series is infinity.
+                   pd.Series( [np.inf, 0] ) ) )
+      assert     ( cla.MeanBounds( 0, np.inf ) . test(
+                   # The mean of this series is infinity.
+                   pd.Series( [np.inf, 0] ) ) )
+      assert not ( cla.MeanBounds( 0, np.inf ) . test(
+                   # The mean of this series is -infinity.
+                   pd.Series( [-np.inf,0] ) ) )
+      assert not ( cla.MeanBounds( -np.inf, np.inf ) . test(
+                   # The mean of this series is undefined.
+                   pd.Series( [-np.inf, np.inf] ) ) )
 
   assert     ( cla.MissingAtMost( 0.5 ) . test(
                pd.Series([1,np.nan,3]) ) )
