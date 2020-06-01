@@ -80,3 +80,4 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
     new_columns["tax, income, dividend"] )
 
   return pd.concat( [ppl, new_columns], axis = 1 )
+

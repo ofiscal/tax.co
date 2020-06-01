@@ -56,41 +56,22 @@ class MissingAtMost(SeriesProperty):
   def test( self, series : pd.Series ) -> bool:
     return series.isnull().mean() <= self.fracMissing
 
-class CellProperty:
-  """When test() is run on a series, it returns a column of the same dimensions, of booleans.
-"""
-  def test( self, series : pd.Series ) -> pd.Series:
-    raise NotImplementedError("CellProperty is an abstract class.")
-
-class NumCellProperty(CellProperty):
-  """Properties numbers can have, such as being in a certain range."""
-  pass
-
-class IsNull(NumCellProperty):
-  def test( self, series : pd.Series ) -> pd.Series:
-    return pd.isnull( series )
-
-class InRange(NumCellProperty):
+class InRange(SeriesProperty):
   """If c = InRange(x,y), and s is a series, then s passes c.test() if and only if c includes no value less than x and no value greater than y."""
   def __init__( self, floor, ceiling ):
     self.floor = floor
     self.ceiling = ceiling
   def test( self, series : pd.Series ) -> pd.Series:
-    return ( (series <= self.ceiling)
-           & (series >= self.floor) )
+    s = series.dropna()
+    return ( (s <= self.ceiling)
+           & (s >= self.floor) ) . all()
 
-class InSet(CellProperty):
+class InSet(SeriesProperty):
   def __init__( self, values : set ):
     self.values = values
   def test( self, series : pd.Series ) -> pd.Series:
-    return series.isin( self.values )
-
-def properties_cover_num_column( properties, column : pd.Series ):
-  """Returns true if at least one of the properties holds for every value in the series."""
-  tests = map( lambda p: p.test( column )
-             , properties )
-  df = pd.concat( tests, axis=1 )
-  return df . any(axis=1) . all(axis=0)
+    s = series.dropna()
+    return s . isin( self.values ) . all()
 
 
 #############################

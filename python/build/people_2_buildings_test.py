@@ -44,9 +44,9 @@ assert util.near( len(df2),
                   tol_frac = 1/5 )
 
 per_cell_spec = {
-    "age-decile"    : { cl.InRange( 0, 9 ) },
-    "income-decile" : { cl.InRange( 0, 9 ) },
-    "female head"   : { cl.InRange( 0, 1 ) } }
+    "age-decile"    : cl.InRange( 0, 9 ),
+    "income-decile" : cl.InRange( 0, 9 ),
+    "female head"   : cl.InRange( 0, 1 ) }
 
 per_column_spec = {
     "age-decile"    : cl.CoversRange( 0, 9 ),
@@ -54,7 +54,7 @@ per_column_spec = {
     "female head"   : cl.CoversRange( 0, 1 ) }
 
 for k,v in per_cell_spec.items():
-  assert cl.properties_cover_num_column( v, df2[k] )
+  assert v . test( df2[k] )
 
 for k,v in per_column_spec.items():
   assert v.test( df2[k] )

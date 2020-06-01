@@ -45,19 +45,19 @@ def test_output( df ):
     tol_frac = 1/20 )
 
   spec = {
-      "where-got" :        { cla.IsNull(), cla.InRange(1,26) }
-    , "weight" :           {               cla.InRange( 0, 1e4 ) }
-    , "value" :            {               cla.InRange( 0, 1e9 ) }
-    , "quantity" :         { cla.IsNull(), cla.InRange( 0, 1e8 ) }
-    , "is-purchase" :      { cla.IsNull(), cla.InRange( 0,1 ) }
-    , "household" :        {               cla.InRange( 1, 1e7 ) }
-    , "per month" :        { cla.IsNull(), cla.InRange( 1, 11 ) }
-    , "coicop" :           { cla.IsNull(), cla.InRange( 1, 1e8 ) }
-    , "25-broad-categs" :  { cla.IsNull(), cla.InRange( 1, 25 ) }
+    "where-got" :        cla.InRange(1,26),
+    "weight" :           cla.InRange( 0, 1e4 ),
+    "value" :            cla.InRange( 0, 1e9 ),
+    "quantity" :         cla.InRange( 0, 1e8 ),
+    "is-purchase" :      cla.InRange( 0,1 ),
+    "household" :        cla.InRange( 1, 1e7 ),
+    "per month" :        cla.InRange( 1, 11 ),
+    "coicop" :           cla.InRange( 1, 1e8 ),
+    "25-broad-categs" :  cla.InRange( 1, 25 )
   }
   for k in spec:
     log += ("  " + k + "\n")
-    assert cla.properties_cover_num_column( spec[k], df[k] )
+    assert spec[k] . test( df[k] )
 
   log += "Specs cover all column names."
   assert set( df.columns ) == set( spec.keys() )

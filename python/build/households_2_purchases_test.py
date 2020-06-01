@@ -44,13 +44,13 @@ if True:
 
 if True:
   for k,v in {
-      "vat/value, min"  : { cl.IsNull(), cl.InRange( 0, 0.3 ) },
-      "vat/value, max"  : { cl.IsNull(), cl.InRange( 0, 0.3 ) },
-      "vat/income, min" : { cl.IsNull(), cl.InRange( 0, np.inf ) },
-      "vat/income, max" : { cl.IsNull(), cl.InRange( 0, np.inf ) },
-      "value/income"    : { cl.IsNull(), cl.InRange( 0, np.inf ) }
+      "vat/value, min"  : cl.InRange( 0, 0.3 ),
+      "vat/value, max"  : cl.InRange( 0, 0.3 ),
+      "vat/income, min" : cl.InRange( 0, np.inf ),
+      "vat/income, max" : cl.InRange( 0, np.inf ),
+      "value/income"    : cl.InRange( 0, np.inf )
       }.items():
-    assert cl.properties_cover_num_column( v, merge[k] )
+    assert v.test( merge[k] )
   for k,v in {
       # These bounds could be tighter,
       # but the 1/1000 subsample has a small range.
