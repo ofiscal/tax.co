@@ -8,6 +8,7 @@ if True:
   import numpy as np
   #
   import python.common.common as com
+  import python.common.describe as desc
   import python.common.util as util
   import python.build.output_io as oio
   from   python.build.people.files import edu_key
@@ -101,7 +102,8 @@ if True: # aggregate from household members to households
   households["one"] = 1 # used in overview.py to create the trivial partition.
     # TODO ? move to overview.py
 
-  households_decile_summary = util.summarizeQuantiles("income-decile", households)
+  households_decile_summary = desc.summarizeQuantiles(
+      "income-decile", households)
 
 
 if True: # save
