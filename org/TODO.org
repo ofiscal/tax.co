@@ -92,7 +92,7 @@ for all new or changed vars.
 ***** misc.unique is good for column names
 def unique( coll: List ) -> bool:
   return len( coll ) == len( set( coll ) )
-*** TODO test that aggregations lose nothing
+*** TODO test that aggregation loses nothing in purchase_sums_test.py
 Compare the sum of a column in the original with same in the aggregated.** TODO add this test for income rank in people data
 def test_income_ranks( ppl : pd.DataFrame ) -> ():
   prefixes = ["income, rank ", "income, labor, rank "]

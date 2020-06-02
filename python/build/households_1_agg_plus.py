@@ -61,7 +61,7 @@ if True: # aggregate from household members to households
           . agg("sum") )
   h_min = ppl.groupby(
       ["household"]
-    ) ["age", "female"
+    ) [["age", "female"]
     ] . agg("min"
     ) . rename( columns = {"age"    : "age-min",
                            "female" : "has-male",

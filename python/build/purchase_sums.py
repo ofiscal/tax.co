@@ -18,11 +18,11 @@ purchases["predial"] = (purchases["coicop"] == 12700601) * purchases["value"]
 
 purchases["transactions"] = 1 # next this is summed within persons
 purchase_sums = purchases.groupby( ["household"]
-         ) [ "value"
-           , "transactions"
-           , "vat paid, max"
-           , "vat paid, min"
-           , "predial"
+         ) [ [ "value"
+             , "transactions"
+             , "vat paid, max"
+             , "vat paid, min"
+             , "predial" ]
          ] . agg("sum")
 purchase_sums = purchase_sums.reset_index(
   level = ["household"] )
