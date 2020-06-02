@@ -18,7 +18,7 @@ def test_vat_file( filename
   df = oio.readStage( cl.subsample
                     , filename + "." + cl.strategy_suffix )
 
-  assert( unique( df.columns ) )
+  assert unique( df.columns )
 
   for c in [ 'vat', 'vat, min', 'vat, max' ]:
     assert df[c].min() == 0

@@ -22,11 +22,14 @@ def test_const_within_group( gs : List[str],
 def test_indices( hh  : pd.DataFrame,
                   ppl : pd.DataFrame
                 ) ->    ():
+  """There might be some redundancy within this collection of assertions,
+but that's costless."""
   assert len(hh) == ppl["household"].nunique()
   assert ( # verify the components of `cols_all` do not overlap
            len(            defs.cols_all ) ==
            len( pd.Series( defs.cols_all ) . unique() ) )
   assert set( defs.cols_all ) == set( hh.columns )
+  assert util.unique( hh.columns )
 
 def test_income_ranks( hh : pd.DataFrame,
                        ppl : pd.DataFrame ) -> ():
@@ -127,13 +130,12 @@ def test_quantiles( hh : pd.DataFrame ) -> ():
 if True: # IO
   log = "starting\n"
   #
-  ppl = oio.readStage(
-    com.subsample,
-    "people_3_income_taxish." + com.strategy_year_suffix )
   hh = oio.readStage(
     com.subsample,
     "households_1_agg_plus." + com.strategy_year_suffix )
-  #
+  ppl = oio.readStage(
+    com.subsample,
+    "people_3_income_taxish." + com.strategy_year_suffix )
   ppl["edu"] = util.interpretCategorical(
     ppl["edu"],
     edu_key.values() )

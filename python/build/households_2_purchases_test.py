@@ -25,6 +25,7 @@ if True:
     "households_2_purchases." + com.strategy_year_suffix )
 
 if True: # See people_2_buildings_test for how to use these definitions.
+  assert util.uniq( merge.columns )
   new_cols = [ "vat/value, min",
                "vat/value, max",
                "vat/income, min",

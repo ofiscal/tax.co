@@ -70,22 +70,22 @@ in ./build/vat_rates.py:
 *** TODO csvtool converts numbers containing commas to strings
 * TODO test suite
 ** TODO homogenize tests
-*** TODO use python.test_utils.uniqueColumnNames() everywhere
+*** DONE assert python.common.util.unique( df.columns ) for all df
 *** TODO for every .py file
 **** TODO remaining files
-build/people_3_income_taxish_test.py
-build/classes_test.py
-build/vat_rates_test.py
-build/households_1_agg_plus_test.py
-build/buildings_test.py
-build/purchases_2_vat_test.py
-build/ss_functions_test.py
-build/purchases/correct_test.py
-build/purchases/input_test.py
-build/people/main_test.py
-build/households_2_purchases_test.py
-build/people_2_buildings_test.py
-build/purchase_sums_test.py
+***** build/people_3_income_taxish_test.py
+***** build/classes_test.py
+***** build/vat_rates_test.py
+***** build/households_1_agg_plus_test.py
+***** build/buildings_test.py
+***** build/purchases_2_vat_test.py
+***** build/ss_functions_test.py
+***** build/purchases/correct_test.py
+***** build/purchases/input_test.py
+***** build/people/main_test.py
+***** build/households_2_purchases_test.py
+***** build/people_2_buildings_test.py
+***** build/purchase_sums_test.py
 **** use InRange, CoversRange, MeanBounds, MissingAtMost
 for all new or changed vars.
 **** test number of obs and column names
