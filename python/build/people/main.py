@@ -137,23 +137,23 @@ if True: # income
       ppl["income, month : govt : beca, cash"] = 0
       ppl.loc[ ppl["beca sources, total"] > 0
              , "income, month : govt : beca, cash" ] = (
-        ppl["income, month : edu : beca, cash"]
-        * ppl["beca sources, govt"]     / ppl["beca sources, total"] )
+        ppl[   "income, month : edu : beca, cash"]
+        * ppl["beca sources, govt"] / ppl["beca sources, total"] )
 
       ppl["income, month : private : beca, cash"] = 0
       ppl.loc[ ppl["beca sources, total"] > 0
              , "income, month : private : beca, cash" ] = (
-        ppl["income, month : edu : beca, cash"]
-        * ppl["beca sources, private"]  / ppl["beca sources, total"] )
+        ppl[   "income, month : edu : beca, cash"]
+        * ppl["beca sources, private"] / ppl["beca sources, total"] )
 
       ppl["income, month : govt : non-beca, cash"] = 0
-      ppl.loc[ ppl["non-beca sources, total"]
+      ppl.loc[ ppl["non-beca sources, total"] > 0
              , "income, month : govt : non-beca, cash"] = (
         ppl["income, month : edu : non-beca, cash"]
         * ppl["non-beca sources, govt"] / ppl["non-beca sources, total"] )
 
       ppl["income, month : private : non-beca, cash"] = 0
-      ppl.loc[ ppl["non-beca sources, total"]
+      ppl.loc[ ppl["non-beca sources, total"] > 0
              , "income, month : private : non-beca, cash"] = (
         ppl["income, month : edu : non-beca, cash"]
         * ppl["non-beca sources, private"] / ppl["non-beca sources, total"] )
@@ -171,13 +171,13 @@ if True: # income
         * ppl["beca sources, private"]  / ppl["beca sources, total"] )
 
       ppl["income, month : govt : non-beca, in-kind"] = 0
-      ppl.loc[ ppl["non-beca sources, total"]
+      ppl.loc[ ppl["non-beca sources, total"] > 0
              , "income, month : govt : non-beca, in-kind"] = (
         ppl["income, month : edu : non-beca, in-kind"]
         * ppl["non-beca sources, govt"] / ppl["non-beca sources, total"] )
 
       ppl["income, month : private : non-beca, in-kind"] = 0
-      ppl.loc[ ppl["non-beca sources, total"]
+      ppl.loc[ ppl["non-beca sources, total"] > 0
              , "income, month : private : non-beca, in-kind"] = (
         ppl["income, month : edu : non-beca, in-kind"]
         * ppl["non-beca sources, private"] / ppl["non-beca sources, total"] )
