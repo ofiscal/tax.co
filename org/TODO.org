@@ -9,6 +9,7 @@ is-purchase we probably assume to be 1, but the others ...?
 ** TODO "vat" conflates some taxes
 That's why, for instance, its max in purchases_2_vat_test is 0.27, not 19
 * TODO possibly wrong
+** TODO ? retain tax information discarded at build/purchase_sums.py
 ** TODO pension variables are bad
 They're missing a lot, so their averages aren't right.
 But we don't use them.
