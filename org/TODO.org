@@ -1,3 +1,21 @@
+* TODO ask Camilo Andres Avila Carreño
+** TODO resume review for questions
+in this document, at "accuracy (#right)"
+** undescribed variables
+directorio, orden, secuencia_encuesta, secuencia_p, cap
+** identifiers (unit of observation, linking)
+** what does "otros impuestos" include?
+From the coicop bridge:
+  "Impuesto predial y de valorizaci�n de la(s) vivienda(s) ocupada(s) por el hogar";12700601;0;0;0;
+  Impuestos del vehiculo;12700602;0;0;0;
+  Impuesto de renta;12700603;0;0;0;
+  Otros impuestos (de timbre, etc);12700699;0;0;0;
+** absurdly big purchase numbers
+absurdly_big_expenditure_threshold = 1e9 # MAGIC
+Something in the full sample has a quantity value of 9e7.
+Currently I don't throw out any quantities, just expenditures.
+** one does not need quantity to determine expenditure, right?
+** is it possible to determine who in a household made an expenditure?
 * TODO shared decision
 ** TODO add cesantias + primas to (which?) income measure
  should be in denominator, and not numerator, of tax rate.
