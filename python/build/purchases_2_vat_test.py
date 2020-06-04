@@ -12,25 +12,26 @@ if True:
 def test_ranges( df ):
   log = "test_ranges()\n"
 
-  per_cell_spec = {
-      "25-broad-categs"  : { cl.IsNull(), cl.InRange( 1, 25 ) }
-    , "big-hog"          : {              cl.InRange( 0, 1 ) }
-    , "coicop"           : { cl.IsNull(), cl.InRange( 1e6, 2e7 ) }
-    , "freq-code"        : {              cl.InRange( 0, 10 ) }
-    , "household"        : { cl.IsNull(), cl.InRange( 0, 1e6 ) }
-    , "household-member" : {              cl.InRange( 1, 230 ) }
-    , "is-purchase"      : { cl.IsNull(), cl.InRange( 0, 1 ) }
-    , "per month"        : {              cl.InRange( 1/36 - 0.001, 31 ) }
-    , "quantity"         : {              cl.InRange( 0, 1e8 ) }
-    , "value"            : {              cl.InRange( 0, 2e9 ) }
-    , "vat frac"         : { cl.IsNull(), cl.InRange( 0, 0.271 / 1.271 + 0.01 ) }
-    , "vat frac, max"    : { cl.IsNull(), cl.InRange( 0, 0.271 / 1.271 + 0.01 ) }
-    , "vat"              : { cl.IsNull(), cl.InRange( 0, 0.271 ) }
+  inRange_spec = {
+      "25-broad-categs"  : cl.InRange( 1, 25 ),
+      "big-hog"          : cl.InRange( 0, 1 ),
+      "coicop"           : cl.InRange( 1e6, 2e7 ),
+      "freq-code"        : cl.InRange( 0, 10 ),
+      "household"        : cl.InRange( 0, 1e6 ),
+      "is-purchase"      : cl.InRange( 0, 1 ),
+      "per month"        : cl.InRange( 1/36 - 0.001, 31 ),
+      "quantity"         : cl.InRange( 0, 1e8 ),
+      "value"            : cl.InRange( 0, 2e9 ),
+      "vat frac"         : cl.InRange( 0, 0.271 / 1.271 + 0.01 ),
+      "vat frac, max"    : cl.InRange( 0, 0.271 / 1.271 + 0.01 ),
+      "vat"              : cl.InRange( 0, 0.271 )
     }
 
-  per_column_spec = {
+  for k,v in inRange_spec.items():
+    assert v.test( df[k] )
+
+  coversRange_spec = {
     "household"        : cl.CoversRange( 2e5,6e5 ),
-    "household-member" : cl.CoversRange( 1,4 ),
     "per month"        : cl.CoversRange( 1,30 ),
     "quantity"         : cl.CoversRange( 1,100 ),
     "value"            : cl.CoversRange( 1,100 ),
@@ -46,10 +47,7 @@ def test_ranges( df ):
     "where-got"        : cl.CoversRange( 1,25 )
     }
 
-  for k,v in per_cell_spec.items():
-    assert cl.properties_cover_num_column( v, df[k] )
-
-  for k,v in per_column_spec.items():
+  for k,v in coversRange_spec.items():
     assert v.test( df[k] )
 
   return log
@@ -63,7 +61,6 @@ class Purchase_2_Columns_missing:
           , "per month"
           , "freq-code"
           , "household"
-          , "household-member"
           , "quantity"
           , "value"
           , "weight" ]

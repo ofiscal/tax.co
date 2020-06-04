@@ -41,13 +41,11 @@ num_purchases_surviving = 7357003 # number of purchases (full sample) with
 
 variables = [ # in some purchase files, all three common variables are numbers
     ( "DIRECTORIO", {StringCellProperty.NotAString}, "household", 0 )
-  , ( "ORDEN",      {StringCellProperty.NotAString}, "household-member", 0 )
   , ( "FEX_C",      {StringCellProperty.NotAString}, "weight", 0 )
   ]
 variables_with_comma_weight = [
     # in others they are strings with commas instead of periods
     ( "DIRECTORIO", {StringCellProperty.NotAString}, "household", 0 )
-  , ( "ORDEN",      {StringCellProperty.NotAString}, "household-member", 0 )
   , ( "FEX_C",      {StringCellProperty.Comma
                     ,StringCellProperty.Digits}, "weight", 0 )
   ]

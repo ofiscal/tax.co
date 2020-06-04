@@ -9,7 +9,7 @@ if True:
   import python.build.output_io as oio
   import python.common.common as cl
   import python.common.misc as c
-  import python.common.util as util
+  import python.common.describe as desc
   import python.draw.util as draw
 
 if cl.regime_year == 2016:
@@ -112,7 +112,7 @@ if True: # create a summary dataframe
     for gv in gvs:
       varSummaries = []
       for v in vs:
-        t = util.tabulate_stats_by_group( df, gv, v, "weight" )
+        t = desc.tabulate_stats_by_group( df, gv, v, "weight" )
         t = t.rename(
           columns = dict(
                 zip( t.columns

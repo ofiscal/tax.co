@@ -1,10 +1,12 @@
-import python.build.classes as cla
-import python.build.output_io as oio
-import python.build.purchases.articulos as articulos
-import python.build.purchases.capitulo_c as capitulo_c
-# import python.build.purchases.medios as medios
-import python.build.purchases.nice_purchases as nice_purchases
-import python.common.common as cl
+if True:
+  import python.build.classes as cla
+  import python.build.output_io as oio
+  import python.build.purchases.articulos as articulos
+  import python.build.purchases.capitulo_c as capitulo_c
+  # import python.build.purchases.medios as medios
+  import python.build.purchases.nice_purchases as nice_purchases
+  import python.common.util as util
+  import python.common.common as cl
 
 
 def test_purchase_inputs():
@@ -15,6 +17,7 @@ def test_purchase_inputs():
            ): 
     df = cl.retrieve_file( f
                          , cl.subsample )
+    assert util.unique( df.columns )
     acc = {}
     for c in df.columns:
       acc.update( [ (c, cla.stringProperties( df[c] ) ) ] )
@@ -27,3 +30,4 @@ if True: # run tests
   oio.test_write( cl.subsample
                 , "purchase_inputs"
                 , log )
+

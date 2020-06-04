@@ -1,14 +1,22 @@
-* TODO some branches should be merged into master
-for instance time-to-save-for-a-month
-so that when I change filenames, etc. it stays up to date.
+* TODO ask Camilo Andres Avila Carreño
+** TODO resume review for questions
+in this document, at "accuracy (#right)"
+** undescribed variables
+directorio, orden, secuencia_encuesta, secuencia_p, cap
+** identifiers (unit of observation, linking)
+** what does "otros impuestos" include?
+From the coicop bridge:
+  "Impuesto predial y de valorizaci�n de la(s) vivienda(s) ocupada(s) por el hogar";12700601;0;0;0;
+  Impuestos del vehiculo;12700602;0;0;0;
+  Impuesto de renta;12700603;0;0;0;
+  Otros impuestos (de timbre, etc);12700699;0;0;0;
+** absurdly big purchase numbers
+absurdly_big_expenditure_threshold = 1e9 # MAGIC
+Something in the full sample has a quantity value of 9e7.
+Currently I don't throw out any quantities, just expenditures.
+** one does not need quantity to determine expenditure, right?
+** is it possible to determine who in a household made an expenditure?
 * TODO shared decision
-** TODO BLOCKED : "household member" max mismatch
-*** awaiting response from Juan, who awaits from DANE
-*** the problem
-No variable in the data has the properties that a household-member variable would need.
-see python/explore/what-is-household-member/
-*** TODO do we really need those person identifiers?
-Is Orden unique within households in the person data?
 ** TODO add cesantias + primas to (which?) income measure
  should be in denominator, and not numerator, of tax rate.
  formality matters
@@ -19,6 +27,10 @@ is-purchase we probably assume to be 1, but the others ...?
 ** TODO "vat" conflates some taxes
 That's why, for instance, its max in purchases_2_vat_test is 0.27, not 19
 * TODO possibly wrong
+** TODO ? retain tax information discarded at build/purchase_sums.py
+** TODO pension variables are bad
+They're missing a lot, so their averages aren't right.
+But we don't use them.
 ** TODO If max "vat" is 0.27, max vat frac should be 0.213
  but instead it's 0.160, which is what would derive from a max vat of 0.19.
  This problem arises in purchases_2_vat_test.py
@@ -76,19 +88,43 @@ in ./build/vat_rates.py:
  while the csv files read as NaN.
 *** TODO csvtool converts numbers containing commas to strings
 * TODO test suite
-** TODO RESUME here
-*** TODO test households_2_purchases
-**** TODO edit, use tests stored in moving.py
- They stopped working in branch `sum-purchases-to-households`
- due to changes in the available targets,
- but they should will work again with little change.
-**** TODO test that the aggregated purchases lose nothing
- Compare the sum of a column in the original with same in the aggregated.
-*** test number of households
-*** some tests fail on the 1/1000 sample
+** TODO homogenize tests
+*** DONE assert python.common.util.unique( df.columns ) for all df
+*** TODO for every .py file
+**** TODO remaining files
+***** build/people_3_income_taxish_test.py
+***** build/classes_test.py
+***** build/vat_rates_test.py
+***** build/households_1_agg_plus_test.py
+***** build/buildings_test.py
+***** build/purchases_2_vat_test.py
+***** build/ss_functions_test.py
+***** build/purchases/correct_test.py
+***** build/purchases/input_test.py
+***** build/people/main_test.py
+***** build/households_2_purchases_test.py
+***** build/people_2_buildings_test.py
+***** build/purchase_sums_test.py
+**** use InRange, CoversRange, MeanBounds, MissingAtMost
+for all new or changed vars.
+**** test number of obs and column names
+***** misc.unique is good for column names
+def unique( coll: List ) -> bool:
+  return len( coll ) == len( set( coll ) )
+*** TODO test that aggregation loses nothing in purchase_sums_test.py
+Compare the sum of a column in the original with same in the aggregated.** TODO add this test for income rank in people data
+def test_income_ranks( ppl : pd.DataFrame ) -> ():
+  prefixes = ["income, rank ", "income, labor, rank "]
+  for p in prefixes:
+    for n in range(1,6):
+      c = p + str(n)
+      m = ppl[c].mean()
+      print( c, ": ", m )
+      assert ppl[c] . mean() > 0.2
+      assert ( (m > (0 if n > 1 else 0.2)) &
+               (m < 1/n) )
 ** TODO double-check mk_solidaridad for contractors
 Is the tax code really that absurd? There are clauses that never hold.
-** TODO use python.test_utils.uniqueColumnNames() everywhere
 ** TODO incorporate tests in hand_test/ into automatic tests
 Note that not all of them can be automated --
 for instance, the ones that draw pictures.
@@ -103,8 +139,6 @@ A function does not record to the log unless it completes.
 **** unit tests for people/main.py
 ? What if a variable is built up in steps in main.py?
 Should I divide main.py into a separate file for each step?
-*** TODO ? test that all column names are unique
-*** TODO test means, variances
 ** tasks
 *** restructure programs for testing
 so that it's like this:
@@ -135,11 +169,6 @@ exhibit the statistics (means, min, max) they should have.
 
 We can apply similar integration tests to a subsample of the real ENPH.
 Those integration tests should test ranges, if not statistics.
-*** collect preexisting tests
-Most tests are in python/test/, but ...
-**** some are elsewhere
-python/build/ss_contribs.py
-python/build/accumulate_marginal.py
 ** wish : shadowing was reported, but only for vars of the same type.
 * TODO refactor
 ** TODO classes.py: Things like this should be defined within each enum type.

@@ -12,9 +12,9 @@ people = oio.readStage( c.subsample, "people_3_purchases" )
 households = oio.readStage( c.subsample, "households" )
 purchase_sums = oio.readStage( c.subsample, "purchase_sums" )
 
-if False: people["education"] = pd.Categorical( people["education"]
+if False: people["edu"] = pd.Categorical( people["edu"]
                 , categories = list( edu_key.values() )
                 , ordered = True)
 
-people["education"] = util.interpretCategorical( people["education"], edu_key.values() )
+people["edu"] = util.interpretCategorical( people["edu"], edu_key.values() )
 

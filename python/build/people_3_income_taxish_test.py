@@ -4,7 +4,7 @@ if True:
   #
   import python.build.people_3_income_taxish_functions as f4
   from   python.common.misc import num_people
-  from   python.common.util import near
+  import python.common.util as util
   import python.build.output_io as oio
   import python.common.common   as com
 
@@ -37,9 +37,11 @@ if True:
   p4 = oio.readStage(
       com.subsample,
       'people_3_income_taxish.' + com.strategy_year_suffix )
-  assert near( len(p4),
-               num_people / com.subsample,
-               tol_frac = 1/5 )
+  assert util.near( 
+      len(p4),
+      num_people / com.subsample,
+      tol_frac = 1/5 )
+  assert util.unique( p4.columns )
 
   oio.test_write( com.subsample
                 , "people_3_income_taxish"

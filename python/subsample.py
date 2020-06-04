@@ -25,11 +25,12 @@
 #   Change the subsample value imported by common.py,
 #   by changing common/params/repl.py.
 
-import os
-import pandas as pd
-import numpy as np
-
-import python.build.datafiles as datafiles
+if True:
+  import os
+  import pandas as pd
+  import numpy as np
+  #
+  import python.build.datafiles as datafiles
 
 
 folder = datafiles.yearSurveyFolder(2017)

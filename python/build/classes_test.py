@@ -1,19 +1,51 @@
-import numpy as np
-import pandas as pd
+if True:
+  import numpy as np
+  import pandas as pd
+  #
+  import python.build.classes as cla
+  import python.build.output_io as oio
+  import python.common.common as com
 
-import python.build.classes as cla
-import python.build.output_io as oio
-import python.common.common as cl
 
+def test_MeanBounds():
+  if True: # MeanBounds
+    assert     ( cla.MeanBounds( 4,6 ) . test(
+                 pd.Series( [1,10] ) ) )
+    assert not ( cla.MeanBounds( 4,6 ) . test(
+                 pd.Series( [20,10] ) ) )
+    assert not ( cla.MeanBounds( 4,6 ) . test(
+                 pd.Series( [1,2] ) ) )
+    if True: # infinities
+      assert     ( cla.MeanBounds( -np.inf, 0 ) . test(
+                   # The mean of this series is -infinity.
+                   pd.Series( [-np.inf,0] ) ) )
+      assert not ( cla.MeanBounds( -np.inf, 0 ) . test(
+                   # The mean of this series is infinity.
+                   pd.Series( [np.inf, 0] ) ) )
+      assert     ( cla.MeanBounds( 0, np.inf ) . test(
+                   # The mean of this series is infinity.
+                   pd.Series( [np.inf, 0] ) ) )
+      assert not ( cla.MeanBounds( 0, np.inf ) . test(
+                   # The mean of this series is -infinity.
+                   pd.Series( [-np.inf,0] ) ) )
+      assert not ( cla.MeanBounds( -np.inf, np.inf ) . test(
+                   # The mean of this series is undefined.
+                   pd.Series( [-np.inf, np.inf] ) ) )
 
 def test_Property_subclasses():
-  assert ( pd.Series(               [False,    False, False, False,   True] )
-         . equals( cla.IsNull()
-                 . test( pd.Series( [    0, "banana",     1,   [2], np.nan] ) ) ) )
+  assert     ( cla.MissingAtMost( 0.5 ) . test(
+               pd.Series([1,np.nan,3]) ) )
+  assert not ( cla.MissingAtMost( 0.5 ) . test(
+               pd.Series([1,np.nan,np.nan]) ) )
 
-  assert ( pd.Series(               [True, True, True, False, False] )
-         . equals( cla.InRange( 0, 1 )
-                 . test( pd.Series( [   0,  0.5,     1,    2, np.nan] ) ) ) )
+  for (val, result) in [ (-1, False),
+                         (0, True),
+                         (0.5, True),
+                         (1, True),
+                         (2, False),
+                         (np.nan, True) ]:
+      assert cla.InRange(0,1)       . test( pd.Series([val]) ) == result
+      assert cla.InSet( {0,0.5,1} ) . test( pd.Series([val]) ) == result
 
   assert ( ( cla.CoversRange( 0, 10 ) .
              test( pd.Series( [0,10] ) ) ) &
@@ -21,28 +53,6 @@ def test_Property_subclasses():
              test( pd.Series( [0,10] ) ) ) &
            ( not cla.CoversRange( 0, 10 ) .
              test( pd.Series( [1,9] ) ) ) )
-
-  assert ( pd.Series(               [True, True, False, False] )
-         . equals( cla.InSet( {1,2} )
-                 . test( pd.Series( [   1,    2,     3,np.nan] ) ) ) )
-
-  assert True == cla.properties_cover_num_column(
-    [ cla.InRange(0,1) ]
-    , pd.Series( [0,0.5,1] ) )
-
-  assert False == cla.properties_cover_num_column(
-    [ cla.InRange(0,1) ]
-    , pd.Series( [np.nan, 0,0.5,1] ) )
-
-  assert True == cla.properties_cover_num_column(
-    [ cla.InRange(0,1)
-      , cla.IsNull() ]
-    , pd.Series( [np.nan, 0,0.5,1] ) )
-
-  assert True == cla.properties_cover_num_column(
-    [ cla.InSet( {0,1} )
-      , cla.IsNull() ]
-    , pd.Series( [np.nan, 0,1] ) )
 
 def test_re_nonNumeric():
   assert(      cla.re_nonNumeric.match( "1-" ) )
@@ -165,6 +175,7 @@ if True: # run the tests
 
   test_Correction()
   test_File()
+  test_MeanBounds()
   test_Property_subclasses()
   test_re_c()
   test_re_digits()
@@ -175,6 +186,6 @@ if True: # run the tests
   test_re_white()
   test_stringProperties()
 
-  oio.test_write( cl.subsample
+  oio.test_write( com.subsample
                 , "build_classes"
                 , log )
