@@ -23,6 +23,7 @@ income_and_tax = ( [ "tax, ss, pension"
 
               + regime.income_tax_columns +
               [ "income"
+              , "income, cash"
               , "income, pension"
               , "income, cesantia"
               , "income, dividend"
@@ -100,6 +101,8 @@ cols_new = (
 )
 
 cols_all = ( ["household"]
+           + [ "used savings"
+              , "recently bought this house" ]
            + cols_const_within_hh
            + income_and_tax
            + cols_to_min_or_max__no_name_change

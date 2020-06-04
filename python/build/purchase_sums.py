@@ -33,9 +33,11 @@ if True: # deal with taxes encoded as purchases
         (purchases["coicop"] == predial_tax)
         * purchases["value"] )
 
-  if True: # discard any purchases that are really taxes
-    purchases = purchases[ ~ purchases["coicop"]
-                           . isin( tax_coicops ) ]
+# To analyze time to save for a month,
+# these should be kept.
+#  if True: # discard any purchases that are really taxes
+#    purchases = purchases[ ~ purchases["coicop"]
+#                           . isin( tax_coicops ) ]
 
 purchases["transactions"] = 1 # next this is summed within persons
 purchase_sums = purchases.groupby( ["household"]

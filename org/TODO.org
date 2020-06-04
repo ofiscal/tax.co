@@ -16,6 +16,8 @@ Something in the full sample has a quantity value of 9e7.
 Currently I don't throw out any quantities, just expenditures.
 ** one does not need quantity to determine expenditure, right?
 ** is it possible to determine who in a household made an expenditure?
+* TODO Why do I need to weaken tests in branch time-to-save-for-a-month?
+See branches/time-to-save-for-a-month/README.md for details.
 * TODO shared decision
 ** TODO add cesantias + primas to (which?) income measure
  should be in denominator, and not numerator, of tax rate.
@@ -64,6 +66,20 @@ They contradict each other.
  max            25.000000  1.270990e+07
 ** TODO ? throw out purchasees with absurd quantities?
 Something in the full sample has a quantity value of 9e7.
+** TODO ? limit purchases to purchases
+In the time-to-save-for-a-month branch, in purchase_sums.py,
+this already exists:
+  purchases = purchases[
+      purchases["is-purchase"] > 0 ]
+Should it be in master?
+* TODO Makefile: add missing dependency
+ households_1_agg_plus: $(households_1_agg_plus)
+ $(households_1_agg_plus):                    \
+   python/build/households_1_agg_plus.py      \
++  python/build/households_1_agg_plus_defs.py \
+   python/common/util.py                      \
+   python/build/output_io.py                  \
+   python/regime/r$(yr).py                    \
 * TODO definitely unsafe
 ** TODO use make.py instead of make
 *** divide recipes better, and actually target them

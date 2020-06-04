@@ -6,7 +6,8 @@ if True:
   import python.build.classes as cl
   import python.common.common as cm
   import python.build.output_io as oio
-  from python.common.util import describeWithMissing, noisyQuantile
+  from python.common.util import noisyQuantile
+  from python.common.describe import describeWithMissing
   import matplotlib
   import matplotlib.pyplot as plt
   import weightedcalcs as weightLib
