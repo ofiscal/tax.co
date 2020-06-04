@@ -124,6 +124,17 @@ zoom = quantiles_report(
 #     zoom_quantiles )
 
 
+############## How much money the extreme savers make ##############
+
+s = hh[ hh[ "months to save for a month, cash" ] < 0.5 ]
+s["income, cash"].describe()
+
+for q in np.arange(0,1,0.05):
+  print( round( q*100),
+         round( wc.quantile( s, "income, cash", q ) ) )
+
+
+
 ############## EXPERIMENTAL ##############
 
 # hh["to plot"] = noisyQuantile(
