@@ -41,7 +41,7 @@ hh["months to save for a month, cash"] = hh.apply(
         spending = row["value"] ),
     axis = "columns" )
 
-if False: # explore
+if True: # explore
   hh["months to save for a month"].describe()
   hh["used savings"].describe()
   hh["recently bought this house"].describe()
@@ -50,6 +50,9 @@ if False: # explore
   len( hh[ hh["used savings"] > 0 ] )
   len( hh[ hh["recently bought this house"] > 0 ] )
 
+# Just under 7% of households used their savings.
+len( hh[ hh["used savings"] > 0 ] ) / len(hh)
+# Drop them.
 hh = hh[ hh["used savings"] <= 0 ]
 hh = hh.drop( columns = ["used savings"] )
 
@@ -90,20 +93,21 @@ zoom_quantiles = list( np.round(
     np.arange( 0.32, 0.45001, 0.01 ),
     2 ) )
 
-every = quantiles_report(
-    mk_samples(
-        # full sample gives just about identical results
-        hh[ hh["recently bought this house"] <= 0 ] ),
-    "months to save for a month, cash",
-    deciles,
-    add_unity = True )
-
-zoom = quantiles_report(
-    mk_samples(
-        # full sample gives just about identical results
-        hh[ hh["recently bought this house"] <= 0 ] ),
-    "months to save for a month, cash",
-    zoom_quantiles )
+if True:
+  assert cm.subsample == 1
+  every = quantiles_report(
+      mk_samples(
+          # full sample gives just about identical results
+          hh[ hh["recently bought this house"] <= 0 ] ),
+      "months to save for a month, cash",
+      deciles,
+      add_unity = True )
+  zoom = quantiles_report(
+      mk_samples(
+          # full sample gives just about identical results
+          hh[ hh["recently bought this house"] <= 0 ] ),
+      "months to save for a month, cash",
+      zoom_quantiles )
 
 # Including non-cash income would seem to compare apples and oranges,
 # although the results are largely the same.
@@ -126,7 +130,11 @@ zoom = quantiles_report(
 
 ############## How much money the extreme savers make ##############
 
-s = hh[ hh[ "months to save for a month, cash" ] < 0.5 ]
+q = wc( hh, # the top decile of savers
+        "months to save for a month, cash",
+        0.1 )
+
+s = hh[ hh[ "months to save for a month, cash" ] < q ]
 s["income, cash"].describe()
 
 for q in np.arange(0,1,0.05):
