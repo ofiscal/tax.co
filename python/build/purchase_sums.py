@@ -8,9 +8,6 @@ purchases = oio.readStage(
     c.subsample,
     "purchases_2_vat." + c.strategy_suffix )
 
-purchases = purchases[
-    purchases["is-purchase"] > 0 ]
-
 purchases["home purchase value"] = (
     purchases[ purchases["coicop"] == "12610104" ]
              [ "value" ] )
@@ -33,6 +30,15 @@ if True: # deal with taxes encoded as purchases
         (purchases["coicop"] == predial_tax)
         * purchases["value"] )
 
+purchases["value, purchase"] = (
+    (purchases[ "is-purchase" ] > 0) *
+    purchases["value"] )
+purchases["value, non-purchase"] = (
+    (purchases[ "is-purchase" ] == 0) *
+    purchases["value"] )
+lpurchases = purchases.drop(
+    columns = "value" )
+
 # To analyze time to save for a month,
 # these should be kept.
 #  if True: # discard any purchases that are really taxes
@@ -41,7 +47,8 @@ if True: # deal with taxes encoded as purchases
 
 purchases["transactions"] = 1 # next this is summed within persons
 purchase_sums = purchases.groupby( ["household"]
-         ) [ "value"
+         ) [ "value, purchase"
+           , "value, non-purchase"
            , "transactions"
            , "vat paid, max"
            , "vat paid, min"

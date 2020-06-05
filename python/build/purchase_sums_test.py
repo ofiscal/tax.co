@@ -19,7 +19,8 @@ assert ( list( sorted( sums.columns ) ) ==
            "household",
            "predial",
            "transactions",
-           "value",
+           "value, non-purchase",
+           "value, purchase",
            "vat paid, max",
            "vat paid, min" ] )
 

@@ -24,6 +24,7 @@ income_and_tax = ( [ "tax, ss, pension"
               + regime.income_tax_columns +
               [ "income"
               , "income, cash"
+              , "income, in-kind"
               , "income, pension"
               , "income, cesantia"
               , "income, dividend"
