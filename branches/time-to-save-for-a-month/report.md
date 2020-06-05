@@ -53,7 +53,9 @@ https://github.com/ofiscal/tax.co/blob/time-to-save-for-a-month/python/months_to
 
 # Footnotes
 
-[1] The ENPH also says whether a household recently moved. Suspecting that moving might temporarily increase a house's expenses, I tried excluding those households from the analysis. It turns out to make no meaningful difference -- mostly because very few households (fewer than 5%) moved.
+[1] About 7% of households in the ENPH used their savings in the month they were followed.
+
+The ENPH also says whether a household recently moved. Suspecting that moving might temporarily increase a house's expenses, I tried excluding those households from the analysis. It turns out to make no meaningful difference -- mostly because very few households (fewer than 5%) moved.
 
 [2] 45% of the top decile of savers made less than 1500000/month. (The data are from 2016-2017; the peso was worth a little more then.) The survey is for all of Colombia, across which the cost of living varies greatly, cities and especially Bogotá being the most expensive.
 
