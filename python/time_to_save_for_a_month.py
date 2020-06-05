@@ -134,26 +134,22 @@ q = wc.quantile( hh, # the top decile of savers
         "months to save for a month, cash",
         0.1 )
 
-s = hh[ hh[ "months to save for a month, cash" ] < q ]
+high_savers = hh[ hh[ "months to save for a month, cash" ] < q ]
 s["income, cash"].describe()
 
 for q in np.arange(0,1,0.05):
   print( round( q*100),
-         round( wc.quantile( s, "income, cash", q ) ) )
+         round( wc.quantile( high_savers, "income, cash", q ) ) )
+
+high_saving_poor = hh [   (hh[ "months to save for a month, cash" ] < q)
+                        & (hh[ "income, cash" ] < 5e5) ]
 
 # The poorest high-savers aren't surviving on in-kind income we know about.
-( hh [   (hh[ "months to save for a month, cash" ] < q)
-       & (hh[ "income, cash" ] < 5e5) ]
-  ["income, in-kind"].describe()
-)
-
 # Nor are they receiving non-purchase goods sufficient to bring their
 # incomes to something one might consider
-( hh [   (hh[ "months to save for a month, cash" ] < q)
-       & (hh[ "income, cash" ] < 5e5) ]
-  ["value, non-purchase"].describe()
-)
-
+( high_saving_poor
+  [[ "income, in-kind", "value, non-purchase"]]
+  . describe() )
 
 
 
