@@ -16,6 +16,7 @@ Something in the full sample has a quantity value of 9e7.
 Currently I don't throw out any quantities, just expenditures.
 ** one does not need quantity to determine expenditure, right?
 ** is it possible to determine who in a household made an expenditure?
+* TODO retain non-purchases as a separate value-ish column
 * TODO Why do I need to weaken tests in branch time-to-save-for-a-month?
 See branches/time-to-save-for-a-month/README.md for details.
 * TODO shared decision
