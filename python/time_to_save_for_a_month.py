@@ -20,7 +20,7 @@ hh = oio.readStage(
   , "households_2_purchases." + cm.strategy_year_suffix )
 
 hh = hh[ ~ ( hh["income"].isnull()
-           | hh["value"].isnull() ) ]
+           | hh["value, purchase"].isnull() ) ]
 
 def months_to_save_for_a_month( income : float,
                                 spending : float
@@ -32,13 +32,13 @@ def months_to_save_for_a_month( income : float,
 hh["months to save for a month"] = hh.apply(
     lambda row: months_to_save_for_a_month(
         income = row["income"],
-        spending = row["value"] ),
+        spending = row["value, purchase"] ),
     axis = "columns" )
 
 hh["months to save for a month, cash"] = hh.apply(
     lambda row: months_to_save_for_a_month(
         income = row["income, cash"],
-        spending = row["value"] ),
+        spending = row["value, purchase"] ),
     axis = "columns" )
 
 if True: # explore
@@ -119,7 +119,7 @@ if True:
 #     "months to save for a month",
 #     deciles,
 #     add_unity = True )
-# 
+#
 # zoom_ = quantiles_report(
 #     mk_samples(
 #         # full sample gives just about identical results
@@ -130,7 +130,7 @@ if True:
 
 ############## How much money the extreme savers make ##############
 
-q = wc( hh, # the top decile of savers
+q = wc.quantile( hh, # the top decile of savers
         "months to save for a month, cash",
         0.1 )
 
@@ -140,6 +140,20 @@ s["income, cash"].describe()
 for q in np.arange(0,1,0.05):
   print( round( q*100),
          round( wc.quantile( s, "income, cash", q ) ) )
+
+# The poorest high-savers aren't surviving on in-kind income we know about.
+( hh [   (hh[ "months to save for a month, cash" ] < q)
+       & (hh[ "income, cash" ] < 5e5) ]
+  ["income, in-kind"].describe()
+)
+
+# Nor are they receiving non-purchase goods sufficient to bring their
+# incomes to something one might consider
+( hh [   (hh[ "months to save for a month, cash" ] < q)
+       & (hh[ "income, cash" ] < 5e5) ]
+  ["value, non-purchase"].describe()
+)
+
 
 
 
