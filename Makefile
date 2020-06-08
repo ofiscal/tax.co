@@ -444,11 +444,12 @@ $(people_3_income_taxish):			\
 	$(python_from_here) python/build/people_3_income_taxish.py $(subsample) $(strategy) $(yr)
 
 households_1_agg_plus: $(households_1_agg_plus)
-$(households_1_agg_plus): \
-  python/build/households_1_agg_plus.py \
-  python/common/util.py \
-  python/build/output_io.py \
-  python/regime/r$(yr).py \
+$(households_1_agg_plus):			\
+  python/build/households_1_agg_plus.py		\
+  python/build/households_1_agg_plus_defs.py	\
+  python/common/util.py				\
+  python/build/output_io.py			\
+  python/regime/r$(yr).py			\
   $(people_3_income_taxish)
 	date
 	$(python_from_here) python/build/households_1_agg_plus.py $(subsample) $(strategy) $(yr)
