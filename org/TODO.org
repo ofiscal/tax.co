@@ -1,21 +1,65 @@
 * TODO ask Camilo Andres Avila Carreño
-** TODO resume review for questions
-in this document, at "accuracy (#right)"
-** undescribed variables
-directorio, orden, secuencia_encuesta, secuencia_p, cap
-** identifiers (unit of observation, linking)
-** what does "otros impuestos" include?
+** DONE undescribed variables
+*** directorio
+The only key variable.
+*** orden
+Identifies people in people data.
+In others, it's not, and it's useless.
+The goal is household, not person, expenditures.
+*** secuencia_encuesta
+also useless
+*** secuencia_p
+also useless
+*** cap
+= capitulo = section of the survey
+Has to do with mensualizacion.
+They follow urban 2 weeks, rural 1 week.
+No way to know when, because anonymized.
+** DONE identifiers (unit of observation, linking)
+** TODO ! ENPH has "itec" = ingreso total
+** DONE Is it possible to determine who in a household made an expenditure?
+** DONE poor high-savers
+I'm finding 1% of the sample who earn less than 500,000,
+yet save at least 40% of their income:
+  spending / (income - spending) = 0.66 => save for a month in 20 days
+  spending = 0.66 * (income - spending)
+  1.66 * spending = income
+  spending = income / 1.66 = income * (3/5)
+Their mean in-kind income is 8,000 pesos/month,
+and their mean non-purchase consumption is 2,000 pesos / month.
+Although if a purchase is not labeled, I call it a purchase.
+  Yes, assume that.
+** DONE used savings?
+are long-term only
+** DONE one does not need quantity to determine expenditure, right?
+right
+** TODO if missing freq, assume mesual
+** DONE absurdly big purchase numbers
+absurdly_big_expenditure_threshold = 1e9 # MAGIC
+Something in the full sample has a quantity value of 9e7.
+Currently I don't throw out any quantities, just expenditures.
+** DONE what does "otros impuestos" include?
 From the coicop bridge:
   "Impuesto predial y de valorizaci�n de la(s) vivienda(s) ocupada(s) por el hogar";12700601;0;0;0;
   Impuestos del vehiculo;12700602;0;0;0;
   Impuesto de renta;12700603;0;0;0;
   Otros impuestos (de timbre, etc);12700699;0;0;0;
-** absurdly big purchase numbers
-absurdly_big_expenditure_threshold = 1e9 # MAGIC
-Something in the full sample has a quantity value of 9e7.
-Currently I don't throw out any quantities, just expenditures.
-** one does not need quantity to determine expenditure, right?
-** is it possible to determine who in a household made an expenditure?
+** DONE no-income spending
+? missed the first thing
+They might have been temp. unemployed.
+* TODO Daniel explains variables
+https://www.dane.gov.co/index.php/estadisticas-por-tema/pobreza-y-condiciones-de-vida/glosario-ingresos-y-gastos
+In this sense every variable that is corriente should be the usual income or expending, the definition is "es igual al gasto total del hogar, excepto pagos de contado por ampliación o subdivisión de vivienda, pagos de contado o cuota inicial por compra de vivienda y compra de automóvil o motocicleta para uso particular." so everything except unusuall expenditure in huge things
+the Unidad de Gasto is the household, It should be the same for each Directorio
+Disponible is after law deductions, wich might be pretty usefull
+If those things are correct, and I am almost sure they are the definition of each variable sholud be the following:
+Ingreso Corriente de la Unidad de Gasto: All the income Monetarie or not (gifts, and material support) per household
+Ingreso Corriente Monetario de la Unidad de Gasto: same as before but just Monetarie
+Ingreso Corriente Monetario Disponible de la Unidada de Gasto: same as before but after taxes and deductions
+Gasto Total de la Unidada de Gasto: Total expendature for the household
+Gasto Corriente de la Unidad de Gasto: expenses without huge boughts like houses or vehicles per household
+Gasto Corriente Monetario de la Unidad de Gasto: Same as before but just the things that were bought with money directly
+* TODO use the "ingreso total" variable, V1945
 * TODO retain non-purchases as a separate value-ish column
 * TODO Why do I need to weaken tests in branch time-to-save-for-a-month?
 See branches/time-to-save-for-a-month/README.md for details.
