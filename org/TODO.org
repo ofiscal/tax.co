@@ -3,8 +3,8 @@
 *** safe & easy to merge now
 **** Makefile
 **** python/build/households_2_purchases.py
-*** time-to-save is strictly better in
 **** python/build/households_2_purchases_test.py
+*** time-to-save is strictly better in
 **** python/build/people/files.py
 **** python/build/people/main.py
 ***** TODO test that variable
