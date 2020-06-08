@@ -1,12 +1,9 @@
 * TODO merge master and time-to-save
 ** comparing branches
-*** easy to merge now
+*** safe & easy to merge now
 **** Makefile
-**** RESUME building this list, by running
-git diff master --ignore-space-change
-*** time-to-save is strictly better in
-**** branches/time-to-save-for-a-month/report.md
 **** python/build/households_2_purchases.py
+*** time-to-save is strictly better in
 **** python/build/households_2_purchases_test.py
 **** python/build/people/files.py
 **** python/build/people/main.py
@@ -34,6 +31,8 @@ git diff master --ignore-space-change
 ****** TODO ? test it, or leave a note that it's untested
 ***** it retains "tax-purchases", if indeed there are any
  #    purchases = purchases[ ~ purchases["coicop"]
+*** TODO should disappear before|at merge
+**** branches/time-to-save-for-a-month/report.md
 ** TODO incorporate time-to-save.py into Makefile
 Move it from build/ to reports/
 * TODO ask Camilo Andres Avila Carreño
