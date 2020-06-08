@@ -2,9 +2,11 @@
 ** comparing branches
 *** safe & easy to merge now
 **** Makefile
+**** org/TODO.org
+**** branches/time-to-save-for-a-month/report.md
+*** time-to-save is strictly better in
 **** python/build/households_2_purchases.py
 **** python/build/households_2_purchases_test.py
-*** time-to-save is strictly better in
 **** python/build/people/files.py
 **** python/build/people/main.py
 ***** TODO test that variable
