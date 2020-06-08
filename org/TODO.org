@@ -1,3 +1,38 @@
+* TODO merge master and time-to-save
+** comparing branches
+*** time-to-save is strictly better in
+**** Makefile
+**** branches/time-to-save-for-a-month/report.md
+**** python/build/households_2_purchases.py
+**** python/build/households_2_purchases_test.py
+**** python/build/people/files.py
+**** python/build/people/main.py
+***** TODO test that variable
+**** python/build/people_2_buildings_test.py
+**** python/build/purchase_sums_test.py
+*** TODO it's probably better in
+**** python/build/buildings.py
+ It pulls in one more variable,
+ + , ("P5102", 0, "recently bought this house", 0) ].
+***** TODO : testt that variable
+*** TODO it's not exactly better in
+**** python/build/households_1_agg_plus.py
+ The only difference is that it uses two more variables,
+ but it does so awkwardly:
+   + + [ "used savings"
+   +   , "recently bought this house" ]
+**** python/build/households_1_agg_plus_test.py
+ I had to weaken one test by a factor of ten!
+ And disable entirely another one!
+*** TODO unsure: python/build/purchase_sums.py
+**** Unlike master, time-to-save does the following
+***** it defines this variable, which never gets used
+  purchases["home purchase value"] = ...
+****** TODO ? test it, or leave a note that it's untested
+***** it retains "tax-purchases", if indeed there are any
+ #    purchases = purchases[ ~ purchases["coicop"]
+** TODO incorporate time-to-save.py into Makefile
+Move it from build/ to reports/
 * TODO ask Camilo Andres Avila Carreño
 ** DONE undescribed variables
 *** directorio
@@ -38,7 +73,9 @@ right
 absurdly_big_expenditure_threshold = 1e9 # MAGIC
 Something in the full sample has a quantity value of 9e7.
 Currently I don't throw out any quantities, just expenditures.
-** DONE what does "otros impuestos" include?
+** TODO what does "otros impuestos" include?
+This is not a DANE question, unless I find that the codes are actually used in the ENPH.
+
 From the coicop bridge:
   "Impuesto predial y de valorizaci�n de la(s) vivienda(s) ocupada(s) por el hogar";12700601;0;0;0;
   Impuestos del vehiculo;12700602;0;0;0;
