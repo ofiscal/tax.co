@@ -1,7 +1,10 @@
 * TODO merge master and time-to-save
 ** comparing branches
-*** time-to-save is strictly better in
+*** easy to merge now
 **** Makefile
+**** RESUME building this list, by running
+git diff master --ignore-space-change
+*** time-to-save is strictly better in
 **** branches/time-to-save-for-a-month/report.md
 **** python/build/households_2_purchases.py
 **** python/build/households_2_purchases_test.py
@@ -85,17 +88,24 @@ From the coicop bridge:
 ? missed the first thing
 They might have been temp. unemployed.
 * TODO Daniel explains variables
+** glossario for something like the ENPH
 https://www.dane.gov.co/index.php/estadisticas-por-tema/pobreza-y-condiciones-de-vida/glosario-ingresos-y-gastos
-In this sense every variable that is corriente should be the usual income or expending, the definition is "es igual al gasto total del hogar, excepto pagos de contado por ampliación o subdivisión de vivienda, pagos de contado o cuota inicial por compra de vivienda y compra de automóvil o motocicleta para uso particular." so everything except unusuall expenditure in huge things
-the Unidad de Gasto is the household, It should be the same for each Directorio
-Disponible is after law deductions, wich might be pretty usefull
-If those things are correct, and I am almost sure they are the definition of each variable sholud be the following:
-Ingreso Corriente de la Unidad de Gasto: All the income Monetarie or not (gifts, and material support) per household
-Ingreso Corriente Monetario de la Unidad de Gasto: same as before but just Monetarie
-Ingreso Corriente Monetario Disponible de la Unidada de Gasto: same as before but after taxes and deductions
-Gasto Total de la Unidada de Gasto: Total expendature for the household
-Gasto Corriente de la Unidad de Gasto: expenses without huge boughts like houses or vehicles per household
-Gasto Corriente Monetario de la Unidad de Gasto: Same as before but just the things that were bought with money directly
+Not specifically for ENPH, but relevant.
+*** Unidad de Gasto = household, probably directorio
+*** Perceptor de ingresos = receiver of income
+*** Corriente = usual (income), excluding (windfalls)
+*** Transferencias y prestaciones corrientes
+Transferencias = government transfers
+Prestaciones = employee's income spent by the employer on services for the employee, such as healthcare or (probably) pensions.
+*** Ingreso total disponible de los hogares.
+What the earner takes home -- the money remaining after those forced payments for things like SS.
+*** Ingreso regular = regular periodic income; excludes windfalls
+How is that different from Corriente?
+** ENPH
+*** Ingresos is obvious
+*** Gasto total = obvious
+*** Gasto corriente = regular periodic spending
+*** Gasto corriente monetario = excluding barter
 * TODO use the "ingreso total" variable, V1945
 * TODO retain non-purchases as a separate value-ish column
 * TODO Why do I need to weaken tests in branch time-to-save-for-a-month?
