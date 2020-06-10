@@ -1,9 +1,5 @@
 * TODO merge master and time-to-save
 ** comparing branches
-*** safe & easy to merge now
-**** Makefile
-**** org/TODO.org
-**** branches/time-to-save-for-a-month/report.md
 *** time-to-save is strictly better in
 **** python/build/households_2_purchases.py
 **** python/build/households_2_purchases_test.py
@@ -23,9 +19,6 @@
  but it does so awkwardly:
    + + [ "used savings"
    +   , "recently bought this house" ]
-**** python/build/households_1_agg_plus_test.py
- I had to weaken one test by a factor of ten!
- And disable entirely another one!
 *** TODO unsure: python/build/purchase_sums.py
 **** Unlike master, time-to-save does the following
 ***** it defines this variable, which never gets used
@@ -37,6 +30,13 @@
 **** branches/time-to-save-for-a-month/report.md
 ** TODO incorporate time-to-save.py into Makefile
 Move it from build/ to reports/
+** TODO these tests merged from time-to-save needed changing for the 1/1 sample even on master
+*** In commit 5ba74b5361bfdf8453e075c68a91ab93f01ec44c
+the changes to
+  python/build/households_1_agg_plus_test.py
+*** Why was that needed?
+I had to weaken one test by a factor of ten!
+And disable entirely another one!
 * TODO ask Camilo Andres Avila Carreño
 ** DONE undescribed variables
 *** directorio
@@ -107,6 +107,7 @@ How is that different from Corriente?
 *** Gasto total = obvious
 *** Gasto corriente = regular periodic spending
 *** Gasto corriente monetario = excluding barter
+* TODO ? look at all-elderly households
 * TODO use the "ingreso total" variable, V1945
 * TODO retain non-purchases as a separate value-ish column
 * TODO Why do I need to weaken tests in branch time-to-save-for-a-month?
