@@ -7,11 +7,7 @@
 **** python/build/people/main.py
 **** python/build/people_2_buildings_test.py
 **** python/build/purchase_sums_test.py
-*** TODO it's probably better in
 **** python/build/buildings.py
- It pulls in one more variable,
- + , ("P5102", 0, "recently bought this house", 0) ].
-***** TODO : testt that variable
 *** TODO it's not exactly better in
 **** python/build/households_1_agg_plus.py
  The only difference is that it uses two more variables,
@@ -36,6 +32,9 @@ the changes to
 *** Why was that needed?
 I had to weaken one test by a factor of ten!
 And disable entirely another one!
+* TODO estrato : drop values above 6
+what do they mean?
+and then adjust the tests
 * TODO ask Camilo Andres Avila Carreño
 ** DONE undescribed variables
 *** directorio
@@ -232,6 +231,10 @@ def test_income_ranks( ppl : pd.DataFrame ) -> ():
       assert ppl[c] . mean() > 0.2
       assert ( (m > (0 if n > 1 else 0.2)) &
                (m < 1/n) )
+*** TODO check variable types
+see build/buildings_test.py for an example
+** TODO ensure no test conflates assetions with booleans
+That is, if a test returns a bool, it must be asserted, not merely evaluated.
 ** TODO double-check mk_solidaridad for contractors
 Is the tax code really that absurd? There are clauses that never hold.
 ** TODO incorporate tests in hand_test/ into automatic tests
