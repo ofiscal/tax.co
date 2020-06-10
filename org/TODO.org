@@ -5,7 +5,6 @@
 **** python/build/households_2_purchases_test.py
 **** python/build/people/files.py
 **** python/build/people/main.py
-***** TODO test that variable
 **** python/build/people_2_buildings_test.py
 **** python/build/purchase_sums_test.py
 *** TODO it's probably better in
