@@ -5,6 +5,9 @@ http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
  https://www.dane.gov.co/files/investigaciones/boletines/enph/boletin-enph-2017.pdf
 * PITFALLS
 ** "used savings" varies within household
+** "home purchase value" is, if present, not encoded via COICOP
+>>> (purchases["coicop"] == "12610104").mean()
+0.0
 * notation
 ** UNUSED means the code does not make mention of this variable
 ** DISABLED means the variable is commented out in the code

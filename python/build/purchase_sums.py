@@ -8,10 +8,6 @@ purchases = oio.readStage(
     c.subsample,
     "purchases_2_vat." + c.strategy_suffix )
 
-purchases["home purchase value"] = (
-    purchases[ purchases["coicop"] == "12610104" ]
-             [ "value" ] )
-
 if True: # deal with taxes encoded as purchases
   # PITFALL: The ENPH "purchase data" is not all purchases; some is taxes.
   # For instance, "predial_tax" below encodes not the value of the property,
