@@ -9,13 +9,16 @@
 **** python/build/buildings.py
 **** python/build/households_1_agg_plus.py
 *** TODO unsure: python/build/purchase_sums.py
-**** Unlike master, time-to-save retains "tax-purchases"
- #    purchases = purchases[ ~ purchases["coicop"]
 **** TODO : rename variables
    "tax",        "tax, predial"         and "tax, other"
 -> "value, tax", "value, tax, predial", and "value, tax, non-predial"
+**** TODO test variables
+"value, tax", "value, tax, predial", and "value, tax, non-predial"
 *** TODO should disappear before|at merge
 **** branches/time-to-save-for-a-month/report.md
+** TODO update time-to-save*.py for new spending variables
+Use "value, spending".
+Look over it, maybe make other subs.
 ** TODO incorporate time-to-save.py into Makefile
 Move it from build/ to reports/
 ** TODO these tests merged from time-to-save needed changing for the 1/1 sample even on master
