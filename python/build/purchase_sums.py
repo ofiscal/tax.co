@@ -18,16 +18,15 @@ if True: # Deal with taxes encoded as purchases.
   other_tax_coicops = { 12700602,  # vehiculo
                         12700603,  # renta
                         12700699 } # otros
-  purchases["tax, predial"] = (
+  purchases["value, tax, predial"] = (
     (purchases["coicop"] == predial_tax)
     * purchases["value"] )
-  purchases["tax, other"] = ( # vehicle, rent, and "other" taxes
-                              # PITFALL: Does not include VAT.
+  purchases["value, tax, purchaselike non-predial non-VAT"] = ( # vehicle, rent, and "other" taxes
     (purchases["coicop"] . isin( other_tax_coicops ) )
     * purchases["value"] )
 
   # Delete those taxes from the "value" column.
-  other_tax_coicops.add( predial_tax ) # PITFALL: Side-effects only.
+  other_tax_coicops.add( predial_tax )
   purchases.loc[
     purchases["coicop"] . isin( other_tax_coicops ),
     "value"] = 0
@@ -48,19 +47,19 @@ purchase_sums = purchases.groupby( ["household"]
              , "transactions"
              , "vat paid, max"
              , "vat paid, min"
-             , "tax, predial"
-             , "tax, other"
+             , "value, tax, predial"
+             , "value, tax, purchaselike non-predial non-VAT"
          ] ] . agg("sum")
 purchase_sums = purchase_sums.reset_index(
   level = ["household"] )
 
 if True: # It's faster to compute these columns post-aggregation.
-  purchase_sums["tax"] = (             # PITFALL: Does not include VAT.
-        purchase_sums["tax, predial"] +
-        purchase_sums["tax, other"] )
+  purchase_sums["value, tax, purchaselike non-VAT"] = (
+        purchase_sums["value, tax, predial"] +
+        purchase_sums["value, tax, purchaselike non-predial non-VAT"] )
   purchase_sums["value, spending"] = ( # Taxes and purchases, but no gifts.
-                                       # PITFALL: Includes VAT.
-      purchase_sums["tax"] +
+      # PITFALL: Includes VAT (it's part of "value, purchase").
+      purchase_sums["value, tax, purchaselike non-VAT"] +
       purchase_sums["value, purchase"] )
 
 oio.saveStage( c.subsample

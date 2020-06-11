@@ -9,9 +9,6 @@
 **** python/build/buildings.py
 **** python/build/households_1_agg_plus.py
 *** TODO unsure: python/build/purchase_sums.py
-**** TODO : rename variables
-   "tax",        "tax, predial"         and "tax, other"
--> "value, tax", "value, tax, predial", and "value, tax, non-predial"
 **** TODO test variables
 "value, tax", "value, tax, predial", and "value, tax, non-predial"
 *** TODO should disappear before|at merge

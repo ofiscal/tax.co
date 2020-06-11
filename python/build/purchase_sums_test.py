@@ -16,9 +16,9 @@ sums = oio.readStage(
 assert util.unique( sums.columns )
 assert ( set( sums.columns )  ==
          { "household",
-           "tax",
-           "tax, predial",
-           "tax, other",
+           "value, tax, purchaselike non-VAT",
+           "value, tax, predial",
+           "value, tax, purchaselike non-predial non-VAT",
            "transactions",
            "value, non-purchase",
            "value, purchase",
