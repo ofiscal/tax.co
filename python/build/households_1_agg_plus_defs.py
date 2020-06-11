@@ -58,7 +58,7 @@ cols_to_min_or_max__pre_rename = (
 # These columns are aggregated through min or max (or both, in some cases),
 # but they retain the same name.
 cols_to_min_or_max__no_name_change = (
-    [ "used savings"
+    [ "used savings" # PITFALL: Varies within household.
     , "recently bought this house"
     , "female head"
     , "pension, receiving"
