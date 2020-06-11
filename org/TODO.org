@@ -8,6 +8,11 @@
 **** python/build/people_2_buildings_test.py
 **** python/build/purchase_sums_test.py
 **** python/build/buildings.py
+*** TODO why is this test failing?
+The one for "used savings" (and maybe "recently bought this house" too)
+in households_1_agg_plus_test.py.
+It's copied straight from how it was pre-aggregation.
+Are both not constant within household?
 *** TODO it's not exactly better in
 **** python/build/households_1_agg_plus.py
  The only difference is that it uses two more variables,

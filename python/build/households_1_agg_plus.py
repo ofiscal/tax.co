@@ -55,8 +55,6 @@ if True: # aggregate from household members to households
     ) [ defs.cols_const_within_hh
     ] . agg("first")
   h_sum = ( ppl.loc[ :, ( ["household","members"]
-                        + [ "used savings"
-                          , "recently bought this house" ]
                         + defs.income_and_tax
                         + defs.cols_income_rank ) ]
           . groupby( "household" )

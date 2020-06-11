@@ -50,20 +50,24 @@ cols_income_rank = [ "income, rank 1"
 
 # These columns are aggregated through min or max (or both, in some cases),
 # and renamed.
-cols_to_min_or_max__pre_rename = [
-     "age", "literate", "student", "female", "edu"
+cols_to_min_or_max__pre_rename = (
+    [ "age", "literate", "student", "female", "edu"
     , "race, indig", "race, git|rom", "race, raizal", "race, palenq", "race, whi|mest" ]
+    )
 
 # These columns are aggregated through min or max (or both, in some cases),
 # but they retain the same name.
-cols_to_min_or_max__no_name_change = [
-      "female head"
+cols_to_min_or_max__no_name_change = (
+    [ "used savings"
+    , "recently bought this house"
+    , "female head"
     , "pension, receiving"
     , "pension, contributing (if not pensioned)"
     , "pension, contributor(s) (if not pensioned) = split"
     , "pension, contributor(s) (if not pensioned) = self"
     , "pension, contributor(s) (if not pensioned) = employer"
     , "seguro de riesgos laborales" ]
+    )
 
 cols_to_min_or_max = ( cols_to_min_or_max__pre_rename
                      + cols_to_min_or_max__no_name_change )
@@ -102,8 +106,6 @@ cols_new = (
 )
 
 cols_all = ( ["household"]
-           + [ "used savings"
-              , "recently bought this house" ]
            + cols_const_within_hh
            + income_and_tax
            + cols_to_min_or_max__no_name_change
