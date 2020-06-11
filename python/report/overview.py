@@ -74,7 +74,7 @@ if True: # create a summary dataframe
     , "vat/income, max"
     , "vat / purchase value, min"
     , "vat / purchase value, max"
-    , "predial" ]
+    , "tax, predial" ]
 
     + regime.income_tax_columns +
 
@@ -210,8 +210,8 @@ if True: # do the same thing to a subset of that data
     , "vat/income, min: mean"
     , "vat/income, max: median_unweighted"
     , "vat/income, max: mean"
-    , "predial: median_unweighted"
-    , "predial: mean" ]
+    , "tax, predial: median_unweighted"
+    , "tax, predial: mean" ]
 
     # "chain.from_iterable" concatenates lists
     + list( chain.from_iterable( [ [ c + ": median_unweighted"

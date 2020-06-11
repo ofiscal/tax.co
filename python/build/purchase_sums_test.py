@@ -14,15 +14,17 @@ sums = oio.readStage(
     "purchase_sums." + com.strategy_suffix )
 
 assert util.unique( sums.columns )
-assert ( list( sorted( sums.columns ) ) ==
-         [ "home purchase value",
-           "household",
-           "predial",
+assert ( set( sums.columns )  ==
+         { "household",
+           "tax",
+           "tax, predial",
+           "tax, other",
            "transactions",
            "value, non-purchase",
            "value, purchase",
+           "value, spending",
            "vat paid, max",
-           "vat paid, min" ] )
+           "vat paid, min" } )
 
 assert sums["household"].is_unique
 

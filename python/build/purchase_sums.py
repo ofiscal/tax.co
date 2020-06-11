@@ -8,23 +8,29 @@ purchases = oio.readStage(
     c.subsample,
     "purchases_2_vat." + c.strategy_suffix )
 
-if True: # deal with taxes encoded as purchases
+if True: # Deal with taxes encoded as purchases.
   # PITFALL: The ENPH "purchase data" is not all purchases; some is taxes.
   # For instance, "predial_tax" below encodes not the value of the property,
   # just the tax paid on it.
   # The coicop-vat bridge assigns that coicop code a vat of zero.
 
   predial_tax = 12700601
-  tax_coicops = { predial_tax,
-                  12700602,  # vehiculo
-                  12700603,  # renta
-                  12700699 } # otros
+  other_tax_coicops = { 12700602,  # vehiculo
+                        12700603,  # renta
+                        12700699 } # otros
+  purchases["tax, predial"] = (
+    (purchases["coicop"] == predial_tax)
+    * purchases["value"] )
+  purchases["tax, other"] = ( # vehicle, rent, and "other" taxes
+                              # PITFALL: Does not include VAT.
+    (purchases["coicop"] . isin( other_tax_coicops ) )
+    * purchases["value"] )
 
-  if True: # extract the predial tax into its own column
-    # TODO ? Retain other taxes beyond predial?
-    purchases["predial"] = (
-        (purchases["coicop"] == predial_tax)
-        * purchases["value"] )
+  # Delete those taxes from the "value" column.
+  other_tax_coicops.add( predial_tax ) # PITFALL: Side-effects only.
+  purchases.loc[
+    purchases["coicop"] . isin( other_tax_coicops ),
+    "value"] = 0
 
 purchases["value, purchase"] = (
     (purchases[ "is-purchase" ] > 0) *
@@ -34,7 +40,7 @@ purchases["value, non-purchase"] = (
     purchases["value"] )
 lpurchases = purchases.drop(
     columns = "value" )
-
+ 
 purchases["transactions"] = 1 # next this is summed within persons
 purchase_sums = purchases.groupby( ["household"]
          ) [ [ "value, purchase"
@@ -42,12 +48,20 @@ purchase_sums = purchases.groupby( ["household"]
              , "transactions"
              , "vat paid, max"
              , "vat paid, min"
-             , "tax"
              , "tax, predial"
              , "tax, other"
          ] ] . agg("sum")
 purchase_sums = purchase_sums.reset_index(
   level = ["household"] )
+
+if True: # It's faster to compute these columns post-aggregation.
+  purchase_sums["tax"] = (             # PITFALL: Does not include VAT.
+        purchase_sums["tax, predial"] +
+        purchase_sums["tax, other"] )
+  purchase_sums["value, spending"] = ( # Taxes and purchases, but no gifts.
+                                       # PITFALL: Includes VAT.
+      purchase_sums["tax"] +
+      purchase_sums["value, purchase"] )
 
 oio.saveStage( c.subsample
              , purchase_sums

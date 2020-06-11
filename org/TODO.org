@@ -10,8 +10,10 @@
 **** python/build/households_1_agg_plus.py
 *** TODO unsure: python/build/purchase_sums.py
 **** Unlike master, time-to-save retains "tax-purchases"
-if indeed there are any
  #    purchases = purchases[ ~ purchases["coicop"]
+**** TODO : rename variables
+   "tax",        "tax, predial"         and "tax, other"
+-> "value, tax", "value, tax, predial", and "value, tax, non-predial"
 *** TODO should disappear before|at merge
 **** branches/time-to-save-for-a-month/report.md
 ** TODO incorporate time-to-save.py into Makefile
@@ -110,7 +112,9 @@ See branches/time-to-save-for-a-month/README.md for details.
 is-purchase we probably assume to be 1, but the others ...?
 (they are often missing)
 ** TODO "vat" conflates some taxes
-That's why, for instance, its max in purchases_2_vat_test is 0.27, not 19
+That's why, for instance, its max in purchases_2_vat_test is 0.27, not 19.
+(0.27 is the total tax levied on big motorcycles --
+the usual 19%, plus 8% more.)
 * TODO possibly wrong
 ** TODO ? retain tax information discarded at build/purchase_sums.py
 ** TODO pension variables are bad
