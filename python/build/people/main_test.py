@@ -100,7 +100,6 @@ def test_upper_bound_on_fraction_missing(ppl: pd.DataFrame):
 # TODO : extend to all the old variables
 def test_means( ppl : pd.DataFrame ) -> None:
     x = ppl["used savings"].mean()
-    print(x)
     assert (x < 0.05) & (x > 0.005)
 
 if True: # run tests

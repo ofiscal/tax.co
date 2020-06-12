@@ -8,9 +8,9 @@
 **** python/build/purchase_sums_test.py
 **** python/build/buildings.py
 **** python/build/households_1_agg_plus.py
-*** TODO unsure: python/build/purchase_sums.py
 *** TODO should disappear before|at merge
-**** branches/time-to-save-for-a-month/report.md
+**** branches/time-to-save-for-a-month/README.md
+**** ? branches/time-to-save-for-a-month/report.md
 ** TODO update time-to-save*.py for new spending variables
 Use "value, spending".
 Look over it, maybe make other subs.

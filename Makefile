@@ -134,7 +134,6 @@ overview = \
   output/vat/tables/recip-$(ss)/overview.$(strategy_year_suffix).tex \
   output/vat/tables/recip-$(ss)/overview.$(strategy_year_suffix).xlsx
 
-
 goods_by_income_decile = \
   output/vat/tables/recip-$(ss)/goods_by_income_decile.csv \
   output/vat/tables/recip-$(ss)/goods,first_six_deciles.csv
