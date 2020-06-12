@@ -9,8 +9,6 @@
 **** python/build/buildings.py
 **** python/build/households_1_agg_plus.py
 *** TODO unsure: python/build/purchase_sums.py
-**** TODO test variables
-"value, tax", "value, tax, predial", and "value, tax, non-predial"
 *** TODO should disappear before|at merge
 **** branches/time-to-save-for-a-month/report.md
 ** TODO update time-to-save*.py for new spending variables
@@ -246,6 +244,13 @@ A function does not record to the log unless it completes.
 **** unit tests for people/main.py
 ? What if a variable is built up in steps in main.py?
 Should I divide main.py into a separate file for each step?
+** TODO purchase_sums.py: subdivide for testing
+Currently the variables that are created before the groupby statement
+are not "cleverly testable". I can test their means, ranges, etc.,
+but I can't test certain identities without the purchase-level data.
+
+Saving an intermediate purchase-lsevel data set containing
+them would make it possible.
 ** tasks
 *** restructure programs for testing
 so that it's like this:

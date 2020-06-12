@@ -3,6 +3,7 @@
 if True:
   import pandas as pd
   #
+  import python.build.classes as cla
   import python.build.output_io as oio
   import python.common.common as com
   from   python.common.misc import num_households
@@ -26,6 +27,53 @@ assert ( set( sums.columns )  ==
            "vat paid, max",
            "vat paid, min" } )
 
+if com.subsample < 11: # The data is too sparse to test
+                       # the smaller samples this way
+  for (c,ts) in [
+    ( "transactions",
+      [ cla.MeanBounds    ( 60 , 120 ),
+        cla.CoversRange   ( 1  , 200 ),
+        cla.InRange       ( 1  , 400 ),
+        cla.MissingAtMost ( 0 ) ] ),
+
+    ( "value, tax, purchaselike non-VAT",
+      [ cla.MeanBounds    (1e3 , 1e4),
+        cla.CoversRange   (0   , 2e6),
+        cla.InRange       (0   , 5e7),
+        cla.MissingAtMost (0) ] ),
+
+    ( "value, tax, predial",
+      [ cla.MeanBounds    (1e3 ,1e4),
+        cla.CoversRange   (0   ,1e3),
+        cla.InRange       (0   ,5e7),
+        cla.MissingAtMost (0) ] ),
+
+    ( "value, tax, purchaselike non-predial non-VAT",
+      [ cla.MeanBounds    (0 ,5e3),
+        cla.CoversRange   (0 ,9e5),
+        cla.InRange       (0 ,2e7), # surprising, given the range of the predial -- I would have imagined no other tax comes close
+        cla.MissingAtMost (0) ] ),
+
+     ( "value, non-purchase",
+       [ cla.MeanBounds    (0 ,2e3),
+         cla.CoversRange   (0 ,1e6),
+         cla.InRange       (0 ,3e7),
+         cla.MissingAtMost (0) ] ),
+
+    ( "value, purchase",
+       [ cla.MeanBounds    (2e6 ,5e6),
+         cla.CoversRange   (1e2 ,4e7), # TODO ? This minimum is nuts.
+         cla.InRange       (0   ,2e8),
+         cla.MissingAtMost (0) ] ),
+
+    ( "value, spending",
+       [ cla.MeanBounds    (2e6 ,5e6),
+         cla.CoversRange   (1e2 ,4e7), # TODO ? This minimum is nuts.
+         cla.InRange       (0   ,2e8),
+         cla.MissingAtMost(0) ] ) ]:
+      for t in ts:
+          assert t.test( sums[c] )
+
 assert sums["household"].is_unique
 
 assert util.near( len(sums),
@@ -35,3 +83,4 @@ assert util.near( len(sums),
 oio.test_write( com.subsample,
                 "build_purchase_sums",
                 "It worked." )
+
