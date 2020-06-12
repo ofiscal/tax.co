@@ -70,6 +70,7 @@ def test_ranges(ppl: pd.DataFrame):
     , "income, labor"                           : cla.InRange(0, 3e9)
     , "income, borrowing"                       : cla.InRange(0, 1e8)
     , "member-by-income"                        : cla.InRange(1, 50)
+    , "used savings"   : cla.InSet( {True,False} )
     , "disabled"       : cla.InSet( {True,False} )
     , "dependent"      : cla.InSet( {True,False} )
     , "race, indig"    : cla.InSet( {True,False} )
@@ -81,6 +82,7 @@ def test_ranges(ppl: pd.DataFrame):
   for k in specs.keys():
     assert specs[k] . test( ppl[k] )
 
+# TODO ! Test that all other variables are missing nothing.
 def test_upper_bound_on_fraction_missing(ppl: pd.DataFrame):
   specs = { # test_ranges guarantees that these are
             # the only columns with missing values
@@ -95,6 +97,10 @@ def test_upper_bound_on_fraction_missing(ppl: pd.DataFrame):
   for k in specs.keys():
     assert (pd.isnull(ppl[k]).sum() / len(ppl)) < specs[k]
 
+# TODO : extend to all the old variables
+def test_means( ppl : pd.DataFrame ) -> None:
+    x = ppl["used savings"].mean()
+    assert (x < 0.05) & (x > 0.005)
 
 if True: # run tests
   log = "starting\n"
@@ -108,6 +114,7 @@ if True: # run tests
                                               , files.edu_key.values() )
   test_ranges( ppl )
   test_upper_bound_on_fraction_missing( ppl )
+  test_means( ppl )
 
   assert util.near( len(ppl),
                     num_people / com.subsample,

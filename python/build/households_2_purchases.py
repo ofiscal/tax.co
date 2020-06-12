@@ -29,11 +29,16 @@ if True: # In San Andrés there is no VAT.
     merge.loc[ merge["region-1"] == "SAN ANDRÉS", "vat paid, " + s ] = 0
 
 if True: # create a few more variables
-  merge["vat/value, min" ] = merge["vat paid, min"] / merge["value" ]
-  merge["vat/value, max" ] = merge["vat paid, max"] / merge["value" ]
-  merge["vat/income, min"] = merge["vat paid, min"] / merge["income"]
-  merge["vat/income, max"] = merge["vat paid, max"] / merge["income"]
-  merge["value/income"   ] = merge["value"]         / merge["income"]
+  merge["vat / purchase value, min" ] = (
+    merge["vat paid, min"]   / merge["value, purchase" ] )
+  merge["vat / purchase value, max" ] = (
+    merge["vat paid, max"]   / merge["value, purchase" ] )
+  merge["vat/income, min"] = (
+    merge["vat paid, min"]   / merge["income"] )
+  merge["vat/income, max"] = (
+    merge["vat paid, max"]   / merge["income"] )
+  merge["purchase value / income"   ] = (
+    merge["value, purchase"] / merge["income"] )
 
 if True: # save
   oio.saveStage(

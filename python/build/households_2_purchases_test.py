@@ -26,11 +26,11 @@ if True:
 
 if True: # See people_2_buildings_test for how to use these definitions.
   assert util.unique( merge.columns )
-  new_cols = [ "vat/value, min",
-               "vat/value, max",
+  new_cols = [ "vat / purchase value, min",
+               "vat / purchase value, max",
                "vat/income, min",
                "vat/income, max",
-               "value/income" ]
+               "purchase value / income" ]
   assert ( len( merge.columns ) ==
            len( hh_cols.columns ) +
            len( pur.columns ) - 1 + # omit the key that was merged on
@@ -45,29 +45,29 @@ if True:
 
 if True:
   for k,v in {
-      "vat/value, min"  : cl.InRange( 0, 0.3 ),
-      "vat/value, max"  : cl.InRange( 0, 0.3 ),
+      "vat / purchase value, min"  : cl.InRange( 0, 0.3 ),
+      "vat / purchase value, max"  : cl.InRange( 0, 0.3 ),
       "vat/income, min" : cl.InRange( 0, np.inf ),
       "vat/income, max" : cl.InRange( 0, np.inf ),
-      "value/income"    : cl.InRange( 0, np.inf )
+      "purchase value / income"    : cl.InRange( 0, np.inf )
       }.items():
     assert v.test( merge[k] )
   for k,v in {
       # These bounds could be tighter,
       # but the 1/1000 subsample has a small range.
-      "vat/value, min"  : cl.CoversRange( 0,      0.1    ),
-      "vat/value, max"  : cl.CoversRange( 0,      0.1    ),
+      "vat / purchase value, min"  : cl.CoversRange( 0,      0.1    ),
+      "vat / purchase value, max"  : cl.CoversRange( 0,      0.1    ),
       "vat/income, min" : cl.CoversRange( 0,      np.inf ),
       "vat/income, max" : cl.CoversRange( 0,      np.inf ),
-      "value/income"    : cl.CoversRange( 0.2,    np.inf )
+      "purchase value / income"    : cl.CoversRange( 0.2,    np.inf )
       }.items():
     assert v.test( merge[k] )
   for k,v in {
-      "vat/value, min"  : cl.MeanBounds( 2.5e-2, 4.5e-2 ),
-      "vat/value, max"  : cl.MeanBounds( 2.5e-2, 4.5e-2 ),
+      "vat / purchase value, min"  : cl.MeanBounds( 2.5e-2, 4.5e-2 ),
+      "vat / purchase value, max"  : cl.MeanBounds( 2.5e-2, 4.5e-2 ),
       "vat/income, min" : cl.MeanBounds( np.inf, np.inf ),
       "vat/income, max" : cl.MeanBounds( np.inf, np.inf ),
-      "value/income"    : cl.MeanBounds( np.inf, np.inf )
+      "purchase value / income"    : cl.MeanBounds( np.inf, np.inf )
       }.items():
     assert v.test( merge[k] )
   for c in new_cols:

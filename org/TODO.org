@@ -5,38 +5,28 @@
 **** python/build/households_2_purchases_test.py
 **** python/build/people/files.py
 **** python/build/people/main.py
-***** TODO test that variable
 **** python/build/people_2_buildings_test.py
 **** python/build/purchase_sums_test.py
-*** TODO it's probably better in
 **** python/build/buildings.py
- It pulls in one more variable,
- + , ("P5102", 0, "recently bought this house", 0) ].
-***** TODO : testt that variable
-*** TODO it's not exactly better in
 **** python/build/households_1_agg_plus.py
- The only difference is that it uses two more variables,
- but it does so awkwardly:
-   + + [ "used savings"
-   +   , "recently bought this house" ]
-*** TODO unsure: python/build/purchase_sums.py
-**** Unlike master, time-to-save does the following
-***** it defines this variable, which never gets used
-  purchases["home purchase value"] = ...
-****** TODO ? test it, or leave a note that it's untested
-***** it retains "tax-purchases", if indeed there are any
- #    purchases = purchases[ ~ purchases["coicop"]
 *** TODO should disappear before|at merge
-**** branches/time-to-save-for-a-month/report.md
+**** branches/time-to-save-for-a-month/README.md
+**** ? branches/time-to-save-for-a-month/report.md
+** TODO update time-to-save*.py for new spending variables
+Use "value, spending".
+Look over it, maybe make other subs.
 ** TODO incorporate time-to-save.py into Makefile
 Move it from build/ to reports/
-** TODO these tests needed changing for the 1/1 sample even on master
-In the commit on master just after 2724f9ccb8658a0201dec379309b1a6cc12d0a69,
-  the changes to
-    python/build/households_1_agg_plus_test.py
-Why was that needed?
-  I had to weaken one test by a factor of ten!
-  And disable entirely another one!
+** TODO these tests merged from time-to-save needed changing for the 1/1 sample even on master
+*** In commit 5ba74b5361bfdf8453e075c68a91ab93f01ec44c
+the changes to
+  python/build/households_1_agg_plus_test.py
+*** Why was that needed?
+I had to weaken one test by a factor of ten!
+And disable entirely another one!
+* TODO estrato : drop values above 6
+what do they mean?
+and then adjust the tests
 * TODO ask Camilo Andres Avila Carreño
 ** DONE undescribed variables
 *** directorio
@@ -107,6 +97,7 @@ How is that different from Corriente?
 *** Gasto total = obvious
 *** Gasto corriente = regular periodic spending
 *** Gasto corriente monetario = excluding barter
+* TODO ? look at all-elderly households
 * TODO use the "ingreso total" variable, V1945
 * TODO retain non-purchases as a separate value-ish column
 * TODO Why do I need to weaken tests in branch time-to-save-for-a-month?
@@ -120,7 +111,9 @@ See branches/time-to-save-for-a-month/README.md for details.
 is-purchase we probably assume to be 1, but the others ...?
 (they are often missing)
 ** TODO "vat" conflates some taxes
-That's why, for instance, its max in purchases_2_vat_test is 0.27, not 19
+That's why, for instance, its max in purchases_2_vat_test is 0.27, not 19.
+(0.27 is the total tax levied on big motorcycles --
+the usual 19%, plus 8% more.)
 * TODO possibly wrong
 ** TODO ? retain tax information discarded at build/purchase_sums.py
 ** TODO pension variables are bad
@@ -232,6 +225,10 @@ def test_income_ranks( ppl : pd.DataFrame ) -> ():
       assert ppl[c] . mean() > 0.2
       assert ( (m > (0 if n > 1 else 0.2)) &
                (m < 1/n) )
+*** TODO check variable types
+see build/buildings_test.py for an example
+** TODO ensure no test conflates assetions with booleans
+That is, if a test returns a bool, it must be asserted, not merely evaluated.
 ** TODO double-check mk_solidaridad for contractors
 Is the tax code really that absurd? There are clauses that never hold.
 ** TODO incorporate tests in hand_test/ into automatic tests
@@ -248,6 +245,13 @@ A function does not record to the log unless it completes.
 **** unit tests for people/main.py
 ? What if a variable is built up in steps in main.py?
 Should I divide main.py into a separate file for each step?
+** TODO purchase_sums.py: subdivide for testing
+Currently the variables that are created before the groupby statement
+are not "cleverly testable". I can test their means, ranges, etc.,
+but I can't test certain identities without the purchase-level data.
+
+Saving an intermediate purchase-lsevel data set containing
+them would make it possible.
 ** tasks
 *** restructure programs for testing
 so that it's like this:

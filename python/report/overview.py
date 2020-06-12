@@ -66,15 +66,15 @@ if True: # create a summary dataframe
     , "income, labor, rank 5"
     , "members"
     , "female head"
-    , "value"
-    , "value/income"
+    , "value, purchase"
+    , "purchase value / income"
     , "vat paid, min"
     , "vat paid, max"
     , "vat/income, min"
     , "vat/income, max"
-    , "vat/value, min"
-    , "vat/value, max"
-    , "predial" ]
+    , "vat / purchase value, min"
+    , "vat / purchase value, max"
+    , "value, tax, predial" ]
 
     + regime.income_tax_columns +
 
@@ -196,22 +196,22 @@ if True: # do the same thing to a subset of that data
     , "income, labor, rank 5: mean_nonzero"
     , "members: mean"
     , "female head: mean"
-    , "value: median_unweighted"
-    , "value: mean"
+    , "value, purchase: median_unweighted"
+    , "value, purchase: mean"
     , "vat paid, min: mean"
     , "vat paid, max: mean"
-    , "value/income: median_unweighted"
-    , "value/income: mean"
-    , "vat/value, min: median_unweighted"
-    , "vat/value, min: mean"
-    , "vat/value, max: median_unweighted"
-    , "vat/value, max: mean"
+    , "purchase value / income: median_unweighted"
+    , "purchase value / income: mean"
+    , "vat / purchase value, min: median_unweighted"
+    , "vat / purchase value, min: mean"
+    , "vat / purchase value, max: median_unweighted"
+    , "vat / purchase value, max: mean"
     , "vat/income, min: median_unweighted"
     , "vat/income, min: mean"
     , "vat/income, max: median_unweighted"
     , "vat/income, max: mean"
-    , "predial: median_unweighted"
-    , "predial: mean" ]
+    , "value, tax, predial: median_unweighted"
+    , "value, tax, predial: mean" ]
 
     # "chain.from_iterable" concatenates lists
     + list( chain.from_iterable( [ [ c + ": median_unweighted"

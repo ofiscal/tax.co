@@ -449,4 +449,6 @@ if True: # drop vars that are (so far) unused downstream of here
     , "relative, child"
     , "relative, non-child" ] )
 
+ppl[ "used savings" ] = ppl[ "used savings" ] == 1
+
 oio.saveStage(cl.subsample, ppl, 'people_1')

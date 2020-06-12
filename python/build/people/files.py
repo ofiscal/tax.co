@@ -223,7 +223,9 @@ files = [
       + income_labor_non_peso
       + beca_sources_govt
       + beca_sources_private
-      + [ ("P6236", 0, "non-beca sources", 0) ]
+      + [ ("P6236", 0, "non-beca sources", 0)
           # PITFALL: Not a number. Instead, a space-separated list of ints.
+        , ("P7516", 0, "used savings", 0) ]
+          # "1 » Sí 2 » No 3 » No tiene ahorros
     , c.corrections
 ) ]

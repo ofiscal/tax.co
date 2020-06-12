@@ -15,7 +15,7 @@ import python.common.common as cl
 
 ppl = pd.DataFrame( {"dividends": [i * c.uvt for i in [0,600,1000,1001]] } )
 
-ppl["tax"] = ppl["dividends"].apply(
+ppl["value, tax, purchaselike non-VAT"] = ppl["dividends"].apply(
   lambda x:
     0                                     if x < (600  * c.uvt)
     else (      (x - 600  * c.uvt) * 0.05 if x < (1000 * c.uvt)

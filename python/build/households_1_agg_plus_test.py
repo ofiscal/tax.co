@@ -76,7 +76,9 @@ def test_bools( hh : pd.DataFrame,
                   ppl : pd.DataFrame ) -> ():
 
     bool_cols = ( defs.cols_to_min_or_max__no_name_change +
-                  [ "has-male",
+                  [ "used savings",
+                    "recently bought this house",
+                    "has-male",
                     "has-lit",
                     "has-student",
                     "has-female",
@@ -114,6 +116,10 @@ def test_bools( hh : pd.DataFrame,
         ("has-whi|mest", cla.MeanBounds(0.8,1)),
         ("has-child", cla.MeanBounds(0.4,0.8)),
         ("has-elderly", cla.MeanBounds(0.1,0.3)),
+        ("used savings", cla.MeanBounds(0.03,0.12)), # PITFALL:
+                     # Bigger than the mean from the people data,
+                     # because it varies within household.
+        ("recently bought this house", cla.MeanBounds( 0,0.01 ) ),
         ("female head", cla.MeanBounds(0.25,0.55)),
         ("seguro de riesgos laborales", cla.MeanBounds(0.3,0.6)) ]:
       assert test.test( hh[c] )

@@ -25,6 +25,7 @@ cols1 = set( in_cols.columns )
 cols2 = set( out.columns      )
 new_cols = {
     "estrato",
+    'recently bought this house',
     "region-1",
     "region-2",
     "age-decile",
