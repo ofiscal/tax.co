@@ -1,53 +1,11 @@
-* TODO merge master and time-to-save
-** comparing branches
-*** time-to-save is strictly better in
-**** python/build/households_2_purchases.py
-**** python/build/households_2_purchases_test.py
-**** python/build/people/files.py
-**** python/build/people/main.py
-**** python/build/people_2_buildings_test.py
-**** python/build/purchase_sums_test.py
-**** python/build/buildings.py
-**** python/build/households_1_agg_plus.py
-*** TODO should disappear before|at merge
-**** branches/time-to-save-for-a-month/README.md
-**** ? branches/time-to-save-for-a-month/report.md
-** TODO update time-to-save*.py for new spending variables
-Use "value, spending".
-Look over it, maybe make other subs.
-** TODO incorporate time-to-save.py into Makefile
-Move it from build/ to reports/
-** TODO these tests merged from time-to-save needed changing for the 1/1 sample even on master
-*** In commit 5ba74b5361bfdf8453e075c68a91ab93f01ec44c
-the changes to
-  python/build/households_1_agg_plus_test.py
-*** Why was that needed?
-I had to weaken one test by a factor of ten!
-And disable entirely another one!
-* TODO estrato : drop values above 6
-what do they mean?
-and then adjust the tests
-* TODO ask Camilo Andres Avila Carreño
-** DONE undescribed variables
-*** directorio
-The only key variable.
-*** orden
-Identifies people in people data.
-In others, it's not, and it's useless.
-The goal is household, not person, expenditures.
-*** secuencia_encuesta
-also useless
-*** secuencia_p
-also useless
-*** cap
-= capitulo = section of the survey
-Has to do with mensualizacion.
-They follow urban 2 weeks, rural 1 week.
-No way to know when, because anonymized.
-** DONE identifiers (unit of observation, linking)
-** TODO ! ENPH has "itec" = ingreso total
-** DONE Is it possible to determine who in a household made an expenditure?
-** DONE poor high-savers
+* TODO time-to-save
+** TODO try new net income, expenditure vars from DANE
+*** Read notes from Camilo and Daniel.
+*** Determine which variables to import.
+Try first: ICMDUG and GCMUG
+*** Import them at person-level, propogate completely through pipeline.
+*** Try running time-to-save using those instead; compare results.
+*** See if as many high-savers are poor.
 I'm finding 1% of the sample who earn less than 500,000,
 yet save at least 40% of their income:
   spending / (income - spending) = 0.66 => save for a month in 20 days
@@ -56,35 +14,50 @@ yet save at least 40% of their income:
   spending = income / 1.66 = income * (3/5)
 Their mean in-kind income is 8,000 pesos/month,
 and their mean non-purchase consumption is 2,000 pesos / month.
-Although if a purchase is not labeled, I call it a purchase.
-  Yes, assume that.
-** DONE used savings?
-are long-term only
-** DONE one does not need quantity to determine expenditure, right?
-right
-** TODO if missing freq, assume mesual
-** DONE absurdly big purchase numbers
+** TODO ? look at all-elderly households
+** TODO archive explanations from Camilo and Camilo
+once this is done
+* TODO ask Camilo Andres Avila Carreño
+** undescribed variables
+*** directorio
+The only key variable.
+*** orden
+Identifies people in people data.
+In others, it's not, and it's useless.
+*** secuencia_encuesta
+also useless
+*** secuencia_p
+also useless
+*** cap
+= capitulo = section of the survey
+Has to do with `mensualizacion`.
+They follow urban 2 weeks, rural 1 week.
+** No way to know when someone was interviewed
+because anonymized
+** person-level expenditure data is unavailable
+The goal of the purchase data is household, not person, expenditures.
+** Good: if a purchase is not labeled, I call it a purchase.
+Camilo Andres Avila Carreño says yes, we should assume that.
+** P7516, "used savings" is long-term only
+says Camilo Andres Avila Carreño
+** One does not need quantity to determine expenditure.
+says Camilo Andres Avila Carreño
+** absurdly big purchase numbers
 absurdly_big_expenditure_threshold = 1e9 # MAGIC
 Something in the full sample has a quantity value of 9e7.
 Currently I don't throw out any quantities, just expenditures.
-** TODO what does "otros impuestos" include?
-This is not a DANE question, unless I find that the codes are actually used in the ENPH.
-
-From the coicop bridge:
-  "Impuesto predial y de valorizaci�n de la(s) vivienda(s) ocupada(s) por el hogar";12700601;0;0;0;
-  Impuestos del vehiculo;12700602;0;0;0;
-  Impuesto de renta;12700603;0;0;0;
-  Otros impuestos (de timbre, etc);12700699;0;0;0;
-** DONE no-income spending
+Camilo Andres Avila Carreño says yeah, there are outliers, use your judgment.
+** no-income spending
 ? missed the first thing
-They might have been temp. unemployed.
+They might have been temporarily unemployed.
+In the GEIH they impute income from (space,edu)-neighbors for people reporting no income.
 * TODO Daniel explains variables
 ** glossario for something like the ENPH
 https://www.dane.gov.co/index.php/estadisticas-por-tema/pobreza-y-condiciones-de-vida/glosario-ingresos-y-gastos
 Not specifically for ENPH, but relevant.
 *** Unidad de Gasto = household, probably directorio
 *** Perceptor de ingresos = receiver of income
-*** Corriente = usual (income), excluding (windfalls)
+*** Corriente = usual (income), excluding windfalls
 *** Transferencias y prestaciones corrientes
 Transferencias = government transfers
 Prestaciones = employee's income spent by the employer on services for the employee, such as healthcare or (probably) pensions.
@@ -93,15 +66,9 @@ What the earner takes home -- the money remaining after those forced payments fo
 *** Ingreso regular = regular periodic income; excludes windfalls
 How is that different from Corriente?
 ** ENPH
-*** Ingresos is obvious
-*** Gasto total = obvious
+*** "Ingreso \*" and "Gasto total" are obvious
 *** Gasto corriente = regular periodic spending
 *** Gasto corriente monetario = excluding barter
-* TODO ? look at all-elderly households
-* TODO use the "ingreso total" variable, V1945
-* TODO retain non-purchases as a separate value-ish column
-* TODO Why do I need to weaken tests in branch time-to-save-for-a-month?
-See branches/time-to-save-for-a-month/README.md for details.
 * TODO shared decision
 ** TODO add cesantias + primas to (which?) income measure
  should be in denominator, and not numerator, of tax rate.
@@ -115,7 +82,30 @@ That's why, for instance, its max in purchases_2_vat_test is 0.27, not 19.
 (0.27 is the total tax levied on big motorcycles --
 the usual 19%, plus 8% more.)
 * TODO possibly wrong
-** TODO ? retain tax information discarded at build/purchase_sums.py
+** TODO if missing freq, assume monthly
+says Camilo Andres Avila Carreño
+** TODO what does "otros impuestos" include?
+They represent a small but nonzero part of expenditures --
+see build/purchase_sums.py.
+
+From the coicop bridge:
+  "Impuesto predial y de valorizaci�n de la(s) vivienda(s) ocupada(s) por el hogar";12700601;0;0;0;
+  Impuestos del vehiculo;12700602;0;0;0;
+  Impuesto de renta;12700603;0;0;0;
+  Otros impuestos (de timbre, etc);12700699;0;0;0;
+** TODO once `conda update` installs pandas 1.04, use that
+*** what to do
+Every week or so, try building the Dockerfile again.
+While building, search for "pandas", check the version.
+If it's still 1.03, ignore; otherwise, build a new tax.co.
+*** explanation
+1.04 fixes some bugs that may have been bothering me,
+  regarding categorical data, isin(), and replace(), among others.
+Currently the latest pandas version that conda update installs in the docker container is 1.03, which doesn't have that good stuff.
+The pandas version in the latest tax.co docker image is 1.02.
+** TODO estrato : drop values above 6
+ what do they mean?
+ and then adjust the tests
 ** TODO pension variables are bad
 They're missing a lot, so their averages aren't right.
 But we don't use them.
@@ -152,44 +142,32 @@ They contradict each other.
  max            25.000000  1.270990e+07
 ** TODO ? throw out purchasees with absurd quantities?
 Something in the full sample has a quantity value of 9e7.
-** TODO ? limit purchases to purchases
-In the time-to-save-for-a-month branch, in purchase_sums.py,
-this already exists:
-  purchases = purchases[
-      purchases["is-purchase"] > 0 ]
-Should it be in master?
-* TODO Makefile: add missing dependency
- households_1_agg_plus: $(households_1_agg_plus)
- $(households_1_agg_plus):                    \
-   python/build/households_1_agg_plus.py      \
-+  python/build/households_1_agg_plus_defs.py \
-   python/common/util.py                      \
-   python/build/output_io.py                  \
-   python/regime/r$(yr).py                    \
-* TODO definitely unsafe
-** TODO use make.py instead of make
-*** divide recipes better, and actually target them
- Currently the only recipe expects something to be built in a parent folder of where it is built.
-*** some recipes don't need to depend on all three variables
- the three variables being subsample, strategy, year
-** TODO handle csv format outside of pandas
-document everything below, then merge the branch into `tests`
-*** motivating example
-in ./build/vat_rates.py:
-  vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
-                          , sep = ";" # TODO PITFALL
-                          , encoding = "latin1" )
-*** TODO document or add to the preliminary Makefile
- apt install csvtool
- mv data/enph_2017/2_unzipped/csv -> /ssv
- mkdir 3_csv
- cd 2_unzipped/ssv
- for i in *; do csvtool -t ';' -u ',' cat $i -o ../../3_csv/$i; done
-*** TODO csvtools deletes whitespace between separators
- For those values, the ssv files read as strings,
- while the csv files read as NaN.
-*** TODO csvtool converts numbers containing commas to strings
 * TODO test suite
+** TODO why did I have to weaken these tests from the time-to-save branch?
+*** The problem
+In commit 5ba74b5361bfdf8453e075c68a91ab93f01ec44c
+the following changes to
+  python/build/households_1_agg_plus_test.py
+I had to weaken one test by a factor of ten!
+And disable entirely another one!
+*** the changes
+     assert ( ( hh [defs.income_and_tax] . sum() -
+                ppl[defs.income_and_tax] . sum() )
+-             . abs() . max() ) < 1e-4
++             . abs() . max() ) < 3e-3
+
+ def test_bools( hh : pd.DataFrame,
+                   ppl : pd.DataFrame ) -> ():
+@@ -93,8 +92,8 @@ def test_bools( hh : pd.DataFrame,
+         for c in bool_cols:
+             assert hh[c].min() == 0
+             assert hh[c].max() == 1
+-        for c in ["age","edu"]:
+-            assert hh[c + "-max"].max() == ppl[c].max()
++        # for c in ["age","edu"]:
++        #     assert hh[c + "-max"].max() == ppl[c].max()
+     assert hh["age-min"].mean() < (ppl["age"].mean() * 0.8)
+     assert hh["age-max"].mean() > (ppl["age"].mean() * 1.2)
 ** TODO homogenize tests
 *** DONE assert python.common.util.unique( df.columns ) for all df
 *** TODO for every .py file
@@ -615,6 +593,28 @@ water exempt, others excluded
 *** primary inputs: income, kids, voluntary pension fund contributions.
 *** at most 40% of a person's inncome can be exempt.
 * TODO safety (#safe)
+** TODO use make.py instead of make
+*** divide recipes better, and actually target them
+ Currently the only recipe expects something to be built in a parent folder of where it is built.
+*** some recipes don't need to depend on all three variables
+ the three variables being subsample, strategy, year
+** TODO handle csv format outside of pandas
+document everything below, then merge the branch into `tests`
+*** motivating example
+in ./build/vat_rates.py:
+  vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
+                          , sep = ";" # TODO PITFALL
+                          , encoding = "latin1" )
+*** TODO document or add to the preliminary Makefile
+ apt install csvtool
+ mv data/enph_2017/2_unzipped/csv -> /ssv
+ mkdir 3_csv
+ cd 2_unzipped/ssv
+ for i in *; do csvtool -t ';' -u ',' cat $i -o ../../3_csv/$i; done
+*** TODO csvtools deletes whitespace between separators
+ For those values, the ssv files read as strings,
+ while the csv files read as NaN.
+*** TODO csvtool converts numbers containing commas to strings
 ** TODO the make recipe for goods-by-income-decile.py is confusing
 It is only used by the del-rosario strategy, which has its own makefile.
 But it is created in the primary Makefile.
