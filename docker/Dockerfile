@@ -56,7 +56,8 @@ RUN pip install pydotplus graphviz
 RUN pip install weightedcalcs
 
 
-# RUN conda update --all --yes
+RUN echo "updating conda: 2020 06 16"
+RUN conda update --all --yes
 # RUN conda update -n base conda
 
 # So that the container runs without root privileges on the host.
