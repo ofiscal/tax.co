@@ -69,7 +69,7 @@ if True: # aggregate from household members to households
   h_min["has-male"] = 1 - h_min["has-male"]
     # If female is 0 for anyone in a household, then min(female) = 0,
     # i.e. the household includes a male.
-
+  #
   if True: # Aggregating by max.
       # This is complicated by the categorical `edu` variable.
       # For some reason, if `edu` is missing for everyone in a household,

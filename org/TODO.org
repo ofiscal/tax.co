@@ -1,9 +1,6 @@
 * TODO time-to-save
 ** TODO try new net income, expenditure vars from DANE
-*** Read notes from Camilo and Daniel.
-*** Determine which variables to import.
-Try first: ICMDUG and GCMUG
-*** Import them at person-level, propogate completely through pipeline.
+*** DONE Import new total income, expense vars at person-level, propogate completely through pipeline.
 *** Try running time-to-save using those instead; compare results.
 *** See if as many high-savers are poor.
 I'm finding 1% of the sample who earn less than 500,000,
@@ -14,6 +11,10 @@ yet save at least 40% of their income:
   spending = income / 1.66 = income * (3/5)
 Their mean in-kind income is 8,000 pesos/month,
 and their mean non-purchase consumption is 2,000 pesos / month.
+*** consider other new DANE variables?
+So far I've imported ICMDUG, GCMUG.
+  See how by looking at the commit immediately following
+   c28b76a6511cdd8f6a2e7e4ebf368c94a94a0dca.
 ** TODO ? look at all-elderly households
 ** TODO archive explanations from Camilo and Camilo
 once this is done
@@ -82,6 +83,15 @@ That's why, for instance, its max in purchases_2_vat_test is 0.27, not 19.
 (0.27 is the total tax levied on big motorcycles --
 the usual 19%, plus 8% more.)
 * TODO possibly wrong
+** TODO check non-functional use of Corrections
+*** e.g. in purchases_2_vat.py, one is run without assignment:
+  if True: # TODO ? move these upstream, to purchases/main.py
+    ( cla . Correction # no "never" frequencies
+      . Drop_Row_If_Column_Satisfies_Predicate(
+        "per month", lambda x: x==11 )
+      . correct( purchases ) )
+*** but purchases/correct.py uses assignment
+purchases = c.correct( purchases )
 ** TODO if missing freq, assume monthly
 says Camilo Andres Avila Carreño
 ** TODO what does "otros impuestos" include?

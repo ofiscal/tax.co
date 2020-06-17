@@ -30,6 +30,8 @@ new_cols = {
     "region-2",
     "age-decile",
     "income-decile",
+    "ICMDUG",
+    "GCMUG",
     "female head" }
 
 assert util.unique( out.columns )

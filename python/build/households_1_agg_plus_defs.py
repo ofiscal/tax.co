@@ -34,6 +34,7 @@ income_and_tax = ( [ "tax, ss, pension"
               , "income, private"
               , "income, labor"
               , "income, borrowing"
+              , "ICMDUG", "GCMUG"
               ] )
 
 cols_income_rank = [ "income, rank 1"
