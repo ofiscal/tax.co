@@ -9,7 +9,7 @@ def months_to_save_for_a_month( income : float,
                                 spending : float
                               ) -> float:
     return ( spending / (income - spending)
-             if spending <= income
+             if spending < income
              else 1e4 )
 
 def mk_samples( df : pd.DataFrame
