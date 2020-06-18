@@ -60,8 +60,8 @@ https://forum.openoffice.org/en/forum/viewtopic.php?f=9&t=49046
 * pandas display
 ** use scientific notation
 pd.set_option('display.float_format', '{:.2g}'.format)
-** show as many columns as screen permitsx
-pd.options.display.width = 0
+** show as many columns as screen permits
+pd.options.display.width = 5000
 * makefile --trace explains why it wants to rebuild something
 Kind of useless, though -- it only restates the dependency section of the target it wants to rebuild.
 A natural companion to --dry-run.

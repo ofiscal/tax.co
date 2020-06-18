@@ -15,7 +15,7 @@
 So far I've imported ICMDUG, GCMUG.
   See how by looking at the commit immediately following
    c28b76a6511cdd8f6a2e7e4ebf368c94a94a0dca.
-** TODO ? look at all-elderly households
+** TODO look at all-elderly households
 ** TODO archive explanations from Camilo and Camilo
 once this is done
 * TODO ask Camilo Andres Avila Carreño
@@ -153,6 +153,19 @@ They contradict each other.
 ** TODO ? throw out purchasees with absurd quantities?
 Something in the full sample has a quantity value of 9e7.
 * TODO test suite
+** TODO fix this disabled assertion
+in a/python/build/households_1_agg_plus_test.py:
+
+-    assert ( ( hh [defs.income_and_tax] . sum() -
+-               ppl[defs.income_and_tax] . sum() )
+-             . abs() . max() ) < 3e-3
++    xxx = ( hh [defs.income_and_tax] . sum() -
++            ppl[defs.income_and_tax] . sum() )
++    print(xxx) # The new vars ICMDUG and GCMUG don't pass
++    # assert ( xxx
++    #          . abs() . max() ) < 5e-3
+** TODO test the new variables
+ICMDUG, GCMUG, etc.
 ** TODO why did I have to weaken these tests from the time-to-save branch?
 *** The problem
 In commit 5ba74b5361bfdf8453e075c68a91ab93f01ec44c
@@ -271,6 +284,19 @@ exhibit the statistics (means, min, max) they should have.
 We can apply similar integration tests to a subsample of the real ENPH.
 Those integration tests should test ranges, if not statistics.
 ** wish : shadowing was reported, but only for vars of the same type.
+* TODO file re. ENPH
+** I deleted the "home purchase value" variable
+      in commit 5967f198000676bd0107065bb332a4dc9aa9192b
+      It was never used.
+      It was being computed from the COICOP code for a home purchase,
+        but that code never appears in the database.
+        Evidence:
+          >>> (purchases["coicop"] == "12610104").mean()
+          0.0
+** "used savings" varies within household
+commit 72097378499048363003190ecbb912135bf05923
+Author: JeffreyBenjaminBrown <jeffbrown.the@gmail.com>
+Date:   Thu Jun 11 14:32:27 2020 -0500
 * TODO refactor
 ** TODO classes.py: Things like this should be defined within each enum type.
   re_nonNumeric = re.compile( "(.+\-|.*[^0-9\s\.,\-])" )
