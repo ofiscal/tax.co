@@ -4,7 +4,7 @@
 
 import python.common.terms as t
 
-subsample = 100
+subsample = 10
 strategy = t.detail
 regime_year = 2018
 strategy_suffix = strategy

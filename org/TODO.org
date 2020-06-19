@@ -164,6 +164,7 @@ They contradict each other.
 ** TODO ? throw out purchasees with absurd quantities?
 Something in the full sample has a quantity value of 9e7.
 * TODO test suite
+** TODO test "value, consumption"
 ** TODO fix this disabled assertion
 in a/python/build/households_1_agg_plus_test.py:
 

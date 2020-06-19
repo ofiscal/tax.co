@@ -62,6 +62,11 @@ if True: # It's faster to compute these columns post-aggregation.
       purchase_sums["value, tax, purchaselike non-VAT"] +
       purchase_sums["value, purchase"] )
 
+  purchase_sums["value, consumption"] = ( # purchases and gifts, but no taxes (except VAT)
+      # PITFALL: Includes VAT (it's part of "value, purchase").
+      purchase_sums["value, non-purchase"] +
+      purchase_sums["value, purchase"] )
+
 oio.saveStage( c.subsample
              , purchase_sums
              , "purchase_sums." + c.strategy_suffix )

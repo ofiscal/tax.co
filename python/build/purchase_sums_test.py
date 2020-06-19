@@ -24,6 +24,7 @@ assert ( set( sums.columns )  ==
            "value, non-purchase",
            "value, purchase",
            "value, spending",
+           "value, consumption",
            "vat paid, max",
            "vat paid, min" } )
 
