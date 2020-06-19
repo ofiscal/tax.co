@@ -69,7 +69,7 @@ def test_sums( hh : pd.DataFrame,
     assert ( (hh_members_mean > 2) &
              (hh_members_mean < 4) )
 
-    # The new vars ICMDUG, GCMUG, etc. don't pass this test.
+    # The new vars ICMD, GCM, etc. don't pass this test.
     # xxx = ( hh [defs.income_and_tax] . sum() -
     #         ppl[defs.income_and_tax] . sum() )
     # print(xxx)

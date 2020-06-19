@@ -31,12 +31,12 @@ new_cols = {
     "age-decile",
     "income-decile",
     "IT",
-    "ICGU",
-    "ICMUG",
-    "ICMDUG",
-    "GTUG",
-    "GCUG",
-    "GCMUG",
+    "IC",
+    "ICM",
+    "ICMD",
+    "GT",
+    "GC",
+    "GCM",
     "female head" }
 
 assert util.unique( out.columns )
