@@ -18,6 +18,7 @@ def mk_samples( df : pd.DataFrame
            ("3 or more",   df[ df["members"] >= 3    ] ),
            ("female head", df[ df["female head"] > 0 ] ),
            ("has child",   df[ df["has-child"] > 0   ] ),
+           ("all elderly", df[ df["all-elderly"] > 0   ] ),
            ("has elderly", df[ df["has-elderly"] > 0 ] ) ]
 
 def quantiles_report( samples : List[ Tuple[ str, pd.DataFrame ] ],

@@ -12,13 +12,12 @@ if True:
 
 
 income = ( # choose one
-    # "income"
-    "income, cash"
-    # "ICMDUG"
+    # "income, cash"
+    "ICMD"
     )
 spending = ( # choose one
-    "value, purchase"
-    # "GCMUG"
+    # "value, purchase"
+    "GCM"
     )
 
 sink = open( ( "output/time_to_save/" +
@@ -79,7 +78,7 @@ deciles = list( np.round(
     1 ) )
 
 zoom_quantiles = list( np.round(
-    np.arange( 0.32, 0.45001, 0.01 ),
+    np.arange( 0.47, 0.62, 0.01 ),
     2 ) )
 
 if True:
@@ -103,7 +102,7 @@ if True:
 sink.write( "\n".join( [
     "every decile",
     str(every),
-    "\npercentiles 32 through 45",
+    "\nzooming in on the percentiles where people become unable to save",
     str(zoom),
     "\n\n"
     ] ) )
