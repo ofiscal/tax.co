@@ -11,17 +11,27 @@ if True:
   import python.report.time_to_save_for_a_month.defs as defs
 
 
-income = ( # choose one
-    # "income, cash"
-    "ICMD"
-    )
-spending = ( # choose one
-    # "value, purchase"
-    "GCM"
-    )
+if True: # choose one of these, or write another
+  if True:
+    drop_used_savings = True # whether to drop households that used savings
+    income = ( # choose one
+        # "income, cash"
+        "ICMD"
+        )
+    spending = ( # choose one
+        # "value, purchase"
+        "GCM"
+        )
+  if False:
+    drop_used_savings = False
+    income = "ICMD"
+    spending = "GCM"
+    zoom_min = 0.48
+    zoom_max = 0.65
 
 sink = open( ( "output/time_to_save/" +
                str(cm.subsample) + ":" +
+               str(drop_used_savings) +
                income + ":" +
                spending + ".txt" ),
              "w")
@@ -69,7 +79,7 @@ if True: # explore
     "\n\n"
     ] ) )
 
-if True: # drop households that used savings
+if drop_used_savings:
   hh = hh[ hh["used savings"] <= 0 ]
   # hh = hh.drop( columns = ["used savings"] )
 
@@ -78,7 +88,7 @@ deciles = list( np.round(
     1 ) )
 
 zoom_quantiles = list( np.round(
-    np.arange( 0.47, 0.62, 0.01 ),
+    np.arange( zoom_min, zoom_max, 0.01 ),
     2 ) )
 
 if True:

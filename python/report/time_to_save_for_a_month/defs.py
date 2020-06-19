@@ -14,12 +14,17 @@ def months_to_save_for_a_month( income : float,
 
 def mk_samples( df : pd.DataFrame
               ) -> List[ Tuple[ str, pd.DataFrame ] ]:
-  return [ ("full sample", df ),
-           ("3 or more",   df[ df["members"] >= 3    ] ),
-           ("female head", df[ df["female head"] > 0 ] ),
-           ("has child",   df[ df["has-child"] > 0   ] ),
-           ("all elderly", df[ df["all-elderly"] > 0   ] ),
-           ("has elderly", df[ df["has-elderly"] > 0 ] ) ]
+  return [ ("full sample",         df ),
+           ("3 or more",           df[ df["members"] >= 3    ] ),
+           ("female head",         df[ (df["female head"] > 0) ] ),
+         # Surprisingly, this group's time to save hardly differs from "female head"
+         # ("female head, plural", df[ (df["female head"] > 0) &
+         #                             (df["members"] >= 2) ] ),
+           ("has child",           df[ df["has-child"] > 0   ] ),
+           ("all elderly",         df[ df["all-elderly"] > 0   ] ),
+           ("some elderly",        df[ (df["has-elderly"] > 0) &
+                                       (df["all-elderly"] < 1) ] )
+          ]
 
 def quantiles_report( samples : List[ Tuple[ str, pd.DataFrame ] ],
                       colname : str,
