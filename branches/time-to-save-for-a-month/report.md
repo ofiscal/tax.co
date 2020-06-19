@@ -6,7 +6,7 @@ The math to do is easy. If a household saves zero or fewer pesos per month, then
 
 The question of which income and spending to take into account is not as easy as one might imagine. For instance, if a family bought a car when they were surveyed, their spending in the survey would (unless they buy cars frequently) be higher than it usually is. Similarly, if they sold a car, their income would appear higher than its average.
 
-Fortunately, the ENPH provides aggregate income and expense data that allows us to handle such problems conservatively[footnote 0].
+Fortunately, the ENPH provides aggregate income and expense data that allows us to handle such problems conservatively[footnote 1].
 
 Here are the results.
 
@@ -55,7 +55,9 @@ https://github.com/ofiscal/tax.co/tree/master/python/report/time_to_save_for_a_m
 
 # Footnotes
 
-[0] "Ingreso Corriente Monetario Disponible" represents a household's usual cash income after automatic deductions. "Usual" means it excludes income from rare events like the sale of a vehicle. "Cash" stands as opposed to in-kind income -- for instance, if one's employer provides food, that counts as income, but it is not cash income. Automatic deductions include things like pension and social security contributions.
+## Footnote 0
+
+"Ingreso Corriente Monetario Disponible" represents a household's usual cash income after automatic deductions. "Usual" means it excludes income from rare events like the sale of a vehicle. "Cash" stands as opposed to in-kind income -- for instance, if one's employer provides food, that counts as income, but it is not cash income. Automatic deductions include things like pension and social security contributions.
 
 Similarly, "Gasto Corriente Monetario" is a household's usual cash spending. ("Gasto Monetario" might seem redudnant -- how does one spend without spending money -- but it's not, because the ENPH includes barter transactions.)
 
@@ -65,7 +67,9 @@ The ENPH sample is really big. There is no obvious reason to expect unusual expe
 
 I expect the truth lies somewhere between them.
 
-[2] 15% of the top decile of savers made less than 1600000/month. If that seems strange, bear a few things in mind:
+## Footnote 2
+
+15% of the top decile of savers made less than 1600000/month. If that seems strange, bear a few things in mind:
 
 The data are from 2016-2017, a period in which the peso was worth a little more.
 
