@@ -1,34 +1,7 @@
 * TODO time-to-save
-** explore other vars
-*** these
-IT
-ICGU
-ICMUG
-ICMDUG
-GTUG
-GCUG
-GCMUG
-*** first compare stats
-esp. compare to "income" and "income, cash", and "value, *"
-** TODO try new net income, expenditure vars from DANE
-*** DONE Import new total income, expense vars at person-level, propogate completely through pipeline.
-*** Try running time-to-save using those instead; compare results.
-**** See if as many high-savers are poor.
- I'm finding 1% of the sample who earn less than 500,000,
- yet save at least 40% of their income:
-   spending / (income - spending) = 0.66 => save for a month in 20 days
-   spending = 0.66 * (income - spending)
-   1.66 * spending = income
-   spending = income / 1.66 = income * (3/5)
- Their mean in-kind income is 8,000 pesos/month,
- and their mean non-purchase consumption is 2,000 pesos / month.
-*** consider other new DANE variables?
-So far I've imported ICMDUG, GCMUG.
-  See how by looking at the commit immediately following
-   c28b76a6511cdd8f6a2e7e4ebf368c94a94a0dca.
-** TODO look at all-elderly households
-** TODO archive explanations from Camilo and Camilo
-once this is done
+** describe how our spending and income variables differ from DANE's
+** replace tables, text
+** replace URL
 * TODO ask Camilo Andres Avila Carreño
 ** undescribed variables
 *** directorio

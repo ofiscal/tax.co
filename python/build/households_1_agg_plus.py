@@ -111,6 +111,7 @@ if True: # assemble the aggregates, then compute a few variables
     # when there are multiple indices, reset_index is the way to do that
 
   households["has-child"]   = households["age-min"] < 18
+  households["all-elderly"] = households["age-min"] > 65
   households["has-elderly"] = households["age-max"] > 65
 
   # PITFALL: Income decile and percentile for persons exist too. They are different.
