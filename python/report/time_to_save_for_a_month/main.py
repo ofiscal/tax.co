@@ -92,7 +92,7 @@ zoom_quantiles = list( np.round(
     2 ) )
 
 if True:
-  assert cm.subsample < 20
+  assert cm.subsample < 5
   every = defs.quantiles_report(
       defs.mk_samples(
           # full sample gives just about identical results

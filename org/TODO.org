@@ -67,6 +67,7 @@ That's why, for instance, its max in purchases_2_vat_test is 0.27, not 19.
 (0.27 is the total tax levied on big motorcycles --
 the usual 19%, plus 8% more.)
 * TODO possibly wrong
+** TODO do my income variables include SS withholdings, etc?
 ** TODO check non-functional use of Corrections
 *** e.g. in purchases_2_vat.py, one is run without assignment:
   if True: # TODO ? move these upstream, to purchases/main.py
