@@ -1,4 +1,15 @@
 * TODO time-to-save
+** explore other vars
+*** these
+IT
+ICGU
+ICMUG
+ICMDUG
+GTUG
+GCUG
+GCMUG
+*** first compare stats
+esp. compare to "income" and "income, cash", and "value, *"
 ** TODO try new net income, expenditure vars from DANE
 *** DONE Import new total income, expense vars at person-level, propogate completely through pipeline.
 *** Try running time-to-save using those instead; compare results.

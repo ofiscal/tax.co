@@ -30,7 +30,12 @@ new_cols = {
     "region-2",
     "age-decile",
     "income-decile",
+    "IT",
+    "ICGU",
+    "ICMUG",
     "ICMDUG",
+    "GTUG",
+    "GCUG",
     "GCMUG",
     "female head" }
 

@@ -18,13 +18,24 @@ files = [
       , ("P8520S1A1", 0, "estrato", 0)
       , ("P5102", 0, "recently bought this house", 0)
          # 1 » Si 2 » No
-      , ("ICMDUG", 0, "ICMDUG", 0) # "ingreso corriente monetario disponisble"
-      , ("GCMUG", 0, "GCMUG", 0)   # "gasto corriente monetario"
+      , ("IT",0,"IT",0)
+      , ("ICGU",0,"ICGU",0)
+      , ("ICMUG",0,"ICMUG",0)
+      , ("ICMDUG",0,"ICMDUG",0) # "ingreso corriente monetario disponisble"
+      , ("GTUG",0,"GTUG",0)
+      , ("GCUG",0,"GCUG",0)
+      , ("GCMUG",0,"GCMUG",0) # "gasto corriente monetario"
     ] ) ]
 
 buildings = cl.collect_files( files
                             , subsample=1 ) # see PITFALL above
-for c in ["ICMDUG","GCMUG"]:
+for c in [ "IT",
+           "ICGU",
+           "ICMUG",
+           "ICMDUG",
+           "GTUG",
+           "GCUG",
+           "GCMUG" ]:
   buildings = ( cla.Correction.Replace_Substring_In_Column(
                   c, ",", "." )
                 . correct( buildings ) )

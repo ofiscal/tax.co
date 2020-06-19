@@ -68,9 +68,11 @@ def test_sums( hh : pd.DataFrame,
     hh_members_mean = hh["members"].mean()
     assert ( (hh_members_mean > 2) &
              (hh_members_mean < 4) )
-    xxx = ( hh [defs.income_and_tax] . sum() -
-            ppl[defs.income_and_tax] . sum() )
-    print(xxx) # The new vars ICMDUG and GCMUG don't pass
+
+    # The new vars ICMDUG, GCMUG, etc. don't pass this test.
+    # xxx = ( hh [defs.income_and_tax] . sum() -
+    #         ppl[defs.income_and_tax] . sum() )
+    # print(xxx)
     # assert ( xxx
     #          . abs() . max() ) < 5e-3
 
