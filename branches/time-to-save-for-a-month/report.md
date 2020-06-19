@@ -55,7 +55,7 @@ https://github.com/ofiscal/tax.co/tree/master/python/report/time_to_save_for_a_m
 
 # Footnotes
 
-## Footnote 0
+## Footnote 1
 
 "Ingreso Corriente Monetario Disponible" represents a household's usual cash income after automatic deductions. "Usual" means it excludes income from rare events like the sale of a vehicle. "Cash" stands as opposed to in-kind income -- for instance, if one's employer provides food, that counts as income, but it is not cash income. Automatic deductions include things like pension and social security contributions.
 
