@@ -6,6 +6,15 @@ http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
 ** pictures of it from DANE
  https://www.dane.gov.co/files/investigaciones/boletines/enph/boletin-enph-2017.pdf
 * PITFALLS
+** avoid repeating
+*** "home purchase value" variable: created, later deleted
+  Deleted in commit 5967f198000676bd0107065bb332a4dc9aa9192b
+  It was never used.
+  It was being computed from the COICOP code for a home purchase,
+    but that code never appears in the database.
+    Evidence:
+      >>> (purchases["coicop"] == "12610104").mean()
+      0.0
 ** unknowable
 *** No way to know when someone was interviewed
 because anonymized
@@ -358,6 +367,10 @@ Asks if the purchase was for breakfast, lunch or dinner.
 *** gastos_semanales_rurales__mercados :: nothing identifies what they purchased!
 **** four broad purchase categories, see nc2_cc_p4. basically 0 vat.
 * variables, common across data sets
+** "used savings" varies within household
+commit 72097378499048363003190ecbb912135bf05923
+Author: JeffreyBenjaminBrown <jeffbrown.the@gmail.com>
+Date:   Thu Jun 11 14:32:27 2020 -0500
 ** value = expense; price = value / quantity
 *** David used real data, e.g. rice price, to figure this out. Genius.
 
