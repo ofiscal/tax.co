@@ -1,0 +1,88 @@
+* PITFALL: These notes files are redundant
+There's an enig.org file, an enph.org file, and this one which pertains to both.
+* PITFALL: These notes are stale, from 2018-ish
+But they might include some insights into the data due to David Suarez not recorded elsewhere.
+* expenditure files
+** # Ig_ml_hogar:
+*** This table contains info regarding characteristics of dwellings and livelihoods.
+*** variables relevant to the VAT on renta
+**** * P5090
+whether the households owns or rents the place
+**** * P5100
+the value paid.
+** # Ig_gsdp_gas_dia
+*** Contains information regarding daily expenditures for income earners in the household. Both urban and rural.
+*** single purchase variables
+**** * GDP_ARTCLO
+a complete COICOP code for the article
+**** * GDP_CNTDAD_ADQRDA
+the quantity purchased
+**** * GDP_FORMA_ADQSCION
+whether they purchased the good (01 is the code for purchases)
+**** * GDP_LUGAR_COMPRA
+place of acquisition
+**** * GDP_VALOR_PGDO_ESTMDO
+total estimated value
+*** aggregate purchase variables
+**** * GDP_CNTDAD_ADQRDA_MES_AJST
+adjusted consumption
+**** * GDP_VALOR_PGDO_ESTMDO_MES_AJST
+total payments by month
+** # Ig_gsdu_gas_dia
+*** Contains information regarding daily expenditures for urban households. Includes income earners.
+*** single purchase variables
+**** * GDU_ARTCLO
+a complete COICOP code for the article
+**** * GDU_CNTDAD_ADQRDA
+the quantity purchased
+**** * GDU_FORMA_ADQSCION
+whether they purchased the good (01 is the code for purchases)
+**** * GDU_LUGAR_COMPRA
+place of acquisition
+**** * GDU_VALOR_PGDO_ESTMDO
+total estimated value
+*** aggregate purchase variables
+**** * GDU_CNTDAD_ADQRDA_MES_AJST
+adjusted consumption
+**** * GDU_VALOR_PGDO_ESTMDO_MES_AJST.
+total payments by month
+** # Ig_gssr_gas_sem
+*** Contains information regarding weekly expenditures for rural households.
+*** * GSR_ARTCLO
+a complete COICOP code for the article
+*** * GSR_CNTDAD_UDM_ESTANDAR
+the quantity purchased
+*** * GSR_FORMA_ADQSCION
+whether they purchased the good (01 is the code for purchases)
+*** * GSR_LUGAR_CMPRA
+place of acquisition (store, restaurant)
+*** * GSR_UDM_ESTANDAR
+measurement units for quantities
+*** * GSR_VALOR_PGDO_ESTMDO_MES
+total estimated value per month
+** # Ig_gsmf_compra
+*** This table contains info regarding purchases less-frequent expenditures.
+*** Includes everyone -- rural, urban, heads of household.
+*** * GMF_CMPRA_ARTCLO
+represent a complete COICOP code for the good/service
+*** * GMF_CMPRA_VLR_PAGO_MES
+total amount paid per month
+*** * GMF_CMPRA_LUGAR
+the place of the purchase
+*** * GMF_CMPRA_FRCNCIA
+purchase frequency
+** # Ig_gssu_gasto_alimentos_cap_c,  Ig_gssr_gasto_alimentos_cap_c
+These tables contain food expenditures that were imputed for households that did not complete the booklets used to compile tables Ig_gsdu_gas_dia and Ig_gssr_gas_sem but reported to have made purchases in the reference period of the survey.  We can only recover prices for the former, using the questions ARTICULO (COICOP code), VALOR_MENSUAL_ALIMENTO, and CANTIDAD; for the latter only total monetary values are reported.
+* persons files
+** data sets
+*** Ig_ml_persona
+*** Ig_ml_ocupado
+** variables
+identical to those in the enph-2017
+* person-level location data for ENIG available from GEIH
+David Suarez wrote:
+
+The location variables are a little bit more difficult to get, since they are not directly available in the tables: the sample of households used in these surveys is a subsample taken from a more general survey (the GEIH) that contains the key variables to present our results by region (as well as other variables that we could use). You can find the GEIH for 2007,2016 and 2017  in the following links (they are presented by month, so we have to append the files to get the complete survey):
+ http://microdatos.dane.gov.co/index.php/catalog/317/get_microdata (GEIH 2007)
+ http://microdatos.dane.gov.co/index.php/catalog/427/get_microdata (GEIH 2016)
+ http://microdatos.dane.gov.co/index.php/catalog/458/get_microdata (GEIH 2017)

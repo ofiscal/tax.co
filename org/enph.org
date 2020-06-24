@@ -1,3 +1,5 @@
+* PITFALL: These notes files are redundant
+There's an enig.org file, an enph.org file, and this one which pertains to both.
 * refs
 ** The ENPH
 http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
@@ -747,3 +749,272 @@ Even a tiny bodega has incentive to charge VAT (unless they add more than half t
 **** gastos_diarios_urbano__comidas_preparadas_fuera - nh_cgducfh_p1
 **** gastos_personales_urbano__comidas_preparadas_fuera - nh_cgpucfh_p1
 **** gastos_semanales_rural__comidas_preparadas_fuera - nh_cgprcfh_p1
+* UNMERGED: notes from david
+** what it is
+*** date|duration: june 2016 to july 2017
+*** Provides information for the 32 principal cities, 6 intermediate cities and 140 municipalities. Covers information for about 87K households.
+** PITFALL: frequencies
+*** frequency codes vary by file
+**** this legend seems to work for all but one of the ENPH-17 expenditure data sets described in this file
+1 » 2. Diario
+2 » 2.1 Varias veces por semana
+3 » 3.Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+8 » 8. Anual
+9 » 9.Esporádico
+10 » 10. Semestral
+*** Expenses with no recorded frequency are daily.
+** expenditure files
+*** sea_enc_per_csv
+The table contains lots of information about the people answering the surveys. Apparently, it has variables that could be used to calibrate the “holy grail” (questions P800 to P8007…need to explore further).
+*** sea_enc_hog_csv
+The table contains information regarding housing characteristics and ownership. Questions P5090, P5100S1- P5100S4, P5110, and P5140 represent if people own or rent among others), monthly payments for mortgages and insurances, and total values for imputed and actual rents respectively.
+*** sea_enc_hogc3_csv
+The table contains additional information regarding less-frequent expenses at the household level. Several questions ask values paid for different services that are relevant for the calculation of indirect taxes, such as internet and cable. Need to explore further.
+*** sea_enc_gcfhr_ce_csv
+**** anything but $ (food ? food consumed outside the home)
+**** The table contains information of personal expenses for rural households.
+**** nc2r_ce_p2
+a complete COICOP code for the article
+**** nc2r_ce_p4s1
+the quantity
+**** nc2r_ce_p4s2
+measurement units
+**** nc2r_ce_p5
+if they purchased the good (01 is the code for purchases)
+**** nc2r_ce_p6
+place of acquisition
+**** nc2r_ce_p7
+total estimated value
+**** nc2r_ce_p8
+***** frequency of acquisition
+***** codes
+1 » 2. Diario
+2 » 2.1 Varias veces por semana
+3 » 3.Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+9 » 9.Esporádico"
+*** sea_enc_gcfhr_csv
+**** The table contains information regarding food consumed for rural households that was not prepared at home.
+**** nh_cgprcfh_p1
+a description in words for the article
+**** nh_cgprcfh_p1s1
+a complete COICOP code
+**** nh_cgprcfh_p2
+the quantity
+**** nh_cgprcfh_p3
+if they purchased the good (01 is the code for purchases)
+**** nh_cgprcfh_p4
+place of acquisition
+**** nh_cgprcfh_p5
+total estimated value
+**** nh_cgprcfh_p6
+***** frequency of acquisition
+***** codes
+1 » 2. Diario
+2 » 2.1. Varias veces por semana
+3 » 3. Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+9 » 9. Esporádica"
+**** nh_cgprcfh_p7
+whether the expenditure is personal or corresponds to the household (1 if household is true).
+*** sea_enc_gcfhu_diarios_csv
+**** food consumed outside the home only
+**** The table contains information regarding food consumed for urban households that was not prepared at home.
+**** nh_cgducfh_p1
+a description in words for the article
+**** nh_cgducfh_p1_1
+a complete COICOP code
+**** nh_cgducfh_p2
+the quantity
+**** nh_cgducfh_p3
+if they purchased the good (01 is the code for purchases)
+**** nh_cgducfh_p4
+place of acquisition
+**** nh_cgducfh_p5
+total estimated value
+**** nh_cgducfh_p6
+***** frequency of acquisition
+***** codes
+1 » 2. Diario
+2 » 2.1. Varias veces por semana
+3 » 3. Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+9 » 9. Esporádica"
+**** nh_cgducfh_p7
+whether the expenditure is personal or corresponds to the household (1 if household is true)
+*** sea_enc_gcfhup_diarios_csv
+**** food consumed outside the home only
+**** The table contains information regarding food consumed for income earners in urban households that was not prepared at home.
+**** nh_cgpucfh_p1
+a description in words for the article
+**** nh_cgpucfh_p1_s1
+a complete COICOP code
+**** nh_cgpucfh_p2
+the quantity
+**** nh_cgpucfh_p3
+if they purchased the good (01 is the code for purchases)
+**** nh_cgpucfh_p4
+place of acquisition
+**** nh_cgpucfh_p5
+total estimated value
+**** nh_cgpucfh_p6
+***** frequency of acquisition
+***** codes
+1 » 2. Diario
+2 » 2.1. Varias veces por semana
+3 » 3. Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+9 » 9. Esporádica"
+*** TODO sea_enc_gdr_csv
+**** includes everything -- food at home, restaurants, clothing, etc.
+**** The table contains information of weekly expenses for rural households.
+**** nc2r_ca_p3
+a complete COICOP code for the article
+**** nc2r_ca_p4_s1
+the quantity
+**** nc2r_ca_p4_s2
+measurement units
+**** nc2r_ca_p5_s1
+if they purchased the good (01 is the code for purchases)
+**** nc2r_ca_p6_s1
+place of acquisition
+**** nc2r_ca_p7_s1
+total estimated value
+**** nc2r_ca_p8_s1
+***** frequency of acquisition
+***** codes
+1 » 2. Diario
+2 » 2.1. Varias veces por semana
+3 » 3. Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+9 » 9. Esporádica"
+*** sea_enc_gmf_csv
+**** The table contains information regarding less-frequent expenditures.
+**** p10270
+a complete COICOP code
+**** p10270_fc_s1
+if the article was purchased (01 if purchased)
+**** p10270s1
+estimated value paid (total/cash)
+**** p10270s2
+place of acquisition
+**** p10270s3
+***** frequency
+***** codes
+3 » 3. Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+8 » 8. Anual
+9 » 9. Esporádica
+10 » 10. Semestral"
+**** p10270s4
+value paid with credit
+*** sea_enc_gsdp_diarios_csv
+**** The table contains information of daily expenses that come from income earners.
+**** nc4_cc_p1_1
+a complete COICOP code for the article
+**** nc4_cc_p2
+the quantity
+**** nc4_cc_p3
+if they purchased the good (01 is the code for purchases)
+**** nc4_cc_p4
+place of acquisition
+**** nc4_cc_p5
+total estimated value
+**** nc4_cc_p6
+***** frequency of acquisition
+***** codes
+1 » 1. Diario
+2 » 2.1. Varias veces
+3 » 3. Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+9 » 9. Esporádica por semana"
+*** sea_enc_gsdu_diarios_csv
+**** The table contains information of daily expenses from urban households.
+**** nh_cgdu_p1
+a complete COICOP code for the article
+**** nh_cgdu_p2
+the quantity
+**** nh_cgdu _p3
+measurement units
+**** nh_cgdu_p5
+whether they purchased the good (01 is the code for purchases)
+**** nh_cgdu_p7b1379
+place of acquisition
+**** nh_cgdu _p8
+total estimated value
+**** nh_cgdu _p9
+***** frequency of acquisition
+***** "9. Frecuencia de Compra
+1 » 2. Diario
+2 » 2.1. Varias veces por semana
+3 » 3. Semanal
+4 » 4. Quincenal
+5 » 5. Mensual
+6 » 6. Bimestral
+7 » 7. Trimestral
+9 » 9. Esporádica"
+**** nh_cgdu_p10
+whether the expenditure is personal or corresponds to the household (1 if household is true)
+** the persons file: st2_sea_enc_per_csv
+*** p6040
+age
+*** p6080
+**** race
+**** "6. De acuerdo con su cultura, pueblo, o rasgos físicos, ${posicion1} es o se reconoce como:
+1 » a. Indígena
+2 » b. Gitano-Rrom
+3 » c. Raizal del archipiélago de San Andrés y Providencia?
+4 » d. Palenquero de San Basilio o descendiente
+5 » e. Negro(a), mulato(a), afrocolombiano(a) o afrodescendiente?
+6 » f. Ninguno de los anteriores (mestizo, blanco, etc.)"
+*** p6020
+sex
+*** p6210
+**** education
+**** ¿Cuál es el nivel educativo más alto alcanzado?
+1 » Ninguno
+2 » Preescolar
+3 » Basica Primaria
+4 » Basica Secundaria
+5 » Media
+6 » Superior o Universitaria
+9 » ""No sabe, no informa
+*** p6370
+job name (text)
+*** p6370s1
+job code
+*** p6160
+literate
+*** p6170
+student
+*** p6430
+employer type (inc. family)
+*** p6500
+income
+*** p6430
+"corresponds to a numeric variable useful to identify employers, employees (government or not), and independent workers, among others. (same for the ENIG)"

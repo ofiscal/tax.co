@@ -1,7 +1,3 @@
-* TODO time-to-save
-** describe how our spending and income variables differ from DANE's
-** replace tables, text
-** replace URL
 * TODO ask Camilo Andres Avila Carreño
 ** undescribed variables
 *** directorio
