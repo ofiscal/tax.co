@@ -1,0 +1,14 @@
+* some terms used across DANE
+https://www.dane.gov.co/index.php/estadisticas-por-tema/pobreza-y-condiciones-de-vida/glosario-ingresos-y-gastos
+These are not specific to any one survey.
+They define more terms than are described here.
+** Unidad de Gasto = household, probably directorio
+** Perceptor de ingresos = receiver of income
+** Corriente = usual (income), excluding windfalls
+** Transferencias y prestaciones corrientes
+Transferencias = government transfers
+Prestaciones = employee's income spent by the employer on services for the employee, such as healthcare or (probably) pensions.
+** Ingreso total disponible de los hogares.
+What the earner takes home -- the money remaining after those forced payments for things like SS.
+** Ingreso regular = regular periodic income; excludes windfalls
+How is that different from Corriente?

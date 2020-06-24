@@ -6,7 +6,49 @@ http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata
 ** pictures of it from DANE
  https://www.dane.gov.co/files/investigaciones/boletines/enph/boletin-enph-2017.pdf
 * PITFALLS
-** "used savings" varies within household
+** unknowable
+*** No way to know when someone was interviewed
+because anonymized
+(per Camilo Andres Avila Carreño at DANE)
+*** person-level expenditure data is unavailable
+The goal of the purchase data is household, not person, expenditures.
+(per Camilo Andres Avila Carreño at DANE)
+** undescribed variables
+(per Camilo Andres Avila Carreño at DANE)
+*** directorio
+The only key variable.
+*** orden
+Identifies people in people data.
+In others, it's not, and it's useless.
+*** secuencia_encuesta
+also useless
+*** secuencia_p
+also useless
+*** cap
+= capitulo = section of the survey
+Has to do with `mensualizacion`.
+They follow urban 2 weeks, rural 1 week.
+** non-encoded defaults
+*** if a purchase is not labeled, call it a purchase.
+ (per Camilo Andres Avila Carreño at DANE)
+ (tax.co already does this.)
+** errors
+*** there are bad outliers
+  Camilo Andres Avila Carreño at DANE says yeah, such problems exist, use your judgment.
+**** absurdly big purchase numbers
+  absurdly_big_expenditure_threshold = 1e9 # MAGIC
+  Something in the full sample has a quantity value of 9e7.
+  Currently I don't throw out any quantities, just expenditures.
+*** households with no income but positive spending
+ (per Camilo Andres Avila Carreño at DANE)
+ They might have been temporarily unemployed.
+ In the GEIH they impute income from (space,edu)-neighbors for people reporting no income.
+** One does not need quantity to determine expenditure.
+says Camilo Andres Avila Carreño
+** P7516, "used savings" 
+*** P7516, "used savings" is long-term only
+says Camilo Andres Avila Carreño
+*** P7516, "used savings" varies within household
 ** "home purchase value" is, if present, not encoded via COICOP
 >>> (purchases["coicop"] == "12610104").mean()
 0.0
@@ -727,6 +769,21 @@ Even a tiny bodega has incentive to charge VAT (unless they add more than half t
 ***** TODO 20 » 25 Plazoleta de comidas
 * legends, common across data sets
 ** how to read "x » y" : usually RHS, but freq : LHS
+* total income and expenditure variables, DANE-constructed
+** PITFALL: Their construction is secret
+and nowhere defined
+** PITFALL: THey are in the Vivienda data
+not, like the other income variables, in the person-level data
+** They are these
+V1945
+V1946
+V1947
+V1948
+V1949
+V1950
+V1951
+** Gasto corriente = regular periodic spending
+** Gasto corriente monetario = expenses excluding barter
 * seldom used
 ** for copying: an empty list of the purchase files
 *** articulos
