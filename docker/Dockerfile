@@ -56,7 +56,7 @@ RUN pip install pydotplus graphviz
 RUN pip install weightedcalcs
 
 
-RUN echo "updating conda: 2020 06 16"
+RUN echo "updating conda: 2020 06 26"
 RUN conda update --all --yes
 # RUN conda update -n base conda
 
