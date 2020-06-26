@@ -101,13 +101,9 @@ if True: # handle freq, value, vat paid
     # Kept for the sake of drawing a table of purchase frequency,
     # with frequencies spread evenly across the x-axis.
   ( purchases["per month"] # PITFALL: not functional; the "inplace" option
-                      # causes replace() to have no return value.
+                           # causes replace() to have no return value.
   . replace( legends.freq
            , inplace=True ) )
-  purchases = purchases.drop( # TODO ? move upstream, to purchases/main.py
-    purchases[ purchases["per month"].isnull() ]
-    .index
-  )
 
   purchases["value"]         = purchases["per month"] * purchases["value"]
   purchases["vat paid, min"] = purchases["value"]     * purchases["vat frac, min"]

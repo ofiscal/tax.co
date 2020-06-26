@@ -22,6 +22,8 @@ for c in (
       "quantity", ",", "." )
   , Correction.Replace_Missing_Values(
       "quantity", 1 )
+  , Correction.Replace_Missing_Values(
+      "per month", 1 )
   , Correction.Change_Column_Type(
       "coicop", str )
   , Correction.Replace_Entirely_If_Substring_Is_In_Column(
