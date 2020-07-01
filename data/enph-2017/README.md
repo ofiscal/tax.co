@@ -5,10 +5,6 @@ How to build and run the Encuesta Nacional de Presupuestos de Hogares.
 The raw microdata used in tax.co is the ENPH. It comes from DANE.
 You can find it
 [here](http://microdatos.dane.gov.co/index.php/catalog/566/get_microdata).
-Downloading it is easy, but annoying, because DANE imposes speedbumps:
-You must download each of the 16 files individually,
-and after you download about six of them,
-the website starts asking you to prove you are a human by doing tests.
 
 In this project, the folder `data/enph-2017/`
 initially contains only a `Makefile`.
