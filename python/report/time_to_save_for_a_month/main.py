@@ -12,7 +12,7 @@ if True:
 
 
 if True: # choose one of these, or write another
-  if True:
+  if False:
     drop_used_savings = True # whether to drop households that used savings
     income = ( # choose one
         # "income, cash"
@@ -22,12 +22,14 @@ if True: # choose one of these, or write another
         # "value, purchase"
         "GCM"
         )
-  if False:
-    drop_used_savings = False
-    income = "ICMD"
-    spending = "GCM"
     zoom_min = 0.48
     zoom_max = 0.65
+  if True:
+    drop_used_savings = False
+    income = "income, cash"
+    spending = "value, purchase"
+    zoom_min = 0.3
+    zoom_max = 0.6
 
 sink = open( ( "output/time_to_save/" +
                str(cm.subsample) + ":" +
