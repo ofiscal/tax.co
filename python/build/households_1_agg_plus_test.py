@@ -79,7 +79,7 @@ def test_sums( hh : pd.DataFrame,
 def test_bools( hh : pd.DataFrame,
                   ppl : pd.DataFrame ) -> ():
 
-    bool_cols = ( defs.cols_to_min_or_max__no_name_change +
+    bool_cols = ( defs.cols_to_max__no_name_change +
                   [ "used savings",
                     "recently bought this house",
                     "has-male",

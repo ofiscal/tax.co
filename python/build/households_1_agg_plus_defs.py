@@ -10,38 +10,49 @@ cols_const_within_hh = ["region-1", "region-2", "estrato", "weight"]
 
 # These are most of the columns that will be in the household data.
 # They are aggregated through summation.
-income_and_tax = ( [ "tax, ss, pension"
-              , "tax, ss, pension, employer"
-              , "tax, ss, salud"
-              , "tax, ss, salud, employer"
-              , "tax, ss, solidaridad"
-              , "tax, ss, parafiscales"
-              , "tax, ss, cajas de compensacion"
-              , "cesantias + primas"
-              , "tax, gmf"
-              , "tax, ganancia ocasional" ]
+#
+# PITFALL: This does not include the aggregate income variables like
+# "IC" and "IT" that eventually appeared in the ENPH, because
+# those (drawn from Viviendas, not Personas) are at the household level,
+# not the individual level.
+income_and_tax = ( [
+    "tax, ss, pension"
+  , "tax, ss, pension, employer"
+  , "tax, ss, salud"
+  , "tax, ss, salud, employer"
+  , "tax, ss, solidaridad"
+  , "tax, ss, parafiscales"
+  , "tax, ss, cajas de compensacion"
+  , "cesantias + primas"
+  , "tax, gmf"
+  , "tax, ganancia ocasional" ]
 
-              + regime.income_tax_columns +
-              [ "income"
-              , "income, cash"
-              , "income, in-kind"
-              , "income, pension"
-              , "income, cesantia"
-              , "income, dividend"
-              , "income, capital (tax def)"
-              , "income, infrequent"
-              , "income, govt"
-              , "income, private"
-              , "income, labor"
-              , "income, borrowing"
-              ,"IT"
-              ,"IC"
-              ,"ICM"
-              ,"ICMD"
-              ,"GT"
-              ,"GC"
-              ,"GCM"
-              ] )
+  + regime.income_tax_columns +
+  [ "income"
+  , "income, cash"
+  , "income, in-kind"
+  , "income, pension"
+  , "income, cesantia"
+  , "income, dividend"
+  , "income, capital (tax def)"
+  , "income, infrequent"
+  , "income, govt"
+  , "income, private"
+  , "income, labor"
+  , "income, borrowing"
+  ] )
+
+income_and_spending__household_level = [
+  # Although these are peso-denominated, they are constant within household,
+  # hence included here rather than in the list `income_and_tax`.
+   "IT"
+  ,"IC"
+  ,"ICM"
+  ,"ICMD"
+  ,"GT"
+  ,"GC"
+  ,"GCM"
+  ]
 
 cols_income_rank = [ "income, rank 1"
                    , "income, rank 2"
@@ -54,37 +65,36 @@ cols_income_rank = [ "income, rank 1"
                    , "income, labor, rank 4"
                    , "income, labor, rank 5" ]
 
-
-# These columns are aggregated through min or max (or both, in some cases),
-# and renamed.
-cols_to_min_or_max__pre_rename = (
+# These columns are aggregated via max and renamed.
+# (Two of them, age and female, are also aggregated via min,
+# but where that happens they are named individually.)
+cols_to_max__pre_rename = (
     [ "age", "literate", "student", "female", "edu"
     , "race, indig", "race, git|rom", "race, raizal", "race, palenq", "race, whi|mest" ]
     )
 
-# These columns are aggregated through min or max (or both, in some cases),
+# These columns are aggregated via max,
 # but they retain the same name.
-cols_to_min_or_max__no_name_change = (
-    [ "used savings" # PITFALL: Varies within household.
-    , "recently bought this house"
-    , "female head"
-    , "pension, receiving"
-    , "pension, contributing (if not pensioned)"
-    , "pension, contributor(s) (if not pensioned) = split"
-    , "pension, contributor(s) (if not pensioned) = self"
-    , "pension, contributor(s) (if not pensioned) = employer"
-    , "seguro de riesgos laborales" ]
-    )
+cols_to_max__no_name_change = [
+    "used savings" # PITFALL: Varies within household.
+  , "recently bought this house"
+  , "female head"
+  , "pension, receiving"
+  , "pension, contributing (if not pensioned)"
+  , "pension, contributor(s) (if not pensioned) = split"
+  , "pension, contributor(s) (if not pensioned) = self"
+  , "pension, contributor(s) (if not pensioned) = employer"
+  , "seguro de riesgos laborales" ]
 
-cols_to_min_or_max = ( cols_to_min_or_max__pre_rename
-                     + cols_to_min_or_max__no_name_change )
+cols_to_max = ( cols_to_max__pre_rename
+               + cols_to_max__no_name_change )
 
-# The variables in cols_to_min_or_max__pre_rename, after aggregation,
-# are renamed as these variables. Note that `cols_to_min_or_max__pre_rename`
-# is smaller than `cols_to_min_or_max__post_rename`,
+# The variables in cols_to_max__pre_rename, after aggregation,
+# are renamed as these variables. Note that `cols_to_max__pre_rename`
+# is smaller than `cols_to_max__post_rename`,
 # because some things in the former (e.g. "female") become multiple things
 # in the latter (e.g. "has-female" and "has-male").
-cols_to_min_or_max__post_rename = (
+cols_to_max__post_rename = (
     [ "age-min", # computed via agg(min)
       "has-male" ] +
 
@@ -116,7 +126,8 @@ cols_new = (
 cols_all = ( ["household"]
            + cols_const_within_hh
            + income_and_tax
-           + cols_to_min_or_max__no_name_change
-           + cols_to_min_or_max__post_rename
+           + income_and_spending__household_level
+           + cols_to_max__no_name_change
+           + cols_to_max__post_rename
            + cols_new
 )

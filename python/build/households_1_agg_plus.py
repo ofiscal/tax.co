@@ -75,9 +75,10 @@ if True: # aggregate from household members to households
       # For some reason, if `edu` is missing for everyone in a household,
       # Pandas throws an error instead of defining max-edu = np.nan.
       # Therefore I handle the `edu` variable separately.
-    cols_without_edu = defs.cols_to_min_or_max.copy()
+    cols_without_edu = ( defs.cols_to_max.copy() +
+                         defs.income_and_spending__household_level )
       # PITFALL! Without the .copy() above, the next line
-      # would modify defs.cols_to_min_or_max.
+      # would modify defs.cols_to_max.
     cols_without_edu.remove("edu") # destructive side effect and no output
     edu_max = ( ppl
       [ ppl["edu"].notnull() ]
@@ -89,15 +90,16 @@ if True: # aggregate from household members to households
         ["household"]
       ) [ cols_without_edu
       ] . agg("max"
-      ) . rename( columns = {"age"            : "age-max",
-                             "literate"       : "has-lit",
-                             "student"        : "has-student",
-                             "female"         : "has-female",
-                             "race, indig"    : "has-indig",
-                             "race, git|rom"  : "has-git|rom",
-                             "race, raizal"   : "has-raizal",
-                             "race, palenq"   : "has-palenq",
-                             "race, whi|mest" : "has-whi|mest"
+      ) . rename( columns = {
+          "age"            : "age-max",
+          "literate"       : "has-lit",
+          "student"        : "has-student",
+          "female"         : "has-female",
+          "race, indig"    : "has-indig",
+          "race, git|rom"  : "has-git|rom",
+          "race, raizal"   : "has-raizal",
+          "race, palenq"   : "has-palenq",
+          "race, whi|mest" : "has-whi|mest"
       } )
     h_max = pd.concat( [edu_max, other_max],
                        axis = 1 )

@@ -45,11 +45,11 @@ if True:
 
 if True:
   for k,v in {
-      "vat / purchase value, min"  : cl.InRange( 0, 0.3 ),
-      "vat / purchase value, max"  : cl.InRange( 0, 0.3 ),
-      "vat/income, min" : cl.InRange( 0, np.inf ),
-      "vat/income, max" : cl.InRange( 0, np.inf ),
-      "purchase value / income"    : cl.InRange( 0, np.inf )
+      "vat / purchase value, min" : cl.InRange( 0, 0.3 ),
+      "vat / purchase value, max" : cl.InRange( 0, 0.3 ),
+      "vat/income, min"           : cl.InRange( 0, np.inf ),
+      "vat/income, max"           : cl.InRange( 0, np.inf ),
+      "purchase value / income"   : cl.InRange( 0, np.inf )
       }.items():
     assert v.test( merge[k] )
   for k,v in {
