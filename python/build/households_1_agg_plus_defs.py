@@ -107,6 +107,7 @@ cols_new = (
     [ "members", # computed ad-hoc
       "has-child",
       "has-elderly",
+      "all-elderly",
       "income-decile",
       "income-percentile",
       "one" ]
