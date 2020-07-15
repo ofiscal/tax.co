@@ -15,7 +15,7 @@ cols_const_within_hh = ["region-1", "region-2", "estrato", "weight"]
 # "IC" and "IT" that eventually appeared in the ENPH, because
 # those (drawn from Viviendas, not Personas) are at the household level,
 # not the individual level.
-income_and_tax = ( [
+income_and_tax__person_level = ( [
     "tax, ss, pension"
   , "tax, ss, pension, employer"
   , "tax, ss, salud"
@@ -44,7 +44,7 @@ income_and_tax = ( [
 
 income_and_spending__household_level = [
   # Although these are peso-denominated, they are constant within household,
-  # hence included here rather than in the list `income_and_tax`.
+  # hence included here rather than in the list `income_and_tax__person_level`.
    "IT"
   ,"IC"
   ,"ICM"
@@ -125,7 +125,7 @@ cols_new = (
 
 cols_all = ( ["household"]
            + cols_const_within_hh
-           + income_and_tax
+           + income_and_tax__person_level
            + income_and_spending__household_level
            + cols_to_max__no_name_change
            + cols_to_max__post_rename

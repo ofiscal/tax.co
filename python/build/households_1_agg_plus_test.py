@@ -70,8 +70,8 @@ def test_sums( hh : pd.DataFrame,
              (hh_members_mean < 4) )
 
     # The new vars ICMD, GCM, etc. don't pass this test.
-    # xxx = ( hh [defs.income_and_tax] . sum() -
-    #         ppl[defs.income_and_tax] . sum() )
+    # xxx = ( hh [defs.income_and_tax__person_level] . sum() -
+    #         ppl[defs.income_and_tax__person_level] . sum() )
     # print(xxx)
     # assert ( xxx
     #          . abs() . max() ) < 5e-3
