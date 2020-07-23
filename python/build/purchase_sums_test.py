@@ -33,32 +33,32 @@ if com.subsample < 11: # The data is too sparse to test
   for (c,ts) in [
     ( "transactions",
       [ cla.MeanBounds    ( 60 , 120 ),
-        cla.CoversRange   ( 1  , 200 ),
-        cla.InRange       ( 1  , 400 ),
+        cla.CoversRange   ( 2  , 200 ),
+        cla.InRange       ( 2  , 400 ),
         cla.MissingAtMost ( 0 ) ] ),
 
     ( "value, tax, purchaselike non-VAT",
-      [ cla.MeanBounds    (1e3 , 1e4),
+      [ cla.MeanBounds    (1e4 , 1e5),
         cla.CoversRange   (0   , 2e6),
         cla.InRange       (0   , 5e7),
         cla.MissingAtMost (0) ] ),
 
     ( "value, tax, predial",
-      [ cla.MeanBounds    (1e3 ,1e4),
+      [ cla.MeanBounds    (1e4 ,1e5),
         cla.CoversRange   (0   ,1e3),
         cla.InRange       (0   ,5e7),
         cla.MissingAtMost (0) ] ),
 
     ( "value, tax, purchaselike non-predial non-VAT",
-      [ cla.MeanBounds    (0 ,5e3),
+      [ cla.MeanBounds    (1e3 ,2e4),
         cla.CoversRange   (0 ,9e5),
-        cla.InRange       (0 ,2e7), # surprising, given the range of the predial -- I would have imagined no other tax comes close
+        cla.InRange       (0 ,4e7), # surprising, given the range of the predial -- I would have imagined no other tax comes close
         cla.MissingAtMost (0) ] ),
 
      ( "value, non-purchase",
-       [ cla.MeanBounds    (0 ,2e3),
+       [ cla.MeanBounds    (1e6,1e7),
          cla.CoversRange   (0 ,1e6),
-         cla.InRange       (0 ,3e7),
+         cla.InRange       (0 ,2e9),
          cla.MissingAtMost (0) ] ),
 
     ( "value, purchase",

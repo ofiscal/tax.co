@@ -18,6 +18,9 @@ purchases = oio.readStage( cl.subsample,
                            'purchases_0' )
 
 for c in (
+    # PITFALL: Any correction reliant on a column's being a number
+    # cannot be trusted to work here. Put it later in the program,
+    # after running `all_columns_to_numbers`.
   [ Correction.Replace_Substring_In_Column(
       "quantity", ",", "." )
   , Correction.Replace_Missing_Values(
@@ -44,6 +47,10 @@ for c in (
 purchases = com.all_columns_to_numbers( purchases )
 purchases = defs.drop_if_coicop_or_value_invalid( purchases )
 purchases = defs.drop_absurdly_big_expenditures( purchases )
+purchases = (
+    Correction.Drop_Row_If_Column_Satisfies_Predicate(
+        "value", lambda v: v <= 0 )
+    . correct( purchases ) )
 
 # These only make sense once the relevant columns are numbers.
 for c in ( # how-got=1 -> is-purchase=1, nan -> nan, otherwise -> 0
