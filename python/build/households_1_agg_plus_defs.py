@@ -43,7 +43,7 @@ income_and_tax__person_level = ( [
   ] )
 
 income_and_spending__household_level = [
-  # Although these are peso-denominated, they are constant within household,
+  # PITFALL: Although these are peso-denominated, they are constant within household,
   # hence included here rather than in the list `income_and_tax__person_level`.
    "IT"
   ,"IC"

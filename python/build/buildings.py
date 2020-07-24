@@ -18,6 +18,10 @@ files = [
       , ("P8520S1A1", 0, "estrato", 0)
       , ("P5102", 0, "recently bought this house", 0)
          # 1 » Si 2 » No
+
+       # PITFALL: Although these are peso-denominated, they are constant within household.
+       # Along with the other Viviendas_y_hogares data, they are merged into people_2_buildings.
+       # However, in households_2_purchases, their within-family max is taken, rather than their sum (which is how the other peso-valued variables are aggregated).
       , ("IT",0,"IT",0)
       , ("ICGU",0,"IC",0)
       , ("ICMUG",0,"ICM",0)
