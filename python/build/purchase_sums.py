@@ -48,6 +48,11 @@ if True: # VAT is only charged for purchases; zero it for other things.
   vat_regex = regex.compile( "^vat" )
   vat_columns = [ col for col in purchases.columns
                    if vat_regex.match( col ) ]
+    # This could change -- that's why I use a regexp -- but currently,
+    # vat_columns is equal to this:
+    #   [ 'vat', 'vat, min', 'vat, max', 'vat frac', 'vat frac, min',
+    #     'vat frac, max', 'vat paid, min', 'vat paid, max']
+  #
   for col in vat_columns:
       purchases[col] = (
           (purchases[ "is-purchase" ] > 0) *
