@@ -86,12 +86,13 @@ if True: # add these columns: ["vat", "vat, min", "vat, max"]
     vat_cap_c,  how = "left", on="25-broad-categs" )
   purchases = purchases_coicop . combine_first( purchases_cap_c )
 
-if True: # motorcycles are special
+if True: # Big motorcycles are special. We proxy for "big" with "expensive".
   purchases["big-hog"] = (1 * (purchases["coicop"]=="07120101")
                             * (purchases["value"]>(9e6) ) )
-  purchases.loc[ purchases["big-hog"]>0, "vat"]      = 0.27
-  purchases.loc[ purchases["big-hog"]>0, "vat, min"] = 0.27
-  purchases.loc[ purchases["big-hog"]>0, "vat, max"] = 0.27
+  for col in ["vat", "vat, min", "vat, max"]:
+      purchases.loc[ purchases["big-hog"]>0, col] = 0.27
+  for col in ["vat frac", "vat frac, min", "vat frac, max"]:
+      purchases.loc[ purchases["big-hog"]>0, col] = 0.27 / 1.27
 
 if False: # drop anything missing min vat (which implies max also missing)
   purchases = purchases[ ~ purchases["vat, min"] . isnull() ]
@@ -113,4 +114,3 @@ oio.saveStage(
   c.subsample,
   purchases,
   "purchases_2_vat." + c.strategy_suffix )
-
