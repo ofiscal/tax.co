@@ -61,20 +61,15 @@ def test_income_ranks( hh : pd.DataFrame,
 
 def test_sums( hh : pd.DataFrame,
                ppl : pd.DataFrame ) -> ():
-    # test hh["members"]
     assert   hh["members"] . min() == 1
     assert ( hh["members"]           . max() ==
              ppl["household-member"] . max() )
     hh_members_mean = hh["members"].mean()
     assert ( (hh_members_mean > 2) &
              (hh_members_mean < 4) )
-
-    # The new vars ICMD, GCM, etc. don't pass this test.
-    # xxx = ( hh [defs.income_and_tax__person_level] . sum() -
-    #         ppl[defs.income_and_tax__person_level] . sum() )
-    # print(xxx)
-    # assert ( xxx
-    #          . abs() . max() ) < 5e-3
+    assert ( ( hh [defs.income_and_tax__person_level] . sum() -
+               ppl[defs.income_and_tax__person_level] . sum() )
+             . abs() . max() ) < 5e-3
 
 def test_bools( hh : pd.DataFrame,
                   ppl : pd.DataFrame ) -> ():
@@ -98,8 +93,8 @@ def test_bools( hh : pd.DataFrame,
         for c in bool_cols:
             assert hh[c].min() == 0
             assert hh[c].max() == 1
-        # for c in ["age","edu"]:
-        #     assert hh[c + "-max"].max() == ppl[c].max()
+        for c in ["age","edu"]:
+            assert hh[c + "-max"].max() == ppl[c].max()
     assert hh["age-min"].mean() < (ppl["age"].mean() * 0.8)
     assert hh["age-max"].mean() > (ppl["age"].mean() * 1.2)
 
@@ -165,4 +160,3 @@ if True: # IO
       com.subsample,
       "households_1_agg_plus",
       log )
-
