@@ -1,5 +1,4 @@
--- This is Haskell, not Python.
--- Developing the income tax code was easier in this language.
+-- This is some Haskell code that generates some Python code.
 
 data IncomeBracket = IncomeBracket
   { top :: Float
