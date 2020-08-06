@@ -77,12 +77,12 @@ It looks like Congress intended to implement the following marginal rate schedul
 
 If so, then the table in the proposal should look like this:
 
-| Límite inferior         | Límite superior | Tarifa                                      |
-| --                      | --              | --                                          |
-| Mayor o Igual a   84253 | Menor a  140422 | Patrimonio menos 84253 UVT * 1%             |
-| Mayor o Igual a  140422 |          280844 | Patrimonio menos  140422 UVT * 1.5% + 562   |
-| Mayor o Igual a  280844 |          702109 | Patrimonio menos  280844 UVT * 2%   + 2668  |
-| Mayor o Igual a  702109 |         1404218 | Patrimonio menos  702109 UVT * 2.5% + 11093 |
-| Mayor o Igual a 1404218 |         2106327 | Patrimonio menos 1404218 UVT * 3%   + 28646 |
-| Mayor o Igual a 2106327 |         2808437 | Patrimonio menos 2106327 UVT * 3.5% + 49709 |
-| Mayor o Igual a 2808437 |        ifninito | Patrimonio menos 2808437 UVT * 4%   + 74283 |
+| Límite inferior         | Límite superior | Tarifa                                           |
+| --                      | --              | --                                               |
+| Mayor o Igual a   84253 | Menor a  140422 | Patrimonio menos 84253 UVT * 1%                  |
+| Mayor o Igual a  140422 |          280844 | Patrimonio menos  140422 UVT * 1.5% + 562   UVTs |
+| Mayor o Igual a  280844 |          702109 | Patrimonio menos  280844 UVT * 2%   + 2668  UVTs |
+| Mayor o Igual a  702109 |         1404218 | Patrimonio menos  702109 UVT * 2.5% + 11093 UVTs |
+| Mayor o Igual a 1404218 |         2106327 | Patrimonio menos 1404218 UVT * 3%   + 28646 UVTs |
+| Mayor o Igual a 2106327 |         2808437 | Patrimonio menos 2106327 UVT * 3.5% + 49709 UVTs |
+| Mayor o Igual a 2808437 |        ifninito | Patrimonio menos 2808437 UVT * 4%   + 74283 UVTs |
