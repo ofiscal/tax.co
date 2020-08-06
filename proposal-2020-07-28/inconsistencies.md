@@ -34,7 +34,11 @@ There are two problems with this table. The first is that the biggest inheritanc
 
 ![inheritance tax](pics/inheritance/rate-mismatch.png)
 
-The second is that the `112337` from the first row should be subtracted from `x` in the second row. Without this, we have the strange result that if someone inherits `112336` UVTs, they pay no inheritance tax, but if they inherit `112338` UVTs, they lose 10% of their entire inheritance to taxes.
+The second is that the `112337` from the first row should be subtracted from `x` in the second row:
+
+![inheritance tax](pics/inheritance/non-marginal.png)
+
+Without this, we have the strange result that if someone inherits `112336` UVTs, they pay no inheritance tax, but if they inherit `112338` UVTs, they lose 10% of their entire inheritance to taxes.
 
 
 # The wealth tax (in progress)
