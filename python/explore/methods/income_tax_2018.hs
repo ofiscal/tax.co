@@ -81,6 +81,10 @@ dividendBrackets =
 -- (x - 55000 * muvt)*0.5  + 21893*muvt if x < (90000*muvt)
 -- (x - 90000 * muvt)*0.55 + 39393*muvt otherwise
 
+-- The table in the proposal differs slightly from this:
+-- written like the above pseudo-Python, its last row would look like this:
+-- (x - 56000 * muvt)*0.55 + 39393*muvt otherwise
+
 -- | If your income is less than 300 UVT, you pay nothing in taxes on it.
 incomeFormula1 :: Formula
 incomeFormula1 = Formula 0 0 0 1090
@@ -109,12 +113,11 @@ incomeBrackets =
 -- (x -  280884 * muvt)*0.2  +  16854.701*muvt if x < (2808436*muvt)
 -- (x - 2808436 * muvt)*0.33 + 522365.1*muvt   if x <    (9e20*muvt)
 
--- Formulas contained in the proposal are wildly different:
+-- Formulas contained in the proposal are different:
 -- 0                                       if x < ( 112337*muvt)
--- x*0.1                                   if x < ( 280884*muvt)
+-- x                   *0.1                if x < ( 280884*muvt)
 -- (x -  280884 * muvt)*0.2  +  28084*muvt if x < (2808436*muvt)
 -- (x - 2808436 * muvt)*0.25 + 533594*muvt if x <    (9e20*muvt)
-
 
 -- | If your inheritance is less than 300 UVT, you pay nothing in taxes on it.
 inheritanceFormula1 :: Formula
@@ -129,22 +132,20 @@ inheritanceBrackets =
   , MoneyBracket  9e20      0.33 ]
 
 
-
 -- * Wealth tax rates
 
--- What I calculate from the proposal's thresholds and marginal rates:
-
+-- What I calculate from the proposal's thresholds and (implicit) rates:
 -- Main> go wealthFormula1 wealthBrackets
 -- 0                                                 if x < (84253*muvt)
--- else (x - 84253   * muvt)*1e-2                    if x < (140422*muvt)
--- else (x - 140422  * muvt)*1.5e-2 + 561.69*muvt    if x < (280844*muvt)
--- else (x - 280844  * muvt)*2e-2   + 2668.0198*muvt if x < (702109*muvt)
--- else (x - 702109  * muvt)*2.5e-2 + 11093.319*muvt if x < (1404218*muvt)
+-- else (x -   84253 * muvt)*1e-2                    if x < (140422*muvt)
+-- else (x -  140422 * muvt)*1.5e-2 + 561.69*muvt    if x < (280844*muvt)
+-- else (x -  280844 * muvt)*2e-2   + 2668.0198*muvt if x < (702109*muvt)
+-- else (x -  702109 * muvt)*2.5e-2 + 11093.319*muvt if x < (1404218*muvt)
 -- else (x - 1404218 * muvt)*3e-2   + 28646.043*muvt if x < (2106327*muvt)
 -- else (x - 2106327 * muvt)*3.5e-2 + 49709.313*muvt if x < (2808437*muvt)
 -- else (x - 2808437 * muvt)*4e-2   + 74283.164*muvt
 
--- Formulas contained in the proposal are different:
+-- Formulas from the proposal are different:
 -- 0                                            if x <   (84253*uvt)
 -- else (x -    13500 * uvt)*1e-2               if x <  (140422*uvt)
 -- else (x -   140422 * uvt)*1.5e-2 +  1269*uvt if x <  (280844*uvt)
