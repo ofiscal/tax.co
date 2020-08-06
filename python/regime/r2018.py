@@ -23,7 +23,7 @@ def non_dividend_income_tax( income : float ) -> float:
 
   x = income
   return (
-                        0                               if x < (1090 *muvt)
+                    0                                   if x < (1090 *muvt)
     else (         (x - 1090 *muvt)*0.19                if x < (1700 *muvt)
       else (       (x - 1700 *muvt)*0.28 + 115.9  *muvt if x < (4100 *muvt)
         else (     (x - 4100 *muvt)*0.33 + 787.9  *muvt if x < (8670 *muvt)
