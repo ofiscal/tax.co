@@ -45,7 +45,7 @@ unMarginalize prev bracket =
 
 -- * Dividend tax rates
 
--- *Main> go dividendFormula1 dividendBrackets
+-- Main> go dividendFormula1 dividendBrackets
 -- 0                                if x < (300*muvt)
 -- (x - 300  * muvt)*0.1            if x < (600*muvt)
 -- (x - 600  * muvt)*0.12 + 30*muvt if x < (1000*muvt)
@@ -127,3 +127,48 @@ inheritanceBrackets =
   [ MoneyBracket    280_884 0.1
   , MoneyBracket  2_808_436 0.2
   , MoneyBracket  9e20      0.33 ]
+
+
+
+-- * Wealth tax rates
+
+-- What I calculate from the proposal's thresholds and marginal rates:
+
+-- Main> go wealthFormula1 wealthBrackets
+-- 0                                                 if x < (84253*muvt)
+-- else (x - 84253   * muvt)*1e-2                    if x < (140422*muvt)
+-- else (x - 140422  * muvt)*1.5e-2 + 561.69*muvt    if x < (280844*muvt)
+-- else (x - 280844  * muvt)*2e-2   + 2668.0198*muvt if x < (702109*muvt)
+-- else (x - 702109  * muvt)*2.5e-2 + 11093.319*muvt if x < (1404218*muvt)
+-- else (x - 1404218 * muvt)*3e-2   + 28646.043*muvt if x < (2106327*muvt)
+-- else (x - 2106327 * muvt)*3.5e-2 + 49709.313*muvt if x < (2808437*muvt)
+-- else (x - 2808437 * muvt)*4e-2   + 74283.164*muvt
+
+-- Formulas contained in the proposal are different:
+-- 0                                            if x <   (84253*uvt)
+-- else (x -    13500 * uvt)*1e-2               if x <  (140422*uvt)
+-- else (x -   140422 * uvt)*1.5e-2 +  1269*uvt if x <  (280844*uvt)
+-- else (x -   280843 * uvt)*2e-2   +  3376*uvt if x <  (702109*uvt)
+-- else (x -   969796 * uvt)*2.5e-2 + 11801*uvt if x < (1404218*uvt)
+-- else (x -  1685061 * uvt)*3e-2   + 29354*uvt if x < (2106327*uvt)
+-- else (x -  2106327 * uvt)*3.5e-2 + 50417*uvt if x < (2808437*uvt)
+-- else (x - 14042183 * uvt)*4e-2   + 74990*uvt
+  -- The richest would by these rules exempt 14042183,
+  -- rather than the 2808437 that I calculate.
+  -- The former random-looking figure is precisely 5 times the latter.
+
+-- | If your wealth is less than 300 UVT, you pay nothing in taxes on it.
+wealthFormula1 :: Formula
+wealthFormula1 = Formula 0 0 0 84253
+
+-- | Don't include the first bracket,
+-- as it's already been converted into a Formula (`wealthFormula1`).
+wealthBrackets :: [MoneyBracket]
+wealthBrackets =
+  [ MoneyBracket   140_422 0.01
+  , MoneyBracket   280_844 0.015
+  , MoneyBracket   702_109 0.02
+  , MoneyBracket 1_404_218 0.025
+  , MoneyBracket 2_106_327 0.03
+  , MoneyBracket 2_808_437 0.035
+  , MoneyBracket 9e20      0.04 ]
