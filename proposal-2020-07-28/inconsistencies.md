@@ -20,11 +20,15 @@ def dividendTax (x):
 
 There are a couple important patterns in that. First, notice how 300 appears at the end of the first line and at the beginning of the second, 600 appears at the end of the second line and the beginning of the third, etc. This pattern is common to tax schedules. Its purpose is to make sure that every peso you earn is taxed by at most one rate. It subtracts the pesos that were already taxed at lower rates.
 
-The same pattern ![appears in the proposal](pics/dividends/dividend tax, thresholds correspond.png).
+The same pattern appears in the proposal:
+
+![dividend thresholds correspond](pics/dividends/dividend tax, thresholds correspond.png).
 
 The second pattern is a little more complicated, but still simple: If you plug in the maximum amount of income that could be taxed in any row, the result is the amount that is added to someone's taxes in the next row. For instance, in the first row, if you plug in 300, you get 0. So 0 is added to (x-300)*0.1 in the second row. In the second row, if you plug in 600, you get 30, and 30 is the amount added in the third row. Etc.
 
-Again, the same pattern ![appears in the proposal](pics/dividends/dividends, plug prev max into prev formula.png).
+Again, the same pattern appears in the proposal:
+
+![didivend schedule, deriving the summand from the previous line](pics/dividends/dividends, plug prev max into prev formula.png).
 
 The dividend tax proposed follows these rules perfectly. The others do not.
 
@@ -33,6 +37,7 @@ The dividend tax proposed follows these rules perfectly. The others do not.
 
 The inheritance schedule comes with a helpful column indicating the intended marginal tax rate.
 
+```
 def inheritanceTax_intended(x):
   return     (  0                          if x <  112337
     else     ( (x -  112337)*0.1           if x <  280884
@@ -44,10 +49,12 @@ def inheritanceTax_written(x):
     else     ( x            *0.1           if x <  280884
       else   ( (x -  280884)*0.2  +  28084 if x < 2808436
         else ( (x - 2808436)*0.25 + 533594 ) ) ) )
+```
 
 
 # The wealth tax
 
+```
 def wealthTax_intended(x):
   return             (0                                if x <   84253
     else             ( (x -   84253)*0.01              if x <  140422
@@ -67,3 +74,4 @@ def wealthTax_written(x):
             else     ( (x -  1685061 )*0.03  + 29354 if x < 2106327
               else   ( (x -  2106327 )*0.035 + 50417 if x < 2808437
                 else ( (x - 14042183 )*0.04  + 74990 ) ) ) ) ) ) ) )
+```
