@@ -3,7 +3,9 @@ I discovered the inconsistencies in the process of translating the law to Python
 
 # The dividend tax schedule
 
-Let's start with the part of the law where I found no inconsistencies, which is the dividend tax. Here's ![what that looks like in the proposal](
+Let's start with the part of the law where I found no inconsistencies, which is the dividend tax. Here's what that looks like in the proposal:
+
+![dividends](dividends/dividends.png)
 
 Translated to python, that looks like this:
 
@@ -22,13 +24,13 @@ There are a couple important patterns in that. First, notice how 300 appears at 
 
 The same pattern appears in the proposal:
 
-![dividend thresholds correspond](pics/dividends/dividend tax, thresholds correspond.png).
+![dividend_thresholds_correspond](pics/dividends/dividend tax, thresholds correspond.png).
 
 The second pattern is a little more complicated, but still simple: If you plug in the maximum amount of income that could be taxed in any row, the result is the amount that is added to someone's taxes in the next row. For instance, in the first row, if you plug in 300, you get 0. So 0 is added to (x-300)*0.1 in the second row. In the second row, if you plug in 600, you get 30, and 30 is the amount added in the third row. Etc.
 
 Again, the same pattern appears in the proposal:
 
-![didivend schedule, deriving the summand from the previous line](pics/dividends/dividends, plug prev max into prev formula.png).
+![didivend_schedule_deriving_the_summand_from_the_previous_line](pics/dividends/dividends-plug-prev-max-into-prev-formula.png).
 
 The dividend tax proposed follows these rules perfectly. The others do not.
 
