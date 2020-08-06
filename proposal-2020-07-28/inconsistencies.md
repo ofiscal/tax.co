@@ -1,11 +1,8 @@
-I discovered the inconsistencies in the process of translating the law to Python code.
-
-
 # The dividend tax schedule
 
 Let's start with the part of the law where I found no inconsistencies, which is the dividend tax. Here's what that looks like in the proposal:
 
-![dividends](pics/dividends/dividends.png)
+![dividends](tables/dividends/dividends.png)
 
 What that says is that if someone's dividend income is less than 300 uvts, they pay no dividend tax. If it's not less than 300 but it's less than 600 uvts, then they pay 10% tax on the portion of their dividend income in excess of 300 uvts. If their dividend income is not less than 600 uvt but it's less than 1000 uvt, they pay 18% on the portion above 600, and they also pay 30 uvt for the first 600. Etc.
 
@@ -15,7 +12,7 @@ There are a couple important patterns in it.
 
 Notice how the 300 in the "hasta" column of the first row is subtracted from income in the formula ("impuesto") column of the second row:
 
-![dividend_thresholds_correspond](pics/dividends/dividend-tax-thresholds-correspond.png).
+![dividend_thresholds_correspond](tables/dividends/dividend-tax-thresholds-correspond.png).
 
 Similarly, the 600 from the second row appears in the formula for the third row, etc. This pattern is common to tax schedules. Since each peso earned should be taxed by exactly one rate (maybe zero), the pesos that were taxed at earlier rates are subtracted from income when the next rate is applied.
 
@@ -23,7 +20,7 @@ Similarly, the 600 from the second row appears in the formula for the third row,
 
 If you plug in the maximum amount of income that could be taxed in any row, the result is the amount that is added to someone's taxes in the next row. For instance:
 
-![didivend_schedule_deriving_the_summand_from_the_previous_line](pics/dividends/dividends-plug-prev-max-into-prev-formula.png)
+![didivend_schedule_deriving_the_summand_from_the_previous_line](tables/dividends/dividends-plug-prev-max-into-prev-formula.png)
 
 If you plug 600 into the second row, you get 30, and 30 is the amount added in the third row. If you plug 1000 into the third row, you get 78, which is the amount added in the fourth row. Etc. (In the first row, if you plug in 300, you get 0, which is why nothing is added in the formula for the second row.)
 
@@ -34,13 +31,24 @@ The dividend tax proposed follows these rules consistently. The others do not.
 
 There are two problems with the proposed inheritance tax schedule. The first is that the biggest inheritances are not in fact being taxed at a 33% rate, as suggested by the "Tarifa Marginal" column, but rather just 25%:
 
-![inheritance tax rate mismatch](pics/inheritance/rate-mismatch.png)
+![inheritance tax rate mismatch](tables/inheritance/rate-mismatch.png)
 
 The second is that the `112337` from the first row should be subtracted from `x` in the second row:
 
-![inheritance tax non-marginal mass point](pics/inheritance/non-marginal.png)
+![inheritance tax non-marginal mass point](tables/inheritance/non-marginal.png)
 
 Without this, we have the strange result that if someone inherits `112336` UVTs, they pay no inheritance tax, but if they inherit `112338` UVTs, they lose 10% of their entire inheritance to taxes.
+
+
+## Graphing the inheritance tax
+
+If we plot the fraction of an inheritance taken by taxes as dictated by the proposal's formulas, we get this:
+
+![inheritance written](graphs/inheritance-written-0-50000000.0.png)
+
+If we plot the same quantity as suggested by the proposal's rates and thresholds, we get this:
+
+![inheritance intended](graphs/inheritance-intended-0-50000000.0.png)
 
 
 # The wealth tax (in progress)
@@ -49,11 +57,11 @@ The weatlh tax schedule gives a uniform, intuitive set of marginal rates, starti
 
 Their first inconsistency is in Pattern 1. It is only followed about half the time. The circles in the picture below indicate where it *is* followed:
 
-![wealth tax bounds mismatch](pics/wealth/bounds-mismatch.png)
+![wealth tax bounds mismatch](tables/wealth/bounds-mismatch.png)
 
 The most pronounced effect of this pattern not being followed is in the highest wealth bracket:
 
-![wealth tax negative](pics/wealth/negative.png)
+![wealth tax negative](tables/wealth/negative.png)
 
 If you plug 3.000.000 into the formula proposed, the resulting tax is actually negative:
 ```
@@ -86,3 +94,16 @@ If so, then the table in the proposal should look like this:
 | Mayor o Igual a 1404218 |         2106327 | Patrimonio menos 1404218 UVT * 3%   + 28646 UVTs |
 | Mayor o Igual a 2106327 |         2808437 | Patrimonio menos 2106327 UVT * 3.5% + 49709 UVTs |
 | Mayor o Igual a 2808437 |        ifninito | Patrimonio menos 2808437 UVT * 4%   + 74283 UVTs |
+
+
+## Graphing the wealth tax
+
+If we plot the fraction of an wealth taken by taxes as dictated by the proposal's formulas, we get this:
+
+![wealth written](graphs/wealth-written-0-50000000.0.png)
+
+Two strange propoerties stand out: (1) Sometimes, a richer person pays less than a poorer person does in taxes. In fact that's true even if we measure in pesos, rather than as a fraction of their income. (2) For certain large wealth values, the tax formulas imply a negative tax.
+
+The schedule suggested by the rates and thresholds in the proposal, as described above, would yield the following alternative:
+
+![wealth intended](graphs/wealth-intended-0-50000000.0.png)

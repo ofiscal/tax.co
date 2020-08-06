@@ -66,3 +66,62 @@ def wealthTax_written(x):
               else   ( (x -  2106327 )*0.035 + 50417 if x < 2808437
                 else ( (x - 14042183 )*0.04  + 74990 ) ) ) ) ) ) ) )
 
+
+# Draw stuff
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+def linear( title, tax_base_name, function_name, function, xmin, xmax):
+  x = np.arange(xmin, xmax, (xmax - xmin) / 10000)
+  plt.plot( x,
+            [function(a) for a in x] )
+  plt.ylabel( "taxes (measured in UVTs)" )
+  plt.xlabel(tax_base_name + ' in UVTs')
+  plt.title(title)
+
+def semilog_ratio( title, tax_base_name, function_name, function, xmin, xmax):
+  x = np.arange(xmin, xmax, (xmax - xmin) / 10000)
+  plt.semilogx( x,
+                [function(a) / a for a in x] )
+  plt.ylabel('fraction of ' + tax_base_name + ' lost to tax')
+  plt.xlabel(tax_base_name + ' in UVTs')
+  plt.title(title)
+
+for (title,base,fname,f,xmin, xmax) in [
+    ("Wealth tax formulas from the proposal",
+     "wealth",      "written",  wealthTax_written,       0, 5e7),
+    ("Wealth tax suggested by the proposal's rates and thresholds",
+     "wealth",      "intended", wealthTax_intended,      0, 5e7),
+    ( # Alternatively, this one can be treated specially,
+      # to highlight a weird region, and zoom in on that region.
+      # See the code below, tagged "huasidhuio20178590hsdjaklva",
+      # for how to do that.
+     "Inheritance tax formulas from the proposal",
+     "inheritance", "written",  inheritanceTax_written,  0, 5e7),
+    ("Inheritance tax suggested by the proposal's rates and thresholds",
+     "inheritance", "intended", inheritanceTax_intended, 0, 5e7)
+    ]:
+  semilog_ratio( title, base,fname,f,xmin, xmax )
+  plt.savefig( base + "-" + fname + "-" +
+               str(xmin) + "-" + str(xmax) + ".png" )
+  plt.close()
+
+if False: # tag: huasidhuio20178590hsdjaklva
+  for (title,base,fname,f,xmin, xmax) in [
+          ( "Inheritance tax",  "inheritance", "written",
+            inheritanceTax_written, 0, 5e7 ) ]:
+    weird_min = 100000
+    weird_max = 300000
+    semilog_ratio( title, base, fname, f, xmin, xmax )
+    plt.axvspan(weird_min, weird_max, color='red', alpha=0.5)
+    plt.savefig( base + "-" + fname + "-" +
+                 str(xmin) + "-" + str(xmax) + ".png" )
+    plt.close()
+    #
+    g = lambda x : x - inheritanceTax_written(x)
+    linear( "Inheritance received after taxes", "inheritance",
+            "written, received", g, weird_min, weird_max )
+    plt.savefig( base + "-" + fname + "-" + "linear" + "-" +
+                 str(weird_min) + "-" + str(weird_max) + ".png" )
+    plt.close()
