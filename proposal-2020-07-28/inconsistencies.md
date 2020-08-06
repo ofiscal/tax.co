@@ -5,7 +5,7 @@ I discovered the inconsistencies in the process of translating the law to Python
 
 Let's start with the part of the law where I found no inconsistencies, which is the dividend tax. Here's what that looks like in the proposal:
 
-![dividends](dividends/dividends.png)
+![dividends](pics/dividends/dividends.png)
 
 Translated to python, that looks like this:
 
@@ -24,7 +24,7 @@ There are a couple important patterns in that. First, notice how 300 appears at 
 
 The same pattern appears in the proposal:
 
-![dividend_thresholds_correspond](pics/dividends/dividend tax, thresholds correspond.png).
+![dividend_thresholds_correspond](pics/dividends/dividend-tax-thresholds-correspond.png).
 
 The second pattern is a little more complicated, but still simple: If you plug in the maximum amount of income that could be taxed in any row, the result is the amount that is added to someone's taxes in the next row. For instance, in the first row, if you plug in 300, you get 0. So 0 is added to (x-300)*0.1 in the second row. In the second row, if you plug in 600, you get 30, and 30 is the amount added in the third row. Etc.
 
