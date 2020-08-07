@@ -104,7 +104,7 @@ incomeBrackets =
   , MoneyBracket 9e20   0.55 ]
 
 
--- * Corporate income tax rates
+-- * Corporate wealth tax rates
 
 -- What I calculate from the proposal's thresholds and (implicit) rates:
 -- 0                                   if x < 1207628
@@ -122,15 +122,14 @@ incomeBrackets =
 -- (x -   1.7665066e7)*0.055 + 806723.4  if x < 4.2126548e7
 -- (x - 280843660)*0.06  + 2152105   if x < Infinity
 
-
--- | If your income is less than 300 UVT, you pay nothing in taxes on it.
-corporateIncomeFormula1 :: Formula
-corporateIncomeFormula1 = Formula 0 0 0 1_207_628
+-- | If your wealth is less than 300 UVT, you pay nothing in taxes on it.
+corporateWealthFormula1 :: Formula
+corporateWealthFormula1 = Formula 0 0 0 1_207_628
 
 -- | Don't include the first bracket,
--- as it's already been converted into a Formula (`corporateIncomeFormula1`).
-corporateIncomeBrackets :: [MoneyBracket]
-corporateIncomeBrackets =
+-- as it's already been converted into a Formula (`corporateWealthFormula1`).
+corporateWealthBrackets :: [MoneyBracket]
+corporateWealthBrackets =
   [ MoneyBracket  2_190_581 0.04
   , MoneyBracket  3_454_377 0.045
   , MoneyBracket 17_665_066 0.05

@@ -120,10 +120,10 @@ for (title,base,fname,f,xmin, xmax) in [
      "inheritance", "written",  inheritanceTax_written,  0, 5e7),
     ("Inheritance tax suggested by the proposal's rates and thresholds",
      "inheritance", "intended", inheritanceTax_intended, 0, 5e7),
-    ( "Inheritance tax formulas from the proposal",
-      "corp-income", "written", corpIncomeTax_written, 0, 1e9),
-    ( "Corporate income tax suggested by the proposal's rates and thresholds",
-      "corp-income", "intended", corpIncomeTax_intended, 0, 1e9),
+    ( "Corporate wealth tax formulas from the proposal",
+      "corp-wealth", "written", corpIncomeTax_written, 0, 1e9),
+    ( "Corporate wealth tax suggested by the proposal's rates and thresholds",
+      "corp-wealth", "intended", corpIncomeTax_intended, 0, 1e9),
     ]:
   semilog_ratio( title, base,fname,f,xmin, xmax )
   plt.savefig( base + "-" + fname + "-" +
