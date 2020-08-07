@@ -121,6 +121,8 @@ In both cases, the number in red on the right hand side should probably be chang
 
 ![corporate income problem graph](graphs/corp-income-written-0-100000000.0.png)
 
-Again, notice that the fraction of profits taxed is *negative* for a large range of extremely profitable companies. Here's the effect with that change:
+We see the same two problems here that we saw in the wealth tax formulas. For one thing, the fraction of profits taxed is *negative* for a large range of extremely profitable companies. For another, some larger corporations pay less tax than smaller corporations, both as a fraction of their profits and in absolute numbers of pesos.
+
+Here's the same graph after the two changes proposed above:
 
 ![corporate income solved graph](graphs/corp-income-intended-0-100000000.0.png)
