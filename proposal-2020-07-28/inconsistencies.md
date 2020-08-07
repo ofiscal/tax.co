@@ -51,17 +51,17 @@ If we plot the same quantity as suggested by the proposal's rates and thresholds
 ![inheritance intended](graphs/inheritance-intended-0-50000000.0.png)
 
 
-# The wealth tax (in progress)
+# The personal wealth tax
 
 The weatlh tax schedule gives a uniform, intuitive set of marginal rates, starting at 1% and progressing up to 4%. However, the formulas dictating total tax owed as a function of those rates appear to be incorrect.
 
 Their first inconsistency is in Pattern 1. It is only followed about half the time. The circles in the picture below indicate where it *is* followed:
 
-![wealth tax bounds mismatch](tables/wealth/bounds-mismatch.png)
+![personal wealth tax bounds mismatch](tables/wealth/bounds-mismatch.png)
 
-The most pronounced effect of this pattern not being followed is in the highest wealth bracket:
+The most pronounced effect of this pattern not being followed is in the highest personal wealth bracket:
 
-![wealth tax negative](tables/wealth/negative.png)
+![personal wealth tax negative](tables/wealth/negative.png)
 
 If you plug 3.000.000 into the formula proposed, the resulting tax is actually negative:
 ```
@@ -96,17 +96,17 @@ If so, then the table in the proposal should look like this:
 | Mayor o Igual a 2808437 |        ifninito | Patrimonio menos 2808437 UVT * 4%   + 74283 UVTs |
 
 
-## Graphing the wealth tax
+## Graphing the personal wealth tax
 
-If we plot the fraction of an wealth taken by taxes as dictated by the proposal's formulas, we get this:
+If we plot the fraction of an personal wealth taken by taxes as dictated by the proposal's formulas, we get this:
 
-![wealth written](graphs/wealth-written-0-50000000.0.png)
+![personal wealth written](graphs/wealth-written-0-50000000.0.png)
 
-Two strange propoerties stand out: (1) Sometimes, a richer person pays less than a poorer person does in taxes. In fact that's true even if we measure in pesos, rather than as a fraction of their income. (2) For certain large wealth values, the tax formulas imply a negative tax.
+Two strange propoerties stand out: (1) Sometimes, a richer person pays less than a poorer person does in taxes. In fact that's true even if we measure in pesos, rather than as a fraction of their income. (2) For certain large personal wealth values, the tax formulas imply a negative tax.
 
 The schedule suggested by the rates and thresholds in the proposal, as described above, would yield the following alternative:
 
-![wealth intended](graphs/wealth-intended-0-50000000.0.png)
+![personal wealth intended](graphs/wealth-intended-0-50000000.0.png)
 
 
 # The corporate wealth tax
