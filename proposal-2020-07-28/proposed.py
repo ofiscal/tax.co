@@ -67,6 +67,25 @@ def wealthTax_written(x):
                 else ( (x - 14042183 )*0.04  + 74990 ) ) ) ) ) ) ) )
 
 
+# Corporate income tax rates
+
+def corpIncomeTax_intended(x):
+  return         ( 0                                   if x < 1207628
+    else         ( (x -     1207628)*0.04              if x < 2190581
+      else       ( (x -     2190581)*0.045 + 39318.117 if x < 3454377
+        else     ( (x -     3454377)*0.05  + 96188.94  if x < 1.7665066e7
+          else   ( (x - 1.7665066e7)*0.055 + 806723.4  if x < 4.2126548e7
+            else ( (x - 4.2126548e7)*0.06  + 2152105 ) ) ) ) ) )
+
+def corpIncomeTax_written(x):
+  return         ( 0                                     if x < 1207628
+    else         ( (x -        145000)*0.04              if x < 2190581
+      else       ( (x -       2190581)*0.045 + 39318.117 if x < 3454377
+        else     ( (x -       3454377)*0.05  + 96188.94  if x < 1.7665066e7
+          else   ( (x -   1.7665066e7)*0.055 + 806723.4  if x < 4.2126548e7
+            else ( (x - 280843660)    *0.06  + 2152105 ) ) ) ) ) )
+
+
 # Draw stuff
 
 import matplotlib.pyplot as plt
@@ -100,7 +119,11 @@ for (title,base,fname,f,xmin, xmax) in [
      "Inheritance tax formulas from the proposal",
      "inheritance", "written",  inheritanceTax_written,  0, 5e7),
     ("Inheritance tax suggested by the proposal's rates and thresholds",
-     "inheritance", "intended", inheritanceTax_intended, 0, 5e7)
+     "inheritance", "intended", inheritanceTax_intended, 0, 5e7),
+    ( "Inheritance tax formulas from the proposal",
+      "corp-income", "written", corpIncomeTax_written, 0, 1e8),
+    ( "Corporate income tax suggested by the proposal's rates and thresholds",
+      "corp-income", "intended", corpIncomeTax_intended, 0, 1e8),
     ]:
   semilog_ratio( title, base,fname,f,xmin, xmax )
   plt.savefig( base + "-" + fname + "-" +

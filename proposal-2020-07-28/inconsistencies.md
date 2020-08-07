@@ -107,3 +107,20 @@ Two strange propoerties stand out: (1) Sometimes, a richer person pays less than
 The schedule suggested by the rates and thresholds in the proposal, as described above, would yield the following alternative:
 
 ![wealth intended](graphs/wealth-intended-0-50000000.0.png)
+
+
+# The corporate income tax
+
+The most immediate problem with the corporate income tax proposed is that it's progressive. Progressive taxes make sense for individuals but they have [unwanted effects when levied on coroporations](https://economic-incentives.blogspot.com/2010/02/why-isn-corporate-income-tax.html).
+
+But supposing Congress does in fact want to impose a progressive corporate income tax, the schedule provided in the proposal does not follow Pattern 1 in two places:
+
+![corporate income problem table](tables/corp-income/bounds-mismatch.png)
+
+In both cases, the number in red on the right hand side should probably be changed to equal the number on the left. Here's the effect without that change:
+
+![corporate income problem graph](graphs/corp-income-written-0-100000000.0.png)
+
+Again, notice that the fraction of profits taxed is *negative* for a large range of extremely profitable companies. Here's the effect with that change:
+
+![corporate income solved graph](graphs/corp-income-intended-0-100000000.0.png)

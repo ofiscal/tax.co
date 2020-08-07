@@ -104,6 +104,40 @@ incomeBrackets =
   , MoneyBracket 9e20   0.55 ]
 
 
+-- * Corporate income tax rates
+
+-- What I calculate from the proposal's thresholds and (implicit) rates:
+-- 0                                   if x < 1207628
+-- (x -     1207628)*0.04              if x < 2190581
+-- (x -     2190581)*0.045 + 39318.117 if x < 3454377
+-- (x -     3454377)*0.05  + 96188.94  if x < 1.7665066e7
+-- (x - 1.7665066e7)*0.055 + 806723.4  if x < 4.2126548e7
+-- (x - 4.2126548e7)*0.06  + 2152105   if x < Infinity
+
+-- The proposal is not quite that:
+-- 0                                     if x < 1207628
+-- (x -        145000)*0.04              if x < 2190581
+-- (x -       2190581)*0.045 + 39318.117 if x < 3454377
+-- (x -       3454377)*0.05  + 96188.94  if x < 1.7665066e7
+-- (x -   1.7665066e7)*0.055 + 806723.4  if x < 4.2126548e7
+-- (x - 280843660)*0.06  + 2152105   if x < Infinity
+
+
+-- | If your income is less than 300 UVT, you pay nothing in taxes on it.
+corporateIncomeFormula1 :: Formula
+corporateIncomeFormula1 = Formula 0 0 0 1_207_628
+
+-- | Don't include the first bracket,
+-- as it's already been converted into a Formula (`corporateIncomeFormula1`).
+corporateIncomeBrackets :: [MoneyBracket]
+corporateIncomeBrackets =
+  [ MoneyBracket  2_190_581 0.04
+  , MoneyBracket  3_454_377 0.045
+  , MoneyBracket 17_665_066 0.05
+  , MoneyBracket 42_126_548 0.055
+  , MoneyBracket 9e50       0.06 ]
+
+
 -- * Inheritance tax rates
 
 -- What I calculate from the proposal's thresholds and marginal rates:
