@@ -10,3 +10,4 @@ _out/
 _probably_obsolete/
 git-comment.txt
 temp*
+*git-comment*
