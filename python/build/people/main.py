@@ -265,7 +265,6 @@ if True: # income
       ppl["income, ganancia ocasional, 10%-taxable"] = (
         # PITFALL: overlaps what will be called "income, infrequent"
         ppl["income, month : sale : real estate"] +
-        ppl["income, month : infrequent : inheritance"] +
         ppl["income, donacion"].apply(
           lambda x: x - min ( x * 0.2
                             , c.muvt * 2290  ) ) )
@@ -273,8 +272,10 @@ if True: # income
       ppl["income, ganancia ocasional, 20%-taxable"] = (
         ppl["income, month : infrequent : gambling"] +
         ppl["income, month : infrequent : jury awards"] )
-
-      ppl = ppl.drop( columns = cols_infrequent )
+      ppl = ppl.drop( columns =
+                      set(cols_infrequent) -
+                      set(["income, month : infrequent : inheritance"])
+                      )
 
     if True: # "income" from borrowing
       cols_borrowing = defs.rename_monthly(
@@ -316,6 +317,7 @@ if True: # income
           'income, month : pension : age | illness'  : "income, pension"
         , 'income, month : cesantia'                 : "income, cesantia"
         , "income, month : investment : dividends"   : "income, dividend"
+        , "income, month : infrequent : inheritance" : "income, inheritance"
         , 'total income, monthly : infrequent'       : "income, infrequent"
         , 'total income, monthly : govt, cash'       : "income, govt, cash"
         , 'total income, monthly : labor, cash'      : "income, labor, cash"
