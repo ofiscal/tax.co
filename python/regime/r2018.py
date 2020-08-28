@@ -24,14 +24,17 @@ def non_dividend_income_tax( income : float ) -> float:
 
   x = income
   return (
-                    0                                   if x < (1090 *muvt)
-    else (         (x - 1090 *muvt)*0.19                if x < (1700 *muvt)
-      else (       (x - 1700 *muvt)*0.28 + 115.9  *muvt if x < (4100 *muvt)
-        else (     (x - 4100 *muvt)*0.33 + 787.9  *muvt if x < (8670 *muvt)
-          else (   (x - 8670 *muvt)*0.35 + 2296   *muvt if x < (18970*muvt)
-            else ( (x - 18970*muvt)*0.37 + 5901   *muvt if x < (31000*muvt)
-              else (x - 31000*muvt)*0.39 + 10352.1*muvt
-                  ) ) ) ) ) )
+    0                                           if x < ( 1090*muvt)
+    else ( (x -  1090 * muvt)*0.19              if x < ( 1700*muvt)
+    else ( (x -  1700 * muvt)*0.28 +   116*muvt if x < ( 4100*muvt)
+    else ( (x -  4100 * muvt)*0.33 +   788*muvt if x < ( 8670*muvt)
+    else ( (x -  8670 * muvt)*0.35 +  2296*muvt if x < (18970*muvt)
+    else ( (x - 18970 * muvt)*0.39 +  5901*muvt if x < (27595*muvt)
+    else ( (x - 27595 * muvt)*0.44 +  9265*muvt if x < (36000*muvt)
+    else ( (x - 36000 * muvt)*0.47 + 12963*muvt if x < (55000*muvt)
+    else ( (x - 55000 * muvt)*0.5  + 21893*muvt if x < (90000*muvt)
+    else ( (x - 90000 * muvt)*0.55 + 39393*muvt
+          ) ) ) ) ) ) ) ) ) )
 
 def taxable( row: pd.Series ) -> float:
   """
