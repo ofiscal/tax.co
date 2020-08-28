@@ -9,8 +9,8 @@ if True:
   import python.regime.r2018 as reg
 
 
-def test_non_dividend_income_tax():
-  f = reg.non_dividend_income_tax
+def test_most_income_tax():
+  f = reg.most_income_tax
   assert near( f( 500 * muvt ), 0 )
   x = 1500 * muvt
   assert near( f(x),
@@ -43,7 +43,7 @@ def test_taxable():
                  r[reg.gravable_pre] - 5072 * muvt )
   
 if True:
-  test_non_dividend_income_tax()
+  test_most_income_tax()
   test_taxable()
   log = str( datetime.datetime.now() )
   oio.test_write( 1 # PITFALL: Doesn't use any subsample,

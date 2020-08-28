@@ -10,7 +10,7 @@ income_tax_columns = [ "tax, income"
 
 gravable_pre = "cedula general gravable, sums before exemptions"
 
-def non_dividend_income_tax( income : float ) -> float:
+def most_income_tax( income : float ) -> float:
   # see test/income_tax_2018.hs for code that generates these formulas.
   # Run this to test the accumulated totals
   # (the numbers just after the + signs):
@@ -74,7 +74,8 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
   new_columns["tax, income, most"] = (
     temp_columns["cedula general gravable"] +
     ppl["income, pension"]
-  ) . apply( non_dividend_income_tax )
+  ) . apply( most_income_tax )
+
 
   new_columns["tax, income, dividend"] = (
     ppl["income, dividend"].apply( lambda x:
