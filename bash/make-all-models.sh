@@ -13,7 +13,7 @@
 for strategy in detail; do # options: detail
   for regime_year in 2018; do # options: 2016 | 2018
       echo; echo "strategy:" $strategy $regime_year; date
-    make --keep-going tests       \
+    make --keep-going overview tests       \
          subsample=$1             \
          regime_year=$regime_year \
          strategy=$strategy

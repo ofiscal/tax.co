@@ -78,8 +78,12 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
 
   new_columns["tax, income, dividend"] = (
     ppl["income, dividend"].apply( lambda x:
-      0 if x < (300*muvt)
-      else (x - 300*muvt) * 0.15 ) )
+      0                                        if x < ( 300*muvt)
+      else ( (x - 300  * muvt)*0.1             if x < ( 600*muvt)
+      else ( (x - 600  * muvt)*0.12 +  30*muvt if x < (1000*muvt)
+      else ( (x - 1000 * muvt)*0.18 +  78*muvt if x < (1500*muvt)
+      else ( (x - 1500 * muvt)*0.2  + 168*muvt
+            ) ) ) ) ) )
 
   new_columns["tax, income, inheritance"] = (
     ppl["income, inheritance"].apply( lambda x:
