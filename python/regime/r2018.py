@@ -3,7 +3,7 @@ from python.common.misc import muvt
 
 
 income_tax_columns = [ "tax, income"
-                     , "tax, income, all but dividend"
+                     , "tax, income, most"
                      , "tax, income, dividend"
                      ]
 
@@ -66,7 +66,7 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
     temp_columns .
     apply(taxable, axis=1) )
 
-  new_columns["tax, income, all but dividend"] = (
+  new_columns["tax, income, most"] = (
     temp_columns["cedula general gravable"] +
     ppl["income, pension"]
   ) . apply( non_dividend_income_tax )
@@ -76,7 +76,7 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
       0 if x < (300*muvt)
       else (x - 300*muvt) * 0.15 ) )
   new_columns["tax, income"] = (
-    new_columns["tax, income, all but dividend"] +
+    new_columns["tax, income, most"] +
     new_columns["tax, income, dividend"] )
 
   return pd.concat( [ppl, new_columns], axis = 1 )
