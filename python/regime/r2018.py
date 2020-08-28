@@ -5,6 +5,7 @@ from python.common.misc import muvt
 income_tax_columns = [ "tax, income"
                      , "tax, income, most"
                      , "tax, income, dividend"
+                     , "tax, income, inheritance"
                      ]
 
 gravable_pre = "cedula general gravable, sums before exemptions"
@@ -62,6 +63,7 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
     + ppl["income, capital (tax def)"]
     + ppl["income, non-labor"]
     ) )
+
   temp_columns["cedula general gravable"] = (
     temp_columns .
     apply(taxable, axis=1) )
@@ -75,9 +77,20 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
     ppl["income, dividend"].apply( lambda x:
       0 if x < (300*muvt)
       else (x - 300*muvt) * 0.15 ) )
+
+  new_columns["tax, income, inheritance"] = (
+    ppl["income, inheritance"].apply( lambda x:
+      0 if x < (112337*muvt)
+      else (   (x -  112337 * muvt)*0.1                if x < ( 280884*muvt)
+        else ( (x -  280884 * muvt)*0.2 +   16855*muvt if x < (2808436*muvt)
+          else (x - 2808436 * muvt)*0.33 + 522365*muvt
+          ) ) ) )
+
   new_columns["tax, income"] = (
     new_columns["tax, income, most"] +
-    new_columns["tax, income, dividend"] )
+    new_columns["tax, income, dividend"] +
+    new_columns["tax, income, inheritance"]
+    )
 
   return pd.concat( [ppl, new_columns], axis = 1 )
 
