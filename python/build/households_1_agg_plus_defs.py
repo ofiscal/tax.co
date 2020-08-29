@@ -23,9 +23,7 @@ income_and_tax__person_level = ( [
   , "tax, ss, solidaridad"
   , "tax, ss, parafiscales"
   , "tax, ss, cajas de compensacion"
-  , "cesantias + primas"
-  , "tax, gmf"
-  , "tax, ganancia ocasional" ]
+  , "cesantias + primas" ]
 
   + regime.income_tax_columns +
   [ "income"

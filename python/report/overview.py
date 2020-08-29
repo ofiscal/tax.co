@@ -86,8 +86,9 @@ if True: # create a summary dataframe
     , "tax, ss, parafiscales"
     , "tax, ss, cajas de compensacion"
     , "cesantias + primas"
-    , "tax, gmf"
-    , "tax, ganancia ocasional"
+    , "tax, income, inheritance, proposed"
+    , "tax, income, gmf"
+    , "tax, income, ganancia ocasional"
     ] )
 
   householdGroupVars = [ "one"
@@ -235,10 +236,10 @@ if True: # do the same thing to a subset of that data
     , "tax, ss, cajas de compensacion: mean"
     , "cesantias + primas: median_unweighted"
     , "cesantias + primas: mean"
-    , "tax, gmf: median_unweighted"
-    , "tax, gmf: mean"
-    , "tax, ganancia ocasional: median_unweighted"
-    , "tax, ganancia ocasional: mean"
+    , "tax, income, gmf: median_unweighted"
+    , "tax, income, gmf: mean"
+    , "tax, income, ganancia ocasional: median_unweighted"
+    , "tax, income, ganancia ocasional: mean"
     ] ]
 
   df.to_csv(   output_dir +

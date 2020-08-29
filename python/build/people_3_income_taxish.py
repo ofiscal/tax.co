@@ -8,7 +8,6 @@ if True:
   import python.build.ss_functions as ss
   import python.build.output_io    as oio
   import python.common.util        as util
-  import python.common.misc        as m
   import python.common.common      as com
   #
   import python.build.people_3_income_taxish_functions as f4
@@ -19,15 +18,6 @@ if True:
 
 ppl = oio.readStage( com.subsample
                    , "people_2_buildings" )
-
-# This tax is also known as the "4 por mil" --
-# the 0.4% tax levided on transactions involving someone's bank account.
-ppl["tax, gmf"] = (0.004 * ( ppl["income, cash"] - m.gmf_threshold)
-                  ).apply( lambda x: max(0,x) )
-
-ppl["tax, ganancia ocasional"] = (
-  ppl["income, ganancia ocasional, 10%-taxable"] * 0.1 +
-  ppl["income, ganancia ocasional, 20%-taxable"] * 0.2 )
 
 ppl = ss.mk_ss_contribs(ppl)
 

@@ -265,6 +265,7 @@ if True: # income
       ppl["income, ganancia ocasional, 10%-taxable"] = (
         # PITFALL: overlaps what will be called "income, infrequent"
         ppl["income, month : sale : real estate"] +
+        ppl["income, month : infrequent : inheritance"] +
         ppl["income, donacion"].apply(
           lambda x: x - min ( x * 0.2
                             , c.muvt * 2290  ) ) )

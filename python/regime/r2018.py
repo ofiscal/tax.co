@@ -1,11 +1,18 @@
 import pandas as pd
-from python.common.misc import muvt
+import python.common.misc as misc
+from   python.common.misc import muvt
 
 
 income_tax_columns = [ "tax, income"
+                     , "tax, income, proposed"
                      , "tax, income, most"
+                     , "tax, income, most, proposed"
                      , "tax, income, dividend"
-                     , "tax, income, inheritance"
+                     , "tax, income, dividend, proposed"
+                     , "tax, income, inheritance, proposed"
+                     , "tax, income, ganancia ocasional"
+                     , "tax, income, ganancia ocasional, proposed"
+                     , "tax, income, gmf"
                      ]
 
 gravable_pre = "cedula general gravable, sums before exemptions"
@@ -24,6 +31,18 @@ def most_income_tax( income : float ) -> float:
 
   x = income
   return (
+    0                                           if x < (1090 *muvt)
+    else ( (x - 1090 *muvt)*0.19                if x < (1700 *muvt)
+    else ( (x - 1700 *muvt)*0.28 + 115.9  *muvt if x < (4100 *muvt)
+    else ( (x - 4100 *muvt)*0.33 + 787.9  *muvt if x < (8670 *muvt)
+    else ( (x - 8670 *muvt)*0.35 + 2296   *muvt if x < (18970*muvt)
+    else ( (x - 18970*muvt)*0.37 + 5901   *muvt if x < (31000*muvt)
+    else   (x - 31000*muvt)*0.39 + 10352.1*muvt
+    ) ) ) ) ) )
+
+def most_income_tax_proposed( income : float ) -> float:
+  x = income
+  return (
     0                                           if x < ( 1090*muvt)
     else ( (x -  1090 * muvt)*0.19              if x < ( 1700*muvt)
     else ( (x -  1700 * muvt)*0.28 +   116*muvt if x < ( 4100*muvt)
@@ -33,8 +52,8 @@ def most_income_tax( income : float ) -> float:
     else ( (x - 27595 * muvt)*0.44 +  9265*muvt if x < (36000*muvt)
     else ( (x - 36000 * muvt)*0.47 + 12963*muvt if x < (55000*muvt)
     else ( (x - 55000 * muvt)*0.5  + 21893*muvt if x < (90000*muvt)
-    else ( (x - 90000 * muvt)*0.55 + 39393*muvt
-          ) ) ) ) ) ) ) ) ) )
+    else   (x - 90000 * muvt)*0.55 + 39393*muvt
+    ) ) ) ) ) ) ) ) )
 
 def taxable( row: pd.Series ) -> float:
   """
@@ -76,8 +95,17 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
     ppl["income, pension"]
   ) . apply( most_income_tax )
 
+  new_columns["tax, income, most, proposed"] = (
+    temp_columns["cedula general gravable"] +
+    ppl["income, pension"]
+  ) . apply( most_income_tax_proposed )
 
   new_columns["tax, income, dividend"] = (
+    ppl["income, dividend"].apply( lambda x:
+      0 if x < (300*muvt)
+      else (x - 300*muvt) * 0.15 ) )
+
+  new_columns["tax, income, dividend, proposed"] = (
     ppl["income, dividend"].apply( lambda x:
       0                                        if x < ( 300*muvt)
       else ( (x - 300  * muvt)*0.1             if x < ( 600*muvt)
@@ -86,7 +114,7 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
       else ( (x - 1500 * muvt)*0.2  + 168*muvt
             ) ) ) ) ) )
 
-  new_columns["tax, income, inheritance"] = (
+  new_columns["tax, income, inheritance, proposed"] = (
     ppl["income, inheritance"].apply( lambda x:
       0 if x < (112337*muvt)
       else (   (x -  112337 * muvt)*0.1                if x < ( 280884*muvt)
@@ -94,11 +122,39 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
           else (x - 2808436 * muvt)*0.33 + 522365*muvt
           ) ) ) )
 
+  new_columns["tax, income, ganancia ocasional"] = (
+    ppl["income, ganancia ocasional, 10%-taxable"] * 0.1 +
+    ppl["income, ganancia ocasional, 20%-taxable"] * 0.2 )
+
+  new_columns["tax, income, ganancia ocasional, proposed"] = (
+    ( ppl["income, ganancia ocasional, 10%-taxable"]
+    - ppl["income, inheritance"]
+    ) * 0.1
+    + ppl["income, ganancia ocasional, 20%-taxable"] * 0.2 )
+
+  # a.k.a. the "4 por mil" -- a 0.4% tax
+  # levided on transactions involving someone's bank account.
+  new_columns["tax, income, gmf"] = (
+      0.004 * ( ppl["income, cash"] - misc.gmf_threshold)
+      ).apply( lambda x: max(0,x) )
+
+  # TODO: This is dangerous: It duplicates some information from
+  # income_tax_columns, so they can get out of sync.
   new_columns["tax, income"] = (
-    new_columns["tax, income, most"] +
-    new_columns["tax, income, dividend"] +
-    new_columns["tax, income, inheritance"]
-    )
+      new_columns [[ "tax, income, most"
+                   , "tax, income, dividend"
+                   , "tax, income, ganancia ocasional"
+                   , "tax, income, gmf" ]] .
+      sum( axis = "columns" ) )
+
+  # TODO: This is dangerous: It duplicates some information from
+  # income_tax_columns, so they can get out of sync.
+  new_columns["tax, income, proposed"] = (
+      new_columns [[ "tax, income, most, proposed"
+                   , "tax, income, dividend, proposed"
+                   , "tax, income, ganancia ocasional, proposed"
+                   , "tax, income, inheritance, proposed"
+                   , "tax, income, gmf" ]] .
+      sum( axis = "columns" ) )
 
   return pd.concat( [ppl, new_columns], axis = 1 )
-
