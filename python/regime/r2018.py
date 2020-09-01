@@ -146,9 +146,6 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
                    , "tax, income, ganancia ocasional"
                    , "tax, income, gmf" ]] .
       sum( axis = "columns" ) )
-
-  # TODO: This is dangerous: It duplicates some information from
-  # income_tax_columns, so they can get out of sync.
   new_columns["tax, income, proposed"] = (
       new_columns [[ "tax, income, most, proposed"
                    , "tax, income, dividend, proposed"

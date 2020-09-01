@@ -94,7 +94,13 @@ def corpIncomeTax_written(x):
 import matplotlib.pyplot as plt
 import numpy as np
 
-def linear( title, tax_base_name, function_name, function, xmin, xmax):
+def linear( title
+          , tax_base_name
+          , function_name
+          , function
+          , xmin
+          , xmax
+          ):
   x = np.arange(xmin, xmax, (xmax - xmin) / 10000)
   plt.plot( x,
             [function(a) for a in x] )
