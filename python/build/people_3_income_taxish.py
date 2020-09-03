@@ -11,9 +11,12 @@ if True:
   import python.common.common      as com
   #
   import python.build.people_3_income_taxish_functions as f4
-  if com.regime_year == 2016:
-        import python.regime.r2016 as regime
-  else: import python.regime.r2018 as regime
+  if   com.regime_year == 2016:
+      import python.regime.r2016 as regime
+  elif com.regime_year == 2018:
+      import python.regime.r2018 as regime
+  else:
+      import python.regime.r2019 as regime
 
 
 ppl = oio.readStage( com.subsample

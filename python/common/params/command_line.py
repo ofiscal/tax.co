@@ -19,7 +19,7 @@ if not strategy in strategy_names:
   raise ValueError( "invalid strategy: " + strategy )
 
 regime_year = int( sys.argv[3] )
-if not regime_year in [2016, 2018]:
+if not regime_year in [2016, 2018, 2019]:
   raise ValueError( "invalid tax regime year: " + str(regime_year) )
 
 strategy_suffix = strategy

@@ -1,8 +1,11 @@
 if True:
   import python.common.common as c
-  if c.regime_year == 2016:
-    import python.regime.r2016 as regime
-  else: import python.regime.r2018 as regime
+  if   c.regime_year == 2016:
+      import python.regime.r2016 as regime
+  elif c.regime_year == 2018:
+      import python.regime.r2018 as regime
+  else:
+      import python.regime.r2019 as regime
 
 
 # These do not vary within household.
