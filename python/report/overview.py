@@ -11,10 +11,12 @@ if True:
   import python.common.misc as c
   import python.common.describe as desc
   import python.draw.util as draw
-
-if cl.regime_year == 2016:
+  if   cl.regime_year == 2016:
       import python.regime.r2016 as regime
-else: import python.regime.r2018 as regime
+  elif cl.regime_year == 2018:
+      import python.regime.r2018 as regime
+  else:
+      import python.regime.r2019 as regime
 
 
 output_dir = "output/vat/tables/recip-" + str(cl.subsample) + "/"
