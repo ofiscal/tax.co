@@ -83,7 +83,7 @@ output = (
     , "tax, income, proposed"
     , "tax, income, most"
     , "tax, income, most, proposed"
-    , "tax, income, ganancia ocasional"          
+    , "tax, income, ganancia ocasional"
     , "tax, income, ganancia ocasional, proposed"
     , "tax, income, inheritance, proposed"
     , "tax, income, dividend"
@@ -101,29 +101,30 @@ output = (
   . transpose()
   )
 
-output.to_excel( "tax-2020.xlsx", index=False )
+output.to_excel( "tax-2020.xlsx" )
 
-import matplotlib.pyplot as plt
-import numpy as np
-
-def semilog_ratio( title, tax_base_name, function_name, function, xmin, xmax):
-  x = np.arange(xmin, xmax, (xmax - xmin) / 10000)
-  plt.semilogx( x,
-                [function(a) / a for a in x] )
-  plt.ylabel('fraction of ' + tax_base_name + ' lost to tax')
-  plt.xlabel(tax_base_name + ' in UVTs')
-  plt.title(title)
-
-def linear( title
-          , tax_base_name
-          , function_name
-          , function
-          , xmin
-          , xmax
-          ):
-  x = np.arange(xmin, xmax, (xmax - xmin) / 10000)
-  plt.plot( x,
-            [function(a) for a in x] )
-  plt.ylabel( "taxes (measured in UVTs)" )
-  plt.xlabel(tax_base_name + ' in UVTs')
-  plt.title(title)
+if False:
+  import matplotlib.pyplot as plt
+  import numpy as np
+  #
+  def semilog_ratio( title, tax_base_name, function_name, function, xmin, xmax):
+    x = np.arange(xmin, xmax, (xmax - xmin) / 10000)
+    plt.semilogx( x,
+                  [function(a) / a for a in x] )
+    plt.ylabel('fraction of ' + tax_base_name + ' lost to tax')
+    plt.xlabel(tax_base_name + ' in UVTs')
+    plt.title(title)
+  #
+  def linear( title
+            , tax_base_name
+            , function_name
+            , function
+            , xmin
+            , xmax
+            ):
+    x = np.arange(xmin, xmax, (xmax - xmin) / 10000)
+    plt.plot( x,
+              [function(a) for a in x] )
+    plt.ylabel( "taxes (measured in UVTs)" )
+    plt.xlabel(tax_base_name + ' in UVTs')
+    plt.title(title)
