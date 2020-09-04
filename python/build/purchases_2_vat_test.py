@@ -16,6 +16,9 @@ def test_ranges( df ):
       "25-broad-categs"  : cl.InRange( 1, 25 ),
       "big-hog"          : cl.InRange( 0, 1 ),
       "coicop"           : cl.InRange( 1e6, 2e7 ),
+
+      # PITFALL: "freq-code"=11 <=> the purchase is never made.
+      # This corresponds to a "per month" value of np.nan.
       "freq-code"        : cl.InRange( 0, 10 ),
       "household"        : cl.InRange( 0, 1e6 ),
       "is-purchase"      : cl.InRange( 0, 1 ),

@@ -5,9 +5,9 @@ if True:
   import pandas as pd
   #
   import python.build.classes as cla
-  if len( argv) > 1: # we are using the command line
+  if len( argv) > 1: # if we are using the command line
     import python.common.params.command_line as par
-  else: # we are in the interpreter
+  else:              # if we are in the interpreter
     import python.common.params.repl         as par
 
 if True:
