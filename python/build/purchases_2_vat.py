@@ -29,16 +29,6 @@ if True: # input files
               , "weight"           : "float32"
               , "where-got"        : "float32"
     } )
-  if True: # TODO ? move these upstream, to purchases/main.py
-    ( cla . Correction # no "never" frequencies
-      . Drop_Row_If_Column_Satisfies_Predicate(
-        "per month", lambda x: x==11 )
-      . correct( purchases ) )
-    ( cla . Correction # no non-positive quantities
-      . Drop_Row_If_Column_Satisfies_Predicate(
-        "quantity", lambda x: x<=0 )
-      . correct( purchases ) )
-
   vat_cap_c = oio.readStage(
       c.subsample
     , "vat_cap_c_brief." + c.strategy_suffix
