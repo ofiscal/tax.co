@@ -24,7 +24,7 @@ def test_ranges( df ):
       "is-purchase"      : cl.InRange( 0, 1 ),
       "per month"        : cl.InRange( 1/36 - 0.001, 31 ),
       "quantity"         : cl.InRange( 0, 1e8 ),
-      "value"            : cl.InRange( 0, 2e9 ),
+      "value"            : cl.InRange( 0, 3e9 ),
       "vat frac"         : cl.InRange( 0, 0.271 / 1.271 + 0.01 ),
       "vat frac, max"    : cl.InRange( 0, 0.271 / 1.271 + 0.01 ),
       "vat"              : cl.InRange( 0, 0.271 )
