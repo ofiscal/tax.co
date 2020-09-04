@@ -1,7 +1,10 @@
+exec( open( "tax-proposal/2020-08-21/build.py" ) . read() )
+
 from python.common.util import near
 import numpy as np
 import weightedcalcs as weightLib
 wc = weightLib.Calculator('weight')
+
 
 # `qs` is a quantile- (specifically percentile-) level data frame.
 qs = pd.DataFrame( {"income q" : np.arange( 0, 1, 0.01 ) } )
@@ -105,7 +108,6 @@ output.to_excel( "tax-2020.xlsx" )
 
 if False:
   import matplotlib.pyplot as plt
-  import numpy as np
   #
   def semilog_ratio( title, tax_base_name, function_name, function, xmin, xmax):
     x = np.arange(xmin, xmax, (xmax - xmin) / 10000)
