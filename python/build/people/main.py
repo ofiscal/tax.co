@@ -217,13 +217,25 @@ if True: # income
       ppl = ppl.drop( columns = cols_govt_in_kind + cols_govt_cash )
 
     if True: # income, non-labor ("ingreso no laboral", for tax purposes)
-      ppl["income, non-labor"] = (
+      ppl["income, sale not real estate"] = (
           ppl["income, month : sale : stock"]
         + ppl["income, month : sale : stock ?2"]
         + ppl["income, month : sale : livestock"]
-        + ppl["income, month : sale : vehicle | equipment"]
+        + ppl["income, month : sale : vehicle | equipment"] )
+
+      # PITFALL: The tax code defines non-labor income
+      # to include edu income only if it is not from the government.
+      ppl["income, non-labor"] = (
+          ppl["income, sale not real estate"]
         + ppl["income, month : private : beca, cash"]
         + ppl["income, month : private : beca, in-kind"] )
+
+      ppl["income, govt edu, cash"] = (
+        ppl["income, month : govt : beca, cash"]     +
+        ppl["income, month : govt : non-beca, cash"] )
+      ppl["income, govt edu, in-kind"] = (
+        ppl["income, month : govt : beca, in-kind"]  +
+        ppl["income, month : govt : non-beca, in-kind"] )
 
     if True: # capital income (which is never in-kind)
       ppl["income, capital (tax def)"] = (
@@ -265,15 +277,14 @@ if True: # income
                           list( cla.name_map( files.income_infrequent )
                               . values() ) )
 
-      # TODO ? This goes unused. Delete?
       ppl["total income, monthly : infrequent"] = (
         ppl[ cols_infrequent ].sum( axis=1 ) )
 
       ppl["income, ganancia ocasional, 10%-taxable"] = (
+        ppl["income, month : sale : real estate"] +
         # PITFALL: Inheritance is taxed separately under the 2020 proposal.
         # Currently this is handled by subtracting inheritance from this
         # downstream where appropriate.
-        ppl["income, month : sale : real estate"] +
         ppl["income, month : infrequent : inheritance"] +
         ppl["income, donacion"].apply(
           lambda x: x - min ( x * 0.2
@@ -328,7 +339,9 @@ if True: # income
           'income, month : pension : age | illness'  : "income, pension"
         , 'income, month : cesantia'                 : "income, cesantia"
         , "income, month : investment : dividends"   : "income, dividend"
-        , "income, month : infrequent : inheritance" : "income, inheritance"
+        # PITFALL: "infrequent income" includes inheritance.
+        # Since this dictionary is used to compute total cash income,
+        # the renaming of the innheritance variable is handled separately.
         , 'total income, monthly : infrequent'       : "income, infrequent"
         , 'total income, monthly : govt, cash'       : "income, govt, cash"
         , 'total income, monthly : labor, cash'      : "income, labor, cash"
@@ -341,14 +354,23 @@ if True: # income
       ppl = ppl.rename( columns = { **income_short_name_dict_cash
                                   , **income_short_name_dict_in_kind
       } )
+      ppl = ppl.rename( columns =
+        { "income, month : infrequent : inheritance"
+          : "income, inheritance" } )
 
     if True: # compute across-category sums
       ppl["income, cash"]    = (
         ppl[ list( income_short_name_dict_cash
-                 . values() )
+                 . values() ) +
+             [ "income, sale not real estate"
+             , "income, govt edu, cash"
+             , "income, month : private : beca, cash"]
         ].sum(axis=1) )
       ppl["income, in-kind"] = (
-        ppl[ list( income_short_name_dict_in_kind.values() )
+        ppl[ list( income_short_name_dict_in_kind.values() ) +
+             [ "income, capital (tax def)"
+             , "income, govt edu, in-kind"
+             , "income, month : private : beca, in-kind"]
         ].sum(axis=1) )
 
       for col in ["income", "income, govt", "income, labor"]:
@@ -436,10 +458,6 @@ if True: # drop vars that are (so far) unused downstream of here
     [ "income, month : borrowing : from person"
     , "income, month : borrowing : from bank"
     , "income, month : borrowing : from other"
-    , "income : edu : beca, cash"
-    , "income : edu : beca, in-kind"
-    , "income : edu : non-beca, cash"
-    , "income : edu : non-beca, in-kind"
     , "income, month : sale : livestock"
     , "income, month : sale : real estate"
     , "income, month : sale : stock"
@@ -450,6 +468,10 @@ if True: # drop vars that are (so far) unused downstream of here
     , "race"
     , "relationship"
     , "skipped 3 meals"
+    , "income : edu : beca, cash"
+    , "income : edu : beca, in-kind"
+    , "income : edu : non-beca, cash"
+    , "income : edu : non-beca, in-kind"
     , "income, month : govt : beca, cash"
     , "income, month : private : beca, cash"
     , "income, month : govt : non-beca, cash"
