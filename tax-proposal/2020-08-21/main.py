@@ -41,70 +41,79 @@ hh["income q"] = income_quantiles(
     hh["income"], qs )
 hh[["income", "income q"]]
 
-## Something's wrong with this.
-aggs = ( hh .
-  groupby( "income q" ) .
-  agg( { "income"                                    : "mean",
-         "tax"                                       : "mean",
-         "tax, proposed"                             : "mean",
-         "tax, income"                               : "mean",
-         "tax, income, proposed"                     : "mean",
-         "tax, income, most"                         : "mean",
-         "tax, income, most, proposed"               : "mean",
-         "tax, income, dividend"                     : "mean",
-         "tax, income, dividend, proposed"           : "mean",
+( hh
+  [ hh["income"] == 0 ]
+  [["income", "income, labor", "income, pension",
+    "tax, income, most", "tax, income, most, proposed"
+    ]] .
+  describe() .
+  transpose() )
 
-         "tax, income, ganancia ocasional"           : "mean",
-         # PITFALL : omits inheritance
-         "tax, income, ganancia ocasional, proposed" : "mean",
-         "tax, income, inheritance, proposed"        : "mean",
+for stat in ["mean", "median"]:
+  aggs = ( hh .
+    groupby( "income q" ) .
+    agg( { "income"                                    : stat,
+           "tax"                                       : stat,
+           "tax, proposed"                             : stat,
+           "tax, income"                               : stat,
+           "tax, income, proposed"                     : stat,
+           "tax, income, most"                         : stat,
+           "tax, income, most, proposed"               : stat,
+           "tax, income, dividend"                     : stat,
+           "tax, income, dividend, proposed"           : stat,
 
-         "tax, income, gmf"                          : "mean",
-         "value, tax, purchaselike non-VAT"          : "mean",
-         "tax, ss"                                   : "mean",
-         } ) )
+           "tax, income, ganancia ocasional"           : stat,
+           # PITFALL : omits inheritance
+           "tax, income, ganancia ocasional, proposed" : stat,
+           "tax, income, inheritance, proposed"        : stat,
 
-aggs[[ "tax, income"
-     , "tax, income, proposed"]]
-aggs[[ "tax, income, most"
-     , "tax, income, most, proposed" ]]
-aggs[[ "tax, income, dividend"
-     , "tax, income, dividend, proposed" ]]
+           "tax, income, gmf"                          : stat,
+           "value, tax, purchaselike non-VAT"          : stat,
+           "tax, ss"                                   : stat,
+           } ) )
 
-aggs[["tax, income, ganancia ocasional",
-         # PITFALL : omits inheritance
-      "tax, income, ganancia ocasional, proposed",
-      "tax, income, inheritance, proposed"        ]]
+  aggs[[ "tax, income"
+       , "tax, income, proposed"]]
+  aggs[[ "tax, income, most"
+       , "tax, income, most, proposed" ]]
+  aggs[[ "tax, income, dividend"
+       , "tax, income, dividend, proposed" ]]
 
-output = aggs.copy()
-output["income %ile"] = aggs.index.astype(int)
-output = (
-  output[[
-      "income %ile"
-    , "income"
-    , "tax, income"
-    , "tax, income, proposed"
-    , "tax, income, most"
-    , "tax, income, most, proposed"
-    , "tax, income, ganancia ocasional"
-    , "tax, income, ganancia ocasional, proposed"
-    , "tax, income, inheritance, proposed"
-    , "tax, income, dividend"
-    , "tax, income, dividend, proposed" ]]
-  . rename( columns =
-    { "tax, income"                               : "total"
-    , "tax, income, proposed"                     : "total, prop"
-    , "tax, income, most"                         : "most"
-    , "tax, income, most, proposed"               : "most, prop"
-    , "tax, income, dividend"                     : "dividend"
-    , "tax, income, dividend, proposed"           : "dividend, prop"
-    , "tax, income, ganancia ocasional"           : "ganancia ocasional"
-    , "tax, income, ganancia ocasional, proposed" : "ganancia ocasional, prop"
-    , "tax, income, inheritance, proposed"        : "inheritance" } )
-  . transpose()
-  )
+  aggs[["tax, income, ganancia ocasional",
+           # PITFALL : omits inheritance
+        "tax, income, ganancia ocasional, proposed",
+        "tax, income, inheritance, proposed"        ]]
 
-output.to_excel( "tax-2020.xlsx" )
+  output = aggs.copy()
+  output["income %ile"] = aggs.index.astype(int)
+  output = (
+    output[[
+        "income %ile"
+      , "income"
+      , "tax, income"
+      , "tax, income, proposed"
+      , "tax, income, most"
+      , "tax, income, most, proposed"
+      , "tax, income, ganancia ocasional"
+      , "tax, income, ganancia ocasional, proposed"
+      , "tax, income, inheritance, proposed"
+      , "tax, income, dividend"
+      , "tax, income, dividend, proposed" ]]
+    . rename( columns =
+      { "tax, income"                               : "total"
+      , "tax, income, proposed"                     : "total, prop"
+      , "tax, income, most"                         : "most"
+      , "tax, income, most, proposed"               : "most, prop"
+      , "tax, income, dividend"                     : "dividend"
+      , "tax, income, dividend, proposed"           : "dividend, prop"
+      , "tax, income, ganancia ocasional"           : "ganancia ocasional"
+      , "tax, income, ganancia ocasional, proposed" : "ganancia ocasional, prop"
+      , "tax, income, inheritance, proposed"        : "inheritance" } )
+    . transpose()
+    . applymap( round ) # round every cell to the nearest integer
+    )
+
+  output.to_excel( "tax-2020." + stat + ".xlsx" )
 
 if False:
   import matplotlib.pyplot as plt
