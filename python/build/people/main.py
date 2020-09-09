@@ -362,14 +362,14 @@ if True: # income
       ppl["income, cash"]    = (
         ppl[ list( income_short_name_dict_cash
                  . values() ) +
-             [ "income, sale not real estate"
+             [ "income, capital (tax def)"
+             , "income, sale not real estate"
              , "income, govt edu, cash"
              , "income, month : private : beca, cash"]
         ].sum(axis=1) )
       ppl["income, in-kind"] = (
         ppl[ list( income_short_name_dict_in_kind.values() ) +
-             [ "income, capital (tax def)"
-             , "income, govt edu, in-kind"
+             [ "income, govt edu, in-kind"
              , "income, month : private : beca, in-kind"]
         ].sum(axis=1) )
 
