@@ -239,7 +239,7 @@ if True: # income
 
     if True: # capital income (which is never in-kind)
       ppl["income, capital (tax def)"] = (
-          # `cols_capital` includes dividends, but this does not.
+          # PITFALL: `cols_capital` includes dividends, but this does not.
           ppl["income, month : investment : interest"]
         + ppl["income, month : rental : real estate, developed"]
         + ppl["income, month : rental : real estate, undeveloped"]
@@ -274,8 +274,9 @@ if True: # income
 
     if True: # infrequent income (cash only)
       cols_infrequent = defs.rename_monthly(
-                          list( cla.name_map( files.income_infrequent )
-                              . values() ) )
+          list( cla.name_map( files.income_infrequent )
+                . values() )
+          + ["income, year : sale : real estate"] )
 
       ppl["total income, monthly : infrequent"] = (
         ppl[ cols_infrequent ].sum( axis=1 ) )
@@ -459,7 +460,6 @@ if True: # drop vars that are (so far) unused downstream of here
     , "income, month : borrowing : from bank"
     , "income, month : borrowing : from other"
     , "income, month : sale : livestock"
-    , "income, month : sale : real estate"
     , "income, month : sale : stock"
     , "income, month : sale : stock ?2"
     , "income, month : sale : vehicle | equipment"
