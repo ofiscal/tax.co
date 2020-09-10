@@ -25,8 +25,8 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
   temp_columns[gravable_pre] = (
     ( ( ppl["income, labor"]
       - ppl["tax, ss, total employee contribs"] )
-    + ppl["income, capital (tax def)"]
-    + ppl["income, non-labor"]
+    + ppl["income, capital not dividends"]
+    + ppl["income, non-labor (tax def)"]
     ) )
 
   temp_columns["cedula general gravable"] = (

@@ -35,7 +35,7 @@ income_and_tax__person_level = ( [
   , "income, pension"
   , "income, cesantia"
   , "income, dividend"
-  , "income, capital (tax def)"
+  , "income, capital not dividends"
   , "income, infrequent"
   , "income, govt"
   , "income, private"

@@ -216,7 +216,7 @@ if True: # income
         ppl[ cols_govt_in_kind ].sum( axis=1 ) )
       ppl = ppl.drop( columns = cols_govt_in_kind + cols_govt_cash )
       #
-    if True: # income, non-labor ("ingreso no laboral", for tax purposes)
+    if True: # income, non-labor (tax def) ("ingreso no laboral")
       ppl["income, sale not real estate"] = (
           ppl["income, month : sale : stock"]
         + ppl["income, month : sale : stock ?2"]
@@ -225,7 +225,7 @@ if True: # income
       #
       # PITFALL: The tax code defines non-labor income
       # to include edu income only if it is not from the government.
-      ppl["income, non-labor"] = (
+      ppl["income, non-labor (tax def)"] = (
           ppl["income, sale not real estate"]
         + ppl["income, month : private : beca, cash"]
         + ppl["income, month : private : beca, in-kind"] )
@@ -238,7 +238,7 @@ if True: # income
         ppl["income, month : govt : non-beca, in-kind"] )
       #
     if True: # capital income (which is never in-kind)
-      ppl["income, capital (tax def)"] = (
+      ppl["income, capital not dividends"] = (
           # PITFALL: `cols_capital` includes dividends, but this does not.
           ppl["income, month : investment : interest"]
         + ppl["income, month : rental : real estate, developed"]
@@ -363,7 +363,7 @@ if True: # income
       ppl["income, cash"]    = (
         ppl[ list( income_short_name_dict_cash
                  . values() ) +
-             [ "income, capital (tax def)"
+             [ "income, capital not dividends"
              , "income, sale not real estate"
              , "income, govt edu, cash"
              , "income, month : private : beca, cash"]
