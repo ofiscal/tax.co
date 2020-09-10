@@ -282,10 +282,15 @@ if True: # income
         ppl[ cols_infrequent ].sum( axis=1 ) )
       #
       ppl["income, ganancia ocasional, 10%-taxable"] = (
+        # PITFALL: This is not all ganancia ocasional income,
+        # only the portion that is taxable.
+        # Rather than use this as a componnent of total income,
+        # use "income, infrequent", which includes all of it
+        # (both the 10%- and the 20%-taxable kinds).
         ppl["income, month : sale : real estate"] +
         # PITFALL: Inheritance is taxed separately under the 2020 proposal.
-        # Currently this is handled by subtracting inheritance from this
-        # downstream where appropriate.
+        # Currently that complication is handled by subtracting inheritance
+        # from this downstream (in python.regime.r2019).
         ppl["income, month : infrequent : inheritance"] +
         ppl["income, donacion"].apply(
           lambda x: x - min ( x * 0.2
