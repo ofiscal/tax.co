@@ -143,16 +143,14 @@ def stringProperties( column ):
 class Correction:
   """Ways to modify a dataset. Convenience functions for pandas routines.
 Mostly of these functions affect a single column, but there are exceptions."""
-  # PITFALL: Some of the return statements in the implementations of "correct" below are unnecessary,
-    # because the operations before them are destructive. However, "drop" is not destructive.
-    # For compatibility with Drop_Row_If_Column_Satisfies_Predicate, therefore, every "correct" function
-    # must return the data frame it operates on.
-
+  # PITFALL: Most of the `correct` functions defeined below are destructive, nxon-functional. Each one that is is marked as such with a `PITFALL` comment.
   class Create_Constant_Column:
     def __init__( self, col_name, value ):
       self.col_name = col_name
       self.value = value
     def correct( self, df ):
+      # PITFALL: Non-functional. `df` (the input) changes even if
+      # `df` (the output) is not assigned to anything.
       df[self.col_name] = self.value
       return df
 
@@ -161,6 +159,8 @@ Mostly of these functions affect a single column, but there are exceptions."""
       self.old = old
       self.new = new
     def correct( self, df ):
+      # PITFALL: Non-functional. `df` (the input) changes even if
+      # `df` (the output) is not assigned to anything.
       return df.rename( columns = {self.old : self.new} )
 
   class Replace_In_Column:
@@ -169,6 +169,8 @@ Mostly of these functions affect a single column, but there are exceptions."""
       self.col_name = col_name
       self.dct = dct
     def correct( self, df ):
+      # PITFALL: Non-functional. `df` (the input) changes even if
+      # `df` (the output) is not assigned to anything.
       df[self.col_name] = ( df[self.col_name]
                           . replace( self.dct ) )
       return df
@@ -178,6 +180,8 @@ Mostly of these functions affect a single column, but there are exceptions."""
       self.col_name = col_name
       self.value = value
     def correct( self, df ):
+      # PITFALL: Non-functional. `df` (the input) changes even if
+      # `df` (the output) is not assigned to anything.
       df[self.col_name] = ( df[self.col_name]
                           . fillna( self.value
                           # , inplace = True
@@ -190,12 +194,14 @@ Mostly of these functions affect a single column, but there are exceptions."""
       self.before = before
       self.after = after
     def correct( self, df ):
+      # PITFALL: Non-functional. `df` (the input) changes even if
+      # `df` (the output) is not assigned to anything.
       c = self.col_name
       df[c] = ( df[c]
               . astype(str)
               . str.replace( self.before, self.after ) )
       # The previous line converts np.nan to "nan" (the string); the next fixes that.
-      # PITFALL: If a cell actually should be "nan", this needs complication.
+      # PITFALL: If a cell actually should be the string "nan", this needs complication.
       df.loc[ df[c] == "nan", c] = np.nan
       return df
 
@@ -204,6 +210,8 @@ Mostly of these functions affect a single column, but there are exceptions."""
       self.col_name = col_name
       self.func = func
     def correct( self, df ):
+      # PITFALL: Non-functional. `df` (the input) changes even if
+      # `df` (the output) is not assigned to anything.
       df[self.col_name] = ( df[self.col_name]
                             .apply(self.func) )
       return df
@@ -235,6 +243,8 @@ Mostly of these functions affect a single column, but there are exceptions."""
       self.substring = substring
       self.replacement = replacement
     def correct( self, df ):
+      # PITFALL: Non-functional. `df` (the input) changes even if
+      # `df` (the output) is not assigned to anything.
       df.loc[ (~ df[self.col_name].isna() )
               & df[self.col_name].str.contains( self.substring )
             , self.col_name
@@ -253,6 +263,8 @@ Mostly of these functions affect a single column, but there are exceptions."""
       self.col_name = col_name
       self.new_type = new_type
     def correct( self, df ):
+      # PITFALL: Non-functional. `df` (the input) changes even if
+      # `df` (the output) is not assigned to anything.
       df[self.col_name] = df[self.col_name] . astype(self.new_type)
       return df
 
