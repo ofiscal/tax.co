@@ -371,11 +371,13 @@ if True: # income
              [ "income, capital not dividends"
              , "income, sale not real estate"
              , "income, govt edu, cash"
+             , "income, month : private : non-beca, cash"
              , "income, month : private : beca, cash"]
         ].sum(axis=1) )
       ppl["income, in-kind"] = (
         ppl[ list( income_short_name_dict_in_kind.values() ) +
              [ "income, govt edu, in-kind"
+             , "income, month : private : non-beca, in-kind"
              , "income, month : private : beca, in-kind"]
         ].sum(axis=1) )
       #
