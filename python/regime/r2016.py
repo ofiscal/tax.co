@@ -27,7 +27,7 @@ PITFALL: The exemption for earners claiming dependents is not implemented."""
           else (x - 4100*muvt)*0.33 + 788*muvt ) ) ) )
 
   temp_columns["taxable income, capital"] = (
-    ppl["income, capital not dividends"].apply(
+    ppl["income, rental + interest"].apply(
       lambda x: x - min( 0.1 * x, 1000*muvt)
     ) )
   temp_columns["taxable income, non-labor (tax def)"] = (

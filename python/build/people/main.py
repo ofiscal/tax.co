@@ -238,7 +238,7 @@ if True: # income
         ppl["income, month : govt : non-beca, in-kind"] )
       #
     if True: # capital income (which is never in-kind)
-      ppl["income, capital not dividends"] = (
+      ppl["income, rental + interest"] = (
           # PITFALL: `cols_capital` includes dividends, but this does not.
           ppl["income, month : investment : interest"]
         + ppl["income, month : rental : real estate, developed"]
@@ -369,7 +369,7 @@ if True: # income
       ppl["income, cash"]    = (
         ppl[ list( income_short_name_dict_cash
                  . values() ) +
-             [ "income, capital not dividends"
+             [ "income, rental + interest"
              , "income, sale not real estate"
              , "income, govt edu, cash"
              , "income, month : private : non-beca, cash"
