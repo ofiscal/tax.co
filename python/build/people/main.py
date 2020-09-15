@@ -42,7 +42,7 @@ if True: # remap some boolean integers
             , "literate"        # originally 1=yes, 2=no
   ]: ppl[cn] = 2 - ppl[cn]
 
-if True: # non-income work characteristics
+if True: # non-income characteristics: pension and labor insurance
   ppl["pension, contributing (if not pensioned)"] = (
     ppl["pension, contributing, pre"]
     . apply( lambda x:
@@ -81,11 +81,12 @@ if True: # non-income work characteristics
 
 if True: # income
   if True: # fill NaN values
-    # Here we interpret NaN as "one month"
+    # For months, interpret NaN as "one"
     ppl[   "income, month : labor : independent, months" ] = (
       ppl[ "income, month : labor : independent, months" ] . fillna(1) )
     #
-    # For the rest of these, we interpret NaN as "zero" (pesos)
+    # For pesos, interpret NaN, 98 and 99 as "zero".
+    # TODO ? Create a new makefile target in which 98s and 99s are dropped.
     columns_to_convert = ( list( cla.name_map( files.income )
                                . values() )
                          + list( cla.name_map( files.beca_sources_private )
@@ -101,7 +102,8 @@ if True: # income
     #
   if True: # divide yearly income variables by 12, and rename
     re_year_income  = regex.compile( "^income, year" )
-    year_columns = [col for col in ppl.columns if re_year_income.match( col )]
+    year_columns = [ col for col in ppl.columns
+                     if re_year_income.match( col )]
     for col in year_columns:
       ppl[col] = ppl[col] / 12
     ppl = ppl.rename(
@@ -134,49 +136,49 @@ if True: # income
       ppl["beca sources, total"] = ( ppl["beca sources, govt"]
                                    + ppl["beca sources, private"] )
       #
-      ppl["income, month : govt : beca, cash"] = 0
+      ppl[     "income, month : govt : beca, cash"] = 0
       ppl.loc[ ppl["beca sources, total"] > 0
              , "income, month : govt : beca, cash" ] = (
         ppl[   "income, month : edu : beca, cash"]
         * ppl["beca sources, govt"] / ppl["beca sources, total"] )
       #
-      ppl["income, month : private : beca, cash"] = 0
+      ppl[     "income, month : private : beca, cash"] = 0
       ppl.loc[ ppl["beca sources, total"] > 0
              , "income, month : private : beca, cash" ] = (
         ppl[   "income, month : edu : beca, cash"]
         * ppl["beca sources, private"] / ppl["beca sources, total"] )
       #
-      ppl["income, month : govt : non-beca, cash"] = 0
+      ppl[     "income, month : govt : non-beca, cash"] = 0
       ppl.loc[ ppl["non-beca sources, total"] > 0
              , "income, month : govt : non-beca, cash"] = (
         ppl["income, month : edu : non-beca, cash"]
         * ppl["non-beca sources, govt"] / ppl["non-beca sources, total"] )
       #
-      ppl["income, month : private : non-beca, cash"] = 0
+      ppl[     "income, month : private : non-beca, cash"] = 0
       ppl.loc[ ppl["non-beca sources, total"] > 0
              , "income, month : private : non-beca, cash"] = (
         ppl["income, month : edu : non-beca, cash"]
         * ppl["non-beca sources, private"] / ppl["non-beca sources, total"] )
       #
-      ppl["income, month : govt : beca, in-kind"] = 0
+      ppl[     "income, month : govt : beca, in-kind"] = 0
       ppl.loc[ ppl["beca sources, total"] > 0
              , "income, month : govt : beca, in-kind" ] = (
         ppl["income, month : edu : beca, in-kind"]
         * ppl["beca sources, govt"]     / ppl["beca sources, total"] )
       #
-      ppl["income, month : private : beca, in-kind"] = 0
+      ppl[     "income, month : private : beca, in-kind"] = 0
       ppl.loc[ ppl["beca sources, total"] > 0
              , "income, month : private : beca, in-kind" ] = (
         ppl["income, month : edu : beca, in-kind"]
         * ppl["beca sources, private"]  / ppl["beca sources, total"] )
       #
-      ppl["income, month : govt : non-beca, in-kind"] = 0
+      ppl[     "income, month : govt : non-beca, in-kind"] = 0
       ppl.loc[ ppl["non-beca sources, total"] > 0
              , "income, month : govt : non-beca, in-kind"] = (
         ppl["income, month : edu : non-beca, in-kind"]
         * ppl["non-beca sources, govt"] / ppl["non-beca sources, total"] )
       #
-      ppl["income, month : private : non-beca, in-kind"] = 0
+      ppl[     "income, month : private : non-beca, in-kind"] = 0
       ppl.loc[ ppl["non-beca sources, total"] > 0
              , "income, month : private : non-beca, in-kind"] = (
         ppl["income, month : edu : non-beca, in-kind"]
@@ -192,15 +194,16 @@ if True: # income
                           ).columns
         ).rename( columns = {
               "income, month : edu : beca, in-kind"
-            : "income : edu : beca, in-kind"
+            :        "income : edu : beca, in-kind"
           ,   "income, month : edu : non-beca, in-kind"
-            : "income : edu : non-beca, in-kind"
+            :        "income : edu : non-beca, in-kind"
           ,   "income, month : edu : beca, cash"
-            : "income : edu : beca, cash"
+            :        "income : edu : beca, cash"
           ,   "income, month : edu : non-beca, cash"
-            : "income : edu : non-beca, cash" } )
+            :        "income : edu : non-beca, cash" } )
       #
     if True: # govt income (cash + in-kind)
+      # TODO ? Should this include becas of govt origin?
       cols_govt = list( cla.name_map( files.income_govt )
                       . values() )
       cols_govt_cash    = [ col for col in defs.rename_monthly( cols_govt )
@@ -213,21 +216,34 @@ if True: # income
         ppl[ cols_govt_in_kind ].sum( axis=1 ) )
       ppl = ppl.drop( columns = cols_govt_in_kind + cols_govt_cash )
       #
-    if True: # income, non-labor ("ingreso no laboral", for tax purposes)
-      ppl["income, non-labor"] = (
+    if True: # income, non-labor (tax def) ("ingreso no laboral")
+      ppl["income, sale not real estate"] = (
           ppl["income, month : sale : stock"]
         + ppl["income, month : sale : stock ?2"]
         + ppl["income, month : sale : livestock"]
-        + ppl["income, month : sale : vehicle | equipment"]
+        + ppl["income, month : sale : vehicle | equipment"] )
+      #
+      # PITFALL: The tax code defines non-labor income
+      # to include edu income only if it is not from the government.
+      ppl["income, non-labor (tax def)"] = (
+          ppl["income, sale not real estate"]
         + ppl["income, month : private : beca, cash"]
         + ppl["income, month : private : beca, in-kind"] )
       #
+      ppl["income, govt edu, cash"] = (
+        ppl["income, month : govt : beca, cash"]     +
+        ppl["income, month : govt : non-beca, cash"] )
+      ppl["income, govt edu, in-kind"] = (
+        ppl["income, month : govt : beca, in-kind"]  +
+        ppl["income, month : govt : non-beca, in-kind"] )
+      #
     if True: # capital income (which is never in-kind)
-      ppl["income, capital (tax def)"] = (
-                   ppl["income, month : investment : interest"]
-                 + ppl["income, month : rental : real estate, developed"]
-                 + ppl["income, month : rental : real estate, undeveloped"]
-                 + ppl["income, month : rental : vehicle | equipment"] )
+      ppl["income, capital not dividends"] = (
+          # PITFALL: `cols_capital` includes dividends, but this does not.
+          ppl["income, month : investment : interest"]
+        + ppl["income, month : rental : real estate, developed"]
+        + ppl["income, month : rental : real estate, undeveloped"]
+        + ppl["income, month : rental : vehicle | equipment"] )
       #
       cols_capital = [ "income, month : investment : dividends"
                      , "income, month : investment : interest"
@@ -242,6 +258,7 @@ if True: # income
       ) )
       #
     if True: # private income (cash + in-kind)
+      # TODO ? Should these include private beca sources?
       cols_private = defs.rename_monthly(
                        list( cla.name_map( files.income_private )
                            . values() ) )
@@ -257,14 +274,23 @@ if True: # income
       #
     if True: # infrequent income (cash only)
       cols_infrequent = defs.rename_monthly(
-                          list( cla.name_map( files.income_infrequent )
-                              . values() ) )
+          list( cla.name_map( files.income_infrequent )
+                . values() )
+          + ["income, year : sale : real estate"] )
+      #
       ppl["total income, monthly : infrequent"] = (
         ppl[ cols_infrequent ].sum( axis=1 ) )
       #
       ppl["income, ganancia ocasional, 10%-taxable"] = (
-        # PITFALL: overlaps what will be called "income, infrequent"
+        # PITFALL: This is not all ganancia ocasional income,
+        # only the portion that is taxable.
+        # Rather than use this as a componnent of total income,
+        # use "income, infrequent", which includes all of it
+        # (both the 10%- and the 20%-taxable kinds).
         ppl["income, month : sale : real estate"] +
+        # PITFALL: Inheritance is taxed separately under the 2020 proposal.
+        # Currently that complication is handled by subtracting inheritance
+        # from this downstream (in python.regime.r2019).
         ppl["income, month : infrequent : inheritance"] +
         ppl["income, donacion"].apply(
           lambda x: x - min ( x * 0.2
@@ -273,8 +299,10 @@ if True: # income
       ppl["income, ganancia ocasional, 20%-taxable"] = (
         ppl["income, month : infrequent : gambling"] +
         ppl["income, month : infrequent : jury awards"] )
-      #
-      ppl = ppl.drop( columns = cols_infrequent )
+      ppl = ppl.drop( columns =
+                      set(cols_infrequent) -
+                      set(["income, month : infrequent : inheritance"])
+                      )
       #
     if True: # "income" from borrowing
       cols_borrowing = defs.rename_monthly(
@@ -290,13 +318,15 @@ if True: # income
         ppl = ppl.drop( columns = [s + ", months"] )
         del(s)
         #
-      if True: # after this, we can simply sum all monthly labor income variables
+      if True: # Only after the following does it makes sense to
+               # sum all labor income variables.
+               # Otherwise we would double-count some things.
         for (quantity, wasOmitted) in files.inclusion_pairs:
           ppl[ quantity ] = ppl[ quantity ] * ppl[ wasOmitted ]
         ppl = ppl.drop(
           columns = [ wasOmitted for (_, wasOmitted) in files.inclusion_pairs ] )
         #
-      if True: # compute within-category sums
+      if True: # Compute cash and in-kind labor income sums.
         cols_labor  = list( cla.name_map( files.income_labor )
                           . values() )
         cols_labor_cash    = [ col for col in cols_labor if not re_in_kind.match(col) ]
@@ -316,6 +346,9 @@ if True: # income
           'income, month : pension : age | illness'  : "income, pension"
         , 'income, month : cesantia'                 : "income, cesantia"
         , "income, month : investment : dividends"   : "income, dividend"
+        # PITFALL: "infrequent income" includes inheritance.
+        # Since this dictionary is used to compute total cash income,
+        # the renaming of the innheritance variable is handled separately.
         , 'total income, monthly : infrequent'       : "income, infrequent"
         , 'total income, monthly : govt, cash'       : "income, govt, cash"
         , 'total income, monthly : labor, cash'      : "income, labor, cash"
@@ -328,14 +361,25 @@ if True: # income
       ppl = ppl.rename( columns = { **income_short_name_dict_cash
                                   , **income_short_name_dict_in_kind
       } )
+      ppl = ppl.rename( columns =
+        { "income, month : infrequent : inheritance"
+          : "income, inheritance" } )
       #
     if True: # compute across-category sums
       ppl["income, cash"]    = (
         ppl[ list( income_short_name_dict_cash
-                 . values() )
+                 . values() ) +
+             [ "income, capital not dividends"
+             , "income, sale not real estate"
+             , "income, govt edu, cash"
+             , "income, month : private : non-beca, cash"
+             , "income, month : private : beca, cash"]
         ].sum(axis=1) )
       ppl["income, in-kind"] = (
-        ppl[ list( income_short_name_dict_in_kind.values() )
+        ppl[ list( income_short_name_dict_in_kind.values() ) +
+             [ "income, govt edu, in-kind"
+             , "income, month : private : non-beca, in-kind"
+             , "income, month : private : beca, in-kind"]
         ].sum(axis=1) )
       #
       for col in ["income", "income, govt", "income, labor"]:
@@ -423,12 +467,7 @@ if True: # drop vars that are (so far) unused downstream of here
     [ "income, month : borrowing : from person"
     , "income, month : borrowing : from bank"
     , "income, month : borrowing : from other"
-    , "income : edu : beca, cash"
-    , "income : edu : beca, in-kind"
-    , "income : edu : non-beca, cash"
-    , "income : edu : non-beca, in-kind"
     , "income, month : sale : livestock"
-    , "income, month : sale : real estate"
     , "income, month : sale : stock"
     , "income, month : sale : stock ?2"
     , "income, month : sale : vehicle | equipment"
@@ -437,6 +476,10 @@ if True: # drop vars that are (so far) unused downstream of here
     , "race"
     , "relationship"
     , "skipped 3 meals"
+    , "income : edu : beca, cash"
+    , "income : edu : beca, in-kind"
+    , "income : edu : non-beca, cash"
+    , "income : edu : non-beca, in-kind"
     , "income, month : govt : beca, cash"
     , "income, month : private : beca, cash"
     , "income, month : govt : non-beca, cash"

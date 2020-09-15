@@ -72,8 +72,7 @@ def test_sums( hh : pd.DataFrame,
              . abs() . max() ) < 5e-3
 
 def test_bools( hh : pd.DataFrame,
-                  ppl : pd.DataFrame ) -> ():
-
+                ppl : pd.DataFrame ) -> ():
     bool_cols = ( defs.cols_to_max__no_name_change +
                   [ "used savings",
                     "recently bought this house",
@@ -141,6 +140,9 @@ if True: # IO
   ppl = oio.readStage(
     com.subsample,
     "people_3_income_taxish." + com.strategy_year_suffix )
+  hh["edu-max"] = util.interpretCategorical(
+    hh["edu-max"],
+    edu_key.values() )
   ppl["edu"] = util.interpretCategorical(
     ppl["edu"],
     edu_key.values() )

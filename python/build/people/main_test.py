@@ -50,12 +50,11 @@ def test_ranges(ppl: pd.DataFrame):
                            : cla.InRange(0,1)
     , "pension, contributor(s) (if not pensioned) = employer"
                            : cla.InRange(0,1)
-    , "seguro de riesgos laborales"
-                           : cla.InRange(0, 1)
+    , "seguro de riesgos laborales"             : cla.InRange(0, 1)
     , "income, govt, cash"                      : cla.InRange(0, 2e7)
     , "income, govt, in-kind"                   : cla.InRange(0, 1e7)
-    , "income, non-labor"                       : cla.InRange(0, 1e8)
-    , "income, capital (tax def)"               : cla.InRange(0, 1e9)
+    , "income, non-labor (tax def)"             : cla.InRange(0, 1e8)
+    , "income, capital not dividends"           : cla.InRange(0, 1e9)
     , "income, donacion"                        : cla.InRange(0, 2e7)
     , "income, infrequent"                      : cla.InRange(0, 1e8)
     , "income, ganancia ocasional, 10%-taxable" : cla.InRange(0, 1e8)

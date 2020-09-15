@@ -1,8 +1,11 @@
 if True:
   import python.common.common as c
-  if c.regime_year == 2016:
-    import python.regime.r2016 as regime
-  else: import python.regime.r2018 as regime
+  if   c.regime_year == 2016:
+      import python.regime.r2016 as regime
+  elif c.regime_year == 2018:
+      import python.regime.r2018 as regime
+  else:
+      import python.regime.r2019 as regime
 
 
 # These do not vary within household.
@@ -23,9 +26,7 @@ income_and_tax__person_level = ( [
   , "tax, ss, solidaridad"
   , "tax, ss, parafiscales"
   , "tax, ss, cajas de compensacion"
-  , "cesantias + primas"
-  , "tax, gmf"
-  , "tax, ganancia ocasional" ]
+  , "cesantias + primas" ]
 
   + regime.income_tax_columns +
   [ "income"
@@ -34,7 +35,7 @@ income_and_tax__person_level = ( [
   , "income, pension"
   , "income, cesantia"
   , "income, dividend"
-  , "income, capital (tax def)"
+  , "income, capital not dividends"
   , "income, infrequent"
   , "income, govt"
   , "income, private"

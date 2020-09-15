@@ -9,11 +9,11 @@ SHELL := bash
 .PHONY = verify unpack_and_rename handle_txt_files
 
 data:			\
-  verify		\
   unpack_and_rename	\
-  verify_txt		\
   move_txt		\
-  format_csv
+  format_csv            \
+  verify		\
+  verify_txt
 
 verify: # verify the content of the raw zipfiles
 	echo "If this fails, checksum does not match value expected as of 2019 07 03."

@@ -11,10 +11,12 @@ if True:
   import python.common.misc as c
   import python.common.describe as desc
   import python.draw.util as draw
-
-if cl.regime_year == 2016:
+  if   cl.regime_year == 2016:
       import python.regime.r2016 as regime
-else: import python.regime.r2018 as regime
+  elif cl.regime_year == 2018:
+      import python.regime.r2018 as regime
+  else:
+      import python.regime.r2019 as regime
 
 
 output_dir = "output/vat/tables/recip-" + str(cl.subsample) + "/"
@@ -48,7 +50,7 @@ if True: # create a summary dataframe
     , "seguro de riesgos laborales"
     , "income"
     , "income, labor + cesantia"
-    , "income, capital (tax def)"
+    , "income, capital not dividends"
     , "income, dividend"
     , "income, pension"
     , "income, govt"
@@ -86,8 +88,9 @@ if True: # create a summary dataframe
     , "tax, ss, parafiscales"
     , "tax, ss, cajas de compensacion"
     , "cesantias + primas"
-    , "tax, gmf"
-    , "tax, ganancia ocasional"
+    , "tax, income, inheritance, proposed"
+    , "tax, income, gmf"
+    , "tax, income, ganancia ocasional"
     ] )
 
   householdGroupVars = [ "one"
@@ -167,7 +170,7 @@ if True: # do the same thing to a subset of that data
     , "income: min"
     , "income: max"
     , "income, labor + cesantia: mean"
-    , "income, capital (tax def): mean"
+    , "income, capital not dividends: mean"
     , "income, dividend: mean"
     , "income, dividend: share"
     , "income, pension: mean"
@@ -235,10 +238,10 @@ if True: # do the same thing to a subset of that data
     , "tax, ss, cajas de compensacion: mean"
     , "cesantias + primas: median_unweighted"
     , "cesantias + primas: mean"
-    , "tax, gmf: median_unweighted"
-    , "tax, gmf: mean"
-    , "tax, ganancia ocasional: median_unweighted"
-    , "tax, ganancia ocasional: mean"
+    , "tax, income, gmf: median_unweighted"
+    , "tax, income, gmf: mean"
+    , "tax, income, ganancia ocasional: median_unweighted"
+    , "tax, income, ganancia ocasional: mean"
     ] ]
 
   df.to_csv(   output_dir +

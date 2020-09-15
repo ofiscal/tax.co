@@ -51,6 +51,17 @@ purchases = (
     Correction.Drop_Row_If_Column_Satisfies_Predicate(
         "value", lambda v: v <= 0 )
     . correct( purchases ) )
+purchases = (
+  Correction . # no "never" frequencies
+  Drop_Row_If_Column_Satisfies_Predicate(
+    "per month", lambda x: x==11 ) .
+  correct( purchases ) )
+purchases = (
+  Correction . # no non-positive quantities
+    Drop_Row_If_Column_Satisfies_Predicate(
+      "quantity", lambda x: x<=0 ) .
+  correct( purchases ) )
+
 
 # These only make sense once the relevant columns are numbers.
 for c in ( # how-got=1 -> is-purchase=1, nan -> nan, otherwise -> 0
