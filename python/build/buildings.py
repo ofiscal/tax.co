@@ -45,7 +45,13 @@ for c in [ "IT",
                   c, ",", "." )
                 . correct( buildings ) )
 
-buildings["estrato"] = buildings["estrato"].replace(' ', np.nan)
+if True: # estrato is strange
+    # It includes undocumented values 0 and 9.
+    # 0 might mean "renter":
+    # https://www.eltiempo.com/archivo/documento/MAM-1757051
+    # I'm assuming 9 is some kind of error code.
+    buildings["estrato"] = buildings["estrato"].replace(9, np.nan)
+
 buildings["recently bought this house"] = (
     buildings["recently bought this house"] == 1 )
 
