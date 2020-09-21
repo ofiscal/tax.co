@@ -87,18 +87,18 @@ if True: # income
     #
     # For pesos, interpret NaN, 98 and 99 as "zero".
     # TODO ? Create a new makefile target in which 98s and 99s are dropped.
-    columns_to_convert = ( list( cla.name_map( files.income )
+    cols_from_na_98_99_to_0 = ( list( cla.name_map( files.income )
                                . values() )
                          + list( cla.name_map( files.beca_sources_private )
                                . values() )
                          + list( cla.name_map( files.beca_sources_govt )
                                . values() ) )
-    ppl[columns_to_convert] = ppl[columns_to_convert] . fillna(0)
-    for col in columns_to_convert: # 98 and 99 are error codes for
+    ppl[cols_from_na_98_99_to_0] = ppl[cols_from_na_98_99_to_0] . fillna(0)
+    for col in cols_from_na_98_99_to_0: # 98 and 99 are error codes for
                                    # "doesn't know" and "won't say"
       ppl[col] = ppl[col].apply(
         lambda x : 0 if ((x >= 98) & (x <= 99)) else x )
-    del(columns_to_convert)
+    del(cols_from_na_98_99_to_0)
     #
   if True: # divide yearly income variables by 12, and rename
     re_year_income  = regex.compile( "^income, year" )
