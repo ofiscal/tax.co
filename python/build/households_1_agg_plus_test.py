@@ -35,15 +35,15 @@ def test_income_ranks( hh : pd.DataFrame,
                        ppl : pd.DataFrame ) -> ():
     ppl_cols = ["income", "income, labor"]
     for c in ppl_cols:
-        def cr(n): return c + ", rank " + str(n)
+        def cRank(n): return c + ", rank " + str(n)
 
         # The maximum earner earns what the maximum top earner earns.
-        assert ppl[c].max() == hh[cr(1)].max()
+        assert ppl[c].max() == hh[cRank(1)].max()
 
         # Store these once to avoid repeatedly calculating them.
         hh_means = {}
         for n in range(1,6):
-            hh_means[n] = hh[cr(n)] . mean()
+            hh_means[n] = hh[cRank(n)] . mean()
 
         for n in range(1,6):
             # Even the average 5th-ranked earner makes more than this.
@@ -53,7 +53,7 @@ def test_income_ranks( hh : pd.DataFrame,
                               (n == 5) )
                        else 1000 ) )
             # Even among top-earners, some earn nothing.
-            assert hh[cr(n)] . min() == 0
+            assert hh[cRank(n)] . min() == 0
 
         for n in range(1,5):
             # Income ranks are ordered correctly.
