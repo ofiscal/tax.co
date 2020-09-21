@@ -14,7 +14,7 @@ def test_insert_has_dependent_column():
       { "household"        : [1,1,1,1,1, 2,2,2,2,2, 3,3,3,3,3, 4,4] ,
         "dependent"        : [0,0,1,1,1, 0,0,0,1,1, 0,0,0,0,1, 0,0] ,
         "dependents"       : [3,3,3,3,3, 2,2,2,2,2, 1,1,1,1,1, 0,0] ,
-        "member-by-income" : [1,2,3,4,5, 1,2,3,4,5, 1,2,3,4,5, 1,2] ,
+        "rank, labor income" : [1,2,3,4,5, 1,2,3,4,5, 1,2,3,4,5, 1,2] ,
         "has dependent"    : list( map( bool,
                              [1,1,1,0,0, # PITFALL: The 3rd 1 here is absurd.
                                          1,1,0,0,0, 1,0,0,0,0, 0,0] ) ) } )

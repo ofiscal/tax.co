@@ -24,29 +24,27 @@ if True: # input
     edu_key.values() )
 
 if True: # compute five columns for top five member incomes
-  # PITFALL: member-by-income is computed based only on labor income,
-  # because that's what's relevant for income tax exclusions.
   ppl["income, rank 1"] = (
-    ppl["income"] * (ppl["member-by-income"] == 1) )
+    ppl["income"] * (ppl["rank, labor income"] == 1) )
   ppl["income, rank 2"] = (
-    ppl["income"] * (ppl["member-by-income"] == 2) )
+    ppl["income"] * (ppl["rank, labor income"] == 2) )
   ppl["income, rank 3"] = (
-    ppl["income"] * (ppl["member-by-income"] == 3) )
+    ppl["income"] * (ppl["rank, labor income"] == 3) )
   ppl["income, rank 4"] = (
-    ppl["income"] * (ppl["member-by-income"] == 4) )
+    ppl["income"] * (ppl["rank, labor income"] == 4) )
   ppl["income, rank 5"] = (
-    ppl["income"] * (ppl["member-by-income"] == 5) )
+    ppl["income"] * (ppl["rank, labor income"] == 5) )
   #
   ppl["income, labor, rank 1"] = (
-    ppl["income, labor"] * (ppl["member-by-income"] == 1) )
+    ppl["income, labor"] * (ppl["rank, labor income"] == 1) )
   ppl["income, labor, rank 2"] = (
-    ppl["income, labor"] * (ppl["member-by-income"] == 2) )
+    ppl["income, labor"] * (ppl["rank, labor income"] == 2) )
   ppl["income, labor, rank 3"] = (
-    ppl["income, labor"] * (ppl["member-by-income"] == 3) )
+    ppl["income, labor"] * (ppl["rank, labor income"] == 3) )
   ppl["income, labor, rank 4"] = (
-    ppl["income, labor"] * (ppl["member-by-income"] == 4) )
+    ppl["income, labor"] * (ppl["rank, labor income"] == 4) )
   ppl["income, labor, rank 5"] = (
-    ppl["income, labor"] * (ppl["member-by-income"] == 5) )
+    ppl["income, labor"] * (ppl["rank, labor income"] == 5) )
 
 
 if True: # aggregate from household members to households

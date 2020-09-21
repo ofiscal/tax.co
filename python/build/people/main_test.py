@@ -68,7 +68,7 @@ def test_ranges(ppl: pd.DataFrame):
     , "income, private"                         : cla.InRange(0, 2e8)
     , "income, labor"                           : cla.InRange(0, 3e9)
     , "income, borrowing"                       : cla.InRange(0, 1e8)
-    , "member-by-income"                        : cla.InRange(1, 50)
+    , "rank, labor income"                      : cla.InRange(1, 50)
     , "used savings"   : cla.InSet( {True,False} )
     , "disabled"       : cla.InSet( {True,False} )
     , "dependent"      : cla.InSet( {True,False} )

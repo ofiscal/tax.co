@@ -34,11 +34,12 @@ but that's costless."""
 def test_income_ranks( hh : pd.DataFrame,
                        ppl : pd.DataFrame ) -> ():
     ppl_cols = ["income", "income, labor"]
+
+    # The maximum earner earns what the maximum top earner earns.
+    assert ppl["income, labor"].max() == hh["income, labor, rank 1"].max()
+
     for c in ppl_cols:
         def cRank(n): return c + ", rank " + str(n)
-
-        # The maximum earner earns what the maximum top earner earns.
-        assert ppl[c].max() == hh[cRank(1)].max()
 
         # Store these once to avoid repeatedly calculating them.
         hh_means = {}
