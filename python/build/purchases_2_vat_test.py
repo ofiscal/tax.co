@@ -35,9 +35,9 @@ def test_ranges( df ):
 
   coversRange_spec = {
     "household"        : cl.CoversRange( 2e5,6e5 ),
-    "per month"        : cl.CoversRange( 1,30 ),
+    "per month"        : cl.CoversRange( 0.05,30 ),
     "quantity"         : cl.CoversRange( 1,100 ),
-    "value"            : cl.CoversRange( 1,100 ),
+    "value"            : cl.CoversRange( 3,1e6 ),
     "vat frac"         : cl.CoversRange( 0, 0.159 ),
     "vat frac, max"    : cl.CoversRange( 0, 0.159 ),
     "vat frac, min"    : cl.CoversRange( 0, 0.159 ),

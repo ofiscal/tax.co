@@ -43,7 +43,7 @@ def test_ranges( bs : pd.DataFrame ) -> None:
     ("recently bought this house" , cla.CoversRange( 0,1 ) ),
     ("recently bought this house" , cla.MeanBounds( 0,0.01 ) ),
     ("recently bought this house" , cla.MissingAtMost( 0 ) ),
-    ("estrato"                    , cla.InSet( set( range(0,10) ) ) ),
+    ("estrato"                    , cla.InSet( set( range(0,6) ) ) ),
     ("estrato"                    , cla.CoversRange( 0, 3 ) ),
     ("estrato"                    , cla.MeanBounds( 1.5, 2.5 ) ),
     ("estrato"                    , cla.MissingAtMost( 0.02 ) ) ]:
