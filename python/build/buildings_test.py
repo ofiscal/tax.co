@@ -3,6 +3,7 @@
 
 if True:
   import pandas as pd
+  import numpy as np
   #
   import python.common.common as cl
   import python.common.util as util
@@ -39,14 +40,14 @@ def test_nullity( df ):
 
 def test_ranges( bs : pd.DataFrame ) -> None:
   for (c,t) in [
-    ("recently bought this house" , cla.InSet( {True,False} ) ),
-    ("recently bought this house" , cla.CoversRange( 0,1 ) ),
-    ("recently bought this house" , cla.MeanBounds( 0,0.01 ) ),
-    ("recently bought this house" , cla.MissingAtMost( 0 ) ),
-    ("estrato"                    , cla.InSet( set( range(0,6) ) ) ),
-    ("estrato"                    , cla.CoversRange( 0, 3 ) ),
-    ("estrato"                    , cla.MeanBounds( 1.5, 2.5 ) ),
-    ("estrato"                    , cla.MissingAtMost( 0.02 ) ) ]:
+      ("recently bought this house" , cla.InSet( {True,False} ) ),
+      ("recently bought this house" , cla.CoversRange( 0,1 ) ),
+      ("recently bought this house" , cla.MeanBounds( 0,0.01 ) ),
+      ("recently bought this house" , cla.MissingAtMost( 0 ) ),
+      ("estrato"                    , cla.InRange( 0, 6 ) ),
+      ("estrato"                    , cla.CoversRange( 0, 3 ) ),
+      ("estrato"                    , cla.MeanBounds( 1.5, 2.5 ) ),
+      ("estrato"                    , cla.MissingAtMost( 0.02 ) ) ]:
     assert t.test( bs[c] )
 
 if True: # run tests
