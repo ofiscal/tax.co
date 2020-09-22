@@ -55,11 +55,11 @@ income_and_spending__household_level = [
   ,"GCM"
   ]
 
-cols_income_rank = [ "income, labor, rank 1"
-                   , "income, labor, rank 2"
-                   , "income, labor, rank 3"
-                   , "income, labor, rank 4"
-                   , "income, labor, rank 5" ]
+cols_income_rank = [ "(rank, labor income) = 1"
+                   , "(rank, labor income) = 2"
+                   , "(rank, labor income) = 3"
+                   , "(rank, labor income) = 4"
+                   , "(rank, labor income) = 5" ]
 
 # These columns are aggregated via max and renamed.
 # (Two of them, age and female, are also aggregated via min,
@@ -107,7 +107,7 @@ cols_to_max__post_rename = (
 )
 
 cols_new = (
-    [ "income, labor, rank " + str(n) for n in range(1,6) ] +
+    [ "(rank, labor income) = " + str(n) for n in range(1,6) ] +
 
     [ "members", # computed ad-hoc
       "has-child",

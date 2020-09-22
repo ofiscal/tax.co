@@ -39,7 +39,7 @@ ppl = oio.readStage( com.subsample
 if True:
   ppl = ppl[ ppl["dependent"] ]
   ppl = ss.mk_ss_contribs( ppl )
-  ppl["has dependent"] = False
+  ppl["claims dependent (labor income tax)"] = False
   ppl = reg.income_taxes( ppl )
   len( ppl[ ppl["tax, income"] > 0 ] )
 

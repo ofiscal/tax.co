@@ -21,7 +21,7 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
   """PITFALL: Destructive."""
   new_columns = pd.DataFrame()
   temp_columns = pd.DataFrame()
-  temp_columns["has dependent"] = ppl["has dependent"]
+  temp_columns["claims dependent (labor income tax)"] = ppl["claims dependent (labor income tax)"]
   temp_columns[gravable_pre] = (
     ( ( ppl["income, labor"]
       - ppl["tax, ss, total employee contribs"] )
@@ -151,7 +151,7 @@ def taxable( row: pd.Series ) -> float:
     row               [gravable_pre]
     - min( 0.325 * row[gravable_pre],
            5040 * muvt ) )
-  s2 = ( s1 if not row["has dependent"]
+  s2 = ( s1 if not row["claims dependent (labor income tax)"]
          else  s1 - min( 0.1 * s1,
                          32 * muvt ) )
   return s2

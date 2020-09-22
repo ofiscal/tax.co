@@ -24,15 +24,15 @@ if True: # input
     edu_key.values() )
 
 if True: # compute five columns for top five member incomes
-  ppl["income, labor, rank 1"] = (
+  ppl["(rank, labor income) = 1"] = (
     ppl["income, labor"] * (ppl["rank, labor income"] == 1) )
-  ppl["income, labor, rank 2"] = (
+  ppl["(rank, labor income) = 2"] = (
     ppl["income, labor"] * (ppl["rank, labor income"] == 2) )
-  ppl["income, labor, rank 3"] = (
+  ppl["(rank, labor income) = 3"] = (
     ppl["income, labor"] * (ppl["rank, labor income"] == 3) )
-  ppl["income, labor, rank 4"] = (
+  ppl["(rank, labor income) = 4"] = (
     ppl["income, labor"] * (ppl["rank, labor income"] == 4) )
-  ppl["income, labor, rank 5"] = (
+  ppl["(rank, labor income) = 5"] = (
     ppl["income, labor"] * (ppl["rank, labor income"] == 5) )
 
 

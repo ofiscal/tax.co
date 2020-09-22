@@ -12,7 +12,7 @@ def insert_has_dependent_column( df : pd.DataFrame ) -> pd.DataFrame:
        . reset_index() )
   df = ( df.merge( hh, how='inner', on='household' )
         . drop( columns = "dependent" ) )
-  df["has dependent"] = (
+  df["claims dependent (labor income tax)"] = (
     df["rank, labor income"] <= df["dependents"] )
   return df
 
