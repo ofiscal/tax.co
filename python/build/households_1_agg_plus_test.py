@@ -33,32 +33,30 @@ but that's costless."""
 
 def test_income_ranks( hh : pd.DataFrame,
                        ppl : pd.DataFrame ) -> ():
-    ppl_cols = ["income", "income, labor"]
 
     # The maximum earner earns what the maximum top earner earns.
     assert ppl["income, labor"].max() == hh["income, labor, rank 1"].max()
 
-    for c in ppl_cols:
-        def cRank(n): return c + ", rank " + str(n)
+    def rank(n): return "income, labor, rank " + str(n)
 
-        # Store these once to avoid repeatedly calculating them.
-        hh_means = {}
-        for n in range(1,6):
-            hh_means[n] = hh[cRank(n)] . mean()
+    # Store these once to avoid repeatedly calculating them.
+    hh_means = {}
+    for n in range(1,6):
+        hh_means[n] = hh[rank(n)] . mean()
 
-        for n in range(1,6):
-            # Even the average 5th-ranked earner makes more than this.
-            assert ( hh_means[n] >=
-                     ( # In the 1/1000 sample, no rank-5 earner makes money.
-                       0 if ( (com.subsample == 1000) &
-                              (n == 5) )
-                       else 1000 ) )
-            # Even among top-earners, some earn nothing.
-            assert hh[cRank(n)] . min() == 0
+    for n in range(1,6):
+        # Even the average 5th-ranked earner makes more than this.
+        assert ( hh_means[n] >=
+                 ( # In the 1/1000 sample, no rank-5 earner makes money.
+                   0 if ( (com.subsample == 1000) &
+                          (n == 5) )
+                   else 1000 ) )
+        # Even among top-earners, some earn nothing.
+        assert hh[rank(n)] . min() == 0
 
-        for n in range(1,5):
-            # Income ranks are ordered correctly.
-            assert hh_means[n] > 2 * hh_means[n+1]
+    for n in range(1,5):
+        # Income ranks are ordered correctly.
+        assert hh_means[n] > 2 * hh_means[n+1]
 
 def test_sums( hh : pd.DataFrame,
                ppl : pd.DataFrame ) -> ():

@@ -55,12 +55,7 @@ income_and_spending__household_level = [
   ,"GCM"
   ]
 
-cols_income_rank = [ "income, rank 1"
-                   , "income, rank 2"
-                   , "income, rank 3"
-                   , "income, rank 4"
-                   , "income, rank 5"
-                   , "income, labor, rank 1"
+cols_income_rank = [ "income, labor, rank 1"
                    , "income, labor, rank 2"
                    , "income, labor, rank 3"
                    , "income, labor, rank 4"
@@ -112,7 +107,6 @@ cols_to_max__post_rename = (
 )
 
 cols_new = (
-    [ "income, rank "        + str(n) for n in range(1,6) ] +
     [ "income, labor, rank " + str(n) for n in range(1,6) ] +
 
     [ "members", # computed ad-hoc
