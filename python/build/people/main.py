@@ -346,19 +346,31 @@ if True: # income
     if True: # homogenize, shorten income variable names
       income_short_name_dict_cash = {
           'income, month : pension : age | illness'  : "income, pension"
+          # A (nearly) raw ENPH column, part of no bigger collection in
+          # people.files (except files.income).
         , 'income, month : cesantia'                 : "income, cesantia"
+          # A (nearly) raw ENPH column, part of no bigger collection in
+          # people.files (except files.income).
         , "income, month : investment : dividends"   : "income, dividend"
-        # PITFALL: "infrequent income" includes inheritance.
-        # Since this dictionary is used to compute total cash income,
-        # the renaming of the innheritance variable is handled separately.
+          # A (nearly) raw column. It's part of files.capital,
         , 'total income, monthly : infrequent'       : "income, infrequent"
+          # PITFALL: "infrequent income" includes (in addition to
+          # all of files.income_infrequent) inheritance and
+          # real estate sales. Neither is part of files.income_infrequent.
+          # Since this dictionary is used to compute total cash income,
+          # the renaming of the innheritance variable is handled separately.
         , 'total income, monthly : govt, cash'       : "income, govt, cash"
+          # Subset of files.income_govt not matching the in-kind regex.
         , 'total income, monthly : labor, cash'      : "income, labor, cash"
+          # Subset of files.income_labor not matching the in-kind regex.
         , "total income, monthly : private"          : "income, private"
+          # Sums (all of and only) the variables in files.income_private.
         }
       income_short_name_dict_in_kind = {
           'total income, monthly : govt, in-kind'  : "income, govt, in-kind"
+            # Subset of files.income_govt matching the in-kind regex.
         , 'total income, monthly : labor, in-kind' : "income, labor, in-kind"
+            # Subset of files.income_labor matching the in-kind regex.
         }
       ppl = ppl.rename( columns =
         { **income_short_name_dict_cash
@@ -372,6 +384,8 @@ if True: # income
                  . values() ) +
              [ "income, rental + interest"
              , "income, sale not real estate"
+                # Real estate sales are part of "infrequent" income,
+                # which is in income_short_name_dict_cash.values().
              , "income, govt edu, cash"
              , "income, private edu, cash" ]
         ].sum(axis=1) )
