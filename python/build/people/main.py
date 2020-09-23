@@ -252,17 +252,15 @@ if True: # income
       #
     if True: # private income (cash + in-kind)
       # TODO ? Should these include private beca sources?
-      cols_private = defs.rename_monthly(
-                       list( cla.name_map( files.income_private )
-                           . values() ) )
       ppl["total income, monthly : private"] = (
-        ppl[ cols_private ].sum( axis=1 ) )
+        ppl[ defs.rename_monthly(
+                       list( cla.name_map( files.income_private )
+                           . values() ) ) ] .
+        sum( axis=1 ) )
       ppl["income, donacion"] = (
         # PITFALL: overlaps what will be called "income, private"
         ppl["income, month : private : from private domestic ?firms"] +
         ppl["income, month : private : from private foreign ?firms"] )
-      #
-      ppl = ppl.drop( columns = cols_private )
       #
     if True: # infrequent income (cash only)
       cols_infrequent = defs.rename_monthly(
