@@ -238,24 +238,17 @@ if True: # income
         ppl["income, month : govt : non-beca, in-kind"] )
       #
     if True: # capital income (which is never in-kind)
+      # Dividend income is retained as a separate variable.
+      # These others are summed.
+      cols_rent_and_interest = [
+          "income, month : investment : interest"
+        , "income, month : rental : real estate, developed"
+        , "income, month : rental : real estate, undeveloped"
+        , "income, month : rental : vehicle | equipment" ]
       ppl["income, rental + interest"] = (
-          # PITFALL: `cols_capital` includes dividends, but this does not.
-          ppl["income, month : investment : interest"]
-        + ppl["income, month : rental : real estate, developed"]
-        + ppl["income, month : rental : real estate, undeveloped"]
-        + ppl["income, month : rental : vehicle | equipment"] )
-      #
-      cols_capital = [ "income, month : investment : dividends"
-                     , "income, month : investment : interest"
-                     , "income, month : rental : real estate, developed"
-                     , "income, month : rental : real estate, undeveloped"
-                     , "income, month : rental : vehicle | equipment" ]
-      #
-      # drop most components, but keep dividend income
-      ppl = ppl.drop(
-        columns = list( set ( cols_capital )
-                      - set ( ["income, month : investment : dividends"] )
-      ) )
+        ppl[ cols_rent_and_interest ] .
+        sum( axis = "columns" ) )
+      ppl = ppl.drop( columns = cols_rent_and_interest )
       #
     if True: # private income (cash + in-kind)
       # TODO ? Should these include private beca sources?
