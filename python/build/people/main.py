@@ -360,12 +360,11 @@ if True: # income
           'total income, monthly : govt, in-kind'  : "income, govt, in-kind"
         , 'total income, monthly : labor, in-kind' : "income, labor, in-kind"
         }
-      ppl = ppl.rename( columns = { **income_short_name_dict_cash
-                                  , **income_short_name_dict_in_kind
-      } )
       ppl = ppl.rename( columns =
-        { "income, month : infrequent : inheritance"
-          : "income, inheritance" } )
+        { **income_short_name_dict_cash
+        , **income_short_name_dict_in_kind
+        , ** { "income, month : infrequent : inheritance"
+             : "income, inheritance" } } )
       #
     if True: # compute across-category sums
       ppl["income, cash"]    = (
