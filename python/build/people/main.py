@@ -306,9 +306,10 @@ if True: # income
     if True: # labor income
       if True: # normalize independent labor income to one months' worth
         s = "income, month : labor : independent"
-        ppl[s] = ppl[s] * ppl[s + ", months"]
-          # TODO ? Should this not be division?
-        ppl = ppl.drop( columns = [s + ", months"] )
+        ppl[s] =  ( ppl[s] /
+                    ppl[s + ", months"] )
+        ppl = ppl.drop( columns =
+                       [s + ", months"] )
         del(s)
         #
       if True: # Only after the following does it makes sense to
