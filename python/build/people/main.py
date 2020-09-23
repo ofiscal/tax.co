@@ -81,7 +81,7 @@ if True: # non-income characteristics: pension and labor insurance
 
 if True: # income
   if True: # fill NaN values
-    # For months, interpret NaN as "one"
+    # For months, interpret NaN as "one".
     ppl[   "income, month : labor : independent, months" ] = (
       ppl[ "income, month : labor : independent, months" ] . fillna(1) )
     #
@@ -95,12 +95,12 @@ if True: # income
                                . values() ) )
     ppl[cols_from_na_98_99_to_0] = ppl[cols_from_na_98_99_to_0] . fillna(0)
     for col in cols_from_na_98_99_to_0: # 98 and 99 are error codes for
-                                   # "doesn't know" and "won't say"
+                                        # "doesn't know" and "won't say"
       ppl[col] = ppl[col].apply(
         lambda x : 0 if ((x >= 98) & (x <= 99)) else x )
     del(cols_from_na_98_99_to_0)
     #
-  if True: # divide yearly income variables by 12, and rename
+  if True: # divide yearly income variables by 12, then rename to monthly
     re_year_income  = regex.compile( "^income, year" )
     year_columns = [ col for col in ppl.columns
                      if re_year_income.match( col )]
@@ -203,7 +203,7 @@ if True: # income
             :        "income : edu : non-beca, cash" } )
       #
     if True: # govt income (cash + in-kind)
-      # TODO ? Should this include becas of govt origin?
+      # todo ? Should this include becas of govt origin?
       cols_govt = list( cla.name_map( files.income_govt )
                       . values() )
       cols_govt_cash    = [ col for col in defs.rename_monthly( cols_govt )
@@ -265,7 +265,6 @@ if True: # income
       ppl["total income, monthly : private"] = (
         ppl[ cols_private ].sum( axis=1 ) )
       ppl["income, donacion"] = (
-        # todo ? this is unused
         # PITFALL: overlaps what will be called "income, private"
         ppl["income, month : private : from private domestic ?firms"] +
         ppl["income, month : private : from private foreign ?firms"] )
@@ -315,6 +314,7 @@ if True: # income
       if True: # normalize independent labor income to one months' worth
         s = "income, month : labor : independent"
         ppl[s] = ppl[s] * ppl[s + ", months"]
+          # TODO ? Should this not be division?
         ppl = ppl.drop( columns = [s + ", months"] )
         del(s)
         #

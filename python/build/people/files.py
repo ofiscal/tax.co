@@ -43,14 +43,14 @@ demog = [
                                      # other = no income
 ]
 
-work = [ ("P6920", 0, "pension, contributing, pre", 0)
+work = [ ("P6920",   0, "pension, contributing, pre", 0)
        , ("P6920S1", 0, "pension, contribution amount", 0)
-       , ("P6940", 0, "pension, contributors, pre", 0)
-       , ("P6990", 0, "seguro de riesgos laborales, pre", 0)
+       , ("P6940",   0, "pension, contributors, pre", 0)
+       , ("P6990",   0, "seguro de riesgos laborales, pre", 0)
 ]
 
 income_govt = [
-    ("P9460S1", 0, "income, month : govt : unemployment", 0)
+    ("P9460S1",   0, "income, month : govt : unemployment", 0)
   , ("P1668S1A1", 0, "income, year : govt : familias en accion", 0)
   , ("P1668S3A2", 0, "income, year : govt : familias en su tierra", 0)
   , ("P1668S4A2", 0, "income, year : govt : jovenes en accion", 0)
@@ -64,9 +64,9 @@ income_govt = [
 ]
 
 income_labor_non_peso = [
-    ("P6760", 0, "income, month : labor : independent, months", 0)
-                   # divide P6750 by this to get monthly
-                   # hopefully this is usually 1 or missing
+    ("P6760",     0, "income, month : labor : independent, months", 0)
+      # Divide P6750 by this to get monthly income.
+      # Observed: This is usually 1 or missing, and bounded to [1,12].
 
   # these air paired with partners in the variable `inclusion_pairs`
   , ("P1653S1A2", 0, "income, month : labor : bonus ?2, included in 6500", 0)
@@ -74,7 +74,7 @@ income_labor_non_peso = [
   , ("P6585S3A2", 0, "income, month : labor : familiar, included in 6500", 0)
   , ("P6585S1A2", 0, "income, month : labor : food, included in 6500", 0)
   , ("P1653S4A2", 0, "income, month : labor : gastos de representacion, included in 6500", 0)
-  , ("P6510S2", 0, "income, month : labor : overtime, included in 6500", 0)
+  , ("P6510S2",   0, "income, month : labor : overtime, included in 6500", 0)
   , ("P6585S2A2", 0, "income, month : labor : transport, included in 6500", 0)
   , ("P1653S3A2", 0, "income, month : labor : viaticum, included in 6500", 0) ]
 
@@ -116,8 +116,8 @@ income_labor = [
 
 income_edu = [
     ("P8610S2", 0, "income, year : edu : beca, in-kind", 0)
-  , ("P8612S2", 0, "income, year : edu : non-beca, in-kind", 0)
   , ("P8610S1", 0, "income, year : edu : beca, cash", 0)
+  , ("P8612S2", 0, "income, year : edu : non-beca, in-kind", 0)
   , ("P8612S1", 0, "income, year : edu : non-beca, cash", 0)
 ]
 
@@ -163,6 +163,7 @@ income_capital = [
   , ("P7513S2A1", 0, "income, year : sale : vehicle | equipment", 0)
 ]
 
+# These form a partition.
 income = ( income_govt
          + income_labor
          + income_edu
@@ -193,6 +194,9 @@ beca_sources_private = [
 inclusion_pairs = [
   # PITFALL: The second of each pair is named for its meaning in the original data.
   # In main.py it is then remapped so that 0=included, 1=omitted.
+  #
+  # None of the "included in 6500" columns uses an out-of-bounds value
+  # like 98 or 99 to indicate an error. (They're all either 1 or 2.)
      ( "income, month : labor : bonus ?2"
      , "income, month : labor : bonus ?2, included in 6500"
   ), ( "income, month : labor : bonus"
