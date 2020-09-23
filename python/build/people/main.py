@@ -34,7 +34,8 @@ if True: # make independiente a 0 or a 1
 if True: # remap some boolean integers
   for cn in ( [ "female" ] + # originally 1=male, 2=female
               [included for (_,included) in files.inclusion_pairs]
-                 # originally, 1=included, 2=forgot
+                 # Originally, 1 = included, 2 = omitted.
+                 # Now 0 = included, 1 = omitted.
   ): ppl[cn] = ppl[cn] - 1
   #
   for cn in [ "student"         # originally 1=student, 2=not
@@ -316,13 +317,16 @@ if True: # income
         for (quantity, wasOmitted) in files.inclusion_pairs:
           ppl[ quantity ] = ppl[ quantity ] * ppl[ wasOmitted ]
         ppl = ppl.drop(
-          columns = [ wasOmitted for (_, wasOmitted) in files.inclusion_pairs ] )
+          columns = [ wasOmitted for
+                      (_, wasOmitted) in files.inclusion_pairs ] )
         #
       if True: # Compute cash and in-kind labor income sums.
         cols_labor  = list( cla.name_map( files.income_labor )
                           . values() )
-        cols_labor_cash    = [ col for col in cols_labor if not re_in_kind.match(col) ]
-        cols_labor_in_kind = [ col for col in cols_labor if     re_in_kind.match(col) ]
+        cols_labor_cash    = [
+          col for col in cols_labor if not re_in_kind.match(col) ]
+        cols_labor_in_kind = [
+          col for col in cols_labor if     re_in_kind.match(col) ]
         ppl["total income, monthly : labor, cash"] = (
           ppl[ defs.rename_monthly( cols_labor_cash ) ]
           . sum( axis=1 ) )
