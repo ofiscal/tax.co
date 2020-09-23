@@ -237,6 +237,12 @@ if True: # income
       ppl["income, govt edu, in-kind"] = (
         ppl["income, month : govt : beca, in-kind"]  +
         ppl["income, month : govt : non-beca, in-kind"] )
+      ppl["income, private edu, cash"] = (
+        ppl["income, month : private : beca, cash"]     +
+        ppl["income, month : private : non-beca, cash"] )
+      ppl["income, private edu, in-kind"] = (
+        ppl["income, month : private : beca, in-kind"]  +
+        ppl["income, month : private : non-beca, in-kind"] )
       #
     if True: # capital income (which is never in-kind)
       # Dividend income is retained as a separate variable.
@@ -368,14 +374,12 @@ if True: # income
              [ "income, rental + interest"
              , "income, sale not real estate"
              , "income, govt edu, cash"
-             , "income, month : private : non-beca, cash"
-             , "income, month : private : beca, cash"]
+             , "income, private edu, cash" ]
         ].sum(axis=1) )
       ppl["income, in-kind"] = (
         ppl[ list( income_short_name_dict_in_kind.values() ) +
              [ "income, govt edu, in-kind"
-             , "income, month : private : non-beca, in-kind"
-             , "income, month : private : beca, in-kind"]
+             , "income, private edu, in-kind" ]
         ].sum(axis=1) )
       #
       for col in ["income", "income, govt", "income, labor"]:
