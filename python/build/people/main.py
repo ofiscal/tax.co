@@ -302,11 +302,11 @@ if True: # income
                       )
       #
     if True: # "income" from borrowing
-      cols_borrowing = defs.rename_monthly(
-                         list( cla.name_map( files.income_borrowing )
-                             . values() ) )
       ppl["income, borrowing"] = (
-        ppl[ cols_borrowing ].sum( axis=1 ) )
+        ppl[ defs.rename_monthly(
+                         list( cla.name_map( files.income_borrowing )
+                             . values() ) ) ] .
+        sum( axis=1 ) )
       #
     if True: # labor income
       if True: # normalize independent labor income to one months' worth
@@ -356,7 +356,7 @@ if True: # income
         , 'total income, monthly : infrequent'       : "income, infrequent"
           # PITFALL: "infrequent income" includes (in addition to
           # all of files.income_infrequent) inheritance and
-          # real estate sales. Neither is part of files.income_infrequent.
+          # real estate sales. RE sales are not part of files.income_infrequent.
           # Since this dictionary is used to compute total cash income,
           # the renaming of the innheritance variable is handled separately.
         , 'total income, monthly : govt, cash'       : "income, govt, cash"

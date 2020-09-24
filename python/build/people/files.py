@@ -68,7 +68,7 @@ income_labor_non_peso = [
       # Divide P6750 by this to get monthly income.
       # Observed: This is usually 1 or missing, and bounded to [1,12].
 
-  # these air paired with partners in the variable `inclusion_pairs`
+  # These air paired with partners in the variable `inclusion_pairs`
   , ("P1653S1A2", 0, "income, month : labor : bonus ?2, included in 6500", 0)
   , ("P1653S2A2", 0, "income, month : labor : bonus, included in 6500", 0)
   , ("P6585S3A2", 0, "income, month : labor : familiar, included in 6500", 0)
