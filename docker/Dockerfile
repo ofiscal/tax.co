@@ -55,10 +55,12 @@ RUN pip install csv-diff
 RUN pip install pydotplus graphviz
 RUN pip install weightedcalcs
 
-
 RUN echo "updating conda: 2020 06 26"
 RUN conda update --all --yes
 # RUN conda update -n base conda
+
+RUN echo "updating django: 2020 09 25"
+RUN pip install django --upgrade
 
 # So that the container runs without root privileges on the host.
 # PITFALL: This might only work when run by a user whose uid is 1000.
