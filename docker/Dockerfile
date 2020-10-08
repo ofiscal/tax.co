@@ -62,6 +62,13 @@ RUN conda update --all --yes
 RUN echo "updating django: 2020 09 25"
 RUN pip install django --upgrade
 
+RUN echo "installing apache and ufw, 2020 10 07" && \
+    apt update && apt install -y ufw apache2
+RUN sed -i "s/Listen 80/Listen 8000/g" /etc/apache2/ports.conf && \
+    echo "service apache2 start" > /etc/apache2/start-apache.sh && \
+    echo "service apache2 stop" > /etc/apache2/stop-apache.sh && \
+    chmod u+x /etc/apache2/st*-apache.sh
+
 # So that the container runs without root privileges on the host.
 # PITFALL: This might only work when run by a user whose uid is 1000.
 # If so, the 1000 below should probably be changed to match the user's id.
