@@ -68,6 +68,8 @@ RUN sed -i "s/Listen 80/Listen 8000/g" /etc/apache2/ports.conf && \
     echo "service apache2 start" > /etc/apache2/start-apache.sh && \
     echo "service apache2 stop" > /etc/apache2/stop-apache.sh && \
     chmod u+x /etc/apache2/st*-apache.sh
+RUN echo "installing mod_wsgi for apache, 2020 10 14" && \
+    apt update && apt install -y libapache2-mod-wsgi
 
 # So that the container runs without root privileges on the host.
 # PITFALL: This might only work when run by a user whose uid is 1000.

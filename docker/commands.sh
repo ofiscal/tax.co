@@ -9,14 +9,14 @@
 docker run --name tax -it             \
   -v /home/jeff/of/tax.co/master:/mnt \
   -p 8888:8888 -d -h 127.0.0.1        \
-  ofiscal/tax.co:2020-09-25.django-3.1.1
+  ofiscal/tax.co:2020-10-15.mod_wsgi
 
 # Start a docker container and run jupyter from within it.
 docker run --name tax -it             \
   --entrypoint=/root/run-jupyter.sh   \
   -v /home/jeff/of/tax.co/master:/mnt \
   -p 8888:8888 -d -h 127.0.0.1	      \
-  ofiscal/tax.co:2020-09-25.django-3.1.1
+  ofiscal/tax.co:2020-10-15.mod_wsgi
 
 # Start a shell within a running container.
 # (Once inside, go to the `/mnt` folder to do useful stuff,
@@ -34,9 +34,10 @@ docker build -f Dockerfile -t \
 docker tag ofiscal/tax.co:new     \
   ofiscal/tax.co:latest
 docker tag ofiscal/tax.co:new     \
-  ofiscal/tax.co:2020-09-25.django-3.1.1
+  ofiscal/tax.co:2020-10-15.mod_wsgi
+docker rmi ofiscal/tax.co:new
 
 # Upload to DockerHub.
 docker push ofiscal/tax.co:latest
-docker push ofiscal/tax.co:2020-09-25.django-3.1.1
+docker push ofiscal/tax.co:2020-10-15.mod_wsgi
 
