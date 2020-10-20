@@ -1,0 +1,38 @@
+
+
+####
+#### jbb-added
+####
+
+# TODO? The tutorial at
+  # https://modwsgi.readthedocs.io/en/develop/user-guides/quick-configuration-guide.html#delegation-to-daemon-process
+# suggests including the following options,,
+# but I don't know how to modify them if I'm only serving locally.
+#
+  # ServerName www.example.com
+  # ServerAlias example.com
+
+# TODO ? I don't want to get spammed ...
+  # ServerAdmin someone@somewhere.com
+
+# The wsgi script should not be below DocumentRoot,
+# because if it were, a visitor could
+# download the code for the site.
+
+DocumentRoot /mnt/wsgi-jbb/content
+<Directory /mnt/wsgi-jbb/content>
+  # Gives Apache access to the `content` mentioned above.
+  Require all granted
+</Directory>
+
+# The first argument can be "/" but that causes problems:
+#   https://modwsgi.readthedocs.io/en/develop/user-guides/quick-configuration-guide.html#mounting-at-root-of-site
+# More convenient is to make it the post-domain portion of the URL,
+# without a trailing slash (as below).
+#
+# The second argument must be absolute.
+WSGIScriptAlias /myapp /mnt/wsgi-jbb/app.py
+<Directory /mnt/wsgi-jbb>
+  # Gives Apache access to `app.py` mentioned above.
+  Require all granted
+</Directory>

@@ -71,6 +71,19 @@ RUN sed -i "s/Listen 80/Listen 8000/g" /etc/apache2/ports.conf && \
 RUN echo "installing mod_wsgi for apache, 2020 10 14" && \
     apt update && apt install -y libapache2-mod-wsgi
 
+# I only append this, rather than copy the whole file,
+# so that if the apt install of Apache changes the base apache2.conf file,
+# I'll receive all those changes.
+COPY apache2.conf.append /etc/apache2/
+RUN cd /etc/apache2/                       && \
+  cat apache2.conf.append >> apache2.conf  && \
+  adduser www-data www-data                && \
+  chown -R www-data:www-data /var/www      && \
+  chmod -R g+rw /var/www                   && \
+  find / -iname "*apache*" -exec chmod 777 -R {} \;
+# PITFALL: www-data is the name of a new group and a new user,
+# both created by the adduser command.
+
 # So that the container runs without root privileges on the host.
 # PITFALL: This might only work when run by a user whose uid is 1000.
 # If so, the 1000 below should probably be changed to match the user's id.
