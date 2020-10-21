@@ -13,7 +13,7 @@
   # ServerAlias example.com
 
 # TODO ? I don't want to get spammed ...
-  # ServerAdmin someone@somewhere.com
+  # ServerAdmin me@place.net
 
 # The wsgi script should not be below DocumentRoot,
 # because if it were, a visitor could

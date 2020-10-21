@@ -69,7 +69,7 @@ RUN sed -i "s/Listen 80/Listen 8000/g" /etc/apache2/ports.conf && \
     echo "service apache2 stop" > /etc/apache2/stop-apache.sh && \
     chmod u+x /etc/apache2/st*-apache.sh
 RUN echo "installing mod_wsgi for apache, 2020 10 14" && \
-    apt update && apt install -y libapache2-mod-wsgi
+    apt update && apt install -y libapache2-mod-wsgi-py3
 
 # I only append this, rather than copy the whole file,
 # so that if the apt install of Apache changes the base apache2.conf file,
