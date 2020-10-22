@@ -9,14 +9,14 @@
 docker run --name tax -it             \
   -v /home/jeff/of/tax.co/master:/mnt \
   -p 8888:8888 -d -h 127.0.0.1        \
-  ofiscal/tax.co:2020-10-21.django-using-apache
+  ofiscal/tax.co:2020-10-22.apache-conf-builtin
 
 # Start a docker container and run jupyter from within it.
 docker run --name tax -it             \
   --entrypoint=/root/run-jupyter.sh   \
   -v /home/jeff/of/tax.co/master:/mnt \
   -p 8888:8888 -d -h 127.0.0.1	      \
-  ofiscal/tax.co:2020-10-21.django-using-apache
+  ofiscal/tax.co:2020-10-22.apache-conf-builtin
 
 # Start a shell within a running container.
 # (Once inside, go to the `/mnt` folder to do useful stuff,
@@ -34,10 +34,10 @@ docker build -f Dockerfile -t \
 docker tag ofiscal/tax.co:new     \
   ofiscal/tax.co:latest
 docker tag ofiscal/tax.co:new     \
-  ofiscal/tax.co:2020-10-21.django-using-apache
+  ofiscal/tax.co:2020-10-22.apache-conf-builtin
 docker rmi ofiscal/tax.co:new
 
 # Upload to DockerHub.
 docker push ofiscal/tax.co:latest
-docker push ofiscal/tax.co:2020-10-21.django-using-apache
+docker push ofiscal/tax.co:2020-10-22.apache-conf-builtin
 

@@ -75,12 +75,13 @@ RUN echo "installing mod_wsgi for apache, 2020 10 14" && \
 # so that if the apt install of Apache changes the base apache2.conf file,
 # I'll receive all those changes.
 COPY apache2.conf.append /etc/apache2/
-RUN cd /etc/apache2/                       && \
-  cat apache2.conf.append >> apache2.conf  && \
-  adduser www-data www-data                && \
-  chown -R www-data:www-data /var/www      && \
-  chmod -R g+rw /var/www                   && \
-  find / -iname "*apache*" -exec chmod 777 -R {} \;
+RUN cd /etc/apache2/                                && \
+  cat apache2.conf.append >> apache2.conf           && \
+  adduser www-data www-data                         && \
+  chown -R www-data:www-data /var/www               && \
+  chmod -R g+rw /var/www                            && \
+  find / -iname "*apache*" -exec chmod 777 -R {} \; && \
+  mkdir /home/appuser /usr/local/apache2
 # PITFALL: www-data is the name of a new group and a new user,
 # both created by the adduser command.
 

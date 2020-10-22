@@ -4,26 +4,15 @@
 #### jbb-added
 ####
 
-# TODO? The tutorial at
-  # https://modwsgi.readthedocs.io/en/develop/user-guides/quick-configuration-guide.html#delegation-to-daemon-process
-# suggests including the following options,,
-# but I don't know how to modify them if I'm only serving locally.
-#
-  # ServerName www.example.com
-  # ServerAlias example.com
+WSGIDaemonProcess www-data python-path=/mnt/:/opt/conda/lib/python3.7/site-packages/
+WSGIProcessGroup www-data
+WSGIScriptAlias /myapp /mnt/ebdjango/wsgi.py
+
+# ServerName http://localhost:8000 # TODO ?
+# ServerAlias example.com  # Only used inside a <VirtualHost> directive.
 
 # TODO ? I don't want to get spammed ...
-  # ServerAdmin me@place.net
-
-# The wsgi script should not be below DocumentRoot,
-# because if it were, a visitor could
-# download the code for the site.
-
-DocumentRoot /mnt/wsgi-jbb/content
-<Directory /mnt/wsgi-jbb/content>
-  # Gives Apache access to the `content` mentioned above.
-  Require all granted
-</Directory>
+  # ServerAdmin someone@somewhere.com
 
 # The first argument can be "/" but that causes problems:
 #   https://modwsgi.readthedocs.io/en/develop/user-guides/quick-configuration-guide.html#mounting-at-root-of-site
@@ -31,8 +20,16 @@ DocumentRoot /mnt/wsgi-jbb/content
 # without a trailing slash (as below).
 #
 # The second argument must be absolute.
-WSGIScriptAlias /myapp /mnt/wsgi-jbb/app.py
-<Directory /mnt/wsgi-jbb>
-  # Gives Apache access to `app.py` mentioned above.
+WSGIPythonPath /mnt
+<Directory /mnt>
+  # Gives Apache access to `wsgi.py` mentioned above.
+  Require all granted
+</Directory>
+
+# The wsgi script (above) should not be below DocumentRoot (below),
+# because if it were, a visitor could download the code for the site.
+DocumentRoot /mnt/polls/static
+<Directory /mnt/polls/static>
+  # Gives Apache access to the `content` mentioned above.
   Require all granted
 </Directory>
