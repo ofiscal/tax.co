@@ -5,31 +5,39 @@
 ####
 
 WSGIDaemonProcess www-data python-path=/mnt/:/opt/conda/lib/python3.7/site-packages/
+  # PITFALL: `python-path` above is actually a colon-separated list of paths.
 WSGIProcessGroup www-data
 WSGIScriptAlias /myapp /mnt/ebdjango/wsgi.py
+  # PITFALL: The first argument makes `myapp` a post-domain
+  # prefix to any of the app pages
+  # (but not any static content).
+  # It could be simply "/", which would mean "no prefix",
+  # but that can cause problems:
+    # https://modwsgi.readthedocs.io/en/develop/user-guides/quick-configuration-guide.html#mounting-at-root-of-site
 
-# ServerName http://localhost:8000 # TODO ?
-# ServerAlias example.com  # Only used inside a <VirtualHost> directive.
+# ServerName http://localhost:8000
+  # TODO ?
+# ServerAlias example.com
+  # Only used inside a <VirtualHost> directive.
+# WSGIPythonHome /path/to/venv
+  # Only needed if using a virtualenv.
 
-# TODO ? I don't want to get spammed ...
-  # ServerAdmin someone@somewhere.com
+# ServerAdmin someone@somewhere.com
+  # TODO ? I don't want to get spammed ...
 
-# The first argument can be "/" but that causes problems:
-#   https://modwsgi.readthedocs.io/en/develop/user-guides/quick-configuration-guide.html#mounting-at-root-of-site
-# More convenient is to make it the post-domain portion of the URL,
-# without a trailing slash (as below).
-#
-# The second argument must be absolute.
 WSGIPythonPath /mnt
 <Directory /mnt>
-  # Gives Apache access to `wsgi.py` mentioned above.
+  # Gives Apache access to `wsgi.py` and the rest of my code,
+  # for serving the Django pages.
+  # In particular, ensures that "import mysite" works.
   Require all granted
 </Directory>
 
-# The wsgi script (above) should not be below DocumentRoot (below),
+# The wsgi script (above) should not be a filetree descendent of DocumentRoot (below),
 # because if it were, a visitor could download the code for the site.
 DocumentRoot /mnt/polls/static
 <Directory /mnt/polls/static>
-  # Gives Apache access to the `content` mentioned above.
+  # Gives Apache access to the `content` mentioned above,
+  # for serving static (non-Django) pages.
   Require all granted
 </Directory>

@@ -2,7 +2,7 @@ The covid crisis has left many Colombians with little or no work. Those who can 
 
 The Encuesta Nacional de Preupuestos de Hogares is a survey of 87201 Colombian households (291590 people) that was conducted over 2016 and 2017. It is rich data, with detailed information on, among many other things, a household's income and expenses.
 
-The math to do is easy. If a household saves zero or fewer pesos per month, then they can never save enough money for a month of expenses. Otherwise, the number of months a household needs in order to save for a month is "spending / saving". For instance, if a household spends 1 million pesos and saves 200,000 in a month, then it would take 5 months to save for one month.
+The math to do is easy. If a household saves zero or fewer pesos per month, then they can never save enough money for a month of expenses. Otherwise, the number of months a household needs in order to save for a month is "spending / saving". For instance, if a household spends 1 million pesos and saves 200,000 pesos in a month, then it would take them 5 months to save for one month.
 
 The question of which income and spending to take into account is not as easy as one might imagine. For instance, if a family bought a car when they were surveyed, their spending in the survey would (unless they buy cars frequently) be higher than it usually is. Similarly, if they sold a car, their income would appear higher than its average.
 
