@@ -81,7 +81,8 @@ RUN cd /etc/apache2/                                && \
   chown -R www-data:www-data /var/www               && \
   chmod -R g+rw /var/www                            && \
   find / -iname "*apache*" -exec chmod 777 -R {} \; && \
-  mkdir /home/appuser /usr/local/apache2
+  mkdir /home/appuser /usr/local/apache2            && \
+  chmod +777 /home/appuser
 # PITFALL: www-data is the name of a new group and a new user,
 # both created by the adduser command.
 
