@@ -5,19 +5,21 @@
 import python.draw.util as draw
 import pandas as pd
 
-%matplotlib inline
+# %matplotlib inline
   # enable the previous line if calling from Jupyter
 import matplotlib
-# matplotlib.use('Agg')
+matplotlib.use('Agg')
   # enable the previous line if calling from the (non-gui) shell
 import matplotlib.pyplot as plt
 
-
-the_data = pd.DataFrame([1,2,7,2,7],columns=["x"])
-draw.cdf( the_data["x"] )
-plt.title("The empirical CDF of the observed series 1,2,7,2,7")
+data = [1,2,7,2,7]
+df = pd.DataFrame( data, columns=["x"])
+draw.cdf( df["x"] )
+plt.title("The empirical CDF of the observed series " + str(data) )
 plt.xlabel("Outcome")
 plt.ylabel("Probability")
 if True: # alternatives
   # plt.show()
   plt.savefig("test.png")
+
+plt.close()

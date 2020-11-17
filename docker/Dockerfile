@@ -74,9 +74,7 @@ RUN echo "installing mod_wsgi for apache, 2020 10 14" && \
 # I only append this, rather than copy the whole file,
 # so that if the apt install of Apache changes the base apache2.conf file,
 # I'll receive all those changes.
-COPY apache2.conf.append /etc/apache2/
 RUN cd /etc/apache2/                                && \
-  cat apache2.conf.append >> apache2.conf           && \
   adduser www-data www-data                         && \
   chown -R www-data:www-data /var/www               && \
   chmod -R g+rw /var/www                            && \
