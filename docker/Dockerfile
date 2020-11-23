@@ -71,6 +71,14 @@ RUN sed -i "s/Listen 80/Listen 8000/g" /etc/apache2/ports.conf && \
 RUN echo "installing mod_wsgi for apache, 2020 10 14" && \
     apt update && apt install -y libapache2-mod-wsgi-py3
 
+RUN pip install yfinance yahoofinancials surbtc && \
+    apt install -y cron
+# Somehow these "pam permissions" break crond in a Docker container, per
+#   https://stackoverflow.com/a/21928878/916142
+# and creating an empty cron.deny file permits every user to use cron.
+RUN sed -i '/session    required     pam_loginuid.so/c\#session    required     pam_loginuid.so' /etc/pam.d/cron && \
+  touch /etc/cron.deny
+
 # I only append this, rather than copy the whole file,
 # so that if the apt install of Apache changes the base apache2.conf file,
 # I'll receive all those changes.
