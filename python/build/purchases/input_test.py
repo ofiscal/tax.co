@@ -9,14 +9,16 @@ if True:
   import python.common.common as cl
 
 
+full_sample = 1
+
 def test_purchase_inputs():
   for f in ( articulos.files
          # + medios.files
            + capitulo_c.files
            + nice_purchases.files
            ): 
-    df = cl.retrieve_file( f
-                         , cl.subsample )
+    df = cl.retrieve_file( f,
+                           subsample = full_sample )
     assert util.unique( df.columns )
     acc = {}
     for c in df.columns:
@@ -27,7 +29,6 @@ def test_purchase_inputs():
 if True: # run tests
   log = "starting\n"
   test_purchase_inputs()
-  oio.test_write( cl.subsample
-                , "purchase_inputs"
-                , log )
-
+  oio.test_write( subsample = full_sample
+                , filename = "purchase_inputs"
+                , content = log )

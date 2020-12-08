@@ -5,7 +5,7 @@ if True:
   import pandas as pd
   import numpy as np
   #
-  import python.common.common as cl
+  import python.common.common as com
   import python.common.util as util
   import python.build.output_io as oio
   from   python.common.util import unique
@@ -63,6 +63,10 @@ if True: # run tests
   test_nullity( bs )
   test_ranges( bs )
   assert( unique( bs.columns ) )
-  oio.test_write( 1 # PITFALL: For buildings, we always use the full sample.
-                , "build_buildings"
-                , log )
+  for subsample in com.valid_subsamples:
+    # If it passes for any subsample, it passes for all of them,
+    # per the "PITFALL" comment above.
+    oio.test_write( subsample
+                  , "build_buildings"
+                  , log )
+  
