@@ -26,6 +26,7 @@ m
 
 ##=##=##=##  Non-file variables
 
+config_file?=config.json
 subsample?=1
   # default value; can be overridden from the command line,
   # as in "make raw subsample=10"
@@ -146,13 +147,14 @@ goods_by_income_decile = \
 ##=## minor tests
 
 lag:
-	bash bash/overview_lag.sh $(ss) $(strategy) $(yr)
+	bash bash/overview_lag.sh $(config_file)
 
 diff:
 	$(python_from_here) python/test/overview_diff.py \
-          $(subsample) $(strategy) $(yr)
+          $(config_file)
 
 show_params:
+	echo "config_file: "		-$(config_file)-
 	echo "subsample: "		-$(subsample)-
 	echo "ss: "			-$(ss)-
 	echo "tax regime year: "	-$(yr)-
@@ -186,6 +188,11 @@ tests:							\
   output/test/recip-1/purchase_inputs.txt
 	printf '\nAll tests passed.\n\n'
 
+common_test:							\
+  python/common/common.py
+	$(python_from_here) python/common/common_test.py	\
+          $(config.json)
+
 output/test/recip-$(ss)/households_1_agg_plus.txt:	\
   $(households_1_agg_plus)				\
   python/build/households_1_agg_plus_test.py		\
@@ -194,7 +201,7 @@ output/test/recip-$(ss)/households_1_agg_plus.txt:	\
   python/common/common.py
 	date
 	$(python_from_here) python/build/households_1_agg_plus_test.py	\
-          $(subsample) $(strategy) $(yr)
+          $(config_file)
 
 output/test/recip-$(ss)/households_2_purchases.txt:	\
   $(households_2_purchases)				\
@@ -204,14 +211,14 @@ output/test/recip-$(ss)/households_2_purchases.txt:	\
   python/common/util.py
 	date
 	$(python_from_here) python/build/households_2_purchases_test.py \
-          $(subsample) $(strategy) $(yr)
+          $(config_file)
 
 output/test/recip-$(ss)/build_classes.txt:	\
   python/build/classes.py			\
   python/build/classes_test.py
 	date
 	$(python_from_here) python/build/classes_test.py \
-          $(subsample) $(strategy) $(yr)
+          $(config_file)
 
 output/test/recip-$(ss)/common_misc.txt:	\
   python/build/output_io.py			\
@@ -220,7 +227,7 @@ output/test/recip-$(ss)/common_misc.txt:	\
   python/common/misc_test.py
 	date
 	$(python_from_here) python/common/misc_test.py \
-          $(subsample) $(strategy) $(yr)
+          $(config_file)
 
 output/test/recip-$(ss)/common_util.txt:	\
   python/build/output_io.py			\
@@ -228,7 +235,7 @@ output/test/recip-$(ss)/common_util.txt:	\
   python/common/util_test.py
 	date
 	$(python_from_here) python/common/util_test.py \
-          $(subsample) $(strategy) $(yr)
+          $(config_file)
 
 output/test/recip-$(ss)/purchases_correct.txt:	\
   $(purchases_1)				\
@@ -240,7 +247,7 @@ output/test/recip-$(ss)/purchases_correct.txt:	\
   python/common/misc.py
 	date
 	$(python_from_here) python/build/purchases/correct_test.py \
-          $(subsample) $(strategy) $(yr)
+          $(config_file)
 
 output/test/recip-$(ss)/build_purchases_2_vat.txt:	\
   $(purchases_2_vat)					\
@@ -251,7 +258,7 @@ output/test/recip-$(ss)/build_purchases_2_vat.txt:	\
   python/common/misc.py
 	date
 	$(python_from_here) python/build/purchases_2_vat_test.py \
-          $(subsample) $(strategy) $(yr)
+          $(config_file)
 
 output/test/recip-$(ss)/build_purchase_sums.txt:	\
   $(purchase_sums)					\
@@ -262,7 +269,7 @@ output/test/recip-$(ss)/build_purchase_sums.txt:	\
   python/common/util.py
 	date
 	$(python_from_here) python/build/purchase_sums_test.py	\
-          $(subsample) $(strategy) $(yr)
+          $(config_file)
 
 output/test/recip-$(ss)/people_main.txt: \
   $(people_1) \
@@ -275,7 +282,7 @@ output/test/recip-$(ss)/people_main.txt: \
   python/common/util.py
 	date
 	$(python_from_here) python/build/people/main_test.py \
-          $(subsample) $(strategy) $(yr)
+          $(config_file)
 
 # PITFALL: for buildings.csv we always use subsample=1.
 output/test/recip-1/build_buildings.txt:	\
@@ -288,7 +295,7 @@ output/test/recip-1/build_buildings.txt:	\
   python/common/misc.py
 	date
 	$(python_from_here) python/build/buildings_test.py \
-          1 $(strategy) $(yr)
+          $(config_file)
 
 output/test/recip-$(ss)/people_2_buildings.txt:	\
   $(people_1)					\
@@ -299,7 +306,7 @@ output/test/recip-$(ss)/people_2_buildings.txt:	\
   python/common/util.py
 	date
 	$(python_from_here) python/build/people_2_buildings_test.py \
-          $(subsample) $(strategy) $(yr)
+          $(config_file)
 
 output/test/recip-1/regime_r2018.txt:				\
   python/regime/r2018.py				\
@@ -309,7 +316,7 @@ output/test/recip-1/regime_r2018.txt:				\
   python/common/util.py
 	date
 	$(python_from_here) python/regime/r2018_test.py \
-          1 $(strategy) $(yr)
+          $(config_file)
 
 output/test/recip-1/build_ss_functions.txt:			\
   python/build/ss_functions_test.py				\
@@ -332,7 +339,7 @@ output/test/recip-$(ss)/people_3_income_taxish.txt:	\
 	date
 	$(python_from_here)				\
           python/build/people_3_income_taxish_test.py	\
-          $(subsample) $(strategy) $(yr)
+          $(config_file)
 
 # PITFALL: Sample size is hardcoded to 1, because otherwise
 # certain rare values would never be encountered.
@@ -347,7 +354,7 @@ output/test/recip-1/purchase_inputs.txt: \
   python/common/misc.py
 	date
 	$(python_from_here) python/build/purchases/input_test.py \
-          1 detail 2016
+          $(config_file)
 
 output/test/recip-$(ss)/vat_rates.txt:	\
   $(vat_rates.py)			\
@@ -357,7 +364,7 @@ output/test/recip-$(ss)/vat_rates.txt:	\
   python/common/common.py		\
   python/common/misc.py
 	$(python_from_here) python/build/vat_rates_test.py \
-          $(subsample) $(strategy) $(yr)
+          $(config_file)
 
 
 ##=##=##=## subsample, or very slightly tweak, some input data sets
@@ -369,7 +376,7 @@ $(input_subsamples):	\
   python/build/datafiles.py
 	date
 	# Next: Validating command-line arguments.
-	$(python_from_here) python/common/common.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/common/common.py $(config_file)
 	$(python_from_here) python/subsample.py
 
 vat_rates: $(vat_rates)
@@ -381,7 +388,7 @@ $(vat_rates): \
   python/build/classes.py \
   data/vat/vat-by-capitulo-c.csv
 	date
-	$(python_from_here) python/build/vat_rates.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/build/vat_rates.py $(config_file)
 
 
 ##=##=##=## Build data from the ENPH
@@ -395,7 +402,7 @@ $(buildings): \
   python/common/misc.py \
   $(input_subsamples)
 	date
-	$(python_from_here) python/build/buildings.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/build/buildings.py $(config_file)
 
 people_0: $(people_0)
 $(people_0): \
@@ -406,7 +413,7 @@ $(people_0): \
   python/common/misc.py \
   $(input_subsamples)
 	date
-	$(python_from_here) python/build/people/collect.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/build/people/collect.py $(config_file)
 
 people_1: $(people_1)
 $(people_1): \
@@ -418,7 +425,7 @@ $(people_1): \
   python/common/misc.py \
   $(people_0)
 	date
-	$(python_from_here) python/build/people/main.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/build/people/main.py $(config_file)
 
 people_2_buildings: $(people_2_buildings)
 $(people_2_buildings): \
@@ -428,7 +435,7 @@ $(people_2_buildings): \
   python/build/classes.py \
   $(buildings) $(people_1)
 	date
-	$(python_from_here) python/build/people_2_buildings.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/build/people_2_buildings.py $(config_file)
 
 people_3_income_taxish: $(people_3_income_taxish)
 $(people_3_income_taxish):			\
@@ -440,7 +447,7 @@ $(people_3_income_taxish):			\
   python/build/classes.py			\
   $(people_2_buildings)
 	date
-	$(python_from_here) python/build/people_3_income_taxish.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/build/people_3_income_taxish.py $(config_file)
 
 households_1_agg_plus: $(households_1_agg_plus)
 $(households_1_agg_plus):			\
@@ -451,7 +458,7 @@ $(households_1_agg_plus):			\
   python/regime/r$(yr).py			\
   $(people_3_income_taxish)
 	date
-	$(python_from_here) python/build/households_1_agg_plus.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/build/households_1_agg_plus.py $(config_file)
 
 households_2_purchases: $(households_2_purchases)
 $(households_2_purchases):			\
@@ -462,7 +469,7 @@ $(households_2_purchases):			\
   python/common/common.py			\
   python/common/util.py
 	date
-	$(python_from_here) python/build/households_2_purchases.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/build/households_2_purchases.py $(config_file)
 
 purchases_0: $(purchases_0)
 $(purchases_0):					\
@@ -474,7 +481,7 @@ $(purchases_0):					\
   python/common/common.py			\
   $(input_subsamples)
 	date
-	$(python_from_here) python/build/purchases/collect.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/build/purchases/collect.py $(config_file)
 
 purchases_1: $(purchases_1)
 $(purchases_1):					\
@@ -491,7 +498,7 @@ $(purchases_1):					\
   python/build/classes.py			\
   $(input_subsamples)
 	date
-	$(python_from_here) python/build/purchases/correct.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/build/purchases/correct.py $(config_file)
 
 purchases_2_vat: $(purchases_2_vat)
 $(purchases_2_vat): \
@@ -503,7 +510,7 @@ $(purchases_2_vat): \
   python/build/classes.py \
   output/vat/data/recip-$(ss)/purchases_1.csv
 	date
-	$(python_from_here) python/build/purchases_2_vat.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/build/purchases_2_vat.py $(config_file)
 
 purchase_sums: $(purchase_sums)
 $(purchase_sums): \
@@ -513,7 +520,7 @@ $(purchase_sums): \
   python/build/classes.py \
   $(purchases_2_vat)
 	date
-	$(python_from_here) python/build/purchase_sums.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/build/purchase_sums.py $(config_file)
 
 
 ##=##=##=## Make charts, diagrams, tiny latex tables
@@ -526,7 +533,7 @@ $(purchase_pics): \
   python/common/common.py \
   $(purchases_2_vat)
 	date
-	$(python_from_here) python/report/pics/purchases.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/report/pics/purchases.py $(config_file)
 
 household_pics: $(household_pics)
 $(household_pics): \
@@ -536,7 +543,7 @@ $(household_pics): \
   python/common/common.py \
   $(households_1_agg_plus)
 	date
-	$(python_from_here) python/report/pics/households.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/report/pics/households.py $(config_file)
 
 people_pics: $(people_pics)
 $(people_pics): \
@@ -546,7 +553,7 @@ $(people_pics): \
   python/common/common.py \
   $(people_3_income_taxish)
 	date
-	$(python_from_here) python/report/pics/people.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/report/pics/people.py $(config_file)
 
 pics: $(pics)
 
@@ -563,7 +570,7 @@ $(overview): \
   python/build/classes.py \
   $(households_2_purchases)
 	date
-	$(python_from_here) python/report/overview.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/report/overview.py $(config_file)
 
 # PITFALL: Always reads households_1_agg_plus from the detail vat strategy, because vat irrelevant.
 goods_by_income_decile: $(goods_by_income_decile)
@@ -572,4 +579,4 @@ $(goods_by_income_decile): \
   output/vat/data/recip-$(ss)/households_1_agg_plus.detail_.csv \
   output/vat/data/recip-$(ss)/purchases_1.csv
 	date
-	$(python_from_here) python/build/goods-by-income-decile.py $(subsample) $(strategy) $(yr)
+	$(python_from_here) python/build/goods-by-income-decile.py $(config_file)
