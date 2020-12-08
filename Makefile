@@ -17,11 +17,11 @@ SHELL := bash
   purchase_pics \
   people_pics \
   household_pics \
-  overview \
   goods_by_income_decile \
+  overview \
   tests
 
-
+m
 ##=##=##=##=##=##=##=## Variables
 
 ##=##=##=##  Non-file variables

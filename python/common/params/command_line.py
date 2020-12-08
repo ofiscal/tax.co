@@ -3,11 +3,11 @@
 # hence the calls to `sys.argv`.
 
 import sys
-import python.common.terms as t
+import python.common.terms as terms
 
 
-strategy_names = [ # There used to be a lot of these.
-  t.detail         # They disappeared in the branch "retire-hypotheticals".
+valid_strategies = [ # There used to be a lot of these.
+  terms.detail       # They disappeared in the branch "retire-hypotheticals".
 ]
 
 subsample = int( sys.argv[1] )

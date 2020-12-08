@@ -3,7 +3,6 @@ if True:
   import pandas as pd
   #
   import python.build.output_io as oio
-  import python.common.common   as c
   from   python.common.misc import muvt
   from   python.common.util import near
   import python.regime.r2018 as reg
