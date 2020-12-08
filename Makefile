@@ -21,7 +21,7 @@ SHELL := bash
   overview \
   tests
 
-m
+
 ##=##=##=##=##=##=##=## Variables
 
 ##=##=##=##  Non-file variables
