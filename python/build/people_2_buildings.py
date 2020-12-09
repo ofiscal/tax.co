@@ -5,7 +5,7 @@ import pandas as pd
 
 import python.build.output_io as oio
 import python.common.util as util
-import python.common.common as c
+import python.common.common as common
 
 
 if True: # merge people, buildings
@@ -14,7 +14,7 @@ if True: # merge people, buildings
     , 'buildings'
     , dtype = {"estrato":'float64'}
   )
-  people = oio.readStage(c.subsample, 'people_1')
+  people = oio.readStage(common.subsample, 'people_1')
   people = pd.merge( people, buildings
                    , how = "left"
                    , on="household" )
@@ -27,7 +27,11 @@ if True: # make some new variables
       util.noisyQuantile( 10, 0, 1, people["income"] ) )
     people["female head"] = people["female"] * (people["household-member"]==1)
 
-oio.saveStage( c.subsample
-             , people
-             , 'people_2_buildings')
+for ss in common . valid_subsamples:
+    # PITFALL: Looping over subsample sizes because this program
+    # always uses the full sample.
+    # If it works, it works for all subsamples.
+    oio.saveStage( ss
+                 , people
+                 , 'people_2_buildings')
 

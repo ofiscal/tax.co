@@ -1,11 +1,12 @@
 if True:
   import datetime
   #
-  from   python.common.misc import min_wage
-  from   python.common.util import near
   import python.build.output_io as oio
   import python.build.ss_functions as sf
   import python.build.ss_schedules as ss
+  from   python.common.misc import min_wage
+  from   python.common.util import near
+  import python.common.common as common
 
 
 contractor = True
@@ -175,7 +176,9 @@ if True:
   test_mk_parafiscales_employer()
   test_mk_cajas_de_compensacion_employer()
   test_mk_cesantias_y_primas_employer()
-  oio.test_write( 1 # PITFALL: Doesn't use any subsample,
-                    # so it's as if it's only tested on the full sample.
-                , "build_ss_functions"
-                , log )
+  for ss in common . valid_subsamples:
+    # PITFALL: Looping over subsample sizes because this program
+    # doesn't use any data. If it works, it works for all subsamples.
+    oio.test_write( ss
+                  , "build_ss_functions"
+                  , log )

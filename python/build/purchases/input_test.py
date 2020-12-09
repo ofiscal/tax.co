@@ -6,10 +6,8 @@ if True:
   # import python.build.purchases.medios as medios
   import python.build.purchases.nice_purchases as nice_purchases
   import python.common.util as util
-  import python.common.common as cl
+  import python.common.common as common
 
-
-full_sample = 1
 
 def test_purchase_inputs():
   for f in ( articulos.files
@@ -17,8 +15,9 @@ def test_purchase_inputs():
            + capitulo_c.files
            + nice_purchases.files
            ): 
-    df = cl.retrieve_file( f,
-                           subsample = full_sample )
+    df = common . retrieve_file (
+        f,
+        subsample = 1 ) # PITFALL: Always the full sample.
     assert util.unique( df.columns )
     acc = {}
     for c in df.columns:
@@ -29,6 +28,10 @@ def test_purchase_inputs():
 if True: # run tests
   log = "starting\n"
   test_purchase_inputs()
-  oio.test_write( subsample = full_sample
-                , filename = "purchase_inputs"
-                , content = log )
+  for ss in common . valid_subsamples:
+    # PITFALL: Looping over subsample sizes because this program
+    # always uses the full sample.
+    # If it works, it works for all subsamples.
+    oio.test_write( subsample = ss
+                  , filename = "purchase_inputs"
+                  , content = log )

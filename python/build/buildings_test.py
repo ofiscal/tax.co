@@ -63,10 +63,10 @@ if True: # run tests
   test_nullity( bs )
   test_ranges( bs )
   assert( unique( bs.columns ) )
-  for subsample in com.valid_subsamples:
-    # If it passes for any subsample, it passes for all of them,
-    # per the "PITFALL" comment above.
-    oio.test_write( subsample
+  for ss in com.valid_subsamples:
+    # PITFALL: Looping over subsample sizes because this program
+    # always uses the full sample.
+    # If it works, it works for all subsamples.
+    oio.test_write( ss
                   , "build_buildings"
                   , log )
-  
