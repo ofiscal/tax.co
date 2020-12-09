@@ -27,11 +27,11 @@ if True: # make some new variables
       util.noisyQuantile( 10, 0, 1, people["income"] ) )
     people["female head"] = people["female"] * (people["household-member"]==1)
 
-for ss in common . valid_subsamples:
-    # PITFALL: Looping over subsample sizes because this program
-    # always uses the full sample.
-    # If it works, it works for all subsamples.
-    oio.saveStage( ss
-                 , people
-                 , 'people_2_buildings')
-
+# PITFALL: As noted earlier, the buildings data is always drawn from the full
+# sample. However, the person data is drawn from a subsample.
+# Hence the output is written only to the folder for that subsample --
+# (This contrasts with the test programs that use the full sample,
+# which write evidence that the test passed to every subsample folder.)
+oio.saveStage( common.subsample
+             , people
+             , 'people_2_buildings')
