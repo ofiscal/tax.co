@@ -327,7 +327,7 @@ output/test/recip-1/build_ss_functions.txt:			\
   python/common/util.py
 	date
 	$(python_from_here) python/build/ss_functions_test.py	\
-          1 $(strategy) $(yr)
+          $(config_file)
 
 output/test/recip-$(ss)/people_3_income_taxish.txt:	\
   $(people_3_income_taxish)                             \
