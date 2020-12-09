@@ -9,24 +9,19 @@
 #
 # TODO Usage: PYTHONPATH="." python3 bash/make.py
 
-import python.common.common
+import python.common.common as common
 import os
-import sys
 
 
-# See the definitions of common.common.valid* for what values work here.
-subsample = 1
-regime_year = 2019
-strategy = "detail"
-config_file = "config.json"
+targets = "tests overview"
+  # A space-separated list of Makefile targets.
+  # Likely values include "tests" and "overview".
+  # For the full list of possible targets,
+  # see the Makefile, particularly the definition of .PHONY.
 
-target = "tests" # Likely targets include "tests" and "overview".
-                 # See Makefile for full list of possible targets,
-                 # in particular the definition of .PHONY.
-
-os.system( "make "         + target           +
-           " config_file=" + config_file      +
-           " subsample="   + str( subsample ) +
-           " strategy="    + strategy         +
-           " regime_year=" + str( regime_year )
+os.system( "make "         + targets                 +
+           " config_file=" + common.config_file      +
+           " subsample="   + str( common.subsample ) +
+           " strategy="    + common.strategy         +
+           " regime_year=" + str( common.regime_year )
   )
