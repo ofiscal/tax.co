@@ -7,7 +7,13 @@
 # products made from the 1/10 sample do not depend on products from 1/100.
 # This solves that problem.
 #
-# TODO Usage: PYTHONPATH="." python3 bash/make.py
+# Usage:
+#   Define targets here.
+#   Define parameters in config.json or similar.
+#   Run this:
+#     PYTHONPATH="." python3 bash/make.py <config_file>
+#   If the <config_file> argument is not provided,
+#   it defaults (in common.py) to "repl_params.py".
 
 import python.common.common as common
 import os
