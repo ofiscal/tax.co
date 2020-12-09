@@ -1,4 +1,4 @@
-{ "subsample" : 100,
+{ "subsample" : 10,
   "strategy" : "detail",
   "regime_year" : 2019
 }

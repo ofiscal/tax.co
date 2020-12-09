@@ -8,3 +8,4 @@ _probably_obsolete/
 git-comment.txt
 temp*
 *git-comment*
+*.json
