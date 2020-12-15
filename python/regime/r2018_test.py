@@ -2,10 +2,11 @@ if True:
   import datetime
   import pandas as pd
   #
-  import python.build.output_io as oio
   from   python.common.misc import muvt
   from   python.common.util import near
-  import python.regime.r2018 as reg
+  import python.build.output_io as oio
+  import python.common.common   as common
+  import python.regime.r2018    as reg
 
 
 def test_most_income_tax():
@@ -45,7 +46,7 @@ if True:
   test_most_income_tax()
   test_taxable()
   log = str( datetime.datetime.now() )
-  for ss in common . valid_subsamples:
+  for ss in common.valid_subsamples:
     # PITFALL: Looping over subsample sizes because this program
     # uses no data.
     # If it works, it works for all subsamples.
