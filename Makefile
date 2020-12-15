@@ -308,7 +308,9 @@ output/test/recip-$(ss)/people_2_buildings.txt:	\
 	$(python_from_here) python/build/people_2_buildings_test.py \
           $(config_file)
 
-output/test/recip-1/regime_r2018.txt:				\
+# TODO: Currently 2018 is tested, regardless of the actual regime-year.
+# It would be better to have separate tests for each year.
+output/test/recip-1/regime_r2018.txt:			\
   python/regime/r2018.py				\
   python/build/output_io.py				\
   python/common/common.py				\
