@@ -11,7 +11,7 @@
 #   Define targets here.
 #   Define parameters in config.json or similar.
 #   Run this:
-#     PYTHONPATH="." python3 bash/make.py <config_file>
+#     PYTHONPATH="." python3 bash/run-makefile.py <config_file>
 #   If the <config_file> argument is not provided,
 #   it defaults (in common.py) to "repl_params.py".
 
