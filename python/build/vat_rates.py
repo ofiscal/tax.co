@@ -13,13 +13,13 @@ if True:
   import python.common.common as c
   import python.build.output_io as oio
 
-vat_cap_c = pd.read_csv( "data/vat/" + "vat-by-capitulo-c.csv"
+vat_cap_c = pd.read_csv( c . vat_by_capitulo_c
                        , encoding = "latin1"
             ) . rename( columns = { "CODE" : "25-broad-categs"
                                   , "DESCRIPTION" : "description"
             } )
 
-vat_coicop = pd.read_csv( "data/vat/" + "vat-by-coicop.csv"
+vat_coicop = pd.read_csv( c . vat_by_coicop
                         , sep = ";" # TODO PITFALL
                         , encoding = "latin1" )
 

@@ -1,6 +1,7 @@
 # Some simple definitions needed throughout much of the codebase.
 
 if True:
+  from os import path
   from sys import argv
   import json
   import pandas as pd
@@ -36,6 +37,14 @@ if not strategy in valid_strategies:
 regime_year = config_dict["regime_year"]
 if not regime_year in valid_regime_years:
   raise ValueError( "invalid tax regime year: " + str(regime_year) )
+
+vat_by_coicop = config_dict["vat_by_coicop"]
+if not path.exists( vat_by_coicop ):
+  raise ValueError( "File does not exist: " + vat_by_coicop )
+
+vat_by_capitulo_c = config_dict["vat_by_capitulo_c"]
+if not path.exists( vat_by_capitulo_c ):
+  raise ValueError( "File does not exist: " + vat_by_capitulo_c )
 
 strategy_suffix = strategy
 strategy_year_suffix = strategy + "." + str(regime_year)
