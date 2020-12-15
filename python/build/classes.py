@@ -32,7 +32,7 @@ class CoversRange(SeriesProperty):
     return ( (series >= self.ceiling).any() &
              (series <= self.floor).any() )
 
-class MeanBounds(SeriesProperty):
+class MeanBounds ( SeriesProperty ) :
   """MeanBounds(a,b) will test that the mean of a series is between a and b."""
   def __init__( self, floor, ceiling ):
     self.floor = floor

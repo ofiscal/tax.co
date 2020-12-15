@@ -170,6 +170,7 @@ show_params:
 # make that output file a dependency.
 # PITFALL: purchase_input.txt always uses the full sample
 tests:							\
+  rate_input_test \
   output/test/recip-$(ss)/households_1_agg_plus.txt	\
   output/test/recip-$(ss)/households_2_purchases.txt    \
   output/test/recip-$(ss)/build_classes.txt		\
@@ -192,6 +193,9 @@ common_test:							\
   python/common/common.py
 	$(python_from_here) python/common/common_test.py	\
           $(config.json)
+
+rate_input_test:
+	$(python_from_here) python/build/rate_input_test.py $(config.json)
 
 output/test/recip-$(ss)/households_1_agg_plus.txt:	\
   $(households_1_agg_plus)				\
