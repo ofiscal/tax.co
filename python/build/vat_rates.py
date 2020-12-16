@@ -11,17 +11,22 @@ if True:
   #
   import python.common.terms as t
   import python.common.common as c
+  import python.common.misc as misc
   import python.build.output_io as oio
 
-vat_cap_c = pd.read_csv( c . vat_by_capitulo_c
-                       , encoding = "latin1"
-            ) . rename( columns = { "CODE" : "25-broad-categs"
-                                  , "DESCRIPTION" : "description"
-            } )
+vat_cap_c = (
+    misc . read_csv_or_xlsx (
+        c . vat_by_capitulo_c
+        , encoding = "latin1" ) .
+    rename (
+        columns = { "CODE" : "25-broad-categs"
+                  , "DESCRIPTION" : "description" }
+    ) )
 
-vat_coicop = pd.read_csv( c . vat_by_coicop
-                        , sep = ";" # TODO PITFALL
-                        , encoding = "latin1" )
+vat_coicop = (
+    misc . read_csv_or_xlsx (
+        c . vat_by_coicop
+        , encoding = "latin1" ) )
 
 for (vat,frac) in [ ("vat"     , "vat frac")
                   , ("vat, min", "vat frac, min")

@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from os import path
 
 from python.build.classes import Correction, StringCellProperty
 
@@ -70,3 +71,8 @@ def all_columns_to_numbers(df, skip_columns=[]):
           df[c]
         , errors='ignore' ) # leave entire column unchanged if any cell won't convert
   return df
+
+def read_csv_or_xlsx( filename : str, **kwargs ) -> pd.DataFrame:
+    _, ext = path . splitext( filename )
+    if ext == ".csv"    : return pd.read_csv  ( filename, **kwargs )
+    elif ext == ".xlsx" : return pd.read_excel( filename, **kwargs )

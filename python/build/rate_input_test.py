@@ -1,6 +1,7 @@
 import pandas as pd
-import python.common.common as common
 import python.build.classes as cla
+import python.common.common as common
+import python.common.misc as misc
 
 
 def test_coicop_data( df : pd.DataFrame ):
@@ -20,8 +21,9 @@ def test_capitulo_c_data( df : pd.DataFrame ):
              test ( df [ col ] ) )
 
 if True:
-  test_coicop_data(
-      pd.read_csv( common.vat_by_coicop, sep=";" ) )
-  test_capitulo_c_data(
-      pd.read_csv( common.vat_by_capitulo_c ) )
-
+  test_coicop_data (
+      misc . read_csv_or_xlsx (
+          common . vat_by_coicop ) )
+  test_capitulo_c_data (
+      misc . read_csv_or_xlsx (
+          common . vat_by_capitulo_c ) )
