@@ -1,0 +1,4 @@
+threshold,rate
+0,0
+1e6,0.1
+10e6,0.2
