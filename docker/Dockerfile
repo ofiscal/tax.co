@@ -73,6 +73,19 @@ RUN echo "installing mod_wsgi for apache, 2020 10 14" && \
 
 RUN pip install yfinance yahoofinancials surbtc && \
     apt install -y cron
+
+# The following would work if the stack web domain was working.
+#
+# # PITFALL: apt-utils must install before haskell-stack,
+# # or haskell-stack will leave a lot of configuration work for later.
+# RUN apt update -y            && \
+#     apt install -y haskell-stack
+
+# TODO : This is overkill. Once the Stack web domain works,
+# use the previous commented-out passage instead of this.
+RUN apt update -y            && \
+    apt install -y haskell-platform
+
 # Somehow these "pam permissions" break crond in a Docker container, per
 #   https://stackoverflow.com/a/21928878/916142
 # and creating an empty cron.deny file permits every user to use cron.
@@ -95,8 +108,9 @@ RUN cd /etc/apache2/                                && \
 # So that the container runs without root privileges on the host.
 # PITFALL: This might only work when run by a user whose uid is 1000.
 # If so, the 1000 below should probably be changed to match the user's id.
-RUN groupadd -g 999 appuser && \
-    useradd -r -u 1000 -g appuser appuser
+RUN groupadd -g 999 appuser               && \
+    useradd -r -u 1000 -g appuser appuser && \
+    chown appuser /home/appuser
 USER appuser
 
 RUN PATH=/root/.local/bin:$PATH

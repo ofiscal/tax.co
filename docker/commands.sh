@@ -6,16 +6,16 @@
 # https://stackoverflow.com/a/26915343
 
 # Start a docker container based on the latest image.
-docker run --name tax -it             \
+docker run --name tax -itd            \
   -v /home/jeff/of/tax.co/master:/mnt \
-  -p 8888:8888 -d -h 127.0.0.1        \
+  -p 8888:8888 -h 127.0.0.   1        \
   ofiscal/tax.co:2020-11-22.cron
 
 # Start a docker container and run jupyter from within it.
-docker run --name tax -it             \
+docker run --name tax -itd            \
   --entrypoint=/root/run-jupyter.sh   \
   -v /home/jeff/of/tax.co/master:/mnt \
-  -p 8888:8888 -d -h 127.0.0.1	      \
+  -p 8888:8888 -h 127.0.0.1	      \
   ofiscal/tax.co:2020-11-22.cron
 
 # Start a shell within a running container.
