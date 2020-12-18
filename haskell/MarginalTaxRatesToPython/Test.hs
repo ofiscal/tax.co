@@ -1,8 +1,10 @@
+{-# LANGUAGE ScopedTypeVariables #-}
+
 module MarginalTaxRatesToPython.Test where
 
 import Test.HUnit
 import MarginalTaxRatesToPython
-
+import Data.Either (isLeft, isRight)
 
 runTests :: IO Counts
 runTests = runTestTT tests
@@ -12,7 +14,24 @@ tests = TestList
   [ TestLabel "test_dropLastCondition" test_dropLastCondition
   , TestLabel "test_wrapConditions" test_wrapConditions
   , TestLabel "test_format" test_format
+  , TestLabel "test_validateTable" test_validateTable
   ]
+
+test_validateTable :: Test
+test_validateTable = TestCase $ do
+  let good :: Table = ( ["a","b"],
+                        [ [ 0, 1 ]
+                        , [ 10, 100 ] ] )
+      bad :: Table = ( ["a","b"], [[0]] )
+      exact = [(0,1), (0,100)]
+      tight = [ (0.2,0.3),
+                (10,20) ]
+      loose = replicate 2 (-1e4,1e4)
+  assertBool "" $ isLeft  $ validateTable ["c"]     exact good
+  assertBool "" $ isLeft  $ validateTable ["a","b"] tight good
+  assertBool "" $ isLeft  $ validateTable ["a","b"] exact bad
+  assertBool "" $ isRight $ validateTable ["a","b"] exact good
+  assertBool "" $ isRight $ validateTable ["a","b"] loose good
 
 test_format :: Test
 test_format = TestCase $ do

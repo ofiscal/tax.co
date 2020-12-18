@@ -1,6 +1,12 @@
+{-# LANGUAGE MultiWayIf
+, ScopedTypeVariables
+, TypeApplications
+#-}
+
 module MarginalTaxRatesToPython where
 
 import Data.List (takeWhile)
+import Data.List.Split (splitOn)
 
 
 -- ** Types
@@ -87,3 +93,43 @@ unMarginalize prev bracket =
           , fAdd = fAdd prev +
                    fRate prev * (fMax prev - fSubtract prev)
           , fMax = top bracket }
+
+
+-- ** Inputx CSV data
+
+type Table = ([String],[[Float]])
+
+validateTable :: [String] -> [(Float,Float)] -> Table
+              -> Either String ()
+validateTable names bounds (names', rows) =
+  mapLeft (++ "validateTable: ") $
+  let validateRowBounds :: ((Float,Float), [Float]) -> Bool
+      validateRowBounds ((low,high), fs) = and (map (>= low) fs)
+                                        && and (map (<= high) fs)
+      validateRowLength :: [Float] -> Bool
+      validateRowLength fs = length fs == length names
+  in if | names /= names' -> Left $ "Observed columns " ++ show names'
+          ++ " not equal to expected columns " ++ show names ++ "."
+        | not $ and $ map validateRowLength rows -> Left $
+          "Rows of table should all have length " ++ show (length names)
+          ++ " but do not."
+        | not $ and $ map validateRowBounds $ zip bounds rows -> Left $
+          "Table cells out of bounds."
+        | otherwise -> Right ()
+
+csvToTable :: String -> IO Table
+csvToTable filename = do
+  (columnNames : rows) :: [[String]] <-
+    map (splitOn ",") . lines
+    <$> readFile filename
+  return (columnNames, map (map $ read @Float) rows)
+
+
+-- ** Utilities
+
+-- | This could be imported from Data.Either.Combinators,
+-- if I installed that. (`cabal update`, `cabal install either`).
+-- But it seems substantial.
+mapLeft :: (a -> b) -> Either a c -> Either b c
+mapLeft f (Left a) = Left $ f a
+mapLeft _ (Right c) = Right c
