@@ -1,0 +1,6 @@
+:m +MarginalTaxRatesToPython
+:m +MarginalTaxRatesToPython.Test
+:m +Demo.Demo
+:m +Demo.Share.Test
+
+:set prompt "> "
