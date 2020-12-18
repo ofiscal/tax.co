@@ -9,9 +9,11 @@
 
 {-# LANGUAGE ScopedTypeVariables #-}
 
+module Demo.Demo where
+
 import System.Environment (getArgs)
 import Data.List.Split (splitOn)
-import Share.Test (x)
+import Demo.Share.Test (x)
 
 
 main = proveImport

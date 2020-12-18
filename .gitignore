@@ -9,3 +9,4 @@ git-comment.txt
 temp*
 *git-comment*
 *.json
+haskell/dist

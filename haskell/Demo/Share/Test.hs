@@ -1,3 +1,3 @@
-module Share.Test where
+module Demo.Share.Test where
 
 x = 3

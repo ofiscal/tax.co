@@ -4,8 +4,8 @@ import Test.HUnit
 import MarginalTaxRatesToPython
 
 
-allTests :: IO Counts
-allTests = runTestTT tests
+runTests :: IO Counts
+runTests = runTestTT tests
 
 tests :: Test
 tests = TestList
@@ -13,7 +13,4 @@ tests = TestList
 
 test_x :: Test
 test_x = TestCase $ do
-  let scheme = ( Formula 0 0 0 
-               , [ MoneyBracket    280_884 0.1
-                 , MoneyBracket  2_808_436 0.2
-                 , MoneyBracket  9e50      0.33 ] )
+  return ()
