@@ -5,12 +5,12 @@
 {-# LANGUAGE NumericUnderscores #-}
 module First where
 
-import Lib
+import MarginalTaxRatesToPython
 
 
 data Tax
    = Dividend
-   -- Corporate income tax rates depend on size, not income.
+   -- No "WealthCorporate" because those rates depend on size, not income.
    | IncomePerson
    | Inheritance
    | WealthCorporate

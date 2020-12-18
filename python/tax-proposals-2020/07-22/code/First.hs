@@ -7,7 +7,7 @@
 {-# LANGUAGE NumericUnderscores #-}
 module First where
 
-import Lib
+import MarginalTaxRatesToPython
 
 
 -- ** Data
