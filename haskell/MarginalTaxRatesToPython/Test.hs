@@ -9,8 +9,9 @@ runTests = runTestTT tests
 
 tests :: Test
 tests = TestList
-  [ TestLabel "test_x" test_x ]
+  [ TestLabel "test_dropLastCondition" test_dropLastCondition ]
 
-test_x :: Test
-test_x = TestCase $ do
-  return ()
+test_dropLastCondition :: Test
+test_dropLastCondition = TestCase $ do
+  assertBool "" $ dropLastCondition ["big", "bird", "flies"]
+    == ["big","bird","fl"]
