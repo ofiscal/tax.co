@@ -1,1 +1,1 @@
-../../common/Lib.hs
+../../Lib.hs
