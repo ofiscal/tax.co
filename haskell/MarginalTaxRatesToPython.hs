@@ -67,7 +67,7 @@ wrapConditions (s:ss) = let
 -- otherwise it would be missing another "else" clause.
 --
 -- PITFALL: This hack only happens to work because the letter "i"
--- only shows up in the word "if" in the formulas constructed by
+-- does not appear before the word "if" in the formulas constructed by
 -- `bracketsToFormulas`.
 dropLastCondition :: [String] -> [String]
 dropLastCondition ss =
