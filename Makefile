@@ -26,7 +26,7 @@ SHELL := bash
 
 ##=##=##=##  Non-file variables
 
-config_file?=config.json
+config_file?=config/shell.json
 subsample?=1
   # default value; can be overridden from the command line,
   # as in "make raw subsample=10"

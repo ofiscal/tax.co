@@ -99,6 +99,9 @@ unMarginalize prev bracket =
 
 type Table = ([String],[[Float]])
 
+-- | PITFALL: Needs to be used to validate the marginal tax rates,
+-- but not the VAT rates, as those get validated by Python, in
+-- python/build/rate_input_test.py
 validateTable :: [String] -> [(Float,Float)] -> Table
               -> Either String ()
 validateTable names bounds (names', rows) =

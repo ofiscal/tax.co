@@ -9,11 +9,11 @@
 #
 # Usage:
 #   Define targets here.
-#   Define parameters in config.json or similar.
+#   Define parameters in config/shell.json or similar.
 #   Run this:
 #     PYTHONPATH="." python3 bash/run-makefile.py <config_file>
 #   If the <config_file> argument is not provided,
-#   it defaults (in common.py) to "repl_params.py".
+#   it defaults (in common.py) to "config/repl.json".
 
 import python.common.common as common
 import os

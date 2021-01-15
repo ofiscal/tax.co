@@ -13,7 +13,7 @@ if True:
 if len( argv) > 1: # If we are using the command line.
   config_file = sys.argv[1]
 else:              # If we are in the interpreter.
-  config_file = "repl_params.json"
+  config_file = "config/repl.json"
 
 if True: # For validation, mostly.
          # (`valid_subsamples` is also looped over, in another program.)

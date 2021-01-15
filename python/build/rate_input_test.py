@@ -1,3 +1,8 @@
+# PITFALL: This validates the (user-provided) VAT rates,
+# but not the (user-provided) marginal tax rates,
+# as the latter are validated in Haskell, by
+# haskell/MarginalTaxRatesToPython.hs
+
 import pandas as pd
 import python.build.classes as cla
 import python.common.common as common
