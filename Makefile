@@ -192,10 +192,10 @@ tests:							\
 common_test:							\
   python/common/common.py
 	$(python_from_here) python/common/common_test.py	\
-          $(config.json)
+          $(config_file)
 
 rate_input_test:
-	$(python_from_here) python/build/rate_input_test.py $(config.json)
+	$(python_from_here) python/build/rate_input_test.py $(config_file)
 
 output/test/recip-$(ss)/households_1_agg_plus.txt:	\
   $(households_1_agg_plus)				\
