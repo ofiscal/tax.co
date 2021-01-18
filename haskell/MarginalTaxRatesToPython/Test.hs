@@ -6,6 +6,7 @@ import Test.HUnit
 import MarginalTaxRatesToPython
 import Data.Either (isLeft, isRight)
 
+
 runTests :: IO Counts
 runTests = runTestTT tests
 
@@ -37,7 +38,7 @@ test_format :: Test
 test_format = TestCase $ do
   let mb = MoneyBracket
   assertBool "" $
-    formatFormulas (bracketsToFormulas [ mb 0 0
+    formulasToPython (bracketsToFormulas [ mb 0 0
                                        , mb 0.1 10
                                        , mb 0.2 100 ] )
     == [ "def f(x):"

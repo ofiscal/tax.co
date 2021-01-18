@@ -1,7 +1,4 @@
--- | Usage: from the command line (in the Docker container),
--- from the folder containing this program, run
---   runhaskell Demo.hs a b
--- If main = readArgs, this will print the first arg, i.e. `a`.
+-- | If main = readArgs, this will print the first arg, i.e. `a`.
 -- If main = readCsv, the arguments will be ignored,
 -- and this will print the first numeric line of test.csv.
 -- If main = proveImport, the arguments will be ignored,

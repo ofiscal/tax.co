@@ -48,8 +48,8 @@ go initialFormula brackets =
 
 -- * The later, better idiom.
 
-formatFormulas :: [Formula] -> [String]
-formatFormulas fs =
+formulasToPython :: [Formula] -> [String]
+formulasToPython fs =
   "def f(x):" : ( map ("  " ++) $
                   wrapConditions $
                   dropLastCondition $
