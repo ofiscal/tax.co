@@ -53,6 +53,19 @@ go initialFormula brackets =
 
 -- * The later, better idiom.
 
+csvToPython :: Filename -> IO (Either String [String])
+csvToPython filename = do
+  table :: Table <- csvToTable filename
+  case validateTable
+       ["ceiling", "rate"]
+       [ (0, 1/0) -- 1/0 represents infinity. Ceilings can be anything >= 0.
+       , (0, 1) ] -- Tax rates, as a percentage of income, must be in [0,1].
+       table :: Either String ()
+    of Left s -> return $ Left s
+       _ -> return $ Right
+            $ formulasToPython $ bracketsToFormulas $ tableToMoneyBrackets
+            table
+
 formulasToPython :: [Formula] -> [String]
 formulasToPython fs =
   "def f(x):" : ( map ("  " ++) $

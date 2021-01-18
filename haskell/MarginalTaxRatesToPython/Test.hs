@@ -17,7 +17,18 @@ tests = TestList
   , TestLabel "test_format" test_format
   , TestLabel "test_validateTable" test_validateTable
   , TestLabel "test_tableToMoneyBrackets" test_tableToMoneyBrackets
+  , TestLabel "test_csvToTable" test_csvToTable
   ]
+
+test_csvToTable :: Test
+test_csvToTable = TestCase $ do
+  let filename = "MarginalTaxRatesToPython/test-rates.csv"
+  table :: Table <- csvToTable filename
+  assertBool "" $ table ==
+    ( ["ceiling", "rate"]
+    , [ [10, 0.1]
+      , [100, 0.2]
+      , [1e50, 0.3] ] )
 
 test_tableToMoneyBrackets :: Test
 test_tableToMoneyBrackets = TestCase $ do
