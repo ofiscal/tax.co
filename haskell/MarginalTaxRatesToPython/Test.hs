@@ -16,7 +16,18 @@ tests = TestList
   , TestLabel "test_wrapConditions" test_wrapConditions
   , TestLabel "test_format" test_format
   , TestLabel "test_validateTable" test_validateTable
+  , TestLabel "test_tableToMoneyBrackets" test_tableToMoneyBrackets
   ]
+
+test_tableToMoneyBrackets :: Test
+test_tableToMoneyBrackets = TestCase $ do
+  let [a,b,c,d] = [1..4 :: Float]
+      t :: Table = ( ["top","rate"] -- is *not* a valid table; that's a
+                   , [ [a, b]       -- different function's responsibility.
+                     , [c, d] ] )
+  assertBool "" $ tableToMoneyBrackets t ==
+    [ MoneyBracket a b
+    , MoneyBracket c d ]
 
 test_validateTable :: Test
 test_validateTable = TestCase $ do

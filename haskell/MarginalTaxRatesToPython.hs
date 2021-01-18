@@ -14,7 +14,7 @@ import Data.List.Split (splitOn)
 -- | A way to represent marginal tax rates.
 data MoneyBracket = MoneyBracket
   { top :: Float
-  , rate :: Float } deriving (Show)
+  , rate :: Float } deriving (Show, Eq)
 
 -- | A formula from money (usually income, sometimes wealth)
 -- to total (not marginal) tax owed.
@@ -28,6 +28,10 @@ instance Show Formula where
   show f = "(x - " ++ show (fSubtract f) ++ " * muvt)*" ++
            show (fRate f) ++ " + " ++ show (fAdd f)
            ++ "*muvt if x < (" ++ show (fMax f) ++ "*muvt)"
+
+type Table = ( [String]
+             , [ [ Float ] ] )
+type Filename = String
 
 
 -- ** Formatting the math.
@@ -97,7 +101,13 @@ unMarginalize prev bracket =
 
 -- ** Inputx CSV data
 
-type Table = ([String],[[Float]])
+-- | PITFALL: Assumes the table is valid: ceilings followed by rates.
+-- See `validateTable` and `csvToPython` for how that's done.
+tableToMoneyBrackets :: Table -> [MoneyBracket]
+tableToMoneyBrackets (_, lfs) = let
+  rowToMoneyBracket :: [Float] -> MoneyBracket
+  rowToMoneyBracket (top : rate : _) = MoneyBracket top rate
+  in map rowToMoneyBracket lfs
 
 -- | PITFALL: Needs to be used to validate the marginal tax rates,
 -- but not the VAT rates, as those get validated by Python, in
@@ -120,7 +130,7 @@ validateTable names bounds (names', rows) =
           "Table cells out of bounds."
         | otherwise -> Right ()
 
-csvToTable :: String -> IO Table
+csvToTable :: Filename -> IO Table
 csvToTable filename = do
   (columnNames : rows) :: [[String]] <-
     map (splitOn ",") . lines
