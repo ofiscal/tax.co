@@ -22,9 +22,10 @@ tests = TestList
 test_tableToMoneyBrackets :: Test
 test_tableToMoneyBrackets = TestCase $ do
   let [a,b,c,d] = [1..4 :: Float]
-      t :: Table = ( ["top","rate"] -- is *not* a valid table; that's a
-                   , [ [a, b]       -- different function's responsibility.
-                     , [c, d] ] )
+      t :: Table =
+        ( ["ceiling","rate"] -- This is *not* a valid table; that's a
+        , [ [a, b]           -- different function's responsibility.
+          , [c, d] ] )
   assertBool "" $ tableToMoneyBrackets t ==
     [ MoneyBracket a b
     , MoneyBracket c d ]

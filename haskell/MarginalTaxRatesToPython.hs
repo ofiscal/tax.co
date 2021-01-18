@@ -5,6 +5,7 @@
 
 module MarginalTaxRatesToPython where
 
+import Prelude hiding (ceiling)
 import Data.List (takeWhile)
 import Data.List.Split (splitOn)
 
@@ -13,7 +14,7 @@ import Data.List.Split (splitOn)
 
 -- | A way to represent marginal tax rates.
 data MoneyBracket = MoneyBracket
-  { top :: Float
+  { ceiling :: Float
   , rate :: Float } deriving (Show, Eq)
 
 -- | A formula from money (usually income, sometimes wealth)
@@ -88,7 +89,7 @@ bracketsToFormulas bs = let
 
 -- | The formula that applies to the taxpayers with the least money to tax.
 initialFormula :: MoneyBracket -> Formula
-initialFormula b = Formula 0 (rate b) 0 (top b)
+initialFormula b = Formula 0 (rate b) 0 (ceiling b)
 
 unMarginalize :: Formula -> MoneyBracket -> Formula
 unMarginalize prev bracket =
@@ -96,7 +97,7 @@ unMarginalize prev bracket =
           , fRate = rate bracket
           , fAdd = fAdd prev +
                    fRate prev * (fMax prev - fSubtract prev)
-          , fMax = top bracket }
+          , fMax = ceiling bracket }
 
 
 -- ** Inputx CSV data
@@ -106,7 +107,7 @@ unMarginalize prev bracket =
 tableToMoneyBrackets :: Table -> [MoneyBracket]
 tableToMoneyBrackets (_, lfs) = let
   rowToMoneyBracket :: [Float] -> MoneyBracket
-  rowToMoneyBracket (top : rate : _) = MoneyBracket top rate
+  rowToMoneyBracket (ceiling : rate : _) = MoneyBracket ceiling rate
   in map rowToMoneyBracket lfs
 
 -- | PITFALL: Needs to be used to validate the marginal tax rates,
