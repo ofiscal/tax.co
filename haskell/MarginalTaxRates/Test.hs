@@ -1,9 +1,9 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module MarginalTaxRatesToPython.Test where
+module MarginalTaxRates.Test where
 
 import Test.HUnit
-import MarginalTaxRatesToPython
+import MarginalTaxRates
 import Data.Either (isLeft, isRight)
 
 
@@ -22,7 +22,7 @@ tests = TestList
 
 test_csvToTable :: Test
 test_csvToTable = TestCase $ do
-  let filename = "MarginalTaxRatesToPython/test-rates.csv"
+  let filename = "MarginalTaxRates/test-rates.csv"
   table :: Table <- csvToTable filename
   assertBool "" $ table ==
     ( ["ceiling", "rate"]

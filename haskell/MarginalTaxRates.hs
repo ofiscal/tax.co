@@ -3,7 +3,7 @@
 , TypeApplications
 #-}
 
-module MarginalTaxRatesToPython where
+module MarginalTaxRates where
 
 import Prelude hiding (ceiling)
 import Data.List (takeWhile)
