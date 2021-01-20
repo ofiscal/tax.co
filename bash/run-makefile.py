@@ -12,6 +12,8 @@
 #   Define parameters in config/shell.json or similar.
 #   Run this:
 #     PYTHONPATH="." python3 bash/run-makefile.py <config_file>
+#   Usually, probably, that'll be this:
+#     PYTHONPATH="." python3 bash/run-makefile.py config/shell.json
 #   If the <config_file> argument is not provided,
 #   it defaults (in common.py) to "config/repl.json".
 

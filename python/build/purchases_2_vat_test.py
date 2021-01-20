@@ -90,7 +90,7 @@ class Purchase_2_Columns_missing:
 def test_output( df ):
   log = "test_output()\n"
 
-  assert unique( df.columns )
+  assert unique ( df . columns )
 
   assert near(
     len(df),

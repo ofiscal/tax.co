@@ -50,11 +50,11 @@ class MeanBounds ( SeriesProperty ) :
     return floorTest & ceilingTest
 
 class MissingAtMost(SeriesProperty):
-  """MissingAtMost(f) tests that at most f of the values in a series are missing. f should be in [0,1]."""
+  """MissingAtMost(f) tests that a fraction at most f of the values in a series are missing. f should be in [0,1]."""
   def __init__( self, fracMissing ):
     self.fracMissing = fracMissing
   def test( self, series : pd.Series ) -> bool:
-    return series.isnull().mean() <= self.fracMissing
+    return series . isnull () . mean () <= self . fracMissing
 
 class InRange(SeriesProperty):
   """If c = InRange(x,y), and s is a series, then s passes c.test() if and only if c includes no value less than x and no value greater than y."""

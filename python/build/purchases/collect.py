@@ -10,7 +10,7 @@ if True:
   import python.build.purchases.capitulo_c     as capitulo_c
 
 
-purchases = com.collect_files(
+purchases = com . collect_files(
   ( articulos.files
     # + medios.files
       # The tax only applies if the purchase is more than 880 million pesos,
