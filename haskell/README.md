@@ -14,3 +14,11 @@ cabal repl   # after this you'll be in GHCI
 :s .ghci     -- loads the libraries listed in the file ".ghci"
 runTests     -- do this regularly
 ```
+
+# Compile Main.hs
+
+```
+ghc -o Main Main.hs
+```
+
+This creates an executable called `Main` from `Main.hs`.
