@@ -6,7 +6,7 @@
 module MarginalTaxRates where
 
 import Prelude hiding (ceiling)
-import Data.List (takeWhile)
+import Data.List (takeWhile, transpose)
 import Data.List.Split (splitOn)
 
 
@@ -127,7 +127,7 @@ tableToMoneyBrackets (_, lfs) = let
 validateTable :: [String] -> [(Float,Float)] -> Table
               -> Either String ()
 validateTable names bounds (names', rows) =
-  mapLeft (++ "validateTable: ") $
+  mapLeft ("validateTable: " ++) $
   let validateRowBounds :: ((Float,Float), [Float]) -> Bool
       validateRowBounds ((low,high), fs) = and (map (>= low) fs)
                                         && and (map (<= high) fs)
@@ -138,8 +138,8 @@ validateTable names bounds (names', rows) =
         | not $ and $ map validateRowLength rows -> Left $
           "Rows of table should all have length " ++ show (length names)
           ++ " but do not."
-        | not $ and $ map validateRowBounds $ zip bounds rows -> Left $
-          "Table cells out of bounds."
+        | not $ and $ map validateRowBounds $ zip bounds $ transpose rows ->
+          Left $ "Table cells out of bounds."
         | otherwise -> Right ()
 
 csvToTable :: Filename -> IO Table
