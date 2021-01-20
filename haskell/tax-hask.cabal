@@ -18,8 +18,8 @@ cabal-version:       >=1.10
 
 library
   exposed-modules:
-    MarginalTaxRatesToPython,
-    MarginalTaxRatesToPython.Test,
+    MarginalTaxRates,
+    MarginalTaxRates.Test,
     Demo.Demo,
     Demo.Share.Test
   -- other-modules:

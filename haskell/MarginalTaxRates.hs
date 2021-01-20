@@ -35,9 +35,7 @@ type Table = ( [String]
 type Filename = String
 
 
--- ** Formatting the math.
-
--- * The first, worse idiom.
+-- ** The first, worse idiom.
 -- This was designed to be run from ghci; then I would copy, paste
 -- and format the resulting pythong code by hand.
 
@@ -51,7 +49,7 @@ go initialFormula brackets =
   scanl unMarginalize initialFormula brackets
 
 
--- * The later, better idiom.
+-- ** The later, better idiom.
 
 csvToPython :: Filename -> IO (Either String [String])
 csvToPython filename = do
@@ -113,7 +111,7 @@ unMarginalize prev bracket =
           , fMax = ceiling bracket }
 
 
--- ** Inputx CSV data
+-- ** Input CSV data
 
 -- | PITFALL: Assumes the table is valid: ceilings followed by rates.
 -- See `validateTable` and `csvToPython` for how that's done.

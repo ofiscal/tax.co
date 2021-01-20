@@ -1,5 +1,5 @@
-:m +MarginalTaxRatesToPython
-:m +MarginalTaxRatesToPython.Test
+:m +MarginalTaxRates
+:m +MarginalTaxRates.Test
 :m +Demo.Demo
 :m +Demo.Share.Test
 
