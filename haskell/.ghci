@@ -1,3 +1,5 @@
+:set -XScopedTypeVariables
+
 :m +MarginalTaxRates
 :m +MarginalTaxRates.Test
 :m +Demo.Demo

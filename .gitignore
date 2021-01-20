@@ -13,3 +13,4 @@ haskell/dist
 *.hi
 *.o
 haskell/Main
+haskell/MarginalTaxRates/*.py
