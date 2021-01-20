@@ -19,7 +19,8 @@ SHELL := bash
   household_pics \
   goods_by_income_decile \
   overview \
-  tests
+  tests \
+  show_config
 
 
 ##=##=##=##=##=##=##=## Variables
@@ -141,6 +142,11 @@ goods_by_income_decile = \
 
 
 ##=##=##=##=##=##=##=## Recipes
+
+# Without this, the shell history would not be very useful,
+# since the configuration file is edited frequently.
+show_config:
+	cat $(config_file)
 
 ##=##=##=## testing
 
