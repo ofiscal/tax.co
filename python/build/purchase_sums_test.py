@@ -32,7 +32,7 @@ if com.subsample < 11: # The data is too sparse to test
                        # the smaller samples this way
   for (c,ts) in [
     ( "transactions",
-      [ cla.MeanBounds    ( 60 , 120 ),
+      [ cla.MeanBounds    ( 50 , 120 ),
         cla.CoversRange   ( 2  , 200 ),
         cla.InRange       ( 1  , 400 ),
         cla.MissingAtMost ( 0 ) ] ),
@@ -62,13 +62,13 @@ if com.subsample < 11: # The data is too sparse to test
          cla.MissingAtMost (0) ] ),
 
     ( "value, purchase",
-       [ cla.MeanBounds    (2e6 ,5e6),
+       [ cla.MeanBounds    (1e6 ,5e6),
          cla.CoversRange   (1e2 ,4e7), # TODO ? This minimum is nuts.
          cla.InRange       (0   ,2e8),
          cla.MissingAtMost (0) ] ),
 
     ( "value, spending",
-       [ cla.MeanBounds    (2e6 ,5e6),
+       [ cla.MeanBounds    (1e6 ,5e6),
          cla.CoversRange   (1e2 ,4e7), # TODO ? This minimum is nuts.
          cla.InRange       (0   ,2e8),
          cla.MissingAtMost(0) ] ) ]:
