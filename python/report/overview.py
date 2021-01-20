@@ -83,7 +83,6 @@ if True: # create a summary dataframe
     , "tax, ss, parafiscales"
     , "tax, ss, cajas de compensacion"
     , "cesantias + primas"
-    , "tax, income, inheritance, proposed"
     , "tax, income, gmf"
     , "tax, income, ganancia ocasional"
     ] )

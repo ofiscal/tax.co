@@ -1,3 +1,6 @@
+# PITFALL: This depends on some variables that were removed from python/build/
+# immediately after commit 61399515e9511d3dae923a29a9af63bc93b0378b
+
 # exec( open( "tax-proposal/2020-08-21/build.py" ) . read() )
 
 if True:

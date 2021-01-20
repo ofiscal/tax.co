@@ -4,14 +4,9 @@ from   python.common.misc import muvt
 
 
 income_tax_columns = [ "tax, income"
-                     , "tax, income, proposed"
                      , "tax, income, most"
-                     , "tax, income, most, proposed"
                      , "tax, income, dividend"
-                     , "tax, income, dividend, proposed"
-                     , "tax, income, inheritance, proposed"
                      , "tax, income, ganancia ocasional"
-                     , "tax, income, ganancia ocasional, proposed"
                      , "tax, income, gmf"
                      ]
 
@@ -38,42 +33,14 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
     ppl["income, pension"]
   ) . apply( most_income_tax )
 
-  new_columns["tax, income, most, proposed"] = (
-    temp_columns["cedula general gravable"] +
-    ppl["income, pension"]
-  ) . apply( most_income_tax_proposed )
-
   new_columns["tax, income, dividend"] = (
     ppl["income, dividend"].apply( lambda x:
       0 if x < (300*muvt)
       else (x - 300*muvt) * 0.1 ) )
 
-  new_columns["tax, income, dividend, proposed"] = (
-    ppl["income, dividend"].apply( lambda x:
-      0                                        if x < ( 300*muvt)
-      else ( (x - 300  * muvt)*0.1             if x < ( 600*muvt)
-      else ( (x - 600  * muvt)*0.12 +  30*muvt if x < (1000*muvt)
-      else ( (x - 1000 * muvt)*0.18 +  78*muvt if x < (1500*muvt)
-      else ( (x - 1500 * muvt)*0.2  + 168*muvt
-            ) ) ) ) ) )
-
-  new_columns["tax, income, inheritance, proposed"] = (
-    ppl["income, inheritance"].apply( lambda x:
-      0 if x < (112337*muvt)
-      else (   (x -  112337 * muvt)*0.1                if x < ( 280884*muvt)
-        else ( (x -  280884 * muvt)*0.2 +   16855*muvt if x < (2808436*muvt)
-          else (x - 2808436 * muvt)*0.33 + 522365*muvt
-          ) ) ) )
-
   new_columns["tax, income, ganancia ocasional"] = (
     ppl["income, ganancia ocasional, 10%-taxable"] * 0.1 +
     ppl["income, ganancia ocasional, 20%-taxable"] * 0.2 )
-
-  new_columns["tax, income, ganancia ocasional, proposed"] = (
-    ( ppl["income, ganancia ocasional, 10%-taxable"]
-    - ppl["income, inheritance"]
-    ) * 0.1
-    + ppl["income, ganancia ocasional, 20%-taxable"] * 0.2 )
 
   # a.k.a. the "4 por mil" -- a 0.4% tax
   # levided on transactions involving someone's bank account.
@@ -87,13 +54,6 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
       new_columns [[ "tax, income, most"
                    , "tax, income, dividend"
                    , "tax, income, ganancia ocasional"
-                   , "tax, income, gmf" ]] .
-      sum( axis = "columns" ) )
-  new_columns["tax, income, proposed"] = (
-      new_columns [[ "tax, income, most, proposed"
-                   , "tax, income, dividend, proposed"
-                   , "tax, income, ganancia ocasional, proposed"
-                   , "tax, income, inheritance, proposed"
                    , "tax, income, gmf" ]] .
       sum( axis = "columns" ) )
 
@@ -121,21 +81,6 @@ def most_income_tax( income : float ) -> float:
     else ( (x - 18970*muvt)*0.37 + 5901   *muvt if x < (31000*muvt)
     else   (x - 31000*muvt)*0.39 + 10352.1*muvt
     ) ) ) ) ) )
-
-def most_income_tax_proposed( income : float ) -> float:
-  x = income
-  return (
-    0                                           if x < ( 1090*muvt)
-    else ( (x -  1090 * muvt)*0.19              if x < ( 1700*muvt)
-    else ( (x -  1700 * muvt)*0.28 +   116*muvt if x < ( 4100*muvt)
-    else ( (x -  4100 * muvt)*0.33 +   788*muvt if x < ( 8670*muvt)
-    else ( (x -  8670 * muvt)*0.35 +  2296*muvt if x < (18970*muvt)
-    else ( (x - 18970 * muvt)*0.39 +  5901*muvt if x < (27595*muvt)
-    else ( (x - 27595 * muvt)*0.44 +  9265*muvt if x < (36000*muvt)
-    else ( (x - 36000 * muvt)*0.47 + 12963*muvt if x < (55000*muvt)
-    else ( (x - 55000 * muvt)*0.5  + 21893*muvt if x < (90000*muvt)
-    else   (x - 90000 * muvt)*0.55 + 39393*muvt
-    ) ) ) ) ) ) ) ) )
 
 def taxable( row: pd.Series ) -> float:
   """
