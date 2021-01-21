@@ -12,10 +12,10 @@ income_tax_columns = [ "tax, income"
 
 gravable_pre = "cedula general gravable, sums before exemptions"
 
-def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
-  """PITFALL: Destructive."""
-  new_columns = pd.DataFrame()
-  temp_columns = pd.DataFrame()
+def income_taxes( ppl : pd.dataframe ) -> pd.dataframe:
+  """pitfall: destructive."""
+  new_columns = pd.dataframe()
+  temp_columns = pd.dataframe()
   temp_columns["claims dependent (labor income tax)"] = ppl["claims dependent (labor income tax)"]
   temp_columns[gravable_pre] = (
     ( ( ppl["income, labor"]

@@ -44,18 +44,18 @@ test_tableToMoneyBrackets = TestCase $ do
 test_validateTable :: Test
 test_validateTable = TestCase $ do
   let good :: Table = ( ["a","b"],
-                        [ [ 0, 1 ]
-                        , [ 10, 100 ] ] )
+                        [ [ 0, 10 ]
+                        , [ 1, 100 ] ] )
       bad :: Table = ( ["a","b"], [[0]] )
       exact = [(0,1), (0,100)]
       tight = [ (0.2,0.3),
                 (10,20) ]
       loose = replicate 2 (-1e4,1e4)
-  assertBool "" $ isLeft  $ validateTable ["c"]     exact good
-  assertBool "" $ isLeft  $ validateTable ["a","b"] tight good
-  assertBool "" $ isLeft  $ validateTable ["a","b"] exact bad
-  assertBool "" $ isRight $ validateTable ["a","b"] exact good
-  assertBool "" $ isRight $ validateTable ["a","b"] loose good
+  assertBool "1" $ isLeft  $ validateTable ["c"]     exact good
+  assertBool "2" $ isLeft  $ validateTable ["a","b"] tight good
+  assertBool "3" $ isLeft  $ validateTable ["a","b"] exact bad
+  assertBool "4" $ isRight $ validateTable ["a","b"] exact good
+  assertBool "5" $ isRight $ validateTable ["a","b"] loose good
 
 test_format :: Test
 test_format = TestCase $ do
