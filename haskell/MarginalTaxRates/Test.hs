@@ -64,8 +64,7 @@ test_format = TestCase $ do
     formulasToPython (bracketsToFormulas [ mb 0 0
                                        , mb 0.1 10
                                        , mb 0.2 100 ] )
-    == [ "def f(x):"
-       , "  return ( (x - 0.0 * muvt)*0.0 + 0.0*muvt if x < (0.0*muvt)"
+    == [ "  return ( (x - 0.0 * muvt)*0.0 + 0.0*muvt if x < (0.0*muvt)"
        , "  else ( (x - 0.0 * muvt)*10.0 + 0.0*muvt if x < (0.1*muvt)"
        , "  else ( (x - 0.1 * muvt)*100.0 + 1.0*muvt "
        , "  )))" ]

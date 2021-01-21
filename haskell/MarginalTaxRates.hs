@@ -60,16 +60,19 @@ csvToPython filename = do
        , (0, 1) ] -- Tax rates, as a percentage of income, must be in [0,1].
        table :: Either String ()
     of Left s -> return $ Left s
-       _ -> return $ Right
-            $ formulasToPython $ bracketsToFormulas $ tableToMoneyBrackets
-            table
+       _ -> return $ Right $
+            [ "import python.common.misc as c"
+            , "", ""
+            , "def f(x):" ] ++
+            ( formulasToPython $ bracketsToFormulas $
+              tableToMoneyBrackets table )
 
 formulasToPython :: [Formula] -> [String]
 formulasToPython fs =
-  "def f(x):" : ( map ("  " ++) $
-                  wrapConditions $
-                  dropLastCondition $
-                  map show fs )
+  ( map ("  " ++) $
+    wrapConditions $
+    dropLastCondition $
+    map show fs )
 
 wrapConditions :: [String] -> [String]
 wrapConditions (s:ss) = let
