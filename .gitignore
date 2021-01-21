@@ -1,16 +1,16 @@
+# anywhere
+*.hi
+*.json
+*.o
+*.pyc
 *~
-.emacs*
 TAGS
-__pycache__/
-_out/
-  # for make.py
-_probably_obsolete/
 git-comment.txt
 temp*
-*git-comment*
-*.json
-haskell/dist
-*.hi
-*.o
+__pycache__/
+
+# in specific folders
+./git-comment*
 haskell/Main
 haskell/MarginalTaxRates/*.py
+haskell/dist/
