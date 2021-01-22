@@ -1,7 +1,18 @@
-import pandas as pd
-import python.common.misc as misc
-from   python.common.misc import muvt
+if True: # imports
+  from os import path
+  import pandas as pd
+  import python.common.common as com
+  import python.common.misc as misc
+  from   python.common.misc import muvt
+  if True: # csv-dynamic imports
+    rates = com.marginal_rates_folder
+    exec( "import "
+          + path.join( rates, "dividend") . replace( "/", "." )
+          + " as dividend" )
 
+
+# Set this to true to use the .py files in python/csv_dynamic/.
+csv_dynamic = True
 
 income_tax_columns = [ "tax, income"
                      , "tax, income, most"
@@ -34,9 +45,11 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
   ) . apply( most_income_tax )
 
   new_columns["tax, income, dividend"] = (
-    ppl["income, dividend"].apply( lambda x:
-      0 if x < (300*muvt)
-      else (x - 300*muvt) * 0.1 ) )
+    ppl["income, dividend"].apply(
+        dividend.f if csv_dynamic else
+        lambda x:
+        0 if x < (300*muvt)
+        else (x - 300*muvt) * 0.1 ) )
 
   new_columns["tax, income, ganancia ocasional"] = (
     ppl["income, ganancia ocasional, 10%-taxable"] * 0.1 +
