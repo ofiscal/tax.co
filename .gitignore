@@ -9,9 +9,10 @@ temp*
 __pycache__/
 
 # in specific folders
-./git-comment*
+/git-comment*
 config/repl.json
 config/shell.json
+python/csv_dynamic/**/*.csv
 haskell/Main
 haskell/MarginalTaxRates/*.py
 haskell/dist/

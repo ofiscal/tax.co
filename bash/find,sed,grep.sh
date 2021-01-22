@@ -2,6 +2,11 @@
 # This is NOT a script, but rather a collection of handy one-liners,
 # for various common tasks like renaming variables.
 
+exit # To make sure you don't run this as a script.
+
+# To grep for a string in every format except unreadable ones.
+find . -type f -not \( -name "*.csv" -o -name "*.xlsx" -o -name "*.tgz" -o -name "*.zip" -o -name "*.ssv" -o -name "*.sav" -o -name "*.pyc" -o -name "*.pdf" -o -name "*.jpeg" -o -name "*.odt" -o -name "*.pack" -o -name "*.ods" -o -name "*.ipynb" -o -name "*.idx" -o -name "*.docx" -o -name "*.dta" \) -print0 | xargs -0 grep "xxx" --color
+
 # Always using: Find multiple files, replace in them
 find . \( -name "*.py" -o -name "*.md" -o -name "*.org" \) -print0 | xargs -0 sed -i "s/prop.2018.11.31/prop_2018_10_31/g"
 
@@ -33,4 +38,3 @@ find . -name "*~" -print0 | xargs -0 rm
 
 # Find multiple patterns
 find . \( -name "*.py" -o -name "*.md" -o -name "*.org" \)
-
