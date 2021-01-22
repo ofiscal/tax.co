@@ -22,7 +22,7 @@ tests = TestList
 
 test_csvToTable :: Test
 test_csvToTable = TestCase $ do
-  let filename = "MarginalTaxRates/test-rates.csv"
+  let filename = "MarginalTaxRates/test_rates.csv"
   table :: Table <- csvToTable filename
   assertBool "" $ table ==
     ( ["ceiling", "rate"]

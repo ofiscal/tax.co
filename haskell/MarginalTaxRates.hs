@@ -61,7 +61,7 @@ csvToPython filename = do
        table :: Either String ()
     of Left s -> return $ Left s
        _ -> return $ Right $
-            [ "import python.common.misc as c"
+            [ "from python.common.misc import muvt"
             , "", ""
             , "def f(x):" ] ++
             ( formulasToPython $ bracketsToFormulas $
