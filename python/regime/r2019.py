@@ -6,9 +6,14 @@ if True: # imports
   from   python.common.misc import muvt
   if True: # csv-dynamic imports
     rates = com.marginal_rates_folder
-    exec( "import "
-          + path.join( rates, "dividend") . replace( "/", "." )
-          + " as dividend" )
+    for lib in ["dividend",
+                "ocasional_low_tax",
+                "ocasional_high_tax",
+                "most",]:
+      exec( "import "
+            + ( path.join( rates, lib)
+              . replace ( "/", "." ) )
+            + " as " + lib )
 
 
 # Set this to true to use the .py files in python/csv_dynamic/.
@@ -37,23 +42,31 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
 
   temp_columns["cedula general gravable"] = (
     temp_columns .
-    apply(taxable, axis=1) )
+    apply ( taxable, axis = 1 ) )
 
   new_columns["tax, income, most"] = (
-    temp_columns["cedula general gravable"] +
-    ppl["income, pension"]
-  ) . apply( most_income_tax )
+    ( temp_columns["cedula general gravable"] +
+      ppl["income, pension"] )
+    . apply( most . f
+             if csv_dynamic else
+             most_income_tax ) )
 
   new_columns["tax, income, dividend"] = (
     ppl["income, dividend"].apply(
-        dividend.f if csv_dynamic else
+        dividend.f
+        if csv_dynamic else
         lambda x:
         0 if x < (300*muvt)
         else (x - 300*muvt) * 0.1 ) )
 
   new_columns["tax, income, ganancia ocasional"] = (
-    ppl["income, ganancia ocasional, 10%-taxable"] * 0.1 +
-    ppl["income, ganancia ocasional, 20%-taxable"] * 0.2 )
+    ( ( ppl["income, ganancia ocasional, 10%-taxable"]
+        . apply ( ocasional_low_tax . f ) ) +
+      ( ppl["income, ganancia ocasional, 20%-taxable"]
+        . apply ( ocasional_high_tax . f ) ) )
+    if not csv_dynamic else
+    ( ppl["income, ganancia ocasional, 10%-taxable"] * 0.1 +
+      ppl["income, ganancia ocasional, 20%-taxable"] * 0.2 ) )
 
   # a.k.a. the "4 por mil" -- a 0.4% tax
   # levided on transactions involving someone's bank account.
@@ -73,17 +86,6 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
   return pd.concat( [ppl, new_columns], axis = 1 )
 
 def most_income_tax( income : float ) -> float:
-  # see test/income_tax_2018.hs for code that generates these formulas.
-  # Run this to test the accumulated totals
-  # (the numbers just after the + signs):
-  #   ns = [ 0.19 * (1700 - 1090),
-  #        0.28 * (4100 - 1700),
-  #        0.33 * (8670 - 4100),
-  #        0.35 * (18970 - 8670),
-  #        0.37 * (31000 - 18970) ]
-  #   for i in range(0,5):
-  #     print( sum( ns[0:i+1] ) )
-
   x = income
   return (
     0                                           if x < (1090 *muvt)
