@@ -29,7 +29,7 @@ income_tax_columns = [ "tax, income"
 gravable_pre = "cedula general gravable, sums before exemptions"
 
 def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
-  """pitfall: destructive."""
+  """PITFALL: Destructive."""
   new_columns = pd.DataFrame()
   temp_columns = pd.DataFrame()
   temp_columns["claims dependent (labor income tax)"] = ppl["claims dependent (labor income tax)"]

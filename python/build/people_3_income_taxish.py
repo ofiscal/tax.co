@@ -32,4 +32,3 @@ oio.saveStage( com.subsample
              , ppl
              , 'people_3_income_taxish.' + com.strategy_year_suffix
 )
-
