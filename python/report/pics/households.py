@@ -1,22 +1,22 @@
-if True: # matplotlib imports are sensitive to order
-  # %matplotlib inline
-    # enable the previous line if calling from Jupyter
-  import matplotlib
-  matplotlib.use('Agg')
-    # enable the previous line if calling from the (non-gui) shell
-  import matplotlib.pyplot as plt
-  from matplotlib.ticker import EngFormatter
-
-if True: # more imports
-  import sys
-  import os
-  import numpy as np
-  from functools import reduce
-
-  import python.common.util as util
-  import python.draw.util as draw
-  import python.build.output_io as oio
-  import python.build.common as c
+if True:
+  if True: # matplotlib imports are sensitive to order
+    # %matplotlib inline
+      # enable the previous line if calling from Jupyter
+    import matplotlib
+    matplotlib.use('Agg')
+      # enable the previous line if calling from the (non-gui) shell
+    import matplotlib.pyplot as plt
+    from matplotlib.ticker import EngFormatter
+  if True: # more imports
+    import sys
+    import os
+    import numpy as np
+    from functools import reduce
+    #
+    import python.common.util as util
+    import python.draw.util as draw
+    import python.build.output_io as oio
+    import python.build.common as c
 
 
 vat_pics_dir = ( "output/vat/pics/recip-" + str(c.subsample) + "/"
@@ -103,9 +103,9 @@ if True: # VAT expenditures by income decile
 
     if True: # minimum VAT possible
       plt.close()
-  
+
       plt.suptitle("CDFs of VAT expenditure across households by income decile")
-  
+
       plt.subplot(1,2,1)
       plt.xlabel("VAT paid / value consumed")
       plt.ylabel("Probability")
@@ -119,7 +119,7 @@ if True: # VAT expenditures by income decile
                   with_mean = False
         )
       plt.grid(color='b', linestyle=':', linewidth=0.5)
-  
+
       plt.subplot(1,2,2)
       plt.ylabel("Probability")
       for i in list(households_decile_summary.index):
@@ -132,21 +132,21 @@ if True: # VAT expenditures by income decile
                   with_mean = False
         )
       plt.grid(color='b', linestyle=':', linewidth=0.5)
-  
+
       ax = plt.gca()
       ax.set_yticklabels([])
-  
+
       fig = plt.gcf()
       fig.set_size_inches(8,4)
-  
+
       draw.savefig(vat_pics_dir + "households", "VAT-over-consumption,-by-income-decile.png")
 
 
     if True: # maximum VAT possible
       plt.close()
-  
+
       plt.suptitle("CDFs of VAT expenditure across households by income decile")
-  
+
       plt.subplot(1,2,1)
       plt.xlabel("VAT paid / value consumed")
       plt.ylabel("Probability")
@@ -160,7 +160,7 @@ if True: # VAT expenditures by income decile
                   with_mean = False
         )
       plt.grid(color='b', linestyle=':', linewidth=0.5)
-  
+
       plt.subplot(1,2,2)
       plt.ylabel("Probability")
       for i in list(households_decile_summary.index):
@@ -173,11 +173,11 @@ if True: # VAT expenditures by income decile
                   with_mean = False
         )
       plt.grid(color='b', linestyle=':', linewidth=0.5)
-  
+
       ax = plt.gca()
       ax.set_yticklabels([])
-  
+
       fig = plt.gcf()
       fig.set_size_inches(8,4)
-  
+
       draw.savefig(vat_pics_dir + "households", "VAT-over-consumption,-by-income-decile.png")

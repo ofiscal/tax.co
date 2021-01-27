@@ -2,14 +2,15 @@
 #########
 # Compute VAT per purchase in the purchase data.
 
-import numpy as np
-import pandas as pd
-
-import python.build.classes as cla
-import python.build.purchases.legends as legends
-import python.build.output_io as oio
-import python.common.common as c
-import python.common.util as util
+if True:
+  import numpy as np
+  import pandas as pd
+  #
+  import python.build.classes as cla
+  import python.build.purchases.legends as legends
+  import python.build.output_io as oio
+  import python.common.common as c
+  import python.common.util as util
 
 
 if True: # input files

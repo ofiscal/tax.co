@@ -3,10 +3,11 @@
 # as the latter are validated in Haskell, by
 # haskell/MarginalTaxRatesToPython.hs
 
-import pandas as pd
-import python.build.classes as cla
-import python.common.common as common
-import python.common.misc as misc
+if True:
+  import pandas as pd
+  import python.build.classes as cla
+  import python.common.common as common
+  import python.common.misc as misc
 
 
 def test_coicop_data( df : pd.DataFrame ):

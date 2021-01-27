@@ -2,12 +2,13 @@
 
 if True:
   from os import path
+  import sys
   from sys import argv
   import json
   import pandas as pd
+  #
   import python.build.classes as cla
   import python.common.terms as terms
-  import sys
 
 
 if len( argv) > 1: # If we are using the command line.

@@ -1,11 +1,12 @@
 # Merge the building data innto the person-level data.
 
-import sys
-import pandas as pd
-
-import python.build.output_io as oio
-import python.common.util as util
-import python.common.common as common
+if True:
+  import sys
+  import pandas as pd
+  #
+  import python.build.output_io as oio
+  import python.common.util as util
+  import python.common.common as common
 
 
 if True: # merge people, buildings

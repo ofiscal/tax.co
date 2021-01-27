@@ -1,6 +1,11 @@
 # PITFALL: This code builds on that in ./main.py;
 # for instance, hh is used here but defined there.
 
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+
+
 hh["to plot"] = noisyQuantile(
     10, 0, 0.01,
     hh["months to save for a month"] )
@@ -16,10 +21,7 @@ ax.set_ylabel("ylabel")
 
 plt.savefig("temp.png")
 
-
-import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
+##### ??? ####
 
 plt.close()
 labels = ['G1', 'G2', 'G3', 'G4', 'G5']
@@ -58,4 +60,3 @@ autolabel(rects2)
 fig.tight_layout()
 
 plt.savefig("temp.png")
-

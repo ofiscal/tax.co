@@ -1,9 +1,10 @@
-import numpy as np
-import pandas as pd
-
-import python.common.common as cl
-import python.common.misc as defs
-import python.build.output_io as oio
+if True:
+  import numpy as np
+  import pandas as pd
+  #
+  import python.common.common as cl
+  import python.common.misc as defs
+  import python.build.output_io as oio
 
 
 def test_all_columns_to_numbers():

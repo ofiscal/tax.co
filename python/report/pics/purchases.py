@@ -1,20 +1,20 @@
-if True: # matplotlib imports are sensitive to order
-  # %matplotlib inline
-    # enable the previous line if calling from Jupyter
-  import matplotlib
-  matplotlib.use('Agg')
-    # enable the previous line if calling from the (non-gui) shell
-  import matplotlib.pyplot as plt
-  from matplotlib.ticker import EngFormatter
-
-if True: # more imports
-  import sys
-  import os
-  import numpy as np
-  
-  import python.build.output_io as oio
-  import python.draw.util as draw
-  import python.build.common as c
+if True:
+  if True: # matplotlib imports are sensitive to order
+    # %matplotlib inline
+      # enable the previous line if calling from Jupyter
+    import matplotlib
+    matplotlib.use('Agg')
+      # enable the previous line if calling from the (non-gui) shell
+    import matplotlib.pyplot as plt
+    from matplotlib.ticker import EngFormatter
+  if True: # more imports
+    import sys
+    import os
+    import numpy as np
+    #
+    import python.build.output_io as oio
+    import python.draw.util as draw
+    import python.build.common as c
 
 
 vat_pics_dir = "output/vat/pics/recip-" + str(c.subsample) + "/" + c.strategy_suffix + "/"

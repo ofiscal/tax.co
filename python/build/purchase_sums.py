@@ -1,8 +1,10 @@
 # Aggregate purchases within person.
 
-import python.build.output_io as oio
-import python.common.common as c
-import re as regex
+if True:
+  import re as regex
+  #
+  import python.build.output_io as oio
+  import python.common.common as c
 
 
 purchases = oio.readStage(
@@ -57,7 +59,7 @@ if True: # VAT is only charged for purchases; zero it for other things.
       purchases[col] = (
           (purchases[ "is-purchase" ] > 0) *
           purchases[col] )
- 
+
 purchases["transactions"] = 1 # next this is summed within persons
 purchase_sums = purchases.groupby( ["household"]
          ) [ [ "value, purchase"
@@ -88,4 +90,3 @@ if True: # It's faster to compute these columns post-aggregation.
 oio.saveStage( c.subsample
              , purchase_sums
              , "purchase_sums." + c.strategy_suffix )
-

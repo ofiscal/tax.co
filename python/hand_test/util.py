@@ -1,8 +1,9 @@
 # TODO : automate these tests
 
-import pandas as pd
-from numpy import nan
-import python.common.util as util
+if True:
+  import pandas as pd
+  from numpy import nan
+  import python.common.util as util
 
 
 df = pd.DataFrame( [  [1,      2  ,      1,       1,         1 ]
