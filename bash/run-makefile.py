@@ -1,4 +1,4 @@
-# This has nothing to do with the make.py package
+# PITFALL: This has nothing to do with the make.py package
 # that is an alternative to the utility called make.
 #
 # Purpose: A Makefile cannot ingeest parameters from a .json file.
@@ -27,9 +27,13 @@ targets = "show_config tests overview"
   # For the full list of possible targets,
   # see the Makefile, particularly the definition of .PHONY.
 
-os.system( "make "         + targets                 +
-           " config_file=" + common.config_file      +
-           " subsample="   + str( common.subsample ) +
-           " strategy="    + common.strategy         +
-           " regime_year=" + str( common.regime_year )
-  )
+os.system(
+    "make "                   + targets                   +
+    " config_file="           + common.config_file        +
+    " subsample="             + str( common.subsample )   +
+    " strategy="              + common.strategy           +
+    " regime_year="           + str( common.regime_year ) +
+    " vat_by_coicop="         + common.vat_by_coicop      +
+    " vat_by_capitulo_c="     + common.vat_by_capitulo_c  +
+    " marginal_rates_folder=" + common.marginal_rates_folder
+    )

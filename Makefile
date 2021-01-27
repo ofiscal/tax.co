@@ -27,6 +27,9 @@ SHELL := bash
 
 ##=##=##=##  Non-file variables
 
+# TODO: Makefile is a horrible language.
+# This would be more readable and safer if it were done by run-makefile.py.
+
 config_file?=config/shell.json
 subsample?=1
   # default value; can be overridden from the command line,
@@ -159,14 +162,19 @@ diff:
 	$(python_from_here) python/test/overview_diff.py \
           $(config_file)
 
+# Some of these are defined in config_file.
+# Others are derived therefrom.
 show_params:
-	echo "config_file: "		-$(config_file)-
-	echo "subsample: "		-$(subsample)-
-	echo "ss: "			-$(ss)-
-	echo "tax regime year: "	-$(yr)-
-	echo "strategy: "		-$(strategy)-
-	echo "strategy suffix: "	-$(strategy_suffix)-
-	echo "strategy_year_suffix: "	-$(strategy_year_suffix)
+	echo "config_file: "           -$(config_file)-
+	echo "subsample: "             -$(subsample)-
+	echo "ss: "                    -$(ss)-
+	echo "tax regime year: "       -$(yr)-
+	echo "strategy: "              -$(strategy)-
+	echo "strategy suffix: "       -$(strategy_suffix)-
+	echo "strategy_year_suffix: "  -$(strategy_year_suffix)
+	echo "vat_by_coicop: "         -$(vat_by_coicop)-
+	echo "vat_by_capitulo_c: "     -$(vat_by_capitulo_c)-
+	echo "marginal_rates_folder: " -$(marginal_rates_folder)-
 
 
 ##=## the run-after-every-change test suite
