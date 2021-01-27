@@ -1,0 +1,22 @@
+.PHONY: show_params \
+  input_subsamples \
+  buildings \
+  households_1_agg_plus \
+  households_2_purchases \
+  people_0 \
+  people_1 \
+  people_2_buildings \
+  people_3_income_taxish \
+  purchases_0 \
+  purchases_1 \
+  purchases_2_vat \
+  purchase_sums \
+  vat_rates \
+  pics \
+  purchase_pics \
+  people_pics \
+  household_pics \
+  goods_by_income_decile \
+  overview \
+  tests \
+  show_config
