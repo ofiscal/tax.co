@@ -7,11 +7,11 @@ python_tax_proposals_2020_08_21_main_py: \
 
 python_tax_proposals_2020_08_21_build_py: \
   python/tax-proposals-2020/08-21/build.py
-  import python.build.output_io as oio
-  import python.common.common as cl
-  import python.common.misc as c
-  import python.common.describe as desc
-  import python.draw.util as draw
+  import python.build.output_io
+  import python.common.common
+  import python.common.misc
+  import python.common.describe
+  import python.draw.util
 
 python_csv_dynamic_r2019_dividend_py: \
   $(marginal_rates_folder)/dividend.py
@@ -31,63 +31,63 @@ python_csv_dynamic_r2019_ocasional_low_py: \
 
 python_build_ss_functions_test_py: \
   python/build/ss_functions_test.py
-  import python.build.output_io as oio
-  import python.build.ss_functions as sf
-  import python.build.ss_schedules as ss
+  import python.build.output_io
+  import python.build.ss_functions
+  import python.build.ss_schedules
   from   python.common.misc import min_wage
   from   python.common.util import near
-  import python.common.common as common
+  import python.common.common
 
 python_build_buildings_test_py: \
   python/build/buildings_test.py
-  import python.common.common as com
-  import python.common.util as util
-  import python.build.output_io as oio
+  import python.common.common
+  import python.common.util
+  import python.build.output_io
   from   python.common.util import unique
-  import python.build.classes as cla
+  import python.build.classes
 
 python_build_households_2_purchases_py: \
   python/build/households_2_purchases.py
-  import python.common.util as util
-  import python.build.output_io as oio
-  import python.common.common as com
+  import python.common.util
+  import python.build.output_io
+  import python.common.common
 
 python_build_households_2_purchases_test_py: \
   python/build/households_2_purchases_test.py
-  import python.build.classes   as cl
-  import python.build.output_io as oio
-  import python.common.common   as com
-  import python.common.util     as util
+  import python.build.classes
+  import python.build.output_io
+  import python.common.common
+  import python.common.util
 
 python_build_output_io_py: \
   python/build/output_io.py
 
 python_build_vat_rates_test_py: \
   python/build/vat_rates_test.py
-  import python.common.common as cl
-  import python.build.output_io as oio
+  import python.common.common
+  import python.build.output_io
   from   python.common.util import unique
 
 python_build_buildings_py: \
   python/build/buildings.py
-  import python.build.classes as cla
-  import python.common.common as cl
-  import python.build.output_io as oio
+  import python.build.classes
+  import python.common.common
+  import python.build.output_io
 
 python_build_purchases_articulos_py: \
   python/build/purchases/articulos.py
   from python.build.classes import File, Correction, StringCellProperty
-  import python.common.misc as c
+  import python.common.misc
 
 python_build_purchases_input_test_py: \
   python/build/purchases/input_test.py
-  import python.build.classes as cla
-  import python.build.output_io as oio
-  import python.build.purchases.articulos as articulos
-  import python.build.purchases.capitulo_c as capitulo_c
-  import python.build.purchases.nice_purchases as nice_purchases
-  import python.common.util as util
-  import python.common.common as common
+  import python.build.classes
+  import python.build.output_io
+  import python.build.purchases.articulos
+  import python.build.purchases.capitulo_c
+  import python.build.purchases.nice_purchases
+  import python.common.util
+  import python.common.common
 
 python_build_purchases_correct_defs_py: \
   python/build/purchases/correct_defs.py
@@ -95,168 +95,168 @@ python_build_purchases_correct_defs_py: \
 python_build_purchases_correct_py: \
   python/build/purchases/correct.py
   from   python.build.classes import Correction
-  import python.build.output_io as oio
-  import python.build.purchases.correct_defs as defs
-  import python.common.common as cl
-  import python.common.misc as com
-  import python.build.purchases.nice_purchases as nice_purchases
-  import python.build.purchases.articulos as articulos
-  import python.build.purchases.capitulo_c as capitulo_c
+  import python.build.output_io
+  import python.build.purchases.correct_defs
+  import python.common.common
+  import python.common.misc
+  import python.build.purchases.nice_purchases
+  import python.build.purchases.articulos
+  import python.build.purchases.capitulo_c
 
 python_build_purchases_legends_py: \
   python/build/purchases/legends.py
 
 python_build_purchases_correct_test_py: \
   python/build/purchases/correct_test.py
-  import python.build.purchases.correct_defs as defs
-  import python.common.common as com
-  import python.build.classes as cla
-  import python.build.output_io as oio
+  import python.build.purchases.correct_defs
+  import python.common.common
+  import python.build.classes
+  import python.build.output_io
   from   python.common.misc import num_purchases_surviving
   from   python.common.util import unique, near
 
 python_build_purchases_nice_purchases_py: \
   python/build/purchases/nice_purchases.py
   from python.build.classes import File, Correction, StringCellProperty
-  import python.common.misc as c
+  import python.common.misc
 
 python_build_purchases_collect_py: \
   python/build/purchases/collect.py
-  import python.common.common as com
-  import python.build.output_io as oio
-  import python.common.misc as misc
-  import python.common.util as util
-  import python.build.purchases.nice_purchases as nice_purchases
-  import python.build.purchases.articulos      as articulos
-  import python.build.purchases.capitulo_c     as capitulo_c
+  import python.common.common
+  import python.build.output_io
+  import python.common.misc
+  import python.common.util
+  import python.build.purchases.nice_purchases
+  import python.build.purchases.articulos
+  import python.build.purchases.capitulo_c
 
 python_build_purchases_medios_py: \
   python/build/purchases/medios.py
-  import python.build.classes as classes
-  import python.common.misc as c
+  import python.build.classes
+  import python.common.misc
 
 python_build_purchases_capitulo_c_py: \
   python/build/purchases/capitulo_c.py
   from python.build.classes import File, Correction, StringCellProperty
-  import python.common.misc as c
+  import python.common.misc
 
 python_build_people_3_income_taxish_test_py: \
   python/build/people_3_income_taxish_test.py
-  import python.build.people_3_income_taxish_functions as f4
+  import python.build.people_3_income_taxish_functions
   from   python.common.misc import num_people
-  import python.common.util as util
-  import python.build.output_io as oio
-  import python.common.common   as com
+  import python.common.util
+  import python.build.output_io
+  import python.common.common
 
 python_build_households_1_agg_plus_py: \
   python/build/households_1_agg_plus.py
-  import python.common.common as com
-  import python.common.describe as desc
-  import python.common.util as util
-  import python.build.output_io as oio
+  import python.common.common
+  import python.common.describe
+  import python.common.util
+  import python.build.output_io
   from   python.build.people.files import edu_key
-  import python.build.households_1_agg_plus_defs as defs
+  import python.build.households_1_agg_plus_defs
 
 python_build_classes_py: \
   python/build/classes.py
 
 python_build_people_main_py: \
   python/build/people/main.py
-  import python.build.classes as cla
-  import python.build.output_io as oio
-  import python.build.people.main_defs as defs
-  import python.build.people.files as files
-  import python.common.common as cl
-  import python.common.misc as c
+  import python.build.classes
+  import python.build.output_io
+  import python.build.people.main_defs
+  import python.build.people.files
+  import python.common.common
+  import python.common.misc
 
 python_build_people_main_test_py: \
   python/build/people/main_test.py
-  import python.build.classes as cla
-  import python.build.output_io as oio
-  import python.build.people.files as files
-  import python.build.people.main_defs as defs
-  import python.common.common as com
+  import python.build.classes
+  import python.build.output_io
+  import python.build.people.files
+  import python.build.people.main_defs
+  import python.common.common
   from   python.common.misc import num_people
-  import python.common.util as util
+  import python.common.util
 
 python_build_people_files_py: \
   python/build/people/files.py
-  import python.build.classes as classes
-  import python.common.misc as c
-  import python.build.classes as cl
+  import python.build.classes
+  import python.common.misc
+  import python.build.classes
 
 python_build_people_main_defs_py: \
   python/build/people/main_defs.py
 
 python_build_people_collect_py: \
   python/build/people/collect.py
-  import python.build.output_io as oio
-  import python.build.people.files as files
-  import python.common.common as cl
-  import python.common.misc as c
+  import python.build.output_io
+  import python.build.people.files
+  import python.common.common
+  import python.common.misc
 
 python_build_rate_input_test_py: \
   python/build/rate_input_test.py
-  import pandas as pd
-  import python.build.classes as cla
-  import python.common.common as common
-  import python.common.misc as misc
+  import pandas
+  import python.build.classes
+  import python.common.common
+  import python.common.misc
 
 python_build_people_2_buildings_py: \
   python/build/people_2_buildings.py
-  import python.build.output_io as oio
-  import python.common.util as util
-  import python.common.common as common
+  import python.build.output_io
+  import python.common.util
+  import python.common.common
 
 python_build_households_1_agg_plus_defs_py: \
   python/build/households_1_agg_plus_defs.py
-  import python.common.common as c
-  import python.regime.r2016 as regime
-  import python.regime.r2018 as regime
-  import python.regime.r2019 as regime
+  import python.common.common
+  import python.regime.r2016
+  import python.regime.r2018
+  import python.regime.r2019
 
 python_build_ss_functions_py: \
   python/build/ss_functions.py
-  import python.build.ss_schedules as ss
-  import python.common.util        as util
+  import python.build.ss_schedules
+  import python.common.util
 
 python_build_purchases_2_vat_test_py: \
   python/build/purchases_2_vat_test.py
-  import python.build.classes   as cl
-  import python.build.output_io as oio
-  import python.common.common   as com
+  import python.build.classes
+  import python.build.output_io
+  import python.common.common
   from   python.common.misc import num_purchases_surviving
   from   python.common.util import unique, near
 
 python_build_households_1_agg_plus_test_py: \
   python/build/households_1_agg_plus_test.py
-  import python.build.households_1_agg_plus_defs as defs
-  import python.build.output_io                  as oio
+  import python.build.households_1_agg_plus_defs
+  import python.build.output_io
   from   python.build.people.files import edu_key
-  import python.common.common                    as com
-  import python.common.util                      as util
-  import python.build.classes                    as cla
+  import python.common.common
+  import python.common.util
+  import python.build.classes
 
 python_build_purchase_sums_py: \
   python/build/purchase_sums.py
-  import python.build.output_io as oio
-  import python.common.common as c
+  import python.build.output_io
+  import python.common.common
 
 python_build_purchase_sums_test_py: \
   python/build/purchase_sums_test.py
-  import python.build.classes as cla
-  import python.build.output_io as oio
-  import python.common.common as com
+  import python.build.classes
+  import python.build.output_io
+  import python.common.common
   from   python.common.misc import num_households
-  import python.common.util as util
+  import python.common.util
 
 python_build_purchases_2_vat_py: \
   python/build/purchases_2_vat.py
-  import python.build.classes as cla
-  import python.build.purchases.legends as legends
-  import python.build.output_io as oio
-  import python.common.common as c
-  import python.common.util as util
+  import python.build.classes
+  import python.build.purchases.legends
+  import python.build.output_io
+  import python.common.common
+  import python.common.util
 
 python_build_ss_schedules_py: \
   python/build/ss_schedules.py
@@ -264,71 +264,71 @@ python_build_ss_schedules_py: \
 
 python_build_classes_test_py: \
   python/build/classes_test.py
-  import python.build.classes as cla
-  import python.build.output_io as oio
-  import python.common.common as com
+  import python.build.classes
+  import python.build.output_io
+  import python.common.common
 
 python_build_people_3_income_taxish_py: \
   python/build/people_3_income_taxish.py
-  import python.build.ss_functions as ss
-  import python.build.output_io    as oio
-  import python.common.util        as util
-  import python.common.common      as com
-  import python.build.people_3_income_taxish_functions as f4
-  import python.regime.r2016 as regime
-  import python.regime.r2018 as regime
-  import python.regime.r2019 as regime
+  import python.build.ss_functions
+  import python.build.output_io
+  import python.common.util
+  import python.common.common
+  import python.build.people_3_income_taxish_functions
+  import python.regime.r2016
+  import python.regime.r2018
+  import python.regime.r2019
 
 python_build_datafiles_py: \
   python/build/datafiles.py
 
 python_build_people_2_buildings_test_py: \
   python/build/people_2_buildings_test.py
-  import python.build.classes   as cl
-  import python.build.output_io as oio
-  import python.common.common   as com
-  import python.common.misc     as misc
-  import python.common.util     as util
+  import python.build.classes
+  import python.build.output_io
+  import python.common.common
+  import python.common.misc
+  import python.common.util
 
 python_build_vat_rates_py: \
   python/build/vat_rates.py
-  import python.common.terms as t
-  import python.common.common as c
-  import python.common.misc as misc
-  import python.build.output_io as oio
+  import python.common.terms
+  import python.common.common
+  import python.common.misc
+  import python.build.output_io
 
 python_build_people_3_income_taxish_functions_py: \
   python/build/people_3_income_taxish_functions.py
 
 python_temp_load_py: \
   python/temp-load.py
-  import python.common.common as cm
-  import python.build.output_io as oio
+  import python.common.common
+  import python.build.output_io
 
 python_convert_key_output_for_stata_py: \
   python/convert-key-output-for-stata.py
-  import python.common.common as com
-  import python.build.output_io as oio
+  import python.common.common
+  import python.build.output_io
 
 python_draw_util_py: \
   python/draw/util.py
-  import python.common.misc as c
-  import python.common.common as c
+  import python.common.misc
+  import python.common.common
 
 python_draw_shell_load_py: \
   python/draw/shell-load.py
 
 python_draw_examples_py: \
   python/draw/examples.py
-  import python.draw.util as draw
+  import python.draw.util
 
 python_draw_jupyter_load_py: \
   python/draw/jupyter-load.py
 
 python_regime_r2019_py: \
   python/regime/r2019.py
-  import python.common.common as com
-  import python.common.misc as misc
+  import python.common.common
+  import python.common.misc
   from   python.common.misc import muvt
   $(marginal_rates_folder)/dividend
   $(marginal_rates_folder)/ocasional_low
@@ -337,7 +337,7 @@ python_regime_r2019_py: \
 
 python_regime_r2018_py: \
   python/regime/r2018.py
-  import python.common.misc as misc
+  import python.common.misc
   from   python.common.misc import muvt
 
 python_regime_r2016_py: \
@@ -348,9 +348,9 @@ python_regime_r2018_test_py: \
   python/regime/r2018_test.py
   from   python.common.misc import muvt
   from   python.common.util import near
-  import python.build.output_io as oio
-  import python.common.common   as common
-  import python.regime.r2018    as reg
+  import python.build.output_io
+  import python.common.common
+  import python.regime.r2018
 
 python_regime_r2019_proof_py: \
   python/regime/r2019_proof.py
@@ -364,15 +364,15 @@ python_common_util_py: \
 
 python_common_util_test_py: \
   python/common/util_test.py
-  import python.common.common as cl
-  import python.common.util as util
-  import python.build.output_io as oio
+  import python.common.common
+  import python.common.util
+  import python.build.output_io
 
 python_common_misc_test_py: \
   python/common/misc_test.py
-  import python.common.common as cl
-  import python.common.misc as defs
-  import python.build.output_io as oio
+  import python.common.common
+  import python.common.misc
+  import python.build.output_io
 
 python_common_terms_py: \
   python/common/terms.py
@@ -382,40 +382,40 @@ python_common_describe_py: \
 
 python_common_common_py: \
   python/common/common.py
-  import python.build.classes as cla
-  import python.common.terms as terms
+  import python.build.classes
+  import python.common.terms
 
 python_temp_groupby_py: \
   python/temp-groupby.py
 
 python_report_pics_people_py: \
   python/report/pics/people.py
-  import python.common.util as util
-  import python.draw.util as draw
-  import python.build.output_io as oio
-  import python.build.common as c
+  import python.common.util
+  import python.draw.util
+  import python.build.output_io
+  import python.build.common
 
 python_report_pics_households_py: \
   python/report/pics/households.py
-  import python.common.util as util
-  import python.draw.util as draw
-  import python.build.output_io as oio
-  import python.build.common as c
+  import python.common.util
+  import python.draw.util
+  import python.build.output_io
+  import python.build.common
 
 python_report_pics_purchases_py: \
   python/report/pics/purchases.py
-  import python.build.output_io as oio
-  import python.draw.util as draw
-  import python.build.common as c
+  import python.build.output_io
+  import python.draw.util
+  import python.build.common
 
 python_report_time_to_save_for_a_month_main_py: \
   python/report/time_to_save_for_a_month/main.py
-  import python.build.classes as cl
-  import python.common.common as cm
-  import python.build.output_io as oio
+  import python.build.classes
+  import python.common.common
+  import python.build.output_io
   from python.common.util import noisyQuantile
   from python.common.describe import describeWithMissing
-  import python.report.time_to_save_for_a_month.defs as defs
+  import python.report.time_to_save_for_a_month.defs
 
 python_report_time_to_save_for_a_month_explore_py: \
   python/report/time_to_save_for_a_month/explore.py
@@ -425,15 +425,15 @@ python_report_time_to_save_for_a_month_defs_py: \
 
 python_report_overview_py: \
   python/report/overview.py
-  import python.build.output_io as oio
-  import python.common.common as cl
-  import python.common.misc as c
-  import python.common.describe as desc
-  import python.draw.util as draw
-  import python.regime.r2016 as regime
-  import python.regime.r2018 as regime
-  import python.regime.r2019 as regime
+  import python.build.output_io
+  import python.common.common
+  import python.common.misc
+  import python.common.describe
+  import python.draw.util
+  import python.regime.r2016
+  import python.regime.r2018
+  import python.regime.r2019
 
 python_subsample_py: \
   python/subsample.py
-  import python.build.datafiles as datafiles
+  import python.build.datafiles
