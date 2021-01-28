@@ -7,26 +7,26 @@ if True:
   from itertools import chain
   #
   import python.build.output_io as oio
-  import python.common.common as cl
+  import python.common.common as com
   import python.common.misc as c
   import python.common.describe as desc
   import python.draw.util as draw
-  if   cl.regime_year == 2016:
+  if   com.regime_year == 2016:
       import python.regime.r2016 as regime
-  elif cl.regime_year == 2018:
+  elif com.regime_year == 2018:
       import python.regime.r2018 as regime
   else:
       import python.regime.r2019 as regime
 
 
-output_dir = "output/vat/tables/recip-" + str(cl.subsample) + "/"
+output_dir = "output/vat/tables/recip-" + str(com.subsample) + "/"
 if not os.path.exists(output_dir): os.makedirs(output_dir)
 
 
 if True: # Get, prepare the data
   households = oio.readStage(
-      cl.subsample,
-      "households_2_purchases." + cl.strategy_year_suffix )
+      com.subsample,
+      "households_2_purchases." + com.strategy_year_suffix )
 
   households["income, labor + cesantia"] = (
       households["income, labor"]
@@ -131,12 +131,12 @@ if True: # create a summary dataframe
 
 if True: # save
   df_tmi.to_csv(   output_dir +
-                   "overview_tmi." + cl.strategy_year_suffix + ".csv" )
+                   "overview_tmi." + com.strategy_year_suffix + ".csv" )
   df_tmi.to_excel( output_dir +
-                   "overview_tmi." + cl.strategy_year_suffix + ".xlsx" )
+                   "overview_tmi." + com.strategy_year_suffix + ".xlsx" )
   draw.to_latex( df_tmi
                , output_dir
-               , "overview_tmi." + cl.strategy_year_suffix )
+               , "overview_tmi." + com.strategy_year_suffix )
 
 
 if True: # do the same thing to a subset of that data
@@ -229,9 +229,9 @@ if True: # do the same thing to a subset of that data
     ] ]
 
   df.to_csv(   output_dir +
-               "overview." + cl.strategy_year_suffix + ".csv" )
+               "overview." + com.strategy_year_suffix + ".csv" )
   df.to_excel( output_dir +
-               "overview." + cl.strategy_year_suffix + ".xlsx" )
+               "overview." + com.strategy_year_suffix + ".xlsx" )
   draw.to_latex( df
                , output_dir
-               , "overview." + cl.strategy_year_suffix )
+               , "overview." + com.strategy_year_suffix )
