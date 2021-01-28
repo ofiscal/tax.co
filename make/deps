@@ -3,332 +3,332 @@ python_tax_proposals_2020_07_22_code_First_py: \
 
 python_tax_proposals_2020_08_21_main_py: \
   python/tax-proposals-2020/08-21/main.py
-  python/common/util.py
+  python_common_util
 
 python_tax_proposals_2020_08_21_build_py: \
   python/tax-proposals-2020/08-21/build.py
-  python.build.output_io
-  python.common.common
-  python.common.misc
-  python.common.describe
-  python.draw.util
+  python_build_output_io
+  python_common_common
+  python_common_misc
+  python_common_describe
+  python_draw_util
 
 python_csv_dynamic_r2019_dividend_py: \
   $(marginal_rates_folder)/dividend.py
-  python.common.misc
+  python_common_misc
 
 python_csv_dynamic_r2019_ocasional_high_py: \
   $(marginal_rates_folder)/ocasional_high.py
-  python.common.misc
+  python_common_misc
 
 python_csv_dynamic_r2019_most_py: \
   $(marginal_rates_folder)/most.py
-  python.common.misc
+  python_common_misc
 
 python_csv_dynamic_r2019_ocasional_low_py: \
   $(marginal_rates_folder)/ocasional_low.py
-  python.common.misc
+  python_common_misc
 
 python_build_ss_functions_test_py: \
   python/build/ss_functions_test.py
-  python.build.output_io
-  python.build.ss_functions
-  python.build.ss_schedules
-  python.common.misc
-  python.common.util
-  python.common.common
+  python_build_output_io
+  python_build_ss_functions
+  python_build_ss_schedules
+  python_common_misc
+  python_common_util
+  python_common_common
 
 python_build_buildings_test_py: \
   python/build/buildings_test.py
-  python.common.common
-  python.common.util
-  python.build.output_io
-  python.common.util
-  python.build.classes
+  python_common_common
+  python_common_util
+  python_build_output_io
+  python_common_util
+  python_build_classes
 
 python_build_households_2_purchases_py: \
   python/build/households_2_purchases.py
-  python.common.util
-  python.build.output_io
-  python.common.common
+  python_common_util
+  python_build_output_io
+  python_common_common
 
 python_build_households_2_purchases_test_py: \
   python/build/households_2_purchases_test.py
-  python.build.classes
-  python.build.output_io
-  python.common.common
-  python.common.util
+  python_build_classes
+  python_build_output_io
+  python_common_common
+  python_common_util
 
 python_build_output_io_py: \
   python/build/output_io.py
 
 python_build_vat_rates_test_py: \
   python/build/vat_rates_test.py
-  python.common.common
-  python.build.output_io
-  python.common.util
+  python_common_common
+  python_build_output_io
+  python_common_util
 
 python_build_buildings_py: \
   python/build/buildings.py
-  python.build.classes
-  python.common.common
-  python.build.output_io
+  python_build_classes
+  python_common_common
+  python_build_output_io
 
 python_build_purchases_articulos_py: \
   python/build/purchases/articulos.py
-  python.build.classes
-  python.common.misc
+  python_build_classes
+  python_common_misc
 
 python_build_purchases_input_test_py: \
   python/build/purchases/input_test.py
-  python.build.classes
-  python.build.output_io
-  python.build.purchases.articulos
-  python.build.purchases.capitulo_c
-  python.build.purchases.nice_purchases
-  python.common.util
-  python.common.common
+  python_build_classes
+  python_build_output_io
+  python_build_purchases_articulos
+  python_build_purchases_capitulo_c
+  python_build_purchases_nice_purchases
+  python_common_util
+  python_common_common
 
 python_build_purchases_correct_defs_py: \
   python/build/purchases/correct_defs.py
 
 python_build_purchases_correct_py: \
   python/build/purchases/correct.py
-  python.build.classes
-  python.build.output_io
-  python.build.purchases.correct_defs
-  python.common.common
-  python.common.misc
-  python.build.purchases.nice_purchases
-  python.build.purchases.articulos
-  python.build.purchases.capitulo_c
+  python_build_classes
+  python_build_output_io
+  python_build_purchases_correct_defs
+  python_common_common
+  python_common_misc
+  python_build_purchases_nice_purchases
+  python_build_purchases_articulos
+  python_build_purchases_capitulo_c
 
 python_build_purchases_legends_py: \
   python/build/purchases/legends.py
 
 python_build_purchases_correct_test_py: \
   python/build/purchases/correct_test.py
-  python.build.purchases.correct_defs
-  python.common.common
-  python.build.classes
-  python.build.output_io
-  python.common.misc
-  python.common.util
+  python_build_purchases_correct_defs
+  python_common_common
+  python_build_classes
+  python_build_output_io
+  python_common_misc
+  python_common_util
 
 python_build_purchases_nice_purchases_py: \
   python/build/purchases/nice_purchases.py
-  python.build.classes
-  python.common.misc
+  python_build_classes
+  python_common_misc
 
 python_build_purchases_collect_py: \
   python/build/purchases/collect.py
-  python.common.common
-  python.build.output_io
-  python.common.misc
-  python.common.util
-  python.build.purchases.nice_purchases
-  python.build.purchases.articulos
-  python.build.purchases.capitulo_c
+  python_common_common
+  python_build_output_io
+  python_common_misc
+  python_common_util
+  python_build_purchases_nice_purchases
+  python_build_purchases_articulos
+  python_build_purchases_capitulo_c
 
 python_build_purchases_medios_py: \
   python/build/purchases/medios.py
-  python.build.classes
-  python.common.misc
+  python_build_classes
+  python_common_misc
 
 python_build_purchases_capitulo_c_py: \
   python/build/purchases/capitulo_c.py
-  python.build.classes
-  python.common.misc
+  python_build_classes
+  python_common_misc
 
 python_build_people_3_income_taxish_test_py: \
   python/build/people_3_income_taxish_test.py
-  python.build.people_3_income_taxish_functions
-  python.common.misc
-  python.common.util
-  python.build.output_io
-  python.common.common
+  python_build_people_3_income_taxish_functions
+  python_common_misc
+  python_common_util
+  python_build_output_io
+  python_common_common
 
 python_build_households_1_agg_plus_py: \
   python/build/households_1_agg_plus.py
-  python.common.common
-  python.common.describe
-  python.common.util
-  python.build.output_io
-  python.build.people.files
-  python.build.households_1_agg_plus_defs
+  python_common_common
+  python_common_describe
+  python_common_util
+  python_build_output_io
+  python_build_people_files
+  python_build_households_1_agg_plus_defs
 
 python_build_classes_py: \
   python/build/classes.py
 
 python_build_people_main_py: \
   python/build/people/main.py
-  python.build.classes
-  python.build.output_io
-  python.build.people.main_defs
-  python.build.people.files
-  python.common.common
-  python.common.misc
+  python_build_classes
+  python_build_output_io
+  python_build_people_main_defs
+  python_build_people_files
+  python_common_common
+  python_common_misc
 
 python_build_people_main_test_py: \
   python/build/people/main_test.py
-  python.build.classes
-  python.build.output_io
-  python.build.people.files
-  python.build.people.main_defs
-  python.common.common
-  python.common.misc
-  python.common.util
+  python_build_classes
+  python_build_output_io
+  python_build_people_files
+  python_build_people_main_defs
+  python_common_common
+  python_common_misc
+  python_common_util
 
 python_build_people_files_py: \
   python/build/people/files.py
-  python.build.classes
-  python.common.misc
-  python.build.classes
+  python_build_classes
+  python_common_misc
+  python_build_classes
 
 python_build_people_main_defs_py: \
   python/build/people/main_defs.py
 
 python_build_people_collect_py: \
   python/build/people/collect.py
-  python.build.output_io
-  python.build.people.files
-  python.common.common
-  python.common.misc
+  python_build_output_io
+  python_build_people_files
+  python_common_common
+  python_common_misc
 
 python_build_rate_input_test_py: \
   python/build/rate_input_test.py
-  python.build.classes
-  python.common.common
-  python.common.misc
+  python_build_classes
+  python_common_common
+  python_common_misc
 
 python_build_people_2_buildings_py: \
   python/build/people_2_buildings.py
-  python.build.output_io
-  python.common.util
-  python.common.common
+  python_build_output_io
+  python_common_util
+  python_common_common
 
 python_build_households_1_agg_plus_defs_py: \
   python/build/households_1_agg_plus_defs.py
-  python.common.common
-  python.regime.r2016
-  python.regime.r2018
-  python.regime.r2019
+  python_common_common
+  python_regime_r2016
+  python_regime_r2018
+  python_regime_r2019
 
 python_build_ss_functions_py: \
   python/build/ss_functions.py
-  python.build.ss_schedules
-  python.common.util
+  python_build_ss_schedules
+  python_common_util
 
 python_build_purchases_2_vat_test_py: \
   python/build/purchases_2_vat_test.py
-  python.build.classes
-  python.build.output_io
-  python.common.common
-  python.common.misc
-  python.common.util
+  python_build_classes
+  python_build_output_io
+  python_common_common
+  python_common_misc
+  python_common_util
 
 python_build_households_1_agg_plus_test_py: \
   python/build/households_1_agg_plus_test.py
-  python.build.households_1_agg_plus_defs
-  python.build.output_io
-  python.build.people.files
-  python.common.common
-  python.common.util
-  python.build.classes
+  python_build_households_1_agg_plus_defs
+  python_build_output_io
+  python_build_people_files
+  python_common_common
+  python_common_util
+  python_build_classes
 
 python_build_purchase_sums_py: \
   python/build/purchase_sums.py
-  python.build.output_io
-  python.common.common
+  python_build_output_io
+  python_common_common
 
 python_build_purchase_sums_test_py: \
   python/build/purchase_sums_test.py
-  python.build.classes
-  python.build.output_io
-  python.common.common
-  python.common.misc
-  python.common.util
+  python_build_classes
+  python_build_output_io
+  python_common_common
+  python_common_misc
+  python_common_util
 
 python_build_purchases_2_vat_py: \
   python/build/purchases_2_vat.py
-  python.build.classes
-  python.build.purchases.legends
-  python.build.output_io
-  python.common.common
-  python.common.util
+  python_build_classes
+  python_build_purchases_legends
+  python_build_output_io
+  python_common_common
+  python_common_util
 
 python_build_ss_schedules_py: \
   python/build/ss_schedules.py
-  python.common.misc
+  python_common_misc
 
 python_build_classes_test_py: \
   python/build/classes_test.py
-  python.build.classes
-  python.build.output_io
-  python.common.common
+  python_build_classes
+  python_build_output_io
+  python_common_common
 
 python_build_people_3_income_taxish_py: \
   python/build/people_3_income_taxish.py
-  python.build.ss_functions
-  python.build.output_io
-  python.common.util
-  python.common.common
-  python.build.people_3_income_taxish_functions
-  python.regime.r2016
-  python.regime.r2018
-  python.regime.r2019
+  python_build_ss_functions
+  python_build_output_io
+  python_common_util
+  python_common_common
+  python_build_people_3_income_taxish_functions
+  python_regime_r2016
+  python_regime_r2018
+  python_regime_r2019
 
 python_build_datafiles_py: \
   python/build/datafiles.py
 
 python_build_people_2_buildings_test_py: \
   python/build/people_2_buildings_test.py
-  python.build.classes
-  python.build.output_io
-  python.common.common
-  python.common.misc
-  python.common.util
+  python_build_classes
+  python_build_output_io
+  python_common_common
+  python_common_misc
+  python_common_util
 
 python_build_vat_rates_py: \
   python/build/vat_rates.py
-  python.common.terms
-  python.common.common
-  python.common.misc
-  python.build.output_io
+  python_common_terms
+  python_common_common
+  python_common_misc
+  python_build_output_io
 
 python_build_people_3_income_taxish_functions_py: \
   python/build/people_3_income_taxish_functions.py
 
 python_temp_load_py: \
   python/temp-load.py
-  python.common.common
-  python.build.output_io
+  python_common_common
+  python_build_output_io
 
 python_convert_key_output_for_stata_py: \
   python/convert-key-output-for-stata.py
-  python.common.common
-  python.build.output_io
+  python_common_common
+  python_build_output_io
 
 python_draw_util_py: \
   python/draw/util.py
-  python.common.misc
-  python.common.common
+  python_common_misc
+  python_common_common
 
 python_draw_shell_load_py: \
   python/draw/shell-load.py
 
 python_draw_examples_py: \
   python/draw/examples.py
-  python.draw.util
+  python_draw_util
 
 python_draw_jupyter_load_py: \
   python/draw/jupyter-load.py
 
 python_regime_r2019_py: \
   python/regime/r2019.py
-  python.common.common
-  python.common.misc
-  python.common.misc
+  python_common_common
+  python_common_misc
+  python_common_misc
   $(marginal_rates_folder)/dividend
   $(marginal_rates_folder)/ocasional_low
   $(marginal_rates_folder)/ocasional_high
@@ -336,42 +336,42 @@ python_regime_r2019_py: \
 
 python_regime_r2018_py: \
   python/regime/r2018.py
-  python.common.misc
-  python.common.misc
+  python_common_misc
+  python_common_misc
 
 python_regime_r2016_py: \
   python/regime/r2016.py
-  python.common.misc
+  python_common_misc
 
 python_regime_r2018_test_py: \
   python/regime/r2018_test.py
-  python.common.misc
-  python.common.util
-  python.build.output_io
-  python.common.common
-  python.regime.r2018
+  python_common_misc
+  python_common_util
+  python_build_output_io
+  python_common_common
+  python_regime_r2018
 
 python_regime_r2019_proof_py: \
   python/regime/r2019_proof.py
 
 python_common_misc_py: \
   python/common/misc.py
-  python.build.classes
+  python_build_classes
 
 python_common_util_py: \
   python/common/util.py
 
 python_common_util_test_py: \
   python/common/util_test.py
-  python.common.common
-  python.common.util
-  python.build.output_io
+  python_common_common
+  python_common_util
+  python_build_output_io
 
 python_common_misc_test_py: \
   python/common/misc_test.py
-  python.common.common
-  python.common.misc
-  python.build.output_io
+  python_common_common
+  python_common_misc
+  python_build_output_io
 
 python_common_terms_py: \
   python/common/terms.py
@@ -381,40 +381,40 @@ python_common_describe_py: \
 
 python_common_common_py: \
   python/common/common.py
-  python.build.classes
-  python.common.terms
+  python_build_classes
+  python_common_terms
 
 python_temp_groupby_py: \
   python/temp-groupby.py
 
 python_report_pics_people_py: \
   python/report/pics/people.py
-  python.common.util
-  python.draw.util
-  python.build.output_io
-  python.build.common
+  python_common_util
+  python_draw_util
+  python_build_output_io
+  python_build_common
 
 python_report_pics_households_py: \
   python/report/pics/households.py
-  python.common.util
-  python.draw.util
-  python.build.output_io
-  python.build.common
+  python_common_util
+  python_draw_util
+  python_build_output_io
+  python_build_common
 
 python_report_pics_purchases_py: \
   python/report/pics/purchases.py
-  python.build.output_io
-  python.draw.util
-  python.build.common
+  python_build_output_io
+  python_draw_util
+  python_build_common
 
 python_report_time_to_save_for_a_month_main_py: \
   python/report/time_to_save_for_a_month/main.py
-  python.build.classes
-  python.common.common
-  python.build.output_io
-  python.common.util
-  python.common.describe
-  python.report.time_to_save_for_a_month.defs
+  python_build_classes
+  python_common_common
+  python_build_output_io
+  python_common_util
+  python_common_describe
+  python_report_time_to_save_for_a_month_defs
 
 python_report_time_to_save_for_a_month_explore_py: \
   python/report/time_to_save_for_a_month/explore.py
@@ -424,15 +424,15 @@ python_report_time_to_save_for_a_month_defs_py: \
 
 python_report_overview_py: \
   python/report/overview.py
-  python.build.output_io
-  python.common.common
-  python.common.misc
-  python.common.describe
-  python.draw.util
-  python.regime.r2016
-  python.regime.r2018
-  python.regime.r2019
+  python_build_output_io
+  python_common_common
+  python_common_misc
+  python_common_describe
+  python_draw_util
+  python_regime_r2016
+  python_regime_r2018
+  python_regime_r2019
 
 python_subsample_py: \
   python/subsample.py
-  python.build.datafiles
+  python_build_datafiles
