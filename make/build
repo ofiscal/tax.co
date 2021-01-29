@@ -1,22 +1,16 @@
 ##=##=##=## subsample, or very slightly tweak, some input data sets
 
 input_subsamples: $(input_subsamples)
-$(input_subsamples):	\
-  $(enph_orig)		\
-  python/subsample.py	\
-  python/build/datafiles.py
+$(input_subsamples): \
+  $(enph_orig)       \
+  exists/python/subsample.py
 	date
-	# Next: Validating command-line arguments.
-	$(python_from_here) python/common/common.py $(config_file)
 	$(python_from_here) python/subsample.py
 
 vat_rates: $(vat_rates)
-$(vat_rates): \
-  python/build/vat_rates.py \
-  python/build/output_io.py \
-  data/vat/vat-by-coicop.csv \
-  python/common/misc.py \
-  python/build/classes.py \
+$(vat_rates):                      \
+  exists/python/build/vat_rates.py \
+  data/vat/vat-by-coicop.csv       \
   data/vat/vat-by-capitulo-c.csv
 	date
 	$(python_from_here) python/build/vat_rates.py $(config_file)
@@ -25,130 +19,81 @@ $(vat_rates): \
 ##=##=##=## Build data from the ENPH
 
 buildings: $(buildings)
-$(buildings): \
-  python/build/buildings.py \
-  python/build/classes.py \
-  python/build/output_io.py \
-  python/common/common.py \
-  python/common/misc.py \
+$(buildings):                      \
+  exists/python/build/buildings.py \
   $(input_subsamples)
 	date
 	$(python_from_here) python/build/buildings.py $(config_file)
 
 people_0: $(people_0)
-$(people_0): \
-  python/build/output_io.py \
-  python/build/people/collect.py \
-  python/build/people/files.py \
-  python/common/common.py \
-  python/common/misc.py \
+$(people_0):                            \
+  exists/python/build/people/collect.py \
   $(input_subsamples)
 	date
 	$(python_from_here) python/build/people/collect.py $(config_file)
 
 people_1: $(people_1)
-$(people_1): \
-  python/build/classes.py \
-  python/build/output_io.py \
-  python/build/people/files.py \
-  python/build/people/main.py \
-  python/common/common.py \
-  python/common/misc.py \
+$(people_1):                         \
+  exists/python/build/people/main.py \
   $(people_0)
 	date
 	$(python_from_here) python/build/people/main.py $(config_file)
 
 people_2_buildings: $(people_2_buildings)
-$(people_2_buildings): \
-  python/build/people_2_buildings.py \
-  python/build/output_io.py \
-  python/common/misc.py \
-  python/build/classes.py \
+$(people_2_buildings):                      \
+  exists/python/build/people_2_buildings.py \
   $(buildings) $(people_1)
 	date
 	$(python_from_here) python/build/people_2_buildings.py $(config_file)
 
 people_3_income_taxish: $(people_3_income_taxish)
-$(people_3_income_taxish):			\
-  python/build/people_3_income_taxish.py	\
-  python/build/output_io.py			\
-  python/build/ss_schedules.py			\
-  python/regime/r$(yr).py			\
-  python/common/misc.py				\
-  python/build/classes.py			\
+$(people_3_income_taxish):                      \
+  exists/python/build/people_3_income_taxish.py	\
   $(people_2_buildings)
 	date
 	$(python_from_here) python/build/people_3_income_taxish.py $(config_file)
 
 households_1_agg_plus: $(households_1_agg_plus)
-$(households_1_agg_plus):			\
-  python/build/households_1_agg_plus.py		\
-  python/build/households_1_agg_plus_defs.py	\
-  python/common/util.py				\
-  python/build/output_io.py			\
-  python/regime/r$(yr).py			\
+$(households_1_agg_plus):                      \
+  exists/python/build/households_1_agg_plus.py \
   $(people_3_income_taxish)
 	date
 	$(python_from_here) python/build/households_1_agg_plus.py $(config_file)
 
 households_2_purchases: $(households_2_purchases)
-$(households_2_purchases):			\
-  $(households_1_agg_plus)			\
-  $(purchase_sums)				\
-  python/build/households_2_purchases.py	\
-  python/build/output_io.py			\
-  python/common/common.py			\
-  python/common/util.py
+$(households_2_purchases):                      \
+  exists/python/build/households_2_purchases.py \
+  $(households_1_agg_plus)                      \
+  $(purchase_sums)
 	date
 	$(python_from_here) python/build/households_2_purchases.py $(config_file)
 
 purchases_0: $(purchases_0)
-$(purchases_0):					\
-  python/build/purchases/collect.py		\
-  python/build/output_io.py			\
-  python/build/purchases/nice_purchases.py	\
-  python/build/purchases/articulos.py		\
-  python/build/purchases/capitulo_c.py		\
-  python/common/common.py			\
+$(purchases_0):                            \
+  exists/python/build/purchases/collect.py \
   $(input_subsamples)
 	date
 	$(python_from_here) python/build/purchases/collect.py $(config_file)
 
 purchases_1: $(purchases_1)
-$(purchases_1):					\
-  $(purchases_0)				\
-  python/build/purchases/correct.py		\
-  python/build/purchases/correct_defs.py	\
-  python/build/classes.py			\
-  python/build/output_io.py			\
-  python/build/purchases/nice_purchases.py	\
-  python/build/purchases/articulos.py		\
-  python/build/purchases/capitulo_c.py		\
-  python/common/common.py			\
-  python/common/misc.py				\
-  python/build/classes.py			\
+$(purchases_1):                            \
+  exists/python/build/purchases/correct.py \
+  $(purchases_0)                           \
   $(input_subsamples)
 	date
 	$(python_from_here) python/build/purchases/correct.py $(config_file)
 
 purchases_2_vat: $(purchases_2_vat)
-$(purchases_2_vat): \
-  python/build/purchases_2_vat.py \
-  python/build/output_io.py \
-  python/build/purchases/legends.py \
-  $(vat_rates) \
-  python/common/misc.py \
-  python/build/classes.py \
+$(purchases_2_vat):                      \
+  exists/python/build/purchases_2_vat.py \
+  $(vat_rates)                           \
   output/vat/data/recip-$(ss)/purchases_1.csv
 	date
 	$(python_from_here) python/build/purchases_2_vat.py $(config_file)
 
 purchase_sums: $(purchase_sums)
-$(purchase_sums): \
-  python/build/purchase_sums.py \
-  python/build/output_io.py \
-  python/common/misc.py \
-  python/build/classes.py \
+$(purchase_sums):                      \
+  exists/python/build/purchase_sums.py \
   $(purchases_2_vat)
 	date
 	$(python_from_here) python/build/purchase_sums.py $(config_file)
@@ -157,31 +102,22 @@ $(purchase_sums): \
 ##=##=##=## Make charts, diagrams, tiny latex tables
 
 purchase_pics: $(purchase_pics)
-$(purchase_pics): \
-  python/report/pics/purchases.py \
-  python/draw/util.py \
-  python/common/misc.py \
-  python/common/common.py \
+$(purchase_pics):                        \
+  exists/python/report/pics/purchases.py \
   $(purchases_2_vat)
 	date
 	$(python_from_here) python/report/pics/purchases.py $(config_file)
 
 household_pics: $(household_pics)
-$(household_pics): \
-  python/report/pics/households.py \
-  python/draw/util.py \
-  python/common/misc.py \
-  python/common/common.py \
+$(household_pics):                        \
+  exists/python/report/pics/households.py \
   $(households_1_agg_plus)
 	date
 	$(python_from_here) python/report/pics/households.py $(config_file)
 
 people_pics: $(people_pics)
-$(people_pics): \
-  python/report/pics/people.py \
-  python/draw/util.py \
-  python/common/misc.py \
-  python/common/common.py \
+$(people_pics):                       \
+  exists/python/report/pics/people.py \
   $(people_3_income_taxish)
 	date
 	$(python_from_here) python/report/pics/people.py $(config_file)
@@ -189,24 +125,16 @@ $(people_pics): \
 pics: $(pics)
 
 overview: $(overview)
-$(overview): \
-  python/report/overview.py \
-  python/common/util.py \
-  python/build/output_io.py \
-  python/build/people/files.py \
-  python/regime/r$(yr).py \
-  python/draw/util.py \
-  python/common/misc.py \
-  python/common/common.py \
-  python/build/classes.py \
+$(overview):                       \
+  exists/python/report/overview.py \
   $(households_2_purchases)
 	date
 	$(python_from_here) python/report/overview.py $(config_file)
 
 # PITFALL: Always reads households_1_agg_plus from the detail vat strategy, because vat irrelevant.
 goods_by_income_decile: $(goods_by_income_decile)
-$(goods_by_income_decile): \
-  python/build/goods-by-income-decile.py \
+$(goods_by_income_decile):                      \
+  exists/python/build/goods-by-income-decile.py	\
   output/vat/data/recip-$(ss)/households_1_agg_plus.detail_.csv \
   output/vat/data/recip-$(ss)/purchases_1.csv
 	date
