@@ -1,14 +1,14 @@
 # This folder is not for human manipulation.
 
-It is designed to contain evidence that files are up to date, or not.
-The Makefile uses it to know when to rebuild things.
+The Makefile writes empty files here to know when to rebuild things.
+The only information such files convey are their names and timestamps.
 
-# What these files mean
+# What the files here mean
 
-If the timestamp on `.no_younger_than/x` is T,
-then `x` was not modified any later than time T.
+For any sourcefile `x` there might be a corresponding empty file `.no_younger_than/x`.
+If so, and the timestamp on `.no_younger_than/x` is T,
+then neither `x` nor any source file it imports was not modified any later than time T.
 
-# Where these files are used
-
-Search for the expression `.no_younger_than` in the Makefile
-(that is, in the files in `make/`).
+If the Makefile finds that an output `o` depends on `x`,
+and the timestamp on `.no_younger_than/x` is more recent than the one on `o`,
+then it must rerun the recipe for `o`.
