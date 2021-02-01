@@ -54,18 +54,15 @@ go initialFormula brackets =
 csvToPython :: Filename -> IO (Either String [String])
 csvToPython filename = do
   table :: Table <- csvToTable filename
-  case validateTable
-       ["ceiling", "rate"]
-       [ (0, 1/0) -- 1/0 represents infinity. Ceilings can be anything >= 0.
-       , (0, 1) ] -- Tax rates, as a percentage of income, must be in [0,1].
-       table :: Either String ()
-    of Left s -> return $ Left s
-       _ -> return $ Right $
-            [ "from python.common.misc import muvt"
-            , "", ""
-            , "def f(x):" ] ++
-            ( formulasToPython $ bracketsToFormulas $
-              tableToMoneyBrackets table )
+  let mbs :: Either String [MoneyBracket] =
+        tableToMoneyBrackets table
+  return $ case tableToMoneyBrackets table of
+    Left s -> Left s
+    Right (mbs :: [MoneyBracket]) -> Right $
+      [ "from python.common.misc import muvt"
+      , "", ""
+      , "def f(x):" ] ++
+      formulasToPython ( bracketsToFormulas mbs )
 
 formulasToPython :: [Formula] -> [String]
 formulasToPython fs =
@@ -118,11 +115,18 @@ unMarginalize prev bracket =
 
 -- | PITFALL: Assumes the table is valid: ceilings followed by rates.
 -- See `validateTable` and `csvToPython` for how that's done.
-tableToMoneyBrackets :: Table -> [MoneyBracket]
-tableToMoneyBrackets (_, lfs) = let
-  rowToMoneyBracket :: [Float] -> MoneyBracket
-  rowToMoneyBracket (ceiling : rate : _) = MoneyBracket ceiling rate
-  in map rowToMoneyBracket lfs
+tableToMoneyBrackets :: Table -> Either String [MoneyBracket]
+tableToMoneyBrackets table =
+  case validateTable
+       ["ceiling", "rate"]
+       [ (0, 1/0) -- 1/0 represents infinity. Ceilings can be anything >= 0.
+       , (0, 1) ] -- Tax rates, as a percentage of income, must be in [0,1].
+       table :: Either String ()
+  of Right () -> let
+       rowToMoneyBracket :: [Float] -> MoneyBracket
+       rowToMoneyBracket (ceiling : rate : _) = MoneyBracket ceiling rate
+       in Right $ map rowToMoneyBracket $ snd table
+     Left s -> Left s
 
 -- | PITFALL: Needs to be used to validate the marginal tax rates,
 -- but not the VAT rates, as those get validated by Python, in

@@ -32,14 +32,16 @@ test_csvToTable = TestCase $ do
 
 test_tableToMoneyBrackets :: Test
 test_tableToMoneyBrackets = TestCase $ do
-  let [a,b,c,d] = [1..4 :: Float]
-      t :: Table =
-        ( ["ceiling","rate"] -- This is *not* a valid table; that's a
-        , [ [a, b]           -- different function's responsibility.
-          , [c, d] ] )
-  assertBool "" $ tableToMoneyBrackets t ==
-    [ MoneyBracket a b
-    , MoneyBracket c d ]
+  let colnames = ["ceiling","rate"]
+      invalid = [ [1,2]
+                , [3,4] ]
+      [a,b,c,d] = [10,0,100,0.1]
+      valid = [ [ a,b ]
+              , [ c,d ] ]
+  assertBool "" $ isLeft $ tableToMoneyBrackets (colnames, invalid)
+  assertBool "" $ tableToMoneyBrackets (colnames, valid) ==
+    Right [ MoneyBracket a b
+          , MoneyBracket c d ]
 
 test_validateTable :: Test
 test_validateTable = TestCase $ do
