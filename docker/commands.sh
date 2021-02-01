@@ -21,8 +21,8 @@ docker run --name tax -itd            \
 # Start a shell within a running container.
 # (Once inside, go to the `/mnt` folder to do useful stuff,
 # like running `python` or the Makefile.)
-docker exec      -it tax bash && cd mnt/
-docker exec -u 0 -it tax bash && cd mnt/ # as root
+docker exec -it tax bash # add -u to do it as root
+cd mnt/
 
 # Build a new image. Do this after making changes to the Dockerfile
 # or any of its dependencies.

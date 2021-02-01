@@ -1,4 +1,16 @@
-# Run tests from command line
+# Execution
+
+## Execution with compilation
+
+```
+./Main ../python/csv_dynamic/r2019/most
+```
+
+This will generate `../python/csv_dynamic/r2019/most.py`
+from `../python/csv_dynamic/r2019/most.csv`,
+assuming the latter exists.
+
+## Execution without compilation
 
 From the command line (in the Docker container),
 from this folder (such that Demo/Demo.hs is found), run
