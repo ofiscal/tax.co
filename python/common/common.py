@@ -6,6 +6,7 @@ if True:
   from sys import argv
   import json
   import pandas as pd
+  import hashlib
   #
   import python.build.classes as cla
   import python.common.terms as terms
@@ -50,6 +51,12 @@ if not path.exists( vat_by_capitulo_c ):
 marginal_rates_folder = config_dict["marginal_rates_folder"]
 if not path.exists( marginal_rates_folder ):
   raise ValueError( "Folder does not exist: " + marginal_rates_folder )
+
+user_email = config_dict [ "marginal_rates_folder" ]
+user = ( # A user's "name" is generated from their email address.
+    hashlib.md5(
+        user_email . encode () )
+    . hexdigest () )
 
 strategy_suffix = strategy
 strategy_year_suffix = strategy + "." + str(regime_year)
