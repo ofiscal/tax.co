@@ -21,7 +21,7 @@ import python.common.common as c
 import os
 
 
-targets = "show_config tests overview"
+targets = "show_config tests overview" # show_params
   # A space-separated list of Makefile targets.
   # Likely values include "tests" and "overview".
   # For the full list of possible targets,
