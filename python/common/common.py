@@ -57,6 +57,9 @@ user = ( # A user's "name" is generated from their email address.
     hashlib.md5(
         user_email . encode () )
     . hexdigest () )
+user_tables = path.join( "users", user, "data" )
+user_pics   = path.join( "users", user, "pics" )
+user_test   = path.join( "users", user, "test" )
 
 strategy_suffix = strategy
 strategy_year_suffix = strategy + "." + str(regime_year)

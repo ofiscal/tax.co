@@ -87,7 +87,7 @@ purchases_2_vat: $(purchases_2_vat)
 $(purchases_2_vat):                      \
   .no_younger_than/python/build/purchases_2_vat.py \
   $(vat_rates)                           \
-  output/vat/data/recip-$(ss)/purchases_1.csv
+  $(user_tables)/recip-$(ss)/purchases_1.csv
 	date
 	$(python_from_here) python/build/purchases_2_vat.py $(config_file)
 
@@ -135,7 +135,7 @@ $(overview):                       \
 goods_by_income_decile: $(goods_by_income_decile)
 $(goods_by_income_decile):                      \
   .no_younger_than/python/build/goods-by-income-decile.py	\
-  output/vat/data/recip-$(ss)/households_1_agg_plus.detail_.csv \
-  output/vat/data/recip-$(ss)/purchases_1.csv
+  $(user_tables)/recip-$(ss)/households_1_agg_plus.detail_.csv \
+  $(user_tables)/recip-$(ss)/purchases_1.csv
 	date
 	$(python_from_here) python/build/goods-by-income-decile.py $(config_file)

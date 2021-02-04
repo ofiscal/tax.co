@@ -17,7 +17,7 @@
 #   If the <config_file> argument is not provided,
 #   it defaults (in common.py) to "config/repl.json".
 
-import python.common.common as common
+import python.common.common as c
 import os
 
 
@@ -28,12 +28,16 @@ targets = "show_config tests overview"
   # see the Makefile, particularly the definition of .PHONY.
 
 os.system(
-    "make "                   + targets                   +
-    " config_file="           + common.config_file        +
-    " subsample="             + str( common.subsample )   +
-    " strategy="              + common.strategy           +
-    " regime_year="           + str( common.regime_year ) +
-    " vat_by_coicop="         + common.vat_by_coicop      +
-    " vat_by_capitulo_c="     + common.vat_by_capitulo_c  +
-    " marginal_rates_folder=" + common.marginal_rates_folder
+    "make " # + " --keep-going " +
+    + targets                 +
+    " config_file="           + c.config_file           +
+    " subsample="             + str( c.subsample )      +
+    " strategy="              + c.strategy              +
+    " regime_year="           + str( c.regime_year )    +
+    " vat_by_coicop="         + c.vat_by_coicop         +
+    " vat_by_capitulo_c="     + c.vat_by_capitulo_c     +
+    " marginal_rates_folder=" + c.marginal_rates_folder +
+    " user_tables="           + c.user_tables           +
+    " user_pics="             + c.user_pics             +
+    " user_test="             + c.user_test
     )
