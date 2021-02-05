@@ -92,26 +92,22 @@ if True: # aggregate from household members to households
                        axis = 1 )
     del( edu_max, other_max )
 
-if True: # assemble the aggregates, then compute a few variables
+if True: # Assemble the aggregates, then compute a few variables.
   households = pd.concat( [h_first, h_sum, h_min, h_max]
                         , axis=1 )
-
   households["household"]   = households.index
     # when there are multiple indices, reset_index is the way to do that
-
   households["has-child"]   = households["age-min"] < 18
   households["all-elderly"] = households["age-min"] > 65
   households["has-elderly"] = households["age-max"] > 65
-
+  #
   # PITFALL: Income decile and percentile for persons exist too. They are different.
   households["income-decile"] = (
     util.noisyQuantile( 10, 0, 1, households["income"] ) )
   households["income-percentile"] = (
     util.noisyQuantile( 100, 0, 1, households["income"] ) )
-
   households["one"] = 1 # used in overview.py to create the trivial partition.
     # TODO ? move to overview.py
-
   households_decile_summary = desc.summarizeQuantiles(
       "income-decile", households)
 
@@ -120,4 +116,3 @@ if True: # save
                , "households_1_agg_plus." + com.strategy_year_suffix )
   oio.saveStage( com.subsample, households_decile_summary
                , "households_decile_summary." + com.strategy_year_suffix )
-
