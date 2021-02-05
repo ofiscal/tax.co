@@ -35,7 +35,7 @@ def saveStage(subsample,data,name,**kwargs):
     os.makedirs(         df )
   path = os.path.join( df,
                        name + ".csv" )
-  data.to_csv( path, **kwargs )
+  data.to_csv( path, index=False, **kwargs )
 
 def saveStage_excel(subsample,data,name,**kwargs):
   df = data_folder(subsample)
@@ -43,7 +43,7 @@ def saveStage_excel(subsample,data,name,**kwargs):
     os.makedirs(         df )
   path = os.path.join( df,
                        name + ".xlsx" )
-  data.to_excel( path, **kwargs )
+  data.to_excel( path, index=False, **kwargs )
 
 def readStage(subsample,name,**kwargs):
   return pd.read_csv(
