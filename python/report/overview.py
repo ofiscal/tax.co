@@ -130,13 +130,17 @@ if True: # create a summary dataframe
 
 
 if True: # save
-  df_tmi.to_csv(   output_dir +
-                   "overview_tmi." + com.strategy_year_suffix + ".csv" )
-  df_tmi.to_excel( output_dir +
-                   "overview_tmi." + com.strategy_year_suffix + ".xlsx" )
-  draw.to_latex( df_tmi
-               , output_dir
-               , "overview_tmi." + com.strategy_year_suffix )
+  oio.saveStage(
+      com.subsample,
+      df_tmi,
+      "overview_tmi." + com.strategy_year_suffix )
+  oio.saveStage_excel(
+      com.subsample,
+      df_tmi,
+      "overview_tmi." + com.strategy_year_suffix )
+#  draw.to_latex( df_tmi
+#               , output_dir
+#               , "overview_tmi." + com.strategy_year_suffix )
 
 
 if True: # do the same thing to a subset of that data
@@ -228,10 +232,14 @@ if True: # do the same thing to a subset of that data
     , "tax, income, ganancia ocasional: mean"
     ] ]
 
-  df.to_csv(   output_dir +
-               "overview." + com.strategy_year_suffix + ".csv" )
-  df.to_excel( output_dir +
-               "overview." + com.strategy_year_suffix + ".xlsx" )
-  draw.to_latex( df
-               , output_dir
-               , "overview." + com.strategy_year_suffix )
+  oio.saveStage(
+      com.subsample,
+      df,
+      "overview." + com.strategy_year_suffix )
+  oio.saveStage_excel(
+      com.subsample,
+      df,
+      "overview." + com.strategy_year_suffix )
+#  draw.to_latex( df
+#               , output_dir
+#               , "overview." + com.strategy_year_suffix )

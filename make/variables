@@ -106,10 +106,8 @@ pics = $(purchase_pics) $(people_pics) $(household_pics)
 
 overview = \
   $(user_tables)/recip-$(ss)/overview_tmi.$(strategy_year_suffix).csv \
-  $(user_tables)/recip-$(ss)/overview_tmi.$(strategy_year_suffix).tex \
   $(user_tables)/recip-$(ss)/overview_tmi.$(strategy_year_suffix).xlsx \
   $(user_tables)/recip-$(ss)/overview.$(strategy_year_suffix).csv \
-  $(user_tables)/recip-$(ss)/overview.$(strategy_year_suffix).tex \
   $(user_tables)/recip-$(ss)/overview.$(strategy_year_suffix).xlsx
 
 goods_by_income_decile = \
