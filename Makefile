@@ -3,8 +3,8 @@
 
 SHELL := bash
 
-include make/phony
-include make/variables
-include make/deps
-include make/tests
-include make/build
+include make/Makefile.phony
+include make/Makefile.variables
+include make/Makefile.deps
+include make/Makefile.tests
+include make/Makefile.build
