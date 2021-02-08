@@ -1,0 +1,8 @@
+{ "subsample"             : 1000,
+  "strategy"              : "detail",
+  "regime_year"           : 2019,
+  "vat_by_coicop"         : "data/vat/vat-by-coicop.csv",
+  "vat_by_capitulo_c"     : "data/vat/vat-by-capitulo-c.csv",
+  "marginal_rates_folder" : "python/csv_dynamic/r2019",
+  "user_email"            : "jeffbrown.the@gmail.com"
+}

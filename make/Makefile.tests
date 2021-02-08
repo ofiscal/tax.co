@@ -54,6 +54,8 @@ tests:                                               \
   users/$(user)/test/recip-1/purchase_inputs.txt
 	printf '\nAll tests passed.\n\n'
 
+# TODO: Replace this phony target with evidence that the test succeeded,
+# so thaht it won't rerun unnecessarily.
 rate_input_test: \
   .no_younger_than/python/build/rate_input_test.py
 	$(python_from_here) python/build/rate_input_test.py $(config_file)
