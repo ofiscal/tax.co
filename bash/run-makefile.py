@@ -37,7 +37,5 @@ os.system(
     " vat_by_coicop="         + c.vat_by_coicop         +
     " vat_by_capitulo_c="     + c.vat_by_capitulo_c     +
     " marginal_rates_folder=" + c.marginal_rates_folder +
-    " user_tables="           + c.user_tables           +
-    " user_pics="             + c.user_pics             +
-    " user_test="             + c.user_test
+    " user="                  + c.user
     )

@@ -23,9 +23,7 @@ show_params:
 	echo "vat_by_coicop: "         -$(vat_by_coicop)-
 	echo "vat_by_capitulo_c: "     -$(vat_by_capitulo_c)-
 	echo "marginal_rates_folder: " -$(marginal_rates_folder)-
-	echo "user_tables"	-$(user_tables)-
-	echo "user_pics"	-$(user_pics)-
-	echo "user_test"	-$(user_test)-
+	echo "user"                    -$(user)-
 
 
 ##=## ##=## ##=## ##=## ##=##
@@ -38,82 +36,82 @@ show_params:
 # PITFALL: purchase_input.txt always uses the full sample
 tests:                                               \
   rate_input_test                                    \
-  $(user_test)/recip-$(ss)/households_1_agg_plus.txt  \
-  $(user_test)/recip-$(ss)/households_2_purchases.txt \
-  $(user_test)/recip-$(ss)/build_classes.txt          \
-  $(user_test)/recip-$(ss)/build_purchases_2_vat.txt  \
-  $(user_test)/recip-$(ss)/build_purchase_sums.txt    \
-  $(user_test)/recip-1/build_ss_functions.txt         \
-  $(user_test)/recip-$(ss)/people_3_income_taxish.txt \
-  $(user_test)/recip-$(ss)/common_misc.txt            \
-  $(user_test)/recip-$(ss)/common_util.txt            \
-  $(user_test)/recip-$(ss)/people_main.txt            \
-  $(user_test)/recip-$(ss)/people_2_buildings.txt     \
-  $(user_test)/recip-$(ss)/purchases_correct.txt      \
-  $(user_test)/recip-1/regime_r2018.txt               \
-  $(user_test)/recip-$(ss)/vat_rates.txt              \
-  $(user_test)/recip-1/build_buildings.txt            \
-  $(user_test)/recip-1/purchase_inputs.txt
+  users/$(user)/test/recip-$(ss)/households_1_agg_plus.txt  \
+  users/$(user)/test/recip-$(ss)/households_2_purchases.txt \
+  users/$(user)/test/recip-$(ss)/build_classes.txt          \
+  users/$(user)/test/recip-$(ss)/build_purchases_2_vat.txt  \
+  users/$(user)/test/recip-$(ss)/build_purchase_sums.txt    \
+  users/$(user)/test/recip-1/build_ss_functions.txt         \
+  users/$(user)/test/recip-$(ss)/people_3_income_taxish.txt \
+  users/$(user)/test/recip-$(ss)/common_misc.txt            \
+  users/$(user)/test/recip-$(ss)/common_util.txt            \
+  users/$(user)/test/recip-$(ss)/people_main.txt            \
+  users/$(user)/test/recip-$(ss)/people_2_buildings.txt     \
+  users/$(user)/test/recip-$(ss)/purchases_correct.txt      \
+  users/$(user)/test/recip-1/regime_r2018.txt               \
+  users/$(user)/test/recip-$(ss)/vat_rates.txt              \
+  users/$(user)/test/recip-1/build_buildings.txt            \
+  users/$(user)/test/recip-1/purchase_inputs.txt
 	printf '\nAll tests passed.\n\n'
 
 rate_input_test: \
   .no_younger_than/python/build/rate_input_test.py
 	$(python_from_here) python/build/rate_input_test.py $(config_file)
 
-$(user_test)/recip-$(ss)/households_1_agg_plus.txt:                 \
+users/$(user)/test/recip-$(ss)/households_1_agg_plus.txt:                 \
   $(households_1_agg_plus)                                         \
   .no_younger_than/python/build/households_1_agg_plus_test.py
 	date
 	$(python_from_here) python/build/households_1_agg_plus_test.py \
           $(config_file)
 
-$(user_test)/recip-$(ss)/households_2_purchases.txt:                 \
+users/$(user)/test/recip-$(ss)/households_2_purchases.txt:                 \
   $(households_2_purchases)                                         \
   .no_younger_than/python/build/households_2_purchases_test.py
 	date
 	$(python_from_here) python/build/households_2_purchases_test.py \
           $(config_file)
 
-$(user_test)/recip-$(ss)/build_classes.txt:           \
+users/$(user)/test/recip-$(ss)/build_classes.txt:           \
   .no_younger_than/python/build/classes_test.py
 	date
 	$(python_from_here) python/build/classes_test.py \
           $(config_file)
 
-$(user_test)/recip-$(ss)/common_misc.txt:           \
+users/$(user)/test/recip-$(ss)/common_misc.txt:           \
   .no_younger_than/python/common/misc_test.py
 	date
 	$(python_from_here) python/common/misc_test.py \
           $(config_file)
 
-$(user_test)/recip-$(ss)/common_util.txt:           \
+users/$(user)/test/recip-$(ss)/common_util.txt:           \
   .no_younger_than/python/common/util_test.py
 	date
 	$(python_from_here) python/common/util_test.py \
           $(config_file)
 
-$(user_test)/recip-$(ss)/purchases_correct.txt:                 \
+users/$(user)/test/recip-$(ss)/purchases_correct.txt:                 \
   $(purchases_1)                                               \
   .no_younger_than/python/build/purchases/correct_test.py
 	date
 	$(python_from_here) python/build/purchases/correct_test.py \
           $(config_file)
 
-$(user_test)/recip-$(ss)/build_purchases_2_vat.txt:           \
+users/$(user)/test/recip-$(ss)/build_purchases_2_vat.txt:           \
   $(purchases_2_vat)                                         \
   .no_younger_than/python/build/purchases_2_vat.py
 	date
 	$(python_from_here) python/build/purchases_2_vat_test.py \
           $(config_file)
 
-$(user_test)/recip-$(ss)/build_purchase_sums.txt:           \
+users/$(user)/test/recip-$(ss)/build_purchase_sums.txt:           \
   $(purchase_sums)                                         \
   .no_younger_than/python/build/purchase_sums_test.py
 	date
 	$(python_from_here) python/build/purchase_sums_test.py \
           $(config_file)
 
-$(user_test)/recip-$(ss)/people_main.txt:                 \
+users/$(user)/test/recip-$(ss)/people_main.txt:                 \
   $(people_1)                                            \
   .no_younger_than/python/build/people/main_test.py
 	date
@@ -121,14 +119,14 @@ $(user_test)/recip-$(ss)/people_main.txt:                 \
           $(config_file)
 
 # PITFALL: for buildings.csv we always use subsample=1.
-$(user_test)/recip-1/build_buildings.txt:               \
+users/$(user)/test/recip-1/build_buildings.txt:               \
   $(buildings)                                         \
   .no_younger_than/python/build/buildings_test.py
 	date
 	$(python_from_here) python/build/buildings_test.py \
           $(config_file)
 
-$(user_test)/recip-$(ss)/people_2_buildings.txt:                 \
+users/$(user)/test/recip-$(ss)/people_2_buildings.txt:                 \
   $(people_1)                                                   \
   $(people_2_buildings)                                         \
   .no_younger_than/python/build/people_2_buildings_test.py
@@ -138,19 +136,19 @@ $(user_test)/recip-$(ss)/people_2_buildings.txt:                 \
 
 # TODO: Currently 2018 is tested, regardless of the actual regime-year.
 # It would be better to have separate tests for each year.
-$(user_test)/recip-1/regime_r2018.txt:               \
+users/$(user)/test/recip-1/regime_r2018.txt:               \
   .no_younger_than/python/regime/r2018_test.py
 	date
 	$(python_from_here) python/regime/r2018_test.py \
           $(config_file)
 
-$(user_test)/recip-1/build_ss_functions.txt:               \
+users/$(user)/test/recip-1/build_ss_functions.txt:               \
   .no_younger_than/python/build/ss_functions_test.py
 	date
 	$(python_from_here) python/build/ss_functions_test.py \
           $(config_file)
 
-$(user_test)/recip-$(ss)/people_3_income_taxish.txt:   \
+users/$(user)/test/recip-$(ss)/people_3_income_taxish.txt:   \
   $(people_3_income_taxish)                           \
   .no_younger_than/python/build/people_3_income_taxish_test.py
 	date
@@ -160,14 +158,14 @@ $(user_test)/recip-$(ss)/people_3_income_taxish.txt:   \
 
 # PITFALL: Sample size is hardcoded to 1, because otherwise
 # certain rare values would never be encountered.
-$(user_test)/recip-1/purchase_inputs.txt:                     \
+users/$(user)/test/recip-1/purchase_inputs.txt:                     \
   $(input_subsamples)                                        \
   .no_younger_than/python/build/purchases/input_test.py
 	date
 	$(python_from_here) python/build/purchases/input_test.py \
           $(config_file)
 
-$(user_test)/recip-$(ss)/vat_rates.txt:                 \
+users/$(user)/test/recip-$(ss)/vat_rates.txt:                 \
   $(vat_rates.py)                                      \
   .no_younger_than/python/build/vat_rates_test.py
 	$(python_from_here) python/build/vat_rates_test.py \
