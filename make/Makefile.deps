@@ -31,22 +31,22 @@
 	install -D /dev/null .no_younger_than/python/tax-proposals-2020/08_21_build.py
 
 .no_younger_than/python/csv_dynamic/r2019/dividend.py: \
-  $(marginal_rates_folder)/dividend.py \
+  users/$(user)/marginal_rates/dividend.py \
   .no_younger_than/python/common/misc.py
 	install -D /dev/null .no_younger_than/python/csv_dynamic/r2019/dividend.py
 
-.no_younger_than/$(marginal_rates_folder)/ocasional_high.py: \
-  $(marginal_rates_folder)/ocasional_high.py \
+.no_younger_than/users/$(user)/marginal_rates/ocasional_high.py: \
+  users/$(user)/marginal_rates/ocasional_high.py \
   .no_younger_than/python/common/misc.py
 	install -D /dev/null .no_younger_than/python/csv_dynamic/r2019/ocasional_high.py
 
-.no_younger_than/$(marginal_rates_folder)/most.py: \
-  $(marginal_rates_folder)/most.py \
+.no_younger_than/users/$(user)/marginal_rates/most.py: \
+  users/$(user)/marginal_rates/most.py \
   .no_younger_than/python/common/misc.py
 	install -D /dev/null .no_younger_than/python/csv_dynamic/r2019/most.py
 
-.no_younger_than/$(marginal_rates_folder)/ocasional_low.py: \
-  $(marginal_rates_folder)/ocasional_low.py \
+.no_younger_than/users/$(user)/marginal_rates/ocasional_low.py: \
+  users/$(user)/marginal_rates/ocasional_low.py \
   .no_younger_than/python/common/misc.py
 	install -D /dev/null .no_younger_than/python/csv_dynamic/r2019/ocasional_low.py
 
@@ -391,10 +391,10 @@
   .no_younger_than/python/common/common.py \
   .no_younger_than/python/common/misc.py \
   .no_younger_than/python/common/misc.py \
-  .no_younger_than/python/csv_dynamic/r2019/dividend.py \
-  .no_younger_than/python/csv_dynamic/r2019/ocasional_low.py \
-  .no_younger_than/python/csv_dynamic/r2019/ocasional_high.py \
-  .no_younger_than/python/csv_dynamic/r2019/most.py
+  users/$(user)/marginal_rates/dividend.py \
+  users/$(user)/marginal_rates/ocasional_low.py \
+  users/$(user)/marginal_rates/ocasional_high.py \
+  users/$(user)/marginal_rates/most.py
 	install -D /dev/null .no_younger_than/python/regime/r2019.py
 
 .no_younger_than/python/regime/r2018.py: \
@@ -515,3 +515,12 @@
   python/subsample.py \
   .no_younger_than/python/build/datafiles.py
 	install -D /dev/null .no_younger_than/python/subsample.py
+
+.no_younger_than/haskell/MarginalTaxRates.hs: \
+  haskell/MarginalTaxRates.hs
+	install -D /dev/null .no_younger_than/haskell/MarginalTaxRates.hs
+
+.no_younger_than/haskell/Main.hs: \
+  haskell/Main.hs \
+  .no_younger_than/haskell/MarginalTaxRates.hs
+	install -D /dev/null .no_younger_than/haskell/Main.hs

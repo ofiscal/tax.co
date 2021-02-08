@@ -36,6 +36,5 @@ os.system(
     " regime_year="           + str( c.regime_year )    +
     " vat_by_coicop="         + c.vat_by_coicop         +
     " vat_by_capitulo_c="     + c.vat_by_capitulo_c     +
-    " marginal_rates_folder=" + c.marginal_rates_folder +
     " user="                  + c.user
     )

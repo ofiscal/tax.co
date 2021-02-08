@@ -139,3 +139,24 @@ $(goods_by_income_decile):                      \
   users/$(user)/data/recip-$(ss)/purchases_1.csv
 	date
 	$(python_from_here) python/build/goods-by-income-decile.py $(config_file)
+
+haskell/Main: \
+  .no_younger_than/haskell/Main.hs
+	cd haskell && ghc -o Main Main.hs
+
+users/$(user)/marginal_rates/most.py: \
+  users/$(user)/marginal_rates/most.csv \
+  haskell/Main
+	haskell/Main users/$(user)/marginal_rates/most
+users/$(user)/marginal_rates/dividend.py: \
+  users/$(user)/marginal_rates/dividend.csv \
+  haskell/Main
+	haskell/Main users/$(user)/marginal_rates/dividend
+users/$(user)/marginal_rates/ocasional_low.py: \
+  users/$(user)/marginal_rates/ocasional_low.csv \
+  haskell/Main
+	haskell/Main users/$(user)/marginal_rates/ocasional_low
+users/$(user)/marginal_rates/ocasional_high.py: \
+  users/$(user)/marginal_rates/ocasional_high.csv \
+  haskell/Main
+	haskell/Main users/$(user)/marginal_rates/ocasional_high

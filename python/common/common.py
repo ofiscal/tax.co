@@ -48,10 +48,6 @@ vat_by_capitulo_c = config_dict["vat_by_capitulo_c"]
 if not path.exists( vat_by_capitulo_c ):
   raise ValueError( "File does not exist: " + vat_by_capitulo_c )
 
-marginal_rates_folder = config_dict["marginal_rates_folder"]
-if not path.exists( marginal_rates_folder ):
-  raise ValueError( "Folder does not exist: " + marginal_rates_folder )
-
 user_email = config_dict [ "user_email" ]
 user = ( # A user's "name" is generated from their email address.
     hashlib.md5(

@@ -5,7 +5,7 @@ if True: # imports
   import python.common.misc as misc
   from   python.common.misc import muvt
   if True: # csv-dynamic imports
-    rates = com.marginal_rates_folder
+    rates = path.join( "users", com.user, "marginal_rates" )
     for lib in ["dividend",
                 "ocasional_low",
                 "ocasional_high",
