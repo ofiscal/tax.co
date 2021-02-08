@@ -10,8 +10,9 @@ __pycache__/
 # in specific folders
 /git-comment*
 data/requests.csv
-python/csv_dynamic/**/*.csv
 haskell/Main
 haskell/MarginalTaxRates/*.py
 haskell/dist/
 .no_younger_than/*/
+users/*/*
+users/jeff
