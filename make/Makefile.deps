@@ -30,11 +30,6 @@
   .no_younger_than/python/draw/util.py
 	install -D /dev/null .no_younger_than/python/tax-proposals-2020/08_21_build.py
 
-.no_younger_than/python/csv_dynamic/r2019/dividend.py: \
-  users/$(user)/marginal_rates/dividend.py \
-  .no_younger_than/python/common/misc.py
-	install -D /dev/null .no_younger_than/python/csv_dynamic/r2019/dividend.py
-
 .no_younger_than/users/$(user)/marginal_rates/ocasional_high.py: \
   users/$(user)/marginal_rates/ocasional_high.py \
   .no_younger_than/python/common/misc.py

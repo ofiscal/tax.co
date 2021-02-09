@@ -23,9 +23,9 @@ def read_users() -> pd.DataFrame:
 
 def create_user() -> pd.Series:
   return pd . Series (
-    { "user" : c.user,
-      "requested"  : datetime.now(),
-      "completed"  : np.nan
+    { "user"      : c.user,
+      "requested" : datetime.now(),
+      "completed" : np.nan
     } )
 
 def append_user():
@@ -48,4 +48,7 @@ def uniquify_requests():
     df . to_csv( requests_file,
                  index = False )
 
+def oldest_old_enough_to_delete() -> bool:
 def delete_oldest():
+def available_gb() -> float:
+def unexecuted_requests() -> bool:

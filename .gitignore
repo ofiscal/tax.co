@@ -16,3 +16,4 @@ haskell/dist/
 .no_younger_than/*/
 users/*/*
 users/jeff
+!users/example/ # The ! indicates an exception to a prior rule.
