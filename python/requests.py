@@ -3,14 +3,14 @@
 # into the calling code.
 
 if True:
-  from datetime import datetime, timedelta
-  from typing import Callable, Dict
+  from   datetime import datetime, timedelta
   import json
+  import numpy as np
   import os
   import os.path as path
-  import subprocess
-  import numpy as np
   import pandas as pd
+  import subprocess
+  from   typing import Callable, Dict
   #
   import python.common.common as c
 
@@ -34,13 +34,16 @@ def mutate ( target : str,
     f ( df ) . to_csv ( target,
                         index = False )
 
-def read_users() -> pd.DataFrame:
+def initialize_requests():
+  if not path . exists ( requests_file ):
+       empty_requests() . to_csv ( requests_file,
+                                   index = False )
+
+def read_requests() -> pd.DataFrame:
   if path . exists ( requests_file ):
-    df = pd . read_csv( requests_file )
-    for c in ["requested","completed"]:
-      df[c] = pd.to_datetime( df[c] )
-    return df
-  else: return pd.DataFrame()
+    return format_times (
+      pd . read_csv ( requests_file ) )
+  else: return pd.DataFrame( columns = ["user","requested","completed"] )
 
 def memory_permits_another_run ( constraints : Dict[ str, str ]
                                ) -> bool:
@@ -67,6 +70,10 @@ def kb_used () -> int:
 #### Pure functions ####
 #### #### #### #### ####
 
+def empty_requests () -> pd.DataFrame:
+    return pd.DataFrame(
+        columns = ["user","requested","completed"] )
+
 def this_request () -> pd.Series:
   return pd . Series (
     { "user"      : c.user,
@@ -74,7 +81,7 @@ def this_request () -> pd.Series:
       "completed" : np.nan
     } )
 
-# todo ? maybe this should be inlined,
+# Arguably this is too simple to define,
 # but then I'd have to remember the ignore_index option.
 def append_request ( requests : pd.DataFrame,
                      request  : pd.Series
@@ -89,7 +96,7 @@ def append_request ( requests : pd.DataFrame,
 # then at least the oldest request has been executed.)
 def delete_oldest ( requests : pd.DataFrame
                   ) -> pd.DataFrame:
-    return canonicalize_requests( requests ) [1:]
+    return ( canonicalize_requests( requests ) ) [1:]
 
 def at_least_one_is_old ( requests : pd.DataFrame,
                           constraints : Dict[ str, str ]
@@ -107,9 +114,10 @@ def canonicalize_requests ( requests : pd.DataFrame
     """ Calling this everywhere would be wasteful in big data,
     but it's negligible for the request data,
     and safer than assuming upstream functions have already done it."""
-    return ( uniquify_requests( requests )
-             . sort_values( "requested",
-                            ascending = True ) )
+    return format_times (
+        uniquify_requests ( requests )
+        . sort_values ( "requested",
+                        ascending = True ) )
 
 def uniquify_requests ( requests : pd.DataFrame
                       ) -> pd.DataFrame:
@@ -125,4 +133,12 @@ def uniquify_requests ( requests : pd.DataFrame
 
 def unexecuted_requests_exist ( requests : pd.DataFrame
                               ) -> bool:
-    return requests [ "completed" ] . isnull()
+    return not ( requests [ "completed" ]
+                 . isnull()
+                 . all () )
+
+def format_times ( requests : pd.DataFrame
+                 ) -> pd.DataFrame:
+    for c in ["requested","completed"]:
+      requests [c] = pd.to_datetime( requests [c] )
+    return requests
