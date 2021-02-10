@@ -34,7 +34,7 @@ show_params:
 # make that output file a dependency.
 # PITFALL: purchase_input.txt always uses the full sample
 tests:                                                      \
-  rate_input_test                                           \
+  users/$(user)/test/recip-1/rate_input.txt                 \
   users/$(user)/test/recip-1/requests.txt                   \
   users/$(user)/test/recip-$(ss)/households_1_agg_plus.txt  \
   users/$(user)/test/recip-$(ss)/households_2_purchases.txt \
@@ -56,7 +56,7 @@ tests:                                                      \
 
 # TODO: Replace this phony target with evidence that the test succeeded,
 # so thaht it won't rerun unnecessarily.
-rate_input_test: \
+users/$(user)/test/recip-1/rate_input.txt: \
   .no_younger_than/python/build/rate_input_test.py
 	$(python_from_here) python/build/rate_input_test.py $(config_file)
 
