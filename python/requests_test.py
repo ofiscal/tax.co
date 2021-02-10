@@ -1,10 +1,11 @@
 if True:
-  from datetime import datetime, timedelta
+  from   datetime import datetime, timedelta
   import numpy as np
   import pandas as pd
   #
-  import python.common.common as c
-  import python.requests as r
+  import python.build.output_io as oio
+  import python.common.common   as c
+  import python.requests        as r
 
 
 def test_memory_permits_another_run ():
@@ -68,3 +69,7 @@ if True:
   test_at_least_one_is_old ()
   test_uniquify_requests ()
   test_unexecuted_requests_exist ()
+  #
+  oio.test_write(
+      1, # PTIFALL: Uses no data, so always writes to recip-1/
+      "requests", "" )
