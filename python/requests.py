@@ -35,23 +35,18 @@ def mutate ( target : str,
                         index = False )
 
 def initialize_requests():
+  """If the file already exists, this does nothing."""
   if not path . exists ( requests_file ):
-       empty_requests() . to_csv ( requests_file,
-                                   index = False )
+       empty_requests () . to_csv ( requests_file,
+                                    index = False )
 
 def read_requests() -> pd.DataFrame:
   if path . exists ( requests_file ):
     return format_times (
       pd . read_csv ( requests_file ) )
-  else: return pd.DataFrame( columns = ["user","requested","completed"] )
+  else: return empty_requests ()
 
-def memory_permits_another_run ( constraints : Dict[ str, str ]
-                               ) -> bool:
-    gb_used = kb_used() / 2e6
-    gb_avail = constraints["max_gb"] - gb_used
-    return gb_avail > constraints["max_user_gb"]
-
-def kb_used () -> int:
+def gb_used () -> int:
     s = str ( subprocess.Popen( "du -s " + users_folder,
                                 shell=True,
                                 stdout=subprocess.PIPE)
@@ -63,12 +58,18 @@ def kb_used () -> int:
         if s [i] . isnumeric ():
             reading = reading + s[i]
         if s [i] . isspace(): break
-    return int( reading )
+    return int( reading ) / 1e6 # divide because `du` gives kb, not gb
 
 
 #### #### #### #### ####
 #### Pure functions ####
 #### #### #### #### ####
+
+def memory_permits_another_run ( gb_used : float,
+                                 constraints : Dict[ str, str ]
+                               ) -> bool:
+    gb_unused = constraints["max_gb"] - gb_used
+    return gb_unused > constraints["max_user_gb"]
 
 def empty_requests () -> pd.DataFrame:
     return pd.DataFrame(

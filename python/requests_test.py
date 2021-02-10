@@ -7,6 +7,16 @@ if True:
   import python.requests as r
 
 
+def test_memory_permits_another_run ():
+    assert not r.memory_permits_another_run (
+        gb_used = 5,
+        constraints = { "max_gb" : 7,
+                        "max_user_gb" : 3 } )
+    assert     r.memory_permits_another_run (
+        gb_used = 5,
+        constraints = { "max_gb" : 7,
+                        "max_user_gb" : 1 } )
+
 def test_delete_oldest ():
   df = pd.DataFrame ( [ [ 1, 2, np.nan ],
                         [ 1, 1, np.nan ],
@@ -53,6 +63,7 @@ def test_unexecuted_requests_exist ():
     assert not r.unexecuted_requests_exist( has_none )
 
 if True:
+  test_memory_permits_another_run ()
   test_delete_oldest ()
   test_at_least_one_is_old ()
   test_uniquify_requests ()
