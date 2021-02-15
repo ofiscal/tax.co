@@ -8,15 +8,15 @@
 # Start a docker container based on the latest image.
 docker run --name tax -itd            \
   -v /home/jeff/of/tax.co/master:/mnt \
-  -p 8888:8888 -h 127.0.0.   1        \
-  ofiscal/tax.co:2020-12-17.haskell
+  -p 8888:8888 -h 127.0.0.1           \
+  ofiscal/tax.co:2021-02-15.python-3-8
 
 # Start a docker container and run jupyter from within it.
 docker run --name tax -itd            \
   --entrypoint=/root/run-jupyter.sh   \
   -v /home/jeff/of/tax.co/master:/mnt \
   -p 8888:8888 -h 127.0.0.1	      \
-  ofiscal/tax.co:2020-12-17.haskell
+  ofiscal/tax.co:2021-02-15.python-3-8
 
 # Start a shell within a running container.
 # (Once inside, go to the `/mnt` folder to do useful stuff,
@@ -35,9 +35,9 @@ docker build -f Dockerfile -t \
 docker tag ofiscal/tax.co:new     \
   ofiscal/tax.co:latest
 docker tag ofiscal/tax.co:new     \
-  ofiscal/tax.co:2020-12-17.haskell
+  ofiscal/tax.co:2021-02-15.python-3-8
 docker rmi ofiscal/tax.co:new
 
 # Upload to DockerHub.
 docker push ofiscal/tax.co:latest
-docker push ofiscal/tax.co:2020-12-17.haskell
+docker push ofiscal/tax.co:2021-02-15.python-3-8

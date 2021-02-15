@@ -14,8 +14,7 @@ RUN apt install -y wget bzip2 ca-certificates \
   make curl grep sed dpkg git mercurial subversion \
   texlive-latex-base texlive-fonts-recommended \
   texlive-fonts-extra texlive-latex-extra texlive-publishers
-
-RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh -O ~/anaconda.sh && \
+RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2020.11-Linux-x86_64.sh -O ~/anaconda.sh && \
     /bin/bash ~/anaconda.sh -b -p /opt/conda && \
     rm ~/anaconda.sh && \
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
@@ -47,8 +46,9 @@ RUN chmod +777 /usr/bin/python-from-here
 RUN apt install -y csvtool
 
 # for make2graph. (bild-essential includes cc, the clang compiler.)
-RUN apt install -y build-essential graphviz               && \
-  git clone https://github.com/lindenb/makefile2graph.git && \
+RUN apt update && apt upgrade -y && apt install --fix-missing -y \
+  build-essential graphviz                                    && \
+  git clone https://github.com/lindenb/makefile2graph.git     && \
   cd makefile2graph && make && make install
 
 RUN pip install csv-diff
