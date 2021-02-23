@@ -68,6 +68,7 @@ RUN sed -i "s/Listen 80/Listen 8000/g" /etc/apache2/ports.conf && \
     echo "service apache2 start" > /etc/apache2/start-apache.sh && \
     echo "service apache2 stop" > /etc/apache2/stop-apache.sh && \
     chmod u+x /etc/apache2/st*-apache.sh
+    # TODO: Delete start-apache and stop-apache above.
 RUN echo "installing mod_wsgi for apache, 2020 10 14" && \
     apt update && apt install -y libapache2-mod-wsgi-py3
 
