@@ -6,11 +6,11 @@ if True:
   import numpy as np
   import pandas as pd
   #
-  import python.build.classes as cla
+  import python.build.classes           as cla
+  import python.build.output_io         as oio
   import python.build.purchases.legends as legends
-  import python.build.output_io as oio
-  import python.common.common as c
-  import python.common.util as util
+  import python.common.common           as c
+  import python.common.util             as util
 
 
 if True: # input files
@@ -30,6 +30,7 @@ if True: # input files
               , "weight"           : "float32"
               , "where-got"        : "float32"
     } )
+  #
   vat_cap_c = oio.readStage(
       c.subsample
     , "vat_cap_c_brief." + c.strategy_suffix
@@ -42,7 +43,7 @@ if True: # input files
       , "vat frac, min" : "float32"
       , "vat frac, max" : "float32"
     } )
-
+  #
   vat_coicop = oio.readStage(
       c.subsample
     , "vat_coicop_brief." + c.strategy_suffix

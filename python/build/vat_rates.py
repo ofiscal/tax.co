@@ -26,7 +26,9 @@ vat_cap_c = (
 vat_coicop = (
     misc . read_csv_or_xlsx (
         c . vat_by_coicop
-        , encoding = "latin1" ) )
+        , encoding = "latin1" )
+    . rename (
+        columns = { "CODE" : "coicop" } ) )
 
 for (vat,frac) in [ ("vat"     , "vat frac")
                   , ("vat, min", "vat frac, min")
@@ -46,8 +48,8 @@ if True: # save
                , vat_cap_c
                , 'vat_cap_c.'  + c.strategy_suffix )
 
-  vat_coicop = vat_coicop.drop( columns = ["description","Notes"] )
-  vat_cap_c  = vat_cap_c .drop( columns = ["description"        ] )
+  vat_coicop = vat_coicop.drop( columns = ["DESCRIPTION"] )
+  vat_cap_c  = vat_cap_c .drop( columns = ["description"] )
 
   oio.saveStage( c.subsample
                , vat_coicop

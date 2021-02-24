@@ -61,6 +61,7 @@ if True:
       "vat/income, max" : cl.CoversRange( 0,      np.inf ),
       "purchase value / income"    : cl.CoversRange( 0.2,    np.inf )
       }.items():
+    print(k)
     assert v.test( merge[k] )
   for k,v in {
       "vat / purchase value, min"  : cl.MeanBounds( 2.5e-2, 6e-2 ),
@@ -77,4 +78,3 @@ oio.test_write(
     com.subsample,
     "households_2_purchases",
     "It worked." )
-
