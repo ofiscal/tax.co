@@ -144,19 +144,19 @@ haskell/Main: \
   .no_younger_than/haskell/Main.hs
 	cd haskell && ghc -o Main Main.hs
 
-users/$(user)/marginal_rates/most.py: \
-  users/$(user)/marginal_rates/most.csv \
+users/$(user)/config/marginal_rates/most.py: \
+  users/$(user)/config/marginal_rates/most.csv \
   haskell/Main
-	haskell/Main users/$(user)/marginal_rates/most
-users/$(user)/marginal_rates/dividend.py: \
-  users/$(user)/marginal_rates/dividend.csv \
+	haskell/Main users/$(user)/config/marginal_rates/most
+users/$(user)/config/marginal_rates/dividend.py: \
+  users/$(user)/config/marginal_rates/dividend.csv \
   haskell/Main
-	haskell/Main users/$(user)/marginal_rates/dividend
-users/$(user)/marginal_rates/ocasional_low.py: \
-  users/$(user)/marginal_rates/ocasional_low.csv \
+	haskell/Main users/$(user)/config/marginal_rates/dividend
+users/$(user)/config/marginal_rates/ocasional_low.py: \
+  users/$(user)/config/marginal_rates/ocasional_low.csv \
   haskell/Main
-	haskell/Main users/$(user)/marginal_rates/ocasional_low
-users/$(user)/marginal_rates/ocasional_high.py: \
-  users/$(user)/marginal_rates/ocasional_high.csv \
+	haskell/Main users/$(user)/config/marginal_rates/ocasional_low
+users/$(user)/config/marginal_rates/ocasional_high.py: \
+  users/$(user)/config/marginal_rates/ocasional_high.csv \
   haskell/Main
-	haskell/Main users/$(user)/marginal_rates/ocasional_high
+	haskell/Main users/$(user)/config/marginal_rates/ocasional_high

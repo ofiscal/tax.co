@@ -20,8 +20,7 @@ else:              # If we are in the interpreter.
 if True: # For validation, mostly.
          # (`valid_subsamples` is also looped over, in another program.)
   valid_strategies = [ # There used to be a lot of these.
-    terms.detail       # They disappeared in the branch "retire-hypotheticals".
-  ]
+    terms.detail ]     # They disappeared in branch "retire-hypotheticals".
   valid_subsamples = [1,10,100,1000]
   valid_regime_years = [2016, 2018, 2019]
 
