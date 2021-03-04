@@ -7,23 +7,23 @@
 
 # Start a docker container based on the latest image.
 docker run --name tax -itd                   \
-  -v /home/jeff/of/tax.co/master:/mnt/tax.co \
+  -v /home/jeff/of/tax.co/master:/mnt/tax_co \
   -p 8888:8888 -h 127.0.0.1                  \
-  ofiscal/tax.co:2021-02-15.python-3-8
+  ofiscal/tax.co:new
 
 # Start a docker container and run jupyter from within it.
 docker run --name tax -itd                   \
   --entrypoint=/root/run-jupyter.sh          \
-  -v /home/jeff/of/tax.co/master:/mnt/tax.co \
+  -v /home/jeff/of/tax.co/master:/mnt/tax_co \
   -p 8888:8888 -h 127.0.0.1                  \
-  ofiscal/tax.co:2021-02-15.python-3-8
+  ofiscal/tax.co:2021-03-04.jq
 
 # Start a shell within a running container.
 # (Once inside, go to the root of the project to do useful stuff,
 # like running `python` or `bash/run-makefile.py`.)
 docker start tax
 docker exec -it tax bash # add -u to do it as root
-cd mnt/tax.co/
+cd mnt/tax_co/
 
 docker stop tax && docker rm tax
 
@@ -37,9 +37,9 @@ docker build -f Dockerfile -t \
 docker tag ofiscal/tax.co:new     \
   ofiscal/tax.co:latest
 docker tag ofiscal/tax.co:new     \
-  ofiscal/tax.co:2021-02-15.python-3-8
+  ofiscal/tax.co:2021-03-04.jq
 docker rmi ofiscal/tax.co:new
 
 # Upload to DockerHub.
 docker push ofiscal/tax.co:latest
-docker push ofiscal/tax.co:2021-02-15.python-3-8
+docker push ofiscal/tax.co:2021-03-04.jq

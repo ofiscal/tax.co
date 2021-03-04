@@ -15,9 +15,13 @@ if True:
   import python.common.common as c
 
 
-users_folder = "users/"
-constraints_file = "data/constraints-time-memory.json"
-requests_file = "data/requests.csv"
+tax_co_root_folder = "/mnt/tax.co"
+users_folder     = os.path.join ( tax_co_root_folder,
+                                  "users/" )
+constraints_file = os.path.join ( tax_co_root_folder,
+                                  "data/constraints-time-memory.json" )
+requests_file    = os.path.join ( tax_co_root_folder,
+                                  "data/requests.csv" )
 
 
 #### #### #### #### #### #### #### ####

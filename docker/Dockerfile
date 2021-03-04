@@ -25,13 +25,9 @@ RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2020.11-Linux-x86_6
     /opt/conda/bin/conda clean -afy
 RUN /opt/conda/bin/conda install jupyter -y --quiet
 RUN conda update --all -y
-  # This brings pandas to version 0.25.1.
 COPY run-jupyter.sh /root/
 
 RUN pip install django==3.0.2
-
-# RUN curl -sSL https://get.haskellstack.org/ | sh
-# RUN stack install shake
 
 RUN easy_install xlsx2csv
 
@@ -45,57 +41,36 @@ RUN chmod +777 /usr/bin/python-from-here
 
 RUN apt install -y csvtool
 
-# for make2graph. (bild-essential includes cc, the clang compiler.)
-RUN apt update && apt upgrade -y && apt install --fix-missing -y \
-  build-essential graphviz                                    && \
-  git clone https://github.com/lindenb/makefile2graph.git     && \
+RUN apt update && apt upgrade -y && apt install --fix-missing -y           \
+  build-essential graphviz cron jq  libapache2-mod-wsgi-py3 ufw apache2 && \
+  git clone https://github.com/lindenb/makefile2graph.git               && \
   cd makefile2graph && make && make install
 
-RUN pip install csv-diff
-RUN pip install pydotplus graphviz
-RUN pip install weightedcalcs
+RUN pip install --upgrade                                            \
+  csv-diff pydotplus graphviz weightedcalcs yfinance yahoofinancials \
+  surbtc django
 
-RUN echo "updating conda: 2020 06 26"
 RUN conda update --all --yes
 # RUN conda update -n base conda
 
-RUN echo "updating django: 2020 09 25"
-RUN pip install django --upgrade
-
-RUN echo "installing apache and ufw, 2020 10 07" && \
-    apt update && apt install -y ufw apache2
-RUN sed -i "s/Listen 80/Listen 8000/g" /etc/apache2/ports.conf && \
-    echo "service apache2 start" > /etc/apache2/start-apache.sh && \
-    echo "service apache2 stop" > /etc/apache2/stop-apache.sh && \
+RUN sed -i "s/Listen 80/Listen 8000/g" /etc/apache2/ports.conf  && \
     chmod u+x /etc/apache2/st*-apache.sh
-    # TODO: Delete start-apache and stop-apache above.
-RUN echo "installing mod_wsgi for apache, 2020 10 14" && \
-    apt update && apt install -y libapache2-mod-wsgi-py3
 
-RUN pip install yfinance yahoofinancials surbtc && \
-    apt install -y cron
-
-# The following would work if the stack web domain was working.
-#
-# # PITFALL: apt-utils must install before haskell-stack,
-# # or haskell-stack will leave a lot of configuration work for later.
-# RUN apt update -y            && \
-#     apt install -y haskell-stack
-
-# TODO : This is overkill. Once the Stack web domain works,
-# use the previous commented-out passage instead of this.
 RUN apt update -y            && \
     apt install -y haskell-platform
 
+
+#### #### #### #### #### #### #### #### #### #### #### ####
+#### ####      No more installs, just config      #### ####
+#### #### #### #### #### #### #### #### #### #### #### ####
+
 # Somehow these "pam permissions" break crond in a Docker container, per
 #   https://stackoverflow.com/a/21928878/916142
-# and creating an empty cron.deny file permits every user to use cron.
+# Creating an empty cron.deny file overcomes that, albeit bluntly,
+# by permitting every user to use cron.
 RUN sed -i '/session    required     pam_loginuid.so/c\#session    required     pam_loginuid.so' /etc/pam.d/cron && \
   touch /etc/cron.deny
 
-# I only append this, rather than copy the whole file,
-# so that if the apt install of Apache changes the base apache2.conf file,
-# I'll receive all those changes.
 RUN cd /etc/apache2/                                && \
   adduser www-data www-data                         && \
   chown -R www-data:www-data /var/www               && \
