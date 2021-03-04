@@ -6,24 +6,26 @@
 # https://stackoverflow.com/a/26915343
 
 # Start a docker container based on the latest image.
-docker run --name tax -itd            \
-  -v /home/jeff/of/tax.co/master:/mnt \
-  -p 8888:8888 -h 127.0.0.1           \
+docker run --name tax -itd                   \
+  -v /home/jeff/of/tax.co/master:/mnt/tax.co \
+  -p 8888:8888 -h 127.0.0.1                  \
   ofiscal/tax.co:2021-02-15.python-3-8
 
 # Start a docker container and run jupyter from within it.
-docker run --name tax -itd            \
-  --entrypoint=/root/run-jupyter.sh   \
-  -v /home/jeff/of/tax.co/master:/mnt \
-  -p 8888:8888 -h 127.0.0.1	      \
+docker run --name tax -itd                   \
+  --entrypoint=/root/run-jupyter.sh          \
+  -v /home/jeff/of/tax.co/master:/mnt/tax.co \
+  -p 8888:8888 -h 127.0.0.1                  \
   ofiscal/tax.co:2021-02-15.python-3-8
 
 # Start a shell within a running container.
-# (Once inside, go to the `/mnt` folder to do useful stuff,
-# like running `python` or the Makefile.)
+# (Once inside, go to the root of the project to do useful stuff,
+# like running `python` or `bash/run-makefile.py`.)
 docker start tax
 docker exec -it tax bash # add -u to do it as root
-cd mnt/
+cd mnt/tax.co/
+
+docker stop tax && docker rm tax
 
 # Build a new image. Do this after making changes to the Dockerfile
 # or any of its dependencies.
