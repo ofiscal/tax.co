@@ -1,7 +1,7 @@
 if True:
   import numpy as np
+  import os
   import pandas as pd
-  from os import path
   #
   from python.build.classes import Correction, StringCellProperty
 
@@ -74,6 +74,20 @@ def all_columns_to_numbers(df, skip_columns=[]):
   return df
 
 def read_csv_or_xlsx( filename : str, **kwargs ) -> pd.DataFrame:
-    _, ext = path . splitext( filename )
+    """ If filename ends in .csv, this assumes it is .csv-formatted, and similarly for .xlsx. If no file extension is provided, it finds the first file starting with the provided prefix. (If that file does not end in .csv or .xlsx, the result is not defined."""
+    _, ext = os . path . splitext( filename )
     if ext == ".csv"    : return pd.read_csv  ( filename, **kwargs )
     elif ext == ".xlsx" : return pd.read_excel( filename, **kwargs )
+    else: return read_csv_or_xlsx ( # once-recursive
+        find_first_file_starting_with ( filename ),
+        **kwargs )
+
+def find_first_file_starting_with ( path : str
+                                  ) -> str:
+    """PITFALL: If multiple files start with the prefix, this might not do what you want."""
+    folder, prefix = os . path . split ( path )
+    files = os . listdir ( folder )
+    with_prefix = [ f for f in files if f.startswith( prefix ) ]
+    if with_prefix: return os . path . join (
+        folder, with_prefix[0] )
+    else: return None

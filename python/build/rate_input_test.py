@@ -4,6 +4,7 @@
 # haskell/MarginalTaxRatesToPython.hs
 
 if True:
+  from   os import path
   import pandas as pd
   #
   import python.build.classes    as cla
@@ -31,10 +32,14 @@ def test_capitulo_c_data( df : pd.DataFrame ):
 if True:
   test_coicop_data (
       misc . read_csv_or_xlsx (
-          common . vat_by_coicop ) )
+          path.join ( "users",
+                      common . user,
+                      "config/vat_by_coicop" ) ) )
   test_capitulo_c_data (
       misc . read_csv_or_xlsx (
-          common . vat_by_capitulo_c ) )
+          path.join ( "users",
+                      common . user,
+                      "config/vat_by_capitulo_c" ) ) )
   oio.test_write(
       1, # PTIFALL: Uses no sample-size-dependent data,
          # so always writes to recip-1/

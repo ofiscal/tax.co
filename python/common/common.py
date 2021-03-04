@@ -39,14 +39,6 @@ regime_year = config_dict["regime_year"]
 if not regime_year in valid_regime_years:
   raise ValueError( "invalid tax regime year: " + str(regime_year) )
 
-vat_by_coicop = config_dict["vat_by_coicop"]
-if not path.exists( vat_by_coicop ):
-  raise ValueError( "File does not exist: " + vat_by_coicop )
-
-vat_by_capitulo_c = config_dict["vat_by_capitulo_c"]
-if not path.exists( vat_by_capitulo_c ):
-  raise ValueError( "File does not exist: " + vat_by_capitulo_c )
-
 user_email = config_dict [ "user_email" ]
 user = ( # A user's "name" is generated from their email address.
     hashlib.md5(

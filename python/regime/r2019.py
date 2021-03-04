@@ -5,13 +5,13 @@ if True: # imports
   import python.common.misc as misc
   from   python.common.misc import muvt
   if True: # csv-dynamic imports
-    rates = path.join( "users", com.user, "marginal_rates" )
+    rates = path.join( "users", com.user, "config/marginal_rates" )
     for lib in ["dividend",
                 "ocasional_low",
                 "ocasional_high",
                 "most",]:
       exec( "import "
-            + ( path.join( rates, lib)
+            + ( path.join( rates, lib )
               . replace ( "/", "." ) )
             + " as rates_" + lib )
 

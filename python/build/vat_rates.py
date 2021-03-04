@@ -6,27 +6,32 @@
 #   two more, briefer versions of those two keys
 
 if True:
-  import sys
-  import pandas as pd
+  import os
+  import pandas                 as pd
   #
-  import python.common.terms as t
-  import python.common.common as c
-  import python.common.misc as misc
   import python.build.output_io as oio
+  import python.common.common   as c
+  import python.common.misc     as misc
+  import python.common.terms    as t
+
 
 vat_cap_c = (
     misc . read_csv_or_xlsx (
-        c . vat_by_capitulo_c
-        , encoding = "latin1" ) .
-    rename (
+        os.path.join ( "users",
+                       c . user,
+                       "config/vat_by_capitulo_c" ),
+        encoding = "latin1" )
+    . rename (
         columns = { "CODE" : "25-broad-categs"
                   , "DESCRIPTION" : "description" }
     ) )
 
 vat_coicop = (
     misc . read_csv_or_xlsx (
-        c . vat_by_coicop
-        , encoding = "latin1" ) )
+        os.path.join ( "users",
+                       c . user,
+                       "config/vat_by_coicop" ),
+        encoding = "latin1" ) )
 
 for (vat,frac) in [ ("vat"     , "vat frac")
                   , ("vat, min", "vat frac, min")
