@@ -12,16 +12,21 @@
 # and requires no `.no_younger_than/` folder:
 # https://github.com/JeffreyBenjaminBrown/makefile-import-aware/blob/55b285f645d6b336183988db9917816f8883a173/maybe-equally-good/Makefile
 
-.no_younger_than/python/requests.py:	\
-  python/requests.py			\
+.no_younger_than/python/requests/lib.py:	\
+  python/requests/lib.py			\
   .no_younger_than/python/common/common.py
-	install -D /dev/null .no_younger_than/python/requests.py
+	install -D /dev/null .no_younger_than/python/requests/lib.py
 
-.no_younger_than/python/requests_test.py:	\
-  python/requests_test.py			\
+.no_younger_than/python/requests/main.py:	\
+  python/requests/main.py			\
+  .no_younger_than/python/common/common.py
+	install -D /dev/null .no_younger_than/python/requests/main.py
+
+.no_younger_than/python/requests/test.py:	\
+  python/requests/test.py			\
   .no_younger_than/python/common/common.py	\
   .no_younger_than/python/requests.py
-	install -D /dev/null .no_younger_than/python/requests_test.py
+	install -D /dev/null .no_younger_than/python/requests/test.py
 
 .no_younger_than/python/tax-proposals-2020/07_22_code_First.py: \
   python/tax-proposals-2020/07-22/code/First.py

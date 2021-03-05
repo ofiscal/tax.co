@@ -5,7 +5,7 @@ if True:
   #
   import python.build.output_io as oio
   import python.common.common   as c
-  import python.requests        as r
+  import python.requests.lib    as r
 
 
 def test_memory_permits_another_run ():

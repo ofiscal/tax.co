@@ -15,21 +15,9 @@ if True:
   import python.common.common as c
 
 
-tax_co_root_folder = "/mnt/tax.co"
-users_folder     = os.path.join ( tax_co_root_folder,
-                                  "users/" )
-constraints_file = os.path.join ( tax_co_root_folder,
-                                  "data/constraints-time-memory.json" )
-requests_file    = os.path.join ( tax_co_root_folder,
-                                  "data/requests.csv" )
-
-
 #### #### #### #### #### #### #### ####
 #### IO (functions and actions)    ####
 #### #### #### #### #### #### #### ####
-
-with open( constraints_file ) as f:
-    constraints = json.load( f )
 
 def mutate ( target : str,
              f : Callable [ [ pd.DataFrame ], pd.DataFrame ]
@@ -38,26 +26,26 @@ def mutate ( target : str,
     f ( df ) . to_csv ( target,
                         index = False )
 
-def initialize_requests():
+def initialize_requests ( requests_file_path : str ):
   """If the file already exists, this does nothing."""
-  if not path . exists ( requests_file ):
-       empty_requests () . to_csv ( requests_file,
+  if not path . exists ( requests_file_path ):
+       empty_requests () . to_csv ( requests_file_path,
                                     index = False )
 
-def read_requests() -> pd.DataFrame:
-  if path . exists ( requests_file ):
+def read_requests ( requests_file_path : str ) -> pd.DataFrame:
+  if path . exists ( requests_file_path ):
     return format_times (
-      pd . read_csv ( requests_file ) )
+      pd . read_csv ( requests_file_path ) )
   else: return empty_requests ()
 
-def gb_used () -> int:
-    s = str ( subprocess.Popen( "du -s " + users_folder,
-                                shell=True,
-                                stdout=subprocess.PIPE)
+def gb_used ( users_folder ) -> int:
+    s = str ( subprocess . Popen( "du -s " + users_folder,
+                                  shell = True,
+                                  stdout = subprocess . PIPE )
               . stdout . read () )
     reading = ""
     for i in range( len( s ) ):
-        # Incredibly, itertools.takewhile is so unfriendly that
+        # itertools.takewhile is so unfriendly that
         # it was easier to do this by hand.
         if s [i] . isnumeric ():
             reading = reading + s[i]
@@ -76,7 +64,7 @@ def memory_permits_another_run ( gb_used : float,
     return gb_unused > constraints["max_user_gb"]
 
 def empty_requests () -> pd.DataFrame:
-    return pd.DataFrame(
+    return pd.DataFrame (
         columns = ["user","requested","completed"] )
 
 def this_request () -> pd.Series:
@@ -86,8 +74,8 @@ def this_request () -> pd.Series:
       "completed" : np.nan
     } )
 
-# Arguably this is too simple to define,
-# but then I'd have to remember the ignore_index option.
+# Arguably this is too simple to be worth defining,
+# but if I didn't, I'd have to remember the ignore_index option.
 def append_request ( requests : pd.DataFrame,
                      request  : pd.Series
                    ) -> pd.DataFrame:
@@ -106,9 +94,10 @@ def delete_oldest ( requests : pd.DataFrame
 def at_least_one_is_old ( requests : pd.DataFrame,
                           constraints : Dict[ str, str ]
                         ) -> bool:
-    requests = canonicalize_requests( requests )
     now = datetime.now()
+    requests = canonicalize_requests( requests )
     oldest = requests . iloc[0] ["requested"]
+      # Canonicalization ensures this is the oldest request.
     min_survival_time = (
         timedelta ( hours = 1 )
         * ( constraints[ "min_survival_minutes" ] / 60 ) )

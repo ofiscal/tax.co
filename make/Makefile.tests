@@ -61,9 +61,9 @@ users/$(user)/test/recip-1/rate_input.txt: \
 	$(python_from_here) python/build/rate_input_test.py $(config_file)
 
 users/$(user)/test/recip-1/requests.txt: \
-  .no_younger_than/python/requests_test.py
+  .no_younger_than/python/requests/test.py
 	date
-	$(python_from_here) python/requests_test.py $(config_file)
+	$(python_from_here) python/requests/test.py $(config_file)
 
 users/$(user)/test/recip-$(ss)/households_1_agg_plus.txt:                 \
   $(households_1_agg_plus)                                         \
