@@ -52,6 +52,19 @@ def gb_used ( users_folder ) -> int:
         if s [i] . isspace(): break
     return int( reading ) / 1e6 # divide because `du` gives kb, not gb
 
+def delete_oldest_user_folder ( requests : pd.DataFrame,
+                                users_folder : str ):
+    if True: # Verify that users_folder looks plausible,
+             # to be sure it can't delete anything too important.
+      (base, last) = os . path . split ( users_folder )
+      if last != "users"
+        raise Exception ( users_folder + " does not end in `/users`" )
+      if base . count ("/") != 4:
+        raise Exception ( users_folder " is not four folders below /." )
+    requests = canonicalize_requests( requests )
+    oldest_user = requests . iloc[0] ["user"]
+    os . system( "rm -rf " + users_folder )
+
 
 #### #### #### #### ####
 #### Pure functions ####
