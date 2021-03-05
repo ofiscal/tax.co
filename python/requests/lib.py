@@ -19,11 +19,11 @@ if True:
 #### IO (functions and actions)    ####
 #### #### #### #### #### #### #### ####
 
-def mutate ( target : str,
+def mutate ( filename : str,
              f : Callable [ [ pd.DataFrame ], pd.DataFrame ]
            ):
-    df = pd . read_csv ( target )
-    f ( df ) . to_csv ( target,
+    df = pd . read_csv ( filename )
+    f ( df ) . to_csv ( filename,
                         index = False )
 
 def initialize_requests ( requests_file_path : str ):
@@ -87,8 +87,8 @@ def append_request ( requests : pd.DataFrame,
 # Upstream it should only be called if memory does not permit another run.
 # (If memory does not permit another run,
 # then at least the oldest request has been executed.)
-def delete_oldest ( requests : pd.DataFrame
-                  ) -> pd.DataFrame:
+def delete_oldest_request ( requests : pd.DataFrame
+                          ) -> pd.DataFrame:
     return ( canonicalize_requests( requests ) ) [1:]
 
 def at_least_one_is_old ( requests : pd.DataFrame,

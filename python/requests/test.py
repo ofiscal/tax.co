@@ -18,14 +18,14 @@ def test_memory_permits_another_run ():
         constraints = { "max_gb" : 7,
                         "max_user_gb" : 1 } )
 
-def test_delete_oldest ():
+def test_delete_oldest_request ():
   df = pd.DataFrame ( [ [ 1, 2, np.nan ],
                         [ 1, 1, np.nan ],
                         [ 3, 5, np.nan ],
                         [ 2, 4, np.nan ],
                         [ 2, 3, np.nan ] ],
                       columns = ["user", "requested", "completed"] )
-  assert ( r.delete_oldest ( df )
+  assert ( r.delete_oldest_request ( df )
          . reset_index ( drop = True )
          . equals (
            r.format_times (
@@ -65,7 +65,7 @@ def test_unexecuted_requests_exist ():
 
 if True:
   test_memory_permits_another_run ()
-  test_delete_oldest ()
+  test_delete_oldest_request ()
   test_at_least_one_is_old ()
   test_uniquify_requests ()
   test_unexecuted_requests_exist ()
