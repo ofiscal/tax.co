@@ -19,35 +19,36 @@
 
 .no_younger_than/python/requests/main.py:	\
   python/requests/main.py			\
-  .no_younger_than/python/common/common.py
+  .no_younger_than/python/common/common.py      \
+  .no_younger_than/python/requests/lib.py
 	install -D /dev/null .no_younger_than/python/requests/main.py
 
 .no_younger_than/python/requests/test.py:	\
   python/requests/test.py			\
   .no_younger_than/python/common/common.py	\
-  .no_younger_than/python/requests.py
+  .no_younger_than/python/requests/lib.py       \
 	install -D /dev/null .no_younger_than/python/requests/test.py
 
 .no_younger_than/python/tax-proposals-2020/07_22_code_First.py: \
   python/tax-proposals-2020/07-22/code/First.py
 	install -D /dev/null .no_younger_than/python/tax-proposals-2020/07_22_code_First.py
 
-.no_younger_than/python/tax-proposals-2020/08_21_main.py: \
-  python/tax-proposals-2020/08-21/main.py \
+.no_younger_than/python/tax-proposals-2020/08_21_main.py:	\
+  python/tax-proposals-2020/08-21/main.py			\
   .no_younger_than/python/common/util.py
 	install -D /dev/null .no_younger_than/python/tax-proposals-2020/08_21_main.py
 
-.no_younger_than/python/tax-proposals-2020/08_21_build.py: \
-  python/tax-proposals-2020/08-21/build.py \
-  .no_younger_than/python/build/output_io.py \
-  .no_younger_than/python/common/common.py \
-  .no_younger_than/python/common/misc.py \
-  .no_younger_than/python/common/describe.py \
+.no_younger_than/python/tax-proposals-2020/08_21_build.py:	\
+  python/tax-proposals-2020/08-21/build.py			\
+  .no_younger_than/python/build/output_io.py			\
+  .no_younger_than/python/common/common.py			\
+  .no_younger_than/python/common/misc.py			\
+  .no_younger_than/python/common/describe.py			\
   .no_younger_than/python/draw/util.py
 	install -D /dev/null .no_younger_than/python/tax-proposals-2020/08_21_build.py
 
 .no_younger_than/users/$(user)/config/marginal_rates/ocasional_high.py: \
-  users/$(user)/config/marginal_rates/ocasional_high.py \
+  users/$(user)/config/marginal_rates/ocasional_high.py			\
   .no_younger_than/python/common/misc.py
 	install -D /dev/null .no_younger_than/python/csv_dynamic/r2019/ocasional_high.py
 
