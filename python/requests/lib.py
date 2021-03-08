@@ -29,8 +29,9 @@ def mutate ( filename : str,
 def initialize_requests ( requests_file_path : str ):
   """If the file already exists, this does nothing."""
   if not path . exists ( requests_file_path ):
-       empty_requests () . to_csv ( requests_file_path,
-                                    index = False )
+       ( empty_requests ()
+         . to_csv ( requests_file_path,
+                    index = False ) )
 
 def read_requests ( requests_file_path : str ) -> pd.DataFrame:
   if path . exists ( requests_file_path ):
@@ -57,13 +58,22 @@ def delete_oldest_user_folder ( requests : pd.DataFrame,
     if True: # Verify that users_folder looks plausible,
              # to be sure it can't delete anything too important.
       (base, last) = os . path . split ( users_folder )
-      if last != "users"
+      if last != "users":
         raise Exception ( users_folder + " does not end in `/users`" )
       if base . count ("/") != 4:
-        raise Exception ( users_folder " is not four folders below /." )
+        raise Exception ( users_folder + " is not four folders below /." )
     requests = canonicalize_requests( requests )
     oldest_user = requests . iloc[0] ["user"]
     os . system( "rm -rf " + users_folder )
+
+def this_request () -> pd.Series:
+  # PITFALL: Looks pure, but in fact through the python.common lib
+  # it executes IO, reading the user's config file.
+  return pd . Series (
+    { "user"      : c.user,
+      "requested" : datetime . now (),
+      "completed" : np.nan
+    } )
 
 
 #### #### #### #### ####
@@ -79,13 +89,6 @@ def memory_permits_another_run ( gb_used : float,
 def empty_requests () -> pd.DataFrame:
     return pd.DataFrame (
         columns = ["user","requested","completed"] )
-
-def this_request () -> pd.Series:
-  return pd . Series (
-    { "user"      : c.user,
-      "requested" : datetime.now(),
-      "completed" : np.nan
-    } )
 
 # Arguably this is too simple to be worth defining,
 # but if I didn't, I'd have to remember the ignore_index option.
