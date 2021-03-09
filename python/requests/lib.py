@@ -110,7 +110,7 @@ def delete_oldest_request ( requests : pd.DataFrame
 def at_least_one_is_old ( requests : pd.DataFrame,
                           constraints : Dict[ str, str ]
                         ) -> bool:
-    now = datetime.now()
+    now = datetime . now ()
     requests = canonicalize_requests( requests )
     oldest = requests . iloc[0] ["requested"]
       # Canonicalization ensures this is the oldest request.
@@ -144,7 +144,7 @@ def uniquify_requests ( requests : pd.DataFrame
 def unexecuted_requests_exist ( requests : pd.DataFrame
                               ) -> bool:
     return not ( requests [ "completed" ]
-                 . isnull()
+                 . isnull ()
                  . all () )
 
 def format_times ( requests : pd.DataFrame
