@@ -53,6 +53,19 @@ def gb_used ( users_folder ) -> int:
         if s [i] . isspace(): break
     return int( reading ) / 1e6 # divide because `du` gives kb, not gb
 
+# This isn't actually necessary,
+# since delete_oldest_request() isn't.
+#
+# def delete_oldest ( requests_file : str,
+#                     users_folder : str ):
+#     # TODO: These changes to reqs could be clobbered --
+#     # by another instance of the same cron job,
+#     # or by a user submitting a new request. Need a mem lock.
+#     reqs = lib . read_requests ( requests_file )
+#     delete_oldest_user_folder ( reqs, users_folder )
+#     reqs = delete_oldest_request ( reqs )
+#     reqs . to_csv ( requests_file, index = False )
+
 def delete_oldest_user_folder ( requests : pd.DataFrame,
                                 users_folder : str ):
     if True: # Verify that users_folder looks plausible,
@@ -99,12 +112,13 @@ def append_request ( requests : pd.DataFrame,
              . append ( request,
                         ignore_index = True ) )
 
-# PITFALL: This doesn't verify that the oldest has been executed.
-# Upstream it should only be called if memory does not permit another run.
-# (If memory does not permit another run,
-# then at least the oldest request has been executed.)
+# This turns out not to be necessary.
 def delete_oldest_request ( requests : pd.DataFrame
                           ) -> pd.DataFrame:
+    # PITFALL: This doesn't verify that the oldest has been executed.
+    # Upstream it should only be called if memory does not permit another run.
+    # (If memory does not permit another run,
+    # then at least the oldest request has been executed.)
     return ( canonicalize_requests( requests ) ) [1:]
 
 def at_least_one_is_old ( requests : pd.DataFrame,

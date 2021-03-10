@@ -39,6 +39,25 @@ requests_file    = os.path.join ( tax_co_root_folder,
 with open ( constraints_file ) as f:
     constraints = json . load ( f )
 
+def try_to_advance_request_queue ():
+    # TODO : Test
+    reqs = lib . read_requests ( requests_file )
+    if not unexecuted_requests_exist ( reqs ):
+        return ()
+    if lib .  memory_permits_another_run (
+            lib . gb_used ( users_folder ),
+            constraints ):
+        advance_request_queue ()
+    elif lib . at_least_one_is_old ( reqs, constraints ):
+        delete_oldest_user_folder ( requests_file, users_folder )
+        try_to_advance_request_queue ()
+          # Recurse. Hopefully, now memory permits --
+          # but since a user can choose a small sample size,
+          # it might still not.
+
+def advance_request_queue ():
+    pass
+
 if len ( sys.argv ) > 1:
     lib . initialize_requests ( requests_file )
     print ( sys . argv [ 0 ] )
