@@ -7,7 +7,6 @@ if True:
   import json
   import numpy as np
   import os
-  import os.path as path
   import pandas as pd
   import subprocess
   from   typing import Callable, Dict
@@ -28,13 +27,13 @@ def mutate ( filename : str,
 
 def initialize_requests ( requests_file_path : str ):
   """If the file already exists, this does nothing."""
-  if not path . exists ( requests_file_path ):
+  if not os . path . exists ( requests_file_path ):
        ( empty_requests ()
          . to_csv ( requests_file_path,
                     index = False ) )
 
 def read_requests ( requests_file_path : str ) -> pd.DataFrame:
-  if path . exists ( requests_file_path ):
+  if os . path . exists ( requests_file_path ):
     return format_times (
       pd . read_csv ( requests_file_path ) )
   else: return empty_requests ()
@@ -83,9 +82,9 @@ def this_request () -> pd.Series:
   # PITFALL: Looks pure, but in fact through the python.common lib
   # it executes IO, reading the user's config file.
   return pd . Series (
-    { "user"      : c.user,
+    { "user"      : c . user,
       "requested" : datetime . now (),
-      "completed" : np.nan
+      "completed" : np . nan
     } )
 
 

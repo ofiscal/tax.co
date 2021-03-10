@@ -15,17 +15,12 @@
 #   PYTHONPATH="." python3 python/requests/main.py users/jeff/config/shell.json add
 
 if True:
-  from   datetime import datetime, timedelta
+  import filelock
   import json
-  import numpy as np
   import os
-  import os.path as path
-  import pandas as pd
-  import subprocess
   import sys
   from   typing import Callable, Dict
   #
-  import python.common.common as c
   import python.requests.lib  as lib
 
 
@@ -64,20 +59,8 @@ if len ( sys.argv ) > 1:
     print ( sys . argv [ 1 ] )
     action = sys . argv [ 2 ]
 
-#    # for testing only
-#    reqs = lib . append_request (
-#        lib . empty_requests (),
-#        lib . this_request () )
-
-    if action == "add":
+    if action == "queue":
         lib . mutate (
             requests_file,
             lambda reqs: lib . append_request (
                 reqs, lib . this_request () ) )
-
-# TODO: something like this
-#    if action == "delete":
-#        lib . delete_oldest_user_folder (
-#            reqs,
-#            os . path . join ( users_folder,
-#                               c . user ) )
