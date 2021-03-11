@@ -92,7 +92,8 @@ def this_request () -> pd.Series:
 #### Pure functions ####
 #### #### #### #### ####
 
-def memory_permits_another_run ( gb_used : float,
+def memory_permits_another_run (
+        gb_used : float,
                                  constraints : Dict[ str, str ]
                                ) -> bool:
     gb_unused = constraints["max_gb"] - gb_used
@@ -111,7 +112,9 @@ def append_request ( requests : pd.DataFrame,
              . append ( request,
                         ignore_index = True ) )
 
-# This turns out not to be necessary.
+# This turns out not to be necessary --
+# there's no reason not to keep the entire history,
+# which will be small.
 def delete_oldest_request ( requests : pd.DataFrame
                           ) -> pd.DataFrame:
     # PITFALL: This doesn't verify that the oldest has been executed.
@@ -123,6 +126,10 @@ def delete_oldest_request ( requests : pd.DataFrame
 def at_least_one_is_old ( requests : pd.DataFrame,
                           constraints : Dict[ str, str ]
                         ) -> bool:
+    # PITFALL: Does not verify the old request was executed.
+    # But it's only called if there's no space,
+    # in which case we can assume the execution happened,
+    # since execution is FIFO.
     now = datetime . now ()
     requests = canonicalize_requests( requests )
     oldest = requests . iloc[0] ["requested"]

@@ -66,7 +66,7 @@ RUN apt update -y            && \
 
 # Somehow these "pam permissions" break crond in a Docker container, per
 #   https://stackoverflow.com/a/21928878/916142
-# Creating an empty cron.deny file overcomes that, albeit bluntly,
+# Creating an empty cron.deny file overcomes that, bluntly,
 # by permitting every user to use cron.
 RUN sed -i '/session    required     pam_loginuid.so/c\#session    required     pam_loginuid.so' /etc/pam.d/cron && \
   touch /etc/cron.deny

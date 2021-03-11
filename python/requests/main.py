@@ -1,3 +1,14 @@
+# SHARED MEMORY STRATEGY
+# ######################
+# The webpage (tax.co.web) adds requests to `requests.temp.csv`.
+# Anything accessing that file uses a file lock for it.
+# Such access is always brief; no process will make another wait long.
+#
+# The microsimulation (tax.co) transfers files from `requests.temp.csv`
+# to `requests.csv`. Then it processes those requests.
+# It is the only process that manipulates `requests.csv`,
+# so it doesn't need to worry about getting clobbered.
+
 # PITFALL
 # ######
 # This Python program is meant to be called from another one --
@@ -31,11 +42,20 @@ constraints_file = os.path.join ( tax_co_root_folder,
                                   "data/constraints-time-memory.json" )
 requests_file    = os.path.join ( tax_co_root_folder,
                                   "data/requests.csv" )
+requests_temp_file = os.path.join ( tax_co_root_folder,
+                                    "data/requests.temp.csv" )
 with open ( constraints_file ) as f:
     constraints = json . load ( f )
 
+def transfer_requests_from_temp_queue ():
+    lock = filelock . FileLock ( requests_temp_file + ".lock" )
+    pass # TODO
+
+def advance_request_queue ():
+    pass # TODO: Run makefile.
+
 def try_to_advance_request_queue ():
-    # TODO : Test
+    # TODO: Test.
     reqs = lib . read_requests ( requests_file )
     if not unexecuted_requests_exist ( reqs ):
         return ()
@@ -50,16 +70,13 @@ def try_to_advance_request_queue ():
           # but since a user can choose a small sample size,
           # it might still not.
 
-def advance_request_queue ():
-    pass
-
 if len ( sys.argv ) > 1:
     lib . initialize_requests ( requests_file )
     print ( sys . argv [ 0 ] )
     print ( sys . argv [ 1 ] )
     action = sys . argv [ 2 ]
 
-    if action == "queue":
+    if action == "add-to-queue":
         lib . mutate (
             requests_file,
             lambda reqs: lib . append_request (
