@@ -29,6 +29,7 @@ if True:
   import filelock
   import json
   import os
+  import pandas as pd
   import sys
   from   typing import Callable, Dict
   #
@@ -49,10 +50,21 @@ with open ( constraints_file ) as f:
 
 def transfer_requests_from_temp_queue ():
     lock = filelock . FileLock ( requests_temp_file + ".lock" )
-    pass # TODO
+      # Since requests_file is only ever manipulated by tax.co,
+      # it does not need a lock. requests_temp_file, OTOH,
+      # is manipulated by tax.co.web also.
+    with lock:
+        for f in [ requests_file, requests_temp_file ]:
+            lib . initialize_requests ( f )
+        reqs = lib . read_requests ( requests_file )
+        reqs_temp = lib . read_requests ( requests_temp_file )
+        reqs = lib . canonicalize_requests (
+            pd.concat ( [reqs, reqs_temp] ) )
+        lib . write_requests ( reqs,                    requests_file )
+        lib . write_requests ( lib . empty_requests (), requests_temp_file )
 
 def advance_request_queue ():
-    pass # TODO: Run makefile.
+    pass # TODO: Run makefile, mark the request executed.
 
 def try_to_advance_request_queue ():
     # TODO: Test.

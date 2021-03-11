@@ -38,6 +38,11 @@ def read_requests ( requests_file_path : str ) -> pd.DataFrame:
       pd . read_csv ( requests_file_path ) )
   else: return empty_requests ()
 
+def write_requests ( reqs : pd.DataFrame,
+                     requests_file_path : str ):
+    reqs . to_csv ( requests_file_path,
+                    index = False )
+
 def gb_used ( users_folder ) -> int:
     s = str ( subprocess . Popen( "du -s " + users_folder,
                                   shell = True,
@@ -170,5 +175,5 @@ def unexecuted_requests_exist ( requests : pd.DataFrame
 def format_times ( requests : pd.DataFrame
                  ) -> pd.DataFrame:
     for c in ["requested","completed"]:
-      requests [c] = pd.to_datetime( requests [c] )
+      requests [c] = pd . to_datetime( requests [c] )
     return requests
