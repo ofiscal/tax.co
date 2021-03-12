@@ -26,7 +26,7 @@
 .no_younger_than/python/requests/test.py:	\
   python/requests/test.py			\
   .no_younger_than/python/common/common.py	\
-  .no_younger_than/python/requests/lib.py       \
+  .no_younger_than/python/requests/lib.py
 	install -D /dev/null .no_younger_than/python/requests/test.py
 
 .no_younger_than/python/tax-proposals-2020/07_22_code_First.py: \
