@@ -32,7 +32,8 @@ def initialize_requests ( requests_file_path : str ):
          . to_csv ( requests_file_path,
                     index = False ) )
 
-def read_requests ( requests_file_path : str ) -> pd.DataFrame:
+def read_requests ( requests_file_path : str
+                  ) -> pd.DataFrame:
   if os . path . exists ( requests_file_path ):
     return format_times (
       pd . read_csv ( requests_file_path ) )
@@ -43,7 +44,7 @@ def write_requests ( reqs : pd.DataFrame,
     reqs . to_csv ( requests_file_path,
                     index = False )
 
-def gb_used ( users_folder ) -> int:
+def gb_used ( users_folder : str ) -> int:
     s = str ( subprocess . Popen( "du -s " + users_folder,
                                   shell = True,
                                   stdout = subprocess . PIPE )
@@ -93,6 +94,35 @@ def this_request () -> pd.Series:
     } )
 
 
+#### #### #### #### #### #### #### #### #### ####
+####  Pure-minus-reading-the-time functions  ####
+#### #### #### #### #### #### #### #### #### ####
+
+def mark_complete (
+    user_hash : str,
+    reqs : pd.DataFrame ) -> pd.DataFrame:
+  requests = requests . copy ()
+  reqs . loc [ reqs [ "user" ] == user_hash,
+               "completed" ] = datetime . now ()
+  return reqs
+
+def at_least_one_is_old ( requests : pd.DataFrame,
+                          constraints : Dict[ str, str ]
+                        ) -> bool:
+    # PITFALL: Does not verify the old request was executed.
+    # But it's only called if there's no space,
+    # in which case we can assume the execution happened,
+    # since execution is FIFO.
+    now = datetime . now ()
+    requests = canonicalize_requests( requests )
+    oldest = requests . iloc[0] ["requested"]
+      # Canonicalization ensures this is the oldest request.
+    min_survival_time = (
+        timedelta ( hours = 1 )
+        * ( constraints[ "min_survival_minutes" ] / 60 ) )
+    return (now - oldest) > min_survival_time
+
+
 #### #### #### #### ####
 #### Pure functions ####
 #### #### #### #### ####
@@ -113,6 +143,7 @@ def empty_requests () -> pd.DataFrame:
 def append_request ( requests : pd.DataFrame,
                      request  : pd.Series
                    ) -> pd.DataFrame:
+    requests = requests . copy ()
     return ( requests
              . append ( request,
                         ignore_index = True ) )
@@ -128,27 +159,12 @@ def delete_oldest_request ( requests : pd.DataFrame
     # then at least the oldest request has been executed.)
     return ( canonicalize_requests( requests ) ) [1:]
 
-def at_least_one_is_old ( requests : pd.DataFrame,
-                          constraints : Dict[ str, str ]
-                        ) -> bool:
-    # PITFALL: Does not verify the old request was executed.
-    # But it's only called if there's no space,
-    # in which case we can assume the execution happened,
-    # since execution is FIFO.
-    now = datetime . now ()
-    requests = canonicalize_requests( requests )
-    oldest = requests . iloc[0] ["requested"]
-      # Canonicalization ensures this is the oldest request.
-    min_survival_time = (
-        timedelta ( hours = 1 )
-        * ( constraints[ "min_survival_minutes" ] / 60 ) )
-    return (now - oldest) > min_survival_time
-
 def canonicalize_requests ( requests : pd.DataFrame
                           ) -> pd.DataFrame:
     """ Calling this everywhere would be wasteful in big data,
     but it's negligible for the request data,
     and safer than assuming upstream functions have already done it."""
+    requests = requests . copy ()
     return format_times (
         uniquify_requests ( requests )
         . sort_values ( "requested",
@@ -156,6 +172,7 @@ def canonicalize_requests ( requests : pd.DataFrame
 
 def uniquify_requests ( requests : pd.DataFrame
                       ) -> pd.DataFrame:
+    requests = requests . copy ()
     return ( requests
              . sort_values( ["user","requested"],
                             ascending = True )
@@ -174,6 +191,7 @@ def unexecuted_requests_exist ( requests : pd.DataFrame
 
 def format_times ( requests : pd.DataFrame
                  ) -> pd.DataFrame:
+    requests = requests . copy ()
     for c in ["requested","completed"]:
       requests [c] = pd . to_datetime( requests [c] )
     return requests

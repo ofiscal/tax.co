@@ -84,10 +84,15 @@ def try_to_advance_request_queue ():
 
 if len ( sys.argv ) > 1:
     lib . initialize_requests ( requests_file )
-    print ( sys . argv [ 0 ] )
-    print ( sys . argv [ 1 ] )
     action = sys . argv [ 2 ]
+      # 0 is the path to this program path, 1 the .json config
 
+    # What the cron job does.
+    if action == "try-to-advance":
+        transfer_requests_from_temp_queue ()
+        try_to_advance_request_queue ()
+
+    # What the web page (the tax.co.web repo) does.
     if action == "add-to-queue":
         lib . mutate (
             requests_file,
