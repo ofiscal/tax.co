@@ -129,8 +129,8 @@ def at_least_one_is_old ( requests : pd.DataFrame,
 
 def memory_permits_another_run (
         gb_used : float,
-                                 constraints : Dict[ str, str ]
-                               ) -> bool:
+        constraints : Dict[ str, str ]
+        ) -> bool:
     gb_unused = constraints["max_gb"] - gb_used
     return gb_unused > constraints["max_user_gb"]
 
