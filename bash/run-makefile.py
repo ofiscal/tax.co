@@ -27,7 +27,7 @@ targets = "show_config tests overview" # show_params
   # For the full list of possible targets,
   # see the Makefile, particularly the definition of .PHONY.
 
-os.system(
+os . system (
     "make " # + " --keep-going " +
     + targets                 +
     " config_file="           + c.config_file           +

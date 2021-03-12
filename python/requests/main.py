@@ -59,7 +59,7 @@ def transfer_requests_from_temp_queue ():
         reqs = lib . read_requests ( requests_file )
         reqs_temp = lib . read_requests ( requests_temp_file )
         reqs = lib . canonicalize_requests (
-            pd.concat ( [reqs, reqs_temp] ) )
+            pd . concat ( [reqs, reqs_temp] ) )
         lib . write_requests ( reqs,                    requests_file )
         lib . write_requests ( lib . empty_requests (), requests_temp_file )
 
