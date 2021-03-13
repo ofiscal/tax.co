@@ -50,14 +50,15 @@ requests_temp_file = os.path.join ( tax_co_root_folder,
 with open ( constraints_file ) as f:
     constraints = json . load ( f )
 
+lock = filelock . FileLock ( requests_temp_file + ".lock" )
+    # Since requests_file is only ever manipulated by tax.co,
+    # it does not need a lock. requests_temp_file, however,
+    # is manipulated by tax.co.web also.
+    # (Both only ever manipulate it through this program,
+    # but more than one instance could be running at once.)
+
 def transfer_requests_from_temp_queue ():
-    lock = filelock . FileLock ( requests_temp_file + ".lock" )
-      # Since requests_file is only ever manipulated by tax.co,
-      # it does not need a lock. requests_temp_file, OTOH,
-      # is manipulated by tax.co.web also.
     with lock:
-        for f in [ requests_file, requests_temp_file ]:
-            lib . initialize_requests ( f )
         reqs = lib . read_requests ( requests_file )
         reqs_temp = lib . read_requests ( requests_temp_file )
         reqs = lib . canonicalize_requests (
@@ -82,12 +83,12 @@ def advance_request_queue ( user_hash : str ):
         env    = my_env,
         stdout = subprocess . PIPE,
         stderr = subprocess . PIPE )
-    for ( path, source ) in [ ("stdout.txt",stdout),
-                              ("stderr.txt",stderr) ]:
-      with open ( os . path . join ( user_root, path ), "a" )
-           as f:
+    for ( path, source ) in [ ("stdout.txt", sp.stdout),
+                              ("stderr.txt", sp.stderr) ]:
+      with open ( os.path.join ( user_root, path ),
+                  "a" ) as f:
         f . write ( datetime . now () + "\n" )
-        f . write ( sp . stdout )
+        f . write ( source )
     if sp . returncode == 0:
         lib . mutate ( requests_file,
                        lambda reqs: lib . mark_complete ( reqs ) )
@@ -97,7 +98,7 @@ def try_to_advance_request_queue ():
     # TODO: Test.
     reqs = lib . read_requests ( requests_file )
     if ( os.path.exists ( process_marker )
-         | not unexecuted_requests_exist ( reqs ) ):
+         | ( not unexecuted_requests_exist ( reqs ) ) ):
         return ()
     if lib . memory_permits_another_run (
             lib.gb_used ( users_folder ),
@@ -111,9 +112,11 @@ def try_to_advance_request_queue ():
           # it might still not.
 
 if len ( sys.argv ) > 1:
-    lib . initialize_requests ( requests_file )
     action = sys . argv [ 2 ]
       # 0 is the path to this program path, 1 the .json config
+    lib . initialize_requests ( requests_file )
+    with lock:
+        lib . initialize_requests ( requests_temp_file )
 
     # What the cron job does.
     if action == "try-to-advance":
@@ -122,7 +125,8 @@ if len ( sys.argv ) > 1:
 
     # What the web page (the tax.co.web repo) does.
     if action == "add-to-queue":
-        lib . mutate (
-            requests_file,
-            lambda reqs: lib . append_request (
-                reqs, lib . this_request () ) )
+        with lock:
+          lib . mutate (
+              requests_temp_file,
+              lambda reqs: lib . append_request (
+                  reqs, lib . this_request () ) )
