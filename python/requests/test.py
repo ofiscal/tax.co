@@ -56,12 +56,15 @@ def test_uniquify_requests ():
     assert r.uniquify_requests (b) . equals ( b[:2] )
 
 def test_unexecuted_requests_exist ():
-    has_some = pd.DataFrame ( [ np.nan, 0 ],
+    all_done = pd.DataFrame ( [ 0, 0 ],
                               columns = ["completed"] )
-    has_none = pd.DataFrame ( [ np.nan, np.nan ],
-                              columns = ["completed"] )
-    assert     r.unexecuted_requests_exist( has_some )
-    assert not r.unexecuted_requests_exist( has_none )
+    some_done = pd.DataFrame ( [ np.nan, 0 ],
+                               columns = ["completed"] )
+    none_done = pd.DataFrame ( [ np.nan, np.nan ],
+                               columns = ["completed"] )
+    assert not r.unexecuted_requests_exist( all_done )
+    assert     r.unexecuted_requests_exist( some_done )
+    assert     r.unexecuted_requests_exist( none_done )
 
 if True:
   test_memory_permits_another_run ()

@@ -185,9 +185,9 @@ def uniquify_requests ( requests : pd.DataFrame
 
 def unexecuted_requests_exist ( requests : pd.DataFrame
                               ) -> bool:
-    return not ( requests [ "completed" ]
-                 . isnull ()
-                 . all () )
+    return ( requests [ "completed" ]
+            . isnull ()
+            . any () )
 
 def format_times ( requests : pd.DataFrame
                  ) -> pd.DataFrame:
