@@ -116,9 +116,11 @@ def try_to_advance_request_queue ():
 if len ( sys.argv ) > 1:
     action = sys . argv [ 2 ]
       # 0 is the path to this program path, 1 the .json config
-    lib . initialize_requests ( requests_file )
-    with lock:
-        lib . initialize_requests ( requests_temp_file )
+
+    if True: # Initialize request data. (Usually unnecessary.)
+      lib . initialize_requests ( requests_file )
+      with lock:
+          lib . initialize_requests ( requests_temp_file )
 
     # What the cron job does.
     if action == "try-to-advance":
