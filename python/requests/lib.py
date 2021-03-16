@@ -100,11 +100,12 @@ def this_request () -> pd.Series:
 
 def mark_complete (
     user_hash : str,
-    reqs : pd.DataFrame ) -> pd.DataFrame:
+    requests : pd.DataFrame ) -> pd.DataFrame:
   requests = requests . copy ()
-  reqs . loc [ reqs [ "user" ] == user_hash,
-               "completed" ] = datetime . now ()
-  return reqs
+  requests . loc [ requests [ "user" ] == user_hash,
+                   "completed" ] = (
+     datetime . now () )
+  return requests
 
 def at_least_one_is_old ( requests : pd.DataFrame,
                           constraints : Dict[ str, str ]
