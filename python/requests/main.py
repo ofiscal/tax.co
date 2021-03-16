@@ -90,9 +90,11 @@ def advance_request_queue ( user_hash : str ):
         f . write ( datetime . now () + "\n" )
         f . write ( source )
     if sp . returncode == 0:
-        lib . mutate ( requests_file,
-                       lambda reqs: lib . mark_complete ( reqs ) )
-        os . remove ( process_marker )
+        lib . mutate (
+            requests_file,
+            lambda reqs: lib . mark_complete (
+                user_hash, reqs ) )
+    os . remove ( process_marker )
 
 def try_to_advance_request_queue ():
     # TODO: Test.
