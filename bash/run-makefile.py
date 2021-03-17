@@ -18,21 +18,25 @@
 #   it defaults (in common.py) to "config/repl.json".
 
 import python.common.common as c
-import os
+import subprocess
 
 
-targets = "show_config tests overview" # show_params
-  # A space-separated list of Makefile targets.
-  # Likely values include "tests" and "overview".
+targets = [ "show_config",
+            "tests",
+            # "show_params"
+            "overview"
+          ]
+  # Makefile targets.
   # For the full list of possible targets,
   # see the Makefile, particularly the definition of .PHONY.
 
-os . system (
-    "make " # + " --keep-going " +
-    + targets                 +
-    " config_file="           + c.config_file           +
-    " subsample="             + str( c.subsample )      +
-    " strategy="              + c.strategy              +
-    " regime_year="           + str( c.regime_year )    +
-    " user="                  + c.user
+subprocess.run (
+    [ "make",
+     "bash/run-makefile.py" ] +
+    targets +
+    [ "config_file=" + c.config_file       ,
+      "subsample="   + str( c.subsample )  ,
+      "strategy="    + c.strategy          ,
+      "regime_year=" + str( c.regime_year ),
+      "user="        + c.user ]
     )

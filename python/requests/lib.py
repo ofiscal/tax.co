@@ -82,7 +82,10 @@ def delete_oldest_user_folder ( requests : pd.DataFrame,
         raise Exception ( users_folder + " is not four folders below /." )
     requests = canonicalize_requests( requests )
     oldest_user = requests . iloc[0] ["user"]
-    os . system( "rm -rf " + users_folder )
+    subprocess.run (
+        [ "rm",
+          "-rf",
+          users_folder ] )
 
 def this_request () -> pd.Series:
   # PITFALL: Looks pure, but in fact through the python.common lib
