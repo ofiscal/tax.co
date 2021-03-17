@@ -70,15 +70,23 @@ def transfer_requests_from_temp_queue ():
 
 def advance_request_queue ( user_hash : str ):
     user_root = os . path . join ( tax_co_root_path, "users", user_hash )
-    my_env = os . environ . copy ()
     with open ( process_marker_path, "w" ) as f:
         f . write ( user_hash )
+    if True: # Refine the environment.
+        my_env = os . environ . copy ()
+        env_additions = ":" . join (
+            [ tax_co_root_path,
+              "/opt/conda/lib/python3.8/site-packages" ] )
+              # TODO ? Why must this second folder be specified?
+              # It's the default when I run python3 from the shell.
     my_env["PYTHONPATH"] = (
-        tax_co_root_path + ":" + my_env [ "PYTHONPATH" ]
+            ":" . join ( [ env_additions,
+                           my_env [ "PYTHONPATH" ] ] )
         if "PYTHONPATH" in my_env . keys ()
-        else tax_co_root_path )
+            else env_additions )
     sp = subprocess . run (
-        [ "python3",
+        [ "/opt/conda/bin/python3.8", # TODO : Why do I have to specify kthis?
+                                      # It's the default python in the shell.
           "bash/run-makefile.py",
           os . path . join ( user_root, "config/shell.json" ) ],
         env    = my_env,
