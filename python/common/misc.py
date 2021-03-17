@@ -73,8 +73,10 @@ def all_columns_to_numbers(df, skip_columns=[]):
         , errors='ignore' ) # leave entire column unchanged if any cell won't convert
   return df
 
-def read_csv_or_xlsx( filename : str, **kwargs ) -> pd.DataFrame:
+def read_csv_or_xlsx ( filename : str, **kwargs ) -> pd.DataFrame:
     """ If filename ends in .csv, this assumes it is .csv-formatted, and similarly for .xlsx. If no file extension is provided, it finds the first file starting with the provided prefix. (If that file does not end in .csv or .xlsx, the result is not defined."""
+    with open ( "/mnt/tax_co/log.txt", "w" )  as f:
+        f . write ( filename + "\n" )
     _, ext = os . path . splitext( filename )
     if ext == ".csv"    : return pd.read_csv  ( filename, **kwargs )
     elif ext == ".xlsx" : return pd.read_excel( filename, **kwargs )

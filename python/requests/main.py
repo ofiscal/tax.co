@@ -25,6 +25,7 @@
 #   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/jeff/config/shell.json add-to-queue
 
 if True:
+  from   datetime import datetime
   import filelock
   import json
   import os
@@ -34,6 +35,7 @@ if True:
   from   typing import Callable, Dict
   #
   import python.requests.lib  as lib
+  import python.common.common as c
 
 
 tax_co_root_folder = "/mnt/tax_co"
@@ -87,8 +89,8 @@ def advance_request_queue ( user_hash : str ):
                               ("stderr.txt", sp.stderr) ]:
       with open ( os.path.join ( user_root, path ),
                   "a" ) as f:
-        f . write ( datetime . now () + "\n" )
-        f . write ( source )
+        f . write ( str ( datetime . now () ) + "\n" )
+        f . write ( source . decode () )
     if sp . returncode == 0:
         lib . mutate (
             requests_file,
@@ -96,26 +98,27 @@ def advance_request_queue ( user_hash : str ):
                 user_hash, reqs ) )
     os . remove ( process_marker )
 
-def try_to_advance_request_queue ():
+def try_to_advance_request_queue ( user_hash : str ):
     # TODO: Test.
     reqs = lib . read_requests ( requests_file )
     if ( os.path.exists ( process_marker )
-         | ( not unexecuted_requests_exist ( reqs ) ) ):
+         | ( not lib.unexecuted_requests_exist ( reqs ) ) ):
         return ()
     if lib . memory_permits_another_run (
             lib.gb_used ( users_folder ),
             constraints ):
-        advance_request_queue ()
+        advance_request_queue ( user_hash )
     elif lib . at_least_one_is_old ( reqs, constraints ):
         delete_oldest_user_folder ( requests_file, users_folder )
-        try_to_advance_request_queue ()
+        try_to_advance_request_queue ( user_hash )
           # Recurse. Hopefully, now memory permits --
           # but since a user can choose a small sample size,
           # it might still not.
 
 if len ( sys.argv ) > 1:
     action = sys . argv [ 2 ]
-      # 0 is the path to this program path, 1 the .json config
+      # Arg 0 is the path to this program path, 1 the .json config.
+      # Arg 1 is read and used by common.py.
 
     if True: # Initialize request data. (Usually unnecessary.)
       lib . initialize_requests ( requests_file )
@@ -125,10 +128,10 @@ if len ( sys.argv ) > 1:
     # What the cron job does.
     if action == "try-to-advance":
         transfer_requests_from_temp_queue ()
-        try_to_advance_request_queue ()
+        try_to_advance_request_queue ( c.user )
 
     # What the web page (the tax.co.web repo) does.
-    if action == "add-to-queue":
+    if action == "add-to-temp-queue":
         with lock:
           lib . mutate (
               requests_temp_file,
