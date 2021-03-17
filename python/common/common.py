@@ -41,6 +41,7 @@ if not regime_year in valid_regime_years:
 
 user_email = config_dict [ "user_email" ]
 user = ( # A user's "name" is generated from their email address.
+    "u" + # Because Python library paths must start with letters, not numbers.
     hashlib.md5(
         user_email . encode () )
     . hexdigest () )
