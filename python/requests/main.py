@@ -38,45 +38,45 @@ if True:
   import python.common.common as c
 
 
-tax_co_root_folder = "/mnt/tax_co"
-process_marker     = os.path.join ( tax_co_root_folder,
+tax_co_root_path    = "/mnt/tax_co"
+process_marker_path = os.path.join ( tax_co_root_path,
                                     "data/incomplete-request" )
-users_folder       = os.path.join ( tax_co_root_folder,
+users_path          = os.path.join ( tax_co_root_path,
                                     "users/" )
-constraints_file   = os.path.join ( tax_co_root_folder,
+constraints_path    = os.path.join ( tax_co_root_path,
                                     "data/constraints-time-memory.json" )
-requests_file      = os.path.join ( tax_co_root_folder,
+requests_path       = os.path.join ( tax_co_root_path,
                                     "data/requests.csv" )
-requests_temp_file = os.path.join ( tax_co_root_folder,
+requests_temp_path  = os.path.join ( tax_co_root_path,
                                     "data/requests.temp.csv" )
-with open ( constraints_file ) as f:
+with open ( constraints_path ) as f:
     constraints = json . load ( f )
 
-lock = filelock . FileLock ( requests_temp_file + ".lock" )
-    # Since requests_file is only ever manipulated by tax.co,
-    # it does not need a lock. requests_temp_file, however,
+lock = filelock . FileLock ( requests_temp_path + ".lock" )
+    # Since the file at requests_path is only ever manipulated by tax.co,
+    # it does not need a lock. The one at requests_temp_path, however,
     # is manipulated by tax.co.web also.
     # (Both only ever manipulate it through this program,
     # but more than one instance could be running at once.)
 
 def transfer_requests_from_temp_queue ():
     with lock:
-        reqs = lib . read_requests ( requests_file )
-        reqs_temp = lib . read_requests ( requests_temp_file )
+        reqs = lib . read_requests ( requests_path )
+        reqs_temp = lib . read_requests ( requests_temp_path )
         reqs = lib . canonicalize_requests (
             pd . concat ( [reqs, reqs_temp] ) )
-        lib . write_requests ( reqs,                    requests_file )
-        lib . write_requests ( lib . empty_requests (), requests_temp_file )
+        lib . write_requests ( reqs,                    requests_path )
+        lib . write_requests ( lib . empty_requests (), requests_temp_path )
 
 def advance_request_queue ( user_hash : str ):
-    user_root = os . path . join ( tax_co_root_folder, "users", user_hash )
+    user_root = os . path . join ( tax_co_root_path, "users", user_hash )
     my_env = os . environ . copy ()
-    with open ( process_marker, "w" ) as f:
+    with open ( process_marker_path, "w" ) as f:
         f . write ( user_hash )
     my_env["PYTHONPATH"] = (
-        tax_co_root_folder + ":" + my_env [ "PYTHONPATH" ]
+        tax_co_root_path + ":" + my_env [ "PYTHONPATH" ]
         if "PYTHONPATH" in my_env . keys ()
-        else tax_co_root_folder )
+        else tax_co_root_path )
     sp = subprocess . run (
         [ "python3",
           "bash/run-makefile.py",
@@ -92,23 +92,23 @@ def advance_request_queue ( user_hash : str ):
         f . write ( source . decode () )
     if sp . returncode == 0:
         lib . mutate (
-            requests_file,
+            requests_path,
             lambda reqs: lib . mark_complete (
                 user_hash, reqs ) )
-    os . remove ( process_marker )
+    os . remove ( process_marker_path )
 
 def try_to_advance_request_queue ( user_hash : str ):
     # TODO: Test.
-    reqs = lib . read_requests ( requests_file )
-    if ( os.path.exists ( process_marker )
+    reqs = lib . read_requests ( requests_path )
+    if ( os.path.exists ( process_marker_path )
          | ( not lib.unexecuted_requests_exist ( reqs ) ) ):
         return ()
     if lib . memory_permits_another_run (
-            lib.gb_used ( users_folder ),
+            lib.gb_used ( users_path ),
             constraints ):
         advance_request_queue ( user_hash )
     elif lib . at_least_one_is_old ( reqs, constraints ):
-        delete_oldest_user_folder ( requests_file, users_folder )
+        delete_oldest_user_folder ( requests_path, users_path )
         try_to_advance_request_queue ( user_hash )
           # Recurse. Hopefully, now memory permits --
           # but since a user can choose a small sample size,
@@ -120,9 +120,9 @@ if len ( sys.argv ) > 1:
       # Arg 1 is read and used by common.py.
 
     if True: # Initialize request data. (Usually unnecessary.)
-      lib . initialize_requests ( requests_file )
+      lib . initialize_requests ( requests_path )
       with lock:
-          lib . initialize_requests ( requests_temp_file )
+          lib . initialize_requests ( requests_temp_path )
 
     # What the cron job does.
     if action == "try-to-advance":
@@ -133,6 +133,6 @@ if len ( sys.argv ) > 1:
     if action == "add-to-temp-queue":
         with lock:
           lib . mutate (
-              requests_temp_file,
+              requests_temp_path,
               lambda reqs: lib . append_request (
                   reqs, lib . this_request () ) )
