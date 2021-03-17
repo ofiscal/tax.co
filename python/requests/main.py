@@ -69,15 +69,14 @@ def transfer_requests_from_temp_queue ():
         lib . write_requests ( lib . empty_requests (), requests_temp_file )
 
 def advance_request_queue ( user_hash : str ):
-    tax_co_root = "/mnt/tax_co/" # absolute b/c this is callable from cron
-    user_root = os . path . join ( tax_co_root, "users", user_hash )
+    user_root = os . path . join ( tax_co_root_folder, "users", user_hash )
     my_env = os . environ . copy ()
     with open ( process_marker, "w" ) as f:
         f . write ( user_hash )
     my_env["PYTHONPATH"] = (
-        tax_co_root + ":" + my_env [ "PYTHONPATH" ]
+        tax_co_root_folder + ":" + my_env [ "PYTHONPATH" ]
         if "PYTHONPATH" in my_env . keys ()
-        else tax_co_root )
+        else tax_co_root_folder )
     sp = subprocess . run (
         [ "python3",
           "bash/run-makefile.py",
