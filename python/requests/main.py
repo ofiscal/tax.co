@@ -40,15 +40,15 @@ if True:
 
 tax_co_root_path    = "/mnt/tax_co"
 process_marker_path = os.path.join ( tax_co_root_path,
-                                    "data/incomplete-request" )
+                                     "data/incomplete-request" )
 users_path          = os.path.join ( tax_co_root_path,
-                                    "users/" )
+                                     "users/" )
 constraints_path    = os.path.join ( tax_co_root_path,
-                                    "data/constraints-time-memory.json" )
+                                     "data/constraints-time-memory.json" )
 requests_path       = os.path.join ( tax_co_root_path,
-                                    "data/requests.csv" )
+                                     "data/requests.csv" )
 requests_temp_path  = os.path.join ( tax_co_root_path,
-                                    "data/requests.temp.csv" )
+                                     "data/requests.temp.csv" )
 with open ( constraints_path ) as f:
     constraints = json . load ( f )
 
