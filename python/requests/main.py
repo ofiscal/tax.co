@@ -40,7 +40,7 @@ if True:
 
 tax_co_root_path    = "/mnt/tax_co"
 process_marker_path = os.path.join ( tax_co_root_path,
-                                     "data/incomplete-request" )
+                                     "data/request-ongoing" )
 users_path          = os.path.join ( tax_co_root_path,
                                      "users/" )
 constraints_path    = os.path.join ( tax_co_root_path,
@@ -69,7 +69,8 @@ def transfer_requests_from_temp_queue ():
         lib . write_requests ( lib . empty_requests (), requests_temp_path )
 
 def advance_request_queue ( user_hash : str ):
-    user_root = os . path . join ( tax_co_root_path, "users", user_hash )
+    user_root = os . path . join (
+        tax_co_root_path, "users", user_hash )
     with open ( process_marker_path, "w" ) as f:
         f . write ( user_hash )
     if True: # Refine the environment.
@@ -79,15 +80,15 @@ def advance_request_queue ( user_hash : str ):
               "/opt/conda/lib/python3.8/site-packages" ] )
               # TODO ? Why must this second folder be specified?
               # It's the default when I run python3 from the shell.
-    my_env["PYTHONPATH"] = (
+        my_env["PYTHONPATH"] = (
             ":" . join ( [ env_additions,
                            my_env [ "PYTHONPATH" ] ] )
-        if "PYTHONPATH" in my_env . keys ()
+            if "PYTHONPATH" in my_env . keys ()
             else env_additions )
     sp = subprocess . run (
         [ "/opt/conda/bin/python3.8", # TODO : Why do I have to specify kthis?
                                       # It's the default python in the shell.
-          "bash/run-makefile.py",
+          "/mnt/tax_co/bash/run-makefile.py",
           os . path . join ( user_root, "config/shell.json" ) ],
         env    = my_env,
         stdout = subprocess . PIPE,
