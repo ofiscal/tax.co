@@ -69,7 +69,8 @@ def transfer_requests_from_temp_queue ():
         lib . write_requests ( lib . empty_requests (), requests_temp_path )
 
 def advance_request_queue ( user_hash : str ):
-    user_root = os . path . join ( tax_co_root_path, "users", user_hash )
+    user_root = os . path . join (
+        tax_co_root_path, "users", user_hash )
     with open ( process_marker_path, "w" ) as f:
         f . write ( user_hash )
     if True: # Refine the environment.
@@ -87,7 +88,7 @@ def advance_request_queue ( user_hash : str ):
     sp = subprocess . run (
         [ "/opt/conda/bin/python3.8", # TODO : Why do I have to specify kthis?
                                       # It's the default python in the shell.
-          "bash/run-makefile.py",
+          "/mnt/tax_co/bash/run-makefile.py",
           os . path . join ( user_root, "config/shell.json" ) ],
         env    = my_env,
         stdout = subprocess . PIPE,
