@@ -14,6 +14,9 @@ if True:
   import python.common.common as c
 
 
+log_path = os.path.join ( "/mnt/tax_co",
+                          "log.txt" )
+
 #### #### #### #### #### #### #### ####
 #### IO (functions and actions)    ####
 #### #### #### #### #### #### #### ####
@@ -69,6 +72,8 @@ def delete_oldest_user_folder ( requests : pd.DataFrame,
         raise Exception ( users_folder + " is not four folders below /." )
     requests = canonicalize_requests ( requests )
     oldest_user = requests . iloc[0] ["user"]
+    with open( log_path, "a" ) as f:
+        f.write( "oldest_user = " + oldest_user + "\n" )
     subprocess.run (
         [ "rm",
           "-rf",

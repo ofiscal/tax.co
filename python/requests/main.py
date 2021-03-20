@@ -47,6 +47,8 @@ requests_path       = os.path.join ( tax_co_root_path,
                                      "data/requests.csv" )
 requests_temp_path  = os.path.join ( tax_co_root_path,
                                      "data/requests.temp.csv" )
+log_path            = os.path.join ( tax_co_root_path,
+                                     "log.txt" )
 with open ( constraints_path ) as f:
     constraints = json . load ( f )
 
@@ -67,6 +69,8 @@ def transfer_requests_from_temp_queue ():
         lib . write_requests ( lib . empty_requests (), requests_temp_path )
 
 def advance_request_queue ( user_hash : str ):
+    with open( log_path, "a" ) as f:
+        f.write( "starting advance_request_queue\n" )
     user_root = os . path . join (
         tax_co_root_path, "users", user_hash )
     with open ( process_marker_path, "w" ) as f:
@@ -105,13 +109,22 @@ def advance_request_queue ( user_hash : str ):
 
 def try_to_advance_request_queue ( user_hash : str ):
     # TODO: Test.
+    with open( log_path, "a" ) as f:
+        f.write( "starting try_to_advance_request_queue\n" )
     reqs = lib . read_requests ( requests_path )
-    if ( os.path.exists ( process_marker_path )
-         | ( not lib.unexecuted_requests_exist ( reqs ) ) ):
+    if os.path.exists ( process_marker_path ):
+        with open( log_path, "a" ) as f:
+            f.write( "exit: process marker exists\n" )
         return ()
-    if lib . memory_permits_another_run (
+    if not lib.unexecuted_requests_exist ( reqs ):
+        with open( log_path, "a" ) as f:
+            f.write( "exit: no unexecuted requests\n" )
+        return ()
+    elif lib . memory_permits_another_run (
             lib.gb_used ( users_path ),
             constraints ):
+        with open( log_path, "a" ) as f:
+            f.write( "calling advance_request_queue\n" )
         advance_request_queue ( user_hash )
     elif lib . at_least_one_is_old ( reqs, constraints ):
         delete_oldest_user_folder ( requests_path, users_path )
@@ -119,24 +132,41 @@ def try_to_advance_request_queue ( user_hash : str ):
           # Recurse. Hopefully, now memory permits --
           # but since a user can choose a small sample size,
           # it might still not.
+    else:
+        with open( log_path, "a" ) as f:
+            f.write( "WEIRD: exit with uncaught condition\n" )
 
 if len ( sys.argv ) > 1:
+    with open( log_path, "a" ) as f:
+        f.write( "starting main conditional\n" )
+
     action = sys . argv [ 2 ]
       # Arg 0 is the path to this program path, 1 the .json config.
       # Arg 1 is read and used by common.py.
 
+    with open( log_path, "a" ) as f:
+        f.write( "action = " + action + "\n" )
+
     if True: # Initialize request data. (Usually unnecessary.)
+      with open( log_path, "a" ) as f:
+          f.write( "initializing data\n" )
       lib . initialize_requests ( requests_path )
       with lock:
           lib . initialize_requests ( requests_temp_path )
+      with open( log_path, "a" ) as f:
+          f.write( "initializing data: done\n" )
 
     # What the cron job does.
     if action == "try-to-advance":
+        with open( log_path, "a" ) as f:
+            f.write( "action = try-to-advance\n" )
         transfer_requests_from_temp_queue ()
         try_to_advance_request_queue ( c.user )
 
     # What the web page (the tax.co.web repo) does.
     if action == "add-to-temp-queue":
+        with open( log_path, "a" ) as f:
+            f.write( "action = add-to-temp-queue\n" )
         with lock:
           lib . mutate (
               requests_temp_path,
