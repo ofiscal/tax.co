@@ -1,4 +1,4 @@
- # TODO ? PTIFALL: All of these do IO, often destructively.
+# TODO ? PTIFALL: All of these do IO, often destructively.
 # Maybe I should make them functional and bump the IO
 # into the calling code.
 
@@ -58,19 +58,6 @@ def gb_used ( users_folder : str ) -> int:
         if s [i] . isspace(): break
     return int( reading ) / 1e6 # divide because `du` gives kb, not gb
 
-# This isn't actually necessary,
-# since delete_oldest_request() isn't.
-#
-# def delete_oldest ( requests_file : str,
-#                     users_folder : str ):
-#     # TODO: These changes to reqs could be clobbered --
-#     # by another instance of the same cron job,
-#     # or by a user submitting a new request. Need a mem lock.
-#     reqs = lib . read_requests ( requests_file )
-#     delete_oldest_user_folder ( reqs, users_folder )
-#     reqs = delete_oldest_request ( reqs )
-#     reqs . to_csv ( requests_file, index = False )
-
 def delete_oldest_user_folder ( requests : pd.DataFrame,
                                 users_folder : str ):
     if True: # Verify that users_folder looks plausible,
@@ -80,7 +67,7 @@ def delete_oldest_user_folder ( requests : pd.DataFrame,
         raise Exception ( users_folder + " does not end in `/users`" )
       if base . count ("/") != 4:
         raise Exception ( users_folder + " is not four folders below /." )
-    requests = canonicalize_requests( requests )
+    requests = canonicalize_requests ( requests )
     oldest_user = requests . iloc[0] ["user"]
     subprocess.run (
         [ "rm",

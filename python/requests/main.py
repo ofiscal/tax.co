@@ -25,14 +25,12 @@
 #   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/jeff/config/shell.json add-to-queue
 
 if True:
-  from   datetime import datetime
   import filelock
   import json
   import os
   import pandas as pd
   import subprocess
   import sys
-  from   typing import Callable, Dict
   #
   import python.requests.lib  as lib
   import python.common.common as c
@@ -97,7 +95,6 @@ def advance_request_queue ( user_hash : str ):
                               ("stderr.txt", sp.stderr) ]:
       with open ( os.path.join ( user_root, path ),
                   "a" ) as f:
-        f . write ( str ( datetime . now () ) + "\n" )
         f . write ( source . decode () )
     if sp . returncode == 0:
         lib . mutate (
