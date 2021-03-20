@@ -126,8 +126,12 @@ def try_to_advance_request_queue ( user_hash : str ):
         with open( log_path, "a" ) as f:
             f.write( "calling advance_request_queue\n" )
         advance_request_queue ( user_hash )
-    elif lib . at_least_one_is_old ( reqs, constraints ):
-        delete_oldest_user_folder ( requests_path, users_path )
+    elif lib.at_least_one_is_old ( reqs, constraints ):
+        with open( log_path, "a" ) as f:
+            f.write( "deleting something\n" )
+        lib.delete_oldest_user_folder (
+            lib.read_requests ( requests_path ),
+            users_path )
         try_to_advance_request_queue ( user_hash )
           # Recurse. Hopefully, now memory permits --
           # but since a user can choose a small sample size,
