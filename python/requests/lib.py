@@ -65,10 +65,12 @@ def delete_oldest_user_folder ( requests : pd.DataFrame,
                                 users_folder : str ):
     if True: # Verify that users_folder looks plausible,
              # to be sure it can't delete anything too important.
+      if users_folder[-1] == "/":
+          users_folder = users_folder[:-1]
       (base, last) = os . path . split ( users_folder )
-      if last != "users":
+      if not last in ["users","users/"]:
         raise Exception ( users_folder + " does not end in `/users`" )
-      if base . count ("/") != 4:
+      if base . count ("/") != 2:
         raise Exception ( users_folder + " is not four folders below /." )
     requests = canonicalize_requests ( requests )
     oldest_user = requests . iloc[0] ["user"]
@@ -77,7 +79,7 @@ def delete_oldest_user_folder ( requests : pd.DataFrame,
     subprocess.run (
         [ "rm",
           "-rf",
-          users_folder ] )
+          os.path.join ( users_folder, oldest_user ) ] )
 
 def this_request () -> pd.Series:
   # PITFALL: Looks pure, but in fact through the python.common lib
