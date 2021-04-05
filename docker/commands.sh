@@ -9,14 +9,14 @@
 docker run --name tax -itd                   \
   -v /home/jeff/of/tax.co/master:/mnt/tax_co \
   -p 8888:8888 -h 127.0.0.1                  \
-  ofiscal/tax.co:new
+  ofiscal/tax.co:latest
 
 # Start a docker container and run jupyter from within it.
 docker run --name tax -itd                   \
   --entrypoint=/root/run-jupyter.sh          \
   -v /home/jeff/of/tax.co/master:/mnt/tax_co \
   -p 8888:8888 -h 127.0.0.1                  \
-  ofiscal/tax.co:2021-03-04.jq
+  ofiscal/tax.co:2021-04-05.icecream
 
 # Start a shell within a running container.
 # (Once inside, go to the root of the project to do useful stuff,
@@ -37,9 +37,9 @@ docker build -f Dockerfile -t \
 docker tag ofiscal/tax.co:new     \
   ofiscal/tax.co:latest
 docker tag ofiscal/tax.co:new     \
-  ofiscal/tax.co:2021-03-04.jq
+  ofiscal/tax.co:2021-04-05.icecream
 docker rmi ofiscal/tax.co:new
 
 # Upload to DockerHub.
 docker push ofiscal/tax.co:latest
-docker push ofiscal/tax.co:2021-03-04.jq
+docker push ofiscal/tax.co:2021-04-05.icecream
