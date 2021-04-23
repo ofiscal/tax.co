@@ -71,12 +71,12 @@ def transfer_requests_from_temp_queue ():
         lib . write_requests ( lib . empty_requests (), requests_temp_path )
 
 def advance_request_queue ( user_hash : str ):
+    with open ( process_marker_path, "w" ) as f:
+        f . write ( user_hash )
     with open( log_path, "a" ) as f:
         f.write( "starting advance_request_queue\n" )
     user_root = os . path . join (
         tax_co_root_path, "users", user_hash )
-    with open ( process_marker_path, "w" ) as f:
-        f . write ( user_hash )
     if True: # Refine the environment.
         my_env = os . environ . copy ()
         env_additions = ":" . join (
@@ -113,11 +113,11 @@ def try_to_advance_request_queue ( user_hash : str ):
     # TODO: Test.
     with open( log_path, "a" ) as f:
         f.write( "starting try_to_advance_request_queue\n" )
-    reqs = lib . read_requests ( requests_path )
     if os.path.exists ( process_marker_path ):
         with open( log_path, "a" ) as f:
             f.write( "Exit: An earlier process is still running.\n" )
         return ()
+    reqs = lib . read_requests ( requests_path )
     if not lib.unexecuted_requests_exist ( reqs ):
         with open( log_path, "a" ) as f:
             f.write( "Exit: No unexecuted requests\n" )
