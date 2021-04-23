@@ -61,6 +61,18 @@ def gb_used ( users_folder : str ) -> int:
         if s [i] . isspace(): break
     return int( reading ) / 1e6 # divide because `du` gives kb, not gb
 
+def delete_oldest_folder_and_request (
+      requests_path : str,
+      users_folder : str ):
+    # PITFALL: Order matters. The oldest user folder can only
+    # be found if the oldest request is still in the db.
+    delete_oldest_user_folder (
+        read_requests ( requests_path ),
+        users_folder )
+    mutate (
+        requests_path,
+        lambda reqs: delete_oldest_request (
+            reqs ) )
 
 def validate_users_folder ( users_folder : str):
     """Verify that users_folder looks plausible,
@@ -150,9 +162,17 @@ def append_request ( requests : pd.DataFrame,
              . append ( request,
                         ignore_index = True ) )
 
-# This turns out not to be necessary --
-# there's no reason not to keep the entire history,
-# which will be small.
+# This might seem unnecessary -- why not just keep the old requests,
+# since they're small? But they actually contain no information,
+# because user names are hashes, and user configurations are deleted
+# along with the data they requested.
+#
+# If we ever decide to keep old configurations,
+# two more things would have to change:
+# the request format would have to include a "(tabular data) deleted" field,
+# and "delete oldest user()" would have to delete only the tabular data
+# from the oldest request that still has such data.
+# Or there might be an easier way, such as to simply copy the configs to another folder.
 def delete_oldest_request ( requests : pd.DataFrame
                           ) -> pd.DataFrame:
     # PITFALL: This doesn't verify that the oldest has been executed.

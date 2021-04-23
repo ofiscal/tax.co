@@ -56,8 +56,8 @@ with open ( constraints_path ) as f:
 
 lock = filelock . FileLock ( requests_temp_path + ".lock" )
     # Since the file at requests_path is only ever manipulated by tax.co,
-    # it does not need a lock. The one at requests_temp_path, however,
-    # is manipulated by tax.co.web also.
+    # it does not need a lock. The one at requests_temp_path,
+    # by contrast, is manipulated by tax.co.web also.
     # (Both only ever manipulate it through this program,
     # but more than one instance could be running at once.)
 
@@ -116,23 +116,23 @@ def try_to_advance_request_queue ( user_hash : str ):
     reqs = lib . read_requests ( requests_path )
     if os.path.exists ( process_marker_path ):
         with open( log_path, "a" ) as f:
-            f.write( "exit: process marker exists\n" )
+            f.write( "Exit: An earlier process is still running.\n" )
         return ()
     if not lib.unexecuted_requests_exist ( reqs ):
         with open( log_path, "a" ) as f:
-            f.write( "exit: no unexecuted requests\n" )
+            f.write( "Exit: No unexecuted requests\n" )
         return ()
     elif lib . memory_permits_another_run (
             lib.gb_used ( users_path ),
             constraints ):
         with open( log_path, "a" ) as f:
-            f.write( "calling advance_request_queue\n" )
+            f.write( "Calling advance_request_queue\n" )
         advance_request_queue ( user_hash )
     elif lib.at_least_one_is_old ( reqs, constraints ):
         with open( log_path, "a" ) as f:
-            f.write( "deleting something\n" )
-        lib.delete_oldest_user_folder (
-            lib.read_requests ( requests_path ),
+            f.write( "Deleting oldest request folder and request.\n" )
+        lib.delete_oldest_folder_and_request (
+            requests_path,
             users_path )
         try_to_advance_request_queue ( user_hash )
           # Recurse. Hopefully, now memory permits --
@@ -140,7 +140,7 @@ def try_to_advance_request_queue ( user_hash : str ):
           # it might still not.
     else:
         with open( log_path, "a" ) as f:
-            f.write( "WEIRD: exit with uncaught condition\n" )
+            f . write ( "Exit: No free memory, and nothing old enough to delete.\n" )
 
 if len ( sys.argv ) > 1:
     with open( log_path, "a" ) as f:
