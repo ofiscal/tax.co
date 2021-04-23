@@ -53,11 +53,10 @@ RUN pip install --upgrade                                            \
 RUN conda update --all --yes
 # RUN conda update -n base conda
 
-RUN sed -i "s/Listen 80/Listen 8000/g" /etc/apache2/ports.conf  && \
-    chmod u+x /etc/apache2/st*-apache.sh
-
 RUN apt update -y            && \
     apt install -y haskell-platform
+
+RUN pip install icecream  # a print library, nice for debugging
 
 
 #### #### #### #### #### #### #### #### #### #### #### ####
@@ -77,7 +76,8 @@ RUN cd /etc/apache2/                                && \
   chmod -R g+rw /var/www                            && \
   find / -iname "*apache*" -exec chmod 777 -R {} \; && \
   mkdir /home/appuser /usr/local/apache2            && \
-  chmod +777 /home/appuser
+  chmod +777 /home/appuser                          && \
+  sed -i "s/Listen 80/Listen 8000/g" /etc/apache2/ports.conf
 # PITFALL: www-data is the name of a new group and a new user,
 # both created by the adduser command.
 
