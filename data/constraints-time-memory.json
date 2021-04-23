@@ -1,5 +1,0 @@
-{ "min_survival_minutes" : 60,
-  "max_runtime_minutes" : 15,
-  "max_user_gb" : 2.5,
-  "max_gb" : 5
-}

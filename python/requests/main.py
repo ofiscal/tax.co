@@ -22,7 +22,9 @@
 # should be a path to a user configuration,
 # and the second should be an action to take.
 # For example,
-#   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/jeff/config/shell.json add-to-queue
+#   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/1/config/shell.json add-to-temp-queue
+#   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/1/config/shell.json try-to-advance
+
 
 if True:
   import filelock
