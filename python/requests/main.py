@@ -27,6 +27,7 @@
 
 
 if True:
+  from   datetime import datetime
   import filelock
   import json
   import os
@@ -143,15 +144,14 @@ def try_to_advance_request_queue ( user_hash : str ):
             f . write ( "Exit: No free memory, and nothing old enough to delete.\n" )
 
 if len ( sys.argv ) > 1:
-    with open( log_path, "a" ) as f:
-        f.write( "starting main conditional\n" )
-
+    time_started = str( datetime.now () )
     action = sys . argv [ 2 ]
       # Arg 0 is the path to this program path, 1 the .json config.
       # Arg 1 is read and used by common.py.
-
     with open( log_path, "a" ) as f:
-        f.write( "action = " + action + "\n" )
+        f.write( "\n" )
+        f.write( "Current GMT time: " + time_started  + "\n" )
+        f.write( "Starting action " + action + "\n" )
 
     if True: # Initialize request data. (Usually unnecessary.)
       with open( log_path, "a" ) as f:
@@ -164,17 +164,18 @@ if len ( sys.argv ) > 1:
 
     # What the cron job does.
     if action == "try-to-advance":
-        with open( log_path, "a" ) as f:
-            f.write( "action = try-to-advance\n" )
         transfer_requests_from_temp_queue ()
         try_to_advance_request_queue ( c.user )
 
     # What the web page (the tax.co.web repo) does.
     if action == "add-to-temp-queue":
-        with open( log_path, "a" ) as f:
-            f.write( "action = add-to-temp-queue\n" )
         with lock:
           lib . mutate (
               requests_temp_path,
               lambda reqs: lib . append_request (
                   reqs, lib . this_request () ) )
+
+    with open( log_path, "a" ) as f:
+        f.write( "Current time GMT: " + str( datetime.now() ) + "\n" )
+        f.write( "Ending action " + action + "that began at time\n" )
+        f.write( "    " + time_started  + "\n" )
