@@ -102,8 +102,9 @@ def this_request () -> pd.Series:
   # it executes IO, reading the user's config file.
   return pd . Series (
     { "user"      : c . user,
-      "requested" : datetime . now (),
-      "completed" : np . nan
+      "completed" : False,
+      "time requested" : datetime . now (),
+      "time completed" : np . nan
     } )
 
 
@@ -115,9 +116,11 @@ def mark_complete (
     user_hash : str,
     requests : pd.DataFrame ) -> pd.DataFrame:
   requests = requests . copy ()
-  requests . loc [ requests [ "user" ] == user_hash,
-                   "completed" ] = (
+  requests.loc [ requests [ "user" ] == user_hash,
+                 "time completed" ] = (
      datetime . now () )
+  requests.loc [ requests [ "user" ] == user_hash,
+                 "completed" ] = True
   return requests
 
 def at_least_one_is_old ( requests : pd.DataFrame,
@@ -129,12 +132,12 @@ def at_least_one_is_old ( requests : pd.DataFrame,
     # since execution is FIFO.
     now = datetime . now ()
     requests = canonicalize_requests( requests )
-    oldest = requests . iloc[0] ["requested"]
-      # Canonicalization ensures this is the oldest request.
+    oldest_request_time = requests . iloc[0] ["time requested"]
+      # Canonicalization ensures this comes from the oldest request.
     min_survival_time = (
         timedelta ( hours = 1 )
         * ( constraints[ "min_survival_minutes" ] / 60 ) )
-    return (now - oldest) > min_survival_time
+    return (now - oldest_request_time) > min_survival_time
 
 
 #### #### #### #### ####
@@ -150,7 +153,7 @@ def memory_permits_another_run (
 
 def empty_requests () -> pd.DataFrame:
     return pd.DataFrame (
-        columns = ["user","requested","completed"] )
+        columns = ["user","completed","time requested","time completed"] )
 
 # Arguably this is too simple to be worth defining,
 # but if I didn't, I'd have to remember the ignore_index option.
@@ -189,31 +192,31 @@ def canonicalize_requests ( requests : pd.DataFrame
     requests = requests . copy ()
     return format_times (
         uniquify_requests ( requests )
-        . sort_values ( "requested",
+        . sort_values ( "time requested",
                         ascending = True ) )
 
 def uniquify_requests ( requests : pd.DataFrame
                       ) -> pd.DataFrame:
     requests = requests . copy ()
     return ( requests
-             . sort_values( ["user","requested"],
+             . sort_values( ["user","completed","time requested"],
                             ascending = True )
-             . groupby( ["user"] )
+             . groupby( ["user","completed"] )
              . agg( "first" )
-               # User keeps their place in line after changing the request.
+               # "ascending" means the first entry for a user is the earliest,
+               # so the user keeps place in line after changing the request.
                # (This database does not know the content of the request,
                # just the time and the user.)
              . reset_index() )
 
 def unexecuted_requests_exist ( requests : pd.DataFrame
                               ) -> bool:
-    return ( requests [ "completed" ]
-            . isnull ()
+    return ( (~ requests [ "completed" ] )
             . any () )
 
 def format_times ( requests : pd.DataFrame
                  ) -> pd.DataFrame:
     requests = requests . copy ()
-    for c in ["requested","completed"]:
+    for c in ["time requested","time completed"]:
       requests [c] = pd . to_datetime( requests [c] )
     return requests
