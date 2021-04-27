@@ -15,7 +15,7 @@ if True:
 
 
 log_path = os.path.join ( "/mnt/tax_co",
-                          "log.txt" )
+                          "requests-log.txt" )
 
 #### #### #### #### #### #### #### ####
 #### IO (functions and actions)    ####

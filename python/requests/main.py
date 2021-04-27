@@ -22,9 +22,10 @@
 # should be a path to a user configuration,
 # and the second should be an action to take.
 # For example,
-#   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/1/config/shell.json add-to-temp-queue
-#   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/1/config/shell.json try-to-advance
-
+#   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/symlinks1/config/shell.json add-to-temp-queue
+#   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/symlinks/1/config/shell.json try-to-advance
+# and for debugging:
+#   PYTHONPATH=/mnt/tax_co python3 -m pdb python/requests/main.py users/symlinks/1/config/shell.json try-to-advance
 
 if True:
   from   datetime import datetime
@@ -32,6 +33,7 @@ if True:
   import json
   import os
   import pandas as pd
+  import pdb
   import subprocess
   import sys
   #
@@ -51,7 +53,7 @@ requests_path       = os.path.join ( tax_co_root_path,
 requests_temp_path  = os.path.join ( tax_co_root_path,
                                      "data/requests.temp.csv" )
 log_path            = os.path.join ( tax_co_root_path,
-                                     "log.txt" )
+                                     "requests-log.txt" )
 with open ( constraints_path ) as f:
     constraints = json . load ( f )
 
@@ -90,6 +92,7 @@ def advance_request_queue ( user_hash : str ):
                            my_env [ "PYTHONPATH" ] ] )
             if "PYTHONPATH" in my_env . keys ()
             else env_additions )
+    pdb.set_trace()
     sp = subprocess . run (
         [ "/opt/conda/bin/python3.8", # TODO : Why do I have to specify kthis?
                                       # It's the default python in the shell.
