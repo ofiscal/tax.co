@@ -77,7 +77,7 @@ def advance_request_queue ( user_hash : str ):
     with open ( process_marker_path, "w" ) as f:
         f . write ( user_hash )
     with open( log_path, "a" ) as f:
-        f.write( "starting advance_request_queue\n" )
+        f . write( "starting advance_request_queue\n" )
     user_root = os . path . join (
         tax_co_root_path, "users", user_hash )
     if True: # Refine the environment.
@@ -116,7 +116,7 @@ def advance_request_queue ( user_hash : str ):
 def try_to_advance_request_queue ( user_hash : str ):
     # TODO: Test.
     with open( log_path, "a" ) as f:
-        f.write( "starting try_to_advance_request_queue\n" )
+        f . write( "starting try_to_advance_request_queue\n" )
     if os.path.exists ( process_marker_path ):
         with open( log_path, "a" ) as f:
             f.write( "Exit: An earlier process is still running.\n" )
@@ -134,7 +134,7 @@ def try_to_advance_request_queue ( user_hash : str ):
         advance_request_queue ( user_hash )
     elif lib.at_least_one_is_old ( reqs, constraints ):
         with open( log_path, "a" ) as f:
-            f.write( "Deleting oldest request folder and request.\n" )
+            f . write( "Deleting oldest request folder and request.\n" )
         lib.delete_oldest_folder_and_request (
             requests_path,
             users_path )
@@ -158,12 +158,12 @@ if len ( sys.argv ) > 1:
 
     if True: # Initialize request data. (Usually unnecessary.)
       with open( log_path, "a" ) as f:
-          f.write( "initializing data\n" )
+          f . write( "initializing data\n" )
       lib . initialize_requests ( requests_path )
       with lock:
-          lib . initialize_requests ( requests_temp_path )
+          lib.initialize_requests ( requests_temp_path )
       with open( log_path, "a" ) as f:
-          f.write( "initializing data: done\n" )
+          f . write( "initializing data: done\n" )
 
     # What the cron job does.
     if action == "try-to-advance":
@@ -173,7 +173,7 @@ if len ( sys.argv ) > 1:
     # What the web page (the tax.co.web repo) does.
     if action == "add-to-temp-queue":
         with lock:
-          lib . mutate (
+          lib.mutate (
               requests_temp_path,
               lambda reqs: lib . append_request (
                   reqs, lib . this_request () ) )
