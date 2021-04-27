@@ -101,8 +101,8 @@ def this_request () -> pd.Series:
   # PITFALL: Looks pure, but in fact through the python.common lib
   # it executes IO, reading the user's config file.
   return pd . Series (
-    { "user"      : c . user,
-      "completed" : False,
+    { "user"           : c . user,
+      "completed"      : False,
       "time requested" : datetime . now (),
       "time completed" : np . nan
     } )
@@ -130,14 +130,18 @@ def at_least_one_is_old ( requests : pd.DataFrame,
     # But it's only called if there's no space,
     # in which case we can assume the execution happened,
     # since execution is FIFO.
-    now = datetime . now ()
-    requests = canonicalize_requests( requests )
-    oldest_request_time = requests . iloc[0] ["time requested"]
-      # Canonicalization ensures this comes from the oldest request.
-    min_survival_time = (
-        timedelta ( hours = 1 )
-        * ( constraints[ "min_survival_minutes" ] / 60 ) )
-    return (now - oldest_request_time) > min_survival_time
+    if (~requests["completed"]) . all():
+        # If nothing is complete, no results exist, hence no results are old.
+        return False
+    else:
+        now = datetime . now ()
+        requests = canonicalize_requests ( requests )
+        oldest_request_time = requests . iloc[0] ["time completed"]
+          # Canonicalization ensures this comes from the oldest request.
+        min_survival_time = (
+            timedelta ( hours = 1 )
+            * ( constraints[ "min_survival_minutes" ] / 60 ) )
+        return (now - oldest_request_time) > min_survival_time
 
 
 #### #### #### #### ####
@@ -192,22 +196,31 @@ def canonicalize_requests ( requests : pd.DataFrame
     requests = requests . copy ()
     return format_times (
         uniquify_requests ( requests )
-        . sort_values ( "time requested",
-                        ascending = True ) )
+        . sort_values (
+            ["completed","time completed","time requested"],
+            ascending = [False,    # Complete before incomplete.
+                         True,     # Early before late.
+                         True] ) ) # Early before late.
 
 def uniquify_requests ( requests : pd.DataFrame
                       ) -> pd.DataFrame:
     requests = requests . copy ()
+
     return ( requests
-             . sort_values( ["user","completed","time requested"],
-                            ascending = True )
-             . groupby( ["user","completed"] )
-             . agg( "first" )
-               # "ascending" means the first entry for a user is the earliest,
-               # so the user keeps place in line after changing the request.
-               # (This database does not know the content of the request,
-               # just the time and the user.)
-             . reset_index() )
+        . sort_values (
+        # Sort order doesn't matter for "user" or "completed";
+        # every unique (user,completed) pair will be kept.
+        # but it's important that within each such pair,
+        # the first time is the earliest.
+        ["user","completed","time requested"],
+        ascending = True )
+        . groupby( ["user","completed"] )
+        . agg( "first" )
+        # "ascending" means the first entry for a user is the earliest,
+        # so the user keeps place in line after changing the request.
+        # (This database does not know the content of the request,
+        # just the time and the user.)
+        . reset_index() )
 
 def unexecuted_requests_exist ( requests : pd.DataFrame
                               ) -> bool:

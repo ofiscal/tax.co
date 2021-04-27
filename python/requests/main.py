@@ -33,7 +33,6 @@ if True:
   import json
   import os
   import pandas as pd
-  import pdb
   import subprocess
   import sys
   #
@@ -75,6 +74,8 @@ def transfer_requests_from_temp_queue ():
 
 def advance_request_queue ( user_hash : str ):
     with open ( process_marker_path, "w" ) as f:
+        # Reserving this marker prevents another advance-the-queue
+        # process from running while this one does.
         f . write ( user_hash )
     with open( log_path, "a" ) as f:
         f . write( "starting advance_request_queue\n" )
@@ -92,10 +93,19 @@ def advance_request_queue ( user_hash : str ):
                            my_env [ "PYTHONPATH" ] ] )
             if "PYTHONPATH" in my_env . keys ()
             else env_additions )
-    pdb.set_trace()
-    sp = subprocess . run (
-        [ "/opt/conda/bin/python3.8", # TODO : Why do I have to specify kthis?
-                                      # It's the default python in the shell.
+    with open( log_path, "a" ) as f:
+        f . write(
+            "\n".join( [
+                "About to run this:",
+                "/opt/conda/bin/python3.8",
+                "/mnt/tax_co/bash/run-makefile.py",
+                os . path . join ( user_root, "config/shell.json" ),
+                str( my_env ) ] )
+            + "\n" )
+    sp = subprocess.run (
+        [ "/opt/conda/bin/python3.8",
+            # TODO : Do I really have to specify this?
+            # In the shell it's the default python (and the default python3).
           "/mnt/tax_co/bash/run-makefile.py",
           os . path . join ( user_root, "config/shell.json" ) ],
         env    = my_env,
