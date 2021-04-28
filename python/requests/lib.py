@@ -101,10 +101,11 @@ def this_request () -> pd.Series:
   # PITFALL: Looks pure, but in fact through the python.common lib
   # it executes IO, reading the user's config file.
   return pd . Series (
-    { "user"           : c . user,
+    { "user email"     : c.user_email,
+      "user"           : c.user,
       "completed"      : False,
-      "time requested" : datetime . now (),
-      "time completed" : np . nan
+      "time requested" : datetime.now (),
+      "time completed" : np.nan
     } )
 
 
@@ -157,7 +158,7 @@ def memory_permits_another_run (
 
 def empty_requests () -> pd.DataFrame:
     return pd.DataFrame (
-        columns = ["user","completed","time requested","time completed"] )
+        columns = ["user email", "user","completed","time requested","time completed"] )
 
 # Arguably this is too simple to be worth defining,
 # but if I didn't, I'd have to remember the ignore_index option.
