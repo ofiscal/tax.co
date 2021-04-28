@@ -12,3 +12,4 @@ By contrast, when running from the shell,
 Python uses a `shell.json` file from somewhere in `users/`.
 `repl.json` is not overridden;
 instead it should be edited in-place, here.
+It should look something like `repl.MODEL.json`.
