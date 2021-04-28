@@ -102,6 +102,7 @@ def this_request () -> pd.Series:
   # it executes IO, reading the user's config file.
   return pd . Series (
     { "user email"     : c.user_email,
+        # Not necessary, but helpful to a human reading the data.
       "user"           : c.user,
       "completed"      : False,
       "time requested" : datetime.now (),
