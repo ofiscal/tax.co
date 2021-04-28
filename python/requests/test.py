@@ -41,7 +41,7 @@ def test_delete_oldest_request ():
              df . iloc [[4,2]]
              . reset_index ( drop = True ) ) ) )
 
-def test_at_least_one_is_old ():
+def test_at_least_one_result_is_old ():
   constraints = { "min_survival_minutes" : 60 }
   now = datetime.now()
   early = now - timedelta (
@@ -51,9 +51,9 @@ def test_at_least_one_is_old ():
        [ 2, True,  now, now],        # finished but young
        [ 3, True,  early, early ] ], # finished and old
      columns = ["user", "completed", "time requested","time completed"] )
-  assert not r.at_least_one_is_old ( df[:2]     , constraints )
-  assert     r.at_least_one_is_old ( df         , constraints )
-  assert     r.at_least_one_is_old ( df.iloc[2:], constraints )
+  assert not r.at_least_one_result_is_old ( df[:2]     , constraints )
+  assert     r.at_least_one_result_is_old ( df         , constraints )
+  assert     r.at_least_one_result_is_old ( df.iloc[2:], constraints )
 
 def test_uniquify_requests ():
     cols = ["user","completed", "time requested"]
@@ -95,7 +95,7 @@ def test_unexecuted_requests_exist ():
 if True:
   test_memory_permits_another_run ()
   test_delete_oldest_request ()
-  test_at_least_one_is_old ()
+  test_at_least_one_result_is_old ()
   test_uniquify_requests ()
   test_unexecuted_requests_exist ()
   #

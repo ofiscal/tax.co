@@ -123,7 +123,7 @@ def mark_complete (
                  "completed" ] = True
   return requests
 
-def at_least_one_is_old ( requests : pd.DataFrame,
+def at_least_one_result_is_old ( requests : pd.DataFrame,
                           constraints : Dict[ str, str ]
                         ) -> bool:
     # PITFALL: Does not verify the old request was executed.

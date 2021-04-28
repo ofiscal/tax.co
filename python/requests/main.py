@@ -56,7 +56,7 @@ log_path            = os.path.join ( tax_co_root_path,
 with open ( constraints_path ) as f:
     constraints = json . load ( f )
 
-lock = filelock . FileLock ( requests_temp_path + ".lock" )
+lock_for_temp_db = filelock . FileLock ( requests_temp_path + ".lock" )
     # Since the file at requests_path is only ever manipulated by tax.co,
     # it does not need a lock. The one at requests_temp_path,
     # by contrast, is manipulated by tax.co.web also.
@@ -64,7 +64,7 @@ lock = filelock . FileLock ( requests_temp_path + ".lock" )
     # but more than one instance could be running at once.)
 
 def transfer_requests_from_temp_queue ():
-    with lock:
+    with lock_for_temp_db:
         reqs = lib . read_requests ( requests_path )
         reqs_temp = lib . read_requests ( requests_temp_path )
         reqs = lib . canonicalize_requests (
@@ -143,7 +143,7 @@ def try_to_advance_request_queue ( user_hash : str ):
         with open( log_path, "a" ) as f:
             f.write( "Calling advance_request_queue\n" )
         advance_request_queue ( user_hash )
-    elif lib.at_least_one_is_old ( reqs, constraints ):
+    elif lib.at_least_one_result_is_old ( reqs, constraints ):
         with open( log_path, "a" ) as f:
             f . write( "Deleting oldest request folder and request.\n" )
         lib.delete_oldest_folder_and_request (
@@ -171,7 +171,7 @@ if len ( sys.argv ) > 1:
       with open( log_path, "a" ) as f:
           f . write( "initializing data\n" )
       lib . initialize_requests ( requests_path )
-      with lock:
+      with lock_for_temp_db:
           lib.initialize_requests ( requests_temp_path )
       with open( log_path, "a" ) as f:
           f . write( "initializing data: done\n" )
@@ -183,7 +183,7 @@ if len ( sys.argv ) > 1:
 
     # What the web page (the tax.co.web repo) does.
     if action == "add-to-temp-queue":
-        with lock:
+        with lock_for_temp_db:
           lib.mutate (
               requests_temp_path,
               lambda reqs: lib . append_request (
