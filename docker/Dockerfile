@@ -89,6 +89,8 @@ RUN groupadd -g 999 appuser               && \
     chown appuser /home/appuser
 USER appuser
 
+ENV TZ="America/Bogota"
+
 RUN PATH=/root/.local/bin:$PATH
 EXPOSE 8888
 CMD ["/bin/bash"]

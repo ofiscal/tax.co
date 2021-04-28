@@ -164,7 +164,7 @@ if len ( sys.argv ) > 1:
       # Arg 1 is read and used by common.py.
     with open( log_path, "a" ) as f:
         f.write( "\n" )
-        f.write( "Current GMT time: " + time_started  + "\n" )
+        f.write( "Current time: " + time_started  + "\n" )
         f.write( "Starting action " + action + "\n" )
 
     if True: # Initialize request data. (Usually unnecessary.)
@@ -190,6 +190,6 @@ if len ( sys.argv ) > 1:
                   reqs, lib . this_request () ) )
 
     with open( log_path, "a" ) as f:
-        f.write( "Current time GMT: " + str( datetime.now() ) + "\n" )
+        f.write( "Current time: " + str( datetime.now() ) + "\n" )
         f.write( "Ending action " + action + "that began at time\n" )
         f.write( "    " + time_started  + "\n" )

@@ -5,6 +5,8 @@
 # A trick to quickly edit a Docker-locked file from the host system:
 # https://stackoverflow.com/a/26915343
 
+DOCKER_IMAGE_SUFFIX="2021-04-27.Colombia-time"
+
 # Start a docker container based on the latest image.
 docker run --name tax -itd                   \
   -v /home/jeff/of/tax.co/master:/mnt/tax_co \
@@ -16,7 +18,7 @@ docker run --name tax -itd                   \
   --entrypoint=/root/run-jupyter.sh          \
   -v /home/jeff/of/tax.co/master:/mnt/tax_co \
   -p 8888:8888 -h 127.0.0.1                  \
-  ofiscal/tax.co:2021-04-05.icecream
+  ofiscal/tax.co:$DOCKER_IMAGE_SUFFIX
 
 # Start a shell within a running container.
 # (Once inside, go to the root of the project to do useful stuff,
@@ -37,9 +39,10 @@ docker build -f Dockerfile -t \
 docker tag ofiscal/tax.co:new     \
   ofiscal/tax.co:latest
 docker tag ofiscal/tax.co:new     \
-  ofiscal/tax.co:2021-04-05.icecream
+  ofiscal/tax.co:$DOCKER_IMAGE_SUFFIX
 docker rmi ofiscal/tax.co:new
+docker push ofiscal/tax.co:$DOCKER_IMAGE_SUFFIX
 
 # Upload to DockerHub.
 docker push ofiscal/tax.co:latest
-docker push ofiscal/tax.co:2021-04-05.icecream
+docker push ofiscal/tax.co:$DOCKER_IMAGE_SUFFIX
