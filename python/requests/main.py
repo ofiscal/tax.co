@@ -117,6 +117,7 @@ def advance_request_queue ( user_hash : str ):
                   "a" ) as f:
         f . write ( source . decode () )
     if sp . returncode == 0:
+        # TODO : `make` returns 0 even when from my point of view it didn't work, so this is unreliable.
         lib . mutate (
             requests_path,
             lambda reqs: lib . mark_complete (
