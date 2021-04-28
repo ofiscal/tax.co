@@ -4,14 +4,12 @@
 
 # For testing on the 1/1000 sample.
 { "min_survival_minutes" : 0,
-  "max_runtime_minutes" : 1,
   "max_user_gb" : 0.016,
   "max_gb" : 0.040
 }
 
 # MAYBE good parameters for production, with the full sample.
 { "min_survival_minutes" : 60,
-  "max_runtime_minutes" : 15,
   "max_user_gb" : 2.5,
   "max_gb" : 5
 }
