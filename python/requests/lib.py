@@ -223,7 +223,12 @@ def uniquify_requests ( requests : pd.DataFrame
             # so the user keeps place in line after changing the request.
             # (This database does not know the content of the request,
             # just the time and the user.)
-        . reset_index() )
+        . reset_index()
+        [[ "user email", # Without this the grouping columns go first.
+           "user",
+           "completed",
+           "time requested",
+           "time completed" ]] )
 
 def unexecuted_requests_exist ( requests : pd.DataFrame
                               ) -> bool:
