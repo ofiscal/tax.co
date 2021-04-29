@@ -44,8 +44,10 @@ def read_requests ( requests_file_path : str
 
 def write_requests ( reqs : pd.DataFrame,
                      requests_file_path : str ):
-    reqs . to_csv ( requests_file_path,
-                    index = False )
+    ( canonicalize_requests ( reqs )
+     . to_csv (
+         requests_file_path,
+         index = False ) )
 
 def gb_used ( users_folder : str ) -> int:
     s = str ( subprocess . Popen( "du -s " + users_folder,
