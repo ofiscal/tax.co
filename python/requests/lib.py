@@ -232,10 +232,9 @@ def unexecuted_requests_exist ( requests : pd.DataFrame
 
 def next_request ( reqs : pd.DataFrame ) -> str:
     reqs = canonicalize_requests ( reqs )
-    s = ( reqs [ ~reqs [ "completed" ] ]
-          ["user"]
-          . iloc[0] )
-    return s
+    return ( reqs [ ~reqs [ "completed" ] ]
+             ["user"]
+             . iloc[0] )
 
 def format_times ( requests : pd.DataFrame
                  ) -> pd.DataFrame:
