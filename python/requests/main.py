@@ -11,10 +11,10 @@
 
 # PITFALL
 # ######
-# This Python program is meant to be called, either from another one --
-# the Django server defined by the repo at
-#   github.com:ofiscal/tax.co.web
-# -- or by a cron job.
+# This Python program is meant to be invoked either by
+# (1) a cron job, or
+# (2) another Python program -- specifically the Django server
+#   defined by the repo at github.com:ofiscal/tax.co.web
 
 # How to invoke this code:
 # ########################

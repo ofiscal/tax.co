@@ -1,4 +1,4 @@
-# TODO ? PTIFALL: All of these do IO, often destructively.
+# TODO ? PITFALL: All of these do IO, often destructively.
 # Maybe I should make them functional and bump the IO
 # into the calling code.
 
@@ -64,7 +64,7 @@ def gb_used ( users_folder : str ) -> int:
 def delete_oldest_folder_and_request (
       requests_path : str,
       users_folder : str ):
-    # PITFALL: Order matters. The oldest user folder can only
+    # PITFALL: Order of the below matters. The oldest user folder can only
     # be found if the oldest request is still in the db.
     delete_oldest_user_folder (
         read_requests ( requests_path ),
