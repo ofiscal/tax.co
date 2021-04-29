@@ -23,9 +23,10 @@
 # and the second should be an action to take.
 # For example,
 #   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/1/config/shell.json add-to-temp-queue
-#   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/1/config/shell.json try-to-advance
+#   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/1/config/shell.json try-to-advance-user
 # and for debugging:
-#   PYTHONPATH=/mnt/tax_co python3 -m pdb python/requests/main.py users/1/config/shell.json try-to-advance
+#   PYTHONPATH=/mnt/tax_co python3 -m pdb python/requests/main.py users/1/config/shell.json try-to-advance-user
+#
 
 if True:
   from   datetime import datetime
@@ -177,7 +178,7 @@ if len ( sys.argv ) > 1:
           f . write( "initializing data: done\n" )
 
     # What the cron job does.
-    if action == "try-to-advance":
+    if action == "try-to-advance-user":
         transfer_requests_from_temp_queue ()
         try_to_advance_request_queue ( c.user )
 
