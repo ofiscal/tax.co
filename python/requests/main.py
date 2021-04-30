@@ -23,10 +23,19 @@
 # and the second should be an action to take.
 # For example,
 #   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/1/config/shell.json add-to-temp-queue
-#   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/1/config/shell.json try-to-advance-user
+#   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/1/config/shell.json try-to-advance-queue
 # and for debugging:
-#   PYTHONPATH=/mnt/tax_co python3 -m pdb python/requests/main.py users/1/config/shell.json try-to-advance-user
+#   PYTHONPATH=/mnt/tax_co python3 -m pdb python/requests/main.py users/1/config/shell.json try-to-advance-queue
 #
+# What the actions mean
+# ---------------------
+# add-to-temp-queue:
+#   Appends the latest request to
+#     data/requests.temp.csv
+# try-to-advance-queue:
+#   Runs the most recent incomplete request, if possible.
+#   If there's no room for it and nothing old enough to be deleted,
+#   or if another request is being processed, this does nothing.
 
 if True:
   from   datetime import datetime
@@ -73,7 +82,9 @@ def transfer_requests_from_temp_queue ():
         lib . write_requests ( reqs,                    requests_path )
         lib . write_requests ( lib . empty_requests (), requests_temp_path )
 
-def advance_request_queue ( user_hash : str ):
+def advance_request_queue ():
+    user_hash : str = lib.next_request (
+      lib.read_requests ( requests_path ) )
     with open ( process_marker_path, "w" ) as f:
         # Reserving this marker prevents another advance-the-queue
         # process from running while this one does.
@@ -125,7 +136,7 @@ def advance_request_queue ( user_hash : str ):
                 user_hash, reqs ) )
     os . remove ( process_marker_path )
 
-def try_to_advance_request_queue ( user_hash : str ):
+def try_to_advance_request_queue ( ):
     # TODO: Test.
     with open( log_path, "a" ) as f:
         f . write( "starting try_to_advance_request_queue\n" )
@@ -143,14 +154,14 @@ def try_to_advance_request_queue ( user_hash : str ):
             constraints ):
         with open( log_path, "a" ) as f:
             f.write( "Calling advance_request_queue\n" )
-        advance_request_queue ( user_hash )
+        advance_request_queue ()
     elif lib.at_least_one_result_is_old ( reqs, constraints ):
         with open( log_path, "a" ) as f:
             f . write( "Deleting oldest request folder and request.\n" )
         lib.delete_oldest_folder_and_request (
             requests_path,
             users_path )
-        try_to_advance_request_queue ( user_hash )
+        try_to_advance_request_queue ()
           # Recurse. Hopefully, now memory permits --
           # but since a user can choose a small sample size,
           # it might still not.
@@ -178,9 +189,9 @@ if len ( sys.argv ) > 1:
           f . write( "initializing data: done\n" )
 
     # What the cron job does.
-    if action == "try-to-advance-user":
+    if action == "try-to-advance-queue":
         transfer_requests_from_temp_queue ()
-        try_to_advance_request_queue ( c.user )
+        try_to_advance_request_queue ()
 
     # What the web page (the tax.co.web repo) does.
     if action == "add-to-temp-queue":
