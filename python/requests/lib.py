@@ -24,16 +24,16 @@ log_path = os.path.join ( "/mnt/tax_co",
 def mutate ( filename : str,
              f : Callable [ [ pd.DataFrame ], pd.DataFrame ]
            ):
-    df = pd . read_csv ( filename )
-    f ( df ) . to_csv ( filename,
-                        index = False )
+  df = pd . read_csv ( filename )
+  f ( df ) . to_csv ( filename,
+                      index = False )
 
 def initialize_requests ( requests_file_path : str ):
   """If the file already exists, this does nothing."""
   if not os . path . exists ( requests_file_path ):
-       ( empty_requests ()
-         . to_csv ( requests_file_path,
-                    index = False ) )
+    ( empty_requests ()
+      . to_csv ( requests_file_path,
+                 index = False ) )
 
 def read_requests ( requests_file_path : str
                   ) -> pd.DataFrame:
@@ -64,17 +64,17 @@ def gb_used ( users_folder : str ) -> int:
     return int( reading ) / 1e6 # divide because `du` gives kb, not gb
 
 def delete_oldest_folder_and_request (
-      requests_path : str,
-      users_folder : str ):
-    # PITFALL: Order of the below matters. The oldest user folder can only
-    # be found if the oldest request is still in the db.
-    delete_oldest_user_folder (
-        read_requests ( requests_path ),
-        users_folder )
-    mutate (
-        requests_path,
-        lambda reqs: delete_oldest_request (
-            reqs ) )
+    requests_path : str,
+    users_folder : str ):
+  # PITFALL: Order of the below matters. The oldest user folder can only
+  # be found if the oldest request is still in the db.
+  delete_oldest_user_folder (
+    read_requests ( requests_path ),
+    users_folder )
+  mutate (
+    requests_path,
+    lambda reqs: delete_oldest_request (
+      reqs ) )
 
 def validate_users_folder ( users_folder : str):
     """Verify that users_folder looks plausible,
