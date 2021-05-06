@@ -23,7 +23,8 @@
 # and the second should be an action to take.
 # For example,
 #   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/1/config/shell.json add-to-temp-queue
-#   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/1/config/shell.json try-to-advance-queue
+#   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py config/repl.json try-to-advance-queue
+#       repl.json isn't used, but still must be supplied.
 # and for debugging:
 #   PYTHONPATH=/mnt/tax_co python3 -m pdb python/requests/main.py users/1/config/shell.json try-to-advance-queue
 #
