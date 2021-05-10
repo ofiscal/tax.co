@@ -18,7 +18,7 @@ regime_year?=2016
 yr=$(strip $(regime_year))
 strategy_year_suffix=$(strategy_suffix).$(yr)
 
-python_from_here = PYTHONPATH='.' python3
+python_from_here = PYTHONPATH='/mnt/tax_co':$PYTHONPATH python3
 
 
 ##=##=##=##  Input data variables

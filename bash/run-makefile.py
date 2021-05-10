@@ -21,8 +21,11 @@
 #   it defaults (in common.py) to "config/config.json".
 
 import python.common.common as c
+import os
 import subprocess
 
+
+tax_co_root_path    = "/mnt/tax_co"
 
 targets = [ "show_config",
             "tests",
@@ -33,13 +36,28 @@ targets = [ "show_config",
   # For the full list of possible targets,
   # see the Makefile, particularly the definition of .PHONY.
 
+if True: # Refine the environment.
+  my_env = os . environ . copy ()
+  env_additions = ":" . join (
+      [ tax_co_root_path,
+        "/opt/conda/lib/python3.8/site-packages" ] )
+        # TODO ? Why must this second folder be specified?
+        # It's the default when I run python3 from the shell.
+  my_env["PYTHONPATH"] = (
+      ":" . join ( [ env_additions,
+                     my_env [ "PYTHONPATH" ] ] )
+      if "PYTHONPATH" in my_env . keys ()
+      else env_additions )
+
 subprocess.run (
-    [ "make",
-     "bash/run-makefile.py" ] +
+  ( [ "make",
+      "bash/run-makefile.py" ] +
     targets +
     [ "config_file=" + c.config_file       ,
       "subsample="   + str( c.subsample )  ,
       "strategy="    + c.strategy          ,
       "regime_year=" + str( c.regime_year ),
-      "user="        + c.user ]
-    )
+      "user="        + c.user ] ),
+  env    = my_env,
+  stdout = subprocess . PIPE,
+  stderr = subprocess . PIPE )

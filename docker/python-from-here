@@ -3,4 +3,4 @@
 # This script becomes part of the tax.co Docker environment.
 # `make.py` and `rules.py` rely on it.
 
-PYTHONPATH='.' python3 $@
+PYTHONPATH='/mnt/tax_co':$PYTHONPATH python3 $@

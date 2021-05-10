@@ -23,7 +23,7 @@
 # and the second should be an action to take.
 # For example,
 #   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/1/config/config.json add-to-temp-queue
-#   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py config/config.json try-to-advance-queue
+#   PYTHONPATH=/mnt/tax:$PYTHONPATH_co python3 python/requests/main.py config/config.json try-to-advance-queue
 #       config.json isn't used for try-to-advance-queue,
 #       but still must be supplied, or common.py will be confused.
 # and for debugging:
