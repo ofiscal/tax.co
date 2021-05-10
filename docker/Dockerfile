@@ -3,9 +3,6 @@
 
 FROM debian:latest
 
-ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
-ENV PATH /opt/conda/bin:$PATH
-
 RUN echo "2020 01 05" && \
   apt update --fix-missing -y && \
   apt upgrade -y
@@ -35,9 +32,6 @@ RUN easy_install xlsx2csv
 RUN cd /root                                     && \
     git clone https://github.com/zwegner/make.py && \
     ln -s /root/make.py/make.py /usr/bin/make.py
-
-COPY python-from-here /usr/bin
-RUN chmod +777 /usr/bin/python-from-here
 
 RUN apt install -y csvtool
 
@@ -70,6 +64,9 @@ RUN pip install icecream  # a print library, nice for debugging
 RUN sed -i '/session    required     pam_loginuid.so/c\#session    required     pam_loginuid.so' /etc/pam.d/cron && \
   touch /etc/cron.deny
 
+COPY python-from-here /usr/bin
+RUN chmod +777 /usr/bin/python-from-here
+
 RUN cd /etc/apache2/                                && \
   adduser www-data www-data                         && \
   chown -R www-data:www-data /var/www               && \
@@ -80,6 +77,9 @@ RUN cd /etc/apache2/                                && \
   sed -i "s/Listen 80/Listen 8000/g" /etc/apache2/ports.conf
 # PITFALL: www-data is the name of a new group and a new user,
 # both created by the adduser command.
+
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+ENV PATH /opt/conda/bin:$PATH
 
 # So that the container runs without root privileges on the host.
 # PITFALL: This might only work when run by a user whose uid is 1000.
