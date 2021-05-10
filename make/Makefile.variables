@@ -3,7 +3,7 @@
 # TODO: Makefile is a horrible language.
 # This would be more readable and safer if it were done by run-makefile.py.
 
-config_file?=config/shell.json
+config_file?=config/config.json
 subsample?=1
   # default value; can be overridden from the command line,
   # as in "make raw subsample=10"

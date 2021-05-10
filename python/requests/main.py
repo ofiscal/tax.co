@@ -22,11 +22,12 @@
 # should be a path to a user configuration,
 # and the second should be an action to take.
 # For example,
-#   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/1/config/shell.json add-to-temp-queue
-#   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py config/repl.json try-to-advance-queue
-#       repl.json isn't used, but still must be supplied.
+#   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py users/1/config/config.json add-to-temp-queue
+#   PYTHONPATH=/mnt/tax_co python3 python/requests/main.py config/config.json try-to-advance-queue
+#       config.json isn't used for try-to-advance-queue,
+#       but still must be supplied, or common.py will be confused.
 # and for debugging:
-#   PYTHONPATH=/mnt/tax_co python3 -m pdb python/requests/main.py users/1/config/shell.json try-to-advance-queue
+#   PYTHONPATH=/mnt/tax_co python3 -m pdb python/requests/main.py users/1/config/config.json try-to-advance-queue
 #
 # What the actions mean
 # ---------------------
@@ -112,7 +113,7 @@ def advance_request_queue ():
                 "About to run this:",
                 "/opt/conda/bin/python3.8",
                 "/mnt/tax_co/bash/run-makefile.py",
-                os . path . join ( user_root, "config/shell.json" ),
+                os . path . join ( user_root, "config/config.json" ),
                 str( my_env ) ] )
             + "\n" )
     sp = subprocess.run (
@@ -120,7 +121,7 @@ def advance_request_queue ():
             # TODO : Do I really have to specify this?
             # In the shell it's the default python (and the default python3).
           "/mnt/tax_co/bash/run-makefile.py",
-          os . path . join ( user_root, "config/shell.json" ) ],
+          os . path . join ( user_root, "config/config.json" ) ],
         env    = my_env,
         stdout = subprocess . PIPE,
         stderr = subprocess . PIPE )
