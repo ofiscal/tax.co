@@ -36,6 +36,8 @@ targets = [ "show_config",
   # For the full list of possible targets,
   # see the Makefile, particularly the definition of .PHONY.
 
+# TODO: This is duplicated in python/requests/main.py.
+# Factor out both into a shared library.
 if True: # Refine the environment.
   my_env = os . environ . copy ()
   env_additions = ":" . join (
