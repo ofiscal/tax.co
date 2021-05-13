@@ -85,59 +85,59 @@ def transfer_requests_from_temp_queue ():
         lib . write_requests ( lib . empty_requests (), requests_temp_path )
 
 def advance_request_queue ():
-    user_hash : str = lib.next_request (
-      lib.read_requests ( requests_path ) )
-    with open ( process_marker_path, "w" ) as f:
-        # Reserving this marker prevents another advance-the-queue
-        # process from running while this one does.
-        f . write ( user_hash )
-    with open( log_path, "a" ) as f:
-        f . write( "starting advance_request_queue\n" )
-    user_root = os . path . join (
-        tax_co_root_path, "users", user_hash )
-    if True: # Refine the environment.
-        my_env = os . environ . copy ()
-        env_additions = ":" . join (
-            [ tax_co_root_path,
-              "/opt/conda/lib/python3.8/site-packages" ] )
-              # TODO ? Why must this second folder be specified?
-              # It's the default when I run python3 from the shell.
-        my_env["PYTHONPATH"] = (
-            ":" . join ( [ env_additions,
-                           my_env [ "PYTHONPATH" ] ] )
-            if "PYTHONPATH" in my_env . keys ()
-            else env_additions )
-    with open( log_path, "a" ) as f:
-        f . write(
-            "\n".join( [
-                "About to run this:",
-                "/opt/conda/bin/python3.8",
-                "/mnt/tax_co/bash/run-makefile.py",
-                os . path . join ( user_root, "config/config.json" ),
-                str( my_env ) ] )
-            + "\n" )
-    sp = subprocess.run (
-        [ "/opt/conda/bin/python3.8",
-            # TODO : Do I really have to specify this?
-            # In the shell it's the default python (and the default python3).
-          "/mnt/tax_co/bash/run-makefile.py",
-          os . path . join ( user_root, "config/config.json" ) ],
+  user_hash : str = lib.next_request (
+    lib.read_requests ( requests_path ) )
+  with open ( process_marker_path, "w" ) as f:
+    # Reserving this marker prevents another advance-the-queue
+    # process from running while this one does.
+    f . write ( user_hash )
+  with open( log_path, "a" ) as f:
+    f . write( "starting advance_request_queue\n" )
+  user_root = os . path . join (
+    tax_co_root_path, "users", user_hash )
+  if True: # Refine the environment.
+    my_env = os . environ . copy ()
+    env_additions = ":" . join (
+      [ tax_co_root_path,
+        "/opt/conda/lib/python3.8/site-packages" ] )
+      # TODO ? Why must this second folder be specified?
+      # It's the default when I run python3 from the shell.
+    my_env["PYTHONPATH"] = (
+      ":" . join ( [ env_additions,
+                     my_env [ "PYTHONPATH" ] ] )
+      if "PYTHONPATH" in my_env . keys ()
+      else env_additions )
+  with open( log_path, "a" ) as f:
+    f . write(
+      "\n".join( [
+        "About to run this:",
+        "/opt/conda/bin/python3.8",
+        "/mnt/tax_co/bash/run-makefile.py",
+        os . path . join ( user_root, "config/config.json" ),
+        str( my_env ) ] )
+      + "\n" )
+  sp = subprocess.run (
+    [ "/opt/conda/bin/python3.8",
+      # TODO : Do I really have to specify this?
+      # In the shell it's the default python (and the default python3).
+      "/mnt/tax_co/bash/run-makefile.py",
+      os . path . join ( user_root, "config/config.json" ) ],
     cwd    = tax_co_root_path,
-        env    = my_env,
-        stdout = subprocess . PIPE,
-        stderr = subprocess . PIPE )
-    for ( path, source ) in [ ("stdout.txt", sp.stdout),
-                              ("stderr.txt", sp.stderr) ]:
-      with open ( os.path.join ( user_root, path ),
-                  "a" ) as f:
-        f . write ( source . decode () )
-    if sp . returncode == 0:
-        # TODO : `make` returns 0 even when from my point of view it didn't work, so this is unreliable.
-        lib . mutate (
-            requests_path,
-            lambda reqs: lib . mark_complete (
-                user_hash, reqs ) )
-    os . remove ( process_marker_path )
+    env    = my_env,
+    stdout = subprocess . PIPE,
+    stderr = subprocess . PIPE )
+  for ( path, source ) in [ ("stdout.txt", sp.stdout),
+                            ("stderr.txt", sp.stderr) ]:
+    with open ( os.path.join ( user_root, path ),
+                "a" ) as f:
+      f . write ( source . decode () )
+  if sp . returncode == 0:
+      # TODO : `make` returns 0 even when from my point of view it didn't work, so this is unreliable.
+      lib . mutate (
+          requests_path,
+          lambda reqs: lib . mark_complete (
+              user_hash, reqs ) )
+  os . remove ( process_marker_path )
 
 def try_to_advance_request_queue ( ):
     # TODO: Test.
