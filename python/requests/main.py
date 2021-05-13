@@ -122,6 +122,7 @@ def advance_request_queue ():
             # In the shell it's the default python (and the default python3).
           "/mnt/tax_co/bash/run-makefile.py",
           os . path . join ( user_root, "config/config.json" ) ],
+    cwd    = tax_co_root_path,
         env    = my_env,
         stdout = subprocess . PIPE,
         stderr = subprocess . PIPE )

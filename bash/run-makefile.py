@@ -28,10 +28,11 @@ import subprocess
 
 tax_co_root_path    = "/mnt/tax_co"
 
-make_log_debug_path = os.path.join(
-  tax_co_root_path, "make-log.txt" )
+make_logs_path = os.path.join(
+  tax_co_root_path, "make-logs" )
 
-with open( make_log_debug_path, "a" ) as f:
+with open( os.path.join( make_logs_path, "outer"),
+           "a" ) as f:
   f.write( "run-makefile.py starting at" + str( datetime.now() ) + "\n" )
 
 targets = [ "show_config",
@@ -58,7 +59,7 @@ if True: # Refine the environment.
       if "PYTHONPATH" in my_env . keys ()
       else env_additions )
 
-subprocess.run (
+sp = subprocess.run (
   ( [ "/usr/bin/make" ] +
     targets +
     [ "config_file" + "=" + c.config_file       ,
@@ -66,9 +67,17 @@ subprocess.run (
       "strategy"    + "=" + c.strategy          ,
       "regime_year" + "=" + str( c.regime_year ),
       "user"        + "=" + c.user ] ),
+  cwd    = tax_co_root_path,
   env    = my_env,
   stdout = subprocess . PIPE,
   stderr = subprocess . PIPE )
 
-with open( make_log_debug_path, "a" ) as f:
+for ( path, source ) in [ ("stdout.txt", sp.stdout),
+                          ("stderr.txt", sp.stderr) ]:
+  with open ( os.path.join ( make_logs_path, path ),
+             "a" ) as f:
+    f . write ( source . decode () )
+
+with open( os.path.join( make_logs_path, "outer"),
+           "a" ) as f:
   f.write( "run-makefile.py ending at" + str( datetime.now() ) + "\n" )
