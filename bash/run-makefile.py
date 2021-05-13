@@ -55,11 +55,11 @@ subprocess.run (
   ( [ "make",
       "bash/run-makefile.py" ] +
     targets +
-    [ "config_file=" + c.config_file       ,
-      "subsample="   + str( c.subsample )  ,
-      "strategy="    + c.strategy          ,
-      "regime_year=" + str( c.regime_year ),
-      "user="        + c.user ] ),
+    [ "config_file" + "=" + c.config_file       ,
+      "subsample"   + "=" + str( c.subsample )  ,
+      "strategy"    + "=" + c.strategy          ,
+      "regime_year" + "=" + str( c.regime_year ),
+      "user"        + "=" + c.user ] ),
   env    = my_env,
   stdout = subprocess . PIPE,
   stderr = subprocess . PIPE )
