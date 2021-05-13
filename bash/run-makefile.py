@@ -20,12 +20,19 @@
 #   If the <config_file> argument is not provided,
 #   it defaults (in common.py) to "config/config.json".
 
-import python.common.common as c
+from   datetime import datetime
 import os
+import python.common.common as c
 import subprocess
 
 
 tax_co_root_path    = "/mnt/tax_co"
+
+make_log_debug_path = os.path.join(
+  tax_co_root_path, "make-log.txt" )
+
+with open( make_log_debug_path, "a" ) as f:
+  f.write( "run-makefile.py starting at" + str( datetime.now() ) + "\n" )
 
 targets = [ "show_config",
             "tests",
@@ -52,7 +59,7 @@ if True: # Refine the environment.
       else env_additions )
 
 subprocess.run (
-  ( [ "make" ] +
+  ( [ "/usr/bin/make" ] +
     targets +
     [ "config_file" + "=" + c.config_file       ,
       "subsample"   + "=" + str( c.subsample )  ,
@@ -62,3 +69,6 @@ subprocess.run (
   env    = my_env,
   stdout = subprocess . PIPE,
   stderr = subprocess . PIPE )
+
+with open( make_log_debug_path, "a" ) as f:
+  f.write( "run-makefile.py ending at" + str( datetime.now() ) + "\n" )
