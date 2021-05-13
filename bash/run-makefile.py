@@ -52,8 +52,7 @@ if True: # Refine the environment.
       else env_additions )
 
 subprocess.run (
-  ( [ "make",
-      "bash/run-makefile.py" ] +
+  ( [ "make" ] +
     targets +
     [ "config_file" + "=" + c.config_file       ,
       "subsample"   + "=" + str( c.subsample )  ,
