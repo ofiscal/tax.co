@@ -27,7 +27,7 @@
 #       config.json isn't used for try-to-advance-queue,
 #       but still must be supplied, or common.py will be confused.
 # and for debugging:
-#   PYTHONPATH=/mnt/tax_co python3 -m pdb python/requests/main.py users/1/config/config.json try-to-advance-queue
+#   PYTHONPATH=/mnt/tax_co:$PYTHONPATH python3 -m pdb python/requests/main.py users/1/config/config.json try-to-advance-queue
 #
 # What the actions mean
 # ---------------------
