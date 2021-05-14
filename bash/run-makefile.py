@@ -28,16 +28,16 @@ import subprocess
 
 tax_co_root_path    = "/mnt/tax_co"
 
-make_logs_path = os.path.join(
-  tax_co_root_path, "make-logs" )
+logs_path = os.path.join(
+  tax_co_root_path, "users", c.user, "logs" )
 
-with open( os.path.join( make_logs_path, "outer"),
+with open( os.path.join( logs_path, "run-makefile.txt"),
            "a" ) as f:
   f.write( "run-makefile.py starting at " + str( datetime.now() ) + "\n" )
 
 targets = [ "show_config",
-            "tests",
-            # "show_params"
+            # "tests",
+            # "show_params",
             "overview"
           ]
   # Makefile targets.
@@ -72,12 +72,12 @@ sp = subprocess.run (
   stdout = subprocess . PIPE,
   stderr = subprocess . PIPE )
 
-for ( path, source ) in [ ("stdout.txt", sp.stdout),
-                          ("stderr.txt", sp.stderr) ]:
-  with open ( os.path.join ( make_logs_path, path ),
+for ( name, source ) in [ ("make.stdout.txt", sp.stdout),
+                          ("make.stderr.txt", sp.stderr) ]:
+  with open ( os.path.join ( logs_path, name ),
              "a" ) as f:
     f . write ( source . decode () )
 
-with open( os.path.join( make_logs_path, "outer"),
+with open( os.path.join( logs_path, "run-makefile.txt"),
            "a" ) as f:
   f.write( "run-makefile.py ending at " + str( datetime.now() ) + "\n" )
