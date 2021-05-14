@@ -33,7 +33,7 @@ make_logs_path = os.path.join(
 
 with open( os.path.join( make_logs_path, "outer"),
            "a" ) as f:
-  f.write( "run-makefile.py starting at" + str( datetime.now() ) + "\n" )
+  f.write( "run-makefile.py starting at " + str( datetime.now() ) + "\n" )
 
 targets = [ "show_config",
             "tests",
@@ -80,4 +80,4 @@ for ( path, source ) in [ ("stdout.txt", sp.stdout),
 
 with open( os.path.join( make_logs_path, "outer"),
            "a" ) as f:
-  f.write( "run-makefile.py ending at" + str( datetime.now() ) + "\n" )
+  f.write( "run-makefile.py ending at " + str( datetime.now() ) + "\n" )
