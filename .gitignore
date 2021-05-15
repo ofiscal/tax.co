@@ -1,15 +1,20 @@
 # anywhere
+.emacs.desktop*
 *.hi
 *.o
 *.pyc
+*.lock
 *~
 TAGS
+TAGS2
+*log.txt
 temp*
 __pycache__/
 
 # in specific folders
 /git-comment*
 config/config.json
+config/repl.json
 cron/test/*.txt
 data/requests.*csv
 data/constraints-time-memory.json
@@ -20,3 +25,4 @@ haskell/dist/
 users/*/*
 users/jeff
 !users/example/ # The ! indicates an exception to a prior rule.
+secret/
