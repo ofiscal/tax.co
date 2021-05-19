@@ -120,11 +120,12 @@ def advance_request_queue ():
     # As of commit d2f0fd95286c970ee95f56c4fa633165324b2dca
     # it was working, before I factored my_subprocess.run() out of this.
 
-    lib . mutate (
+    lib.zip_request_logs ( user_hash )
+    lib.mutate (
       requests_path,
       lambda reqs: lib . mark_complete (
         user_hash, reqs ) )
-    os . remove ( process_marker_path )
+    os.remove ( process_marker_path )
 
 def try_to_advance_request_queue ( ):
     # TODO: Test.
