@@ -41,8 +41,7 @@ def run ( to_run : List[ str ] # A list of lexemes -- that is,
 
   for ( path, source ) in [ (stdout_path, sp.stdout),
                             (stderr_path, sp.stderr) ]:
-    with open ( os.path.join ( user_root, path ),
-                "a" ) as f:
+    with open ( path, "a" ) as f:
       f . write ( source . decode () )
 
   return sp

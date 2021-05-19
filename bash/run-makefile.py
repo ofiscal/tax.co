@@ -31,9 +31,9 @@ tax_co_root_path    = "/mnt/tax_co"
 logs_path = os.path.join(
   tax_co_root_path, "users", c.user, "logs" )
 
-with open( os.path.join( logs_path, "run-makefile.txt"),
+with open( os.path.join( logs_path, "make.txt"),
            "a" ) as f:
-  f.write( "run-makefile.py starting at " + str( datetime.now() ) + "\n" )
+  f.write( "make.py starting at " + str( datetime.now() ) + "\n" )
 
 targets = [ "show_config",
             # "tests",
@@ -78,6 +78,6 @@ for ( name, source ) in [ ("make.stdout.txt", sp.stdout),
              "a" ) as f:
     f . write ( source . decode () )
 
-with open( os.path.join( logs_path, "run-makefile.txt"),
+with open( os.path.join( logs_path, "make.txt"),
            "a" ) as f:
-  f.write( "run-makefile.py ending at " + str( datetime.now() ) + "\n" )
+  f.write( "make.py ending at " + str( datetime.now() ) + "\n" )

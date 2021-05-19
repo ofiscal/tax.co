@@ -63,7 +63,7 @@ requests_path       = os.path.join ( tax_co_root_path,
                                      "data/requests.csv" )
 requests_temp_path  = os.path.join ( tax_co_root_path,
                                      "data/requests.temp.csv" )
-log_path            = os.path.join ( tax_co_root_path,
+global_log_path     = os.path.join ( tax_co_root_path,
                                      "requests-log.txt" )
 with open ( constraints_path ) as f:
     constraints = json . load ( f )
@@ -91,51 +91,61 @@ def advance_request_queue ():
     # Reserving this marker prevents another advance-the-queue
     # process from running while this one does.
     f . write ( user_hash )
-  with open( log_path, "a" ) as f:
+  with open( global_log_path, "a" ) as f:
     f . write( "starting advance_request_queue\n" )
   user_root = os . path . join (
     tax_co_root_path, "users", user_hash )
+  user_logs = os.path.join (
+    user_root, "logs" )
+  arq = "advance-request-queue" # Yes, just a string.
 
-  my_subprocess.run (
+  sp = my_subprocess.run (
     to_run = [ "/opt/conda/bin/python3.8",
                # TODO : Do I really have to specify this?
                # In the shell it's the default python (and python3).
                "/mnt/tax_co/bash/run-makefile.py",
                os . path . join (
                  user_root, "config/config.json" ) ],
-    log_path = log_path,
-    stdout_path = os.path.join ( user_root, "stdout.txt" ),
-    stderr_path = os.path.join ( user_root, "stderr.txt" ) )
+    log_path    = os.path.join ( user_logs, arq +        ".txt" ),
+    stdout_path = os.path.join ( user_logs, arq + ".stdout.txt" ),
+    stderr_path = os.path.join ( user_logs, arq + ".stderr.txt" ) )
 
-  if sp . returncode == 0:
-      # TODO : `make` returns 0 even when from my point of view it didn't work, so this is unreliable.
-      lib . mutate (
-          requests_path,
-          lambda reqs: lib . mark_complete (
-              user_hash, reqs ) )
-  os . remove ( process_marker_path )
+  if True:
+    # TODO : It would be better to run these only conditional on success.
+    # `make` returns 0 even when from my point of view it didn't work,
+    # so checking if `sp . returncode` is 0 is unreliable.
+    #
+    # TODO : Why is `sp` not defined after the above?
+    # As of commit d2f0fd95286c970ee95f56c4fa633165324b2dca
+    # it was working, before I factored my_subprocess.run() out of this.
+
+    lib . mutate (
+      requests_path,
+      lambda reqs: lib . mark_complete (
+        user_hash, reqs ) )
+    os . remove ( process_marker_path )
 
 def try_to_advance_request_queue ( ):
     # TODO: Test.
-    with open( log_path, "a" ) as f:
+    with open( global_log_path, "a" ) as f:
         f . write( "starting try_to_advance_request_queue\n" )
     if os.path.exists ( process_marker_path ):
-        with open( log_path, "a" ) as f:
+        with open( global_log_path, "a" ) as f:
             f.write( "Exit: An earlier process is still running.\n" )
         return ()
     reqs = lib . read_requests ( requests_path )
     if not lib.unexecuted_requests_exist ( reqs ):
-        with open( log_path, "a" ) as f:
+        with open( global_log_path, "a" ) as f:
             f.write( "Exit: No unexecuted requests\n" )
         return ()
     elif lib . memory_permits_another_run (
             lib.gb_used ( users_path ),
             constraints ):
-        with open( log_path, "a" ) as f:
+        with open( global_log_path, "a" ) as f:
             f.write( "Calling advance_request_queue\n" )
-        advance_request_queue ()
+        advance_request_queue () # RESUME HERE
     elif lib.at_least_one_result_is_old ( reqs, constraints ):
-        with open( log_path, "a" ) as f:
+        with open( global_log_path, "a" ) as f:
             f . write( "Deleting oldest request folder and request.\n" )
         lib.delete_oldest_folder_and_request (
             requests_path,
@@ -145,7 +155,7 @@ def try_to_advance_request_queue ( ):
           # but since a user can choose a small sample size,
           # it might still not.
     else:
-        with open( log_path, "a" ) as f:
+        with open( global_log_path, "a" ) as f:
             f . write ( "Exit: No free memory, and nothing old enough to delete.\n" )
 
 if len ( sys.argv ) > 1:
@@ -153,18 +163,18 @@ if len ( sys.argv ) > 1:
     action = sys . argv [ 2 ]
       # Arg 0 is the path to this program path, 1 the .json config.
       # Arg 1 is read and used by common.py.
-    with open( log_path, "a" ) as f:
+    with open( global_log_path, "a" ) as f:
         f.write( "\n" )
         f.write( "Current time: " + time_started  + "\n" )
         f.write( "Starting action " + action + "\n" )
 
     if True: # Initialize request data. (Usually unnecessary.)
-      with open( log_path, "a" ) as f:
+      with open( global_log_path, "a" ) as f:
           f . write( "initializing data\n" )
       lib . initialize_requests ( requests_path )
       with lock_for_temp_db:
           lib.initialize_requests ( requests_temp_path )
-      with open( log_path, "a" ) as f:
+      with open( global_log_path, "a" ) as f:
           f . write( "initializing data: done\n" )
 
     # What the cron job does.
@@ -180,7 +190,7 @@ if len ( sys.argv ) > 1:
               lambda reqs: lib . append_request (
                   reqs, lib . this_request () ) )
 
-    with open( log_path, "a" ) as f:
+    with open( global_log_path, "a" ) as f:
         f.write( "Current time: " + str( datetime.now() ) + "\n" )
         f.write( "Ending action " + action + "that began at time\n" )
         f.write( "    " + time_started  + "\n" )
