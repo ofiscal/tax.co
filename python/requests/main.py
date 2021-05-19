@@ -52,6 +52,7 @@ if True:
   import python.common.common as c
   import python.common.subprocess as my_subprocess
 
+
 tax_co_root_path    = "/mnt/tax_co"
 process_marker_path = os.path.join ( tax_co_root_path,
                                      "data/request-ongoing" )
@@ -93,7 +94,7 @@ def advance_request_queue ():
     f . write ( user_hash )
   with open( global_log_path, "a" ) as f:
     f . write( "starting advance_request_queue\n" )
-  user_root = os . path . join (
+  user_root = os.path.join (
     tax_co_root_path, "users", user_hash )
   user_logs = os.path.join (
     user_root, "logs" )

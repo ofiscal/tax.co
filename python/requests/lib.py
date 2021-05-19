@@ -12,8 +12,10 @@ if True:
   from   typing import Callable, Dict
   #
   import python.common.common as c
+  import python.common.subprocess as my_subprocess
 
 
+tax_co_root = "/mnt/tax_co"
 log_path = os.path.join ( "/mnt/tax_co",
                           "requests-log.txt" )
 
@@ -48,6 +50,22 @@ def write_requests ( reqs : pd.DataFrame,
      . to_csv (
          requests_file_path,
          index = False ) )
+
+def zip_request_results ( user_hash : str ):
+  user_root = os.path.join (
+    tax_co_root, "users", user_hash )
+  user_logs = os.path.join (
+    user_root, "logs" )
+
+  sp = my_subprocess.run (
+    to_run = ( [ "/usr/bin/zip",
+                 os.path.join( user_root, "logs.zip" ) ]
+               + list ( map (
+                 lambda p: os.path.join ( user_logs, p ),
+                 os.listdir ( user_logs ) ) ) ),
+    log_path    = os.path.join ( user_logs, "zip" +        ".txt" ),
+    stdout_path = os.path.join ( user_logs, "zip" + ".stdout.txt" ),
+    stderr_path = os.path.join ( user_logs, "zip" + ".stderr.txt" ) )
 
 def gb_used ( users_folder : str ) -> int:
     s = str ( subprocess . Popen( "du -s " + users_folder,
