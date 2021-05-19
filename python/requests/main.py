@@ -50,7 +50,7 @@ if True:
   #
   import python.requests.lib  as lib
   import python.common.common as c
-
+  import python.common.subprocess as my_subprocess
 
 tax_co_root_path    = "/mnt/tax_co"
 process_marker_path = os.path.join ( tax_co_root_path,
@@ -95,42 +95,18 @@ def advance_request_queue ():
     f . write( "starting advance_request_queue\n" )
   user_root = os . path . join (
     tax_co_root_path, "users", user_hash )
-  if True: # Refine the environment.
-    my_env = os . environ . copy ()
-    env_additions = ":" . join (
-      [ tax_co_root_path,
-        "/opt/conda/lib/python3.8/site-packages" ] )
-      # TODO ? Why must this second folder be specified?
-      # It's the default when I run python3 from the shell.
-    my_env["PYTHONPATH"] = (
-      ":" . join ( [ env_additions,
-                     my_env [ "PYTHONPATH" ] ] )
-      if "PYTHONPATH" in my_env . keys ()
-      else env_additions )
-  with open( log_path, "a" ) as f:
-    f . write(
-      "\n".join( [
-        "About to run this:",
-        "/opt/conda/bin/python3.8",
-        "/mnt/tax_co/bash/run-makefile.py",
-        os . path . join ( user_root, "config/config.json" ),
-        str( my_env ) ] )
-      + "\n" )
-  sp = subprocess.run (
-    [ "/opt/conda/bin/python3.8",
-      # TODO : Do I really have to specify this?
-      # In the shell it's the default python (and the default python3).
-      "/mnt/tax_co/bash/run-makefile.py",
-      os . path . join ( user_root, "config/config.json" ) ],
-    cwd    = tax_co_root_path,
-    env    = my_env,
-    stdout = subprocess . PIPE,
-    stderr = subprocess . PIPE )
-  for ( path, source ) in [ ("stdout.txt", sp.stdout),
-                            ("stderr.txt", sp.stderr) ]:
-    with open ( os.path.join ( user_root, path ),
-                "a" ) as f:
-      f . write ( source . decode () )
+
+  my_subprocess.run (
+    to_run = [ "/opt/conda/bin/python3.8",
+               # TODO : Do I really have to specify this?
+               # In the shell it's the default python (and python3).
+               "/mnt/tax_co/bash/run-makefile.py",
+               os . path . join (
+                 user_root, "config/config.json" ) ],
+    log_path = log_path,
+    stdout_path = os.path.join ( user_root, "stdout.txt" ),
+    stderr_path = os.path.join ( user_root, "stderr.txt" ) )
+
   if sp . returncode == 0:
       # TODO : `make` returns 0 even when from my point of view it didn't work, so this is unreliable.
       lib . mutate (
