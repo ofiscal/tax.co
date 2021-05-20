@@ -9,10 +9,11 @@ from   typing import List
 import python.common.common as c
 
 
-tax_co_root  = "/mnt/tax_co"
-secrets_path = path.join ( tax_co_root, "secret" )
+secrets_path = "/mnt/apache2/secret"
 
 def getSecret ( filename : str ):
+  # The file should contain the secret and nothing else --
+  # no surrounding whitespace, no newline, no comments, etc.
   return ( open( path.join ( secrets_path,
                              filename ) )
            . read ()
