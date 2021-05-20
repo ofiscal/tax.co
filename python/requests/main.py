@@ -48,6 +48,7 @@ if True:
   import subprocess
   import sys
   #
+  import python.email
   import python.requests.lib  as lib
   import python.common.common as c
   import python.common.subprocess as my_subprocess
@@ -121,6 +122,16 @@ def advance_request_queue ():
     # it was working, before I factored my_subprocess.run() out of this.
 
     lib.zip_request_logs ( user_hash )
+    data_path = os.path.join ( users_path, c.user, "data",
+                               "recip-" + str(c.subsample) )
+    python.email.send (
+      receiver_address = c.user_email,
+      subject = "Resultados de microsimulación",
+      body = "Los resultados son los documentos .xlsx adjuntos. Si todo fue bien, los logs.zip no le van a importar.",
+      attachment_paths = [
+        os.path.join ( data_path, "overview.detail.2019.xlsx" ),
+        os.path.join ( data_path, "overview_tmi.detail.2019.xlsx"),
+        os.path.join ( data_path, "../..", "logs.zip" ) ] )
     lib.mutate (
       requests_path,
       lambda reqs: lib . mark_complete (
