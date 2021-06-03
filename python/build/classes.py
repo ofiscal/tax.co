@@ -9,7 +9,6 @@ from   functools import reduce
 import math
 import numpy as np
 import pandas as pd
-import pytest
 import re
 import sys
 
