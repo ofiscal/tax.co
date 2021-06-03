@@ -27,6 +27,12 @@ if True: # For validation, mostly.
 with open( config_file ) as f:
   config_dict = json.load( f )
 
+with open( "/mnt/paths/paths.json" ) as f:
+  paths_dict = json.load( f )
+
+tax_co_root = paths_dict["paths"]["docker"]["tax_co"]
+
+
 subsample = int( config_dict["subsample"] )
 if not subsample in valid_subsamples:
   raise ValueError( "invalid subsample reciprocal: " + str(subsample) )

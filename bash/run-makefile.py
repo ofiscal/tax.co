@@ -13,8 +13,8 @@
 #     (or in a similar file in users/u<user-hash>/config/).
 #   Run this:
 #     PYTHONPATH="." python3 bash/run-makefile.py <config_file>
-#   Usually, probably, that'll be this:
-#     PYTHONPATH="." python3 bash/run-makefile.py users/jeff/config/config.json
+#   For instance:
+#     PYTHONPATH="." python3 bash/run-makefile.py users/example/config/config.json
 #   but for debugging in a user folder, maybe something like this:
 #     PYTHONPATH="." python3 bash/run-makefile.py users/1/config/config.json
 #   If the <config_file> argument is not provided,
