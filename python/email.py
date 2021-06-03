@@ -1,12 +1,13 @@
-import email.encoders as Encoders
-from   email.mime.base import MIMEBase
-from   email.mime.multipart import MIMEMultipart
-from   email.mime.text import MIMEText
-from   os import path
-import smtplib
-from   typing import List
-
-import python.common.common as c
+if True:
+  import email.encoders as Encoders
+  from   email.mime.base import MIMEBase
+  from   email.mime.multipart import MIMEMultipart
+  from   email.mime.text import MIMEText
+  from   os import path
+  import smtplib
+  from   typing import List
+  #
+  import python.common.common as c
 
 
 secrets_path = "/mnt/apache2/secret"
