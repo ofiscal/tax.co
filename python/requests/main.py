@@ -87,16 +87,16 @@ def transfer_requests_from_temp_queue ():
         lib . write_requests ( lib . empty_requests (), requests_temp_path )
 
 def advance_request_queue ():
-  user_hash : str = lib.next_request (
+  req =  lib.next_request (
     lib.read_requests ( requests_path ) )
   with open ( process_marker_path, "w" ) as f:
     # Reserving this marker prevents another advance-the-queue
     # process from running while this one does.
-    f . write ( user_hash )
+    f . write ( req["user"] )
   with open( global_log_path, "a" ) as f:
-    f . write( "starting advance_request_queue\n" )
+    f . write( "Starting advance_request_queue.\n" )
   user_root = os.path.join (
-    tax_co_root_path, "users", user_hash )
+    tax_co_root_path, "users", req["user"] )
   user_logs = os.path.join (
     user_root, "logs" )
   arq = "advance-request-queue" # Yes, just a string.
@@ -111,6 +111,8 @@ def advance_request_queue ():
     log_path    = os.path.join ( user_logs, arq +        ".txt" ),
     stdout_path = os.path.join ( user_logs, arq + ".stdout.txt" ),
     stderr_path = os.path.join ( user_logs, arq + ".stderr.txt" ) )
+  with open( global_log_path, "a" ) as f:
+    f . write( "Subprocess: Done.\n" )
 
   if True:
     # TODO : It would be better to run these only conditional on success.
@@ -120,25 +122,40 @@ def advance_request_queue ():
     # TODO : Why is `sp` not defined after the above?
     # As of commit d2f0fd95286c970ee95f56c4fa633165324b2dca
     # it was working, before I factored my_subprocess.run() out of this.
+    #
+    lib.zip_request_logs ( req["user"] )
+    with open( global_log_path, "a" ) as f:
+      f . write( "Zip logs: done.\n" )
 
-    lib.zip_request_logs ( user_hash )
-    data_path = os.path.join ( users_path, c.user, "data",
-                               "recip-" + str(c.subsample) )
+    data_path = os.path.join ( users_path, req["user"], "data",
+                               "recip-" + str( req["subsample"] ) )
+    with open( global_log_path, "a" ) as f:
+      f . write( "About to send attachemnts at " + data_path + ".\n" )
     python.email.send (
-      receiver_address = c.user_email,
+      receiver_address = req["user email"],
       subject = "Resultados de microsimulación",
       body = "Los resultados son los documentos .xlsx adjuntos. Si todo fue bien, los logs.zip no le van a importar.",
       attachment_paths = [
         os.path.join ( data_path, "overview.detail.2019.xlsx" ),
         os.path.join ( data_path, "overview_tmi.detail.2019.xlsx"),
         os.path.join ( data_path, "../..", "logs.zip" ) ] )
+    with open( global_log_path, "a" ) as f:
+      f . write( "Email: Done.\n" )
+
     lib.mutate (
       requests_path,
       lambda reqs: lib . mark_complete (
-        user_hash, reqs ) )
-    os.remove ( process_marker_path )
+        req["user"], reqs ) )
+    with open( global_log_path, "a" ) as f:
+      f . write( "Mutate requests db: Done.\n" )
 
-def try_to_advance_request_queue ( ):
+    os.remove ( process_marker_path ) # BUG: This isn't executing.
+      # As a result, only the first request is executing.
+      # (Once that's solved, apply the diffs in diffs/.)
+    with open( global_log_path, "a" ) as f:
+      f . write( "Remove process marker: Done.\n" )
+
+def try_to_advance_request_queue ():
     # TODO: Test.
     with open( global_log_path, "a" ) as f:
         f . write( "starting try_to_advance_request_queue\n" )
@@ -156,7 +173,7 @@ def try_to_advance_request_queue ( ):
             constraints ):
         with open( global_log_path, "a" ) as f:
             f.write( "Calling advance_request_queue\n" )
-        advance_request_queue () # RESUME HERE
+        advance_request_queue ()
     elif lib.at_least_one_result_is_old ( reqs, constraints ):
         with open( global_log_path, "a" ) as f:
             f . write( "Deleting oldest request folder and request.\n" )
@@ -183,12 +200,12 @@ if len ( sys.argv ) > 1:
 
     if True: # Initialize request data. (Usually unnecessary.)
       with open( global_log_path, "a" ) as f:
-          f . write( "initializing data\n" )
+          f . write( "Initializing data.\n" )
       lib . initialize_requests ( requests_path )
       with lock_for_temp_db:
           lib.initialize_requests ( requests_temp_path )
       with open( global_log_path, "a" ) as f:
-          f . write( "initializing data: done\n" )
+          f . write( "Initializing data: Done.\n" )
 
     # What the cron job does.
     if action == "try-to-advance-queue":
@@ -205,5 +222,5 @@ if len ( sys.argv ) > 1:
 
     with open( global_log_path, "a" ) as f:
         f.write( "Current time: " + str( datetime.now() ) + "\n" )
-        f.write( "Ending action " + action + "that began at time\n" )
+        f.write( "Ending action \"" + action + "\" that began at time\n" )
         f.write( "    " + time_started  + "\n" )

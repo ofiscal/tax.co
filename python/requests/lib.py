@@ -126,6 +126,7 @@ def this_request () -> pd.Series:
     { "user email"     : c.user_email,
         # Not necessary, but helpful to a human reading the data.
       "user"           : c.user,
+      "subsample"      : c.subsample,
       "completed"      : False,
       "time requested" : datetime.now (),
       "time completed" : np.nan
@@ -181,7 +182,7 @@ def memory_permits_another_run (
 
 def empty_requests () -> pd.DataFrame:
     return pd.DataFrame (
-        columns = ["user email", "user","completed","time requested","time completed"] )
+        columns = ["user email", "user","subsample","completed","time requested","time completed"] )
 
 # Arguably this is too simple to be worth defining,
 # but if I didn't, I'd have to remember the ignore_index option.
@@ -244,8 +245,9 @@ def uniquify_requests ( requests : pd.DataFrame
             # (This database does not know the content of the request,
             # just the time and the user.)
         . reset_index()
-        [[ "user email", # Without this the grouping columns go first.
+        [[ "user email", # Without this the grouping columns would be first.
            "user",
+           "subsample",
            "completed",
            "time requested",
            "time completed" ]] )
@@ -258,7 +260,6 @@ def unexecuted_requests_exist ( requests : pd.DataFrame
 def next_request ( reqs : pd.DataFrame ) -> str:
     reqs = canonicalize_requests ( reqs )
     return ( reqs [ ~reqs [ "completed" ] ]
-             ["user"]
              . iloc[0] )
 
 def format_times ( requests : pd.DataFrame

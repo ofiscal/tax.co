@@ -103,7 +103,8 @@ def test_next_request ():
         [ "3", "3", True,  7,  7 ],
         [ "4", "4", True,  8,  8 ], ],
       columns = cols )
-    assert r.next_request ( df ) == "2"
+    assert r.next_request ( df )["user"] == "2"
+
 
 if True:
   test_memory_permits_another_run ()
