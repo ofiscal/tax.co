@@ -36,7 +36,7 @@ with open( os.path.join( logs_path, "make.txt"),
   f.write( "make.py starting at " + str( datetime.now() ) + "\n" )
 
 targets = [ "show_config",
-            # "tests",
+            "tests",
             # "show_params",
             "overview"
           ]

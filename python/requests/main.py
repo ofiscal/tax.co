@@ -54,18 +54,17 @@ if True:
   import python.common.subprocess as my_subprocess
 
 
-tax_co_root_path    = "/mnt/tax_co"
-process_marker_path = os.path.join ( tax_co_root_path,
+process_marker_path = os.path.join ( c.tax_co_root,
                                      "data/request-ongoing" )
-users_path          = os.path.join ( tax_co_root_path,
+users_path          = os.path.join ( c.tax_co_root,
                                      "users/" )
-constraints_path    = os.path.join ( tax_co_root_path,
+constraints_path    = os.path.join ( c.tax_co_root,
                                      "data/constraints-time-memory.json" )
-requests_path       = os.path.join ( tax_co_root_path,
+requests_path       = os.path.join ( c.tax_co_root,
                                      "data/requests.csv" )
-requests_temp_path  = os.path.join ( tax_co_root_path,
+requests_temp_path  = os.path.join ( c.tax_co_root,
                                      "data/requests.temp.csv" )
-global_log_path     = os.path.join ( tax_co_root_path,
+global_log_path     = os.path.join ( c.tax_co_root,
                                      "requests-log.txt" )
 with open ( constraints_path ) as f:
     constraints = json . load ( f )
@@ -96,7 +95,7 @@ def advance_request_queue ():
   with open( global_log_path, "a" ) as f:
     f . write( "Starting advance_request_queue.\n" )
   user_root = os.path.join (
-    tax_co_root_path, "users", req["user"] )
+    c.tax_co_root, "users", req["user"] )
   user_logs = os.path.join (
     user_root, "logs" )
   arq = "advance-request-queue" # Yes, just a string.
@@ -105,7 +104,7 @@ def advance_request_queue ():
     to_run = [ "/opt/conda/bin/python3.8",
                # TODO : Do I really have to specify this?
                # In the shell it's the default python (and python3).
-               "/mnt/tax_co/bash/run-makefile.py",
+               "bash/run-makefile.py",
                os . path . join (
                  user_root, "config/config.json" ) ],
     log_path    = os.path.join ( user_logs, arq +        ".txt" ),

@@ -15,8 +15,7 @@ if True:
   import python.common.subprocess as my_subprocess
 
 
-tax_co_root = "/mnt/tax_co"
-log_path = os.path.join ( "/mnt/tax_co",
+log_path = os.path.join ( c.tax_co_root,
                           "requests-log.txt" )
 
 #### #### #### #### #### #### #### ####
@@ -53,7 +52,7 @@ def write_requests ( reqs : pd.DataFrame,
 
 def zip_request_logs ( user_hash : str ):
   user_root = os.path.join (
-    tax_co_root, "users", user_hash )
+    c.tax_co_root, "users", user_hash )
 
   sp = my_subprocess.run (
     to_run = ( [ "/usr/bin/zip",

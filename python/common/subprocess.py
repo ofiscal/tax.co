@@ -1,9 +1,10 @@
-import os
-import subprocess
-from   typing import List
+if True:
+  import os
+  import subprocess
+  from   typing import List
+  #
+  import python.common.common as c
 
-
-tax_co_root = "/mnt/tax_co"
 
 def run ( to_run : List[ str ] # A list of lexemes -- that is,
           # would be space-separated tokens at the command line.
@@ -15,7 +16,7 @@ def run ( to_run : List[ str ] # A list of lexemes -- that is,
   if True: # Refine the environment.
     my_env = os . environ . copy ()
     env_additions = ":" . join (
-      [ tax_co_root,
+      [ c.tax_co_root,
         "/opt/conda/lib/python3.8/site-packages" ] )
       # TODO ? Why must this second folder be specified?
       # It's the default when I run python3 from the shell.
@@ -34,7 +35,7 @@ def run ( to_run : List[ str ] # A list of lexemes -- that is,
 
   sp = subprocess.run (
     to_run,
-    cwd    = tax_co_root,
+    cwd    = c.tax_co_root,
     env    = my_env,
     stdout = subprocess . PIPE,
     stderr = subprocess . PIPE )
