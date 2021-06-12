@@ -1,19 +1,30 @@
-# This was originally based on
-# https://hub.docker.com/r/continuumio/anaconda3/
-
 FROM debian:latest
 
-RUN echo "2020 01 05" && \
-  apt update --fix-missing -y && \
-  apt upgrade -y
-RUN apt install -y wget bzip2 ca-certificates \
-  libglib2.0-0 libxext6 libsm6 libxrender1 \
-  make curl grep sed dpkg git mercurial subversion \
-  texlive-latex-base texlive-fonts-recommended \
-  texlive-fonts-extra texlive-latex-extra texlive-publishers
-RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2020.11-Linux-x86_64.sh -O ~/anaconda.sh && \
-    /bin/bash ~/anaconda.sh -b -p /opt/conda && \
-    rm ~/anaconda.sh && \
+RUN echo "2021 05 11"
+RUN apt update --fix-missing -y &&                     \
+    apt upgrade -y
+RUN apt install -y wget bzip2 ca-certificates          \
+      libglib2.0-0 libxext6 libsm6 libxrender1
+RUN apt install -y                                     \
+      make curl grep sed dpkg git mercurial subversion
+
+# TeX takes almost 2 GB, and I haven't used it in years.
+#RUN apt install -y                                     \
+#      texlive-latex-base texlive-fonts-recommended     \
+#      texlive-fonts-extra texlive-latex-extra texlive-publishers
+
+RUN apt install -y                                     \
+      build-essential graphviz cron jq
+RUN apt install -y                                     \
+      libapache2-mod-wsgi-py3 ufw apache2
+RUN apt install -y                                     \
+      haskell-platform
+RUN apt install -y python3-pip
+
+COPY Anaconda3-2020.11-Linux-x86_64.sh /home/anaconda.sh
+
+RUN /bin/bash /home/anaconda.sh -b -p /opt/conda
+RUN rm /home/anaconda.sh && \
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
     echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "conda activate base" >> ~/.bashrc && \
@@ -21,36 +32,32 @@ RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2020.11-Linux-x86_6
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
     /opt/conda/bin/conda clean -afy
 RUN /opt/conda/bin/conda install jupyter -y --quiet
-RUN conda update --all -y
-COPY run-jupyter.sh /root/
+RUN /opt/conda/bin/conda update --all -y
 
-RUN pip install django==3.0.2
+RUN /opt/conda/bin/conda install pydotplus graphviz django
 
-RUN easy_install xlsx2csv
+# PITFALL: If something is available via `conda install`, use that.
+RUN pip3 install --upgrade \
+  yfinance yahoofinancials weightedcalcs csv-diff surbtc icecream
 
-# make.py, a build tool that's better and easier than make
-RUN cd /root                                     && \
-    git clone https://github.com/zwegner/make.py && \
-    ln -s /root/make.py/make.py /usr/bin/make.py
+RUN apt install -y zip unzip
 
-RUN apt install -y csvtool
+ADD makefile2graph.zip make.py.zip /home/
 
-RUN apt update && apt upgrade -y && apt install --fix-missing -y           \
-  build-essential graphviz cron jq  libapache2-mod-wsgi-py3 ufw apache2 && \
-  git clone https://github.com/lindenb/makefile2graph.git               && \
-  cd makefile2graph && make && make install
+# makefile2graph is useful for drawing the dependency hierarchy
+RUN cd /home && unzip makefile2graph && rm makefile2graph.zip && \
+    cd makefile2graph && make && make install
 
-RUN pip install --upgrade                                            \
-  csv-diff pydotplus graphviz weightedcalcs yfinance yahoofinancials \
-  surbtc django
+# make.py is a build tool that's better and easier than make
+RUN cd /home && unzip make.py && rm make.py.zip && \
+    ln -s /home/make.py/make.py /usr/bin/make.py
 
-RUN conda update --all --yes
-# RUN conda update -n base conda
+# PITFALL: Earlier this was installed via easy_install,
+# which at least used to be included in the Python `setuptools` pakage.
+# If it doesn't work, try installing it that way instead.
+RUN apt install xlsx2csv
 
-RUN apt update -y            && \
-    apt install -y haskell-platform
-
-RUN pip install icecream  # a print library, nice for debugging
+RUN apt install csvtool
 
 
 #### #### #### #### #### #### #### #### #### #### #### ####
@@ -64,6 +71,7 @@ RUN pip install icecream  # a print library, nice for debugging
 RUN sed -i '/session    required     pam_loginuid.so/c\#session    required     pam_loginuid.so' /etc/pam.d/cron && \
   touch /etc/cron.deny
 
+COPY run-jupyter.sh /root/
 COPY python-from-here /usr/bin
 RUN chmod +777 /usr/bin/python-from-here
 
