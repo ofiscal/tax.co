@@ -5,7 +5,7 @@
 # A trick to quickly edit a Docker-locked file from the host system:
 # https://stackoverflow.com/a/26915343
 
-DOCKER_IMAGE_SUFFIX="2021-04-27.Colombia-time"
+DOCKER_IMAGE_SUFFIX="2021-06-11.reorg-and-no-tex"
 
 # Start a docker container based on the latest image.
 docker run --name tax -itd                   \
@@ -34,14 +34,12 @@ docker stop tax && docker rm tax
 docker build -f Dockerfile -t \
   ofiscal/tax.co:new .        \
   | tee logs/"build-log.`date`.txt"
+tput bel # Make a noise to indicate termination.
 
 # Change the name of the new image.
-docker tag ofiscal/tax.co:new     \
-  ofiscal/tax.co:latest
-docker tag ofiscal/tax.co:new     \
-  ofiscal/tax.co:$DOCKER_IMAGE_SUFFIX
+docker tag ofiscal/tax.co:new ofiscal/tax.co:latest
+docker tag ofiscal/tax.co:new ofiscal/tax.co:$DOCKER_IMAGE_SUFFIX
 docker rmi ofiscal/tax.co:new
-docker push ofiscal/tax.co:$DOCKER_IMAGE_SUFFIX
 
 # Upload to DockerHub.
 docker push ofiscal/tax.co:latest

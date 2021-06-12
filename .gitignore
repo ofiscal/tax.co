@@ -16,8 +16,13 @@ __pycache__/
 config/config.json
 config/repl.json
 cron/test/*.txt
+data/request-ongoing
 data/requests.*csv
 data/constraints-time-memory.json
+docker/logs
+docker/Anaconda3-*.sh
+docker/make.py*
+docker/makefile2graph*
 haskell/Main
 haskell/MarginalTaxRates/*.py
 haskell/dist/
