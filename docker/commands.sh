@@ -5,7 +5,7 @@
 # A trick to quickly edit a Docker-locked file from the host system:
 # https://stackoverflow.com/a/26915343
 
-DOCKER_IMAGE_SUFFIX="2021-06-11.reorg-and-no-tex"
+DOCKER_IMAGE_SUFFIX="2021-06-22.tex"
 
 # Start a docker container based on the latest image.
 docker run --name tax -itd                   \

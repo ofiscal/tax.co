@@ -59,6 +59,10 @@ RUN apt install xlsx2csv
 
 RUN apt install csvtool
 
+RUN apt install -y                                     \
+      texlive-latex-base texlive-fonts-recommended     \
+      texlive-fonts-extra texlive-latex-extra texlive-publishers
+
 
 #### #### #### #### #### #### #### #### #### #### #### ####
 #### ####      No more installs, just config      #### ####
