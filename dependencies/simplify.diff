@@ -1,0 +1,119 @@
+diff --git a/dependencies/README.md b/dependencies/README.md
+index 099f6b9..266f7fd 100644
+--- a/dependencies/README.md
++++ b/dependencies/README.md
+@@ -1,26 +1,42 @@
+-# draw Makefile dependencies
++# How to read these Makefile dependencies
++
++Look at `dependencies.png`.
++If that doesn't exist, see the next section,
++"How to draw these Makefile dependencies".
++
++It looks hard to read,
++but that's because it draws all the code that's depended on.
++The easy way to read it is to ignore all those `.py` files,
++none of which depend on anything themselves,
++and consider instead just the `.csv` files.
++Roughly, that means looking at the red ovals,
++and not the green ones.
++
++# How to draw these Makefile dependencies
+ 
+ This README describes how to generate an image called `dependencies.png`
+ that graphically illustrates the dependencies encoded in the Makefile --
+ that is, which files (both code and data) depend on which.
+ 
+-It uses [makefile2graph](https://github.com/lindenb/makefile2graph)
+-(which is included in the tax.co Docker image).
++It uses [makefile2graph](https://github.com/lindenb/makefile2graph),
++which is included in the tax.co Docker image.
+ 
+-## the basic syntax
+-Substitute something (e.g. "overview") for "target" below:
+-make <target> -Bnd | make2graph | dot -Tpng -o dependencies.png
+-
+-That will work but it's kind of hard to read;
+-see the next section for a more complex process with a simpler output.
+-
+-## to make it easier to read
++## Optional: To make the graph easier to read
+ In the Makefile, comment out (by putting a `#` in front of them)
+ most of the files in the definitions of `enph_files` and `overview`.
+-Then run this:
+ 
+-make overview -Bnd vat_strategy="()" | make2graph \
++## Next, run this
++
++```
++make overview -Bnd                                         \
++  config_file=config/config.json                           \
++  subsample=1                                              \
++  strategy=detail                                          \
++  regime_year=2019                                         \
++  user=u59b2b1ba567d0dec94345c66793e9122                   \
++  | make2graph                                             \
+   | sed -r "s/([a-zA-Z0-9_\-\.\(\)]+)\.(csv|py)/\n\1.\2/g" \
+   | dot -Tpng -o dependencies.png
++```
+ 
+-(Be sure to change the Makefile back to how it was before running it again.)
++Be sure to change the Makefile back to how it was before running it again.
+diff --git a/make/Makefile.variables b/make/Makefile.variables
+index 5c35f72..3e546bf 100644
+--- a/make/Makefile.variables
++++ b/make/Makefile.variables
+@@ -24,22 +24,22 @@ python_from_here = PYTHONPATH='/mnt/tax_co':'/opt/conda/lib/python3.8/site-packa
+ ##=##=##=##  Input data variables
+ 
+ enph_files =								\
+-  Caracteristicas_generales_personas					\
+-  Gastos_diarios_del_hogar_Urbano_-_Comidas_preparadas_fuera_del_hogar	\
+-  Gastos_diarios_personales_Urbano					\
+-  Gastos_diarios_Urbano_-_Capitulo_C					\
+-  Gastos_diarios_Urbanos						\
+-  Gastos_diarios_Urbanos_-_Mercados					\
+-  Gastos_menos_frecuentes_-_Articulos					\
+-  Gastos_menos_frecuentes_-_Medio_de_pago				\
+-  Gastos_personales_Rural_-_Comidas_preparadas_fuera_del_Hogar		\
+-  Gastos_personales_Rural						\
+-  Gastos_personales_Urbano_-_Comidas_preparadas_fuera_del_hogar		\
+-  Gastos_semanales_Rural_-_Capitulo_C					\
+-  Gastos_semanales_Rural_-_Comidas_preparadas_fuera_del_hogar		\
+-  Gastos_semanales_Rurales						\
+-  Gastos_semanales_Rurales_-_Mercados					\
+-  Viviendas_y_hogares
++  Caracteristicas_generales_personas
++#  Gastos_diarios_del_hogar_Urbano_-_Comidas_preparadas_fuera_del_hogar	\
++#  Gastos_diarios_personales_Urbano					\
++#  Gastos_diarios_Urbano_-_Capitulo_C					\
++#  Gastos_diarios_Urbanos						\
++#  Gastos_diarios_Urbanos_-_Mercados					\
++#  Gastos_menos_frecuentes_-_Articulos					\
++#  Gastos_menos_frecuentes_-_Medio_de_pago				\
++#  Gastos_personales_Rural_-_Comidas_preparadas_fuera_del_Hogar		\
++#  Gastos_personales_Rural						\
++#  Gastos_personales_Urbano_-_Comidas_preparadas_fuera_del_hogar		\
++#  Gastos_semanales_Rural_-_Capitulo_C					\
++#  Gastos_semanales_Rural_-_Comidas_preparadas_fuera_del_hogar		\
++#  Gastos_semanales_Rurales						\
++#  Gastos_semanales_Rurales_-_Mercados					\
++#  Viviendas_y_hogares
+ 
+ enph_orig = $(addsuffix .csv, $(addprefix data/enph-2017/3_csv/, $(enph_files)))
+ 
+@@ -105,10 +105,10 @@ household_pics = \
+ pics = $(purchase_pics) $(people_pics) $(household_pics)
+ 
+ overview = \
+-  users/$(user)/data/recip-$(ss)/overview_tmi.$(strategy_year_suffix).csv \
+-  users/$(user)/data/recip-$(ss)/overview_tmi.$(strategy_year_suffix).xlsx \
+-  users/$(user)/data/recip-$(ss)/overview.$(strategy_year_suffix).csv \
+-  users/$(user)/data/recip-$(ss)/overview.$(strategy_year_suffix).xlsx
++  users/$(user)/data/recip-$(ss)/overview_tmi.$(strategy_year_suffix).csv
++#  users/$(user)/data/recip-$(ss)/overview_tmi.$(strategy_year_suffix).xlsx \
++#  users/$(user)/data/recip-$(ss)/overview.$(strategy_year_suffix).csv \
++#  users/$(user)/data/recip-$(ss)/overview.$(strategy_year_suffix).xlsx
+ 
+ goods_by_income_decile = \
+   users/$(user)/data/recip-$(ss)/goods_by_income_decile.csv \
