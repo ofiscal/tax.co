@@ -3,7 +3,6 @@
 if True:
   from os import path
   import sys
-  from sys import argv
   import json
   import pandas as pd
   import hashlib
@@ -12,7 +11,7 @@ if True:
   import python.common.terms as terms
 
 
-if len( argv) > 1: # If we are using the command line.
+if len( sys.argv) > 1: # If we are using the command line.
   config_file = sys.argv[1]
 else:              # If we are in the interpreter.
   config_file = "config/config.json"

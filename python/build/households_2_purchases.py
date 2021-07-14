@@ -45,4 +45,3 @@ if True: # save
       com.subsample,
       merge,
       "households_2_purchases." + com.strategy_year_suffix )
-
