@@ -19,10 +19,10 @@ Is Orden unique within households in the person data?
 But instead it's 0.160, which is what would derive from a max vat of 0.19.
 This problem arises in `purchases_2_vat_test.py`
 
-## Bug ? Why are the median columns in overview.py's df_tmi called "unweighted"?
+## Bug ? Why are the median columns in report/households.py's df_tmi called "unweighted"?
 
 ## Bug ? Add cesantias + primas to (which?) income measure
-Should be in denominator, and not numerator, of tax rate. 
+Should be in denominator, and not numerator, of tax rate.
 
 Formality matters: if an informal person makes 500K, they don't get primas + cesantias.
 

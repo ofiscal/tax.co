@@ -2,7 +2,7 @@
 #
 # It lets you run overview_lag.sh and python/test/overview_diff.py.
 # It's for determining whether changes to the code have resulted
-# in changes to the overview.py file.
+# in changes to the report/households.py file.
 
 ##### Workflow (how to use it) #####
 #

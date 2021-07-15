@@ -106,8 +106,8 @@ if True: # Assemble the aggregates, then compute a few variables.
     util.noisyQuantile( 10, 0, 1, households["income"] ) )
   households["income-percentile"] = (
     util.noisyQuantile( 100, 0, 1, households["income"] ) )
-  households["one"] = 1 # used in overview.py to create the trivial partition.
-    # TODO ? move to overview.py
+  households["one"] = 1 # used in report/households.py to create the trivial partition.
+    # TODO ? move to report/households.py
   households_decile_summary = desc.summarizeQuantiles(
       "income-decile", households)
 
