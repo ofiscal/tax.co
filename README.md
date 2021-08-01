@@ -10,6 +10,10 @@ To get started using the code, please see
 [how to run tax.co](markdown/How-to-run-tax.co.md).
 The [markdown/](markdown/) folder has more potentially helpful documentation.
 
+# Some obsolete documentation
+
+TODO: Update these notes to refer to [the ofiscal org-roam repo](git@github.com:ofiscal/knowledge-graph).
+
 The truly adventurous can brave the [org/](org/) folder.
 Those contain my working notes.
 You probably won't need to, with a few possible exceptions:

@@ -77,7 +77,7 @@ def taxable( row: pd.Series ) -> float:
   """
   The first stage of "renta gravable laboral" is someone's income,
   minus either 32.5% or 5040 UVTs, whichever is smaller.
-  If someone can claim no dependents, then their second stage renta gravable
+  If someone cannot claim dependents, then their second stage renta gravable
   is the same as the first.
   If they can, and S1 is the value of the first stage,
   then the second stage is equal to S1 minus 10% or 32 UVT,

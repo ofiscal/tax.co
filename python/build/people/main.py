@@ -260,6 +260,7 @@ if True: # income
     if True: # private income (cash + in-kind)
       # TODO ? Should these include private beca sources?
       ppl["total income, monthly : private"] = (
+        # TODO "private" is really non-descriptive. This is gifts + alimony.
         ppl[ defs.rename_monthly(
                        list( cla.name_map( files.income_private )
                            . values() ) ) ] .

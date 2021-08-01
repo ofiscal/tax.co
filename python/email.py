@@ -13,8 +13,8 @@ if True:
 secrets_path = "/mnt/apache2/secret"
 
 def getSecret ( filename : str ):
-  # The file should contain the secret and nothing else --
-  # no surrounding whitespace, no newline, no comments, etc.
+  # The file should contain the secret and nothing else -- no comments, etc.
+  # (Whitespace before or after the secret is harmless.)
   return ( open( path.join ( secrets_path,
                              filename ) )
            . read ()
