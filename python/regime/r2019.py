@@ -23,18 +23,18 @@ income_tax_columns = [ "tax, income"
                      , "tax, income, gmf"
                      ]
 
-gravable_pre = "cedula general gravable, sums before exemptions"
+gravable_pre = "taxable labor income before exemptions"
 
 def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
   """PITFALL: Destructive."""
   new_columns = pd.DataFrame()
   temp_columns = pd.DataFrame()
-  temp_columns["claims dependent (labor income tax)"] = ppl["claims dependent (labor income tax)"]
+  temp_columns["claims dependent (labor income tax)"] = (
+    ppl["claims dependent (labor income tax)"] )
+  temp_columns["zero"] = 0
   temp_columns[gravable_pre] = (
     ( ( ppl["income, labor"]
       - ppl["tax, ss, total employee contribs"] )
-    + ppl["income, rental + interest"]
-    + ppl["income, non-labor (tax def)"]
     ) )
 
   temp_columns["cedula general gravable"] = (
@@ -42,8 +42,11 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
     apply ( taxable, axis = 1 ) )
 
   new_columns["tax, income, most"] = (
-    ( temp_columns["cedula general gravable"] +
-      ppl["income, pension"] )
+    ( temp_columns[["cedula general gravable","zero"]]
+      . max ( axis = "columns" ) # Takes the row-wise maximum.
+      + ppl["income, rental + interest"]
+      + ppl["income, non-labor (tax def)"]
+      + ppl["income, pension"] )
     . apply( rates_most . f ) )
 
   new_columns["tax, income, dividend"] = (
@@ -62,8 +65,9 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
       0.004 * ( ppl["income, cash"] - misc.gmf_threshold)
       ).apply( lambda x: max(0,x) )
 
-  # TODO: This is dangerous: It duplicates some information from
-  # income_tax_columns, so they can get out of sync.
+  # TODO: This is dangerous:
+  # It duplicates some information from income_tax_columns,
+  # so they can get out of sync.
   new_columns["tax, income"] = (
       new_columns [[ "tax, income, most"
                    , "tax, income, dividend"
@@ -77,8 +81,8 @@ def taxable( row: pd.Series ) -> float:
   """
   The first stage of "renta gravable laboral" is someone's income,
   minus either 32.5% or 5040 UVTs, whichever is smaller.
-  If someone cannot claim dependents, then their second stage renta gravable
-  is the same as the first.
+  If someone cannot claim dependents,
+  then their second stage renta gravable equals the first.
   If they can, and S1 is the value of the first stage,
   then the second stage is equal to S1 minus 10% or 32 UVT,
   whichever is smaller.

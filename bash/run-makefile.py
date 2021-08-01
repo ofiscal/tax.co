@@ -8,7 +8,7 @@
 # This solves that problem.
 
 # USAGE:
-#   Define targets here.
+#   Define targets in this file.
 #   Define parameters in config/config.json
 #     (or in a similar file in users/u<user-hash>/config/).
 #   Run this:
@@ -36,7 +36,7 @@ with open( os.path.join( logs_path, "make.txt"),
   f.write( "make.py starting at " + str( datetime.now() ) + "\n" )
 
 targets = [ "show_config",
-            # "tests",
+            "tests",
             # "show_params",
             "overview"
           ]
