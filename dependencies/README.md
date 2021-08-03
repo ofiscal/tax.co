@@ -24,13 +24,13 @@ which is included in the tax.co Docker image.
 ## Optional: First make the graph easier to read
 
 In the Makefile, comment out (by putting a `#` in front of them)
-most of the files in the definitions of `enph_files` and `overview`.
+most of the files in the definitions of `enph_files` and `report_households`.
 (As of 2021 July 08, `simplify.diff` shows what those changes look like.)
 
 ## Next, run this
 
 ```
-make overview -Bnd                                         \
+make report_households -Bnd                                \
   config_file=config/config.json                           \
   subsample=1                                              \
   strategy=detail                                          \

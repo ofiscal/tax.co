@@ -38,7 +38,7 @@ with open( os.path.join( logs_path, "make.txt"),
 targets = [ "show_config",
             "tests",
             # "show_params",
-            "overview"
+            "report_households"
           ]
   # Makefile targets.
   # For the full list of possible targets,

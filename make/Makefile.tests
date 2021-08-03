@@ -4,10 +4,10 @@ show_config:
 	cat $(config_file)
 
 lag:
-	bash bash/overview_lag.sh $(config_file)
+	bash bash/report_households_lag.sh $(config_file)
 
 diff:
-	$(python_from_here) python/test/overview_diff.py \
+	$(python_from_here) python/test/report_households_diff.py \
           $(config_file)
 
 # Some of these are defined in config_file.

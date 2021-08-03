@@ -124,8 +124,8 @@ $(people_pics):                       \
 
 pics: $(pics)
 
-overview: $(overview)
-$(overview):                       \
+report_households: $(report_households)
+$(report_households):                          \
   .no_younger_than/python/report/households.py \
   $(households_2_purchases)
 	date

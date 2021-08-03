@@ -136,8 +136,8 @@ def advance_request_queue ():
       subject = "Resultados de microsimulación",
       body = "Los resultados son los documentos .xlsx adjuntos. Si todo fue bien, los logs.zip no le van a importar.",
       attachment_paths = [
-        os.path.join ( data_path, "overview.detail.2019.xlsx" ),
-        os.path.join ( data_path, "overview_tmi.detail.2019.xlsx"),
+        os.path.join ( data_path, "report_households.detail.2019.xlsx" ),
+        os.path.join ( data_path, "report_households_tmi.detail.2019.xlsx"),
         os.path.join ( data_path, "../..", "logs.zip" ) ] )
     with open( global_log_path, "a" ) as f:
       f . write( "Email: Done.\n" )

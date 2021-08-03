@@ -104,11 +104,11 @@ household_pics = \
 
 pics = $(purchase_pics) $(people_pics) $(household_pics)
 
-overview = \
-  users/$(user)/data/recip-$(ss)/overview_tmi.$(strategy_year_suffix).csv \
-  users/$(user)/data/recip-$(ss)/overview_tmi.$(strategy_year_suffix).xlsx \
-  users/$(user)/data/recip-$(ss)/overview.$(strategy_year_suffix).csv \
-  users/$(user)/data/recip-$(ss)/overview.$(strategy_year_suffix).xlsx
+report_households =                                                                 \
+  users/$(user)/data/recip-$(ss)/report_households_tmi.$(strategy_year_suffix).csv  \
+  users/$(user)/data/recip-$(ss)/report_households_tmi.$(strategy_year_suffix).xlsx \
+  users/$(user)/data/recip-$(ss)/report_households.$(strategy_year_suffix).csv      \
+  users/$(user)/data/recip-$(ss)/report_households.$(strategy_year_suffix).xlsx
 
 goods_by_income_decile = \
   users/$(user)/data/recip-$(ss)/goods_by_income_decile.csv \
