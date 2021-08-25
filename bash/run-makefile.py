@@ -8,17 +8,24 @@
 # This solves that problem.
 
 # USAGE:
-#   Define targets in this file.
-#   Define parameters in config/config.json
-#     (or in a similar file in users/u<user-hash>/config/).
-#   Run this:
+#   Optional: Change the targets defined in this file.
+#     See the `targets` variable below.
+#   Optional: Define parameters in config/config.json,
+#     or in a similar file in users/u<user-hash>/config/
+#   From the root folder of the project, run this:
 #     PYTHONPATH="." python3 bash/run-makefile.py <config_file>
-#   For instance:
-#     PYTHONPATH="." python3 bash/run-makefile.py users/example/config/config.json
-#   but for debugging in a user folder, maybe something like this:
-#     PYTHONPATH="." python3 bash/run-makefile.py users/1/config/config.json
-#   If the <config_file> argument is not provided,
-#   it defaults (in common.py) to "config/config.json".
+#   The file path in <>s is optional; if you don't provide it,
+#     it will default to config/config.json.
+#
+# PITFALL:
+#   If, when you run the above, you receive an error of the form
+#   "No such file or directory:
+#     '/mnt/tax_co/users/ue01af9d7df5e7e220c6ef60e400a6683/logs/make.txt"
+#   it's because the program expects `users/ue01af9d7df5e7e220c6ef60e400a6683/`
+#   to exist, and to have the same structure as `users/example/`
+#   Solve this by copying `users/example/` folder to
+#   `users/ue01af9d7df5e7e220c6ef60e400a6683/` (or whatever appeared in the error),
+#   and then editing the `config.json` file within it.
 
 from   datetime import datetime
 import os
