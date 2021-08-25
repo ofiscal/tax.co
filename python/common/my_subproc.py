@@ -1,3 +1,6 @@
+# PITFALL: Naming this module `subprocess` generates conflicts,
+# causing Python to fail to find the built-in `subprocess` library.
+
 import os
 import subprocess
 from   typing import List

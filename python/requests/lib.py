@@ -12,7 +12,7 @@ if True:
   from   typing import Callable, Dict
   #
   import python.common.common as c
-  import python.common.subprocess as my_subprocess
+  import python.common.my_subproc
 
 
 tax_co_root = "/mnt/tax_co"
@@ -55,7 +55,7 @@ def zip_request_logs ( user_hash : str ):
   user_root = os.path.join (
     tax_co_root, "users", user_hash )
 
-  sp = my_subprocess.run (
+  sp = my_subproc.run (
     to_run = ( [ "/usr/bin/zip",
                  "-r",
                  os.path.join ( user_root, "logs.zip" ),

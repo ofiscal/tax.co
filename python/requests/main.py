@@ -51,7 +51,7 @@ if True:
   import python.email
   import python.requests.lib  as lib
   import python.common.common as c
-  import python.common.subprocess as my_subprocess
+  import python.common.my_subproc as my_subproc
 
 
 tax_co_root_path    = "/mnt/tax_co"
@@ -101,7 +101,7 @@ def advance_request_queue ():
     user_root, "logs" )
   arq = "advance-request-queue" # Yes, just a string.
 
-  sp = my_subprocess.run (
+  sp = my_subproc.run (
     to_run = [ "/opt/conda/bin/python3.8",
                # TODO : Do I really have to specify this?
                # In the shell it's the default python (and python3).
@@ -121,7 +121,7 @@ def advance_request_queue ():
     #
     # TODO : Why is `sp` not defined after the above?
     # As of commit d2f0fd95286c970ee95f56c4fa633165324b2dca
-    # it was working, before I factored my_subprocess.run() out of this.
+    # it was working, before I factored my_subproc.run() out of this.
     #
     lib.zip_request_logs ( req["user"] )
     with open( global_log_path, "a" ) as f:
