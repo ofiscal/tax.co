@@ -120,8 +120,10 @@ def delete_oldest_user_folder ( requests : pd.DataFrame,
           os.path.join ( users_folder, oldest_user ) ] )
 
 def this_request () -> pd.Series:
-  # PITFALL: Looks pure, but in fact through the python.common lib
-  # it executes IO, reading the user's config file.
+  """
+  PITFALL: Looks pure, but in fact through the python.common lib
+  it executes IO, reading the user's config file.
+  """
   return pd . Series (
     { "user email"     : c.user_email,
         # Not necessary, but helpful to a human reading the data.
