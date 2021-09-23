@@ -103,6 +103,10 @@ USER appuser
 
 ENV TZ="America/Bogota"
 
+# This prevents a weird error that recently (2021 June) started happening
+# when pasting multiple lines of text into a shell.
+RUN echo "set enable-bracketed-paste off" >> ~/.inputrc
+
 RUN PATH=/root/.local/bin:$PATH
 EXPOSE 8888
 CMD ["/bin/bash"]
