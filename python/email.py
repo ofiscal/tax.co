@@ -20,6 +20,11 @@ def getSecret ( filename : str ):
            . read ()
            . strip () )
 
+# PITFALL: This *only* works with Gmail.
+# It probably can be easily modified to work with other
+# SMTP-compatible email servers -- by, I imagine,
+# changing the definitions of "sender" and "server" below --
+# but I haven't tried that.
 def send ( receiver_address : str, # To send to multiple addresses, this should be a space-separated list of email addresses. (It's still a string, not a list of strings.)
            subject          : str,
            body             : str,
