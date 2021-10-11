@@ -1,7 +1,7 @@
 # PITFALL: This has nothing to do with the make.py package
 # that is an alternative to the utility called make.
 #
-# Purpose: A Makefile cannot ingeest parameters from a .json file.
+# PURPOSE: A Makefile cannot ingeest .json parameters.
 # But the Makefile needs to know those parameters,
 # in order to track dependencies correclty -- for instance,
 # products made from the 1/10 sample do not depend on products from 1/100.
