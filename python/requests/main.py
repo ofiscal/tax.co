@@ -228,9 +228,6 @@ def try_to_advance_request_queue ():
       f . write (
         "Exit: No free memory, and nothing old enough to delete.\n" )
 
-if len ( sys.argv ) > 1:
-  request_handler ()
-
 def request_handler ():
   """
   Initialize request queues.
@@ -281,3 +278,6 @@ def request_handler ():
     f.write( "Current time: " + str( datetime.now() ) + "\n" )
     f.write( "Ending action \"" + action + "\" that began at time\n" )
     f.write( "    " + time_started  + "\n" )
+
+if len ( sys.argv ) > 1:
+  request_handler ()
