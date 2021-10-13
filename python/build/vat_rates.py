@@ -19,7 +19,7 @@ vat_cap_c = (
     misc . read_csv_or_xlsx (
         os.path.join ( "users",
                        c . user,
-                       "config/vat_by_capitulo_c" ),
+                       "config/vat/vat_by_capitulo_c" ),
         encoding = "latin1" )
     . rename (
         columns = { "CODE" : "25-broad-categs"
@@ -30,7 +30,7 @@ vat_coicop = (
     misc . read_csv_or_xlsx (
         os.path.join ( "users",
                        c . user,
-                       "config/vat_by_coicop" ),
+                       "config/vat/vat_by_coicop" ),
         encoding = "latin1" ) )
 
 for (vat,frac) in [ ("vat"     , "vat frac")
