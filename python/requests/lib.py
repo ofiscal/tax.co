@@ -12,7 +12,7 @@ if True:
   from   typing import Callable, Dict
   #
   import python.common.common as c
-  import python.common.my_subproc
+  import python.common.my_subproc as my_subproc
 
 
 log_path = os.path.join ( c.tax_co_root,
