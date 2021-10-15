@@ -39,6 +39,13 @@
 #   If there's no room for it and nothing old enough to be deleted,
 #   or if another request is being processed, this does nothing.
 
+# How to debug this code
+# ######################
+# Set up a desirable user data state,
+# and save it via the scripts in state/.
+# Stop the cron job.
+# Set an appropriate breakpoint (pdb.set_trace).
+
 if True:
   from   datetime import datetime
   import filelock
@@ -74,6 +81,9 @@ lock_for_temp_db = filelock . FileLock ( requests_temp_path + ".lock" )
     # by contrast, is manipulated by tax.co.web also.
     # (Both only ever manipulate it through this program,
     # but more than one instance could be running at once.)
+    #
+    # PITFALL: This lock file will persist even when no process holds it.
+    # That's not a problem.
 
 def transfer_requests_from_temp_queue ():
   """
@@ -176,9 +186,6 @@ def advance_request_queue ():
       f . write( "Mutate requests db: Done.\n" )
 
     os.remove ( process_marker_path )
-      # BUG: This isn't executing.
-      # As a result, only the first request is executing.
-      # (Once that's solved, apply the diffs in diffs/.)
     with open( global_log_path, "a" ) as f:
       f . write( "Remove process marker: Done.\n" )
 
