@@ -18,13 +18,13 @@ def add_fake_rate_group_column ( vat_filename : str ) -> pd.DataFrame:
   df = pd.read_csv (
     os.path.join ( source_folder, vat_filename ),
     encoding = "latin1" )
-  df["rate group"] = np.random.randint (
+  df["consumable group"] = np.random.randint (
     0, number_of_rate_groups, len ( df ) )
   df.to_csv( os.path.join ( "config/vat/fake_grouped", vat_filename ),
              index = False )
   return df
 
-coicop = add_fake_rate_group_column ( "vat_by_coicop.csv" )
+coicop     = add_fake_rate_group_column ( "vat_by_coicop.csv" )
 capitulo_c = add_fake_rate_group_column ( "vat_by_capitulo_c.csv" )
 
 rate_groups = pd.DataFrame (
