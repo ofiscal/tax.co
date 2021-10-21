@@ -32,14 +32,10 @@ def test_capitulo_c_data( df : pd.DataFrame ):
 if True:
   test_coicop_data (
       misc . read_csv_or_xlsx (
-          path.join ( "users",
-                      common . user,
-                      "config/vat/vat_by_coicop" ) ) )
+            "config/vat/vat_by_coicop.csv" ) )
   test_capitulo_c_data (
       misc . read_csv_or_xlsx (
-          path.join ( "users",
-                      common . user,
-                      "config/vat/vat_by_capitulo_c" ) ) )
+        "config/vat/vat_by_capitulo_c.csv" ) )
   oio.test_write(
       1, # PTIFALL: Uses no sample-size-dependent data,
          # so always writes to recip-1/

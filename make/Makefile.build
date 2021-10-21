@@ -8,10 +8,10 @@ $(input_subsamples): \
 	$(python_from_here) python/subsample.py
 
 vat_rates: $(vat_rates)
-$(vat_rates):                      \
-  .no_younger_than/python/build/vat_rates.py \
-  users/$(user)/config/vat/vat_by_coicop.csv       \
-  users/$(user)/config/vat/vat_by_capitulo_c.csv
+$(vat_rates):					\
+  .no_younger_than/python/build/vat_rates.py	\
+  config/vat/vat_by_coicop.csv			\
+  config/vat/vat_by_capitulo_c.csv
 	date
 	$(python_from_here) python/build/vat_rates.py $(config_file)
 

@@ -11,16 +11,26 @@ import os
 
 source_folder      = "config/vat/"
 destination_folder = os.path.join ( source_folder, "fake_grouped" )
-number_of_rate_groups = 3
+number_of_rate_groups = 4
+
+consumable_group_names = pd.DataFrame (
+  [ ["food"          , 0 ],
+    ["medicine"      , 1 ],
+    ["travel"        , 2 ],
+    ["entertainment" , 3 ], ],
+  columns = ["consumable group", "cg index"] )
 
 # PITFALL: IO: Writes a new file.
 def add_fake_rate_group_column ( vat_filename : str ) -> pd.DataFrame:
   df = pd.read_csv (
     os.path.join ( source_folder, vat_filename ),
     encoding = "latin1" )
-  df["consumable group"] = np.random.randint (
+  df["cg index"] = np.random.randint (
     0, number_of_rate_groups, len ( df ) )
-  df.to_csv( os.path.join ( "config/vat/fake_grouped", vat_filename ),
+  df = df.merge ( consumable_group_names,
+                  on = "cg index" )
+  df = df.drop ( columns = "cg index" )
+  df.to_csv( os.path.join ( destination_folder, vat_filename ),
              index = False )
   return df
 

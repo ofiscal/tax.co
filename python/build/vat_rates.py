@@ -15,11 +15,16 @@ if True:
   import python.common.terms    as t
 
 
+consumable_groups = (
+  pd.read_csv (
+    os.path.join ( "users",
+                   c . user,
+                   "config/vat/consumable_groups.csv" ) ) )
+
 vat_cap_c = (
     misc . read_csv_or_xlsx (
-        os.path.join ( "users",
-                       c . user,
-                       "config/vat/vat_by_capitulo_c" ),
+        os.path.join (
+          "config/vat/fake_grouped/vat_by_capitulo_c" ),
         encoding = "latin1" )
     . rename (
         columns = { "CODE" : "25-broad-categs"
@@ -28,10 +33,13 @@ vat_cap_c = (
 
 vat_coicop = (
     misc . read_csv_or_xlsx (
-        os.path.join ( "users",
-                       c . user,
-                       "config/vat/vat_by_coicop" ),
+        os.path.join (
+          "config/vat/fake_grouped/vat_by_coicop" ),
         encoding = "latin1" ) )
+
+for d in [vat_coicop, vat_cap_c]:
+  d = d.merge ( consumable_groups,
+                on = "consumable group" )
 
 for (vat,frac) in [ ("vat"     , "vat frac")
                   , ("vat, min", "vat frac, min")
