@@ -63,6 +63,24 @@ RUN apt install -y                                     \
       texlive-latex-base texlive-fonts-recommended     \
       texlive-fonts-extra texlive-latex-extra texlive-publishers
 
+#### #### #### #### #### #### #### #### #### #### #### ####
+#### ####            Afterthoughts                #### ####
+#### #### #### #### #### #### #### #### #### #### #### ####
+# It would be more natural for these to run earlier in the Dockerfile,
+# but that would require rebuilding many stages.
+# Until that needs doing, it's more efficient to leave them tacked on
+# here at the end.
+
+# PITFALL: pip and conda can conflict,
+# but coconut and pandas-stubs are not packaged for conda.
+# I did not install mypy from conda
+# because I thought it might conflict with `coconut[mypy]`.
+RUN pip3 install --upgrade coconut mypy coconut[mypy] \
+    pandas-stubs types-requests
+RUN /opt/conda/bin/conda update pandas
+RUN echo "coconut \$1 \$1.py -l -t 3.7 --mypy" > /usr/bin/myCoconut && \
+    chmod +x                                     /usr/bin/myCoconut
+
 
 #### #### #### #### #### #### #### #### #### #### #### ####
 #### ####      No more installs, just config      #### ####
