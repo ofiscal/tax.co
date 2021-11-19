@@ -1,0 +1,19 @@
+category	description
+productos perjudiciales para el ambiente	Productos que pueden ser considerados para impuestos verdes, es decir que generan algún tipo de contaminación o problema ambiental
+productos no saludables	Productos que por su contenido pueden resultar perjudiciales para la salud a largo plazo y que pueden ser sujetos a impuestos saludables
+genero	productos que suelen ser asociados a una distincion cultural o biologica de forma diferenciada según el genero o sexo de quienes se asocia
+gasolina	gasolina y combustibles
+cerveza	cerveza
+licores	licores distintos a la cerveza
+tabaco y cigarrillos	tabaco y cigarrillos
+vehículos	vehículos
+alimentos	alimentos
+Estupefacientes	Estupefacientes
+cuidado	productos que se usan para el cuidado de personas o para el mantenimiento de donde habitan
+medicamentos (medicina)	medicamentos (medicina)
+otros	productos que no pertenecen a ningún otra categoria
+pink tax	productos que fueron asociados a generar (en algun momento) una carga impositiva mas alta de forma exclusiva a mujeres y personas con vulva
+De uso exclusivo para mujeres - personas con vulva/útero 	De uso exclusivo para mujeres - personas con vulva/útero 
+Rol de género  - femenino 	Productos que se asocian con el rol de genero femenino atribuido en la sociedad Colombiana
+Categoría de productos por conexión (infantiles*)	Productos infantiles que suelen ser usados/adquiridos por su cuidador directo, más comunmente mujeres 
+Para hombre	"Que se etiquetan como ""para hombre"""

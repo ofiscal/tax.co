@@ -1,0 +1,26 @@
+"CODE,DESCRIPTION,vat,""vat, min"",""vat, max"""
+"1,""Pan, arepas, bollos y almojÃ¡banas"",0,0,0"
+2,Galletas de sal y de dulce,0.19,0.19,0.19
+"3,""Arroz, pastas alimenticias, avena, maÃ­z, harinas"",,0,0.05"
+"4,""Carne de res, cerdo, hueso y vÃ­sceras"",0,0,0"
+"5,""Pollo, otras aves y menudencias"",0,0,0"
+"6,""Salchichas, jamÃ³n, mortadela, salchichÃ³n"",0.05,0.05,0.05"
+"7,""Pescado de rÃ­o, mar y otros productos"",0,0,0"
+8,Leche (animal y vegetal),0,0,0
+9,Queso (animal y vegetal),,0,0.05
+"10,""Otros derivados de la leche: yogur,"",0.19,0.19,0.19"
+11,Huevos,0,0,0
+"12,""Aceites y grasas: aceite, manteca, mantequilla,"",0.19,0.19,0.19"
+13,Frutas,0,0,0
+"14,""Verduras y hortalizas: tomate, cebolla,"",0,0,0"
+"15,""Granos secos: frÃ­jol, lenteja, garbanzo,"",0,0,0"
+"16,""Enlatados y encurtidos: arveja, frÃ­jol,"",0.19,0.19,0.19"
+"17,""PlÃ¡tano, yuca, arracacha, Ã±ame, papa y"",0,0,0"
+"18,""AzÃºcar, panela y otros endulzantes"",,0,0.05"
+"19,""Mermeladas, arequipe, bocadillos, compotas,"",,0,0.19"
+"20,""Salsas, mayonesa, mostaza, vinagre, etc."",0.19,0.19,0.19"
+21,Sal y condimentos,,0,0.19
+"22,""CafÃ©, chocolate, otras bebidas con cacao"",0.05,0.05,0.05"
+"23,""Papas fritas, chitos, maicitos, patacones,"",0.19,0.19,0.19"
+"24,""Agua, gaseosas, refrescos, jugos, tÃ© frÃ­o y otras bebidas no alcohï¿½licas "",0,0,0"
+25,Alimentos y bebidas preparados fuera,0,0,0
