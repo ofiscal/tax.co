@@ -257,20 +257,20 @@ T� en polvo (para preparar),1210301,0.19,0.19,0.19,
 Agua mineral (con y sin gas) para consumo en el hogar,1220101,0.0,0.0,0.0,
 Agua en lata o de carrotanque,1220201,0.0,0.0,0.0,
 Hielo ,1220301,0.0,0.0,0.0,
-Gaseosas para consumo en el hogar,1220401,0.128,0.128,0.128,
-Maltas para consumo en el hogar,1220501,0.128,0.128,0.128,
-"Refrescos l�quidos empacados (jugos, t� fr�os y bebidas hidratantes) para consumo en el hogar",1220601,0.128,0.128,0.128,
+Gaseosas para consumo en el hogar,1220401,0.19,0.19,0.19,
+Maltas para consumo en el hogar,1220501,0.19,0.19,0.19,
+"Refrescos l�quidos empacados (jugos, t� fr�os y bebidas hidratantes) para consumo en el hogar",1220601,0.19,0.19,0.19,
 Concentrados para preparar refrescos,1220701,0.19,0.19,0.19,
-"Bebidas energizantes (a base de glucosa, guaran�, cafe�na, entre otros) para consumo en el hogar",1220801,0.128,0.128,0.128,
-"Bebidas a base de arroz, soya, coco, quinua, almendra, etc (horchata, yogurt vegetariano) para consumo en el hogar",1220901,0.128,0.128,0.128,
+"Bebidas energizantes (a base de glucosa, guaran�, cafe�na, entre otros) para consumo en el hogar",1220801,0.19,0.19,0.19,
+"Bebidas a base de arroz, soya, coco, quinua, almendra, etc (horchata, yogurt vegetariano) para consumo en el hogar",1220901,0.19,0.19,0.19,
 Aguardiente para consumo en el hogar,2110101,0.05,0.05,0.05,
 Ron para consumo en el hogar,2110201,0.05,0.05,0.05,
 "Whisky, brandy, vodka, ginebra, cognac, tequila y similares para consumo en el hogar",2110301,0.05,0.05,0.05,
 "Cremas de licor (de amareto, de whisky, etc.), sabaj�n y ponche crema para consumo en el hogar",2110401,0.05,0.05,0.05,
 "Otras bebidas alcoh�licas: aperitivos que no sean a base de vino, mezclas de cocteles para consumo en el hogar",2119901,0.05,0.05,0.05,
 "Vino, champa�a, jerez y aperitivos a base de vino para consumo en el hogar",2120101,0.05,0.05,0.05,
-Cerveza nacional e importada para consumo en el hogar,2130101,0.128,0.128,0.128,
-Refajo preparado (embotellado o enlatado) para consumo en el hogar,2130102,0.128,0.128,0.128,
+Cerveza nacional e importada para consumo en el hogar,2130101,0.19,0.19,0.19,
+Refajo preparado (embotellado o enlatado) para consumo en el hogar,2130102,0.19,0.19,0.19,
 Cigarrillos con filtro,2200101,0.19,0.19,0.19,
 Cigarrillos sin filtro,2200102,0.19,0.19,0.19,
 Tabacos y picadura para pipa o para armar cigarrillos,2200103,0.19,0.19,0.19,
@@ -824,10 +824,8 @@ Alimentos para animales dom�sticos y mascotas,9340201,0.19,0.19,0.19,
 "Entrada a Ferias (del libro, artesanal, etc)",9410101,0.0,0.0,0.0,
 "Gastos en parques, parques de diversiones, juegos mec�nicos (no incluir pago de paquetes de paseos de menos de un d�a por excursiones, peregrinaje o convivencia)",9410102,0.19,0.19,0.19,
 Gastos en bazares y fiestas populares,9410103,0.19,0.19,0.19,
-"Servicio de profesores o instructores particulares en clases recreativas y deportivas (f�tbol, ajedrez, gimnasia, patinaje, nataci�n, yoga y otros)
-       ",9410104,0.19,0.19,0.19,
-"Servicio de profesores o instructores particulares en clases de formaci�n art�stica (m�sica, baile, instrumentos musicales, canto, producci�n art�stica-creativa)     
-  ",9410105,0.19,0.19,0.19,
+"Servicio de profesores o instructores particulares en clases recreativas y deportivas (f�tbol, ajedrez, gimnasia, patinaje, nataci�n, yoga y otros)",9410104,0.19,0.19,0.19,
+"Servicio de profesores o instructores particulares en clases de formaci�n art�stica (m�sica, baile, instrumentos musicales, canto, producci�n art�stica-creativa)",9410105,0.19,0.19,0.19,
 "Gastos en  fiestas del hogar (matrimonios, cumplea�os, bautizos, navidad) a excepci�n de pi�atas.",9410106,0.19,0.19,0.19,
 Gastos en juegos electr�nicos y maquinitas (daytona y otros) en establecimientos p�blicos,9410107,0.19,0.19,0.19,
 Entrada a  espect�culos deportivos,9410201,0.0,0.0,0.0,
@@ -916,7 +914,7 @@ Comidas completas,11110103,0.0,0.0,0.0,No VAT but Impuesto nacional al consumo o
 "Leche tomada fuera del hogar suministrada para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento.",11110303,0.0,0.0,0.0,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?
 "Yogurt, kumis para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento.",11110304,0.0,0.0,0.0,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?
 "Masato, mazamorra, chicha, avena helada, malteada, agua de panela fria y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo y para llevar",11110305,0.0,0.0,0.0,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?
-"Helados, paletas, conos y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  puestos moviles,  lugares de esparcimiento y para llevar.",11110401,0.0,0.0,0.0,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. 
+"Helados, paletas, conos y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  puestos moviles,  lugares de esparcimiento y para llevar.",11110401,0.0,0.0,0.0,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase.
 "Ensaladas de frutas, frutas sueltas, fresas con crema  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las contratadas por encargo, para llevar y por servicio a domicilio",11110402,0.0,0.0,0.0,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?
 "Galletas de sal y de dulce  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las contratadas por encargo y para llevar",11110403,0.0,0.0,0.0,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?
 "Pan, almoj�banas, bu�uelos,  pandeyucas, arepas y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo, para llevar y por servicio a domicilio",11110404,0.0,0.0,0.0,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?
@@ -928,7 +926,7 @@ Comidas completas,11110103,0.0,0.0,0.0,No VAT but Impuesto nacional al consumo o
 "Arequipes, bocadillos, gelatinas y similares para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento y para llevar",11110410,0.0,0.0,0.0,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?
 "Frituras: papas fritas, chitos, patacones y similares  para consumo inmediato, en medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento y para llevar",11110411,0.0,0.0,0.0,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?
 "Dulces, confites, chocolatinas, bombones  para consumo inmediato, en medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento y para llevar",11110412,0.0,0.0,0.0,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?
-"C�cteles de camarones, ostras y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  puestos moviles, y lugares de esparcimiento; se incluyen tambien las contratadas por encargo y para llevar",11110413,0.0,0.0,0.0,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. 
+"C�cteles de camarones, ostras y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  puestos moviles, y lugares de esparcimiento; se incluyen tambien las contratadas por encargo y para llevar",11110413,0.0,0.0,0.0,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase.
 "Onces, medias nueves, media ma�ana, algo, entred�a, recreo para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las contratadas por encargo y para llevar",11110414,0.0,0.0,0.0,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?
 Alimentos provenientes de salario en especie,11110415,0.0,0.0,0.0,
 "Gastos en discotecas, bares, griles, tabernas y similares (comida, bebidas, cover)  ",11110501,0.0,0.0,0.0,
