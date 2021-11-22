@@ -7,7 +7,7 @@ if True:
 
 
 grouped = pd.read_csv (
-  "config/vat/grouped/1.dos2unix/vat-by-coicop.csv",
+  "config/vat/grouped/1.dos2unix/vat-by-coicop.tsv",
   sep = "\t" )
 
 old = ( pd.read_csv (

@@ -38,7 +38,8 @@ RUN /opt/conda/bin/conda install pydotplus graphviz django
 
 # PITFALL: If something is available via `conda install`, use that.
 RUN pip3 install --upgrade \
-  yfinance yahoofinancials weightedcalcs csv-diff surbtc icecream
+  yfinance yahoofinancials weightedcalcs csv-diff surbtc icecream \
+  django-stubs
 
 RUN apt install -y zip unzip
 

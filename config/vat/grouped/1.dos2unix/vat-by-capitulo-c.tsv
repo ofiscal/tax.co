@@ -1,0 +1,26 @@
+CODE	DESCRIPTION	vat	vat, min	vat, max	big categorie	coicop	coicop2
+1	Pan, arepas, bollos y almojÃ¡banas	0	0	0	11103	1110301	1110309
+2	Galletas de sal y de dulce	0.19	0.19	0.19	1110309	1110309	
+3	Arroz, pastas alimenticias, avena, maÃ­z, harinas		0	0.05	111	1110102	1110500
+4	Carne de res, cerdo, hueso y vÃ­sceras	0	0	0	11202	1120201	1120202
+5	Pollo, otras aves y menudencias	0	0	0	1120204	1120204	1120400
+6	Salchichas, jamÃ³n, mortadela, salchichÃ³n	0.05	0.05	0.05	1120501	1120501	
+7	Pescado de rÃ­o, mar y otros productos	0	0	0	113	1130101	
+8	Leche (animal y vegetal)	0	0	0	11401	1140101	1140401
+9	Queso (animal y vegetal)		0	0.05	1140500	1140500	
+10	Otros derivados de la leche: yogur,	0.19	0.19	0.19	1140600	1140600	
+11	Huevos	0	0	0	1140801	1140801	
+12	Aceites y grasas: aceite, manteca, mantequilla,	0.19	0.19	0.19	115	1150101	1150201
+13	Frutas	0	0	0	11601	1160101	1160109
+14	Verduras y hortalizas: tomate, cebolla,	0	0	0	117	1170101	1170102
+15	Granos secos: frÃ­jol, lenteja, garbanzo,	0	0	0	1170	1170601	1170602
+16	Enlatados y encurtidos: arveja, frÃ­jol,	0.19	0.19	0.19	1170902	1170902	
+17	PlÃ¡tano, yuca, arracacha, Ã±ame, papa y	0	0	0	11705	1170501	1170502
+18	AzÃºcar, panela y otros endulzantes		0	0.05	118	1180101	1180102
+19	Mermeladas, arequipe, bocadillos, compotas,		0	0.19	11803	1180301	1180309
+20	Salsas, mayonesa, mostaza, vinagre, etc.	0.19	0.19	0.19	1190303	1190303	
+21	Sal y condimentos		0	0.19	1190301	1190301	
+22	CafÃ©, chocolate, otras bebidas con cacao	0.05	0.05	0.05	12	1220001	1240000
+23	Papas fritas, chitos, maicitos, patacones,	0.19	0.19	0.19	11909	1190900	
+24	Agua, gaseosas, refrescos, jugos, tÃ© frÃ­o y otras bebidas no alcohï¿½licas 	0	0	0	126	1260000	
+25	Alimentos y bebidas preparados fuera	0	0	0	13	1300000	
