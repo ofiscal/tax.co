@@ -44,7 +44,7 @@ grouped = grouped.rename (
 
 
 ###
-### Add 2-digit a COICOP prefix column
+### Add 2-digit COICOP prefix column
 ###
 
 grouped["coicop"] = util.pad_column_as_int (
@@ -102,4 +102,4 @@ p[ p["prefix"]==10 ].describe()
 ### Write
 ###
 
-grouped.to_csv ( "config/vat/grouped/vat-by-coicop.csv" )
+grouped.to_csv ( "config/vat/grouped/vat_by_coicop.csv" )
