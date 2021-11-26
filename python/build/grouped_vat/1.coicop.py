@@ -1,7 +1,6 @@
 if True:
   import pandas as pd
   import numpy as np
-  import re # regex
   #
   import python.common.util as util
 
@@ -13,34 +12,6 @@ grouped = pd.read_csv (
 old = ( pd.read_csv (
   "config/vat/vat_by_coicop.csv" )
   [[ "coicop", "vat", "vat, min", "vat, max" ]] )
-
-
-###
-### Fix column names.
-###
-
-for i in grouped.columns: print(i)
-
-fails = "pd.rename fails to change the name of this column, which is why I use regexes later."
-
-grouped = grouped.rename (
-  columns = {
-    "Estupefacientes"              : "estupefacientes",
-    "Para hombres"                 : "para hombres",
-    "medicamentos (medicina)"      : "medicamentos",
-    "impuestos saludables (bienes" : "impuestos saludables",
-    "Categoría de productos por conexión (infantiles*)" : "infantiles",
-    "De uso exclusivo para mujeres - personas con vulva/útero" : fails,
-    "Rol de género  - femenino"                                : fails,
-  } )
-
-grouped = grouped.rename (
-  columns = lambda x: re.sub (
-    ".*exclusivo para mujeres.*", "used only by females", x ) )
-
-grouped = grouped.rename (
-  columns = lambda x: re.sub (
-    ".*Rol de g.*fem.*", "female gender role", x ) )
 
 
 ###
@@ -102,4 +73,5 @@ p[ p["prefix"]==10 ].describe()
 ### Write
 ###
 
-grouped.to_csv ( "config/vat/grouped/vat_by_coicop.csv" )
+grouped.to_csv ( "config/vat/grouped/vat_by_coicop.csv",
+                 index = False )

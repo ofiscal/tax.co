@@ -52,11 +52,12 @@ grouped["prefix"] = (
 ### and we don't actually use it.)
 grouped["vat"] = ( grouped["vat, min"] + grouped["vat, max"] ) / 2
 
-( grouped [[ "CODE",
-             "DESCRIPTION",
-             "vat",
-             "vat, min",
-             "vat, max",
-             "prefix" ]]
-  . to_csv ( "config/vat/grouped/vat_by_capitulo_c.csv",
-             index = False ) )
+grouped = grouped.drop (
+  columns = [ 'big categorie',
+              'coicop1',
+              'coicop2',
+              'prefix1',
+              'prefix2', ] )
+
+( grouped . to_csv ( "config/vat/grouped/vat_by_capitulo_c.csv",
+                     index = False ) )
