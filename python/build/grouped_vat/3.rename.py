@@ -3,14 +3,8 @@ if True:
   import numpy as np
   import os
   import re # regex
-
-
-folder = "config/vat/grouped/"
-raw = os.path.join ( folder, "1.dos2unix" )
-
-coicop_path = os.path.join ( folder, "vat_by_coicop.csv" )
-cap_c_path  = os.path.join ( folder, "vat_by_capitulo_c.csv" )
-dicc_path   = os.path.join ( raw,    "dicc_coicop.tsv" )
+  #
+  import python.build.grouped_vat.paths as paths
 
 
 ###
@@ -39,7 +33,7 @@ regex_replacements = [
   ( ".*veh.*culo.*"              , "vehículos"            ),
 ]
 
-for path in [ coicop_path, cap_c_path ]:
+for path in [ paths.file_vat_coicop, paths.file_vat_cap_c ]:
   df = pd.read_csv ( path )
   df = df.rename ( columns = simple_replacements )
   for [before, after] in regex_replacements:
@@ -55,7 +49,7 @@ for path in [ coicop_path, cap_c_path ]:
 ###
 
 dicc = pd.read_csv (
-  "config/vat/grouped/1.dos2unix/dicc_coicop.tsv",
+  paths.file_vat_dicc_raw,
   sep = "\t" )
 
 x = (
@@ -73,5 +67,5 @@ for [before, after] in regex_replacements:
       before, after, x ) )
 
 dicc.to_csv (
-  "config/vat/grouped/dicc_coicop.csv",
+  paths.file_vat_dicc,
   index = False )

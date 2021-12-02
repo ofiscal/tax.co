@@ -8,4 +8,8 @@ In those two files there are three VAT columns: min, max, and "the" VAT. The min
 
 The data in the `fake_grouped/` folder are fake.
 
-The real grouped data include extra binary (0 or 1) columns that define groups of goods, such as "for babies" or "alcohol". Some of them overlap. Each good falls in at least one category, because some of the categoreis are defined based on the first two digits of the coicop code.
+The real grouped data include extra binary (0 or 1)
+columns that define groups of goods, such as "for babies" or "alcohol".
+Some of them overlap.
+Each good falls in at least one category,
+because some of the categories are defined based on the first two digits of the coicop code.

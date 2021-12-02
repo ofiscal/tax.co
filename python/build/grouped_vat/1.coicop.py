@@ -3,10 +3,11 @@ if True:
   import numpy as np
   #
   import python.common.util as util
+  import python.build.grouped_vat.paths as paths
 
 
 grouped = pd.read_csv (
-  "config/vat/grouped/1.dos2unix/vat-by-coicop.tsv",
+  paths.file_vat_coicop_raw,
   sep = "\t" )
 
 old = ( pd.read_csv (
@@ -73,5 +74,5 @@ p[ p["prefix"]==10 ].describe()
 ### Write
 ###
 
-grouped.to_csv ( "config/vat/grouped/vat_by_coicop.csv",
+grouped.to_csv ( paths.file_vat_coicop,
                  index = False )

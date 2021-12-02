@@ -8,9 +8,11 @@ if True:
   import numpy as np
   #
   import python.common.util as util
+  import python.build.grouped_vat.paths as paths
+
 
 grouped = pd.read_csv (
-  "config/vat/grouped/1.dos2unix/vat-by-capitulo-c.tsv",
+  paths.file_vat_cap_c_raw,
   sep = "\t" )
 
 
@@ -59,5 +61,5 @@ grouped = grouped.drop (
               'prefix1',
               'prefix2', ] )
 
-( grouped . to_csv ( "config/vat/grouped/vat_by_capitulo_c.csv",
-                     index = False ) )
+grouped . to_csv ( paths.file_vat_cap_c,
+                   index = False )
