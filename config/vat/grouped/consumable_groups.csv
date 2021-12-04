@@ -1,0 +1,30 @@
+,consumable group,rate group,is prefix
+0,1,1,True
+1,2,1,True
+2,7,1,True
+3,8,1,True
+4,3,2,True
+5,4,2,True
+6,5,2,True
+7,9,2,True
+8,12,2,True
+9,6,0,True
+10,10,0,True
+11,11,0,True
+0,tabaco y cigarrillos,0,False
+1,genero,0,False
+2,cuidado,0,False
+3,estupefacientes,0,False
+4,pink tax,0,False
+5,used only by females,0,False
+6,medicamentos,0,False
+7,daña el ambiente,0,False
+8,infantiles,0,False
+9,female gender role,0,False
+10,para hombres,0,False
+11,vehículos,0,False
+12,gasolina,0,False
+13,cerveza,0,False
+14,alimentos,0,False
+15,licores,0,False
+16,no saludable,0,False
