@@ -21,8 +21,9 @@ if True: # COICOP prefix groups
                           {"prefix vat" : "rate"} )
                .  merge( rate_groups,
                          on = "rate" ) )
-  prefixes = prefixes.rename (
-    columns = {"prefix" : "consumable group"} )
+  prefixes = ( prefixes
+               . rename ( columns = {"prefix" : "consumable group"} )
+               . sort_values ( "consumable group" ) )
   prefixes["is prefix"] = True
 
 if True: # Other groups of consumables, e.g. "pink tax"
@@ -47,4 +48,5 @@ consumable_groups = pd.concat (
     other_groups [[ "consumable group", "rate group", "is prefix" ]] ],
   axis = "rows" )
 
-consumable_groups.to_csv ( paths.file_consumable_groups )
+consumable_groups.to_csv ( paths.file_consumable_groups,
+                           index = False )

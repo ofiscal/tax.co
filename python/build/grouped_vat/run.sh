@@ -2,7 +2,6 @@
 
 PYTHONPATH="/mnt/tax_co":"/opt/conda/lib/python3.8/site-packages"
 condaPython=/opt/conda/bin/python3
-
 code_folder=python/build/grouped_vat/
 
 PYTHONPATH=$PYTHONPATH $condaPython $code_folder/1.coicop.py
