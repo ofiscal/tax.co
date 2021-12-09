@@ -31,9 +31,11 @@ docker stop tax && docker rm tax
 
 # Build a new image. Do this after making changes to the Dockerfile
 # or any of its dependencies.
+echo date
 docker build -f Dockerfile -t \
   ofiscal/tax.co:new .        \
-  | tee logs/"build-log.`date`.txt"
+    | tee logs/"build-log.`date`.txt"
+echo date
 tput bel # Make a noise to indicate termination.
 
 # Change the name of the new image.

@@ -8,11 +8,6 @@ RUN apt install -y wget bzip2 ca-certificates          \
 RUN apt install -y                                     \
       make curl grep sed dpkg git mercurial subversion
 
-# TeX takes almost 2 GB, and I haven't used it in years.
-#RUN apt install -y                                     \
-#      texlive-latex-base texlive-fonts-recommended     \
-#      texlive-fonts-extra texlive-latex-extra texlive-publishers
-
 RUN apt install -y                                     \
       build-essential graphviz cron jq
 RUN apt install -y                                     \
