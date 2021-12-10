@@ -45,7 +45,7 @@ for (vat,frac) in [ ("vat"     , "vat frac")
                   , ("vat, min", "vat frac, min")
                   , ("vat, max", "vat frac, max") ]:
   # Multiplying vat-fraction by value (payment, price)
-    # results in the fraction  of the value attributable to the vat.
+    # results in the fraction of the value attributable to the vat.
     # For instance, if the VAT were 20%, then (0.2 / 1.2) is that fraction.
     # This is because reported expenditures are post-tax.
   vat_cap_c [frac] = vat_cap_c [vat] / (1 + vat_cap_c [vat])

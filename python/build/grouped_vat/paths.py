@@ -10,8 +10,13 @@ folder_grouped_vat     = "config/vat/grouped/"
 folder_dos2unix        = join ( folder_grouped_vat,
                              "1.dos2unix" )
 
-file_consumable_groups = join ( folder_grouped_vat,
-                                "consumable_groups.csv" )
+file_consumable_groups_by_coicop = join (
+  folder_grouped_vat,
+  "consumable_groups_by_coicop.csv" )
+
+file_consumable_groups_other = join (
+  folder_grouped_vat,
+  "consumable_groups_other.csv" )
 
 file_vat_cap_c_raw     = join ( folder_dos2unix,
                                 "vat-by-capitulo-c.tsv" )

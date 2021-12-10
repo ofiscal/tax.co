@@ -23,8 +23,11 @@ if True: # COICOP prefix groups
                          on = "rate" ) )
   prefixes = ( prefixes
                . rename ( columns = {"prefix" : "consumable group"} )
-               . sort_values ( "consumable group" ) )
-  prefixes["is prefix"] = True
+               . sort_values ( "consumable group" )
+                [[ "consumable group", "rate group" ]] )
+  prefixes . to_csv (
+    paths.file_consumable_groups_by_coicop,
+    index = False )
 
 if True: # Other groups of consumables, e.g. "pink tax"
   other_groups = (
@@ -41,12 +44,5 @@ if True: # Other groups of consumables, e.g. "pink tax"
                          "prefix vat",
                         ] ) ) } ) )
   other_groups["rate group"] = 0
-  other_groups["is prefix"] = False
-
-consumable_groups = pd.concat (
-  [ prefixes     [[ "consumable group", "rate group", "is prefix" ]],
-    other_groups [[ "consumable group", "rate group", "is prefix" ]] ],
-  axis = "rows" )
-
-consumable_groups.to_csv ( paths.file_consumable_groups,
-                           index = False )
+  other_groups.to_csv ( paths.file_consumable_groups_other,
+                        index = False )
