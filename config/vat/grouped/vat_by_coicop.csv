@@ -1,4 +1,4 @@
-DESCRIPTION,coicop,Notes,daña el ambiente,no saludable,genero,gasolina,cerveza,licores,tabaco y cigarrillos,vehículos,alimentos,estupefacientes,cuidado,medicamentos,pink tax,used only by females,female gender role,infantiles,para hombres,prefix,vat,"vat, min","vat, max",prefix vat
+DESCRIPTION,coicop,Notes,daña el ambiente,no saludable,genero,gasolina,cerveza,licores,tabaco y cigarrillos,vehículos,alimentos,estupefacientes,cuidado,medicamentos,impuestos rosa,usado exclusivamente por mujeres,rol de género femenino,infantiles,para hombres,prefix,vat,"vat, min","vat, max",prefix vat
 Arroz para seco,1110101,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05
 Arroz para sopa,1110102,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05
 Arroz integral,1110103,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05
@@ -826,7 +826,7 @@ Alimentos para animales domï¿½sticos y mascotas,9340201,,0,0,0,0,0,0,0,0,0,0,
 Gastos en bazares y fiestas populares,9410103,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,0.19,0.19,0.19,0.19
 "Servicio de profesores o instructores particulares en clases recreativas y deportivas (fï¿½tbol, ajedrez, gimnasia, patinaje, nataciï¿½n, yoga y otros)
        ",9410104,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,0.19,0.19,0.19,0.19
-"Servicio de profesores o instructores particulares en clases de formaciï¿½n artï¿½stica (mï¿½sica, baile, instrumentos musicales, canto, producciï¿½n artï¿½stica-creativa)     
+"Servicio de profesores o instructores particulares en clases de formaciï¿½n artï¿½stica (mï¿½sica, baile, instrumentos musicales, canto, producciï¿½n artï¿½stica-creativa)
   ",9410105,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,0.19,0.19,0.19,0.19
 "Gastos en  fiestas del hogar (matrimonios, cumpleaï¿½os, bautizos, navidad) a excepciï¿½n de piï¿½atas.",9410106,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,0.19,0.19,0.19,0.19
 Gastos en juegos electrï¿½nicos y maquinitas (daytona y otros) en establecimientos pï¿½blicos,9410107,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,0.19,0.19,0.19,0.19

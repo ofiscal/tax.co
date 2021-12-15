@@ -15,7 +15,7 @@ the earlier data above it.
 For the few goods in which "vat, min" != "vat, max",
 it defines "vat" to be their average,
 whereas before "vat" was undefined.
-Also, of course, it has new columns like "prefix" or "pink tax"
+Also, of course, it has new columns like "prefix" or "impuesto rosa"
 which were never contemplated for the earlier data set.
 The "prefix vat" rate is computed by averaging
 the "vat" column of all the goods with a given prefix.

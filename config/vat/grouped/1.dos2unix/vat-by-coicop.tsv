@@ -1,4 +1,4 @@
-description	coicop	vat	vat, min	vat, max	Notes	productos perjudiciales para el ambiente	productos no saludables	genero	gasolina	cerveza	licores	tabaco y cigarrillos	vehículos	alimentos	Estupefacientes	cuidado	medicamentos (medicina)	pink tax	De uso exclusivo para mujeres - personas con vulva/útero 	Rol de género  - femenino 	Categoría de productos por conexión (infantiles*)	Para hombres
+description	coicop	vat	vat, min	vat, max	Notes	productos perjudiciales para el ambiente	productos no saludables	genero	gasolina	cerveza	licores	tabaco y cigarrillos	vehículos	alimentos	Estupefacientes	cuidado	medicamentos (medicina)	impuestos rosa	usado exclusivamente por mujeres	rol de género femenino	Categoría de productos por conexión (infantiles*)	Para hombres
 Arroz para seco	1110101	#¡REF!	0	0		0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0
 Arroz para sopa	1110102	#¡REF!	0	0		0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0
 Arroz integral	1110103	#¡REF!	0	0		0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0
@@ -826,7 +826,7 @@ Gastos en parques, parques de diversiones, juegos mecï¿½nicos (no incluir pag
 Gastos en bazares y fiestas populares	9410103	#¡REF!	0.19	0.19		0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
 "Servicio de profesores o instructores particulares en clases recreativas y deportivas (fï¿½tbol, ajedrez, gimnasia, patinaje, nataciï¿½n, yoga y otros)
        "	9410104	#¡REF!	0.19	0.19		0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-"Servicio de profesores o instructores particulares en clases de formaciï¿½n artï¿½stica (mï¿½sica, baile, instrumentos musicales, canto, producciï¿½n artï¿½stica-creativa)     
+"Servicio de profesores o instructores particulares en clases de formaciï¿½n artï¿½stica (mï¿½sica, baile, instrumentos musicales, canto, producciï¿½n artï¿½stica-creativa)
   "	9410105	#¡REF!	0.19	0.19		0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
 Gastos en  fiestas del hogar (matrimonios, cumpleaï¿½os, bautizos, navidad) a excepciï¿½n de piï¿½atas.	9410106	#¡REF!	0.19	0.19		0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
 Gastos en juegos electrï¿½nicos y maquinitas (daytona y otros) en establecimientos pï¿½blicos	9410107	#¡REF!	0.19	0.19		0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
