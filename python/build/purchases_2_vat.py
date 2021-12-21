@@ -65,7 +65,7 @@ if True: # left-pad every coicop value with 0s
 if True: # add these columns: ["vat", "vat, min", "vat, max"]
   # The tax laws do not precisely conform to the COICOP labeling of goods.
   # We (especially our tax policy expert, David Suarez)
-  # had to exercise our judgment,
+  # had to exercise judgment,
   # determining what VAT rate applied to which COICOP category.
   # In some cases the VAT was clear. In other cases,
   # we recorded minimum and maximum possible VAT values.
@@ -95,7 +95,7 @@ if True: # handle freq, value, vat paid
   ( purchases["per month"] # PITFALL: not functional; the "inplace" option
                            # causes replace() to have no return value.
   . replace( legends.freq
-           , inplace=True ) )
+           , inplace = True ) )
 
   purchases["value"]         = purchases["per month"] * purchases["value"]
   purchases["vat paid, min"] = purchases["value"]     * purchases["vat frac, min"]

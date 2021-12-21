@@ -27,7 +27,13 @@ haskell/Main
 haskell/MarginalTaxRates/*.py
 haskell/dist/
 .no_younger_than/*/
+secret/
+
 users/*/*
 users/jeff
-!users/example/ # The ! indicates an exception to a prior rule.
-secret/
+# The ! indicates an exception to a prior rule.
+# The following are all the same folder -- `example` is an alias.
+!users/example/
+!users/u1e71cf39e330262a44422cc73e2e046a/
+!users/example/*
+!users/u1e71cf39e330262a44422cc73e2e046a/*
