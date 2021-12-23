@@ -12,7 +12,8 @@ consumables_by_coicop_prefix = (
   pd.read_csv (
     os.path.join ( "users",
                    c . user,
-                   "config/vat/consumable_groups_by_coicop_prefix.csv" ) ) )
+                   "config/vat/consumable_groups_by_coicop_prefix.csv" ) )
+  . rename ( columns = { "vat" : "prefix vat" } ) )
 
 consumables_other = (
   pd.read_csv (
@@ -57,7 +58,6 @@ vat_coicop = (
 def incorporate_user_vat_prefs ( data : pd.DataFrame
                                ) -> pd.DataFrame:
   # PURPOSE: Merge user's VAT preferences into vat_coicopg and vat_cap_c.
-  # Also compute "vat frac" = vat / (1 + vat).
   # PITFALL: This function is impure, as it depends on the runtime values
   # of `consumables_by_coicop_prefix` and `consumables_other`.
   # TODO: Test (automatically).
@@ -73,12 +73,32 @@ def incorporate_user_vat_prefs ( data : pd.DataFrame
           . iloc[0] # Converts a single-valued series to a number.
           )
     data[g] = data[g] * v
+  return data
+
+vat_components = ( list ( consumables_other ["group"] )
+                   + ["prefix vat"] )
+
+def compute_total_vat ( data : pd.DataFrame
+                      ) -> pd.DataFrame:
+  # Sum the prefix vat and the rates for the other consumable groups.
+  # Also compute "vat frac" = vat / (1 + vat).
+  # TODO: Test (automatically).
+  data["vat"] = ( data [ vat_components ]
+                  . sum ( axis = "columns" ) )
   data["vat frac"] = (  data ["vat"] /
                        (data ["vat"] + 1) )
   return data
 
-vat_coicop = incorporate_user_vat_prefs ( vat_coicop )
-vat_cap_c  = incorporate_user_vat_prefs ( vat_cap_c )
+def go ( data : pd.DataFrame
+       ) -> pd.DataFrame:
+  return (
+    compute_total_vat (
+      incorporate_user_vat_prefs ( data ) )
+    . drop ( # Once they have been summed, the components are of no interest.
+      columns = vat_components ) )
+
+vat_coicop = go ( vat_coicop )
+vat_cap_c  = go ( vat_cap_c )
 
 if True: # save
   oio.saveStage ( c.subsample
@@ -87,10 +107,10 @@ if True: # save
   oio.saveStage ( c.subsample
                 , vat_cap_c
                 , 'vat_cap_c.'  + c.strategy_suffix )
-
+  #
   vat_coicop = vat_coicop.drop( columns = ["description","Notes"] )
   vat_cap_c  = vat_cap_c .drop( columns = ["description"        ] )
-
+  #
   oio.saveStage ( c.subsample
                 , vat_coicop
                 , 'vat_coicop_brief.' + c.strategy_suffix )
