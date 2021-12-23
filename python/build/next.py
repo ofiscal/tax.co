@@ -20,6 +20,22 @@ consumables_other = (
                    c . user,
                    "config/vat/consumable_groups_other.csv" ) ) )
 
+if True: # Fill in any groups missing fromo consumables_other.
+         # (Necessary because by default in the UI none of the radio buttons
+         # are checked for the other consumables groups.)
+  consumables_other_blank = (
+    pd.read_csv ( "config/vat/grouped/consumable_groups_other.csv" )
+    . rename ( columns = { "consumable group" : "group",
+                           "rate group" : "vat" } ) )
+  consumables_other_blank["vat"] = 0
+  consumables_other = (
+    pd.concat ( [ consumables_other,
+                  consumables_other_blank ] )
+    . groupby ( "group" )
+    . agg ( "first" )
+    . reset_index() )
+  del(consumables_other_blank)
+
 vat_cap_c = (
     misc . read_csv_or_xlsx (
         os.path.join (
