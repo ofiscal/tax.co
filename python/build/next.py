@@ -51,12 +51,16 @@ vat_coicop = (
         os.path.join (
           "config/vat/grouped/vat_by_coicop" ),
         encoding = "utf-8" )
-  . drop ( columns = ["prefix vat"] ) )
+  . drop ( columns = ["prefix vat"] )
+  . rename ( columns = {"DESCRIPTION" : "description" } ) )
 
-# Merge the user's VAT preferences into vat_coicopg and vat_cap_c.
-# Also compute "vat frac" = vat / (1 + vat).
 def incorporate_user_vat_prefs ( data : pd.DataFrame
                                ) -> pd.DataFrame:
+  # PURPOSE: Merge user's VAT preferences into vat_coicopg and vat_cap_c.
+  # Also compute "vat frac" = vat / (1 + vat).
+  # PITFALL: This function is impure, as it depends on the runtime values
+  # of `consumables_by_coicop_prefix` and `consumables_other`.
+  # TODO: Test (automatically).
   data = ( data
     . drop ( columns = ["vat", "vat, min", "vat, max"] )
     . rename ( columns = { "prefix" : "group" } )
@@ -75,3 +79,21 @@ def incorporate_user_vat_prefs ( data : pd.DataFrame
 
 vat_coicop = incorporate_user_vat_prefs ( vat_coicop )
 vat_cap_c  = incorporate_user_vat_prefs ( vat_cap_c )
+
+if True: # save
+  oio.saveStage ( c.subsample
+                , vat_coicop
+                , 'vat_coicop.' + c.strategy_suffix )
+  oio.saveStage ( c.subsample
+                , vat_cap_c
+                , 'vat_cap_c.'  + c.strategy_suffix )
+
+  vat_coicop = vat_coicop.drop( columns = ["description","Notes"] )
+  vat_cap_c  = vat_cap_c .drop( columns = ["description"        ] )
+
+  oio.saveStage ( c.subsample
+                , vat_coicop
+                , 'vat_coicop_brief.' + c.strategy_suffix )
+  oio.saveStage ( c.subsample
+                , vat_cap_c
+                , 'vat_cap_c_brief.'   + c.strategy_suffix )
