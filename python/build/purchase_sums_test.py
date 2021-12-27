@@ -25,8 +25,7 @@ assert ( set( sums.columns )  ==
            "value, purchase",
            "value, spending",
            "value, consumption",
-           "vat paid, max",
-           "vat paid, min" } )
+           "vat paid" } )
 
 if com.subsample < 11: # The data is too sparse to test
                        # the smaller samples this way
@@ -84,4 +83,3 @@ assert util.near( len(sums),
 oio.test_write( com.subsample,
                 "build_purchase_sums",
                 "It worked." )
-

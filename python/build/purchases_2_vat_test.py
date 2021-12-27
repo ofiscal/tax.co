@@ -25,9 +25,12 @@ def test_ranges( df ):
       "per month"        : cl.InRange( 1/36 - 0.001, 31 ),
       "quantity"         : cl.InRange( 0, 1e8 ),
       "value"            : cl.InRange( 0, 3e9 ),
-      "vat frac"         : cl.InRange( 0, 0.271 / 1.271 + 0.01 ),
-      "vat frac, max"    : cl.InRange( 0, 0.271 / 1.271 + 0.01 ),
-      "vat"              : cl.InRange( 0, 0.271 )
+
+      # TODO ? These are weak bounds,
+      # but given that users might ask for something
+      # crazy, it's hard to tighten them.
+      "vat"              : cl.InRange( -2, 2 ),
+      "vat frac"         : cl.InRange( -np.inf, 1 ),
     }
 
   for k,v in inRange_spec.items():
@@ -38,16 +41,14 @@ def test_ranges( df ):
     "per month"        : cl.CoversRange( 0.05,30 ),
     "quantity"         : cl.CoversRange( 1,100 ),
     "value"            : cl.CoversRange( 3,1e6 ),
-    "vat frac"         : cl.CoversRange( 0, 0.159 ),
-    "vat frac, max"    : cl.CoversRange( 0, 0.159 ),
-    "vat frac, min"    : cl.CoversRange( 0, 0.159 ),
-    "vat paid, max"    : cl.CoversRange( 0, 1e5 ),
-    "vat paid, min"    : cl.CoversRange( 0, 1e5 ),
-    "vat"              : cl.CoversRange( 0,0.19 ),
-    "vat, max"         : cl.CoversRange( 0, 0.19 ),
-    "vat, min"         : cl.CoversRange( 0, 0.19 ),
     "weight"           : cl.CoversRange( 10, 1000 ),
     "where-got"        : cl.CoversRange( 1,25 )
+
+    # TODO ? These tests don't really work when the user can input
+    # absurd VAT values.
+    # "vat frac"         : cl.CoversRange( 0, 0.159 ),
+    # "vat paid"         : cl.CoversRange( 0, 1e5 ),
+    # "vat"              : cl.CoversRange( 0,0.19 ),
     }
 
   for k,v in coversRange_spec.items():
@@ -59,7 +60,6 @@ def test_ranges( df ):
 class Purchase_2_Columns_missing:
   purchase_codes = [ "25-broad-categs"
                    , "coicop"]
-
   never = [ "big-hog"
           , "per month"
           , "freq-code"
@@ -67,25 +67,16 @@ class Purchase_2_Columns_missing:
           , "quantity"
           , "value"
           , "weight" ]
-
   slightly = [ "is-purchase"
              , "vat frac"
-             , "vat frac, max"
-             , "vat frac, min"
-             , "vat paid, max"
-             , "vat paid, min"
-             , "vat"
-             , "vat, max"
-             , "vat, min" ]
-
+             , "vat paid"
+             , "vat" ]
   very = [ "where-got" ]
-
   def all_columns():
     return ( Purchase_2_Columns_missing.very +
              Purchase_2_Columns_missing.slightly +
              Purchase_2_Columns_missing.never +
              Purchase_2_Columns_missing.purchase_codes )
-
 
 def test_output( df ):
   log = "test_output()\n"

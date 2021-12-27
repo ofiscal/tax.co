@@ -20,13 +20,13 @@ def test_vat_file( filename
 
   assert unique( df.columns )
 
-  for c in [ 'vat', 'vat, min', 'vat, max' ]:
-    assert df[c].min() == 0
-    assert df[c].max() == 0.19
+  # TODO ? If a user can define crazy VAT values,
+  # it's hard to make these tighter.
+  assert df["vat"].min() > -2
+  assert df["vat"].max() < 2
 
   assert set( df.columns ) == set(
-    [code_column_name, 'vat'     , 'vat, min'     , 'vat, max'
-                     , 'vat frac', 'vat frac, min', 'vat frac, max'] )
+    [code_column_name, 'vat', 'vat frac'] )
 
   for c in df.columns:
     if c == code_column_name:
@@ -54,4 +54,3 @@ if True: # run tests
   oio.test_write( cl.subsample
                 , "vat_rates"
                 , log )
-

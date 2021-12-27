@@ -30,23 +30,28 @@ if True: # input files
               , "weight"           : "float32"
               , "where-got"        : "float32"
     } )
-  vat_cap_c = oio.readStage(
-      c.subsample
-    , "vat_cap_c_brief." + c.strategy_suffix
-    , dtype = {
-      "25-broad-categs" : "int32"
-      , "vat"           : "float32"
-      , "vat frac"      : "float32"
-    } )
 
-  vat_coicop = oio.readStage(
+  vat_cap_c = (
+    oio.readStage (
       c.subsample
-    , "vat_coicop_brief." + c.strategy_suffix
-    , dtype = {
-      "coicop"          : "int32"
-      , "vat"           : "float32"
-      , "vat frac"      : "float32"
-    } )
+      , "vat_cap_c_brief." + c.strategy_suffix
+      , dtype = {
+        "25-broad-categs" : "int32"
+        , "vat"           : "float32"
+        , "vat frac"      : "float32"
+      } )
+    . drop ( columns = ["group"] ) )
+
+  vat_coicop = (
+    oio.readStage (
+      c.subsample
+      , "vat_coicop_brief." + c.strategy_suffix
+      , dtype = {
+        "coicop"          : "int32"
+        , "vat"           : "float32"
+        , "vat frac"      : "float32"
+      } )
+    . drop ( columns = ["group"] ) )
 
 if True: # left-pad every coicop value with 0s
   purchases  ["coicop"] = util.pad_column_as_int(
@@ -82,7 +87,6 @@ if True: # handle freq, value, vat paid
                            # causes replace() to have no return value.
   . replace( legends.freq
            , inplace = True ) )
-
   purchases["value"]    = purchases["per month"] * purchases["value"]
   purchases["vat paid"] = purchases["value"]     * purchases["vat frac"]
 
