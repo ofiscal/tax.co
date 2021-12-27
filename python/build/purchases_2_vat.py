@@ -39,8 +39,7 @@ if True: # input files
         "25-broad-categs" : "int32"
         , "vat"           : "float32"
         , "vat frac"      : "float32"
-      } )
-    . drop ( columns = ["group"] ) )
+      } ) )
 
   vat_coicop = (
     oio.readStage (
@@ -50,8 +49,7 @@ if True: # input files
         "coicop"          : "int32"
         , "vat"           : "float32"
         , "vat frac"      : "float32"
-      } )
-    . drop ( columns = ["group"] ) )
+      } ) )
 
 if True: # left-pad every coicop value with 0s
   purchases  ["coicop"] = util.pad_column_as_int(

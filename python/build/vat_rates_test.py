@@ -1,3 +1,5 @@
+# import python.build.vat_rates_test as t
+
 if True:
   import pandas as pd
   #

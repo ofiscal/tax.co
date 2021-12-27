@@ -95,7 +95,7 @@ def go ( data : pd.DataFrame
     compute_total_vat (
       incorporate_user_vat_prefs ( data ) )
     . drop ( # Once they have been summed, the components are of no interest.
-      columns = vat_components ) )
+      columns = vat_components + ["group"] ) )
 
 vat_coicop = go ( vat_coicop )
 vat_cap_c  = go ( vat_cap_c )
