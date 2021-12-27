@@ -52,21 +52,19 @@ if True: # VAT is only charged for purchases; zero it for other things.
                   if vat_regex.match( col ) ]
     # This could change -- that's why I use a regexp -- but currently,
     # vat_columns is equal to this:
-    #   [ 'vat', 'vat, min', 'vat, max', 'vat frac', 'vat frac, min',
-    #     'vat frac, max', 'vat paid, min', 'vat paid, max']
+    #   [ "vat", "vat frac", "vat paid"]
   #
   for col in vat_columns:
       purchases[col] = (
           (purchases[ "is-purchase" ] > 0) *
           purchases[col] )
 
-purchases["transactions"] = 1 # next this is summed within persons
+purchases["transactions"] = 1 # This is soon summed within persons.
 purchase_sums = purchases.groupby( ["household"]
          ) [ [ "value, purchase"
              , "value, non-purchase"
              , "transactions"
-             , "vat paid, max"
-             , "vat paid, min"
+             , "vat paid"
              , "value, tax, predial"
              , "value, tax, purchaselike non-predial non-VAT"
          ] ] . agg("sum")
@@ -81,7 +79,6 @@ if True: # It's faster to compute these columns post-aggregation.
       # PITFALL: Includes VAT (it's part of "value, purchase").
       purchase_sums["value, tax, purchaselike non-VAT"] +
       purchase_sums["value, purchase"] )
-
   purchase_sums["value, consumption"] = ( # purchases and gifts, but no taxes (except VAT)
       # PITFALL: Includes VAT (it's part of "value, purchase").
       purchase_sums["value, non-purchase"] +

@@ -36,11 +36,7 @@ if True: # input files
     , dtype = {
       "25-broad-categs" : "int32"
       , "vat"           : "float32"
-      , "vat, min"      : "float32"
-      , "vat, max"      : "float32"
       , "vat frac"      : "float32"
-      , "vat frac, min" : "float32"
-      , "vat frac, max" : "float32"
     } )
 
   vat_coicop = oio.readStage(
@@ -49,11 +45,7 @@ if True: # input files
     , dtype = {
       "coicop"          : "int32"
       , "vat"           : "float32"
-      , "vat, min"      : "float32"
-      , "vat, max"      : "float32"
       , "vat frac"      : "float32"
-      , "vat frac, min" : "float32"
-      , "vat frac, max" : "float32"
     } )
 
 if True: # left-pad every coicop value with 0s
@@ -62,31 +54,25 @@ if True: # left-pad every coicop value with 0s
   vat_coicop ["coicop"] = util.pad_column_as_int(
     8, vat_coicop ["coicop"] )
 
-if True: # add these columns: ["vat", "vat, min", "vat, max"]
-  # The tax laws do not precisely conform to the COICOP labeling of goods.
-  # We (especially our tax policy expert, David Suarez)
-  # had to exercise judgment,
-  # determining what VAT rate applied to which COICOP category.
-  # In some cases the VAT was clear. In other cases,
-  # we recorded minimum and maximum possible VAT values.
-  # The columns "vat, min", "vat max", "vat frac, min" and "vat frac, max"
-  # correspond to those minima and maxima.
+if True: # add the columns "vat" and "vat frac"
   purchases_coicop = purchases.merge(
     vat_coicop, how = "left", on="coicop" )
   purchases_cap_c = purchases.merge(
     vat_cap_c,  how = "left", on="25-broad-categs" )
   purchases = purchases_coicop . combine_first( purchases_cap_c )
 
-if True: # Big motorcycles are special. We proxy for "big" with "expensive".
+if True: # Big motorcycles incur a special 8% tax.
+         # We proxy for "big" with "expensive".
   purchases["big-hog"] = (1 * (purchases["coicop"]=="07120101")
                             * (purchases["value"]>(9e6) ) )
-  for col in ["vat", "vat, min", "vat, max"]:
-      purchases.loc[ purchases["big-hog"]>0, col] = 0.27
-  for col in ["vat frac", "vat frac, min", "vat frac, max"]:
-      purchases.loc[ purchases["big-hog"]>0, col] = 0.27 / 1.27
+  purchases.loc[ purchases["big-hog"]>0, "vat"] = (
+    purchases.loc[ purchases["big-hog"]>0, "vat"] + 0.08 )
+  purchases.loc[ purchases["big-hog"]>0, "vat frac"] = (
+    purchases.loc[ purchases["big-hog"]>0, "vat"] /
+    (purchases.loc[ purchases["big-hog"]>0, "vat"] + 1) )
 
-if False: # drop anything missing min vat (which implies max also missing)
-  purchases = purchases[ ~ purchases["vat, min"] . isnull() ]
+if False: # drop anything missing vat
+  purchases = purchases[ ~ purchases["vat"] . isnull() ]
 
 if True: # handle freq, value, vat paid
   purchases["freq-code"] = purchases["per month"]
@@ -97,9 +83,8 @@ if True: # handle freq, value, vat paid
   . replace( legends.freq
            , inplace = True ) )
 
-  purchases["value"]         = purchases["per month"] * purchases["value"]
-  purchases["vat paid, min"] = purchases["value"]     * purchases["vat frac, min"]
-  purchases["vat paid, max"] = purchases["value"]     * purchases["vat frac, max"]
+  purchases["value"]    = purchases["per month"] * purchases["value"]
+  purchases["vat paid"] = purchases["value"]     * purchases["vat frac"]
 
 oio.saveStage(
   c.subsample,

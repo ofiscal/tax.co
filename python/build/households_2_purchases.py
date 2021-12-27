@@ -25,18 +25,13 @@ if True: # merge purchase data into person data
                     on=["household"] )
 
 if True: # In San Andrés there is no VAT.
-  for s in ["min", "max"]:
-    merge.loc[ merge["region-1"] == "SAN ANDRÉS", "vat paid, " + s ] = 0
+  merge.loc[ merge["region-1"] == "SAN ANDRÉS", "vat paid" ] = 0
 
 if True: # create a few more variables
-  merge["vat / purchase value, min" ] = (
-    merge["vat paid, min"]   / merge["value, purchase" ] )
-  merge["vat / purchase value, max" ] = (
-    merge["vat paid, max"]   / merge["value, purchase" ] )
-  merge["vat/income, min"] = (
-    merge["vat paid, min"]   / merge["income"] )
-  merge["vat/income, max"] = (
-    merge["vat paid, max"]   / merge["income"] )
+  merge["vat / purchase value" ] = (
+    merge["vat paid"]   / merge["value, purchase" ] )
+  merge["vat/income"] = (
+    merge["vat paid"]   / merge["income"] )
   merge["purchase value / income"   ] = (
     merge["value, purchase"] / merge["income"] )
 
