@@ -40,11 +40,11 @@ if True:
     assert ( merge[ merge["region-1"] == "SAN ANDRÉS" ]
              ["vat paid"].max() == 0 )
 
-# TODO ? These tests don't really work when the user can input
-# absurd VAT values.
-if False:
+if True:
   for k,v in {
       "vat / purchase value"      : cl.InRange( 0, 0.3 ),
+        # The special motorcycle tax, abusivelyed lump into the VAT table,
+        # means the max "vat" is 0.27 rather than 0.19.
       "vat/income"                : cl.InRange( 0, np.inf ),
       "purchase value / income"   : cl.InRange( 0, np.inf )
       }.items():

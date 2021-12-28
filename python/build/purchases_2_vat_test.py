@@ -26,11 +26,10 @@ def test_ranges( df ):
       "quantity"         : cl.InRange( 0, 1e8 ),
       "value"            : cl.InRange( 0, 3e9 ),
 
-      # TODO ? These are weak bounds,
-      # but given that users might ask for something
-      # crazy, it's hard to tighten them.
-      "vat"              : cl.InRange( -2, 2 ),
-      "vat frac"         : cl.InRange( -np.inf, 1 ),
+      # The special motorcycle tax, abusivelyed lump into the VAT table,
+      # means the max "vat" is 0.27 rather than 0.19.
+      "vat"              : cl.InRange( 0, 0.3 ),
+      "vat frac"         : cl.InRange( 0, 0.3 / 1.3 ),
     }
 
   for k,v in inRange_spec.items():
@@ -42,13 +41,17 @@ def test_ranges( df ):
     "quantity"         : cl.CoversRange( 1,100 ),
     "value"            : cl.CoversRange( 3,1e6 ),
     "weight"           : cl.CoversRange( 10, 1000 ),
-    "where-got"        : cl.CoversRange( 1,25 )
+    "where-got"        : cl.CoversRange( 1,25 ),
 
-    # TODO ? These tests don't really work when the user can input
-    # absurd VAT values.
-    # "vat frac"         : cl.CoversRange( 0, 0.159 ),
-    # "vat paid"         : cl.CoversRange( 0, 1e5 ),
-    # "vat"              : cl.CoversRange( 0,0.19 ),
+    # The special motorcycle tax, abusively lump into the VAT table,
+    # means the max "vat" is 0.27 rather than 0.19.
+    # *However*, in the smaller samples,
+    # we can't be sure that whole range is covered:
+    # there  might be no motorcycle purchases.
+    # That at least some purchase incurs a VAT of 0.19, though, is a safe bet.
+    "vat frac"         : cl.CoversRange( 0, 0.19 / 1.19 ),
+    "vat paid"         : cl.CoversRange( 0, 1e5 ),
+    "vat"              : cl.CoversRange( 0, 0.19 ),
     }
 
   for k,v in coversRange_spec.items():

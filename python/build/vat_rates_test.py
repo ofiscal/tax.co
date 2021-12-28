@@ -22,10 +22,10 @@ def test_vat_file( filename
 
   assert unique( df.columns )
 
-  # TODO ? If a user can define crazy VAT values,
-  # it's hard to make these tighter.
-  assert df["vat"].min() > -2
-  assert df["vat"].max() < 2
+  # The special motorcycle tax, abusivelyed lump into the VAT table,
+  # means the max "vat" is 0.27 rather than 0.19.
+  assert df["vat"].min() >= 0
+  assert df["vat"].max() < 0.3
 
   assert set( df.columns ) == set(
     [code_column_name, 'vat', 'vat frac'] )

@@ -80,8 +80,12 @@ vat_components = ( list ( consumables_other ["group"] )
 
 def compute_total_vat ( data : pd.DataFrame
                       ) -> pd.DataFrame:
-  # Sum the prefix vat and the rates for the other consumable groups.
-  # Also compute "vat frac" = vat / (1 + vat).
+  # (1) Sum the prefix vat and the rates for the other consumable groups.
+  # (2) Compute "vat frac" = vat / (1 + vat).
+    # Multiplying "vat frac" by a consumer's payment
+    # results in the fraction of that payment attributable to the vat.
+    # This is because reported expenditures are post-tax.
+    # For instance, if the VAT were 20%, then (0.2 / 1.2) is that fraction.
   # TODO: Test (automatically).
   data["vat"] = ( data [ vat_components ]
                   . sum ( axis = "columns" ) )
