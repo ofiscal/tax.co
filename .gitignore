@@ -19,7 +19,7 @@ cron/test/*.txt
 data/request-ongoing
 data/requests.*csv
 data/constraints-time-memory.json
-docker/logs
+docker/logs/build-log*.txt
 docker/Anaconda3-*.sh
 docker/make.py*
 docker/makefile2graph*
