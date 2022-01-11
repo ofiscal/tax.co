@@ -100,7 +100,7 @@ RUN chmod +777 /usr/bin/python-from-here
 # PITFALL: While the names "jeff" and "users" aren't important,
 # the IDs are. This is designed to match my system,
 # where "jeff" = 1000 and "users" = 100.
-RUN groupmod -g 100 users            && \
+RUN groupmod -g 1000 users           && \
     useradd -r -u 1000 -g users jeff && \
     mkdir /home/jeff                 && \
     chmod +777 /home/jeff            && \
