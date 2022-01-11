@@ -1,6 +1,6 @@
 # bash python/build/grouped_vat/run.sh
 
-PYTHONPATH="/mnt/tax_co":"/opt/conda/lib/python3.8/site-packages"
+PYTHONPATH="/mnt/tax_co":"/opt/conda/lib/python3.9/site-packages"
 condaPython=/opt/conda/bin/python3
 code_folder=python/build/grouped_vat/
 

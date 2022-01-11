@@ -3,10 +3,16 @@ FROM debian:latest
 RUN echo "2021 05 11"
 RUN apt update --fix-missing -y &&                     \
     apt upgrade -y
+RUN apt install -y                                     \
+      texlive-latex-base texlive-fonts-recommended     \
+      texlive-fonts-extra texlive-latex-extra texlive-publishers
 RUN apt install -y wget bzip2 ca-certificates          \
       libglib2.0-0 libxext6 libsm6 libxrender1
 RUN apt install -y                                     \
       make curl grep sed dpkg git mercurial subversion
+
+RUN apt update --fix-missing -y && \
+    apt upgrade -y
 
 RUN apt install -y                                     \
       build-essential graphviz cron jq
@@ -16,7 +22,7 @@ RUN apt install -y                                     \
       haskell-platform
 RUN apt install -y python3-pip
 
-COPY Anaconda3-2020.11-Linux-x86_64.sh /home/anaconda.sh
+COPY Anaconda3-2021.11-Linux-x86_64.sh /home/anaconda.sh
 
 RUN /bin/bash /home/anaconda.sh -b -p /opt/conda
 RUN rm /home/anaconda.sh && \
@@ -29,11 +35,12 @@ RUN rm /home/anaconda.sh && \
 RUN /opt/conda/bin/conda install jupyter -y --quiet
 RUN /opt/conda/bin/conda update --all -y
 
-RUN /opt/conda/bin/conda install pydotplus graphviz django
+RUN /opt/conda/bin/conda install django
 
 # PITFALL: If something is available via `conda install`, use that.
 RUN pip3 install --upgrade \
   yfinance yahoofinancials weightedcalcs csv-diff surbtc icecream \
+  pydotplus graphviz \
   django-stubs
 
 RUN apt install -y zip unzip
@@ -54,10 +61,6 @@ RUN cd /home && unzip make.py && rm make.py.zip && \
 RUN apt install xlsx2csv
 
 RUN apt install csvtool
-
-RUN apt install -y                                     \
-      texlive-latex-base texlive-fonts-recommended     \
-      texlive-fonts-extra texlive-latex-extra texlive-publishers
 
 #### #### #### #### #### #### #### #### #### #### #### ####
 #### ####            Afterthoughts                #### ####
@@ -93,29 +96,29 @@ COPY run-jupyter.sh /root/
 COPY python-from-here /usr/bin
 RUN chmod +777 /usr/bin/python-from-here
 
+# So that the container runs without root privileges on the host.
+# PITFALL: While the names "jeff" and "users" aren't important,
+# the IDs are. This is designed to match my system,
+# where "jeff" = 1000 and "users" = 100.
+RUN groupmod -g 100 users            && \
+    useradd -r -u 1000 -g users jeff && \
+    mkdir /home/jeff                 && \
+    chmod +777 /home/jeff            && \
+    chown jeff /home/jeff
+
 RUN cd /etc/apache2/                                && \
   adduser www-data www-data                         && \
   chown -R www-data:www-data /var/www               && \
   chmod -R g+rw /var/www                            && \
   find / -iname "*apache*" -exec chmod 777 -R {} \; && \
-  mkdir /home/appuser /usr/local/apache2            && \
-  chmod +777 /home/appuser                          && \
   sed -i "s/Listen 80/Listen 8000/g" /etc/apache2/ports.conf
 # PITFALL: www-data is the name of a new group and a new user,
 # both created by the adduser command.
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH /opt/conda/bin:$PATH
-
-# So that the container runs without root privileges on the host.
-# PITFALL: This might only work when run by a user whose uid is 1000.
-# If so, the 1000 below should probably be changed to match the user's id.
-RUN groupadd -g 999 appuser               && \
-    useradd -r -u 1000 -g appuser appuser && \
-    chown appuser /home/appuser
-USER appuser
-
 ENV TZ="America/Bogota"
+USER jeff
 
 # This prevents a weird error that recently (2021 June) started happening
 # when pasting multiple lines of text into a shell.

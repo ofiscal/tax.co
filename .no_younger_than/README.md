@@ -2,8 +2,10 @@
 
 The Makefile writes empty files here to know when to rebuild things.
 The only information such files convey are their names and timestamps.
+The names correspond to source files.
+Timestamps are maxima for the last time a file or anything it depends on was modified.
 
-# What the files here mean
+# More detail
 
 For any sourcefile `x` there might be a corresponding empty file `.no_younger_than/x`.
 If so, and the timestamp on `.no_younger_than/x` is T,

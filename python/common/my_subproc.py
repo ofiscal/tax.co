@@ -19,7 +19,7 @@ def run ( to_run : List[ str ] # A list of lexemes -- that is,
     my_env = os . environ . copy ()
     env_additions = ":" . join (
       [ c.tax_co_root,
-        "/opt/conda/lib/python3.8/site-packages" ] )
+        "/opt/conda/lib/python3.9/site-packages" ] )
       # TODO ? Why must this second folder be specified?
       # It's the default when I run python3 from the shell.
     my_env["PYTHONPATH"] = (
