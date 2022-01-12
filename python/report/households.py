@@ -97,9 +97,9 @@ if True: # create a summary dataframe
         else: return val
 
   # PITFALL: Earlier, this looped over two data sets, households and people.
-  # Now its outermost loop is unnecessary.
+  # Now its outermost loop could be flattened.
   summaryDict = {}
-  for (unit, df, vs, gvs) in [
+  for ( unit,         df,         vs,            gvs) in [
       ( "households", households, householdVars, householdGroupVars ) ]:
 
     groupSummaries = []
@@ -124,7 +124,8 @@ if True: # create a summary dataframe
 
   df_tmi = pd.concat( list( summaryDict.values() ), axis = 0
                     ) . transpose()
-
+  df_tmi . reset_index ( inplace = True )
+  df_tmi = df_tmi . rename ( columns = {"index" : "measure"} )
 
 if True: # save
   oio.saveStage(

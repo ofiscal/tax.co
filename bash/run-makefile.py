@@ -73,7 +73,9 @@ sp = subprocess.run (
       "subsample"   + "=" + str( c.subsample )  ,
       "strategy"    + "=" + c.strategy          ,
       "regime_year" + "=" + str( c.regime_year ),
-      "user"        + "=" + c.user ] ),
+      "user"        + "=" + c.user,
+      "-k"
+     ] ),
   cwd    = tax_co_root_path,
   env    = my_env,
   stdout = subprocess . PIPE,
