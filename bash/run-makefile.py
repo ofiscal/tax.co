@@ -44,7 +44,7 @@ with open( os.path.join( logs_path, "make.txt"),
 
 targets = [ "show_config",
             "show_params",
-            # "tests",
+            "tests",
             "report_households"
           ]
   # Makefile targets.
@@ -74,7 +74,7 @@ sp = subprocess.run (
       "strategy"    + "=" + c.strategy          ,
       "regime_year" + "=" + str( c.regime_year ),
       "user"        + "=" + c.user,
-      "-k"
+      "-k" # Keep going with other targets after any fails, if possible.
      ] ),
   cwd    = tax_co_root_path,
   env    = my_env,

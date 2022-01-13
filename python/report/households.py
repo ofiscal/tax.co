@@ -124,22 +124,6 @@ if True: # create a summary dataframe
 
   df_tmi = pd.concat( list( summaryDict.values() ), axis = 0
                     ) . transpose()
-  df_tmi . reset_index ( inplace = True )
-  df_tmi = df_tmi . rename ( columns = {"index" : "measure"} )
-
-if True: # save
-  oio.saveStage(
-      com.subsample,
-      df_tmi,
-      "report_households_tmi." + com.strategy_year_suffix )
-  oio.saveStage_excel(
-      com.subsample,
-      df_tmi,
-      "report_households_tmi." + com.strategy_year_suffix )
-#  draw.to_latex( df_tmi
-#               , output_dir
-#               , "report_households_tmi." + com.strategy_year_suffix )
-
 
 if True: # do the same thing to a subset of that data
   df = df_tmi.loc[
@@ -225,6 +209,20 @@ if True: # do the same thing to a subset of that data
     , "tax, income, ganancia ocasional: mean"
     ] ]
 
+df_tmi . reset_index ( inplace = True )
+df_tmi = df_tmi . rename ( columns = {"index" : "measure"} )
+df     . reset_index ( inplace = True )
+df     = df . rename ( columns = {"index" : "measure"} )
+
+if True: # save
+  oio.saveStage(
+      com.subsample,
+      df_tmi,
+      "report_households_tmi." + com.strategy_year_suffix )
+  oio.saveStage_excel(
+      com.subsample,
+      df_tmi,
+      "report_households_tmi." + com.strategy_year_suffix )
   oio.saveStage(
       com.subsample,
       df,
