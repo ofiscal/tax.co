@@ -1,6 +1,7 @@
 # Aggregate purchases within person.
 
 if True:
+  import numpy as np
   import re as regex
   #
   import python.build.output_io as oio
@@ -21,6 +22,11 @@ if True: # Deal with taxes encoded as purchases.
   other_tax_coicops = { 12700602,  # vehiculo
                         12700603,  # renta
                         12700699 } # otros
+  purchases["is-purchase"] = np.where (
+    # Because if a "purchase" is a tax then it's not really a purchase.
+    purchases["coicop"].isin ( list(other_tax_coicops) + [predial_tax] ),
+    0,
+    purchases["is-purchase"] )
   purchases["value, tax, predial"] = (
     (purchases["coicop"] == predial_tax)
     * purchases["value"] )
@@ -40,7 +46,7 @@ purchases["value, purchase"] = (
 purchases["value, non-purchase"] = (
     (purchases[ "is-purchase" ] == 0) *
     purchases["value"] )
-lpurchases = purchases.drop(
+purchases = purchases.drop(
     columns = "value" )
 
 if True: # VAT is only charged for purchases; zero it for other things.
