@@ -86,7 +86,7 @@ if True: # handle freq, value, vat paid
   . replace( legends.freq
            , inplace = True ) )
   purchases["value"]    = purchases["per month"] * purchases["value"]
-  purchases["vat paid"] = purchases["value"]     * purchases["vat frac"]
+  purchases["vat paid"] = purchases["value"] * purchases["vat frac"]
 
 oio.saveStage(
   c.subsample,

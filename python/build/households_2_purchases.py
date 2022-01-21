@@ -29,10 +29,10 @@ if True: # In San Andrés there is no VAT.
 
 if True: # create a few more variables
   merge["vat / purchase value" ] = (
-    merge["vat paid"]   / merge["value, purchase" ] )
+    merge["vat paid"]        / merge["value, purchase" ] )
   merge["vat/income"] = (
-    merge["vat paid"]   / merge["income"] )
-  merge["purchase value / income"   ] = (
+    merge["vat paid"]        / merge["income"] )
+  merge["purchase value / income" ] = (
     merge["value, purchase"] / merge["income"] )
 
 if True: # save
