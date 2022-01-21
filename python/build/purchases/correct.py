@@ -68,7 +68,7 @@ for c in ( # how-got=1 -> is-purchase=1, nan -> nan, otherwise -> 0
   [ Correction.Apply_Function_To_Column(
       "how-got"
       , lambda x: 1 if x==1 else
-        # HACK: x >= 0 yields True for numbers, False for NaN
+        # PITFALL: x >= 0 yields False for NaN
         (0 if x >= 0 else np.nan) )
     , Correction.Rename_Column( "how-got", "is-purchase" )
     , Correction.Drop_Row_If_Column_Satisfies_Predicate(
