@@ -60,6 +60,8 @@ people_1 =           users/$(user)/data/recip-$(ss)/people_1.csv
 people_2_buildings = users/$(user)/data/recip-$(ss)/people_2_buildings.csv
 people_3_income_taxish = \
   users/$(user)/data/recip-$(ss)/people_3_income_taxish.$(strategy_year_suffix).csv
+people_4_post_households = \
+  users/$(user)/data/recip-$(ss)/people_4_post_households.$(strategy_year_suffix).csv
 purchases_0 =        users/$(user)/data/recip-$(ss)/purchases_0.csv
 purchases_1 =        users/$(user)/data/recip-$(ss)/purchases_1.csv
 purchases_2_vat =    users/$(user)/data/recip-$(ss)/purchases_2_vat.$(strategy_suffix).csv

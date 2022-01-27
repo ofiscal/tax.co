@@ -1,4 +1,5 @@
 # anywhere
+*.pickle
 .emacs.desktop*
 *.hi
 *.o
