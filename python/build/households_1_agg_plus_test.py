@@ -66,6 +66,9 @@ def test_sums( hh : pd.DataFrame,
     assert   ( hh["members"] >=
                hh["adults"] ) . all()
     assert   ( hh["members"].mean() >
+               # The below 0.3 is probably a lot smaller than it could be,
+               # but I just want to establish substantial separation.
+               # I don't need to pin down how much.
                hh["adults"].mean() + 0.3 )
     assert   hh["adults"] . min() >= 0
       # Can a household have no children?

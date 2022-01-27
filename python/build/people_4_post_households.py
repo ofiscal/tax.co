@@ -40,10 +40,10 @@ if True: # Prepare to merge.
     == set ( ["household"] # PITFALL: If "household" isn't wrapped in a list, the result is a set of letters rather than a set containing a single word.
             ) )
 
-if True: # merge and make new variables,
-         # esp. create person-level purchase-like
+if True: # Merge people and households.
+         # Make new variables, esp. create person-level purchase-like
   m = pd.merge ( left = ps,
-                 right = hs[ ["household"] + columns_to_pull_from_hs ],
+                 right = hs[ columns_to_pull_from_hs ],
                  on = "household" )
   m["share"] = np.where ( # The fraction of purchaselike variables
                           # attributed to this household adult.
