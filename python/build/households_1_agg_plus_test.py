@@ -63,6 +63,12 @@ def test_sums( hh : pd.DataFrame,
     assert   hh["members"] . min() == 1
     assert ( hh["members"]           . max() ==
              ppl["household-member"] . max() )
+    assert   ( hh["members"] >=
+               hh["adults"] ) . all()
+    assert   ( hh["members"].mean() >
+               hh["adults"].mean() + 0.3 )
+    assert   hh["adults"] . min() >= 0
+      # Can a household have no children?
     hh_members_mean = hh["members"].mean()
     assert ( (hh_members_mean > 2) &
              (hh_members_mean < 4) )

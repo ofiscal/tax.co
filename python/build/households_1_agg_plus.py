@@ -37,11 +37,12 @@ if True: # compute five columns for top five member incomes
 
 
 if True: # aggregate from household members to households
-  ppl["members"] = 1 # will be summed
+  ppl["members"] = 1               # will be summed
+  ppl["adults"] = ppl["age"] >= 18 # will be summed
   h_first = ppl.groupby( ["household"]
     ) [ defs.cols_const_within_hh
     ] . agg("first")
-  h_sum = ( ppl.loc[ :, ( ["household","members"]
+  h_sum = ( ppl.loc[ :, ( ["household","members","adults"]
                         + defs.income_and_tax__person_level
                         + defs.cols_income_rank ) ]
           . groupby( "household" )
