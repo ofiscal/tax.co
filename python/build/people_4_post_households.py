@@ -45,11 +45,29 @@ if True: # Merge people and households.
   m = pd.merge ( left = ps,
                  right = hs[ columns_to_pull_from_hs ],
                  on = "household" )
-  m["share"] = np.where ( # The fraction of purchaselike variables
-                          # attributed to this household adult.
-    m["income, household"] <= 0,           # the condition
-    1 / m["adults"],                      # used if true
-    m["income"] / m["income, household"] ) # used if false
-  m["one"] = 1 # To define the trivial group in the person-level report.
+  earners = m [ m["income"] > 0 ]  # TODO: This should also include
+                                   # adults in the labor force.
+  del(m)
+  earners["share"] = np.where ( # The fraction of purchaselike variables
+                                # attributed to this household adult.
+    earners["income, household"] <= 0,          # the condition
+    1 / earners["adults"],                      # used if true
+    earners["income"] / earners["income, household"] ) # used if false
+  earners["one"] = 1 # To define the trivial group in the person-level report.
   for i in household_variables_to_allocate_by_income_share:
-    m[i] = m[i] * m["share"]
+    earners[i] = earners[i] * earners["share"]
+
+if True: # more variables
+  earners["income-decile"] = (
+    util.noisyQuantile( 10, 0, 1, earners["income"] ) )
+  earners["income-percentile"] = (
+    util.noisyQuantile( 100, 0, 1, earners["income"] ) )
+  earners["vat / purchase value" ] = (
+    earners["vat paid"]   / earners["value, purchase" ] )
+  earners["vat/income"] = (
+    # PITFALL: While the maximum value of this looks absurd (103),
+    # it's not. The 95th percentile is 0.3. The outliers are so high because
+    # people can spend borrowed money.
+    earners["vat paid"]   / earners["income"] )
+  earners["purchase value / income"   ] = (
+    earners["value, purchase"] / earners["income"] )
