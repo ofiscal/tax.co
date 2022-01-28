@@ -29,6 +29,6 @@ file_vat_coicop        = join ( folder_grouped_vat,
                                 "vat_by_coicop.csv" )
 
 file_vat_dicc_raw      = join ( folder_dos2unix,
-                                "dicc_coicop.tsv" )
+                                "dicc_non	coicop.tsv" )
 file_vat_dicc          = join ( folder_grouped_vat,
-                                "dicc_coicop.csv" )
+                                "dicc_non	coicop.csv" )
