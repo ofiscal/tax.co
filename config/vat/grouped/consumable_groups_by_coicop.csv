@@ -1,13 +1,13 @@
-consumable group,rate group
-1,1
-2,1
-3,2
-4,2
-5,2
-6,0
-7,1
-8,1
-9,2
-10,0
-11,0
-12,2
+consumable group,rate group,label
+1,1,Comida y bebidas no alcoholicas
+2,1,"Bebidas alcohólicas, tabaco y narcoticos"
+3,2,Vestido y calzado
+4,2,"Vivienda, servicios públicos y combustibles"
+5,2,"Amueblado, equipos de casa, mantenimiento del hogar"
+6,0,Salud
+7,1,Transporte
+8,1,Información y comunicaciones
+9,2,"Recreación, deporte y cultura"
+10,0,Servicios educativos
+11,0,Restaurantes y servicios de alojamineto
+12,2,Seguros y servicios financieros

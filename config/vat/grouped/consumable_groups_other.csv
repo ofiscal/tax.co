@@ -1,18 +1,18 @@
-consumable group,rate group
-cuidado,0
-estupefacientes,0
-usado exclusivamente por mujeres,0
-cerveza,0
-infantiles,0
-impuestos rosa,0
-tabaco y cigarrillos,0
-gasolina,0
-licores,0
-no saludable,0
-rol de género femenino,0
-medicamentos,0
-genero,0
-vehículos,0
-daña el ambiente,0
-para hombres,0
-alimentos,0
+consumable group,rate group,label
+cuidado,0,cuidado
+gasolina,0,gasolina
+genero,0,genero
+rol de género femenino,0,rol de género femenino
+alimentos,0,alimentos
+vehículos,0,vehículos
+tabaco y cigarrillos,0,tabaco y cigarrillos
+para hombres,0,para hombres
+licores,0,licores
+daña el ambiente,0,daña el ambiente
+impuestos rosa,0,impuestos rosa
+medicamentos,0,medicamentos
+cerveza,0,cerveza
+infantiles,0,infantiles
+usado exclusivamente por mujeres,0,usado exclusivamente por mujeres
+estupefacientes,0,estupefacientes
+no saludable,0,no saludable
