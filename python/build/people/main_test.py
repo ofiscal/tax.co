@@ -69,6 +69,8 @@ def test_ranges(ppl: pd.DataFrame):
     , "income, labor"                           : cla.InRange(0, 3e9)
     , "income, borrowing"                       : cla.InRange(0, 1e8)
     , "rank, labor income"                      : cla.InRange(1, 50)
+    , "empleado"                                : cla.InRange(0,1)
+    , "desempleado"                             : cla.InRange(0,1)
     , "used savings"   : cla.InSet( {True,False} )
     , "disabled"       : cla.InSet( {True,False} )
     , "dependent"      : cla.InSet( {True,False} )
@@ -92,14 +94,22 @@ def test_upper_bound_on_fraction_missing(ppl: pd.DataFrame):
     , "pension, contributor(s) (if not pensioned) = self"     : 0.9
     , "pension, contributor(s) (if not pensioned) = employer" : 0.9
     , "seguro de riesgos laborales"                           : 0.7
+
+    , "empleado"                                              : 0
+    , "desempleado"                                           : 0
     }
   for k in specs.keys():
-    assert (pd.isnull(ppl[k]).sum() / len(ppl)) < specs[k]
+    assert (pd.isnull(ppl[k]).sum() / len(ppl)) <= specs[k]
 
 # TODO : extend to all the old variables
 def test_means( ppl : pd.DataFrame ) -> None:
-    x = ppl["used savings"].mean()
-    assert (x < 0.05) & (x > 0.005)
+  for (col, theMin, theMax) in [
+      ("used savings", 0.005, 0.05),
+      ("empleado", 0.2, 0.6),
+      ("desempleado", 0.03, 0.12) ]:
+    x = ppl[col].mean()
+    assert (x >= theMin ) & (x <= theMax)
+
 
 if True: # run tests
   log = "starting\n"
@@ -122,4 +132,3 @@ if True: # run tests
   oio.test_write( com.subsample
                 , "people_main"
                 , log )
-
