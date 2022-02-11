@@ -110,6 +110,7 @@ cols_new = (
     [ "(rank, labor income) = " + str(n) for n in range(1,6) ] +
 
     [ "members",
+      "members in labor force",
       "adults",
       "has-child",
       "has-elderly",

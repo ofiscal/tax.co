@@ -35,16 +35,17 @@ if True: # compute five columns for top five member incomes
   ppl["(rank, labor income) = 5"] = (
     ppl["income, labor"] * (ppl["rank, labor income"] == 5) )
 
-
 if True: # aggregate from household members to households
   ppl["members"] = 1               # will be summed
   ppl["adults"] = ppl["age"] >= 18 # will be summed
   h_first = ppl.groupby( ["household"]
     ) [ defs.cols_const_within_hh
     ] . agg("first")
-  h_sum = ( ppl.loc[ :, ( ["household","members","adults"]
+  h_sum = ( ppl.loc[ :, ( ["household","members","adults","in labor force"]
                         + defs.income_and_tax__person_level
                         + defs.cols_income_rank ) ]
+          . rename ( columns = { "in labor force" :
+                                 "members in labor force" } )
           . groupby( "household" )
           . agg("sum") )
   h_min = ppl.groupby(

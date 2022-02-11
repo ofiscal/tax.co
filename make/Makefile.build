@@ -139,6 +139,13 @@ $(report_households):                          \
 	date
 	$(python_from_here) python/report/households.py $(config_file)
 
+report_earners: $(report_earners)
+$(report_earners):                          \
+  .no_younger_than/python/report/earners.py \
+  $(people_4_post_households)
+	date
+	$(python_from_here) python/report/earners.py $(config_file)
+
 # PITFALL: Always reads households_1_agg_plus from the detail vat strategy, because vat irrelevant.
 goods_by_income_decile: $(goods_by_income_decile)
 $(goods_by_income_decile):                      \

@@ -355,6 +355,13 @@
   .no_younger_than/python/build/output_io.py
 	install -D /dev/null .no_younger_than/python/build/people_4_post_households.py
 
+.no_younger_than/python/build/people_4_post_households_test.py: \
+  python/build/people_4_post_households_test.py                 \
+  .no_younger_than/python/common/misc.py			\
+  .no_younger_than/python/common/common.py			\
+  .no_younger_than/python/build/output_io.py
+	install -D /dev/null .no_younger_than/python/build/people_4_post_households_test.py
+
 .no_younger_than/python/build/datafiles.py: \
   python/build/datafiles.py
 	install -D /dev/null .no_younger_than/python/build/datafiles.py
@@ -533,6 +540,18 @@
   .no_younger_than/python/regime/r2018.py \
   .no_younger_than/python/regime/r2019.py
 	install -D /dev/null .no_younger_than/python/report/households.py
+
+.no_younger_than/python/report/earners.py: \
+  python/report/earners.py \
+  .no_younger_than/python/common/misc.py \
+  .no_younger_than/python/common/common.py \
+  .no_younger_than/python/build/output_io.py \
+  .no_younger_than/python/common/describe.py \
+  .no_younger_than/python/draw/util.py \
+  .no_younger_than/python/regime/r2016.py \
+  .no_younger_than/python/regime/r2018.py \
+  .no_younger_than/python/regime/r2019.py
+	install -D /dev/null .no_younger_than/python/report/earners.py
 
 .no_younger_than/python/subsample.py: \
   python/subsample.py \

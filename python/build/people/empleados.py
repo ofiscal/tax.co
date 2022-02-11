@@ -63,4 +63,7 @@ def generar_empleados ( df : pd.DataFrame ) -> pd.DataFrame:
         else 0 ),
       axis = 1 ) )
 
+  df["in labor force"] = ( df["empleado"]    |
+                           df["desempleado"] )
+
   return(df)

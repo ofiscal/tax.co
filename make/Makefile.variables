@@ -112,6 +112,12 @@ report_households =                                                             
   users/$(user)/data/recip-$(ss)/report_households.$(strategy_year_suffix).csv      \
   users/$(user)/data/recip-$(ss)/report_households.$(strategy_year_suffix).xlsx
 
+report_earners =                                                                 \
+  users/$(user)/data/recip-$(ss)/report_earners_tmi.$(strategy_year_suffix).csv  \
+  users/$(user)/data/recip-$(ss)/report_earners_tmi.$(strategy_year_suffix).xlsx \
+  users/$(user)/data/recip-$(ss)/report_earners.$(strategy_year_suffix).csv      \
+  users/$(user)/data/recip-$(ss)/report_earners.$(strategy_year_suffix).xlsx
+
 goods_by_income_decile = \
   users/$(user)/data/recip-$(ss)/goods_by_income_decile.csv \
   users/$(user)/data/recip-$(ss)/goods,first_six_deciles.csv

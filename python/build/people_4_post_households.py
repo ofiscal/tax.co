@@ -29,7 +29,7 @@ if True: # Prepare to merge.
     ]
   columns_to_pull_from_hs = ( [
     "household",
-    "adults",            # Number of household members >= 18.
+    "members in labor force",
     "income, household", # For allocating VAT among household members
                          # according to each member's income share.
     ] + household_variables_to_allocate_by_income_share )
@@ -45,13 +45,12 @@ if True: # Merge people and households.
   m = pd.merge ( left = ps,
                  right = hs[ columns_to_pull_from_hs ],
                  on = "household" )
-  earners = m [ m["income"] > 0 ]  # TODO: This should also include
-                                   # adults in the labor force.
+  earners = m [ m [ "in labor force" ] == 1 ]
   del(m)
   earners["share"] = np.where ( # The fraction of purchaselike variables
                                 # attributed to this household adult.
-    earners["income, household"] <= 0,          # the condition
-    1 / earners["adults"],                      # used if true
+    earners["income, household"] <= 0,                 # the condition
+    1 / earners["members in labor force"],             # used if true
     earners["income"] / earners["income, household"] ) # used if false
   earners["one"] = 1 # To define the trivial group in the person-level report.
   for i in household_variables_to_allocate_by_income_share:
@@ -71,3 +70,9 @@ if True: # more variables
     earners["vat paid"]   / earners["income"] )
   earners["purchase value / income"   ] = (
     earners["value, purchase"] / earners["income"] )
+
+if True: # save
+  oio.saveStage(
+      com.subsample,
+      earners,
+      "people_4_post_households." + com.strategy_year_suffix )
