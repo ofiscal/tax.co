@@ -6,9 +6,10 @@ if True:
   import python.build.households_1_agg_plus_defs as defs
   import python.build.output_io                  as oio
   from   python.build.people.files import edu_key
-  import python.common.common                    as com
-  import python.common.util                      as util
   import python.build.classes                    as cla
+  import python.common.common                    as com
+  import python.common.tests                     as com_tests
+  import python.common.util                      as util
 
 
 def test_const_within_group( gs : List[str],
@@ -130,15 +131,6 @@ def test_bools( hh : pd.DataFrame,
         ("seguro de riesgos laborales", cla.MeanBounds(0.3,0.6)) ]:
       assert test.test( hh[c] )
 
-def test_quantiles( hh : pd.DataFrame ) -> ():
-    for (col,top) in [ ("income-decile",10),
-                       ("income-percentile",100) ]:
-        assert hh[col].min() == 0
-        assert hh[col].max() == top - 1
-        if com.subsample != 1000:
-            assert util.near( hh[col].mean(),
-                              (top - 1) / 2 )
-
 if True: # IO
   log = "starting\n"
   #
@@ -160,11 +152,11 @@ if True: # IO
       gs = ["household"],
       cs = defs.cols_const_within_hh,
       d = hh )
-  test_indices      ( hh=hh, ppl=ppl )
-  test_income_ranks ( hh=hh, ppl=ppl )
-  test_sums         ( hh=hh, ppl=ppl )
-  test_bools        ( hh=hh, ppl=ppl )
-  test_quantiles    ( hh=hh )
+  test_indices             ( hh=hh, ppl=ppl )
+  test_income_ranks        ( hh=hh, ppl=ppl )
+  test_sums                ( hh=hh, ppl=ppl )
+  test_bools               ( hh=hh, ppl=ppl )
+  com_tests.test_quantiles ( df=hh )
 
   oio.test_write(
       com.subsample,
