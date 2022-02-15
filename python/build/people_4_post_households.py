@@ -45,7 +45,7 @@ if True: # more variables
     util.noisyQuantile( 100, 0, 1, earners["income"] ) )
   earners["vat / purchase value" ] = (
     earners["vat paid"]   / earners["value, purchase" ] )
-  earners["vat/income"] = (
+  earners["vat / income"] = (
     # PITFALL: While the maximum value of this looks absurd (103),
     # it's not. The 95th percentile is 0.3. The outliers are so high because
     # people can spend borrowed money.

@@ -16,7 +16,7 @@ new_columns = [ "in labor force",
                 "income-decile",
                 "income-percentile",
                 "vat / purchase value",
-                "vat/income",
+                "vat / income",
                 "purchase value / income",
                ]
 
@@ -72,7 +72,7 @@ log = log + "\n" + "Means of new person-level variables are smaller than corresp
 
 same_ratio = [ # Should be pretty similar in hh2 and ps4.
   "vat / purchase value",
-  "vat/income",
+  "vat / income",
   "purchase value / income", ]
 same_ratio_hh_list = [ x + "-hh" for x in same_ratio ]
 same_ratio_hh_dict = { x : x + "-hh" for x in same_ratio }

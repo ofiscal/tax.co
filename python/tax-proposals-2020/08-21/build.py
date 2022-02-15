@@ -92,8 +92,8 @@ if True: # Narrow the set of columns
     # , "value, consumption"
     # , "vat / purchase value, min"
     # , "vat / purchase value, max"
-    # , "vat/income, min"
-    # , "vat/income, max"
+    # , "vat / income, min"
+    # , "vat / income, max"
     # , "purchase value / income"
     , "tax, ss" ]
   #

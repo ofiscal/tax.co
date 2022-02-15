@@ -66,7 +66,7 @@ if True: # create a summary dataframe
     , "value, purchase"
     , "purchase value / income"
     , "vat paid"
-    , "vat/income"
+    , "vat / income"
     , "vat / purchase value"
     , "value, tax, predial" ]
 
@@ -176,8 +176,8 @@ if True: # do the same thing to a subset of that data
     , "purchase value / income: mean"
     , "vat / purchase value: median_unweighted"
     , "vat / purchase value: mean"
-    , "vat/income: median_unweighted"
-    , "vat/income: mean"
+    , "vat / income: median_unweighted"
+    , "vat / income: mean"
     , "value, tax, predial: median_unweighted"
     , "value, tax, predial: mean" ]
 
