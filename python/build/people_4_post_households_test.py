@@ -89,6 +89,21 @@ for c in same_ratio:
   log = log + "\n" + c + "has the same values in ps4 as in hh2."
 del ( htemp, ptemp )
 
+for (c,m) in [ ( "in labor force", 0 ),
+               ( "share", 0 ),
+               ( "one", 0 ),
+               ( "income-decile", 0 ),
+               ( "income-percentile" 0 )
+               ( "vat / purchase value", 0.1 ),
+               ( "vat / income", 0.1 ),
+               ( "purchase value / income", 0.1 ), ]:
+  # PITFALL: Income and purcahse value is zero for far more rows of people_4 than for households_2.
+  # The reason for the first is that many households have positive income even though some earners in the household don't.
+  # The reason for the second is that "value, purchase" is zero for anyone with zero income in a household with positive income.
+  # (If everyone in the household has zero income then purchase value is instead divided equally among earners.)
+  assert ps4[c] . isnull() . mean() <= m
+  log = log + "\n" + c + " is missing no more than " + str(100*m) + "%."
+
 com_tests.test_quantiles ( df=ps4 )
 
 oio.test_write ( com.subsample
