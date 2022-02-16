@@ -2,8 +2,9 @@
 
 if True:
   import os
-  import sys
   import pandas                  as pd
+  import sys
+  from   typing import List, Tuple
   #
   import python.build.output_io  as oio
   import python.common.common    as com
@@ -36,51 +37,60 @@ if True: # Create a few columns missing in the input data.
     df["income < min wage"] = (
       df["income"] < c.min_wage )
 
-if True: # Create a summary dataframe.
-         # TODO: Refactor this into two function calls.
-  summaryDict = {}
-  for ( unit,         df,         vs,                 restrictedVars ) in [
-      ( "households", households, defs.householdVars, defs.householdRestrictedVars ) ]:
-    groupSummaries = []
-    for gv in defs.groupVars:
-      varSummaries = []
-      for v in vs:
-        t = desc.tabulate_stats_by_group( df, gv, v, "weight" )
-        t = t.rename (
-          columns = dict(
-                zip( t.columns
-                   , map( lambda x: v + ": " + x
-                        , t.columns ) ) )
-          , index = dict(
-                zip( t.index
-                   , map( lambda x: str(gv) + ": "
-                          + defs.maybeFill( gv, str(x) )
-                        , t.index ) ) ) )
-        varSummaries . append( t )
-      groupSummaries . append( pd.concat( varSummaries, axis = 1 ) )
-    summaryDict[unit] = pd.concat( groupSummaries, axis = 0 )
+def make_summary_frame ( unit           : str,
+                         df             : pd.DataFrame,
+                         variables      : List[str],
+                         restrictedVars : List[str]
+                        ) -> Tuple [ pd.DataFrame,
+                                     pd.DataFrame ]:
+  summaryDict = {} # TODO: Don't use this. It's no longer necessary --
+                   # maybe it never was -- and it's confusing.
+  groupSummaries = []
+  for gv in defs.groupVars:
+    varSummaries = []
+    for v in variables:
+      t = desc.tabulate_stats_by_group( df, gv, v, "weight" )
+      t = t.rename (
+        columns = dict (
+              zip( t.columns
+                 , map( lambda x: v + ": " + x
+                        , t.columns ) ) ),
+        index = dict(
+          zip( t.index
+               , map( lambda x: str(gv) + ": "
+                      + defs.maybeFill( gv, str(x) )
+                      , t.index ) ) ) )
+      varSummaries . append( t )
+    groupSummaries . append( pd.concat( varSummaries, axis = 1 ) )
+  summaryDict[unit] = pd.concat( groupSummaries, axis = 0 )
 
-  df_tmi = pd.concat( list( summaryDict.values() ), axis = 0
+  ret_tmi = pd.concat( list( summaryDict.values() ), axis = 0
                     ) . transpose()
-  df = df_tmi.loc [ restrictedVars ]
-  df_tmi . reset_index ( inplace = True )
-  df_tmi = df_tmi . rename ( columns = {"index" : "measure"} )
-  df     . reset_index ( inplace = True )
-  df     = df . rename ( columns = {"index" : "measure"} )
+  ret = ret_tmi.loc [ restrictedVars ]
+  ret_tmi . reset_index ( inplace = True )
+  ret_tmi = ret_tmi . rename ( columns = {"index" : "measure"} )
+  ret     . reset_index ( inplace = True )
+  ret     = ret . rename ( columns = {"index" : "measure"} )
 
+  return (ret, ret_tmi)
+
+for (unit, df, variables, restrictedVars) in [
+    ( "earners",    earners,    defs.earnerVars,    defs.earnerRestrictedVars ),
+    ( "households", households, defs.householdVars, defs.householdRestrictedVars ) ]:
+  (ret, ret_tmi) = make_summary_frame ( unit, df, variables, restrictedVars )
   oio.saveStage(
       com.subsample,
-      df_tmi,
+      ret_tmi,
       "report_" + unit + "_tmi." + com.strategy_year_suffix )
   oio.saveStage_excel(
       com.subsample,
-      df_tmi,
+      ret_tmi,
       "report_" + unit + "_tmi." + com.strategy_year_suffix )
   oio.saveStage(
       com.subsample,
-      df,
+      ret,
       "report_" + unit + "."     + com.strategy_year_suffix )
   oio.saveStage_excel(
       com.subsample,
-      df,
+      ret,
       "report_" + unit + "."     + com.strategy_year_suffix )
