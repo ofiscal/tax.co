@@ -20,12 +20,18 @@ if True:
       import python.regime.r2019 as regime
 
 
-if True: # Get, prepare the data
+if True: # load data
   households = oio.readStage(
       com.subsample,
       "households_2_purchases." + com.strategy_year_suffix )
 
-  for df in [households]:
+  earners = oio.readStage(
+      com.subsample,
+      "people_4_post_households." + com.strategy_year_suffix )
+
+if True: # Create a few columns missing in the input data.
+         # TODO ? Move upstream.
+  for df in [households, earners]:
     df["income, labor + cesantia"] = (
         df["income, labor"]
         + df["income, cesantia"] )
@@ -38,7 +44,7 @@ if True: # Get, prepare the data
       df["income"] < c.min_wage )
 
 if True: # create a summary dataframe
-  householdVars = ( [
+  commonVars = ( [
       "income < min wage"
     , "pension, receiving"
     , "pension, contributing (if not pensioned)"
@@ -54,12 +60,6 @@ if True: # create a summary dataframe
     , "income, govt"
     , "income, private"
     , "income, infrequent"
-    , "(rank, labor income) = 1"
-    , "(rank, labor income) = 2"
-    , "(rank, labor income) = 3"
-    , "(rank, labor income) = 4"
-    , "(rank, labor income) = 5"
-    , "members"
     , "female head"
     , "value, purchase"
     , "purchase value / income"
@@ -82,7 +82,19 @@ if True: # create a summary dataframe
     , "tax, income, ganancia ocasional"
     ] )
 
-  householdRestrictedVars = (
+  householdSpecificVars = [
+    "(rank, labor income) = 1",
+    "(rank, labor income) = 2",
+    "(rank, labor income) = 3",
+    "(rank, labor income) = 4",
+    "(rank, labor income) = 5",
+    "members",
+    ]
+
+  householdVars = commonVars + householdSpecificVars
+  earnerVars    = commonVars
+
+  commonRestrictedVars = (
     [ "income < min wage: mean"
     , "pension, receiving: mean"
     , "pension, receiving: min"
@@ -113,17 +125,6 @@ if True: # create a summary dataframe
     , "income, govt: mean"
     , "income, private: mean"
     , "income, infrequent: mean"
-    , "(rank, labor income) = 1: mean"
-    , "(rank, labor income) = 1: mean_nonzero"
-    , "(rank, labor income) = 2: mean"
-    , "(rank, labor income) = 2: mean_nonzero"
-    , "(rank, labor income) = 3: mean"
-    , "(rank, labor income) = 3: mean_nonzero"
-    , "(rank, labor income) = 4: mean"
-    , "(rank, labor income) = 4: mean_nonzero"
-    , "(rank, labor income) = 5: mean"
-    , "(rank, labor income) = 5: mean_nonzero"
-    , "members: mean"
     , "female head: mean"
     , "value, purchase: median_unweighted"
     , "value, purchase: mean"
@@ -165,25 +166,42 @@ if True: # create a summary dataframe
     , "tax, income, ganancia ocasional: mean"
     ] )
 
-  householdGroupVars = [ "one"
-                       , "female head"
-                       , "income-decile"
-                       , "income-percentile"
-                       , "income-percentile-in[90,97]"
-                       , "region-2" ]
+  householdSpecificRestrictedVars = [
+    "(rank, labor income) = 1: mean",
+    "(rank, labor income) = 1: mean_nonzero",
+    "(rank, labor income) = 2: mean",
+    "(rank, labor income) = 2: mean_nonzero",
+    "(rank, labor income) = 3: mean",
+    "(rank, labor income) = 3: mean_nonzero",
+    "(rank, labor income) = 4: mean",
+    "(rank, labor income) = 4: mean_nonzero",
+    "(rank, labor income) = 5: mean",
+    "(rank, labor income) = 5: mean_nonzero",
+    "members: mean",
+    ]
+
+  householdRestrictedVars = commonRestrictedVars + householdSpecificRestrictedVars
+  earnerRestrictedVars    = commonRestrictedVars
+
+  groupVars = [ "one"
+              , "female head"
+              , "income-decile"
+              , "income-percentile"
+              , "income-percentile-in[90,97]"
+              , "region-2" ]
 
   # PITFALL: Earlier, this looped over two data sets, households and people.
   # Now its outermost loop could be flattened.
   summaryDict = {}
-  for ( unit,         df,         vs,            gvs) in [
-      ( "households", households, householdVars, householdGroupVars ) ]:
+  for ( unit,         df,         vs,           ) in [
+      ( "households", households, householdVars ) ]:
 
     groupSummaries = []
-    for gv in gvs:
+    for gv in groupVars:
       varSummaries = []
       for v in vs:
         t = desc.tabulate_stats_by_group( df, gv, v, "weight" )
-        t = t.rename(
+        t = t.rename (
           columns = dict(
                 zip( t.columns
                    , map( lambda x: v + ": " + x
@@ -192,8 +210,7 @@ if True: # create a summary dataframe
                 zip( t.index
                    , map( lambda x: str(gv) + ": "
                           + defs.maybeFill( gv, str(x) )
-                        , t.index ) ) )
-          )
+                        , t.index ) ) ) )
         varSummaries . append( t )
       groupSummaries . append( pd.concat( varSummaries, axis = 1 ) )
     summaryDict[unit] = pd.concat( groupSummaries, axis = 0 )
