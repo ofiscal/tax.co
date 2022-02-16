@@ -8,9 +8,10 @@ if True:
   #
   import python.build.output_io as oio
   import python.common.common as com
-  import python.common.misc as c
   import python.common.describe as desc
+  import python.common.misc as c
   import python.draw.util as draw
+  import python.report.defs as defs
   if   com.regime_year == 2016:
       import python.regime.r2016 as regime
   elif com.regime_year == 2018:
@@ -19,25 +20,22 @@ if True:
       import python.regime.r2019 as regime
 
 
-output_dir = "output/vat/tables/recip-" + str(com.subsample) + "/"
-if not os.path.exists(output_dir): os.makedirs(output_dir)
-
-
 if True: # Get, prepare the data
   households = oio.readStage(
       com.subsample,
       "households_2_purchases." + com.strategy_year_suffix )
 
-  households["income, labor + cesantia"] = (
-      households["income, labor"]
-      + households["income, cesantia"] )
+  for df in [households]:
+    df["income, labor + cesantia"] = (
+        df["income, labor"]
+        + df["income, cesantia"] )
 
-  households["income-percentile-in[90,97]"] = (
-      (households["income-percentile"] >= 90)
-    & (households["income-percentile"] <= 97) )
+    df["income-percentile-in[90,97]"] = (
+        (df["income-percentile"] >= 90)
+      & (df["income-percentile"] <= 97) )
 
-  households["income < min wage"] = (
-    households["income"] < c.min_wage )
+    df["income < min wage"] = (
+      df["income"] < c.min_wage )
 
 if True: # create a summary dataframe
   householdVars = ( [
@@ -84,49 +82,7 @@ if True: # create a summary dataframe
     , "tax, income, ganancia ocasional"
     ] )
 
-  householdGroupVars = [ "one"
-                       , "female head"
-                       , "income-decile"
-                       , "income-percentile"
-                       , "income-percentile-in[90,97]"
-                       , "region-2" ]
-
-  def maybeFill(groupVar, val):
-        if groupVar == "income-percentile":
-              return val.zfill(2)
-        else: return val
-
-  # PITFALL: Earlier, this looped over two data sets, households and people.
-  # Now its outermost loop could be flattened.
-  summaryDict = {}
-  for ( unit,         df,         vs,            gvs) in [
-      ( "households", households, householdVars, householdGroupVars ) ]:
-
-    groupSummaries = []
-    for gv in gvs:
-      varSummaries = []
-      for v in vs:
-        t = desc.tabulate_stats_by_group( df, gv, v, "weight" )
-        t = t.rename(
-          columns = dict(
-                zip( t.columns
-                   , map( lambda x: v + ": " + x
-                        , t.columns ) ) )
-          , index = dict(
-                zip( t.index
-                   , map( lambda x: str(gv) + ": "
-                          + maybeFill( gv, str(x) )
-                        , t.index ) ) )
-          )
-        varSummaries . append( t )
-      groupSummaries . append( pd.concat( varSummaries, axis = 1 ) )
-    summaryDict[unit] = pd.concat( groupSummaries, axis = 0 )
-
-  df_tmi = pd.concat( list( summaryDict.values() ), axis = 0
-                    ) . transpose()
-
-if True: # do the same thing to a subset of that data
-  df = df_tmi.loc[
+  householdRestrictedVars = (
     [ "income < min wage: mean"
     , "pension, receiving: mean"
     , "pension, receiving: min"
@@ -207,7 +163,46 @@ if True: # do the same thing to a subset of that data
     , "tax, income, gmf: mean"
     , "tax, income, ganancia ocasional: median_unweighted"
     , "tax, income, ganancia ocasional: mean"
-    ] ]
+    ] )
+
+  householdGroupVars = [ "one"
+                       , "female head"
+                       , "income-decile"
+                       , "income-percentile"
+                       , "income-percentile-in[90,97]"
+                       , "region-2" ]
+
+  # PITFALL: Earlier, this looped over two data sets, households and people.
+  # Now its outermost loop could be flattened.
+  summaryDict = {}
+  for ( unit,         df,         vs,            gvs) in [
+      ( "households", households, householdVars, householdGroupVars ) ]:
+
+    groupSummaries = []
+    for gv in gvs:
+      varSummaries = []
+      for v in vs:
+        t = desc.tabulate_stats_by_group( df, gv, v, "weight" )
+        t = t.rename(
+          columns = dict(
+                zip( t.columns
+                   , map( lambda x: v + ": " + x
+                        , t.columns ) ) )
+          , index = dict(
+                zip( t.index
+                   , map( lambda x: str(gv) + ": "
+                          + defs.maybeFill( gv, str(x) )
+                        , t.index ) ) )
+          )
+        varSummaries . append( t )
+      groupSummaries . append( pd.concat( varSummaries, axis = 1 ) )
+    summaryDict[unit] = pd.concat( groupSummaries, axis = 0 )
+
+  df_tmi = pd.concat( list( summaryDict.values() ), axis = 0
+                    ) . transpose()
+
+if True: # do the same thing to a subset of that data
+  df = df_tmi.loc [ householdRestrictedVars ]
 
 df_tmi . reset_index ( inplace = True )
 df_tmi = df_tmi . rename ( columns = {"index" : "measure"} )
@@ -231,6 +226,3 @@ if True: # save
       com.subsample,
       df,
       "report_households." + com.strategy_year_suffix )
-#  draw.to_latex( df
-#               , output_dir
-#               , "report_households." + com.strategy_year_suffix )

@@ -93,7 +93,7 @@ for (c,m) in [ ( "in labor force", 0 ),
                ( "share", 0 ),
                ( "one", 0 ),
                ( "income-decile", 0 ),
-               ( "income-percentile" 0 )
+               ( "income-percentile", 0 ),
                ( "vat / purchase value", 0.1 ),
                ( "vat / income", 0.1 ),
                ( "purchase value / income", 0.1 ), ]:

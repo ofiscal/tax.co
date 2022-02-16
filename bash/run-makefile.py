@@ -46,7 +46,6 @@ targets = [ "show_config",
             "show_params",
             "tests",
             "report_households",
-            "report_earners",
           ]
   # Makefile targets.
   # For the full list of possible targets,
