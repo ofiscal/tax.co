@@ -37,10 +37,10 @@ if True: # Create a few columns missing in the input data.
       df["income"] < c.min_wage )
 
 if True: # Create a summary dataframe.
+         # TODO: Refactor this into two function calls.
   summaryDict = {}
-  for ( unit,         df,         vs,           ) in [
-      ( "households", households, defs.householdVars ) ]:
-
+  for ( unit,         df,         vs,                 restrictedVars ) in [
+      ( "households", households, defs.householdVars, defs.householdRestrictedVars ) ]:
     groupSummaries = []
     for gv in defs.groupVars:
       varSummaries = []
@@ -62,29 +62,25 @@ if True: # Create a summary dataframe.
 
   df_tmi = pd.concat( list( summaryDict.values() ), axis = 0
                     ) . transpose()
+  df = df_tmi.loc [ restrictedVars ]
+  df_tmi . reset_index ( inplace = True )
+  df_tmi = df_tmi . rename ( columns = {"index" : "measure"} )
+  df     . reset_index ( inplace = True )
+  df     = df . rename ( columns = {"index" : "measure"} )
 
-if True: # do the same thing to a subset of that data
-  df = df_tmi.loc [ defs.householdRestrictedVars ]
-
-df_tmi . reset_index ( inplace = True )
-df_tmi = df_tmi . rename ( columns = {"index" : "measure"} )
-df     . reset_index ( inplace = True )
-df     = df . rename ( columns = {"index" : "measure"} )
-
-if True: # save
   oio.saveStage(
       com.subsample,
       df_tmi,
-      "report_households_tmi." + com.strategy_year_suffix )
+      "report_" + unit + "_tmi." + com.strategy_year_suffix )
   oio.saveStage_excel(
       com.subsample,
       df_tmi,
-      "report_households_tmi." + com.strategy_year_suffix )
+      "report_" + unit + "_tmi." + com.strategy_year_suffix )
   oio.saveStage(
       com.subsample,
       df,
-      "report_households." + com.strategy_year_suffix )
+      "report_" + unit + "."     + com.strategy_year_suffix )
   oio.saveStage_excel(
       com.subsample,
       df,
-      "report_households." + com.strategy_year_suffix )
+      "report_" + unit + "."     + com.strategy_year_suffix )
