@@ -539,8 +539,8 @@
   python/report/defs.py
 	install -D /dev/null .no_younger_than/python/report/defs.py
 
-.no_younger_than/python/report/households.py: \
-  python/report/households.py                 \
+.no_younger_than/python/report/var_summaries_by_group.py: \
+  python/report/var_summaries_by_group.py                 \
   .no_younger_than/python/build/output_io.py  \
   .no_younger_than/python/common/common.py    \
   .no_younger_than/python/common/describe.py  \
@@ -550,7 +550,7 @@
   .no_younger_than/python/regime/r2018.py     \
   .no_younger_than/python/regime/r2019.py     \
   .no_younger_than/python/report/defs.py
-	install -D /dev/null .no_younger_than/python/report/households.py
+	install -D /dev/null .no_younger_than/python/report/var_summaries_by_group.py
 
 .no_younger_than/python/subsample.py: \
   python/subsample.py \

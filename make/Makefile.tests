@@ -3,9 +3,11 @@
 show_config:
 	cat $(config_file)
 
+# TODO : Dead. Fix or delete.
 lag:
 	bash bash/report_households_lag.sh $(config_file)
 
+# TODO : Dead. Fix or delete.
 diff:
 	$(python_from_here) python/test/report_households_diff.py \
           $(config_file)

@@ -106,7 +106,7 @@ household_pics = \
 
 pics = $(purchase_pics) $(people_pics) $(household_pics)
 
-report_households =                                                                 \
+reports =                                                                 \
   users/$(user)/data/recip-$(ss)/report_households_tmi.$(strategy_year_suffix).csv  \
   users/$(user)/data/recip-$(ss)/report_households_tmi.$(strategy_year_suffix).xlsx \
   users/$(user)/data/recip-$(ss)/report_households.$(strategy_year_suffix).csv      \

@@ -132,12 +132,12 @@ $(people_pics):                       \
 
 pics: $(pics)
 
-report_households: $(report_households)
-$(report_households):                          \
-  .no_younger_than/python/report/households.py \
+reports: $(reports)
+$(reports):                          \
+  .no_younger_than/python/report/var_summaries_by_group.py \
   $(households_2_purchases)
 	date
-	$(python_from_here) python/report/households.py $(config_file)
+	$(python_from_here) python/report/var_summaries_by_group.py $(config_file)
 
 # PITFALL: Always reads households_1_agg_plus from the detail vat strategy, because vat irrelevant.
 goods_by_income_decile: $(goods_by_income_decile)
