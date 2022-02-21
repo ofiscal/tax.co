@@ -3,9 +3,11 @@
 show_config:
 	cat $(config_file)
 
+# TODO : Dead. Fix or delete.
 lag:
 	bash bash/report_households_lag.sh $(config_file)
 
+# TODO : Dead. Fix or delete.
 diff:
 	$(python_from_here) python/test/report_households_diff.py \
           $(config_file)
@@ -41,6 +43,7 @@ tests:                                                      \
   users/$(user)/test/recip-$(ss)/build_purchase_sums.txt    \
   users/$(user)/test/recip-1/build_ss_functions.txt         \
   users/$(user)/test/recip-$(ss)/people_3_income_taxish.txt \
+  users/$(user)/test/recip-$(ss)/people_4_post_households.txt \
   users/$(user)/test/recip-$(ss)/common_misc.txt            \
   users/$(user)/test/recip-$(ss)/common_util.txt            \
   users/$(user)/test/recip-$(ss)/people_main.txt            \
@@ -159,6 +162,16 @@ users/$(user)/test/recip-$(ss)/people_3_income_taxish.txt:   \
 	date
 	$(python_from_here)                               \
           python/build/people_3_income_taxish_test.py \
+          $(config_file)
+
+users/$(user)/test/recip-$(ss)/people_4_post_households.txt:  \
+  $(people_4_post_households)				      \
+  $(people_3_income_taxish)				      \
+  $(households_2_purchases)				      \
+  .no_younger_than/python/build/people_4_post_households_test.py
+	date
+	$(python_from_here)				      \
+          python/build/people_4_post_households_test.py	      \
           $(config_file)
 
 # PITFALL: Sample size is hardcoded to 1, because otherwise

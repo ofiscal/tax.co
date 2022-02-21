@@ -16,6 +16,7 @@ if True:
   import python.build.classes as cla
   import python.build.output_io as oio
   import python.build.people.main_defs as defs
+  from   python.build.people.empleados import generar_empleados
   import python.build.people.files as files
   import python.common.common as cl
   import python.common.misc as c
@@ -38,9 +39,16 @@ if True: # remap some boolean integers
                  # Now 0 = included, 1 = omitted.
   ): ppl[cn] = ppl[cn] - 1
   #
-  for cn in [ "student"         # originally 1=student, 2=not
-            , "skipped 3 meals" # originally 1=yes, 2=no
-            , "literate"        # originally 1=yes, 2=no
+  for cn in [ # Originally these were coded 1=yes, 2=no.
+      "student",
+      "skipped 3 meals",
+      "literate",
+      "last week worked an hour for pay",
+      "last week had paying job or business",
+      "last week worked an hour without pay",
+      "last month sought work",
+      "last year sought work",
+      "last week was available to work",
   ]: ppl[cn] = 2 - ppl[cn]
 
 if True: # non-income characteristics: pension and labor insurance
@@ -428,8 +436,7 @@ if True: # make|format some categorical variables
     , categories = list( files.edu_key.values() ),
     ordered = True)
   #
-  ppl["disabled"] = ppl["why did not seek work"] == 11
-  ppl = ppl.drop( columns = "why did not seek work" )
+  ppl["disabled"] = ppl["last month why did not seek work"] == 11
   #
   #time_use_key = { 1 : "work" # Trabajando
   #           , 2 : "search" # Buscando trabajo
@@ -476,6 +483,8 @@ if True: # dependence
           | ( ppl["disabled"]==1 ) )
       )
 
+ppl = generar_empleados ( ppl )
+
 if True: # drop vars that are (so far) unused downstream of here
   ppl = ppl.drop( columns =
     [ "income, month : borrowing : from person"
@@ -504,7 +513,23 @@ if True: # drop vars that are (so far) unused downstream of here
     , "income, month : private : non-beca, in-kind"
     , "jefe"
     , "relative, child"
-    , "relative, non-child" ] )
+    , "relative, non-child"
+
+    # raw ENPH variables used in empleados.py
+    , "last week major activity"
+    , "last week worked an hour for pay"
+    , "last week had paying job or business"
+    , "last week worked an hour without pay"
+    , "last month sought work"
+    , "last month why did not seek work"
+    , "last year sought work"
+    , "last week was available to work"
+
+    # variables empleados.py makes that we don't use
+    , "ocupado"
+    , "desempleado-abierto"
+    , "desempleado-oculto"
+    ] )
   #
 ppl[ "used savings" ] = ppl[ "used savings" ] == 1
 

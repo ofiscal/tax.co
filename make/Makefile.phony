@@ -7,6 +7,7 @@
   people_1               \
   people_2_buildings     \
   people_3_income_taxish \
+  people_4_post_households \
   purchases_0            \
   purchases_1            \
   purchases_2_vat        \
@@ -17,7 +18,7 @@
   people_pics            \
   household_pics         \
   goods_by_income_decile \
-  report_households      \
+  reports                \
   tests                  \
   rate_input_test        \
   show_config

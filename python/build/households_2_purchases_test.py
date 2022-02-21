@@ -27,7 +27,7 @@ if True:
 if True: # See people_2_buildings_test for how to use these definitions.
   assert util.unique( merge.columns )
   new_cols = [ "vat / purchase value",
-               "vat/income",
+               "vat / income",
                "purchase value / income" ]
   assert ( len( merge.columns ) ==
            len( hh_cols.columns ) +
@@ -45,7 +45,7 @@ if True:
       "vat / purchase value"      : cl.InRange( 0, 0.3 ),
         # The special motorcycle tax, abusivelyed lump into the VAT table,
         # means the max "vat" is 0.27 rather than 0.19.
-      "vat/income"                : cl.InRange( 0, np.inf ),
+      "vat / income"              : cl.InRange( 0, np.inf ),
       "purchase value / income"   : cl.InRange( 0, np.inf )
       }.items():
     assert v.test( merge[k] )
@@ -53,13 +53,13 @@ if True:
       # These bounds could be tighter,
       # but the 1/1000 subsample has a small range.
       "vat / purchase value"       : cl.CoversRange( 0,      0.1    ),
-      "vat/income"                 : cl.CoversRange( 0,      np.inf ),
+      "vat / income"               : cl.CoversRange( 0,      np.inf ),
       "purchase value / income"    : cl.CoversRange( 0.2,    np.inf )
       }.items():
     assert v.test( merge[k] )
   for k,v in {
       "vat / purchase value"       : cl.MeanBounds( 2.5e-2, 6e-2 ),
-      "vat/income"                 : cl.MeanBounds( np.inf, np.inf ),
+      "vat / income"               : cl.MeanBounds( np.inf, np.inf ),
       "purchase value / income"    : cl.MeanBounds( np.inf, np.inf )
       }.items():
     assert v.test( merge[k] )
