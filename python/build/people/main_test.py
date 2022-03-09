@@ -121,7 +121,7 @@ if True: # run tests
   test_count_num_matches_in_space_separated_list()
 
   # integration tests
-  ppl = oio.readStage(com.subsample, 'people_1')
+  ppl = oio.readUserData(com.subsample, 'people_1')
   ppl["edu"] = util.interpretCategorical( ppl["edu"]
                                               , files.edu_key.values() )
   test_ranges( ppl )

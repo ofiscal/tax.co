@@ -12,13 +12,13 @@ if True:
   import python.common.util     as util
 
 
-in_cols = oio.readStage( com.subsample,
+in_cols = oio.readUserData( com.subsample,
                           "people_1",
                           nrows = 1 )
-in_rows = oio.readStage( com.subsample,
+in_rows = oio.readUserData( com.subsample,
                           "people_1",
                           usecols = ["household"] )
-out = oio.readStage(com.subsample, 'people_2_buildings')
+out = oio.readUserData(com.subsample, 'people_2_buildings')
 
 
 cols1 = set( in_cols.columns )

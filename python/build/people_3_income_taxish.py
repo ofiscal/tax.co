@@ -19,7 +19,7 @@ if True:
       import python.regime.r2019 as regime
 
 
-ppl = oio.readStage( com.subsample
+ppl = oio.readUserData( com.subsample
                    , "people_2_buildings" )
 
 ppl = ss.mk_ss_contribs(ppl)

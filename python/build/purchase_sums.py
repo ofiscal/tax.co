@@ -8,7 +8,7 @@ if True:
   import python.common.common as c
 
 
-purchases = oio.readStage(
+purchases = oio.readUserData(
     c.subsample,
     "purchases_2_vat." + c.strategy_suffix )
 

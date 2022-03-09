@@ -9,10 +9,10 @@ if True:
 
 
 if True: # input
-  hs = oio.readStage (
+  hs = oio.readUserData (
     com.subsample,
     "households_2_purchases." + com.strategy_year_suffix )
-  ps = oio.readStage (
+  ps = oio.readUserData (
     com.subsample,
     'people_3_income_taxish.' + com.strategy_year_suffix )
 

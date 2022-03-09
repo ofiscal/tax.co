@@ -9,18 +9,18 @@ if True:
 
 
 if True:
-  hh_cols = oio.readStage(
+  hh_cols = oio.readUserData(
       com.subsample,
       "households_1_agg_plus." + com.strategy_year_suffix,
       nrows = 1 )
-  hh_rows = oio.readStage(
+  hh_rows = oio.readUserData(
     com.subsample,
     "households_1_agg_plus." + com.strategy_year_suffix,
     usecols = ["household"] )
-  pur = oio.readStage(
+  pur = oio.readUserData(
     com.subsample,
     "purchase_sums." + com.strategy_suffix )
-  merge = oio.readStage(
+  merge = oio.readUserData(
     com.subsample,
     "households_2_purchases." + com.strategy_year_suffix )
 

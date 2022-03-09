@@ -22,7 +22,7 @@ if True:
   import python.common.misc as c
 
 
-ppl = oio.readStage(cl.subsample, 'people_0')
+ppl = oio.readUserData(cl.subsample, 'people_0')
 
 ppl = ppl.drop( # drop non-members of household
   ppl[ ppl["relationship"].isin( [6,7,8] )

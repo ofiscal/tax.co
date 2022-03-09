@@ -23,7 +23,7 @@ if True:
 
 vat_pics_dir = "output/vat/pics/recip-" + str(c.subsample) + "/" + c.strategy_suffix + "/"
 if not os.path.exists(vat_pics_dir): os.makedirs(vat_pics_dir)
-people = oio.readStage( c.subsample, 'people_3_purchases.' + c.strategy_suffix )
+people = oio.readUserData( c.subsample, 'people_3_purchases.' + c.strategy_suffix )
 
 edu_key = { 1 : "Ninguno",
     2 : "Preescolar",

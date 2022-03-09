@@ -17,7 +17,7 @@ def test_vat_file( filename
   def non_null_part( column ):
     return column[ ~ pd.isnull( column ) ]
 
-  df = oio.readStage( cl.subsample
+  df = oio.readUserData( cl.subsample
                     , filename + "." + cl.strategy_suffix )
 
   assert unique( df.columns )

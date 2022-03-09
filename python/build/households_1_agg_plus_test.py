@@ -134,10 +134,10 @@ def test_bools( hh : pd.DataFrame,
 if True: # IO
   log = "starting\n"
   #
-  hh = oio.readStage(
+  hh = oio.readUserData(
     com.subsample,
     "households_1_agg_plus." + com.strategy_year_suffix )
-  ppl = oio.readStage(
+  ppl = oio.readUserData(
     com.subsample,
     "people_3_income_taxish." + com.strategy_year_suffix )
   hh["edu-max"] = util.interpretCategorical(

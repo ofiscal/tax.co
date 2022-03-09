@@ -14,10 +14,10 @@ if True:
 
 if True: # merge purchase data into person data
   # PITFALL: The unit of observation in all these data sets is a household.
-  hh = oio.readStage(
+  hh = oio.readUserData(
     com.subsample,
     "households_1_agg_plus." + com.strategy_year_suffix )
-  pur = oio.readStage(
+  pur = oio.readUserData(
     com.subsample,
     "purchase_sums." + com.strategy_suffix )
   merge = pd.merge( hh, pur,

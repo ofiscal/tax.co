@@ -16,7 +16,7 @@ if True:
 
 
 if True: # input
-  ppl = oio.readStage(
+  ppl = oio.readUserData(
     com.subsample,
     "people_3_income_taxish." + com.strategy_year_suffix )
   ppl["edu"] = util.interpretCategorical(

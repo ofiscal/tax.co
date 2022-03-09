@@ -21,7 +21,7 @@ else: import python.regime.r2018 as regime
 
 
 if True: # Get, prepare the data
-  hh = oio.readStage(
+  hh = oio.readUserData(
       cl.subsample,
       "households_2_purchases." + cl.strategy_year_suffix )
   hh["income-percentile-in[90,97]"] = (

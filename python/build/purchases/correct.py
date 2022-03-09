@@ -14,7 +14,7 @@ if True:
   import python.build.purchases.capitulo_c as capitulo_c
 
 
-purchases = oio.readStage( cl.subsample,
+purchases = oio.readUserData( cl.subsample,
                            'purchases_0' )
 
 for c in (

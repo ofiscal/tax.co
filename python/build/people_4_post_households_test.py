@@ -23,13 +23,13 @@ new_columns = [ "in labor force",
 log = str( datetime.datetime.now () )
 
 if True: # load data
-  hh2 = oio.readStage (
+  hh2 = oio.readUserData (
     com.subsample,
     "households_2_purchases." + com.strategy_year_suffix )
-  ps3 = oio.readStage (
+  ps3 = oio.readUserData (
     com.subsample,
     'people_3_income_taxish.' + com.strategy_year_suffix )
-  ps4 = oio.readStage (
+  ps4 = oio.readUserData (
     com.subsample,
     'people_4_post_households.' + com.strategy_year_suffix )
   assert (

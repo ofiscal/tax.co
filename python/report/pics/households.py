@@ -22,8 +22,8 @@ if True:
 vat_pics_dir = ( "output/vat/pics/recip-" + str(c.subsample) + "/"
                + c.strategy_suffix + "/" )
 if not os.path.exists(vat_pics_dir): os.makedirs(vat_pics_dir)
-households = oio.readStage( c.subsample, 'households.' + c.strategy_suffix )
-households_decile_summary = oio.readStage( c.subsample, 'households_decile_summary.' + c.strategy_suffix )
+households = oio.readUserData( c.subsample, 'households.' + c.strategy_suffix )
+households_decile_summary = oio.readUserData( c.subsample, 'households_decile_summary.' + c.strategy_suffix )
 
 
 if True: # single series

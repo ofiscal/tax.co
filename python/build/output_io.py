@@ -45,7 +45,7 @@ def saveStage_excel(subsample,data,name,**kwargs):
                        name + ".xlsx" )
   data.to_excel( path, index=False, **kwargs )
 
-def readStage(subsample,name,**kwargs):
+def readUserData(subsample,name,**kwargs):
   return pd.read_csv(
       os.path.join(
           data_folder(subsample),

@@ -10,12 +10,12 @@ if True:
 
 
 if True: # merge people, buildings
-  buildings = oio.readStage(
+  buildings = oio.readUserData(
       1 # PITFALL: For buildings, we always use the full sample.
     , 'buildings'
     , dtype = {"estrato":'float64'}
   )
-  people = oio.readStage(common.subsample, 'people_1')
+  people = oio.readUserData(common.subsample, 'people_1')
   people = pd.merge( people, buildings
                    , how = "left"
                    , on="household" )

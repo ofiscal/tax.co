@@ -15,11 +15,11 @@ if True:
 
 
 if True: # load data
-  households = oio.readStage(
+  households = oio.readUserData(
       com.subsample,
       "households_2_purchases." + com.strategy_year_suffix )
 
-  earners = oio.readStage(
+  earners = oio.readUserData(
       com.subsample,
       "people_4_post_households." + com.strategy_year_suffix )
 

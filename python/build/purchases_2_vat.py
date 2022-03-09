@@ -14,7 +14,7 @@ if True:
 
 
 if True: # input files
-  purchases = oio.readStage (
+  purchases = oio.readUserData (
     # Data is too big unless we down-cast the numbers
     # from 64-bit to 32-bit.
       c.subsample
@@ -32,7 +32,7 @@ if True: # input files
     } )
 
   vat_cap_c = (
-    oio.readStage (
+    oio.readUserData (
       c.subsample
       , "vat_cap_c_brief." + c.strategy_suffix
       , dtype = {
@@ -42,7 +42,7 @@ if True: # input files
       } ) )
 
   vat_coicop = (
-    oio.readStage (
+    oio.readUserData (
       c.subsample
       , "vat_coicop_brief." + c.strategy_suffix
       , dtype = {

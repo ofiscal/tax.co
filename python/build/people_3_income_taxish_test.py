@@ -34,7 +34,7 @@ if True:
   test_insert_has_dependent_column()
 
   # integration tests
-  p4 = oio.readStage(
+  p4 = oio.readUserData(
       com.subsample,
       'people_3_income_taxish.' + com.strategy_year_suffix )
   assert util.near( 
