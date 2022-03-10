@@ -39,4 +39,4 @@ assert util.near(
 # But it's surprising, because for subsample = 10,
 # the reality is much less than the expectation.
 
-oio.saveStage( com.subsample, purchases, 'purchases_0' )
+oio.saveUserData( com.subsample, purchases, 'purchases_0' )

@@ -54,7 +54,7 @@ if True: # more variables
     earners["value, purchase"] / earners["income"] )
 
 if True: # save
-  oio.saveStage(
+  oio.saveUserData(
       com.subsample,
       earners,
       "people_4_post_households." + com.strategy_year_suffix )

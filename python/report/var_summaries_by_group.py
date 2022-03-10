@@ -78,19 +78,19 @@ for (unit, df, variables, restrictedVars) in [
     ( "earners",    earners,    defs.earnerVars,    defs.earnerRestrictedVars ),
     ( "households", households, defs.householdVars, defs.householdRestrictedVars ) ]:
   (ret, ret_tmi) = make_summary_frame ( unit, df, variables, restrictedVars )
-  oio.saveStage(
+  oio.saveUserData(
       com.subsample,
       ret_tmi,
       "report_" + unit + "_tmi." + com.strategy_year_suffix )
-  oio.saveStage_excel(
+  oio.saveUserData_excel(
       com.subsample,
       ret_tmi,
       "report_" + unit + "_tmi." + com.strategy_year_suffix )
-  oio.saveStage(
+  oio.saveUserData(
       com.subsample,
       ret,
       "report_" + unit + "."     + com.strategy_year_suffix )
-  oio.saveStage_excel(
+  oio.saveUserData_excel(
       com.subsample,
       ret,
       "report_" + unit + "."     + com.strategy_year_suffix )

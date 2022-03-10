@@ -76,4 +76,4 @@ for c in ( # how-got=1 -> is-purchase=1, nan -> nan, otherwise -> 0
   ] ):
   purchases = c.correct( purchases )
 
-oio.saveStage(cl.subsample, purchases, 'purchases_1')
+oio.saveUserData(cl.subsample, purchases, 'purchases_1')

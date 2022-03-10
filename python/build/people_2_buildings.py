@@ -33,6 +33,6 @@ if True: # make some new variables
 # Hence the output is written only to the folder for that subsample --
 # (This contrasts with the test programs that use the full sample,
 # which write evidence that the test passed to every subsample folder.)
-oio.saveStage( common.subsample
+oio.saveUserData( common.subsample
              , people
              , 'people_2_buildings')

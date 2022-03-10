@@ -90,6 +90,6 @@ if True: # It's faster to compute these columns post-aggregation.
       purchase_sums["value, non-purchase"] +
       purchase_sums["value, purchase"] )
 
-oio.saveStage( c.subsample
+oio.saveUserData( c.subsample
              , purchase_sums
              , "purchase_sums." + c.strategy_suffix )

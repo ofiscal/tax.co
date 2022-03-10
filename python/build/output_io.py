@@ -37,7 +37,7 @@ see python/build/purchases/main_test.py. """
     f.write( "".join( map( str, content ) )
            + "\n" )
 
-def saveStage(subsample,data,name,**kwargs):
+def saveUserData ( subsample, data, name, **kwargs):
   df = get_user_data_folder(subsample)
   if not os.path.exists( df ):
     os.makedirs(         df )
@@ -45,7 +45,15 @@ def saveStage(subsample,data,name,**kwargs):
                        name + ".csv" )
   data.to_csv( path, index=False, **kwargs )
 
-def saveStage_excel(subsample,data,name,**kwargs):
+def saveCommonOutput ( subsample, data, name, **kwargs):
+  df = get_common_output_folder ( subsample )
+  if not os.path.exists( df ):
+    os.makedirs(         df )
+  path = os.path.join( df,
+                       name + ".csv" )
+  data.to_csv ( path, index=False, **kwargs )
+
+def saveUserData_excel(subsample,data,name,**kwargs):
   df = get_user_data_folder(subsample)
   if not os.path.exists( df ):
     os.makedirs(         df )

@@ -533,4 +533,4 @@ if True: # drop vars that are (so far) unused downstream of here
   #
 ppl[ "used savings" ] = ppl[ "used savings" ] == 1
 
-oio.saveStage(cl.subsample, ppl, 'people_1')
+oio.saveUserData(cl.subsample, ppl, 'people_1')

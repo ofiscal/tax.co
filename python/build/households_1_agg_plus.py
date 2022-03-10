@@ -114,7 +114,7 @@ if True: # Assemble the aggregates, then compute a few variables.
       "income-decile", households)
 
 if True: # save
-  oio.saveStage( com.subsample, households
+  oio.saveUserData( com.subsample, households
                , "households_1_agg_plus." + com.strategy_year_suffix )
-  oio.saveStage( com.subsample, households_decile_summary
+  oio.saveUserData( com.subsample, households_decile_summary
                , "households_decile_summary." + com.strategy_year_suffix )

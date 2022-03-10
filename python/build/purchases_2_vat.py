@@ -88,7 +88,7 @@ if True: # handle freq, value, vat paid
   purchases["value"]    = purchases["per month"] * purchases["value"]
   purchases["vat paid"] = purchases["value"] * purchases["vat frac"]
 
-oio.saveStage(
+oio.saveUserData(
   c.subsample,
   purchases,
   "purchases_2_vat." + c.strategy_suffix )

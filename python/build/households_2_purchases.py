@@ -36,7 +36,7 @@ if True: # create a few more variables
     merge["value, purchase"] / merge["income"] )
 
 if True: # save
-  oio.saveStage(
+  oio.saveUserData(
       com.subsample,
       merge,
       "households_2_purchases." + com.strategy_year_suffix )
