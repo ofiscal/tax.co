@@ -2,6 +2,7 @@
 
 import pandas as pd
 import os
+
 import python.common.common as c
 
 
@@ -9,10 +10,17 @@ def test_folder(subsample):
     return os.path.join(
         "users", c.user,
         "test/recip-" + str(subsample) )
-def data_folder(subsample):
-    return os.path.join(
-        "users", c.user,
-        "data/recip-" + str(subsample) )
+
+def get_user_data_folder(subsample):
+  return os.path.join(
+    "users", c.user,
+    "data/recip-" + str(subsample) )
+
+def get_common_output_folder(subsample):
+  """Data created by the (second) Makefile shared by all users."""
+  return os.path.join (
+    "output",
+    "recip-" + str(subsample) )
 
 def test_write( subsample, filename, content ):
   """ This idiom for logging test results is mostly unused.
@@ -30,7 +38,7 @@ see python/build/purchases/main_test.py. """
            + "\n" )
 
 def saveStage(subsample,data,name,**kwargs):
-  df = data_folder(subsample)
+  df = get_user_data_folder(subsample)
   if not os.path.exists( df ):
     os.makedirs(         df )
   path = os.path.join( df,
@@ -38,16 +46,24 @@ def saveStage(subsample,data,name,**kwargs):
   data.to_csv( path, index=False, **kwargs )
 
 def saveStage_excel(subsample,data,name,**kwargs):
-  df = data_folder(subsample)
+  df = get_user_data_folder(subsample)
   if not os.path.exists( df ):
     os.makedirs(         df )
   path = os.path.join( df,
                        name + ".xlsx" )
   data.to_excel( path, index=False, **kwargs )
 
-def readUserData(subsample,name,**kwargs):
+def readUserData (subsample,name,**kwargs):
   return pd.read_csv(
-      os.path.join(
-          data_folder(subsample),
-          name + ".csv" ),
-      **kwargs )
+    os.path.join(
+      get_user_data_folder ( subsample ),
+      name + ".csv" ),
+    **kwargs )
+
+def readCommonOutput (subsample,name,**kwargs):
+  """Read a file from the output of the (second) Makefile, not specific to any user."""
+  return pd.read_csv(
+    os.path.join(
+      get_common_output_folder ( subsample ),
+      name + ".csv" ),
+    **kwargs )
