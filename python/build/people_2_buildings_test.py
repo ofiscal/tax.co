@@ -12,13 +12,16 @@ if True:
   import python.common.util     as util
 
 
-in_cols = oio.readUserData( com.subsample,
-                          "people_1",
-                          nrows = 1 )
-in_rows = oio.readUserData( com.subsample,
-                          "people_1",
-                          usecols = ["household"] )
-out = oio.readUserData(com.subsample, 'people_2_buildings')
+in_cols = oio.readCommonOutput (
+  com.subsample,
+  "people_1",
+  nrows = 1 )
+in_rows = oio.readCommonOutput (
+  com.subsample,
+  "people_1",
+  usecols = ["household"] )
+out = oio.readCommonOutput (
+  com.subsample, 'people_2_buildings' )
 
 
 cols1 = set( in_cols.columns )
@@ -70,4 +73,3 @@ for k,v in per_column_spec.items():
 oio.test_write( com.subsample,
                 "people_2_buildings",
                 "It worked." )
-

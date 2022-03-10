@@ -14,7 +14,7 @@ if True:
 
 
 if True: # input files
-  purchases = oio.readUserData (
+  purchases = oio.readCommonOutput (
     # Data is too big unless we down-cast the numbers
     # from 64-bit to 32-bit.
       c.subsample
@@ -88,7 +88,7 @@ if True: # handle freq, value, vat paid
   purchases["value"]    = purchases["per month"] * purchases["value"]
   purchases["vat paid"] = purchases["value"] * purchases["vat frac"]
 
-oio.saveUserData(
+oio.saveUserData (
   c.subsample,
   purchases,
   "purchases_2_vat." + c.strategy_suffix )

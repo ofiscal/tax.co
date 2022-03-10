@@ -92,10 +92,10 @@ $(purchases_1):                            \
 	$(python_from_here) python/build/purchases/correct.py $(config_file)
 
 purchases_2_vat: $(purchases_2_vat)
-$(purchases_2_vat):                      \
-  .no_younger_than/python/build/purchases_2_vat.py \
-  $(vat_rates)                           \
-  users/$(user)/data/recip-$(ss)/purchases_1.csv
+$(purchases_2_vat):				    \
+  .no_younger_than/python/build/purchases_2_vat.py  \
+  $(vat_rates)					    \
+  $(purchases_1)
 	date
 	$(python_from_here) python/build/purchases_2_vat.py $(config_file)
 

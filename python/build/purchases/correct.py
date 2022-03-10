@@ -14,8 +14,9 @@ if True:
   import python.build.purchases.capitulo_c as capitulo_c
 
 
-purchases = oio.readUserData( cl.subsample,
-                           'purchases_0' )
+purchases = oio.readCommonOutput (
+  cl.subsample,
+  'purchases_0' )
 
 for c in (
     # PITFALL: Any correction reliant on a column's being a number
@@ -76,4 +77,7 @@ for c in ( # how-got=1 -> is-purchase=1, nan -> nan, otherwise -> 0
   ] ):
   purchases = c.correct( purchases )
 
-oio.saveUserData(cl.subsample, purchases, 'purchases_1')
+oio.saveCommonOutput (
+  cl.subsample,
+  purchases,
+  'purchases_1' )

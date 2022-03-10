@@ -22,7 +22,7 @@ if True:
   import python.common.misc as c
 
 
-ppl = oio.readUserData(cl.subsample, 'people_0')
+ppl = oio.readCommonOutput (cl.subsample, 'people_0')
 
 ppl = ppl.drop( # drop non-members of household
   ppl[ ppl["relationship"].isin( [6,7,8] )
@@ -533,4 +533,4 @@ if True: # drop vars that are (so far) unused downstream of here
   #
 ppl[ "used savings" ] = ppl[ "used savings" ] == 1
 
-oio.saveUserData(cl.subsample, ppl, 'people_1')
+oio.saveCommonOutput(cl.subsample, ppl, 'people_1')

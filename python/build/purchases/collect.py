@@ -39,4 +39,7 @@ assert util.near(
 # But it's surprising, because for subsample = 10,
 # the reality is much less than the expectation.
 
-oio.saveUserData( com.subsample, purchases, 'purchases_0' )
+oio.saveCommonOutput (
+  com.subsample,
+  purchases,
+  'purchases_0' )

@@ -19,8 +19,9 @@ if True:
       import python.regime.r2019 as regime
 
 
-ppl = oio.readUserData( com.subsample
-                   , "people_2_buildings" )
+ppl = oio.readCommonOutput (
+  com.subsample,
+  "people_2_buildings" )
 
 ppl = ss.mk_ss_contribs(ppl)
 

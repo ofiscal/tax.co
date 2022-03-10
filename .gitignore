@@ -13,6 +13,7 @@ temp*
 __pycache__/
 
 # in specific folders
+/output/recip-*/*.csv
 /git-comment*
 config/config.json
 config/repl.json

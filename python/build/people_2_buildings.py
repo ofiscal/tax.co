@@ -10,12 +10,12 @@ if True:
 
 
 if True: # merge people, buildings
-  buildings = oio.readUserData(
-      1 # PITFALL: For buildings, we always use the full sample.
-    , 'buildings'
-    , dtype = {"estrato":'float64'}
-  )
-  people = oio.readUserData(common.subsample, 'people_1')
+  buildings = oio.readCommonOutput (
+    1, # PITFALL: For buildings, we always use the full sample.
+    'buildings',
+    dtype = {"estrato":'float64'}, )
+  people = oio.readCommonOutput (
+    common.subsample, 'people_1' )
   people = pd.merge( people, buildings
                    , how = "left"
                    , on="household" )
@@ -33,6 +33,7 @@ if True: # make some new variables
 # Hence the output is written only to the folder for that subsample --
 # (This contrasts with the test programs that use the full sample,
 # which write evidence that the test passed to every subsample folder.)
-oio.saveUserData( common.subsample
-             , people
-             , 'people_2_buildings')
+oio.saveCommonOutput (
+  common.subsample,
+  people,
+  'people_2_buildings')

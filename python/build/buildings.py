@@ -55,7 +55,7 @@ if True: # estrato is strange
 buildings["recently bought this house"] = (
     buildings["recently bought this house"] == 1 )
 
-oio.saveUserData(
+oio.saveCommonOutput (
   1 # see PITFALL above
   , buildings
   , 'buildings' )

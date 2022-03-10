@@ -52,7 +52,7 @@ def test_ranges( bs : pd.DataFrame ) -> None:
 
 if True: # run tests
   log = "starting\n"
-  bs = oio.readUserData(
+  bs = oio.readCommonOutput (
       1 # PITFALL: For buildings, we always use the full sample.
     , 'buildings'
     , dtype = {"estrato":'float64'}
