@@ -15,7 +15,11 @@ if True:
 #   includes means
 #   includes statistics on nonzero values
 #   does not modify its arguments
-def tabulate_min_median_max_by_group(df, group_name, param_name):
+def tabulate_min_median_max_by_group (
+    df : pd.DataFrame,
+    group_name : String,
+    param_name : String
+) -> pd.DataFrame:
     dff = df.copy()
     dff["one"] = 1
     counts = dff.groupby( group_name )[["one"]]               \
@@ -28,7 +32,11 @@ def tabulate_min_median_max_by_group(df, group_name, param_name):
            .agg('max').rename(columns = {param_name:"max"})
     return pd.concat([counts,mins,maxs,medians],axis=1)
 
-def tabulate_stats_by_group(df0, group_name, param_name, weight_name=None):
+def tabulate_stats_by_group (
+    df0 : pd.DataFrame,
+    group_name : str,
+    param_name : str,
+    weight_name : str = None):
   """ Alas, Pandas offers no easy way to compute weighted medians. """
   if weight_name != None:
     df = df0[ ~ df0[param_name].isnull() ].copy()
@@ -75,9 +83,10 @@ def tabulate_stats_by_group(df0, group_name, param_name, weight_name=None):
     medians_nonzero = df[ df[param_name] != 0
                          ].groupby( group_name ) [[param_name
          ]].agg('median').rename(columns = {param_name:"median_nonzero_unweighted"})
-    return pd.concat( [ counts, shares, mins, means, maxs, nonzeros, means_nonzero
-                      , medians, medians_nonzero ]
-                    , axis = 1 )
+    return pd.concat (
+      [ counts, shares, mins, means, maxs, nonzeros, means_nonzero,
+        medians, medians_nonzero ]
+      , axis = 1 )
 
   else:
     df = df0[ ~ df0[param_name].isnull() ].copy()
@@ -107,8 +116,10 @@ def tabulate_stats_by_group(df0, group_name, param_name, weight_name=None):
     means_nonzero = df[ df[param_name] != 0
                          ].groupby( group_name )[[param_name
          ]].agg('mean').rename(columns = {param_name:"mean_nonzero_unweighted"})
-    return pd.concat([counts, shares, nonzeros, mins, maxs
-                      ,medians,medians_nonzero,means,means_nonzero],axis=1)
+    return pd.concat (
+      [ counts, shares, nonzeros, mins, maxs,
+        medians,medians_nonzero,means,means_nonzero],
+      axis = 1 )
 
 def histogram(series):
     dff = pd.DataFrame(series).copy()
@@ -181,4 +192,3 @@ def summarizeQuantiles (quantileParam, df):
   maxs = dff.groupby( quantileParam )[["income"]]    \
          .agg('max').rename(columns = {"income":"max"})
   return pd.concat([counts,mins,maxs],axis=1)
-

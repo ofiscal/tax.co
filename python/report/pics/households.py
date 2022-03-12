@@ -48,12 +48,13 @@ if True: # single series
     plt.close()
     draw.single_cdf( households["income"], "Household income",
                      xmax = 3e6)
-    plt.gca().xaxis.set_major_formatter(EngFormatter(places=2))
-    draw.savefig( vat_pics_dir + "households" , "income" )
+    plt.gca().xaxis.set_major_formatter (
+      EngFormatter ( places = 2 ) )
+    draw.savefig ( vat_pics_dir + "households" , "income" )
 
     plt.close()
     draw.single_cdf( households["income"], "Household income",
-                     xmin = 10**4, # as a monthly income in pesos, that's basically zero
+                     xmin = 1e4, # as a monthly income in pesos, that's basically zero
                      logx = True)
     draw.savefig( vat_pics_dir + "households/logx" , "income" )
 
@@ -79,14 +80,16 @@ if True: # VAT expenditures by income decile
     # distinguishes the first 5 deciles, so they are grouped together.
     # The "duplicates='drop'" option to pd.qcut achieves that grouping.
 
-  draw.to_latex(
-    util.tabulate_min_median_max_by_group( households, "income-decile", "income" ),
+  draw.to_latex (
+    util.tabulate_min_median_max_by_group (
+      households, "income-decile", "income" ),
     "output/vat/tables/recip-" + str(c.subsample),
-    "income-by-income-decile"
+    "income-by-income-decile",
   )
 
   draw.to_latex(
-    util.tabulate_min_median_max_by_group( households, "income-decile", "vat/value, min" ),
+    util.tabulate_min_median_max_by_group(
+      households, "income-decile", "vat/value, min" ),
     "output/vat/tables/recip-" + str(c.subsample),
     "vat-over-spending,min,-by-income-decile")
 
