@@ -109,7 +109,9 @@ cols_to_max__post_rename = (
 cols_new = (
     [ "(rank, labor income) = " + str(n) for n in range(1,6) ] +
 
-    [ "members", # computed ad-hoc
+    [ "members",
+      "members in labor force",
+      "adults",
       "has-child",
       "has-elderly",
       "all-elderly",

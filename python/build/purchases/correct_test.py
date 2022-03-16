@@ -101,10 +101,9 @@ if True: # run the tests
   log += test_drop_absurdly_big_expenditures()
 
   # integration test
-  df = oio.readStage( com.subsample, 'purchases_1' )
+  df = oio.readCommonOutput ( com.subsample, 'purchases_1' )
   log += test_output( df )
 
   oio.test_write( com.subsample
                 , "purchases_correct"
                 , log )
-

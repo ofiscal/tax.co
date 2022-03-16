@@ -105,19 +105,19 @@ vat_coicop = go ( vat_coicop )
 vat_cap_c  = go ( vat_cap_c )
 
 if True: # save
-  oio.saveStage ( c.subsample
+  oio.saveUserData ( c.subsample
                 , vat_coicop
                 , 'vat_coicop.' + c.strategy_suffix )
-  oio.saveStage ( c.subsample
+  oio.saveUserData ( c.subsample
                 , vat_cap_c
                 , 'vat_cap_c.'  + c.strategy_suffix )
   #
   vat_coicop = vat_coicop.drop( columns = ["description","Notes"] )
   vat_cap_c  = vat_cap_c .drop( columns = ["description"        ] )
   #
-  oio.saveStage ( c.subsample
+  oio.saveUserData ( c.subsample
                 , vat_coicop
                 , 'vat_coicop_brief.' + c.strategy_suffix )
-  oio.saveStage ( c.subsample
+  oio.saveUserData ( c.subsample
                 , vat_cap_c
                 , 'vat_cap_c_brief.'   + c.strategy_suffix )

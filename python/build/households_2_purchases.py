@@ -14,10 +14,10 @@ if True:
 
 if True: # merge purchase data into person data
   # PITFALL: The unit of observation in all these data sets is a household.
-  hh = oio.readStage(
+  hh = oio.readUserData(
     com.subsample,
     "households_1_agg_plus." + com.strategy_year_suffix )
-  pur = oio.readStage(
+  pur = oio.readUserData(
     com.subsample,
     "purchase_sums." + com.strategy_suffix )
   merge = pd.merge( hh, pur,
@@ -30,13 +30,13 @@ if True: # In San Andrés there is no VAT.
 if True: # create a few more variables
   merge["vat / purchase value" ] = (
     merge["vat paid"]        / merge["value, purchase" ] )
-  merge["vat/income"] = (
+  merge["vat / income"] = (
     merge["vat paid"]        / merge["income"] )
   merge["purchase value / income" ] = (
     merge["value, purchase"] / merge["income"] )
 
 if True: # save
-  oio.saveStage(
+  oio.saveUserData(
       com.subsample,
       merge,
       "households_2_purchases." + com.strategy_year_suffix )

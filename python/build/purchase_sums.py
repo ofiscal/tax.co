@@ -8,7 +8,7 @@ if True:
   import python.common.common as c
 
 
-purchases = oio.readStage(
+purchases = oio.readUserData(
     c.subsample,
     "purchases_2_vat." + c.strategy_suffix )
 
@@ -90,6 +90,6 @@ if True: # It's faster to compute these columns post-aggregation.
       purchase_sums["value, non-purchase"] +
       purchase_sums["value, purchase"] )
 
-oio.saveStage( c.subsample
+oio.saveUserData( c.subsample
              , purchase_sums
              , "purchase_sums." + c.strategy_suffix )

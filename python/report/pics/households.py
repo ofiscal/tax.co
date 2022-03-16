@@ -22,8 +22,8 @@ if True:
 vat_pics_dir = ( "output/vat/pics/recip-" + str(c.subsample) + "/"
                + c.strategy_suffix + "/" )
 if not os.path.exists(vat_pics_dir): os.makedirs(vat_pics_dir)
-households = oio.readStage( c.subsample, 'households.' + c.strategy_suffix )
-households_decile_summary = oio.readStage( c.subsample, 'households_decile_summary.' + c.strategy_suffix )
+households = oio.readUserData( c.subsample, 'households.' + c.strategy_suffix )
+households_decile_summary = oio.readUserData( c.subsample, 'households_decile_summary.' + c.strategy_suffix )
 
 
 if True: # single series
@@ -96,7 +96,7 @@ if True: # VAT expenditures by income decile
     "vat-over-spending,max,-by-income-decile")
 
 
-  if True: # vat/income (left) and vat/value (right) by income decile, both in the same figure
+  if True: # vat / income (left) and vat/value (right) by income decile, both in the same figure
     styles = [":","-"]*5 # ten from the sequence - : - : - ...
     colors = reduce( lambda x,y: x+y # ten from the sequence red, red, orange, orange, ...
                      , [ [x,x] for x in ["red","orange","yellow","green","blue"] ] )
@@ -112,7 +112,7 @@ if True: # VAT expenditures by income decile
       for i in list(households_decile_summary.index):
         draw.cdf( households                           \
                     [ households["income-decile"]==i ] \
-                    ["vat/income, min"],
+                    ["vat / income, min"],
                   linestyle = styles[i],
                   color = colors[i],
                   xmax = 0.1,
@@ -153,7 +153,7 @@ if True: # VAT expenditures by income decile
       for i in list(households_decile_summary.index):
         draw.cdf( households                           \
                     [ households["income-decile"]==i ] \
-                    ["vat/income, max"],
+                    ["vat / income, max"],
                   linestyle = styles[i],
                   color = colors[i],
                   xmax = 0.1,

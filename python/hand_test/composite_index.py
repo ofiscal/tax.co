@@ -9,7 +9,7 @@ if True:
   import python.build.output_io    as oio
   import python.common.common      as cl
 
-p4 = oio.readStage( cl.subsample
+p4 = oio.readUserData( cl.subsample
                    , "people_3_income_taxish." + cl.strategy_year_suffix )
 
 p4["id"] = ( p4["household"]       .astype(str) + ":" +

@@ -5,9 +5,6 @@ if True:
   #
   import matplotlib
   import matplotlib.pyplot as plt
-  #
-  import python.common.misc as c
-  import python.common.common as c
 
 
 def cdf( series, logx = False, with_mean = True, with_pdf = False

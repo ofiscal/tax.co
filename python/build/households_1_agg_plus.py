@@ -16,7 +16,7 @@ if True:
 
 
 if True: # input
-  ppl = oio.readStage(
+  ppl = oio.readUserData(
     com.subsample,
     "people_3_income_taxish." + com.strategy_year_suffix )
   ppl["edu"] = util.interpretCategorical(
@@ -35,15 +35,17 @@ if True: # compute five columns for top five member incomes
   ppl["(rank, labor income) = 5"] = (
     ppl["income, labor"] * (ppl["rank, labor income"] == 5) )
 
-
 if True: # aggregate from household members to households
-  ppl["members"] = 1 # will be summed
+  ppl["members"] = 1               # will be summed
+  ppl["adults"] = ppl["age"] >= 18 # will be summed
   h_first = ppl.groupby( ["household"]
     ) [ defs.cols_const_within_hh
     ] . agg("first")
-  h_sum = ( ppl.loc[ :, ( ["household","members"]
+  h_sum = ( ppl.loc[ :, ( ["household","members","adults","in labor force"]
                         + defs.income_and_tax__person_level
                         + defs.cols_income_rank ) ]
+          . rename ( columns = { "in labor force" :
+                                 "members in labor force" } )
           . groupby( "household" )
           . agg("sum") )
   h_min = ppl.groupby(
@@ -112,7 +114,7 @@ if True: # Assemble the aggregates, then compute a few variables.
       "income-decile", households)
 
 if True: # save
-  oio.saveStage( com.subsample, households
+  oio.saveUserData( com.subsample, households
                , "households_1_agg_plus." + com.strategy_year_suffix )
-  oio.saveStage( com.subsample, households_decile_summary
+  oio.saveUserData( com.subsample, households_decile_summary
                , "households_decile_summary." + com.strategy_year_suffix )

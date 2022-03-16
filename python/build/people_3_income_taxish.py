@@ -19,8 +19,9 @@ if True:
       import python.regime.r2019 as regime
 
 
-ppl = oio.readStage( com.subsample
-                   , "people_2_buildings" )
+ppl = oio.readCommonOutput (
+  com.subsample,
+  "people_2_buildings" )
 
 ppl = ss.mk_ss_contribs(ppl)
 
@@ -28,7 +29,7 @@ ppl = f4.insert_has_dependent_column(ppl)
 
 ppl = regime.income_taxes( ppl )
 
-oio.saveStage( com.subsample
+oio.saveUserData( com.subsample
              , ppl
              , 'people_3_income_taxish.' + com.strategy_year_suffix
 )
