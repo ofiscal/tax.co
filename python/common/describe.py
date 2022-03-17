@@ -17,8 +17,8 @@ if True:
 #   does not modify its arguments
 def tabulate_min_median_max_by_group (
     df : pd.DataFrame,
-    group_name : String,
-    param_name : String
+    group_name : str,
+    param_name : str,
 ) -> pd.DataFrame:
     dff = df.copy()
     dff["one"] = 1
