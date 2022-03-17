@@ -66,8 +66,8 @@ if True: # aggregate from household members to households
       # Therefore I handle the `edu` variable separately.
     cols_without_edu = ( defs.cols_to_max.copy() +
                          defs.income_and_spending__household_level )
-      # PITFALL! Without the .copy() above, the next line
-      # would modify defs.cols_to_max.
+      # PITFALL! Without the .copy() in the line above,
+      # the next line would modify defs.cols_to_max.
     cols_without_edu.remove("edu") # destructive side effect and no output
     edu_max = ( ppl
       [ ppl["edu"].notnull() ]
@@ -110,11 +110,15 @@ if True: # Assemble the aggregates, then compute a few variables.
     util.noisyQuantile( 100, 0, 1, households["income"] ) )
   households["one"] = 1 # used in report/households.py to create the trivial partition.
     # TODO ? move to report/households.py
-  households_decile_summary = desc.summarizeQuantiles(
+  households_decile_summary = desc.summarizeQuantiles (
       "income-decile", households)
 
 if True: # save
-  oio.saveUserData( com.subsample, households
-               , "households_1_agg_plus." + com.strategy_year_suffix )
-  oio.saveUserData( com.subsample, households_decile_summary
-               , "households_decile_summary." + com.strategy_year_suffix )
+  oio.saveUserData (
+    com.subsample,
+    households,
+    "households_1_agg_plus." + com.strategy_year_suffix )
+  oio.saveUserData (
+    com.subsample,
+    households_decile_summary,
+    "households_decile_summary." + com.strategy_year_suffix )

@@ -7,8 +7,13 @@ if True:
   import matplotlib.pyplot as plt
 
 
-def cdf( series, logx = False, with_mean = True, with_pdf = False
-         , xmin = None, xmax = None, **kwargs ):
+def cdf ( series,
+          logx = False,
+          with_mean = True,
+          with_pdf = False,
+          xmin = None,
+          xmax = None,
+          **kwargs ):
   data = pd.DataFrame()
   data["x"] = pd.Series( sorted(series) )
   data["count"] = 1
@@ -49,13 +54,11 @@ def cdf( series, logx = False, with_mean = True, with_pdf = False
   plt.gca().set_xlim(left=dmin,right=dmax)
   plt.plot( df["x"],df["cdf"], **kwargs )
 
-
 def single_cdf( series, xlabel, **kwargs ):
   plt.grid(color='b', linestyle=':', linewidth=0.5)
   plt.xlabel(xlabel)
   plt.ylabel("Probability")
   cdf( series, **kwargs )
-
 
 def table( df, colName ):
   df = pd.DataFrame(
@@ -65,14 +68,12 @@ def table( df, colName ):
     .reset_index( level = colName )
   plt.bar( df[colName], df["count"] )
 
-
 def savefig( folder, name, **kwargs ):
   if not os.path.exists(folder): os.makedirs(folder)
   plt.savefig( folder + "/" + name
              , bbox_inches='tight' # ironically, this causes xlabels that might
                             # otherwise get cut off to appear in their entirety
              , **kwargs )
-
 
 def to_latex( df, folder, name ):
   if not os.path.exists(folder): os.makedirs(folder)

@@ -29,7 +29,8 @@ ppl = f4.insert_has_dependent_column(ppl)
 
 ppl = regime.income_taxes( ppl )
 
-oio.saveUserData( com.subsample
-             , ppl
-             , 'people_3_income_taxish.' + com.strategy_year_suffix
+oio.saveUserData(
+  com.subsample,
+  ppl,
+  'people_3_income_taxish.' + com.strategy_year_suffix
 )
