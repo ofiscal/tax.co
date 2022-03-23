@@ -1,4 +1,4 @@
-{ "user_email"  : "quien@donde.net",
+{ "user_email"  : "example_user@somewhere.net",
   "subsample"   : 1000,
   "strategy"    : "detail",
   "regime_year" : 2019 }
