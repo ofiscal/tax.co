@@ -7,7 +7,7 @@ if True:
   import pandas as pd
   import numpy as np
   import math as math
-
+  import python.common.common    as com
 
 # Keeping this only to avoid breaking vat/report/*.py
 # tabulate_stats_by_group is better, because it:
@@ -66,9 +66,12 @@ def tabulate_stats_by_group (
     shares =   df       . groupby( group_name ) [[ "val*weight"
              ]]         . agg('sum'
              )          . rename(columns = {"val*weight":"share"})
+    sums =     df       . groupby( group_name ) [[ "val*weight"
+             ]]         . agg('sum'
+             )          . rename(columns = {"val*weight":"sums"})
     shares["share"] = shares [ "share" ] / total_weighted_value
-
-    means = df          . groupby( group_name ) [[ "val*weight", weight_name
+    sums["sums"] = sums [ "sums" ]*int(com.subsample)
+    means =    df       . groupby( group_name ) [[ "val*weight", weight_name
              ]]         . agg('mean')
     means["mean"] = means [ "val*weight" ] / means[weight_name]
     means         = means . drop( columns = ["val*weight",weight_name] )
@@ -79,12 +82,12 @@ def tabulate_stats_by_group (
                                   ] / means_nonzero[weight_name]
     means_nonzero = means_nonzero.drop( columns = ["val*weight", weight_name] )
     medians = df.groupby( group_name ) [[param_name]]         \
-           .agg('median').rename(columns = {param_name:"median_unweighted"})
+              .agg('median').rename(columns = {param_name:"median_unweighted"})
     medians_nonzero = df[ df[param_name] != 0
                          ].groupby( group_name ) [[param_name
          ]].agg('median').rename(columns = {param_name:"median_nonzero_unweighted"})
     return pd.concat (
-      [ counts, shares, mins, means, maxs, nonzeros, means_nonzero,
+      [ counts, shares,sums, mins, means, maxs, nonzeros, means_nonzero,
         medians, medians_nonzero ]
       , axis = 1 )
 
@@ -111,14 +114,18 @@ def tabulate_stats_by_group (
              )  . rename(columns = {param_name:"share"})
     shares["share"] = shares [ "share" ] / shares["share"].sum()
 
+    sums  = df.groupby( group_name )[[param_name]]     \
+            .agg('sum').rename(columns = {param_name:"sum_unweighted"})
+
     means = df.groupby( group_name )[[param_name]]     \
-           .agg('mean').rename(columns = {param_name:"mean_unweighted"})
+            .agg('mean').rename(columns = {param_name:"mean_unweighted"})
     means_nonzero = df[ df[param_name] != 0
                          ].groupby( group_name )[[param_name
          ]].agg('mean').rename(columns = {param_name:"mean_nonzero_unweighted"})
+
     return pd.concat (
-      [ counts, shares, nonzeros, mins, maxs,
-        medians,medians_nonzero,means,means_nonzero],
+      [ counts, shares, sums, nonzeros, mins, maxs,
+        medians, medians_nonzero, means, means_nonzero],
       axis = 1 )
 
 def histogram(series):
