@@ -58,7 +58,7 @@ if True:
       }.items():
     assert v.test( merge[k] )
   for k,v in {
-      "vat / purchase value"       : cl.MeanBounds( 2.5e-2, 6e-2 ),
+      "vat / purchase value"       : cl.MeanBounds( 2.5e-2, 8e-2 ),
       "vat / income"               : cl.MeanBounds( np.inf, np.inf ),
       "purchase value / income"    : cl.MeanBounds( np.inf, np.inf )
       }.items():
