@@ -19,7 +19,8 @@ cols_const_within_hh = ["region-1", "region-2", "estrato", "weight"]
 # those (drawn from Viviendas, not Personas) are at the household level,
 # not the individual level.
 income_and_tax__person_level = ( [
-    "tax, ss, pension"
+    "tax, ss"
+  , "tax, ss, pension"
   , "tax, ss, pension, employer"
   , "tax, ss, salud"
   , "tax, ss, salud, employer"

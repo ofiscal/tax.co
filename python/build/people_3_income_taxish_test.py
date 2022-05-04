@@ -42,8 +42,10 @@ if True:
       num_people / com.subsample,
       tol_frac = 1/5 )
   assert util.unique( p4.columns )
+  assert ( ( p4 ["tax, ss"] >=
+             p4 ["tax, ss, total employee contribs"] )
+           . all () )
 
   oio.test_write( com.subsample
                 , "people_3_income_taxish"
                 , log )
-
