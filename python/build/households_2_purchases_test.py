@@ -62,7 +62,7 @@ if True:
       "vat / income"               : cl.MeanBounds( np.inf, np.inf ),
       "purchase value / income"    : cl.MeanBounds( np.inf, np.inf )
       }.items():
-    assert v.test( merge[k] )
+    assert v.test ( merge[k] )
   for c in new_cols:
     assert cl.MissingAtMost( 0.01 ) . test( merge[c] )
 

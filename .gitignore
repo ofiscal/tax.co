@@ -34,9 +34,12 @@ secret/
 
 users/*/*
 users/jeff
+
 # The ! indicates an exception to a prior rule.
 # The following are all the same folder -- `example` is an alias.
-!users/example/
+!users/symlinks/
 !users/u1e71cf39e330262a44422cc73e2e046a/
-!users/example/*
-!users/u1e71cf39e330262a44422cc73e2e046a/*
+
+users/u1e71cf39e330262a44422cc73e2e046a/data/
+users/u1e71cf39e330262a44422cc73e2e046a/logs/
+users/u1e71cf39e330262a44422cc73e2e046a/test/
