@@ -34,7 +34,9 @@ if True: # Deal with taxes encoded as purchases.
     (purchases["coicop"] . isin( other_tax_coicops ) )
     * purchases["value"] )
   #
-  # Delete those taxes from the "value" column.
+  # Now that their value has been recorded in "value, tax, *" columns,
+  # delete those taxes from the "value" column,
+  # so that it can be summed to get actual purchase value.
   other_tax_coicops.add( predial_tax )
   purchases.loc[
     purchases["coicop"] . isin( other_tax_coicops ),
@@ -81,11 +83,13 @@ if True: # It's faster to compute these columns post-aggregation.
   purchase_sums["value, tax, purchaselike non-VAT"] = (
         purchase_sums["value, tax, predial"] +
         purchase_sums["value, tax, purchaselike non-predial non-VAT"] )
-  purchase_sums["value, spending"] = ( # Taxes and purchases, but no gifts.
+  purchase_sums["value, spending"] = (
+      # Taxes and purchases, but no received gifts.
       # PITFALL: Includes VAT (it's part of "value, purchase").
       purchase_sums["value, tax, purchaselike non-VAT"] +
       purchase_sums["value, purchase"] )
-  purchase_sums["value, consumption"] = ( # purchases and gifts, but no taxes (except VAT)
+  purchase_sums["value, consumption"] = (
+      # Purchases and received gifts, but no taxes (except VAT).
       # PITFALL: Includes VAT (it's part of "value, purchase").
       purchase_sums["value, non-purchase"] +
       purchase_sums["value, purchase"] )

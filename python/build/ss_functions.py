@@ -89,11 +89,11 @@ def mk_ss_contribs( ppl : pd.DataFrame ) -> pd.DataFrame:
         mk_salud_employer)
     , ( "tax, ss, solidaridad",
         mk_solidaridad)
-    , ( "tax, ss, parafiscales",
+    , ( "tax, ss, parafiscales",          # PITFALL: nominally from the employer
         mk_parafiscales_employer)
-    , ( "tax, ss, cajas de compensacion",
+    , ( "tax, ss, cajas de compensacion", # PITFALL: nominally from the employer
         mk_cajas_de_compensacion_employer)
-    , ( "cesantias + primas",
+    , ( "cesantias + primas",             # PITFALL: nominally from the employer
         mk_cesantias_y_primas_employer) ]:
 
     ppl[goal] = ppl.apply(
