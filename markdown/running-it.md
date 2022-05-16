@@ -14,10 +14,6 @@ uses Linux, not Windows -- even if you run it in Windows.
 Install Git.
 (For more information, see [Some software we use](Some-software-we-use.md).)
 
-Download this Git repository,
-with `git clone https://github.com/ofiscal/tax.co`.
-(In the example below, I have located that folder at `/home/username/tax.co`. You'll want to put it somewhere else; change those paths accordingly.)
-
 Install Docker.
 (For more information, see [Some software we use](Some-software-we-use.md).
 Docker is not strictly necessary,
@@ -26,6 +22,7 @@ but it's a really [good idea](Why-to-use-Docker.md).
 Get the latest Docker image of tax.co,
 by running `docker pull ofiscal/tax.co:latest`.
 (Or you could build it yourself from [the Dockerfile](../docker/Dockerfile).)
+This will probably take a long time.
 
 Each time you use that image,
 Docker will create a virtual Ubuntu Linux system.
@@ -39,11 +36,17 @@ you might need to use `sudo` to modify it from outside of Docker.)
 
 # Get `tax.co`
 
-`tax.co` is the code for the microsimulation.
+`tax.co` is the code that runs the microsimulation.
 
 Get it by running this:
 
-`git clone git@github.com:ofiscal/tax.co.git`
+`git clone https://github.com/ofiscal/tax.co`.
+
+(In the example below, I have located that folder at
+`/home/username/tax.co`.
+You might want to put it somewhere else;
+if you do, then change those paths accordingly.)
+
 
 ## Update `tax.co` if needed
 
@@ -54,7 +57,8 @@ From within the `tax.co` folder, run `git pull`.
 This is the code for the webpage,
 but you'll need it even if you don't run the webpage.
 Get it by running
-`git clone git@github.com:ofiscal/tax.co.web.git`
+
+`git clone https://github.com/ofiscal/tax.co.web`
 
 Don't do that from within `tax.co`.
 (If you did, the Docker container would become confusing.)
