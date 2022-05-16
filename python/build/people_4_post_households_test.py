@@ -18,6 +18,7 @@ new_columns = [ "in labor force",
                 "vat / purchase value",
                 "vat / income",
                 "purchase value / income",
+                "tax",
                ]
 
 log = str( datetime.datetime.now () )

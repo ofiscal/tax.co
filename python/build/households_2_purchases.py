@@ -34,6 +34,16 @@ if True: # create a few more variables
     merge["vat paid"]        / merge["income"] )
   merge["purchase value / income" ] = (
     merge["value, purchase"] / merge["income"] )
+  merge["tax"] = (
+    # PITFALL: This must be computed separately for households and earners,
+    # because income and ss taxes vary by earner.
+    # (The VAT and other purchaselike taxes are, by contrast,
+    # allocated within households based on each earner's income.)
+    merge [ [ "tax, income",
+              "tax, ss",
+              "vat paid",
+              "value, tax, purchaselike non-VAT" ] ]
+    . sum ( axis = "columns" ) )
 
 if True: # save
   oio.saveUserData(

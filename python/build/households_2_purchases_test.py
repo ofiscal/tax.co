@@ -28,11 +28,13 @@ if True: # See people_2_buildings_test for how to use these definitions.
   assert util.unique( merge.columns )
   new_cols = [ "vat / purchase value",
                "vat / income",
-               "purchase value / income" ]
+               "purchase value / income",
+               "tax", ]
   assert ( len( merge.columns ) ==
+           len( new_cols ) +
            len( hh_cols.columns ) +
-           len( pur.columns ) - 1 + # omit the key that was merged on
-           len( new_cols ) )
+           len( pur.columns )
+           - 1 ) # omit the key that was merged on
   assert len( merge ) == len( hh_rows )
 
 if True:
