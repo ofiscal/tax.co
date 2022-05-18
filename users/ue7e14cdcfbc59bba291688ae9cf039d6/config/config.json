@@ -1,5 +1,5 @@
 { "subsample"             : 100,
   "strategy"              : "detail",
   "regime_year"           : 2019,
-  "user_email"            : "example_user@somewhere.net"
+  "user_email"            : "baseline"
 }
