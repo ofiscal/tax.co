@@ -183,4 +183,6 @@ if True: # VAT expenditures by income decile
       fig = plt.gcf()
       fig.set_size_inches(8,4)
 
-      draw.savefig(vat_pics_dir + "households", "VAT-over-consumption,-by-income-decile.png")
+      draw.savefig(
+        vat_pics_dir + "households",
+        "VAT-over-consumption,-by-income-decile.png")
