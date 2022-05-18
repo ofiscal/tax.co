@@ -3,9 +3,7 @@ FROM debian:latest
 RUN echo "2021 05 11"
 RUN apt update --fix-missing -y &&                     \
     apt upgrade -y
-RUN apt install -y                                     \
-      texlive-latex-base texlive-fonts-recommended     \
-      texlive-fonts-extra texlive-latex-extra texlive-publishers
+
 RUN apt install -y wget bzip2 ca-certificates          \
       libglib2.0-0 libxext6 libsm6 libxrender1
 RUN apt install -y                                     \
@@ -79,6 +77,10 @@ RUN pip3 install --upgrade coconut mypy coconut[mypy] \
 RUN /opt/conda/bin/conda update pandas
 RUN echo "coconut \$1 \$1.py -l -t 3.7 --mypy" > /usr/bin/myCoconut && \
     chmod +x                                     /usr/bin/myCoconut
+
+# # PITFALL: These are massive. Don't reorder or collect them.
+RUN apt install -y texlive
+RUN apt install -y texlive-latex-extra
 
 
 #### #### #### #### #### #### #### #### #### #### #### ####
