@@ -11,9 +11,16 @@ def test_folder(subsample):
         "users", c.user,
         "test/recip-" + str(subsample) )
 
-def get_user_data_folder(subsample):
+def get_user_data_folder ( subsample : int) -> str:
   return os.path.join(
-    "users", c.user,
+    "users",
+    c.user,
+    "data/recip-" + str(subsample) )
+
+def get_baseline_data_folder ( subsample : int ) -> str:
+  return os.path.join(
+    "users",
+    c.user_hash_from_email ( "baseline" ),
     "data/recip-" + str(subsample) )
 
 def get_common_output_folder(subsample):
@@ -61,10 +68,17 @@ def saveUserData_excel(subsample,data,name,**kwargs):
                        name + ".xlsx" )
   data.to_excel( path, index=False, **kwargs )
 
-def readUserData (subsample,name,**kwargs):
+def readUserData (subsample,name,**kwargs) -> pd.DataFrame():
   return pd.read_csv(
     os.path.join(
       get_user_data_folder ( subsample ),
+      name + ".csv" ),
+    **kwargs )
+
+def readBaselineData (subsample,name,**kwargs) -> pd.DataFrame():
+  return pd.read_csv(
+    os.path.join(
+      get_baseline_data_folder ( subsample ),
       name + ".csv" ),
     **kwargs )
 
