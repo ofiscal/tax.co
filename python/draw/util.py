@@ -10,6 +10,9 @@ if True:
 
 def bar_chart_with_changes (
     # PITFALL: Must all be the same length.
+    title : str,
+    xlabel : str,
+    ylabel : str,
     labels : pd.Series,  # could also be a list
     levels : pd.Series,  # could also be a list
     changes : pd.Series, # could also be a list
@@ -39,13 +42,12 @@ def bar_chart_with_changes (
   for bar in range( 0, len ( labels ) ):
     arrow ( bar )
 
-  ax.set_ylabel('Something to measure')
-  ax.set_title('Title of the graph')
+  ax.set_xlabel ( xlabel )
+  ax.set_ylabel ( ylabel )
+  ax.set_title ( title )
   ax.legend()
 
-  if True: # alternatives
-    # plt.show()
-    plt.savefig ( save_path + ".png" )
+  plt.savefig ( save_path + ".png" )
   plt.close()
 
 def cdf ( series,
