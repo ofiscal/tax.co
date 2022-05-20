@@ -5,7 +5,48 @@ if True:
   #
   import matplotlib
   import matplotlib.pyplot as plt
+  import matplotlib.patches as mpatches
 
+
+def bar_chart_with_changes (
+    # PITFALL: Must all be the same length.
+    labels : pd.Series,  # could also be a list
+    levels : pd.Series,  # could also be a list
+    changes : pd.Series, # could also be a list
+    save_path : str,
+):
+
+  fig, ax = plt.subplots()
+
+  ax.bar ( labels,
+           levels,
+           width = 0.35,
+           label='before proposed change',
+           color="lightgray")
+
+  def arrow ( bar : int ):
+    """ "bar" is an index (zero-indexed) into the data vectors."""
+    ax.add_patch (
+      mpatches.FancyArrowPatch (
+        ( bar, levels [ bar ] ),                   # tail
+        ( bar, levels [ bar ] + changes [ bar ] ), # head
+        color = ( "red"
+                  if (changes[bar] > 0)
+                  else "green" ),
+        mutation_scale = 15 # determines arrow width, among other things
+      ) )
+
+  for bar in range( 0, len ( labels ) ):
+    arrow ( bar )
+
+  ax.set_ylabel('Something to measure')
+  ax.set_title('Title of the graph')
+  ax.legend()
+
+  if True: # alternatives
+    # plt.show()
+    plt.savefig ( save_path + ".png" )
+  plt.close()
 
 def cdf ( series,
           logx = False,
