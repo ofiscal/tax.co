@@ -539,6 +539,13 @@
   python/report/defs.py
 	install -D /dev/null .no_younger_than/python/report/defs.py
 
+.no_younger_than/python/report/compare.py:    \
+  python/report/compare.py                    \
+  .no_younger_than/python/build/output_io.py  \
+  .no_younger_than/python/common/common.py    \
+  .no_younger_than/python/draw/util.py
+	install -D /dev/null .no_younger_than/python/report/compare.py
+
 .no_younger_than/python/report/var_summaries_by_group.py: \
   python/report/var_summaries_by_group.py                 \
   .no_younger_than/python/build/output_io.py  \

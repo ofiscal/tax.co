@@ -116,6 +116,11 @@ reports =                                                                 \
   users/$(user)/data/recip-$(ss)/report_earners.$(strategy_year_suffix).csv         \
   users/$(user)/data/recip-$(ss)/report_earners.$(strategy_year_suffix).xlsx
 
+compare = \
+  users/$(user)/data/recip-$(ss)/change-in.tax-mean.by-households.$(strategy_year_suffix).png \
+  users/$(user)/data/recip-$(ss)/change-in.tax-mean.by-earners.$(strategy_year_suffix).png
+
+
 goods_by_income_decile = \
   users/$(user)/data/recip-$(ss)/goods_by_income_decile.csv \
   users/$(user)/data/recip-$(ss)/goods,first_six_deciles.csv

@@ -48,14 +48,19 @@ with open( os.path.join( logs_path, "make.txt"),
            "a" ) as f:
   f.write( "make.py starting at " + str( datetime.now() ) + "\n" )
 
-targets = [ "show_config",
-            "show_params",
-            "tests",
-            "reports",
-          ]
+targets = (
   # Makefile targets.
   # For the full list of possible targets,
   # see the Makefile, particularly the definition of .PHONY.
+  [ "show_config",
+    "show_params",
+    "tests",
+    "reports",
+   ]
+  + ( [] # Since the baseline user is the one others are compared to,
+         # it makes no sense to build "compare" for tthat user.
+      if c.user_email == "baseline"
+      else ["compare"] ) )
 
 # TODO: This is duplicated in python/requests/main.py.
 # Factor out both into a shared library.

@@ -19,6 +19,7 @@
   household_pics         \
   goods_by_income_decile \
   reports                \
+  compare                \
   tests                  \
   rate_input_test        \
   show_config

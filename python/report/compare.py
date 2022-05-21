@@ -1,11 +1,18 @@
 if True:
-  from os import path
+  from   os import path
   import pandas as pd
+  import re
   #
   import python.build.output_io  as oio
   import python.common.common    as com
   import python.draw.util        as draw
 
+
+def sanitize_name_for_makefile (s : str) -> str:
+  """Because Makefiles cannot handle spaces, and maybe colons, in filenames."""
+  return re.sub (
+    ":", "",
+    re.sub ( " ", "-", s ) )
 
 income_deciles = [ "income-decile: " + str(n)
                    for n in range(0,10) ]
@@ -64,5 +71,6 @@ for unit in ["households", "earners"]:
       "report_" + unit + "." + com.strategy_year_suffix ),
     save_path = path.join (
       oio.get_user_data_folder ( com.subsample ),
-      ( "change in." + measure + ".by-" + unit + "."
-        + com.strategy ) ) )
+      sanitize_name_for_makefile (
+        "change in." + measure + ".by " + unit + "."
+        + com.strategy_year_suffix ) ) )
