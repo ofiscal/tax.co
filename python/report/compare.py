@@ -21,8 +21,6 @@ income_deciles_shorthand = [
   str(i) + "-" + str(i+9)
   for i in range (0, 100, 10) ]
 
-cols_to_keep = [ "measure" ] + income_deciles
-
 def draw_one_comparison (
     measure : str,
     unit : str,

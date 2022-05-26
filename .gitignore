@@ -9,6 +9,7 @@
 TAGS
 TAGS2
 *log.txt
+/test*
 temp*
 __pycache__/
 
