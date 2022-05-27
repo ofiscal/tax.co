@@ -35,35 +35,43 @@ if True: # Create a few columns missing in the input data.
     df["income < min wage"] = (
       df["income"] < c.min_wage )
 
-def make_summary_frame ( unit           : str,
-                         df             : pd.DataFrame,
-                         variables      : List[str],
-                         restrictedVars : List[str]
-                        ) -> Tuple [ pd.DataFrame,
-                                     pd.DataFrame ]:
+def make_summary_frame (
+    unit           : str,
+    df             : pd.DataFrame,
+    variables      : List[str],
+    restrictedVars : List[str]
+) -> Tuple [ pd.DataFrame,
+             pd.DataFrame ]:
   summaryDict = {} # TODO: Don't use this. It's no longer necessary --
                    # maybe it never was -- and it's confusing.
   groupSummaries = []
   for gv in defs.groupVars:
     varSummaries = []
     for v in variables:
-      t = desc.tabulate_stats_by_group( df, gv, v, "weight" )
+      t = desc.tabulate_stats_by_group ( df, gv, v, "weight" )
       t = t.rename (
         columns = dict (
-              zip( t.columns
-                 , map( lambda x: v + ": " + x
-                        , t.columns ) ) ),
-        index = dict(
-          zip( t.index
-               , map( lambda x: str(gv) + ": "
+          zip ( t.columns
+              , map ( lambda x: v + ": " + x
+                    , t.columns ) ) ),
+        index = dict (
+          zip ( t.index
+              , map ( lambda x: str(gv) + ": "
                       + defs.maybeFill( gv, str(x) )
-                      , t.index ) ) ) )
-      varSummaries . append( t )
-    groupSummaries . append( pd.concat( varSummaries, axis = 1 ) )
-  summaryDict[unit] = pd.concat( groupSummaries, axis = 0 )
+                    , t.index ) ) ) )
+      varSummaries . append ( t )
+    groupSummaries . append (
+      pd.concat ( varSummaries,
+                  axis = 1 ) )
+  summaryDict [ unit ] = pd.concat ( groupSummaries, axis = 0 )
 
-  ret_tmi = pd.concat( list( summaryDict.values() ), axis = 0
-                    ) . transpose()
+  ret_tmi = ( pd.concat ( list ( summaryDict.values() ),
+                          axis = 0 )
+              . transpose () )
+
+  # TODO ? This passage seems like it could be simplified --
+  # rename `index` to `measure` before spawning `ret` from `ret_tmi`,
+  # so that it needn't be renamed again in `ret`.
   ret = ret_tmi.loc [ restrictedVars ]
   ret_tmi . reset_index ( inplace = True )
   ret_tmi = ret_tmi . rename ( columns = {"index" : "measure"} )
