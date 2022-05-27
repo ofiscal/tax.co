@@ -49,8 +49,8 @@ def user_hash_from_email ( s : str ) -> str:
   return (
       "u" + # Because Python library paths must start with letters,
             # not numbers, and the user's folder contains code.
-      hashlib.md5(
-          user_email . encode () )
+      hashlib.md5 (
+          s . encode () )
       . hexdigest () )
 user = user_hash_from_email ( user_email )
 
