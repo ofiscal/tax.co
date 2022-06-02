@@ -117,8 +117,8 @@ $(purchase_pics):                        \
 	$(python_from_here) python/report/pics/purchases.py $(config_file)
 
 household_pics: $(household_pics)
-$(household_pics):                        \
-  .no_younger_than/python/report/pics/households.py \
+$(household_pics):                                      \
+  .no_younger_than/python/report/pics/households.py     \
   $(households_1_agg_plus)
 	date
 	$(python_from_here) python/report/pics/households.py $(config_file)
