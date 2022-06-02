@@ -42,7 +42,7 @@ pd.options.display.max_columns = 5555
 
 wc = weightLib.Calculator('weight')
 
-hh = oio.readStage(
+hh = oio.readUserData(
     cm.subsample
   , "households_2_purchases." + cm.strategy_year_suffix )
 

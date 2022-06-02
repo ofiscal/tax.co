@@ -19,7 +19,8 @@ cols_const_within_hh = ["region-1", "region-2", "estrato", "weight"]
 # those (drawn from Viviendas, not Personas) are at the household level,
 # not the individual level.
 income_and_tax__person_level = ( [
-    "tax, ss, pension"
+    "tax, ss"
+  , "tax, ss, pension"
   , "tax, ss, pension, employer"
   , "tax, ss, salud"
   , "tax, ss, salud, employer"
@@ -109,7 +110,9 @@ cols_to_max__post_rename = (
 cols_new = (
     [ "(rank, labor income) = " + str(n) for n in range(1,6) ] +
 
-    [ "members", # computed ad-hoc
+    [ "members",
+      "members in labor force",
+      "adults",
       "has-child",
       "has-elderly",
       "all-elderly",

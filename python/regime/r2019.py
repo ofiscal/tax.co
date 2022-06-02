@@ -16,12 +16,13 @@ if True: # imports
             + " as rates_" + lib )
 
 
-income_tax_columns = [ "tax, income"
-                     , "tax, income, most"
-                     , "tax, income, dividend"
-                     , "tax, income, ganancia ocasional"
-                     , "tax, income, gmf"
-                     ]
+income_tax_components = [ "tax, income, most",
+                          "tax, income, dividend",
+                          "tax, income, ganancia ocasional",
+                          "tax, income, gmf",
+                        ]
+
+income_tax_columns = [ "tax, income" ] + income_tax_components
 
 gravable_pre = "taxable labor income before exemptions"
 
@@ -65,15 +66,9 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
       0.004 * ( ppl["income, cash"] - misc.gmf_threshold)
       ).apply( lambda x: max(0,x) )
 
-  # TODO: This is dangerous:
-  # It duplicates some information from income_tax_columns,
-  # so they can get out of sync.
   new_columns["tax, income"] = (
-      new_columns [[ "tax, income, most"
-                   , "tax, income, dividend"
-                   , "tax, income, ganancia ocasional"
-                   , "tax, income, gmf" ]] .
-      sum( axis = "columns" ) )
+      new_columns [ income_tax_components ] .
+      sum ( axis = "columns" ) )
 
   return pd.concat( [ppl, new_columns], axis = 1 )
 

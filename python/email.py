@@ -55,3 +55,10 @@ def send ( receiver_address : str, # To send to multiple addresses, this should 
   #
   server . send_message ( msg )
   server . quit ()
+
+def test( recipient : str ):
+  send (
+    recipient,
+    "Testing Ofiscal automated emails",
+    "Hi! Jeff here. Did you receive this message?",
+    [] )

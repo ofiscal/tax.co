@@ -6,9 +6,10 @@ if True:
   import python.build.households_1_agg_plus_defs as defs
   import python.build.output_io                  as oio
   from   python.build.people.files import edu_key
-  import python.common.common                    as com
-  import python.common.util                      as util
   import python.build.classes                    as cla
+  import python.common.common                    as com
+  import python.common.tests                     as com_tests
+  import python.common.util                      as util
 
 
 def test_const_within_group( gs : List[str],
@@ -63,6 +64,15 @@ def test_sums( hh : pd.DataFrame,
     assert   hh["members"] . min() == 1
     assert ( hh["members"]           . max() ==
              ppl["household-member"] . max() )
+    assert   ( hh["members"] >=
+               hh["adults"] ) . all()
+    assert   ( hh["members"].mean() >
+               # The below 0.3 is probably a lot smaller than it could be,
+               # but I just want to establish substantial separation.
+               # I don't need to pin down how much.
+               hh["adults"].mean() + 0.3 )
+    assert   hh["adults"] . min() >= 0
+      # Can a household have no children?
     hh_members_mean = hh["members"].mean()
     assert ( (hh_members_mean > 2) &
              (hh_members_mean < 4) )
@@ -121,22 +131,13 @@ def test_bools( hh : pd.DataFrame,
         ("seguro de riesgos laborales", cla.MeanBounds(0.3,0.6)) ]:
       assert test.test( hh[c] )
 
-def test_quantiles( hh : pd.DataFrame ) -> ():
-    for (col,top) in [ ("income-decile",10),
-                       ("income-percentile",100) ]:
-        assert hh[col].min() == 0
-        assert hh[col].max() == top - 1
-        if com.subsample != 1000:
-            assert util.near( hh[col].mean(),
-                              (top - 1) / 2 )
-
 if True: # IO
   log = "starting\n"
   #
-  hh = oio.readStage(
+  hh = oio.readUserData(
     com.subsample,
     "households_1_agg_plus." + com.strategy_year_suffix )
-  ppl = oio.readStage(
+  ppl = oio.readUserData(
     com.subsample,
     "people_3_income_taxish." + com.strategy_year_suffix )
   hh["edu-max"] = util.interpretCategorical(
@@ -151,11 +152,11 @@ if True: # IO
       gs = ["household"],
       cs = defs.cols_const_within_hh,
       d = hh )
-  test_indices      ( hh=hh, ppl=ppl )
-  test_income_ranks ( hh=hh, ppl=ppl )
-  test_sums         ( hh=hh, ppl=ppl )
-  test_bools        ( hh=hh, ppl=ppl )
-  test_quantiles    ( hh=hh )
+  test_indices             ( hh=hh, ppl=ppl )
+  test_income_ranks        ( hh=hh, ppl=ppl )
+  test_sums                ( hh=hh, ppl=ppl )
+  test_bools               ( hh=hh, ppl=ppl )
+  com_tests.test_quantiles ( df=hh )
 
   oio.test_write(
       com.subsample,

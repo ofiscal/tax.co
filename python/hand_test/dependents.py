@@ -8,7 +8,7 @@ import python.common.misc        as c
 import python.common.common     as cl
 
 
-people = oio.readStage( cl.subsample
+people = oio.readUserData( cl.subsample
                       , 'people_3_income_taxish.' + cl.strategy_suffix )
 
 ppl = people.rename( columns = {

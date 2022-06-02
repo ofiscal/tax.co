@@ -49,19 +49,21 @@ enph_orig = $(addsuffix .csv, $(addprefix data/enph-2017/3_csv/, $(enph_files)))
 input_subsamples = \
   $(addsuffix .csv, $(addprefix data/enph-2017/recip-$(ss)/, $(enph_files)))
 
-buildings =          users/$(user)/data/recip-1/buildings.csv
+buildings =   output/recip-1/buildings.csv
 households_1_agg_plus = \
   users/$(user)/data/recip-$(ss)/households_1_agg_plus.$(strategy_year_suffix).csv \
   users/$(user)/data/recip-$(ss)/households_decile_summary.$(strategy_year_suffix).csv
 households_2_purchases = \
   users/$(user)/data/recip-$(ss)/households_2_purchases.$(strategy_year_suffix).csv
-people_0 =           users/$(user)/data/recip-$(ss)/people_0.csv
-people_1 =           users/$(user)/data/recip-$(ss)/people_1.csv
-people_2_buildings = users/$(user)/data/recip-$(ss)/people_2_buildings.csv
+people_0 =                       output/recip-$(ss)/people_0.csv
+people_1 =                       output/recip-$(ss)/people_1.csv
+people_2_buildings =             output/recip-$(ss)/people_2_buildings.csv
 people_3_income_taxish = \
   users/$(user)/data/recip-$(ss)/people_3_income_taxish.$(strategy_year_suffix).csv
-purchases_0 =        users/$(user)/data/recip-$(ss)/purchases_0.csv
-purchases_1 =        users/$(user)/data/recip-$(ss)/purchases_1.csv
+people_4_post_households = \
+  users/$(user)/data/recip-$(ss)/people_4_post_households.$(strategy_year_suffix).csv
+purchases_0 =                    output/recip-$(ss)/purchases_0.csv
+purchases_1 =                    output/recip-$(ss)/purchases_1.csv
 purchases_2_vat =    users/$(user)/data/recip-$(ss)/purchases_2_vat.$(strategy_suffix).csv
 purchase_sums =      users/$(user)/data/recip-$(ss)/purchase_sums.$(strategy_suffix).csv
 vat_rates = \
@@ -104,11 +106,20 @@ household_pics = \
 
 pics = $(purchase_pics) $(people_pics) $(household_pics)
 
-report_households =                                                                 \
+reports =                                                                 \
   users/$(user)/data/recip-$(ss)/report_households_tmi.$(strategy_year_suffix).csv  \
   users/$(user)/data/recip-$(ss)/report_households_tmi.$(strategy_year_suffix).xlsx \
   users/$(user)/data/recip-$(ss)/report_households.$(strategy_year_suffix).csv      \
-  users/$(user)/data/recip-$(ss)/report_households.$(strategy_year_suffix).xlsx
+  users/$(user)/data/recip-$(ss)/report_households.$(strategy_year_suffix).xlsx     \
+  users/$(user)/data/recip-$(ss)/report_earners_tmi.$(strategy_year_suffix).csv     \
+  users/$(user)/data/recip-$(ss)/report_earners_tmi.$(strategy_year_suffix).xlsx    \
+  users/$(user)/data/recip-$(ss)/report_earners.$(strategy_year_suffix).csv         \
+  users/$(user)/data/recip-$(ss)/report_earners.$(strategy_year_suffix).xlsx
+
+compare = \
+  users/$(user)/data/recip-$(ss)/change-in.tax-mean.by-households.$(strategy_year_suffix).png \
+  users/$(user)/data/recip-$(ss)/change-in.tax-mean.by-earners.$(strategy_year_suffix).png
+
 
 goods_by_income_decile = \
   users/$(user)/data/recip-$(ss)/goods_by_income_decile.csv \

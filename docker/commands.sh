@@ -5,7 +5,7 @@
 # A trick to quickly edit a Docker-locked file from the host system:
 # https://stackoverflow.com/a/26915343
 
-DOCKER_IMAGE_SUFFIX="2022-01-11.for-aws.Conda-2021-11_user-jeff"
+DOCKER_IMAGE_SUFFIX="2022-05-18.latex"
 
 # Start a docker container based on the latest image.
 docker run --name tax -itd                   \
@@ -29,13 +29,14 @@ cd mnt/tax_co/
 
 docker stop tax && docker rm tax
 
-# Build a new image. Do this after making changes to the Dockerfile
+# Build a new image.
+# Do this after making changes to the Dockerfile
 # or any of its dependencies.
-echo date
+STARTING_AT=$(date)
 docker build -f Dockerfile -t \
   ofiscal/tax.co:new .        \
-    | tee logs/"build-log.`date`.txt"
-echo date
+    | tee logs/build-log."$STARTING_AT".txt
+echo $(date)
 tput bel # Make a noise to indicate termination.
 
 # Change the name of the new image.

@@ -21,7 +21,7 @@ else: import python.regime.r2018 as regime
 
 
 if True: # Get, prepare the data
-  hh = oio.readStage(
+  hh = oio.readUserData(
       cl.subsample,
       "households_2_purchases." + cl.strategy_year_suffix )
   hh["income-percentile-in[90,97]"] = (
@@ -92,8 +92,8 @@ if True: # Narrow the set of columns
     # , "value, consumption"
     # , "vat / purchase value, min"
     # , "vat / purchase value, max"
-    # , "vat/income, min"
-    # , "vat/income, max"
+    # , "vat / income, min"
+    # , "vat / income, max"
     # , "purchase value / income"
     , "tax, ss" ]
   #

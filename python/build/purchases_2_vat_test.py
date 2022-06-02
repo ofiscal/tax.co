@@ -131,7 +131,7 @@ def test_output( df ):
 
 if True: # IO
   log = "starting\n"
-  ps = oio.readStage( com.subsample
+  ps = oio.readUserData( com.subsample
                     , "purchases_2_vat." + com.strategy_suffix )
   log += test_ranges( ps )
   log += test_output( ps )

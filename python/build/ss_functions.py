@@ -76,25 +76,27 @@ def mk_cesantias_y_primas_employer( independiente, income ):
         income, ss.ss_contribs_by_employer["cesantias + primas"] )
     return compute_base( income ) * rate
 
+ss_tax_names_and_recipes = [
+  ( "tax, ss, pension",
+    mk_pension)
+  , ( "tax, ss, pension, employer",
+      mk_pension_employer)
+  , ( "tax, ss, salud",
+      mk_salud)
+  , ( "tax, ss, salud, employer",
+      mk_salud_employer)
+  , ( "tax, ss, solidaridad",
+      mk_solidaridad)
+  , ( "tax, ss, parafiscales",          # PITFALL: nominally from the employer
+      mk_parafiscales_employer)
+  , ( "tax, ss, cajas de compensacion", # PITFALL: nominally from the employer
+      mk_cajas_de_compensacion_employer)
+  , ( "cesantias + primas",             # PITFALL: nominally from the employer
+      mk_cesantias_y_primas_employer) ]
+
 def mk_ss_contribs( ppl : pd.DataFrame ) -> pd.DataFrame:
   """PITFALL: Destructive."""
-  for (goal,function) in [
-      ( "tax, ss, pension",
-        mk_pension)
-    , ( "tax, ss, pension, employer",
-        mk_pension_employer)
-    , ( "tax, ss, salud",
-        mk_salud)
-    , ( "tax, ss, salud, employer",
-        mk_salud_employer)
-    , ( "tax, ss, solidaridad",
-        mk_solidaridad)
-    , ( "tax, ss, parafiscales",
-        mk_parafiscales_employer)
-    , ( "tax, ss, cajas de compensacion",
-        mk_cajas_de_compensacion_employer)
-    , ( "cesantias + primas",
-        mk_cesantias_y_primas_employer) ]:
+  for (goal,function) in ss_tax_names_and_recipes:
 
     ppl[goal] = ppl.apply(
         lambda row: function(
@@ -106,5 +108,10 @@ def mk_ss_contribs( ppl : pd.DataFrame ) -> pd.DataFrame:
     ppl["tax, ss, pension"] +
     ppl["tax, ss, salud"] +
     ppl["tax, ss, solidaridad"] )
+
+  ppl["tax, ss"] = (
+    ppl [ [ name for (name, _)
+            in ss_tax_names_and_recipes ] ]
+    . sum ( axis = "columns" ) )
 
   return ppl

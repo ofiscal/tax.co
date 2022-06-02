@@ -44,11 +44,15 @@ if not regime_year in valid_regime_years:
   raise ValueError( "invalid tax regime year: " + str(regime_year) )
 
 user_email = config_dict [ "user_email" ]
-user = ( # A user's "name" is generated from their email address.
-    "u" + # Because Python library paths must start with letters, not numbers.
-    hashlib.md5(
-        user_email . encode () )
-    . hexdigest () )
+def user_hash_from_email ( s : str ) -> str:
+  """A user's "name" is generated from their email address."""
+  return (
+      "u" + # Because Python library paths must start with letters,
+            # not numbers, and the user's folder contains code.
+      hashlib.md5 (
+          s . encode () )
+      . hexdigest () )
+user = user_hash_from_email ( user_email )
 
 strategy_suffix = strategy
 strategy_year_suffix = strategy + "." + str(regime_year)

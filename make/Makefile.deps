@@ -348,6 +348,26 @@
   .no_younger_than/python/regime/r2019.py
 	install -D /dev/null .no_younger_than/python/build/people_3_income_taxish.py
 
+.no_younger_than/python/build/people_4_post_households.py:       \
+  python/build/people_4_post_households.py                       \
+  .no_younger_than/python/common/util.py                         \
+  .no_younger_than/python/common/common.py                       \
+  .no_younger_than/python/build/people_4_post_households_defs.py \
+  .no_younger_than/python/build/output_io.py
+	install -D /dev/null .no_younger_than/python/build/people_4_post_households.py
+
+.no_younger_than/python/build/people_4_post_households_test.py:  \
+  python/build/people_4_post_households_test.py                  \
+  .no_younger_than/python/common/misc.py			 \
+  .no_younger_than/python/common/common.py			 \
+  .no_younger_than/python/build/people_4_post_households_defs.py \
+  .no_younger_than/python/build/output_io.py
+	install -D /dev/null .no_younger_than/python/build/people_4_post_households_test.py
+
+.no_younger_than/python/build/people_4_post_households_defs.py: \
+  python/build/people_4_post_households_defs.py
+	install -D /dev/null .no_younger_than/python/build/people_4_post_households_defs.py
+
 .no_younger_than/python/build/datafiles.py: \
   python/build/datafiles.py
 	install -D /dev/null .no_younger_than/python/build/datafiles.py
@@ -515,17 +535,29 @@
   python/report/time_to_save_for_a_month/defs.py
 	install -D /dev/null .no_younger_than/python/report/time_to_save_for_a_month_defs.py
 
-.no_younger_than/python/report/households.py: \
-  python/report/households.py \
-  .no_younger_than/python/common/misc.py \
-  .no_younger_than/python/common/common.py \
-  .no_younger_than/python/build/output_io.py \
-  .no_younger_than/python/common/describe.py \
-  .no_younger_than/python/draw/util.py \
-  .no_younger_than/python/regime/r2016.py \
-  .no_younger_than/python/regime/r2018.py \
-  .no_younger_than/python/regime/r2019.py
-	install -D /dev/null .no_younger_than/python/report/households.py
+.no_younger_than/python/report/defs.py: \
+  python/report/defs.py
+	install -D /dev/null .no_younger_than/python/report/defs.py
+
+.no_younger_than/python/report/compare.py:    \
+  python/report/compare.py                    \
+  .no_younger_than/python/build/output_io.py  \
+  .no_younger_than/python/common/common.py    \
+  .no_younger_than/python/draw/util.py
+	install -D /dev/null .no_younger_than/python/report/compare.py
+
+.no_younger_than/python/report/var_summaries_by_group.py: \
+  python/report/var_summaries_by_group.py                 \
+  .no_younger_than/python/build/output_io.py  \
+  .no_younger_than/python/common/common.py    \
+  .no_younger_than/python/common/describe.py  \
+  .no_younger_than/python/common/misc.py      \
+  .no_younger_than/python/draw/util.py        \
+  .no_younger_than/python/regime/r2016.py     \
+  .no_younger_than/python/regime/r2018.py     \
+  .no_younger_than/python/regime/r2019.py     \
+  .no_younger_than/python/report/defs.py
+	install -D /dev/null .no_younger_than/python/report/var_summaries_by_group.py
 
 .no_younger_than/python/subsample.py: \
   python/subsample.py \

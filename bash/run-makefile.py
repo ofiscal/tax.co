@@ -1,31 +1,37 @@
-# PITFALL: This has nothing to do with the make.py package
-# that is an alternative to the utility called make.
-#
-# PURPOSE: A Makefile cannot ingeest .json parameters.
-# But the Makefile needs to know those parameters,
-# in order to track dependencies correclty -- for instance,
-# products made from the 1/10 sample do not depend on products from 1/100.
-# This solves that problem.
+"""
+PITFALL: This has nothing to do with the make.py package
+that is an alternative to the utility called make.
 
-# USAGE:
-#   Optional: Change the targets defined in this file.
-#     See the `targets` variable below.
-#   Optional: Define parameters in config/config.json,
-#     or in a similar file in users/u<user-hash>/config/
-#   From the root folder of the project, run this:
-#     PYTHONPATH="." python3 bash/run-makefile.py <config_file>
-#   The file path in <>s is optional; if you don't provide it,
-#     it will default to config/config.json.
-#
-# PITFALL:
-#   If, when you run the above, you receive an error of the form
-#   "No such file or directory:
-#     '/mnt/tax_co/users/ue01af9d7df5e7e220c6ef60e400a6683/logs/make.txt"
-#   it's because the program expects `users/ue01af9d7df5e7e220c6ef60e400a6683/`
-#   to exist, and to have the same structure as `users/example/`
-#   Solve this by copying `users/example/` folder to
-#   `users/ue01af9d7df5e7e220c6ef60e400a6683/` (or whatever appeared in the error),
-#   and then editing the `config.json` file within it.
+PURPOSE: A Makefile cannot ingest .json parameters.
+But the Makefile needs to know those parameters,
+in order to track dependencies correctly -- for instance,
+products made from the 1/10 sample do not depend on products from 1/100.
+This solves that problem.
+
+USAGE:
+  Optional: Change the targets defined in this file.
+    See the `targets` variable below.
+  Optional: Define parameters in config/config.json,
+    or in a similar file in users/u<user-hash>/config/
+  From the root folder of the project, run these two lines:
+    PYTHONPATH="." python3 bash/run-makefile.py users/symlinks/baseline/config/config.json
+    PYTHONPATH="." python3 bash/run-makefile.py <config_file>
+  The first line builds the baseline "user",
+    which other users are compared to.
+    It won't rebuild unless the code changed.
+  In the second line, the file path in <>s is optional.
+    If you don't provide it, it will default to config/config.json.
+
+PITFALL:
+  If, when you run the above, you receive an error of the form
+  "No such file or directory:
+    '/mnt/tax_co/users/ue01af9d7df5e7e220c6ef60e400a6683/logs/make.txt"
+  it's because the program expects `users/ue01af9d7df5e7e220c6ef60e400a6683/`
+  to exist, and to have the same structure as `users/example/`
+  One way to solve this is to copy `users/example/` folder to
+  `users/ue01af9d7df5e7e220c6ef60e400a6683/` (or whatever appeared in the error),
+  and then editing the `config.json` file within it.
+"""
 
 from   datetime import datetime
 import os
@@ -42,14 +48,19 @@ with open( os.path.join( logs_path, "make.txt"),
            "a" ) as f:
   f.write( "make.py starting at " + str( datetime.now() ) + "\n" )
 
-targets = [ "show_config",
-            "show_params",
-            # "tests",
-            "report_households"
-          ]
+targets = (
   # Makefile targets.
   # For the full list of possible targets,
   # see the Makefile, particularly the definition of .PHONY.
+  [ "show_config",
+    "show_params",
+    # "tests",
+    "reports",
+   ]
+  + ( [] # Since the baseline user is the one others are compared to,
+         # it makes no sense to build "compare" for tthat user.
+      if c.user_email == "baseline"
+      else ["compare"] ) )
 
 # TODO: This is duplicated in python/requests/main.py.
 # Factor out both into a shared library.

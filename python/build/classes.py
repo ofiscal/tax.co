@@ -60,7 +60,7 @@ class InRange(SeriesProperty):
   def __init__( self, floor, ceiling ):
     self.floor = floor
     self.ceiling = ceiling
-  def test( self, series : pd.Series ) -> pd.Series:
+  def test ( self, series : pd.Series ) -> bool:
     s = series.dropna()
     return ( (s <= self.ceiling)
            & (s >= self.floor) ) . all()
@@ -68,7 +68,7 @@ class InRange(SeriesProperty):
 class InSet(SeriesProperty):
   def __init__( self, values : set ):
     self.values = values
-  def test( self, series : pd.Series ) -> pd.Series:
+  def test( self, series : pd.Series ) -> bool:
     s = series.dropna()
     return s . isin( self.values ) . all()
 

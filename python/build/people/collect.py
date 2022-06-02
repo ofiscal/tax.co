@@ -14,4 +14,4 @@ ppl = c.all_columns_to_numbers(
   , skip_columns = ["non-beca sources"] # PITFALL : a space-separated list of ints
 )
 
-oio.saveStage( cl.subsample, ppl, 'people_0')
+oio.saveCommonOutput ( cl.subsample, ppl, 'people_0')

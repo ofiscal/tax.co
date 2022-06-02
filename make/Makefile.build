@@ -53,6 +53,14 @@ $(people_3_income_taxish):                      \
 	date
 	$(python_from_here) python/build/people_3_income_taxish.py $(config_file)
 
+people_4_post_households: $(people_4_post_households)
+$(people_4_post_households):                                \
+  .no_younger_than/python/build/people_4_post_households.py \
+  $(people_3_income_taxish)                                 \
+  $(households_2_purchases)
+	date
+	$(python_from_here) python/build/people_4_post_households.py $(config_file)
+
 households_1_agg_plus: $(households_1_agg_plus)
 $(households_1_agg_plus):                      \
   .no_younger_than/python/build/households_1_agg_plus.py \
@@ -84,10 +92,10 @@ $(purchases_1):                            \
 	$(python_from_here) python/build/purchases/correct.py $(config_file)
 
 purchases_2_vat: $(purchases_2_vat)
-$(purchases_2_vat):                      \
-  .no_younger_than/python/build/purchases_2_vat.py \
-  $(vat_rates)                           \
-  users/$(user)/data/recip-$(ss)/purchases_1.csv
+$(purchases_2_vat):				    \
+  .no_younger_than/python/build/purchases_2_vat.py  \
+  $(vat_rates)					    \
+  $(purchases_1)
 	date
 	$(python_from_here) python/build/purchases_2_vat.py $(config_file)
 
@@ -124,12 +132,20 @@ $(people_pics):                       \
 
 pics: $(pics)
 
-report_households: $(report_households)
-$(report_households):                          \
-  .no_younger_than/python/report/households.py \
+reports: $(reports)
+$(reports):                                                \
+  .no_younger_than/python/report/var_summaries_by_group.py \
+  $(people_4_post_households)                              \
   $(households_2_purchases)
 	date
-	$(python_from_here) python/report/households.py $(config_file)
+	$(python_from_here) python/report/var_summaries_by_group.py $(config_file)
+
+compare: $(compare)
+$(compare):                                 \
+  .no_younger_than/python/report/compare.py \
+  $(reports)
+	date
+	$(python_from_here) python/report/compare.py $(config_file)
 
 # PITFALL: Always reads households_1_agg_plus from the detail vat strategy, because vat irrelevant.
 goods_by_income_decile: $(goods_by_income_decile)

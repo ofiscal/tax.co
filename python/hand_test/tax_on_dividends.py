@@ -24,7 +24,7 @@ ppl["value, tax, purchaselike non-VAT"] = ppl["dividends"].apply(
 
 ### This isn't very informative, because almost nobody makes dividend income.
 
-ppl = oio.readStage( cl.subsample
+ppl = oio.readUserData( cl.subsample
   , 'people_3_income_taxish.' + cl.strategy_suffix)
 
 pHigh = ppl[ ppl["income, dividend"] > 0 ]

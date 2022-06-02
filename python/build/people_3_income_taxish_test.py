@@ -19,7 +19,7 @@ def test_insert_has_dependent_column():
                                [1,1,1,0,0, # PITFALL: 3rd 1 here is absurd
                                            1,1,0,0,0, 1,0,0,0,0, 0,0] ) ) } )
   def rei( df: pd.DataFrame ) -> pd.DataFrame():
-      return df . reindex( sorted(df.columns), axis=1) 
+      return df . reindex( sorted(df.columns), axis=1)
   d_input  =          rei( d.drop( columns = [ "dependents",
                                                "claims dependent (labor income tax)"] ) )
   d_intended_putput = rei( d.drop( columns = [ "dependent"] ) )
@@ -34,16 +34,18 @@ if True:
   test_insert_has_dependent_column()
 
   # integration tests
-  p4 = oio.readStage(
+  p4 = oio.readUserData(
       com.subsample,
       'people_3_income_taxish.' + com.strategy_year_suffix )
-  assert util.near( 
+  assert util.near(
       len(p4),
       num_people / com.subsample,
       tol_frac = 1/5 )
   assert util.unique( p4.columns )
+  assert ( ( p4 ["tax, ss"] >=
+             p4 ["tax, ss, total employee contribs"] )
+           . all () )
 
   oio.test_write( com.subsample
                 , "people_3_income_taxish"
                 , log )
-

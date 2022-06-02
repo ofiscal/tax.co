@@ -10,7 +10,7 @@ if True:
   import python.common.util as util
 
 
-sums = oio.readStage(
+sums = oio.readUserData(
     com.subsample,
     "purchase_sums." + com.strategy_suffix )
 
