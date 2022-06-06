@@ -35,8 +35,10 @@ PITFALL:
 
 from   datetime import datetime
 import os
-import python.common.common as c
 import subprocess
+
+import python.common.common as c
+import python.makefile_targets as makefile_targets
 
 
 tax_co_root_path    = "/mnt/tax_co"
@@ -52,11 +54,7 @@ targets = (
   # Makefile targets.
   # For the full list of possible targets,
   # see the Makefile, particularly the definition of .PHONY.
-  [ "show_config",
-    "show_params",
-    "tests",
-    "reports",
-   ]
+  makefile_targets.targets
   + ( [] # Since the baseline user is the one others are compared to,
          # it makes no sense to build "compare" for tthat user.
       if c.user_email == "baseline"
