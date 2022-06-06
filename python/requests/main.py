@@ -174,6 +174,10 @@ def advance_request_queue ():
         os.path.join (
           data_path, "report_households_tmi.detail.2019.xlsx"),
         os.path.join (
+          data_path, "change-in.tax-mean.by-households.detail.2019.png"),
+        os.path.join (
+          data_path, "change-in.tax-mean.by-earners.detail.2019.png"),
+        os.path.join (
           data_path, "../..", "logs.zip" ) ] )
     with open( global_log_path, "a" ) as f:
       f . write( "Email: Done.\n" )
