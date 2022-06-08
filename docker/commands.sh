@@ -5,7 +5,7 @@
 # A trick to quickly edit a Docker-locked file from the host system:
 # https://stackoverflow.com/a/26915343
 
-DOCKER_IMAGE_SUFFIX="2022-05-18.latex"
+DOCKER_IMAGE_SUFFIX="2022-06-06.inputrc-for-root-too"
 
 # Start a docker container based on the latest image.
 docker run --name tax -itd                   \

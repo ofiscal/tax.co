@@ -117,14 +117,17 @@ RUN cd /etc/apache2/                                && \
 # PITFALL: www-data is the name of a new group and a new user,
 # both created by the adduser command.
 
+# This prevents a weird error that recently (2021 June) started happening
+# when pasting multiple lines of text into a shell.
+# PITFALL: This needs to be in the home folder of both users.
+# `root` (done here) and `jeff` (done below).
+RUN echo "set enable-bracketed-paste off" >> /root/.inputrc
+RUN echo "set enable-bracketed-paste off" >> /home/jeff/.inputrc
+
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH /opt/conda/bin:$PATH
 ENV TZ="America/Bogota"
 USER jeff
-
-# This prevents a weird error that recently (2021 June) started happening
-# when pasting multiple lines of text into a shell.
-RUN echo "set enable-bracketed-paste off" >> ~/.inputrc
 
 RUN PATH=/root/.local/bin:$PATH
 EXPOSE 8888
