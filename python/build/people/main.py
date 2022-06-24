@@ -305,10 +305,11 @@ if True: # income
       ppl["income, ganancia ocasional, 20%-taxable"] = (
         ppl["income, month : infrequent : gambling"] +
         ppl["income, month : infrequent : jury awards"] )
-      ppl = ppl.drop( columns =
-                      set(cols_infrequent) -
-                      set(["income, month : infrequent : inheritance"])
-                      )
+      ppl = ppl.drop (
+        columns = ( set ( cols_infrequent ) -
+                    # Except don't drop the following.
+                    { "income, month : infrequent : inheritance",
+                      "income, month : sale : real estate", } ) )
       #
     if True: # "income" from borrowing
       ppl["income, borrowing"] = (
@@ -385,7 +386,10 @@ if True: # income
         { **income_short_name_dict_cash
         , **income_short_name_dict_in_kind
         , ** { "income, month : infrequent : inheritance"
-             : "income, inheritance" } } )
+               : "income, inheritance",
+               "income, month : sale : real estate"
+               : "income, sale, real estate",
+              } } )
       #
     if True: # compute across-category sums
       ppl["income, cash"]    = (
@@ -485,6 +489,13 @@ if True: # dependence
 
 ppl = generar_empleados ( ppl )
 
+ppl["income, capital"] = (
+  ppl [ [ "income, dividend",
+          "income, rental + interest",
+          "income, sale not real estate",
+          "income, sale, real estate", ] ]
+  . sum ( axis = 1 ) )
+
 if True: # drop vars that are (so far) unused downstream of here
   ppl = ppl.drop( columns =
     [ "income, month : borrowing : from person"
@@ -494,6 +505,7 @@ if True: # drop vars that are (so far) unused downstream of here
     , "income, month : sale : stock"
     , "income, month : sale : stock ?2"
     , "income, month : sale : vehicle | equipment"
+    , "income, sale, real estate"
     , "pension, contribution amount"
     , "pre-k|daycare"
     , "race"

@@ -33,6 +33,7 @@ income_and_tax__person_level = ( [
   [ "income"
   , "income, cash"
   , "income, in-kind"
+  , "income, capital"
   , "income, pension"
   , "income, cesantia"
   , "income, dividend"
