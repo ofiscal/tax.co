@@ -51,16 +51,6 @@ assert ( set.union ( set ( ps3.columns ),
          == set ( ps4.columns ) )
 log = log + "\n" + "Column names look good."
 
-assert ps4["share"].max() <= 1.01
-assert ps4["share"].min() >= -0.01
-x = ( ps4 [[ "household", "share" ]]
-      . groupby ( "household" )
-      . agg ( "sum" ) )
-assert x["share"].max() <= 1.01
-assert x["share"].min() >= 0.99
-del(x)
-log = log + "\n" + "Share looks reasonable."
-
 assert ( ( (   ( ps4 [ "in labor force" ] == 1 )
              & ( ps4 [ "age" ] >= 18 ) )
          | (     ps4 [ "income" ] > 0 ) ) . all () )
@@ -106,6 +96,18 @@ for (c,m) in [ ( "in labor force", 0 ),
   log = log + "\n" + c + " is missing no more than " + str(100*m) + "%."
 
 com_tests.test_quantiles ( df=ps4 )
+
+if True: # Test "share"
+  assert ps4["share"].max() <= 1.01
+  assert ps4["share"].min() >= -0.01
+  x = ( ps4 [[ "household", "share" ]]
+        . groupby ( "household" )
+        . agg ( "sum" ) )
+  assert x["share"].max() <= 1.01
+  assert x["share"].min() >= 0.99 # TODO: Fails in (only) the full sample,
+                                  # for 6 out of 90,000 observations.
+  del(x)
+  log = log + "\n" + "Share looks reasonable."
 
 oio.test_write ( com.subsample
                , "people_4_post_households"
