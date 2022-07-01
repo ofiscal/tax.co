@@ -2,8 +2,8 @@ if True:
   import datetime
   #
   import python.build.output_io as oio
-  import python.build.ss_functions as sf
-  import python.build.ss_schedules as ss
+  import python.build.ss.functions as sf
+  import python.build.ss.schedules as ss
   from   python.common.misc import min_wage
   from   python.common.util import near
   import python.common.common as common

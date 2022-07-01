@@ -151,9 +151,9 @@ users/$(user)/test/recip-1/regime_r2018.txt:               \
           $(config_file)
 
 users/$(user)/test/recip-1/build_ss_functions.txt:               \
-  .no_younger_than/python/build/ss_functions_test.py
+  .no_younger_than/python/build/ss/functions_test.py
 	date
-	$(python_from_here) python/build/ss_functions_test.py \
+	$(python_from_here) python/build/ss/functions_test.py \
           $(config_file)
 
 users/$(user)/test/recip-$(ss)/people_3_income_taxish.txt:   \

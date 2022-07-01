@@ -4,7 +4,7 @@
 
 exit # To make sure you don't run this as a script.
 
-# To grep for a string in every format except unreadable ones.
+# To grep for a string in every format except tables and unreadable ones.
 find . -type f -not \( -name "*.csv" -o -name "*.xlsx" -o -name "*.tgz" -o -name "*.zip" -o -name "*.ssv" -o -name "*.sav" -o -name "*.pyc" -o -name "*.pdf" -o -name "*.jpeg" -o -name "*.odt" -o -name "*.pack" -o -name "*.ods" -o -name "*.ipynb" -o -name "*.idx" -o -name "*.docx" -o -name "*.dta" \) -print0 | xargs -0 grep "xxx" --color
 
 # Always using: Find multiple files, replace in them
