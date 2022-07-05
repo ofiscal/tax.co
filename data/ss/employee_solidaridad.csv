@@ -1,0 +1,9 @@
+min_threshold_in_min_wages,fraction_of_wage,min_base_in_min_wages,max_base_in_min_wages,average_tax_rate
+0,0,-9e99,9e99,0
+4,1,-9e99,9e99,0.01
+13,0.7,-9e99,9e99,0.01
+16,0.7,-9e99,9e99,0.012
+17,0.7,-9e99,9e99,0.014
+18,0.7,-9e99,9e99,0.016
+19,0.7,-9e99,9e99,0.018
+20,0.7,-9e99,25,0.02
