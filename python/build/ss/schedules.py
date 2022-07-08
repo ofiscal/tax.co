@@ -24,10 +24,10 @@ from python.common.misc import min_wage
 ###########################################
 
 def average_tax_function (
-    fraction_of_wage      : float,
-    min_base_in_min_wages : float,
-    max_base_in_min_wages : float
-) -> Callable [ [float], float ]:
+    fraction_of_wage      : float, # fraction of wage taxed
+    min_base_in_min_wages : float, # minimum wage assumed
+    max_base_in_min_wages : float  # maximum wage taxed
+) -> Callable [ [float], float ]: # computes taxable base from wage
   return ( lambda wage:
            min ( max ( wage     * fraction_of_wage,
                        min_wage * min_base_in_min_wages ),
@@ -35,10 +35,9 @@ def average_tax_function (
 
 def ss_tax_schedule_from_frame (
     df : pd.DataFrame
-) -> List [
-  Tuple [ float,                       # minimum income threshold
-          Callable [ [float], float ], # computes taxable base from wage
-          float ]]:                    # average (not marginal!) tax rate
+) -> List [ Tuple [ float,                       # minimum income threshold
+                    Callable [ [float], float ], # computes taxable base from wage
+                    float ]]:                    # average (not marginal!) tax rate
   df["lambda"] = df.apply (
     lambda row: average_tax_function (
       row["fraction_of_wage"],
@@ -57,9 +56,9 @@ def ss_tax_schedule_from_frame (
 
 ss_contrib_schedule_for_contractor : \
   Dict [ str,
-         List [ Tuple [ float,
-                        Callable [ [float], float ],
-                        float ] ] ] = \
+         List [ Tuple [ float,                       # minimum income threshold
+                        Callable [ [float], float ], # computes taxable base from wage
+                        float ] ] ] = \              # average (not marginal!) tax rate
   { "pension" :
     [ ( 0, lambda _: 0, 0.0 )
     , ( min_wage
@@ -101,9 +100,9 @@ ss_contrib_schedule_for_contractor : \
 
 ss_contrib_schedule_for_employee : \
   Dict [ str,
-         List [ Tuple [ float,
-                        Callable [ [float], float ],
-                        float ] ] ] = \
+         List [ Tuple [ float,                       # minimum income threshold
+                        Callable [ [float], float ], # computes taxable base from wage
+                        float ] ] ] = \              # average (not marginal!) tax rate
   { "pension" :
     [ ( 0,           lambda wage: 0                            , 0.0)
     , ( min_wage,    lambda wage: wage                         , 0.04)
@@ -127,9 +126,9 @@ ss_contrib_schedule_for_employee : \
 # some contributions are also made by the employer.
 ss_contribs_by_employer : \
   Dict [ str,
-         List [ Tuple [ float,
-                        Callable [ [float], float ],
-                        float ] ] ] = \
+         List [ Tuple [ float,                       # minimum income threshold
+                        Callable [ [float], float ], # computes taxable base from wage
+                        float ] ] ] = \              # average (not marginal!) tax rate
   { "pension" :
     [ ( 0,           lambda wage: 0                          , 0.0)
     , ( min_wage,    lambda wage: wage                       , 0.12)
