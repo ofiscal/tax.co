@@ -22,7 +22,7 @@ def test_mk_pension():
                  0.16 * 4 * min_wage)
     assert near( sf.mk_pension( contractor, 200 * min_wage ),
                  0.16 * 25 * min_wage)
-  
+
   if True: # for employees
     assert near( sf.mk_pension( employee, 0.5 * min_wage ),
                  0 )
@@ -176,9 +176,9 @@ if True:
   test_mk_parafiscales_employer()
   test_mk_cajas_de_compensacion_employer()
   test_mk_cesantias_y_primas_employer()
-  for ss in common . valid_subsamples:
+  for vs in common . valid_subsamples:
     # PITFALL: Looping over subsample sizes because this program
     # doesn't use any data. If it works, it works for all subsamples.
-    oio.test_write( ss
-                  , "build_ss_functions"
-                  , log )
+    oio.test_write ( vs
+                   , "build_ss_functions"
+                   , log )
