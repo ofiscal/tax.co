@@ -54,7 +54,7 @@ def ss_tax_schedule_from_csv (
     basename : str,
 ) -> List [ Tuple [ float,                       # minimum income threshold
                     Callable [ [float], float ], # computes taxable base from wage
-                    float ]]:                    # average (not marginal!) tax rate
+                    float ] ]:                   # average (not marginal!) tax rate
   return ss_tax_schedule_from_frame (
     pd.read_csv (
       os.path.join ( "data/ss/",
@@ -64,7 +64,8 @@ ss_contrib_schedule_for_contractor_new : \
   Dict [ str,
          List [ Tuple [ float,                       # minimum income threshold
                         Callable [ [float], float ], # computes taxable base from wage
-                        float ] ] ] = \              # average (not marginal!) tax rate
+                        float ]                      # average (not marginal!) tax rate
+               ] ] = \
   { "pension"     : ss_tax_schedule_from_csv ( "contractor_pension" ),
     "salud"       : ss_tax_schedule_from_csv ( "contractor_salud" ),
     "solidaridad" : ss_tax_schedule_from_csv ( "contractor_solidaridad" ), }
@@ -73,7 +74,8 @@ ss_contrib_schedule_for_employee_new : \
   Dict [ str,
          List [ Tuple [ float,                       # minimum income threshold
                         Callable [ [float], float ], # computes taxable base from wage
-                        float ] ] ] = \              # average (not marginal!) tax rate
+                        float ]                      # average (not marginal!) tax rate
+               ] ] = \
   { "pension"     : ss_tax_schedule_from_csv ( "employee_pension" ),
     "salud"       : ss_tax_schedule_from_csv ( "employee_salud" ),
     "solidaridad" : ss_tax_schedule_from_csv ( "employee_solidaridad" ), }
@@ -84,7 +86,8 @@ ss_contribs_by_employer_new : \
   Dict [ str,
          List [ Tuple [ float,                       # minimum income threshold
                         Callable [ [float], float ], # computes taxable base from wage
-                        float ] ] ] = \              # average (not marginal!) tax rate
+                        float ]                      # average (not marginal!) tax rate
+               ] ] = \
  { "pension"              : ss_tax_schedule_from_csv ( "employee_pension" ),
   "cajas de compensacion" : ss_tax_schedule_from_csv ( "employer_cajas_de_compensacion" ),
   "cesantias + primas"    : ss_tax_schedule_from_csv ( "employer_cesantias_y_primas" ),
@@ -100,7 +103,8 @@ ss_contrib_schedule_for_contractor : \
   Dict [ str,
          List [ Tuple [ float,                       # minimum income threshold
                         Callable [ [float], float ], # computes taxable base from wage
-                        float ] ] ] = \              # average (not marginal!) tax rate
+                        float ]                      # average (not marginal!) tax rate
+               ] ] = \
   { "pension" :
     [ ( 0, lambda _: 0, 0.0 )
     , ( min_wage
@@ -144,7 +148,8 @@ ss_contrib_schedule_for_employee : \
   Dict [ str,
          List [ Tuple [ float,                       # minimum income threshold
                         Callable [ [float], float ], # computes taxable base from wage
-                        float ] ] ] = \              # average (not marginal!) tax rate
+                        float ]                      # average (not marginal!) tax rate
+               ] ] = \
   { "pension" :
     [ ( 0,           lambda wage: 0                            , 0.0)
     , ( min_wage,    lambda wage: wage                         , 0.04)
@@ -170,7 +175,8 @@ ss_contribs_by_employer : \
   Dict [ str,
          List [ Tuple [ float,                       # minimum income threshold
                         Callable [ [float], float ], # computes taxable base from wage
-                        float ] ] ] = \              # average (not marginal!) tax rate
+                        float ]                      # average (not marginal!) tax rate
+               ] ] = \
   { "pension" :
     [ ( 0,           lambda wage: 0                          , 0.0)
     , ( min_wage,    lambda wage: wage                       , 0.12)
