@@ -58,8 +58,7 @@ def ss_tax_schedule_from_csv (
   return ss_tax_schedule_from_frame (
     pd.read_csv (
       os.path.join ( "data/ss/",
-                     basename,
-                     ".csv") ) )
+                     basename + ".csv") ) )
 
 ss_contrib_schedule_for_contractor_new : \
   Dict [ str,
