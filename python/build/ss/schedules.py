@@ -45,7 +45,8 @@ def ss_tax_schedule_from_frame (
       row["min_base_in_min_wages"],
       row["max_base_in_min_wages"] ),
     axis = "columns" )
-  return ( df [[ "min_threshold_in_min_wages",
+  df["min_threshold"] = df["min_threshold_in_min_wages"] * min_wage
+  return ( df [[ "min_threshold",
                  "lambda",
                  "average_tax_rate" ]]
            . values . tolist () )
