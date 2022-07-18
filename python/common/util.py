@@ -16,7 +16,7 @@ def near( a : float,
         return True
     else: return False
 
-def unique( coll: List ) -> bool:
+def unique( coll : List ) -> bool:
   return len( coll ) == len( set( coll ) )
 
 def tuple_by_threshold( income, schedule ):
@@ -73,4 +73,3 @@ def printInRed(message):
 def print_trueBlack_falseRed( aBool, ifTrue, ifFalse ):
   if aBool: print( ifTrue )
   else: printInRed( ifFalse )
-

@@ -14,7 +14,7 @@ if True:
 
 def test_const_within_group( gs : List[str],
                              cs : List[str],
-                             d  : pd.DataFrame ) -> ():
+                             d  : pd.DataFrame ) -> None:
     """Tests that the columns `cs` are constant within each of the groups defined by `gs`."""
     h = d.groupby( gs )
     for c in cs:
@@ -22,7 +22,7 @@ def test_const_within_group( gs : List[str],
 
 def test_indices( hh  : pd.DataFrame,
                   ppl : pd.DataFrame
-                ) ->    ():
+                ) -> None:
   """There might be some redundancy within this collection of assertions,
 but that's costless."""
   assert len(hh) == ppl["household"].nunique()
@@ -33,7 +33,7 @@ but that's costless."""
   assert util.unique( hh.columns )
 
 def test_income_ranks( hh : pd.DataFrame,
-                       ppl : pd.DataFrame ) -> ():
+                       ppl : pd.DataFrame ) -> None:
 
     # The maximum earner earns what the maximum top earner earns.
     assert ppl["income, labor"].max() == hh["(rank, labor income) = 1"].max()
@@ -60,7 +60,7 @@ def test_income_ranks( hh : pd.DataFrame,
         assert hh_means[n] > 2 * hh_means[n+1]
 
 def test_sums( hh : pd.DataFrame,
-               ppl : pd.DataFrame ) -> ():
+               ppl : pd.DataFrame ) -> None:
     assert   hh["members"] . min() == 1
     assert ( hh["members"]           . max() ==
              ppl["household-member"] . max() )
@@ -81,7 +81,8 @@ def test_sums( hh : pd.DataFrame,
              . abs() . max() ) < 5e-3
 
 def test_bools( hh : pd.DataFrame,
-                ppl : pd.DataFrame ) -> ():
+                ppl : pd.DataFrame
+               ) -> None:
     bool_cols = ( defs.cols_to_max__no_name_change +
                   [ "used savings",
                     "recently bought this house",
