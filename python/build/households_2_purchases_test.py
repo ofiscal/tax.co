@@ -43,6 +43,8 @@ if True:
              ["vat paid"].max() == 0 )
 
 if True:
+  # PITFALL: The reuse of the name `v` below generates harmless mypy errors,
+  # because it expects `v` to always have the same type.
   for k,v in {
       "vat / purchase value"      : cl.InRange( 0, 0.3 ),
         # The special motorcycle tax, abusivelyed lump into the VAT table,

@@ -67,8 +67,10 @@ per_column_spec = {
 for k,v in per_cell_spec.items():
   assert v . test( out[k] )
 
-for k,v in per_column_spec.items():
-  assert v.test( out[k] )
+# Using kk and vv instead of k and v to avoid a mypy error --
+# mypy wants a variable name to always be associated with the same type.
+for kk,vv in per_column_spec.items():
+  assert vv.test( out[kk] )
 
 oio.test_write( com.subsample,
                 "people_2_buildings",
