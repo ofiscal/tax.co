@@ -115,11 +115,6 @@ pension_contractor_frame = pd.DataFrame (
 pension_contractor_schedule_from_frame = ss_tax_schedule_from_frame (
   df = pension_contractor_frame )
 
-x = ss_contrib_schedule_for_contractor ["pension"]
-y = ss_contrib_schedule_for_contractor ["pension"] [0]
-z = ss_contrib_schedule_for_contractor ["pension"] [0] [0]
-
-
 for b in [0,1]: # tax bracket
   for i in [0,2]: # list index
     assert ( pension_contractor_schedule_from_frame         [0][i] ==
