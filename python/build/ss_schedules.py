@@ -107,7 +107,9 @@ ss_contribs_by_employer = {
   , "cesantias + primas":
     [ ( 0,           lambda wage: 0                          , 0.0)
     , ( min_wage,    lambda wage: wage                       , 2.12 / 12 )
-                 # Every year a worker gets 1 prima de servicio worth
-                 # 1 month's wages, and 1 cesantia worth 1.12 month's wages.
+      # Every year a worker gets 1 prima de servicio worth
+      # 1 month's wages, and 1 cesantia worth 1.12 month's wages.
+      # Summing those gives a yearly figure of 2.12.
+      # Dividing by 12 amortizes it into a monthly one.
     , ( 13*min_wage, lambda wage: 0                          , 0.0 ) ]
   }
