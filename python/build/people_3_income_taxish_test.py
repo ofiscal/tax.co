@@ -18,7 +18,7 @@ def test_insert_has_dependent_column():
         "claims dependent (labor income tax)"    : list( map( bool,
                                [1,1,1,0,0, # PITFALL: 3rd 1 here is absurd
                                            1,1,0,0,0, 1,0,0,0,0, 0,0] ) ) } )
-  def rei( df: pd.DataFrame ) -> pd.DataFrame():
+  def rei( df: pd.DataFrame ) -> pd.DataFrame:
       return df . reindex( sorted(df.columns), axis=1)
   d_input  =          rei( d.drop( columns = [ "dependents",
                                                "claims dependent (labor income tax)"] ) )
