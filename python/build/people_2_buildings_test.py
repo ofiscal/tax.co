@@ -43,7 +43,6 @@ new_cols = {
     "female head" }
 
 assert util.unique( out.columns )
-assert util.unique( new_cols )
 
 assert set.intersection (cols1, new_cols) == set()
 assert set.union        (cols1, new_cols) == cols2
