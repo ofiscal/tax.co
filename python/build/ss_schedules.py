@@ -24,9 +24,42 @@
 #########
 # The model `rentas_naturales.xlsx` might make this easier to understand.
 
+import pandas as pd
+from typing import Callable, Dict, List, Tuple
+
 from python.common.misc import min_wage
 
-ss_contrib_schedule_for_contractor = {
+
+def average_tax_function (
+    fraction_of_wage      : float,
+    min_base_in_min_wages : float,
+    max_base_in_min_wages : float
+) -> Callable [ [float], float ]:
+  return ( lambda wage:
+           min ( max ( wage     * fraction_of_wage,
+                       min_wage * min_base_in_min_wages ),
+                 min_wage       * max_base_in_min_wages ) )
+
+def ss_tax_schedule_from_frame (
+    df : pd.DataFrame
+) -> List [
+  Tuple [ float,                       # minimum income threshold
+          Callable [ [float], float ], # computes taxable base from wage
+          float ]]:                    # average (not marginal!) tax rate
+  df["lambda"] = df.apply (
+    lambda row: average_tax_function (
+      row["fraction_of_wage"],
+      row["min_base_in_min_wages"],
+      row["max_base_in_min_wages"] ),
+    axis = "columns" )
+  return ( df [[ "min_threshold_in_min_wages",
+                 "lambda",
+                 "average_tax_rate" ]]
+           . values . tolist () )
+
+ss_contrib_schedule_for_contractor : Dict [
+  str,
+  List [ Tuple [ float, Callable [ [float], float ], float ] ] ] = {
   "pension" :
     [ ( 0, lambda _: 0, 0.0 )
     , ( min_wage
@@ -65,6 +98,36 @@ ss_contrib_schedule_for_contractor = {
                         , 25*min_wage)
       , 0.02) ]
   }
+
+
+#### #### #### #### #### ####
+#### Tests
+#### TODO: Move to a separate file
+#### #### #### #### #### ####
+
+pension_contractor_frame = pd.DataFrame (
+  { "min_threshold_in_min_wages" : [0    , 1   ],
+    "fraction_of_wage"           : [0    , 0.4 ],
+    "min_base_in_min_wages"      : [-9e99, 1   ],
+    "max_base_in_min_wages"      : [9e99 , 25  ],
+    "average_tax_rate"           : [0    , 0.16], } )
+
+pension_contractor_schedule_from_frame = ss_tax_schedule_from_frame (
+  df = pension_contractor_frame )
+
+x = ss_contrib_schedule_for_contractor ["pension"]
+y = ss_contrib_schedule_for_contractor ["pension"] [0]
+z = ss_contrib_schedule_for_contractor ["pension"] [0] [0]
+
+
+for b in [0,1]: # tax bracket
+  for i in [0,2]: # list index
+    assert ( pension_contractor_schedule_from_frame         [0][i] ==
+             ss_contrib_schedule_for_contractor ["pension"] [0][i] )
+
+  for w in range(25): # wage
+    assert ( pension_contractor_schedule_from_frame         [0][1] (w) ==
+             ss_contrib_schedule_for_contractor ["pension"] [0][1] (w) )
 
 ss_contrib_schedule_for_employee = {
   "pension" :
