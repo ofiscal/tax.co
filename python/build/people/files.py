@@ -224,10 +224,18 @@ inclusion_pairs = [
   ) ]
 
 files = [
+  # TODO ? This list is inhomogeneous.
+  # That might be because I used `0` to represent the empty set,
+  # where I should have used `{}`.
+  # It doesn't affect execution but it confuses mypy,
+  # and it would surely be better to make it homogeneous.
   classes.File( "people"
     , "Caracteristicas_generales_personas.csv"
     ,   c.variables
-      + [ ( "ORDEN", {cl.StringCellProperty.NotAString}, "household-member", 0 ) ]
+      + [ ( "ORDEN",
+            {cl.StringCellProperty.NotAString},
+            "household-member",
+            0 ) ]
       + demog
       + work
       + income
