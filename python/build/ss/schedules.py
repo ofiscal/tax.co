@@ -1,8 +1,27 @@
+#####################################################
+##### PITFALL: This code was defined using two idioms
+#####################################################
+
+"""Initially and for years, the SS schedules were defined as code.
+That idiom did not lend itself well to the interactive online model,
+for which users would like to define their own parameters.
+
+To facilitate that, in 2022 I am refactoring the program using a new idiom,
+such that SS schedules are represented as CSV files.
+
+`./schedules_test.py` includes tests to ensure that the two idioms are equivalent.
+"""
+
+
 import pandas as pd
 from typing import Callable, Dict, List, Tuple
 
 from python.common.misc import min_wage
 
+
+###########################################
+##### Tabular representation: The new idiom
+###########################################
 
 def average_tax_function (
     fraction_of_wage      : float,
@@ -31,10 +50,17 @@ def ss_tax_schedule_from_frame (
                  "average_tax_rate" ]]
            . values . tolist () )
 
-ss_contrib_schedule_for_contractor : Dict [
-  str,
-  List [ Tuple [ float, Callable [ [float], float ], float ] ] ] = {
-  "pension" :
+
+########################################
+##### Code representation: The old idiom
+########################################
+
+ss_contrib_schedule_for_contractor : \
+  Dict [ str,
+         List [ Tuple [ float,
+                        Callable [ [float], float ],
+                        float ] ] ] = \
+  { "pension" :
     [ ( 0, lambda _: 0, 0.0 )
     , ( min_wage
       , lambda wage: min( max( 0.4*wage, min_wage )
@@ -73,8 +99,12 @@ ss_contrib_schedule_for_contractor : Dict [
       , 0.02) ]
   }
 
-ss_contrib_schedule_for_employee = {
-  "pension" :
+ss_contrib_schedule_for_employee : \
+  Dict [ str,
+         List [ Tuple [ float,
+                        Callable [ [float], float ],
+                        float ] ] ] = \
+  { "pension" :
     [ ( 0,           lambda wage: 0                            , 0.0)
     , ( min_wage,    lambda wage: wage                         , 0.04)
     , ( 13*min_wage, lambda wage: min( 0.7*wage, 25*min_wage)  , 0.04 ) ]
@@ -93,9 +123,14 @@ ss_contrib_schedule_for_employee = {
     , (20*min_wage,  lambda wage: min(0.7*wage, 25*min_wage)   , 0.02) ]
   }
 
-ss_contribs_by_employer = {
-  # For employees, but not contractors, some contributions are also made by the employer.
-  "pension" :
+# For employees, but not contractors,
+# some contributions are also made by the employer.
+ss_contribs_by_employer : \
+  Dict [ str,
+         List [ Tuple [ float,
+                        Callable [ [float], float ],
+                        float ] ] ] = \
+  { "pension" :
     [ ( 0,           lambda wage: 0                          , 0.0)
     , ( min_wage,    lambda wage: wage                       , 0.12)
     , ( 13*min_wage, lambda wage: min(0.7*wage, 25*min_wage) , 0.12) ]
