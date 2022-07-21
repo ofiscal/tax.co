@@ -89,11 +89,11 @@ ss_contribs_by_employer_new : \
                         Callable [ [float], float ], # computes taxable base from wage
                         float ]                      # average (not marginal!) tax rate
                ] ] = \
- { "pension"              : ss_tax_schedule_from_csv ( "employee_pension" ),
-  "cajas de compensacion" : ss_tax_schedule_from_csv ( "employer_cajas_de_compensacion" ),
-  "cesantias + primas"    : ss_tax_schedule_from_csv ( "employer_cesantias_y_primas" ),
-  "parafiscales"          : ss_tax_schedule_from_csv ( "employer_parafiscales" ),
-  "salud"                 : ss_tax_schedule_from_csv ( "employer_saluid" ), }
+ { "pension"               : ss_tax_schedule_from_csv ( "employer_pension" ),
+   "cajas de compensacion" : ss_tax_schedule_from_csv ( "employer_cajas_de_compensacion" ),
+   "cesantias + primas"    : ss_tax_schedule_from_csv ( "employer_cesantias_y_primas" ),
+   "parafiscales"          : ss_tax_schedule_from_csv ( "employer_parafiscales" ),
+   "salud"                 : ss_tax_schedule_from_csv ( "employer_saluid" ), }
 
 
 ########################################
