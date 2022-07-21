@@ -1,29 +1,3 @@
-# PURPOSE
-#########
-# These functions return triples that encode how to
-# determine someone's income tax as a function of their wage.
-# Interpret those triples as follows:
-    # First number: threshold at which a new income tax rate takes effect.
-    # Second: taxable base. This is a function; you input someone's wage,
-    #   and it outputs the amount of that money subject to the tax.
-    # Third: average tax rate.
-
-# PITFALL
-#########
-# The ENPH data gives nominal salary, before any of these contributions.
-
-# PITFALL
-#########
-# Contractors pay all income taxes themselves. Employees do not --
-# they pay some part of those taxes themselves,
-# and their employer pays the rest.
-# (In an economic sense, it all comes out of the employee's wages,
-# but in a legal sense, the burden is shared with the employer.)
-
-# CONTEXT
-#########
-# The model `rentas_naturales.xlsx` might make this easier to understand.
-
 import pandas as pd
 from typing import Callable, Dict, List, Tuple
 
@@ -98,31 +72,6 @@ ss_contrib_schedule_for_contractor : Dict [
                         , 25*min_wage)
       , 0.02) ]
   }
-
-
-#### #### #### #### #### ####
-#### Tests
-#### TODO: Move to a separate file
-#### #### #### #### #### ####
-
-pension_contractor_frame = pd.DataFrame (
-  { "min_threshold_in_min_wages" : [0    , 1   ],
-    "fraction_of_wage"           : [0    , 0.4 ],
-    "min_base_in_min_wages"      : [-9e99, 1   ],
-    "max_base_in_min_wages"      : [9e99 , 25  ],
-    "average_tax_rate"           : [0    , 0.16], } )
-
-pension_contractor_schedule_from_frame = ss_tax_schedule_from_frame (
-  df = pension_contractor_frame )
-
-for b in [0,1]: # tax bracket
-  for i in [0,2]: # list index
-    assert ( pension_contractor_schedule_from_frame         [0][i] ==
-             ss_contrib_schedule_for_contractor ["pension"] [0][i] )
-
-  for w in range(25): # wage
-    assert ( pension_contractor_schedule_from_frame         [0][1] (w) ==
-             ss_contrib_schedule_for_contractor ["pension"] [0][1] (w) )
 
 ss_contrib_schedule_for_employee = {
   "pension" :
