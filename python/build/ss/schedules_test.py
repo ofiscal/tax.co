@@ -1,3 +1,16 @@
+"""
+PURPOSE:
+  To test the equivalence of the old (code-) and new (csv-based)
+  idioms for defining SS tax schedules.
+
+PITFALL:
+  Those tax scheduels include functions.
+  There is no way to test for equivalence of functions
+  without accessing their syntax trees.
+  This instead tests them for a reasonable range of input values:
+  namely, [ i * min_wage for i in range(30) ].
+"""
+
 import pandas as pd
 
 import python.build.ss.schedules as sss
