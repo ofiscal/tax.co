@@ -324,10 +324,17 @@
   .no_younger_than/python/common/util.py
 	install -D /dev/null .no_younger_than/python/build/purchases_2_vat.py
 
-.no_younger_than/python/build/ss/schedules.py: \
-  python/build/ss/schedules.py \
+.no_younger_than/python/build/ss/schedules.py:	\
+  python/build/ss/schedules.py			\
   .no_younger_than/python/common/misc.py
 	install -D /dev/null .no_younger_than/python/build/ss/schedules.py
+
+.no_younger_than/python/build/ss/schedules_test.py: \
+  python/build/ss/schedules_test.py                 \
+  .no_younger_than/python/build/ss/schedules.py     \
+  .no_younger_than/python/common/misc.py            \
+  .no_younger_than/python/common/util.py
+	install -D /dev/null .no_younger_than/python/build/ss/schedules_test.py
 
 .no_younger_than/python/build/classes_test.py: \
   python/build/classes_test.py \

@@ -42,6 +42,7 @@ tests:                                                      \
   users/$(user)/test/recip-$(ss)/build_purchases_2_vat.txt  \
   users/$(user)/test/recip-$(ss)/build_purchase_sums.txt    \
   users/$(user)/test/recip-1/build_ss_functions.txt         \
+  users/$(user)/test/recip-1/build_ss_schedules.txt         \
   users/$(user)/test/recip-$(ss)/people_3_income_taxish.txt \
   users/$(user)/test/recip-$(ss)/people_4_post_households.txt \
   users/$(user)/test/recip-$(ss)/common_misc.txt            \
@@ -150,10 +151,16 @@ users/$(user)/test/recip-1/regime_r2018.txt:               \
 	$(python_from_here) python/regime/r2018_test.py \
           $(config_file)
 
-users/$(user)/test/recip-1/build_ss_functions.txt:               \
+users/$(user)/test/recip-1/build_ss_functions.txt:            \
   .no_younger_than/python/build/ss/functions_test.py
 	date
 	$(python_from_here) python/build/ss/functions_test.py \
+          $(config_file)
+
+users/$(user)/test/recip-1/build_ss_schedules.txt:            \
+  .no_younger_than/python/build/ss/schedules_test.py
+	date
+	$(python_from_here) python/build/ss/schedules_test.py \
           $(config_file)
 
 users/$(user)/test/recip-$(ss)/people_3_income_taxish.txt:   \
