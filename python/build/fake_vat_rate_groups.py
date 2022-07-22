@@ -43,7 +43,9 @@ rate_groups = pd.DataFrame (
     [ 2, 0.19 ], ],
   columns = ["rate group", "rate" ] )
 rate_groups.to_csv (
-  os.path.join ( config_folder, "rate_groups.csv" ),
+  os.path.join (
+    "config/vat/fake_grouped",
+    "rate_groups.csv" ),
   index = False )
 
 consumable_groups = pd.DataFrame (
