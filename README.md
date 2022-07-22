@@ -20,6 +20,7 @@ https://github.com/ofiscal/knowledge-graph
 is a knowledge graph --
 a collection of notes that can refer to each other --
 in org-roam format. See, for instance, the one called `tax.co`.
+
 It is mostly TODO items, though, so probably not much use.
 
 My (Jeff Brown's) public knowledge graph:
@@ -28,6 +29,8 @@ https://github.com/JeffreyBenjaminBrown/notes-in-org-format-on-tech
 ```
 has notes on lots of things not specific to the Observatorio,
 such as Python or AWS. The ofiscal repo sometimes refers to this one.
+
 Awkwardly, these notes are probably of more use to a hacker,
-as they are "evergreen" -- they explain how to use the things I use here,
+as they are "evergreen" --
+they explain how to use the things I use here,
 rather than where I'm trying to go next.
