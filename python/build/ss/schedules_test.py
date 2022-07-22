@@ -11,9 +11,12 @@ PITFALL:
   namely, [ i * min_wage for i in range(30) ].
 """
 
+import datetime
 import pandas as pd
 
-import python.build.ss.schedules as sss
+import python.build.output_io     as oio
+import python.build.ss.schedules  as sss
+import python.common.common       as common
 from   python.common.misc import min_wage
 from   python.common.util import near
 
@@ -81,3 +84,10 @@ for (new, old) in \
       for w in range(30): # wage
         assert ( near ( old [t] [b] [1] (w * min_wage),
                         new [t] [b] [1] (w * min_wage) ) )
+
+for vs in common . valid_subsamples:
+  # PITFALL: Looping over subsample sizes because this program
+  # doesn't use any data. If it works, it works for all subsamples.
+  oio.test_write ( vs
+                   , "build_ss_schedules"
+                   , str( datetime.datetime.now() ) )
