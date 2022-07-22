@@ -78,6 +78,14 @@ def read_csv_or_xlsx (
     filename : str,
     **kwargs
 ) -> Optional [ pd.DataFrame ]:
+  # TODO : This generates downstream mypy type errors,
+  # because usage sites aren't designed to handle the `None` possibility.
+  # I suspect that instead of returning None, this should throw an error.
+  # but I'd have to think carefully about
+  # whether and where the error would be reported --
+  # can I log it? What if it's thrown from within an exec() statement?
+  # Would I have to litter the call sites with try-catch statements anyway?
+  # (That would be just as awkward as handling the None case.)
     """ If filename ends in .csv, this assumes it is .csv-formatted, and similarly for .xlsx. If no file extension is provided, it finds the first file starting with the provided prefix. (If that file does not end in .csv or .xlsx, the result is not defined."""
     _, ext = os . path . splitext( filename )
     if ext == ".csv"    : return pd.read_csv  ( filename, **kwargs )
