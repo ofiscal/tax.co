@@ -59,7 +59,6 @@ def test_ranges( df ):
 
   return log
 
-
 class Purchase_2_Columns_missing:
   purchase_codes = [ "25-broad-categs"
                    , "coicop"]
@@ -75,7 +74,16 @@ class Purchase_2_Columns_missing:
              , "vat paid"
              , "vat" ]
   very = [ "where-got" ]
-  def all_columns():
+  def all_columns ():
+    # PITFALL: mypy doesn't seem to recognize that Python lets you define
+    # functions in a class that are properties of the class
+    # rather than some object belonging to it.
+    # It wants this function to have an argument, presumably `self` --
+    # but change it to that and this library break,
+    # at the assertion
+    #   assert ( set( df.columns ) ==
+    #            set( Purchase_2_Columns_missing.all_columns() ) )
+    # below.
     return ( Purchase_2_Columns_missing.very +
              Purchase_2_Columns_missing.slightly +
              Purchase_2_Columns_missing.never +
