@@ -68,14 +68,14 @@ def saveUserData_excel(subsample,data,name,**kwargs):
                        name + ".xlsx" )
   data.to_excel( path, index=False, **kwargs )
 
-def readUserData (subsample,name,**kwargs) -> pd.DataFrame():
+def readUserData (subsample,name,**kwargs) -> pd.DataFrame:
   return pd.read_csv(
     os.path.join(
       get_user_data_folder ( subsample ),
       name + ".csv" ),
     **kwargs )
 
-def readBaselineData (subsample,name,**kwargs) -> pd.DataFrame():
+def readBaselineData (subsample,name,**kwargs) -> pd.DataFrame:
   return pd.read_csv(
     os.path.join(
       get_baseline_data_folder ( subsample ),
