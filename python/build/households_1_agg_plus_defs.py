@@ -1,5 +1,9 @@
 if True:
   import python.common.common as c
+
+  # PITFALL: Generates harmless mypy errors.
+  # mypy assumes each import statement executes,
+  # and therefore complains, `Name "regime" already defined`.
   if   c.regime_year == 2016:
       import python.regime.r2016 as regime
   elif c.regime_year == 2018:

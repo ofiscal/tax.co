@@ -10,6 +10,12 @@ if True: # imports
                 "ocasional_low",
                 "ocasional_high",
                 "most",]:
+      # PITFALL: Mypy does not understand this.
+      # The exec statement constructs an alias, "rates_x" (for some x),
+      # for each library it imports -- the full list of those libraries
+      # being the arguments to the for loop above.
+      # If mypy says something like `Name "rates_most" is not defined`,
+      # that's why.
       exec( "import "
             + ( path.join( rates, lib )
               . replace ( "/", "." ) )
