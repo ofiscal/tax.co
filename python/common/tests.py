@@ -3,7 +3,7 @@ import python.common.common as com
 import python.common.util as util
 
 
-def test_quantiles( df : pd.DataFrame ) -> ():
+def test_quantiles( df : pd.DataFrame ) -> None:
   for (col,top) in [ ("income-decile",    10),
                      ("income-percentile",100) ]:
     assert df[col] . min() == 0
