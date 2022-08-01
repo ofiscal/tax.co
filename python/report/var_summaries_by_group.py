@@ -36,12 +36,12 @@ if True: # Create a few columns missing in the input data.
       df["income"] < c.min_wage )
 
 def make_summary_frame (
-    unit           : str,
+    unit           : str, # unit of observation: households or earners
     df             : pd.DataFrame,
-    variables      : List[str],
-    restrictedVars : List[str]
-) -> Tuple [ pd.DataFrame,
-             pd.DataFrame ]:
+    variables      : List[str], # things to summarize
+    restrictedVars : List[str]  # a subset of those things to summarize
+) -> Tuple [ pd.DataFrame,   # The restricted (subset of) results.
+             pd.DataFrame ]: # The unrestricted results.
   summaryDict = {} # TODO: Don't use this. It's no longer necessary --
                    # maybe it never was -- and it's confusing.
   groupSummaries = []
@@ -69,10 +69,11 @@ def make_summary_frame (
                           axis = 0 )
               . transpose () )
 
-  # TODO ? This passage seems like it could be simplified --
+  # TODO ? This passage seems like it could be slightly simplified --
   # rename `index` to `measure` before spawning `ret` from `ret_tmi`,
   # so that it needn't be renamed again in `ret`.
-  ret = ret_tmi.loc [ restrictedVars ]
+  # The two reset_index calls cannot be combined, though.
+  ret = ret_tmi.loc [ restrictedVars ] # a subset of the rows in `ret`
   ret_tmi . reset_index ( inplace = True )
   ret_tmi = ret_tmi . rename ( columns = {"index" : "measure"} )
   ret     . reset_index ( inplace = True )

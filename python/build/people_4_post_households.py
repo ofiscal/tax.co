@@ -43,6 +43,8 @@ if True: # more variables
     util.noisyQuantile( 10, 0, 1, earners["income"] ) )
   earners["income-percentile"] = (
     util.noisyQuantile( 100, 0, 1, earners["income"] ) )
+  earners["income-millile"] = (
+    util.noisyQuantile( 1000, 0, 1, earners["income"] ) )
   earners["vat / purchase value" ] = (
     earners["vat paid"] / earners["value, purchase" ] )
   earners["vat / income"] = (

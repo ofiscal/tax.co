@@ -8,6 +8,7 @@ if True:
   else:
       import python.regime.r2019 as regime
 
+
 def maybeFill(groupVar, val):
   if groupVar == "income-percentile":
     return val.zfill(2)

@@ -54,10 +54,17 @@ def interpretCategorical( column, categories ):
                        , ordered = True)
 
 def noisyQuantile( n_quantiles, noise_min, noise_max, in_col ):
-  "Noise guarantees the desired number of quantiles, of sizes as equal as possible."
+  """
+  Noise guarantees the desired number of quantiles,
+  of sizes as equal as possible.
+  The nois is added to the underlying series,
+  and should be very small relative to it.
+  For instance, I use min=0 pesos, max=1 peso,
+  and add that to peoples' income before generating income quantiles."""
   noise = pd.Series( np.random.uniform( noise_min, noise_max, len(in_col) ) )
   noise.index = in_col.index
   quantile_length = len( str( n_quantiles - 1 ) )
+    # quantile_length 1 <=> deciles, 2 <=> percentiles, 3 <=> miltiles, etc.
   return pd.qcut( in_col + noise
                 , n_quantiles
                 , labels = list( map(

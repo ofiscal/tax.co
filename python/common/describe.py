@@ -34,9 +34,22 @@ def tabulate_min_median_max_by_group (
 
 def tabulate_stats_by_group (
     df0 : pd.DataFrame,
-    group_name : str,
-    param_name : str,
-    weight_name : str = None):
+    group_name : str, # TODO: Rename this to "grouping_var",
+                      # because it usually defines many groups.
+    param_name : str, # The parameter to describe for each group.
+    weight_name : str = None
+) -> pd.DataFrame: # Its row indices are the group's values,
+                   # and its columns have these names:
+                   # count_unweighted
+                   # share
+                   # sum_unweighted
+                   # nonzero_unweighted
+                   # min
+                   # max
+                   # median_unweighted
+                   # median_nonzero_unweighted
+                   # mean_unweighted
+                   # mean_nonzero_unweighted
   """ Alas, Pandas offers no easy way to compute weighted medians. """
   if weight_name != None:
     df = df0[ ~ df0[param_name].isnull() ].copy()

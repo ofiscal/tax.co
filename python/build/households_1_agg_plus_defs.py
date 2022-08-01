@@ -123,6 +123,7 @@ cols_new = (
       "all-elderly",
       "income-decile",
       "income-percentile",
+      "income-millile",
       "one" ]
 )
 
