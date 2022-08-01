@@ -45,10 +45,15 @@ def make_summary_frame (
   summaryDict = {} # TODO: Don't use this. It's no longer necessary --
                    # maybe it never was -- and it's confusing.
   groupSummaries = []
-  for gv in defs.groupVars:
+  for (gv, gRange) in defs.groupVars:
     varSummaries = []
     for v in variables:
-      t = desc.tabulate_stats_by_group ( df, gv, v, "weight" )
+      t = desc.tabulate_stats_by_group (
+        df0         = df,
+        group_name  = gv,
+        group_range = gRange,
+        param_name  = v,
+        weight_name = "weight" )
       t = t.rename (
         columns = dict (
           zip ( t.columns

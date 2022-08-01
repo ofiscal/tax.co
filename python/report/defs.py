@@ -14,13 +14,16 @@ def maybeFill(groupVar, val):
     return val.zfill(2)
   else: return val
 
-groupVars = [ # Variables to group by
-  "one",
-  "female head",
-  "income-decile",
-  "income-percentile",
-  "income-percentile-in[90,97]",
-  "region-2",
+groupVars = [ # Variables to group by, and optionally,
+              # the subset of values for that group variable to consider.
+              # If `None` then all values are considered.
+  ( "one"                         , None ),
+  ( "female head"                 , None ),
+  ( "income-decile"               , None ),
+  ( "income-percentile"           , None ),
+  ( "income-percentile-in[90,97]" , [1]  ),
+  ( "income-millile"              , list ( range(990,1000) ) ),
+  ( "region-2"                    , None ),
   ]
 
 #

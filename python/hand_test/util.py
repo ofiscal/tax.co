@@ -16,10 +16,10 @@ df = pd.DataFrame( [  [1,      2  ,      1,       1,         1 ]
 
 df
 
-util.tabulate_stats_by_group( df, "group",             "examining"           ) . transpose()
-util.tabulate_stats_by_group( df, "group",             "examining", "weight" ) . transpose()
-util.tabulate_stats_by_group( df, ["group","group-2"], "examining"           ) . transpose()
-util.tabulate_stats_by_group( df, ["group","group-2"], "examining", "weight" ) . transpose()
+util.tabulate_stats_by_group( df, "group",             None, "examining"           ) . transpose()
+util.tabulate_stats_by_group( df, "group",             None, "examining", "weight" ) . transpose()
+util.tabulate_stats_by_group( df, ["group","group-2"], None, "examining"           ) . transpose()
+util.tabulate_stats_by_group( df, ["group","group-2"], None, "examining", "weight" ) . transpose()
   # If we call this table t, note that t.loc["count",:].sum() == 5,
   # which is the number of rows in t.
 
