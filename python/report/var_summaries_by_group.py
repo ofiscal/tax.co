@@ -105,7 +105,7 @@ def make_summary_frame (
 
   return ( ( ret_tmi # a subset of the rows in `ret_tmi`
              . loc [ ret_tmi ["measure"]
-                     . isin( defs.householdRestrictedVars ) ] ),
+                     . isin( defs.ofMostInterestLately ) ] ),
            ret_tmi )
 
 for (unit, df, variables, restrictedVars) in [

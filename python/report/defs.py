@@ -85,6 +85,21 @@ earnerVars    = commonVars
 # Restricted sets of variables to summarize, for the simpler data frames
 #
 
+ofMostInterestLately = [
+  "income tax sums / total income sums",
+  "income tax rate: mean",
+  "income tax rate: min",
+  "income tax rate: max",
+  "income: mean",
+  "income: min",
+  "income: max",
+  "income: sums",
+  "tax: mean",
+  "tax: min",
+  "tax: max",
+  "tax: sums",
+  ]
+
 commonRestrictedVars = ( [
   #####################
   # What we want lately
