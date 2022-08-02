@@ -29,6 +29,13 @@ ppl = f4.insert_has_dependent_column(ppl)
 
 ppl = regime.income_taxes( ppl )
 
+# TODO: This is computed separately for households and earners.
+# It's not the only variable like that.
+# It'd be nice if those variables' definitions
+# were drawn by both programs from the same library.
+ppl["income tax rate"] = (
+  ppl["tax, income"] / ppl["income"] )
+
 oio.saveUserData(
   com.subsample,
   ppl,

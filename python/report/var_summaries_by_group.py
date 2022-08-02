@@ -1,4 +1,5 @@
 if True:
+  import numpy                   as np
   import os
   import pandas                  as pd
   import sys
@@ -74,22 +75,43 @@ def make_summary_frame (
                           axis = 0 )
               . transpose () )
 
-  # TODO ? This passage seems like it could be slightly simplified --
-  # rename `index` to `measure` before spawning `ret` from `ret_tmi`,
-  # so that it needn't be renamed again in `ret`.
-  # The two reset_index calls cannot be combined, though.
-  ret = ret_tmi.loc [ restrictedVars ] # a subset of the rows in `ret`
   ret_tmi . reset_index ( inplace = True )
   ret_tmi = ret_tmi . rename ( columns = {"index" : "measure"} )
-  ret     . reset_index ( inplace = True )
-  ret     = ret . rename ( columns = {"index" : "measure"} )
 
-  return (ret, ret_tmi)
+  if True: # Compute "income tax sums / total income sums"
+    # PITFALL: As a ratio of two rows, this has to be calculated
+    # differently from (so far) all of the other rows.
+    if True: # compute some intermediate things
+      def tail_of_row ( measure_name : str ) -> pd.Series:
+        """
+        From (ret_tmi : pd.DataFrame),
+        returns the row with the measure equal to measure_name,
+        minus the "measure" column, as a Series of floats.
+        """
+        return ( ret_tmi.loc[ ret_tmi["measure"]
+                              == measure_name ]
+                 . drop ( columns = "measure" )
+                 . astype ( float ) # before dropping "measure" it was an Object
+                 . iloc[0] ) # reduce a one-row Frame to a Series
+      total_income_tax_over_total_income : pd.Series = pd.concat (
+        [ pd.Series ( {"measure" : "income tax sums / total income sums" } ),
+          ( ( tail_of_row ( "tax, income: sums" ) /
+              tail_of_row ( "income: sums" ) )
+            . replace ( [np.nan, np.inf], 0 ) ) ] )
+    ret_tmi : pd.DataFrame = pd.concat (
+      [ pd.DataFrame ( total_income_tax_over_total_income ) . transpose(),
+        ret_tmi ],
+      ignore_index = True )
+
+  return (ret_tmi.loc [ restrictedVars ], # a subset of the rows in `ret_tmi`
+          ret_tmi)
 
 for (unit, df, variables, restrictedVars) in [
     ( "earners",    earners,    defs.earnerVars,    defs.earnerRestrictedVars ),
-    ( "households", households, defs.householdVars, defs.householdRestrictedVars ) ]:
+    ( "households", households, defs.householdVars, defs.householdRestrictedVars )
+  ]:
   (ret, ret_tmi) = make_summary_frame ( unit, df, variables, restrictedVars )
+
   oio.saveUserData(
       com.subsample,
       ret_tmi,

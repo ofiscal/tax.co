@@ -115,6 +115,17 @@ if True: # Assemble the aggregates, then compute a few variables.
   households_decile_summary = desc.summarizeQuantiles (
       "income-decile", households)
 
+  # TODO: This is computed separately for households and earners --
+  # like many of the variables immediately above, and maybe others too.
+  # Those are computed in these programs, respectively:
+  #   households_1_agg_plus_defs.py
+  #   people_3_income_taxish.py
+  # It'd be nice if those variables' definitions
+  # were drawn by both programs from the same library.
+  households["income tax rate"] = (
+    households["tax, income"] / households["income"] )
+
+
 if True: # save
   oio.saveUserData (
     com.subsample,

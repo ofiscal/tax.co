@@ -40,6 +40,7 @@ commonVars = ( [
   # "seguro de riesgos laborales",
   "income",
   "tax",
+  "income tax rate",
   "income, labor + cesantia",
   "income, rental + interest",
   "income, capital",
@@ -85,6 +86,24 @@ earnerVars    = commonVars
 #
 
 commonRestrictedVars = ( [
+  #####################
+  # What we want lately
+  #####################
+  "income tax rate: mean",
+  "income tax rate: min",
+  "income tax rate: max",
+  "income: mean",
+  "income: min",
+  "income: max",
+  "income: sums",
+  "tax: mean",
+  "tax: min",
+  "tax: max",
+  "tax: sums",
+
+  ######################################
+  # The rest are of less interest lately
+  ######################################
   "income < min wage: mean",
   "pension, receiving: mean",
   "pension, receiving: min",
@@ -104,12 +123,6 @@ commonRestrictedVars = ( [
   # "seguro de riesgos laborales: mean",
   # "seguro de riesgos laborales: min",
   # "seguro de riesgos laborales: max",
-  "income: mean",
-  "income: min",
-  "income: max",
-  "tax: mean",
-  "tax: min",
-  "tax: max",
   "income, labor + cesantia: mean",
   "income, rental + interest: mean",
   "income, capital: mean",
