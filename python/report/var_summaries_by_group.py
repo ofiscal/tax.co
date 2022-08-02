@@ -103,8 +103,10 @@ def make_summary_frame (
         ret_tmi ],
       ignore_index = True )
 
-  return (ret_tmi.loc [ restrictedVars ], # a subset of the rows in `ret_tmi`
-          ret_tmi)
+  return ( ( ret_tmi # a subset of the rows in `ret_tmi`
+             . loc [ ret_tmi ["measure"]
+                     . isin( defs.householdRestrictedVars ) ] ),
+           ret_tmi )
 
 for (unit, df, variables, restrictedVars) in [
     ( "earners",    earners,    defs.earnerVars,    defs.earnerRestrictedVars ),
