@@ -21,8 +21,9 @@ groupVars = [ # Variables to group by, and optionally,
   ( "female head"                 , None ),
   ( "income-decile"               , None ),
   ( "income-percentile"           , None ),
-  ( "income-percentile-in[90,97]" , [1]  ),
   ( "income-millile"              , list ( range(990,1000) ) ),
+  ( "income-percentile-in[90,98]" , [1]  ),
+  ( "income-millile-in[990,998]"  , [1]  ),
   ( "region-2"                    , None ),
   ]
 
