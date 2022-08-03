@@ -58,7 +58,7 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
 
   new_columns["tax, income, dividend"] = (
     ppl["income, dividend"].apply(
-        rates_dividend.f ) )
+        rates_dividend . f ) )
 
   new_columns["tax, income, ganancia ocasional"] = (
     ( ppl["income, ganancia ocasional, 10%-taxable"]
