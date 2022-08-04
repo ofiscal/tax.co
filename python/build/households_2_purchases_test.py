@@ -56,15 +56,15 @@ if True:
   for k,v in {
       # These bounds could be tighter,
       # but the 1/1000 subsample has a small range.
-      "vat / purchase value"       : cl.CoversRange( 0,      0.1    ),
-      "vat / income"               : cl.CoversRange( 0,      np.inf ),
-      "purchase value / income"    : cl.CoversRange( 0.2,    np.inf )
+      "vat / purchase value"       : cl.CoversRange( 0,      0.1 ),
+      "vat / income"               : cl.CoversRange( 0,      1e5 ),
+      "purchase value / income"    : cl.CoversRange( 0.2,    1e5 )
       }.items():
     assert v.test( merge[k] )
   for k,v in {
-      "vat / purchase value"       : cl.MeanBounds( 2.5e-2, 8e-2 ),
-      "vat / income"               : cl.MeanBounds( np.inf, np.inf ),
-      "purchase value / income"    : cl.MeanBounds( np.inf, np.inf )
+      "vat / purchase value"       : cl.MeanBounds( 2-2, 8e-2 ),
+      "vat / income"               : cl.MeanBounds( 100, np.inf ),
+      "purchase value / income"    : cl.MeanBounds( 1000, np.inf )
       }.items():
     assert v.test ( merge[k] )
   for c in new_cols:
