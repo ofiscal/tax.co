@@ -23,7 +23,6 @@ if True: # For validation, mostly.
     # for where they went.
     terms.detail,
     terms.single_2052_UVT_income_tax_deduction,
-    terms.second_stage_2052_UVT_income_tax_deduction,
   ]
   valid_subsamples = [1,10,100,1000]
   valid_regime_years = [2016, 2018, 2019]
