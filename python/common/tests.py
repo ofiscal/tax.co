@@ -1,3 +1,6 @@
+# PITFALL: This is not a test file! It is a test *library* file,
+# used by other test files.
+
 import pandas as pd
 import python.common.common as com
 import python.common.util as util
