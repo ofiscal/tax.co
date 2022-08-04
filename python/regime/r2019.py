@@ -13,7 +13,8 @@ if True: # imports
                 "ocasional_low",
                 "ocasional_high",
                 "most",]:
-      # PITFALL: Mypy does not understand this.
+      # TODO : The Makefile does not know about these imports.
+      # PITFALL: Mypy cannot not understand these imports.
       # The exec statement constructs an alias, "rates_x" (for some x),
       # for each library it imports -- the full list of those libraries
       # being the arguments to the for loop above.
