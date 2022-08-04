@@ -8,7 +8,7 @@ if True:
 ### Some algorithms to compute the cedula general gravable
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
-def cgg_default ( row: pd.Series ) -> float:
+def cgg_detail ( row: pd.Series ) -> float:
   """
   The first stage of "renta gravable laboral" is someone's income,
   minus either 32.5% or 5040 UVTs, whichever is smaller.
