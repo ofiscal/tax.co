@@ -48,3 +48,18 @@ def cgg_single_2052_UVT_income_tax_deduction ( row: pd.Series ) -> float:
            if not row["claims dependent (labor income tax)"]
            else  stage1 - min( 0.1 * stage1,
                                32 * muvt ) )
+
+def cgg_second_stage_a2052_UVT_income_tax_deduction (
+    row: pd.Series ) -> float:
+  """This is just like cgg_detail() except the second stage is simpler,
+imposing an absolute deductible of 2052 UVTs.
+  """
+  rlt = (
+    row              ["renta liquida"]
+    - min( 0.4 * row ["renta liquida"],
+           5040 * muvt ) )
+  stage2 = max ( rlt - 2052 * muvt, 0 )
+  stage3 = ( stage2 if not row["claims dependent (labor income tax)"]
+             else  stage2 - min( 0.1 * stage2,
+                                 32 * muvt ) )
+  return stage3

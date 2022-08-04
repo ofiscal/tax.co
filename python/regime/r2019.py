@@ -82,6 +82,10 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
 
 def cedula_general_gravable ( row: pd.Series ) -> float:
   if com.strategy == terms.single_2052_UVT_income_tax_deduction:
-    return strat_dep . cgg_single_2052_UVT_income_tax_deduction ( row )
+    return strat_dep . cgg_single_2052_UVT_income_tax_deduction       ( row )
+
+  if com.strategy == terms.second_stage_2052_UVT_income_tax_deduction:
+    return strat_dep . cgg_second_stage_2052_UVT_income_tax_deduction ( row )
+
   if com.strategy == terms.detail:
     return strat_dep . cgg_detail                                     ( row )
