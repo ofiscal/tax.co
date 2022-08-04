@@ -39,12 +39,12 @@ if True: # Make new variables, esp. create person-level purchase-like
     earners[i] = earners[i] * earners["share"]
 
 if True: # more variables
-  earners["income-decile"] = (
-    util.noisyQuantile( 10, 0, 1, earners["income"] ) )
-  earners["income-percentile"] = (
-    util.noisyQuantile( 100, 0, 1, earners["income"] ) )
-  earners["income-millile"] = (
-    util.noisyQuantile( 1000, 0, 1, earners["income"] ) )
+  for label, n in [ ("income-decile"    , 10),
+                    ("income-percentile", 100),
+                    ("income-millile"   , 1000), ]:
+    earners[label] = util.myQuantile (
+      n_quantiles = n,
+      in_col = earners["income"] )
   earners["vat / purchase value" ] = (
     earners["vat paid"] / earners["value, purchase" ] )
   earners["vat / income"] = (
