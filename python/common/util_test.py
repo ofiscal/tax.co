@@ -6,6 +6,28 @@ if True:
   import python.common.util as util
   import python.build.output_io as oio
 
+def test_noisyQuantile ():
+  # Half of this series is exactly zero,
+  # so the bin sizes if we used ordinary quantiles would be uneven.
+  s = ( pd.concat ( [ pd.Series ( [0] * 500 ),
+                      pd.Series ( np.random.rand ( 500 ) ) ] )
+        . reset_index ( drop = True ) )
+
+  # n is the series of quantiles (specifically deciles)
+  # corresponding to s, labeled from 0 to 9.
+  n = ( # This definition won't even work without noise.
+    util.noisyQuantile ( n_quantiles = 10,
+                         noise_min = 0,
+                         noise_max= 0.001,
+                         in_col = s )
+    . astype ( int ) )
+
+  # The mean of n should be very close to 4.5 = 0 + 9 / 2.
+  # The bounds below are wider than would be necessary if I didn't mind
+  # the occasional false alarm because randomness put the mean outside
+  # where it ought to be.
+  assert 4.3 < n.mean()
+  assert 4.7 > n.mean()
 
 def test_fuzz_peso_values ():
   df = pd.DataFrame (
@@ -45,6 +67,7 @@ def test_util_pad_column_as_int():
 
 if True: # run tests
   log = "starting\n"
+  test_noisyQuantile ()
   test_fuzz_peso_values ()
   test_near ()
   test_tuple_by_threshold ()

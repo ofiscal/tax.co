@@ -68,8 +68,28 @@ def interpretCategorical( column, categories ):
                        , categories = categories
                        , ordered = True)
 
-def noisyQuantile( n_quantiles, noise_min, noise_max, in_col ):
+def myQuantile (
+    n_quantiles : int, # should be a power of 10
+    in_col : pd.Series ):
+  quantile_length = len( str( n_quantiles - 1 ) )
+    # quantile_length 1 <=> deciles, 2 <=> percentiles, 3 <=> miltiles, etc.
+  return pd.qcut ( in_col,
+                   n_quantiles,
+                   labels = list( map(
+                     lambda x: str(x) . zfill ( quantile_length ),
+                     range ( 0, n_quantiles ) ) ),
+                   duplicates = 'drop' )
+
+def noisyQuantile(
+    n_quantiles : int, # should be a power of 10
+    noise_min : int,
+    noise_max : int,
+    in_col : pd.Series ):
   """
+  UPDATE: This might be deprecated.
+  It might cause undesirable reordering of households across quantiles
+  in different runs of the sim.
+
   Noise guarantees the desired number of quantiles,
   of sizes as equal as possible.
   The nois is added to the underlying series,
@@ -78,14 +98,8 @@ def noisyQuantile( n_quantiles, noise_min, noise_max, in_col ):
   and add that to peoples' income before generating income quantiles."""
   noise = pd.Series( np.random.uniform( noise_min, noise_max, len(in_col) ) )
   noise.index = in_col.index
-  quantile_length = len( str( n_quantiles - 1 ) )
-    # quantile_length 1 <=> deciles, 2 <=> percentiles, 3 <=> miltiles, etc.
-  return pd.qcut( in_col + noise
-                , n_quantiles
-                , labels = list( map(
-                    lambda x: str(x).zfill(quantile_length)
-                  , range(0,n_quantiles) ) )
-                , duplicates = 'drop' )
+  return myQuantile ( n_quantiles = n_quantiles,
+                      in_col      = in_col + noise )
 
 def printInRed(message):
     "from https://stackoverflow.com/a/287934/916142"
