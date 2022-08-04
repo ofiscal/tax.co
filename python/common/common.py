@@ -19,7 +19,11 @@ else:              # If we are in the interpreter.
 if True: # For validation, mostly.
          # (`valid_subsamples` is also looped over, in another program.)
   valid_strategies = [ # There used to be a lot of these.
-    terms.detail ]     # They disappeared in branch "retire-hypotheticals".
+    # See the section on `retire-hypotheticals` in  `branches/branches.md`
+    # for where they went.
+    terms.detail,
+    terms.single_2052_UVT_income_tax_deduction,
+  ]
   valid_subsamples = [1,10,100,1000]
   valid_regime_years = [2016, 2018, 2019]
 
