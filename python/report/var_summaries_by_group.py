@@ -29,9 +29,17 @@ if True: # Create a few columns missing in the input data.
         df["income, labor"]
         + df["income, cesantia"] )
 
+    df["income-percentile-in[90,97]"] = (
+        (df["income-percentile"] >= 90)
+      & (df["income-percentile"] <= 97) )
+
     df["income-percentile-in[90,98]"] = (
         (df["income-percentile"] >= 90)
       & (df["income-percentile"] <= 98) )
+
+    df["income-millile-in[990,997]"] = (
+        (df["income-millile"] >= 990)
+      & (df["income-millile"] <= 997) )
 
     df["income-millile-in[990,998]"] = (
         (df["income-millile"] >= 990)
