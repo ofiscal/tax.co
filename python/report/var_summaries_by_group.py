@@ -26,7 +26,11 @@ if True: # load data
 if True: # nonzero labor income earners
   nonzero_laborers = earners.copy()
   nonzero_laborers = nonzero_laborers [
-    nonzero_laborers ["income, labor"] > 0 ]
+    # Since a random amount between 0 and 1 peso is added to labor income
+    # (in order to make the quantiles all the same size),
+    # this keeps only people with income greater than 2 pesos,
+    # rather than people with any nonzero labor income.
+    nonzero_laborers ["income, labor"] > 2 ]
   for label, n in [ ("income-decile"    , 10),
                     ("income-percentile", 100),
                     ("income-millile"   , 1000), ]:
