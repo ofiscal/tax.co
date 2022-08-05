@@ -1,50 +1,60 @@
-# SHARED MEMORY STRATEGY
-# ######################
-# The webpage (tax.co.web) adds requests to `requests.temp.csv`.
-# Anything accessing that file uses a file lock for it.
-# Such access is always brief; no process will make another wait long.
-# #
-# The microsimulation (tax.co) transfers files from `requests.temp.csv`
-# to `requests.csv`. Then it processes those requests.
-# It is the only process that manipulates `requests.csv`,
-# so it doesn't need to worry about getting clobbered.
-
-# PITFALL
-# ######
-# This Python program is meant to be invoked either by
-# (1) a cron job, or
-# (2) another Python program -- specifically the Django server
-#   defined by the repo at github.com:ofiscal/tax.co.web
-
-# How to invoke this code:
-# ########################
-# the first non-mandatory argument to `python3` at the command line
-# should be a path to a user configuration,
-# and the second should be an action to take.
-# For example,
-#   PYTHONPATH=/mnt/tax_co:$PYTHONPATH python3 /mnt/tax_co/python/requests/main.py users/symlinks/jbb/config/config.json add-to-temp-queue
-#   PYTHONPATH=/mnt/tax_co:$PYTHONPATH python3 /mnt/tax_co/python/requests/main.py config/config.json try-to-advance-queue
-#       config.json isn't used for try-to-advance-queue,
-#       but still must be supplied, or common.py will be confused.
-# and for debugging:
-#   PYTHONPATH=/mnt/tax_co:$PYTHONPATH python3 -m pdb /mnt/tax_co/python/requests/main.py users/symlinks/jbb/config/config.json try-to-advance-queue
+"""
+SHARED MEMORY STRATEGY
+######################
+The webpage (tax.co.web) adds requests to `requests.temp.csv`.
+Anything accessing that file uses a file lock for it.
+Such access is always brief; no process will make another wait long.
 #
-# What the actions mean
-# ---------------------
-# add-to-temp-queue:
-#   Appends the latest request to
-#     data/requests.temp.csv
-# try-to-advance-queue:
-#   Runs the most recent incomplete request, if possible.
-#   If there's no room for it and nothing old enough to be deleted,
-#   or if another request is being processed, this does nothing.
+The microsimulation (tax.co) transfers files from `requests.temp.csv`
+to `requests.csv`. Then it processes those requests.
+It is the only process that manipulates `requests.csv`,
+so it doesn't need to worry about getting clobbered.
 
-# How to debug this code
-# ######################
-# Set up a desirable user data state,
-# and save it via the scripts in state/.
-# Stop the cron job.
-# Set an appropriate breakpoint (pdb.set_trace).
+PITFALL: Invocation is weird
+############################
+This Python program is meant to be invoked either by
+(1) a cron job, or
+(2) another Python program -- specifically the Django server
+  defined by the repo at github.com:ofiscal/tax.co.web
+
+PITFALL: Limitations in definitions from python.common.common
+#############################################################
+That program defines some things like "strategy"
+that depend on the user's config file.
+But this program is invoked without knowing which is that config file.
+Uses of those user-dependent definitions, therefore,
+are a bad idea.
+
+How to invoke this code:
+########################
+the first non-mandatory argument to `python3` at the command line
+should be a path to a user configuration,
+and the second should be an action to take.
+For example,
+  PYTHONPATH=/mnt/tax_co:$PYTHONPATH python3 /mnt/tax_co/python/requests/main.py users/symlinks/jbb/config/config.json add-to-temp-queue
+  PYTHONPATH=/mnt/tax_co:$PYTHONPATH python3 /mnt/tax_co/python/requests/main.py config/config.json try-to-advance-queue
+      config.json isn't used for try-to-advance-queue,
+      but still must be supplied, or common.py will be confused.
+and for debugging:
+  PYTHONPATH=/mnt/tax_co:$PYTHONPATH python3 -m pdb /mnt/tax_co/python/requests/main.py users/symlinks/jbb/config/config.json try-to-advance-queue
+
+What the actions mean
+---------------------
+add-to-temp-queue:
+  Appends the latest request to
+    data/requests.temp.csv
+try-to-advance-queue:
+  Runs the most recent incomplete request, if possible.
+  If there's no room for it and nothing old enough to be deleted,
+  or if another request is being processed, this does nothing.
+
+How to debug this code
+######################
+Set up a desirable user data state,
+and save it via the scripts in state/.
+Stop the cron job.
+Set an appropriate breakpoint (pdb.set_trace).
+"""
 
 if True:
   from   datetime import datetime
