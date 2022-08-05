@@ -17,11 +17,11 @@ global_log_path     = os.path.join ( c.tax_co_root,
                                      "requests-log.txt" )
 
 attachments = [
-  "report_households.detail.2019.xlsx",
-  "report_households_tmi.detail.2019.xlsx",
-  "report_earners.detail.2019.xlsx",
-  "report_earners_tmi.detail.2019.xlsx",
-  "change-in.tax-mean.by-households.detail.2019.png",
-  "change-in.tax-mean.by-earners.detail.2019.png",
-  "../..", "logs.zip",
+  "report_households."                + c.strategy_year_suffix + ".xlsx",
+  "report_households_tmi."            + c.strategy_year_suffix + ".xlsx",
+  "report_earners."                   + c.strategy_year_suffix + ".xlsx",
+  "report_earners_tmi."               + c.strategy_year_suffix + ".xlsx",
+  "change-in.tax-mean.by-households." + c.strategy_year_suffix + ".png",
+  "change-in.tax-mean.by-earners."    + c.strategy_year_suffix + ".png",
+  "../../logs.zip",
 ]
