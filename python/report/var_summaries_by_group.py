@@ -9,6 +9,7 @@ if True:
   import python.common.common    as com
   import python.common.describe  as desc
   import python.common.misc      as c
+  import python.common.util      as util
   import python.draw.util        as draw
   import python.report.defs      as defs
 
@@ -22,9 +23,22 @@ if True: # load data
       com.subsample,
       "people_4_post_households." + com.strategy_year_suffix )
 
+if True: # nonzero labor income earners
+  nonzero_laborers = earners.copy()
+  nonzero_laborers = nonzero_laborers [
+    nonzero_laborers ["income, labor"] > 0 ]
+  for label, n in [ ("income-decile"    , 10),
+                    ("income-percentile", 100),
+                    ("income-millile"   , 1000), ]:
+    nonzero_laborers[label] = (
+      util.myQuantile (
+        n_quantiles = n,
+        in_col = nonzero_laborers["income, labor"] )
+      . astype ( int ) )
+
 if True: # Create a few columns missing in the input data.
          # TODO ? Move upstream.
-  for df in [households, earners]:
+  for df in [households, earners, nonzero_laborers]:
     df["income, labor + cesantia"] = (
         df["income, labor"]
         + df["income, cesantia"] )
@@ -51,8 +65,8 @@ if True: # Create a few columns missing in the input data.
 def make_summary_frame (
     unit           : str, # unit of observation: households or earners
     df             : pd.DataFrame,
-    groupVars      : List[str], # gruops              to summarize
-    variables      : List[str], # aspects (of groups) to summarize
+    groupVars      : List[ Tuple [ str, List ] ], # gruops to summarize
+    variables      : List[str], # aspects (of groups)      to summarize
       # PITFALL: Long name because "vars" is an occupied keyword.
     restrictedVars : List[str]  # a subset of those things to summarize
 ) -> Tuple [ pd.DataFrame,   # The restricted (subset of) results.
@@ -125,6 +139,11 @@ def make_summary_frame (
 for (unit, df, groupVars, variables, restrictedVars) in [
     ( "earners",
       earners,
+      defs.earnerGroupVars,
+      defs.earnerVars,
+      defs.earnerRestrictedVars ),
+    ( "nonzero_laborers",
+      nonzero_laborers,
       defs.earnerGroupVars,
       defs.earnerVars,
       defs.earnerRestrictedVars ),

@@ -412,9 +412,12 @@ if True: # income
       for col in ["income", "income, govt", "income, labor"]:
           ppl[col] = ppl[col + ", cash"] + ppl[col + ", in-kind"]
 
-if True: # Add a very small random amount to total income,
+if True: # Add a very small random amount to income,
          # so that quantiles will all be the same size.
-  ppl["income"] = util.fuzz_peso_values ( ppl["income"] )
+  # PITFALL: Labor income should be fuzzed *after* total income,
+  # so that the two fuzzes don't interact.
+  ppl["income"]        = util.fuzz_peso_values ( ppl["income"] )
+  ppl["income, labor"] = util.fuzz_peso_values ( ppl["income, labor"] )
 
 if True: # compute each household member's income rank
   def sort_household_by_labor_income_then_make_index(df):

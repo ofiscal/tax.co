@@ -21,6 +21,8 @@ attachments = [
   "report_households_tmi."            + c.strategy_year_suffix + ".xlsx",
   "report_earners."                   + c.strategy_year_suffix + ".xlsx",
   "report_earners_tmi."               + c.strategy_year_suffix + ".xlsx",
+  "report_nonzero_laborers."          + c.strategy_year_suffix + ".xlsx",
+  "report_nonzero_laborers_tmi."      + c.strategy_year_suffix + ".xlsx",
   "change-in.tax-mean.by-households." + c.strategy_year_suffix + ".png",
   "change-in.tax-mean.by-earners."    + c.strategy_year_suffix + ".png",
   "../../logs.zip",
