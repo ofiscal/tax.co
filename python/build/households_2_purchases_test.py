@@ -56,9 +56,12 @@ if True:
   for k,v in {
       # These bounds could be tighter,
       # but the 1/1000 subsample has a small range.
+      # PITFALL: If it weren't for the fuzzing on income,
+      # the max on the fractions with income in the denominator
+      # could be even bigger.
       "vat / purchase value"       : cl.CoversRange( 0,      0.1 ),
-      "vat / income"               : cl.CoversRange( 0,      1e5 ),
-      "purchase value / income"    : cl.CoversRange( 0.2,    1e5 )
+      "vat / income"               : cl.CoversRange( 0,      1e3 ),
+      "purchase value / income"    : cl.CoversRange( 0.2,    1e3 ),
       }.items():
     assert v.test( merge[k] )
   for k,v in {
