@@ -59,6 +59,7 @@ Set an appropriate breakpoint (pdb.set_trace).
 if True:
   from   datetime import datetime
   import filelock
+  import glob
   import json
   import os
   import pandas as pd
@@ -167,8 +168,11 @@ def advance_request_queue ():
         "Los resultados son los documentos .xlsx adjuntos. "
         + "(Si todo fue bien, el adjunto archivo `logs.zip` "
         + " no le va a importar.)" ),
-      attachment_paths = [ os.path.join ( data_path, i )
-                           for i in defs.attachments ] )
+      attachment_paths = (
+        glob.glob   ( data_path + "report*.xlsx" )
+        + glob.glob ( data_path + "change-in*by*" )
+        + [ os.path.join ( data_path,
+                           "../../logs.zip" ) ] ) )
     with open( defs.global_log_path, "a" ) as f:
       f . write( "Email: Done.\n" )
 
