@@ -14,9 +14,10 @@ def maybeFill(groupVar, val):
     return val.zfill(2)
   else: return val
 
-groupVars = [ # Variables to group by, and optionally,
-              # the subset of values for that group variable to consider.
-              # If `None` then all values are considered.
+householdGroupVars = [
+  # Variables to group by, and optionally,
+  # the subset of values for that group variable to consider.
+  # If `None` then all values are considered.
   ( "one"                         , None ),
   ( "female head"                 , None ),
   ( "income-decile"               , None ),
@@ -28,6 +29,15 @@ groupVars = [ # Variables to group by, and optionally,
   ( "income-millile-in[990,998]"  , [1]  ),
   ( "region-2"                    , None ),
   ]
+
+earnerGroupVars = (
+  # The female/male distinction doesn't make sense at the household level
+  # -- most households have both.
+  # By contrast, "female head" does make sense at the earner level,
+  # as it indicates whether someone lives in a household with a female head.
+  # (Whether that's useful is a separate question.)
+  [ ( "female", None ) ]
+  + householdGroupVars )
 
 #
 # Variables to summarize

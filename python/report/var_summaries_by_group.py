@@ -51,14 +51,16 @@ if True: # Create a few columns missing in the input data.
 def make_summary_frame (
     unit           : str, # unit of observation: households or earners
     df             : pd.DataFrame,
-    variables      : List[str], # things to summarize
+    groupVars      : List[str], # gruops              to summarize
+    variables      : List[str], # aspects (of groups) to summarize
+      # PITFALL: Long name because "vars" is an occupied keyword.
     restrictedVars : List[str]  # a subset of those things to summarize
 ) -> Tuple [ pd.DataFrame,   # The restricted (subset of) results.
              pd.DataFrame ]: # The unrestricted results.
   summaryDict = {} # TODO: Don't use this. It's no longer necessary --
                    # maybe it never was -- and it's confusing.
   groupSummaries = []
-  for (gv, gRange) in defs.groupVars:
+  for (gv, gRange) in groupVars:
     varSummaries = []
     for v in variables:
       t = desc.tabulate_stats_by_group (
@@ -120,11 +122,24 @@ def make_summary_frame (
                      . isin( defs.ofMostInterestLately ) ] ),
            ret_tmi )
 
-for (unit, df, variables, restrictedVars) in [
-    ( "earners",    earners,    defs.earnerVars,    defs.earnerRestrictedVars ),
-    ( "households", households, defs.householdVars, defs.householdRestrictedVars )
+for (unit, df, groupVars, variables, restrictedVars) in [
+    ( "earners",
+      earners,
+      defs.earnerGroupVars,
+      defs.earnerVars,
+      defs.earnerRestrictedVars ),
+    ( "households",
+      households,
+      defs.householdGroupVars,
+      defs.householdVars,
+      defs.householdRestrictedVars )
   ]:
-  (ret, ret_tmi) = make_summary_frame ( unit, df, variables, restrictedVars )
+  (ret, ret_tmi) = make_summary_frame (
+    unit           = unit,
+    df             = df,
+    groupVars      = groupVars,
+    variables      = variables,
+    restrictedVars = restrictedVars )
 
   oio.saveUserData(
       com.subsample,
