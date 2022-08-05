@@ -12,14 +12,28 @@
 # and requires no `.no_younger_than/` folder:
 # https://github.com/JeffreyBenjaminBrown/makefile-import-aware/blob/55b285f645d6b336183988db9917816f8883a173/maybe-equally-good/Makefile
 
-.no_younger_than/python/requests/lib.py:	\
-  python/requests/lib.py			\
+.no_younger_than/python/email.py: \
+  python/email.py                 \
   .no_younger_than/python/common/common.py
+	install -D /dev/null .no_younger_than/python/email.py
+
+.no_younger_than/python/requests/defs.py: \
+  python/requests/defs.py                 \
+  .no_younger_than/python/common/common.py
+	install -D /dev/null .no_younger_than/python/requests/defs.py
+
+.no_younger_than/python/requests/lib.py:   \
+  python/requests/lib.py                   \
+  .no_younger_than/python/common/common.py \
+  .no_younger_than/python/common/my_subproc.py
 	install -D /dev/null .no_younger_than/python/requests/lib.py
 
-.no_younger_than/python/requests/main.py:	\
-  python/requests/main.py			\
-  .no_younger_than/python/common/common.py      \
+.no_younger_than/python/requests/main.py:      \
+  python/requests/main.py		       \
+  .no_younger_than/python/common/common.py     \
+  .no_younger_than/python/common/my_subproc.py \
+  .no_younger_than/python/email.py             \
+  .no_younger_than/python/requests/defs.py     \
   .no_younger_than/python/requests/lib.py
 	install -D /dev/null .no_younger_than/python/requests/main.py
 
@@ -502,11 +516,16 @@
   python/common/describe.py
 	install -D /dev/null .no_younger_than/python/common/describe.py
 
-.no_younger_than/python/common/common.py: \
-  python/common/common.py \
+.no_younger_than/python/common/common.py:  \
+  python/common/common.py                  \
   .no_younger_than/python/build/classes.py \
   .no_younger_than/python/common/terms.py
 	install -D /dev/null .no_younger_than/python/common/common.py
+
+.no_younger_than/python/common/my_subproc.py: \
+  python/common/my_subproc.py                 \
+  .no_younger_than/python/common/common.py
+	install -D /dev/null .no_younger_than/python/common/my_subproc.py
 
 .no_younger_than/python/report/pics/people.py: \
   python/report/pics/people.py \
