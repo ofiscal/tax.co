@@ -123,10 +123,11 @@ cols_new = (
       "all-elderly",
       "income-decile",
       "income-percentile",
+      "income-millile",
       "one" ]
 )
 
-cols_all = ( ["household"]
+cols_all = ( ["household", "income tax rate"]
            + cols_const_within_hh
            + income_and_tax__person_level
            + income_and_spending__household_level

@@ -6,6 +6,7 @@ if True:
   import python.build.output_io  as oio
   import python.common.common    as com
   import python.draw.util        as draw
+  import python.common.terms     as terms
 
 
 def sanitize_name_for_makefile (s : str) -> str:
@@ -65,8 +66,8 @@ for unit in ["households", "earners"]:
       com.subsample,
       "report_" + unit + "." + com.strategy_year_suffix ),
     baseline  = oio.readBaselineData (
-      com.subsample,
-      "report_" + unit + "." + com.strategy_year_suffix ),
+      1,
+      "report_" + unit + "." + terms.detail + ".2019" ),
     save_path = path.join (
       oio.get_user_data_folder ( com.subsample ),
       sanitize_name_for_makefile (

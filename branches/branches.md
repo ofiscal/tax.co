@@ -84,3 +84,13 @@ which processes on disk rather than in memory.
 The memory errors are common in the early stages, through subsampling.
 After that I haven't run into them. So if I were to introduce Vaex,
 I might not need to propogate it any farther than the subsampling stage.
+
+# retire-hypotheticals
+
+In `python/common/common.py`, the list `valid_strategies`
+used to have a lot of values.
+All but one were deleted in the branch "retire-hypotheticals",
+from (earliest) commit 1feac521d3805370afa2d3b45023cbb550541860
+to   (latest)   commit 80dc3fc7f1a42feab0ca067526f6a0f17b1c19dd
+
+Since then at least one branch has been added again.

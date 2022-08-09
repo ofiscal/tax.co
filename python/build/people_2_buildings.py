@@ -23,9 +23,6 @@ if True: # merge people, buildings
 if True: # make some new variables
     people["age-decile"] = pd.qcut(
       people["age"], 10, labels = False, duplicates='drop')
-    people["income-decile"] = (
-      # PITFALL: there's a different such variable at the household level
-      util.noisyQuantile( 10, 0, 1, people["income"] ) )
     people["female head"] = people["female"] * (people["household-member"]==1)
 
 # PITFALL: As noted earlier, the buildings data is always drawn from the full

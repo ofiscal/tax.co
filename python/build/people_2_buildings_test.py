@@ -32,7 +32,6 @@ new_cols = {
     "region-1",
     "region-2",
     "age-decile",
-    "income-decile",
     "IT",
     "IC",
     "ICM",
@@ -55,12 +54,10 @@ assert util.near( len(out),
 
 per_cell_spec = {
     "age-decile"    : cl.InRange( 0, 9 ),
-    "income-decile" : cl.InRange( 0, 9 ),
     "female head"   : cl.InRange( 0, 1 ) }
 
 per_column_spec = {
     "age-decile"    : cl.CoversRange( 0, 9 ),
-    "income-decile" : cl.CoversRange( 0, 9 ),
     "female head"   : cl.CoversRange( 0, 1 ) }
 
 for k,v in per_cell_spec.items():

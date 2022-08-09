@@ -52,8 +52,9 @@ def test_income_ranks( hh : pd.DataFrame,
                    0 if ( (com.subsample == 1000) &
                           (n == 5) )
                    else 1000 ) )
-        # Even among top-earners, some earn nothing.
-        assert hh[rank(n)] . min() == 0
+        # Even among top-earners, some earn less than a tenth of a peso.
+        # (If it weren't for fuzzing, I would make that 0.1 a 0.)
+        assert hh[rank(n)] . min() < 0.1
 
     for n in range(1,5):
         # Income ranks are ordered correctly.

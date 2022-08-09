@@ -104,14 +104,28 @@ if True: # Assemble the aggregates, then compute a few variables.
   households["has-elderly"] = households["age-max"] > 65
   #
   # PITFALL: Income decile and percentile for persons exist too. They are different.
-  households["income-decile"] = (
-    util.noisyQuantile( 10, 0, 1, households["income"] ) )
-  households["income-percentile"] = (
-    util.noisyQuantile( 100, 0, 1, households["income"] ) )
+
+  for label, n in [ ("income-decile"    , 10),
+                    ("income-percentile", 100),
+                    ("income-millile"   , 1000), ]:
+    households[label] = util.myQuantile (
+      n_quantiles = n,
+      in_col = households["income"] )
   households["one"] = 1 # used in report/households.py to create the trivial partition.
     # TODO ? move to report/households.py
   households_decile_summary = desc.summarizeQuantiles (
       "income-decile", households)
+
+  # TODO: This is computed separately for households and earners --
+  # like many of the variables immediately above, and maybe others too.
+  # Those are computed in these programs, respectively:
+  #   households_1_agg_plus_defs.py
+  #   people_3_income_taxish.py
+  # It'd be nice if those variables' definitions
+  # were drawn by both programs from the same library.
+  households["income tax rate"] = (
+    households["tax, income"] / households["income"] )
+
 
 if True: # save
   oio.saveUserData (

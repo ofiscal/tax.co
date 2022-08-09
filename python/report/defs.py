@@ -8,19 +8,36 @@ if True:
   else:
       import python.regime.r2019 as regime
 
+
 def maybeFill(groupVar, val):
   if groupVar == "income-percentile":
     return val.zfill(2)
   else: return val
 
-groupVars = [ # Variables to group by
-  "one",
-  "female head",
-  "income-decile",
-  "income-percentile",
-  "income-percentile-in[90,97]",
-  "region-2",
+householdGroupVars = [
+  # Variables to group by, and optionally,
+  # the subset of values for that group variable to consider.
+  # If `None` then all values are considered.
+  ( "one"                         , None ),
+  ( "female head"                 , None ),
+  ( "income-decile"               , None ),
+  ( "income-percentile"           , None ),
+  ( "income-millile"              , list ( range(990,1000) ) ),
+  ( "income-percentile-in[90,97]" , [1]  ),
+  ( "income-percentile-in[90,98]" , [1]  ),
+  ( "income-millile-in[990,997]"  , [1]  ),
+  ( "income-millile-in[990,998]"  , [1]  ),
+  ( "region-2"                    , None ),
   ]
+
+earnerGroupVars = (
+  # The female/male distinction doesn't make sense at the household level
+  # -- most households have both.
+  # By contrast, "female head" does make sense at the earner level,
+  # as it indicates whether someone lives in a household with a female head.
+  # (Whether that's useful is a separate question.)
+  [ ( "female", None ) ]
+  + householdGroupVars )
 
 #
 # Variables to summarize
@@ -36,6 +53,8 @@ commonVars = ( [
   # "seguro de riesgos laborales",
   "income",
   "tax",
+  "income tax rate",
+  "income, labor",
   "income, labor + cesantia",
   "income, rental + interest",
   "income, capital",
@@ -80,7 +99,44 @@ earnerVars    = commonVars
 # Restricted sets of variables to summarize, for the simpler data frames
 #
 
+ofMostInterestLately = [
+  # Things I think Daniel needs but Oliver didn't ask for.
+  "income tax sums / total income sums",
+  "income: max",
+
+  # Things Oliver asked for.
+  "income: sums",
+  "income: mean",
+  "tax: sums",
+  "tax: mean",
+  "income tax rate: mean",
+  "income, labor: sums",
+  "income, labor: mean",
+  "income, labor + cesantia: sums",
+  "income, labor + cesantia: mean",
+  "tax, income: sums",
+  "tax, income: mean",
+  ]
+
 commonRestrictedVars = ( [
+  #####################
+  # What we want lately
+  #####################
+  "income tax rate: mean",
+  "income tax rate: min",
+  "income tax rate: max",
+  "income: mean",
+  "income: min",
+  "income: max",
+  "income: sums",
+  "tax: mean",
+  "tax: min",
+  "tax: max",
+  "tax: sums",
+
+  ######################################
+  # The rest are of less interest lately
+  ######################################
   "income < min wage: mean",
   "pension, receiving: mean",
   "pension, receiving: min",
@@ -100,12 +156,7 @@ commonRestrictedVars = ( [
   # "seguro de riesgos laborales: mean",
   # "seguro de riesgos laborales: min",
   # "seguro de riesgos laborales: max",
-  "income: mean",
-  "income: min",
-  "income: max",
-  "tax: mean",
-  "tax: min",
-  "tax: max",
+  "income, labor: mean",
   "income, labor + cesantia: mean",
   "income, rental + interest: mean",
   "income, capital: mean",

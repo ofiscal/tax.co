@@ -3,7 +3,7 @@
 # and the tests would be monstrously hard to write, use and maintain.
 
 if True:
-  from typing import Dict
+  from typing import Dict, List
   import pandas as pd
   import numpy as np
   import math as math
@@ -34,10 +34,27 @@ def tabulate_min_median_max_by_group (
 
 def tabulate_stats_by_group (
     df0 : pd.DataFrame,
-    group_name : str,
-    param_name : str,
-    weight_name : str = None):
+    group_name : str, # TODO: Rename this to "grouping_var",
+                      # because it usually defines many groups.
+    group_range : List, # Either `None` or a subset of the
+                        # values taken by `group_name`.
+    param_name : str, # The parameter to describe for each group.
+    weight_name : str = None
+) -> pd.DataFrame: # Its row indices are the group's values,
+                   # and its columns have these names:
+                   # count_unweighted
+                   # share
+                   # sum_unweighted
+                   # nonzero_unweighted
+                   # min
+                   # max
+                   # median_unweighted
+                   # median_nonzero_unweighted
+                   # mean_unweighted
+                   # mean_nonzero_unweighted
   """ Alas, Pandas offers no easy way to compute weighted medians. """
+  if group_range:
+    df0 = df0 [ df0 [ group_name ] . isin ( group_range ) ]
   if weight_name != None:
     df = df0[ ~ df0[param_name].isnull() ].copy()
     total_weight = df[weight_name].sum()

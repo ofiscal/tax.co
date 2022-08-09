@@ -1,16 +1,20 @@
 if True: # imports
   from os import path
-  import pandas as pd
-  import python.common.common as com
-  import python.common.misc as misc
+  import pandas                as pd
+  #
+  import python.common.common  as com
+  import python.common.misc    as misc
   from   python.common.misc import muvt
-  if True: # csv-dynamic imports
+  import python.common.terms   as terms
+  import python.regime.strategy_dependent as strat_dep
+  if True: # CSV-dynamic imports
     rates = path.join( "users", com.user, "config/marginal_rates" )
     for lib in ["dividend",
                 "ocasional_low",
                 "ocasional_high",
                 "most",]:
-      # PITFALL: Mypy does not understand this.
+      # TODO : The Makefile does not know about these imports.
+      # PITFALL: Mypy cannot not understand these imports.
       # The exec statement constructs an alias, "rates_x" (for some x),
       # for each library it imports -- the full list of those libraries
       # being the arguments to the for loop above.
@@ -30,8 +34,6 @@ income_tax_components = [ "tax, income, most",
 
 income_tax_columns = [ "tax, income" ] + income_tax_components
 
-gravable_pre = "taxable labor income before exemptions"
-
 def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
   """PITFALL: Destructive."""
   new_columns = pd.DataFrame()
@@ -39,14 +41,15 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
   temp_columns["claims dependent (labor income tax)"] = (
     ppl["claims dependent (labor income tax)"] )
   temp_columns["zero"] = 0
-  temp_columns[gravable_pre] = (
+  temp_columns["renta liquida"] = (
+    # This is taxable labor income before exemptions.
     ( ( ppl["income, labor"]
       - ppl["tax, ss, total employee contribs"] )
     ) )
 
   temp_columns["cedula general gravable"] = (
     temp_columns .
-    apply ( taxable, axis = 1 ) )
+    apply ( cedula_general_gravable, axis = 1 ) )
 
   new_columns["tax, income, most"] = (
     ( temp_columns[["cedula general gravable","zero"]]
@@ -58,7 +61,7 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
 
   new_columns["tax, income, dividend"] = (
     ppl["income, dividend"].apply(
-        rates_dividend.f ) )
+        rates_dividend . f ) )
 
   new_columns["tax, income, ganancia ocasional"] = (
     ( ppl["income, ganancia ocasional, 10%-taxable"]
@@ -78,21 +81,9 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
 
   return pd.concat( [ppl, new_columns], axis = 1 )
 
-def taxable( row: pd.Series ) -> float:
-  """
-  The first stage of "renta gravable laboral" is someone's income,
-  minus either 32.5% or 5040 UVTs, whichever is smaller.
-  If someone cannot claim dependents,
-  then their second stage renta gravable equals the first.
-  If they can, and S1 is the value of the first stage,
-  then the second stage is equal to S1 minus 10% or 32 UVT,
-  whichever is smaller.
-  """
-  s1 = (
-    row               [gravable_pre]
-    - min( 0.325 * row[gravable_pre],
-           5040 * muvt ) )
-  s2 = ( s1 if not row["claims dependent (labor income tax)"]
-         else  s1 - min( 0.1 * s1,
-                         32 * muvt ) )
-  return s2
+def cedula_general_gravable ( row: pd.Series ) -> float:
+  if com.strategy == terms.single_2052_UVT_income_tax_deduction:
+    return strat_dep . cgg_single_2052_UVT_income_tax_deduction       ( row )
+
+  if com.strategy == terms.detail:
+    return strat_dep . cgg_detail                                     ( row )
