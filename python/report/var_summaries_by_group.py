@@ -130,10 +130,12 @@ def make_summary_frame (
           ( ( tail_of_row ( "tax, income: sums" ) /
               tail_of_row ( "income: sums" ) )
             . replace ( [np.nan, np.inf], 0 ) ) ] )
-    ret_tmi : pd.DataFrame = pd.concat (
-      [ pd.DataFrame ( total_income_tax_over_total_income ) . transpose(),
-        ret_tmi ],
-      ignore_index = True )
+    ret_tmi : pd.DataFrame = (
+      pd.concat (
+        [ pd.DataFrame ( total_income_tax_over_total_income ) . transpose(),
+          ret_tmi ],
+        ignore_index = True )
+      . rename ( columns = defs.quantileNames ) )
 
   return ( ( ret_tmi # a subset of the rows in `ret_tmi`
              . loc [ ret_tmi ["measure"]

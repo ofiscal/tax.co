@@ -14,6 +14,18 @@ def maybeFill(groupVar, val):
     return val.zfill(2)
   else: return val
 
+quantileNames = {
+  **{ "income-decile: " + str(i)
+      : "[" + str(10*i) + "," + str(10*(i+1)) + ")"
+      for i in range(10) },
+  **{ "income-percentile: " + ( str(i) . zfill(2) )
+      : "[" + str(i) + "," + str(i+1) + ")"
+      for i in range(100) },
+  **{ "income-millile: " + str(i) . zfill(3)
+      : "[" + str(i/10) + "," + str((i+1)/10) + ")"
+      for i in range(1000) },
+}
+
 householdGroupVars = [
   # Variables to group by, and optionally,
   # the subset of values for that group variable to consider.
