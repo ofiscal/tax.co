@@ -439,10 +439,12 @@
   python/draw/jupyter-load.py
 	install -D /dev/null .no_younger_than/python/draw/jupyter-load.py
 
-.no_younger_than/python/regime/strategy_dependent.py:   \
-  python/regime/strategy_dependent.py                   \
-  .no_younger_than/python/common/misc.py
-	install -D /dev/null .no_younger_than/python/regime/strategy_dependent.py
+.no_younger_than/python/regime/cedula_general_gravable.py: \
+  python/regime/cedula_general_gravable.py                 \
+  .no_younger_than/python/common/misc.py                   \
+  .no_younger_than/python/common/common.py                 \
+  .no_younger_than/python/common/terms.py
+	install -D /dev/null .no_younger_than/python/regime/cedula_general_gravable.py
 
 .no_younger_than/python/regime/test.py:                 \
   python/regime/test.py                                 \
@@ -453,15 +455,15 @@
 # is in .no_younger_than/. That's because they are not (in general)
 # part of the repo, but rather generated from a user's .csv config files.
 # TODO ? That difference is confusing; can it be smoothed over?
-.no_younger_than/python/regime/r2019.py:                \
-  python/regime/r2019.py                                \
-  .no_younger_than/python/common/common.py              \
-  .no_younger_than/python/common/misc.py                \
-  .no_younger_than/python/common/terms.py               \
-  .no_younger_than/python/regime/strategy_dependent.py  \
-  users/$(user)/config/marginal_rates/dividend.py       \
-  users/$(user)/config/marginal_rates/most.py           \
-  users/$(user)/config/marginal_rates/ocasional_high.py \
+.no_younger_than/python/regime/r2019.py:                    \
+  python/regime/r2019.py                                    \
+  .no_younger_than/python/common/common.py                  \
+  .no_younger_than/python/common/misc.py                    \
+  .no_younger_than/python/common/terms.py                   \
+  .no_younger_than/python/regime/cedula_general_gravable.py \
+  users/$(user)/config/marginal_rates/dividend.py           \
+  users/$(user)/config/marginal_rates/most.py               \
+  users/$(user)/config/marginal_rates/ocasional_high.py     \
   users/$(user)/config/marginal_rates/ocasional_low.py
 	install -D /dev/null .no_younger_than/python/regime/r2019.py
 

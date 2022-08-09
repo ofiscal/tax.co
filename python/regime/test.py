@@ -2,7 +2,7 @@ if True:
   import pandas                as pd
   #
   from   python.common.misc import muvt
-  import python.regime.strategy_dependent as strat_dep
+  import python.regime.cedula_general_gravable as cgg
 
 
 def test_cgg_single_2052_UVT_income_tax_deduction ():
@@ -11,7 +11,7 @@ def test_cgg_single_2052_UVT_income_tax_deduction ():
                           for i in [0, 2000, 2100, 5000] ],
       "claims dependent (labor income tax)" : [False] * 4 } )
   res = df . apply (
-    strat_dep.cgg_single_2052_UVT_income_tax_deduction,
+    cgg.cgg_single_2052_UVT_income_tax_deduction,
     axis = 1 )
   should_be_small = (
     res

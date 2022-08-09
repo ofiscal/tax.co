@@ -1,12 +1,25 @@
 if True:
   import pandas                as pd
   #
+  import python.common.common  as com
   from   python.common.misc import muvt
+  import python.common.terms   as terms
 
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-### Some algorithms to compute the cedula general gravable
+### Ways to compute the cedula general gravable
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+
+def cedula_general_gravable ( row: pd.Series ) -> float:
+  return (
+    { terms. single_cedula_with_single_1210_uvt_threshold
+      : cgg_single_cedula_with_single_1210_uvt_threshold,
+      terms. single_2052_UVT_income_tax_deduction
+      : cgg_single_2052_UVT_income_tax_deduction,
+      terms.detail
+      : cgg_detail }
+    [ com.strategy ] # lookup a function from the dictionary
+    ( row ) )        # apply an argument to the function
 
 def cgg_detail ( row: pd.Series ) -> float:
   """
@@ -33,3 +46,14 @@ def cgg_single_2052_UVT_income_tax_deduction ( row: pd.Series ) -> float:
            if not row["claims dependent (labor income tax)"]
            else  stage1 - min( 0.1 * stage1,
                                32 * muvt ) )
+
+def cgg_single_cedula_with_single_1210_uvt_threshold (
+    row: pd.Series
+) -> float:
+  s1 = ( row                ["renta liquida"]
+         - min( 0.325 * row ["renta liquida"],
+                1210 * muvt ) )
+  return ( s1
+           if   not row ["claims dependent (labor income tax)"]
+           else s1 - min ( 0.1 * s1,
+                           32 * muvt ) )
