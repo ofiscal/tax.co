@@ -170,7 +170,8 @@ def advance_request_queue ():
         + " no le va a importar.)" ),
       attachment_paths = (
         glob.glob   ( data_path + "report*.xlsx" )
-        + glob.glob ( data_path + "change-in*by*" )
+        + glob.glob ( data_path + "change-in*by*.png" )
+        + glob.glob ( data_path + "changes_*.xlsx" )
         + [ os.path.join ( data_path,
                            "../../logs.zip" ) ] ) )
     with open( defs.global_log_path, "a" ) as f:

@@ -578,11 +578,13 @@
   .no_younger_than/python/regime/r2019.py
 	install -D /dev/null .no_younger_than/python/report/defs.py
 
-.no_younger_than/python/report/compare.py:    \
-  python/report/compare.py                    \
-  .no_younger_than/python/build/output_io.py  \
-  .no_younger_than/python/common/common.py    \
-  .no_younger_than/python/draw/util.py
+.no_younger_than/python/report/compare.py:   \
+  python/report/compare.py                   \
+  .no_younger_than/python/build/output_io.py \
+  .no_younger_than/python/common/common.py   \
+  .no_younger_than/python/common/terms.py    \
+  .no_younger_than/python/draw/util.py       \
+  .no_younger_than/python/report/defs.py
 	install -D /dev/null .no_younger_than/python/report/compare.py
 
 .no_younger_than/python/report/var_summaries_by_group.py: \

@@ -159,6 +159,7 @@ for (unit, df, groupVars, variables, restrictedVars) in [
       defs.householdVars,
       defs.householdRestrictedVars )
   ]:
+
   (ret, ret_tmi) = make_summary_frame (
     unit           = unit,
     df             = df,

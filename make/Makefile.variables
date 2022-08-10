@@ -116,10 +116,13 @@ reports =                                                                 \
   users/$(user)/data/recip-$(ss)/report_earners.$(strategy_year_suffix).csv         \
   users/$(user)/data/recip-$(ss)/report_earners.$(strategy_year_suffix).xlsx
 
-compare = \
+compare =                                                                                     \
   users/$(user)/data/recip-$(ss)/change-in.tax-mean.by-households.$(strategy_year_suffix).png \
-  users/$(user)/data/recip-$(ss)/change-in.tax-mean.by-earners.$(strategy_year_suffix).png
-
+  users/$(user)/data/recip-$(ss)/change-in.tax-mean.by-earners.$(strategy_year_suffix).png    \
+  users/$(user)/data/recip-$(ss)/changes_earners.csv                                          \
+  users/$(user)/data/recip-$(ss)/changes_earners.xlsx                                         \
+  users/$(user)/data/recip-$(ss)/changes_households.csv                                       \
+  users/$(user)/data/recip-$(ss)/changes_households.xlsx
 
 goods_by_income_decile = \
   users/$(user)/data/recip-$(ss)/goods_by_income_decile.csv \
