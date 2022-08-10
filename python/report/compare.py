@@ -23,6 +23,12 @@ user_households     = oio.readUserData (
 baseline_households = oio.readBaselineData (
   100, # TODO: Should be 1
   "report_households_tmi." + terms.detail + ".2019" )
+user_nonzero_laborers        = oio.readUserData (
+  com.subsample,
+  "report_nonzero_laborers_tmi." + com.strategy_year_suffix )
+baseline_nonzero_laborers    = oio.readBaselineData (
+  100, # TODO: Should be 1
+  "report_nonzero_laborers_tmi." + terms.detail + ".2019" )
 
 def sanitize_name_for_makefile (s : str) -> str:
   """Because Makefiles cannot handle spaces, and maybe colons, in filenames."""
@@ -85,8 +91,9 @@ def draw_one_comparison (
         + com.strategy_year_suffix ) ) )
 
 for (unit, user, baseline) in [
-    ("households", user_households, baseline_households),
-    ("earners",    user_earners,    baseline_earners) ]:
+    ("households",       user_households,       baseline_households),
+    ("earners",          user_earners,          baseline_earners),
+    ("nonzero_laborers", user_nonzero_laborers, baseline_nonzero_laborers) ]:
   measure = "tax: mean"
     # TODO : Will probably want to loop over
     # different values of this, too.

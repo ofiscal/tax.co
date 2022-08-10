@@ -3,9 +3,13 @@
 # Instead use the variables defined below,
 # so that if one of them is written incorrectly, Python will let us know.
 
+
 ###########################
 #### ### Strategies ### ###
 ###########################
+
+# PITFALL: Whenever adding a strategy here,
+# be sure to add it to common.common.valid_strategies as well.
 
 # The default -- the law as of July 2022.
 detail = "detail"

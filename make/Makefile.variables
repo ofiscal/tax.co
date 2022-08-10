@@ -122,7 +122,9 @@ compare =                                                                       
   users/$(user)/data/recip-$(ss)/changes_earners.csv                                          \
   users/$(user)/data/recip-$(ss)/changes_earners.xlsx                                         \
   users/$(user)/data/recip-$(ss)/changes_households.csv                                       \
-  users/$(user)/data/recip-$(ss)/changes_households.xlsx
+  users/$(user)/data/recip-$(ss)/changes_households.xlsx                                      \
+  users/$(user)/data/recip-$(ss)/changes_nonzero_laborers.csv                                 \
+  users/$(user)/data/recip-$(ss)/changes_nonzero_laborers.xlsx
 
 goods_by_income_decile = \
   users/$(user)/data/recip-$(ss)/goods_by_income_decile.csv \

@@ -15,6 +15,7 @@ USAGE:
     or in a similar file in users/u<user-hash>/config/
   From the root folder of the project, run these two lines:
     PYTHONPATH="." python3 bash/run-makefile.py users/symlinks/baseline/config/config.json
+    PYTHONPATH="." python3 bash/run-makefile.py users/symlinks/single-cedula/config/config.json
     PYTHONPATH="." python3 bash/run-makefile.py <config_file>
   The first line builds the baseline "user",
     which other users are compared to.
