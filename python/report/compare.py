@@ -21,13 +21,13 @@ user_households     = oio.readUserData (
   com.subsample,
   "report_households_tmi." + com.strategy_year_suffix )
 baseline_households = oio.readBaselineData (
-  100, # TODO: Should be 1
+  1,
   "report_households_tmi." + terms.detail + ".2019" )
 user_nonzero_laborers        = oio.readUserData (
   com.subsample,
   "report_nonzero_laborers_tmi." + com.strategy_year_suffix )
 baseline_nonzero_laborers    = oio.readBaselineData (
-  100, # TODO: Should be 1
+  1,
   "report_nonzero_laborers_tmi." + terms.detail + ".2019" )
 
 def sanitize_name_for_makefile (s : str) -> str:
