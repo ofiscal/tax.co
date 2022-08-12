@@ -36,9 +36,10 @@ def sanitize_name_for_makefile (s : str) -> str:
     ":", "",
     re.sub ( " ", "-", s ) )
 
-def make_one_difference_table ( unit      : str,
-                                user      : pd.DataFrame,
-                                baseline  : pd.DataFrame ):
+def make_one_difference_table (
+    unit      : str,
+    user      : pd.DataFrame,
+    baseline  : pd.DataFrame ):
   df = pd.concat ( [
     pd.DataFrame ( user["measure"] ),
     ( user       . drop ( columns = "measure" ) . astype ( float )

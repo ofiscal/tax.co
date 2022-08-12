@@ -132,6 +132,12 @@ ofMostInterestLately = [
   "income, labor + cesantia: mean",
   "tax, income: sums",
   "tax, income: mean",
+  "tax, income: min",
+  "tax, income: max",
+  "tax, income, labor: sums",
+  "tax, income, labor: mean",
+  "tax, income, labor: min",
+  "tax, income, labor: max",
   ]
 
 commonRestrictedVars = ( [
