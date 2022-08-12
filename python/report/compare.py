@@ -40,10 +40,11 @@ def make_one_difference_table (
     unit      : str,
     user      : pd.DataFrame,
     baseline  : pd.DataFrame ):
-  df = pd.concat ( [
-    pd.DataFrame ( user["measure"] ),
-    ( user       . drop ( columns = "measure" ) . astype ( float )
-      - baseline . drop ( columns = "measure" ) . astype ( float ) ) ] )
+  df = pd.concat (
+    [ pd.DataFrame ( user["measure"] ),
+      ( user       . drop ( columns = "measure" ) . astype ( float )
+        - baseline . drop ( columns = "measure" ) . astype ( float ) ) ],
+    axis = "columns" )
   df . to_csv (
     path_or_buf = path.join (
       oio.get_user_data_folder ( com.subsample ),
