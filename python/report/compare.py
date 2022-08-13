@@ -15,7 +15,7 @@ user_earners        = oio.readUserData (
   com.subsample,
   "report_earners_tmi." + com.strategy_year_suffix )
 baseline_earners    = oio.readBaselineData (
-  100, # TODO: Should be 1
+  1, 
   "report_earners_tmi." + terms.detail + ".2019" )
 user_households     = oio.readUserData (
   com.subsample,
@@ -61,24 +61,20 @@ def draw_one_comparison (
     unit     : str,
     user     : pd.DataFrame,
     baseline : pd.DataFrame ):
-
   user_deciles     = user     [ list ( defs.decile_names.values() ) ]
   baseline_deciles = baseline [ list ( defs.decile_names.values() ) ]
-
   user_levels : pd.Series = (
     user_deciles [
       user [ "measure" ] == measure ]
     . transpose()
     . iloc[:,0]
     . astype ( float ) )
-
   baseline_levels : pd.Series = (
     baseline_deciles [
       baseline [ "measure" ] == measure ]
     . transpose()
     . iloc[:,0]
     . astype ( float ) )
-
   draw.bar_chart_with_changes (
     title  = "Resulting change in \"" + measure + "\"",
     xlabel = unit + " by income percentile",
