@@ -22,12 +22,12 @@ PITFALL: Limitations in definitions from python.common.common
 That program defines some things like "strategy"
 that depend on the user's config file.
 But this program is invoked without knowing which is that config file.
-Uses of those user-dependent definitions, therefore,
-are a bad idea.
+References within this file to those user-dependent definitions,
+therefore, are a bad idea.
 
 How to invoke this code:
 ########################
-the first non-mandatory argument to `python3` at the command line
+The first non-mandatory argument to `python3` at the command line
 should be a path to a user configuration,
 and the second should be an action to take.
 For example,
@@ -169,9 +169,9 @@ def advance_request_queue ():
         + "(Si todo fue bien, el adjunto archivo `logs.zip` "
         + " no le va a importar.)" ),
       attachment_paths = (
-        glob.glob   ( data_path + "report*.xlsx" )
-        + glob.glob ( data_path + "change-in*by*.png" )
-        + glob.glob ( data_path + "changes_*.xlsx" )
+        glob.glob   ( os.path.join ( data_path, "report*.xlsx" ) )
+        + glob.glob ( os.path.join ( data_path, "change-in*by*.png" ) )
+        + glob.glob ( os.path.join ( data_path, "changes_*.xlsx" ) )
         + [ os.path.join ( data_path,
                            "../../logs.zip" ) ] ) )
     with open( defs.global_log_path, "a" ) as f:
