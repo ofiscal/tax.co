@@ -67,6 +67,7 @@ commonVars = ( [
   # "pension, contributor(s) (if not pensioned) = self",
   # "pension, contributor(s) (if not pensioned) = employer",
   # "seguro de riesgos laborales",
+  "income - tax",
   "income",
   "tax",
   "income tax rate",
@@ -121,6 +122,8 @@ ofMostInterestLately = [
   "income: max",
 
   # Things Oliver asked for.
+  "income - tax: sums"
+  "income - tax: mean"
   "income: sums",
   "income: mean",
   "tax: sums",
@@ -144,6 +147,10 @@ commonRestrictedVars = ( [
   #####################
   # What we want lately
   #####################
+  "income - tax: sums"
+  "income - tax: mean"
+  "income - tax: min"
+  "income - tax: max"
   "income tax rate: mean",
   "income tax rate: min",
   "income tax rate: max",

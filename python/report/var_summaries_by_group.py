@@ -23,6 +23,10 @@ if True: # load data
       com.subsample,
       "people_4_post_households." + com.strategy_year_suffix )
 
+if True: # generate "income - tax"
+  for df in (households, earners):
+    df["income - tax"] = df["income"] - df["tax"]
+
 if True: # nonzero labor income earners
   nonzero_laborers = earners.copy()
   nonzero_laborers = nonzero_laborers [

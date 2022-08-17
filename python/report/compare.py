@@ -15,7 +15,7 @@ user_earners        = oio.readUserData (
   com.subsample,
   "report_earners_tmi." + com.strategy_year_suffix )
 baseline_earners    = oio.readBaselineData (
-  1, 
+  1,
   "report_earners_tmi." + terms.detail + ".2019" )
 user_households     = oio.readUserData (
   com.subsample,
@@ -92,17 +92,15 @@ for (unit, user, baseline) in [
     ("households",       user_households,       baseline_households),
     ("earners",          user_earners,          baseline_earners),
     ("nonzero_laborers", user_nonzero_laborers, baseline_nonzero_laborers) ]:
-  measure = "tax: mean"
-    # TODO : Will probably want to loop over
-    # different values of this, too.
-  make_one_difference_table (
-    unit     = unit,
-    user     = user     [ user     ["measure"] . isin (
-      defs.ofMostInterestLately ) ],
-    baseline = baseline [ baseline ["measure"] . isin (
-      defs.ofMostInterestLately ) ] )
-  draw_one_comparison (
-    measure   = measure,
-    unit      = unit,
-    user      = user,
-    baseline  = baseline )
+  for measure in ["tax: mean", "income - tax: mean"]:
+    make_one_difference_table (
+      unit     = unit,
+      user     = user     [ user     ["measure"] # the quotes are not a typo
+                        . isin ( defs.ofMostInterestLately ) ],
+      baseline = baseline [ baseline ["measure"] # the quotes are not a typo
+                            . isin ( defs.ofMostInterestLately ) ] )
+    draw_one_comparison (
+      measure   = measure,
+      unit      = unit,
+      user      = user,
+      baseline  = baseline )
