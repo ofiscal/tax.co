@@ -1,26 +1,26 @@
-CODE,DESCRIPTION,vat,"vat, min","vat, max",daña el ambiente,no saludable,genero,gasolina,cerveza,licores,tabaco y cigarrillos,vehículos,alimentos,estupefacientes,cuidado,medicamentos,impuestos rosa,usado exclusivamente por mujeres,rol de género femenino,infantiles,para hombres,prefix
-1,"Pan, arepas, bollos y almojÇ­banas",0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-2,Galletas de sal y de dulce,0.19,0.19,0.19,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-3,"Arroz, pastas alimenticias, avena, maÇðz, harinas",0.025,0.0,0.05,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-4,"Carne de res, cerdo, hueso y vÇðsceras",0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-5,"Pollo, otras aves y menudencias",0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-6,"Salchichas, jamÇün, mortadela, salchichÇün",0.05,0.05,0.05,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-7,"Pescado de rÇðo, mar y otros productos",0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-8,Leche (animal y vegetal),0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-9,Queso (animal y vegetal),0.025,0.0,0.05,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-10,"Otros derivados de la leche: yogur,",0.19,0.19,0.19,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-11,Huevos,0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-12,"Aceites y grasas: aceite, manteca, mantequilla,",0.19,0.19,0.19,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-13,Frutas,0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-14,"Verduras y hortalizas: tomate, cebolla,",0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-15,"Granos secos: frÇðjol, lenteja, garbanzo,",0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-16,"Enlatados y encurtidos: arveja, frÇðjol,",0.19,0.19,0.19,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-17,"PlÇ­tano, yuca, arracacha, Çñame, papa y",0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-18,"AzÇ§car, panela y otros endulzantes",0.025,0.0,0.05,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-19,"Mermeladas, arequipe, bocadillos, compotas,",0.095,0.0,0.19,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-20,"Salsas, mayonesa, mostaza, vinagre, etc.",0.19,0.19,0.19,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-21,Sal y condimentos,0.095,0.0,0.19,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-22,"CafÇ¸, chocolate, otras bebidas con cacao",0.05,0.05,0.05,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-23,"Papas fritas, chitos, maicitos, patacones,",0.19,0.19,0.19,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-24,"Agua, gaseosas, refrescos, jugos, tÇ¸ frÇðo y otras bebidas no alcoh‹¨«licas ",0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
-25,Alimentos y bebidas preparados fuera,0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
+CODE,DESCRIPTION,vat,"vat, min","vat, max",daña el ambiente,no saludable,genero,gasolina,cerveza,licores,tabaco y cigarrillos,vehículos,alimentos,estupefacientes,cuidado,medicamentos,impuestos rosa,usado exclusivamente por mujeres,rol de género femenino,infantiles,para hombres,prefix,azucar y/o hiperprocesamiento
+1,"Pan, arepas, bollos y almojÇ­banas",0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+2,Galletas de sal y de dulce,0.19,0.19,0.19,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+3,"Arroz, pastas alimenticias, avena, maÇðz, harinas",0.025,0.0,0.05,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+4,"Carne de res, cerdo, hueso y vÇðsceras",0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+5,"Pollo, otras aves y menudencias",0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+6,"Salchichas, jamÇün, mortadela, salchichÇün",0.05,0.05,0.05,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+7,"Pescado de rÇðo, mar y otros productos",0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+8,Leche (animal y vegetal),0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+9,Queso (animal y vegetal),0.025,0.0,0.05,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+10,"Otros derivados de la leche: yogur,",0.19,0.19,0.19,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+11,Huevos,0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+12,"Aceites y grasas: aceite, manteca, mantequilla,",0.19,0.19,0.19,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+13,Frutas,0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+14,"Verduras y hortalizas: tomate, cebolla,",0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+15,"Granos secos: frÇðjol, lenteja, garbanzo,",0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+16,"Enlatados y encurtidos: arveja, frÇðjol,",0.19,0.19,0.19,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+17,"PlÇ­tano, yuca, arracacha, Çñame, papa y",0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+18,"AzÇ§car, panela y otros endulzantes",0.025,0.0,0.05,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+19,"Mermeladas, arequipe, bocadillos, compotas,",0.095,0.0,0.19,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+20,"Salsas, mayonesa, mostaza, vinagre, etc.",0.19,0.19,0.19,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+21,Sal y condimentos,0.095,0.0,0.19,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+22,"CafÇ¸, chocolate, otras bebidas con cacao",0.05,0.05,0.05,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+23,"Papas fritas, chitos, maicitos, patacones,",0.19,0.19,0.19,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+24,"Agua, gaseosas, refrescos, jugos, tÇ¸ frÇðo y otras bebidas no alcoh‹¨«licas ",0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+25,Alimentos y bebidas preparados fuera,0.0,0.0,0.0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
