@@ -2,9 +2,11 @@ if True:
   import pandas as pd
   import numpy as np
   #
+  from   python.common.fuzz   import fuzz_peso_values
   import python.common.common as cl
   import python.common.util as util
   import python.build.output_io as oio
+
 
 def test_noisyQuantile ():
   # Half of this series is exactly zero,
@@ -32,7 +34,7 @@ def test_noisyQuantile ():
 def test_fuzz_peso_values ():
   df = pd.DataFrame (
     {"s" : [float ( 10**i) for i in range(0,15) ] } )
-  df["s+r"] = util.fuzz_peso_values ( df["s"] )
+  df["s+r"] = fuzz_peso_values ( df["s"] )
   df["max difference"] = df["s"] . apply (
     lambda x : max ( x * 1e-5, 1 ) )
   assert ( ( ( df["s"] - df["s+r"] ) . abs()

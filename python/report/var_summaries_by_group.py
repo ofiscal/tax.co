@@ -30,7 +30,8 @@ if True: # generate "income - tax"
 if True: # nonzero labor income earners
   nonzero_laborers = earners.copy()
   nonzero_laborers = nonzero_laborers [
-    # Since a random amount between 0 and 1 peso is added to labor income
+    # PITFALL: Since a random amount between 0 and 1 peso
+    # is added to labor income in `build.people.main`
     # (in order to make the quantiles all the same size),
     # this keeps only people with income greater than 2 pesos,
     # rather than people with any nonzero labor income.

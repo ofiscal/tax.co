@@ -27,7 +27,9 @@ def generar_empleados ( df : pd.DataFrame ) -> pd.DataFrame:
         1 if (    row["last week worked an hour for pay"] == 1 # at least an hour
                or row["last week had paying job or business"] == 1
                     # got paid for work or a business, even if didn't work
-               or row["income, labor"] > 0
+               or row["income, labor"] > 2 # PITFALL: 2 COP is basically 0.
+                  # Can't test against 0 COP because labor income is fuzzed
+                  # to make income quantiles be equally sized.
               )
         else 0 ),
       axis=1 ) )

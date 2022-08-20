@@ -13,14 +13,14 @@ if True:
   import pandas as pd
   import re as regex
   #
-  from   python.build.people.empleados import generar_empleados
   import python.build.classes as cla
   import python.build.output_io as oio
+  from   python.build.people.empleados import generar_empleados
   import python.build.people.files as files
   import python.build.people.main_defs as defs
   import python.common.common as cl
+  from   python.common.fuzz import fuzz_peso_values
   import python.common.misc as c
-  import python.common.util as util
 
 
 ppl = oio.readCommonOutput (cl.subsample, 'people_0')
@@ -416,8 +416,8 @@ if True: # Add a very small random amount to income,
          # so that quantiles will all be the same size.
   # PITFALL: Labor income should be fuzzed *after* total income,
   # so that the two fuzzes don't interact.
-  ppl["income"]        = util.fuzz_peso_values ( ppl["income"] )
-  ppl["income, labor"] = util.fuzz_peso_values ( ppl["income, labor"] )
+  ppl["income"]        = fuzz_peso_values ( ppl["income"] )
+  ppl["income, labor"] = fuzz_peso_values ( ppl["income, labor"] )
 
 if True: # compute each household member's income rank
   def sort_household_by_labor_income_then_make_index(df):
