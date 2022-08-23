@@ -231,6 +231,10 @@
   python/common/fuzz.py
 	install -D /dev/null .no_younger_than/python/common/fuzz.py
 
+.no_younger_than/python/build/people/empleados.py: \
+  python/build/people/empleados.py
+	install -D /dev/null .no_younger_than/python/build/people/empleados.py
+
 .no_younger_than/python/build/people/main.py:       \
   python/build/people/main.py                       \
   .no_younger_than/python/build/classes.py          \
