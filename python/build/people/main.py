@@ -96,7 +96,7 @@ if True: # income
       ppl[ "income, month : labor : independent, months" ] . fillna(1) )
     #
     # For pesos, interpret NaN, 98 and 99 as "zero".
-    # TODO ? Create a new makefile target in which 98s and 99s are dropped.
+    # TODO ? Create a new Makefile target in which 98s and 99s are dropped.
     cols_from_na_98_99_to_0 = ( list( cla.name_map( files.income )
                                . values() )
                          + list( cla.name_map( files.beca_sources_private )
@@ -146,6 +146,10 @@ if True: # income
       ppl["beca sources, total"] = ( ppl["beca sources, govt"]
                                    + ppl["beca sources, private"] )
       #
+      # ASSUMPTION: Govt and non-govt sources contribute equally
+      # to a student's beca. Clearly false, but it's the best we can do.
+      # Fortunately most peoples' education income is only from one source,
+      # so this apportionment doesn't affect them.
       ppl[     "income, month : govt : beca, cash"] = 0
       ppl.loc[ ppl["beca sources, total"] > 0
              , "income, month : govt : beca, cash" ] = (
