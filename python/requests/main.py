@@ -161,21 +161,27 @@ def advance_request_queue ():
     with open( defs.global_log_path, "a" ) as f:
       f . write( "About to send attachemnts at "
                  + data_path + ".\n" )
-    python.email.send (
-      receiver_address = req["user email"],
-      subject = "Resultados de microsimulación",
-      body = (
-        "Los resultados son los documentos .xlsx adjuntos. "
-        + "(Si todo fue bien, el adjunto archivo `logs.zip` "
-        + " no le va a importar.)" ),
-      attachment_paths = (
-        glob.glob   ( os.path.join ( data_path, "report*.xlsx" ) )
-        + glob.glob ( os.path.join ( data_path, "change-in*by*.png" ) )
-        + glob.glob ( os.path.join ( data_path, "changes_*.xlsx" ) )
-        + [ os.path.join ( data_path,
-                           "../../logs.zip" ) ] ) )
-    with open( defs.global_log_path, "a" ) as f:
-      f . write( "Email: Done.\n" )
+    if not ( req["user email"] == "quien@donde.net" ):
+      # If the email address is quien@donde.net, then the user didn't change
+      # the default email address. Sending would fail.
+      # This might be getting triggered by bots, and if the website
+      # ever became popular, could become a problem,
+      # since Gmail only lets me send so many automatic emails per day.
+      python.email.send (
+        receiver_address = req["user email"],
+        subject = "Resultados de microsimulación",
+        body = (
+          "Los resultados son los documentos .xlsx adjuntos. "
+          + "(Si todo fue bien, el adjunto archivo `logs.zip` "
+          + " no le va a importar.)" ),
+        attachment_paths = (
+          glob.glob   ( os.path.join ( data_path, "report*.xlsx" ) )
+          + glob.glob ( os.path.join ( data_path, "change-in*by*.png" ) )
+          + glob.glob ( os.path.join ( data_path, "changes_*.xlsx" ) )
+          + [ os.path.join ( data_path,
+                             "../../logs.zip" ) ] ) )
+      with open( defs.global_log_path, "a" ) as f:
+        f . write( "Email: Done.\n" )
 
     lib.mutate (
       defs.requests_path,
