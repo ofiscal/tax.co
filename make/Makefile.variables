@@ -106,7 +106,7 @@ household_pics = \
 
 pics = $(purchase_pics) $(people_pics) $(household_pics)
 
-reports =                                                                 \
+reports =                                                                           \
   users/$(user)/data/recip-$(ss)/report_households_tmi.$(strategy_year_suffix).csv  \
   users/$(user)/data/recip-$(ss)/report_households_tmi.$(strategy_year_suffix).xlsx \
   users/$(user)/data/recip-$(ss)/report_households.$(strategy_year_suffix).csv      \
@@ -115,6 +115,16 @@ reports =                                                                 \
   users/$(user)/data/recip-$(ss)/report_earners_tmi.$(strategy_year_suffix).xlsx    \
   users/$(user)/data/recip-$(ss)/report_earners.$(strategy_year_suffix).csv         \
   users/$(user)/data/recip-$(ss)/report_earners.$(strategy_year_suffix).xlsx
+
+reports_baseline =                                                                            \
+  users/symlinks/baseline/data/recip-$(ss)/report_households_tmi.$(strategy_year_suffix).csv  \
+  users/symlinks/baseline/data/recip-$(ss)/report_households_tmi.$(strategy_year_suffix).xlsx \
+  users/symlinks/baseline/data/recip-$(ss)/report_households.$(strategy_year_suffix).csv      \
+  users/symlinks/baseline/data/recip-$(ss)/report_households.$(strategy_year_suffix).xlsx     \
+  users/symlinks/baseline/data/recip-$(ss)/report_earners_tmi.$(strategy_year_suffix).csv     \
+  users/symlinks/baseline/data/recip-$(ss)/report_earners_tmi.$(strategy_year_suffix).xlsx    \
+  users/symlinks/baseline/data/recip-$(ss)/report_earners.$(strategy_year_suffix).csv         \
+  users/symlinks/baseline/data/recip-$(ss)/report_earners.$(strategy_year_suffix).xlsx
 
 compare =                                                                                              \
   users/$(user)/data/recip-$(ss)/change-in.tax-mean.by-households.$(strategy_year_suffix).png          \

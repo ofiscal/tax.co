@@ -1,5 +1,5 @@
 """
-PITFALL: This has nothing to do with the make.py package
+This program has nothing to do with the make.py package
 that is an alternative to the utility called make.
 
 PURPOSE: A Makefile cannot ingest .json parameters.
@@ -22,6 +22,12 @@ USAGE:
     It won't rebuild unless the code changed.
   In the second line, the file path in <>s is optional.
     If you don't provide it, it will default to config/config.json.
+
+PITFALL:
+  The config files for the baseline and for the user must
+  have the sample subsample size.
+  In the online simulation, the subsample is automatically 1/1 in both,
+  but when running simulations manually, this pitfall must be remembered.
 
 PITFALL:
   If, when you run the above, you receive an error of the form
@@ -83,7 +89,9 @@ def run_one_config (
   sp = subprocess.run (
     ( [ "/usr/bin/make" ] +
       targets +
-      [ "config_file" + "=" + config_file,
+      [
+        # "--dry-run",
+        "config_file" + "=" + config_file,
         "subsample"   + "=" + str( subsample ),
         "strategy"    + "=" + strategy,
         "regime_year" + "=" + str( regime_year ),
@@ -108,8 +116,12 @@ def run_one_config (
 run_one_config ( # First rebuild the baseline, if appropriate.
                  # Use the full sample every time.
   config_file = "users/symlinks/baseline/config/config.json",
-  subsample   = 1, # PITFALL: Unless baseline/config/config.json also has
-                 # subsample = 1, this will not build the right thing.
+  subsample   = c.subsample,
+    # PITFALL: This parameter, which dictates the subsample size used
+    # when generating the baseline model, is drawn not from that config file,
+    # but instead from the user's. The two config files
+    # must have the same sample size.
+    # (Otherwise the wrong baseline targets will be made.)
   strategy    = terms.detail,
   regime_year = 2019,
   user_hash   = c.user_hash_from_email ( "baseline" ),

@@ -143,6 +143,7 @@ $(reports):                                                \
 compare: $(compare)
 $(compare):                                 \
   .no_younger_than/python/report/compare.py \
+  $(reports_baseline)                       \
   $(reports)
 	date
 	$(python_from_here) python/report/compare.py $(config_file)
