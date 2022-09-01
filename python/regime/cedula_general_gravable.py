@@ -31,9 +31,10 @@ def cgg_detail ( row: pd.Series ) -> float:
   s1 minus 10% or 32 UVT, whichever is smaller.
   The second stage is the function's return value.
   """
-  s1 = ( row                ["renta liquida"]
-         - min( 0.325 * row ["renta liquida"],
-                5040 * muvt ) )
+  s1 = max ( ( row                 ["renta liquida"]
+               - min ( 0.325 * row ["renta liquida"],
+                       5040 * muvt ) ),
+             0 )
   return ( s1
            if   not row["claims dependent (labor income tax)"]
            else s1 - min ( 0.1 * s1,
@@ -50,9 +51,10 @@ def cgg_single_2052_UVT_income_tax_deduction ( row: pd.Series ) -> float:
 def cgg_single_cedula_with_single_1210_uvt_threshold (
     row: pd.Series
 ) -> float:
-  s1 = ( row                ["renta liquida"]
-         - min( 0.325 * row ["renta liquida"],
-                1210 * muvt ) )
+  s1 = max ( ( row                ["renta liquida"]
+               - min( 0.325 * row ["renta liquida"],
+                      1210 * muvt ) ),
+             0 )
   return ( s1
            if   not row ["claims dependent (labor income tax)"]
            else s1 - min ( 0.1 * s1,
