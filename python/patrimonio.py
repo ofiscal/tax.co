@@ -46,8 +46,8 @@ results.summary()
 
 # Sanity check: looks insane at the extremes.
 for annual_income in [ 1e6, 1e7, 1e8, 1e9 ]:
-  print ( "{:e}" . format ( annual_income ) )
-  print ( "{:e}" . format (
+  print ( "annual income: {:e}" . format ( annual_income ) )
+  print ( "predicted patrimonio liquido: {:e}" . format (
     exp ( log ( annual_income )
           * results . params [ "income" ]
           + results . params [ "one" ] ) ) )
@@ -56,20 +56,20 @@ for annual_income in [ 1e6, 1e7, 1e8, 1e9 ]:
 #
 # If you make a million COP in a year,
 # your savings is basically nothing. Reasonable.
-# 1.000000e+06
-# 5.904753e+03
+# annual income: 1.000000e+06
+# predicted patrimonio liquido:  5.904753e+03
 #
 # If you make 10 million COP in a year,
-# your savings is a couple million a yaer. Reasonable.
-# 1.000000e+07
-# 1.905299e+06
+# your savings is a couple million a year. Reasonable.
+# annual income: 1.000000e+07
+# predicted patrimonio liquido: 1.905299e+06
 #
 # If you make 100 million COP in a year,
 # your savings is about six times that. Plausible.
-# 1.000000e+08
-# 6.147868e+08
+# annual income: 1.000000e+08
+# predicted patrimonio liquido: 6.147868e+08
 #
 # But if you make 1000 million COP in a year,
 # your savings is 200 times that? No way.
-# 1.000000e+09
-# 1.983746e+11
+# annual income: 1.000000e+09
+# predicted patrimonio liquido: 1.983746e+11
