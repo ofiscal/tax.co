@@ -6,7 +6,10 @@
 #
 # OPTION: Retain only the rich.
 # This can discard quantiles with wealth below a certain threshold
-# before running the regression. That's appropriate IF we're only interested
+# before running the regression.
+# It improves prediction quality on such people,
+# at the cost of worthless predictions for the poor.
+# That's appropriate IF we're only interested
 # in predicting the wealth of wealthy people.
 # (The tax code currently being discussed in Congress would only apply
 # to people with exceptionally high net wealth.)
@@ -38,9 +41,13 @@ if True:
 
 dian = pd.read_csv (
   "data/DIAN-quantiles/individuals.by-patrimonio-liquido.AG-2019.csv" )
-dian = dian . rename ( # strip whitespace at edges from column names
-  columns = { c : c.strip()
-              for c in dian.columns } )
+dian = (
+  dian . rename ( # strip whitespace at edges from column names
+    columns = { c : c.strip()
+                for c in dian.columns } )
+  . rename (
+    columns = { "Total Patrimonio líquido" : "wealth" } ) )
+
 dian["income, DIAN-style"] = ( # total income
   dian [[ "Ingresos brutos por rentas de trabajo",
         'Ingresos por ganancias ocasionales del país y del exterior',
@@ -50,7 +57,7 @@ dian["income, DIAN-style"] = ( # total income
   . sum ( axis = "columns" ) )
 
 # OPTION: Retain only the rich.
-dian_rich = dian [ dian [ "Patrimonio Bruto" ] > 1e9 ] . copy()
+dian_rich = dian [ dian [ "wealth" ] > 5e8 ] . copy()
 min_income = dian_rich["income, DIAN-style"] . min()
 
 def log_square_income_and_constant (
@@ -65,8 +72,8 @@ def log_square_income_and_constant (
         lambda x : log(x) ** 3),
       "one"      : 1 } )
 
-model   = OLS (
-  ( dian_rich ["Total Patrimonio líquido"]
+model = OLS (
+  ( dian_rich ["wealth"]
     . apply(log) ),
   log_square_income_and_constant (
     dian_rich ) )
@@ -75,6 +82,30 @@ results = model.fit ()
 results.params
 results.tvalues
 results.summary()
+
+
+##########################################
+### Evaluate predictions on input data ###
+##########################################
+
+### PITFALL: This section should be evaluated manually (eyeballed).
+
+dian_rich["wealth^"] = (
+  results.predict (
+    log_square_income_and_constant ( dian_rich ) )
+  . apply ( exp ) )
+
+dian_rich["log wealth"]  = dian_rich["wealth"]  . apply ( log )
+dian_rich["log wealth^"] = dian_rich["wealth^"] . apply ( log )
+
+( dian_rich[["income, DIAN-style", "log wealth", "log wealth^", "wealth", "wealth^"]]
+  . sort_values ( "wealth" ) )
+
+MSE = ( ( ( dian_rich["log wealth"]
+            - dian_rich["log wealth^"] )
+          ** 2 )
+        . sum()
+        / len(dian_rich) )
 
 
 ############################
