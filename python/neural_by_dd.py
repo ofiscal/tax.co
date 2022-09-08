@@ -179,7 +179,7 @@ show().sort_values("mean MSE over runs")
 
 # Keeping all the data, I get these as the best layouts:
 #
-# shape           runs            MSE averaged over those runs
+# shape           runs            mean MSE over runs
 # (26, 16, 6)     19.0            1.776743
 # (26, 22, 20)    30.0            1.781108
 # (16, 14, 12)    62.0            1.787907
@@ -204,3 +204,17 @@ show().sort_values("mean MSE over runs")
 # (26, 14)        31.0            1.800362
 # (22, 14, 10)    20.0            1.801524
 # (18, 16)        63.0            1.802058
+
+# If instead I drop everyone with wealth < 500e8 COP,
+# I get this:
+# shape           n runs  mean MSE over runs
+# (24, 14, 10)    14.0            0.003450
+# (22, 18, 12)    14.0            0.003482
+# (18, 12, 10)    14.0            0.003485
+# (24, 8)         14.0            0.003498
+# (16, 14, 6)     14.0            0.003502
+# (20, 18, 10)    14.0            0.003507
+# (22, 12, 10)    14.0            0.003508
+# (14, 12)        16.0            0.003509
+# (24, 10, 6)     14.0            0.003511
+# (26, 14, 10)    14.0            0.003511

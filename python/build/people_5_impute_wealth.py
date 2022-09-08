@@ -84,9 +84,9 @@ results.tvalues
 results.summary()
 
 
-##########################################
-### Evaluate predictions on input data ###
-##########################################
+#################################################
+### Evaluate predictions on input (DIAN) data ###
+#################################################
 
 ### PITFALL: This section should be evaluated manually (eyeballed).
 
