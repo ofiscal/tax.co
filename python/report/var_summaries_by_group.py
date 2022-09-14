@@ -14,6 +14,10 @@ if True:
   import python.report.defs      as defs
 
 
+##################################
+### Load, futz with input data ###
+##################################
+
 if True: # load data
   households = oio.readUserData(
       com.subsample,
@@ -70,6 +74,18 @@ if True: # Create a few columns missing in the input data.
 
     df["income < min wage"] = (
       df["income"] < c.min_wage )
+
+if True: # Make some subsets.
+  # PITFALL: All changes to `earners`, `households` should precede this.
+  householdsFemale = households[ households["female head"] == 1 ] . copy()
+  householdsMale   = households[ households["female head"] == 0 ] . copy()
+  earnersFemale = earners[ earners["female"] == 1 ] . copy()
+  earnersMale   = earners[ earners["female"] == 0 ] . copy()
+
+
+###################################
+### Build, save the output data ###
+###################################
 
 def make_summary_frame (
     unit           : str, # unit of observation: households or earners
@@ -153,6 +169,16 @@ for (unit, df, groupVars, variables, restrictedVars) in [
       defs.earnerGroupVars,
       defs.earnerVars,
       defs.earnerRestrictedVars ),
+    ( "earnersFemale",
+      earnersFemale,
+      defs.earnerGroupVars,
+      defs.earnerVars,
+      defs.earnerRestrictedVars ),
+   ( "earnersMale",
+     earnersMale,
+     defs.earnerGroupVars,
+     defs.earnerVars,
+     defs.earnerRestrictedVars ),
     ( "nonzero_laborers",
       nonzero_laborers,
       defs.earnerGroupVars,
@@ -160,6 +186,16 @@ for (unit, df, groupVars, variables, restrictedVars) in [
       defs.earnerRestrictedVars ),
     ( "households",
       households,
+      defs.householdGroupVars,
+      defs.householdVars,
+      defs.householdRestrictedVars ),
+    ( "householdsFemale",
+      householdsFemale,
+      defs.householdGroupVars,
+      defs.householdVars,
+      defs.householdRestrictedVars ),
+    ( "householdsMale",
+      householdsMale,
       defs.householdGroupVars,
       defs.householdVars,
       defs.householdRestrictedVars )
