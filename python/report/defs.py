@@ -60,6 +60,7 @@ earnerGroupVars = (
 #
 
 commonVars = ( [
+  "female head",
   "income < min wage",
   "pension, receiving",
   # "pension, contributing (if not pensioned)",
@@ -108,8 +109,12 @@ householdSpecificVars = [
   "members",
   ]
 
+earnerSpecificVars = [
+  "female",
+]
+
 householdVars = commonVars + householdSpecificVars
-earnerVars    = commonVars
+earnerVars    = commonVars + earnerSpecificVars
 
 
 #
@@ -117,11 +122,9 @@ earnerVars    = commonVars
 #
 
 ofMostInterestLately = [
-  # Things I think Daniel needs but Oliver didn't ask for.
   "income tax sums / total income sums",
   "income: max",
 
-  # Things Oliver asked for.
   "income - tax: sums",
   "income - tax: mean",
   "income: sums",
@@ -261,4 +264,4 @@ householdSpecificRestrictedVars = [
   ]
 
 householdRestrictedVars = commonRestrictedVars + householdSpecificRestrictedVars
-earnerRestrictedVars    = commonRestrictedVars
+earnerRestrictedVars    = commonRestrictedVars + earnerSpecificVars
