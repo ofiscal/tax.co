@@ -89,9 +89,9 @@ if True: # Make some subsets.
   earnersMale   = earners[ earners["female"] == 0 ] . copy()
 
 
-#########################
-### Compute the thing ###
-#########################
+##########################
+### Compute the things ###
+##########################
 
 print()
 print ( "All of the following figures are denominated in peso values recorded in the ENPH, i.e. as of sometime between July 2016 and June 2017. They have not been adjusted for inflation." )
@@ -107,4 +107,10 @@ for radius in [0.1, 1]:
     vat_paid = subset [ "vat paid" ] . mean ()
     sample_size = len ( subset )
     print()
-    print ( label + " earers whose total (not just labor) income was within " + str(radius) + "% of the minimum wage in those years paid " + str ( vat_paid ) + " VAT per month on average. The sample contains " + str ( sample_size ) + " such people." )
+    print ( label + " earers whose total (not just labor) income was within " + str(radius) + "% of the minimum wage in those years paid " + str ( vat_paid ) + " VAT per month on average. That's " + str ( vat_paid / min_wage ) + " minimum wages. The sample contains " + str ( sample_size ) + " such people." )
+
+earners_under_4_min_wages = (
+  len ( earners [ earners [ "income" ] < (4 * min_wage) ] ) /
+  len ( earners ) )
+print()
+print ( "The share of earners making (in total, not just labor income) less than 4 minimum wages is " + str ( earners_under_4_min_wages ) + "." )
