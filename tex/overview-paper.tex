@@ -20,16 +20,31 @@
 \geometry{left=1in,right=1in,top=1.00in,bottom=1.0in}
 \begin{document}
 
-\title{A Static Microsimulation of the Colombian Tax System\thanks{We thank Universidad Javeriana for its financial support of this project. We are also grateful to Catalina Herr\'{a}n for her detailed description of the Colombian tax system, and to seminar participants at Universidad Javeriana for their useful comments on this draft.}}
-\author{Jeffrey Brown, Luis Carlos Reyes, and David Su\'{a}rez\thanks{Observatorio Fiscal, Department of Economics, Pontificia Universidad Javeriana, Bogot\'{a}, Colombia. Telephone:\ 57-1-3208320, e-mail: \textit{luis\_reyes@javeriana.edu.co}}}
+\title{A Static Microsimulation of the Colombian Tax System
+  \thanks{We thank Universidad Javeriana for its financial support of this project.
+    We are also grateful to Catalina Herr\'{a}n for her detailed description of the Colombian tax system,
+    and to seminar participants at Universidad Javeriana for their useful comments on this draft.}}
+\author{Jeffrey Brown, Luis Carlos Reyes, and David Su\'{a}rez
+  \thanks{Observatorio Fiscal,
+    Department of Economics, Pontificia Universidad Javeriana, Bogot\'{a}, Colombia.
+    Telephone:\ 57-1-3208320,
+    e-mail: \textit{ofiscal@javeriana.edu.co}}}
 
 \maketitle
 \begin{abstract}
-  For over at least three decades, Colombia has undergone major tax reform roughly every eighteen months.
-  However, estimates of the distributional impact of changes to the tax code are not systematically produced by any branch of government or by independent groups, despite the constitutional mandate that the tax system be progressive.
-  We develop a static microsimulation of the Colombian tax system that allows us to calculate effective tax rates at the national, departmental and municipal levels for the entire income distribution.
-  We are able to estimate differences in effective tax rates by city, gender, and socioeconomic stratum.
-  The model is programmed in such a way that it allows for easy updates as changes to the tax code are proposed.
+  For over at least three decades,
+  Colombia has undergone major tax reform roughly every eighteen months.
+  However, estimates of the distributional impact of changes to the tax code are not systematically produced by any branch of government,
+  nor by independent groups,
+  despite the constitutional mandate that the tax system be progressive.
+  We develop a static microsimulation of the Colombian tax system
+  that allows us to calculate effective tax rates
+  at the national, departmental and municipal levels
+  for the entire income distribution.
+  We are able to estimate differences in effective tax rates by
+  (among other things) city, gender, and socioeconomic stratum.
+  The software that implements the model allows for
+  easy updates as changes to the tax code are proposed.
  \end{abstract}
 
 \textbf{JEL Classification Codes:}
@@ -40,106 +55,212 @@
 
 \section{Introduction}
 
-In this paper, we develop a microsimulation model of the Colombian tax system with the twin goals of accurately understanding the distributional effects of taxation in a developing country characterized by its high levels of inequality, and of making this information available to the public and policymakers in a way that is easy to understand and use in the formulation of public policy.
+In this paper, we develop a microsimulation model of the Colombian tax system
+with the twin goals of
+accurately understanding the distributional effects of taxation
+in a developing country characterized by its high levels of inequality [[and informality?]],
+and of making this information available to the public and policymakers
+in a way that is easy to understand and use in the formulation of public policy.
 
-Few policymakers, voters, or, indeed, economists, understand the economics of taxation as well as the intricate and technical features of tax law.
-By making reasonable assumptions about tax incidence, carefully modeling tax rules that apply to individual tax payers, and using data from surveys and tax returns, microsimulation analysis can boil down this complex subject to bar charts showing the effects of proposed policy on the after-tax income of people from various demographics and income groups.
+Few policymakers, voters, or indeed economists, understand both
+the economics of taxation
+and the intricate and technical features of tax law.
+By making reasonable assumptions about tax incidence,
+carefully modeling tax rules that apply to individual tax payers,
+and using data from surveys and tax returns,
+microsimulation analysis can boil down this complex subject to
+bar charts showing the effects of proposed policy
+on the after-tax income of people from various demographics and income groups.
 
 The simplicity of the model's output is crucial.
-For ideas to be circulated widely and have an effect on public policy, they need to be clear and on point.
+For ideas to be circulated widely and have an effect on public policy,
+they need to be clear and to the point.
 
 The next section describes the broad outlines of taxation in Colombia.
 Section 3 lists the assumptions we make about tax incidence.
 Section 3 describes the data we use.
-Section 4 explains in detail how we calculate effective tax rates, and shows effective rates of taxation for different income groups.
+Section 4 explains in detail how we calculate effective tax rates,
+and shows effective rates of taxation for different income groups.
 Section 6 concludes.
 
 \section{Institutional framework}
 There are national, departmental, and municipal taxes in Colombia.
-Departments and municipalities do not have the same degree of autonomy that states and cities do in federal countries like the United States: whereas American states can create and levy taxes without the intervention of the federal government, this is not the case in Colombia.
-National, departmental and municipal taxes are all created directly by Congress.
+Departments and municipalities do not have the same degree of autonomy
+that states and cities do in federal countries like the United States:
+whereas American states can create and levy taxes
+without the intervention of the federal government,
+in Colombia they cannot.
+National, departmental and municipal taxes
+are all created directly by Congress.
 
-The difference between national and local taxes is that departments and municipalities can vary some parameters of the taxes that Congress authorizes them to levy.
-For instance, municipalities can tax the profits of all commercial activity occurring within their boundaries, and they can choose the tax rate as well as exemptions to the tax base.
-But the tax rate cannot exceed the maximum allowed by Congress, and municipalities are unable to, say, create a personal income tax in their jurisdiction, because they have not been given legal authority to do so.
+The difference between national and local taxes
+is that departments and municipalities can vary
+some parameters of the taxes that Congress authorizes them to levy.
+For instance, municipalities can tax the profits of
+all commercial activity occurring within their boundaries,
+and they can choose the tax rate as well as exemptions to the tax base.
+But the tax rate cannot exceed the maximum allowed by Congress,
+and municipalities do not have legal authority to, say,
+create a personal income tax in their jurisdiction.
 
-This setup makes it easier to create a model of all the national and local taxes in the country.
-Even though, in principle, there are 32 departmental and 1132 municipal tax codes, the differences between the latter are relatively limited.
+This setup makes it easier to create a model
+of all the national and local taxes in the country.
+Even though, in principle,
+there are 32 departmental and 1132 municipal tax codes,
+the differences between the latter are relatively limited.
 
 Tax intake is low in Colombia relative to other Latin American countries and to countries in the OECD.
-According to the OECD, tax intake in Colombia was around 19.6 \% of GDP in 2016, whereas on average it was 22\% in Latin America and 34\% in the OECD. [[reference]]
+According to the OECD, tax intake in Colombia was around 19.6 \% of GDP in 2016,
+whereas on average it was 22\% in Latin America and 34\% in the OECD. [[reference]]
 
 Table \ref{tab:taxcol} breaks down tax revenue for the year 2017.
-National taxes are the bulk of tax revenue, accounting for 84.9\% of the total.
-Interestingly, municipalities collect roughly three times as much in taxes as departments, even though departments are the larger administrative unit: municipal taxes accounted for 11.3\% of tax intake, while departments only got 3.8\%.
+National taxes are the bulk of tax revenue,
+accounting for 84.9\% of the total.
+Interestingly, municipalities collect roughly three times as much in taxes as departments,
+even though departments are the larger administrative unit:
+municipal taxes accounted for 11.3\% of tax intake,
+while departments only got 3.8\%.
 
-Three quarters of tax revenue come from four types of taxes: the value added tax (27.6\%), corporate income tax (25.3\%), payroll taxes (16.2\%), and the personal income tax (5.9\%).
+Three quarters of tax revenue come from four types of taxes:
+the value added tax (27.6\%),
+corporate income tax (25.3\%),
+payroll taxes (16.2\%),
+and the personal income tax (5.9\%).
 These are all national taxes.
-The fifth largest source of tax revenue is the industry and commerce tax, which is a tax on corporate income collected by municipalities that accounts for 4.
-2\% of revenue.
-Unlike in many developed countries, in Colombia the personal income tax is a smaller source of revenue than corporate income taxes.
+The fifth largest source of tax revenue is the industry and commerce tax,
+the GMF or ``4 por mil'',
+which is a tax on corporate income collected by municipalities
+that accounts for 4.2\% of revenue.
+Unlike in many developed countries, in Colombia
+the personal income tax is a smaller source of revenue than corporate income taxes.
 
-Municipal property taxes on land and real estate follow, making up 3.7\% of revenue.
-Another 3.7\% comes from a much-criticized but easy to collect national tax on financial transactions - the tax is said to keep much of the population away from the formal financial system.
-Import tariffs account for 2.2\% of tax revenue, in contrast with the days of import substitution industrialization, when roughly a third of tax revenue came from tariffs.
-A tax on personal and corporate wealth that comes and goes with every tax reform accounted for 2\% of revenue in 2017.
-Another 5.9\% of revenue comes from a variety of specific and ad valorem taxes on goods, including a national sales tax for restaurant consumption and other items, and various national and local taxes on gasoline, alcohol, tobacco, and vehicles.
+Municipal property taxes on land and real estate follow,
+making up 3.7\% of revenue.
+Another 3.7\% comes from a much-criticized but easy to collect national tax on financial transactions,
+which is said to keep much of the population away from the formal financial system.
+Import tariffs account for 2.2\% of tax revenue,
+in contrast with the days of import substitution industrialization,
+when roughly a third of tax revenue came from tariffs.
+A tax on personal and corporate wealth that comes and goes with every tax reform
+accounted for 2\% of revenue in 2017.
+Another 5.9\% of revenue comes from a variety of specific and ad valorem taxes on goods,
+including a national sales tax for restaurant consumption and other items,
+and various national and local taxes on
+gasoline, alcohol, tobacco, and vehicles.
 A host of other small taxes make up the remaining 3.3\% of tax intake.
 
-Any analysis of taxation in Colombia must take into account that roughly half of the workforce is informal, which limits the collection of payroll and personal income taxes.
+Any analysis of taxation in Colombia must take into account that
+roughly half of the workforce is informal,
+which limits the collection of payroll and personal income taxes.
 The assumptions of our model take this into account.
 
 \section{Assumptions}
 
-We are interested in calculating the entire tax burden of individuals belonging to different income groups,  so that we can produce estimates of how progressive proposed changes to the tax code will be.
+We are interested in calculating
+the entire tax burden of individuals belonging to different income groups,
+so that we can produce estimates of how progressive proposed changes to the tax code will be.
 This requires making assumptions about the incidence of various taxes.
-We follow the same approach as the Congressional Budget Office of the United States described in \citet{salanie}, assuming that the personal income tax is fully borne by households, payroll taxes are borne entirely by workers, excise taxes (including the VAT, the tax on financial transactions, sales tax, and tariffs) are borne by the consumers of the goods and services in question, and corporate income tax is fully borne by the owners of capital.
-Moreover, we assume that property taxes are borne by the owners of land or real estate.
+We follow the same approach as
+the Congressional Budget Office of the United States,
+as described in \citet{salanie}:
+we assume that the personal income tax is fully borne by households,
+payroll taxes are borne entirely by workers,
+excise taxes
+(including the VAT, the tax on financial transactions, sales tax, and tariffs)
+are borne by the consumers of the goods and services in question,
+and corporate income tax is fully borne by the owners of capital.
+Moreover, we assume that property taxes are borne by
+the owners of land or real estate.
 Appendix A describes the relevant taxes in detail.
 
 \section{Data}
-Our data come from \textit{Encuesta nacional de presupuestos de los hogares} (ENPH), which is a nationally representative survey of 87,201 households that was carried out between July 2016 and July 2017.
-The ENPH includes a wealth of data on income and expenditures, which we use to calculate effective tax rates for people of different levels of income in different regions of the country.
+Our data come from the
+\textit{Encuesta nacional de presupuestos de los hogares} (ENPH),
+which is a nationally representative survey of 87,201 households
+that was carried out between July 2016 and July 2017.
+The ENPH includes a wealth of data on income and expenditures,
+which we use to calculate effective tax rates for
+people of different levels of income in different regions of the country.
 
 Table \ref{tab:ygender} shows some descriptive statistics of the sample.
 The average household has 3.3 members and an income of COP 2.1 million.
-Labor income accounts for 74\% of the total, capital income for 11.5\%, dividend income for 0.05\%, pension income for 10\%, government transfers for 0.7\%, private transfers for 3.5\% and extraordinary income for 0.5\%.
-The average household has 3.3 members, and the average income of female-headed households is only 73\% the average income of male-heade ones, despite being of essentially the same size.
+Labor income accounts for 74\% of the total,
+capital income for 11.5\%,
+dividend income for 0.05\%,
+pension income for 10\%,
+government transfers for 0.7\%,
+private transfers for 3.5\%
+and extraordinary income for 0.5\%.
+The average household has 3.3 members,
+and the average income of female-headed households
+is only 73\% of the average income of male-heade ones,
+despite being of essentially the same size.
 Table \ref{tab:ydecile} disaggregates these statistics by income decile.
-Labor income is only is only 53\% of income for individuals in the first decile, with private transfers (27\%) and government transfers (11.7\%) being an important source of income.
-As income increases, reliance on transfers falls quickly, and income from capital and dividends slowly increases.
-Most (50\%) households in the first decile are female-headed, and their share declines as income rises.
+Labor income is only 53\% of income for individuals in the first decile,
+with private (27\%) and government transfers (11.7\%)
+being important sources of income.
+As income increases, reliance on transfers falls quickly,
+and income from capital and dividends slowly increases.
+Most (50\%) households in the first decile are female-headed,
+and their share declines as income rises.
 Only 29.6\% of households in the top decile are headed by women.
-Table \ref{tab:ycity} shows the statistics for the main cities, with Bogota and Medellin reporting the highest incomes, as would be expected.
-It is worth noting that the incomes reported in the survey probably do not include the employee share of social security payments, which we calculate on the basis of tax rules to be able to compute effective tax rates.
+Table \ref{tab:ycity} shows the statistics for the main cities,
+with Bogota and Medellin reporting the highest incomes, as would be expected.
+It is worth noting that the incomes reported in the survey
+probably do not include the employee share of social security payments,
+which we calculate on the basis of tax rules
+to be able to compute effective tax rates.
 
 \section{Effective Tax Rates}
 We calculate individual $j$'s effective tax rate before transfers as
 \begin{equation}
-t=\frac{consumption + capital + payroll + personal + financial + wealth + property}{net \; labor \;income +capital \;income + dividends + payroll + pension \;income}
+  t=\frac
+  {consumption + capital + payroll + personal + financial + wealth + property}
+  {net \; labor \;income +capital \;income + dividends + payroll + pension \;income}
 \end{equation}
 
-$consumption$ is payments made for value added taxes on consumption, as well as the national sales tax and the beer, liquor, tobacco, and vehicle taxes:
+$consumption$ is payments made for value added taxes on consumption,
+as well as the national sales tax
+and the beer, liquor, tobacco, and vehicle taxes:
 
 \begin{equation}
 consumption = \sum^{N}_{n=1} \tau_nP_nX_n
 \end{equation}
-where $P_n$ is the price before taxes of good $n$, $X_n$ is the number of units of $n$ consumed, and $\tau_n$ is the tax rate rate that applies to good $n$.
-ENPH has data on $(P_n+\tau_n)X_n$, so we multiply this by $\frac{\tau_n}{1+\tau_n}$ and add over all goods to obtain $consumption$.
+where $P_n$ is the price before taxes of good $n$,
+$X_n$ is the number of units of $n$ consumed,
+and $\tau_n$ is the tax rate rate that applies to good $n$.
+The ENPH has data on $(P_n+\tau_n)X_n$,
+so we multiply this by $\frac{\tau_n}{1+\tau_n}$
+and add over all goods to obtain $consumption$.
 We obtain $\tau_n$ from the tax code.
-Sometimes there is more than one excise tax on a good, in which case $\tau_n$ is the sum of the rates corresponding to the various taxes.
-In the case of taxes on fuel, we assume that not just household fuel purchases but also a certain percentage of spending on public transportation (which can be specified in the simulation) is taxed at this rate.
-In cases where other inputs other than fuel are taxed we do the same (see the appendix for details).
+Sometimes there is more than one excise tax on a good,
+in which case $\tau_n$ is the sum of
+the rates corresponding to the various taxes.
+In the case of taxes on fuel,
+we assume that not just household fuel purchases but also
+a certain percentage of spending on public transportation
+(which can be specified in the simulation)
+is taxed at this rate.
+In cases where other inputs other than fuel are taxed we do the same
+(see the appendix for details).
 
-
-$corporate$ is individual $j$'s share of the taxes paid by firms of which he is a stockholder:
+$corporate$ is individual $j$'s share of
+the taxes paid by firms of which he is a stockholder:
 \begin{equation}
 corporate = \sum^{K}_{k=1} \tau_k\theta^j_k\Pi_k
 \end{equation}
 
-where $\theta^j_k$ is the share of firm $k$ owned by $j$, $\tau_k$ is firm $k$'s effective tax rate, and $\Pi_k$ is firm $k$'s profits before taxes.
-ENPH has data on total earnings from dividends (\citet{juliana} also have administrative data for the top 1\% of income earners), which we take to be $\sum^{K}_{k=1} \theta^j_k\Pi_k(1-\tau_k)$.
-To obtain $corporate$ we multiply total earnings from dividends by $\frac{\tau_k}{1-\tau_k}$, assuming that $\tau_k=\tau \; \forall k$, where $\tau$ is the effective tax rate on capital obtained from national accounts by \citet{banrep}.
+where $\theta^j_k$ is the share of firm $k$ owned by $j$,
+$\tau_k$ is firm $k$'s effective tax rate,
+and $\Pi_k$ is firm $k$'s profits before taxes.
+The ENPH has data on total earnings from dividends
+(\citet{juliana} also have administrative data for the top 1\% of income earners),
+which we take to be $\sum^{K}_{k=1} \theta^j_k\Pi_k(1-\tau_k)$.
+To obtain $corporate$ we multiply total earnings from dividends by
+$\frac{\tau_k}{1-\tau_k}$,
+assuming that $\tau_k=\tau \; \forall k$,
+where $\tau$ is the effective tax rate on capital
+obtained from national accounts by \citet{banrep}.
 
 $payroll$ is the sum of employee and employer contributions to social security payments:
 \begin{equation}
@@ -150,31 +271,54 @@ payroll = payroll(Y)=
   \end{cases}
 \end{equation}
 
-where  $n(Y)$ stands for pension contributions, $h(Y)$ for compulsory health care contributions, $f(Y)$ for family compensation fund contributions, $a(Y)$ for adult education contributions, $c(Y)$ for child welfare contributions, and  $\underline{w}$ stands for the minimum wage.
-$Y$, which is reported by ENPH, is labor income net of the employer share of payroll taxes but including the employee share.
+where  $n(Y)$ stands for pension contributions,
+$h(Y)$ for compulsory health care contributions,
+$f(Y)$ for family compensation fund contributions,
+$a(Y)$ for adult education contributions,
+$c(Y)$ for child welfare contributions,
+and $\underline{w}$ for the minimum wage.
+$Y$, which is reported in the ENPH,
+is labor income net of the employer share of payroll taxes
+but including the employee share.
 Functions of $Y$ are calculated by applying the rules described in the appendix.
-When $Y < \underline{w} $ (which is the case for about half of the labor force), we assume that the worker is informal and therefore pays no payroll taxes.
+When $Y < \underline{w}$
+(which is the case for about half of the labor force),
+we assume that the worker is informal and therefore pays no payroll taxes.
 
-$personal$ is the personal income tax; we estimate it from ENPH data on $Y$, and from the number of children in the household.
-ENPH does not allow us to infer which exemptions (other than the child exemption) people claimed.
+$personal$ is the personal income tax.
+We estimate it from ENPH data on $Y$,
+and from the number of children in the household.
+The ENPH does not allow us to infer which exemptions
+(other than the child exemption) people claimed.
 However, exemptions are limited and few people claim them.
-We are able to see how the tax burden would vary for the small percentage of individuals who pay income taxes when we assume that they claim either the minimum or the maximum allowed.
+We are able to see how the tax burden would vary
+for the small percentage of individuals who pay income taxes
+when we assume that they claim either the minimum or the maximum allowed.
 
 $financial$ is the tax on financial transactions paid by individuals:
 \begin{equation}
   financial=0.04 \times (net \;income -350uvt)
 \end{equation}
-where $net \;income$ includes income from all sources net of taxes and $uvt$ is \textit{unidades de valor tributario}  \footnote{The tax code uses a special unit to measure income for tax purposes, called \textit{unidad de valor tributario}, or UVT.
-  In 2018, the value of a UVT was COP 33,156, and the monthly minimum wage was COP 781,242.
-  The tax on financial transactions is only paid when monthly transactions exceed 350 UVTs, or around 15 times the minimum wage.}
+where $net \;income$ includes income from all sources net of taxes
+and $uvt$ is \textit{unidades de valor tributario}
+\footnote{The tax code uses a special unit to measure income for tax purposes,
+called \textit{unidad de valor tributario}, or UVT.
+In 2018, the value of a UVT was COP 33,156,
+and the monthly minimum wage was COP 781,242.
+The tax on financial transactions is only paid
+when monthly transactions exceed 350 UVTs,
+or around 15 times the minimum wage.}
 
 $wealth$ stands for taxes paid on personal wealth by the individual.
 The tax on personal wealth is set to expire on December 31, 2018.
 
 $property$ is the municipal tax on real estate.
-ENPH reports payments made by individuals on account of this tax, so we simply add this variable to their tax burden.
+The ENPH reports payments made by individuals on account of this tax,
+so we simply add this variable to their tax burden.
 
-$net \; labor \;income$ is labor income reported in ENPH minus our estimate of the employee share of payroll taxes (which is zero for informal workers):
+$net \; labor \;income$ is labor income reported in the ENPH
+minus our estimate of the employee share of payroll taxes
+(which is zero for informal workers):
 
 \begin{equation}
 net \; labor \;income
@@ -184,15 +328,14 @@ net \; labor \;income
   \end{cases}
 \end{equation}
 
-
-Finally, $capital \; income$, $dividends$, and $pension \; income$ are self-explanatory, and are reported by ENPH.
+Finally, $capital \; income$, $dividends$, and $pension \; income$
+are self-explanatory, and are reported in the ENPH.
 
 By deciles
 
 - 10.7\% vat, .23 rate on capital
 - 10.7\% vat, .15 rate on capital
 - 10.7\% vat,  0 rate on capital
-
 
 By gender and city
 Preferred specification: 10.7\% vat and .23 rate on capital
@@ -205,15 +348,22 @@ Preferred specification: 10.7\% vat and .23 rate on capital
 
 \begin{appendices}
 \section{Building the Data}
-The ENPH consists of a number of files in which the unit of observation is a purchase, and one in which it is a person.
+The ENPH consists of a number of files
+in which the unit of observation is a purchase,
+one in which it is a person,
+and one in which it is a building.
 
 \subsection{Purchase-level Data}
 
 \subsubsection{Cleaning}
 
 14 files in the ENPH contain what we call ``purchase-level'' data.
-It is not literally that, as it includes within-household transfers (which we drop) and gifts
--- but ``acquisition data'' seemed like a more confusing term.
+It is not literally that,
+as it includes within-household transfers (which we drop)
+and gifts
+and a few taxes (notably the land value tax) --
+but ``data on acquisitions and a select set of taxes''
+seemed unwieldy.
 
 Every purchase file includes an expense variable.
 We drop purchases with a listed cost greater than a billion pesos
@@ -221,13 +371,14 @@ We drop purchases with a listed cost greater than a billion pesos
 
 Some of the purchase files include a quantity variable.
 For those that don't, we assume quantity = 1.
-We drop purchases for which quantity is non-positive.
+We drop purchases for which the quantity is non-positive.
 
 Some of the files indicate how the good was acquired.
 For those that don't, we assume the good was purchased.
 
 Some of the files indicate where the good was acquired.
-For those that don't, we assume it came from a store too large to dodge the VAT.
+For those that don't,
+we assume it came from a store too large to dodge the VAT.
 
 Some of the files include a ``frequency of purchase'' variable.
 For those that don't, we assume the purchase is monthly.
@@ -240,18 +391,29 @@ However, two of the files, ``Gastos diarios Urbano - Capitulo C'' and
 ``Gastos semanales Rural - Capitulo C'',
 use a separate system of 25 categories to classify certain food purchases.
 Based on our study of the tax laws,
-Observatorio Fiscal developed \href{two bridges}{https://github.com/ofiscal/tax.co/tree/master/data/vat}
-to VAT rates, one from COICOP codes and one from Capitulo C codes.
+we (the Observatorio Fiscal) developed two bridges to VAT rates,
+\href
+    {https://github.com/ofiscal/tax.co/tree/master/config/vat/grouped/vat\_by\_coicop.csv}
+    {one from COICOP codes}
+and
+\href
+    {https://github.com/ofiscal/tax.co/tree/master/config/vat/grouped/vat\_by\_capitulo\_c.csv}
+    {one from Capitulo C codes}.
 
 These files include columns ``vat, min'' and ``vat, max''.
 That is because the tax laws do not align precisely with the codes the ENPH uses to classify purchases.
-For instance, if gasoline for public transportation is not taxed, but gasoline for private automobiles is, and if the COICOP system does not distinguish between them, then the effective tax on fuel depends on the proportion of fuel consumed by buses.
+For instance, if gasoline for public transportation is not taxed,
+but gasoline for private automobiles is,
+and if the COICOP system does not distinguish between them,
+then the effective tax on fuel depends on the proportion of fuel consumed by buses.
 
-From those legal VAT rates, we calculate the ``VAT fraction'' for each category as
+From those legal VAT rates,
+we calculate the ``VAT fraction'' for each category as
 \begin{equation}
   vatFraction = \frac{vat}{1 + vat}
 \end{equation}
-We use the VAT fraction to determine the fraction of a household's expenditures that go to the VAT.
+We use the VAT fraction to determine
+the fraction of a household's expenditures that go to the VAT.
 For instance, if the VAT for some good is 50\%, then the VAT constitutes
 \begin{equation}
   \frac{0.5}{1.5} = frac{1}{3}
@@ -262,10 +424,11 @@ From VAT rate and purchase frequency, we compute total VAT paid.
 
 Colombia imposes a special 8\% tax on oversized motorcycles.
 The size of a motorcycle purchase is not part of the ENPH.
-We use price as a proxy, assuming that any motorcycle with a value above 9
-million pesos is oversized.
+We use price as a proxy, assuming that
+any motorcycle with a value above 9 million pesos is oversized.
 
-These tax rates are then merged into the purchase data by COICOP or Capitulo C code.
+These tax rates are then merged into the purchase data
+by COICOP or Capitulo C code.
 
 Note that the ENPH records the predial (a tax levied on property)
 as if it were a purchase, under the COICOP code 12700601.
@@ -274,7 +437,8 @@ as if it were a purchase, under the COICOP code 12700601.
 \subsection{Person-level Data}
 Each person in the data is a ``member'' of a household.
 
-Item ``P6050'' gives the relationship an individual bears to the head of household.
+Item ``P6050'' encodes an individual's relationship to the head of household
+(which might be the identity relationship).
 We exclude all persons for whom ``P6050'' takes any of the following values:
 \begin{itemize}
 \item 6: Empleado(a) del servicio doméstico y sus parientes
@@ -283,27 +447,39 @@ We exclude all persons for whom ``P6050'' takes any of the following values:
 \end{itemize}
 
 \subsubsection{Income}
-The item ``P6760'' indicates the number of months for which someone was paid the last time they received a salary.
+The item ``P6760'' indicates the number of months
+for which someone was paid the last time they received a salary.
 Where that value is missing, we assume the received salary is for one month.
 
 The ENPH has more than 70 variables detailing sources of income.
 They are mostly missing.
 We replace those missing values with zero.
-Those columns also use the values 98 and 99, respectively, to signify that the respondent did not know or would not say, respectively.
-(98 and 99 Colombian pesos is an amount of money so close to zero that nobody would report it as a monthly income of any sort.)
+Those columns also use the values 98 and 99, respectively,
+to signify that the respondent did not know or would not say, respectively.
+(98 and 99 Colombian pesos is an amount of money so close to zero
+that nobody would report it as a monthly income of any sort.)
 We replace those with 0 as well.
 
 The ENPH provides total cash and in-kind beca and non-beca funding for students.
 [[LUIS: How can I explain the difference between beca and non-beca funding?]]
-That uses four variables -- cash beca funding, in-kind beca funding, cash non-beca funding, and in-kind non-beca funding.
-The ENPH also provides information on what kinds of entities contributed to a student's funding, but does not provide a breakdown.
-We group those funding sources into two broad classes, government and private.
-For those students receiving from multiple agencies, we assume the contributions are equal across them -- for instance, if a student receives from one government and two private institutions, we assume 1/3 of the student's funding is from the government, and the other 2/3 is private.
-The result is 8 variables: cash x in-kind, beca x non-beca, and government x private.
+That uses four variables --
+cash beca funding, in-kind beca funding, cash non-beca funding, and in-kind non-beca funding.
+The ENPH also provides information on
+what kinds of entities contributed to a student's funding,
+but does not provide a breakdown.
+We group those funding sources into two broad classes: government and private.
+For those students receiving from multiple agencies,
+we assume the contributions are equal across them -- for instance,
+if a student receives from one government and two private institutions,
+we assume 1/3 of the student's funding is from the government,
+and the other 2/3 is private.
+The result is 8 variables:
+cash x in-kind, beca x non-beca, and government x private.
 
-The ENPH reports 11 kinds of income an individual might receive from the governmnent.
+The ENPH reports 11 kinds of income
+an individual might receive from the governmnent.
 One of them is unemployment insurance.
-The other ten come from the five programs''
+The other ten come from the five programs
 ``Familias en Accion'',
 ``Familias en Su Tierra'',
 ``Jovenes en Accion'',
@@ -313,37 +489,99 @@ in cash and in-kind forms.
 We collect all under the category ``government income''.
 
 We define ``non-labor income'' to include beca income and sales income.
-The ENPH reports three kinds of sales income -- from stock, from livestock, and from vehicles.
+The ENPH reports three kinds of sales income --
+from stock, from livestock, and from vehicles.
 
-For Colombian tax purposes, ``capital income'' includes rental income and income from interest on investments.
+For Colombian tax purposes, ``capital income''
+includes rental income and income from interest on investments.
 It does not include dividends; we retain that as a separate variable.
-Rental income described in the ENPH includes that from real estate, vehicles and equipment.
+Rental income described in the ENPH includes that from
+real estate, vehicles and equipment.
 
-We define ``private income'' to include alimony income, domestic and private remittances, and assistance (``ayudas'') from domestic and foreign institutions.
+We define ``private income'' to include
+alimony income, domestic and private remittances, and
+assistance (``ayudas'') from domestic and foreign institutions.
 
-We define ``infrequent income'' to include income from gambling, inheritance, jury awards, tax refunds, and other refunds.
+We define ``infrequent income'' to include income from
+gambling, inheritance, jury awards, tax refunds, and other refunds.
 The tax code uses slightly different definitions.
-It divides ``ganancias ocasionales'' into one set that is taxed at a 10\% rate and another that is taxed at 20\%.
-The former includes inheritance income, assistance from foreign and domestic institutions, and proceeds from the sale of real estate.
+It divides ``ganancias ocasionales'' into
+one set that is taxed at a 10\% rate
+and another that is taxed at 20\%.
+The former includes inheritance income,
+assistance from foreign and domestic institutions,
+and proceeds from the sale of real estate.
 The second includes gambling and jury award income.
 
 The ENPH includes a column that describes ``income'' from borrowing.
-We do not include such income in our analysis, as income is not traditionally thought of as something one must repay.
+We do not include such income in our analysis,
+as income is not ordinarily thought of as something one must repay.
 
 Labor income in the ENPH includes all of the following variables:
-P6500, P7070, P7472S1, P7422S1, P6750, P1653S1A1, P1653S2A1, P6585S3A1, P6585S1A1, P1653S4A1, P6510S1, P6585S2A1, P1653S3A1, P6779S1, P550, P6630S5A1, P6630S2A1, P6630S1A1, P6630S3A1, P6630S4A1, P6630S6A1, P6590S1, P6600S1, P6620S1, P6610S1
+P6500,
+P7070,
+P7472S1,
+P7422S1,
+P6750,
+P1653S1A1,
+P1653S2A1,
+P6585S3A1,
+P6585S1A1,
+P1653S4A1,
+P6510S1,
+P6585S2A1,
+P1653S3A1,
+P6779S1,
+P550,
+P6630S5A1,
+P6630S2A1,
+P6630S1A1,
+P6630S3A1,
+P6630S4A1,
+P6630S6A1,
+P6590S1,
+P6600S1,
+P6620S1,
+and P6610S1.
 Some of those are in-kind and others are cash.
-Note that for some rows, some of those columns are redundant, as certain respondents included their value in their response to P6500.
-The variables P1653S1A2, P1653S2A2, P6585S3A2, P6585S1A2, P1653S4A2, P6510S2, P6585S2A2, and P1653S3A2 can be used to avoid double-counting them.
+Note that for some rows, some of those columns are redundant,
+as certain respondents included their value in their response to P6500.
+The variables
+P1653S1A2,
+P1653S2A2,
+P6585S3A2,
+P6585S1A2,
+P1653S4A2,
+P6510S2,
+P6585S2A2,
+and P1653S3A2 can be used to avoid double-counting them.
 
 The above transformations result in the following income aggregates:
-pension, cesantia, dividend, infrequent, govt cash, labor cash, private, govt in-kind, and labor in-kind.
-From these we are able to compute further aggregates: total cash, in-kind, government and labor income, and total income.
+pension,
+cesantia,
+dividend,
+infrequent,
+govt cash,
+labor cash,
+private,
+govt in-kind,
+and labor in-kind.
+From these we are able to compute further aggregates:
+cash income,
+in-kind income,
+government income,
+labor income,
+and total income.
+(Cash and in-kind form a partition of total income.)
 
 \subsubsection {Income Rank and Tax-Deductible Dependents}
-To determine which earner should claim which dependent in households with multiple earners and dependents, we compute within each household an ``income rank'' from labor income.
+To determine which earner should claim which dependent
+in households with multiple earners and dependents,
+we compute within each household an ``income rank'' from labor income.
 
-The ENPH includes no variable describing disability per se, but it does provide disability as one of the possible responses (namely 11) to question P6310, ``Why did you not seek work?''
+The ENPH includes no variable describing disability per se,
+but it does provide disability as one of the possible responses (namely 11)
+to question P6310, ``Why did you not seek work?''
 From this we construct the ``disabled'' variable.
 
 From P6050, the ``relationship to head of household'' variable,
@@ -355,8 +593,15 @@ we can assign household members to one of the following categories:
 \item anyone else
 \end{itemize}
 
-A child related to the head of household can be claimed as a dependent for tax purposes if they are under 19 years of age, or if they are a student and under 24 years of age, or if they are disabled.
-A relative who is not a child of the head of household can be claimed as a dependent if they have an income below 260 UVTs or they are disabled. Non-relatives cannot be claimed as dependents.
+A child related to the head of household
+can be claimed as a dependent for tax purposes
+if they are under 19 years of age,
+or if they are a student and under 24 years of age,
+or if they are disabled.
+A relative who is not a child of the head of household
+can be claimed as a dependent
+if they have an income below 260 UVTs or they are disabled.
+Non-relatives cannot be claimed as dependents.
 
 
 \subsubsection{Location and Estrato}
@@ -364,7 +609,8 @@ A relative who is not a child of the head of household can be claimed as a depen
 The file ``Viviendas y hogares'' contains data on housing.
 We use only three variables from it: city, department and estrato.
 Estrato is a number assigned to neighborhoods that correlates loosely with income,
-ranging from 0 (along the lines of hovels with dirt floors and utilities) to 6.
+ranging from 0 (think hovels with dirt floors and no utilities)
+to 6 (pretty swanky).
 We merge these variables into the person-level data by household.
 
 \subsection{Taxes on Income}
@@ -372,21 +618,32 @@ We merge these variables into the person-level data by household.
 \subsubsection{The GMF}
 
 The GMF is a financial tax of 0.4\% levied on funds leaving any bank account.
-Every individual receives a certain monthly exemption, which varies from year to year.
-The ENPH was conducted for six months in 2016 and six in 2017, over which period the exemption threshold changed.
+Every individual receives a certain monthly exemption,
+which varies from year to year.
+The exemption threshold changed at the end of 2016,
+halfway through the conduct of the ENPH.
 In 2016 it was \$10,413,550 COP, and in 2017 it was \$11,150,650 COP.
 We use the arithmetic average of those two figures,
 and assume all of a person's cash income leaves their bank account exactly once.
 
 \subsubsection{Other Income Taxes}
 
-Other income taxes levied in Colombia include Pensión, Salud, Solidaridad, Parafiscales, and Cajas de Compensación, and Cesantias and Primas.
+Other income taxes levied in Colombia include
+Pensión,
+Salud,
+Solidaridad,
+Parafiscales,
+Cajas de Compensación,
+and Cesantias and Primas.
 
 The rules governing these taxes are somewhat complex,
 depending on a person's income and whether they have a long-term employment contract.
 In some cases their employer contributes a share.
-Our code merely replicates what the law suggests.
-It can be found in the following three files \href{https://github.com/ofiscal/tax.co/tree/master/python/build}{here}:
+Our code replicates those laws.
+It can be found in the following three files
+\href
+    {https://github.com/ofiscal/tax.co/tree/master/python/build}
+    {here}:
 \begin{itemize}
 \item people\_4\_income\_taxish.py
 \item ss\_functions.py
@@ -395,127 +652,260 @@ It can be found in the following three files \href{https://github.com/ofiscal/ta
 
 
 \section{Tax Rules and Modeling Choices}
-This appendix describes taxes in Colombia and our modeling choices with enough precision to replicate our microsimulation.
-The tax code we describe here was passed in December 2016, and it came into force on January 2017.
-As of this writing (October 2018), Congress has already started to discuss a new tax reform.
+This appendix describes taxes in Colombia and our modeling choices
+with enough precision to replicate our microsimulation.
+The tax code we describe here was passed in December 2016,
+and it came into force on January 2017.
+As of this writing (October 2018),
+Congress has already started to discuss a new tax reform.
+
 
 \subsection{Value Added Tax}
 This is a standard VAT (\textit{Impuesto al Valor Agregado}).
-Sellers of a good can reclaim the VAT paid for the inputs they used, and they only have to pay the tax on the value they created.
+Sellers of a good can reclaim the VAT paid for the inputs they used,
+and they only have to pay the tax on the value they created.
 We assume that this tax is fully borne by consumers.
-The survey data from ENPH include consumption data discriminated by types of goods purchased, as well as data on income.
-We calculate the total VAT paid by an individual as the value of their consumption of a good times the VAT rate charged for consuming that good.
+The survey data from ENPH include consumption data
+discriminated by types of goods purchased,
+as well as data on income.
+We calculate the total VAT paid by an individual
+as the value of their consumption of a good
+times the VAT rate charged for consuming that good.
 
-The VAT rate is 19\% for all goods and services unless a different rate is specifically stipulated in the tax code (\textit{Estatuto Tributario}).
-These exceptions are meant to reduce the tax burden on items that are frequently consumed and are considered basic needs - they are a way of reducing the regressiveness of the tax.
+The VAT rate is 19\% for all goods and services
+unless a different rate is specifically stipulated in the tax code
+(\textit{Estatuto Tributario}).
+These exceptions are meant to reduce the tax burden
+on items that are frequently consumed and are considered basic needs
+- they are a way of reducing the regressiveness of the tax.
 
 The exceptions to the standard 19\% VAT fall into one of the following three categories:
 \begin{itemize}
 \item 5\% VAT on goods listed in article 468 of the tax code
-\item Exempt goods and services (\textit{exentos}), on which no VAT is paid, and for which the seller is allowed to reclaim the VAT paid for input purchases.
+\item Exempt goods and services (\textit{exentos}),
+  on which no VAT is paid,
+  and for which the seller is allowed to reclaim
+  the VAT paid for input purchases.
   These are listed in articles 477-481 of the tax code.
-\item Excluded goods and services (\textit{exclu\'{i}dos}), on which no VAT is paid, but for which the seller is not allowed to reclaim the VAT paid for input purchases.
-  Excluded goods are listed in article 424 of the tax code, and excluded services in article 476.
+\item Excluded goods and services (\textit{exclu\'{i}dos}),
+  on which no VAT is paid,
+  but for which the seller is not allowed to reclaim
+  the VAT paid for input purchases.
+  Excluded goods are listed in article 424 of the tax code,
+  and excluded services in article 476.
 \end{itemize}
 
-The tax payments made at the 19\%, 5\% and exempt (0\%) rates are easy to calculate.
-Excluded goods, by contrast, require us to make an assumption regarding the share of the final value that corresponds to the cost of the inputs used by the final seller.
-Our program allows us to choose this share, which is then multiplied by the final value and then by 19\% to obtain the VAT paid for this good.
+The tax payments made at the 19\%, 5\% and exempt (0\%) rates
+are easy to calculate.
+Excluded goods, by contrast, require us to make an assumption regarding
+the share of the final value that corresponds to
+the cost of the inputs used by the final seller.
+Our program allows us to choose this share,
+which is then multiplied by the final value and then by 19\%
+to obtain the VAT paid for this good.
 
 \subsection{Corporate Income Tax}
 
-In principle, there is a flat corporate income tax rate of 33\% on profits, and in 2018 the marginal tax rate on profits greater than COP 800 million (roughly USD PPP 626,000) was provisionally increased to 37\%.
-In practice, however, there are numerous industry-specific tax exemptions, because of which these nominal tax rates translate into vastly different effective tax rates for different firms.
-Therefore, we impute an effective tax rate of [[]] to the earnings of corporations, which we take from [[]]'s calculation of the effective tax rate on capital, a figure derived using information from national accounts.
+In principle, there is a flat corporate income tax rate of 33\% on profits,
+and in 2018 the marginal tax rate
+on profits greater than COP 800 million (roughly USD PPP 626,000)
+was provisionally increased to 37\%.
+In practice, however, there are numerous industry-specific tax exemptions,
+thanks to which these nominal tax rates translate into
+vastly different effective tax rates for different firms.
+Therefore, we impute an effective tax rate of [[]]
+to the earnings of corporations,
+which we take from [[]]'s calculation of the effective tax rate on capital,
+a figure derived using information from national accounts.
 
-Ideally, we would like to impute the burden of taxes on firms to the individuals who own the firms.
-Unfortunately, this is not possible, because personal income tax returns do not specify which firms are the source of a person's earnings from dividends.
-Therefore, we impute effective tax rate on capital to individuals' earnings from dividends and from returns on capital.
-These are the taxes paid by the firm before distributing dividends, and they are not to be confused with the personal income tax on dividends or on returns on capital, which is an additional burden to the owners of capital.
+Ideally, we would like to impute the burden of taxes on firms
+to the individuals who own the firms.
+Unfortunately, this is not possible,
+because personal income tax returns do not specify
+which firms are the source of a person's earnings from dividends.
+Therefore, we impute effective tax rate on capital
+to individuals' earnings from dividends and from returns on capital.
+These are the taxes paid by the firm before distributing dividends,
+and they are not to be confused with
+the personal income tax on dividends or on returns on capital,
+which is an additional burden to the owners of capital.
 
-\citet{juliana} use administrative data from the tax administration, DIAN, to analyze high incomes in Colombia.
-They show that, in 2010, the top 1\% of income earners received [[]] percent of their income from dividends and [[]] from returns on capital.
+\citet{juliana} use administrative data from the tax administration, DIAN,
+to analyze high incomes in Colombia.
+They show that, in 2010, the top 1\% of income earners
+received [[]] percent of their income from dividends
+and [[]] from returns on capital.
 We impute the effective tax rate on capital to that share of high incomes.
 
 \subsection{Payroll Taxes}
 
 Statutorily, payroll taxes are shared by the employee and the employer.
-Because labor demand is elastic and labor supply is highly inelastic, we attribute the entire burden of payroll taxes to the worker.
-Payroll taxes are high in Colombia: they range between 24\% and 39.5\% of wages (compare this to the 15.3\% FICA tax in the United States).
-Maximum taxable earnings are 25 times the minimum wage for employees, and 62.5 times the minimum wage for independent contractors.
-We compute the payroll tax burden on the basis of labor income as reported by respondents to ENPH.
-We assume that the income reported is their nominal salary: it includes the employee share of payroll taxes but excludes the employer share.
+Because labor demand is elastic and labor supply is highly inelastic,
+we attribute the entire burden of payroll taxes to the worker.
+Payroll taxes are high in Colombia:
+they range between 24\% and 39.5\% of wages
+(compare this to the 15.3\% FICA tax in the United States).
+Maximum payroll-taxable earnings are 25 times the minimum wage for employees,
+and 62.5 times the minimum wage for independent contractors.
+We compute the payroll tax burden on the basis of
+labor income as reported by respondents to ENPH.
+We assume that the income reported is their nominal salary:
+it includes the employee share of payroll taxes
+but excludes the employer share.
 Payroll taxes include:
 \begin{itemize}
 
-\item Compulsory Pension Contributions, which the employee may choose to put into an individual retirement account (\textit{r\'{e}gimen de ahorro individual}) or into the state-run pay-as-you-go system (\textit{r\'{e}gimen de prima media}).
+\item Compulsory Pension Contributions,
+  which the employee may choose to put into an individual retirement account
+  (\textit{r\'{e}gimen de ahorro individual})
+  or into the state-run pay-as-you-go system
+  (\textit{r\'{e}gimen de prima media}).
   In general, the employee share is 4\% and the employer share is 12\%.
-  However, employees making more than 4 times the minimum wage contribute an additional 1\%; this surcharge increases to 1.
-  2\% for those making more than 16 times the minimum wage, and it gradually goes up to 2\% for those making more than 20 times the minimum wage \footnote{The precise rule is described in \textit{decreto n\'{u}mero 510 de 2003}}.
+  However, employees making more than 4 times the minimum wage
+  contribute an additional 1\%; this surcharge increases to 1.2\%
+  for those making more than 16 times the minimum wage,
+  and it gradually goes up to 2\%
+  for those making more than 20 times the minimum wage
+  \footnote
+      {The precise rule is described in
+        \textit{decreto n\'{u}mero 510 de 2003}}.
   That is to say, the employee share can be up to 6\% for high salaries.
-  Independent contractors pay a different rate than employees: only 6.4\% of the value of their contract  goes into a pension fund.
+  Independent contractors pay a different rate than employees:
+  only 6.4\% of the value of their contract goes into a pension fund.
 
-\item Compulsory Health Contributions, which go to the (usually private) health insurer of one's choice.
-  Health insurers must offer a standardized package and are paid a fixed amount per patient by the government.
-  In general, the employee share is 4\% of wages and the employer share is 8.5\%.
-  However, employers paying less than 10 times the minimum wage do not have to pay the employer share if they are in the for-profit sector.
-  Independent contractors pay 5\% of the minimum wage or 5\% of the value of their contract \footnote{Contracts can be signed for less than the minimum wage.
-    However, people making less than the minimum wage (roughly half the work force) are by and large informal, and do not make contributions to the health care system}, whichever is highest, into the health care system.
+\item Compulsory Health Contributions,
+  which go to the (usually private) health insurer of one's choice.
+  Health insurers must offer a standardized package
+  and are paid a fixed amount per patient by the government.
+  In general, the employee share is 4\% of wages
+  and the employer share is 8.5\%.
+  However, employers paying less than 10 times the minimum wage
+  do not have to pay the employer share if they are in the for-profit sector.
+  Independent contractors pay 5\% of the minimum wage
+  or 5\% of the value of their contract
+  \footnote{
+  Contracts can be signed for less than the minimum wage.
+  However, people making less than the minimum wage
+  (roughly half the work force) are mostly informal,
+  and as such do not make contributions to the health care system},
+  whichever is highest, into the health care system.
 
-\item Family Compensation Funds, which are chosen by the employer and require an employer contribution equal to 4\% of the employee's wages.
-  These funds provide services such as recreational centers, discounts at supermarkets owned by the funds, and, in some cases, cash transfers to low-income affiliates.
-  Independent contractors are not obligated to make payments to the family compensation funds, nor can they use their services (unless they choose to make payments).
+\item Family Compensation Funds,
+  which are chosen by the employer
+  and require an employer contribution equal to 4\% of the employee's wages.
+  These funds provide services such as recreational centers,
+  discounts at supermarkets owned by the funds,
+  and in some cases, cash transfers to low-income affiliates.
+  Independent contractors are not obligated
+  to make payments to the family compensation funds,
+  nor can they use their services
+  (unless they choose to make payments).
 
-\item Adult Education and Child Welfare Contribution, which funds the SENA and ICBF institutes.
-  Employers must contribute the equivalent of 5\% of the employee's salary when salaries are higher than 10 times the minimum wage.
+\item Adult Education and Child Welfare Contribution,
+  which funds the SENA and ICBF institutes.
+  Employers must contribute the equivalent of
+  5\% of the employee's salary
+  when salaries are higher than 10 times the minimum wage.
   Independent contractors are not responsible for this contribution.
 
 \end{itemize}
 
 \subsection{Personal Income Tax}
 Well over 90\% of the population is not required to pay the personal income tax.
-This is because the tax only applies to incomes higher than around 5 times the minimum wage\footnote{The tax code uses a special unit to measure income for tax purposes, called \textit{unidad de valor tributario}, or UVT.
-  Labor income under 1090 UVTs a year is tax exempt, and there is a standard deduction equal to 25\% of income.
-  In 2018, the value of a UVT was COP 33,156, and the monthly minimum wage was COP 781,242, so only labor incomes greater than 5.14 times the minimum wage would potentially pay income tax.},
+This is because the tax only applies to incomes
+higher than around 5 times the minimum wage
+\footnote{
+The tax code uses a special unit to measure income for tax purposes,
+called \textit{unidad de valor tributario}, or UVT.
+Labor income under 1090 UVTs a year is tax exempt,
+and there is a standard deduction equal to 25\% of income.
+In 2018, the value of a UVT was COP 33,156,
+and the monthly minimum wage was COP 781,242,
+so only labor incomes greater than 5.14 times the minimum wage
+would potentially pay income tax.},
 an amount higher than what most people make.
-Married couples are not treated differently from individuals, and every member of the household who qualifies has to file a tax return.
-Deductible income is usually specified as a percentage of gross income, and not as a fixed amount in pesos: the standard deduction is 25\% of income, and other deductions can add up to 40\% of income.
-Income is taxed progressively, but there are three different schedules with marginal tax rates that differ depending on the source of income.
-Labor income is taxed at marginal rates of 19\%, 28\% and 33\%; marginal tax rates on income from capital (e.g., rent payments) can be 10\%, 20\%, 30\%, 33\%, or 35\%; and marginal tax rates on income from dividends can be 5\% or 10\%.
+Married couples are not treated differently from individuals,
+and every member of the household who qualifies has to file a tax return.
+Deductible income is usually specified as a percentage of gross income,
+rather than as a fixed amount in pesos.
+The standard deduction is 25\% of income,
+and other deductions can add up to 40\% of income.
+Income is taxed progressively,
+but there are three different schedules
+with marginal tax rates that differ depending on the source of income.
+Labor income is taxed at marginal rates of 19\%, 28\% and 33\%;
+marginal tax rates on income from capital
+(e.g., rent payments)
+can be 10\%, 20\%, 30\%, 33\%, or 35\%;
+and marginal tax rates on income from dividends can be 5\% or 10\%.
 Personal income tax is regulated by articles [[]] of the tax code.
-ENPH allows us to distinguish between labor, capital and dividend income, and we use this feature of the data to calculate the personal income tax owed for each type of income.
+The ENPH allows us to distinguish between
+labor, capital and dividend income,
+and we use this feature of the data to calculate
+the personal income tax owed for each type of income.
 We assume everyone takes the standard deduction of 25\%.
-There is a deduction of [[]]\% for having dependents (it is the same regardless of the number of dependents).
-In households where there are children, we assume that the highest earning member takes the deduction for the first child, the second highest earning takes the deduction for the second child, and so on.
 
+There is a deduction of [[]]\% for having dependents,
+the value of which does not depend on the number of dependents claimed.
+We assume households with children minimize their income tax liability
+by allocating each dependent to a different earner,
+starting with the highest earner and working their way down.
 
 \subsection{Tax on Financial Transactions}
 
 This is a tax of 0.4\% on all financial transactions.
-Individuals have a monthly tax-free allowance of around 15 times\footnote{350 UVTs} the monthly minimum wage.
-We assume that tax payers optimize so as to pay this tax only once, so we estimate the tax burden to be 0.4\% of all income higher than the allowance.
+Individuals have a monthly tax-free allowance of around
+15 times\footnote{350 UVTs} the monthly minimum wage.
+We assume that tax payers optimize so as to pay this tax only once,
+so we estimate the tax burden to be
+0.4\% of all income higher than the allowance.
 
 \subsection{Import Tariffs}
 
-We assume import tariffs are passed on to consumers of imported goods and of goods that use imported inputs.
+We assume import tariffs are passed on to consumers of imported goods
+and of goods that use imported inputs.
 For each individual, we estimate the burden of tariffs to be
 \begin{equation}
-  \textnormal{Tariff burden} = \textnormal{value of consumption} \times \textnormal{imports as share of GDP} \times \textnormal{average tariff}.
+  \textnormal{Tariff burden} =
+      \textnormal{value of consumption}
+      \times \textnormal{imports as share of GDP}
+      \times \textnormal{average tariff}.
 \end{equation}
-As of 2017, imports were [[]]\% of GDP, and the weighted average tariff was [[]]\%.
+As of 2017, imports were [[]]\% of GDP,
+and the weighted average tariff was [[]]\%.
+
 \subsection{Corporate and Personal Wealth Tax}
-The tax reform of 2016 began a phase-out on the taxes on corporate and personal wealth.
-The tax on corporate wealth was levied for the last time in 2017, and the tax on personal wealth was last levied in 2018.
+The tax reform of 2016 began a phase-out
+of the taxes on corporate and personal wealth.
+The tax on corporate wealth was last levied in 2017,
+and the tax on personal wealth in 2018.
+
 \subsection{National sales Tax}
 This is a sales tax (not a VAT) on various items.
-We assume that consumers bear the entire burden of the sales tax and of the VAT on the inputs used for the production of the final good.
-The national sales tax applies mainly to cell phone, data, and internet services (4\%), restaurant and bar consumption (8\%), and vehicles (16\% in most cases).
-Most inputs of restaurant consumption are basic food items, which are tax free, so for restaurant consumption we calculate a tax of 8\%.
-For cell phones, data and internet services, we assume that inputs amount to a certain share (60\% unless otherwise noted) of the costs, so in addition to the sales tax we calculate a tax of 0.6$\times$19\%= 11.4\%.
+We assume that consumers bear the entire burden of
+the sales tax
+and of the VAT on the inputs used for the production of the final good.
+The national sales tax applies mainly to
+cell phone, data, and internet services (4\%),
+restaurant and bar consumption (8\%),
+and vehicles (16\% in most cases).
+Most inputs of restaurant consumption are basic food items,
+which are tax free,
+so for restaurant consumption we calculate a tax of 8\%.
+For cell phones, data and internet services,
+we assume that inputs amount to a certain share
+(60\% unless otherwise noted) of the costs,
+so in addition to the sales tax we calculate a tax of
+0.6$\times$19\%= 11.4\%.
 
 \subsection{National Fuel Tax}
-The national fuel tax is actually a series of specific taxes on various kinds of fuel.
-We convert the specific tax into an ad valorem tax by dividing it by the market price of a gallon (or cubic meter) of fuel, and we calculate the amount paid by multiplying this rate by a household's expenditure in fuel reported by the ENPH.
+The national fuel tax is actually
+a series of specific taxes on various kinds of fuel.
+We convert the specific tax into an ad valorem tax
+by dividing it by the market price of a gallon (or cubic meter) of fuel,
+and we calculate the amount paid
+by multiplying this rate
+by a household's expenditure in fuel reported by the ENPH.
 
 \subsection{Stamp Tax}
 The stamp tax amounts to only 0.05\% of tax revenue.
@@ -523,23 +913,42 @@ We do not model it.
 
 \subsection{Industry and Commerce Tax}
 This is a municipal tax on profits.
-Municipalities can create exemptions and choose the tax rate, which by law can be between 0.2\% an 0.7\% of profits on industrial activities and between 0.2\% an 1\% of profits on commercial activities.
-We account for this tax when we impute macroeconomic estimates of the tax on capital to the owners of capital.
+Municipalities can create exemptions and choose the tax rate,
+which by law can be between 0.2\% and 0.7\%
+of profits on industrial activities
+and between 0.2\% and 1\% of profits on commercial activities.
+We account for this tax when we
+impute macroeconomic estimates of the tax on capital
+to the owners of capital.
 
 \subsection{Property Tax}
 This is a municipal tax on property (\textit{impuesto predial}).
-The amount paid depends on the cadastral (as opposed to commercial) value of real estate, and the rates chosen by the municipality in question.
-By law, municipalities can levy a tax anywhere between 0.1\% and 1.6\% of the cadastral value.
-Some municipalities, especially large urban ones, have up-to-date cadasters in which the value of real estate approaches its commercial value.
-Other municipalities (especially rural ones) have cadasters which are extremely outdated.
-This makes it potentially complicated to estimate the actual burden of the tax.
-Fortunately, ENPH reports payments made by households on account of the property tax, and we use this variable as our measure of the tax burden, which we assume falls entirely on the owners of real estate.
+The amount paid depends on the cadastral
+(as opposed to commercial) value of real estate,
+and the rates chosen by the municipality in question.
+By law, municipalities can levy a tax anywhere
+between 0.1\% and 1.6\% of the cadastral value.
+Some municipalities, especially large urban ones,
+have up-to-date cadasters in which
+the value of real estate approaches its commercial value.
+The cadasters of other municipalities,
+especially rural ones, are extremely outdated.
+This makes it potentially complicated
+to estimate the actual burden of the tax.
+Fortunately, the ENPH reports households' property tax payments.
+We use this variable as our measure of the tax burden,
+which we assume falls entirely on the owners of real estate.
 
 \subsection{Municipal and Departmental Gasoline Tax}
-These are taxes on gasoline and diesel that are charged in addition to the national fuel tax.
-Municipalities can charge a tax of 18.5\%, and departments can charge an extra 6.5\%.
-Bogota does not pay the departmental tax, but it charges a municipal tax of 25\%.
-We assume the burden of this tax falls on people who buy fuel and who use public transportation in the same way that we do for the national fuel tax.
+These are taxes on gasoline and diesel
+that are charged in addition to the national fuel tax.
+Municipalities can charge a tax of 18.5\%,
+and departments can charge an extra 6.5\%.
+In Bogota there is no departmental tax,
+but there is a municipal tax of 25\%.
+We assume the burden of this tax falls on people who buy fuel
+and on people who use public transportation,
+in the same way that we do for the national fuel tax.
 
 \subsection{Beer Tax}
 \subsection{Liquor Tax}
