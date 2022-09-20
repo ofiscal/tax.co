@@ -175,7 +175,7 @@ def advance_request_queue ():
           + "(Si todo fue bien, el adjunto archivo `logs.zip` "
           + " no le va a importar.)" ),
         attachment_paths = (
-          glob.glob   ( os.path.join ( data_path, "report*.xlsx" ) )
+          glob.glob   ( os.path.join ( data_path, "report*" ) )
           + glob.glob ( os.path.join ( data_path, "change-in*by*.png" ) )
           + glob.glob ( os.path.join ( data_path, "changes_*.xlsx" ) )
           + [ os.path.join ( data_path,
