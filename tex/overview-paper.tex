@@ -58,13 +58,15 @@
 In this paper, we develop a microsimulation model of the Colombian tax system
 with the twin goals of
 accurately understanding the distributional effects of taxation
-in a developing country characterized by its high levels of inequality [[and informality?]],
+in a developing country characterized by its high levels of inequality
+[[Someone:
+    and informality?]],
 and of making this information available to the public and policymakers
 in a way that is easy to understand and use in the formulation of public policy.
 
-Few policymakers, voters, or indeed economists, understand both
+Few policymakers, voters, or even economists understand both
 the economics of taxation
-and the intricate and technical features of tax law.
+and the intricacies of tax law.
 By making reasonable assumptions about tax incidence,
 carefully modeling tax rules that apply to individual tax payers,
 and using data from surveys and tax returns,
@@ -78,12 +80,16 @@ they need to be clear and to the point.
 
 The next section describes the broad outlines of taxation in Colombia.
 Section 3 lists the assumptions we make about tax incidence.
-Section 3 describes the data we use.
-Section 4 explains in detail how we calculate effective tax rates,
+Section 4 describes the data we use.
+Section 5 explains in detail how we calculate effective tax rates,
 and shows effective rates of taxation for different income groups.
 Section 6 concludes.
 
 \section{Institutional framework}
+
+[[Someone:
+    Maybe we should update all of these numbers.]]
+
 There are national, departmental, and municipal taxes in Colombia.
 Departments and municipalities do not have the same degree of autonomy
 that states and cities do in federal countries like the United States:
@@ -107,7 +113,7 @@ This setup makes it easier to create a model
 of all the national and local taxes in the country.
 Even though, in principle,
 there are 32 departmental and 1132 municipal tax codes,
-the differences between the latter are relatively limited.
+the differences among them are relatively limited.
 
 Tax intake is low in Colombia relative to other Latin American countries and to countries in the OECD.
 According to the OECD, tax intake in Colombia was around 19.6 \% of GDP in 2016,
@@ -128,7 +134,6 @@ payroll taxes (16.2\%),
 and the personal income tax (5.9\%).
 These are all national taxes.
 The fifth largest source of tax revenue is the industry and commerce tax,
-the GMF or ``4 por mil'',
 which is a tax on corporate income collected by municipalities
 that accounts for 4.2\% of revenue.
 Unlike in many developed countries, in Colombia
@@ -138,10 +143,11 @@ Municipal property taxes on land and real estate follow,
 making up 3.7\% of revenue.
 Another 3.7\% comes from a much-criticized but easy to collect national tax on financial transactions,
 which is said to keep much of the population away from the formal financial system.
-Import tariffs account for 2.2\% of tax revenue,
-in contrast with the days of import substitution industrialization,
+Import tariffs account for 2.2\% of tax revenue
+-- in stark contrast with the days of import substitution industrialization,
 when roughly a third of tax revenue came from tariffs.
-A tax on personal and corporate wealth that comes and goes with every tax reform
+A tax on personal and corporate wealth
+that seems to come and go with every tax reform
 accounted for 2\% of revenue in 2017.
 Another 5.9\% of revenue comes from a variety of specific and ad valorem taxes on goods,
 including a national sales tax for restaurant consumption and other items,
@@ -159,31 +165,47 @@ The assumptions of our model take this into account.
 We are interested in calculating
 the entire tax burden of individuals belonging to different income groups,
 so that we can produce estimates of how progressive proposed changes to the tax code will be.
-This requires making assumptions about the incidence of various taxes.
-We follow the same approach as
+This requires making assumptions about the incidence of various taxes. We assume:
+
+\begin{itemize}
+  \item The personal income tax is fully borne by households.
+  \item Payroll taxes are borne entirely by workers.
+  \item Excise taxes
+  (including the VAT, the tax on financial transactions, sales tax, and tariffs)
+  are borne by the consumers of the goods and services in question.
+  \item Corporate income tax is fully borne by the owners of capital.
+  \item Property taxes are borne by
+  the owners of land or real estate.
+\end{itemize}
+
+With the exception of the property tax assumption,
+which is our own [[Luis: It is, right?]],
+these assumptions are all made as well by
 the Congressional Budget Office of the United States,
-as described in \citet{salanie}:
-we assume that the personal income tax is fully borne by households,
-payroll taxes are borne entirely by workers,
-excise taxes
-(including the VAT, the tax on financial transactions, sales tax, and tariffs)
-are borne by the consumers of the goods and services in question,
-and corporate income tax is fully borne by the owners of capital.
-Moreover, we assume that property taxes are borne by
-the owners of land or real estate.
+as described in \citet{salanie}.
+
 Appendix A describes the relevant taxes in detail.
 
 \section{Data}
 Our data come from the
 \textit{Encuesta nacional de presupuestos de los hogares} (ENPH),
-which is a nationally representative survey of 87,201 households
+a nationally representative survey of 87,201 households
 that was carried out between July 2016 and July 2017.
 The ENPH includes a wealth of data on income and expenditures,
 which we use to calculate effective tax rates for
 people of different levels of income in different regions of the country.
 
+
+[[Someone:
+    Double-check each of these figures
+    against the table it comes from.]]
+[[Jeff:
+    Since the underlying data is cleaner now,
+    either regenerate the table
+    or verify that the Makefile regenerates it.]]
+
 Table \ref{tab:ygender} shows some descriptive statistics of the sample.
-The average household has 3.3 members and an income of COP 2.1 million.
+The average household has 3.3 members and a monthly income of 2.1 million COP.
 Labor income accounts for 74\% of the total,
 capital income for 11.5\%,
 dividend income for 0.05\%,
@@ -195,6 +217,7 @@ The average household has 3.3 members,
 and the average income of female-headed households
 is only 73\% of the average income of male-heade ones,
 despite being of essentially the same size.
+
 Table \ref{tab:ydecile} disaggregates these statistics by income decile.
 Labor income is only 53\% of income for individuals in the first decile,
 with private (27\%) and government transfers (11.7\%)
@@ -204,25 +227,44 @@ and income from capital and dividends slowly increases.
 Most (50\%) households in the first decile are female-headed,
 and their share declines as income rises.
 Only 29.6\% of households in the top decile are headed by women.
+
 Table \ref{tab:ycity} shows the statistics for the main cities,
 with Bogota and Medellin reporting the highest incomes, as would be expected.
+
 It is worth noting that the incomes reported in the survey
 probably do not include the employee share of social security payments,
 which we calculate on the basis of tax rules
 to be able to compute effective tax rates.
 
 \section{Effective Tax Rates}
-We calculate individual $j$'s effective tax rate before transfers as
+We calculate
+[[Someone:
+    Who's we? I don't think *I've* ever calculated this.
+    It's certainly not automated.
+    --jbb]]
+individual $j$'s effective tax rate before transfers as
 \begin{equation}
   t=\frac
-  {consumption + capital + payroll + personal + financial + wealth + property}
+  {consumption + capital + payroll + personal\ income + financial + wealth + property}
   {net \; labor \;income +capital \;income + dividends + payroll + pension \;income}
 \end{equation}
+Each summand in the numerator is a tax.
+[[someone:
+    Should $corporate$, described below, be in that sum?
+    --jbb]]
+[[someone:
+    It's confusing that, for instance,
+    ``consumpetion'' refers to the \textit{tax} on consumption,
+    rather than consumption itself.
+    I'm thinking $tp_{consumption}$ would be better,
+    indicating ``taxes paid on consumption''.
+    (`t` would be more terse than `tp`,
+    but usually `t` means a tax rate, not a peso amount.)
+    --jbb]]
 
-$consumption$ is payments made for value added taxes on consumption,
+(The) $consumption$ (tax) is payments made for value added taxes on consumption,
 as well as the national sales tax
 and the beer, liquor, tobacco, and vehicle taxes:
-
 \begin{equation}
 consumption = \sum^{N}_{n=1} \tau_nP_nX_n
 \end{equation}
@@ -240,8 +282,11 @@ In the case of taxes on fuel,
 we assume that not just household fuel purchases but also
 a certain percentage of spending on public transportation
 (which can be specified in the simulation)
+[[Someone:
+    really? I don't know where that change would be made.
+    --jbb]]
 is taxed at this rate.
-In cases where other inputs other than fuel are taxed we do the same
+In cases where inputs other than fuel are taxed we do the same
 (see the appendix for details).
 
 $corporate$ is individual $j$'s share of
@@ -249,7 +294,6 @@ the taxes paid by firms of which he is a stockholder:
 \begin{equation}
 corporate = \sum^{K}_{k=1} \tau_k\theta^j_k\Pi_k
 \end{equation}
-
 where $\theta^j_k$ is the share of firm $k$ owned by $j$,
 $\tau_k$ is firm $k$'s effective tax rate,
 and $\Pi_k$ is firm $k$'s profits before taxes.
@@ -261,26 +305,31 @@ $\frac{\tau_k}{1-\tau_k}$,
 assuming that $\tau_k=\tau \; \forall k$,
 where $\tau$ is the effective tax rate on capital
 obtained from national accounts by \citet{banrep}.
+[[Someone:
+    I'm unaware of any place in the code that does this,
+    and pretty sure that's because there isn't one.
+    Maybe Luis or David was computing it by hand.
+    --jbb]]
 
 $payroll$ is the sum of employee and employer contributions to social security payments:
-\begin{equation}
+\begin{equation} \label{payroll_tax}
 payroll = payroll(Y)=
   \begin{cases}
 	n(Y)+h(Y)+f(Y)+a(Y)+c(Y) & Y \geq \underline{w} \\
 	0 &  Y < \underline{w}
   \end{cases}
 \end{equation}
-
 where  $n(Y)$ stands for pension contributions,
 $h(Y)$ for compulsory health care contributions,
 $f(Y)$ for family compensation fund contributions,
 $a(Y)$ for adult education contributions,
 $c(Y)$ for child welfare contributions,
 and $\underline{w}$ for the minimum wage.
-$Y$, which is reported in the ENPH,
+$Y$, which can (with some work) be determined from the ENPH,
 is labor income net of the employer share of payroll taxes
 but including the employee share.
-Functions of $Y$ are calculated by applying the rules described in the appendix.
+The functions of $Y$ in \ref{payroll_tax} are calculated by
+applying the rules described in the appendix.
 When $Y < \underline{w}$
 (which is the case for about half of the labor force),
 we assume that the worker is informal and therefore pays no payroll taxes.
@@ -297,10 +346,10 @@ when we assume that they claim either the minimum or the maximum allowed.
 
 $financial$ is the tax on financial transactions paid by individuals:
 \begin{equation}
-  financial=0.04 \times (net \;income -350uvt)
+  financial=0.04 \times (net \;income -350\ uvt)
 \end{equation}
 where $net \;income$ includes income from all sources net of taxes
-and $uvt$ is \textit{unidades de valor tributario}
+and $uvt$ is \textit{unidades de valor tributario}.
 \footnote{The tax code uses a special unit to measure income for tax purposes,
 called \textit{unidad de valor tributario}, or UVT.
 In 2018, the value of a UVT was COP 33,156,
@@ -310,7 +359,8 @@ when monthly transactions exceed 350 UVTs,
 or around 15 times the minimum wage.}
 
 $wealth$ stands for taxes paid on personal wealth by the individual.
-The tax on personal wealth is set to expire on December 31, 2018.
+The latest tax on personal wealth expired on December 31, 2018.
+As of this writing (Sept 2022), a new one is being mooted.
 
 $property$ is the municipal tax on real estate.
 The ENPH reports payments made by individuals on account of this tax,
@@ -319,7 +369,6 @@ so we simply add this variable to their tax burden.
 $net \; labor \;income$ is labor income reported in the ENPH
 minus our estimate of the employee share of payroll taxes
 (which is zero for informal workers):
-
 \begin{equation}
 net \; labor \;income
   \begin{cases}
@@ -330,6 +379,12 @@ net \; labor \;income
 
 Finally, $capital \; income$, $dividends$, and $pension \; income$
 are self-explanatory, and are reported in the ENPH.
+
+
+[[someone:
+    What does this next passage mean?
+    It looks like it got mangled.
+    --jbb]]
 
 By deciles
 
