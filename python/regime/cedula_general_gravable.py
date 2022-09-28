@@ -14,8 +14,8 @@ def cedula_general_gravable ( row: pd.Series ) -> float:
   return (
     { terms. single_cedula_with_single_1210_uvt_threshold
       : cgg_single_cedula_with_single_1210_uvt_threshold,
-      terms. single_1210_UVT_income_tax_deduction
-      : cgg_single_1210_UVT_income_tax_deduction,
+      terms. reduce_income_tax_deduction_to_1210_uvts
+      : cgg_reduce_income_tax_deduction_to_1210_uvts,
       terms.detail
       : cgg_detail }
     [ com.strategy ] # lookup a function from the dictionary
@@ -40,13 +40,15 @@ def cgg_detail ( row: pd.Series ) -> float:
            else stage_1 - min ( 0.1 * stage_1,
                                 32 * muvt ) )
 
-def cgg_single_1210_UVT_income_tax_deduction ( row: pd.Series ) -> float:
-  stage1 = max ( row ["renta liquida"] - 1210 * muvt,
-                 0 )
-  return ( stage1
-           if not row["claims dependent (labor income tax)"]
-           else  stage1 - min( 0.1 * stage1,
-                               32 * muvt ) )
+def cgg_reduce_income_tax_deduction_to_1210_uvts ( row: pd.Series ) -> float:
+  stage_1 = max ( ( row                 ["renta liquida"]
+                    - min ( 0.325 * row ["renta liquida"],
+                            1210 * muvt ) ),
+                  0 )
+  return ( stage_1
+           if   not row["claims dependent (labor income tax)"]
+           else stage_1 - min ( 0.1 * stage_1,
+                                32 * muvt ) )
 
 def cgg_single_cedula_with_single_1210_uvt_threshold (
     row: pd.Series

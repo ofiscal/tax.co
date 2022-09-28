@@ -58,7 +58,7 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
     # This determines that stuff.
     { terms.detail
       : new_columns__detail,
-      terms.single_1210_UVT_income_tax_deduction
+      terms.reduce_income_tax_deduction_to_1210_uvts
       : new_columns__detail,
       terms.single_cedula_with_single_1210_uvt_threshold
       : new_columns__single_cedula_with_single_1210_uvt_threshold }

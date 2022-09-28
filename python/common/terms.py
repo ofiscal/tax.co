@@ -20,6 +20,6 @@ detail = "detail"
 single_cedula_with_single_1210_uvt_threshold = \
   "single_cedula_with_single_1210_uvt_threshold"
 
-# We imagined this might happen right before August 8 2022.
-single_1210_UVT_income_tax_deduction = \
-  "single_1210_UVT_income_tax_deduction"
+# Just like the status quo, except with a lower income tax deduction.
+reduce_income_tax_deduction_to_1210_uvts = \
+  "reduce_income_tax_deduction_to_1210_uvts"
