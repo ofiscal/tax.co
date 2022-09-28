@@ -23,22 +23,22 @@ def cedula_general_gravable ( row: pd.Series ) -> float:
 
 def cgg_detail ( row: pd.Series ) -> float:
   """
-  The first stage, "s1", is someone's income,
+  `stage_1` is someone's income,
   minus either 32.5% or 5040 UVTs, whichever is smaller.
   If someone cannot claim dependents,
   then the second stage equals the first.
   If they can, then the second stage is equal to
-  s1 minus 10% or 32 UVT, whichever is smaller.
+  stage_1 minus 10% or 32 UVT, whichever is smaller.
   The second stage is the function's return value.
   """
-  s1 = max ( ( row                 ["renta liquida"]
-               - min ( 0.325 * row ["renta liquida"],
-                       5040 * muvt ) ),
-             0 )
-  return ( s1
+  stage_1 = max ( ( row                 ["renta liquida"]
+                    - min ( 0.325 * row ["renta liquida"],
+                            5040 * muvt ) ),
+                  0 )
+  return ( stage_1
            if   not row["claims dependent (labor income tax)"]
-           else s1 - min ( 0.1 * s1,
-                           32 * muvt ) )
+           else stage_1 - min ( 0.1 * stage_1,
+                                32 * muvt ) )
 
 def cgg_single_1210_UVT_income_tax_deduction ( row: pd.Series ) -> float:
   stage1 = max ( row ["renta liquida"] - 1210 * muvt,
@@ -51,11 +51,11 @@ def cgg_single_1210_UVT_income_tax_deduction ( row: pd.Series ) -> float:
 def cgg_single_cedula_with_single_1210_uvt_threshold (
     row: pd.Series
 ) -> float:
-  s1 = max ( ( row                ["renta liquida"]
-               - min( 0.325 * row ["renta liquida"],
-                      1210 * muvt ) ),
-             0 )
-  return ( s1
+  stage_1 = max ( ( row                ["renta liquida"]
+                    - min( 0.325 * row ["renta liquida"],
+                           1210 * muvt ) ),
+                  0 )
+  return ( stage_1
            if   not row ["claims dependent (labor income tax)"]
-           else s1 - min ( 0.1 * s1,
-                           32 * muvt ) )
+           else stage_1 - min ( 0.1 * stage_1,
+                                32 * muvt ) )
