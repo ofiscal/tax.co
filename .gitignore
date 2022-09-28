@@ -42,3 +42,8 @@ users/*/
 !users/ue7e14cdcfbc59bba291688ae9cf039d6/config/
 !users/ue7e14cdcfbc59bba291688ae9cf039d6/config/*/*.py
 !users/ue7e14cdcfbc59bba291688ae9cf039d6/logs/.exist
+
+tex/*.log
+tex/*.aux
+tex/*.pdf
+tex/*.out
