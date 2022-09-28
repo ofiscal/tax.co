@@ -18,13 +18,6 @@ else:              # If we are in the interpreter.
 
 if True: # For validation, mostly.
          # (`valid_subsamples` is also looped over, in another program.)
-  valid_strategies = [ # There used to be a lot of these.
-    # See the section on `retire-hypotheticals` in  `branches/branches.md`
-    # for where they went.
-    terms.detail,
-    terms.reduce_income_tax_deduction_to_1210_uvts,
-    terms.single_cedula_with_single_1210_uvt_threshold,
-  ]
   valid_subsamples = [1,10,100,1000]
   valid_regime_years = [2016, 2018, 2019]
 
@@ -41,7 +34,7 @@ if not subsample in valid_subsamples:
   raise ValueError( "invalid subsample reciprocal: " + str(subsample) )
 
 strategy = config_dict["strategy"]
-if not strategy in valid_strategies:
+if not strategy in terms.valid_strategies:
   raise ValueError( "invalid strategy: " + strategy )
 
 regime_year = config_dict["regime_year"]
