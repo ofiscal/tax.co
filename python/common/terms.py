@@ -21,5 +21,5 @@ single_cedula_with_single_1210_uvt_threshold = \
   "single_cedula_with_single_1210_uvt_threshold"
 
 # We imagined this might happen right before August 8 2022.
-single_2052_UVT_income_tax_deduction = \
-  "single_2052_UVT_income_tax_deduction"
+single_1210_UVT_income_tax_deduction = \
+  "single_1210_UVT_income_tax_deduction"

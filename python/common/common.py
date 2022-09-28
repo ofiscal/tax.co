@@ -22,7 +22,7 @@ if True: # For validation, mostly.
     # See the section on `retire-hypotheticals` in  `branches/branches.md`
     # for where they went.
     terms.detail,
-    terms.single_2052_UVT_income_tax_deduction,
+    terms.single_1210_UVT_income_tax_deduction,
     terms.single_cedula_with_single_1210_uvt_threshold,
   ]
   valid_subsamples = [1,10,100,1000]
