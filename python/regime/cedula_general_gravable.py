@@ -12,9 +12,9 @@ if True:
 
 def cedula_general_gravable ( row: pd.Series ) -> float:
   return (
-    { terms. single_cedula_with_single_1210_uvt_threshold
+    { terms.single_cedula_with_single_1210_uvt_threshold
       : cgg_single_cedula_with_single_1210_uvt_threshold,
-      terms. reduce_income_tax_deduction_to_1210_uvts
+      terms.reduce_income_tax_deduction_to_1210_uvts
       : cgg_reduce_income_tax_deduction_to_1210_uvts,
       terms.detail
       : cgg_detail }

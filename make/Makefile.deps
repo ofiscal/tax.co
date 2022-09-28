@@ -456,9 +456,12 @@
   .no_younger_than/python/common/terms.py
 	install -D /dev/null .no_younger_than/python/regime/cedula_general_gravable.py
 
-.no_younger_than/python/regime/test.py:                 \
-  python/regime/test.py                                 \
-  .no_younger_than/python/common/misc.py
+.no_younger_than/python/regime/test.py:      \
+  python/regime/test.py                      \
+  .no_younger_than/python/build/output_io.py \
+  .no_younger_than/python/common/common.py   \
+  .no_younger_than/python/common/misc.py     \
+  .no_younger_than/python/regime/cedula_general_gravable.py
 	install -D /dev/null .no_younger_than/python/regime/test.py
 
 # PITFALL: This violates the usual rule that every dependency but the first

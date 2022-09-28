@@ -33,27 +33,29 @@ show_params:
 # But for any test complex enough to require an output file,
 # make that output file a dependency.
 # PITFALL: purchase_input.txt always uses the full sample
+# PITFALL: Whenever adding a test recipe, add it to this list too.
 tests:                                                      \
-  users/$(user)/test/recip-1/rate_input.txt                 \
-  users/$(user)/test/recip-1/requests.txt                   \
-  users/$(user)/test/recip-$(ss)/households_1_agg_plus.txt  \
-  users/$(user)/test/recip-$(ss)/households_2_purchases.txt \
   users/$(user)/test/recip-$(ss)/build_classes.txt          \
-  users/$(user)/test/recip-$(ss)/build_purchases_2_vat.txt  \
   users/$(user)/test/recip-$(ss)/build_purchase_sums.txt    \
-  users/$(user)/test/recip-1/build_ss_functions.txt         \
-  users/$(user)/test/recip-1/build_ss_schedules.txt         \
-  users/$(user)/test/recip-$(ss)/people_3_income_taxish.txt \
-  users/$(user)/test/recip-$(ss)/people_4_post_households.txt \
+  users/$(user)/test/recip-$(ss)/build_purchases_2_vat.txt  \
   users/$(user)/test/recip-$(ss)/common_misc.txt            \
   users/$(user)/test/recip-$(ss)/common_util.txt            \
-  users/$(user)/test/recip-$(ss)/people_main.txt            \
+  users/$(user)/test/recip-$(ss)/households_1_agg_plus.txt  \
+  users/$(user)/test/recip-$(ss)/households_2_purchases.txt \
   users/$(user)/test/recip-$(ss)/people_2_buildings.txt     \
+  users/$(user)/test/recip-$(ss)/people_3_income_taxish.txt \
+  users/$(user)/test/recip-$(ss)/people_4_post_households.txt \
+  users/$(user)/test/recip-$(ss)/people_main.txt            \
   users/$(user)/test/recip-$(ss)/purchases_correct.txt      \
-  users/$(user)/test/recip-1/regime_r2018.txt               \
+  users/$(user)/test/recip-$(ss)/python_regime_test         \
   users/$(user)/test/recip-$(ss)/vat_rates.txt              \
   users/$(user)/test/recip-1/build_buildings.txt            \
-  users/$(user)/test/recip-1/purchase_inputs.txt
+  users/$(user)/test/recip-1/build_ss_functions.txt         \
+  users/$(user)/test/recip-1/build_ss_schedules.txt         \
+  users/$(user)/test/recip-1/purchase_inputs.txt            \
+  users/$(user)/test/recip-1/rate_input.txt                 \
+  users/$(user)/test/recip-1/regime_r2018.txt               \
+  users/$(user)/test/recip-1/requests.txt
 	printf '\nAll tests passed.\n\n'
 
 # TODO: Replace this phony target with evidence that the test succeeded,
@@ -149,6 +151,12 @@ users/$(user)/test/recip-1/regime_r2018.txt:               \
   .no_younger_than/python/regime/r2018_test.py
 	date
 	$(python_from_here) python/regime/r2018_test.py \
+          $(config_file)
+
+users/$(user)/test/recip-$(ss)/python_regime_test: \
+  .no_younger_than/python/regime/test.py
+	date
+	$(python_from_here) python/regime/test.py  \
           $(config_file)
 
 users/$(user)/test/recip-1/build_ss_functions.txt:            \
