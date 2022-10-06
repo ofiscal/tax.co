@@ -9,7 +9,7 @@ if True:
   import python.common.common   as com
 
 
-def test_insert_has_dependent_column():
+def test_insert_claims_dependents_columns():
   d = pd.DataFrame(
       { "household"          : [1,1,1,1,1, 2,2,2,2,2, 3,3,3,3,3, 4,4] ,
         "dependent"          : [0,0,1,1,1, 0,0,0,1,1, 0,0,0,0,1, 0,0] ,
@@ -23,15 +23,15 @@ def test_insert_has_dependent_column():
   d_input  =          rei( d.drop( columns = [ "dependents",
                                                "claims dependent (labor income tax)"] ) )
   d_intended_putput = rei( d.drop( columns = [ "dependent"] ) )
-  d_output =          rei( f4.insert_has_dependent_column( d_input ) )
-  return (d_input, d_intended_putput, d_output)
-#  assert d_intended_putput . equals( d_output )
+  d_output =          rei( f4.insert_claims_dependents_columns( d_input ) )
+# return (d_input, d_intended_putput, d_output)
+  assert d_intended_putput . equals( d_output )
 
 if True:
   log = str( datetime.datetime.now() )
 
   # unit tests
-  test_insert_has_dependent_column()
+  test_insert_claims_dependents_columns()
 
   # integration tests
   p4 = oio.readUserData(

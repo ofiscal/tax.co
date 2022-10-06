@@ -25,7 +25,7 @@ ppl = oio.readCommonOutput (
 
 ppl = ss.mk_ss_contribs(ppl)
 
-ppl = f4.insert_has_dependent_column(ppl)
+ppl = f4.insert_claims_dependents_columns(ppl)
 
 ppl = regime.income_taxes( ppl )
 

@@ -16,6 +16,8 @@ def cedula_general_gravable ( row: pd.Series ) -> float:
       : cgg_single_cedula_with_single_1210_uvt_threshold,
       terms.reduce_income_tax_deduction_to_1210_uvts
       : cgg_reduce_income_tax_deduction_to_1210_uvts,
+      terms.max_1340_uvt_deduction_and_max_4_dependents_72_uvt_each
+      : cgg_max_1340_uvt_deduction_and_max_4_dependents_72_uvt_each,
       terms.detail
       : cgg_detail }
     [ com.strategy ] # lookup a function from the dictionary
@@ -35,6 +37,15 @@ def cgg_detail ( row: pd.Series ) -> float:
          if   not row["claims dependent (labor income tax)"]
          else x - min ( 0.1 * x,
                         32 * muvt ) )
+  return max ( 0, a1, a2 )
+
+# Being considered in Congress as of 2022 Oct 06.
+def cgg_max_1340_uvt_deduction_and_max_4_dependents_72_uvt_each (
+    row : pd.Series
+)      -> float:
+  a1 =   row ["renta liquida"] - 1340 * muvt
+  a2  = ( row ["renta liquida"] * (1 - 0.325) -
+         row ["dependents to claim (up to 4)"] * 72 * muvt )
   return max ( 0, a1, a2 )
 
 def cgg_reduce_income_tax_deduction_to_1210_uvts ( row: pd.Series ) -> float:

@@ -14,6 +14,9 @@
 # The default -- the law as of July 2022.
 detail = "detail"
 
+max_1340_uvt_deduction_and_max_4_dependents_72_uvt_each = \
+  "max_1340_uvt_deduction_and_max_4_dependents_72_uvt_each"
+
 # Here, dividends and ganancias ocasionales are taxed the same way
 # as any other income, and the dedudctible limit is lower.
 # The government proposed this on August 8 2022
@@ -28,6 +31,7 @@ valid_strategies = [ # There used to be a lot of these.
   # See the section on `retire-hypotheticals` in  `branches/branches.md`
   # for where they went.
   detail,
-  reduce_income_tax_deduction_to_1210_uvts,
+  max_1340_uvt_deduction_and_max_4_dependents_72_uvt_each,
   single_cedula_with_single_1210_uvt_threshold,
+  reduce_income_tax_deduction_to_1210_uvts,
 ]

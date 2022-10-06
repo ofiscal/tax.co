@@ -41,8 +41,10 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
   Maybe there's a speed argument for separating them; I don't remember.
   """
   temp_columns = pd.DataFrame()
+  temp_columns["dependents to claim (up to 4)"] = \
+    ppl [      "dependents to claim (up to 4)"]
   temp_columns["claims dependent (labor income tax)"] = (
-    ppl["claims dependent (labor income tax)"] )
+    ppl [      "claims dependent (labor income tax)"] )
   temp_columns["zero"] = 0
   temp_columns["renta liquida"] = (
     # This is taxable labor income before exemptions.
@@ -59,6 +61,8 @@ def income_taxes( ppl : pd.DataFrame ) -> pd.DataFrame:
     { terms.detail
       : new_columns__detail,
       terms.reduce_income_tax_deduction_to_1210_uvts
+      : new_columns__detail,
+      terms.max_1340_uvt_deduction_and_max_4_dependents_72_uvt_each
       : new_columns__detail,
       terms.single_cedula_with_single_1210_uvt_threshold
       : new_columns__single_cedula_with_single_1210_uvt_threshold }
