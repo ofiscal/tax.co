@@ -16,25 +16,25 @@ Cuchuco de maï¿½z para preparar,1110602,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,
 Harina de maï¿½z,1110603,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,0
 Harina precocida de maï¿½z,1110604,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,0
 Fï¿½cula de maï¿½z para preparar,1110605,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
-"Pan corriente, con queso,  aliï¿½ado, mogolla, relleno, pan de coco, calado, tajado, ï¿½rabe., para consumo en el hogar",1110801,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,1
+"Pan corriente, con queso,  aliï¿½ado, mogolla, relleno, pan de coco, calado, tajado, ï¿½rabe., para consumo en el hogar",1110801,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,1
 Pan francï¿½s para consumo en el hogar,1110802,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
 Pan integral para consumo en el hogar,1110803,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
-"Harina para preparar tortas, natilla, buï¿½uelos, etc.",1119801,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
-Harina para coladas ,1119802,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+"Harina para preparar tortas, natilla, buï¿½uelos, etc.",1119801,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+Harina para coladas ,1119802,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
 Almidones de papa o yuca,1119803,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
-Cereales para el desayuno,1119804,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+Cereales para el desayuno,1119804,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
 Cereales para la alimentaciï¿½n infantil (papilla),1119805,,0,0,1,0,0,0,0,0,1,0,0,0,1,0,0,1,0,1,0.19,0.19,0.19,0.05,0
 "Ajonjolï¿½, soya, quinua, sorgo (para preparar)",1119806,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
 "Masas para la preparaciï¿½n de productos de panaderï¿½a o pastelerï¿½a  (trigo, maï¿½z, soya)",1119807,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
 Arepas crudas o precocidas  ,1119808,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
 "Bollos y envueltos precocidos, quiches, tamales",1119809,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
 "Gï¿½rmen de trigo, lecitina, levadura, linaza ",1119810,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
-"Comidas preparadas precocidas a base de cereales (lasagna, pizza, empanadas) ",1119811,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
-"Carne vegetal, embutidos y otros alimentos vegetarianos (a base de soya, glï¿½ten, lenteja, quinua, etc.) sin cocinar",1119812,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
-Galletas de sal para consumo en el hogar,1119901,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
-Galletas de dulce (de panaderï¿½a y de paquete) para consumo en el hogar,1119902,goods with different tax rates. Tentative VAT presented.,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
-Galletas integrales (de panaderï¿½a y de paquete) para consumo en el hogar,1119903,goods with different tax rates. Tentative VAT presented.,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
-"Otros productos de panaderï¿½a no mencionados previamente: brownies, obleas, ponques, bizcochos (pudines en Costa Atlï¿½ntica) para consumo en el hogar",1119999,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,1
+"Comidas preparadas precocidas a base de cereales (lasagna, pizza, empanadas) ",1119811,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
+"Carne vegetal, embutidos y otros alimentos vegetarianos (a base de soya, glï¿½ten, lenteja, quinua, etc.) sin cocinar",1119812,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
+Galletas de sal para consumo en el hogar,1119901,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
+Galletas de dulce (de panaderï¿½a y de paquete) para consumo en el hogar,1119902,goods with different tax rates. Tentative VAT presented.,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+Galletas integrales (de panaderï¿½a y de paquete) para consumo en el hogar,1119903,goods with different tax rates. Tentative VAT presented.,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+"Otros productos de panaderï¿½a no mencionados previamente: brownies, obleas, ponques, bizcochos (pudines en Costa Atlï¿½ntica) para consumo en el hogar",1119999,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,1
 Carne de res sin hueso o pulpa,1120101,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
 Carne de res con hueso,1120102,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
 Hueso de res,1120103,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
@@ -57,16 +57,16 @@ Menudencias de gallina o pollo,1120304,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,
 "Cordero, chivo, cabro para consumo en el hogar",1120402,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
 Chigï¿½iro para consumo en el hogar,1120403,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
 Caballo para consumo en el hogar,1120404,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
-"Carne preparada de pavo, pollo,cerdo, lomo ahumado para consumo en el hogar",1120501,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,1
+"Carne preparada de pavo, pollo,cerdo, lomo ahumado para consumo en el hogar",1120501,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,1
 Mortadela,1120502,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,1
 Salchichas para consumo en el hogar,1120503,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,1
-Jamï¿½n y jamoneta para consumo en el hogar,1120504,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,1
+Jamï¿½n y jamoneta para consumo en el hogar,1120504,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,1
 Chorizo para consumo en el hogar,1120505,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,1
 Tocineta,1120506,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,1
 Hamburguesa para consumo en el hogar,1120507,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,1
 Carnes frï¿½as enlatadas,1120509,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,1
-"Otros embutidos de proteina animal (longaniza, butifarra, gï¿½novas, salchichï¿½n, salami, cï¿½banos, patï¿½s, etc) para consumo en el hogar",1120599,goods with different tax rates. Tentative VAT presented.,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,1
-"Otros alimentos no especificados: Hormigas culonas, etc. ",1129901,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
+"Otros embutidos de proteina animal (longaniza, butifarra, gï¿½novas, salchichï¿½n, salami, cï¿½banos, patï¿½s, etc) para consumo en el hogar",1120599,goods with different tax rates. Tentative VAT presented.,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,1
+"Otros alimentos no especificados: Hormigas culonas, etc. ",1129901,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
 Pescado de rï¿½o fresco o congelado,1130101,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
 Pescado de mar fresco o congelado,1130201,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
 Camarones frescos o congelados,1130202,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
@@ -83,14 +83,14 @@ Queso doble crema para consumo en el hogar,1140202,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,
 "Otros quesos: pera, mozarella, paipa, parmesano, etc. para consumo en el hogar",1140299,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
 Huevos crudos de gallina y otras aves para consumo en el hogar,1140501,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
 Huevos crudos de iguana y de tortuga para consumo en el hogar,1140502,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
-"Leche condensada, leche condensada y evaporada y crema chantilly para consumo en el hogar",1149901,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
+"Leche condensada, leche condensada y evaporada y crema chantilly para consumo en el hogar",1149901,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
 Crema de leche,1149902,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
-Yogurt para consumo en el hogar,1149903,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
-Kumis para consumo en el hogar,1149904,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
-"Suero costeï¿½o, queso crema, crema agria",1149905,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
-Natas para consumo en el hogar,1149906,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
-Postres lï¿½cteos para consumo en el hogar,1149907,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
-Bebidas lï¿½cteas saborizadas no achocolatadas (avena) para consumo en el hogar,1149908,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+Yogurt para consumo en el hogar,1149903,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
+Kumis para consumo en el hogar,1149904,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
+"Suero costeï¿½o, queso crema, crema agria",1149905,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
+Natas para consumo en el hogar,1149906,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
+Postres lï¿½cteos para consumo en el hogar,1149907,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+Bebidas lï¿½cteas saborizadas no achocolatadas (avena) para consumo en el hogar,1149908,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
 "Aceite de girasol, maï¿½z, soya y palma",1150101,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,0
 Aceite de oliva ,1150102,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
 "Otros aceites comestibles: canola, cacahuete, coco, almendras, dietï¿½ticos, etc.",1150199,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
@@ -142,7 +142,7 @@ Otras frutas frescas ,1160199,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0
 Frutas congeladas o en pulpa,1160201,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
 "Almendras y otras nueces (manï¿½, cacahuete, pistacho, etc) para consumo en el hogar",1160301,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
 "Frutas deshidratadas y cristalizadas: peras, uvas y ciruelas pasas, etc para consumo en el hogar",1160302,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
-"Frutas en conserva: melocotï¿½n, piï¿½a, brevas, lychees, etc. para consumo en el hogar",1160401,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+"Frutas en conserva: melocotï¿½n, piï¿½a, brevas, lychees, etc. para consumo en el hogar",1160401,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
 Tomate,1170101,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
 Cebolla cabezona,1170102,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
 "Cebolla larga o en rama (bermuda, junca)",1170103,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
@@ -202,27 +202,27 @@ Arracacha,1170701,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
 "Papa, yuca y plï¿½tano precocidos ",1171101,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
 "Harina de plï¿½tano, de yuca, de achiras, purï¿½ de papas",1171102,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,0
 "Otras raï¿½ces y tubï¿½rculos: mafafa, achira, batata, etc",1179901,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
-Azï¿½car refinada,1180101,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,1
-Azï¿½car natural o morena,1180102,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,1
+Azï¿½car refinada,1180101,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,1
+Azï¿½car natural o morena,1180102,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,1
 "Endulzantes dietï¿½ticos: aspartame, fructosa, sucralosa, otras",1180103,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,0
 Panela cruda para consumo en el hogar,1180201,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
-Jaleas y mermeladas,1180301,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+Jaleas y mermeladas,1180301,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
 Compotas para consumo en el hogar,1180302,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
-Bocadillos para consumo en el hogar,1180303,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
-Arequipe para consumo en el hogar,1180304,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,1
-"Herpos, tumes y otros dulces de arequipe y bocadillo para consumo en el hogar",1180305,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
-Gelatina de pata negra o blanca para consumo en el hogar,1180306,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
-"Gelatinas, flanes y pudines,en vaso listos para el consumo en el hogar",1180307,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+Bocadillos para consumo en el hogar,1180303,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
+Arequipe para consumo en el hogar,1180304,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,1
+"Herpos, tumes y otros dulces de arequipe y bocadillo para consumo en el hogar",1180305,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+Gelatina de pata negra o blanca para consumo en el hogar,1180306,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
+"Gelatinas, flanes y pudines,en vaso listos para el consumo en el hogar",1180307,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
 "Miel de abejas, maple o arce, melazas y almï¿½bares",1180308,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
 "Pasta de chocolate para ponquï¿½, cobertura de chocolate y crema de avellana y cacao (Nutella)",1180401,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
 "Dulces, confites, caramelos, bombones, chocolatinas, chicles, masmelos, cocadas para consumo en el hogar",1180501,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
 "Helados, conos, paletas, vasitos, refrescos congelados y tortas heladas para consumo en el hogar",1180601,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
 "Gelatinas, flanes y pudines en polvo para preparar",1180701,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
-Polvo para preparar helados,1180801,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
-Salsa de tomate,1190101,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
-Mayonesa,1190102,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
-"Mostaza, salsa rosada",1190103,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
-Pasta de tomate,1190104,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+Polvo para preparar helados,1180801,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+Salsa de tomate,1190101,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+Mayonesa,1190102,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+"Mostaza, salsa rosada",1190103,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+Pasta de tomate,1190104,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
 Vinagre,1190106,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
 "Otras salsas: salsa de soya, salsa china, salsa tï¿½rtara, salsa de ajï¿½, ajï¿½ picante, etc",1190199,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
 Sal  ,1190201,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
@@ -235,42 +235,42 @@ Color,1190305,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
 "Hierbas culinarias: perejil, cilantro, romero, orï¿½gano, etc.",1190401,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
 "Sopas: de vegetales, de carne, de pollo, de pescado, cremas de sobre, sopas para bebï¿½ para consumo en el hogar",1190501,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
 Caldos y consomï¿½s concentrados (cubos y polvo) ,1190502,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
-Bases para preparar carnes y otros alimentos,1190503,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
-"Frituras: papas fritas, chitos, maizitos, patacones, besitos, etc",1190601,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+Bases para preparar carnes y otros alimentos,1190503,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+"Frituras: papas fritas, chitos, maizitos, patacones, besitos, etc",1190601,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
 Levaduras y esencias (polvo para hornear),1190701,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
 Mercados sin especificar productos,1190901,goods with different tax rates,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.095,0.0,0.19,0.05,0
 Anchetas,1191001,goods with different tax rates,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.095,0.0,0.19,0.05,0
 Leche en polvo para lactantes,1191101,,0,0,1,0,0,0,0,0,1,0,0,0,1,0,0,1,0,1,0.0,0.0,0.0,0.05,0
 "Otros alimentos precocidos y preparados: ajiaco, lenteja, frijol, lechona enlatada y similares",1199901,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,0
 Cafï¿½ molido,1210101,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,0
-Cafï¿½ o crema instantï¿½neo en polvo o granulado,1210102,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,0
+Cafï¿½ o crema instantï¿½neo en polvo o granulado,1210102,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,0
 Cafï¿½ en grano,1210103,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,0
-Extractos y esencias de cafï¿½,1210105,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,1
-"Otras bebidas preparadas a base de cafï¿½: capuchino, mocachino, cafï¿½ con leche, cafï¿½ en lata para consumo en el hogar",1210199,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,1
+Extractos y esencias de cafï¿½,1210105,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,1
+"Otras bebidas preparadas a base de cafï¿½: capuchino, mocachino, cafï¿½ con leche, cafï¿½ en lata para consumo en el hogar",1210199,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,1
 Chocolate en pastillas (con y sin azï¿½car),1210201,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.05,0.05,0.05,0.05,1
-Chocolate instantï¿½neo en polvo o granulado,1210202,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+Chocolate instantï¿½neo en polvo o granulado,1210202,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
 Cocoa y chucula  ,1210203,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
-Polvo para preparar bebidas achocolatadas,1210204,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
-Bebidas achocolatadas listas para consumir,1210205,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
-Tï¿½ en polvo (para preparar),1210301,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
-"Hierbas aromï¿½ticas (secas y frescas), mate para consumo en el hogar",1210302,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+Polvo para preparar bebidas achocolatadas,1210204,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+Bebidas achocolatadas listas para consumir,1210205,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+Tï¿½ en polvo (para preparar),1210301,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+"Hierbas aromï¿½ticas (secas y frescas), mate para consumo en el hogar",1210302,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
 Agua mineral (con y sin gas) para consumo en el hogar,1220101,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
 Agua en lata o de carrotanque,1220201,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
 Hielo ,1220301,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.0,0.0,0.0,0.05,0
 Gaseosas para consumo en el hogar,1220401,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
-Maltas para consumo en el hogar,1220501,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
+Maltas para consumo en el hogar,1220501,,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
 "Refrescos lï¿½quidos empacados (jugos, tï¿½ frï¿½os y bebidas hidratantes) para consumo en el hogar",1220601,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
 Concentrados para preparar refrescos,1220701,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
 "Bebidas energizantes (a base de glucosa, guaranï¿½, cafeï¿½na, entre otros) para consumo en el hogar",1220801,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
 "Bebidas a base de arroz, soya, coco, quinua, almendra, etc (horchata, yogurt vegetariano) para consumo en el hogar",1220901,,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0.19,0.19,0.19,0.05,1
-Aguardiente para consumo en el hogar,2110101,,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0.05,0.05,0.05,0.05,1
-Ron para consumo en el hogar,2110201,,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0.05,0.05,0.05,0.05,1
-"Whisky, brandy, vodka, ginebra, cognac, tequila y similares para consumo en el hogar",2110301,,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0.05,0.05,0.05,0.05,1
-"Cremas de licor (de amareto, de whisky, etc.), sabajï¿½n y ponche crema para consumo en el hogar",2110401,,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0.05,0.05,0.05,0.05,1
-"Otras bebidas alcohï¿½licas: aperitivos que no sean a base de vino, mezclas de cocteles para consumo en el hogar",2119901,,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0.05,0.05,0.05,0.05,1
-"Vino, champaï¿½a, jerez y aperitivos a base de vino para consumo en el hogar",2120101,,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0.05,0.05,0.05,0.05,1
-Cerveza nacional e importada para consumo en el hogar,2130101,,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,2,0.19,0.19,0.19,0.05,0
-Refajo preparado (embotellado o enlatado) para consumo en el hogar,2130102,,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0.19,0.19,0.19,0.05,0
+Aguardiente para consumo en el hogar,2110101,,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0.05,0.05,0.05,0.05,1
+Ron para consumo en el hogar,2110201,,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0.05,0.05,0.05,0.05,1
+"Whisky, brandy, vodka, ginebra, cognac, tequila y similares para consumo en el hogar",2110301,,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0.05,0.05,0.05,0.05,1
+"Cremas de licor (de amareto, de whisky, etc.), sabajï¿½n y ponche crema para consumo en el hogar",2110401,,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0.05,0.05,0.05,0.05,1
+"Otras bebidas alcohï¿½licas: aperitivos que no sean a base de vino, mezclas de cocteles para consumo en el hogar",2119901,,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0.05,0.05,0.05,0.05,1
+"Vino, champaï¿½a, jerez y aperitivos a base de vino para consumo en el hogar",2120101,,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0.05,0.05,0.05,0.05,1
+Cerveza nacional e importada para consumo en el hogar,2130101,,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,2,0.19,0.19,0.19,0.05,0
+Refajo preparado (embotellado o enlatado) para consumo en el hogar,2130102,,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0.19,0.19,0.19,0.05,0
 Cigarrillos con filtro,2200101,,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,2,0.19,0.19,0.19,0.05,0
 Cigarrillos sin filtro,2200102,,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,2,0.19,0.19,0.19,0.05,0
 Tabacos y picadura para pipa o para armar cigarrillos,2200103,,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,2,0.19,0.19,0.19,0.05,0
@@ -916,7 +916,7 @@ Comidas completas,11110103,No VAT but Impuesto nacional al consumo of 8% dependi
 "Leche tomada fuera del hogar suministrada para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento.",11110303,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,11,0.0,0.0,0.0,0.0,0
 "Yogurt, kumis para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento.",11110304,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,11,0.0,0.0,0.0,0.0,0
 "Masato, mazamorra, chicha, avena helada, malteada, agua de panela fria y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo y para llevar",11110305,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,11,0.0,0.0,0.0,0.0,0
-"Helados, paletas, conos y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  puestos moviles,  lugares de esparcimiento y para llevar.",11110401,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. ,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,11,0.0,0.0,0.0,0.0,1
+"Helados, paletas, conos y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  puestos moviles,  lugares de esparcimiento y para llevar.",11110401,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. ,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,11,0.0,0.0,0.0,0.0,1
 "Ensaladas de frutas, frutas sueltas, fresas con crema  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las contratadas por encargo, para llevar y por servicio a domicilio",11110402,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,11,0.0,0.0,0.0,0.0,0
 "Galletas de sal y de dulce  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las contratadas por encargo y para llevar",11110403,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,11,0.0,0.0,0.0,0.0,0
 "Pan, almojï¿½banas, buï¿½uelos,  pandeyucas, arepas y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo, para llevar y por servicio a domicilio",11110404,No VAT but Impuesto nacional al consumo of 8% depending on place of purchase. Vending machines?,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,11,0.0,0.0,0.0,0.0,0
@@ -998,7 +998,7 @@ Monitores e intercomunicadores para bebï¿½,12320203,,0,0,1,0,0,0,0,0,0,0,0,0,
 Paï¿½aleras,12320205,,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,1,0,12,0.19,0.19,0.19,0.19,0
 Reparaciï¿½n de artï¿½culos para bebï¿½,12320207,,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,1,0,12,0.19,0.19,0.19,0.19,0
 "Otros artï¿½culos para bebï¿½ (baï¿½eras, correas para bebï¿½, etc) ",12320299,,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,1,0,12,0.19,0.19,0.19,0.19,0
-"Artï¿½culos para fumador: Pipas, encendedores no desechables, pitilleras, cortapuros, cigarrillos electrï¿½nicos y narguile",12320301,,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0.19,0.19,0.19,0.19,0
+"Artï¿½culos para fumador: Pipas, encendedores no desechables, pitilleras, cortapuros, cigarrillos electrï¿½nicos y narguile",12320301,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0.19,0.19,0.19,0.19,0
 "Artï¿½culos personales varios como: gafas de sol, lentes de contacto, cosmeticos, bastones, paraguas y sombrillas, abanicos, llaveros, etc",12320401,goods with different tax rates,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0.095,0.0,0.19,0.19,0
 "Artï¿½culos de funeraria: ataï¿½des, lï¿½pidas y urnas",12320501,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0.19,0.19,0.19,0.19,0
 "Residencias para ancianos, hogares geriï¿½tricos, hogares para personas con limitaciones fï¿½sicas o cognitivas y centros de rehabilitaciï¿½n",12400101,,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,12,0.19,0.19,0.19,0.19,0
