@@ -117,14 +117,14 @@ reports =                                                                       
   users/$(user)/data/recip-$(ss)/report_earners.$(strategy_year_suffix).xlsx
 
 reports_baseline =                                                                            \
-  users/symlinks/baseline/data/recip-$(ss)/report_households_tmi.$(strategy_year_suffix).csv  \
-  users/symlinks/baseline/data/recip-$(ss)/report_households_tmi.$(strategy_year_suffix).xlsx \
-  users/symlinks/baseline/data/recip-$(ss)/report_households.$(strategy_year_suffix).csv      \
-  users/symlinks/baseline/data/recip-$(ss)/report_households.$(strategy_year_suffix).xlsx     \
-  users/symlinks/baseline/data/recip-$(ss)/report_earners_tmi.$(strategy_year_suffix).csv     \
-  users/symlinks/baseline/data/recip-$(ss)/report_earners_tmi.$(strategy_year_suffix).xlsx    \
-  users/symlinks/baseline/data/recip-$(ss)/report_earners.$(strategy_year_suffix).csv         \
-  users/symlinks/baseline/data/recip-$(ss)/report_earners.$(strategy_year_suffix).xlsx
+  users/symlinks/baseline/data/recip-$(ss)/report_households_tmi.detail.2019.csv  \
+  users/symlinks/baseline/data/recip-$(ss)/report_households_tmi.detail.2019.xlsx \
+  users/symlinks/baseline/data/recip-$(ss)/report_households.detail.2019.csv      \
+  users/symlinks/baseline/data/recip-$(ss)/report_households.detail.2019.xlsx     \
+  users/symlinks/baseline/data/recip-$(ss)/report_earners_tmi.detail.2019.csv     \
+  users/symlinks/baseline/data/recip-$(ss)/report_earners_tmi.detail.2019.xlsx    \
+  users/symlinks/baseline/data/recip-$(ss)/report_earners.detail.2019.csv         \
+  users/symlinks/baseline/data/recip-$(ss)/report_earners.detail.2019.xlsx
 
 compare =                                                                                              \
   users/$(user)/data/recip-$(ss)/change-in.tax-mean.by-households.$(strategy_year_suffix).png          \
