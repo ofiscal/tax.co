@@ -25,7 +25,7 @@ if True: # Merge people and households.
                  on = "household" )
   earners = m [ (   ( m [ "in labor force" ] == 1 )
                   & ( m [ "age" ] >= 18 ) )
-                | (   m [ "income" ] > 0 ) ]
+                | (   m [ "income" ] > 2 ) ]
   del(m)
 
 if True: # Make new variables, esp. create person-level purchase-like
