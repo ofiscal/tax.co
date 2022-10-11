@@ -44,7 +44,7 @@ def cgg_max_1340_uvt_deduction_and_max_4_dependents_72_uvt_each (
     row : pd.Series
 )      -> float:
   a1 =   row ["renta liquida"] - 1340 * muvt
-  a2  = ( row ["renta liquida"] * (1 - 0.325) -
+  a2 = ( row ["renta liquida"] * (1 - 0.325) -
          row ["dependents to claim (up to 4)"] * 72 * muvt )
   return max ( 0, a1, a2 )
 
