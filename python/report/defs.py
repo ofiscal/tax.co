@@ -264,5 +264,7 @@ householdSpecificRestrictedVars = [
   "members: mean",
   ]
 
-householdRestrictedVars = commonRestrictedVars + householdSpecificRestrictedVars
-earnerRestrictedVars    = commonRestrictedVars + earnerSpecificVars
+householdRestrictedVars = commonRestrictedVars \
+  + householdSpecificRestrictedVars
+earnerRestrictedVars    = commonRestrictedVars \
+  + earnerSpecificVars
