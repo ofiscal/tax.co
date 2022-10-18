@@ -31,7 +31,10 @@ if True: # Merge people and households.
 if True: # Make new variables, esp. create person-level purchase-like
   earners["share"] = np.where ( # The fraction of purchaselike variables
                                 # attributed to this household adult.
-    earners["income, household"] <= 0,                 # the condition
+    earners["income, household"] <= 200,               # the condition
+      # PITFALL: Since some households are enormous and income is fuzzed,
+      # total income for a household that earns nothing can be
+      # much greater than 0. Hence the 100 where you might expect 0.
     1 / earners["members in labor force"],             # used if true
     earners["income"] / earners["income, household"] ) # used if false
   earners["one"] = 1 # To define the trivial group in the person-level report.
