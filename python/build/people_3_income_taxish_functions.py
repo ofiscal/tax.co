@@ -50,7 +50,8 @@ def test_dependentsToClaim ():
 # the highest earner should claim the first available dependent,
 # the next-highest earner should claim the next available dependent, etc.
 def insert_claims_dependents_columns (
-    df : pd.DataFrame # Should have "household", "dependent" (bool),
+    df : pd.DataFrame # Each row should be a person.
+                      # Should have "household", "dependent" (bool),
                       # and "rank, labor income".
 )     -> pd.DataFrame: # Just like the input, except:
   # It will have two columns for claiming depenents:
@@ -65,7 +66,8 @@ def insert_claims_dependents_columns (
        . reset_index() )
   df = df.merge( hh, how='inner', on='household' )
   df["claims dependent (labor income tax)"] = (
-    df["rank, labor income"] <= df["dependents"] )
+    ( df["rank, labor income"] <= df["dependents"] ) &
+    ( ~ df["dependent"] ) )
   df["dependents to claim (up to 4)"] = df.apply (
     lambda row: dependentsToClaim (
       nDeps            = row["dependents"],
