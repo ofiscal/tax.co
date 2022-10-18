@@ -47,6 +47,7 @@ income_and_tax__person_level = ( [
   , "income, private"
   , "income, labor"
   , "income, borrowing"
+  , "income, non-labor (tax def)"
   ] )
 
 income_and_spending__household_level = [

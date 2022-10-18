@@ -81,6 +81,7 @@ commonVars = ( [
   "income, govt",
   "income, private",
   "income, infrequent",
+  "income, non-labor (tax def)",
   "female head",
   "value, purchase",
   "purchase value / income",
