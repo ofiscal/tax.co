@@ -66,14 +66,14 @@ same_ratio = [ # Should be pretty similar in hh2 and ps4.
   "vat / purchase value",
   "vat / income",
   "purchase value / income", ]
-same_ratio_hh_list = [ x + "-hh" for x in same_ratio ]
-same_ratio_hh_dict = { x : x + "-hh" for x in same_ratio }
+
 htemp = ( hh2 [ ["household"] + same_ratio ]
-          . rename ( columns = same_ratio_hh_dict ) )
-ptemp = ps4.merge ( htemp [ ["household"] + same_ratio_hh_list ],
+          . rename ( columns = { x : x + "-hh" for x in same_ratio } ) )
+ptemp = ps4.merge ( htemp [ ["household"] +
+                            [        x + "-hh" for x in same_ratio ] ],
                     on = "household" )
 ptemp = ( # To make sure none of the ratios is infinite.
-  ptemp [ ( ptemp [ "income" ] > 0 ) &
+  ptemp [ ( ptemp [ "income" ] > 2 ) &
           ( ptemp [ "value, purchase" ] > 0 ) ] )
 for c in same_ratio:
   assert ( ptemp [ c + "-hh" ] > 0.99 * ptemp [ c ] - 1 ) . all ()
