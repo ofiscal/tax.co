@@ -1,4 +1,6 @@
-The terms in the denominator of Equation 1 do not, I believe, correspond very tightly with the income tax calculations in the sim. That calculation consists of these components:
+The terms in the denominator of Equation 1 of our paper on the microsimulation
+do not correspond very tightly with the income tax calculations in the sim.
+That calculation consists of these components:
 
     income_tax_components =
       [ "tax, income, most", # includes all labor and some nonlabor income
@@ -6,7 +8,17 @@ The terms in the denominator of Equation 1 do not, I believe, correspond very ti
         "tax, income, ganancia ocasional",
         "tax, income, gmf", ]
 
-But anyway, our definition of labor income is, roughly, a sum of these values, after appropriate massaging of each one:
+Meanwhile the denominator of equation 1 is
+
+    net labor income
+    + capital income
+    + dividends
+    + payroll contributions
+    + pension income
+
+Our definition of "income, labor" is, roughly, a sum of these values,
+after appropriate massaging of each one.
+Note that some of these are the peso values of in-kind income.
 
     income_labor = [
         ("P6500", 0, "income, month : labor : formal employment", 0)
@@ -53,13 +65,17 @@ Here's the definition of capital income:
               "income, sale, real estate", ] ]
       . sum ( axis = 1 ) )
 
-That's a quantity we define and then never use to compute anything else (except its average in various subpopulations).
+That's a quantity we define and then never use to compute anything else
+(except its average in various subpopulations).
 
-Dividend income is, mercifully, a single variable reported in the ENPH:
-("P7510S10A1", 0, "income, year : investment : dividends", 0)
+Dividend income is a single variable reported in the ENPH:
+("P7510S10A1", 0, "income, year : investment : dividends", 0),
+later renamed to "income, dividend".
 That's what we use to compute the dividend income tax.
 
-`payroll` is *extremely* complicated, but the idea is that, based on someone's monthly income and whether they are an "independiente", we impute all of these:
+`payroll` is *extremely* complicated, but the idea is that,
+based on someone's monthly income and whether they are an "independiente",
+we impute all of these:
 
   "cesantias + primas"
   "tax, ss, cajas de compensacion"
@@ -70,7 +86,10 @@ That's what we use to compute the dividend income tax.
   "tax, ss, salud, employer"
   "tax, ss, solidaridad"
 
-and call the result "tax, ss". ("independiente" comes from a single variable in the ENPH, P6430, for which 1-3 mean "asalariado" and 4-5 mean independiente.
+and call the result "tax, ss".
+("independiente" comes from a single variable in the ENPH, P6430,
+for which 1-3 mean "asalariado" and 4-5 mean independiente.)
 
 Pension income, like dividend income, is a single variable in the ENPH:
-"P7500S2A1" : "income, month : pension : age | illness"
+"P7500S2A1" : "income, month : pension : age | illness",
+later renamed to "income, pension".
