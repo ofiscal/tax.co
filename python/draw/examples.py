@@ -20,7 +20,7 @@ def a_bar_chart ():
   plt.xlabel("x")
   plt.ylabel("y")
   if True: # alternatives
-    # plt.show()
+    # plt.show() # Probably works from Jupyter and not the command line.
     plt.savefig("test-bars.png")
   plt.close()
 
@@ -32,6 +32,6 @@ def a_cdf ():
   plt.xlabel("Outcome")
   plt.ylabel("Probability")
   if True: # alternatives
-    # plt.show()
+    # plt.show() # Probably works from Jupyter and not the command line.
     plt.savefig("test-cdf.png")
   plt.close()
