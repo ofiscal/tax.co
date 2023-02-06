@@ -13,6 +13,7 @@ if True:
     import numpy as np
     from functools import reduce
     #
+    from   ofiscal_utils.draw.draw import (cdf, single_cdf)
     import python.common.util as util
     import python.draw.util as draw
     import python.build.output_io as oio
@@ -28,34 +29,34 @@ households_decile_summary = oio.readUserData( c.subsample, 'households_decile_su
 
 if True: # single series
   plt.close()
-  draw.single_cdf( households["members"], "Household size", xmax = 10)
+  single_cdf( households["members"], "Household size", xmax = 10)
   draw.savefig( vat_pics_dir + "households" , "size" )
 
   plt.close()
-  draw.single_cdf( households["transactions"], "Transactions per month", xmax = 150)
+  single_cdf( households["transactions"], "Transactions per month", xmax = 150)
   draw.savefig( vat_pics_dir + "households" , "transactions-per-month" )
 
   plt.close()
-  draw.single_cdf( households["age-min"], "Age of youngest member")
+  single_cdf( households["age-min"], "Age of youngest member")
   draw.savefig( vat_pics_dir + "households" , "youngest" )
 
   plt.close()
-  draw.single_cdf( households["age-max"], "Age of oldest member")
+  single_cdf( households["age-max"], "Age of oldest member")
   draw.savefig( vat_pics_dir + "households" , "oldest" )
 
 
   if True: # household income, logx and linear x
     plt.close()
-    draw.single_cdf( households["income"], "Household income",
-                     xmax = 3e6)
+    single_cdf( households["income"], "Household income",
+                xmax = 3e6)
     plt.gca().xaxis.set_major_formatter (
       EngFormatter ( places = 2 ) )
     draw.savefig ( vat_pics_dir + "households" , "income" )
 
     plt.close()
-    draw.single_cdf( households["income"], "Household income",
-                     xmin = 1e4, # as a monthly income in pesos, that's basically zero
-                     logx = True)
+    single_cdf( households["income"], "Household income",
+                xmin = 1e4, # as a monthly income in pesos, that's basically zero
+                logx = True)
     draw.savefig( vat_pics_dir + "households/logx" , "income" )
 
   plt.close()
@@ -113,20 +114,20 @@ if True: # VAT expenditures by income decile
       plt.xlabel("VAT paid / value consumed")
       plt.ylabel("Probability")
       for i in list(households_decile_summary.index):
-        draw.cdf( households                           \
-                    [ households["income-decile"]==i ] \
-                    ["vat / income, min"],
-                  linestyle = styles[i],
-                  color = colors[i],
-                  xmax = 0.1,
-                  with_mean = False
-        )
+        cdf( households                           \
+             [ households["income-decile"]==i ] \
+             ["vat / income, min"],
+             linestyle = styles[i],
+             color = colors[i],
+             xmax = 0.1,
+             with_mean = False,
+            )
       plt.grid(color='b', linestyle=':', linewidth=0.5)
 
       plt.subplot(1,2,2)
       plt.ylabel("Probability")
       for i in list(households_decile_summary.index):
-        draw.cdf( households                           \
+        cdf( households                           \
                     [ households["income-decile"]==i ] \
                     ["vat/value, min"],
                   linestyle = styles[i],
@@ -154,7 +155,7 @@ if True: # VAT expenditures by income decile
       plt.xlabel("VAT paid / value consumed")
       plt.ylabel("Probability")
       for i in list(households_decile_summary.index):
-        draw.cdf( households                           \
+        cdf( households                           \
                     [ households["income-decile"]==i ] \
                     ["vat / income, max"],
                   linestyle = styles[i],
@@ -167,7 +168,7 @@ if True: # VAT expenditures by income decile
       plt.subplot(1,2,2)
       plt.ylabel("Probability")
       for i in list(households_decile_summary.index):
-        draw.cdf( households                           \
+        cdf( households                           \
                     [ households["income-decile"]==i ] \
                     ["vat/value, max"],
                   linestyle = styles[i],
