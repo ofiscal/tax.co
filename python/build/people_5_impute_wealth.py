@@ -112,6 +112,11 @@ MSE = ( ( ( dian_rich["log wealth"]
 ### Predict on ENPH data ###
 ############################
 
+# TODO: Handle the fact that ENPH data is monthly while DIAN's is yearly.
+#
+# TODO: This model's wealth predictions for the richest are too high.
+# Try Daniel's ML model.
+
 ps = oio.readUserData (
   com.subsample,
   'people_4_post_households.' + com.strategy_year_suffix )

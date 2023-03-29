@@ -5,11 +5,11 @@
 # A trick to quickly edit a Docker-locked file from the host system:
 # https://stackoverflow.com/a/26915343
 
-DOCKER_IMAGE_SUFFIX="2022-06-06.inputrc-for-root-too"
+DOCKER_IMAGE_SUFFIX="2023-03-02.Anaconda-2022"
 
 # Start a docker container based on the latest image.
 docker run --name tax -itd                   \
-  -v /home/jeff/of/tax.co/master:/mnt/tax_co \
+  -v /home/jeff/of/tax.co/online:/mnt/tax_co \
   -p 8888:8888 -h 127.0.0.1                  \
   ofiscal/tax.co:latest
 

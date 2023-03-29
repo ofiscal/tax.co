@@ -174,8 +174,13 @@ for i in range(10):
         if x%2 == y%2 == z%2 == 0 ] )
 
 pd.options.display.min_rows = 100
-show().sort_values("mean MSE over runs")
+show().sort_values("mean MSE over runs")[:10]
 
+x = [ 10*x for x in range(1,5) ]
+x.reverse()
+go (x)
+
+go( [16,8,4] )
 
 # Keeping all the data, I get these as the best layouts:
 #

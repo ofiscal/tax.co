@@ -20,8 +20,10 @@ RUN apt install -y                                     \
       haskell-platform
 RUN apt install -y python3-pip
 
-COPY Anaconda3-2021.11-Linux-x86_64.sh /home/anaconda.sh
+RUN apt update --fix-missing -y && \
+    apt upgrade -y
 
+COPY Anaconda3-2022.10-Linux-x86_64.sh /home/anaconda.sh
 RUN /bin/bash /home/anaconda.sh -b -p /opt/conda
 RUN rm /home/anaconda.sh && \
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
