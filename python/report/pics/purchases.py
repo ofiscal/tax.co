@@ -12,6 +12,7 @@ if True:
     import os
     import numpy as np
     #
+    from   ofiscal_utils.draw.draw import single_cdf
     import python.build.output_io as oio
     import python.draw.util as draw
     import python.build.common as c
@@ -24,14 +25,14 @@ purchases = oio.readUserData( c.subsample, 'purchases_2_vat.' + c.strategy_suffi
 
 if True: # purchase quantity, logx and linear
   plt.close()
-  draw.single_cdf( purchases["quantity"], "CDF of quantity per purchase",
-                   xmin = 1, xmax = 1e3)
+  single_cdf( purchases["quantity"], "CDF of quantity per purchase",
+              xmin = 1, xmax = 1e3)
   plt.gca().xaxis.set_major_formatter(EngFormatter(places=2))
   draw.savefig( vat_pics_dir + "purchases" , "quantity" )
 
   plt.close()
-  draw.single_cdf( purchases["quantity"], "CDF of quantity per purchase",
-                  xmin = 1, logx = True)
+  single_cdf( purchases["quantity"], "CDF of quantity per purchase",
+              xmin = 1, logx = True)
   draw.savefig( vat_pics_dir + "purchases/logx" , "quantity" )
 
 
@@ -57,36 +58,36 @@ if True: # purchase frequency
 
 if True: # purchase value, logx and linear
   plt.close()
-  draw.single_cdf( purchases["value"], "CDF of monthly purchase value",
-                   xmin=1, xmax=1e5)
+  single_cdf( purchases["value"], "CDF of monthly purchase value",
+              xmin=1, xmax=1e5)
   plt.gca().xaxis.set_major_formatter(EngFormatter(places=2))
   draw.savefig( vat_pics_dir + "purchases" , "value" )
 
   plt.close()
-  draw.single_cdf( purchases["value"], "CDF of monthly purchase value",
-                   xmin =1, logx = True)
+  single_cdf( purchases["value"], "CDF of monthly purchase value",
+              xmin =1, logx = True)
   draw.savefig( vat_pics_dir + "purchases/logx" , "value" )
 
 
 if True: # VAT per purchase, min and max, logx and linear
   plt.close()
-  draw.single_cdf( purchases["vat paid, min"], "CDF of min VAT paid per purchase",
-                   xmin = 1, xmax = 1e4)
+  single_cdf( purchases["vat paid, min"], "CDF of min VAT paid per purchase",
+              xmin = 1, xmax = 1e4)
   plt.gca().xaxis.set_major_formatter(EngFormatter(places=2))
   draw.savefig( vat_pics_dir + "purchases" , "vat-in-pesos,min" )
 
   plt.close()
-  draw.single_cdf( purchases["vat paid, min"], "CDF of min VAT paid per purchase",
-                   xmin = 0.01, logx = True)
+  single_cdf( purchases["vat paid, min"], "CDF of min VAT paid per purchase",
+              xmin = 0.01, logx = True)
   draw.savefig( vat_pics_dir + "purchases/logx" , "vat-in-pesos,min" )
 
   plt.close()
-  draw.single_cdf( purchases["vat paid, max"], "CDF of max VAT paid per purchase",
-                   xmin = 1, xmax = 1e4)
+  single_cdf( purchases["vat paid, max"], "CDF of max VAT paid per purchase",
+              xmin = 1, xmax = 1e4)
   plt.gca().xaxis.set_major_formatter(EngFormatter(places=2))
   draw.savefig( vat_pics_dir + "purchases" , "vat-in-pesos,max" )
 
   plt.close()
-  draw.single_cdf( purchases["vat paid, max"], "CDF of max VAT paid per purchase",
-                   xmin = 0.01, logx = True)
+  single_cdf( purchases["vat paid, max"], "CDF of max VAT paid per purchase",
+              xmin = 0.01, logx = True)
   draw.savefig( vat_pics_dir + "purchases/logx" , "vat-in-pesos,max" )

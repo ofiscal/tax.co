@@ -126,6 +126,8 @@ if True: # Assemble the aggregates, then compute a few variables.
   households["income tax rate"] = (
     households["tax, income"] / households["income"] )
 
+households["income per capita"] = \
+  households["income"] / households["members"]
 
 if True: # save
   oio.saveUserData (

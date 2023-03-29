@@ -20,18 +20,6 @@ def a_bar_chart ():
   plt.xlabel("x")
   plt.ylabel("y")
   if True: # alternatives
-    # plt.show()
+    # plt.show() # Probably works from Jupyter and not the command line.
     plt.savefig("test-bars.png")
-  plt.close()
-
-def a_cdf ():
-  data = [1,2,7,2,7]
-  df = pd.DataFrame( data, columns=["x"])
-  draw.cdf( df["x"] )
-  plt.title("The empirical CDF of the observed series " + str(data) )
-  plt.xlabel("Outcome")
-  plt.ylabel("Probability")
-  if True: # alternatives
-    # plt.show()
-    plt.savefig("test-cdf.png")
   plt.close()

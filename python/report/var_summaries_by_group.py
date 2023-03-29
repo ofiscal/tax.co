@@ -31,27 +31,43 @@ if True: # generate "income - tax"
   for df in (households, earners):
     df["income - tax"] = df["income"] - df["tax"]
 
-if True: # nonzero labor income earners
-  nonzero_laborers = earners.copy()
-  nonzero_laborers = nonzero_laborers [
-    # PITFALL: Since a random amount between 0 and 1 peso
-    # is added to labor income in `build.people.main`
-    # (in order to make the quantiles all the same size),
-    # this keeps only people with income greater than 2 pesos,
-    # rather than people with any nonzero labor income.
-    nonzero_laborers ["income, labor"] > 2 ]
+def copy_with_alternative_quantile_order (
+    model : pd.DataFrame,
+    ordering_variable : str
+) -> pd.DataFrame:
+  res = model.copy()
   for label, n in [ ("income-decile"    , 10),
                     ("income-percentile", 100),
                     ("income-millile"   , 1000), ]:
-    nonzero_laborers[label] = (
+    res[label] = (
       util.myQuantile (
         n_quantiles = n,
-        in_col = nonzero_laborers["income, labor"] )
+        in_col = res [ ordering_variable ] )
       . astype ( int ) )
+  return res
+
+nonzero_earners_by_labor_income = \
+  copy_with_alternative_quantile_order (
+    model = earners [
+      # PITFALL: Since a random amount between 0 and 1 peso
+      # is added to labor income in `build.people.main`
+      # (in order to make the quantiles all the same size),
+      # this keeps only people with income greater than 2 pesos,
+      # rather than people with any nonzero labor income.
+      earners ["income, labor"] > 2 ],
+    ordering_variable = "income, labor" )
+
+households_by_income_per_capita = \
+  copy_with_alternative_quantile_order (
+    model = households,
+    ordering_variable = "income per capita" )
 
 if True: # Create a few columns missing in the input data.
          # TODO ? Move upstream.
-  for df in [households, earners, nonzero_laborers]:
+  for df in [ households,
+              households_by_income_per_capita,
+              earners,
+              nonzero_earners_by_labor_income ]:
     df["income, labor + cesantia"] = (
         df["income, labor"]
         + df["income, cesantia"] )
@@ -174,18 +190,23 @@ for (unit, df, groupVars, variables, restrictedVars) in [
       defs.earnerGroupVars,
       defs.earnerVars,
       defs.earnerRestrictedVars ),
-   ( "earnersMale",
-     earnersMale,
-     defs.earnerGroupVars,
-     defs.earnerVars,
-     defs.earnerRestrictedVars ),
-    ( "nonzero_laborers",
-      nonzero_laborers,
+    ( "earnersMale",
+      earnersMale,
+      defs.earnerGroupVars,
+      defs.earnerVars,
+      defs.earnerRestrictedVars ),
+    ( "nonzero_earners_by_labor_income",
+      nonzero_earners_by_labor_income,
       defs.earnerGroupVars,
       defs.earnerVars,
       defs.earnerRestrictedVars ),
     ( "households",
       households,
+      defs.householdGroupVars,
+      defs.householdVars,
+      defs.householdRestrictedVars ),
+    ( "households_by_income_per_capita",
+      households_by_income_per_capita,
       defs.householdGroupVars,
       defs.householdVars,
       defs.householdRestrictedVars ),

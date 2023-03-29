@@ -487,7 +487,6 @@ if True: # dependence
       # as they are by definition in the informal sector.
       # Persons making more than it might be able to hide their incomes too;
       # the model will not capture such hiding.
-      #
         ( ( ppl["income, labor, cash"] >= c.min_wage )
         & ( ppl["relative, child"]==1 )
         & ( ( ppl["age"] < 19 )

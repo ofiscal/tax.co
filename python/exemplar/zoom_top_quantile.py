@@ -4,6 +4,7 @@ if True:
   import pandas                  as pd
   from   scipy import stats
   #
+  from   ofiscal_utils.draw.draw import (cdf, single_cdf)
   import python.build.output_io  as oio
   import python.common.common    as com
   import python.draw.util        as draw
@@ -25,9 +26,9 @@ for name, bottom in [ ("all", 0),
                       ("top-half",0.5),
                       ("top-tenth",0.9),
                       ("top-percent",0.99) ]:
-  draw.cdf ( ei[ ei > ei.quantile(bottom) ],
-             logx = True,
-             with_mean = True )
+  cdf ( ei[ ei > ei.quantile(bottom) ],
+        logx = True,
+        with_mean = True )
   draw.savefig( "zoom-in-on-rich",
                 name + ".jpg" )
   plt.close()

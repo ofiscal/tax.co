@@ -13,21 +13,12 @@ USAGE:
     See the `targets` variable below.
   Optional: Define parameters in config/config.json,
     or in a similar file in users/u<user-hash>/config/
-  From the root folder of the project, run these two lines:
-    PYTHONPATH="." python3 bash/run-makefile.py users/symlinks/baseline/config/config.json
-    PYTHONPATH="." python3 bash/run-makefile.py users/symlinks/single-cedula/config/config.json
+  From the root folder of the project, run this:
     PYTHONPATH="." python3 bash/run-makefile.py <config_file>
-  The first line builds the baseline "user",
-    which other users are compared to.
-    It won't rebuild unless the code changed.
-  In the second line, the file path in <>s is optional.
+    for instance:
+      PYTHONPATH="." python3 bash/run-makefile.py users/symlinks/jbb/config/config.json
+  The file path in <>s is optional.
     If you don't provide it, it will default to config/config.json.
-
-PITFALL:
-  The config files for the baseline and for the user must
-  have the sample subsample size.
-  In the online simulation, the subsample is automatically 1/1 in both,
-  but when running simulations manually, this pitfall must be remembered.
 
 PITFALL:
   If, when you run the above, you receive an error of the form
@@ -35,7 +26,9 @@ PITFALL:
     '/mnt/tax_co/users/ue01af9d7df5e7e220c6ef60e400a6683/logs/make.txt"
   it's because the program expects `users/ue01af9d7df5e7e220c6ef60e400a6683/`
   to exist, and to have the same structure as `users/example/`
-  One way to solve this is to copy `users/example/` folder to
+  The easiest way to solve this is to use the web UI,
+  which creates that folder automatically.
+  Another way is to copy `users/example/` folder to
   `users/ue01af9d7df5e7e220c6ef60e400a6683/` (or whatever appeared in the error),
   and then editing the `config.json` file within it.
 """

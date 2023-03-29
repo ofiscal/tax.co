@@ -1,0 +1,3 @@
+[submodule "ofiscal-utils"]
+	path = ofiscal_utils
+	url = git@github.com:ofiscal/utilities
