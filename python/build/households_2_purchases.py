@@ -24,6 +24,7 @@ if True: # merge purchase data into person data
                     how = "left",
                     on=["household"] )
 
+# TODO: This should happen earlier, at the person level.
 if True: # In San Andrés there is no VAT.
   merge.loc[ merge["region-1"] == "SAN ANDRÉS", "vat paid" ] = 0
 
