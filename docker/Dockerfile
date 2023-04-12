@@ -20,9 +20,6 @@ RUN apt install -y                                     \
       haskell-platform
 RUN apt install -y python3-pip
 
-RUN apt update --fix-missing -y && \
-    apt upgrade -y
-
 COPY Anaconda3-2022.10-Linux-x86_64.sh /home/anaconda.sh
 RUN /bin/bash /home/anaconda.sh -b -p /opt/conda
 RUN rm /home/anaconda.sh && \
@@ -43,6 +40,7 @@ RUN pip3 install --upgrade \
   pydotplus graphviz \
   django-stubs
 
+RUN apt update
 RUN apt install -y zip unzip
 
 ADD makefile2graph.zip make.py.zip /home/
