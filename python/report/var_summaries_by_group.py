@@ -10,7 +10,6 @@ if True:
   import python.common.describe  as desc
   import python.common.misc      as c
   import python.common.util      as util
-  import python.draw.util        as draw
   import python.report.defs      as defs
 
 

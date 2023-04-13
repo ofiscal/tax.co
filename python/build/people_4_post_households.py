@@ -1,3 +1,10 @@
+# PURPOSE: From people, isolates earners.
+# Computes each earner's share of total household income,
+# and from there, attributes other consumption, spending and tax variables.
+# Computes each earner's income quantile,
+# various fractions of the variables so far described in this comment,
+# and total tax (just called "tax").
+
 if True:
   import pandas as pd
   import numpy as np
