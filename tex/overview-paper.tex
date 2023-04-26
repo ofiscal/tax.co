@@ -58,8 +58,15 @@ In this paper, we develop a microsimulation model of the Colombian tax system
 with the twin goals of
 accurately understanding the distributional effects of taxation
 in a developing country characterized by its high levels of inequality
-[[Someone:
-    and informality?]],
+[[SOMEONE:
+    and informality?
+    I suspect the answer is that no,
+    the simulation currently has nothing to say about informality.
+    While we do have a ``making pension contributions'' variable,
+    we don't even report it in the final output tables,
+    and the word ``formal'' only shows up twice in the simulation code,
+    in the very early stages, as if we thought we might use it but never did.
+]],
 and of making this information available to the public and policymakers
 in a way that is easy to understand and use in the formulation of public policy.
 
@@ -70,7 +77,7 @@ By making reasonable assumptions about tax incidence,
 carefully modeling tax rules that apply to individual tax payers,
 and using data from surveys and tax returns,
 microsimulation analysis can boil down this complex subject to
-bar charts showing the effects of proposed policy
+bar charts showing the effects of proposed policies
 on the after-tax income of people from various demographics and income groups.
 
 The simplicity of the model's output is crucial.
@@ -86,8 +93,9 @@ Section 6 concludes.
 
 \section{Institutional framework}
 
-[[Someone:
-    Maybe we should update all of these numbers.]]
+[[SOMEONE:
+    We should update all the numbers in this section,
+    including the tables it references.]]
 
 There are national, departmental, and municipal taxes in Colombia.
 Departments and municipalities do not have the same degree of autonomy
@@ -108,15 +116,19 @@ But the tax rate cannot exceed the maximum allowed by Congress,
 and municipalities do not have legal authority to, say,
 create a personal income tax in their jurisdiction.
 
-This setup makes it easier to create a model
+This arrangement makes it easier to create a model
 of all the national and local taxes in the country.
 Even though, in principle,
 there are 32 departmental and 1132 municipal tax codes,
 the differences among them are relatively limited.
 
-Tax intake is low in Colombia relative to other Latin American countries and to countries in the OECD.
-According to the OECD, tax intake in Colombia was around 19.6 \% of GDP in 2016,
-whereas on average it was 22\% in Latin America and 34\% in the OECD. [[reference]]
+Tax intake is low in Colombia
+relative to other Latin American countries and to countries in the OECD.
+According to the OECD,
+tax intake in Colombia was around 19.6 \% of GDP in 2016,
+whereas on average it was
+22\% in Latin America and
+34\% in the OECD. [[reference]]
 
 Table \ref{tab:taxcol} breaks down tax revenue for the year 2017.
 National taxes are the bulk of tax revenue,
@@ -124,7 +136,7 @@ accounting for 84.9\% of the total.
 Interestingly, municipalities collect roughly three times as much in taxes as departments,
 even though departments are the larger administrative unit:
 municipal taxes accounted for 11.3\% of tax intake,
-while departments only got 3.8\%.
+while departments only received 3.8\%.
 
 Three quarters of tax revenue come from four types of taxes:
 the value added tax (27.6\%),
@@ -163,25 +175,33 @@ The assumptions of our model take this into account.
 
 We are interested in calculating
 the entire tax burden of individuals belonging to different income groups,
-so that we can produce estimates of how progressive proposed changes to the tax code will be.
-This requires making assumptions about the incidence of various taxes. We assume:
+so that we can produce estimates of
+how progressive proposed changes to the tax code will be.
+This requires making assumptions about
+the incidence of various taxes. We assume:
 
 \begin{itemize}
   \item The personal income tax is fully borne by households.
   \item Payroll taxes are borne entirely by workers.
   \item Excise taxes
-  (including the VAT, the tax on financial transactions, sales tax, and tariffs)
-  are borne by the consumers of the goods and services in question.
+    (including the VAT,
+    the tax on financial transactions,
+    sales tax, and tariffs)
+    are borne by the consumers of the goods and services in question.
   \item Corporate income tax is fully borne by the owners of capital.
   \item Property taxes are borne by
-  the owners of land or real estate.
+    the owners of land or real estate.
 \end{itemize}
 
 With the exception of the property tax assumption,
-which is our own [[Luis: It is, right?]],
+which is our own,
+[[LUIS:
+    It is, right?]]
 these assumptions are all made as well by
 the Congressional Budget Office of the United States,
 as described in \citet{salanie}.
+(The CBO does not model property taxes,
+because in the US those are not federal.)
 
 Appendix A describes the relevant taxes in detail.
 
@@ -194,11 +214,10 @@ The ENPH includes a wealth of data on income and expenditures,
 which we use to calculate effective tax rates for
 people of different levels of income in different regions of the country.
 
-
-[[Someone:
+[[SOMEONE:
     Double-check each of these figures
     against the table it comes from.]]
-[[Jeff:
+[[JEFF:
     Since the underlying data is cleaner now,
     either regenerate the table
     or verify that the Makefile regenerates it.]]
@@ -223,7 +242,7 @@ with private (27\%) and government transfers (11.7\%)
 being important sources of income.
 As income increases, reliance on transfers falls quickly,
 and income from capital and dividends slowly increases.
-Most (50\%) households in the first decile are female-headed,
+50\% households in the first decile are female-headed,
 and their share declines as income rises.
 Only 29.6\% of households in the top decile are headed by women.
 
@@ -238,12 +257,18 @@ to be able to compute effective tax rates.
 \section{Effective Tax Rates}
 
 Let $\mathcal{P}$ be a partition of the set of households.
-For example, $\mathcal{P}$ is the set of household percentiles.
+For example, $\mathcal{P}$ could be the set of household percentiles.
 We define the effective tax rate $\tau_P$
-for a subset $P\in\mathcal{P}$ of households as follows:
+for a subset $P\in\mathcal{P}$ of households as:
 
 \begin{equation}
-\tau_P = \frac{\sum_{h\in P}T_{h}}{\sum_{h\in P}Y_h}
+\tau_P = \frac{\sum_{h\in P}T_{h}} {\sum_{h\in P}Y_h}
+\end{equation}
+
+where:
+
+\begin{equation}
+Y_h = \sum_{i\in h}\sum_{s\in INC}y_{is}
 \end{equation}
 
 \begin{equation}
@@ -251,34 +276,39 @@ T_h = \sum_{j\in TAXES}t_{hj}
 \end{equation}
 
 \begin{equation}
-    TAXES=\{consumption,\ capital,\  payroll,\ personal\ income,\ financial,\ wealth,\ property\}
-\end{equation}
-
-\begin{equation}
-Y_h = \sum_{i\in h}\sum_{s\in INC}y_{is}
-\end{equation}
-
-\begin{equation}
     INC=\{net \; labor \;income,\ capital \;income,\  dividends,\  payroll,\  pension \;income\}
 \end{equation}
 
-We calculate
-[[  Who's we? I don't think *I've* ever calculated this.
-    It's certainly not automated.
-    --jbb]]
-individual $j$'s effective tax rate before transfers as
-
+[[SOMEONE:
+    The way the definition of TAXES typesets is ugly.]]
 \begin{equation}
-  t=\frac
-  {consumption + capital + payroll + personal\ income + financial + wealth + property}
-  {net \; labor \;income +capital \;income + dividends + payroll + pension \;income}
+    TAXES=\{consumption,\ capital,\  payroll,\ personal\ income,\ financial,\ wealth,\ property\}
 \end{equation}
 
-Each summand in the numerator is a tax.
-[[someone:
-    Should $corporate$, described below, be in that sum?
+We calculate
+[[SOMEONE:
+    Who's ``we''? I don't think I (jbb) have ever calculated this.
+    It's certainly not automated.
+    Maybe we just mean that we ``define'' it this way,
+    although the model never calculates it for any particular person?
+]]
+individual $j$'s effective tax rate $t_j$ before transfers as
+
+\begin{equation}
+  t_j=\frac
+  {T_j}
+  {Y_j}
+\end{equation}
+
+where $T_j$ and $Y_j$ for individual $j$ is computed analogously to
+$T_h$ and $Y_h$ for household $h$.
+
+[[SOMEONE:
+    Should $corporate$, described below, be in the numerator
+    in the definition of $t_j$?
     --jbb]]
-[[someone:
+
+[[SOMEONE:
     It's confusing that, for instance,
     ``consumpetion'' refers to the \textit{tax} on consumption,
     rather than consumption itself.
@@ -297,9 +327,10 @@ consumption = \sum^{N}_{n=1} \tau_nP_nX_n
 where $P_n$ is the price before taxes of good $n$,
 $X_n$ is the number of units of $n$ consumed,
 and $\tau_n$ is the tax rate rate that applies to good $n$.
-The ENPH has data on $(P_n+\tau_n)X_n$,
-so we multiply this by $\frac{\tau_n}{1+\tau_n}$
-and add over all goods to obtain $consumption$.
+The ENPH has data on after-tax spending,
+i.e. $(P_n+\tau_n)X_n$,
+which we multiply $\frac{\tau_n}{1+\tau_n}$
+and sum over all goods to obtain $consumption$.
 We obtain $\tau_n$ from the tax code.
 Sometimes there is more than one excise tax on a good,
 in which case $\tau_n$ is the sum of
@@ -308,11 +339,13 @@ In the case of taxes on fuel,
 we assume that not just household fuel purchases but also
 a certain percentage of spending on public transportation
 (which can be specified in the simulation)
-[[Someone:
-    really? I don't know where that change would be made.
+[[SOMEONE:
+    I don't think it can, actually.
+    Did we promise that before writing the microsimulation,
+    or am I forgetting something?
     --jbb]]
 is taxed at this rate.
-In cases where inputs other than fuel are taxed we do the same
+In cases where inputs other than fuel are taxed, we do the same
 (see the appendix for details).
 
 $corporate$ is individual $j$'s share of
