@@ -51,10 +51,7 @@ tax_co_root_path    = "/mnt/tax_co"
 if True: # Refine the environment.
   my_env = os . environ . copy ()
   env_additions = ":" . join (
-      [ tax_co_root_path,
-        "/opt/conda/lib/python3.9/site-packages" ] )
-        # TODO ? Why must this second folder be specified?
-        # It's the default when I run python3 from the shell.
+      [ tax_co_root_path ] )
   my_env["PYTHONPATH"] = (
       ":" . join ( [ env_additions,
                      my_env [ "PYTHONPATH" ] ] )

@@ -15,21 +15,29 @@ RUN apt install -y wget bzip2 ca-certificates \
 RUN apt install -y \
       make curl grep sed dpkg git mercurial subversion
 
-RUN apt install -y                                     \
+RUN apt install -y \
       build-essential graphviz cron jq
-RUN apt install -y                                     \
+RUN apt install -y \
       libapache2-mod-wsgi-py3 ufw apache2
-RUN apt install -y                                     \
+RUN apt install -y \
       haskell-platform
 RUN apt install -y \
       python3-pip
-
-RUN apt update --fix-missing -y && \
-    apt upgrade -y
+RUN apt install -y \
+      zip unzip
 
 RUN pip3 install --upgrade \
-  yfinance yahoofinancials weightedcalcs csv-diff surbtc icecream \
-  pydotplus graphviz django-stubs zip unzip
+  yfinance yahoofinancials
+RUN pip3 install --upgrade \
+  weightedcalcs csv-diff
+RUN pip3 install --upgrade \
+  icecream
+RUN pip3 install --upgrade \
+  pydotplus
+RUN pip3 install --upgrade \
+  graphviz
+RUN pip3 install --upgrade \
+  django-stubs
 
 RUN pip3 install --upgrade ipython
 
@@ -58,6 +66,8 @@ RUN apt install xlsx2csv csvtool
 RUN pip3 install --upgrade coconut mypy coconut[mypy] \
     pandas-stubs types-requests
 RUN pip3 install --upgrade pandas
+RUN pip3 install --upgrade matplotlib
+RUN pip3 install --upgrade openpyxl
 RUN echo "coconut \$1 \$1.py -l -t 3.7 --mypy" > /usr/bin/myCoconut && \
     chmod +x                                     /usr/bin/myCoconut
 
@@ -104,7 +114,6 @@ RUN echo "set enable-bracketed-paste off" >> /root/.inputrc
 RUN echo "set enable-bracketed-paste off" >> /home/jeff/.inputrc
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
-ENV PATH /opt/conda/bin:$PATH
 ENV TZ="America/Bogota"
 USER jeff
 

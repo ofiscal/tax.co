@@ -127,9 +127,7 @@ def advance_request_queue ():
 
   sp = my_subproc.run (
     to_run = [
-      "/opt/conda/bin/python3.9",
-        # TODO : Do I really have to specify this?
-        # In the shell it's the default python (and python3).
+      "python3",
       os.path.join ( c.tax_co_root,
                      "bash/run-makefile.py" ),
       os . path . join (
