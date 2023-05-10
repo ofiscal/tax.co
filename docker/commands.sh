@@ -5,7 +5,7 @@
 # A trick to quickly edit a Docker-locked file from the host system:
 # https://stackoverflow.com/a/26915343
 
-DOCKER_IMAGE_SUFFIX="2023-03-02.Anaconda-2022"
+DOCKER_IMAGE_SUFFIX="2023-05-10.no-conda"
 
 # Start a docker container based on the latest image.
 docker run --name tax -itd                   \
