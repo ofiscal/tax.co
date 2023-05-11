@@ -17,6 +17,8 @@ USAGE:
     PYTHONPATH="." python3 python/run-makefile.py <config_file>
     for instance:
       PYTHONPATH="." python3 python/run-makefile.py users/symlinks/jbb/config/config.json
+    or (often useful) the baseline:
+      PYTHONPATH="." python3 python/run-makefile.py users/symlinks/baseline/config/config.json
   The file path in <>s is optional.
     If you don't provide it, it will default to config/config.json.
 
