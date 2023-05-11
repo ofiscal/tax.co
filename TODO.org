@@ -1,0 +1,3 @@
+* These (among other) files refer to conda, which is no longer part of the Docker container.
+* how to find them all
+  find . \( -name "*.py" -o -name "*.sh" -o -name "*.md" -o -name "*.org" \) -exec grep --color=auto -nH --null -i conda  \{\} +

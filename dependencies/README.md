@@ -30,7 +30,7 @@ most of the files in the definitions of `enph_files` and `report_households`.
 ## Next, run this
 
 ```
-make report_households -Bnd                                \
+make reports -Bnd                                \
   config_file=config/config.json                           \
   subsample=1                                              \
   strategy=detail                                          \

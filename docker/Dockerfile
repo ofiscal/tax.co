@@ -1,53 +1,58 @@
 FROM debian:latest
 
-RUN echo "2021 05 11"
+RUN echo "2023 05 10"
 RUN apt update --fix-missing -y &&                     \
     apt upgrade -y
 
-RUN apt install -y wget bzip2 ca-certificates          \
+# PITFALL: These are massive. Don't reorder them
+# or join them into one RUN command.
+RUN apt install -y texlive
+RUN apt install -y texlive-latex-extra
+
+RUN apt install -y wget bzip2 ca-certificates \
       libglib2.0-0 libxext6 libsm6 libxrender1
-RUN apt install -y                                     \
+
+RUN apt install -y \
       make curl grep sed dpkg git mercurial subversion
 
-RUN apt update --fix-missing -y && \
-    apt upgrade -y
-
-RUN apt install -y                                     \
+RUN apt install -y \
       build-essential graphviz cron jq
-RUN apt install -y                                     \
+RUN apt install -y \
       libapache2-mod-wsgi-py3 ufw apache2
-RUN apt install -y                                     \
+RUN apt install -y \
       haskell-platform
-RUN apt install -y python3-pip
+RUN apt install -y \
+      python3-pip
+RUN apt install -y \
+      zip unzip
 
-COPY Anaconda3-2022.10-Linux-x86_64.sh /home/anaconda.sh
-RUN /bin/bash /home/anaconda.sh -b -p /opt/conda
-RUN rm /home/anaconda.sh && \
-    ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
-    echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "conda activate base" >> ~/.bashrc && \
-    find /opt/conda/ -follow -type f -name '*.a' -delete && \
-    find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
-    /opt/conda/bin/conda clean -afy
-RUN /opt/conda/bin/conda install jupyter -y --quiet
-RUN /opt/conda/bin/conda update --all -y
-
-RUN /opt/conda/bin/conda install django
-
-# PITFALL: If something is available via `conda install`, use that.
 RUN pip3 install --upgrade \
-  yfinance yahoofinancials weightedcalcs csv-diff surbtc icecream \
-  pydotplus graphviz \
+  yfinance yahoofinancials
+RUN pip3 install --upgrade \
+  weightedcalcs csv-diff
+RUN pip3 install --upgrade \
+  icecream
+RUN pip3 install --upgrade \
+  pydotplus
+RUN pip3 install --upgrade \
+  graphviz
+RUN pip3 install --upgrade \
   django-stubs
 
-RUN apt update
-RUN apt install -y zip unzip
+RUN pip3 install --upgrade ipython
+
+RUN pip3 install --upgrade scipy
+
+RUN pip3 install --upgrade django
 
 ADD makefile2graph.zip make.py.zip /home/
 
 # makefile2graph is useful for drawing the dependency hierarchy
-RUN cd /home && unzip makefile2graph && rm makefile2graph.zip && \
-    cd makefile2graph && make && make install
+RUN cd /home &&              \
+    unzip makefile2graph &&  \
+    rm makefile2graph.zip && \
+    cd makefile2graph &&     \
+    make && make install
 
 # make.py is a build tool that's better and easier than make
 RUN cd /home && unzip make.py && rm make.py.zip && \
@@ -56,32 +61,15 @@ RUN cd /home && unzip make.py && rm make.py.zip && \
 # PITFALL: Earlier this was installed via easy_install,
 # which at least used to be included in the Python `setuptools` pakage.
 # If it doesn't work, try installing it that way instead.
-RUN apt install xlsx2csv
+RUN apt install xlsx2csv csvtool
 
-RUN apt install csvtool
-
-
-#### #### #### #### #### #### #### #### #### #### #### ####
-#### ####            Afterthoughts                #### ####
-#### #### #### #### #### #### #### #### #### #### #### ####
-# It would be more natural for these to run earlier in the Dockerfile,
-# but that would require rebuilding many stages.
-# Until that needs doing, it's more efficient to leave them tacked on
-# here at the end.
-
-# PITFALL: pip and conda can conflict,
-# but coconut and pandas-stubs are not packaged for conda.
-# I did not install mypy from conda
-# because I thought it might conflict with `coconut[mypy]`.
 RUN pip3 install --upgrade coconut mypy coconut[mypy] \
     pandas-stubs types-requests
-RUN /opt/conda/bin/conda update pandas
+RUN pip3 install --upgrade pandas
+RUN pip3 install --upgrade matplotlib
+RUN pip3 install --upgrade openpyxl
 RUN echo "coconut \$1 \$1.py -l -t 3.7 --mypy" > /usr/bin/myCoconut && \
     chmod +x                                     /usr/bin/myCoconut
-
-# # PITFALL: These are massive. Don't reorder or collect them.
-RUN apt install -y texlive
-RUN apt install -y texlive-latex-extra
 
 
 #### #### #### #### #### #### #### #### #### #### #### ####
@@ -126,7 +114,6 @@ RUN echo "set enable-bracketed-paste off" >> /root/.inputrc
 RUN echo "set enable-bracketed-paste off" >> /home/jeff/.inputrc
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
-ENV PATH /opt/conda/bin:$PATH
 ENV TZ="America/Bogota"
 USER jeff
 
