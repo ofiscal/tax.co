@@ -55,26 +55,28 @@ user = user_hash_from_email ( user_email )
 strategy_suffix = strategy
 strategy_year_suffix = strategy + "." + str(regime_year)
 
-def retrieve_file( file_struct, subsample ):
+def retrieve_file ( file_struct, subsample ):
   return pd.read_csv(
       ( "data/enph-2017/recip-" + str(subsample)
         + "/" + file_struct.filename )
       , usecols = list( cla.name_map( file_struct.col_specs )
                       . keys() )
-    )
+  )
 
-def collect_files( file_structs, subsample=subsample ):
+def collect_files ( file_structs, subsample=subsample ):
   """Collect all files in `file_structs` into a single dataset,
 with slight changes for homogeneity, readability."""
   acc = pd.DataFrame()
   for f in file_structs:
-    shuttle = ( retrieve_file( f, subsample )
+    shuttle = ( retrieve_file ( f, subsample )
               . rename( columns = cla.name_map( f.col_specs ) ) )
     # shuttle["file-origin"] = f.name
     for c in f.corrections:
       shuttle = c.correct( shuttle )
-    acc = acc.append( shuttle
-                    , ignore_index = True # avoids duplicating index values
-                    , sort=True ) # the two capitulo_c files include a column,
+    acc = pd.concat (
+      [ acc, shuttle ],
+      axis = "rows", # i.e. add more rows, not columns
+      ignore_index = True, # avoids duplicating index values
+      sort = True ) # the two capitulo_c files include a column,
     # "25-broad-categs", that the others don't. `sort=true` deals with that.
   return acc

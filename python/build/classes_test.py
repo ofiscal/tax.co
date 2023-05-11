@@ -84,7 +84,7 @@ def test_re_gt1c():
 def test_stringProperties():
   assert( cla.stringProperties( pd.Series( [0,1] ) ) ==
           { cla.StringCellProperty.NotAString } )
-  assert( cla.stringProperties( pd.Series( ["a a", " b "] ) ) ==
+  assert( cla.stringProperties ( pd.Series( ["a a", " b "] ) ) ==
           { cla.StringCellProperty.NonNumeric
           , cla.StringCellProperty.InteriorSpace} )
   assert( cla.stringProperties( pd.Series( ["a a", " b ", np.nan] ) ) ==

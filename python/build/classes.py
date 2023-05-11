@@ -103,7 +103,7 @@ if True: # TODO ? WART: These should be defined within each enum type,
   re_gt1p       = re.compile( ".*\..*\." )
   re_gt1c       = re.compile( ".*,.*," )
 
-def stringProperties( column ):
+def stringProperties ( column : pd.Series ):
   """Seems to (?) determine all properties that apply to a string column. See classes_test.py."""
   # let c = column.apply( str.strip )
     # omitted because this is done to every column when subsampling
@@ -111,7 +111,9 @@ def stringProperties( column ):
     return {StringCellProperty.NotAString}
 
   acc = set()
-  for (_,val) in column.iteritems():
+  for (_,val) in column.items():
+    # PITFALL: `column` is a pd.Series, but we can iterate over it as if
+    # it were a dictionary. That seems silly of my past self, but it works.
     if pd.isnull( val ):
       acc.add( StringCellProperty.HasNull )
     else:
