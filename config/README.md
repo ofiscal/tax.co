@@ -9,7 +9,7 @@ pointing to the default here.
 `config.json` in this folder serves as a configuration file
 when in the Python REPL.
 It is also the default configuration file used by
-`bash/run-makefile.py` when none is specified.
+`python/run-makefile.py` when none is specified.
 Output in that case will still go to some subfolder of the `users/` folder --
 specifically, a subfolder named
 'u' + the hash of the user_email specified in `config.json`.

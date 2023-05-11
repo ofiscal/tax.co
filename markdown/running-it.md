@@ -135,19 +135,19 @@ After that, enter the docker:
 The docker container is where it runs.
 (If the following commands don't work, they might be out of date.
 The most up-to-date commands for running it can be found
-in the header comment to `bash/bash/run-makefile.py`.)
+in the header comment to `python/run-makefile.py`.)
 
 If you don't want to specify the config file,
 run this from `/mnt/tax_co`:
-  `PYTHONPATH="." python3 bash/run-makefile.py`
+  `PYTHONPATH="." python3 python/run-makefile.py`
 
 If you do (which is easier),
 run this from `/mnt/tax_co`:
-  `PYTHONPATH="." python3 bash/run-makefile.py users/example/config/config.json`
+  `PYTHONPATH="." python3 python/run-makefile.py users/example/config/config.json`
 
 If that path doesn't work (because Windows doesn't like symlinks?),
 try this:
-  `PYTHONPATH="." python3 bash/run-makefile.py users/u1e71cf39e330262a44422cc73e2e046a/config/config.json`
+  `PYTHONPATH="." python3 python/run-makefile.py users/u1e71cf39e330262a44422cc73e2e046a/config/config.json`
 
 # Once you've (maybe) gotten it to run
 
@@ -157,7 +157,7 @@ Edit the `users/symlinks/quien/config` folder.
 
 ## To disable testing
 
-Go to `bash/run-makefile.sh`,
+Go to `python/run-makefile.sh`,
 and comment out the word `tests`.
 
 ## To be sure that it's running

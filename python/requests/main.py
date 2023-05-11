@@ -103,7 +103,7 @@ def advance_request_queue ():
   """
   Read the next request.
   Create a powerless lock at "data/request-ongoing".
-  Call `bash/run-makefile.py` per the request.
+  Call `python/run-makefile.py` per the request.
   Zip some files.
   Email results to user.
   Mark the request complete in `requests.csv`.
@@ -129,7 +129,7 @@ def advance_request_queue ():
     to_run = [
       "python3",
       os.path.join ( c.tax_co_root,
-                     "bash/run-makefile.py" ),
+                     "python/run-makefile.py" ),
       os . path . join (
         user_root, "config/config.json" ) ],
     log_path    = os.path.join ( user_logs,

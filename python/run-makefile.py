@@ -14,9 +14,9 @@ USAGE:
   Optional: Define parameters in config/config.json,
     or in a similar file in users/u<user-hash>/config/
   From the root folder of the project, run this:
-    PYTHONPATH="." python3 bash/run-makefile.py <config_file>
+    PYTHONPATH="." python3 python/run-makefile.py <config_file>
     for instance:
-      PYTHONPATH="." python3 bash/run-makefile.py users/symlinks/jbb/config/config.json
+      PYTHONPATH="." python3 python/run-makefile.py users/symlinks/jbb/config/config.json
   The file path in <>s is optional.
     If you don't provide it, it will default to config/config.json.
 

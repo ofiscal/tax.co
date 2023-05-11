@@ -22,7 +22,7 @@ docker run --name tax -itd                   \
 
 # Start a shell within a running container.
 # (Once inside, go to the root of the project to do useful stuff,
-# like running `python` or `bash/run-makefile.py`.)
+# like running `python` or `python/run-makefile.py`.)
 docker start tax
 docker exec -it tax bash # add -u to do it as root
 cd mnt/tax_co/
