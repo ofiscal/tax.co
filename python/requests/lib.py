@@ -191,9 +191,10 @@ def append_request ( requests : pd.DataFrame,
                      request  : pd.Series
                    ) -> pd.DataFrame:
     requests = requests . copy ()
-    return ( requests
-             . append ( request,
-                        ignore_index = True ) )
+    return pd.concat ( [ requests,
+                         pd.DataFrame ( request ) . transpose() ],
+                       axis = "rows",
+                       ignore_index = True )
 
 # This might seem unnecessary -- why not just keep the old requests,
 # since they're small? But they actually contain no information,
