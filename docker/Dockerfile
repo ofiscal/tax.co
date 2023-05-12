@@ -68,6 +68,7 @@ RUN pip3 install --upgrade coconut mypy coconut[mypy] \
 RUN pip3 install --upgrade pandas
 RUN pip3 install --upgrade matplotlib
 RUN pip3 install --upgrade openpyxl
+RUN pip3 install --upgrade filelock
 RUN echo "coconut \$1 \$1.py -l -t 3.7 --mypy" > /usr/bin/myCoconut && \
     chmod +x                                     /usr/bin/myCoconut
 
