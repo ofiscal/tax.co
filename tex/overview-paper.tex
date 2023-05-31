@@ -24,7 +24,7 @@
   \thanks{We thank Universidad Javeriana for its financial support of this project.
     We are also grateful to Catalina Herr\'{a}n for her detailed description of the Colombian tax system,
     and to seminar participants at Universidad Javeriana for their useful comments on this draft.}}
-\author{Jeffrey Brown, Luis Carlos Reyes, and David Su\'{a}rez
+\author{Jeffrey Benjamin Brown, Liliana Heredia, Oliver Pardo, Luis Carlos Reyes, and David Su\'{a}rez
   \thanks{Observatorio Fiscal,
     Department of Economics, Pontificia Universidad Javeriana, Bogot\'{a}, Colombia.
     Telephone:\ 57-1-3208320,
@@ -58,7 +58,8 @@ In this paper, we develop a microsimulation model of the Colombian tax system
 with the twin goals of
 accurately understanding the distributional effects of taxation
 in a developing country characterized by its high levels of inequality
-[[SOMEONE:
+\iffalse
+    [[SOMEONE:
     and informality?
     I suspect the answer is that no,
     the simulation currently has nothing to say about informality.
@@ -66,7 +67,8 @@ in a developing country characterized by its high levels of inequality
     we don't even report it in the final output tables,
     and the word ``formal'' only shows up twice in the simulation code,
     in the very early stages, as if we thought we might use it but never did.
-]],
+    ]],
+\fi
 and of making this information available to the public and policymakers
 in a way that is easy to understand and use in the formulation of public policy.
 
@@ -93,9 +95,11 @@ Section 6 concludes.
 
 \section{Institutional framework}
 
-[[SOMEONE:
+\iffalse
+    [[SOMEONE:
     We should update all the numbers in this section,
     including the tables it references.]]
+\fi
 
 There are national, departmental, and municipal taxes in Colombia.
 Departments and municipalities do not have the same degree of autonomy
@@ -128,7 +132,10 @@ According to the OECD,
 tax intake in Colombia was around 19.6 \% of GDP in 2016,
 whereas on average it was
 22\% in Latin America and
-34\% in the OECD. [[reference]]
+34\% in the OECD.
+\iffalse
+    [[reference]]
+\fi
 
 Table \ref{tab:taxcol} breaks down tax revenue for the year 2017.
 National taxes are the bulk of tax revenue,
@@ -195,8 +202,10 @@ the incidence of various taxes. We assume:
 
 With the exception of the property tax assumption,
 which is our own,
-[[LUIS:
+\iffalse
+    [[LUIS:
     It is, right?]]
+\fi
 these assumptions are all made as well by
 the Congressional Budget Office of the United States,
 as described in \citet{salanie}.
@@ -214,6 +223,7 @@ The ENPH includes a wealth of data on income and expenditures,
 which we use to calculate effective tax rates for
 people of different levels of income in different regions of the country.
 
+\iffalse
 [[SOMEONE:
     Double-check each of these figures
     against the table it comes from.]]
@@ -221,6 +231,7 @@ people of different levels of income in different regions of the country.
     Since the underlying data is cleaner now,
     either regenerate the table
     or verify that the Makefile regenerates it.]]
+\fi
 
 Table \ref{tab:ygender} shows some descriptive statistics of the sample.
 The average household has 3.3 members and a monthly income of 2.1 million COP.
@@ -279,19 +290,23 @@ T_h = \sum_{j\in TAXES}t_{hj}
     INC=\{net \; labor \;income,\ capital \;income,\  dividends,\  payroll,\  pension \;income\}
 \end{equation}
 
+\iffalse
 [[SOMEONE:
     The way the definition of TAXES typesets is ugly.]]
+\fi
 \begin{equation}
     TAXES=\{consumption,\ capital,\  payroll,\ personal\ income,\ financial,\ wealth,\ property\}
 \end{equation}
 
 We calculate
+\iffalse
 [[SOMEONE:
     Who's ``we''? I don't think I (jbb) have ever calculated this.
     It's certainly not automated.
     Maybe we just mean that we ``define'' it this way,
     although the model never calculates it for any particular person?
 ]]
+\fi
 individual $j$'s effective tax rate $t_j$ before transfers as
 
 \begin{equation}
@@ -303,6 +318,7 @@ individual $j$'s effective tax rate $t_j$ before transfers as
 where $T_j$ and $Y_j$ for individual $j$ is computed analogously to
 $T_h$ and $Y_h$ for household $h$.
 
+\iffalse
 [[SOMEONE:
     Should $corporate$, described below, be in the numerator
     in the definition of $t_j$?
@@ -317,6 +333,7 @@ $T_h$ and $Y_h$ for household $h$.
     (`t` would be more terse than `tp`,
     but usually `t` means a tax rate, not a peso amount.)
     --jbb]]
+\fi
 
 (The) $consumption$ (tax) is payments made for value added taxes on consumption,
 as well as the national sales tax
@@ -339,11 +356,13 @@ In the case of taxes on fuel,
 we assume that not just household fuel purchases but also
 a certain percentage of spending on public transportation
 (which can be specified in the simulation)
+\iffalse
 [[SOMEONE:
     I don't think it can, actually.
     Did we promise that before writing the microsimulation,
     or am I forgetting something?
     --jbb]]
+\fi
 is taxed at this rate.
 In cases where inputs other than fuel are taxed, we do the same
 (see the appendix for details).
@@ -364,11 +383,13 @@ $\frac{\tau_k}{1-\tau_k}$,
 assuming that $\tau_k=\tau \; \forall k$,
 where $\tau$ is the effective tax rate on capital
 obtained from national accounts by \citet{banrep}.
+\iffalse
 [[Someone:
     I'm unaware of any place in the code that does this,
     and pretty sure that's because there isn't one.
     Maybe Luis or David was computing it by hand.
     --jbb]]
+\fi
 
 $payroll$ is the sum of employee and employer contributions to social security payments:
 \begin{equation} \label{payroll_tax}
@@ -439,10 +460,12 @@ net \; labor \;income
 Finally, $capital \; income$, $dividends$, and $pension \; income$
 are self-explanatory, and are reported in the ENPH.
 
+\iffalse
 [[someone:
     What does this next passage mean?
     It looks like it got mangled.
     --jbb]]
+\fi
 
 By deciles
 
@@ -574,7 +597,9 @@ that nobody would report it as a monthly income of any sort.)
 We replace those with 0 as well.
 
 The ENPH provides total cash and in-kind beca and non-beca funding for students.
+\iffalse
 [[LUIS: How can I explain the difference between beca and non-beca funding?]]
+\fi
 That uses four variables --
 cash beca funding, in-kind beca funding, cash non-beca funding, and in-kind non-beca funding.
 The ENPH also provides information on
