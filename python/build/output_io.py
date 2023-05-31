@@ -88,4 +88,6 @@ def readCommonOutput (subsample,name,**kwargs):
     os.path.join(
       get_common_output_folder ( subsample ),
       name + ".csv" ),
+    low_memory = False, # TODO ? Is this bad?
+                        # A list of dtypes would make it unnecessary.
     **kwargs )

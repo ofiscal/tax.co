@@ -23,12 +23,12 @@ user_households     = oio.readUserData (
 baseline_households = oio.readBaselineData (
   1, # PITFALL: The baseline data is always full-sample.
   "report_households_tmi." + terms.detail + ".2019" )
-user_nonzero_laborers        = oio.readUserData (
+user_nonzero_earners_by_labor_income        = oio.readUserData (
   com.subsample,
-  "report_nonzero_laborers_tmi." + com.strategy_year_suffix )
-baseline_nonzero_laborers    = oio.readBaselineData (
+  "report_nonzero_earners_by_labor_income_tmi." + com.strategy_year_suffix )
+baseline_nonzero_earners_by_labor_income    = oio.readBaselineData (
   1, # PITFALL: The baseline data is always full-sample.
-  "report_nonzero_laborers_tmi." + terms.detail + ".2019" )
+  "report_nonzero_earners_by_labor_income_tmi." + terms.detail + ".2019" )
 
 def sanitize_name_for_makefile (s : str) -> str:
   """Because Makefiles cannot handle spaces, and maybe colons, in filenames."""
@@ -91,7 +91,9 @@ def draw_one_comparison (
 for (unit, user, baseline) in [
     ("households",       user_households,       baseline_households),
     ("earners",          user_earners,          baseline_earners),
-    ("nonzero_laborers", user_nonzero_laborers, baseline_nonzero_laborers) ]:
+    ("nonzero_earners_by_labor_income",
+     user_nonzero_earners_by_labor_income,
+     baseline_nonzero_earners_by_labor_income) ]:
   for measure in ["tax: mean", "income - tax: mean"]:
     make_one_difference_table (
       unit     = unit,

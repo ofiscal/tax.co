@@ -56,11 +56,14 @@ strategy_suffix = strategy
 strategy_year_suffix = strategy + "." + str(regime_year)
 
 def retrieve_file ( file_struct, subsample ):
-  return pd.read_csv(
-      ( "data/enph-2017/recip-" + str(subsample)
-        + "/" + file_struct.filename )
-      , usecols = list( cla.name_map( file_struct.col_specs )
-                      . keys() )
+  return pd.read_csv (
+    path.join ( "data/enph-2017",
+                "recip-" + str(subsample),
+                file_struct.filename ),
+    usecols = list( cla.name_map( file_struct.col_specs )
+                    . keys() ),
+    low_memory = False # TODO ? Is this bad?
+                       # A list of dtypes would make it unnecessary.
   )
 
 def collect_files ( file_structs, subsample=subsample ):
