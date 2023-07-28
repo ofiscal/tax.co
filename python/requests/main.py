@@ -170,7 +170,7 @@ def advance_request_queue ():
         subject = "Resultados de microsimulación",
         body = (
           "Los resultados son los documentos .xlsx adjuntos. "
-          + "(Si todo fue bien, el adjunto archivo `logs.zip` "
+          + "(Si todo salió bien, el adjunto archivo `logs.zip` "
           + " no le va a importar.)" ),
         attachment_paths = (
           glob.glob   ( os.path.join ( data_path, "report*" ) )
