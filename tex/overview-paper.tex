@@ -276,6 +276,11 @@ for a subset $P\in\mathcal{P}$ of households as:
 \tau_P = \frac{\sum_{h\in P}T_{h}} {\sum_{h\in P}Y_h}
 \end{equation}
 
+\iffalse [[JEFF: Verify: is that even what we do?
+    I (Jeff) thought we compute an average of ratios,
+    not a ratio of averages.]]
+\fi
+
 where:
 
 \begin{equation}
@@ -287,16 +292,29 @@ T_h = \sum_{j\in TAXES}t_{hj}
 \end{equation}
 
 \begin{equation}
-    INC=\{net \; labor \;income,\ capital \;income,\  dividends,\  payroll,\  pension \;income\}
+  INC = \left\{ \begin{array}{cc}
+    net \; labor \;income,\ capital \;income,\  \\
+    dividend \;income,\ payroll \;income,\ pension \;income
+  \end{array} \right\}
+\end{equation}
+
+\begin{equation}
+  TAXES = \left\{ \begin{array}{cc}
+    consumption \;tax,\ capital \;tax,\  payroll \;tax, wealth \;tax, \\
+    personal\ income \;tax, financial\ \;tax, property \;tax
+  \end{array} \right\}
 \end{equation}
 
 \iffalse
-[[SOMEONE:
-    The way the definition of TAXES typesets is ugly.]]
+PITFALL (DONE):
+It's unfortunate to have to specify ``tax'' and ``income''
+after each of the terms in the preceding two equations,
+but otherwise they are confusible --
+e.g. ``personal could be personal income or a tax on it;
+``labor'' and ``payroll'' could be income or taxes on that income; etc.
+
+JEFF: RESUME HERE
 \fi
-\begin{equation}
-    TAXES=\{consumption,\ capital,\  payroll,\ personal\ income,\ financial,\ wealth,\ property\}
-\end{equation}
 
 We calculate
 \iffalse
