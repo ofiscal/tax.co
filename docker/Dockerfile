@@ -1,7 +1,7 @@
 FROM debian:latest
 
-RUN echo "2023 05 10"
-RUN apt update --fix-missing -y &&                     \
+RUN echo "2023 07 26"
+RUN apt update --fix-missing -y && \
     apt upgrade -y
 
 # PITFALL: These are massive. Don't reorder them
