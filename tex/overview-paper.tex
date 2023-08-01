@@ -96,7 +96,7 @@ Section 6 concludes.
 \section{Institutional framework}
 
 \iffalse
-    [[SOMEONE:
+    [[AN ECONOMIST:
     We should update all the numbers in this section,
     including the tables it references.]]
 \fi
@@ -134,10 +134,10 @@ whereas on average it was
 22\% in Latin America and
 34\% in the OECD.
 \iffalse
-    [[reference]]
+    [[AN ECONOMIST: reference missing]]
 \fi
 
-Table \ref{tab:taxcol} breaks down tax revenue for the year 2017.
+Table \ref{table:taxcol} breaks down tax revenue for the year 2017.
 National taxes are the bulk of tax revenue,
 accounting for 84.9\% of the total.
 Interestingly, municipalities collect roughly three times as much in taxes as departments,
@@ -211,7 +211,7 @@ the Congressional Budget Office of the United States,
 as described in \citet{salanie}.
 \iffalse
     [[AN ECONOMIST::
-        Who is salamie? That string only appears once in the entire document.
+        Who is Salamie? That string only appears once in the entire document.
         --jbb]]
 \fi
 (The CBO does not model property taxes,
@@ -229,7 +229,7 @@ which we use to calculate effective tax rates for
 people of different levels of income in different regions of the country.
 
 \iffalse
-[[SOMEONE:
+[[AN ECONOMIST:
     Double-check each of these figures
     against the table it comes from.]]
 [[JEFF:
@@ -238,7 +238,7 @@ people of different levels of income in different regions of the country.
     or verify that the Makefile regenerates it.]]
 \fi
 
-Table \ref{tab:ygender} shows some descriptive statistics of the sample.
+Table \ref{table:ygender} shows some descriptive statistics of the sample.
 The average household has 3.3 members and a monthly income of 2.1 million COP.
 Labor income accounts for 74\% of the total,
 capital income for 11.5\%,
@@ -252,7 +252,7 @@ and the average income of female-headed households
 is only 73\% of the average income of male-headed ones,
 despite being of essentially the same size.
 
-Table \ref{tab:ydecile} disaggregates these statistics by income decile.
+Table \ref{table:ydecile} disaggregates these statistics by income decile.
 Labor income is only 53\% of income for individuals in the first decile,
 with private (27\%) and government transfers (11.7\%)
 being important sources of income.
@@ -262,7 +262,7 @@ and income from capital and dividends slowly increases.
 and their share declines as income rises.
 Only 29.6\% of households in the top decile are headed by women.
 
-Table \ref{tab:ycity} shows the statistics for the main cities,
+Table \ref{table:ycity} shows the statistics for the main cities,
 with Bogota and Medellin reporting the highest incomes, as would be expected.
 
 It is worth noting that the incomes reported in the survey
@@ -298,18 +298,20 @@ T_h = \sum_{j\in TAXES}t_{hj}
 \end{equation}
 \begin{equation}
   TAXES = \left\{ \begin{array}{cc}
-    consumption \;tax,\ capital \;tax,\  payroll \;tax, wealth \;tax, \\
-    personal\ income \;tax, financial\ \;tax, property \;tax
+    consumption \;tax,\ capital \;income \;tax, \\
+    payroll \;tax, wealth \;tax, personal \;income \;tax, \\
+    financial \; transactions \;tax, property \;tax
   \end{array} \right\}
 \end{equation}
 
 \iffalse
-PITFALL (DONE):
-It's unfortunate to have to specify ``tax'' and ``income''
-after each of the terms in the preceding two equations,
-but otherwise they are confusible --
-e.g. ``personal could be personal income or a tax on it;
-``labor'' and ``payroll'' could be income or taxes on that income; etc.
+    [[ PITFALL (DONE):
+        It's unfortunate to have to specify ``tax'' and ``income''
+        after each of the terms in the preceding two equations,
+        but otherwise they are confusible --
+        e.g. ``personal could be personal income or a tax on it;
+        ``labor'' and ``payroll''
+        could be income or taxes on that income; etc. ]]
 \fi
 
 We define
@@ -322,13 +324,14 @@ individual $j$'s effective (average) tax rate $t_j$ before transfers as
 where $T_j$ and $Y_j$ for individual $j$ is computed analogously to
 $T_h$ and $Y_h$ for household $h$.
 
+
 \iffalse
-[[AN ECONOMIST:
+[[ AN ECONOMIST:
     Should $corporate \;tax$, described below, be in the numerator
     in the definition of $t_j$?
     --jbb]]
 
-[[JEFF:
+[[ JEFF:
     BLOCKED -- might be addressed once I've renamed taxes and consumptions.
 
     It's confusing that, for instance,
@@ -341,7 +344,7 @@ $T_h$ and $Y_h$ for household $h$.
     --jbb]]
 \fi
 
-(The) $consumption \;tax$
+$consumption \;tax$
 is payments made for value added taxes on consumption,
 as well as the national sales tax
 and the beer, liquor, tobacco, and vehicle taxes:
@@ -364,7 +367,7 @@ we assume that not just household fuel purchases but also
 a certain percentage of spending on public transportation
 (which can be specified in the simulation)
 \iffalse
-[[LUIS:
+[[ LUIS:
     I don't think it can, actually.
     Did we promise that before writing the microsimulation,
     or am I forgetting something?
@@ -374,7 +377,7 @@ is taxed at this rate.
 In cases where inputs other than fuel are taxed, we do the same
 (see the appendix for details).
 
-$corporate$ (income) $tax$ is individual $j$'s share of
+$corporate \;income \;tax$ is individual $j$'s share of
 the taxes paid by firms of which he is a stockholder:
 \begin{equation}
 corporate = \sum^{K}_{k=1} \tau_k\theta^j_k\Pi_k
@@ -385,7 +388,7 @@ and $\Pi_k$ is firm $k$'s profits before taxes.
 The ENPH has data on total earnings from dividends.
 (\citet{juliana} also have administrative data
 \iffalse
-    [[AN ECONOMIST:
+    [[ AN ECONOMIST:
         Who is juliana? That string only appears cited in this document,
         but the citation is never defined. --jbb]]
 \fi
@@ -397,7 +400,7 @@ assuming that $\tau_k=\tau \; \forall k$,
 where $\tau$ is the effective tax rate on capital
 obtained from national accounts by \citet{banrep}.
 \iffalse
-[[AN ECONOMIST:
+[[ AN ECONOMIST:
     I'm unaware of any place in the code that does this,
     and pretty sure that's because there isn't one.
     Maybe Luis Carlos Reyes or David Suarez was computing it by hand.
@@ -411,13 +414,14 @@ obtained from national accounts by \citet{banrep}.
 
 $payroll$ is the sum of employee and employer contributions to social security payments:
 \begin{equation}
-  payroll(Y) = \begin{cases}
+  \label{payroll_tax}
+  payroll \;tax(Y) = \begin{cases}
     \left\{ \begin{array}{cc}
-      pension \;contributions(Y) +
-      health \;care \;contributions(Y) + \\
-      family \;compensation \;fund \;contributions(Y) + \\
-      adult \;education \;contributions(Y) +
-      child \;welfare \;contributions(Y)
+      pension \;contributions(Y) \\
+      + health \;care \;contributions(Y) \\
+      + family \;compensation \;fund \;contributions(Y) \\
+      + adult \;education \;contributions(Y) \\
+      + child \;welfare \;contributions(Y)
     \end{array} \right\}
     & Y \geq \underline{w} \\
     0 & Y < \underline{w}
@@ -435,8 +439,7 @@ When $Y < \underline{w}$
 (which is the case for about half of the labor force),
 we assume that the worker is informal and therefore pays no payroll taxes.
 
-$personal$ is the personal income tax.
-We estimate it from ENPH data on $Y$,
+We estimate $personal \;income \;tax$ from ENPH data on $Y$,
 and from the number of children in the household.
 The ENPH does not allow us to infer which exemptions
 (other than the child exemption) people claimed.
@@ -445,35 +448,40 @@ We are able to see how the tax burden would vary
 for the small percentage of individuals who pay income taxes
 when we assume that they claim either the minimum or the maximum allowed.
 
-$financial$ is the tax on financial transactions paid by individuals:
+Individuals pay a 0.4\% $financial \;transaction \;tax$:
 \begin{equation}
-  financial=0.04 \times (net \;income -350\ uvt)
+  financial=0.004 \times (net \;income -350\ uvt)
 \end{equation}
-where $net \;income$ includes income from all sources net of taxes
+Here $net \;income$ includes income from all sources net of taxes
 and $uvt$ is \textit{unidades de valor tributario}.
-\footnote{The tax code uses a special unit to measure income for tax purposes,
-called \textit{unidad de valor tributario}, or UVT.
-In 2018, the value of a UVT was COP 33,156,
-and the monthly minimum wage was COP 781,242.
-The tax on financial transactions is only paid
-when monthly transactions exceed 350 UVTs,
-or around 15 times the minimum wage.}
+  \footnote{
+  The tax code uses a special unit to measure income for tax purposes,
+  called \textit{unidad de valor tributario}, or UVT.
+  In 2018, the value of a UVT was COP 33,156,
+  and the monthly minimum wage was COP 781,242.
+  The tax on financial transactions is only paid
+  when monthly transactions exceed 350 UVTs,
+  or around 15 times the minimum wage.}
+The first 350 UVT in transactions are exempt from the tax.
 
-$wealth$ stands for taxes paid on personal wealth by the individual.
+The $wealth \;tax$ is a tax on individual wealth
+exceeding a threshold so high that nearly all Colombians are exempt.
+\iffalse [[ AN ECONOMIST or A LAWYER:
+    This is out of date. What happened? --jbb ]]
+\fi
 The latest tax on personal wealth expired on December 31, 2018.
 As of this writing (Sept 2022), a new one is being mooted.
 
-$property$ is the municipal tax on real estate.
-The ENPH reports payments made by individuals on account of this tax,
-so we simply add this variable to their tax burden.
+$property \;tax$ is the municipal tax on individuals' real estate.
+The ENPH reports such payments directly.
 
 $net \; labor \;income$ is labor income reported in the ENPH
 minus our estimate of the employee share of payroll taxes
 (which is zero for informal workers):
 \begin{equation}
-net \; labor \;income
+net \; labor \;income =
   \begin{cases}
-	Y - employee \; payroll& Y \geq \underline{w} \\
+	Y - payroll \;tax & Y \geq \underline{w} \\
 	Y &  Y < \underline{w}
   \end{cases}
 \end{equation}
@@ -482,7 +490,7 @@ Finally, $capital \; income$, $dividends$, and $pension \; income$
 are self-explanatory, and are reported in the ENPH.
 
 \iffalse
-[[SOMEONE:
+[[ AN ECONOMIST:
     What does this next passage mean?
     It looks like it got mangled.
     --jbb]]
@@ -1131,7 +1139,7 @@ in the same way that we do for the national fuel tax.
 
 \begin{table}
 \caption{Taxes in Colombia 2017}
-\label{tab:taxcol}
+\label{table:taxcol}
 \footnotesize
 \begin{tabular}{lccc} \hline
                             & \textbf{\makecell{Billions of \\ USD PPP} }&    \textbf{\makecell{Share of tax \\ revenue}} & \textbf{\makecell{Share of \\ GDP}}      \\     \hline
@@ -1176,7 +1184,7 @@ Other Departmental Taxes                                & 1.0                   
 
 \begin{table}[]
 \caption{Household Income by gender of head (means unless otherwise stated)}
-\label{tab:ygender}
+\label{table:ygender}
 \footnotesize
 \begin{tabular}{llll}\hline
 &Whole Sample                     & Female-Headed Households & Male-Headed Households                 \\ \hline
@@ -1198,7 +1206,7 @@ Household Size                   & 3.3                      & 3.2               
 
 \begin{table}[]
 \caption{Household Income by decile (means unless otherwise stated)}
-\label{tab:ydecile}
+\label{table:ydecile}
 \footnotesize
 \begin{tabular}{lllllllllll} \hline
 & Decile 1                              & Decile 2  & Decile 3  & Decile 4  & Decile 5    & Decile 6    & Decile 7    & Decile 8    & Decile 9    & Decile 10                    \\ \hline
@@ -1221,7 +1229,7 @@ Female-Headed              & 58.4\%    & 49.9\%    & 43.6\%    & 42.2\%      & 4
 
 \begin{table}[]
 \caption{Household Income by decile (means unless otherwise stated)}
-\label{tab:ycity}
+\label{table:ycity}
 \footnotesize
 \begin{tabular}{lllllllllll}\\ \hline
 & Bogot\'{a}                           & Medell\'{i}n     & Cali          & Bquilla & Bmanga  & C\'{u}cuta       & Tunja        & Cartagena     & S. Marta  & Ibagu\'{e}                     \\ \hline
@@ -1245,7 +1253,7 @@ Female-Headed  & 39.0\%       & 47.7\%        & 40.9\%       & 37.8\%       & 39
 
 \begin{table}[]
 \caption{Effective tax rate for female and male-headed households}
-\label{tab:tgender}
+\label{table:tgender}
 \footnotesize
 \begin{tabular}{llll} \hline
 &Whole Sample                                          & Female Head & Male Head        \\ \hline
@@ -1278,7 +1286,7 @@ Effective tax rate after government transfers (K24\%) & 21.8\%                  
 \begin{landscape}
 \begin{table}[]
 \caption{Effective tax rate by income decile}
-\label{tab:tdecile}
+\label{table:tdecile}
 \footnotesize
 \begin{tabular}{lllllllllll} \hline
 & Decile 1                                              & Decile 2  & Decile 3  & Decile 4  & Decile 5    & Decile 6    & Decile 7    & Decile 8    & Decile 9    & Decile 10                \\ \hline
@@ -1311,7 +1319,7 @@ Tax rate after govt. (K24\%) & 27.2\%    & 10.7\%    & 9.5\%     & 9.2\%       &
 
 \begin{table}[]
 \caption{Effective tax rate for top 1\% (data from \citet{juliana}}
-\label{tab:ttop}
+\label{table:ttop}
 \footnotesize
 \begin{tabular}{llll} \hline
 &Top 1\%                           & Top 0.01\%  & Top 0.001\%                  \\ \hline
@@ -1344,7 +1352,7 @@ Tax rate after govt. (K24 \%)     & 56.9\%                       & 54.0\%       
 
 \begin{table}[]
 \caption{Effective tax rates by city}
-\label{tab:tcity}
+\label{table:tcity}
 \footnotesize
 \begin{tabular}{lllllllllll} \hline
 & Bogot\'{a}                            & Medell\'{i}n    & Cali        & Bquilla & Bmanga & C\'{u}cuta      & Tunja       & Cartagena   & S. Marta & Ibagu\'{e}                 \\ \hline
@@ -1376,10 +1384,10 @@ Tax rate after govt. (K24 \%)     & 23.3\%      & 21.1\%      & 21.5\%       & 2
 
 \begin{table}[]
 \caption{Effective tax rates with 17\% VAT}
-\label{tab:t17}
+\label{table:t17}
 \footnotesize
 \begin{tabular}{lllllllllll} \hline
-\label{tab:t17}
+\label{table:t17}
 
 & Decile 1                          & Decile 2  & Decile 3  & Decile 4  & Decile 5    & Decile 6    & Decile 7    & Decile 8    & Decile 9    & Decile 10                 \\ \hline
 17\% rate on consumption          & \$75,852  & \$97,042  & \$123,626 & \$147,564   & \$168,162   & \$201,549   & \$236,135   & \$277,314   & \$323,777   & \$432,070    \\
@@ -1406,7 +1414,7 @@ Effective tax rate (K 24\%)       & 55.9\%    & 20.0\%    & 16.0\%    & 15.1\%  
 
 \begin{table}[]
 \caption{Effective tax rates with 16\% VAT}
-\label{tab:t16}
+\label{table:t16}
 \footnotesize
 \begin{tabular}{lllllllllll} \hline
  &Decile 1                          & Decile 2  & Decile 3  & Decile 4  & Decile 5    & Decile 6    & Decile 7    & Decile 8    & Decile 9    & Decile 10          \\ \hline
@@ -1435,7 +1443,7 @@ Effective tax rate (K 24\%)       & 53.1\%    & 19.0\%    & 15.3\%    & 14.4\%  
 \end{landscape}
 
 \begin{table}[]
-\label{tab:tcity}
+\label{table:tcity}
 \footnotesize
 \begin{tabular}{ll} \hline
 &LCR                                             \\ \hline
