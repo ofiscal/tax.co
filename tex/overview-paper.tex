@@ -292,15 +292,15 @@ T_h = \sum_{j\in TAXES}t_{hj}
 \end{equation}
 \begin{equation}
   INC = \left\{ \begin{array}{cc}
-    net \; labor \;income,\ capital \;income,\  \\
-    dividend \;income,\ payroll \;income,\ pension \;income
+    net\ labor\ income,\ payroll\ income, \\
+    capital\ income, dividend\ income, pension\ income
   \end{array} \right\}
 \end{equation}
 \begin{equation}
   TAXES = \left\{ \begin{array}{cc}
-    consumption \;tax,\ capital \;income \;tax, \\
-    payroll \;tax, wealth \;tax, personal \;income \;tax, \\
-    financial \; transactions \;tax, property \;tax
+    consumption\ tax,\ capital\ income\ tax, \\
+    payroll\ tax, wealth\ tax, personal\ income\ tax, \\
+    financial\  transactions\ tax, property\ tax
   \end{array} \right\}
 \end{equation}
 
@@ -324,14 +324,30 @@ individual $j$'s effective (average) tax rate $t_j$ before transfers as
 where $T_j$ and $Y_j$ for individual $j$ is computed analogously to
 $T_h$ and $Y_h$ for household $h$.
 
+$net\ labor\ income$ is labor income reported in the ENPH
+minus our estimate of the employee share of payroll taxes
+(which is zero for informal workers):
+\begin{equation}
+net\ labor\ income =
+  \begin{cases}
+	Y - payroll\ tax & Y \geq \underline{w} \\
+	Y &  Y < \underline{w}
+  \end{cases}
+\end{equation}
+
+$capital\ income$, $dividend\ income$, and $pension\ income$
+are self-explanatory. The ENPH reports them.
 
 \iffalse
 [[ AN ECONOMIST:
-    Should $corporate \;tax$, described below, be in the numerator
-    in the definition of $t_j$?
-    --jbb]]
+    What about payroll income? I (Jeff) wouldn't call that self-explanatory.
 
-[[ JEFF:
+    AN ECONOMIST:
+    Should $corporate\ tax$, described below, be in the numerator
+    in the definition of $t_j$?
+    --jbb
+
+    JEFF:
     BLOCKED -- might be addressed once I've renamed taxes and consumptions.
 
     It's confusing that, for instance,
@@ -344,12 +360,12 @@ $T_h$ and $Y_h$ for household $h$.
     --jbb]]
 \fi
 
-$consumption \;tax$
+$consumption\ tax$
 is payments made for value added taxes on consumption,
 as well as the national sales tax
 and the beer, liquor, tobacco, and vehicle taxes:
 \begin{equation}
-consumption \;tax = \sum^{N}_{n=1} \tau_nP_nX_n
+consumption\ tax = \sum^{N}_{n=1} \tau_nP_nX_n
 \end{equation}
 where $P_n$ is the price before taxes of good $n$,
 $X_n$ is the number of units of $n$ consumed,
@@ -357,7 +373,7 @@ and $\tau_n$ is the tax rate rate that applies to good $n$.
 The ENPH has data on after-tax spending,
 i.e. $(P_n+\tau_n)X_n$,
 which we multiply $\frac{\tau_n}{1+\tau_n}$
-and sum over all goods to obtain $consumption \;tax$.
+and sum over all goods to obtain $consumption\ tax$.
 We obtain $\tau_n$ from the tax code.
 Sometimes there is more than one excise tax on a good,
 in which case $\tau_n$ is the sum of
@@ -377,7 +393,7 @@ is taxed at this rate.
 In cases where inputs other than fuel are taxed, we do the same
 (see the appendix for details).
 
-$corporate \;income \;tax$ is individual $j$'s share of
+$corporate\ income\ tax$ is individual $j$'s share of
 the taxes paid by firms of which he is a stockholder:
 \begin{equation}
 corporate = \sum^{K}_{k=1} \tau_k\theta^j_k\Pi_k
@@ -394,9 +410,9 @@ The ENPH has data on total earnings from dividends.
 \fi
 for the top 1\% of income earners),
 which we take to be $\sum^{K}_{k=1} \theta^j_k\Pi_k(1-\tau_k)$.
-To obtain $corporate \;tax$ we multiply total earnings from dividends by
+To obtain $corporate\ tax$ we multiply total earnings from dividends by
 $\frac{\tau_k}{1-\tau_k}$,
-assuming that $\tau_k=\tau \; \forall k$,
+assuming that $\tau_k=\tau\  \forall k$,
 where $\tau$ is the effective tax rate on capital
 obtained from national accounts by \citet{banrep}.
 \iffalse
@@ -415,13 +431,13 @@ obtained from national accounts by \citet{banrep}.
 $payroll$ is the sum of employee and employer contributions to social security payments:
 \begin{equation}
   \label{payroll_tax}
-  payroll \;tax(Y) = \begin{cases}
+  payroll\ tax(Y) = \begin{cases}
     \left\{ \begin{array}{cc}
-      pension \;contributions(Y) \\
-      + health \;care \;contributions(Y) \\
-      + family \;compensation \;fund \;contributions(Y) \\
-      + adult \;education \;contributions(Y) \\
-      + child \;welfare \;contributions(Y)
+      pension\ contributions(Y) \\
+      + health\ care\ contributions(Y) \\
+      + family\ compensation\ fund\ contributions(Y) \\
+      + adult\ education\ contributions(Y) \\
+      + child\ welfare\ contributions(Y)
     \end{array} \right\}
     & Y \geq \underline{w} \\
     0 & Y < \underline{w}
@@ -432,14 +448,13 @@ and where each contribution is a function of $Y$,
 labor income excluding the employer share's of payroll taxes
 but including the employee's share.
 $Y$ can (with some work) be determined from the ENPH.
-\iffalse JEFF: RESUME HERE (mid-paragraph) \fi
 The functions of $Y$ in \ref{payroll_tax} are calculated by
 applying the rules described in the appendix.
 When $Y < \underline{w}$
 (which is the case for about half of the labor force),
 we assume that the worker is informal and therefore pays no payroll taxes.
 
-We estimate $personal \;income \;tax$ from ENPH data on $Y$,
+We estimate $personal\ income\ tax$ from ENPH data on $Y$,
 and from the number of children in the household.
 The ENPH does not allow us to infer which exemptions
 (other than the child exemption) people claimed.
@@ -448,11 +463,11 @@ We are able to see how the tax burden would vary
 for the small percentage of individuals who pay income taxes
 when we assume that they claim either the minimum or the maximum allowed.
 
-Individuals pay a 0.4\% $financial \;transaction \;tax$:
+Individuals pay a 0.4\% $financial\ transaction\ tax$:
 \begin{equation}
-  financial=0.004 \times (net \;income -350\ uvt)
+  financial=0.004 \times (net\ income -350\ uvt)
 \end{equation}
-Here $net \;income$ includes income from all sources net of taxes
+Here $net\ income$ includes income from all sources net of taxes
 and $uvt$ is \textit{unidades de valor tributario}.
   \footnote{
   The tax code uses a special unit to measure income for tax purposes,
@@ -464,7 +479,7 @@ and $uvt$ is \textit{unidades de valor tributario}.
   or around 15 times the minimum wage.}
 The first 350 UVT in transactions are exempt from the tax.
 
-The $wealth \;tax$ is a tax on individual wealth
+The $wealth\ tax$ is a tax on individual wealth
 exceeding a threshold so high that nearly all Colombians are exempt.
 \iffalse [[ AN ECONOMIST or A LAWYER:
     This is out of date. What happened? --jbb ]]
@@ -472,22 +487,10 @@ exceeding a threshold so high that nearly all Colombians are exempt.
 The latest tax on personal wealth expired on December 31, 2018.
 As of this writing (Sept 2022), a new one is being mooted.
 
-$property \;tax$ is the municipal tax on individuals' real estate.
+$property\ tax$ is the municipal tax on individuals' real estate.
 The ENPH reports such payments directly.
 
-$net \; labor \;income$ is labor income reported in the ENPH
-minus our estimate of the employee share of payroll taxes
-(which is zero for informal workers):
-\begin{equation}
-net \; labor \;income =
-  \begin{cases}
-	Y - payroll \;tax & Y \geq \underline{w} \\
-	Y &  Y < \underline{w}
-  \end{cases}
-\end{equation}
-
-Finally, $capital \; income$, $dividends$, and $pension \; income$
-are self-explanatory, and are reported in the ENPH.
+\iffalse JEFF: RESUME HERE \fi
 
 \iffalse
 [[ AN ECONOMIST:
