@@ -59,7 +59,7 @@ with the twin goals of
 accurately understanding the distributional effects of taxation
 in a developing country characterized by its high levels of inequality
 \iffalse
-    [[SOMEONE:
+    [[AN ECONOMIST:
     and informality?
     I suspect the answer is that no,
     the simulation currently has nothing to say about informality.
@@ -204,11 +204,16 @@ With the exception of the property tax assumption,
 which is our own,
 \iffalse
     [[LUIS:
-    It is, right?]]
+        It is, right?]]
 \fi
 these assumptions are all made as well by
 the Congressional Budget Office of the United States,
 as described in \citet{salanie}.
+\iffalse
+    [[AN ECONOMIST::
+        Who is salamie? That string only appears once in the entire document.
+        --jbb]]
+\fi
 (The CBO does not model property taxes,
 because in the US those are not federal.)
 
@@ -271,33 +276,26 @@ Let $\mathcal{P}$ be a partition of the set of households.
 For example, $\mathcal{P}$ could be the set of household percentiles.
 We define the effective tax rate $\tau_P$
 for a subset $P\in\mathcal{P}$ of households as:
-
 \begin{equation}
 \tau_P = \frac{\sum_{h\in P}T_{h}} {\sum_{h\in P}Y_h}
 \end{equation}
-
 \iffalse [[JEFF: Verify: is that even what we do?
     I (Jeff) thought we compute an average of ratios,
     not a ratio of averages.]]
 \fi
-
 where:
-
 \begin{equation}
 Y_h = \sum_{i\in h}\sum_{s\in INC}y_{is}
 \end{equation}
-
 \begin{equation}
 T_h = \sum_{j\in TAXES}t_{hj}
 \end{equation}
-
 \begin{equation}
   INC = \left\{ \begin{array}{cc}
     net \; labor \;income,\ capital \;income,\  \\
     dividend \;income,\ payroll \;income,\ pension \;income
   \end{array} \right\}
 \end{equation}
-
 \begin{equation}
   TAXES = \left\{ \begin{array}{cc}
     consumption \;tax,\ capital \;tax,\  payroll \;tax, wealth \;tax, \\
@@ -312,39 +310,29 @@ after each of the terms in the preceding two equations,
 but otherwise they are confusible --
 e.g. ``personal could be personal income or a tax on it;
 ``labor'' and ``payroll'' could be income or taxes on that income; etc.
-
-JEFF: RESUME HERE
 \fi
 
-We calculate
-\iffalse
-[[SOMEONE:
-    Who's ``we''? I don't think I (jbb) have ever calculated this.
-    It's certainly not automated.
-    Maybe we just mean that we ``define'' it this way,
-    although the model never calculates it for any particular person?
-]]
-\fi
-individual $j$'s effective tax rate $t_j$ before transfers as
-
+We define
+individual $j$'s effective (average) tax rate $t_j$ before transfers as
 \begin{equation}
   t_j=\frac
   {T_j}
   {Y_j}
 \end{equation}
-
 where $T_j$ and $Y_j$ for individual $j$ is computed analogously to
 $T_h$ and $Y_h$ for household $h$.
 
 \iffalse
-[[SOMEONE:
-    Should $corporate$, described below, be in the numerator
+[[AN ECONOMIST:
+    Should $corporate \;tax$, described below, be in the numerator
     in the definition of $t_j$?
     --jbb]]
 
-[[SOMEONE:
+[[JEFF:
+    BLOCKED -- might be addressed once I've renamed taxes and consumptions.
+
     It's confusing that, for instance,
-    ``consumpetion'' refers to the \textit{tax} on consumption,
+    ``consumption'' refers to the \textit{tax} on consumption,
     rather than consumption itself.
     I'm thinking $tp_{consumption}$ would be better,
     indicating ``taxes paid on consumption''.
@@ -353,11 +341,12 @@ $T_h$ and $Y_h$ for household $h$.
     --jbb]]
 \fi
 
-(The) $consumption$ (tax) is payments made for value added taxes on consumption,
+(The) $consumption \;tax$
+is payments made for value added taxes on consumption,
 as well as the national sales tax
 and the beer, liquor, tobacco, and vehicle taxes:
 \begin{equation}
-consumption = \sum^{N}_{n=1} \tau_nP_nX_n
+consumption \;tax = \sum^{N}_{n=1} \tau_nP_nX_n
 \end{equation}
 where $P_n$ is the price before taxes of good $n$,
 $X_n$ is the number of units of $n$ consumed,
@@ -365,7 +354,7 @@ and $\tau_n$ is the tax rate rate that applies to good $n$.
 The ENPH has data on after-tax spending,
 i.e. $(P_n+\tau_n)X_n$,
 which we multiply $\frac{\tau_n}{1+\tau_n}$
-and sum over all goods to obtain $consumption$.
+and sum over all goods to obtain $consumption \;tax$.
 We obtain $\tau_n$ from the tax code.
 Sometimes there is more than one excise tax on a good,
 in which case $\tau_n$ is the sum of
@@ -375,7 +364,7 @@ we assume that not just household fuel purchases but also
 a certain percentage of spending on public transportation
 (which can be specified in the simulation)
 \iffalse
-[[SOMEONE:
+[[LUIS:
     I don't think it can, actually.
     Did we promise that before writing the microsimulation,
     or am I forgetting something?
@@ -385,7 +374,7 @@ is taxed at this rate.
 In cases where inputs other than fuel are taxed, we do the same
 (see the appendix for details).
 
-$corporate$ is individual $j$'s share of
+$corporate$ (income) $tax$ is individual $j$'s share of
 the taxes paid by firms of which he is a stockholder:
 \begin{equation}
 corporate = \sum^{K}_{k=1} \tau_k\theta^j_k\Pi_k
@@ -393,39 +382,53 @@ corporate = \sum^{K}_{k=1} \tau_k\theta^j_k\Pi_k
 where $\theta^j_k$ is the share of firm $k$ owned by $j$,
 $\tau_k$ is firm $k$'s effective tax rate,
 and $\Pi_k$ is firm $k$'s profits before taxes.
-The ENPH has data on total earnings from dividends
-(\citet{juliana} also have administrative data for the top 1\% of income earners),
+The ENPH has data on total earnings from dividends.
+(\citet{juliana} also have administrative data
+\iffalse
+    [[AN ECONOMIST:
+        Who is juliana? That string only appears cited in this document,
+        but the citation is never defined. --jbb]]
+\fi
+for the top 1\% of income earners),
 which we take to be $\sum^{K}_{k=1} \theta^j_k\Pi_k(1-\tau_k)$.
-To obtain $corporate$ we multiply total earnings from dividends by
+To obtain $corporate \;tax$ we multiply total earnings from dividends by
 $\frac{\tau_k}{1-\tau_k}$,
 assuming that $\tau_k=\tau \; \forall k$,
 where $\tau$ is the effective tax rate on capital
 obtained from national accounts by \citet{banrep}.
 \iffalse
-[[Someone:
+[[AN ECONOMIST:
     I'm unaware of any place in the code that does this,
     and pretty sure that's because there isn't one.
-    Maybe Luis or David was computing it by hand.
+    Maybe Luis Carlos Reyes or David Suarez was computing it by hand.
+    --jbb]]
+
+[[ AN ECONOMIST:
+    What document is that ``banrep'' citation supposed to cite?
+    It's not defined anywhere.
     --jbb]]
 \fi
 
 $payroll$ is the sum of employee and employer contributions to social security payments:
-\begin{equation} \label{payroll_tax}
-payroll = payroll(Y)=
-  \begin{cases}
-	n(Y)+h(Y)+f(Y)+a(Y)+c(Y) & Y \geq \underline{w} \\
-	0 &  Y < \underline{w}
-  \end{cases}
+\begin{equation}
+  payroll(Y) = \begin{cases}
+    \left\{ \begin{array}{cc}
+      pension \;contributions(Y) +
+      health \;care \;contributions(Y) + \\
+      family \;compensation \;fund \;contributions(Y) + \\
+      adult \;education \;contributions(Y) +
+      child \;welfare \;contributions(Y)
+    \end{array} \right\}
+    & Y \geq \underline{w} \\
+    0 & Y < \underline{w}
+    \end{cases}
 \end{equation}
-where  $n(Y)$ stands for pension contributions,
-$h(Y)$ for compulsory health care contributions,
-$f(Y)$ for family compensation fund contributions,
-$a(Y)$ for adult education contributions,
-$c(Y)$ for child welfare contributions,
-and $\underline{w}$ for the minimum wage.
-$Y$, which can (with some work) be determined from the ENPH,
-is labor income net of the employer share of payroll taxes
-but including the employee share.
+where $\underline{w}$ is the minimum wage,
+and where each contribution is a function of $Y$,
+labor income excluding the employer share's of payroll taxes
+but including the employee's share.
+$Y$ can (with some work) be determined from the ENPH.
+\iffalse JEFF: RESUME HERE (mid-paragraph) \fi
 The functions of $Y$ in \ref{payroll_tax} are calculated by
 applying the rules described in the appendix.
 When $Y < \underline{w}$
@@ -479,7 +482,7 @@ Finally, $capital \; income$, $dividends$, and $pension \; income$
 are self-explanatory, and are reported in the ENPH.
 
 \iffalse
-[[someone:
+[[SOMEONE:
     What does this next passage mean?
     It looks like it got mangled.
     --jbb]]
@@ -496,9 +499,12 @@ Preferred specification: 10.7\% vat and .23 rate on capital
 
 \section{Conclusion}
 
-
-
 \citet{microsim}
+
+\iffalse [[ AN ECONOMIST: What in / what document about the microsim
+    do we intend to be citing here?
+    --jbb ]]
+\fi
 
 \begin{appendices}
 \section{Building the Data}
@@ -616,7 +622,8 @@ We replace those with 0 as well.
 
 The ENPH provides total cash and in-kind beca and non-beca funding for students.
 \iffalse
-[[LUIS: How can I explain the difference between beca and non-beca funding?]]
+    [[AN ECONOMIST:
+        How can I explain the difference between beca and non-beca funding?]]
 \fi
 That uses four variables --
 cash beca funding, in-kind beca funding, cash non-beca funding, and in-kind non-beca funding.
