@@ -24,7 +24,7 @@
   \thanks{We thank Universidad Javeriana for its financial support of this project.
     We are also grateful to Catalina Herr\'{a}n for her detailed description of the Colombian tax system,
     and to seminar participants at Universidad Javeriana for their useful comments on this draft.}}
-\author{Jeffrey Benjamin Brown, Liliana Heredia, Oliver Pardo, Luis Carlos Reyes, and David Su\'{a}rez
+\author{Jeffrey Benjamin Brown, Luis Carlos Reyes, and David Su\'{a}rez
   \thanks{Observatorio Fiscal,
     Department of Economics, Pontificia Universidad Javeriana, Bogot\'{a}, Colombia.
     Telephone:\ 57-1-3208320,
@@ -167,7 +167,8 @@ when roughly a third of tax revenue came from tariffs.
 A tax on personal and corporate wealth
 that seems to come and go with every tax reform
 accounted for 2\% of revenue in 2017.
-Another 5.9\% of revenue comes from a variety of specific and ad valorem taxes on goods,
+Another 5.9\% of revenue comes from a variety of
+ad valorem taxes on specific classes of goods,
 including a national sales tax for restaurant consumption and other items,
 and various national and local taxes on
 gasoline, alcohol, tobacco, and vehicles.
@@ -247,8 +248,7 @@ pension income for 10\%,
 government transfers for 0.7\%,
 private transfers for 3.5\%
 and extraordinary income for 0.5\%.
-The average household has 3.3 members,
-and the average income of female-headed households
+The average income of female-headed households
 is only 73\% of the average income of male-headed ones,
 despite being of essentially the same size.
 
@@ -298,7 +298,7 @@ T_h = \sum_{j\in TAXES}t_{hj}
 \end{equation}
 \begin{equation}
   TAXES = \left\{ \begin{array}{cc}
-    consumption\ tax,\ capital\ income\ tax, \\
+    consumption\ tax,\ capital\ income\ tax,          \\
     payroll\ tax, wealth\ tax, personal\ income\ tax, \\
     financial\  transactions\ tax, property\ tax
   \end{array} \right\}
@@ -343,21 +343,12 @@ are self-explanatory. The ENPH reports them.
     What about payroll income? I (Jeff) wouldn't call that self-explanatory.
 
     AN ECONOMIST:
-    Should $corporate\ tax$, described below, be in the numerator
+    Should $corporate\ income\ tax$, described below, be in the numerator
     in the definition of $t_j$?
     --jbb
 
     JEFF:
     BLOCKED -- might be addressed once I've renamed taxes and consumptions.
-
-    It's confusing that, for instance,
-    ``consumption'' refers to the \textit{tax} on consumption,
-    rather than consumption itself.
-    I'm thinking $tp_{consumption}$ would be better,
-    indicating ``taxes paid on consumption''.
-    (`t` would be more terse than `tp`,
-    but usually `t` means a tax rate, not a peso amount.)
-    --jbb]]
 \fi
 
 $consumption\ tax$
@@ -396,7 +387,7 @@ In cases where inputs other than fuel are taxed, we do the same
 $corporate\ income\ tax$ is individual $j$'s share of
 the taxes paid by firms of which he is a stockholder:
 \begin{equation}
-corporate = \sum^{K}_{k=1} \tau_k\theta^j_k\Pi_k
+  corporate\ income\ tax = \sum^{K}_{k=1} \tau_k\theta^j_k\Pi_k
 \end{equation}
 where $\theta^j_k$ is the share of firm $k$ owned by $j$,
 $\tau_k$ is firm $k$'s effective tax rate,
@@ -410,7 +401,8 @@ The ENPH has data on total earnings from dividends.
 \fi
 for the top 1\% of income earners),
 which we take to be $\sum^{K}_{k=1} \theta^j_k\Pi_k(1-\tau_k)$.
-To obtain $corporate\ tax$ we multiply total earnings from dividends by
+To obtain $corporate\ income\ tax$
+we multiply total earnings from dividends by
 $\frac{\tau_k}{1-\tau_k}$,
 assuming that $\tau_k=\tau\  \forall k$,
 where $\tau$ is the effective tax rate on capital
@@ -433,11 +425,11 @@ $payroll$ is the sum of employee and employer contributions to social security p
   \label{payroll_tax}
   payroll\ tax(Y) = \begin{cases}
     \left\{ \begin{array}{cc}
-      pension\ contributions(Y) \\
-      + health\ care\ contributions(Y) \\
-      + family\ compensation\ fund\ contributions(Y) \\
-      + adult\ education\ contributions(Y) \\
-      + child\ welfare\ contributions(Y)
+      pension\ contributions(Y)                       \\
+      +\ health\ care\ contributions(Y)               \\
+      +\ family\ compensation\ fund\ contributions(Y) \\
+      +\ adult\ education\ contributions(Y)           \\
+      +\ child\ welfare\ contributions(Y)
     \end{array} \right\}
     & Y \geq \underline{w} \\
     0 & Y < \underline{w}
@@ -464,8 +456,16 @@ for the small percentage of individuals who pay income taxes
 when we assume that they claim either the minimum or the maximum allowed.
 
 Individuals pay a 0.4\% $financial\ transaction\ tax$:
-\begin{equation}
-  financial=0.004 \times (net\ income -350\ uvt)
+\begin{equation} financial\ transaction\ tax =
+    0.004 \times \max (0, net\ income -350\ uvt)
+    \iffalse [[
+        We could, alternatively, write that using cases:
+          \begin{cases}
+            0.004 \times (net\ income -350\ uvt) & net\ income > 350 uvt \\
+            0                                    & net\ income <= 350 uvt
+          \end{cases}
+          but I (Jeff) find it easier harder to read without cases. ]]
+    \fi
 \end{equation}
 Here $net\ income$ includes income from all sources net of taxes
 and $uvt$ is \textit{unidades de valor tributario}.
