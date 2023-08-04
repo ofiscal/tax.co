@@ -34,7 +34,8 @@
 \begin{abstract}
   For over at least three decades,
   Colombia has undergone major tax reform roughly every eighteen months.
-  However, estimates of the distributional impact of changes to the tax code are not systematically produced by any branch of government,
+  However, estimates of the distributional impact of changes to the tax code
+  are not systematically produced by any branch of government,
   nor by independent groups,
   despite the constitutional mandate that the tax system be progressive.
   We develop a static microsimulation of the Colombian tax system
@@ -82,7 +83,7 @@ microsimulation analysis can boil down this complex subject to
 bar charts showing the effects of proposed policies
 on the after-tax income of people from various demographics and income groups.
 
-The simplicity of the model's output is crucial.
+It is crucial that the model's output be simple.
 For ideas to be circulated widely and have an effect on public policy,
 they need to be clear and to the point.
 
@@ -104,9 +105,9 @@ Section 6 concludes.
 There are national, departmental, and municipal taxes in Colombia.
 Departments and municipalities do not have the same degree of autonomy
 that states and cities do in federal countries like the United States:
-whereas American states can create and levy taxes
+whereas, for instance, American states can create and levy taxes
 without the intervention of the federal government,
-in Colombia they cannot.
+Colombian states cannot.
 National, departmental and municipal taxes
 are all created directly by Congress.
 
@@ -128,13 +129,22 @@ the differences among them are relatively limited.
 
 Tax intake is low in Colombia
 relative to other Latin American countries and to countries in the OECD.
-According to the OECD,
-tax intake in Colombia was around 19.6 \% of GDP in 2016,
+According to the OECD\cite{oecd,oecd_latam},
+tax intake in Colombia was 19.5\% of GDP in 2021,
 whereas on average it was
-22\% in Latin America and
-34\% in the OECD.
+21.7\% in Latin America and
+34.1\% in the OECD as a whole.
 \iffalse
-    [[AN ECONOMIST: reference missing]]
+    [[ SOMEONE: Put these in the bibliography:
+        \label{oecd}:
+        Revenue Statistics 2022: The impact of COVID-19 on OECD tax revenues
+        https://www.oecd.org/tax/tax-policy/revenue-statistics-highlights-brochure.pdf
+        \label{oecd_latam}:
+        Revenue Statistics in Latin America and the Caribbean 2023
+        https://www.oecd.org/tax/tax-policy/brochure-revenue-statistics-latin-america-and-caribbean.pdf
+    ]]
+
+    [[ SOMEONE: The numbers below need updating. That probably just means updating the table they come from and then reading those into these paragraphs.]]
 \fi
 
 Table \ref{table:taxcol} breaks down tax revenue for the year 2017.
@@ -160,7 +170,7 @@ the personal income tax is a smaller source of revenue than corporate income tax
 Municipal property taxes on land and real estate follow,
 making up 3.7\% of revenue.
 Another 3.7\% comes from a much-criticized but easy to collect national tax on financial transactions,
-which is said to keep much of the population away from the formal financial system.
+widely believed to keep much of the population away from the formal financial system.
 Import tariffs account for 2.2\% of tax revenue
 -- in stark contrast with the days of import substitution industrialization,
 when roughly a third of tax revenue came from tariffs.
@@ -183,21 +193,22 @@ The assumptions of our model take this into account.
 
 We are interested in calculating
 the entire tax burden of individuals belonging to different income groups,
-so that we can produce estimates of
-how progressive proposed changes to the tax code will be.
+in order to
+estimate how progressive proposed changes to the tax code will be.
 This requires making assumptions about
 the incidence of various taxes. We assume:
 
 \begin{itemize}
-  \item The personal income tax is fully borne by households.
+  \item The personal income tax is borne entirely by households.
   \item Payroll taxes are borne entirely by workers.
   \item Excise taxes
     (including the VAT,
     the tax on financial transactions,
     sales tax, and tariffs)
-    are borne by the consumers of the goods and services in question.
-  \item Corporate income tax is fully borne by the owners of capital.
-  \item Property taxes are borne by
+    are borne entirely by
+    the consumers of the goods and services in question.
+  \item Corporate income tax is borne entirely by the owners of capital.
+  \item Property taxes are borne entirely by
     the owners of land or real estate.
 \end{itemize}
 
@@ -212,7 +223,7 @@ the Congressional Budget Office of the United States,
 as described in \citet{salanie}.
 \iffalse
     [[AN ECONOMIST::
-        Who is Salamie? That string only appears once in the entire document.
+        Who is salanie? That string only appears once in the entire document.
         --jbb]]
 \fi
 (The CBO does not model property taxes,
@@ -222,7 +233,7 @@ Appendix A describes the relevant taxes in detail.
 
 \section{Data}
 Our data come from the
-\textit{Encuesta nacional de presupuestos de los hogares} (ENPH),
+\textit{Encuesta Nacional de Presupuestos de los Hogares} (ENPH),
 a nationally representative survey of 87,201 households
 that was carried out between July 2016 and July 2017.
 The ENPH includes a wealth of data on income and expenditures,
@@ -263,9 +274,9 @@ and their share declines as income rises.
 Only 29.6\% of households in the top decile are headed by women.
 
 Table \ref{table:ycity} shows the statistics for the main cities,
-with Bogota and Medellin reporting the highest incomes, as would be expected.
+with Bogotá and Medellín reporting the highest incomes, as would be expected.
 
-It is worth noting that the incomes reported in the survey
+It should be noted that the incomes reported in the survey
 probably do not include the employee share of social security payments,
 which we calculate on the basis of tax rules
 to be able to compute effective tax rates.
@@ -277,7 +288,7 @@ For example, $\mathcal{P}$ could be the set of household percentiles.
 We define the effective tax rate $\tau_P$
 for a subset $P\in\mathcal{P}$ of households as:
 \begin{equation}
-\tau_P = \frac{\sum_{h\in P}T_{h}} {\sum_{h\in P}Y_h}
+  \tau_P = \frac{\sum_{h\in P}T_{h}} {\sum_{h\in P}Y_h}
 \end{equation}
 \iffalse [[JEFF: Verify: is that even what we do?
     I (Jeff) thought we compute an average of ratios,
@@ -1139,6 +1150,7 @@ in the same way that we do for the national fuel tax.
 \bibliographystyle{aea}
 \bibliography{references}
 
+\iffalse [[ SOMEONE: These tables need updating. ]]
 
 \begin{table}
 \caption{Taxes in Colombia 2017}
