@@ -1,7 +1,18 @@
+# PURPOSE:
+# Assign a 2-digit COICOP prefix to each of the Capitulo C categories.
+#
 # Just as the goods in the COICOP table have been assigned
 # a 2-digit COICOP prefix
 # (theoretically from 01 to 14, but in our data only from 01 to 12),
 # so too must the Capitulo C data be assigned a 2-digit COICOP prefix.
+#
+# PITFALL:
+# The Capitulo C table (at `paths.file_vat_cap_c_raw`)
+# contains two COICOP columns, "coicop" and "coicop2".
+# I believe that's because it wasn't obvious how to COICOP-classify
+# each Capitulo C category.
+# However, fortunately, they all have the same 2-digit COICOP prefix,
+# which is all we need.
 
 if True:
   import pandas as pd

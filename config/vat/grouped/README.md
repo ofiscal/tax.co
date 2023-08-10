@@ -1,3 +1,5 @@
+SEE ALSO `how-coicop-codes-work.md`, in this same folder.
+
 # PITFALL: Files here must be kept in sync with some files elsewhere
 
 The file

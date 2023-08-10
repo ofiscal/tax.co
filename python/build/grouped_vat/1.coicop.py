@@ -33,12 +33,13 @@ grouped["coicop"] = ( # Turn COICOP back to an int.
 ### Massage the VAT variables.
 ###
 
-# Use the old VAT values.
+# Use the old VAT values of ["vat","vat, min", "vat, max"]
+# (and leave everything else unchanged).
 grouped = grouped.drop ( columns = ["vat","vat, min", "vat, max"] )
 grouped = grouped.merge ( old, on = "coicop" )
 
 # Replace VAT with the average of vat min and vat max.
-# (In the original data it's not defined for all COICOP codes,
+# (In the original data, "vat" is's not defined for all COICOP codes,
 # and we don't actually use it.)
 grouped["vat"] = ( grouped["vat, min"] + grouped["vat, max"] ) / 2
 
