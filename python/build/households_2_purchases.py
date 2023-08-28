@@ -33,8 +33,12 @@ if True: # create a few more variables
     merge["vat paid"]        / merge["value, purchase" ] )
   merge["vat / income"] = (
     merge["vat paid"]        / merge["income"] )
+  merge["vat / IT"] = (
+    merge["vat paid"]        / merge["IT"] )
   merge["purchase value / income" ] = (
     merge["value, purchase"] / merge["income"] )
+  merge["purchase value / IT" ] = (
+    merge["value, purchase"] / merge["IT"] )
   merge["tax"] = (
     # PITFALL: This must be computed separately for households and earners,
     # because income and ss taxes vary by earner.

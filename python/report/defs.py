@@ -70,6 +70,7 @@ commonVars = ( [
   # "seguro de riesgos laborales",
   "income - tax",
   "income",
+  "IT",
   "tax",
   "income tax rate",
   "income, labor",
@@ -85,8 +86,10 @@ commonVars = ( [
   "female head",
   "value, purchase",
   "purchase value / income",
+  "purchase value / IT",
   "vat paid",
   "vat / income",
+  "vat / IT",
   "vat / purchase value",
   "value, tax, predial",
   ] + regime.income_tax_columns + [

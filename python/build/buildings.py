@@ -1,3 +1,7 @@
+# PITFALL: This file is badly named.
+# Viviendas y Hogares includes not just information on buildings,
+# but also on households -- that is, collections of people.
+
 # PITFALL: For the buildings file, subsample is ignored;
 # the program uses the full sample always.
 # It's a small file, so that doesn't hurt.
