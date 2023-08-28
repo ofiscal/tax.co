@@ -8,20 +8,23 @@
 SHELL := bash
 .PHONY = verify unpack_and_rename handle_txt_files
 
-data:			\
-  unpack_and_rename	\
-  move_txt		\
-  format_csv            \
-  verify		\
+data:               \
+  unpack_and_rename \
+  move_txt          \
+  format_csv        \
   verify_txt
+  # verify_checksum # Disabling for now (2023-08-28 Mon), because DANE appears to have updated Caracteristicas_generales_personas, and the old checksum no longer works. I don't want to compute a new checksum because I would have to download all 16 files and that's a slow process. (I do know that Viviendas_y_hogares has not been chnaged.)
 
-verify: # verify the content of the raw zipfiles
+verify_checksum: # verify the content of the raw zipfiles
 	echo "If this fails, checksum does not match value expected as of 2019 07 03."
 	sha1sum 1_raw/* | sort | sha1sum | grep "89f4fbad99d66a4ebfd130694e9052536cec55ea"
 
+# PURPOSE: Change spaces in filenames to underscores.
 # PITFALL: The files ending inn .csv here are not in fact comma-separated. Instead,
 #          they are semicolon-separated, so I rename them from *.csv to *.ssv.
-unpack_and_rename: verify
+# PITFALL: The phony target `verify_checksum` used to be a requirement for this.
+#          See comment under `verify_checksum` for why, and what to do about it, if anything.
+unpack_and_rename:
 	# Without the next line, the unzip fails later.
 	cd 1_raw							; \
 	  for x in *.zip; do mv -- "$$x" "$${x// /_}"; done

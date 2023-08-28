@@ -8,6 +8,7 @@ def generar_empleados ( df : pd.DataFrame ) -> pd.DataFrame:
 "desempleado-abierto",
 "desempleado-oculto",
 "desempleado",
+"in labor force",
   """
   df["ocupado"] = (
     # looks like a definition of ocupado, not empleado
