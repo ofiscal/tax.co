@@ -18,6 +18,15 @@ regime_year?=2016
 yr=$(strip $(regime_year))
 strategy_year_suffix=$(strategy_suffix).$(yr)
 
+# PITFALL: When running the Makefile via Python as described in
+# the header comment to python/run-makefile.py,
+# then one already defines PYTHONPATH during that command,
+# so this definition of `python_from_here` is not needed, but harmless;
+# one could instead call `python3` directly.
+# HOWEVER, if running the Makefile directly ("manually")
+# by typing "make" into the shell,
+# then it will be needed.
+# Without it, Python does not know where to find the code.
 python_from_here = PYTHONPATH=$PYTHONPATH:'/mnt/tax_co' python3
 
 
@@ -116,27 +125,23 @@ reports =                                                                       
   users/$(user)/data/recip-$(ss)/report_earners.$(strategy_year_suffix).csv         \
   users/$(user)/data/recip-$(ss)/report_earners.$(strategy_year_suffix).xlsx
 
-reports_baseline =                                                                            \
-  users/symlinks/baseline/data/recip-$(ss)/report_households_tmi.detail.2019.csv  \
-  users/symlinks/baseline/data/recip-$(ss)/report_households_tmi.detail.2019.xlsx \
-  users/symlinks/baseline/data/recip-$(ss)/report_households.detail.2019.csv      \
-  users/symlinks/baseline/data/recip-$(ss)/report_households.detail.2019.xlsx     \
-  users/symlinks/baseline/data/recip-$(ss)/report_earners_tmi.detail.2019.csv     \
-  users/symlinks/baseline/data/recip-$(ss)/report_earners_tmi.detail.2019.xlsx    \
-  users/symlinks/baseline/data/recip-$(ss)/report_earners.detail.2019.csv         \
-  users/symlinks/baseline/data/recip-$(ss)/report_earners.detail.2019.xlsx
+reports_baseline =                                                            \
+  users/symlinks/baseline/data/recip-1/report_households_tmi.detail.2019.csv  \
+  users/symlinks/baseline/data/recip-1/report_households_tmi.detail.2019.xlsx \
+  users/symlinks/baseline/data/recip-1/report_households.detail.2019.csv      \
+  users/symlinks/baseline/data/recip-1/report_households.detail.2019.xlsx     \
+  users/symlinks/baseline/data/recip-1/report_earners_tmi.detail.2019.csv     \
+  users/symlinks/baseline/data/recip-1/report_earners_tmi.detail.2019.xlsx    \
+  users/symlinks/baseline/data/recip-1/report_earners.detail.2019.csv         \
+  users/symlinks/baseline/data/recip-1/report_earners.detail.2019.xlsx
 
-compare =                                                                                              \
-  users/$(user)/data/recip-$(ss)/change-in.tax-mean.by-households.$(strategy_year_suffix).png          \
-  users/$(user)/data/recip-$(ss)/change-in.tax-mean.by-earners.$(strategy_year_suffix).png             \
-  users/$(user)/data/recip-$(ss)/change-in.income---tax-mean.by-households.$(strategy_year_suffix).png \
-  users/$(user)/data/recip-$(ss)/change-in.income---tax-mean.by-earners.$(strategy_year_suffix).png    \
-  users/$(user)/data/recip-$(ss)/changes_earners.csv                                                   \
-  users/$(user)/data/recip-$(ss)/changes_earners.xlsx                                                  \
-  users/$(user)/data/recip-$(ss)/changes_households.csv                                                \
-  users/$(user)/data/recip-$(ss)/changes_households.xlsx                                               \
-  users/$(user)/data/recip-$(ss)/changes_nonzero_laborers.csv                                          \
-  users/$(user)/data/recip-$(ss)/changes_nonzero_laborers.xlsx
+compare =                                                                                                                   \
+  users/$(user)/data/recip-$(ss)/change-in.income---tax-mean.by-earners.$(strategy_year_suffix).png                         \
+  users/$(user)/data/recip-$(ss)/change-in.income---tax-mean.by-households.$(strategy_year_suffix).png                      \
+  users/$(user)/data/recip-$(ss)/change-in.income---tax-mean.by-nonzero_earners_by_labor_income.$(strategy_year_suffix).png \
+  users/$(user)/data/recip-$(ss)/change-in.tax-mean.by-earners.$(strategy_year_suffix).png                                  \
+  users/$(user)/data/recip-$(ss)/change-in.tax-mean.by-households.$(strategy_year_suffix).png                               \
+  users/$(user)/data/recip-$(ss)/change-in.tax-mean.by-nonzero_earners_by_labor_income.$(strategy_year_suffix).png
 
 goods_by_income_decile = \
   users/$(user)/data/recip-$(ss)/goods_by_income_decile.csv \

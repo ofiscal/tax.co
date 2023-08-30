@@ -82,7 +82,8 @@ def run_one_config (
     ( [ "/usr/bin/make" ] +
       targets +
       [
-        # "--dry-run",
+        # "-d",        # for debugging output (explains why it builds what)
+        # "--dry-run", # outputs to stdout as usual without running recipes
         "config_file" + "=" + config_file,
         "subsample"   + "=" + str( subsample ),
         "strategy"    + "=" + strategy,

@@ -28,7 +28,9 @@ if True: # See people_2_buildings_test for how to use these definitions.
   assert util.unique( merge.columns )
   new_cols = [ "vat / purchase value",
                "vat / income",
+               "vat / IT",
                "purchase value / income",
+               "purchase value / IT",
                "tax", ]
   assert ( len( merge.columns ) ==
            len( new_cols ) +
