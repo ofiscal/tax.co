@@ -28,7 +28,9 @@ def getSecret ( filename : str ):
 def send ( receiver_address : str, # To send to multiple addresses, this should be a space-separated list of email addresses. (It's still a string, not a list of strings.)
            subject          : str,
            body             : str,
-           attachment_paths : List [ str ] ):
+           attachment_paths : List [ str ]
+): # TODO: Update type signature to incorporate the new return type.
+   # (It used to return nothing.)
   sender   = getSecret ( "email address.txt" )
   password = getSecret ( "email password, app.txt" ) # This might be the same as your ordinary Gmail password. But if Google complains "Application-specific password required," you'll have to use that instead. To do so, enable "Less secure apps" for Gmail, enable 2-step verification, and then generate an "app key" for controlling your Gmail account.
   server = smtplib . SMTP ( 'smtp.gmail.com',  587 )
@@ -53,11 +55,13 @@ def send ( receiver_address : str, # To send to multiple addresses, this should 
         'attachment; filename="%s"' % file)
     msg . attach ( part )
   #
-  server . send_message ( msg )
+  send_dict = server . send_message ( msg ) # If this is empty,
+    # someone should have received the message.
   server . quit ()
+  return send_dict
 
 def test( recipient : str ):
-  send (
+  return send (
     recipient,
     "Testing Ofiscal automated emails",
     "Hi! Jeff here. Did you receive this message?",
