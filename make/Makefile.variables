@@ -125,7 +125,7 @@ reports =                                                                       
   users/$(user)/data/recip-$(ss)/report_earners.$(strategy_year_suffix).csv         \
   users/$(user)/data/recip-$(ss)/report_earners.$(strategy_year_suffix).xlsx
 
-reports_baseline =                                                                            \
+reports_baseline =                                                            \
   users/symlinks/baseline/data/recip-1/report_households_tmi.detail.2019.csv  \
   users/symlinks/baseline/data/recip-1/report_households_tmi.detail.2019.xlsx \
   users/symlinks/baseline/data/recip-1/report_households.detail.2019.csv      \

@@ -1,3 +1,11 @@
+# For debugging. Run a line like this:
+#
+#   make show_reports config_file=users/ucf88a560a7f987712350b7d629ed2bc7/config/config.json subsample=1000 strategy=detail regime_year=2019 user=ucf88a560a7f987712350b7d629ed2bc7
+#
+# to display what terms a given variable (esp. what files a given target) includes.
+show_variable:
+	echo $(households_2_purchases)
+
 # Without this, the shell history would not be very useful,
 # since the configuration file is edited frequently.
 show_config:
