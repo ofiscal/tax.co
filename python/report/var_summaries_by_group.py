@@ -1,6 +1,3 @@
-print ( "var_summaries_by_group.py starting at: ",
-        str ( datetime.datetime.now() ) )
-
 if True:
   import numpy                   as np
   import os
@@ -187,16 +184,16 @@ for (unit, df, groupVars, variables, restrictedVars) in [
       defs.earnerGroupVars,
       defs.earnerVars,
       defs.earnerRestrictedVars ),
-#    ( "earnersFemale",
-#      earnersFemale,
-#      defs.earnerGroupVars,
-#      defs.earnerVars,
-#      defs.earnerRestrictedVars ),
-#    ( "earnersMale",
-#      earnersMale,
-#      defs.earnerGroupVars,
-#      defs.earnerVars,
-#      defs.earnerRestrictedVars ),
+    ( "earnersFemale",
+      earnersFemale,
+      defs.earnerGroupVars,
+      defs.earnerVars,
+      defs.earnerRestrictedVars ),
+    ( "earnersMale",
+      earnersMale,
+      defs.earnerGroupVars,
+      defs.earnerVars,
+      defs.earnerRestrictedVars ),
     ( "nonzero_earners_by_labor_income",
       nonzero_earners_by_labor_income,
       defs.earnerGroupVars,
@@ -207,27 +204,21 @@ for (unit, df, groupVars, variables, restrictedVars) in [
       defs.householdGroupVars,
       defs.householdVars,
       defs.householdRestrictedVars ),
-#    ( "households_by_income_per_capita",
-#      households_by_income_per_capita,
-#      defs.householdGroupVars,
-#      defs.householdVars,
-#      defs.householdRestrictedVars ),
-#    ( "householdsFemale",
-#      householdsFemale,
-#      defs.householdGroupVars,
-#      defs.householdVars,
-#      defs.householdRestrictedVars ),
-#    ( "householdsMale",
-#      householdsMale,
-#      defs.householdGroupVars,
-#      defs.householdVars,
-#      defs.householdRestrictedVars )
-  ]:
-
-print ( "var_summaries_by_group.py starting ",
-        unit,
-        " at: ",
-        str ( datetime.datetime.now() ) )
+    ( "households_by_income_per_capita",
+      households_by_income_per_capita,
+      defs.householdGroupVars,
+      defs.householdVars,
+      defs.householdRestrictedVars ),
+    ( "householdsFemale",
+      householdsFemale,
+      defs.householdGroupVars,
+      defs.householdVars,
+      defs.householdRestrictedVars ),
+    ( "householdsMale",
+      householdsMale,
+      defs.householdGroupVars,
+      defs.householdVars,
+      defs.householdRestrictedVars ) ]:
 
   (ret, ret_tmi) = make_summary_frame (
     unit           = unit,
@@ -252,6 +243,3 @@ print ( "var_summaries_by_group.py starting ",
       com.subsample,
       ret,
       "report_" + unit + "."     + com.strategy_year_suffix )
-
-print ( "var_summaries_by_group.py finishing at: ",
-        str ( datetime.datetime.now() ) )
