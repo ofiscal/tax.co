@@ -82,14 +82,18 @@ def run_one_config (
     ( [ "/usr/bin/make" ] +
       targets +
       [
-        # "-d",        # for debugging output (explains why it builds what)
-        # "--dry-run", # outputs to stdout as usual without running recipes
+        #"-d",        # For debugging output: says what needs building, & why.
+        #"--dry-run", # Prints output as usual, but runs no recipes.
+
+        "-j", # parallel
+        "-O", # "When running multiple jobs in parallel with -j, ensure the  output of each job is collected together"
+        "-k", # Keep going with other targets after any fails, if possible.
+
         "config_file" + "=" + config_file,
         "subsample"   + "=" + str( subsample ),
         "strategy"    + "=" + strategy,
         "regime_year" + "=" + str( regime_year ),
         "user"        + "=" + user_hash,
-        # "-k" # Keep going with other targets after any fails, if possible.
        ] ),
     cwd    = tax_co_root_path,
     env    = my_env,
