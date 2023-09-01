@@ -85,7 +85,7 @@ def run_one_config (
         #"-d",        # For debugging output: says what needs building, & why.
         #"--dry-run", # Prints output as usual, but runs no recipes.
 
-        "-j", # parallel
+        # "-j", # parallel
         "-O", # "When running multiple jobs in parallel with -j, ensure the  output of each job is collected together"
         "-k", # Keep going with other targets after any fails, if possible.
 
