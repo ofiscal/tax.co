@@ -1,5 +1,7 @@
+# PURPOSE:
 # Compute how much a person paid for various income taxes,
-# and for things resembling income tax, e.g. social security contributions.
+# and for things resembling income tax,
+# e.g. social security contributions.
 
 if True:
   import sys
@@ -29,10 +31,8 @@ ppl = f4.insert_claims_dependents_columns(ppl)
 
 ppl = regime.income_taxes( ppl )
 
-# TODO: This is computed separately for households and earners.
-# It's not the only variable like that.
-# It'd be nice if such variables' definitions
-# were drawn by both programs from the same library.
+# PITFALL: See
+#   markdown/household-and-person-level-total-income.md
 ppl["income tax / income"] = (
   ppl["tax, income"] / ppl["income"] )
 

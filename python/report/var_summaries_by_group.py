@@ -30,6 +30,8 @@ if True: # generate "income - tax"
   for df in (households, earners):
     df["income - tax"] = df["income"] - df["tax"]
 
+# PITFALL: The many kinds of quantiles can be confusing. See
+#  markdown/multiple-kinds-of-quantiles.md
 def copy_with_alternative_quantile_order (
     model : pd.DataFrame,
     ordering_variable : str
@@ -105,8 +107,8 @@ if True: # Make some subsets.
 
 def make_summary_frame (
     unit           : str, # unit of observation: households or earners
-    df             : pd.DataFrame,
     quantileVar    : str # defines income quantiles, e.g. "IT" or "income"
+    df             : pd.DataFrame, # the underlying data   to summarize
     groupVars      : List[ Tuple [ str, List ] ], # gruops to summarize
     variables      : List[str], # aspects (of groups)      to summarize
       # PITFALL: Long name because "vars" is an occupied keyword.
@@ -187,52 +189,52 @@ def make_summary_frame (
 # the six variables assigned each time the loop runs
 # are assigned to a list which, if its order changed,
 # would make the results stupid, without looking stupid.)
-for (unit, df, quantileVar, groupVars, variables, restrictedVars) in [
+for (unit, quantileVar, df, groupVars, variables, restrictedVars) in [
     ( "earners",
-      earners,
       "income",
+      earners,
       defs.earnerGroupVars,
       defs.earnerVars,
       defs.earnerRestrictedVars ),
     ( "earnersFemale",
-      earnersFemale,
       "income",
+      earnersFemale,
       defs.earnerGroupVars,
       defs.earnerVars,
       defs.earnerRestrictedVars ),
     ( "earnersMale",
-      earnersMale,
       "income",
+      earnersMale,
       defs.earnerGroupVars,
       defs.earnerVars,
       defs.earnerRestrictedVars ),
     ( "nonzero_earners_by_labor_income",
-      nonzero_earners_by_labor_income,
       "income",
+      nonzero_earners_by_labor_income,
       defs.earnerGroupVars,
       defs.earnerVars,
       defs.earnerRestrictedVars ),
     ( "households",
-      households,
       "IT",
+      households,
       defs.householdGroupVars,
       defs.householdVars,
       defs.householdRestrictedVars ),
     ( "households_by_income_per_capita",
-      households_by_income_per_capita,
       "IT",
+      households_by_income_per_capita,
       defs.householdGroupVars,
       defs.householdVars,
       defs.householdRestrictedVars ),
     ( "householdsFemale",
-      householdsFemale,
       "IT",
+      householdsFemale,
       defs.householdGroupVars,
       defs.householdVars,
       defs.householdRestrictedVars ),
     ( "householdsMale",
-      householdsMale,
       "IT",
+      householdsMale,
       defs.householdGroupVars,
       defs.householdVars,
       defs.householdRestrictedVars ) ]:

@@ -3,7 +3,7 @@ if True:
 
   # PITFALL: Generates harmless mypy errors.
   # mypy assumes each import statement executes,
-  # and therefore complains, `Name "regime" already defined`.
+  # and therefore it complains, `Name "regime" already defined`.
   if   c.regime_year == 2016:
       import python.regime.r2016 as regime
   elif c.regime_year == 2018:
@@ -17,11 +17,6 @@ cols_const_within_hh = ["region-1", "region-2", "estrato", "weight"]
 
 # These are most of the columns that will be in the household data.
 # They are aggregated through summation.
-#
-# PITFALL: This does not include the aggregate income variables like
-# "IC" and "IT" that eventually appeared in the ENPH, because
-# those (drawn from Viviendas, not Personas) are at the household level,
-# not the individual level.
 income_and_tax__person_level = ( [
     "tax, ss"
   , "tax, ss, pension"
@@ -51,8 +46,8 @@ income_and_tax__person_level = ( [
   ] )
 
 income_and_spending__household_level = [
-  # PITFALL: Although these are peso-denominated, they are constant within household,
-  # hence included here rather than in the list `income_and_tax__person_level`.
+  # Unusually, these income and spending aggregates
+  # are drawn from Viviendas, not Personas.
    "IT"
   ,"IC"
   ,"ICM"
@@ -114,6 +109,7 @@ cols_to_max__post_rename = (
 )
 
 cols_new = (
+    # Columns created (not just renamed) by `households_1_agg_plus.py`.
     [ "(rank, labor income) = " + str(n) for n in range(1,6) ] +
 
     [ "members",

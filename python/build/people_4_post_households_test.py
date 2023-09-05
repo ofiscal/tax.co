@@ -10,7 +10,8 @@ if True:
   import python.common.tests                        as com_tests
 
 
-new_columns = [ "in labor force",
+new_columns = [ # created by people_4_post_households_test.py
+                "in labor force",
                 "share",
                 "one",
                 "income-decile",
@@ -89,9 +90,9 @@ for (c,m) in [ ( "in labor force", 0 ),
                ( "vat / purchase value", 0.1 ),
                ( "vat / income", 0.1 ),
                ( "purchase value / income", 0.1 ), ]:
-  # PITFALL: Income and purcahse value is zero for far more rows of people_4 than for households_2.
-  # The reason for the first is that many households have positive income even though some earners in the household don't.
-  # The reason for the second is that "value, purchase" is zero for anyone with zero income in a household with positive income.
+  # PITFALL: Income and purchase value is zero for far more rows of people_4 than for households_2.
+  # The reason they differ in income is that many households have positive income even though some earners in the household don't.
+  # The reason they differ in purchase value is that "value, purchase" is zero for anyone with zero income in a household with positive income.
   # (If everyone in the household has zero income then purchase value is instead divided equally among earners.)
   assert ps4[c] . isnull() . mean() <= m
   log = log + "\n" + c + " is missing no more than " + str(100*m) + "%."

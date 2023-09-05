@@ -103,7 +103,8 @@ if True: # Assemble the aggregates, then compute a few variables.
   households["all-elderly"] = households["age-min"] > 65
   households["has-elderly"] = households["age-max"] > 65
   #
-  # PITFALL: Income decile and percentile for persons exist too. They are different.
+  # PITFALL: The simulation's quantiles are complex. See the file
+  #   markdown/multiple-kinds-of-quantiles.md
 
   for label, n in [ ("IT-decile"    , 10),
                     ("IT-percentile", 100),
