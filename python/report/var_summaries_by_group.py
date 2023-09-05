@@ -133,7 +133,8 @@ def make_summary_frame (
         index = dict (
           zip ( t.index
               , map ( lambda x: str(gv) + ": "
-                      + defs.maybeFill( gv, str(x) )
+                      + defs.fill_if_percentile ( groupVar = gv,
+                                                  val      = str(x) )
                     , t.index ) ) ) )
       varSummaries . append ( t )
     groupSummaries . append (

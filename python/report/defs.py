@@ -9,38 +9,38 @@ if True:
   else:
       import python.regime.r2019 as regime
 
-# PITFALL: If we use yet other variables (besides "income" and "IT")
-# to define quantiles, this will need to know about it.
-def maybeFill(groupVar, val):
-  if groupVar in [ "income-percentile",
-                   "IT-percentile" ]:
+def fill_if_percentile (
+    groupVar : str,
+    val      : str, # maybe numeric
+)           -> str: # If `val` is a percentile, adds leading zeros to `val`.
+  if groupVar[-10:] == "percentile":
     return val.zfill(2)
   else: return val
 
 def decile_names (
     underlying_var_name : str # e.g. "income" or "IT"
-) -> Dict [ Str, Str ]:
+) -> Dict [ str, str ]:
   return { underlying_var_name  +"-decile: " + str(i)
            : "[" + str(10*i) + "," + str(10*(i+1)) + ")"
            for i in range(10) }
 
 def percentile_names (
     underlying_var_name : str # e.g. "income" or "IT"
-) -> Dict [ Str, Str ]:
+) -> Dict [ str, str ]:
   return { underlying_var_name + "-percentile: " + ( str(i) . zfill(2) )
            : "[" + str(i) + "," + str(i+1) + ")"
            for i in range(100) }
 
 def millile_names (
     underlying_var_name : str # e.g. "income" or "IT"
-) -> Dict [ Str, Str ]:
+) -> Dict [ str, str ]:
   return { underlying_var_name + "-millile: " + str(i) . zfill(3)
            : "[" + str(i/10) + "," + str((i+1)/10) + ")"
            for i in range(1000) }
 
 def quantileNames (
     underlying_var_name : str # e.g. "income" or "IT"
-) -> Dict [ Str, Str ]:
+) -> Dict [ str, str ]:
     return { ** decile_names     ( underlying_var_name ),
              ** percentile_names ( underlying_var_name ),
              ** millile_names    ( underlying_var_name ) }

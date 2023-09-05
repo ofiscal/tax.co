@@ -57,6 +57,7 @@ tests:                                                      \
   users/$(user)/test/recip-$(ss)/purchases_correct.txt      \
   users/$(user)/test/recip-$(ss)/python_regime_test         \
   users/$(user)/test/recip-$(ss)/vat_rates.txt              \
+  users/$(user)/test/recip-1/python.report.tests.txt        \
   users/$(user)/test/recip-1/build_buildings.txt            \
   users/$(user)/test/recip-1/build_ss_functions.txt         \
   users/$(user)/test/recip-1/build_ss_schedules.txt         \
@@ -76,6 +77,11 @@ users/$(user)/test/recip-1/requests.txt: \
   .no_younger_than/python/requests/test.py
 	date
 	$(python_from_here) python/requests/test.py $(config_file)
+
+users/$(user)/test/recip-1/python.report.tests.txt: \
+  .no_younger_than/python/report/tests.py
+	date
+	$(python_from_here) python/report/tests.py $(config_file)
 
 users/$(user)/test/recip-$(ss)/households_1_agg_plus.txt:                 \
   $(households_1_agg_plus)                                         \

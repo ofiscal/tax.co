@@ -314,6 +314,12 @@
   .no_younger_than/python/common/util.py
 	install -D /dev/null .no_younger_than/python/build/purchases_2_vat_test.py
 
+.no_younger_than/python/report/tests.py:     \
+  python/report/tests.py                     \
+  .no_younger_than/python/build/output_io.py \
+  .no_younger_than/python/report/defs.py
+	install -D /dev/null .no_younger_than/python/report/tests.py
+
 .no_younger_than/python/build/households_1_agg_plus_test.py: \
   python/build/households_1_agg_plus_test.py \
   .no_younger_than/python/build/households_1_agg_plus_defs.py \
