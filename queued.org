@@ -1,0 +1,55 @@
+* DONE read pitfalls
+  python/build/households_1_agg_plus.py
+  python/build/households_1_agg_plus_defs.py
+  python/build/households_1_agg_plus_test.py
+  python/build/people_3_income_taxish.py
+  python/build/people_4_post_households_test.py
+  python/common/tests.py
+  python/report/compare.py
+  python/report/defs.py
+  python/report/var_summaries_by_group.py
+* DONE find all changed definitions (listed here)
+* DONE review all uses of chnaged defs
+* in var_summaries_by_group, this passage probably needs more bifurcation
+  for (df, quantileVar) in [ (households,                      "IT"),
+                             (households_by_income_per_capita, "IT"),
+                             (earners,                         "income"),
+                             (nonzero_earners_by_labor_income, "income"),
+                            ]:
+
+  These:
+    nonzero_earners_by_labor_income
+    households_by_income_per_capita
+  probably need different values assigned to 'quantileVar'.
+* in var_summaries_by_group, use quantileVar
+  Currently it is assigned in a loop but unused.
+  It is defined as an argument to `make_summary_frame` but never supplied.
+* in var_summaries_by_group, distinguish the quantiles better
+  The loop at the end only assigns `quantileVar` to "income" or "IT",
+  but these:
+    nonzero_earners_by_labor_income
+    households_by_income_per_capita
+  use other variables.
+  I suspect `quantileVar` should correspond, but I'm not sure;
+  I'll have to read how `make_summary_frame` uses it.
+* in var_summaries_by_group, the groupVars in the loop at the end might need more bifurcation too
+  Are they different for these data sets?
+    nonzero_earners_by_labor_income
+    households_by_income_per_capita
+* in python/report/defs.py, change some common variables
+** the problem
+   These variables are in "commonVars" and shouldn't be --
+   they now need separate treatment for households and individuals,
+   in the two lists defined thereafter.
+** the variables
+   "income < min wage",
+   "income - tax",
+   "income"
+   "purchase value / income",
+   "vat / income",
+* maybe disable all the non-tmi data sets
+  ofMostInterestLately, etc.
+** if so
+   They're too hard to sync, now that individuals and households diverge.
+** if not
+   then split those common variables just like I did for the tmi data

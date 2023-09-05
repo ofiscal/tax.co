@@ -1,3 +1,10 @@
+# PURPOSE:
+# This defines the columns we report on in var_summaries_by_group.py,
+# and how we group them.
+# The group variables are columns of the generated reports.
+# The other variables correspond to rows of it.
+# Both sets depend on the report in question.
+
 if True:
   from itertools import chain
   from typing import Dict, List, Set
@@ -8,6 +15,7 @@ if True:
       import python.regime.r2018 as regime
   else:
       import python.regime.r2019 as regime
+
 
 def fill_if_percentile (
     groupVar : str, # a column name
