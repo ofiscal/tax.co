@@ -10,8 +10,9 @@ if True:
       import python.regime.r2019 as regime
 
 def fill_if_percentile (
-    groupVar : str,
-    val      : str, # maybe numeric
+    groupVar : str, # a column name
+    val      : str, # Maybe numeric. Gets "transformed"
+                    # (but this is a pure function).
 )           -> str: # If `val` is a percentile, adds leading zeros to `val`.
   if groupVar[-10:] == "percentile":
     return val.zfill(2)
@@ -97,7 +98,7 @@ commonVars = ( [
   "income - tax",
   "income",
   "tax",
-  "income tax rate",
+  "income tax / income",
   "income, labor",
   "income, labor + cesantia",
   "income, rental + interest",
@@ -161,7 +162,7 @@ ofMostInterestLately = [
   "income: mean",
   "tax: sums",
   "tax: mean",
-  "income tax rate: mean",
+  "income tax rate: mean", # TODO: This is now "income tax / x" for x in [income, IT]
   "income, labor: sums",
   "income, labor: mean",
   "income, labor + cesantia: sums",

@@ -112,6 +112,8 @@ if True: # Assemble the aggregates, then compute a few variables.
     households[label] = util.myQuantile (
       n_quantiles = n,
       in_col = households["IT"] )
+  del(label,n)
+
   households["one"] = 1 # used in report/households.py to create the trivial partition.
     # TODO ? move to report/households.py
   households_decile_summary = desc.summarizeQuantiles (

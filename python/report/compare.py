@@ -59,8 +59,8 @@ def make_one_difference_table (
 # Compares the user-generated data to the baseline,
 # across deciles, for the variable `measure`.
 def draw_one_comparison (
-    quantile_defining_var : str,
     measure               : str,
+    quantile_defining_var : str,
     unit                  : str, # unit of observation, e.g. "households"
     user                  : pd.DataFrame,
     baseline              : pd.DataFrame ): # Writes a file.
