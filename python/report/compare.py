@@ -56,13 +56,18 @@ def make_one_difference_table (
       "changes_" + unit + ".xlsx" ),
     index = False )
 
+# Compares the user-generated data to the baseline,
+# across deciles, for the variable `measure`.
 def draw_one_comparison (
-    measure  : str,
-    unit     : str,
-    user     : pd.DataFrame,
-    baseline : pd.DataFrame ):
-  user_deciles     = user     [ list ( defs.decile_names.values() ) ]
-  baseline_deciles = baseline [ list ( defs.decile_names.values() ) ]
+    quantile_defining_var : str,
+    measure               : str,
+    unit                  : str, # unit of observation, e.g. "households"
+    user                  : pd.DataFrame,
+    baseline              : pd.DataFrame ): # Writes a file.
+  decile_columns = list ( defs.decile_names (quantile_defining_var )
+                          . values() )
+  user_deciles     = user     [ decile_columns ]
+  baseline_deciles = baseline [ decile_columns ]
   user_levels : pd.Series = (
     user_deciles [
       user [ "measure" ] == measure ]
@@ -77,9 +82,9 @@ def draw_one_comparison (
     . astype ( float ) )
   draw.bar_chart_with_changes (
     title  = "Resulting change in \"" + measure + "\"",
-    xlabel = unit + " by income percentile",
+    xlabel = unit + " by " + quantile_defining_var + " percentile",
     ylabel = "COP",
-    labels = defs.decile_names.values(),
+    labels = decile_columns,
     levels = baseline_levels,
     changes = user_levels - baseline_levels,
     save_path = path.join (
@@ -88,10 +93,11 @@ def draw_one_comparison (
         "change in." + measure + ".by " + unit + "."
         + com.strategy_year_suffix ) ) )
 
-for (unit, user, baseline) in [
-    ("households",       user_households,       baseline_households),
-    ("earners",          user_earners,          baseline_earners),
+for (unit, quantile_defining_var, user, baseline) in [
+    ("households",   "IT",        user_households,    baseline_households),
+    ("earners",      "income",    user_earners,       baseline_earners),
     ("nonzero_earners_by_labor_income",
+     "income",
      user_nonzero_earners_by_labor_income,
      baseline_nonzero_earners_by_labor_income) ]:
   for measure in ["tax: mean", "income - tax: mean"]:
@@ -102,7 +108,8 @@ for (unit, user, baseline) in [
       baseline = baseline [ baseline ["measure"] # the quotes are not a typo
                             . isin ( defs.ofMostInterestLately ) ] )
     draw_one_comparison (
-      measure   = measure,
-      unit      = unit,
-      user      = user,
-      baseline  = baseline )
+      measure               = measure,
+      quantile_defining_var = quantile_defining_var,
+      unit                  = unit,
+      user                  = user,
+      baseline              = baseline )

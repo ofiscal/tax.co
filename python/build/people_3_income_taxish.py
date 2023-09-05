@@ -31,9 +31,9 @@ ppl = regime.income_taxes( ppl )
 
 # TODO: This is computed separately for households and earners.
 # It's not the only variable like that.
-# It'd be nice if those variables' definitions
+# It'd be nice if such variables' definitions
 # were drawn by both programs from the same library.
-ppl["income tax rate"] = (
+ppl["income tax / income"] = (
   ppl["tax, income"] / ppl["income"] )
 
 oio.saveUserData(

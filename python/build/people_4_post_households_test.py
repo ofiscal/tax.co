@@ -96,7 +96,8 @@ for (c,m) in [ ( "in labor force", 0 ),
   assert ps4[c] . isnull() . mean() <= m
   log = log + "\n" + c + " is missing no more than " + str(100*m) + "%."
 
-com_tests.test_quantiles ( df=ps4 )
+com_tests.test_quantiles ( var_name = "income",
+                           df       = ps4 )
 
 if True: # Test "share"
   assert ps4["share"].max() <= 1.01

@@ -160,7 +160,8 @@ if True: # run tests
   test_income_ranks        ( hh=hh, ppl=ppl )
   test_sums                ( hh=hh, ppl=ppl )
   test_bools               ( hh=hh, ppl=ppl )
-  com_tests.test_quantiles ( df=hh )
+  com_tests.test_quantiles ( var_name = "IT",
+                             df       = hh )
 
   oio.test_write(
       com.subsample,

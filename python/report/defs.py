@@ -1,5 +1,6 @@
 if True:
   from itertools import chain
+  from typing import Dict, List, Set
   import python.common.common    as com
   if   com.regime_year == 2016:
       import python.regime.r2016 as regime
@@ -8,43 +9,60 @@ if True:
   else:
       import python.regime.r2019 as regime
 
-
+# PITFALL: If we use yet other variables (besides "income" and "IT")
+# to define quantiles, this will need to know about it.
 def maybeFill(groupVar, val):
-  if groupVar == "income-percentile":
+  if groupVar in [ "income-percentile",
+                   "IT-percentile" ]:
     return val.zfill(2)
   else: return val
 
-decile_names = { "income-decile: " + str(i)
-                 : "[" + str(10*i) + "," + str(10*(i+1)) + ")"
-                 for i in range(10) }
+def decile_names (
+    underlying_var_name : str # e.g. "income" or "IT"
+) -> Dict [ Str, Str ]:
+  return { underlying_var_name  +"-decile: " + str(i)
+           : "[" + str(10*i) + "," + str(10*(i+1)) + ")"
+           for i in range(10) }
 
-percentile_names = { "income-percentile: " + ( str(i) . zfill(2) )
-                     : "[" + str(i) + "," + str(i+1) + ")"
-                     for i in range(100) }
+def percentile_names (
+    underlying_var_name : str # e.g. "income" or "IT"
+) -> Dict [ Str, Str ]:
+  return { underlying_var_name + "-percentile: " + ( str(i) . zfill(2) )
+           : "[" + str(i) + "," + str(i+1) + ")"
+           for i in range(100) }
 
-millile_names = { "income-millile: " + str(i) . zfill(3)
-                  : "[" + str(i/10) + "," + str((i+1)/10) + ")"
-                  for i in range(1000) }
+def millile_names (
+    underlying_var_name : str # e.g. "income" or "IT"
+) -> Dict [ Str, Str ]:
+  return { underlying_var_name + "-millile: " + str(i) . zfill(3)
+           : "[" + str(i/10) + "," + str((i+1)/10) + ")"
+           for i in range(1000) }
 
-quantileNames = { ** decile_names,
-                  ** percentile_names,
-                  ** millile_names }
+def quantileNames (
+    underlying_var_name : str # e.g. "income" or "IT"
+) -> Dict [ Str, Str ]:
+    return { ** decile_names     ( underlying_var_name ),
+             ** percentile_names ( underlying_var_name ),
+             ** millile_names    ( underlying_var_name ) }
 
-householdGroupVars = [
+commonGroupVars = [
+  ( "one"         , None ),
+  ( "female head" , None ),
+  ( "region-2"    , None ), ]
+
+householdGroupVars = (
   # Variables to group by, and optionally,
   # the subset of values for that group variable to consider.
   # If `None` then all values are considered.
-  ( "one"                         , None ),
-  ( "female head"                 , None ),
-  ( "income-decile"               , None ),
-  ( "income-percentile"           , None ),
-  ( "income-millile"              , list ( range(990,1000) ) ),
-  ( "income-percentile-in[90,97]" , [1]  ),
-  ( "income-percentile-in[90,98]" , [1]  ),
-  ( "income-millile-in[990,997]"  , [1]  ),
-  ( "income-millile-in[990,998]"  , [1]  ),
-  ( "region-2"                    , None ),
-  ]
+  commonGroupVars
+  + [ ( "IT-decile"               , None ),
+      ( "IT-percentile"           , None ),
+      ( "IT-millile"              , list ( range(990,1000) ) ),
+      ( "IT-percentile-in[90,97]" , [1]  ),
+      ( "IT-percentile-in[90,98]" , [1]  ),
+      ( "IT-millile-in[990,997]"  , [1]  ),
+      ( "IT-millile-in[990,998]"  , [1]  ),
+     ] )
 
 earnerGroupVars = (
   # The female/male distinction doesn't make sense at the household level
@@ -52,8 +70,16 @@ earnerGroupVars = (
   # By contrast, "female head" does make sense at the earner level,
   # as it indicates whether someone lives in a household with a female head.
   # (Whether that's useful is a separate question.)
-  [ ( "female", None ) ]
-  + householdGroupVars )
+  commonGroupVars
+  + [ ( "female", None ),
+      ( "income-decile"               , None ),
+      ( "income-percentile"           , None ),
+      ( "income-millile"              , list ( range(990,1000) ) ),
+      ( "income-percentile-in[90,97]" , [1]  ),
+      ( "income-percentile-in[90,98]" , [1]  ),
+      ( "income-millile-in[990,997]"  , [1]  ),
+      ( "income-millile-in[990,998]"  , [1]  ),
+     ] )
 
 #
 # Variables to summarize

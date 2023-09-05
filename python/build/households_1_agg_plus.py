@@ -105,12 +105,12 @@ if True: # Assemble the aggregates, then compute a few variables.
   #
   # PITFALL: Income decile and percentile for persons exist too. They are different.
 
-  for label, n in [ ("income-decile"    , 10),
-                    ("income-percentile", 100),
-                    ("income-millile"   , 1000), ]:
+  for label, n in [ ("IT-decile"    , 10),
+                    ("IT-percentile", 100),
+                    ("IT-millile"   , 1000), ]:
     households[label] = util.myQuantile (
       n_quantiles = n,
-      in_col = households["income"] )
+      in_col = households["IT"] )
   households["one"] = 1 # used in report/households.py to create the trivial partition.
     # TODO ? move to report/households.py
   households_decile_summary = desc.summarizeQuantiles (
@@ -123,11 +123,11 @@ if True: # Assemble the aggregates, then compute a few variables.
   #   people_3_income_taxish.py
   # It'd be nice if those variables' definitions
   # were drawn by both programs from the same library.
-  households["income tax rate"] = (
-    households["tax, income"] / households["income"] )
+  households["income tax / IT"] = (
+    households["tax, income"] / households["IT"] )
 
-households["income per capita"] = \
-  households["income"] / households["members"]
+households["IT per capita"] = \
+  households["IT"] / households["members"]
 
 if True: # save
   oio.saveUserData (

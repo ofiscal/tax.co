@@ -35,9 +35,9 @@ def copy_with_alternative_quantile_order (
     ordering_variable : str
 ) -> pd.DataFrame:
   res = model.copy()
-  for label, n in [ ("income-decile"    , 10),
-                    ("income-percentile", 100),
-                    ("income-millile"   , 1000), ]:
+  for label, n in [ (ordering_variable + "-decile"    , 10),
+                    (ordering_variable + "-percentile", 100),
+                    (ordering_variable + "-millile"   , 1000), ]:
     res[label] = (
       util.myQuantile (
         n_quantiles = n,
@@ -59,36 +59,37 @@ nonzero_earners_by_labor_income = \
 households_by_income_per_capita = \
   copy_with_alternative_quantile_order (
     model = households,
-    ordering_variable = "income per capita" )
+    ordering_variable = "IT per capita" )
 
 if True: # Create a few columns missing in the input data.
          # TODO ? Move upstream.
-  for df in [ households,
-              households_by_income_per_capita,
-              earners,
-              nonzero_earners_by_labor_income ]:
+  for (df, quantileVar) in [ (households,                      "IT"),
+                             (households_by_income_per_capita, "IT"),
+                             (earners,                         "income"),
+                             (nonzero_earners_by_labor_income, "income"),
+                            ]:
     df["income, labor + cesantia"] = (
         df["income, labor"]
         + df["income, cesantia"] )
 
-    df["income-percentile-in[90,97]"] = (
-        (df["income-percentile"] >= 90)
-      & (df["income-percentile"] <= 97) )
+    df[quantileVar + "-percentile-in[90,97]"] = (
+        (df[quantileVar + "-percentile"] >= 90)
+      & (df[quantileVar + "-percentile"] <= 97) )
 
-    df["income-percentile-in[90,98]"] = (
-        (df["income-percentile"] >= 90)
-      & (df["income-percentile"] <= 98) )
+    df[quantileVar + "-percentile-in[90,98]"] = (
+        (df[quantileVar + "-percentile"] >= 90)
+      & (df[quantileVar + "-percentile"] <= 98) )
 
-    df["income-millile-in[990,997]"] = (
-        (df["income-millile"] >= 990)
-      & (df["income-millile"] <= 997) )
+    df[quantileVar + "-millile-in[990,997]"] = (
+        (df[quantileVar + "-millile"] >= 990)
+      & (df[quantileVar + "-millile"] <= 997) )
 
-    df["income-millile-in[990,998]"] = (
-        (df["income-millile"] >= 990)
-      & (df["income-millile"] <= 998) )
+    df[quantileVar + "-millile-in[990,998]"] = (
+        (df[quantileVar + "-millile"] >= 990)
+      & (df[quantileVar + "-millile"] <= 998) )
 
-    df["income < min wage"] = (
-      df["income"] < c.min_wage )
+    df[quantileVar + " < min wage"] = (
+      df[quantileVar + ""] < c.min_wage )
 
 if True: # Make some subsets.
   # PITFALL: All changes to `earners`, `households` should precede this.
@@ -105,6 +106,7 @@ if True: # Make some subsets.
 def make_summary_frame (
     unit           : str, # unit of observation: households or earners
     df             : pd.DataFrame,
+    quantileVar    : str # defines income quantiles, e.g. "IT" or "income"
     groupVars      : List[ Tuple [ str, List ] ], # gruops to summarize
     variables      : List[str], # aspects (of groups)      to summarize
       # PITFALL: Long name because "vars" is an occupied keyword.
@@ -171,51 +173,65 @@ def make_summary_frame (
         [ pd.DataFrame ( total_income_tax_over_total_income ) . transpose(),
           ret_tmi ],
         ignore_index = True )
-      . rename ( columns = defs.quantileNames ) )
+      . rename ( columns = defs.quantileNames (quantileVar) ) )
 
   return ( ( ret_tmi # a subset of the rows in `ret_tmi`
              . loc [ ret_tmi ["measure"]
                      . isin( defs.ofMostInterestLately ) ] ),
            ret_tmi )
 
-for (unit, df, groupVars, variables, restrictedVars) in [
+# TODO: Replace this loop with a series of function calls.
+# That will permit qualifying the function argument names.
+# (At present, the order of the lists below is delicate --
+# the six variables assigned each time the loop runs
+# are assigned to a list which, if its order changed,
+# would make the results stupid, without looking stupid.)
+for (unit, df, quantileVar, groupVars, variables, restrictedVars) in [
     ( "earners",
       earners,
+      "income",
       defs.earnerGroupVars,
       defs.earnerVars,
       defs.earnerRestrictedVars ),
     ( "earnersFemale",
       earnersFemale,
+      "income",
       defs.earnerGroupVars,
       defs.earnerVars,
       defs.earnerRestrictedVars ),
     ( "earnersMale",
       earnersMale,
+      "income",
       defs.earnerGroupVars,
       defs.earnerVars,
       defs.earnerRestrictedVars ),
     ( "nonzero_earners_by_labor_income",
       nonzero_earners_by_labor_income,
+      "income",
       defs.earnerGroupVars,
       defs.earnerVars,
       defs.earnerRestrictedVars ),
     ( "households",
       households,
+      "IT",
       defs.householdGroupVars,
       defs.householdVars,
       defs.householdRestrictedVars ),
     ( "households_by_income_per_capita",
       households_by_income_per_capita,
+      "IT",
       defs.householdGroupVars,
       defs.householdVars,
       defs.householdRestrictedVars ),
     ( "householdsFemale",
       householdsFemale,
+      "IT",
       defs.householdGroupVars,
       defs.householdVars,
       defs.householdRestrictedVars ),
     ( "householdsMale",
       householdsMale,
+      "IT",
       defs.householdGroupVars,
       defs.householdVars,
       defs.householdRestrictedVars ) ]:

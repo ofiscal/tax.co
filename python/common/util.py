@@ -54,8 +54,9 @@ def interpretCategorical( column, categories ):
                        , ordered = True)
 
 def myQuantile (
-    n_quantiles : int, # should be a power of 10
-    in_col : pd.Series ):
+    n_quantiles : int, # Number of quantiles.
+    in_col : pd.Series # The underlying variable to define quantiles from.
+) -> pd.Series: # Series with index `in_col`, values quantiles 0 to n-1.
   quantile_length = len( str( n_quantiles - 1 ) )
     # quantile_length 1 <=> deciles, 2 <=> percentiles, 3 <=> miltiles, etc.
   return pd.qcut ( in_col,
