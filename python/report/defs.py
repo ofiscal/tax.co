@@ -179,7 +179,7 @@ def ofMostInterestLately (
     total_income + ": max",
     total_income + ": mean",
     total_income + ": sums",
-    "income tax / "  + total_income
+    "income tax / "  + total_income,
 
     # The rest of these do not depend on `total_income`
     "income, labor + cesantia: mean",

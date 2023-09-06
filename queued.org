@@ -48,3 +48,12 @@
    "income"
    "purchase value / income",
    "vat / income",
+* DONE fuzz every income value for which quantiles are generated
+** how
+   ppl["income"] = util.fuzz_peso_values ( ppl["income"] )
+** measures that need fuzzing
+   income, labor
+   IT
+* ONGOING WHERE I LEFT OFF:
+  compare.py still doesn't work
+* try running it

@@ -117,7 +117,7 @@ if True: # Assemble the aggregates, then compute a few variables.
   households["one"] = 1 # used in report/households.py to create the trivial partition.
     # TODO ? move to report/households.py
   households_decile_summary = desc.summarizeQuantiles (
-      "income-decile", households)
+      "IT-decile", households)
 
   # TODO: This is computed separately for households and earners --
   # like many of the variables immediately above, and maybe others too.

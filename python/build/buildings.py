@@ -8,6 +8,7 @@
 
 import numpy as np
 
+from   python.common.fuzz import fuzz_peso_values
 import python.build.classes as cla
 import python.common.common as cl
 import python.build.output_io as oio
@@ -48,6 +49,10 @@ for c in [ "IT",
   buildings = ( cla.Correction.Replace_Substring_In_Column(
                   c, ",", "." )
                 . correct( buildings ) )
+
+# Necessary because "IT" is later used to generate quantiles.
+buildings["IT"] = fuzz_peso_values (
+  buildings ["IT"] . astype (float) )
 
 if True: # estrato is strange
     # It includes undocumented values 0 and 9.

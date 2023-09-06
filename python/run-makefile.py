@@ -87,7 +87,7 @@ def run_one_config (
 
         # "-j", # parallel
         "-O", # "When running multiple jobs in parallel with -j, ensure the  output of each job is collected together"
-        "-k", # Keep going with other targets after any fails, if possible.
+        # "-k", # Keep going with other targets after any fails, if possible.
 
         "config_file" + "=" + config_file,
         "subsample"   + "=" + str( subsample ),

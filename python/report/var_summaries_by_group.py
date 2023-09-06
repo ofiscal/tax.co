@@ -29,7 +29,7 @@ if True: # load data
 if True: # generate "income - tax"
   for df, var_name in [ ( households, "IT"     ),
                         ( earners,    "income" ), ]:
-    df[ var_name + "- tax"] = df[var_name] - df["tax"]
+    df[ var_name + " - tax"] = df[var_name] - df["tax"]
 
 # PITFALL: The many kinds of quantiles can be confusing. See
 #  markdown/multiple-kinds-of-quantiles.md
@@ -66,11 +66,14 @@ households_by_IT_per_capita = \
 
 if True: # Create a few columns missing in the input data.
          # TODO ? Move upstream.
-  for (df, quantileVar) in [
-      (households,                      "IT"),
-      (households_by_IT_per_capita,     "IT per capita"),
-      (earners,                         "income"),
-      (nonzero_earners_by_labor_income, "income, labor"),
+         # TODO : Replace with a function definition and a list of calls,
+         # because assigning many variables in a loop is error-prone,
+         # whereas one can qualify argument names in function calls.
+  for (df, quantileVar, total_income_var) in [
+      (households,                      "IT",            "IT"),
+      (households_by_IT_per_capita,     "IT per capita", "IT"),
+      (earners,                         "income",        "income"),
+      (nonzero_earners_by_labor_income, "income, labor", "income"),
   ]:
     df["income, labor + cesantia"] = (
         df["income, labor"]
@@ -92,8 +95,8 @@ if True: # Create a few columns missing in the input data.
         (df[quantileVar + "-millile"] >= 990)
       & (df[quantileVar + "-millile"] <= 998) )
 
-    df[quantileVar + " < min wage"] = (
-      df[quantileVar + ""] < c.min_wage )
+    df[total_income_var + " < min wage"] = (
+      df[total_income_var] < c.min_wage )
 
 if True: # Make some subsets.
   # PITFALL: All changes to `earners`, `households` should precede this.
@@ -108,11 +111,12 @@ if True: # Make some subsets.
 ###################################
 
 def make_summary_frame (
-    unit           : str, # unit of observation: households or earners
-    quantileVar    : str # defines income quantiles, e.g. "IT" or "income"
-    df             : pd.DataFrame, # the underlying data   to summarize
-    groupVars      : List[ Tuple [ str, List ] ], # gruops to summarize
-    variables      : List[str], # aspects (of groups)      to summarize
+    unit             : str, # unit of observation: households or earners
+    quantileVar      : str, # defines income quantiles, e.g. "IT" or "income"
+    total_income_var : str, # often, but not always, equal to `quantileVar`
+    df               : pd.DataFrame, # the underlying data   to summarize
+    groupVars        : List[ Tuple [ str, List ] ], # gruops to summarize
+    variables        : List[str], # aspects (of groups)      to summarize
       # PITFALL: Long name because "vars" is an occupied keyword.
 ) -> Tuple [ pd.DataFrame,   # The restricted (subset of) results.
              pd.DataFrame ]: # The unrestricted results.
@@ -169,9 +173,11 @@ def make_summary_frame (
                  . astype ( float ) # before dropping "measure" it was an Object
                  . iloc[0] ) # reduce a one-row Frame to a Series
       total_income_tax_over_total_income : pd.Series = pd.concat (
-        [ pd.Series ( {"measure" : "income tax sums / total income sums" } ),
+        [ pd.Series ( {"measure" : ( "income tax sums / "
+                                     + total_income_var
+                                     + " sums" ) } ),
           ( ( tail_of_row ( "tax, income: sums" ) /
-              tail_of_row ( "income: sums" ) )
+              tail_of_row ( total_income_var + ": sums" ) )
             . replace ( [np.nan, np.inf], 0 ) ) ] )
     ret_tmi : pd.DataFrame = (
       pd.concat (
@@ -198,54 +204,63 @@ def make_summary_frame (
 # TODO: Rather than match the definitions of `quantileVar` and `groupVars`,
 # it would be safer of `groupVars` were an (unapplied) function,
 # which was applied to `quantileVar` by `make_summary_frame`.
-for (unit, quantileVar, df, groupVars, variables) in [
+for (unit, quantileVar, total_income_var, df, groupVars, variables) in [
     ( "earners",
+      "income",
       "income",
       earners,
       defs.earnerGroupVars ("income"),
       defs.earnerVars, ),
     ( "earnersFemale",
       "income",
+      "income",
       earnersFemale,
       defs.earnerGroupVars ("income"),
       defs.earnerVars, ),
     ( "earnersMale",
+      "income",
       "income",
       earnersMale,
       defs.earnerGroupVars ("income"),
       defs.earnerVars, ),
     ( "nonzero_earners_by_labor_income",
       "income, labor",
+      "income",
       nonzero_earners_by_labor_income,
       defs.earnerGroupVars ("income, labor"),
       defs.earnerVars, ),
     ( "households",
+      "IT",
       "IT",
       households,
       defs.householdGroupVars ("IT"),
       defs.householdVars, ),
     ( "households_by_IT_per_capita",
       "IT per capita",
+      "IT",
       households_by_IT_per_capita,
       defs.householdGroupVars ("IT per capita"),
       defs.householdVars, ),
     ( "householdsFemale",
+      "IT",
       "IT",
       householdsFemale,
       defs.householdGroupVars ("IT"),
       defs.householdVars, ),
     ( "householdsMale",
       "IT",
+      "IT",
       householdsMale,
       defs.householdGroupVars ("IT"),
       defs.householdVars, ), ]:
 
   (ret, ret_tmi) = make_summary_frame (
-    unit           = unit,
-    quantileVar    = quantileVar,
-    df             = df,
-    groupVars      = groupVars,
-    variables      = variables, )
+    unit             = unit,
+    total_income_var = total_income_var,
+    quantileVar      = quantileVar,
+    df               = df,
+    groupVars        = groupVars,
+    variables        = variables, )
 
   oio.saveUserData(
       com.subsample,
