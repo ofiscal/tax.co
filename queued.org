@@ -37,7 +37,7 @@
    Are they different for these data sets?
      nonzero_earners_by_labor_income
      households_by_income_per_capita
-* in python/report/defs.py, change some common variables
+* DONE in python/report/defs.py, change some common variables
 ** the problem
    These variables are in "commonVars" and shouldn't be --
    they now need separate treatment for households and individuals,

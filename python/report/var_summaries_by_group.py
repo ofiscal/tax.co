@@ -27,8 +27,9 @@ if True: # load data
       "people_4_post_households." + com.strategy_year_suffix )
 
 if True: # generate "income - tax"
-  for df in (households, earners):
-    df["income - tax"] = df["income"] - df["tax"]
+  for df, var_name in [ ( households, "IT"     ),
+                        ( earners,    "income" ), ]:
+    df[ var_name + "- tax"] = df[var_name] - df["tax"]
 
 # PITFALL: The many kinds of quantiles can be confusing. See
 #  markdown/multiple-kinds-of-quantiles.md
@@ -113,7 +114,6 @@ def make_summary_frame (
     groupVars      : List[ Tuple [ str, List ] ], # gruops to summarize
     variables      : List[str], # aspects (of groups)      to summarize
       # PITFALL: Long name because "vars" is an occupied keyword.
-    restrictedVars : List[str]  # a subset of those things to summarize
 ) -> Tuple [ pd.DataFrame,   # The restricted (subset of) results.
              pd.DataFrame ]: # The unrestricted results.
 
@@ -183,7 +183,9 @@ def make_summary_frame (
 
   return ( ( ret_tmi # a subset of the rows in `ret_tmi`
              . loc [ ret_tmi ["measure"]
-                     . isin( defs.ofMostInterestLately ) ] ),
+                     . isin (
+                       defs.ofMostInterestLately (
+                         total_income = quantileVar ) ) ] ),
            ret_tmi )
 
 # TODO: Replace this loop with a series of function calls.
@@ -196,63 +198,54 @@ def make_summary_frame (
 # TODO: Rather than match the definitions of `quantileVar` and `groupVars`,
 # it would be safer of `groupVars` were an (unapplied) function,
 # which was applied to `quantileVar` by `make_summary_frame`.
-for (unit, quantileVar, df, groupVars, variables, restrictedVars) in [
+for (unit, quantileVar, df, groupVars, variables) in [
     ( "earners",
       "income",
       earners,
       defs.earnerGroupVars ("income"),
-      defs.earnerVars,
-      defs.earnerRestrictedVars ),
+      defs.earnerVars, ),
     ( "earnersFemale",
       "income",
       earnersFemale,
       defs.earnerGroupVars ("income"),
-      defs.earnerVars,
-      defs.earnerRestrictedVars ),
+      defs.earnerVars, ),
     ( "earnersMale",
       "income",
       earnersMale,
       defs.earnerGroupVars ("income"),
-      defs.earnerVars,
-      defs.earnerRestrictedVars ),
+      defs.earnerVars, ),
     ( "nonzero_earners_by_labor_income",
       "income, labor",
       nonzero_earners_by_labor_income,
       defs.earnerGroupVars ("income, labor"),
-      defs.earnerVars,
-      defs.earnerRestrictedVars ),
+      defs.earnerVars, ),
     ( "households",
       "IT",
       households,
       defs.householdGroupVars ("IT"),
-      defs.householdVars,
-      defs.householdRestrictedVars ),
+      defs.householdVars, ),
     ( "households_by_IT_per_capita",
       "IT per capita",
       households_by_IT_per_capita,
       defs.householdGroupVars ("IT per capita"),
-      defs.householdVars,
-      defs.householdRestrictedVars ),
+      defs.householdVars, ),
     ( "householdsFemale",
       "IT",
       householdsFemale,
       defs.householdGroupVars ("IT"),
-      defs.householdVars,
-      defs.householdRestrictedVars ),
+      defs.householdVars, ),
     ( "householdsMale",
       "IT",
       householdsMale,
       defs.householdGroupVars ("IT"),
-      defs.householdVars,
-      defs.householdRestrictedVars ) ]:
+      defs.householdVars, ), ]:
 
   (ret, ret_tmi) = make_summary_frame (
     unit           = unit,
     quantileVar    = quantileVar,
     df             = df,
     groupVars      = groupVars,
-    variables      = variables,
-    restrictedVars = restrictedVars )
+    variables      = variables, )
 
   oio.saveUserData(
       com.subsample,
