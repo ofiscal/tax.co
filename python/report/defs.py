@@ -7,7 +7,7 @@
 
 if True:
   from itertools import chain
-  from typing import Dict, List, Set
+  from typing import Dict, List, Set, Tuple, Optional, TypeVar, GenericAlias
   import python.common.common    as com
   if   com.regime_year == 2016:
       import python.regime.r2016 as regime
@@ -16,6 +16,14 @@ if True:
   else:
       import python.regime.r2019 as regime
 
+
+ColumnType = TypeVar("ColumnType")
+GroupSpec : GenericAlias = (
+  Tuple [ str, # the name of the column identifying the grouping variable
+          Optional [
+            # If present, this list specifies the values to use as groups.
+            # If absent, all possible groups are generated.
+            List [ ColumnType ] ] ] )
 
 def fill_if_percentile (
     groupVar : str, # a column name
@@ -54,41 +62,38 @@ def quantileNames (
              ** percentile_names ( underlying_var_name ),
              ** millile_names    ( underlying_var_name ) }
 
-commonGroupVars = [
+def quantile_group_vars (
+    quantile_var : str # The underlying variable from which the quantiles were defined.
+) -> List [ GroupSpec ]:
+  return [
+    ( quantile_var + "-decile"               , None ),
+    ( quantile_var + "-percentile"           , None ),
+    ( quantile_var + "-millile"              , list ( range(990,1000) ) ),
+    ( quantile_var + "-percentile-in[90,97]" , [1]  ),
+    ( quantile_var + "-percentile-in[90,98]" , [1]  ),
+    ( quantile_var + "-millile-in[990,997]"  , [1]  ),
+    ( quantile_var + "-millile-in[990,998]"  , [1]  ),
+  ]
+
+commonGroupVars : List [ GroupSpec ] = [
   ( "one"         , None ),
   ( "female head" , None ),
   ( "region-2"    , None ), ]
 
-householdGroupVars = (
-  # Variables to group by, and optionally,
-  # the subset of values for that group variable to consider.
-  # If `None` then all values are considered.
-  commonGroupVars
-  + [ ( "IT-decile"               , None ),
-      ( "IT-percentile"           , None ),
-      ( "IT-millile"              , list ( range(990,1000) ) ),
-      ( "IT-percentile-in[90,97]" , [1]  ),
-      ( "IT-percentile-in[90,98]" , [1]  ),
-      ( "IT-millile-in[990,997]"  , [1]  ),
-      ( "IT-millile-in[990,998]"  , [1]  ),
-     ] )
+def householdGroupVars (
+    income_var_for_quantiles : str
+) -> List [ GroupSpec ]:
+  return ( commonGroupVars
+           + quantile_group_vars ( income_var_for_quantiles )
+          )
 
-earnerGroupVars = (
-  # The female/male distinction doesn't make sense at the household level
-  # -- most households have both.
-  # By contrast, "female head" does make sense at the earner level,
-  # as it indicates whether someone lives in a household with a female head.
-  # (Whether that's useful is a separate question.)
-  commonGroupVars
-  + [ ( "female", None ),
-      ( "income-decile"               , None ),
-      ( "income-percentile"           , None ),
-      ( "income-millile"              , list ( range(990,1000) ) ),
-      ( "income-percentile-in[90,97]" , [1]  ),
-      ( "income-percentile-in[90,98]" , [1]  ),
-      ( "income-millile-in[990,997]"  , [1]  ),
-      ( "income-millile-in[990,998]"  , [1]  ),
-     ] )
+def earnerGroupVars (
+    income_var_for_quantiles : str
+) -> List [ GroupSpec ]:
+  return ( commonGroupVars
+           + [ ( "female", None ) ]
+           + quantile_group_vars ( income_var_for_quantiles ) )
+
 
 #
 # Variables to summarize

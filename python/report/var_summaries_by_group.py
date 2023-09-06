@@ -58,18 +58,19 @@ nonzero_earners_by_labor_income = \
       earners ["income, labor"] > 2 ],
     ordering_variable = "income, labor" )
 
-households_by_income_per_capita = \
+households_by_IT_per_capita = \
   copy_with_alternative_quantile_order (
     model = households,
     ordering_variable = "IT per capita" )
 
 if True: # Create a few columns missing in the input data.
          # TODO ? Move upstream.
-  for (df, quantileVar) in [ (households,                      "IT"),
-                             (households_by_income_per_capita, "IT"),
-                             (earners,                         "income"),
-                             (nonzero_earners_by_labor_income, "income"),
-                            ]:
+  for (df, quantileVar) in [
+      (households,                      "IT"),
+      (households_by_IT_per_capita,     "IT per capita"),
+      (earners,                         "income"),
+      (nonzero_earners_by_labor_income, "income, labor"),
+  ]:
     df["income, labor + cesantia"] = (
         df["income, labor"]
         + df["income, cesantia"] )
@@ -115,6 +116,7 @@ def make_summary_frame (
     restrictedVars : List[str]  # a subset of those things to summarize
 ) -> Tuple [ pd.DataFrame,   # The restricted (subset of) results.
              pd.DataFrame ]: # The unrestricted results.
+
   summaryDict = {} # TODO: Don't use this. It's no longer necessary --
                    # maybe it never was -- and it's confusing.
   groupSummaries = []
@@ -173,7 +175,8 @@ def make_summary_frame (
             . replace ( [np.nan, np.inf], 0 ) ) ] )
     ret_tmi : pd.DataFrame = (
       pd.concat (
-        [ pd.DataFrame ( total_income_tax_over_total_income ) . transpose(),
+        [ ( pd.DataFrame ( total_income_tax_over_total_income )
+            . transpose() ),
           ret_tmi ],
         ignore_index = True )
       . rename ( columns = defs.quantileNames (quantileVar) ) )
@@ -189,58 +192,63 @@ def make_summary_frame (
 # the six variables assigned each time the loop runs
 # are assigned to a list which, if its order changed,
 # would make the results stupid, without looking stupid.)
+#
+# TODO: Rather than match the definitions of `quantileVar` and `groupVars`,
+# it would be safer of `groupVars` were an (unapplied) function,
+# which was applied to `quantileVar` by `make_summary_frame`.
 for (unit, quantileVar, df, groupVars, variables, restrictedVars) in [
     ( "earners",
       "income",
       earners,
-      defs.earnerGroupVars,
+      defs.earnerGroupVars ("income"),
       defs.earnerVars,
       defs.earnerRestrictedVars ),
     ( "earnersFemale",
       "income",
       earnersFemale,
-      defs.earnerGroupVars,
+      defs.earnerGroupVars ("income"),
       defs.earnerVars,
       defs.earnerRestrictedVars ),
     ( "earnersMale",
       "income",
       earnersMale,
-      defs.earnerGroupVars,
+      defs.earnerGroupVars ("income"),
       defs.earnerVars,
       defs.earnerRestrictedVars ),
     ( "nonzero_earners_by_labor_income",
-      "income",
+      "income, labor",
       nonzero_earners_by_labor_income,
-      defs.earnerGroupVars,
+      defs.earnerGroupVars ("income, labor"),
       defs.earnerVars,
       defs.earnerRestrictedVars ),
     ( "households",
       "IT",
       households,
-      defs.householdGroupVars,
+      defs.householdGroupVars ("IT"),
       defs.householdVars,
       defs.householdRestrictedVars ),
-    ( "households_by_income_per_capita",
-      "IT",
-      households_by_income_per_capita,
-      defs.householdGroupVars,
+    ( "households_by_IT_per_capita",
+      "IT per capita",
+      households_by_IT_per_capita,
+      defs.householdGroupVars ("IT per capita"),
       defs.householdVars,
       defs.householdRestrictedVars ),
     ( "householdsFemale",
       "IT",
       householdsFemale,
-      defs.householdGroupVars,
+      defs.householdGroupVars ("IT"),
       defs.householdVars,
       defs.householdRestrictedVars ),
     ( "householdsMale",
       "IT",
       householdsMale,
-      defs.householdGroupVars,
+      defs.householdGroupVars ("IT"),
       defs.householdVars,
       defs.householdRestrictedVars ) ]:
 
   (ret, ret_tmi) = make_summary_frame (
     unit           = unit,
+    quantileVar    = quantileVar,
     df             = df,
     groupVars      = groupVars,
     variables      = variables,
