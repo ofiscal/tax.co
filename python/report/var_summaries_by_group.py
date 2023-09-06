@@ -66,7 +66,8 @@ households_by_IT_per_capita = \
 
 if True: # Create a few columns missing in the input data.
          # TODO ? Move upstream.
-         # TODO : Replace with a function definition and a list of calls,
+         # TODO : Replace loop with function definition
+         # followed by some calls to it,
          # because assigning many variables in a loop is error-prone,
          # whereas one can qualify argument names in function calls.
   for (df, quantileVar, total_income_var) in [

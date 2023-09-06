@@ -93,20 +93,30 @@ def draw_one_comparison (
         "change in." + measure + ".by " + unit + "."
         + com.strategy_year_suffix ) ) )
 
-for (unit, quantile_defining_var, user, baseline) in [
-    ("households",   "IT",        user_households,    baseline_households),
-    ("earners",      "income",    user_earners,       baseline_earners),
+# TODO : Replace loop with function definition
+# followed by some calls to it.
+# Assigning many variables in a loop is error-prone,
+# because the order of the variables matters.
+# Instead, in function calls, one can qualify argument names.
+for (unit, quantile_defining_var, total_income_var, user, baseline) in [
+    ("households", "IT",      "IT",     user_households, baseline_households),
+    ("earners",    "income",  "income", user_earners,    baseline_earners),
     ("nonzero_earners_by_labor_income",
+     "income, labor",
      "income",
      user_nonzero_earners_by_labor_income,
      baseline_nonzero_earners_by_labor_income) ]:
-  for measure in ["tax: mean", "income - tax: mean"]:
+  for measure in ["tax: mean", total_income_var + " - tax: mean"]:
     make_one_difference_table (
       unit     = unit,
       user     = user     [ user     ["measure"] # the quotes are not a typo
-                        . isin ( defs.ofMostInterestLately ) ],
+                            . isin (
+                              defs.ofMostInterestLately (
+                                total_income_var ) ) ],
       baseline = baseline [ baseline ["measure"] # the quotes are not a typo
-                            . isin ( defs.ofMostInterestLately ) ] )
+                            . isin (
+                              defs.ofMostInterestLately (
+                                total_income_var ) ) ] )
     draw_one_comparison (
       measure               = measure,
       quantile_defining_var = quantile_defining_var,
