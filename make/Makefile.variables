@@ -81,6 +81,10 @@ vat_rates = \
   users/$(user)/data/recip-$(ss)/vat_coicop_brief.$(strategy_suffix).csv \
   users/$(user)/data/recip-$(ss)/vat_cap_c_brief.$(strategy_suffix).csv
 
+# PTIFALL | TODO: These lists are in at least one case (reports) incomplete.
+# And it's not clear that they *should* be complete. See:
+#   https://github.com/JeffreyBenjaminBrown/public-notes-in-org-roam-format/blob/master/parallel_processing_in_gnu_make_with_a_multi_output_rule_that_does_not_create_redundant_processes.org
+
 purchase_pics = \
   users/$(user)/pics/recip-$(ss)/$(strategy_suffix)/purchases/frequency.png \
   users/$(user)/pics/recip-$(ss)/$(strategy_suffix)/purchases/quantity.png \
