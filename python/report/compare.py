@@ -30,11 +30,21 @@ baseline_nonzero_earners_by_labor_income    = oio.readBaselineData (
   com.subsample,
   "report_nonzero_earners_by_labor_income_tmi." + terms.detail + ".2019" )
 
-def sanitize_name_for_makefile (s : str) -> str:
-  """Because Makefiles cannot handle spaces, and maybe colons, in filenames."""
-  return re.sub (
-    ":", "",
-    re.sub ( " ", "-", s ) )
+def sanitize_filename_for_filesystem (s : str) -> str:
+  """Using special characters in filenames is dangerous.
+Bash might handle them, but Windows and GNU Make are pretty rigid.
+Not all of these substitutions are used, but they're all a good idea.
+
+PITFALL: Whitespace is treated irregularly by these substitutions,
+because not every punctuation mark is used the same in the original names --
+for instance, colons are always bordered on the left by an alphanumeric character
+and on the left by a space, whereas dashes are bordered by space on both sides.
+"""
+  return re.sub ( " ", "-", re.sub (
+    "-", "minus", re.sub (
+      ":", " colon", re.sub (
+        "/", " over ", re.sub (
+          ",", " comma ", s ) ) ) ) )
 
 def make_one_difference_table (
     unit      : str,
@@ -89,7 +99,7 @@ def draw_one_comparison (
     changes = user_levels - baseline_levels,
     save_path = path.join (
       oio.get_user_data_folder ( com.subsample ),
-      sanitize_name_for_makefile (
+      sanitize_filename_for_filesystem (
         "change in." + measure + ".by " + unit + "."
         + com.strategy_year_suffix ) ) )
 
