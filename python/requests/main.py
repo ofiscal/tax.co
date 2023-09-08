@@ -64,6 +64,7 @@ if True:
   import os
   import pandas as pd
   import sys
+  from   typing import List, Set, Dict
   #
   import python.common.common      as c
   import python.common.my_subproc  as my_subproc
@@ -149,13 +150,29 @@ def advance_request_queue ():
     # TODO : Why is `sp` not defined after the above?
     # As of commit d2f0fd95286c970ee95f56c4fa633165324b2dca
     # it was working, before I factored my_subproc.run() out of this.
-    lib.zip_request_logs ( req["user"] )
-    with open( defs.global_log_path, "a" ) as f:
-      f . write( "Zip logs: done.\n" )
-
     data_path = os.path.join (
       defs.users_path, req["user"], "data",
       "recip-" + str( req["subsample"] ) )
+    lib.myZip (
+      user_hash = req["user"],
+      output_file = "results.zip",
+      input_files = (
+        glob.glob   ( os.path.join ( data_path, "report*.csv"  ) )
+        + glob.glob ( os.path.join ( data_path, "change*.png"  ) )
+        + glob.glob ( os.path.join ( data_path, "changes*.csv" ) ) ),
+      zip_instance_name = "zipping-results", )
+    with open( defs.global_log_path, "a" ) as f:
+      f . write( "Zipping the results: done.\n" )
+
+    lib.myZip (
+      user_hash = req["user"],
+      output_file = os.path.join ( user_root, "config-and-logs.zip" ),
+      input_files = [ os.path.join ( user_root, "logs" ),
+                      os.path.join ( user_root, "config" ), ],
+      zip_instance_name = "zipping-config-and-logs", )
+    with open( defs.global_log_path, "a" ) as f:
+      f . write( "Zipping the config and logs: done.\n" )
+
     with open( defs.global_log_path, "a" ) as f:
       f . write( "About to send attachemnts at "
                  + data_path + ".\n" )
@@ -168,16 +185,10 @@ def advance_request_queue ():
       python.email.send (
         receiver_address = req["user email"],
         subject = "Resultados de microsimulación",
-        body = (
-          "Los resultados son los documentos .xlsx adjuntos. "
-          + "(Si todo salió bien, el adjunto archivo `logs.zip` "
-          + " no le va a importar.)" ),
-        attachment_paths = (
-          glob.glob   ( os.path.join ( data_path, "report*" ) )
-          + glob.glob ( os.path.join ( data_path, "change-in*by*.png" ) )
-          + glob.glob ( os.path.join ( data_path, "changes_*.xlsx" ) )
-          + [ os.path.join ( data_path,
-                             "../../logs.zip" ) ] ) )
+        body = defs.email_body,
+        attachment_paths = [
+          os.path.join ( data_path, "../../logs.zip" ),
+          os.path.join ( data_path, "../../results.zip" ) ], )
       with open( defs.global_log_path, "a" ) as f:
         f . write( "Email: Done.\n" )
 
