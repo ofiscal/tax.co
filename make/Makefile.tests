@@ -1,10 +1,14 @@
-# For debugging. Run a line like this:
+# PURPOSE:
+# Contains all the tests that the Makefile runs.
+
+# `show_variable` is for debugging the Makefile itself.
+# Run a line like this:
 #
-#   make show_reports config_file=users/ucf88a560a7f987712350b7d629ed2bc7/config/config.json subsample=1000 strategy=detail regime_year=2019 user=ucf88a560a7f987712350b7d629ed2bc7
+#   make show_variable config_file=users/ucf88a560a7f987712350b7d629ed2bc7/config/config.json subsample=100 strategy=detail regime_year=2019 user=ucf88a560a7f987712350b7d629ed2bc7
 #
 # to display what terms a given variable (esp. what files a given target) includes.
 show_variable:
-	echo $(households_2_purchases)
+	echo $(compare)
 
 # Without this, the shell history would not be very useful,
 # since the configuration file is edited frequently.

@@ -140,13 +140,13 @@ reports_baseline =                                                            \
   users/symlinks/baseline/data/recip-$(ss)/report_earners.detail.2019.csv         \
   users/symlinks/baseline/data/recip-$(ss)/report_earners.detail.2019.xlsx
 
-compare =                                                                                                                   \
-  users/$(user)/data/recip-$(ss)/change-in.income---tax-mean.by-earners.$(strategy_year_suffix).png                         \
-  users/$(user)/data/recip-$(ss)/change-in.income---tax-mean.by-households.$(strategy_year_suffix).png                      \
-  users/$(user)/data/recip-$(ss)/change-in.income---tax-mean.by-nonzero_earners_by_labor_income.$(strategy_year_suffix).png \
-  users/$(user)/data/recip-$(ss)/change-in.tax-mean.by-earners.$(strategy_year_suffix).png                                  \
-  users/$(user)/data/recip-$(ss)/change-in.tax-mean.by-households.$(strategy_year_suffix).png                               \
-  users/$(user)/data/recip-$(ss)/change-in.tax-mean.by-nonzero_earners_by_labor_income.$(strategy_year_suffix).png
+compare =                                                                                                                             \
+  users/$(user)/data/recip-$(ss)/change-in.IT-minus-tax-colon-mean.by-households.$(strategy_year_suffix).png                          \
+  users/$(user)/data/recip-$(ss)/change-in.income-minus-tax-colon-mean.by-earners.$(strategy_year_suffix).png                         \
+  users/$(user)/data/recip-$(ss)/change-in.income-minus-tax-colon-mean.by-nonzero_earners_by_labor_income.$(strategy_year_suffix).png \
+  users/$(user)/data/recip-$(ss)/change-in.tax-colon-mean.by-earners.$(strategy_year_suffix).png                                      \
+  users/$(user)/data/recip-$(ss)/change-in.tax-colon-mean.by-households.$(strategy_year_suffix).png                                   \
+  users/$(user)/data/recip-$(ss)/change-in.tax-colon-mean.by-nonzero_earners_by_labor_income.$(strategy_year_suffix).png
 
 goods_by_income_decile = \
   users/$(user)/data/recip-$(ss)/goods_by_income_decile.csv \
