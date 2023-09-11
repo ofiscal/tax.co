@@ -187,7 +187,7 @@ def advance_request_queue ():
         subject = "Resultados de microsimulación",
         body = defs.email_body,
         attachment_paths = [
-          os.path.join ( data_path, "../../logs.zip" ),
+          os.path.join ( data_path, "../../config-and-logs.zip" ),
           os.path.join ( data_path, "../../results.zip" ) ], )
       with open( defs.global_log_path, "a" ) as f:
         f . write( "Email: Done.\n" )
