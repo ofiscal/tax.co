@@ -5,7 +5,8 @@
 # A trick to quickly edit a Docker-locked file from the host system:
 # https://stackoverflow.com/a/26915343
 
-DOCKER_IMAGE_SUFFIX="2023-07-26.update-all"
+# PITFALL: Cannot include some special characters, such as "+".
+DOCKER_IMAGE_SUFFIX="2023-08-16.pytest"
 
 # Start a docker container based on the latest image.
 docker run --name tax.co -itd                \
