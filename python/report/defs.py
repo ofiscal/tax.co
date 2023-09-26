@@ -145,6 +145,7 @@ householdSpecificVars = [
   "IT < min wage",
   "income tax / IT",
   "IT",
+  "GT",
   "members",
   "purchase value / IT",
   "purchase value / IT",
