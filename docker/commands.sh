@@ -6,7 +6,7 @@
 # https://stackoverflow.com/a/26915343
 
 # PITFALL: Cannot include some special characters, such as "+".
-DOCKER_IMAGE_SUFFIX="2023-08-16.pytest"
+DOCKER_IMAGE_SUFFIX="2023-09-29.xlrd"
 
 # Start a docker container based on the latest image.
 docker run --name tax.co -itd                \

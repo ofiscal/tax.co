@@ -72,6 +72,7 @@ RUN pip3 install --upgrade filelock
 RUN pip3 install --upgrade pytest
 RUN echo "coconut \$1 \$1.py -l -t 3.7 --mypy" > /usr/bin/myCoconut && \
     chmod +x                                     /usr/bin/myCoconut
+RUN pip3 install --upgrade xlrd
 
 
 #### #### #### #### #### #### #### #### #### #### #### ####
