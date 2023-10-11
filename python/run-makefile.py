@@ -110,8 +110,7 @@ def run_one_config (
              "a" ) as f:
     f.write( "make.py ending at " + str( datetime.now() ) + "\n" )
 
-run_one_config ( # First rebuild the baseline, if appropriate.
-                 # Use the full sample every time.
+run_one_config ( # Rebuild the baseline (if make deems it necessary).
   config_file = "users/symlinks/baseline/config/config.json",
   subsample   = c.subsample,
     # PITFALL: This parameter, which dictates the subsample size used
@@ -124,15 +123,16 @@ run_one_config ( # First rebuild the baseline, if appropriate.
   user_hash   = c.user_hash_from_email ( "baseline" ),
   targets     = makefile_targets.targets )
 
-run_one_config ( # Then build the user data.
-  config_file = c.config_file,
-  subsample   = c.subsample,
-  strategy    = c.strategy,
-  regime_year = c.regime_year,
-  user_hash   = c.user,
-  targets     = (
-    makefile_targets.targets
-    + ( [] # Since the baseline user is the one others are compared to,
-        # it makes no sense to build "compare" for tthat user.
-        if c.user_email == "baseline"
-        else ["compare"] ) ) )
+if c.user_email != "baseline":
+  run_one_config ( # Build user data (if make deems it necessary).
+    config_file = c.config_file,
+    subsample   = c.subsample,
+    strategy    = c.strategy,
+    regime_year = c.regime_year,
+    user_hash   = c.user,
+    targets     = (
+      makefile_targets.targets
+      + ( [] # Since the baseline user is the one others are compared to,
+          # it makes no sense to build "compare" for tthat user.
+          if c.user_email == "baseline"
+          else ["compare"] ) ) )
