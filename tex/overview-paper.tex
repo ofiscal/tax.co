@@ -34,8 +34,7 @@
 \begin{abstract}
   For over at least three decades,
   Colombia has undergone major tax reform roughly every eighteen months.
-  However, estimates of the distributional impact of changes to the tax code
-  are not systematically produced by any branch of government,
+  However, estimates of the distributional impact of changes to the tax code are not systematically produced by any branch of government,
   nor by independent groups,
   despite the constitutional mandate that the tax system be progressive.
   We develop a static microsimulation of the Colombian tax system
@@ -83,7 +82,7 @@ microsimulation analysis can boil down this complex subject to
 bar charts showing the effects of proposed policies
 on the after-tax income of people from various demographics and income groups.
 
-It is crucial that the model's output be simple.
+The simplicity of the model's output is crucial.
 For ideas to be circulated widely and have an effect on public policy,
 they need to be clear and to the point.
 
@@ -132,8 +131,8 @@ relative to other Latin American countries and to countries in the OECD.
 According to the OECD\cite{oecd,oecd_latam},
 tax intake in Colombia was 19.5\% of GDP in 2021,
 whereas on average it was
-21.7\% in Latin America and
-34.1\% in the OECD as a whole.
+22\% in Latin America and
+34\% in the OECD.
 \iffalse
     [[ SOMEONE: Put these in the bibliography:
         \label{oecd}:
@@ -170,7 +169,7 @@ the personal income tax is a smaller source of revenue than corporate income tax
 Municipal property taxes on land and real estate follow,
 making up 3.7\% of revenue.
 Another 3.7\% comes from a much-criticized but easy to collect national tax on financial transactions,
-widely believed to keep much of the population away from the formal financial system.
+which is said to keep much of the population away from the formal financial system.
 Import tariffs account for 2.2\% of tax revenue
 -- in stark contrast with the days of import substitution industrialization,
 when roughly a third of tax revenue came from tariffs.
@@ -193,22 +192,22 @@ The assumptions of our model take this into account.
 
 We are interested in calculating
 the entire tax burden of individuals belonging to different income groups,
-in order to
-estimate how progressive proposed changes to the tax code will be.
+so that we can produce estimates of
+how progressive proposed changes to the tax code will be.
 This requires making assumptions about
 the incidence of various taxes. We assume:
 
 \begin{itemize}
-  \item The personal income tax is borne entirely by households.
-  \item Payroll taxes are borne entirely by workers.
+  \item The personal income tax is fully borne by households.
+  \item Payroll taxes are fully borne by workers.
   \item Excise taxes
     (including the VAT,
     the tax on financial transactions,
     sales tax, and tariffs)
-    are borne entirely by
+    are fully borne by
     the consumers of the goods and services in question.
-  \item Corporate income tax is borne entirely by the owners of capital.
-  \item Property taxes are borne entirely by
+  \item Corporate income tax is fully borne by the owners of capital.
+  \item Property taxes are fully borne by
     the owners of land or real estate.
 \end{itemize}
 
@@ -223,7 +222,7 @@ the Congressional Budget Office of the United States,
 as described in \citet{salanie}.
 \iffalse
     [[AN ECONOMIST::
-        Who is salanie? That string only appears once in the entire document.
+        Who is Salamie? That string only appears once in the entire document.
         --jbb]]
 \fi
 (The CBO does not model property taxes,
@@ -259,7 +258,8 @@ pension income for 10\%,
 government transfers for 0.7\%,
 private transfers for 3.5\%
 and extraordinary income for 0.5\%.
-The average income of female-headed households
+The average household has 3.3 members,
+and the average income of female-headed households
 is only 73\% of the average income of male-headed ones,
 despite being of essentially the same size.
 
@@ -274,9 +274,9 @@ and their share declines as income rises.
 Only 29.6\% of households in the top decile are headed by women.
 
 Table \ref{table:ycity} shows the statistics for the main cities,
-with Bogotá and Medellín reporting the highest incomes, as would be expected.
+with Bogota and Medellin reporting the highest incomes, as would be expected.
 
-It should be noted that the incomes reported in the survey
+It is worth noting that the incomes reported in the survey
 probably do not include the employee share of social security payments,
 which we calculate on the basis of tax rules
 to be able to compute effective tax rates.
@@ -360,6 +360,15 @@ are self-explanatory. The ENPH reports them.
 
     JEFF:
     BLOCKED -- might be addressed once I've renamed taxes and consumptions.
+
+    It's confusing that, for instance,
+    ``consumption'' refers to the \textit{tax} on consumption,
+    rather than consumption itself.
+    I'm thinking $tp_{consumption}$ would be better,
+    indicating ``taxes paid on consumption''.
+    (`t` would be more terse than `tp`,
+    but usually `t` means a tax rate, not a peso amount.)
+    --jbb]]
 \fi
 
 $consumption\ tax$
@@ -398,7 +407,7 @@ In cases where inputs other than fuel are taxed, we do the same
 $corporate\ income\ tax$ is individual $j$'s share of
 the taxes paid by firms of which he is a stockholder:
 \begin{equation}
-  corporate\ income\ tax = \sum^{K}_{k=1} \tau_k\theta^j_k\Pi_k
+  corporate\ tax = \sum^{K}_{k=1} \tau_k\theta^j_k\Pi_k
 \end{equation}
 where $\theta^j_k$ is the share of firm $k$ owned by $j$,
 $\tau_k$ is firm $k$'s effective tax rate,
@@ -467,16 +476,8 @@ for the small percentage of individuals who pay income taxes
 when we assume that they claim either the minimum or the maximum allowed.
 
 Individuals pay a 0.4\% $financial\ transaction\ tax$:
-\begin{equation} financial\ transaction\ tax =
-    0.004 \times \max (0, net\ income -350\ uvt)
-    \iffalse [[
-        We could, alternatively, write that using cases:
-          \begin{cases}
-            0.004 \times (net\ income -350\ uvt) & net\ income > 350 uvt \\
-            0                                    & net\ income <= 350 uvt
-          \end{cases}
-          but I (Jeff) find it easier harder to read without cases. ]]
-    \fi
+\begin{equation}
+  0.004 \times \max (0, net\ income -350\ uvt)
 \end{equation}
 Here $net\ income$ includes income from all sources net of taxes
 and $uvt$ is \textit{unidades de valor tributario}.
@@ -518,6 +519,37 @@ By deciles
 
 By gender and city
 Preferred specification: 10.7\% vat and .23 rate on capital
+
+\section{Example}
+
+This section illustrates the simulations that can be carried out by the microsimulation model. In particular, we check the effect of a uniform VAT rate on income deciles. In Colombia, although the general VAT tax rate is 19\%, many goods and services face a tax rate of 0\% and 5\%.\footnote{(footnote about exclusions and exemptions)} This is our baseline scenario.  In the alternative scenario, all goods and services are taxed at 19\%.
+
+\begin{center}
+\begin{table}
+\caption{VAT rates (Baseline scenario)}
+\centering
+\begin{tabular}{ |c|c| }
+ \hline
+Category & VAT rate  \\
+ \hline
+ Food and non-alcoholic drinks & 5\%  \\
+ Alcoholic drinks and Tobacco & 5\%  \\
+ Dress and footwear & 19\%  \\
+ Housing, utilities and fuel & 19\%  \\
+ Furnishing, home equipment and home maintenance & 19\%  \\
+ Health & 0\%  \\
+ Transport and commuting & 5\%  \\
+ Communication and Information Technologies & 5\%  \\
+ Sports and entertainment & 19\%  \\
+ Education & 0\%  \\
+ Restaurants and hosting & 5\%  \\
+ Insurance and financial services & 19\%  \\
+ \hline
+\end{tabular}
+\end{table}
+\end{center}
+
+%Clearly, such a policy change will negatively affect all households. The question is: relative to income and expenditure, who would suffer the most from this policy change?  If the differentiated tax rates in the baseline scenario were designed to favor the poorest households, then such a policy will be extremely regressive. However, we show that, in the baseline scenario, the VAT is not progressive. Therefore, the implementation of a uniform VAT rate of 19\% will have an
 
 \section{Conclusion}
 
@@ -1151,6 +1183,7 @@ in the same way that we do for the national fuel tax.
 \bibliography{references}
 
 \iffalse [[ SOMEONE: These tables need updating. ]]
+\fi
 
 \begin{table}
 \caption{Taxes in Colombia 2017}
