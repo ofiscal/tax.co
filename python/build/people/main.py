@@ -240,7 +240,7 @@ if True: # income
       # PITFALL: The tax code defines non-labor income
       # to include edu income only if it is not from the government.
       ppl["income, non-labor (tax def)"] = (
-          ppl["income, sale not real estate"]
+          ppl["income, sale not real estate"] # PITFALL: After two years of ownership, a sale is taxed as ganancias ocasionales rather than capital income. We don't know how long sellers own the things they sell. By filing these sales as non-labor income, we are assuming they wait less than 2 years. This has the advantage that if the sale is a frequent, substantial portion of someone's income, we are probably right -- but the disadvantage that we are probably wrong for, e.g., most sellers of cars.
         + ppl["income, month : private : beca, cash"]
         + ppl["income, month : private : beca, in-kind"] )
       #
