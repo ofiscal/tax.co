@@ -43,18 +43,21 @@ demog = [
 ]
 
 work = [
-  ("P6240", 0, "last week major activity", 0),
-  ("P6250", 0, "last week worked an hour for pay", 0),
-  ("P6260", 0, "last week had paying job or business", 0),
-  ("P6270", 0, "last week worked an hour without pay", 0),
-  ("P6280", 0, "last month sought work", 0),
-  ("P6310", 0, "last month why did not seek work", 0),
-  ("P6340", 0, "last year sought work", 0),
-  ("P6350", 0, "last week was available to work", 0),
-  ("P6920",   0, "pension, contributing, pre", 0),
-  ("P6920S1", 0, "pension, contribution amount", 0),
-  ("P6940",   0, "pension, contributors, pre", 0),
-  ("P6990",   0, "seguro de riesgos laborales, pre", 0),
+  ( "P6240",   0, "last week major activity",             0),
+  ( "P6250",   0, "last week worked an hour for pay",     0),
+  ( "P6260",   0, "last week had paying job or business", 0),
+  ( "P6270",   0, "last week worked an hour without pay", 0),
+  ( "P6280",   0, "last month sought work",               0),
+  ( "P6310",   0, "last month why did not seek work",     0),
+  ( "P6340",   0, "last year sought work",                0),
+  ( "P6350",   0, "last week was available to work",      0),
+  ( # I don't know what Gabriel wants this for, so I won't interpret it.
+    # I'll just thread the raw data through every person-level data set.
+    "P6765",   0, "P6765",                                0),
+  ( "P6920",   0, "pension, contributing, pre",           0),
+  ( "P6920S1", 0, "pension, contribution amount",         0),
+  ( "P6940",   0, "pension, contributors, pre",           0),
+  ( "P6990",   0, "seguro de riesgos laborales, pre",     0),
 ]
 
 income_govt = [
