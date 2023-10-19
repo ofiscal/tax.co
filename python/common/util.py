@@ -1,14 +1,17 @@
-if True:
-  from typing import List, Dict
-  import pandas as pd
-  import numpy as np
-  import math as math
+from typing import Callable, Dict, List
+import pandas as pd
+import numpy as np
+import math as math
+#
+from python.build.ss.types import (
+  AverageTaxBracket, AverageTaxSchedule )
 
 
 def near( a : float,
           b : float,
           tol_abs  : float = 0.001,
-          tol_frac : float = 0.001 ):
+          tol_frac : float = 0.001
+         ) -> bool:
     if ( ( abs( a - b )
            < tol_abs ) |
          ( abs( a - b )
@@ -19,7 +22,10 @@ def near( a : float,
 def unique( coll : List ) -> bool:
   return len( coll ) == len( set( coll ) )
 
-def tuple_by_threshold( income, schedule ):
+def tuple_by_threshold (
+    income   : float,
+    schedule : AverageTaxSchedule,
+) ->           AverageTaxBracket:
   """If a "schedule" is a list of tuples, where the first element of each tuple gives \
   the threshold (least income) at which the regime described by the tuple applies, \
   this returns that triple. If the income is less than the first threshold, \
@@ -34,7 +40,10 @@ def tuple_by_threshold( income, schedule ):
   if True:
       return tuple_by_threshold( income, schedule[1:] )
 
-def pad_column_as_int( length, column ):
+def pad_column_as_int (
+    length : int,
+    column : pd.Series  # ints (mis)represented as floats
+) ->         pd.Series: # strings
   """ Left-pads a column's numbers with zeroes, to have the desired length.
   Delete any trailing ".0". Leave NaN unchanged."""
   format_str = '{0:0>' + str(length) + '}'
@@ -87,11 +96,15 @@ def noisyQuantile(
   return myQuantile ( n_quantiles = n_quantiles,
                       in_col      = in_col + noise )
 
-def printInRed(message):
+def printInRed (message : str):
     "from https://stackoverflow.com/a/287934/916142"
     CSI="\x1B["
     print( CSI+"31;40m" + message + CSI + "0m")
 
-def print_trueBlack_falseRed( aBool, ifTrue, ifFalse ):
-  if aBool: print( ifTrue )
+def print_trueBlack_falseRed (
+    black : bool,
+    ifTrue, # forall a. Show a => a
+    ifFalse # forall a. Show a => a
+):
+  if black: print( ifTrue )
   else: printInRed( ifFalse )
