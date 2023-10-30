@@ -1,17 +1,20 @@
 #####################################################
 ##### PITFALL: This code was defined using two idioms
+##### The new idiom, however, never took effect.
 #####################################################
 
 """Initially and for years, the SS schedules were defined as code.
 That idiom did not lend itself well to the interactive online model,
 for which users would like to define their own parameters.
 
-To facilitate that, in 2022 I am refactoring the program using a new idiom,
+To facilitate that,
+in 2022 I started refactoring the program using a new idiom,
 such that SS schedules are represented as CSV files.
 
 `./schedules_test.py` includes tests to ensure that the two idioms are equivalent.
-"""
 
+Our priorities then changed, and I have not finished the conversion.
+"""
 
 import os
 import pandas as pd

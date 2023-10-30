@@ -9,6 +9,8 @@ if True:
   import python.common.common as common
 
 
+# TODO: Rather than using these, use named arguments in the function below.
+# That clarity will cost some brevity but seems worth it.
 contractor = True
 employee = False
 
@@ -51,7 +53,7 @@ def test_mk_pension_employer():
 def test_mk_salud():
   if True: # contractors
     assert near( sf.mk_salud( contractor, 0 ),
-                 0.125 * min_wage )
+                 0 )
     assert near( sf.mk_salud( contractor, 2 * min_wage ),
                  0.125 * min_wage )
     assert near( sf.mk_salud( contractor, 4 * min_wage ),
