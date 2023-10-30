@@ -94,10 +94,11 @@ ss_contrib_schedule_for_contractor : \
                           25*min_wage)
       , 0.16 ) ]
   , "salud" :
-    [ ( 0
-      , lambda wage: min( max( 0.4*wage, min_wage ),
-                          25*min_wage )
-      , 0.125 ) ]
+    [ ( 0, lambda _: 0, 0.0 ),
+      ( min_wage,
+        lambda wage: min( max( 0.4*wage, min_wage ),
+                          25*min_wage ),
+        0.125 ) ]
   , "solidaridad" :
     [ (0, lambda wage: 0, 0.0)
     , ( 4*min_wage
