@@ -1,17 +1,20 @@
 #####################################################
 ##### PITFALL: This code was defined using two idioms
+##### The new idiom, however, never took effect.
 #####################################################
 
 """Initially and for years, the SS schedules were defined as code.
 That idiom did not lend itself well to the interactive online model,
 for which users would like to define their own parameters.
 
-To facilitate that, in 2022 I am refactoring the program using a new idiom,
+To facilitate that,
+in 2022 I started refactoring the program using a new idiom,
 such that SS schedules are represented as CSV files.
 
 `./schedules_test.py` includes tests to ensure that the two idioms are equivalent.
-"""
 
+Our priorities then changed, and I have not finished the conversion.
+"""
 
 import os
 import pandas as pd
@@ -94,10 +97,11 @@ ss_contrib_schedule_for_contractor : \
                           25*min_wage)
       , 0.16 ) ]
   , "salud" :
-    [ ( 0
-      , lambda wage: min( max( 0.4*wage, min_wage ),
-                          25*min_wage )
-      , 0.125 ) ]
+    [ ( 0, lambda _: 0, 0.0 ),
+      ( min_wage,
+        lambda wage: min( max( 0.4*wage, min_wage ),
+                          25*min_wage ),
+        0.125 ) ]
   , "solidaridad" :
     [ (0, lambda wage: 0, 0.0)
     , ( 4*min_wage

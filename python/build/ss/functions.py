@@ -15,11 +15,10 @@ def mk_pension( independiente, income ):
   if independiente:
     (_, compute_base, rate) = util.tuple_by_threshold(
         income, ss.ss_contrib_schedule_for_contractor["pension"] )
-    return compute_base( income ) * rate
   else:
     (_, compute_base, rate) = util.tuple_by_threshold(
         income, ss.ss_contrib_schedule_for_employee["pension"] )
-    return compute_base( income ) * rate
+  return compute_base( income ) * rate
 
 def mk_pension_employer( independiente, income ):
   if independiente: return 0
@@ -32,11 +31,10 @@ def mk_salud( independiente, income ):
   if independiente:
     (_, compute_base, rate) = util.tuple_by_threshold(
         income, ss.ss_contrib_schedule_for_contractor["salud"] )
-    return compute_base( income ) * rate
   else:
     (_, compute_base, rate) = util.tuple_by_threshold(
         income, ss.ss_contrib_schedule_for_employee["salud"] )
-    return compute_base( income ) * rate
+  return compute_base( income ) * rate
 
 def mk_salud_employer( independiente, income ):
   if independiente: return 0
@@ -49,11 +47,10 @@ def mk_solidaridad( independiente, income ):
   if independiente:
     (_, compute_base, rate) = util.tuple_by_threshold(
         income, ss.ss_contrib_schedule_for_contractor["solidaridad"] )
-    return compute_base( income ) * rate
   else:
     (_, compute_base, rate) = util.tuple_by_threshold(
         income, ss.ss_contrib_schedule_for_employee["solidaridad"] )
-    return compute_base( income ) * rate
+  return compute_base( income ) * rate
 
 def mk_parafiscales_employer( independiente, income ):
   if independiente: return 0
