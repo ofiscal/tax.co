@@ -94,7 +94,7 @@ income_labor = [
   , ( "P7070", 0, "income, month : labor : job 2", 0)
   , ( "P7472S1", 0, "income, month : labor : as inactive", 0)
   , ( "P7422S1", 0, "income, month : labor : as unemployed", 0)
-  , ( # TODO ? Hopefully this is net of costs, so that it makes sense
+  , ( # PITFALL: This is net of costs, so that it makes sense
       # to add it to the labor income taxable base.
       "P6750", 0, "income, month : labor : independent", 0)
 
