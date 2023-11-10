@@ -1,4 +1,4 @@
-# Don't let Windows file formats thwart you
+# PITFALL: Don't let Windows file formats thwart you.
 
 If you use Windows,
 and you edit any file that's used in the build process,
@@ -13,6 +13,9 @@ uses Linux, not Windows -- even if you run it in Windows.
 
 Install Git.
 (For more information, see [Some software we use](Some-software-we-use.md).)
+
+Install jq.
+(For more information, see [Some software we use](Some-software-we-use.md).
 
 Install Docker.
 (For more information, see [Some software we use](Some-software-we-use.md).
@@ -47,51 +50,66 @@ Get it by running this:
 You might want to put it somewhere else;
 if you do, then change those paths accordingly.)
 
-
-## Update `tax.co` if needed
-
-From within the `tax.co` folder, run `git pull`.
-
-# Get `tax.co.web`
+# Get and configure `tax.co.web`
 
 This is the code for the webpage,
 but you'll need it even if you don't run the webpage.
-Get it by running
+Clone (get) it, and set up its submodules, by running:
 
-`git clone https://github.com/ofiscal/tax.co.web`
+```
+git clone https://github.com/ofiscal/tax.co.web
+cd tax.co.web
+git submodule init
+git submodule update
+cd system_specific
+git checkout master
+```
 
-Don't do that from within `tax.co`.
-(If you did, the Docker container would become confusing.)
-
-## Update `tax.co.web` if needed
-
-From within the `tax.co.web` folder, run `git pull`.
-
-# Set up `tax.co.web`
-
-## Configure paths and create the Docker container
-
-Copy `tax.co.web/paths/paths.EXAMPLE.json`
-to a new file called `tax.co.web/paths/paths.json`,
-delete the comments in it,
-and customize it by changing the paths in `base_system`
-so that they point to your `tax.co` and `tax.co.web`.
-Leave the paths in `docker` unchanged.
+Now customize the `base_system` paths in the file `paths.json`.
+(using any text editor).
+Leave the `docker` paths defined there unchanged.
 
 Then from the root of `tax.co.web`,
 run `./commands/offline/create.sh`.
 That creates, and starts services in, the Docker container.
 
-### PITFALL: That might be tricky on Windows
+## Why system_specific is a submodule
 
-`create.sh` requires `jq`, which I've never installed on Windows.
-It also requires a kind of scary-looking nested evaluation idiom
+Since the paths to `tax.co` and `tax.co.web`
+can be different on different systems,
+the proper configuration of `paths.json`
+depends on the system it's running on.
+By making `system_specific` a submodule,
+one can use different branches of `system_specific`,
+customized for different systems,
+even while they all use the same branch of `tax.co.web`.
+
+## PITFALL: Customizing `paths.json` and using `jq` might be hard on Windows
+
+The two `create.sh` scripts both require `jq`,
+which I've never installed on Windows.
+They also require a scary-looking nested evaluation idiom
 that I've never translated into Windows.
 
-An alternative that worked for Daniel was to write a simplified script
-that doesn't use `paths.json` or `jq`.
+Should that prove difficult,
+an alternative approach is to rewrite `create.sh`,
+incorporating the paths you want to use directly into it,
+and delete the lines involving `jq`.
+That would involve replacing each of the following expressions:
 
-#### TODO: Explain how that works
+```
+  $base_system_tax_co
+  $base_system_tax_co_web
+  $docker_apache
+  $docker_commands
+  $docker_django
+  $docker_paths
+  $docker_system_specific
+  $docker_tax_co
+```
+
+with whatever `paths.json` defines
+(after having edited `paths.json` as described above).
 
 # Set up and use `tax.co`
 

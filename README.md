@@ -7,7 +7,7 @@ For instance, the [README file in the python/ folder](python/README.md)
 is helpful for understanding the Python code.
 
 To get started using the code, please see
-[how to run tax.co](markdown/How-to-run-tax.co.md).
+[how to run tax.co](markdown/running-it.md).
 The [markdown/](markdown/) folder has more potentially helpful documentation.
 
 
@@ -20,14 +20,10 @@ https://github.com/ofiscal/knowledge-graph
 is a knowledge graph --
 a collection of notes that can refer to each other --
 in org-roam format. See, for instance, the one called `tax.co`.
-It is mostly TODO items, though, so probably not much use.
 
-y (Jeff Brown's) public knowledge graph:
+(Jeff Brown's) public knowledge graph:
 ```
 https://github.com/JeffreyBenjaminBrown/notes-in-org-format-on-tech
 ```
 has notes on lots of things not specific to the Observatorio,
 such as Python or AWS. The ofiscal repo sometimes refers to this one.
-Awkwardly, these notes are probably of more use to a hacker,
-as they are "evergreen" -- they explain how to use the things I use here,
-rather than where I'm trying to go next.

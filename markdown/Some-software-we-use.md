@@ -23,10 +23,10 @@ iPython is a browser-based development environment good for exploring data visua
 [DockerHub](hub.docker.com) is a place where a lot of people keep their Docker images.
 
 
-
 # TeX
 
 [TeX](https://www.tug.org/begin.html) is a programming language for document creation. You describe what text and images you want, and it creates a nice-looking PDF for you.
+
 
 # org-mode
 
@@ -40,6 +40,15 @@ However, some editors "understand" it,
 allowing you to do clever things like fold nested passages.
 Org-mode evolved in the Emacs ecosystem,
 and Emacs has the best support for it.
+
+
+# jq
+
+[jq](https://jqlang.github.io/jq/)
+is a command-line interpreter for JSON data.
+[tax.co.web](https://github.com/ofiscal/tax.co.web)
+uses it to read your `paths.json` configuration file.
+
 
 # OBSOLETE: Freeplane
 
