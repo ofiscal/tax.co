@@ -4,13 +4,13 @@ if True:
   import pandas as pd
   #
   import python.build.output_io                     as oio
-  import python.build.people_4_post_households_defs as defs
+  import python.build.people_4_earners_post_households_defs as defs
   import python.common.common                       as com
   from   python.common.misc import num_people
   import python.common.tests                        as com_tests
 
 
-new_columns = [ # created by people_4_post_households_test.py
+new_columns = [ # created by people_4_earners_post_households_test.py
                 "in labor force",
                 "share",
                 "one",
@@ -34,7 +34,7 @@ if True: # load data
     'people_3_income_taxish.' + com.strategy_year_suffix )
   ps4 = oio.readUserData (
     com.subsample,
-    'people_4_post_households.' + com.strategy_year_suffix )
+    'people_4_earners_post_households.' + com.strategy_year_suffix )
   assert (
     set.intersection (
       set ( ps3.columns ),
@@ -121,5 +121,5 @@ if True: # Test "share"
   log = log + "\n" + "Share looks reasonable."
 
 oio.test_write ( com.subsample
-               , "people_4_post_households"
+               , "people_4_earners_post_households"
                , log )

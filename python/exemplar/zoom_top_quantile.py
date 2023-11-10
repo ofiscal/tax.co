@@ -17,7 +17,7 @@ if True: # load data
 
   earners = oio.readUserData(
       com.subsample,
-      "people_4_post_households." + com.strategy_year_suffix )
+      "people_4_earners_post_households." + com.strategy_year_suffix )
 
 ei = earners["income"]
 ei[ ei > ei.quantile(0.99) ]

@@ -31,7 +31,7 @@ if True: # load data
 
   earners = oio.readUserData(
       com.subsample,
-      "people_4_post_households." + com.strategy_year_suffix )
+      "people_4_earners_post_households." + com.strategy_year_suffix )
 
 if True: # generate "income - tax"
   for df in (households, earners):

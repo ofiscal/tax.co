@@ -53,13 +53,13 @@ $(people_3_income_taxish):                      \
 	date
 	$(python_from_here) python/build/people_3_income_taxish.py $(config_file)
 
-people_4_post_households: $(people_4_post_households)
-$(people_4_post_households):                                \
-  .no_younger_than/python/build/people_4_post_households.py \
+people_4_earners_post_households: $(people_4_earners_post_households)
+$(people_4_earners_post_households):                                \
+  .no_younger_than/python/build/people_4_earners_post_households.py \
   $(people_3_income_taxish)                                 \
   $(households_2_purchases)
 	date
-	$(python_from_here) python/build/people_4_post_households.py $(config_file)
+	$(python_from_here) python/build/people_4_earners_post_households.py $(config_file)
 
 households_1_agg_plus: $(households_1_agg_plus)
 $(households_1_agg_plus):                      \
@@ -135,7 +135,7 @@ pics: $(pics)
 reports: $(reports)
 $(reports):                                                \
   .no_younger_than/python/report/var_summaries_by_group.py \
-  $(people_4_post_households)                              \
+  $(people_4_earners_post_households)                              \
   $(households_2_purchases)
 	date
 	$(python_from_here) python/report/var_summaries_by_group.py $(config_file)

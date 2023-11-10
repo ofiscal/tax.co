@@ -119,7 +119,7 @@ MSE = ( ( ( dian_rich["log wealth"]
 
 ps = oio.readUserData (
   com.subsample,
-  'people_4_post_households.' + com.strategy_year_suffix )
+  'people_4_earners_post_households.' + com.strategy_year_suffix )
 
 ps["income, DIAN-style"] = (
   ps [[ "income, ganancia ocasional, 10%-taxable",

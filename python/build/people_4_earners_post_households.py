@@ -1,9 +1,22 @@
-# PURPOSE: From people, isolates earners.
+# PITFALL:
+# Unlike the other "people_*" programs,
+# this one does not contain everybody -- just earners.
+
+# PURPOSE:
+# From people, isolates earners.
 # Computes each earner's share of total household income,
 # and from there, attributes other consumption, spending and tax variables.
 # Computes each earner's income quantile,
 # various fractions of the variables so far described in this comment,
 # and total tax (just called "tax").
+
+# ABOUT THE NAME "post households":
+# This merges the household-level output of households_2_purchases.py
+# into the person-level output of people_3_income_taxish.py.
+# It is therefore called "post households"
+# because it runs after the "households_*" programs,
+# unlike all the earlier people_* programs,
+# which run before and are used by the households_* programs.
 
 if True:
   import pandas as pd
@@ -12,7 +25,7 @@ if True:
   import python.common.util as util
   import python.build.output_io as oio
   import python.common.common as com
-  import python.build.people_4_post_households_defs as defs
+  import python.build.people_4_earners_post_households_defs as defs
 
 
 if True: # input
@@ -79,4 +92,4 @@ if True: # save
   oio.saveUserData (
     com.subsample,
     earners,
-    "people_4_post_households." + com.strategy_year_suffix )
+    "people_4_earners_post_households." + com.strategy_year_suffix )

@@ -56,7 +56,7 @@ tests:                                                      \
   users/$(user)/test/recip-$(ss)/households_2_purchases.txt \
   users/$(user)/test/recip-$(ss)/people_2_buildings.txt     \
   users/$(user)/test/recip-$(ss)/people_3_income_taxish.txt \
-  users/$(user)/test/recip-$(ss)/people_4_post_households.txt \
+  users/$(user)/test/recip-$(ss)/people_4_earners_post_households.txt \
   users/$(user)/test/recip-$(ss)/people_main.txt            \
   users/$(user)/test/recip-$(ss)/purchases_correct.txt      \
   users/$(user)/test/recip-$(ss)/python_regime_test         \
@@ -197,14 +197,14 @@ users/$(user)/test/recip-$(ss)/people_3_income_taxish.txt:   \
           python/build/people_3_income_taxish_test.py \
           $(config_file)
 
-users/$(user)/test/recip-$(ss)/people_4_post_households.txt:  \
-  $(people_4_post_households)				      \
+users/$(user)/test/recip-$(ss)/people_4_earners_post_households.txt:  \
+  $(people_4_earners_post_households)				      \
   $(people_3_income_taxish)				      \
   $(households_2_purchases)				      \
-  .no_younger_than/python/build/people_4_post_households_test.py
+  .no_younger_than/python/build/people_4_earners_post_households_test.py
 	date
 	$(python_from_here)				      \
-          python/build/people_4_post_households_test.py	      \
+          python/build/people_4_earners_post_households_test.py	      \
           $(config_file)
 
 # PITFALL: Sample size is hardcoded to 1, because otherwise
