@@ -99,7 +99,7 @@ def earnerGroupVars (
 # Variables to summarize
 #
 
-commonVars = ( [
+commonVars = ( [ # vars in both household- and earner-level data sets
   "cesantias + primas",
   "female head",
   "female head",
@@ -145,7 +145,9 @@ householdSpecificVars = [
   "IT < min wage",
   "income tax / IT",
   "IT",
+  "IT per capita",
   "GT",
+  "GT per capita",
   "members",
   "purchase value / IT",
   "purchase value / IT",

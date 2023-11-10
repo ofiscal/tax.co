@@ -131,6 +131,8 @@ if True: # Assemble the aggregates, then compute a few variables.
 
 households["IT per capita"] = \
   households["IT"] / households["members"]
+households["GT per capita"] = \
+  households["GT"] / households["members"]
 
 if True: # save
   oio.saveUserData (

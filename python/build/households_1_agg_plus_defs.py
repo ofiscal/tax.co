@@ -124,7 +124,10 @@ cols_new = (
       "one" ]
 )
 
-cols_all = ( ["household", "income tax / IT", "IT per capita"]
+cols_all = ( ["household",
+              "income tax / IT",
+              "IT per capita",
+              "GT per capita"]
            + cols_const_within_hh
            + income_and_tax__person_level
            + income_and_spending__household_level
