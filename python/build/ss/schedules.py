@@ -89,8 +89,12 @@ ss_contribs_by_employer_new : \
 ########################################
 
 ss_contrib_schedule_for_contractor : \
-  Dict [ str, AverageTaxSchedule ] = \
-  { "pension" :
+  Dict [ str, AverageTaxSchedule ] = {
+    # PITFALL: cajas de compensacion : voluntary => 0 contributions.
+    # That is, since the microsimulation computes what someone *must* legally pay,
+    # not what they actually pay, and since contributions to cajas de compensacion
+    # are voluntary, we have made them 0 for contractors by omitting that category here.
+    "pension" :
     [ ( 0, lambda _: 0, 0.0 )
     , ( min_wage
       , lambda wage: min( max( 0.4*wage, min_wage ),
@@ -102,6 +106,12 @@ ss_contrib_schedule_for_contractor : \
         lambda wage: min( max( 0.4*wage, min_wage ),
                           25*min_wage ),
         0.125 ) ]
+  , "ARL" :
+    [ ( 0, lambda _: 0, 0.0 )
+    , ( min_wage,
+        lambda wage: min( max( 0.4*wage, min_wage ),
+                          25*min_wage )
+      , 0.00522 ) ] # PITfALL: This is the minimum. The true value is complex.
   , "solidaridad" :
     [ (0, lambda wage: 0, 0.0)
     , ( 4*min_wage
@@ -132,10 +142,22 @@ ss_contrib_schedule_for_contractor : \
 
 ss_contrib_schedule_for_employee : \
   Dict [ str, AverageTaxSchedule ] = \
-  { "pension" :
-    [ ( 0,           lambda wage: 0                            , 0.0)
-    , ( min_wage,    lambda wage: wage                         , 0.04)
-    , ( 13*min_wage, lambda wage: min( 0.7*wage, 25*min_wage)  , 0.04 ) ]
+  { # PITFALL: Suponemos que un dependiente que gane menos de un salario minimo
+    # trabaja por horas segun el decreto 2616 de 2013.
+    "pension" :
+    [ ( 0,                lambda wage: 0                          , 0.0 )
+    , ( 3, # PITFALL: Literally 3 COP per month.
+           # This is to effectively create a 0-income bracket, where contributions are 0.
+           # The reason I chose 3 COP is that it is basically nothing,
+           # but greater than the 2 COP theoretical maximum that a zero-income household
+           # might "earn" in the microsimulation after I've twice added a random amount
+           # between 0 and 1 peso, in order to make the quantiles well-defined.
+                          lambda wage:     min_wage / 4           , 0.04)
+    , (     min_wage / 4, lambda wage: 2 * min_wage / 4           , 0.04)
+    , ( 2 * min_wage / 4, lambda wage: 3 * min_wage / 4           , 0.04)
+    , ( 3 * min_wage / 4, lambda wage:     min_wage               , 0.04)
+    , ( min_wage,         lambda wage:         wage               , 0.04)
+    , ( 13*min_wage,      lambda wage: min(0.7*wage, 25*min_wage) , 0.04) ]
   , "salud" :
     [ ( 0,           lambda wage: 0                            , 0.0 )
     , ( min_wage,    lambda wage: wage                         , 0.04 )
@@ -156,23 +178,44 @@ ss_contrib_schedule_for_employee : \
 ss_contribs_by_employer :            \
   Dict [ str, AverageTaxSchedule ] = \
   { "pension" :
-    [ ( 0,           lambda wage: 0                          , 0.0)
-    , ( min_wage,    lambda wage: wage                       , 0.12)
-    , ( 13*min_wage, lambda wage: min(0.7*wage, 25*min_wage) , 0.12) ]
+    [ ( 0,                lambda wage: 0                          , 0.0 )
+    , ( 3,                lambda wage:     min_wage / 4           , 0.12)
+    , (     min_wage / 4, lambda wage: 2 * min_wage / 4           , 0.12)
+    , ( 2 * min_wage / 4, lambda wage: 3 * min_wage / 4           , 0.12)
+    , ( 3 * min_wage / 4, lambda wage:     min_wage               , 0.12)
+    , ( min_wage,         lambda wage: wage                       , 0.12)
+    , ( 13*min_wage,      lambda wage: min(0.7*wage, 25*min_wage) , 0.12) ]
   , "salud" :
     [ ( 0,           lambda wage: 0                          , 0.0)
     , ( 10*min_wage, lambda wage: wage                       , 0.085)
     , ( 13*min_wage, lambda wage: min(0.7*wage, 25*min_wage) , 0.085) ]
-  , "parafiscales" :
+  , "parafiscales" : # This is ICBF + SENA
     [ ( 0,           lambda wage: 0                          , 0.0 )
     , ( 10*min_wage, lambda wage: wage                       , 0.05 )
     , ( 13*min_wage, lambda wage: min(0.7*wage, 25*min_wage) , 0.05 ) ]
+  , "ARL" :
+    [ ( 0,           lambda _: min_wage                        , 0.00522 )
+    , ( min_wage,    lambda wage: wage                         , 0.00522 )
+    , ( 13*min_wage, lambda wage: min( 0.7*wage, 25*min_wage ) , 0.00522 ) ]
+  , "aux transporte" :
+    [ ( 0,           lambda _: 0                                , 0    )
+    , ( # PITFALL: We derived this 0.1212069 value ourselves.
+        # Auxilio de transporte is a fixed amount,
+        # not one that depends on your wage,
+        # given to people earning between 1 and 2 minima.
+        # 0.1212069 = the aux amount in 2023 / the minimum wage in 2023.
+        min_wage,    lambda wage: min_wage                      , 0.1212069 )
+    , ( 2*min_wage,  lambda wage: 0                             , 0    ) ]
   , "cajas de compensacion" :
-    [ ( 0,           lambda wage: 0                          , 0.0)
+    [ ( 0,           lambda wage: min_wage                   , 0.04)
     , ( min_wage,    lambda wage: wage                       , 0.04)
     , ( 13*min_wage, lambda wage: min(0.7*wage, 25*min_wage) , 0.04) ]
+  , "vacaciones" : # Like cesantías, this goes to the worker.
+    [ ( 0,           lambda wage: min_wage                   , 0.0417 )
+    , ( min_wage,    lambda wage: wage                       , 0.0417 )
+    , ( 13*min_wage, lambda wage: min(0.7*wage, 25*min_wage) , 0.0417 ) ]
   , "cesantias + primas":
-    [ ( 0,           lambda wage: 0                          , 0.0)
+    [ ( 0,           lambda wage: min_wage                   , 2.12 / 12 )
     , ( min_wage,    lambda wage: wage                       , 2.12 / 12 )
       # Every year a worker gets 1 prima de servicio worth
       # 1 month's wages, and 1 cesantia worth 1.12 month's wages.
