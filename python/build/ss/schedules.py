@@ -99,7 +99,7 @@ ss_contrib_schedule_for_employee : \
 # some contributions are also made by the employer.
 ss_contribs_by_employer :            \
   Dict [ str, AverageTaxSchedule ] = \
-  { "ARL" :
+  { "ARL" : # Admin. de Riesgos Laborales
     [ ( 0,           lambda _: min_wage                        , 0.00522 )
     , ( min_wage,    lambda wage: wage                         , 0.00522 )
     , ( 13*min_wage, lambda wage: min( 0.7*wage, 25*min_wage ) , 0.00522 ) ]
@@ -123,6 +123,7 @@ ss_contribs_by_employer :            \
       # 1 month's wages, and 1 cesantia worth 1.12 month's wages.
       # Summing those gives a yearly figure of 2.12.
       # Dividing by 12 amortizes it into a monthly one.
+      # Thus this is income, albeit strangely distributed over time.
     , ( 13*min_wage, lambda wage: 0                          , 0.0 ) ]
   , "parafiscales" : # This is ICBF + SENA
     [ ( 0,           lambda wage: 0                          , 0.0 )
@@ -140,7 +141,7 @@ ss_contribs_by_employer :            \
     [ ( 0,           lambda wage: 0                          , 0.0)
     , ( 10*min_wage, lambda wage: wage                       , 0.085)
     , ( 13*min_wage, lambda wage: min(0.7*wage, 25*min_wage) , 0.085) ]
-  , "vacaciones" : # Like cesantías, this goes to the worker.
+  , "vacaciones" : # Like cesantías, these are income.
     [ ( 0,           lambda wage: min_wage                   , 0.0417 )
     , ( min_wage,    lambda wage: wage                       , 0.0417 )
     , ( 13*min_wage, lambda wage: min(0.7*wage, 25*min_wage) , 0.0417 ) ]
