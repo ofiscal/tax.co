@@ -9,6 +9,7 @@ if True:
   #
   import python.build.ss.schedules as ss
   import python.common.util        as util
+  import re
 
 
 def mk_arl ( independiente, income ):
@@ -145,9 +146,14 @@ def mk_ss_contribs( ppl : pd.DataFrame ) -> pd.DataFrame:
     + ppl["tax, ss, salud"]
     + ppl["tax, ss, solidaridad"] )
 
+  re_tax_ss  = regex.compile( "^tax, ss" )
   ppl["tax, ss"] = (
+    # Cesantías, primas and vacaciones are not included here,
+    # because they are income.
     ppl [ [ name for (name, _)
-            in ss_tax_names_and_recipes ] ]
+            in ss_tax_names_and_recipes
+            if re_tax_ss . match ( name )
+           ] ]
     . sum ( axis = "columns" ) )
 
   return ppl
