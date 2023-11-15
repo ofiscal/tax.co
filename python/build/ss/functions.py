@@ -73,9 +73,6 @@ def mk_solidaridad( independiente, income ):
         income, ss.ss_contrib_schedule_for_employee["solidaridad"] )
   return compute_base( income ) * rate
 
-ss_tax_names_and_recipes = [
-  ( "tax, ss, pension",
-    mk_pension)
 ss_tax_names_and_recipes = \
   [ ( "tax, ss, cajas de compensacion", # PITFALL: nominally from the employer
       mk_cajas_de_compensacion_employer)
