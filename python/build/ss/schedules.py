@@ -63,8 +63,9 @@ ss_contrib_schedule_for_contractor : \
 
 ss_contrib_schedule_for_employee : \
   Dict [ str, AverageTaxSchedule ] = \
-  { # PITFALL: Suponemos que un dependiente que gane menos de un salario minimo
-    # trabaja por horas segun el decreto 2616 de 2013.
+  { # PITFALL: Suponemos que un dependiente
+    # que gana menos de un salario mínimo
+    # trabaje por horas, según el decreto 2616 de 2013.
     "pension" :
     [ ( 0,                lambda wage: 0                          , 0.0 )
     , ( 3, # PITFALL: Literally 3 COP per month.
