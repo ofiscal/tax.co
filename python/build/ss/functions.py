@@ -11,6 +11,27 @@ if True:
   import python.common.util        as util
 
 
+def mk_cajas_de_compensacion_employer( independiente, income ):
+  if independiente: return 0
+  else:
+    (_, compute_base, rate) = util.tuple_by_threshold(
+        income, ss.ss_contribs_by_employer["cajas de compensacion"] )
+    return compute_base( income ) * rate
+
+def mk_cesantias_y_primas_employer( independiente, income ):
+  if independiente: return 0
+  else:
+    (_, compute_base, rate) = util.tuple_by_threshold(
+        income, ss.ss_contribs_by_employer["cesantias + primas"] )
+    return compute_base( income ) * rate
+
+def mk_parafiscales_employer( independiente, income ):
+  if independiente: return 0
+  else:
+    (_, compute_base, rate) = util.tuple_by_threshold(
+        income, ss.ss_contribs_by_employer["parafiscales"] )
+    return compute_base( income ) * rate
+
 def mk_pension( independiente, income ):
   if independiente:
     (_, compute_base, rate) = util.tuple_by_threshold(
@@ -51,27 +72,6 @@ def mk_solidaridad( independiente, income ):
     (_, compute_base, rate) = util.tuple_by_threshold(
         income, ss.ss_contrib_schedule_for_employee["solidaridad"] )
   return compute_base( income ) * rate
-
-def mk_parafiscales_employer( independiente, income ):
-  if independiente: return 0
-  else:
-    (_, compute_base, rate) = util.tuple_by_threshold(
-        income, ss.ss_contribs_by_employer["parafiscales"] )
-    return compute_base( income ) * rate
-
-def mk_cajas_de_compensacion_employer( independiente, income ):
-  if independiente: return 0
-  else:
-    (_, compute_base, rate) = util.tuple_by_threshold(
-        income, ss.ss_contribs_by_employer["cajas de compensacion"] )
-    return compute_base( income ) * rate
-
-def mk_cesantias_y_primas_employer( independiente, income ):
-  if independiente: return 0
-  else:
-    (_, compute_base, rate) = util.tuple_by_threshold(
-        income, ss.ss_contribs_by_employer["cesantias + primas"] )
-    return compute_base( income ) * rate
 
 ss_tax_names_and_recipes = [
   ( "tax, ss, pension",

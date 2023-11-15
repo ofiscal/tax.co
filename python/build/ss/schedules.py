@@ -15,7 +15,13 @@ ss_contrib_schedule_for_contractor : \
     # That is, since the microsimulation computes what someone *must* legally pay,
     # not what they actually pay, and since contributions to cajas de compensacion
     # are voluntary, we have made them 0 for contractors by omitting that category here.
-    "pension" :
+    "ARL" :
+    [ ( 0, lambda _: 0, 0.0 )
+    , ( min_wage,
+        lambda wage: min( max( 0.4*wage, min_wage ),
+                          25*min_wage )
+      , 0.00522 ) ] # PITfALL: This is the minimum. The true value is complex.
+  , "pension" :
     [ ( 0, lambda _: 0, 0.0 )
     , ( min_wage
       , lambda wage: min( max( 0.4*wage, min_wage ),
@@ -27,12 +33,6 @@ ss_contrib_schedule_for_contractor : \
         lambda wage: min( max( 0.4*wage, min_wage ),
                           25*min_wage ),
         0.125 ) ]
-  , "ARL" :
-    [ ( 0, lambda _: 0, 0.0 )
-    , ( min_wage,
-        lambda wage: min( max( 0.4*wage, min_wage ),
-                          25*min_wage )
-      , 0.00522 ) ] # PITfALL: This is the minimum. The true value is complex.
   , "solidaridad" :
     [ (0, lambda wage: 0, 0.0)
     , ( 4*min_wage
@@ -98,23 +98,7 @@ ss_contrib_schedule_for_employee : \
 # some contributions are also made by the employer.
 ss_contribs_by_employer :            \
   Dict [ str, AverageTaxSchedule ] = \
-  { "pension" :
-    [ ( 0,                lambda wage: 0                          , 0.0 )
-    , ( 3,                lambda wage:     min_wage / 4           , 0.12)
-    , (     min_wage / 4, lambda wage: 2 * min_wage / 4           , 0.12)
-    , ( 2 * min_wage / 4, lambda wage: 3 * min_wage / 4           , 0.12)
-    , ( 3 * min_wage / 4, lambda wage:     min_wage               , 0.12)
-    , ( min_wage,         lambda wage: wage                       , 0.12)
-    , ( 13*min_wage,      lambda wage: min(0.7*wage, 25*min_wage) , 0.12) ]
-  , "salud" :
-    [ ( 0,           lambda wage: 0                          , 0.0)
-    , ( 10*min_wage, lambda wage: wage                       , 0.085)
-    , ( 13*min_wage, lambda wage: min(0.7*wage, 25*min_wage) , 0.085) ]
-  , "parafiscales" : # This is ICBF + SENA
-    [ ( 0,           lambda wage: 0                          , 0.0 )
-    , ( 10*min_wage, lambda wage: wage                       , 0.05 )
-    , ( 13*min_wage, lambda wage: min(0.7*wage, 25*min_wage) , 0.05 ) ]
-  , "ARL" :
+  { "ARL" :
     [ ( 0,           lambda _: min_wage                        , 0.00522 )
     , ( min_wage,    lambda wage: wage                         , 0.00522 )
     , ( 13*min_wage, lambda wage: min( 0.7*wage, 25*min_wage ) , 0.00522 ) ]
@@ -131,10 +115,6 @@ ss_contribs_by_employer :            \
     [ ( 0,           lambda wage: min_wage                   , 0.04)
     , ( min_wage,    lambda wage: wage                       , 0.04)
     , ( 13*min_wage, lambda wage: min(0.7*wage, 25*min_wage) , 0.04) ]
-  , "vacaciones" : # Like cesantías, this goes to the worker.
-    [ ( 0,           lambda wage: min_wage                   , 0.0417 )
-    , ( min_wage,    lambda wage: wage                       , 0.0417 )
-    , ( 13*min_wage, lambda wage: min(0.7*wage, 25*min_wage) , 0.0417 ) ]
   , "cesantias + primas":
     [ ( 0,           lambda wage: min_wage                   , 2.12 / 12 )
     , ( min_wage,    lambda wage: wage                       , 2.12 / 12 )
@@ -143,4 +123,24 @@ ss_contribs_by_employer :            \
       # Summing those gives a yearly figure of 2.12.
       # Dividing by 12 amortizes it into a monthly one.
     , ( 13*min_wage, lambda wage: 0                          , 0.0 ) ]
+  , "parafiscales" : # This is ICBF + SENA
+    [ ( 0,           lambda wage: 0                          , 0.0 )
+    , ( 10*min_wage, lambda wage: wage                       , 0.05 )
+    , ( 13*min_wage, lambda wage: min(0.7*wage, 25*min_wage) , 0.05 ) ]
+  , "pension" :
+    [ ( 0,                lambda wage: 0                          , 0.0 )
+    , ( 3,                lambda wage:     min_wage / 4           , 0.12)
+    , (     min_wage / 4, lambda wage: 2 * min_wage / 4           , 0.12)
+    , ( 2 * min_wage / 4, lambda wage: 3 * min_wage / 4           , 0.12)
+    , ( 3 * min_wage / 4, lambda wage:     min_wage               , 0.12)
+    , ( min_wage,         lambda wage: wage                       , 0.12)
+    , ( 13*min_wage,      lambda wage: min(0.7*wage, 25*min_wage) , 0.12) ]
+  , "salud" :
+    [ ( 0,           lambda wage: 0                          , 0.0)
+    , ( 10*min_wage, lambda wage: wage                       , 0.085)
+    , ( 13*min_wage, lambda wage: min(0.7*wage, 25*min_wage) , 0.085) ]
+  , "vacaciones" : # Like cesantías, this goes to the worker.
+    [ ( 0,           lambda wage: min_wage                   , 0.0417 )
+    , ( min_wage,    lambda wage: wage                       , 0.0417 )
+    , ( 13*min_wage, lambda wage: min(0.7*wage, 25*min_wage) , 0.0417 ) ]
   }
