@@ -6,6 +6,14 @@
 # Most of the variables processed here are forms of income,
 # of which the ENPH has around 75.
 #
+# PITFALL: Reasoning about this code is complicated by two facts:
+#   (1) sometimes variables are referred to not using their names,
+#     but using instead the lists in ./files.py that they are part of, and
+#   (2) sometimes variables are referred to using regular expressions
+#     defined in this program, like `cols_govt_cash` or `cols_labor_in_kind`.
+#   Therefore, to trace the evolution of a variable requires tracing
+#   not just its name, but any other kind of thing that might refer to it.
+#
 # TODO: divide into sub-modules
 
 if True:
@@ -356,7 +364,11 @@ if True: # income
           . sum( axis=1 ) )
         ppl = ppl.drop(
           columns = defs.rename_monthly(
-            cols_labor_in_kind + cols_labor_cash ) )
+            cols_labor # equivalently, cols_labor_in_kind + cols_labor_cash
+          ) )
+        del ( cols_labor_cash,
+              cols_labor_in_kind,
+              cols_labor )
         #
     if True: # homogenize, shorten income variable names
       income_short_name_dict_cash = {
