@@ -76,6 +76,16 @@ def mk_solidaridad( independiente, income ):
 ss_tax_names_and_recipes = [
   ( "tax, ss, pension",
     mk_pension)
+ss_tax_names_and_recipes = \
+  [ ( "tax, ss, cajas de compensacion", # PITFALL: nominally from the employer
+      mk_cajas_de_compensacion_employer)
+  , ( "cesantias + primas",             # PITFALL: nominally from the employer
+      mk_cesantias_y_primas_employer)   # PITFALL: not a tax -- that's why its
+                                        # name looks different
+  , ( "tax, ss, parafiscales",          # PITFALL: nominally from the employer
+      mk_parafiscales_employer)
+  , ( "tax, ss, pension",
+      mk_pension)
   , ( "tax, ss, pension, employer",
       mk_pension_employer)
   , ( "tax, ss, salud",
@@ -84,12 +94,6 @@ ss_tax_names_and_recipes = [
       mk_salud_employer)
   , ( "tax, ss, solidaridad",
       mk_solidaridad)
-  , ( "tax, ss, parafiscales",          # PITFALL: nominally from the employer
-      mk_parafiscales_employer)
-  , ( "tax, ss, cajas de compensacion", # PITFALL: nominally from the employer
-      mk_cajas_de_compensacion_employer)
-  , ( "cesantias + primas",             # PITFALL: nominally from the employer
-      mk_cesantias_y_primas_employer) ]
 
 def mk_ss_contribs( ppl : pd.DataFrame ) -> pd.DataFrame:
   """PITFALL: Destructive."""
