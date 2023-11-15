@@ -61,16 +61,17 @@ work = [
 ]
 
 income_govt = [
+  # 5 transfer programs + unemployment payments
     ("P9460S1",   0, "income, month : govt : unemployment", 0)
   , ("P1668S1A1", 0, "income, year : govt : familias en accion", 0)
-  , ("P1668S3A2", 0, "income, year : govt : familias en su tierra", 0)
-  , ("P1668S4A2", 0, "income, year : govt : jovenes en accion", 0)
-  , ("P1668S2A2", 0, "income, year : govt : programa de adultos mayores", 0)
-  , ("P1668S5A2", 0, "income, year : govt : transferencias por victimizacion", 0)
   , ("P1668S1A4", 0, "income, year : govt : familias en accion, in-kind", 0)
+  , ("P1668S3A2", 0, "income, year : govt : familias en su tierra", 0)
   , ("P1668S3A4", 0, "income, year : govt : familias en su tierra, in-kind", 0)
+  , ("P1668S4A2", 0, "income, year : govt : jovenes en accion", 0)
   , ("P1668S4A4", 0, "income, year : govt : jovenes en accion, in-kind", 0)
+  , ("P1668S2A2", 0, "income, year : govt : programa de adultos mayores", 0)
   , ("P1668S2A4", 0, "income, year : govt : programa de adultos mayores, in-kind", 0)
+  , ("P1668S5A2", 0, "income, year : govt : transferencias por victimizacion", 0)
   , ("P1668S5A4", 0, "income, year : govt : transferencias por victimizacion, in-kind", 0)
 ]
 
