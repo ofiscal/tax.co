@@ -19,3 +19,8 @@ but in a legal sense, the burden is shared with the employer.)
 
 # Context
 The model `rentas_naturales.xlsx` might make this easier to understand.
+
+# TODO
+Finish the code in `./csv_paused/`,
+which is necessary (not sufficient)
+to enable users to modify SS contribution schedules via the web UI.
