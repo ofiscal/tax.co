@@ -74,12 +74,19 @@ ss_contrib_schedule_for_employee : \
            # but greater than the 2 COP theoretical maximum that a zero-income household
            # might "earn" in the microsimulation after I've twice added a random amount
            # between 0 and 1 peso, in order to make the quantiles well-defined.
-                          lambda wage:     min_wage / 4           , 0.04)
-    , (     min_wage / 4, lambda wage: 2 * min_wage / 4           , 0.04)
-    , ( 2 * min_wage / 4, lambda wage: 3 * min_wage / 4           , 0.04)
-    , ( 3 * min_wage / 4, lambda wage:     min_wage               , 0.04)
-    , ( min_wage,         lambda wage:         wage               , 0.04)
-    , ( 13*min_wage,      lambda wage: min(0.7*wage, 25*min_wage) , 0.04) ]
+                              lambda wage:     min_wage / 4           , 0.04)
+    , (     min_wage / 4 + 1, lambda wage: 2 * min_wage / 4           , 0.04)
+    , ( 2 * min_wage / 4 + 1, lambda wage: 3 * min_wage / 4           , 0.04)
+    , ( 3 * min_wage / 4 + 1, lambda wage:     min_wage               , 0.04)
+      # PITFALL: The reason the above three lines add 1 COP
+      # to the threshold (n/4) * min_wage (for n in [1,2,3])
+      # is that if you make exactly n/4 minimum wages,
+      # you pay the same rate as
+      # someone who earns slightly less than that threshold.
+      #
+      # COMMENT NAME: "Raising low pension thresholds by 1 COP".
+    , ( min_wage,             lambda wage:         wage               , 0.04)
+    , ( 13*min_wage,          lambda wage: min(0.7*wage, 25*min_wage) , 0.04) ]
   , "salud" :
     [ ( 0,           lambda wage: 0                            , 0.0 )
     , ( min_wage,    lambda wage: wage                         , 0.04 )
@@ -130,13 +137,16 @@ ss_contribs_by_employer :            \
     , ( 10*min_wage, lambda wage: wage                       , 0.05 )
     , ( 13*min_wage, lambda wage: min(0.7*wage, 25*min_wage) , 0.05 ) ]
   , "pension" :
-    [ ( 0,                lambda wage: 0                          , 0.0 )
-    , ( 3,                lambda wage:     min_wage / 4           , 0.12)
-    , (     min_wage / 4, lambda wage: 2 * min_wage / 4           , 0.12)
-    , ( 2 * min_wage / 4, lambda wage: 3 * min_wage / 4           , 0.12)
-    , ( 3 * min_wage / 4, lambda wage:     min_wage               , 0.12)
-    , ( min_wage,         lambda wage: wage                       , 0.12)
-    , ( 13*min_wage,      lambda wage: min(0.7*wage, 25*min_wage) , 0.12) ]
+    [ ( 0,                    lambda wage: 0                          , 0.0 )
+    , ( 3,                    lambda wage:     min_wage / 4           , 0.12)
+    , (     min_wage / 4 + 1, lambda wage: 2 * min_wage / 4           , 0.12)
+    , ( 2 * min_wage / 4 + 1, lambda wage: 3 * min_wage / 4           , 0.12)
+    , ( 3 * min_wage / 4 + 1, lambda wage:     min_wage               , 0.12)
+      # PITFALL: The reason the above three lines add 1 COP
+      # is documented above in the comment labeled
+      # COMMENT NAME: "Raising low pension thresholds by 1 COP".
+    , ( min_wage,             lambda wage: wage                       , 0.12)
+    , ( 13*min_wage,          lambda wage: min(0.7*wage, 25*min_wage) , 0.12) ]
   , "salud" :
     [ ( 0,           lambda wage: 0                          , 0.0)
     , ( 10*min_wage, lambda wage: wage                       , 0.085)
