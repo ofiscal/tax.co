@@ -26,8 +26,22 @@ def test_mk_pension():
                  0.16 * 25 * min_wage)
 
   if True: # for employees
-    assert near( sf.mk_pension( employee, 0.5 * min_wage ),
+    assert near( sf.mk_pension( employee, 0 ),
                  0 )
+    assert near( sf.mk_pension( employee, 0.125 * min_wage ),
+                 0.04 *                   0.25 * min_wage )
+    assert near( sf.mk_pension( employee, 0.25 * min_wage ),
+                 0.04 *                   0.25 * min_wage )
+    assert near( sf.mk_pension( employee, 0.325 * min_wage ),
+                 0.04 *                   0.5 * min_wage )
+    assert near( sf.mk_pension( employee, 0.5 * min_wage ),
+                 0.04 *                   0.5 * min_wage )
+    assert near( sf.mk_pension( employee, 0.625 * min_wage ),
+                 0.04 *                   0.75 * min_wage )
+    assert near( sf.mk_pension( employee, 0.75 * min_wage ),
+                 0.04 *                   0.75 * min_wage )
+    assert near( sf.mk_pension( employee, 0.875 * min_wage ),
+                 0.04 *                   min_wage )
     assert near( sf.mk_pension( employee, min_wage ),
                  0.04 *                   min_wage )
     assert near( sf.mk_pension( employee, 12 * min_wage ),
@@ -42,7 +56,22 @@ def test_mk_pension_employer():
     assert near( sf.mk_pension_employer( contractor, 0 ), 0 )
     assert near( sf.mk_pension_employer( contractor, 1000 * min_wage ), 0 )
   if True: # for employees
-    assert near( sf.mk_pension_employer( employee, 0.5 * min_wage ), 0 )
+    assert near( sf.mk_pension_employer( employee, 0 ),
+                 0 )
+    assert near( sf.mk_pension_employer( employee, 0.125 * min_wage ),
+                 0.12 *                   0.25 * min_wage )
+    assert near( sf.mk_pension_employer( employee, 0.25 * min_wage ),
+                 0.12 *                   0.25 * min_wage )
+    assert near( sf.mk_pension_employer( employee, 0.325 * min_wage ),
+                 0.12 *                   0.5 * min_wage )
+    assert near( sf.mk_pension_employer( employee, 0.5 * min_wage ),
+                 0.12 *                   0.5 * min_wage )
+    assert near( sf.mk_pension_employer( employee, 0.625 * min_wage ),
+                 0.12 *                   0.75 * min_wage )
+    assert near( sf.mk_pension_employer( employee, 0.75 * min_wage ),
+                 0.12 *                   0.75 * min_wage )
+    assert near( sf.mk_pension_employer( employee, 0.875 * min_wage ),
+                 0.12 *                   min_wage )
     assert near( sf.mk_pension_employer( employee,   5 * min_wage ),
                  0.12                              * 5 * min_wage )
     assert near( sf.mk_pension_employer( employee,  20 * min_wage ),
@@ -143,7 +172,8 @@ def test_mk_cajas_de_compensacion_employer():
     assert near( t( contractor, 0 ), 0 )
     assert near( t( contractor, 1000 * min_wage ), 0 )
   if True: # for employees
-    assert near( t( employee,  0.5 * min_wage ), 0 )
+    assert near( t( employee,  0.5 * min_wage ),
+                 0.04              * min_wage )
     assert near( t( employee,  1.1 * min_wage ),
                  0.04        * 1.1 * min_wage )
     assert near( t( employee,  12  * min_wage ),
@@ -159,7 +189,8 @@ def test_mk_cesantias_y_primas_employer():
     assert near( t( contractor, 0 ), 0 )
     assert near( t( contractor, 1000 * min_wage ), 0 )
   if True: # for employees
-    assert near( t( employee,  0.5 * min_wage ), 0 )
+    assert near( t( employee,  0.5 * min_wage ),
+                 (2.12 / 12)       * min_wage )
     assert near( t( employee,  1.1 * min_wage ),
                  (2.12 / 12) * 1.1 * min_wage )
     assert near( t( employee,  12  * min_wage ),
