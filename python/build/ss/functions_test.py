@@ -14,6 +14,55 @@ if True:
 contractor = True
 employee = False
 
+def test_mk_arl():
+  if True: # for contractors
+    assert near( sf.mk_arl( contractor, min_wage / 2 ),
+                 0 )
+    assert near( sf.mk_arl( contractor, min_wage ),
+                 0.00522 *              min_wage )
+    assert near( sf.mk_arl( contractor, min_wage * 2 ),
+                 0.00522 *              min_wage )
+    assert near( sf.mk_arl( contractor, min_wage * 3 ),
+                 0.00522 * 0.4 *        min_wage * 3 )
+    assert near( sf.mk_arl( contractor, min_wage * 10 ),
+                 0.00522 * 0.4 *        min_wage * 10 )
+    assert near( sf.mk_arl( contractor, min_wage * 25 ),
+                 0.00522 * 0.4 *        min_wage * 25 )
+    assert near( sf.mk_arl( contractor, min_wage * 50 ),
+                 0.00522 * 0.4 *        min_wage * 50 )
+    assert near( sf.mk_arl( contractor, min_wage * 75 ),
+                 0.00522 *              min_wage * 25 )
+    assert near( sf.mk_arl( contractor, min_wage * 100 ),
+                 0.00522 *              min_wage * 25 )
+  if True: # for employees
+    for i in [i for i in range(10) ] + [10*(i+1) for i in range(10)]:
+      assert near( sf.mk_arl( employee, i * min_wage ), 0 )
+
+def test_mk_arl_employer():
+  f = sf.mk_arl_employer
+  if True: # for employees
+    assert near( f ( employee, min_wage / 2 ),
+                 0.00522 *            min_wage )
+    assert near( f ( employee, min_wage ),
+                 0.00522 *            min_wage )
+    assert near( f ( employee, min_wage * 2 ),
+                 0.00522 *            min_wage * 2 )
+    assert near( f ( employee, min_wage * 13 ),
+                 0.00522 * 0.7 *      min_wage * 13 )
+    assert near( f ( employee, min_wage * 20 ),
+                 0.00522 * 0.7 *      min_wage * 20 )
+    assert near( f ( employee, min_wage * 25 ),
+                 0.00522 * 0.7 *      min_wage * 25 )
+    assert near( f ( employee, min_wage * 30 ),
+                 0.00522 * 0.7 *      min_wage * 30 )
+    assert near( f ( employee, min_wage * 40 ),
+                 0.00522 *            min_wage * 25 )
+    assert near( f ( employee, min_wage * 100 ),
+                 0.00522 *            min_wage * 25 )
+  if True: # for contractors
+    for i in [i for i in range(10) ] + [10*(i+1) for i in range(10)]:
+      assert near( f ( contractor, i * min_wage ), 0 )
+
 def test_mk_pension():
   if True: # for contractors
     assert near( sf.mk_pension( contractor, 0.5 * min_wage ),
@@ -201,6 +250,8 @@ def test_mk_cesantias_y_primas_employer():
 
 if True:
   log = str( datetime.datetime.now() )
+  test_mk_arl()
+  test_mk_arl_employer()
   test_mk_pension()
   test_mk_pension_employer()
   test_mk_salud()
