@@ -3,7 +3,7 @@
 
 import os
 import pandas as pd
-from   typing import Callable, Dict, List, Tuple
+from   typing import Dict
 #
 from   python.common.misc import min_wage
 from   python.build.ss.types import AverageTaxSchedule

@@ -64,12 +64,15 @@ tests:                                                      \
   users/$(user)/test/recip-1/python.report.tests.txt        \
   users/$(user)/test/recip-1/build_buildings.txt            \
   users/$(user)/test/recip-1/build_ss_functions.txt         \
-  users/$(user)/test/recip-1/build_ss_schedules.txt         \
   users/$(user)/test/recip-1/purchase_inputs.txt            \
   users/$(user)/test/recip-1/rate_input.txt                 \
   users/$(user)/test/recip-1/regime_r2018.txt               \
   users/$(user)/test/recip-1/requests.txt
 	printf '\nAll tests passed.\n\n'
+  # DISABLED:
+  #   users/$(user)/test/recip-1/build_ss_csv_paused_equivalence_test.txt
+  # For why, see the header comment in
+  #   python/build/ss/csv_paused/equivalence_test.py
 
 # TODO: Replace this phony target with evidence that the test succeeded,
 # so thaht it won't rerun unnecessarily.
@@ -183,10 +186,10 @@ users/$(user)/test/recip-1/build_ss_functions.txt:            \
 	$(python_from_here) python/build/ss/functions_test.py \
           $(config_file)
 
-users/$(user)/test/recip-1/build_ss_schedules.txt:            \
-  .no_younger_than/python/build/ss/schedules_test.py
+users/$(user)/test/recip-1/build_ss_csv_paused_equivalence_test.txt: \
+  .no_younger_than/python/build/ss/csv_paused/equivalence_test.py
 	date
-	$(python_from_here) python/build/ss/schedules_test.py \
+	$(python_from_here) python/build/ss/csv_paused/equivalence_test.py \
           $(config_file)
 
 users/$(user)/test/recip-$(ss)/people_3_income_taxish.txt:   \

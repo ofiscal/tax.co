@@ -13,6 +13,13 @@ so that SS schedules would be represented as CSV files.
 Our priorities then changed, and I have not finished the conversion.
 """
 
+import os
+import pandas as pd
+from   typing import Callable, Dict
+#
+from   python.build.ss.types import AverageTaxSchedule
+from   python.common.misc import min_wage
+
 
 def average_tax_function (
     fraction_of_wage      : float, # fraction of wage taxed
