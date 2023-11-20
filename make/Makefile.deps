@@ -359,12 +359,14 @@
   .no_younger_than/python/common/misc.py
 	install -D /dev/null .no_younger_than/python/build/ss/schedules.py
 
-.no_younger_than/python/build/ss/schedules_test.py: \
-  python/build/ss/schedules_test.py                 \
-  .no_younger_than/python/build/ss/schedules.py     \
-  .no_younger_than/python/common/misc.py            \
+.no_younger_than/python/build/ss/csv_paused/equivalence_test.py: \
+  python/build/ss/csv_paused/equivalence_test.py                 \
+  .no_younger_than/python/build/output_io.py                     \
+  .no_younger_than/python/build/ss/schedules.py                  \
+  .no_younger_than/python/common/common.py                       \
+  .no_younger_than/python/common/misc.py                         \
   .no_younger_than/python/common/util.py
-	install -D /dev/null .no_younger_than/python/build/ss/schedules_test.py
+	install -D /dev/null .no_younger_than/python/build/ss/csv_paused/equivalence_test.py
 
 .no_younger_than/python/build/classes_test.py: \
   python/build/classes_test.py \

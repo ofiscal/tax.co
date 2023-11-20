@@ -61,16 +61,17 @@ work = [
 ]
 
 income_govt = [
+  # 5 transfer programs + unemployment payments
     ("P9460S1",   0, "income, month : govt : unemployment", 0)
   , ("P1668S1A1", 0, "income, year : govt : familias en accion", 0)
-  , ("P1668S3A2", 0, "income, year : govt : familias en su tierra", 0)
-  , ("P1668S4A2", 0, "income, year : govt : jovenes en accion", 0)
-  , ("P1668S2A2", 0, "income, year : govt : programa de adultos mayores", 0)
-  , ("P1668S5A2", 0, "income, year : govt : transferencias por victimizacion", 0)
   , ("P1668S1A4", 0, "income, year : govt : familias en accion, in-kind", 0)
+  , ("P1668S3A2", 0, "income, year : govt : familias en su tierra", 0)
   , ("P1668S3A4", 0, "income, year : govt : familias en su tierra, in-kind", 0)
+  , ("P1668S4A2", 0, "income, year : govt : jovenes en accion", 0)
   , ("P1668S4A4", 0, "income, year : govt : jovenes en accion, in-kind", 0)
+  , ("P1668S2A2", 0, "income, year : govt : programa de adultos mayores", 0)
   , ("P1668S2A4", 0, "income, year : govt : programa de adultos mayores, in-kind", 0)
+  , ("P1668S5A2", 0, "income, year : govt : transferencias por victimizacion", 0)
   , ("P1668S5A4", 0, "income, year : govt : transferencias por victimizacion, in-kind", 0)
 ]
 
@@ -90,41 +91,41 @@ income_labor_non_peso = [
   , ("P1653S3A2", 0, "income, month : labor : viaticum, included in 6500", 0) ]
 
 income_labor = [
-    ( "P6500", 0, "income, month : labor : formal employment", 0)
-  , ( "P7070", 0, "income, month : labor : job 2", 0)
-  , ( "P7472S1", 0, "income, month : labor : as inactive", 0)
-  , ( "P7422S1", 0, "income, month : labor : as unemployed", 0)
+    ( "P6500",    0, "income, month : labor : formal employment",        0)
+  , ( "P7070",    0, "income, month : labor : job 2",                    0)
+  , ( "P7472S1",  0, "income, month : labor : as inactive",              0)
+  , ( "P7422S1",  0, "income, month : labor : as unemployed",            0)
   , ( # PITFALL: This is net of costs, so that it makes sense
       # to add it to the labor income taxable base.
-      "P6750", 0, "income, month : labor : independent", 0)
+      "P6750",    0, "income, month : labor : independent",              0)
 
   # these air paired with partners in the variable `inclusion_pairs`
-  , ("P1653S1A1", 0, "income, month : labor : bonus ?2", 0)
-  , ("P1653S2A1", 0, "income, month : labor : bonus", 0)
-  , ("P6585S3A1", 0, "income, month : labor : familiar", 0)
-  , ("P6585S1A1", 0, "income, month : labor : food", 0)
+  , ("P1653S1A1", 0, "income, month : labor : bonus ?2",                 0)
+  , ("P1653S2A1", 0, "income, month : labor : bonus",                    0)
+  , ("P6585S3A1", 0, "income, month : labor : familiar",                 0)
+  , ("P6585S1A1", 0, "income, month : labor : food",                     0)
   , ("P1653S4A1", 0, "income, month : labor : gastos de representacion", 0)
-  , ("P6510S1", 0, "income, month : labor : overtime", 0)
-  , ("P6585S2A1", 0, "income, month : labor : transport", 0)
-  , ("P1653S3A1", 0, "income, month : labor : viaticum", 0)
+  , ("P6510S1",   0, "income, month : labor : overtime",                 0)
+  , ("P6585S2A1", 0, "income, month : labor : transport",                0)
+  , ("P1653S3A1", 0, "income, month : labor : viaticum",                 0)
 
-  , ("P6779S1", 0, "income, month : labor : viaticum ?2", 0)
+  , ("P6779S1",   0, "income, month : labor : viaticum ?2",              0)
 
-  , ("P550", 0, "income, year : labor : rural", 0)
-  , ("P6630S5A1", 0, "income, year : labor : annual bonus", 0)
+  , ("P550",      0, "income, year : labor : rural",                     0)
+  , ("P6630S5A1", 0, "income, year : labor : annual bonus",              0)
     # PITFALL: This needs the apparently-redundant word annual
     # in order not to clobber another variable once yearly variables
     # are converted to monthly ones and accordingly renamed.
-  , ("P6630S2A1", 0, "income, year : labor : christmas bonus", 0)
-  , ("P6630S1A1", 0, "income, year : labor : prima de servicios", 0)
-  , ("P6630S3A1", 0, "income, year : labor : vacation bonus", 0)
-  , ("P6630S4A1", 0, "income, year : labor : viaticum ?3", 0)
-  , ("P6630S6A1", 0, "income, year : labor : work accident payments", 0)
+  , ("P6630S2A1", 0, "income, year : labor : christmas bonus",           0)
+  , ("P6630S1A1", 0, "income, year : labor : prima de servicios",        0)
+  , ("P6630S3A1", 0, "income, year : labor : vacation bonus",            0)
+  , ("P6630S4A1", 0, "income, year : labor : viaticum ?3",               0)
+  , ("P6630S6A1", 0, "income, year : labor : work accident payments",    0)
 
-  , ("P6590S1", 0, "income, month : labor : food, in-kind", 0)
-  , ("P6600S1", 0, "income, month : labor : lodging, in-kind", 0)
-  , ("P6620S1", 0, "income, month : labor : other, in-kind", 0)
-  , ("P6610S1", 0, "income, month : labor : transport, in-kind", 0)
+  , ("P6590S1",   0, "income, month : labor : food, in-kind",            0)
+  , ("P6600S1",   0, "income, month : labor : lodging, in-kind",         0)
+  , ("P6620S1",   0, "income, month : labor : other, in-kind",           0)
+  , ("P6610S1",   0, "income, month : labor : transport, in-kind",       0)
 ]
 
 income_edu = [

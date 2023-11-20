@@ -9,7 +9,50 @@ if True:
   #
   import python.build.ss.schedules as ss
   import python.common.util        as util
+  import re # regular expressions
 
+
+def mk_arl ( independiente, income ):
+  if independiente:
+    (_, compute_base, rate) = util.tuple_by_threshold(
+        income, ss.ss_contrib_schedule_for_contractor["ARL"] )
+    return compute_base ( income ) * rate
+  else: return 0
+
+def mk_arl_employer ( independiente, income ):
+  if independiente: return 0
+  else:
+    (_, compute_base, rate) = util.tuple_by_threshold (
+        income, ss.ss_contribs_by_employer [ "ARL"] )
+    return compute_base ( income ) * rate
+
+def mk_aux_transporte_employer ( independiente, income ):
+  if independiente: return 0
+  else:
+    (_, compute_base, rate) = util.tuple_by_threshold (
+        income, ss.ss_contribs_by_employer [ "aux transporte"] )
+    return compute_base ( income ) * rate
+
+def mk_cajas_de_compensacion_employer( independiente, income ):
+  if independiente: return 0
+  else:
+    (_, compute_base, rate) = util.tuple_by_threshold(
+        income, ss.ss_contribs_by_employer["cajas de compensacion"] )
+    return compute_base( income ) * rate
+
+def mk_cesantias_y_primas_employer( independiente, income ):
+  if independiente: return 0
+  else:
+    (_, compute_base, rate) = util.tuple_by_threshold(
+        income, ss.ss_contribs_by_employer["cesantias + primas"] )
+    return compute_base( income ) * rate
+
+def mk_parafiscales_employer( independiente, income ):
+  if independiente: return 0
+  else:
+    (_, compute_base, rate) = util.tuple_by_threshold(
+        income, ss.ss_contribs_by_employer["parafiscales"] )
+    return compute_base( income ) * rate
 
 def mk_pension( independiente, income ):
   if independiente:
@@ -52,30 +95,29 @@ def mk_solidaridad( independiente, income ):
         income, ss.ss_contrib_schedule_for_employee["solidaridad"] )
   return compute_base( income ) * rate
 
-def mk_parafiscales_employer( independiente, income ):
+def mk_vacaciones_employer ( independiente, income ):
   if independiente: return 0
   else:
-    (_, compute_base, rate) = util.tuple_by_threshold(
-        income, ss.ss_contribs_by_employer["parafiscales"] )
-    return compute_base( income ) * rate
+    (_, compute_base, rate) = util.tuple_by_threshold (
+        income, ss.ss_contribs_by_employer [ "vacaciones"] )
+    return compute_base ( income ) * rate
 
-def mk_cajas_de_compensacion_employer( independiente, income ):
-  if independiente: return 0
-  else:
-    (_, compute_base, rate) = util.tuple_by_threshold(
-        income, ss.ss_contribs_by_employer["cajas de compensacion"] )
-    return compute_base( income ) * rate
-
-def mk_cesantias_y_primas_employer( independiente, income ):
-  if independiente: return 0
-  else:
-    (_, compute_base, rate) = util.tuple_by_threshold(
-        income, ss.ss_contribs_by_employer["cesantias + primas"] )
-    return compute_base( income ) * rate
-
-ss_tax_names_and_recipes = [
-  ( "tax, ss, pension",
-    mk_pension)
+ss_tax_names_and_recipes = \
+  [ ( "tax, ss, ARL",
+      mk_arl)
+  , ( "tax, ss, ARL, employer",
+      mk_arl_employer)
+  , ( "tax, ss, aux transporte, employer",
+      mk_aux_transporte_employer)
+  , ( "tax, ss, cajas de compensacion", # PITFALL: nominally from the employer
+      mk_cajas_de_compensacion_employer)
+  , ( "cesantias + primas",             # PITFALL: nominally from the employer
+      mk_cesantias_y_primas_employer)   # PITFALL: not a tax -- that's why its
+                                        # name looks different.
+  , ( "tax, ss, parafiscales",          # PITFALL: nominally from the employer
+      mk_parafiscales_employer)
+  , ( "tax, ss, pension",
+      mk_pension)
   , ( "tax, ss, pension, employer",
       mk_pension_employer)
   , ( "tax, ss, salud",
@@ -84,12 +126,9 @@ ss_tax_names_and_recipes = [
       mk_salud_employer)
   , ( "tax, ss, solidaridad",
       mk_solidaridad)
-  , ( "tax, ss, parafiscales",          # PITFALL: nominally from the employer
-      mk_parafiscales_employer)
-  , ( "tax, ss, cajas de compensacion", # PITFALL: nominally from the employer
-      mk_cajas_de_compensacion_employer)
-  , ( "cesantias + primas",             # PITFALL: nominally from the employer
-      mk_cesantias_y_primas_employer) ]
+  , ( "vacaciones, employer",
+      mk_vacaciones_employer) ] # PITFALL: not a tax -- that's why its
+                                # name looks different.
 
 def mk_ss_contribs( ppl : pd.DataFrame ) -> pd.DataFrame:
   """PITFALL: Destructive."""
@@ -101,14 +140,20 @@ def mk_ss_contribs( ppl : pd.DataFrame ) -> pd.DataFrame:
             row["income, labor, cash"] )
       , axis = "columns" )
 
-  ppl["tax, ss, total employee contribs"] = (
-    ppl["tax, ss, pension"] +
-    ppl["tax, ss, salud"] +
-    ppl["tax, ss, solidaridad"] )
+  ppl["tax, ss, total employee contribs"] = \
+    ( ppl["tax, ss, ARL"]
+    + ppl["tax, ss, pension"]
+    + ppl["tax, ss, salud"]
+    + ppl["tax, ss, solidaridad"] )
 
+  re_tax_ss  = re.compile( "^tax, ss" )
   ppl["tax, ss"] = (
+    # Cesantías, primas and vacaciones are not included here,
+    # because they are income.
     ppl [ [ name for (name, _)
-            in ss_tax_names_and_recipes ] ]
+            in ss_tax_names_and_recipes
+            if re_tax_ss . match ( name )
+           ] ]
     . sum ( axis = "columns" ) )
 
   return ppl

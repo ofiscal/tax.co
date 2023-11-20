@@ -18,15 +18,20 @@ cols_const_within_hh = ["region-1", "region-2", "estrato", "weight"]
 # These are most of the columns that will be in the household data.
 # They are aggregated through summation.
 income_and_tax__person_level = ( [
-    "tax, ss"
+    "cesantias + primas"
+  , "vacaciones, employer"
+  , "tax, ss"
+  , "tax, ss, ARL"
+  , "tax, ss, ARL, employer"
+  , "tax, ss, aux transporte, employer"
+  , "tax, ss, cajas de compensacion"
+  , "tax, ss, parafiscales"
   , "tax, ss, pension"
   , "tax, ss, pension, employer"
   , "tax, ss, salud"
   , "tax, ss, salud, employer"
   , "tax, ss, solidaridad"
-  , "tax, ss, parafiscales"
-  , "tax, ss, cajas de compensacion"
-  , "cesantias + primas" ]
+  ]
 
   + regime.income_tax_columns +
   [ "income"

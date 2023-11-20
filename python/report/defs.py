@@ -101,6 +101,7 @@ def earnerGroupVars (
 
 commonVars = ( [ # vars in both household- and earner-level data sets
   "cesantias + primas",
+  "vacaciones, employer",
   "female head",
   "female head",
   "income, capital",
@@ -116,6 +117,9 @@ commonVars = ( [ # vars in both household- and earner-level data sets
   "pension, receiving",
   "tax",
   "tax, ss",
+  "tax, ss, ARL",
+  "tax, ss, ARL, employer",
+  "tax, ss, aux transporte, employer",
   "tax, ss, cajas de compensacion",
   "tax, ss, parafiscales",
   "tax, ss, pension",
