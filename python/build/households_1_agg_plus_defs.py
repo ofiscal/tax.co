@@ -21,9 +21,9 @@ income_and_tax__person_level = ( [
     "cesantias + primas"
   , "vacaciones, employer"
   , "tax, ss"
-  , "tax, ss, ARL",
-  , "tax, ss, ARL, employer",
-  , "tax, ss, aux transporte, employer",
+  , "tax, ss, ARL"
+  , "tax, ss, ARL, employer"
+  , "tax, ss, aux transporte, employer"
   , "tax, ss, cajas de compensacion"
   , "tax, ss, parafiscales"
   , "tax, ss, pension"
