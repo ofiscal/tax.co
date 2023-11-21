@@ -41,7 +41,10 @@ if True:
   test_insert_claims_dependents_columns()
 
   # integration tests
-  p3 = oio.readUserData(
+  p2 = oio.readCommonOutput (
+    com.subsample,
+    "people_2_buildings" )
+  p3 = oio.readUserData (
       com.subsample,
       'people_3_income_taxish.' + com.strategy_year_suffix )
   assert util.near(
@@ -52,6 +55,12 @@ if True:
   assert ( ( p3 ["tax, ss"] >=
              p3 ["tax, ss, total employee contribs"] )
            . all () )
+  assert ( ( p2["income, labor"] <=
+             ( p3["income, labor"]
+               +  1  # Add 1 COP to defeat floating-point error.
+               ) )
+           . all () )
+    # because after p3 it includes cesantias, primas and vacaciones
 
   oio.test_write( com.subsample
                 , "people_3_income_taxish"
