@@ -76,10 +76,6 @@ if True: # Create a few columns missing in the input data.
       (earners,                         "income",        "income"),
       (nonzero_earners_by_labor_income, "income, labor", "income"),
   ]:
-    df["income, labor + cesantia"] = (
-        df["income, labor"]
-        + df["income, cesantia"] )
-
     df[quantileVar + "-percentile-in[90,97]"] = (
         (df[quantileVar + "-percentile"] >= 90)
       & (df[quantileVar + "-percentile"] <= 97) )

@@ -100,15 +100,12 @@ def earnerGroupVars (
 #
 
 commonVars = ( [
-  "cesantias + primas",
-  "vacaciones, employer",
   "female head",
   "female head",
   "income, capital",
   "income, dividend",
   "income, govt",
   "income, infrequent",
-  "income, labor + cesantia",
   "income, labor",
   "income, non-labor (tax def)",
   "income, pension",
@@ -187,8 +184,6 @@ def ofMostInterestLately (
     "income tax / "  + total_income,
 
     # The rest of these do not depend on `total_income`
-    "income, labor + cesantia: mean",
-    "income, labor + cesantia: sums",
     "income, labor: mean",
     "income, labor: sums",
     "tax, income, labor: max",
