@@ -33,7 +33,7 @@ if True: # Read and format the data
       usecols = hh_dict . keys() )
     . rename ( columns = hh_dict ) )
 
-  # Only hhs needs reformatting.
+  # Only `hhs` needs reformatting.
   for colname in ["weight","IT","GT"]:
     hhs[colname] = ( hhs[colname]
                      . str.replace ( ",", "." )
@@ -43,7 +43,7 @@ if True: # Read and format the data
 # Compute number of members, merge into households,
 # and use to compute "IT/members" (income per capita)
 if True:
-  ppl_agg = (
+  ppl_agg = ( # Find number of members in each household.
     ppl.groupby ( "household" )
     . agg ("max")
     . reset_index ()
@@ -54,28 +54,37 @@ if True:
                   how = "left",
                   on = "household" )
 
-  m["IT/members"] = m["IT"] / m["members"]
+  m["IT/members"] = ( # income per capita
+    m["IT"] / m["members"] )
 
 
 if True: # Define and examine deciles, most of them unweighted.
 
-  decile_defining_var = "IT/members" # "IT" and "IT/members" are both interesting
+  decile_defining_var = "IT/members" # "IT" or "IT/members"
 
   if True: # Computing the jankiest weighted lowest decile.
     tenth_weight = m["weight"].sum() / 10
     last_index = 7525 # I found this by hand.
     assert m.iloc[:last_index + 1]["weight"].sum() >= tenth_weight
     assert m.iloc[:last_index]    ["weight"].sum() <  tenth_weight
-    weighted_lowest_decile = ( m
-                               . sort_values ( decile_defining_var )
-                               . iloc[:last_index] )
+    weighted_lowest_decile = (
+      # The lowest decile is the first `n` poorest households,
+      # such that the sum of their weights is one tenth of the total.
+      m
+      . sort_values ( decile_defining_var )
+      . iloc[:last_index] )
 
-  m["decile, unweighted"] = pd.qcut ( m[ decile_defining_var ],
-                                      10,
-                                      labels = False )
+  m["decile, unweighted"] = pd.qcut (
+    # Define unweighted deciles.
+    m[ decile_defining_var ],
+    10,
+    labels = False )
 
-  def describe_subset ( subset_name : str,
-                        df : pd.DataFrame ) -> pd.DataFrame:
+  def describe_subset (
+      # This will be used to describe deciles,
+      # weighted or unweighted.
+      subset_name : str,
+      df : pd.DataFrame ) -> pd.DataFrame:
     return pd.DataFrame ( {
       "Decile"              : [ subset_name ],
       "Sum of IT"           : [   df["IT"] . sum() ],
@@ -84,22 +93,27 @@ if True: # Define and examine deciles, most of them unweighted.
       "Sum of GT, weighted" : [ ( df["GT"] * df["weight"] ) . sum() ],
     } )
 
-  accList = [] # a list in which to accrete descriptions of
+  accList = [] # a list in which to accumulate descriptions of deciles
   accList.append (
+    # Start by appending the weighted 0th decile.
     describe_subset ( "weighted 0",
                       weighted_lowest_decile ) )
   for i in range(10):
+    # Then add all the unweighted deciles (including the 0th).
     decile = m[ m["decile, unweighted"] == i ]
     accList.append (
       describe_subset ( str(i),
                         decile )
     )
 
-  acc = ( pd.concat ( accList )
-          . reset_index ( drop = True ) )
+  acc : pd.DataFrame = (
+    # Make a table out of those decile descriptions.
+    pd.concat ( accList )
+    . reset_index ( drop = True ) )
 
-  acc[ "Sum of GT / Sum of IT" ] = ( acc [ "Sum of GT" ] /
-                                     acc [ "Sum of IT" ] )
+  # Compute two more columns.
+  acc[ "Sum of GT / Sum of IT" ]   = ( acc [ "Sum of GT" ] /
+                                       acc [ "Sum of IT" ] )
   acc[ "Wsum of GT / Wsum of IT" ] = ( acc [ "Sum of GT, weighted" ] /
                                        acc [ "Sum of IT, weighted" ] )
 
