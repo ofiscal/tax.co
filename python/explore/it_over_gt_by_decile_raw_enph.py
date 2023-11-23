@@ -79,8 +79,8 @@ if True: # Define and examine deciles.
 
   acc[ "Sum of GT / Sum of IT" ] = ( acc [ "Sum of GT" ] /
                                      acc [ "Sum of IT" ] )
-  acc[ "Ws of GT / Wsum of IT" ] = ( acc [ "Sum of GT, weighted" ] /
-                                     acc [ "Sum of IT, weighted" ] )
+  acc[ "Wsum of GT / Wsum of IT" ] = ( acc [ "Sum of GT, weighted" ] /
+                                       acc [ "Sum of IT, weighted" ] )
 
   acc
 
@@ -102,7 +102,7 @@ if True: # Define and examine deciles.
 
 # Results, if instead deciles are defined using IT (see the `qcut` command above)
 #
-#  Decile     Sum of IT     Sum of GT  Sum of IT, weighted  Sum of GT, weighted  Sum of GT / Sum of IT  Ws of GT / Wsum of IT
+#  Decile     Sum of IT     Sum of GT  Sum of IT, weighted  Sum of GT, weighted  Sum of GT / Sum of IT  Wsum of GT / Wsum of IT
 #       0  2.672727e+09  6.721673e+09         5.368087e+11         1.198133e+12               2.514912               2.231955
 #       1  5.477734e+09  7.696810e+09         1.025721e+12         1.394381e+12               1.405108               1.359416
 #       2  8.059080e+09  9.705304e+09         1.340730e+12         1.605673e+12               1.204269               1.197611
