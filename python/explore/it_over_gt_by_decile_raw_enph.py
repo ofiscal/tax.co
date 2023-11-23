@@ -39,6 +39,7 @@ if True: # Read and format the data
                      . str.replace ( ",", "." )
                      . astype (float) )
 
+
 # Compute number of members, merge into households,
 # and use to compute "IT/members" (income per capita)
 if True:
@@ -55,34 +56,51 @@ if True:
 
   m["IT/members"] = m["IT"] / m["members"]
 
+
 if True: # Define and examine deciles.
-  m["decile"] = pd.qcut ( m["IT"],
+  m["decile"] = pd.qcut ( m["IT/members"],
                           10,
                           labels = False )
 
-accList = []
-for i in range(10):
-  decile = m[ m["decile"] == i ]
-  accList.append (
-    pd.DataFrame ( {
-      "Decile"              : [ i],
-      "Sum of IT"           : [   decile["IT"] . sum() ],
-      "Sum of GT"           : [   decile["GT"] . sum() ],
-      "Sum of IT, weighted" : [ ( decile["IT"] * decile["weight"] ) . sum() ],
-      "Sum of GT, weighted" : [ ( decile["GT"] * decile["weight"] ) . sum() ],
-    } ) )
+  accList = []
+  for i in range(10):
+    decile = m[ m["decile"] == i ]
+    accList.append (
+      pd.DataFrame ( {
+        "Decile"              : [ i],
+        "Sum of IT"           : [   decile["IT"] . sum() ],
+        "Sum of GT"           : [   decile["GT"] . sum() ],
+        "Sum of IT, weighted" : [ ( decile["IT"] * decile["weight"] ) . sum() ],
+        "Sum of GT, weighted" : [ ( decile["GT"] * decile["weight"] ) . sum() ],
+      } ) )
 
-acc = ( pd.concat ( accList )
-        . reset_index ( drop = True ) )
+  acc = ( pd.concat ( accList )
+          . reset_index ( drop = True ) )
 
-acc[ "Sum of GT / Sum of IT" ] = ( acc [ "Sum of GT" ] /
-                                   acc [ "Sum of IT" ] )
-acc[ "Ws of GT / Wsum of IT" ] = ( acc [ "Sum of GT, weighted" ] /
-                                   acc [ "Sum of IT, weighted" ] )
+  acc[ "Sum of GT / Sum of IT" ] = ( acc [ "Sum of GT" ] /
+                                     acc [ "Sum of IT" ] )
+  acc[ "Ws of GT / Wsum of IT" ] = ( acc [ "Sum of GT, weighted" ] /
+                                     acc [ "Sum of IT, weighted" ] )
 
-acc
+  acc
 
-# Results
+
+# Results, if deciles are defined using income per capita  (see the `qcut` command above)
+#
+#  Decile     Sum of IT     Sum of GT  Sum of IT, weighted  Sum of GT, weighted  Sum of GT / Sum of IT  Ws of GT / Wsum of IT
+#       0  3.768656e+09  7.978665e+09         7.587045e+11         1.441257e+12               2.117111               1.899629
+#       1  7.941213e+09  9.984152e+09         1.455360e+12         1.775537e+12               1.257258               1.219999
+#       2  9.542510e+09  1.038566e+10         1.574423e+12         1.737850e+12               1.088357               1.103801
+#       3  1.193796e+10  1.191160e+10         1.864963e+12         1.931906e+12               0.997792               1.035895
+#       4  1.400936e+10  1.293686e+10         2.155178e+12         2.043198e+12               0.923444               0.948041
+#       5  1.664439e+10  1.443002e+10         2.513932e+12         2.273739e+12               0.866960               0.904455
+#       6  1.877937e+10  1.549272e+10         3.017311e+12         2.593903e+12               0.824986               0.859674
+#       7  2.292190e+10  1.742693e+10         3.368491e+12         2.662958e+12               0.760274               0.790549
+#       8  3.005364e+10  2.131843e+10         4.347225e+12         3.311412e+12               0.709346               0.761730
+#       9  6.338725e+10  3.573281e+10         1.124145e+13         7.625127e+12               0.563722               0.678305
+
+
+# Results, if instead deciles are defined using IT (see the `qcut` command above)
 #
 #  Decile     Sum of IT     Sum of GT  Sum of IT, weighted  Sum of GT, weighted  Sum of GT / Sum of IT  Ws of GT / Wsum of IT
 #       0  2.672727e+09  6.721673e+09         5.368087e+11         1.198133e+12               2.514912               2.231955
