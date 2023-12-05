@@ -96,14 +96,14 @@ def describe_deciles (
 ) -> pd.DataFrame:
 
   def describe_subset (
-      # This will be used to describe deciles,
-      # weighted or unweighted.
+      # This will be used to describe deciles.
+      # (I call them "subsets" in the function name because "decile" suggests
+      # either weighted or unweighted, whereas this is used for both.)
       subset_name : str,
       df0 : pd.DataFrame ) -> pd.DataFrame:
     df = df0.copy()
     n_households = len ( df["household"] . drop_duplicates() )
     assert len (df) == n_households # households are not repeated
-    weight_sum = df ["weight"] . sum ()
     return pd.DataFrame ( {
       "Decile"          : [ subset_name                             ],
       "n households"    : [ n_households                            ],
@@ -114,13 +114,13 @@ def describe_deciles (
       "Sum (GT*weight)" : [ ( df["GT"    ] * df["weight"] ) . sum() ],
     } )
 
-  summaryList = [] # a list in which to accumulate descriptions of deciles
+  summaryList = [] # a list of descriptions of deciles
   summaryList.append (
     # Start by appending the weighted 0th decile.
     describe_subset ( subset_name = "weighted 0",
                       df0 = extra_weighted_decile ) )
   for i in range(10):
-    # Then add all the unweighted deciles (including the 0th).
+    # Then append all the unweighted deciles (including the 0th).
     decile = m[ m["decile, unweighted"] == i ]
     summaryList.append (
       describe_subset ( str(i),
@@ -132,7 +132,7 @@ def describe_deciles (
     pd.concat ( summaryList )
     . reset_index ( drop = True ) )
 
-  # Compute a few more columns.
+  # Compute more columns.
   summary[ "Sum GT / n households" ]             = ( summary [ "Sum GT" ] /
                                                      summary [ "n households" ] )
   summary[ "Sum IT / n households" ]             = ( summary [ "Sum IT" ] /
@@ -147,10 +147,10 @@ def describe_deciles (
                                                      summary [ "Sum (IT*weight)" ] )
   return summary
 
-for ( decile_defining_var, extra_weighted_decile ) in [
-    ( "IT",            weighted_lowest_decile_sorted_on_it),
-    ( "IT-per-capita", weighted_lowest_decile_sorted_on_it_over_members) ]:
-  df = describe_deciles ( decile_defining_var = decile_defining_var,
+for ( decile_defining_var , extra_weighted_decile ) in [
+    ( "IT"                , weighted_lowest_decile_sorted_on_it),
+    ( "IT-per-capita"     , weighted_lowest_decile_sorted_on_it_over_members) ]:
+  df = describe_deciles ( decile_defining_var   = decile_defining_var,
                           extra_weighted_decile = extra_weighted_decile )
   print ( decile_defining_var )
   print ( df )
