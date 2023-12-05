@@ -40,7 +40,7 @@ if True: # Read and format the data
                      . astype (float) )
 
 # Compute number of members, merge into households,
-# and use to compute "IT per capita" (income per capita)
+# and use to compute "IT-per-capita" (income per capita)
 if True:
   ppl_agg = ( # Find number of members in each household.
     ppl.groupby ( "household" )
@@ -53,7 +53,7 @@ if True:
                   how = "left",
                   on = "household" )
 
-  m["IT per capita"] = (
+  m["IT-per-capita"] = (
     m["IT"] / m["members"] )
 
 if True: # Compute weighted deciles (janky!)
@@ -71,10 +71,10 @@ if True: # Compute weighted deciles (janky!)
       # such that the sum of their weights is one tenth of the total.
       m . iloc[:last_index] . copy() )
 
-  if True: # Do it again for "IT per capita"
-    decile_defining_var = "IT per capita"
+  if True: # Do it again for "IT-per-capita"
+    decile_defining_var = "IT-per-capita"
     m = m . sort_values ( decile_defining_var )
-    last_index = 7224 # I found this by hand, if sorting on IT per capita
+    last_index = 7224 # I found this by hand, if sorting on IT-per-capita
     ratio = m.iloc[:last_index] ["weight"].sum() / tenth_weight
     assert (ratio > 0.99) & (ratio < 1.01) # The last index is unstable, but near this.
 
@@ -90,7 +90,7 @@ if True: # Compute weighted deciles (janky!)
     labels = False )
 
 def describe_deciles (
-    decile_defining_var : str, # "IT" or "IT per capita"
+    decile_defining_var : str, # "IT" or "IT-per-capita"
     extra_weighted_decile : pd.DataFrame, # In addition to the unweighted deciles,
                                           # must can include a weighted one.
 ) -> pd.DataFrame:
@@ -149,10 +149,15 @@ def describe_deciles (
 
 for ( decile_defining_var, extra_weighted_decile ) in [
     ( "IT",            weighted_lowest_decile_sorted_on_it),
-    ( "IT per capita", weighted_lowest_decile_sorted_on_it_over_members) ]:
+    ( "IT-per-capita", weighted_lowest_decile_sorted_on_it_over_members) ]:
   df = describe_deciles ( decile_defining_var = decile_defining_var,
                           extra_weighted_decile = extra_weighted_decile )
   print ( decile_defining_var )
   print ( df )
-  df.to_csv ( os.path.join ( ".",
-                             decile_defining_var + ".csv" ) )
+  df.to_csv (
+    "." . join ( [
+      "IT-and-GT-by-household-decile",
+      "sorting-on-" + decile_defining_var,
+      ".csv" ] ),
+    index = False,
+  )
