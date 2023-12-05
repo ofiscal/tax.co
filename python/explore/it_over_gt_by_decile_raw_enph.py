@@ -46,7 +46,7 @@ if True:
     ppl.groupby ( "household" )
     . agg ("max")
     . reset_index ()
-    . rename ( columns = {"member" : "members"} )
+    . rename ( columns = {"member" : "n members"} )
   )
 
   m = hhs.merge ( ppl_agg,
@@ -54,12 +54,12 @@ if True:
                   on = "household" )
 
   m["IT-per-capita"] = (
-    m["IT"] / m["members"] )
+    m["IT"] / m["n members"] )
 
 if True: # Compute weighted deciles (janky!)
   tenth_weight = m["weight"].sum() / 10
 
-  if True: # First, define a weighted decile for "IT"
+  if True: # Define a weighted decile for "IT"
     decile_defining_var = "IT"
     m = m . sort_values ( decile_defining_var )
     last_index = 7284 # I found this by hand, if sorting on IT
@@ -71,7 +71,7 @@ if True: # Compute weighted deciles (janky!)
       # such that the sum of their weights is one tenth of the total.
       m . iloc[:last_index] . copy() )
 
-  if True: # Do it again for "IT-per-capita"
+  if True: # Define a weighted decile for "IT-per-capita"
     decile_defining_var = "IT-per-capita"
     m = m . sort_values ( decile_defining_var )
     last_index = 7224 # I found this by hand, if sorting on IT-per-capita
@@ -105,13 +105,13 @@ def describe_deciles (
     assert len (df) == n_households # households are not repeated
     weight_sum = df ["weight"] . sum ()
     return pd.DataFrame ( {
-      "Decile"              : [ subset_name                             ],
-      "n households"        : [ n_households                            ],
-      "Sum of weight"       : [   df["weight"]                  . sum() ],
-      "Sum of IT"           : [   df["IT"    ]                  . sum() ],
-      "Sum of GT"           : [   df["GT"    ]                  . sum() ],
-      "Sum of IT, weighted" : [ ( df["IT"    ] * df["weight"] ) . sum() ],
-      "Sum of GT, weighted" : [ ( df["GT"    ] * df["weight"] ) . sum() ],
+      "Decile"          : [ subset_name                             ],
+      "n households"    : [ n_households                            ],
+      "Sum weight"      : [   df["weight"]                  . sum() ],
+      "Sum IT"          : [   df["IT"    ]                  . sum() ],
+      "Sum GT"          : [   df["GT"    ]                  . sum() ],
+      "Sum (IT*weight)" : [ ( df["IT"    ] * df["weight"] ) . sum() ],
+      "Sum (GT*weight)" : [ ( df["GT"    ] * df["weight"] ) . sum() ],
     } )
 
   summaryList = [] # a list in which to accumulate descriptions of deciles
@@ -133,18 +133,18 @@ def describe_deciles (
     . reset_index ( drop = True ) )
 
   # Compute a few more columns.
-  summary[ "Sum of GT / n households" ]  = ( summary [ "Sum of GT" ] /
-                                             summary [ "n households" ] )
-  summary[ "Sum of IT / n households" ]  = ( summary [ "Sum of IT" ] /
-                                             summary [ "n households" ] )
-  summary[ "Sum of GT / Sum of weight" ] = ( summary [ "Sum of GT" ] /
-                                             summary [ "Sum of weight" ] )
-  summary[ "Sum of IT / Sum of weight" ] = ( summary [ "Sum of IT" ] /
-                                             summary [ "Sum of weight" ] )
-  summary[ "Sum of GT / Sum of IT" ]     = ( summary [ "Sum of GT" ] /
-                                             summary [ "Sum of IT" ] )
-  summary[ "Wsum of GT / Wsum of IT" ]   = ( summary [ "Sum of GT, weighted" ] /
-                                             summary [ "Sum of IT, weighted" ] )
+  summary[ "Sum GT / n households" ]             = ( summary [ "Sum GT" ] /
+                                                     summary [ "n households" ] )
+  summary[ "Sum IT / n households" ]             = ( summary [ "Sum IT" ] /
+                                                     summary [ "n households" ] )
+  summary[ "Sum (GT*weight) / Sum weight" ]      = ( summary [ "Sum (GT*weight)" ] /
+                                                     summary [ "Sum weight" ] )
+  summary[ "Sum (IT*weight) / Sum weight" ]      = ( summary [ "Sum (IT*weight)" ] /
+                                                     summary [ "Sum weight" ] )
+  summary[ "Sum GT / Sum of IT" ]                = ( summary [ "Sum GT" ] /
+                                                     summary [ "Sum IT" ] )
+  summary[ "Sum (GT*weight) / Sum (IT*weight)" ] = ( summary [ "Sum (GT*weight)" ] /
+                                                     summary [ "Sum (IT*weight)" ] )
   return summary
 
 for ( decile_defining_var, extra_weighted_decile ) in [
@@ -158,6 +158,6 @@ for ( decile_defining_var, extra_weighted_decile ) in [
     "." . join ( [
       "IT-and-GT-by-household-decile",
       "sorting-on-" + decile_defining_var,
-      ".csv" ] ),
+      "csv" ] ),
     index = False,
   )
