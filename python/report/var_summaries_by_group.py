@@ -76,10 +76,6 @@ if True: # Create a few columns missing in the input data.
       (earners,                         "income",        "income"),
       (nonzero_earners_by_labor_income, "income, labor", "income"),
   ]:
-    df["income, labor + cesantia"] = (
-        df["income, labor"]
-        + df["income, cesantia"] )
-
     df[quantileVar + "-percentile-in[90,97]"] = (
         (df[quantileVar + "-percentile"] >= 90)
       & (df[quantileVar + "-percentile"] <= 97) )
@@ -113,7 +109,7 @@ if True: # Make some subsets.
 
 def make_summary_frame (
     unit             : str, # unit of observation: households or earners
-    quantileVar      : str, # defines income quantiles, e.g. "IT" or "income"
+    quantileVar      : str, # income variable used to define quantiles
     total_income_var : str, # often, but not always, equal to `quantileVar`
     df               : pd.DataFrame, # the underlying data   to summarize
     groupVars        : List[ Tuple [ str, List ] ], # gruops to summarize

@@ -7,7 +7,8 @@
 
 if True:
   from itertools import chain
-  from typing import Dict, List, Set, Tuple, Optional, TypeVar, GenericAlias
+  from typing import Dict, List, Set, Tuple, Optional, TypeVar
+  from typing_extensions import TypeAlias
   import python.common.common    as com
   if   com.regime_year == 2016:
       import python.regime.r2016 as regime
@@ -18,7 +19,7 @@ if True:
 
 
 ColumnType = TypeVar("ColumnType")
-GroupSpec : GenericAlias = (
+GroupSpec : TypeAlias = (
   Tuple [ str, # the name of the column identifying the grouping variable
           Optional [
             # If present, this list specifies the values to use as groups.
@@ -100,15 +101,14 @@ def earnerGroupVars (
 #
 
 commonVars = ( [ # vars in both household- and earner-level data sets
-  "cesantias + primas",
   "female head",
   "female head",
   "income, capital",
   "income, dividend",
   "income, govt",
   "income, infrequent",
-  "income, labor + cesantia",
   "income, labor",
+  "income, labor, cesantias + primas",
   "income, non-labor (tax def)",
   "income, pension",
   "income, private",
@@ -116,6 +116,9 @@ commonVars = ( [ # vars in both household- and earner-level data sets
   "pension, receiving",
   "tax",
   "tax, ss",
+  "tax, ss, ARL",
+  "tax, ss, ARL, employer",
+  "tax, ss, aux transporte, employer",
   "tax, ss, cajas de compensacion",
   "tax, ss, parafiscales",
   "tax, ss, pension",
@@ -185,8 +188,6 @@ def ofMostInterestLately (
     "income tax / "  + total_income,
 
     # The rest of these do not depend on `total_income`
-    "income, labor + cesantia: mean",
-    "income, labor + cesantia: sums",
     "income, labor: mean",
     "income, labor: sums",
     "tax, income, labor: max",
