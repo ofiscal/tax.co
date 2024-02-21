@@ -14,6 +14,9 @@ temp*
 __pycache__/
 
 # in specific folders
+/python/bin/
+/python/venv/
+/haskell/dist-newstyle/
 /state/1
 /output/recip-*/*.csv
 /git-comment*

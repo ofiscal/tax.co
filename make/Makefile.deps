@@ -626,8 +626,3 @@
 .no_younger_than/haskell/MarginalTaxRates.hs: \
   haskell/MarginalTaxRates.hs
 	install -D /dev/null .no_younger_than/haskell/MarginalTaxRates.hs
-
-.no_younger_than/haskell/Main.hs: \
-  haskell/Main.hs \
-  .no_younger_than/haskell/MarginalTaxRates.hs
-	install -D /dev/null .no_younger_than/haskell/Main.hs

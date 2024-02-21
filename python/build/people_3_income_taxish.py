@@ -36,7 +36,13 @@ ppl = regime.income_taxes( ppl )
 ppl["income tax / income"] = (
   ppl["tax, income"] / ppl["income"] )
 
-oio.saveUserData(
+ppl["income, labor"] = (
+  ppl [[ "income, labor",
+         "income, labor, vacaciones",
+         "income, labor, cesantias + primas", ]]
+  . sum (axis = "columns" ) )
+
+oio.saveUserData (
   com.subsample,
   ppl,
   'people_3_income_taxish.' + com.strategy_year_suffix

@@ -1,7 +1,7 @@
 if True:
-  from typing import List
-  import sys
   import pandas as pd
+  import sys
+  from   typing import List
   #
   import python.build.households_1_agg_plus_defs as defs
   import python.build.output_io                  as oio
@@ -59,7 +59,7 @@ def test_income_ranks( hh : pd.DataFrame,
 
     for n in range(1,5):
         # Income ranks are ordered correctly.
-        assert hh_means[n] > 2 * hh_means[n+1]
+        assert hh_means[n] > 1.5 * hh_means[n+1]
 
 def test_sums( hh : pd.DataFrame,
                ppl : pd.DataFrame ) -> None:

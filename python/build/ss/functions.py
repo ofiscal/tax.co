@@ -103,18 +103,21 @@ def mk_vacaciones_employer ( independiente, income ):
     return compute_base ( income ) * rate
 
 ss_tax_names_and_recipes = \
-  [ ( "tax, ss, ARL",
+  [ ( "income, labor, cesantias + primas", # PITFALL: nominally from the employer
+      mk_cesantias_y_primas_employer)      # PITFALL: not a tax -- that's why its
+                                           # name looks different.
+  , ( "income, labor, vacaciones",
+      mk_vacaciones_employer)              # PITFALL: not a tax -- that's why its
+                                           # name looks different.
+  , ( "tax, ss, ARL",
       mk_arl)
   , ( "tax, ss, ARL, employer",
       mk_arl_employer)
   , ( "tax, ss, aux transporte, employer",
       mk_aux_transporte_employer)
-  , ( "tax, ss, cajas de compensacion", # PITFALL: nominally from the employer
+  , ( "tax, ss, cajas de compensacion",    # PITFALL: nominally from the employer
       mk_cajas_de_compensacion_employer)
-  , ( "cesantias + primas",             # PITFALL: nominally from the employer
-      mk_cesantias_y_primas_employer)   # PITFALL: not a tax -- that's why its
-                                        # name looks different.
-  , ( "tax, ss, parafiscales",          # PITFALL: nominally from the employer
+  , ( "tax, ss, parafiscales",             # PITFALL: nominally from the employer
       mk_parafiscales_employer)
   , ( "tax, ss, pension",
       mk_pension)
@@ -125,10 +128,7 @@ ss_tax_names_and_recipes = \
   , ( "tax, ss, salud, employer",
       mk_salud_employer)
   , ( "tax, ss, solidaridad",
-      mk_solidaridad)
-  , ( "vacaciones, employer",
-      mk_vacaciones_employer) ] # PITFALL: not a tax -- that's why its
-                                # name looks different.
+      mk_solidaridad) ]
 
 def mk_ss_contribs( ppl : pd.DataFrame ) -> pd.DataFrame:
   """PITFALL: Destructive."""
@@ -148,8 +148,6 @@ def mk_ss_contribs( ppl : pd.DataFrame ) -> pd.DataFrame:
 
   re_tax_ss  = re.compile( "^tax, ss" )
   ppl["tax, ss"] = (
-    # Cesantías, primas and vacaciones are not included here,
-    # because they are income.
     ppl [ [ name for (name, _)
             in ss_tax_names_and_recipes
             if re_tax_ss . match ( name )

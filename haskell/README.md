@@ -1,3 +1,22 @@
+# Setup
+
+The makefile will try to build the executable.
+If that fails it should be in the logs.
+If it succeeds, the default symlink here might not work,
+because it depends on your version of ghc.
+
+If it's broken, you'll know because the link
+`haskell/Main` will point to a nonexistent file.
+To fix it, go to the `haskell/` folder and run
+```
+find  . -name "Main" -type f
+```
+delete the old symlink, and make a new one
+pointing to the file that `find` discovered.
+
+Now the Makefile will be able to run the executable
+by referring to it as `haskell/Main`.
+
 # Execution
 
 ## Execution with compilation

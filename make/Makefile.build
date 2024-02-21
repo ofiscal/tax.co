@@ -157,9 +157,8 @@ $(goods_by_income_decile):                      \
 	date
 	$(python_from_here) python/build/goods-by-income-decile.py $(config_file)
 
-haskell/Main: \
-  .no_younger_than/haskell/Main.hs
-	cd haskell && ghc -o Main Main.hs
+haskell/Main:
+	cd haskell && cabal build
 
 users/$(user)/config/marginal_rates/most.py: \
   users/$(user)/config/marginal_rates/most.csv \

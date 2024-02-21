@@ -17,7 +17,7 @@ import os
 import pandas as pd
 from   typing import Callable, Dict
 #
-from   python.build.ss.types import AverageTaxSchedule
+from   python.build.ss.myTypes import AverageTaxSchedule
 from   python.common.misc import min_wage
 
 

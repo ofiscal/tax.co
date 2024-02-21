@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import math as math
 #
-from python.build.ss.types import (
+from python.build.ss.myTypes import (
   AverageTaxBracket, AverageTaxSchedule )
 
 

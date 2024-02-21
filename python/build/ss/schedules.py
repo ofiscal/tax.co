@@ -6,7 +6,7 @@ import pandas as pd
 from   typing import Dict
 #
 from   python.common.misc import min_wage
-from   python.build.ss.types import AverageTaxSchedule
+from   python.build.ss.myTypes import AverageTaxSchedule
 
 
 ss_contrib_schedule_for_contractor : \

@@ -1,3 +1,7 @@
+# PITFALL: Calling this module "types" can, unbelievably,
+# create mayhem due to collisions with
+# the names of builtin modules.
+
 from typing import Callable, List, Tuple
 from typing_extensions import TypeAlias
 
