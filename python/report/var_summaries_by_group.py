@@ -263,15 +263,19 @@ for (unit, quantileVar, total_income_var, df, groupVars, variables) in [
       com.subsample,
       ret_tmi,
       "report_" + unit + "_tmi." + com.strategy_year_suffix )
+"""
   oio.saveUserData_excel(
       com.subsample,
       ret_tmi,
       "report_" + unit + "_tmi." + com.strategy_year_suffix )
+"""
   oio.saveUserData(
       com.subsample,
       ret,
       "report_" + unit + "."     + com.strategy_year_suffix )
+"""
   oio.saveUserData_excel(
       com.subsample,
       ret,
       "report_" + unit + "."     + com.strategy_year_suffix )
+"""
